@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# ===== PAGES THAT SHOULD NEVER BE INDEXED =====
+Disallow: /404.html
+Disallow: /send_inquiry.php
+Disallow: /thank-you.html
+
+# ===== OLD/REMOVED PAGES (Bing cleanup 2026-05-30) =====
+# Add old page paths here as you discover them:
+# Disallow: /pneumatic-fittings.html
+# Disallow: /old-product-page.html
+
+# ===== LEGACY URL PATTERNS =====
+# Disallow: /old-category/
+# Disallow: /temp/
+# Disallow: /test/
+
+# ===== SITEMAP =====
+Sitemap: https://www.begapunk.com/sitemap.xml
+
+# Crawl-delay: 10

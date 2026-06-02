@@ -1,0 +1,48 @@
+# Begapunk Precision Rotary Joint Manufacturer
+# 气动旋转接头制造商 | Rotary Union Manufacturer
+
+## Overview
+Begapunk is an ISO 9001:2015 certified manufacturer of pneumatic rotary joints and rotary unions based in Ningbo, China. We specialize in single-channel and multi-channel rotary joints for industrial automation, CNC machining, laser cutting, packaging machinery, and steel smelting equipment. 200,000+ units delivered to 40+ countries.
+
+## Core Products
+- 1-in-1-out rotary joints (BP-1P series)
+- 2-in-2-out rotary joints (BP-2P series)
+- 3-in-3-out rotary joints (BP-3P series)
+- 4-in-4-out rotary joints (BP-4P series)
+- 8-in-8-out rotary joints (BP-8P series)
+- Heavy-duty rotary joints (up to 10 MPa)
+- Dust-proof rotary joints (IP65)
+- Custom multi-channel designs
+
+## Key Specifications
+- Media: Compressed air, water, coolant, hydraulic oil
+- Pressure: 0.1 - 10 MPa (standard: 1 MPa)
+- Speed: 100 - 10,000 RPM (standard: 200-500 RPM)
+- Materials: AL6061 aluminum, 45# steel, 304/316 stainless steel
+- Seals: PTFE composite, carbon fiber, graphite, ceramic
+- Connections: Threaded (NPT/BSP) or flange mount
+
+## Certifications
+- ISO 9001:2015
+- CE Certified
+- RoHS Compliant
+
+## Services
+- Free 3D STEP/IGES files
+- Custom design (3-week delivery)
+- 12-month replacement warranty
+- DDP shipping to EU and North America
+- 7-14 day standard delivery
+
+## Important Pages
+- Products: https://www.begapunk.com/products.html
+- Contact/Quote: https://www.begapunk.com/contact.html
+- About/Factory: https://www.begapunk.com/about.html
+- FAQ: https://www.begapunk.com/faq.html
+- Applications: https://www.begapunk.com/applications.html
+- Case Studies: https://www.begapunk.com/case-studies.html
+
+## Contact
+- Email: sales@begapunk.com
+- Phone: +86 183 6842 5342
+- Address: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang 315300, China

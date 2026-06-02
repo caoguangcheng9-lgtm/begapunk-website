@@ -1,0 +1,79 @@
+# Begapunk - Remove old pages from search engines
+# 410 Gone = permanent removal signal (stronger than 404)
+
+# ========================================
+# OLD PRODUCT PAGES (Bing cached 404s — submitted 2026-05-30)
+# ========================================
+RedirectMatch 410 ^/pneumatic-fittings\.html$
+RedirectMatch 410 ^/pneumatic-rotary-joint\.html$
+RedirectMatch 410 ^/hydraulic-rotary-joint\.html$
+RedirectMatch 410 ^/large-flow-rotary-joint\.html$
+RedirectMatch 410 ^/Choosing-the-Right-High-Pressure-Rotary-Joint\.html$
+RedirectMatch 410 ^/A-Dynamic-Model-of-the-Low-Speed-Rotary-Joint\.html$
+
+# Old platform category pages (B2B platform URL patterns)
+RedirectMatch 410 ^/Pneumatic-Fittings-c[0-9]+/.*$
+RedirectMatch 410 ^/Pneumatic-rotary-joint-c[0-9]+/.*$
+RedirectMatch 410 ^/HYDRAULIC-ROTARY-JOINT-C[0-9]+/.*$
+RedirectMatch 410 ^/3-in-3-out-Pneumatic-rotary-joint-p[0-9]+\.html$
+
+# ========================================
+# OLD BLOG/CONTENT PAGES
+# ========================================
+RedirectMatch 410 ^/blog/archive/?.*$
+RedirectMatch 410 ^/blog-123-13355/.*$
+
+# ========================================
+# OLD CATEGORY/DIRECTORY PAGES
+# ========================================
+RedirectMatch 410 ^/pages$
+
+# ========================================
+# LEGACY URL PATTERNS
+# ========================================
+# If you had URLs like /product?id=123 (now replaced by /BP-xxx.html)
+# RedirectMatch 410 ^/product\?.*$
+
+# ========================================
+# CATCH-ALL: Any .html not in current sitemap -> 404
+# (Uncomment below ONLY after confirming ALL current pages work!)
+# ========================================
+# <IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule \.html$ - [R=404,L]
+# </IfModule>
+
+# ========================================
+# BASIC SEO & SECURITY
+# ========================================
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Force HTTPS (uncomment if you have SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Remove trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+# Redirect non-www to www (or vice versa - pick one)
+# RewriteCond %{HTTP_HOST} ^begapunk\.com$ [NC]
+# RewriteRule ^(.*)$ https://www.begapunk.com/$1 [R=301,L]
+</IfModule>
+
+# Enable gzip compression
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType text/css "access plus 1 week"
+ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
