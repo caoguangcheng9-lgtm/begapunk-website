@@ -379,16 +379,21 @@ a:hover { color: var(--primary-dark); }
     display: flex;
     align-items: center;
     isolation: isolate;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffffff 0%, #eef3f8 100%);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.28);
 }
 
 .hero-product-stage::before,
 .hero-product-stage::after {
     content: "";
     position: absolute;
-    left: 4%;
-    right: 2%;
+    left: 6%;
+    right: 6%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(96,165,250,0.72), rgba(45,140,140,0.38), transparent);
+    background: linear-gradient(90deg, transparent, rgba(30,110,184,0.24), rgba(45,140,140,0.16), transparent);
     z-index: 0;
 }
 
@@ -398,13 +403,8 @@ a:hover { color: var(--primary-dark); }
 .hero-product-stage img {
     position: relative;
     z-index: 1;
-    border-radius: 0;
-    opacity: 0.96;
-    filter: drop-shadow(0 24px 34px rgba(0,0,0,0.38));
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 92%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 8%, #000 88%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 92%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 8%, #000 88%, transparent 100%);
-    mask-composite: intersect;
+    border-radius: 6px;
+    filter: none;
 }
 
 .hero-spec-tag {
