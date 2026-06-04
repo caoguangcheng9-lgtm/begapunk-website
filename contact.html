@@ -8,17 +8,17 @@
 
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- <title>Request a Free Quote | Rotary Joints & Custom Rotary Unions | Begapunk</title>
+ <title>Rotary Joint RFQ | Request a Quote from Begapunk Engineers</title>
 
- <meta name="description" content="Request a free quote for standard or custom rotary joints. Standard models ship in 7 days. Custom designs with free 3D STEP files. Engineering team responds within 24 hours.">
+ <meta name="description" content="Submit a rotary joint RFQ with media, pressure, RPM, passages, connection type, mounting style, quantity, and drawing. Begapunk engineers respond within 24 hours.">
 
  
 
  <!-- Open Graph -->
 
- <meta property="og:title" content="Request a Free Quote | Begapunk Rotary Joints">
+ <meta property="og:title" content="Rotary Joint RFQ | Begapunk">
 
- <meta property="og:description" content="Get a quote for rotary joints and custom rotary unions. Standard models in stock. Custom designs with free 3D files. Response within 24 hours.">
+ <meta property="og:description" content="Request a quote for standard or custom rotary joints. Send pressure, RPM, media, passages, mounting details, and drawings for engineer review.">
 
  <meta property="og:url" content="https://www.begapunk.com/contact.html">
 
@@ -40,9 +40,9 @@
 
  <meta name="twitter:card" content="summary_large_image">
 
- <meta name="twitter:title" content="Request a Free Quote | Begapunk Rotary Joints">
+ <meta name="twitter:title" content="Rotary Joint RFQ | Begapunk">
 
- <meta name="twitter:description" content="Get a quote for rotary joints and custom rotary unions. Response within 24 hours.">
+ <meta name="twitter:description" content="Submit rotary joint requirements and drawings for Begapunk engineering review within 24 hours.">
 
  <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
@@ -236,9 +236,9 @@
 
  <div class="container">
 
- <h1>Request a Free Quote</h1>
+ <h1>Request a Rotary Joint Quote</h1>
 
- <p>Tell us what you need. Engineering team responds within 24 hours with pricing, delivery timeline, and free 3D drawing if needed.</p>
+ <p>Send your machine requirements or drawing. Begapunk engineers will check pressure, RPM, media, mounting, passage layout, and reply within 24 hours.</p>
 
  </div>
 
@@ -256,7 +256,7 @@
 
  <h2>Get in Touch</h2>
 
- <p>Every inquiry is reviewed by an engineer &mdash; not a sales bot. For standard models, we quote immediately. For custom designs, we'll schedule a quick video call to confirm your requirements.</p>
+ <p>Every RFQ is reviewed by an engineer &mdash; not a sales bot. Share the working media, pressure, RPM, passages, connection type, mounting style, and drawing if available. For standard models, we quote immediately. For custom designs, we confirm the technical details before production.</p>
 
 
 
@@ -338,9 +338,9 @@
 
  <div class="form-box">
 
- <h2>Quick Quote Form</h2>
+ <h2>Rotary Joint RFQ Form</h2>
 
- <p class="subtitle">The more details you provide, the faster and more accurate our quote will be.</p>
+ <p class="subtitle">Provide the key engineering parameters below. If you are not sure, upload a drawing or photo and our team will help check the specification.</p>
 
 
 
@@ -438,17 +438,21 @@
 
  <option value="">Select or describe below...</option>
 
- <option value="1in1out">1-in-1-out Rotary Joint</option>
+ <option value="standard-model">Standard Begapunk model</option>
 
- <option value="2in2out">2-in-2-out Rotary Joint</option>
+ <option value="1in1out">1-in-1-out air rotary union</option>
 
- <option value="3in3out">3-in-3-out Rotary Joint</option>
+ <option value="2in2out">2-in-2-out pneumatic rotary joint</option>
 
- <option value="4in4out">4-in-4-out Rotary Joint</option>
+ <option value="3in3out">3-in-3-out pneumatic rotary joint</option>
 
- <option value="highspeed">High-Speed Rotary Union</option>
+ <option value="4plus">4-channel or multi-channel rotary union</option>
 
- <option value="custom">Custom Design &mdash; Describe in Requirements</option>
+ <option value="pneumatic-electric">Pneumatic + electrical slip ring rotary joint</option>
+
+ <option value="replacement">Replacement / cross-reference from old drawing or model</option>
+
+ <option value="custom">Custom design &mdash; describe below</option>
 
  </select>
 
@@ -525,6 +529,121 @@
  </div>
 
 
+ <!-- Row 5: Pressure + Speed -->
+
+ <div class="form-row">
+
+ <div class="form-group">
+
+ <label for="max_pressure">Max Working Pressure</label>
+
+ <input type="text" id="max_pressure" name="max_pressure" placeholder="e.g. 0.8 MPa / 8 bar / 120 psi">
+
+ </div>
+
+ <div class="form-group">
+
+ <label for="max_rpm">Max Rotation Speed</label>
+
+ <input type="text" id="max_rpm" name="max_rpm" placeholder="e.g. 200 RPM / 500 RPM">
+
+ </div>
+
+ </div>
+
+
+ <!-- Row 6: Passages + Connection -->
+
+ <div class="form-row">
+
+ <div class="form-group">
+
+ <label for="passages">Number of Passages</label>
+
+ <select id="passages" name="passages">
+
+ <option value="">Select...</option>
+
+ <option value="1">1 passage</option>
+
+ <option value="2">2 passages</option>
+
+ <option value="3">3 passages</option>
+
+ <option value="4">4 passages</option>
+
+ <option value="5plus">5+ passages</option>
+
+ <option value="unknown">Not sure / need engineer check</option>
+
+ </select>
+
+ </div>
+
+ <div class="form-group">
+
+ <label for="connection_type">Connection Type</label>
+
+ <select id="connection_type" name="connection_type">
+
+ <option value="">Select...</option>
+
+ <option value="g-thread">G thread</option>
+
+ <option value="npt">NPT thread</option>
+
+ <option value="bsp">BSP thread</option>
+
+ <option value="m-thread">Metric thread</option>
+
+ <option value="flange">Flange connection</option>
+
+ <option value="custom">Custom / unknown</option>
+
+ </select>
+
+ </div>
+
+ </div>
+
+
+ <!-- Row 7: Mounting + Temperature -->
+
+ <div class="form-row">
+
+ <div class="form-group">
+
+ <label for="mounting_type">Mounting Type</label>
+
+ <select id="mounting_type" name="mounting_type">
+
+ <option value="">Select...</option>
+
+ <option value="threaded">Threaded mount</option>
+
+ <option value="flange">Flange mount</option>
+
+ <option value="anti-rotation">Anti-rotation bracket</option>
+
+ <option value="drop-in">Drop-in replacement</option>
+
+ <option value="unknown">Not sure / need engineer check</option>
+
+ </select>
+
+ </div>
+
+ <div class="form-group">
+
+ <label for="temperature">Working Temperature</label>
+
+ <input type="text" id="temperature" name="temperature" placeholder="e.g. -10 to 80 C">
+
+ </div>
+
+ </div>
+
+
 
  <!-- Application -->
 
@@ -542,9 +661,9 @@
 
  <div class="form-group">
 
- <label for="requirements">Technical Requirements</label>
+ <label for="requirements">Additional Requirements</label>
 
- <textarea id="requirements" name="requirements" placeholder="Tell us about your needs:&#10;- Max pressure (bar/psi)&#10;- Max RPM&#10;- Temperature range&#10;- Connection type (thread/flange)&#10;- Number of passages&#10;- Mounting space constraints"></textarea>
+ <textarea id="requirements" name="requirements" placeholder="Tell us any extra details:&#10;- Machine brand or model&#10;- Mounting space constraints&#10;- Current rotary joint model or drawing number&#10;- Leakage, speed, or seal problems to solve&#10;- Target delivery country and project schedule"></textarea>
 
  </div>
 
@@ -562,7 +681,7 @@
 
  <label for="drawing" style="cursor:pointer; display:block;">
 
- <p>&#128206; Click to upload a file</p>
+ <p>&#128206; Upload drawing, old model photo, or machine interface</p>
 
  <p class="file-hint">PDF, STEP, IGES, DWG, DXF, JPG, PNG &mdash; Max 10 MB</p>
 
