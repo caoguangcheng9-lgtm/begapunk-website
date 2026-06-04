@@ -61,72 +61,110 @@
  <!-- Schema.org Structured Data -->
 
  <script type="application/ld+json">
-
- {
-
- "@context": "https://schema.org",
-
- "@graph": [
-
- {
-
- "@type": "BreadcrumbList",
-
- "itemListElement": [
-
- {"@type":"ListItem","position":1,"name":"Home","item":"https://www.begapunk.com/"},
-
- {"@type":"ListItem","position":2,"name":"Products","item":"https://www.begapunk.com/products.html"},
-
- {"@type":"ListItem","position":3,"name":"BP-2P-0002 Rotary Joint","item":"https://www.begapunk.com/BP-2P-0002.html"}
-
- ]
-
- },
-
- {
-
- "@type": "Product",
-
- "name": "BP-2P-0002 2-in-3-out (4mm Orifice) Rotary Joint",
-
- "image": "https://www.begapunk.com/images/products/BP-2P-0002.png",
-
- "description": "2-in-3-out rotary joint with G1/8 thread. 4mm orifice, max pressure 1 MPa, max speed 300 RPM. AL6061 body with PTFE composite seal. Compatible with air, water, coolant, and light hydraulic oil.",
-
- "sku": "BP-2P-0002",
-
- "brand": {"@type":"Brand","name":"Begapunk"},
-
- "manufacturer": {"@id":"https://www.begapunk.com/#organization"},
-
- "aggregateRating": {
-
- "@type": "AggregateRating",
-
- "ratingValue": "4.9",
-
- "reviewCount": "32"
-
- },
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "price": "0.01",
-      "priceCurrency": "USD",
-      "url": "https://www.begapunk.com/contact.html",
-      "itemCondition": "https://schema.org/NewCondition",
-      "priceValidUntil": "2026-12-31"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.begapunk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://www.begapunk.com/products.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "BP-2P-0002 Rotary Joint",
+          "item": "https://www.begapunk.com/BP-2P-0002.html"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "BP-2P-0002 2-in-3-out (4mm Orifice) Rotary Joint",
+      "image": "https://www.begapunk.com/images/products/BP-2P-0002.png",
+      "description": "2-in-3-out rotary joint with G1/8 thread. 4mm orifice, max pressure 1 MPa, max speed 300 RPM. AL6061 body with PTFE composite seal. Compatible with air, water, coolant, and light hydraulic oil.",
+      "sku": "BP-2P-0002",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://www.begapunk.com/#brand",
+        "name": "Begapunk"
+      },
+      "manufacturer": {
+        "@id": "https://www.begapunk.com/#organization"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "32"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "url": "https://www.begapunk.com/BP-2P-0002.html",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceValidUntil": "2026-12-31",
+        "description": "Request a quote for current B2B pricing, lead time, and customization options."
+      },
+      "@id": "https://www.begapunk.com/BP-2P-0002.html#product",
+      "url": "https://www.begapunk.com/BP-2P-0002.html",
+      "mpn": "BP-2P-0002",
+      "category": "Air Rotary Union / Pneumatic Rotary Joint",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Product type",
+          "value": "Pneumatic rotary joint / air rotary union"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "SKU",
+          "value": "BP-2P-0002"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Passages",
+          "value": "2 inlet / 3 outlet"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Maximum pressure",
+          "value": "1 MPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Maximum speed",
+          "value": "300 RPM"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Compatible media",
+          "value": "air, water, coolant, and light hydraulic oil"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Seal type",
+          "value": "PTFE composite seal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Typical applications",
+          "value": "Industrial automation, rotary tables, pneumatic clamping, packaging machinery, CNC machinery, laser cutting machines"
+        }
+      ]
     }
-  
-
- }
-
- ]
-
- }
-
- </script>
+  ]
+}
+</script>
 
  
 
