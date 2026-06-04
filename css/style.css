@@ -2378,6 +2378,181 @@ border-color: rgba(37,99,235,0.35);
  font-size: 1.15rem;
  max-width: 600px;
  }
+ .app-hero .breadcrumb {
+ color: rgba(255,255,255,0.72);
+ margin-bottom: 18px;
+ font-size: 0.9rem;
+ }
+ .app-hero .breadcrumb a {
+ color: rgba(255,255,255,0.88);
+ font-weight: 600;
+ }
+ .app-hero-actions {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 14px;
+ margin-top: 28px;
+ }
+
+/* Application detail pages */
+.app-detail-intro {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 360px;
+gap: 34px;
+align-items: start;
+}
+.app-detail-copy p {
+color: var(--text-light);
+line-height: 1.78;
+font-size: 1.02rem;
+margin-bottom: 16px;
+}
+.app-detail-visual {
+background: #fff;
+border: 1px solid var(--border);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+padding: 22px;
+}
+.app-detail-visual img {
+width: 100%;
+height: auto;
+display: block;
+object-fit: contain;
+aspect-ratio: 4 / 3;
+}
+.app-detail-visual strong {
+display: block;
+margin-top: 14px;
+color: var(--dark-soft, #1e293b);
+}
+.app-detail-visual span {
+display: block;
+margin-top: 6px;
+color: var(--text-light);
+line-height: 1.55;
+font-size: 0.92rem;
+}
+.app-detail-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 18px;
+}
+.app-detail-card {
+background: #fff;
+border: 1px solid var(--border);
+border-radius: var(--radius);
+padding: 22px;
+box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+.app-detail-card h3 {
+color: var(--dark-soft, #1e293b);
+font-size: 1.05rem;
+margin-bottom: 10px;
+}
+.app-detail-card p,
+.app-detail-card li {
+color: var(--text-light);
+line-height: 1.65;
+font-size: 0.95rem;
+}
+.app-detail-card ul {
+margin: 0;
+padding-left: 18px;
+}
+.app-detail-table-wrap {
+overflow-x: auto;
+border: 1px solid var(--border);
+border-radius: var(--radius);
+background: #fff;
+box-shadow: var(--shadow);
+}
+.app-detail-table {
+width: 100%;
+min-width: 760px;
+border-collapse: collapse;
+font-size: 0.94rem;
+}
+.app-detail-table th {
+background: var(--dark-soft, #1e293b);
+color: #fff;
+text-align: left;
+padding: 14px 16px;
+font-weight: 700;
+white-space: nowrap;
+}
+.app-detail-table td {
+padding: 14px 16px;
+border-top: 1px solid var(--border);
+color: var(--text);
+vertical-align: top;
+line-height: 1.58;
+}
+.app-detail-table tbody tr:nth-child(even) td {
+background: #f8fafc;
+}
+.app-related-products {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 18px;
+}
+.app-related-product {
+display: flex;
+flex-direction: column;
+gap: 10px;
+padding: 20px;
+background: #fff;
+border: 1px solid var(--border);
+border-radius: var(--radius);
+box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+.app-related-product strong {
+color: var(--dark-soft, #1e293b);
+font-size: 1.03rem;
+}
+.app-related-product span {
+color: var(--text-light);
+line-height: 1.55;
+font-size: 0.93rem;
+}
+.app-detail-cta {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 24px;
+padding: 34px;
+background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%);
+border-radius: var(--radius);
+color: #fff;
+}
+.app-detail-cta h2 {
+font-size: 1.65rem;
+margin-bottom: 10px;
+}
+.app-detail-cta p {
+color: rgba(255,255,255,0.78);
+line-height: 1.65;
+max-width: 720px;
+}
+.app-faq-list {
+display: grid;
+gap: 14px;
+}
+.app-faq-item {
+background: #fff;
+border: 1px solid var(--border);
+border-radius: var(--radius);
+padding: 20px 22px;
+}
+.app-faq-item h3 {
+font-size: 1rem;
+color: var(--dark-soft, #1e293b);
+margin-bottom: 8px;
+}
+.app-faq-item p {
+color: var(--text-light);
+line-height: 1.65;
+}
 
  /* Section Spacing */
  .app-section {
@@ -2490,6 +2665,21 @@ border-color: rgba(37,99,235,0.35);
 
  /* Responsive */
  @media (max-width: 768px) {
+ .app-detail-intro,
+ .app-detail-grid,
+ .app-related-products {
+ grid-template-columns: 1fr;
+ }
+ .app-detail-cta {
+ flex-direction: column;
+ align-items: flex-start;
+ padding: 26px;
+ }
+ .app-detail-cta .btn,
+ .app-hero-actions .btn {
+ width: 100%;
+ justify-content: center;
+ }
  .app-row, .app-row.reverse {
  grid-template-columns: 1fr;
  gap: 32px;
