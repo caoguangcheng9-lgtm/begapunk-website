@@ -8,3 +8,5 @@ Thumbs.db
 __pycache__/
 *.tmp
 *.bak
+.codex-panel*
+.codex-tmp*

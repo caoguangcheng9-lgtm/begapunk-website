@@ -139,23 +139,7 @@
 
     <div class="container">
 
-
-
-        <!-- Product Type Tabs -->
-
-        <div class="install-tabs">
-
-            <button class="install-tab active" onclick="showTab('rotary', event)">Rotary Joint / Union</button>
-
-            <button class="install-tab" onclick="showTab('slipring', event)">Slip Ring</button>
-
-            <button class="install-tab" onclick="showTab('combo', event)">Slip Ring + Union</button>
-
-        </div>
-
-
-
-        <!-- Rotary Joint / Union Section -->
+        <!-- Rotary Joint / Union Installation Guide -->
 
         <div id="rotary" class="install-section active">
 
@@ -305,139 +289,9 @@
 
         </div>
 
-
-
-        <!-- Slip Ring Section -->
-
-        <div id="slipring" class="install-section">
-
-            <div class="install-grid">
-
-                <div class="install-main">
-
-                    <div class="install-card">
-
-                        <h2><span class="icon">1</span> Connections</h2>
-
-                        <div class="step-row"><span class="step-number">1</span><p><strong>Use flexible connections.</strong> Begapunk slip rings should always be installed using flexible lead wire routing. To avoid damage to the bearings, the slip ring needs to find its center during operation. Never hard-mount either the shaft or the housing.</p></div>
-
-                        <div class="step-row"><span class="step-number">2</span><p><strong>Allow floating.</strong> It is essential that the housing or shaft is allowed to float to compensate for any eccentricity and/or misalignment in the machine.</p></div>
-
-                    </div>
-
-
-
-                    <div class="install-card">
-
-                        <h2><span class="icon">2</span> Anti-Rotation</h2>
-
-                        <p>For most slip ring applications, the lead wires should <strong>not</strong> be used as the anti-rotation method. Most slip rings require an external anti-rotation device such as a fork around the fittings, pin, yoke, or bracket.</p>
-
-                        <p>Anti-rotation devices must "float" to prevent damage to the slip ring assembly.</p>
-
-                        <div class="note">Need help designing an anti-rotation bracket? <a href="contact.html">Contact us</a> with your mounting dimensions.</div>
-
-                    </div>
-
-                </div>
-
-                <div class="install-sidebar">
-
-                    <h3>Quick Links</h3>
-
-                    <ul>
-
-                        <li><a href="products.html">Slip Ring Catalog</a></li>
-
-                        <li><a href="contact.html">Custom Mounting Help</a></li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Combo Section -->
-
-        <div id="combo" class="install-section">
-
-            <div class="install-grid">
-
-                <div class="install-main">
-
-                    <div class="install-card">
-
-                        <h2><span class="icon">1</span> Slip Ring + Rotary Union Combo</h2>
-
-                        <p>When installing a combined slip ring and rotary union unit, follow the guidelines for <strong>both</strong> components:</p>
-
-                        <ol>
-
-                            <li>Use flexible connections for both fluid and electrical paths.</li>
-
-                            <li>Install the fluid connections first (rotary union side) before connecting electrical leads.</li>
-
-                            <li>Provide separate anti-rotation for each subsystem, or use a single floating bracket that supports both.</li>
-
-                            <li>Ensure electrical leads do not cross or contact fluid hoses &mdash; maintain separation to prevent short circuits.</li>
-
-                            <li>Filter fluid to 25 microns or finer.</li>
-
-                            <li>Grease bearings if fitted (max 2 pumps per fitting).</li>
-
-                        </ol>
-
-                        <div class="note"><strong>Support:</strong> Combo units often require custom mounting brackets. Send us your machine drawings and we can design a bracket for you.</div>
-
-                    </div>
-
-                </div>
-
-                <div class="install-sidebar">
-
-                    <h3>Quick Links</h3>
-
-                    <ul>
-
-                        <li><a href="products.html">Combo Units</a></li>
-
-                        <li><a href="contact.html">Custom Bracket Design</a></li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
     </div>
 
 </section>
-
-
-
-<script>
-
-function showTab(tabId, evt) {
-
-    document.querySelectorAll('.install-section').forEach(s => s.classList.remove('active'));
-
-    document.querySelectorAll('.install-tab').forEach(t => t.classList.remove('active'));
-
-    document.getElementById(tabId).classList.add('active');
-
-    evt.target.classList.add('active');
-
-}
-
-</script>
 
 
 
