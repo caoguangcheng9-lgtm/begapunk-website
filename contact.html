@@ -335,9 +335,14 @@
 
 
 
- <form id="quoteForm" method="POST" onsubmit="return false;">
+<form id="quoteForm" method="POST" onsubmit="return false;">
 
 <input type="hidden" name="redirect" value="https://www.begapunk.com/thank-you.html">
+<input type="hidden" id="inquiry_type" name="inquiry_type" value="">
+<input type="hidden" id="source_model" name="source_model" value="">
+<input type="hidden" id="source_product" name="source_product" value="">
+<input type="hidden" id="source_page" name="source_page" value="">
+<input type="hidden" id="source_url" name="source_url" value="">
 
  <!-- Row 1: Name + Email -->
 
@@ -819,6 +824,64 @@ window.addEventListener('scroll', () => {
  }
 
 });
+
+// Prefill RFQ context when visitors arrive from a product detail page.
+(function prefillProductInquiry() {
+ const params = new URLSearchParams(window.location.search);
+ const requestType = params.get('request') || '';
+ const sourceModel = params.get('model') || '';
+ const sourceProduct = params.get('product') || sourceModel;
+ const sourcePage = params.get('source') || '';
+ const sourceUrl = sourcePage ? new URL(sourcePage, window.location.origin + '/').href : '';
+
+ if (!sourceModel && !sourcePage && !requestType) {
+ return;
+ }
+
+ const inquiryLabel = requestType === '3d-step' ? '3D STEP file request' : 'Engineering quote request';
+ const hiddenValues = {
+ inquiry_type: inquiryLabel,
+ source_model: sourceModel,
+ source_product: sourceProduct,
+ source_page: sourcePage,
+ source_url: sourceUrl
+ };
+
+ Object.entries(hiddenValues).forEach(([id, value]) => {
+ const field = document.getElementById(id);
+ if (field) {
+ field.value = value;
+ }
+ });
+
+ const productSelect = document.getElementById('product');
+ if (productSelect && sourceModel) {
+ const option = document.createElement('option');
+ option.value = sourceModel;
+ option.textContent = sourceProduct;
+ option.selected = true;
+ productSelect.insertBefore(option, productSelect.options[1] || null);
+ }
+
+ const requirements = document.getElementById('requirements');
+ if (requirements && !requirements.value.trim()) {
+ const lines = [
+ `Request type: ${inquiryLabel}`,
+ sourceModel ? `Product model: ${sourceModel}` : '',
+ sourceProduct ? `Product name: ${sourceProduct}` : '',
+ sourceUrl ? `Product page: ${sourceUrl}` : '',
+ '',
+ 'Please send quotation, lead time, and available 3D STEP file for engineering review.'
+ ].filter(Boolean);
+
+ requirements.value = lines.join('\n');
+ }
+
+ const submitBtn = document.getElementById('submitBtn');
+ if (submitBtn && requestType === '3d-step') {
+ submitBtn.innerHTML = 'Request 3D STEP File &rarr;';
+ }
+})();
 
 // AJAX form submit
 document.getElementById('quoteForm').addEventListener('submit', async function(e) {
