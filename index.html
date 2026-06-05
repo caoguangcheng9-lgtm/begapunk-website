@@ -521,7 +521,10 @@
 
                     <div class="hero-product-stage">
 
-                        <img src="images/hero-products-clean.png" alt="Begapunk air rotary union product family for pneumatic rotary transfer" loading="eager">
+                        <picture>
+                            <source srcset="images/hero-products-clean.webp" type="image/webp">
+                            <img src="images/hero-products-clean.png" alt="Begapunk air rotary union product family for pneumatic rotary transfer" loading="eager" fetchpriority="high">
+                        </picture>
 
                         <div class="hero-spec-tag tag-passages">1-8 passages</div>
 
@@ -1067,17 +1070,11 @@
 
         <div class="factory-grid">
 
-            <div class="factory-visual" style="position:relative;overflow:hidden;">
+            <div class="factory-visual factory-video-preview" data-video-src="videos/factory-tour.mp4" aria-label="Play Begapunk factory tour video">
 
-                <video autoplay muted loop playsinline loading="lazy"
+                <img src="images/factory-poster.jpg" alt="Begapunk Ningbo factory tour preview" loading="lazy">
 
- poster="images/factory-poster.jpg"
-
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
-
-                    <source src="videos/factory-tour.mp4" type="video/mp4">
-
-                </video>
+                <button class="play-btn" type="button" aria-label="Play factory tour video">Play</button>
 
             </div>
 
@@ -1500,6 +1497,57 @@ if (cookieBar && cookieAccept) {
     });
 
 }
+
+
+// Factory video: load only after visitor clicks play
+
+document.querySelectorAll('.factory-video-preview').forEach(preview => {
+
+    const playButton = preview.querySelector('.play-btn');
+
+    const videoSrc = preview.dataset.videoSrc;
+
+    if (!playButton || !videoSrc) return;
+
+    playButton.addEventListener('click', () => {
+
+        const video = document.createElement('video');
+
+        video.controls = true;
+
+        video.autoplay = true;
+
+        video.playsInline = true;
+
+        video.preload = 'auto';
+
+        video.style.position = 'absolute';
+
+        video.style.inset = '0';
+
+        video.style.width = '100%';
+
+        video.style.height = '100%';
+
+        video.style.objectFit = 'cover';
+
+        const source = document.createElement('source');
+
+        source.src = videoSrc;
+
+        source.type = 'video/mp4';
+
+        video.appendChild(source);
+
+        preview.innerHTML = '';
+
+        preview.appendChild(video);
+
+        video.play().catch(() => {});
+
+    });
+
+});
 
 
 
