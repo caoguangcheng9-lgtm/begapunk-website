@@ -3305,3 +3305,556 @@ line-height: 1.65;
 .pd-actions { position: relative; z-index: 10; }
 .pd-actions .btn { position: relative; z-index: 11; pointer-events: auto; cursor: pointer; }
 
+/* ===== MOBILE UX REFRESH ===== */
+@media (max-width: 768px) {
+    body {
+        font-size: 1rem;
+        padding-bottom: 76px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .header-inner {
+        height: 64px;
+        min-width: 0;
+    }
+
+    .logo {
+        min-width: 0;
+    }
+
+    .logo img {
+        height: 34px !important;
+        max-width: calc(100vw - 104px);
+        object-fit: contain;
+    }
+
+    .nav.mobile-open {
+        top: 64px;
+        max-height: calc(100vh - 64px);
+        overflow-y: auto;
+        padding: 14px 20px 20px;
+        gap: 8px;
+    }
+
+    .section {
+        padding: 44px 0;
+    }
+
+    .section-header {
+        margin-bottom: 28px;
+        text-align: left;
+    }
+
+    .section-title {
+        font-size: 1.45rem;
+        line-height: 1.25;
+    }
+
+    .section-desc {
+        font-size: 0.98rem;
+        line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    .btn,
+    .section-desc,
+    .hero-badge,
+    .breadcrumb {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .hero-deublin {
+        padding: 30px 0 28px;
+    }
+
+    .hero-deublin-inner {
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .hero-deublin-text,
+    .hero-deublin-visual,
+    .hero-engineering-panel {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hero-deublin .hero-badge {
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.35;
+        font-size: 0.74rem;
+        padding: 7px 11px;
+    }
+
+    .hero-deublin h1 {
+        max-width: 100%;
+        font-size: 1.58rem;
+        line-height: 1.14;
+        margin-bottom: 14px;
+        overflow-wrap: break-word;
+    }
+
+    .hero-deublin .hero-def,
+    .hero-deublin .hero-sub {
+        max-width: 100%;
+        font-size: 0.95rem !important;
+        line-height: 1.62;
+        margin-bottom: 18px;
+        overflow-wrap: break-word;
+    }
+
+    .hero-deublin .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+
+    .hero-deublin .hero-stats .stat-number {
+        font-size: 1.38rem;
+    }
+
+    .hero-deublin .hero-stats .stat-label {
+        font-size: 0.72rem;
+        line-height: 1.25;
+    }
+
+    .hero-deublin .hero-btns {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .hero-deublin .hero-btns .btn {
+        width: 100%;
+        min-height: 50px;
+        justify-content: center;
+    }
+
+    .hero-product-stage {
+        min-height: 190px;
+        padding: 12px;
+        overflow: hidden;
+    }
+
+    .hero-product-stage img {
+        max-height: 210px;
+        object-fit: contain;
+    }
+
+    .hero-spec-tag {
+        min-height: 28px;
+        padding: 5px 8px;
+        font-size: 0.66rem;
+    }
+
+    .tag-passages { top: 4%; left: 4%; }
+    .tag-media { top: 11%; right: 4%; }
+    .tag-mounting { bottom: 11%; left: 4%; }
+    .tag-step { bottom: 4%; right: 4%; }
+
+    .hero-application-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .hero-application-strip a {
+        min-height: 60px;
+        padding: 10px;
+    }
+
+    .industries-grid,
+    .testimonials-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .industry-img {
+        height: 210px;
+    }
+
+    .industry-body {
+        padding: 20px;
+    }
+
+    .industry-body h3 {
+        font-size: 1.25rem;
+        line-height: 1.35;
+    }
+
+    .industry-body p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .products-hero,
+    .contact-hero,
+    .blog-hero,
+    .cs-hero,
+    .app-hero,
+    .about-hero,
+    .install-hero,
+    .faq-hero {
+        padding: 36px 0 28px;
+    }
+
+    .products-hero h1,
+    .contact-hero h1,
+    .blog-hero h1,
+    .cs-hero h1,
+    .app-hero h1,
+    .faq-hero h1 {
+        font-size: 1.65rem;
+        line-height: 1.18;
+        overflow-wrap: break-word;
+    }
+
+    .products-hero p,
+    .contact-hero p,
+    .blog-hero p,
+    .cs-hero p,
+    .app-hero p,
+    .faq-hero p {
+        max-width: 100%;
+        font-size: 0.98rem;
+        line-height: 1.65;
+        overflow-wrap: break-word;
+    }
+
+    .filter-bar {
+        top: 64px;
+        padding: 12px 0;
+        overflow-x: auto;
+    }
+
+    .filter-inner {
+        flex-wrap: nowrap;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .filter-inner::-webkit-scrollbar,
+    .thumbnail-row::-webkit-scrollbar,
+    .pd-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-label,
+    .filter-btn {
+        flex: 0 0 auto;
+    }
+
+    .filter-btn {
+        min-height: 40px;
+        padding: 8px 15px;
+        font-size: 0.88rem;
+    }
+
+    .product-compare-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 22px 20px;
+    }
+
+    .product-compare-cta h2 {
+        font-size: 1.2rem;
+    }
+
+    .product-compare-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .products-section {
+        padding: 34px 0 56px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .product-card,
+    .product-card-large {
+        border-radius: 6px;
+    }
+
+    .product-card .product-img,
+    .product-card-large .product-img {
+        height: 210px;
+    }
+
+    .product-card-large .product-body,
+    .product-body {
+        padding: 18px;
+    }
+
+    .pd-hero {
+        padding: 20px 0;
+    }
+
+    .breadcrumb,
+    .app-hero .breadcrumb,
+    .comparison-hero .breadcrumb {
+        max-width: 100%;
+        font-size: 0.82rem;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .pd-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px 0;
+    }
+
+    .pd-info {
+        order: 1;
+        min-width: 0;
+    }
+
+    .pd-gallery {
+        order: 2;
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .pd-info h1 {
+        font-size: 1.55rem;
+        line-height: 1.22;
+        overflow-wrap: break-word;
+    }
+
+    .pd-sku,
+    .pd-price-note {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        overflow-wrap: break-word;
+    }
+
+    .pd-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .pd-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    .pd-highlights {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .main-img-wrap {
+        aspect-ratio: 4 / 3;
+    }
+
+    .main-img-wrap img {
+        padding: 12px;
+    }
+
+    .thumbnail-row {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .thumb {
+        flex: 0 0 auto;
+        width: 64px;
+        height: 64px;
+    }
+
+    .pd-gallery .badge-tag {
+        top: 10px;
+        left: 10px;
+        font-size: 0.78rem;
+        padding: 5px 10px;
+    }
+
+    .contact-grid,
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-grid > *,
+    .contact-info,
+    .form-box,
+    .info-card {
+        min-width: 0;
+    }
+
+    .contact-info h2,
+    .form-box h2 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+    }
+
+    .contact-info p,
+    .form-box .subtitle,
+    .info-card p,
+    .info-card a {
+        overflow-wrap: break-word;
+    }
+
+    .form-box {
+        padding: 22px 18px;
+    }
+
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    .floating-cta {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1002;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px 12px;
+        background: rgba(255,255,255,0.96);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -8px 22px rgba(15,23,42,0.10);
+        backdrop-filter: blur(10px);
+    }
+
+    .floating-btn,
+    .floating-btn.quote,
+    .floating-btn.whatsapp {
+        width: 100%;
+        height: 48px;
+        min-width: 0;
+        flex: 1 1 0;
+        padding: 0 10px;
+        border-radius: 6px;
+        font-size: 0.86rem;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .cookie-bar {
+        bottom: 68px;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 14px 18px;
+        gap: 12px;
+    }
+
+    .cookie-bar p {
+        width: 100%;
+        font-size: 0.86rem;
+        line-height: 1.55;
+    }
+
+    .cookie-btn {
+        width: 100%;
+        min-height: 42px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .hero-deublin h1 {
+        font-size: 1.36rem;
+        max-width: 22ch;
+    }
+
+    .hero-deublin .hero-def,
+    .hero-deublin .hero-sub,
+    .products-hero p,
+    .contact-hero p,
+    .blog-hero p,
+    .cs-hero p,
+    .app-hero p,
+    .faq-hero p {
+        max-width: 34ch;
+    }
+
+    .hero-deublin .hero-stats {
+        gap: 8px;
+    }
+
+    .hero-deublin .hero-stats .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .hero-product-stage {
+        min-height: 170px;
+    }
+
+    .hero-spec-tag {
+        font-size: 0.62rem;
+    }
+
+    .tag-media,
+    .tag-step {
+        display: none;
+    }
+
+    .hero-application-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .products-hero h1,
+    .contact-hero h1,
+    .blog-hero h1,
+    .cs-hero h1,
+    .app-hero h1,
+    .faq-hero h1,
+    .pd-info h1 {
+        font-size: 1.36rem;
+        max-width: 23ch;
+    }
+
+    .product-compare-cta h2 {
+        font-size: 1.12rem;
+        max-width: 22ch;
+    }
+
+    .product-compare-cta p,
+    .contact-info p,
+    .pd-price-note {
+        max-width: 32ch;
+    }
+
+    .industry-img,
+    .product-card .product-img,
+    .product-card-large .product-img {
+        height: 190px;
+    }
+}
+
