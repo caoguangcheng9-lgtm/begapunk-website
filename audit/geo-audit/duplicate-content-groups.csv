@@ -1,0 +1,4 @@
+﻿group_id,pages,similarity_reason,shared_title,shared_h1,shared_sections,risk,recommended_action
+DG-01,BP-1P-0006.html | BP-2P-0002.html,正文 5-gram Jaccard 最高 0.41，并结合相同页面用途复核,,,产品/应用模板、规格、FAQ 或 CTA 区块高度相似,medium,保留型号事实，重写差异化用途、限制、选型和 FAQ；同意图页面考虑合并
+DG-02,BP-3P-0004.html | BP-3P-0006.html,正文 5-gram Jaccard 最高 0.33，并结合相同页面用途复核,,,产品/应用模板、规格、FAQ 或 CTA 区块高度相似,medium,保留型号事实，重写差异化用途、限制、选型和 FAQ；同意图页面考虑合并
+DG-03,products-p2.html | products.html,正文 5-gram Jaccard 最高 0.23，并结合相同页面用途复核,,Rotary Joint Catalog,产品/应用模板、规格、FAQ 或 CTA 区块高度相似,medium,保留型号事实，重写差异化用途、限制、选型和 FAQ；同意图页面考虑合并
