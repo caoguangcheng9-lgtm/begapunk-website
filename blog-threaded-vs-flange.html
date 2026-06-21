@@ -582,34 +582,56 @@ const mobileToggle = document.getElementById('mobileToggle');
 const mainNav = document.getElementById('mainNav');
 if (mobileToggle && mainNav) {
   mobileToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('active');
-    mobileToggle.classList.toggle('active');
+    var isOpen = mainNav.classList.toggle('active');
+    mobileToggle.classList.toggle('active', isOpen);
+    mobileToggle.setAttribute('aria-expanded', String(isOpen));
   });
 }
 const header = document.querySelector('.header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.style.boxShadow = '0 2px 20px rgba(15,23,42,0.08)';
-  } else {
-    header.style.boxShadow = 'none';
-  }
-});
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(15,23,42,0.08)' : 'none';
+  });
+}
 
-
-, 2000);
-        });
-    } else {
-        var ta = document.createElement('textarea');
-        ta.value = url;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        var original = btn.innerHTML;
-        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
-        btn.classList.add('copied');
-        setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+function copyLink(btn, url) {
+  var targetUrl = url || window.location.href;
+  var showCopied = function() {
+    if (!btn) return;
+    if (btn.copyFeedbackTimer) clearTimeout(btn.copyFeedbackTimer);
+    var original = btn.getAttribute('data-copy-original') || btn.innerHTML;
+    btn.setAttribute('data-copy-original', original);
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+    btn.classList.add('copied');
+    btn.copyFeedbackTimer = setTimeout(function() {
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+      btn.removeAttribute('data-copy-original');
+      btn.copyFeedbackTimer = null;
+    }, 2000);
+  };
+  var fallbackCopy = function(error) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = targetUrl;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var copied = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (copied) showCopied();
+      else console.error('Copy link failed.', error);
+    } catch (fallbackError) {
+      console.error('Copy link failed.', fallbackError);
     }
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(targetUrl).then(showCopied).catch(fallbackCopy);
+  } else {
+    fallbackCopy(new Error('Clipboard API unavailable.'));
+  }
 }
 
 </script>
