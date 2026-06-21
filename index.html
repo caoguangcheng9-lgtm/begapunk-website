@@ -284,67 +284,7 @@
 
           ],
 
-          "aggregateRating": {
-
-            "@type": "AggregateRating",
-
-            "ratingValue": "5",
-
-            "reviewCount": "3"
-
-          },
-
-          "review": [
-
-            {
-
-              "@type": "Review",
-
-              "author": {"@type": "Person", "name": "Michael Keller", "jobTitle": "Automation Engineer, TRUMPF Partner"},
-
-              "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-
-              "reviewBody": "We switched from Deublin to Begapunk for our laser cutting line and saved 40% on component costs without any quality drop. Delivery was 10 days to Germany.",
-
-              "publisher": {"@id": "https://www.begapunk.com/#organization"},
-
-              "isBasedOn": {"@type": "Thing", "name": "Customer Feedback Summary"}
-
-            },
-
-            {
-
-              "@type": "Review",
-
-              "author": {"@type": "Person", "name": "James Liu", "jobTitle": "Project Manager, Goldwind"},
-
-              "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-
-              "reviewBody": "The custom 6-channel rotary joint they built for our wind turbine pitch system has been running for 18 months offshore with zero maintenance. Impressive seal design.",
-
-              "publisher": {"@id": "https://www.begapunk.com/#organization"},
-
-              "isBasedOn": {"@type": "Thing", "name": "Customer Feedback Summary"}
-
-            },
-
-            {
-
-              "@type": "Review",
-
-              "author": {"@type": "Person", "name": "Roberto Silva", "jobTitle": "Plant Manager, AutoParts MFG"},
-
-              "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-
-              "reviewBody": "They provided a free 3D STEP file before we even placed the order. That level of pre-sales support is rare. The joint fit our Haas machine perfectly on first install.",
-
-              "publisher": {"@id": "https://www.begapunk.com/#organization"},
-
-              "isBasedOn": {"@type": "Thing", "name": "Customer Feedback Summary"}
-
-            }
-
-          ]
+          "slogan": "Air Rotary Union Specialist"
 
         },
 
@@ -384,6 +324,7 @@
 
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
+    <script src="js/analytics.js"></script>
 </head>
 
 <body>
@@ -396,7 +337,7 @@
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="images/begapunk-logo-header.png" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
+    <img src="images/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
    </a>
    <nav class="nav" id="mainNav">
     <a href="index.html" class="active">Home</a>
@@ -415,9 +356,10 @@
       <a href="application-laser-tube-cutting.html">Laser Tube Cutting</a>
       <a href="application-packaging-machinery.html">Packaging Machinery</a>
       <a href="application-bottle-filling-capping.html">Bottle Filling &amp; Capping</a>
-      <a href="application-cnc-pneumatic-clamping.html">CNC Pneumatic Clamping</a>
       <a href="application-automation-rotary-tables.html">Automation Rotary Tables</a>
-      <a href="application-steel-dusty-environments.html">Dusty Environments</a>
+      <a href="application-robot-end-of-arm-tooling.html">Robot EOAT</a>
+      <a href="application-pneumatic-tools-hose-anti-twist.html">Pneumatic Tools</a>
+      <a href="applications.html">More Applications</a>
      </div>
     </div>
     <div class="nav-dropdown">
@@ -425,6 +367,7 @@
      <div class="nav-dropdown-menu">
       <a href="blog.html">Technical Blog</a>
       <a href="blog-rotary-joint-selection.html">Selection Guide</a>
+      <a href="blog-rotary-union-seal-types.html">Sealing Technology</a>
       <a href="installation.html">Installation Guide</a>
       <a href="faq.html">FAQ</a>
      </div>
@@ -493,6 +436,30 @@
 
                     <div class="stat-item">
 
+                        <span class="stat-number">16+</span>
+
+                        <span class="stat-label">Standard Models</span>
+
+                    </div>
+
+                    <div class="stat-item">
+
+                        <span class="stat-number">12+</span>
+
+                        <span class="stat-label">Industries Served</span>
+
+                    </div>
+
+                    <div class="stat-item">
+
+                        <span class="stat-number">12</span>
+
+                        <span class="stat-label">Month Warranty</span>
+
+                    </div>
+
+                    <div class="stat-item">
+
                         <span class="stat-number">7-14</span>
 
                         <span class="stat-label">Day Delivery</span>
@@ -523,7 +490,7 @@
 
                         <picture>
                             <source srcset="images/hero-products-clean.webp" type="image/webp">
-                            <img src="images/hero-products-clean.png" alt="Begapunk air rotary union product family for pneumatic rotary transfer" loading="eager" fetchpriority="high">
+                            <img src="images/hero-products-clean.webp" alt="Begapunk air rotary union product family for pneumatic rotary transfer" loading="eager" fetchpriority="high">
                         </picture>
 
                         <div class="hero-spec-tag tag-passages">1-8 passages</div>
@@ -579,7 +546,7 @@
         <div class="portal-search-grid">
             <a href="products.html" class="portal-search-tab active">Product Search</a>
             <a href="product-comparison.html" class="portal-search-tab">Model Comparison</a>
-            <form class="portal-search-form" action="products.html" method="get">
+            <form class="portal-search-form" action="search.html" method="get">
                 <label class="sr-only" for="home-model-search">Search by model or application</label>
                 <input id="home-model-search" name="q" type="search" placeholder="Enter model, passage count, media, or machine application">
                 <button type="submit">Search</button>
@@ -640,32 +607,42 @@
             <a class="portal-topic-card" href="application-laser-tube-cutting.html">
                 <img src="images/3-in-3-out-M8-rotary-joint-3.webp" alt="Rotary union for laser tube cutting machines" loading="lazy">
                 <strong>Laser Tube Cutting Machines</strong>
-                <span>Multi-passage air rotary union selection for assist gas, clamping, and coolant support.</span>
+                <span>Assist gas, clamping, and coolant support for rotating laser tube cutting systems.</span>
             </a>
             <a class="portal-topic-card" href="application-packaging-machinery.html">
                 <img src="images/2-in-2-out-Rotary-joint.webp" alt="Rotary joint for packaging machinery" loading="lazy">
                 <strong>Packaging Machinery</strong>
                 <span>Pneumatic rotary transfer for rotary tables, sealing heads, and pouch filling machines.</span>
             </a>
+            <a class="portal-topic-card" href="application-robot-end-of-arm-tooling.html">
+                <img src="images/products/BP-3P-0004-1.webp" alt="Air rotary union for robot end-of-arm tooling" loading="lazy">
+                <strong>Robot End-of-Arm Tooling</strong>
+                <span>Air and vacuum transfer for robot grippers, suction cups, and rotating wrists.</span>
+            </a>
+            <a class="portal-topic-card" href="application-vacuum-packaging-machines.html">
+                <img src="images/2-in-2-out-Rotary-joint.webp" alt="Rotary union for vacuum packaging machines" loading="lazy">
+                <strong>Vacuum Packaging Machines</strong>
+                <span>Separated vacuum, release air, and clamp air for rotary packaging stations.</span>
+            </a>
             <a class="portal-topic-card" href="application-bottle-filling-capping.html">
                 <img src="images/Rotary-joint-1.webp" alt="Rotary joint for bottle filling and capping machines" loading="lazy">
                 <strong>Bottle Filling &amp; Capping</strong>
                 <span>Compact rotary unions for pneumatic torque control and rotary filling turrets.</span>
-            </a>
-            <a class="portal-topic-card" href="application-cnc-pneumatic-clamping.html">
-                <img src="images/products/BP-2P-0001-1.webp" alt="Rotary union for CNC pneumatic clamping fixture" loading="lazy">
-                <strong>CNC Pneumatic Clamping</strong>
-                <span>Air transfer for clamping, unclamping, pressure holding, and blow-off circuits.</span>
             </a>
             <a class="portal-topic-card" href="application-automation-rotary-tables.html">
                 <img src="images/products/BP-3P-0004-1.webp" alt="Rotary union for automation rotary tables" loading="lazy">
                 <strong>Automation Rotary Tables</strong>
                 <span>Multi-passage layouts for indexing tables, fixtures, grippers, and actuator control.</span>
             </a>
-            <a class="portal-topic-card" href="application-steel-dusty-environments.html">
-                <img src="images/Dust-proof-rotary-joint-4.webp" alt="Dust-proof rotary joint for steel and dusty environments" loading="lazy">
-                <strong>Steel &amp; Dusty Environments</strong>
-                <span>Protected rotary joints for dust, vibration, heat, and abrasive contamination.</span>
+            <a class="portal-topic-card" href="application-pneumatic-tools-hose-anti-twist.html">
+                <img src="images/products/BP-1P-0003-1.webp" alt="Air swivel rotary joint for pneumatic tools" loading="lazy">
+                <strong>Pneumatic Tools</strong>
+                <span>Compact air swivels for hose anti-twist and handheld tool air supply.</span>
+            </a>
+            <a class="portal-topic-card" href="application-electronics-battery-test-fixtures.html">
+                <img src="images/products/BP-3P-0004-1.webp" alt="Pneumatic rotary union for electronics and battery fixtures" loading="lazy">
+                <strong>Electronics &amp; Battery Fixtures</strong>
+                <span>Compact air and vacuum transfer for rotating test and inspection stations.</span>
             </a>
         </div>
     </div>
@@ -681,6 +658,7 @@
                 </div>
                 <ul>
                     <li><a href="blog-rotary-joint-selection.html">How to select a pneumatic rotary joint: 5 parameters that prevent leakage</a></li>
+                    <li><a href="blog-rotary-union-seal-types.html">Rotary union seal types: O-ring, lip seal, and spring-energized PTFE seal</a></li>
                     <li><a href="blog-rotary-joint-leaking.html">Rotary joint leaking? Diagnostic flowchart for maintenance teams</a></li>
                     <li><a href="blog-threaded-vs-flange.html">Threaded vs flange mounting: how to choose for compact machinery</a></li>
                     <li><a href="installation.html">Installation guide: anti-rotation bracket, hose stress, and seal protection</a></li>
@@ -703,6 +681,193 @@
     </div>
 </section>
 
+<!-- ===== ENGINEERING SUPPORT ===== -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="testimonials-header">
+            <h2>Engineering Support Before You Order</h2>
+            <div class="testimonials-rating">
+                <span class="rating-text">Reduce selection and installation risk before production.</span>
+            </div>
+        </div>
+        <div class="testimonials-grid">
+            <article class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                    <strong>Model selection review</strong><br>
+                    Send pressure, speed, media, passage count, and mounting details. Our team checks the operating point against the selected model.
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">01</div>
+                    <div class="testimonial-info">
+                        <strong>Application check</strong>
+                        <span>Standard and custom rotary union selection</span>
+                    </div>
+                </div>
+            </article>
+            <article class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                    <strong>Free 3D STEP file</strong><br>
+                    Verify the envelope, port positions, bolt pattern, and surrounding clearance in your machine assembly before placing an order.
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">02</div>
+                    <div class="testimonial-info">
+                        <strong>Fit verification</strong>
+                        <span>CAD support for OEM machine builders</span>
+                    </div>
+                </div>
+            </article>
+            <article class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                    <strong>Custom configuration review</strong><br>
+                    For non-standard passages, threads, seals, or combined pneumatic-electrical transfer, send a drawing for an engineering feasibility review.
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">03</div>
+                    <div class="testimonial-info">
+                        <strong>Custom RFQ support</strong>
+                        <span>Drawing-based technical evaluation</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <p class="testimonials-cta">
+            <a href="contact.html">Send your operating requirements &rarr;</a>
+        </p>
+    </div>
+</section>
+
+<style>
+.testimonials-section {
+    background: var(--bg-alt);
+    padding: 60px 0 50px;
+    border-top: 1px solid var(--border);
+}
+.testimonials-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+.testimonials-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+.testimonials-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+}
+.testimonials-rating .stars {
+    color: #f5a623;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+.testimonials-rating .rating-text {
+    color: var(--text-light);
+}
+.testimonials-rating .rating-text strong {
+    color: var(--text);
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 28px;
+}
+.testimonial-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.testimonial-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+}
+.testimonial-stars {
+    color: #f5a623;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+.testimonial-quote {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 20px 0;
+    padding: 0;
+    border: none;
+    font-style: italic;
+}
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+}
+.testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+.testimonial-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.testimonial-info strong {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+.testimonial-info span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+.testimonial-flag {
+    font-size: 0.75rem !important;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+.testimonials-cta {
+    text-align: center;
+    margin: 0;
+}
+.testimonials-cta a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.testimonials-cta a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 900px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .testimonials-header h2 {
+        font-size: 1.3rem;
+    }
+}
+</style>
+
 <section class="portal-quick">
     <div class="container">
         <div class="portal-quick-grid">
@@ -722,7 +887,7 @@
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="images/begapunk-logo-header.png" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
+     <img src="images/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
     </div>
     <p>Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.</p>
     <div class="contact-line">&#9993; <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
@@ -752,6 +917,7 @@
     <div class="footer-links">
      <a href="blog.html">Technical Blog</a>
      <a href="blog-rotary-joint-selection.html">Selection Guide</a>
+     <a href="blog-rotary-union-seal-types.html">Sealing Technology</a>
      <a href="installation.html">Installation Guide</a>
      <a href="faq.html">FAQ</a>
     </div>

@@ -47,8 +47,32 @@
 - Hydraulic, excavator, crane, mining, drilling, or mobile machinery applications: custom evaluation required
 - Unknown application: collect pressure, speed, media, number of passages, port size, mounting, and environment before recommending a model
 
+## Sealing Technology Notes
+- Rotary union seal selection depends on media, pressure, speed, temperature, leakage tolerance, shaft finish, duty cycle, and environment.
+- O-ring seals are common for simple low-speed pneumatic, vacuum, and light water rotary transfer.
+- Lip seals are common for oil, hydraulic, water, and general fluid transfer when pressure direction, shaft finish, and lubrication are controlled.
+- Spring-energized carbon-filled PTFE seals use a spring or energizer to maintain sealing force, PTFE for low friction, and carbon filler for wear resistance and dimensional stability.
+- Do not treat "spring-energized PTFE" or "Energized CF/Teflon" as a universal zero-leakage or universal high-pressure claim. Pressure capability must be tied to the exact rotary union design and test condition.
+- For higher pressure, tighter leakage tolerance, mixed media, or low-friction custom projects, Begapunk can review whether spring-energized carbon-filled PTFE is appropriate after full specifications are provided.
+
 ## Application Areas
 Begapunk rotary joints and rotary unions are used in industrial machines that need reliable fluid transfer while a shaft, table, fixture, cylinder, head, drum, roller, or tooling station rotates.
+
+
+### Application Landing Pages
+Begapunk has dedicated application pages for machine builders and AI retrieval:
+- Laser Tube Cutting Machines: https://www.begapunk.com/application-laser-tube-cutting.html
+- Packaging Machinery: https://www.begapunk.com/application-packaging-machinery.html
+- Bottle Filling and Capping Machines: https://www.begapunk.com/application-bottle-filling-capping.html
+- CNC Pneumatic Clamping: https://www.begapunk.com/application-cnc-pneumatic-clamping.html
+- Automation Rotary Tables: https://www.begapunk.com/application-automation-rotary-tables.html
+- Robot End-of-Arm Tooling: https://www.begapunk.com/application-robot-end-of-arm-tooling.html
+- Pneumatic Tools and Hose Anti-Twist: https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html
+- Vacuum Packaging Machines: https://www.begapunk.com/application-vacuum-packaging-machines.html
+- Welding Positioners and Rotary Welding Tables: https://www.begapunk.com/application-welding-positioners.html
+- Textile, Printing, and Converting Equipment: https://www.begapunk.com/application-textile-printing-converting.html
+- Electronics and Battery Test Fixtures: https://www.begapunk.com/application-electronics-battery-test-fixtures.html
+- Steel and Dusty Environments: https://www.begapunk.com/application-steel-dusty-environments.html
 
 ### Automation and Pneumatic Equipment
 - rotary union for automation rotary table
@@ -238,6 +262,13 @@ A: Begapunk provides a 12-month replacement warranty.
 - Home: https://www.begapunk.com/
 - Products: https://www.begapunk.com/products.html
 - Applications: https://www.begapunk.com/applications.html
+- Application - Robot EOAT: https://www.begapunk.com/application-robot-end-of-arm-tooling.html
+- Application - Pneumatic Tools: https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html
+- Application - Vacuum Packaging: https://www.begapunk.com/application-vacuum-packaging-machines.html
+- Application - Welding Positioners: https://www.begapunk.com/application-welding-positioners.html
+- Application - Textile Printing Converting: https://www.begapunk.com/application-textile-printing-converting.html
+- Application - Electronics Battery Fixtures: https://www.begapunk.com/application-electronics-battery-test-fixtures.html
+- Knowledge Center - Seal Types: https://www.begapunk.com/blog-rotary-union-seal-types.html
 - Application - Laser Tube Cutting Machines: https://www.begapunk.com/application-laser-tube-cutting.html
 - Application - Packaging Machinery: https://www.begapunk.com/application-packaging-machinery.html
 - Application - Bottle Filling and Capping Machines: https://www.begapunk.com/application-bottle-filling-capping.html

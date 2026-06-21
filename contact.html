@@ -158,6 +158,7 @@
 
  </script>
 
+    <script src="js/analytics.js"></script>
 </head>
 
 <body>
@@ -170,7 +171,7 @@
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="images/begapunk-logo-header.png" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
+    <img src="images/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
    </a>
    <nav class="nav" id="mainNav">
     <a href="index.html">Home</a>
@@ -257,7 +258,7 @@
 
  <div>
 
- <h4>Email</h4>
+ <h3>Email</h3>
 
  <p><a href="mailto:sales@begapunk.com">sales@begapunk.com</a></p>
 
@@ -275,7 +276,7 @@
 
  <div>
 
- <h4>Phone / WhatsApp / WeChat</h4>
+ <h3>Phone / WhatsApp / WeChat</h3>
 
  <p><a href="tel:+8618368425342">+86 183 6842 5342</a></p>
 
@@ -293,7 +294,7 @@
 
  <div>
 
- <h4>Factory Address</h4>
+ <h3>Factory Address</h3>
 
  <p>88 Yugong Road, Zonghan Industrial Park</p>
 
@@ -311,7 +312,7 @@
 
  <div>
 
- <h4>Working Hours</h4>
+ <h3>Working Hours</h3>
 
  <p>Monday &ndash; Friday: 8:30 AM &ndash; 5:30 PM CST</p>
 
@@ -335,7 +336,7 @@
 
 
 
-<form id="quoteForm" method="POST" onsubmit="return false;">
+<form id="quoteForm" method="POST" enctype="multipart/form-data" onsubmit="return false;">
 
 <input type="hidden" name="redirect" value="https://www.begapunk.com/thank-you.html">
 <input type="hidden" id="inquiry_type" name="inquiry_type" value="">
@@ -374,9 +375,9 @@
 
  <div class="form-group">
 
- <label for="company">Company Name</label>
+ <label for="company">Company Name <span class="req">*</span></label>
 
- <input type="text" id="company" name="company" placeholder="Your Company Ltd.">
+ <input type="text" id="company" name="company" placeholder="Your Company Ltd." required>
 
  </div>
 
@@ -422,244 +423,49 @@
 
 
 
- <!-- Row 3: Product + Quantity -->
-
- <div class="form-row">
+ <!-- Row 3: Product Interest -->
 
  <div class="form-group">
 
- <label for="product">Product Model / Type <span class="req">*</span></label>
+ <label for="product">What do you need? <span class="req">*</span></label>
 
  <select id="product" name="product" required>
 
- <option value="">Select or describe below...</option>
-
- <option value="standard-model">Standard Begapunk model</option>
-
- <option value="1in1out">1-in-1-out air rotary union</option>
-
- <option value="2in2out">2-in-2-out pneumatic rotary joint</option>
-
- <option value="3in3out">3-in-3-out pneumatic rotary joint</option>
-
- <option value="4plus">4-channel or multi-channel rotary union</option>
-
- <option value="pneumatic-electric">Pneumatic + electrical slip ring rotary joint</option>
-
- <option value="replacement">Replacement / cross-reference from old drawing or model</option>
-
- <option value="custom">Custom design &mdash; describe below</option>
-
- </select>
-
- </div>
-
- <div class="form-group">
-
- <label for="quantity">Quantity <span class="req">*</span></label>
-
- <select id="quantity" name="quantity" required>
-
  <option value="">Select...</option>
 
- <option value="1-5">1&ndash;5 pieces (Sample / Prototype)</option>
+ <option value="standard-model">Standard Begapunk model — tell us the model number</option>
 
- <option value="6-20">6&ndash;20 pieces (Small Batch)</option>
+ <option value="custom">Custom design — describe your requirements below</option>
 
- <option value="21-100">21&ndash;100 pieces (Production)</option>
+ <option value="replacement">Replacement — I have an old model or drawing to match</option>
 
- <option value="100+">100+ pieces (Volume Order)</option>
-
- </select>
-
- </div>
-
- </div>
-
-
-
- <!-- Row 4: Media + Timeline -->
-
- <div class="form-row">
-
- <div class="form-group">
-
- <label for="media">Media Type</label>
-
- <select id="media" name="media">
-
- <option value="">Select...</option>
-
- <option value="air">Compressed Air</option>
-
- <option value="water">Water / Coolant</option>
-
- <option value="oil">Hydraulic Oil</option>
-
- <option value="steam">Steam / Thermal Oil</option>
-
- <option value="other">Other / Multiple</option>
+ <option value="not-sure">Not sure — I need an engineer to recommend</option>
 
  </select>
 
  </div>
 
- <div class="form-group">
-
- <label for="timeline">Required Delivery</label>
-
- <select id="timeline" name="timeline">
-
- <option value="">Select...</option>
-
- <option value="urgent">Urgent &mdash; Within 2 Weeks</option>
-
- <option value="standard">Standard &mdash; 3&ndash;4 Weeks</option>
-
- <option value="planning">Planning &mdash; 1&ndash;3 Months</option>
-
- </select>
-
- </div>
-
- </div>
 
 
- <!-- Row 5: Pressure + Speed -->
-
- <div class="form-row">
+ <!-- Row 4: Technical Requirements (merged) -->
 
  <div class="form-group">
 
- <label for="max_pressure">Max Working Pressure</label>
+ <label for="requirements">Technical Requirements <span class="req">*</span></label>
 
- <input type="text" id="max_pressure" name="max_pressure" placeholder="e.g. 0.8 MPa / 8 bar / 120 psi">
-
- </div>
-
- <div class="form-group">
-
- <label for="max_rpm">Max Rotation Speed</label>
-
- <input type="text" id="max_rpm" name="max_rpm" placeholder="e.g. 200 RPM / 500 RPM">
-
- </div>
-
- </div>
-
-
- <!-- Row 6: Passages + Connection -->
-
- <div class="form-row">
-
- <div class="form-group">
-
- <label for="passages">Number of Passages</label>
-
- <select id="passages" name="passages">
-
- <option value="">Select...</option>
-
- <option value="1">1 passage</option>
-
- <option value="2">2 passages</option>
-
- <option value="3">3 passages</option>
-
- <option value="4">4 passages</option>
-
- <option value="5plus">5+ passages</option>
-
- <option value="unknown">Not sure / need engineer check</option>
-
- </select>
-
- </div>
-
- <div class="form-group">
-
- <label for="connection_type">Connection Type</label>
-
- <select id="connection_type" name="connection_type">
-
- <option value="">Select...</option>
-
- <option value="g-thread">G thread</option>
-
- <option value="npt">NPT thread</option>
-
- <option value="bsp">BSP thread</option>
-
- <option value="m-thread">Metric thread</option>
-
- <option value="flange">Flange connection</option>
-
- <option value="custom">Custom / unknown</option>
-
- </select>
-
- </div>
-
- </div>
-
-
- <!-- Row 7: Mounting + Temperature -->
-
- <div class="form-row">
-
- <div class="form-group">
-
- <label for="mounting_type">Mounting Type</label>
-
- <select id="mounting_type" name="mounting_type">
-
- <option value="">Select...</option>
-
- <option value="threaded">Threaded mount</option>
-
- <option value="flange">Flange mount</option>
-
- <option value="anti-rotation">Anti-rotation bracket</option>
-
- <option value="drop-in">Drop-in replacement</option>
-
- <option value="unknown">Not sure / need engineer check</option>
-
- </select>
-
- </div>
-
- <div class="form-group">
-
- <label for="temperature">Working Temperature</label>
-
- <input type="text" id="temperature" name="temperature" placeholder="e.g. -10 to 80 C">
-
- </div>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Please include:&#10;- Media type (air / water / oil / steam)&#10;- Working pressure (e.g. 1 MPa / 10 bar)&#10;- Rotation speed (e.g. 200 RPM)&#10;- Number of passages (e.g. 2-in-2-out)&#10;- Connection type (G thread / NPT / flange)&#10;- Quantity needed&#10;- Target delivery time" required></textarea>
 
  </div>
 
 
 
- <!-- Application -->
+ <!-- Row 5: Application -->
 
  <div class="form-group">
 
  <label for="application">Application / Machine Model</label>
 
  <input type="text" id="application" name="application" placeholder="e.g. TRUMPF TruLaser 5030, Haas VF-2, custom packaging line">
-
- </div>
-
-
-
- <!-- Technical Requirements -->
-
- <div class="form-group">
-
- <label for="requirements">Additional Requirements</label>
-
- <textarea id="requirements" name="requirements" placeholder="Tell us any extra details:&#10;- Machine brand or model&#10;- Mounting space constraints&#10;- Current rotary joint model or drawing number&#10;- Leakage, speed, or seal problems to solve&#10;- Target delivery country and project schedule"></textarea>
 
  </div>
 
@@ -689,9 +495,7 @@
 
 
 
- <!-- Submit -->
-
- <!-- HONEYPOT - anti-spam trap, real users never see this -->
+ <!-- HONEYPOT - anti-spam trap -->
  <div style="position: absolute; left: -9999px; top: -9999px;">
  <label for="honeypot">Leave this field empty</label>
  <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off">
@@ -720,7 +524,7 @@
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="images/begapunk-logo-header.png" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
+     <img src="images/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
     </div>
     <p>Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.</p>
     <div class="contact-line">&#9993; <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
@@ -883,47 +687,184 @@ window.addEventListener('scroll', () => {
  }
 })();
 
-// AJAX form submit
-document.getElementById('quoteForm').addEventListener('submit', async function(e) {
- e.preventDefault();
- 
- const submitBtn = document.getElementById('submitBtn');
- const formMessage = document.getElementById('formMessage');
- const originalText = submitBtn.innerHTML;
- 
- submitBtn.disabled = true;
- submitBtn.innerHTML = 'Sending...';
- formMessage.style.display = 'none';
- 
- const formData = new FormData(this);
- 
- try {
- const response = await fetch('/send_inquiry.php', {
- method: 'POST',
- body: formData
- });
- 
- const result = await response.json();
- 
- if (result.success) {
- formMessage.className = 'form-success';
- formMessage.innerHTML = '✓ Inquiry sent successfully! Our engineering team will respond within 24 hours.';
- formMessage.style.display = 'block';
- document.getElementById('quoteForm').reset();
- } else {
- formMessage.className = 'form-error';
- formMessage.innerHTML = '✗ Failed to send inquiry. Please email us directly at sales@begapunk.com';
- formMessage.style.display = 'block';
- }
- } catch (error) {
- formMessage.className = 'form-error';
- formMessage.innerHTML = '✗ Network error. Please try again or email sales@begapunk.com directly.';
- formMessage.style.display = 'block';
- }
- 
- submitBtn.disabled = false;
- submitBtn.innerHTML = originalText;
-});
+// ===== FRONTEND FORM VALIDATION =====
+(function() {
+    const form = document.getElementById('quoteForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    // Allowed file extensions and max size
+    const ALLOWED_EXTS = ['pdf', 'step', 'stp', 'iges', 'igs', 'dwg', 'dxf', 'jpg', 'jpeg', 'png'];
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+    
+    function showError(msg) {
+        formMessage.className = 'form-error';
+        formMessage.textContent = '✗ ' + msg;
+        formMessage.style.display = 'block';
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    function clearError() {
+        formMessage.style.display = 'none';
+    }
+    
+    function validateEmail(email) {
+        // RFC 5322 simplified regex
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    function validateForm() {
+        clearError();
+        
+        // 1. Required text fields
+        const requiredFields = [
+            { id: 'fullname', name: 'Full Name' },
+            { id: 'email', name: 'Email' },
+            { id: 'company', name: 'Company Name' },
+            { id: 'country', name: 'Country' },
+            { id: 'product', name: 'What do you need?' },
+            { id: 'requirements', name: 'Technical Requirements' }
+        ];
+        
+        for (const field of requiredFields) {
+            const el = document.getElementById(field.id);
+            if (!el || !el.value.trim()) {
+                el.focus();
+                showError(field.name + ' is required. Please fill it in.');
+                return false;
+            }
+        }
+        
+        // 2. Email format
+        const emailEl = document.getElementById('email');
+        const emailVal = emailEl.value.trim();
+        if (!validateEmail(emailVal)) {
+            emailEl.focus();
+            showError('Please enter a valid email address (e.g. john@company.com).');
+            return false;
+        }
+        
+        // 3. Common email domain typos
+        const domain = emailVal.split('@')[1].toLowerCase();
+        const typoMap = {
+            'gmail.con': 'gmail.com',
+            'gmail.co': 'gmail.com',
+            'yahoo.con': 'yahoo.com',
+            'hotmail.con': 'hotmail.com',
+            'outlook.con': 'outlook.com'
+        };
+        if (typoMap[domain]) {
+            emailEl.focus();
+            showError('Did you mean ' + typoMap[domain] + '? Please check your email address.');
+            return false;
+        }
+        
+        // 4. File upload validation
+        const fileInput = document.getElementById('drawing');
+        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            const ext = file.name.split('.').pop().toLowerCase();
+            
+            if (!ALLOWED_EXTS.includes(ext)) {
+                showError('Invalid file type: .' + ext + '. Allowed: PDF, STEP, IGES, DWG, DXF, JPG, PNG.');
+                return false;
+            }
+            
+            if (file.size > MAX_FILE_SIZE) {
+                const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+                showError('File too large (' + sizeMB + ' MB). Maximum allowed: 10 MB.');
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    // Real-time validation: clear error when user starts typing
+    ['fullname', 'email', 'company', 'country', 'product', 'requirements'].forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', clearError);
+            el.addEventListener('change', clearError);
+        }
+    });
+    
+    // Real-time file validation
+    const fileInput = document.getElementById('drawing');
+    if (fileInput) {
+        fileInput.addEventListener('change', function() {
+            clearError();
+            if (this.files && this.files.length > 0) {
+                const file = this.files[0];
+                const ext = file.name.split('.').pop().toLowerCase();
+                if (!ALLOWED_EXTS.includes(ext)) {
+                    showError('Invalid file type: .' + ext + '. Allowed: PDF, STEP, IGES, DWG, DXF, JPG, PNG.');
+                    this.value = ''; // Clear invalid file
+                } else if (file.size > MAX_FILE_SIZE) {
+                    const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+                    showError('File too large (' + sizeMB + ' MB). Maximum: 10 MB.');
+                    this.value = '';
+                }
+            }
+        });
+    }
+    
+    // ===== AJAX form submit (with validation) =====
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Run validation first
+        if (!validateForm()) {
+            return;
+        }
+        
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+        formMessage.style.display = 'none';
+        
+        const formData = new FormData(this);
+        
+        try {
+            const response = await fetch('/send_inquiry.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const responseText = await response.text();
+            let result;
+            try {
+                result = JSON.parse(responseText);
+            } catch (parseError) {
+                throw new Error('The inquiry service returned an invalid response.');
+            }
+
+            if (!response.ok && !result.message) {
+                throw new Error('The inquiry service is temporarily unavailable.');
+            }
+            
+            if (result.success) {
+                formMessage.className = 'form-success';
+                formMessage.textContent = '✓ Inquiry sent successfully! Our engineering team will respond within 24 hours.';
+                formMessage.style.display = 'block';
+                form.reset();
+            } else {
+                formMessage.className = 'form-error';
+                formMessage.textContent = '✗ ' + (result.message || 'Failed to send inquiry. Please email us directly at sales@begapunk.com');
+                formMessage.style.display = 'block';
+            }
+        } catch (error) {
+            formMessage.className = 'form-error';
+            formMessage.textContent = '✗ Inquiry service error. Please try again or email sales@begapunk.com directly.';
+            formMessage.style.display = 'block';
+        }
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+    });
+})();
 
 </script>
 

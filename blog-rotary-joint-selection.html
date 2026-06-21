@@ -146,18 +146,38 @@
     .related-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: box-shadow 0.2s; }
     .related-card:hover { box-shadow: var(--shadow-hover); }
     .related-card .tag { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
-    .related-card h4 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
+    .related-card h3 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
     .related-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
     .related-card a { font-size: 0.9rem; font-weight: 600; }
+    /* Social Share Buttons */
+    .social-share-wrap { margin-top: 20px; padding-top: 16px; padding-bottom: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .social-share { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social-share-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-right: 4px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; line-height: 1; }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .share-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .share-linkedin { background: #0a66c2; color: #fff; }
+    .share-linkedin:hover { background: #084e96; }
+    .share-twitter { background: #000; color: #fff; }
+    .share-twitter:hover { background: #333; }
+    .share-facebook { background: #1877f2; color: #fff; }
+    .share-facebook:hover { background: #166fe5; }
+    .share-whatsapp { background: #25d366; color: #fff; }
+    .share-whatsapp:hover { background: #1da851; }
+    @media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
+
+    
   </style>
+    <script src="js/analytics.js"></script>
 </head>
+<body>
 <body>
 
 <header class="header">
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="images/begapunk-logo-header.png" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
+    <img src="images/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
    </a>
    <nav class="nav" id="mainNav">
     <a href="index.html">Home</a>
@@ -222,355 +242,293 @@
       <span>&#127775; Begapunk Engineering</span>
     </div>
   </div>
+
+    <div class="social-share-wrap">
+    <div class="container">
+    <div class="social-share">
+      <span class="social-share-label">Share:</span>
+      <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.begapunk.com/blog-rotary-joint-selection.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+      <a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://www.begapunk.com/blog-rotary-joint-selection.html&text=How%20to%20Select%20a%20Pneumatic%20Rotary%20Joint:%205%20Parameters%20%7C%20Begapunk" target="_blank" rel="noopener" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
+      <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.begapunk.com/blog-rotary-joint-selection.html" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+      <a class="share-btn share-whatsapp" href="https://api.whatsapp.com/send?text=How%20to%20Select%20a%20Pneumatic%20Rotary%20Joint:%205%20Parameters%20%7C%20Begapunk%20-%20https://www.begapunk.com/blog-rotary-joint-selection.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+    </div>
+  </div>
+  </div>
 </section>
 
+<!-- ===== BLOG CONTENT ===== -->
 <article class="blog-content">
-
-  <p>A rotary joint is one of those components that either runs silently for years or stops an entire production line when it fails. The difference usually comes down to five parameters that engineers overlook during specification.</p>
-
-  <p>At Begapunk, we have manufactured over 200,000 rotary joints since 2010. The majority of warranty claims we receive are not material defects &mdash; they are specification mismatches. A joint rated for 1.0 MPa gets run at 1.2 MPa. A Glyd Ring seal gets used in a 1,000 RPM application when the spec sheet said 500 RPM max. These are preventable errors.</p>
-
-  <p>This guide walks through the five parameters you need to check before placing an order. Get these right, and your rotary joint will outlast the machine it is mounted on.</p>
-
-  <h2>1. Channel Count: Match Your Pneumatic Circuit, Not Your Wish List</h2>
-
-  <h3>Single-Channel, Dual-Channel, and Multi-Channel Differences</h3>
-
-  <p>A <strong>1-in-1-out</strong> rotary joint carries one medium through one rotating passage. A <strong>2-in-2-out</strong> design carries two independent media streams through the same body &mdash; oxygen and coolant, for example, or compressed air and vacuum. Our <strong>3-in-3-out</strong> and <strong>4-in-4-out</strong> unions extend this logic to more complex rotary tables and indexing equipment.</p>
-
-  <p>The critical point: each channel is mechanically isolated. A dual-channel joint is not &ldquo;one channel that splits in two.&rdquo; It is two complete seal assemblies packed into a single housing. This matters when you are counting pneumatic circuits on your machine.</p>
-
-  <p><strong>Common mistake:</strong> Assuming a 2-channel joint can handle mixed media without verification. If channel A carries compressed air and channel B carries cutting coolant, you need to confirm seal material compatibility for both media &mdash; not just one.</p>
-
-  <h3>How to Determine Your Channel Count</h3>
-
-  <p>Count every independent fluid path that must pass through the rotating interface:</p>
-  <ul>
-    <li>Pneumatic gripper = <strong>2 channels</strong> (clamp + unclamp)</li>
-    <li>Pneumatic gripper + vacuum ejector = <strong>4 channels</strong> (clamp + unclamp + vacuum supply + vacuum release)</li>
-    <li>Laser cutting head (clamp, unclamp, blow dust) = <strong>3 channels</strong></li>
-  </ul>
-
-  <p><strong>Tip:</strong> Add one spare channel if your machine is likely to be upgraded later. It is cheaper to specify a 3-channel joint now than to replace a 2-channel joint in 18 months.</p>
-
-  <p><strong>Begapunk product reference:</strong></p>
-  <ul>
-    <li>Single channel: <a href="BP-1P-0003.html" class="product-link">BP-1P-0003</a> &mdash; threaded mount, compact, rated 1.0 MPa</li>
-    <li>Dual channel: <a href="BP-2P-0001.html" class="product-link">BP-2P-0001</a> &mdash; flange mount, 1.0 MPa, AL6061 body</li>
-  </ul>
-
-  <h2>2. Operating Pressure: The "Max 1.0 MPa" Spec Is Misleading</h2>
-
-  <h3>Rated Pressure vs. Test Pressure</h3>
-
-  <p>When a datasheet lists &ldquo;Maximum pressure: 1.0 MPa,&rdquo; that figure is usually the <strong>burst-test pressure</strong> or the <strong>static test pressure</strong> &mdash; not the pressure at which the joint should operate 24/7.</p>
-
-  <p>At Begapunk, every joint is pressure-tested at <strong>1.5&times; the rated specification</strong> before shipment. A joint rated for 1.0 MPa is tested at 1.5 MPa for 30 minutes. It passes. But that does not mean you should run it at 1.0 MPa continuously.</p>
-
-  <p><strong>Design rule:</strong> For continuous operation, apply a <strong>30% derating factor</strong>. A 1.0 MPa joint should be used at 0.7 MPa or below for round-the-clock duty. Exceed this, and seal fatigue accelerates dramatically.</p>
-
-  <p><strong>Common mistake:</strong> Buying a 1.0 MPa joint for an application that runs at 0.9 MPa continuously. Three months later, the seal leaks. The joint did not fail &mdash; it was overspecified.</p>
-
-  <h3>Pressure Selection by Application</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Application</th>
-        <th>Typical Pressure</th>
-        <th>Recommended Begapunk Series</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Standard pneumatic clamping</td>
-        <td>0.3&ndash;0.6 MPa</td>
-        <td><a href="BP-1P-0003.html">BP-1P-0003</a> / <a href="BP-2P-0001.html">BP-2P-0001</a></td>
-      </tr>
-      <tr>
-        <td>High-pressure coolant delivery</td>
-        <td>0.5&ndash;2.0 MPa</td>
-        <td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a> (5.0 MPa rated)</td>
-      </tr>
-      <tr>
-        <td>Hydraulic rotary transfer</td>
-        <td>5.0&ndash;10.0 MPa</td>
-        <td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a> (10.0 MPa rated)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Begapunk product reference:</strong></p>
-  <ul>
-    <li>Standard duty (1.0 MPa): <a href="BP-2P-0001.html" class="product-link">BP-2P-0001</a></li>
-    <li>Heavy duty (5.0 MPa): <a href="BP-2P-130-0001.html" class="product-link">BP-2P-130-0001</a></li>
-    <li>Extreme duty (10.0 MPa): <a href="BP-2P-95-0001.html" class="product-link">BP-2P-95-0001</a></li>
-  </ul>
-
-  <h2>3. RPM: Why High Speed Needs Different Seals</h2>
-
-  <h3>The Direct Relationship Between Speed and Seal Material</h3>
-
-  <p>Rotary joint seals are consumable. Their wear rate is proportional to surface speed (RPM &times; seal diameter). The faster the joint spins, the faster the seal material erodes.</p>
-
-  <p>Begapunk seal material selection by speed:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Speed Range</th>
-        <th>Recommended Seal</th>
-        <th>Max Continuous RPM</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>&lt; 200 RPM</td>
-        <td>FKM (fluoroelastomer / Viton)</td>
-        <td>200 RPM</td>
-      </tr>
-      <tr>
-        <td>200&ndash;500 RPM</td>
-        <td>Glyd Ring (PTFE composite)</td>
-        <td>500 RPM</td>
-      </tr>
-      <tr>
-        <td>500&ndash;2,000 RPM</td>
-        <td>PTFE skeleton oil seal</td>
-        <td>2,000 RPM</td>
-      </tr>
-      <tr>
-        <td>&gt; 2,000 RPM</td>
-        <td>Custom ceramic or balanced design</td>
-        <td>Custom</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Common mistake:</strong> Installing a standard FKM-sealed joint on a 400 RPM indexing table. The FKM seal overheats and hardens within two weeks. The joint leaks. The engineer blames the manufacturer &mdash; but the specification was wrong.</p>
-
-  <p>At Begapunk, all high-speed models (<a href="BP-2P-95-0001.html">BP-2P-95</a> and above) ship with <strong>PTFE skeleton oil seals as standard</strong>. We do not offer FKM on any joint rated above 200 RPM.</p>
-
-  <h3>How to Confirm Your Actual RPM</h3>
-
-  <p>Do not use the spindle&rsquo;s maximum RPM. Use the <strong>RPM at the joint&rsquo;s mounting location</strong>:</p>
-  <ul>
-    <li>A 1-second indexing cycle = 60 RPM</li>
-    <li>A 0.5-second cycle = 120 RPM</li>
-    <li>A continuous rotating shaft at 300 RPM = 300 RPM</li>
-  </ul>
-
-  <p>Most pneumatic rotary applications run well below 200 RPM. Do not overspend on a high-speed seal if your machine never breaks 100 RPM.</p>
-
-  <h2>4. Media Compatibility: "Air" Is Not Just Air</h2>
-
-  <h3>Compressed Air Has Variations</h3>
-
-  <p>Not all compressed air is the same, and the differences matter:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Air Type</th>
-        <th>Effect on Materials</th>
-        <th>Recommended Construction</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Dry, filtered air</td>
-        <td>Neutral</td>
-        <td>Standard AL6061 + FKM/Glyd Ring</td>
-      </tr>
-      <tr>
-        <td>Oil-fog lubricated air</td>
-        <td>FKM swells, Glyd Ring resists</td>
-        <td>Glyd Ring or PTFE skeleton seal mandatory</td>
-      </tr>
-      <tr>
-        <td>Moist / unfiltered air</td>
-        <td>AL6061 corrodes internally</td>
-        <td>304/316 SS body required</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Critical point:</strong> Moist air in an aluminum body causes <strong>internal bore corrosion</strong> within 6&ndash;12 months. The corrosion pits the seal running surface. Even a new seal will leak on a pitted surface. If your plant air is not dried, specify stainless steel.</p>
-
-  <h3>Water and Coolant</h3>
-
-  <p>Water, water-soluble coolant, and hydraulic oil require different material sets than dry air:</p>
-  <ul>
-    <li><strong>Water / coolant</strong> &rarr; 304 SS body + Glyd Ring or EPDM seal</li>
-    <li><strong>Hydraulic oil (ISO VG 32)</strong> &rarr; 316 SS body + FKM or PTFE skeleton seal</li>
-    <li><strong>Food-grade water / steam</strong> &rarr; 316 SS + FDA-approved PTFE, special cleaning protocol</li>
-  </ul>
-
-  <p><strong>Common mistake:</strong> Using a standard pneumatic rotary joint for coolant delivery. The aluminum body corrodes. The FKM seal degrades. The joint leaks in 3 months.</p>
-
-  <p><strong>Begapunk product reference:</strong></p>
-  <ul>
-    <li>Water/oil compatible (SS body): <a href="BP-2P-130-0001.html" class="product-link">BP-2P-130-0001</a></li>
-    <li>Custom food-grade configurations: <a href="contact.html" class="product-link">Contact us</a> for BP-3P-FDA specifications</li>
-  </ul>
-
-  <h2>5. Installation Space and Connection Type</h2>
-
-  <h3>Threaded vs. Flange Mount</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Mount Type</th>
-        <th>Best For</th>
-        <th>Limitations</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Threaded (G1/8, G1/4, M5)</td>
-        <td>Compact spaces, light loads</td>
-        <td>Torque transfer limited; risk of loosening under vibration</td>
-      </tr>
-      <tr>
-        <td>Flange mount</td>
-        <td>High torque, high RPM, heavy hoses</td>
-        <td>Requires more radial space; needs bolted face seal</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Rule of thumb:</strong> If the rotary joint sees significant side load from stiff hoses, or if the machine vibrates, use flange mount. The bolted connection will not loosen.</p>
-
-  <p>At Begapunk, both mounting styles are available across most model ranges. We review your machine drawing and recommend the appropriate configuration.</p>
-
-  <h3>Size Is Not Always Smaller</h3>
-
-  <p>A smaller rotary joint does not always solve your space problem. The <strong>internal bore diameter</strong> determines flow capacity:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bore Diameter</th>
-        <th>Typical Flow (air at 0.5 MPa)</th>
-        <th>Suitable For</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>3 mm</td>
-        <td>~15 L/min</td>
-        <td>Miniature grippers only</td>
-      </tr>
-      <tr>
-        <td>6 mm</td>
-        <td>~60 L/min</td>
-        <td>Standard pneumatic cylinders</td>
-      </tr>
-      <tr>
-        <td>10 mm</td>
-        <td>~150 L/min</td>
-        <td>Large actuators, multiple cylinders</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Common mistake:</strong> Buying a compact joint with a 3 mm bore to save space, then trying to run a 40 mm bore pneumatic cylinder through it. The cylinder extends slowly or stalls under load.</p>
-
-  <h2>Quick Reference: Begapunk Model Selection Table</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Application</th>
-        <th>Medium</th>
-        <th>Pressure</th>
-        <th>RPM</th>
-        <th>Recommended Model</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>General pneumatic clamping</td>
-        <td>Dry air</td>
-        <td>0.1&ndash;0.6 MPa</td>
-        <td>&lt; 200 RPM</td>
-        <td><a href="BP-1P-0003.html">BP-1P-0003</a> / <a href="BP-2P-0001.html">BP-2P-0001</a></td>
-      </tr>
-      <tr>
-        <td>High-pressure coolant system</td>
-        <td>Water / emulsion</td>
-        <td>0.5&ndash;2.0 MPa</td>
-        <td>&lt; 200 RPM</td>
-        <td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td>
-      </tr>
-      <tr>
-        <td>High-speed rotary indexing</td>
-        <td>Air</td>
-        <td>0.1&ndash;0.8 MPa</td>
-        <td>200&ndash;500 RPM</td>
-        <td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td>
-      </tr>
-      <tr>
-        <td>Food / pharmaceutical (custom)</td>
-        <td>Water / steam</td>
-        <td>0.1&ndash;1.0 MPa</td>
-        <td>&lt; 200 RPM</td>
-        <td><a href="contact.html">BP-3P-FDA &mdash; contact for spec</a></td>
-      </tr>
-      <tr>
-        <td>Dust-heavy environment</td>
-        <td>Air / water</td>
-        <td>0.1&ndash;1.0 MPa</td>
-        <td>&lt; 200 RPM</td>
-        <td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a> (IP65 dust-proof)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Conclusion</h2>
-
-  <p>Selecting a rotary joint is not complicated &mdash; but it is specific. Get the channel count right. Derate the pressure by 30%. Match the seal material to your RPM. Verify media compatibility with the body material. Size the bore for your flow requirement.</p>
-
-  <p>These five checks take five minutes. Getting them wrong takes five weeks of downtime.</p>
-
-  <!-- CTA BOX -->
-  <div class="cta-box">
-    <h3>Still Not Sure Which Model Fits Your Machine?</h3>
-    <p>Send us your operating conditions &mdash; pressure, RPM, media type, and channel count &mdash; and our engineers will return a spec recommendation within 24 hours.</p>
-    <a href="contact.html" class="btn">Request a Free Quote &rarr;</a>
-    <p style="margin-top:16px;font-size:0.85rem;">
-      Or email us directly: <a href="mailto:sales@begapunk.com?subject=Rotary%20Joint%20Selection%20Request" style="color:#fff;text-decoration:underline;">sales@begapunk.com</a>
-    </p>
-  </div>
-
-  <p style="font-size:0.85rem;color:var(--text-light);margin-top:32px;padding-top:16px;border-top:1px solid var(--border);">
-    <strong>Technical Note:</strong> All pressure ratings and RPM specifications referenced in this article are based on Begapunk BP-series standard pneumatic rotary joints. Actual performance depends on operating conditions and maintenance practices. For applications outside standard ratings, consult factory engineering before specification.
-  </p>
-
+<p>A rotary joint is one of those components that either runs silently for years or stops an entire production line when it fails. The difference usually comes down to five parameters that engineers overlook during specification.</p>
+<p>At Begapunk, we have manufactured over 200,000 rotary joints since 2010. The majority of warranty claims we receive are not material defects — they are specification mismatches. A joint rated for 1.0 MPa gets run at 1.2 MPa. A Glyd Ring seal gets used in a 1,000 RPM application when the spec sheet said 500 RPM max. These are preventable errors.</p>
+<p>This guide walks through the five parameters you need to check before placing an order. Get these right, and your rotary joint will outlast the machine it is mounted on.</p>
+<h2>1. Channel Count: Match Your Pneumatic Circuit, Not Your Wish List</h2>
+<h3>Single-Channel, Dual-Channel, and Multi-Channel Differences</h3>
+<p>A <strong>1-in-1-out</strong> rotary joint carries one medium through one rotating passage. A <strong>2-in-2-out</strong> design carries two independent media streams through the same body — oxygen and coolant, for example, or compressed air and vacuum. Our <strong>3-in-3-out</strong> and <strong>4-in-4-out</strong> unions extend this logic to more complex rotary tables and indexing equipment.</p>
+<p>The critical point: each channel is mechanically isolated. A dual-channel joint is not "one channel that splits in two." It is two complete seal assemblies packed into a single housing. This matters when you are counting pneumatic circuits on your machine.</p>
+<p><strong>Common mistake:</strong> Assuming a 2-channel joint can handle mixed media without verification. If channel A carries compressed air and channel B carries cutting coolant, you need to confirm seal material compatibility for both media — not just one.</p>
+<h3>How to Determine Your Channel Count</h3>
+<p>Count every independent fluid path that must pass through the rotating interface:</p>
+<ul>
+<li>Pneumatic gripper = <strong>2 channels</strong> (clamp + unclamp)</li>
+<li>Pneumatic gripper + vacuum ejector = <strong>4 channels</strong> (clamp + unclamp + vacuum supply + vacuum release)</li>
+<li>Laser cutting head (clamp, unclamp, blow dust) = <strong>3 channels</strong></li>
+</ul>
+<p><strong>Tip:</strong> Add one spare channel if your machine is likely to be upgraded later. It is cheaper to specify a 3-channel joint now than to replace a 2-channel joint in 18 months.</p>
+<p><strong>Begapunk product reference:</strong></p>
+<ul>
+<li>Single channel: BP-1P-0003 — threaded mount, compact, rated 1.0 MPa</li>
+<li>Dual channel: BP-2P-0001 — flange mount, 1.0 MPa, AL6061 body</li>
+</ul>
+<h2>2. Operating Pressure: The "Max 1.0 MPa" Spec Is Misleading</h2>
+<h3>Rated Pressure vs. Test Pressure</h3>
+<p>When a datasheet lists "Maximum pressure: 1.0 MPa," that figure is usually the <strong>burst-test pressure</strong> or the <strong>static test pressure</strong> — not the pressure at which the joint should operate 24/7.</p>
+<p>At Begapunk, every joint is pressure-tested at <strong>1.5× the rated specification</strong> before shipment. A joint rated for 1.0 MPa is tested at 1.5 MPa for 30 minutes. It passes. But that does not mean you should run it at 1.0 MPa continuously.</p>
+<p><strong>Design rule:</strong> For continuous operation, apply a <strong>30% derating factor</strong>. A 1.0 MPa joint should be used at 0.7 MPa or below for round-the-clock duty. Exceed this, and seal fatigue accelerates dramatically.</p>
+<p><strong>Common mistake:</strong> Buying a 1.0 MPa joint for an application that runs at 0.9 MPa continuously. Three months later, the seal leaks. The joint did not fail — it was overspecified.</p>
+<h3>Pressure Selection by Application</h3>
+<table>
+<thead><tr>
+<th>Application</th>
+<th>Typical Pressure</th>
+<th>Recommended Begapunk Series</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Standard pneumatic clamping</td>
+<td>0.3–0.6 MPa</td>
+<td>BP-1P-0003 / BP-2P-0001</td>
+</tr>
+<tr>
+<td>High-pressure coolant delivery</td>
+<td>0.5–2.0 MPa</td>
+<td>BP-2P-130-0001 (5.0 MPa rated)</td>
+</tr>
+<tr>
+<td>Hydraulic rotary transfer</td>
+<td>5.0–10.0 MPa</td>
+<td>BP-2P-95-0001 (10.0 MPa rated)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Begapunk product reference:</strong></p>
+<ul>
+<li>Standard duty (1.0 MPa): BP-2P-0001</li>
+<li>Heavy duty (5.0 MPa): BP-2P-130-0001</li>
+<li>Extreme duty (10.0 MPa): BP-2P-95-0001</li>
+</ul>
+<h2>3. RPM: Why High Speed Needs Different Seals</h2>
+<h3>The Direct Relationship Between Speed and Seal Material</h3>
+<p>Rotary joint seals are consumable. Their wear rate is proportional to surface speed (RPM × seal diameter). The faster the joint spins, the faster the seal material erodes.</p>
+<p>Begapunk seal material selection by speed:</p>
+<table>
+<thead><tr>
+<th>Speed Range</th>
+<th>Recommended Seal</th>
+<th>Max Continuous RPM</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>< 200 RPM</td>
+<td>FKM (fluoroelastomer / Viton)</td>
+<td>200 RPM</td>
+</tr>
+<tr>
+<td>200–500 RPM</td>
+<td>Glyd Ring (PTFE composite)</td>
+<td>500 RPM</td>
+</tr>
+<tr>
+<td>500–2,000 RPM</td>
+<td>PTFE skeleton oil seal</td>
+<td>2,000 RPM</td>
+</tr>
+<tr>
+<td>> 2,000 RPM</td>
+<td>Custom ceramic or balanced design</td>
+<td>Custom</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Common mistake:</strong> Installing a standard FKM-sealed joint on a 400 RPM indexing table. The FKM seal overheats and hardens within two weeks. The joint leaks. The engineer blames the manufacturer — but the specification was wrong.</p>
+<p>At Begapunk, all high-speed models (BP-2P-95 and above) ship with <strong>PTFE skeleton oil seals as standard</strong>. We do not offer FKM on any joint rated above 200 RPM.</p>
+<h3>How to Confirm Your Actual RPM</h3>
+<p>Do not use the spindle's maximum RPM. Use the <strong>RPM at the joint's mounting location</strong>:</p>
+<ul>
+<li>A 1-second indexing cycle = 60 RPM</li>
+<li>A 0.5-second cycle = 120 RPM</li>
+<li>A continuous rotating shaft at 300 RPM = 300 RPM</li>
+</ul>
+<p>Most pneumatic rotary applications run well below 200 RPM. Do not overspend on a high-speed seal if your machine never breaks 100 RPM.</p>
+<h2>4. Media Compatibility: "Air" Is Not Just Air</h2>
+<h3>Compressed Air Has Variations</h3>
+<p>Not all compressed air is the same, and the differences matter:</p>
+<table>
+<thead><tr>
+<th>Air Type</th>
+<th>Effect on Materials</th>
+<th>Recommended Construction</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Dry, filtered air</td>
+<td>Neutral</td>
+<td>Standard AL6061 + FKM/Glyd Ring</td>
+</tr>
+<tr>
+<td>Oil-fog lubricated air</td>
+<td>FKM swells, Glyd Ring resists</td>
+<td>Glyd Ring or PTFE skeleton seal mandatory</td>
+</tr>
+<tr>
+<td>Moist / unfiltered air</td>
+<td>AL6061 corrodes internally</td>
+<td>304/316 SS body required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical point:</strong> Moist air in an aluminum body causes <strong>internal bore corrosion</strong> within 6–12 months. The corrosion pits the seal running surface. Even a new seal will leak on a pitted surface. If your plant air is not dried, specify stainless steel.</p>
+<h3>Water and Coolant</h3>
+<p>Water, water-soluble coolant, and hydraulic oil require different material sets than dry air:</p>
+<ul>
+<li><strong>Water / coolant</strong> → 304 SS body + Glyd Ring or EPDM seal</li>
+<li><strong>Hydraulic oil (ISO VG 32)</strong> → 316 SS body + FKM or PTFE skeleton seal</li>
+<li><strong>Food-grade water / steam</strong> → 316 SS + FDA-approved PTFE, special cleaning protocol</li>
+</ul>
+<p><strong>Common mistake:</strong> Using a standard pneumatic rotary joint for coolant delivery. The aluminum body corrodes. The FKM seal degrades. The joint leaks in 3 months.</p>
+<p><strong>Begapunk product reference:</strong></p>
+<ul>
+<li>Water/oil compatible (SS body): BP-2P-130-0001</li>
+<li>Custom food-grade configurations: Contact us for BP-3P-FDA specifications</li>
+</ul>
+<h2>5. Installation Space and Connection Type</h2>
+<h3>Threaded vs. Flange Mount</h3>
+<table>
+<thead><tr>
+<th>Mount Type</th>
+<th>Best For</th>
+<th>Limitations</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Threaded (G1/8, G1/4, M5)</td>
+<td>Compact spaces, light loads</td>
+<td>Torque transfer limited; risk of loosening under vibration</td>
+</tr>
+<tr>
+<td>Flange mount</td>
+<td>High torque, high RPM, heavy hoses</td>
+<td>Requires more radial space; needs bolted face seal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb:</strong> If the rotary joint sees significant side load from stiff hoses, or if the machine vibrates, use flange mount. The bolted connection will not loosen.</p>
+<p>At Begapunk, both mounting styles are available across most model ranges. We review your machine drawing and recommend the appropriate configuration.</p>
+<h3>Size Is Not Always Smaller</h3>
+<p>A smaller rotary joint does not always solve your space problem. The <strong>internal bore diameter</strong> determines flow capacity:</p>
+<table>
+<thead><tr>
+<th>Bore Diameter</th>
+<th>Typical Flow (air at 0.5 MPa)</th>
+<th>Suitable For</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>3 mm</td>
+<td>~15 L/min</td>
+<td>Miniature grippers only</td>
+</tr>
+<tr>
+<td>6 mm</td>
+<td>~60 L/min</td>
+<td>Standard pneumatic cylinders</td>
+</tr>
+<tr>
+<td>10 mm</td>
+<td>~150 L/min</td>
+<td>Large actuators, multiple cylinders</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Common mistake:</strong> Buying a compact joint with a 3 mm bore to save space, then trying to run a 40 mm bore pneumatic cylinder through it. The cylinder extends slowly or stalls under load.</p>
+<h2>Quick Reference: Begapunk Model Selection Table</h2>
+<table>
+<thead><tr>
+<th>Application</th>
+<th>Medium</th>
+<th>Pressure</th>
+<th>RPM</th>
+<th>Recommended Model</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>General pneumatic clamping</td>
+<td>Dry air</td>
+<td>0.1–0.6 MPa</td>
+<td>< 200 RPM</td>
+<td>BP-1P-0003 / BP-2P-0001</td>
+</tr>
+<tr>
+<td>High-pressure coolant system</td>
+<td>Water / emulsion</td>
+<td>0.5–2.0 MPa</td>
+<td>< 200 RPM</td>
+<td>BP-2P-130-0001</td>
+</tr>
+<tr>
+<td>High-speed rotary indexing</td>
+<td>Air</td>
+<td>0.1–0.8 MPa</td>
+<td>200–500 RPM</td>
+<td>BP-2P-95-0001</td>
+</tr>
+<tr>
+<td>Food / pharmaceutical (custom)</td>
+<td>Water / steam</td>
+<td>0.1–1.0 MPa</td>
+<td>< 200 RPM</td>
+<td>BP-3P-FDA — contact for spec</td>
+</tr>
+<tr>
+<td>Dust-heavy environment</td>
+<td>Air / water</td>
+<td>0.1–1.0 MPa</td>
+<td>< 200 RPM</td>
+<td>BP-2P-50-0001 (IP65 dust-proof)</td>
+</tr>
+</tbody>
+</table>
+<h2>Conclusion</h2>
+<p>Selecting a rotary joint is not complicated — but it is specific. Get the channel count right. Derate the pressure by 30%. Match the seal material to your RPM. Verify media compatibility with the body material. Size the bore for your flow requirement.</p>
+<p>These five checks take five minutes. Getting them wrong takes five weeks of downtime.</p>
+<h3>Still Not Sure Which Model Fits Your Machine?</h3>
+<p>Send us your operating conditions — pressure, RPM, media type, and channel count — and our engineers will return a spec recommendation within 24 hours.</p>
+<p>Request a Free Quote →</p>
+<p>Or email us directly: sales@begapunk.com</p>
+<p><strong>Technical Note:</strong> All pressure ratings and RPM specifications referenced in this article are based on Begapunk BP-series standard pneumatic rotary joints. Actual performance depends on operating conditions and maintenance practices. For applications outside standard ratings, consult factory engineering before specification.</p>
 </article>
 
+<!-- ===== RELATED ARTICLES ===== -->
 <section class="related-articles">
   <div class="container">
     <h2 style="font-size:1.5rem;font-weight:700;color:var(--dark-soft);">Related Articles</h2>
     <div class="related-grid">
       <div class="related-card">
         <span class="tag">Maintenance</span>
-        <h4>Rotary Joint Leaking? A Practical Diagnostic Flowchart</h4>
-        <p>Systematic troubleshooting: check pressure, RPM, seal material, and air quality before replacing seals.</p>
-        <a href="blog-rotary-joint-leaking.html">Read Now &rarr;</a>
-      </div>
-      <div class="related-card">
-        <span class="tag">Maintenance</span>
-        <h4>Rotary Joint Seal Replacement: A Step-by-Step Guide</h4>
+        <h3>Rotary Joint Seal Replacement: A Step-by-Step Guide</h3>
         <p>When and how to replace PTFE and carbon seals. Torque specs, seal orientation, and troubleshooting leakage.</p>
         <a href="blog-seal-replacement.html">Read Now &rarr;</a>
       </div>
       <div class="related-card">
         <span class="tag">Maintenance</span>
-        <h4>Threaded vs Flange Mounting for Rotary Joints</h4>
+        <h3>Threaded vs Flange Mounting for Rotary Joints</h3>
         <p>60% of early-life leaks trace to installation errors. Torque specs, anti-rotation brackets, and pressure test protocol.</p>
         <a href="blog-threaded-vs-flange.html">Read Now &rarr;</a>
+      </div>
+      <div class="related-card">
+        <span class="tag">Selection Guide</span>
+        <h3>Rotary Joint Body Materials</h3>
+        <p>AL6061, 304 SS, 316 SS, brass. Match material to environment for optimal life and lowest total cost of ownership.</p>
+        <a href="blog-rotary-joint-materials.html">Read Now &rarr;</a>
       </div>
     </div>
   </div>
@@ -581,7 +539,7 @@
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="images/begapunk-logo-header.png" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
+     <img src="images/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
     </div>
     <p>Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.</p>
     <div class="contact-line">&#9993; <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
@@ -656,6 +614,24 @@ window.addEventListener('scroll', () => {
     header.style.boxShadow = 'none';
   }
 });
+
+
+, 2000);
+        });
+    } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var original = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+        btn.classList.add('copied');
+        setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+    }
+}
+
 </script>
 
 </body>

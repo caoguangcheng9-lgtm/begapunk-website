@@ -46,14 +46,39 @@ RedirectMatch 410 ^/pages$
 # </IfModule>
 
 # ========================================
+# SECURITY: Block access to sensitive files
+# ========================================
+<FilesMatch "(^\.|\.(?:backup|bak|config|env|ini|log|md|sql|tmp)$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+RedirectMatch 403 ^/audit_extracts(?:/|$)
+
+# Also block common sensitive file patterns via rewrite
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule \.(env|ini|log|sql|bak|backup|config|md|tmp)$ - [F,L,NC]
+</IfModule>
+
+# ========================================
 # BASIC SEO & SECURITY
 # ========================================
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Force HTTPS (uncomment if you have SSL)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# Force HTTPS and the canonical www host. X-Forwarded-Proto avoids proxy/CDN loops.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://www.begapunk.com%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} !^www\.begapunk\.com$ [NC]
+RewriteRule ^ https://www.begapunk.com%{REQUEST_URI} [R=301,L]
 
 # Remove trailing slashes
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -62,6 +87,16 @@ RewriteRule ^(.*)/$ /$1 [R=301,L]
 # Redirect non-www to www (or vice versa - pick one)
 # RewriteCond %{HTTP_HOST} ^begapunk\.com$ [NC]
 # RewriteRule ^(.*)$ https://www.begapunk.com/$1 [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+Header always unset X-Powered-By
 </IfModule>
 
 # Enable gzip compression
@@ -74,6 +109,8 @@ AddOutputFilterByType DEFLATE text/html text/css text/javascript application/jav
 ExpiresActive On
 ExpiresByType image/png "access plus 1 month"
 ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/webp "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 month"
 ExpiresByType text/css "access plus 1 week"
 ExpiresByType application/javascript "access plus 1 week"
 </IfModule>

@@ -1654,7 +1654,7 @@ a:hover { color: var(--primary-dark); }
  font-size: 0.9rem;
  flex-shrink: 0;
  }
- .install-step h4 {
+ .install-step h3 {
  font-size: 1rem;
  font-weight: 600;
  color: var(--dark-soft);
@@ -1690,17 +1690,17 @@ a:hover { color: var(--primary-dark); }
  font-size: 1.8rem;
  flex-shrink: 0;
  }
- .download-item h4 {
+ .download-item h3 {
  font-size: 0.95rem;
  font-weight: 600;
  color: var(--dark-soft);
  margin-bottom: 2px;
  }
- .download-item h4 a {
+ .download-item h3 a {
  color: var(--dark-soft);
  text-decoration: none;
  }
- .download-item h4 a:hover {
+ .download-item h3 a:hover {
  color: var(--primary);
  }
  .download-item p {
@@ -1730,7 +1730,7 @@ a:hover { color: var(--primary-dark); }
  border-color: var(--primary);
  transform: translateY(-2px);
  }
- .related-card h4 {
+ .related-card h3 {
  font-size: 0.95rem;
  font-weight: 600;
  color: var(--dark-soft);
@@ -2293,7 +2293,7 @@ border-color: rgba(37,99,235,0.35);
  font-size: 1.25rem;
  flex-shrink: 0;
  }
- .info-card h4 {
+ .info-card h3 {
  font-size: 1rem;
  font-weight: 700;
  color: var(--dark-soft);
@@ -2522,6 +2522,12 @@ border-color: rgba(37,99,235,0.35);
  color: #fff;
  border-color: var(--primary);
  }
+ .blog-section-title {
+ font-size: 1.45rem;
+ font-weight: 700;
+ color: var(--dark-soft);
+ margin: 8px 0 18px;
+ }
 
  /* Grid */
  .blog-grid {
@@ -2648,7 +2654,7 @@ border-color: rgba(37,99,235,0.35);
  text-align: center;
  margin-bottom: 48px;
  }
- .newsletter-wrap h3 {
+ .newsletter-wrap h2 {
  font-size: 1.5rem;
  font-weight: 700;
  margin-bottom: 12px;
@@ -2722,7 +2728,7 @@ border-color: rgba(37,99,235,0.35);
  .blog-card h3 { font-size: 1.05rem; }
  .blog-card p { font-size: 0.9rem; }
  .newsletter-wrap { padding: 28px 18px; }
- .newsletter-wrap h3 { font-size: 1.25rem; }
+ .newsletter-wrap h2 { font-size: 1.25rem; }
  .newsletter-form input { min-width: 100%; }
  }
 
@@ -3358,17 +3364,17 @@ line-height: 1.65;
         .timeline { display:flex; flex-direction:column; gap:24px; padding:40px 0; }
         .timeline-item { display:flex; gap:24px; }
         .timeline-year { font-size:1.60rem; font-weight:700; color:var(--primary); width:80px; flex-shrink:0; }
-        .timeline-content h4 { font-size:1.45rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+ .timeline-content h3 { font-size:1.45rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
         .timeline-content p { font-size:1.25rem; color:var(--text-light); }
         .process-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; padding:40px 0; }
         .process-step { text-align:center; padding:24px 16px; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); }
         .process-step .num { width:40px; height:40px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; margin:0 auto 12px; }
-        .process-step h4 { font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:6px; }
+ .process-step h3 { font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:6px; }
         .process-step p { font-size:1.10rem; color:var(--text-light); }
         .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:40px 0; }
         .team-card { text-align:center; padding:32px 24px; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); }
         .team-avatar { width:80px; height:80px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center; font-size:2.35rem; font-weight:700; color:var(--secondary); margin:0 auto 16px; }
-        .team-card h4 { font-size:1.35rem; font-weight:700; color:var(--dark); }
+ .team-card h3 { font-size:1.35rem; font-weight:700; color:var(--dark); }
         .team-card p { font-size:1.15rem; color:var(--text-light); }
         @media (max-width:768px) {
             .about-grid, .process-grid, .team-grid { grid-template-columns:1fr; }
@@ -3381,10 +3387,10 @@ line-height: 1.65;
             .about-content h2 { font-size: 1.4rem; }
             .about-content p { font-size: 0.95rem; }
             .timeline-year { font-size: 1.3rem; width: 60px; }
-            .timeline-content h4 { font-size: 1.2rem; }
+            .timeline-content h3 { font-size: 1.2rem; }
             .timeline-content p { font-size: 1rem; }
             .process-step { padding: 16px 12px; }
-            .process-step h4 { font-size: 1.1rem; }
+            .process-step h3 { font-size: 1.1rem; }
             .process-step p { font-size: 0.95rem; }
             .team-card { padding: 24px 16px; }
             .breadcrumb { font-size: 0.9rem; }
@@ -4207,10 +4213,10 @@ line-height: 1.65;
 
     /* Mobile header: make the navigation entry obvious without changing desktop */
     .mobile-toggle {
-        position: fixed;
-        left: calc(min(100vw, 390px) - 92px);
+        position: relative;
+        left: auto;
         right: auto;
-        top: 12px;
+        top: auto;
         transform: none;
         z-index: 1004;
         width: 74px;
@@ -4226,6 +4232,8 @@ line-height: 1.65;
         border-radius: 6px;
         background: #fff;
         box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        margin-left: auto;
+        flex-shrink: 0;
     }
 
     .mobile-toggle::after {

@@ -50,6 +50,7 @@
 
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
+    <script src="js/analytics.js"></script>
 </head>
 
 <body>
@@ -60,7 +61,7 @@
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="images/begapunk-logo-header.png" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
+    <img src="images/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
    </a>
    <nav class="nav" id="mainNav">
     <a href="index.html">Home</a>
@@ -125,9 +126,9 @@
 
 <section class="legal-body">
 
-    <p><strong>Effective Date:</strong> May 8, 2026<br>
+    <p><strong>Effective Date:</strong> June 11, 2026<br>
 
-    <strong>Last Updated:</strong> May 8, 2026</p>
+    <strong>Last Updated:</strong> June 11, 2026</p>
 
 
 
@@ -173,21 +174,51 @@
 
 
 
-    <h2>3. Cookies</h2>
+    <h2>3. Cookies & Tracking Technologies</h2>
 
-    <p>We use cookies to:</p>
+    <p>We use cookies and similar technologies to operate and improve our website. Below is a breakdown of the cookies we use, their purpose, and how you can control them.</p>
+
+    <h3>3.1 Essential Cookies (Always Active)</h3>
+
+    <p>These cookies are necessary for the website to function and cannot be disabled. They do not store any personally identifiable information beyond your cookie preference.</p>
 
     <ul>
 
-        <li>Remember your cookie consent preference</li>
-
-        <li>Analyze website traffic via Google Analytics</li>
-
-        <li>Improve user experience</li>
+        <li><strong>Consent State</strong> — Stores your cookie preference (accept/decline) so the banner does not reappear on every visit. Expires after 365 days.</li>
 
     </ul>
 
-    <p>You can disable cookies in your browser settings. However, some features may not function properly without cookies.</p>
+    <h3>3.2 Analytics Cookies (Optional)</h3>
+
+    <p>These cookies help us understand how visitors interact with our website. They are only placed if you click "Accept All" on the cookie banner. If you decline, no analytics cookies are set and no tracking data is sent.</p>
+
+    <ul>
+
+        <li><strong>Google Analytics 4</strong> — We use GA4 to collect anonymized traffic data (page views, session duration, referral sources). GA4 is configured with advertising features disabled and IP anonymization enabled. Data is retained for 14 months. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+
+    </ul>
+
+    <h3>3.3 Manage Your Cookie Preferences</h3>
+
+    <p>You can change your preference at any time using the controls below.</p>
+
+    <div id="cookie-manager" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;padding:20px;margin:16px 0;">
+
+        <p id="cookie-status" style="margin-bottom:12px;font-weight:600;">Current status: checking...</p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Accept Analytics</button>
+
+            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Decline Analytics</button>
+
+            <button onclick="BegapunkConsent.reset()" style="padding:10px 18px;background:transparent;color:#666;border:none;border-radius:6px;cursor:pointer;text-decoration:underline;">Reset & Show Banner Again</button>
+
+        </div>
+
+    </div>
+
+    <p>You can also disable cookies entirely through your browser settings. Note that essential cookies (consent state) are required for the banner to function correctly.</p>
 
 
 
@@ -282,7 +313,7 @@
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="images/begapunk-logo-header.png" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
+     <img src="images/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
     </div>
     <p>Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.</p>
     <div class="contact-line">&#9993; <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
@@ -376,6 +407,35 @@ window.addEventListener('scroll', () => {
 
 });
 
+</script>
+
+<script>
+// Cookie preference status display for privacy page
+(function() {
+    function updateStatus() {
+        const el = document.getElementById('cookie-status');
+        if (!el) return;
+        const state = (window.BegapunkConsent && window.BegapunkConsent.state) || null;
+        if (state === 'granted') {
+            el.textContent = 'Current status: Analytics accepted — Google Analytics 4 is active.';
+            el.style.color = '#2e7d32';
+        } else if (state === 'denied') {
+            el.textContent = 'Current status: Analytics declined — only essential cookies are used.';
+            el.style.color = '#c62828';
+        } else {
+            el.textContent = 'Current status: No decision yet — the cookie banner will appear on your next visit.';
+            el.style.color = '#666';
+        }
+    }
+    // Wait for analytics.js to initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(updateStatus, 100);
+        });
+    } else {
+        setTimeout(updateStatus, 100);
+    }
+})();
 </script>
 
 

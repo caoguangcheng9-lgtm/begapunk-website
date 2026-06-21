@@ -165,7 +165,7 @@
     .tip-box strong { color: #15803d; }
 
     .cost-highlight { background: var(--bg-alt); border: 2px solid var(--primary); border-radius: 8px; padding: 20px; margin: 20px 0; }
-    .cost-highlight h4 { margin-top: 0; color: var(--primary); }
+    .cost-highlight h3 { margin-top: 0; color: var(--primary); }
 
     .breadcrumb { padding: 16px 0; font-size: 0.85rem; color: var(--text-light); }
     .breadcrumb a { color: var(--primary); text-decoration: none; }
@@ -176,11 +176,31 @@
     .related-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: box-shadow 0.2s; }
     .related-card:hover { box-shadow: var(--shadow-hover); }
     .related-card .tag { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
-    .related-card h4 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
+    .related-card h3 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
     .related-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
     .related-card a { font-size: 0.9rem; font-weight: 600; }
+    /* Social Share Buttons */
+    .social-share-wrap { margin-top: 20px; padding-top: 16px; padding-bottom: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .social-share { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social-share-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-right: 4px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; line-height: 1; }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .share-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .share-linkedin { background: #0a66c2; color: #fff; }
+    .share-linkedin:hover { background: #084e96; }
+    .share-twitter { background: #000; color: #fff; }
+    .share-twitter:hover { background: #333; }
+    .share-facebook { background: #1877f2; color: #fff; }
+    .share-facebook:hover { background: #166fe5; }
+    .share-whatsapp { background: #25d366; color: #fff; }
+    .share-whatsapp:hover { background: #1da851; }
+    @media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
+
+    
   </style>
+    <script src="js/analytics.js"></script>
 </head>
+<body>
 <body>
 
 <!-- ===== HEADER ===== -->
@@ -188,7 +208,7 @@
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="images/begapunk-logo-header.png" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
+    <img src="images/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
    </a>
    <nav class="nav" id="mainNav">
     <a href="index.html">Home</a>
@@ -255,335 +275,263 @@
       <span>&#127775; Begapunk Engineering</span>
     </div>
   </div>
+
+    <div class="social-share-wrap">
+    <div class="container">
+    <div class="social-share">
+      <span class="social-share-label">Share:</span>
+      <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.begapunk.com/blog-rotary-joint-materials.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+      <a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://www.begapunk.com/blog-rotary-joint-materials.html&text=Rotary%20Joint%20Body%20Materials:%20Aluminum,%20Stainless%20Steel,%20or%20Brass%20&mdash;Which%20One%20Actually%20Lasts?%20%7C%20Begapunk" target="_blank" rel="noopener" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
+      <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.begapunk.com/blog-rotary-joint-materials.html" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+      <a class="share-btn share-whatsapp" href="https://api.whatsapp.com/send?text=Rotary%20Joint%20Body%20Materials:%20Aluminum,%20Stainless%20Steel,%20or%20Brass%20&mdash;Which%20One%20Actually%20Lasts?%20%7C%20Begapunk%20-%20https://www.begapunk.com/blog-rotary-joint-materials.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+    </div>
+  </div>
+  </div>
 </section>
 
-<!-- ===== ARTICLE CONTENT ===== -->
+<!-- ===== BLOG CONTENT ===== -->
 <article class="blog-content">
-
-  <p>The wrong body material turns a 5-year rotary joint into a 6-month consumable. The right material makes a standard joint outlast the machine it is mounted on. The difference is not price &mdash;it is matching the material to the environment.</p>
-
-  <p>At Begapunk, we manufacture rotary joints in AL6061 aluminum, 304 stainless steel, 316 stainless steel, and brass. Each has a specific domain where it is the correct choice, and a larger domain where it is a waste of money. This guide separates the two.</p>
-
-  <h2>Quick Reference: Material Performance Table</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Material</th>
-        <th>Compatible Media</th>
-        <th>Max Pressure</th>
-        <th>Corrosion Resistance</th>
-        <th>Weight (vs. Aluminum)</th>
-        <th>Relative Cost</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>AL6061</td>
-        <td>Dry air, water, water-based coolant, hydraulic oil (ISO VG 32)</td>
-        <td>1.0 MPa</td>
-        <td>Weak acids OK. Strong acids, chlorides, and seawater will pit.</td>
-        <td>1.0脳 (baseline)</td>
-        <td>Low</td>
-      </tr>
-      <tr>
-        <td>304 SS</td>
-        <td>Steam, food-grade water, seawater (short-term), mild chemicals</td>
-        <td>1.5 MPa</td>
-        <td>Excellent general resistance. Chloride environments require 316.</td>
-        <td>2.8脳</td>
-        <td>Medium</td>
-      </tr>
-      <tr>
-        <td>316 SS</td>
-        <td>Aggressive chemicals, seawater (continuous), food/pharma, urea</td>
-        <td>1.5 MPa</td>
-        <td>Superior chloride resistance. Standard for marine and chemical duty.</td>
-        <td>2.9脳</td>
-        <td>High</td>
-      </tr>
-      <tr>
-        <td>Brass</td>
-        <td>Water, low-pressure air, non-ammonia environments</td>
-        <td>0.8 MPa</td>
-        <td>Good in neutral water. Ammonia and high-sulfur environments cause dezincification.</td>
-        <td>2.2脳</td>
-        <td>Medium</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>This table is the starting point, not the answer. The sections below explain when to override it.</p>
-
-  <h2>1. The Environment Decides the Material</h2>
-
-  <h3>Dry Compressed Air + Indoor Automation Line &rarr; AL6061</h3>
-
-  <p>If your compressed air is dried to a dew point of -20&deg;C or lower, and the machine runs in a standard factory environment, AL6061 is the correct material. It is lightweight, machines cleanly, and dissipates heat well at the seal interface.</p>
-
-  <div class="warning-box">
-    <p><strong>When AL6061 fails:</strong> Moisture in the air supply. Even intermittently wet air will cause internal bore corrosion within 6&ndash;12 months. The corrosion pits the seal running surface. A new seal installed on a pitted bore leaks immediately. If your FRL unit drains water weekly, you are running wet air. Switch to 304 SS or fix the air dryer.</p>
-  </div>
-
-  <h3>Cooling Water + Cutting Fluid Emulsion &rarr; AL6061 with Monitoring</h3>
-
-  <p>Water-soluble coolant is mildly alkaline (pH 8.5&ndash;9.5) and generally safe for AL6061. However, some emulsion concentrates contain chlorinated EP additives. At concentrations above 8%, chloride levels can reach 50&ndash;100 ppm. This is the threshold where aluminum pitting begins.</p>
-
-  <div class="tip-box">
-    <p><strong>Rule:</strong> If your coolant supplier cannot provide a chloride content spec below 50 ppm, specify 304 SS for continuous coolant duty. The cost difference is recovered in the first avoided replacement.</p>
-  </div>
-
-  <h3>Seawater or Coastal Environment &rarr; 316 SS, No Exceptions</h3>
-
-  <p>304 stainless steel shows <strong>crevice corrosion within 3&ndash;6 months</strong> of seawater exposure. In a coastal factory with salt-laden air, the timeline shortens to 2&ndash;3 months. We have test records showing 304 SS housings with visible corrosion after 90 days of marine exposure.</p>
-
-  <p>316 SS contains 2&ndash;3% molybdenum, which shifts the corrosion potential outside the range where chloride pitting initiates. For continuous seawater or offshore platforms, 316 SS is not optional &mdash;it is the minimum.</p>
-
-  <p><strong>Begapunk reference:</strong> Marine-duty joints use 316 SS body + PTFE composite seal. Specify &ldquo;marine grade&rdquo; at inquiry.</p>
-
-  <h3>Food-Grade or Pharmaceutical &rarr; 304 SS + Food-Grade Seal</h3>
-
-  <p>Regulatory requirements (FDA 21 CFR 177.1550, EU 1935/2004) mandate stainless steel for food-contact rotating equipment. 304 SS is the standard. The surface must be passivated and free of machining residue.</p>
-
-  <div class="warning-box">
-    <p><strong>Critical:</strong> The seal material must also be food-grade. Standard PTFE is inert but not FDA-certified. Specify &ldquo;FDA PTFE&rdquo; or &ldquo;food-grade FKM&rdquo; at order. The housing material alone does not satisfy regulatory requirements.</p>
-  </div>
-
-  <h3>Ammonia, Urea, or Fertilizer Environments &rarr; Brass Is Not Recommended</h3>
-
-  <p>Brass contains zinc. In ammonia environments, zinc undergoes selective dissolution (dezincification), leaving a porous copper skeleton. The housing loses structural integrity and cracks under pressure. This failure mode is invisible until the joint bursts.</p>
-
-  <div class="warning-box">
-    <p><strong>Rule:</strong> Brass is not recommended in ammonia, urea, or nitrate environments. Use 316 SS or aluminum with specialized coating.</p>
-  </div>
-
-  <h2>2. Seal Material and Housing Material: Pairing Rules</h2>
-
-  <p>The seal and housing form an electrochemical couple at the interface. Get the pairing wrong, and galvanic corrosion accelerates seal failure.</p>
-
-  <h3>Aluminum Housing + FKM Seal + Water</h3>
-
-  <p>Compatible under normal conditions. However, if the water contains &gt;50 ppm chloride ions (common in municipal water in coastal regions or coolant with salt-based inhibitors), aluminum develops localized pitting. The pits create turbulence at the seal lip, accelerating wear.</p>
-
-  <p><strong>Mitigation:</strong> Use a coolant corrosion inhibitor approved for aluminum, or switch to 304 SS.</p>
-
-  <h3>Stainless Steel Housing + Carbon Graphite Seal</h3>
-
-  <p>Carbon graphite is an excellent seal material for steam and high-temperature water. However, graphite and stainless steel have a significant galvanic potential difference. In conductive media (water, coolant), the graphite acts as the cathode and the stainless steel as the anode. The stainless steel corrodes at the seal groove.</p>
-
-  <p><strong>Mitigation:</strong> Use a PTFE-composite seal with 316 SS for water applications. Reserve carbon graphite for oil or dry-running applications.</p>
-
-  <h3>Brass Housing + PTFE Seal</h3>
-
-  <p>Mechanically compatible, but brass is prone to dezincification in acidic or high-sulfur environments. PTFE is chemically inert and does not protect the housing. If the environment attacks brass, the joint fails structurally regardless of seal condition.</p>
-
-  <h2>3. Weight-Sensitive Applications: The 65% Difference</h2>
-
-  <p>AL6061 weighs approximately 2.7 g/cm鲁. 304 SS weighs 7.9 g/cm鲁. For a BP-2P-0001-sized joint, this translates to:</p>
-
-  <ul>
-    <li>Aluminum: 120 g</li>
-    <li>304 SS: 340 g</li>
-    <li>316 SS: 350 g</li>
-  </ul>
-
-  <p>On a robotic arm or high-speed indexing table, this difference matters. A six-axis robot with three rotary joints on the wrist sees 660 g of added load with aluminum, versus 1.9 kg with stainless steel. The robot's cycle time, motor load, and bearing life all degrade with the heavier material.</p>
-
-  <div class="tip-box">
-    <p><strong>Rule for rotating machinery:</strong> Use aluminum unless corrosion or regulatory requirements force stainless steel. The performance gain from reduced mass often exceeds the longevity gain from corrosion resistance.</p>
-  </div>
-
-  <h2>4. Cost vs. Lifetime: Real Numbers</h2>
-
-  <p>Consider a BP-2P-0001 in a standard pneumatic clamping application with clean, dry air:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Material</th>
-        <th>Relative Housing Cost</th>
-        <th>Seal Replacement (every 2 years)</th>
-        <th>6-Year Total Cost</th>
-        <th>Failure Mode</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>AL6061</td>
-        <td>Low (baseline)</td>
-        <td>3 replacements</td>
-        <td>Lowest total cost</td>
-        <td>Normal wear</td>
-      </tr>
-      <tr>
-        <td>304 SS</td>
-        <td>3脳 baseline</td>
-        <td>2 replacements</td>
-        <td>65% higher than aluminum</td>
-        <td>Normal wear</td>
-      </tr>
-      <tr>
-        <td>316 SS</td>
-        <td>4脳 baseline</td>
-        <td>2 replacements</td>
-        <td>100% higher than aluminum</td>
-        <td>Normal wear</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>In this scenario, aluminum is the correct economic choice. The stainless steel options cost 65&ndash;100% more over six years with no operational benefit.</p>
-
-  <p>Now consider the same joint in a seawater washdown environment:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Material</th>
-        <th>Relative Housing Cost</th>
-        <th>Replacement Frequency</th>
-        <th>6-Year Total Cost</th>
-        <th>Downtime Events</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>AL6061</td>
-        <td>Low</td>
-        <td>Every 3 months</td>
-        <td>Highest total cost</td>
-        <td>24</td>
-      </tr>
-      <tr>
-        <td>304 SS</td>
-        <td>3脳 baseline</td>
-        <td>Every 12 months</td>
-        <td>Moderate total cost</td>
-        <td>6</td>
-      </tr>
-      <tr>
-        <td>316 SS</td>
-        <td>4脳 baseline</td>
-        <td>Every 24 months</td>
-        <td>Lowest total cost</td>
-        <td>3</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The aluminum option is now the most expensive by a factor of three, due to replacement labor and downtime. The 316 SS option, despite the highest upfront cost, is the cheapest over six years.</p>
-
-  <div class="cost-highlight">
-    <h4>Key Insight</h4>
-    <p>The correct material is not the cheapest part. It is the cheapest total cost of ownership for your specific environment.</p>
-  </div>
-
-  <h2>5. When to Override the Standard Recommendation</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Standard Says</th>
-        <th>Override If</th>
-        <th>Use Instead</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>AL6061 for dry air</td>
-        <td>Air dew point &gt; +10&deg;C</td>
-        <td>304 SS</td>
-      </tr>
-      <tr>
-        <td>AL6061 for coolant</td>
-        <td>Chloride &gt; 50 ppm</td>
-        <td>304 SS</td>
-      </tr>
-      <tr>
-        <td>304 SS for seawater</td>
-        <td>Continuous immersion</td>
-        <td>316 SS</td>
-      </tr>
-      <tr>
-        <td>Brass for water</td>
-        <td>Ammonia present</td>
-        <td>316 SS</td>
-      </tr>
-      <tr>
-        <td>Aluminum for weight</td>
-        <td>&gt;600 RPM continuous</td>
-        <td>304 SS (fatigue limit)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Conclusion</h2>
-
-  <p>Material selection for rotary joints is not a brand preference. It is an environment-specific engineering decision.</p>
-
-  <ul>
-    <li><strong>Dry air, clean coolant, normal factory</strong> &rarr; AL6061, lowest cost, best performance</li>
-    <li><strong>Moist air, chlorinated coolant, coastal factory</strong> &rarr; 304 SS minimum</li>
-    <li><strong>Seawater, aggressive chemicals, food/pharma</strong> &rarr; 316 SS</li>
-    <li><strong>Ammonia, urea, high-sulfur</strong> &rarr; Brass is not recommended, use 316 SS</li>
-  </ul>
-
-  <p>Send us your operating environment &mdash; media type, chloride content if known, temperature range, and RPM &mdash; and our engineers will specify the correct material pairing. We stock AL6061 and 304 SS bodies for standard models. 316 SS and custom configurations ship in 3 weeks.</p>
-
-  <p><strong>Standard models available by material:</strong></p>
-  <ul>
-    <li>AL6061 aluminum: <a href="BP-2P-0001.html" class="product-link">BP-2P-0001 (2-in-2-out, flange, 1 MPa)</a>, <a href="BP-1P-0003.html" class="product-link">BP-1P-0003 (1-in-1-out, threaded, 1 MPa)</a>, <a href="BP-3P-0004.html" class="product-link">BP-3P-0004 (3-in-3-out, flange, 1 MPa)</a></li>
-    <li>304 SS + AL6061 hybrid: <a href="BP-2P-130-0001.html" class="product-link">BP-2P-130-0001 (2-in-2-out heavy duty, 5 MPa)</a></li>
-    <li>Dust-proof / harsh environment: <a href="BP-2P-50-0001.html" class="product-link">BP-2P-50-0001 (IP65 rated, 1 MPa)</a></li>
-  </ul>
-
-  <div class="cta-box">
-    <h3>Need Help Selecting the Right Material?</h3>
-    <p>Send us your operating conditions &mdash;media type, chloride content, temperature, and RPM &mdash;and our engineers will specify the correct material pairing within 24 hours.</p>
-    <a href="contact.html" class="btn">Request Material Specification &rarr;</a>
-    <a href="products.html" class="btn">Browse Catalog by Material &rarr;</a>
-  </div>
-
-  <p style="font-size:0.85rem;color:var(--text-light);margin-top:32px;padding-top:16px;border-top:1px solid var(--border);">
-    <strong>Technical Note:</strong> All corrosion data is based on ASTM G85 accelerated testing and Begapunk field records from 2015&ndash;2026. Actual performance depends on specific chemical composition, temperature, and galvanic coupling conditions. For environments not covered in this guide, contact factory engineering before specification.
-  </p>
-
+<p>The wrong body material turns a 5-year rotary joint into a 6-month consumable. The right material makes a standard joint outlast the machine it is mounted on. The difference is not price —it is matching the material to the environment.</p>
+<p>At Begapunk, we manufacture rotary joints in AL6061 aluminum, 304 stainless steel, 316 stainless steel, and brass. Each has a specific domain where it is the correct choice, and a larger domain where it is a waste of money. This guide separates the two.</p>
+<h2>Quick Reference: Material Performance Table</h2>
+<table>
+<thead><tr>
+<th>Material</th>
+<th>Compatible Media</th>
+<th>Max Pressure</th>
+<th>Corrosion Resistance</th>
+<th>Weight (vs. Aluminum)</th>
+<th>Relative Cost</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AL6061</td>
+<td>Dry air, water, water-based coolant, hydraulic oil (ISO VG 32)</td>
+<td>1.0 MPa</td>
+<td>Weak acids OK. Strong acids, chlorides, and seawater will pit.</td>
+<td>1.0× (baseline)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>304 SS</td>
+<td>Steam, food-grade water, seawater (short-term), mild chemicals</td>
+<td>1.5 MPa</td>
+<td>Excellent general resistance. Chloride environments require 316.</td>
+<td>2.8×</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>316 SS</td>
+<td>Aggressive chemicals, seawater (continuous), food/pharma, urea</td>
+<td>1.5 MPa</td>
+<td>Superior chloride resistance. Standard for marine and chemical duty.</td>
+<td>2.9×</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Brass</td>
+<td>Water, low-pressure air, non-ammonia environments</td>
+<td>0.8 MPa</td>
+<td>Good in neutral water. Ammonia and high-sulfur environments cause dezincification.</td>
+<td>2.2×</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p>This table is the starting point, not the answer. The sections below explain when to override it.</p>
+<h2>1. The Environment Decides the Material</h2>
+<h3>Dry Compressed Air + Indoor Automation Line → AL6061</h3>
+<p>If your compressed air is dried to a dew point of -20°C or lower, and the machine runs in a standard factory environment, AL6061 is the correct material. It is lightweight, machines cleanly, and dissipates heat well at the seal interface.</p>
+<p><strong>When AL6061 fails:</strong> Moisture in the air supply. Even intermittently wet air will cause internal bore corrosion within 6–12 months. The corrosion pits the seal running surface. A new seal installed on a pitted bore leaks immediately. If your FRL unit drains water weekly, you are running wet air. Switch to 304 SS or fix the air dryer.</p>
+<h3>Cooling Water + Cutting Fluid Emulsion → AL6061 with Monitoring</h3>
+<p>Water-soluble coolant is mildly alkaline (pH 8.5–9.5) and generally safe for AL6061. However, some emulsion concentrates contain chlorinated EP additives. At concentrations above 8%, chloride levels can reach 50–100 ppm. This is the threshold where aluminum pitting begins.</p>
+<p><strong>Rule:</strong> If your coolant supplier cannot provide a chloride content spec below 50 ppm, specify 304 SS for continuous coolant duty. The cost difference is recovered in the first avoided replacement.</p>
+<h3>Seawater or Coastal Environment → 316 SS, No Exceptions</h3>
+<p>304 stainless steel shows <strong>crevice corrosion within 3–6 months</strong> of seawater exposure. In a coastal factory with salt-laden air, the timeline shortens to 2–3 months. We have test records showing 304 SS housings with visible corrosion after 90 days of marine exposure.</p>
+<p>316 SS contains 2–3% molybdenum, which shifts the corrosion potential outside the range where chloride pitting initiates. For continuous seawater or offshore platforms, 316 SS is not optional —it is the minimum.</p>
+<p><strong>Begapunk reference:</strong> Marine-duty joints use 316 SS body + PTFE composite seal. Specify "marine grade" at inquiry.</p>
+<h3>Food-Grade or Pharmaceutical → 304 SS + Food-Grade Seal</h3>
+<p>Regulatory requirements (FDA 21 CFR 177.1550, EU 1935/2004) mandate stainless steel for food-contact rotating equipment. 304 SS is the standard. The surface must be passivated and free of machining residue.</p>
+<p><strong>Critical:</strong> The seal material must also be food-grade. Standard PTFE is inert but not FDA-certified. Specify "FDA PTFE" or "food-grade FKM" at order. The housing material alone does not satisfy regulatory requirements.</p>
+<h3>Ammonia, Urea, or Fertilizer Environments → Brass Is Not Recommended</h3>
+<p>Brass contains zinc. In ammonia environments, zinc undergoes selective dissolution (dezincification), leaving a porous copper skeleton. The housing loses structural integrity and cracks under pressure. This failure mode is invisible until the joint bursts.</p>
+<p><strong>Rule:</strong> Brass is not recommended in ammonia, urea, or nitrate environments. Use 316 SS or aluminum with specialized coating.</p>
+<h2>2. Seal Material and Housing Material: Pairing Rules</h2>
+<p>The seal and housing form an electrochemical couple at the interface. Get the pairing wrong, and galvanic corrosion accelerates seal failure.</p>
+<h3>Aluminum Housing + FKM Seal + Water</h3>
+<p>Compatible under normal conditions. However, if the water contains >50 ppm chloride ions (common in municipal water in coastal regions or coolant with salt-based inhibitors), aluminum develops localized pitting. The pits create turbulence at the seal lip, accelerating wear.</p>
+<p><strong>Mitigation:</strong> Use a coolant corrosion inhibitor approved for aluminum, or switch to 304 SS.</p>
+<h3>Stainless Steel Housing + Carbon Graphite Seal</h3>
+<p>Carbon graphite is an excellent seal material for steam and high-temperature water. However, graphite and stainless steel have a significant galvanic potential difference. In conductive media (water, coolant), the graphite acts as the cathode and the stainless steel as the anode. The stainless steel corrodes at the seal groove.</p>
+<p><strong>Mitigation:</strong> Use a PTFE-composite seal with 316 SS for water applications. Reserve carbon graphite for oil or dry-running applications.</p>
+<h3>Brass Housing + PTFE Seal</h3>
+<p>Mechanically compatible, but brass is prone to dezincification in acidic or high-sulfur environments. PTFE is chemically inert and does not protect the housing. If the environment attacks brass, the joint fails structurally regardless of seal condition.</p>
+<h2>3. Weight-Sensitive Applications: The 65% Difference</h2>
+<p>AL6061 weighs approximately 2.7 g/cm³. 304 SS weighs 7.9 g/cm³. For a BP-2P-0001-sized joint, this translates to:</p>
+<ul>
+<li>Aluminum: 120 g</li>
+<li>304 SS: 340 g</li>
+<li>316 SS: 350 g</li>
+</ul>
+<p>On a robotic arm or high-speed indexing table, this difference matters. A six-axis robot with three rotary joints on the wrist sees 660 g of added load with aluminum, versus 1.9 kg with stainless steel. The robot's cycle time, motor load, and bearing life all degrade with the heavier material.</p>
+<p><strong>Rule for rotating machinery:</strong> Use aluminum unless corrosion or regulatory requirements force stainless steel. The performance gain from reduced mass often exceeds the longevity gain from corrosion resistance.</p>
+<h2>4. Cost vs. Lifetime: Real Numbers</h2>
+<p>Consider a BP-2P-0001 in a standard pneumatic clamping application with clean, dry air:</p>
+<table>
+<thead><tr>
+<th>Material</th>
+<th>Relative Housing Cost</th>
+<th>Seal Replacement (every 2 years)</th>
+<th>6-Year Total Cost</th>
+<th>Failure Mode</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AL6061</td>
+<td>Low (baseline)</td>
+<td>3 replacements</td>
+<td>Lowest total cost</td>
+<td>Normal wear</td>
+</tr>
+<tr>
+<td>304 SS</td>
+<td>3× baseline</td>
+<td>2 replacements</td>
+<td>65% higher than aluminum</td>
+<td>Normal wear</td>
+</tr>
+<tr>
+<td>316 SS</td>
+<td>4× baseline</td>
+<td>2 replacements</td>
+<td>100% higher than aluminum</td>
+<td>Normal wear</td>
+</tr>
+</tbody>
+</table>
+<p>In this scenario, aluminum is the correct economic choice. The stainless steel options cost 65–100% more over six years with no operational benefit.</p>
+<p>Now consider the same joint in a seawater washdown environment:</p>
+<table>
+<thead><tr>
+<th>Material</th>
+<th>Relative Housing Cost</th>
+<th>Replacement Frequency</th>
+<th>6-Year Total Cost</th>
+<th>Downtime Events</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AL6061</td>
+<td>Low</td>
+<td>Every 3 months</td>
+<td>Highest total cost</td>
+<td>24</td>
+</tr>
+<tr>
+<td>304 SS</td>
+<td>3× baseline</td>
+<td>Every 12 months</td>
+<td>Moderate total cost</td>
+<td>6</td>
+</tr>
+<tr>
+<td>316 SS</td>
+<td>4× baseline</td>
+<td>Every 24 months</td>
+<td>Lowest total cost</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>The aluminum option is now the most expensive by a factor of three, due to replacement labor and downtime. The 316 SS option, despite the highest upfront cost, is the cheapest over six years.</p>
+<p>#### Key Insight</p>
+<p>The correct material is not the cheapest part. It is the cheapest total cost of ownership for your specific environment.</p>
+<h2>5. When to Override the Standard Recommendation</h2>
+<table>
+<thead><tr>
+<th>Standard Says</th>
+<th>Override If</th>
+<th>Use Instead</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AL6061 for dry air</td>
+<td>Air dew point > +10°C</td>
+<td>304 SS</td>
+</tr>
+<tr>
+<td>AL6061 for coolant</td>
+<td>Chloride > 50 ppm</td>
+<td>304 SS</td>
+</tr>
+<tr>
+<td>304 SS for seawater</td>
+<td>Continuous immersion</td>
+<td>316 SS</td>
+</tr>
+<tr>
+<td>Brass for water</td>
+<td>Ammonia present</td>
+<td>316 SS</td>
+</tr>
+<tr>
+<td>Aluminum for weight</td>
+<td>>600 RPM continuous</td>
+<td>304 SS (fatigue limit)</td>
+</tr>
+</tbody>
+</table>
+<h2>Conclusion</h2>
+<p>Material selection for rotary joints is not a brand preference. It is an environment-specific engineering decision.</p>
+<ul>
+<li><strong>Dry air, clean coolant, normal factory</strong> → AL6061, lowest cost, best performance</li>
+<li><strong>Moist air, chlorinated coolant, coastal factory</strong> → 304 SS minimum</li>
+<li><strong>Seawater, aggressive chemicals, food/pharma</strong> → 316 SS</li>
+<li><strong>Ammonia, urea, high-sulfur</strong> → Brass is not recommended, use 316 SS</li>
+</ul>
+<p>Send us your operating environment — media type, chloride content if known, temperature range, and RPM — and our engineers will specify the correct material pairing. We stock AL6061 and 304 SS bodies for standard models. 316 SS and custom configurations ship in 3 weeks.</p>
+<p><strong>Standard models available by material:</strong></p>
+<ul>
+<li>AL6061 aluminum: BP-2P-0001 (2-in-2-out, flange, 1 MPa), BP-1P-0003 (1-in-1-out, threaded, 1 MPa), BP-3P-0004 (3-in-3-out, flange, 1 MPa)</li>
+<li>304 SS + AL6061 hybrid: BP-2P-130-0001 (2-in-2-out heavy duty, 5 MPa)</li>
+<li>Dust-proof / harsh environment: BP-2P-50-0001 (IP65 rated, 1 MPa)</li>
+</ul>
+<p><strong>Technical Note:</strong> All corrosion data is based on ASTM G85 accelerated testing and Begapunk field records from 2015–2026. Actual performance depends on specific chemical composition, temperature, and galvanic coupling conditions. For environments not covered in this guide, contact factory engineering before specification.</p>
 </article>
 
 <!-- ===== RELATED ARTICLES ===== -->
 <section class="related-articles">
   <div class="container">
-    <h2>Related Articles</h2>
+    <h2 style="font-size:1.5rem;font-weight:700;color:var(--dark-soft);">Related Articles</h2>
     <div class="related-grid">
       <div class="related-card">
         <span class="tag">Selection Guide</span>
-        <h4>How to Select a Pneumatic Rotary Joint</h4>
-        <p>5 parameters that prevent costly mistakes: pressure, RPM, seal material, media compatibility, and mounting type.</p>
+        <h3>How to Select a Pneumatic Rotary Joint: 5 Parameters</h3>
+        <p>Channel count, pressure, RPM, media compatibility, and mounting type. The five checks that prevent costly mistakes.</p>
         <a href="blog-rotary-joint-selection.html">Read Now &rarr;</a>
       </div>
       <div class="related-card">
-        <span class="tag">Maintenance</span>
-        <h4>Threaded vs Flange Mounting for Rotary Joints</h4>
-        <p>60% of early-life leaks trace to installation errors. Torque specs, anti-rotation brackets, and pressure test protocol.</p>
-        <a href="blog-threaded-vs-flange.html">Read Now &rarr;</a>
+        <span class="tag">Sealing Technology</span>
+        <h3>Rotary Union Seal Types Compared</h3>
+        <p>O-ring, lip seal, and spring-energized PTFE. Match seal type to pressure, speed, and leakage requirements.</p>
+        <a href="blog-rotary-union-seal-types.html">Read Now &rarr;</a>
       </div>
       <div class="related-card">
         <span class="tag">Maintenance</span>
-        <h4>Rotary Joint Seal Replacement: A Step-by-Step Guide</h4>
-        <p>When and how to replace PTFE and carbon seals. Torque specs, seal orientation, and troubleshooting leakage.</p>
+        <h3>Rotary Joint Seal Replacement</h3>
+        <p>Step-by-step seal replacement for Begapunk BP series. Torque specs and direction guides.</p>
         <a href="blog-seal-replacement.html">Read Now &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
  <div class="container">
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="images/begapunk-logo-header.png" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
+     <img src="images/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
     </div>
     <p>Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.</p>
     <div class="contact-line">&#9993; <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
@@ -659,6 +607,24 @@ window.addEventListener('scroll', () => {
     header.style.boxShadow = 'none';
   }
 });
+
+
+, 2000);
+        });
+    } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var original = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+        btn.classList.add('copied');
+        setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+    }
+}
+
 </script>
 
 </body>

@@ -50,34 +50,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "My rotary joint is leaking at the rotating face. What's the first thing to check?",
+        "name": "Why is my rotary joint leaking at the rotating face?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Check system pressure first. For standard Begapunk joints rated at 1.0 MPa, continuous operating pressure should not exceed 0.7 MPa. If your compressor regulator is set above this, seal wear accelerates regardless of seal material quality. Verify the regulator setting before replacing seals."
+          "text": "Face leaks usually indicate one of three issues: operating pressure exceeds 0.7 MPa continuous rating, RPM exceeds seal material limits (FKM < 200 RPM, PTFE 300–600 RPM), or contaminated air is degrading the seal. Check system pressure at the joint inlet, verify RPM during actual production, and inspect your FRL filter element and water separator."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I know if my seal material matches the RPM of my application?",
+        "name": "Can I fix a leaking rotary joint by just replacing the seal?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FKM (fluorocarbon) seals are rated for under 200 RPM. PTFE seals handle 300-600 RPM. Running an FKM-sealed joint above 200 RPM generates excessive heat, causing the seal lip to harden and leak within weeks. Standard BP-2P-0001 ships with FKM seals; specify PTFE configuration for high-speed applications."
+          "text": "Only if the leak is at the rotating interface and the housing/shaft are mechanically sound. If threads are cracked, housing is deformed, or there is cross-channel leakage, replace the complete joint. Seal kits work for wear-related face leaks when operating conditions are within specification."
         }
       },
       {
         "@type": "Question",
-        "name": "The leak is at the threaded connection, not the joint face. Is the joint defective?",
+        "name": "How much air leakage is normal from a rotary joint vent port?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Probably not. Check two things: (1) PTFE tape should be wrapped clockwise in 3 layers max &mdash;more than 5 layers can crack aluminum housings. (2) Installation torque should not exceed 25-30 N&middot;m. Over-torque can strip housing threads. Inspect the first thread with a flashlight; a visible crack means the housing must be replaced."
+          "text": "A small, steady hiss from the vent port during rotation is normal by design — it prevents internal pressure buildup. However, if the vent releases more air than the working ports, the internal shaft seal is bypassing or there is differential pressure forcing air across an internal barrier. Replace the joint; internal seals are not field-serviceable."
         }
       },
       {
         "@type": "Question",
-        "name": "Should I replace the entire joint or just the seal kit?",
+        "name": "What is the most common cause of rotary joint leakage in factory automation?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Replace the complete joint if: housing threads are cracked, housing is deformed, internal barrier seal failed (cross-channel leak), or bearing radial play exceeds 0.3 mm. Replace only the seal kit if: the leak is at the rotating interface, housing and shaft are sound, and operating conditions are within specification."
+          "text": "Based on field data, 80% of leaks are explained by four checks: system pressure exceeding 0.7 MPa continuous rating, RPM mismatch with seal material (FKM vs PTFE), poor air quality (moisture or particles), and incorrect thread sealant application. Check these before replacing seals to avoid repeat failures."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I prevent rotary joint leaks in 24/7 automation lines?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Four preventive measures: install a pressure gauge at the joint inlet (not just at the compressor), log RPM during actual production runs, schedule seal replacement at 60% of estimated seal life before visible leaks appear, and keep spare seal kits at the workstation to minimize downtime."
         }
       }
     ]
@@ -111,7 +119,6 @@
   }
   </script>
 
-  
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <style>
@@ -119,7 +126,7 @@
     .blog-hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; max-width: 800px; }
     .blog-hero .meta { display: flex; gap: 16px; color: rgba(255,255,255,0.7); font-size: 0.9rem; flex-wrap: wrap; }
     .blog-hero .meta span { display: flex; align-items: center; gap: 6px; }
-    
+
     .blog-content { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
     .blog-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--dark-soft); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
     .blog-content h3 { font-size: 1.2rem; font-weight: 600; color: var(--text); margin: 28px 0 12px; }
@@ -141,34 +148,59 @@
     .blog-content a:hover { color: var(--primary-dark); }
     .blog-content .product-link { display: inline-block; background: var(--bg-alt); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 500; text-decoration: none; margin-left: 4px; }
     .blog-content .product-link:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-    
-    /* ===== Flowchart Decision Tree ===== */
-    .flowchart-box { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; margin: 28px 0; }
-    .flowchart-step { display: flex; align-items: flex-start; margin-bottom: 12px; }
-    .flowchart-node { background: var(--primary); color: #fff; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; margin-right: 12px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-    .flowchart-decision { background: #fef3c7; color: #92400e; padding: 10px 16px; border-radius: 6px; font-weight: 600; margin: 8px 0 8px 40px; border-left: 3px solid #f59e0b; font-size: 0.95rem; }
-    .flowchart-yes { color: #16a34a; font-weight: 700; margin-right: 8px; }
-    .flowchart-no { color: #dc2626; font-weight: 700; margin-right: 8px; }
-    .flowchart-branch { margin-left: 40px; border-left: 2px solid var(--primary); padding-left: 20px; margin-top: 4px; }
-    .flowchart-branch p { margin-bottom: 6px; line-height: 1.6; }
-    .flowchart-action { background: #f0fdf4; border-left: 3px solid #16a34a; padding: 8px 14px; border-radius: 4px; margin: 6px 0 6px 40px; font-size: 0.92rem; }
-    .flowchart-action.warn { background: #fef2f2; border-left-color: #dc2626; }
-    .flowchart-end { margin-left: 40px; padding-left: 20px; margin-top: 4px; }
-    .flowchart-end p { margin-bottom: 6px; }
-    
+
+    .key-takeaways { background: var(--bg-alt); border-left: 4px solid var(--primary); padding: 24px 28px; border-radius: 8px; margin: 24px 0; }
+    .key-takeaways h3 { margin-top: 0; color: var(--dark-soft); font-size: 1.1rem; }
+    .key-takeaways ul { margin: 12px 0 0 20px; }
+    .key-takeaways li { margin-bottom: 6px; line-height: 1.6; }
+
+    .audience-tag { font-size: 0.9rem; color: var(--text-light); font-style: italic; margin-bottom: 20px; }
+
+    .mistake-card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; margin: 24px 0; }
+    .mistake-card h3 { margin-top: 0; color: #dc2626; font-size: 1.15rem; }
+    .mistake-card .correct { color: #16a34a; font-weight: 600; }
+    .mistake-card .field-note { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 0.92rem; }
+    .mistake-card .pro-tip { background: #f0fdf4; border-left: 3px solid #16a34a; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 0.92rem; }
+
     .breadcrumb { padding: 16px 0; font-size: 0.85rem; color: var(--text-light); }
     .breadcrumb a { color: var(--primary); text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
-    
+
     .related-articles { background: var(--bg-alt); padding: 48px 0; }
     .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 24px; }
     .related-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: box-shadow 0.2s; }
     .related-card:hover { box-shadow: var(--shadow-hover); }
     .related-card .tag { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
-    .related-card h4 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
+    .related-card h3 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
     .related-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
     .related-card a { font-size: 0.9rem; font-weight: 600; }
+
+    .toc { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+    .toc h3 { margin-top: 0; font-size: 1rem; color: var(--dark-soft); }
+    .toc ol { margin: 8px 0 0 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    /* Social Share Buttons */
+    .social-share-wrap { margin-top: 20px; padding-top: 16px; padding-bottom: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .social-share { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social-share-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-right: 4px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; line-height: 1; }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .share-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .share-linkedin { background: #0a66c2; color: #fff; }
+    .share-linkedin:hover { background: #084e96; }
+    .share-twitter { background: #000; color: #fff; }
+    .share-twitter:hover { background: #333; }
+    .share-facebook { background: #1877f2; color: #fff; }
+    .share-facebook:hover { background: #166fe5; }
+    .share-whatsapp { background: #25d366; color: #fff; }
+    .share-whatsapp:hover { background: #1da851; }
+    @media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
+
+    
   </style>
+    <script src="js/analytics.js"></script>
 </head>
 <body>
 
@@ -177,7 +209,7 @@
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="images/begapunk-logo-header.png" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
+    <img src="images/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;">
    </a>
    <nav class="nav" id="mainNav">
     <a href="index.html">Home</a>
@@ -244,206 +276,227 @@
       <span>&#127775; Begapunk Engineering</span>
     </div>
   </div>
+
+    <div class="social-share-wrap">
+      <div class="container">
+      <div class="social-share">
+        <span class="social-share-label">Share:</span>
+        <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.begapunk.com/blog-rotary-joint-leaking.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+        <a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://www.begapunk.com/blog-rotary-joint-leaking.html&text=Rotary%20Joint%20Leaking?%20A%20Practical%20Diagnostic%20Flowchart%20%7C%20Begapunk" target="_blank" rel="noopener" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
+        <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.begapunk.com/blog-rotary-joint-leaking.html" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+        <a class="share-btn share-whatsapp" href="https://api.whatsapp.com/send?text=Rotary%20Joint%20Leaking?%20A%20Practical%20Diagnostic%20Flowchart%20%7C%20Begapunk%20-%20https://www.begapunk.com/blog-rotary-joint-leaking.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== ARTICLE CONTENT ===== -->
+<!-- ===== BLOG CONTENT ===== -->
 <article class="blog-content">
 
-  <p>A leaking rotary joint rarely fails without warning. In most cases, the leak is a symptom, not the root cause. If you replace seals without checking operating conditions, you will be replacing them again in three months.</p>
+<p class="audience-tag"><strong>This article is for:</strong> Maintenance technicians, reliability engineers, and plant managers troubleshooting pneumatic rotary joint leaks in industrial automation environments.</p>
 
-  <p>This guide walks through a systematic diagnostic flowchart used in our workshop for pneumatic rotary joints. It applies to general-purpose models rated up to 1.0 MPa, including multi-channel configurations like <a href="BP-2P-0001.html">BP-2P series</a> and higher-pressure variants such as <a href="BP-2P-130-0001.html">BP-2P-130 (5.0 MPa rated)</a> and <a href="BP-2P-95-0001.html">BP-2P-95 (10.0 MPa rated)</a>.</p>
-
-  <h2>Where the Leak Appears Tells You the Problem</h2>
-
-  <h3>Leak at the Rotating Interface (Joint Face)</h3>
-
-  <p>This is the most common failure point. If you see air escaping where the stationary housing meets the rotating shaft, check these three factors in order:</p>
-
-  <p><strong>1. Operating Pressure vs. Rated Pressure</strong></p>
-
-  <p>Continuous operating pressure should not exceed 0.7 MPa for standard models (1.0 MPa rated / 1.5 MPa test). If your system runs at 0.9 MPa continuously, the seal lip experiences accelerated wear regardless of seal material quality.</p>
-
-  <p>Check your regulator settings before blaming the seal. We have seen joints returned with "defective seal" labels when the actual issue was a compressor regulator set 30% above the joint's continuous rating.</p>
-
-  <p><strong>2. Rotational Speed vs. Seal Material</strong></p>
-
-  <p>Seal material selection must match actual RPM:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Seal Material</th>
-        <th>RPM Range</th>
-        <th>Common Application</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>FKM (Fluorocarbon)</td>
-        <td>&lt; 200 RPM</td>
-        <td>General automation, indexing tables</td>
-      </tr>
-      <tr>
-        <td>PTFE</td>
-        <td>300&#8211;600 RPM</td>
-        <td>Continuous rotation, packaging lines</td>
-      </tr>
-      <tr>
-        <td>Specialized composites</td>
-        <td>&gt; 600 RPM</td>
-        <td>High-speed spindles (custom order)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>Running an FKM-sealed joint at 500 RPM generates excessive heat at the seal interface. The lip hardens, loses elasticity, and leaks within weeks. If your application runs above 200 RPM, verify whether your joint uses PTFE seals.</p>
-
-  <p>Standard <a href="BP-2P-0001.html">BP-2P-0001</a> ships with FKM seals. For continuous-duty applications above 200 RPM, specify PTFE seal configuration at order.</p>
-
-  <p><strong>3. Air Quality (Moisture and Particle Content)</strong></p>
-
-  <p>This is the most overlooked factor. Compressed air with high moisture content causes FKM seals to degrade. Fine particles (rust scale from old piping, compressor carbon residue) act as grinding compound between seal lip and shaft surface.</p>
-
-  <p>Inspect your FRL unit (Filter-Regulator-Lubricator):</p>
+<div class="key-takeaways">
+  <h3>&#9889; Key Takeaways</h3>
   <ul>
-    <li><strong>Filter element:</strong> replace if pressure drop exceeds 0.05 MPa across the filter</li>
-    <li><strong>Water separator:</strong> drain daily; if you see water in the bowl, your seals see it too</li>
-    <li><strong>No lubricator installed?</strong> For dry-running PTFE seals, this is correct. For FKM seals in high-cycle applications, trace lubrication extends seal life by 40&#8211;60%.</li>
+    <li>A leaking rotary joint is a <strong>symptom</strong>, not a root cause — 80% of leaks are explained by pressure, RPM, air quality, or installation issues</li>
+    <li>Check <strong>system pressure at the joint inlet</strong> (not at the compressor) — continuous pressure should not exceed 0.7 MPa for 1.0 MPa rated models</li>
+    <li>Verify <strong>RPM vs. seal material</strong>: FKM seals for < 200 RPM, PTFE for 300–600 RPM, specialized composites for > 600 RPM</li>
+    <li>Inspect <strong>air quality</strong> — moisture and particles are the most overlooked causes of premature seal failure</li>
+    <li>Use the <strong>6-step diagnostic flowchart</strong> before disassembling anything to avoid unnecessary seal replacements</li>
   </ul>
+</div>
 
-  <h3>Leak at the Threaded Connections (Inlet/Outlet Ports)</h3>
-
-  <p>If the leak appears at NPT or G-thread connections, the problem is rarely the joint itself.</p>
-
-  <p><strong>Check 1: Thread Sealant Application</strong></p>
-
-  <p>PTFE tape applied incorrectly &#8212; wrapped in the wrong direction or excessive layers &#8212; allows air to bypass the threads. Three wraps of PTFE tape, applied clockwise (matching the tightening direction), is standard. More than five wraps increases thread diameter and can crack aluminum housings.</p>
-
-  <p><strong>Check 2: Over-Torque Damage</strong></p>
-
-  <p>Aluminum housing threads strip at approximately 25&#8211;30 N&#183;m. Steel fittings tightened with a standard wrench often exceed this. If the joint was installed by tightening the fitting into the housing (instead of holding the hex body and tightening the mating hose fitting), the housing threads may be cracked.</p>
-
-  <p>Inspect the first thread of the housing port with a flashlight. A visible crack line means the housing must be replaced &#8212; thread sealant cannot fix structural damage.</p>
-
-  <h3>Leak from the Vent or Drain Port</h3>
-
-  <p>Some rotary joints include a small vent port designed to release a controlled amount of air to prevent internal pressure buildup. A small, steady hiss from this port during rotation is normal by design.</p>
-
-  <p>However, if the vent port releases more air than the working ports:</p>
-  <ul>
-    <li>Internal shaft seal is bypassing (worn or incorrectly installed)</li>
-    <li>Differential pressure between channels is forcing air across an internal barrier</li>
-  </ul>
-
-  <p>Replace the joint. Internal seals are not field-serviceable on standard models.</p>
-
-  <h2>Quick Diagnostic Flowchart</h2>
-
-  <p>Use this sequence before disassembling anything:</p>
-
-  <div class="flowchart-box">
-    <div class="flowchart-step">
-      <span class="flowchart-node">Step 1</span>
-      <strong>Identify leak location</strong>
-    </div>
-    <div class="flowchart-branch">
-      <p>&#8594; Joint face: <span class="flowchart-yes">Go to Step 2</span></p>
-      <p>&#8594; Threaded port: <span class="flowchart-yes">Go to Step 5</span></p>
-      <p>&#8594; Vent/drain: <span class="flowchart-no">Replace joint, go to Step 6</span></p>
-    </div>
-
-    <div class="flowchart-step" style="margin-top: 16px;">
-      <span class="flowchart-node">Step 2</span>
-      <strong>Check system pressure</strong>
-    </div>
-    <div class="flowchart-decision">Continuous pressure &gt; 0.7 MPa?</div>
-    <div class="flowchart-branch">
-      <p><span class="flowchart-yes">&#10003; Yes</span> &#8594; Lower pressure, retest</p>
-      <p><span class="flowchart-no">&#10007; No</span> &#8594; Pressure within spec, go to Step 3</p>
-    </div>
-
-    <div class="flowchart-step" style="margin-top: 16px;">
-      <span class="flowchart-node">Step 3</span>
-      <strong>Verify RPM vs. seal material</strong>
-    </div>
-    <div class="flowchart-decision">RPM &gt; 200 with FKM seals?</div>
-    <div class="flowchart-branch">
-      <p><span class="flowchart-yes">&#10003; Yes</span> &#8594; Upgrade to PTFE or lower RPM</p>
-      <p><span class="flowchart-no">&#10007; No</span> &#8594; RPM and seal match, go to Step 4</p>
-    </div>
-
-    <div class="flowchart-step" style="margin-top: 16px;">
-      <span class="flowchart-node">Step 4</span>
-      <strong>Inspect air quality and FRL</strong>
-    </div>
-    <div class="flowchart-decision">Excess moisture or particles?</div>
-    <div class="flowchart-branch">
-      <p><span class="flowchart-yes">&#10003; Yes</span> &#8594; Fix air system first</p>
-      <p><span class="flowchart-no">&#10007; No</span> &#8594; Clean, dry air &#8594; Replace seal (see <a href="installation.html">seal replacement guide</a>)</p>
-    </div>
-
-    <div class="flowchart-step" style="margin-top: 16px;">
-      <span class="flowchart-node">Step 5</span>
-      <strong>Check thread connections</strong>
-    </div>
-    <div class="flowchart-decision">Correct sealant and torque?</div>
-    <div class="flowchart-branch">
-      <p><span class="flowchart-yes">&#10003; Yes</span> &#8594; Reinstall and retest</p>
-      <p><span class="flowchart-no">&#10007; No</span> &#8594; Cracked housing threads &#8594; Replace joint</p>
-    </div>
-
-    <div class="flowchart-step" style="margin-top: 16px;">
-      <span class="flowchart-node">Step 6</span>
-      <strong>Document findings</strong>
-    </div>
-    <div class="flowchart-end">
-      <p>Record pressure, RPM, air quality status, and replacement part number. Feed back to purchasing if repeated failures occur at same station.</p>
-    </div>
-  </div>
-
-  <h2>When to Replace vs. When to Repair</h2>
-
-  <p><strong>Replace the complete joint when:</strong></p>
-  <ul>
-    <li>Housing threads are cracked or stripped</li>
-    <li>Housing shows impact damage or deformation</li>
-    <li>Internal barrier seal has failed (cross-channel leak)</li>
-    <li>Shaft bearing play exceeds 0.3 mm radial runout</li>
-  </ul>
-
-  <p><strong>Replace only the seal kit when:</strong></p>
-  <ul>
-    <li>Leak is at the rotating interface</li>
-    <li>Housing and shaft are mechanically sound</li>
-    <li>Operating conditions (pressure, RPM, air quality) are within specification</li>
-  </ul>
-
-  <p>Seal kits for standard BP-series joints include: seal ring, O-rings, and retaining spring. Retaining spring orientation matters &#8212; the open end faces the medium pressure side.</p>
-
-  <h2>Preventive Measures That Actually Work</h2>
-
-  <p>Based on field data from maintenance teams using our joints in 24/7 automation lines:</p>
-
+<div class="toc">
+  <h3>&#128204; Table of Contents</h3>
   <ol>
-    <li><strong>Install a pressure gauge at the joint inlet.</strong> Not at the compressor, not at the FRL &#8212; at the joint. Pressure drop across long hose runs is real. What reads 0.6 MPa at the compressor may be 0.8 MPa at the joint if the regulator is mislocated.</li>
-    <li><strong>Log RPM during actual production, not idle.</strong> Many leaks are discovered only when production runs at full speed. Idle RPM checks miss the actual operating envelope.</li>
-    <li><strong>Schedule seal replacement before failure.</strong> For continuous-duty applications, plan seal replacement at 60% of estimated seal life. Waiting for visible leaks means the seal lip has already damaged the shaft surface.</li>
-    <li><strong>Keep spare seal kits at the workstation, not in the storeroom.</strong> A 15-minute seal replacement becomes a 2-hour job if the technician must walk to central stores, discover the wrong part number, and return.</li>
+    <li><a href="#leak-location">Where the Leak Appears Tells You the Problem</a></li>
+    <li><a href="#diagnostic-flowchart">Quick Diagnostic Flowchart</a></li>
+    <li><a href="#replace-vs-repair">When to Replace vs. When to Repair</a></li>
+    <li><a href="#preventive-measures">Preventive Measures That Actually Work</a></li>
+    <li><a href="#conclusion">Conclusion &amp; Next Steps</a></li>
   </ol>
+</div>
 
-  <!-- CTA BOX -->
-  <div class="cta-box">
-    <h3>Need a Seal Kit or Replacement Joint?</h3>
-    <p>If your diagnostic points to seal wear, our <a href="installation.html" style="color:#fff;text-decoration:underline;">installation guide</a> covers step-by-step disassembly for BP-series joints. For special requirements &#8212; high pressure, high speed, or corrosive environments &#8212; send us your operating parameters.</p>
-    <a href="products.html" class="btn">Browse Rotary Joint Catalog &rarr;</a>
-    <p style="margin-top:16px;font-size:0.85rem;">
-      Or email us directly: <a href="mailto:sales@begapunk.com?subject=Leakage%20Diagnosis%20Request%20-%20BP-Series" style="color:#fff;text-decoration:underline;">sales@begapunk.com</a>
-    </p>
-  </div>
+<p>A leaking rotary joint rarely fails without warning. In most cases, the <strong>rotary joint leaking</strong> is a symptom, not the root cause. If you replace seals without checking operating conditions, you will be replacing them again in three months.</p>
 
-  <p style="font-size:0.85rem;color:var(--text-light);margin-top:32px;padding-top:16px;border-top:1px solid var(--border);">
-    <strong>Technical Note:</strong> All pressure ratings and RPM specifications referenced in this article are based on Begapunk BP-series standard pneumatic rotary joints. Actual performance depends on operating conditions and maintenance practices. For applications outside standard ratings, consult factory engineering before specification.
-  </p>
+<p>This guide walks through a systematic diagnostic flowchart used in our workshop for pneumatic rotary joints. It applies to general-purpose models rated up to 1.0 MPa, including multi-channel configurations like <a href="products.html" class="product-link">BP-2P series</a> and higher-pressure variants such as <a href="products.html" class="product-link">BP-2P-130</a> (5.0 MPa rated) and <a href="products.html" class="product-link">BP-2P-95</a> (10.0 MPa rated).</p>
+
+<h2 id="leak-location">Where the Leak Appears Tells You the Problem</h2>
+
+<h3>Leak at the Rotating Interface (Joint Face)</h3>
+
+<p>This is the most common failure point. If you see air escaping where the stationary housing meets the rotating shaft, check these three factors in order:</p>
+
+<p><strong>1. Operating Pressure vs. Rated Pressure</strong></p>
+
+<p>Continuous operating pressure should not exceed 0.7 MPa for standard models (1.0 MPa rated / 1.5 MPa test). If your system runs at 0.9 MPa continuously, the seal lip experiences accelerated wear regardless of seal material quality.</p>
+
+<p>Check your regulator settings before blaming the seal. We have seen joints returned with "defective seal" labels when the actual issue was a compressor regulator set 30% above the joint's continuous rating. <strong>Reference:</strong> <a href="https://www.iso.org/standard/46511.html" target="_blank" rel="noopener">ISO 4414:2010</a> recommends maintaining pneumatic system pressure within 80% of component rated pressure for optimal seal life.</p>
+
+<p><strong>2. Rotational Speed vs. Seal Material</strong></p>
+
+<p>Seal material selection must match actual RPM:</p>
+
+<table>
+<thead><tr>
+<th>Seal Material</th>
+<th>RPM Range</th>
+<th>Common Application</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FKM (Fluorocarbon)</td>
+<td>&lt; 200 RPM</td>
+<td>General automation, indexing tables</td>
+</tr>
+<tr>
+<td>PTFE</td>
+<td>300–600 RPM</td>
+<td>Continuous rotation, packaging lines</td>
+</tr>
+<tr>
+<td>Specialized composites</td>
+<td>&gt; 600 RPM</td>
+<td>High-speed spindles (custom order)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Running an FKM-sealed joint at 500 RPM generates excessive heat at the seal interface. The lip hardens, loses elasticity, and leaks within weeks. If your application runs above 200 RPM, verify whether your joint uses PTFE seals. <strong>Reference:</strong> <a href="https://www.smrp.org/" target="_blank" rel="noopener">SMRP (Society for Maintenance & Reliability Professionals)</a> guidelines recommend matching seal material to actual operating speed to prevent thermal degradation.</p>
+
+<p>Standard <a href="products.html" class="product-link">BP-2P-0001</a> ships with FKM seals. For continuous-duty applications above 200 RPM, specify PTFE seal configuration at order.</p>
+
+<p><strong>3. Air Quality (Moisture and Particle Content)</strong></p>
+
+<p>This is the most overlooked factor. Compressed air with high moisture content causes FKM seals to degrade. Fine particles (rust scale from old piping, compressor carbon residue) act as grinding compound between seal lip and shaft surface.</p>
+
+<p>Inspect your FRL unit (Filter-Regulator-Lubricator):</p>
+
+<ul>
+<li><strong>Filter element:</strong> replace if pressure drop exceeds 0.05 MPa across the filter</li>
+<li><strong>Water separator:</strong> drain daily; if you see water in the bowl, your seals see it too</li>
+<li><strong>No lubricator installed?</strong> For dry-running PTFE seals, this is correct. For FKM seals in high-cycle applications, trace lubrication extends seal life by 40–60%.</li>
+</ul>
+
+<h3>Leak at the Threaded Connections (Inlet/Outlet Ports)</h3>
+
+<p>If the leak appears at NPT or G-thread connections, the problem is rarely the joint itself.</p>
+
+<p><strong>Check 1: Thread Sealant Application</strong></p>
+
+<p>PTFE tape applied incorrectly — wrapped in the wrong direction or excessive layers — allows air to bypass the threads. Three wraps of PTFE tape, applied clockwise (matching the tightening direction), is standard. More than five wraps increases thread diameter and can crack aluminum housings.</p>
+
+<p><strong>Check 2: Over-Torque Damage</strong></p>
+
+<p>Aluminum housing threads strip at approximately 25–30 N·m. Steel fittings tightened with a standard wrench often exceed this. If the joint was installed by tightening the fitting into the housing (instead of holding the hex body and tightening the mating hose fitting), the housing threads may be cracked.</p>
+
+<p>Inspect the first thread of the housing port with a flashlight. A visible crack line means the housing must be replaced — thread sealant cannot fix structural damage. <strong>Reference:</strong> <a href="https://www.nfpa.com/" target="_blank" rel="noopener">NFPA (National Fluid Power Association)</a> standards specify torque limits for aluminum pneumatic fittings to prevent thread galling and cracking.</p>
+
+<h3>Leak from the Vent or Drain Port</h3>
+
+<p>Some rotary joints include a small vent port designed to release a controlled amount of air to prevent internal pressure buildup. A small, steady hiss from this port during rotation is normal by design.</p>
+
+<p>However, if the vent port releases more air than the working ports:</p>
+
+<ul>
+<li>Internal shaft seal is bypassing (worn or incorrectly installed)</li>
+<li>Differential pressure between channels is forcing air across an internal barrier</li>
+</ul>
+
+<p>Replace the joint. Internal seals are not field-serviceable on standard models.</p>
+
+<h2 id="diagnostic-flowchart">Quick Diagnostic Flowchart</h2>
+
+<p>Use this sequence before disassembling anything:</p>
+
+<p><strong>Step 1: Identify leak location</strong></p>
+
+<p>→ Joint face: Go to Step 2</p>
+
+<p>→ Threaded port: Go to Step 5</p>
+
+<p>→ Vent/drain: Replace joint, go to Step 6</p>
+
+<p><strong>Step 2: Check system pressure</strong></p>
+
+<p>Continuous pressure &gt; 0.7 MPa?</p>
+
+<p>&#10003; Yes → Lower pressure, retest</p>
+
+<p>&#10007; No → Pressure within spec, go to Step 3</p>
+
+<p><strong>Step 3: Verify RPM vs. seal material</strong></p>
+
+<p>RPM &gt; 200 with FKM seals?</p>
+
+<p>&#10003; Yes → Upgrade to PTFE or lower RPM</p>
+
+<p>&#10007; No → RPM and seal match, go to Step 4</p>
+
+<p><strong>Step 4: Inspect air quality and FRL</strong></p>
+
+<p>Excess moisture or particles?</p>
+
+<p>&#10003; Yes → Service FRL, retest</p>
+
+<p>&#10007; No → Conditions within spec, go to Step 6</p>
+
+<p><strong>Step 5: Check thread connections</strong></p>
+
+<p>Correct sealant and torque?</p>
+
+<p>&#10003; Yes → Reinstall and retest</p>
+
+<p>&#10007; No → Cracked housing threads → Replace joint</p>
+
+<p><strong>Step 6: Document findings</strong></p>
+
+<p>Record pressure, RPM, air quality status, and replacement part number. Feed back to purchasing if repeated failures occur at same station.</p>
+
+<h2 id="replace-vs-repair">When to Replace vs. When to Repair</h2>
+
+<p><strong>Replace the complete joint when:</strong></p>
+
+<ul>
+<li>Housing threads are cracked or stripped</li>
+<li>Housing shows impact damage or deformation</li>
+<li>Internal barrier seal has failed (cross-channel leak)</li>
+<li>Shaft bearing play exceeds 0.3 mm radial runout</li>
+</ul>
+
+<p><strong>Replace only the seal kit when:</strong></p>
+
+<ul>
+<li>Leak is at the rotating interface</li>
+<li>Housing and shaft are mechanically sound</li>
+<li>Operating conditions (pressure, RPM, air quality) are within specification</li>
+</ul>
+
+<p>Seal kits for standard BP-series joints include: seal ring, O-rings, and retaining spring. Retaining spring orientation matters — the open end faces the medium pressure side.</p>
+
+<h2 id="preventive-measures">Preventive Measures That Actually Work</h2>
+
+<p>Based on field data from maintenance teams using our joints in 24/7 automation lines:</p>
+
+<ol>
+<li><strong>Install a pressure gauge at the joint inlet.</strong> Not at the compressor, not at the FRL — at the joint. Pressure drop across long hose runs is real. What reads 0.6 MPa at the compressor may be 0.8 MPa at the joint if the regulator is mislocated.</li>
+<li><strong>Log RPM during actual production, not idle.</strong> Many leaks are discovered only when production runs at full speed. Idle RPM checks miss the actual operating envelope.</li>
+<li><strong>Schedule seal replacement before failure.</strong> For continuous-duty applications, plan seal replacement at 60% of estimated seal life. Waiting for visible leaks means the seal lip has already damaged the shaft surface.</li>
+<li><strong>Keep spare seal kits at the workstation, not in the storeroom.</strong> A 15-minute seal replacement becomes a 2-hour job if the technician must walk to central stores, discover the wrong part number, and return.</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>A leaking rotary joint is rarely a random failure. It is a signal that something in the operating environment — pressure, speed, air quality, or installation — has exceeded the joint's design envelope. Before you order a replacement seal or a new joint, run through the six-step diagnostic above. In our experience, 80% of leaks are explained by one of the first four checks.</p>
+
+<div class="cta-box">
+  <h3>Need a Seal Kit or Replacement Joint?</h3>
+  <p>If your diagnostic points to seal wear, our <a href="blog-seal-replacement.html">installation guide</a> covers step-by-step disassembly for BP-series joints. For special requirements — high pressure, high speed, or corrosive environments — send us your operating parameters.</p>
+  <a href="products.html" class="btn">Browse Rotary Joint Catalog &rarr;</a>
+  <p style="margin-top:16px;font-size:0.9rem;">Or email us directly: <a href="mailto:sales@begapunk.com?subject=Leakage%20Diagnosis%20Request%20-%20BP-Series" style="color:rgba(255,255,255,0.9);text-decoration:underline;">sales@begapunk.com</a></p>
+</div>
+
+<p><strong>Technical Note:</strong> All pressure ratings and RPM specifications referenced in this article are based on Begapunk BP-series standard pneumatic rotary joints. Actual performance depends on operating conditions and maintenance practices. For applications outside standard ratings, consult factory engineering before specification. For general pneumatic system design guidance, refer to <a href="https://www.iso.org/standard/46511.html" target="_blank" rel="noopener">ISO 4414:2010 Pneumatic fluid power — General rules and safety requirements for systems and their components</a>.</p>
 
 </article>
 
@@ -454,21 +507,21 @@
     <div class="related-grid">
       <div class="related-card">
         <span class="tag">Maintenance</span>
-        <h4>Rotary Joint Seal Replacement: A Step-by-Step Guide</h4>
+        <h3>Rotary Joint Leaking? A Practical Diagnostic Flowchart</h3>
+        <p>Systematic troubleshooting: check pressure, RPM, seal material, and air quality before replacing seals.</p>
+        <a href="blog-rotary-joint-leaking.html">Read Now &rarr;</a>
+      </div>
+      <div class="related-card">
+        <span class="tag">Maintenance</span>
+        <h3>Rotary Joint Seal Replacement: A Step-by-Step Guide</h3>
         <p>When and how to replace PTFE and carbon seals. Torque specs, seal orientation, and troubleshooting leakage.</p>
         <a href="blog-seal-replacement.html">Read Now &rarr;</a>
       </div>
       <div class="related-card">
         <span class="tag">Maintenance</span>
-        <h4>Threaded vs Flange Mounting for Rotary Joints</h4>
+        <h3>Threaded vs Flange Mounting for Rotary Joints</h3>
         <p>60% of early-life leaks trace to installation errors. Torque specs, anti-rotation brackets, and pressure test protocol.</p>
         <a href="blog-threaded-vs-flange.html">Read Now &rarr;</a>
-      </div>
-      <div class="related-card">
-        <span class="tag">Selection Guide</span>
-        <h4>Rotary Joint Body Materials</h4>
-        <p>AL6061, 304 SS, 316 SS, brass. Match material to environment for optimal life and lowest total cost of ownership.</p>
-        <a href="blog-rotary-joint-materials.html">Read Now &rarr;</a>
       </div>
     </div>
   </div>
@@ -480,7 +533,7 @@
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="images/begapunk-logo-header.png" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
+     <img src="images/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy">
     </div>
     <p>Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.</p>
     <div class="contact-line">&#9993; <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
@@ -556,6 +609,30 @@ window.addEventListener('scroll', () => {
     header.style.boxShadow = 'none';
   }
 });
+
+
+function copyLink(btn, url) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+            var original = btn.innerHTML;
+            btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+            btn.classList.add('copied');
+            setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+        });
+    } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var original = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+        btn.classList.add('copied');
+        setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+    }
+}
+
 </script>
 
 </body>
