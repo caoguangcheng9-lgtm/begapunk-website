@@ -1,0 +1,20 @@
+﻿file,change_type,details,schema_objects_affected,validation_status
+BP-1P-0003.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-1P-0006.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-0002.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-08-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-130-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-16-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-30-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-50-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-2P-95-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-3P-0004.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-3P-0006.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-3P-0007.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-3P-S06-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-4P-30-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+BP-8P-0001.html,Product Schema calibration,Removed unsupported complete Offer object; retained Product identity and technical properties.,1 Product / 1 Offer removed,passed
+products.html,Product Schema calibration and pagination semantics,Removed 8 unsupported Offer objects; made meta description page-specific; clarified next-page anchor text.,8 Products / 8 Offers removed,passed
+products-p2.html,Pagination semantics,"Added Page 2 H1 semantics, unique meta description, and explicit previous-page anchor text.",none,passed
+sitemap.xml,Sitemap/noindex alignment,Removed the search.html URL because the page explicitly declares noindex.,none,passed
