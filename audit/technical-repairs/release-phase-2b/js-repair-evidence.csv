@@ -1,0 +1,3 @@
+relative_path,source_line_before,error,root_cause,repair,content_or_seo_changed
+blog-rotary-joint-installation-mistakes.html,515,"SyntaxError: Unexpected token ','","copyLink 函数前半段被截断，仅残留 setTimeout 尾部和 fallback 分支","按站内正常同型脚本恢复函数声明、Clipboard API 分支和反馈定时器",no
+blog-seal-replacement.html,999,"SyntaxError: Unexpected token ','","copyLink 函数前半段被截断，仅残留 setTimeout 尾部和 fallback 分支","按站内正常同型脚本恢复函数声明、Clipboard API 分支和反馈定时器",no

@@ -1,0 +1,10 @@
+check,result,evidence,limitation
+PHP runtime discovery,not-available,"PATH、XAMPP、WampServer、Laragon、常见 PHP 路径和 Docker 均未发现可信运行时","未执行原生 php -l"
+PHP opening tags,pass,"send_inquiry.php 与 3 个 PHPMailer 文件均以 <?php 开头","静态检查"
+Bracket and string structure,pass,"4 个 PHP 文件未发现未配对括号、未闭合字符串或块注释","轻量静态词法检查，不替代 PHP 解析器"
+Require paths,pass,"send_inquiry.php 的 3 个 require_once 均指向存在的 PHPMailer 文件","相对 public_html 根目录检查"
+Namespace and use statements,pass,"PHPMailer 文件命名空间均为 PHPMailer\\PHPMailer；send_inquiry.php use 语句匹配","静态检查"
+Missing .env behavior,pass,".env 不存在时 load_env_file 安全返回；缺失 SMTP 配置时返回通用 503 JSON","未执行请求"
+Hard-coded credentials,pass,"SMTP 主机、端口、用户名、密码和收件人均从环境变量读取","未读取真实服务器 .env"
+Sensitive browser output,pass,"display_errors 与 html_errors 关闭；异常仅写入服务器日志，浏览器收到通用错误","未执行请求"
+Native PHP syntax validation,not-run,"本机未发现可信 PHP 运行时","正式部署前必须在服务器对 4 个文件执行 php -l"

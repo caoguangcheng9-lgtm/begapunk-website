@@ -993,10 +993,13 @@ window.addEventListener('scroll', () => {
   }
 
 });
-
-
-
-, 2000);
+function copyLink(btn, url) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+            var original = btn.innerHTML;
+            btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+            btn.classList.add('copied');
+            setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
         });
     } else {
         var ta = document.createElement('textarea');
