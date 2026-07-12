@@ -334,8 +334,8 @@
   {
     "id": "BP-2P-95-0001",
     "url": "BP-2P-95-0001.html",
-    "title": "BP-2P-95-0001 · 2-in-4-out Rotary Joint | Heavy Duty, Max 10 MPa | Begapunk",
-    "description": "BP-2P-95-0001 2-in-4-out rotary joint: heavy duty, max 10 MPa, 200 RPM, AL6061 + 45# steel body, PTFE seal. For high-pressure hydraulic clamping, injection molding rotary units, large stamping tables, and multi-outlet hydraulic systems. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
+    "title": "BP-2P-95-0001 ? 2-in-4-out Rotary Joint | Max 1 MPa | Begapunk",
+    "description": "BP-2P-95-0001 2-in-4-out rotary joint: max 1 MPa / 10 bar, 200 RPM, Aluminum Alloy 6061 body, PTFE seal. For pneumatic clamping, rotary fixtures, and multi-outlet fluid distribution. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
     "h1": "BP-2P-95-0001 · 2-in-4-out Rotary Joint",
     "h2s": [
       "Technical Specifications",
@@ -344,15 +344,15 @@
       "Downloads & Resources",
       "BP-2P-95-0001 vs. Other Begapunk Models"
     ],
-    "body": "Heavy-duty 2-passage rotary joint for high-pressure pneumatic and fluid applications. PTFE composite seal, AL6061 + 45# steel composite body. Max 10 MPa, 162 mm outer diameter, 4.26 kg. Distributes 2 inlet supplies to 4 outlet ports for multi-actuator rotary tables. Ships in 7 days. BP-2P-95-0001 is a heavy-duty 2-in-4-out rotary joint designed for high-pressure pneumatic and hydraulic applications. The composite body combines AL6061 aluminum (housing) with 45# steel (shaft and flange) to achiev",
+    "body": "2-passage rotary joint for pneumatic and light-fluid applications. PTFE composite seal, Aluminum Alloy 6061 body. Max 1 MPa / 10 bar, 162 mm outer diameter, 4.26 kg. Distributes 2 inlet supplies to 4 outlet ports for multi-actuator rotary tables.",
     "keywords": [
       "4 outlets",
       "PTFE (Teflon) composite seal with FKM O-ring backup",
       "Approx. 4.26 kg (4,260 g)",
       "200 RPM — derate to 150 RPM for continuous hydraulic oil duty",
       "162 mm",
-      "10 MPa (100 bar / 1,450 psi) — tested at 12 MPa",
-      "2-in-4-out distribution, 5–10 MPa hydraulic, heavy rotary table",
+      "1 MPa / 10 bar",
+      "1 MPa / 10 bar",
       "BP-2P-95-0001",
       "2-in-4-out",
       "2 passages",
@@ -520,7 +520,7 @@
     "id": "BP-4P-30-0001",
     "url": "BP-4P-30-0001.html",
     "title": "BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint | Flange Mount, Max 1 MPa | Begapunk",
-    "description": "BP-4P-30-0001 4-in-4-out rotary joint: flange mount, max 1 MPa, 80 RPM, AL6061 aluminum body, PTFE + Si3N4 ceramic seal. Ø30mm hollow bore for cable-through or shaft-through applications. Air, water, coolant, hydraulic oil compatible. For multi-station rotary tables, welding positioners, and packaging machinery. ISO9001 certified. Download 2D PDF drawing.",
+    "description": "BP-4P-30-0001 4-in-4-out rotary joint: flange mount, max 1 MPa, 200 rpm, AL6061 aluminum body, PTFE + Si3N4 ceramic seal. Ø30mm hollow bore for cable-through or shaft-through applications. Air, water, coolant, hydraulic oil compatible. For multi-station rotary tables, welding positioners, and packaging machinery. ISO9001 certified. Download 2D PDF drawing.",
     "h1": "BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint",
     "h2s": [
       "Technical Specifications",
@@ -541,7 +541,7 @@
       "PTFE Composite + Si3N4 Ceramic Seal",
       "4 air lines + Ø30mm hollow bore, rotary table",
       "Approx. 0.943 kg",
-      "80 RPM",
+      "200 rpm",
       "4 passages"
     ],
     "category": "product",
