@@ -850,18 +850,21 @@
   {
     "id": "application-textile-printing-converting",
     "url": "application-textile-printing-converting.html",
-    "title": "Rotary Union for Textile, Printing, and Converting Equipment | Begapunk",
-    "description": "Rotary union guide for textile winding machines, printing presses, paper converting equipment, laminating machines, rollers, air blow-off, vacuum, and cooling transfer.",
-    "h1": "Rotary Union for Textile, Printing, and Converting Equipment",
+    "title": "Rotary Union for Printing Machinery & Converting Equipment | Begapunk",
+    "description": "Select a rotary union for printing machinery, printing presses, textile winders, and converting lines by media, pressure, RPM, passages, shaft bore, and contamination.",
+    "h1": "Rotary Union for Printing Machinery and Converting Equipment",
     "h2s": [
-      "Why rotating rollers and converting equipment use rotary unions",
+      "How printing machinery uses rotary unions",
       "Selection Checklist",
-      "Typical Pneumatic Rotary Union Requirements",
+      "Typical Printing Machine Rotary Union Requirements",
       "Recommended Starting Points",
-      "Need help selecting a rotary union for Textile & Printing?"
+      "Need help selecting a rotary union for printing machinery?"
     ],
-    "body": "Textile, printing, and converting equipment use rotating rollers, drums, and winding stations where air, vacuum, water, or coolant may need to pass through a moving shaft. Who this is for:Textile machinery builders, printing press manufacturers, and converting equipment designers specifying rotary transfer for rollers and winding systems. Printing presses, label machines, laminators, textile winders, and converting lines often need rotating air blow-off, vacuum, or temperature-control transfer. ",
+    "body": "Printing machines, presses, laminators, textile winders, and converting lines use rotary unions to transfer air, vacuum, water, or coolant into rotating rollers and drums without twisting fixed hoses. A rotary union for printing machinery provides a sealed path between the stationary supply and a rotating roller or drum. Start selection with media, operating pressure, roller RPM, passage count, shaft bore, mounting envelope, and contamination risk.",
     "keywords": [
+      "rotary union for printing machinery",
+      "rotary unions for printing machines",
+      "printing machine rotary union",
       "BP-2P-50-00012-passage rotary union for larger interface requirements.",
       "textile printing converting",
       "BP-2P-30-00012 passages with larger bore option for rotating equipment layouts."
@@ -1313,13 +1316,17 @@
     "id": "products-p2",
     "url": "products-p2.html",
     "title": "Rotary Joint Catalog Page 2 | Begapunk",
-    "description": "Browse 40+ rotary joint models. Single to multi-channel, threaded and flanged. Standard models in stock. Custom designs available. Get a quote.",
+    "description": "Browse Begapunk rotary joint models online or download the 2026 rotary joint product catalog PDF for offline review.",
     "h1": "Rotary Joint Catalog",
     "h2s": [
-      "Need to compare pressure, RPM, passages, and mounting?"
+      "Compare models online or download the 2026 product catalog"
     ],
-    "body": "40+ standard models in stock. Custom designs with free 3D STEP files. 7-14 day delivery worldwide. Open the full air rotary union comparison table to choose a standard model before sending your RFQ. Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010. © 2026 Begapunk Precision Rotary Joint Manufacturer. All rights reserved.",
-    "keywords": [],
+    "body": "Browse Begapunk rotary joint models by passage count, mounting style, bore size, material, and application. Use the online comparison table for pressure, RPM, passages, and mounting, or download the complete 2026 rotary joint product catalog PDF for offline review.",
+    "keywords": [
+      "rotary joint catalog pdf",
+      "rotary union product catalog",
+      "Begapunk catalog 2026"
+    ],
     "category": "core",
     "tags": [
       "core",
