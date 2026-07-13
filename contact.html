@@ -10,7 +10,7 @@
 
  <title>Rotary Joint RFQ | Request a Quote from Begapunk Engineers</title>
 
- <meta name="description" content="Submit a rotary joint RFQ with media, pressure, RPM, passages, connection type, mounting style, quantity, and drawing. Begapunk engineers respond within 24 hours.">
+ <meta name="description" content="Request a rotary joint quotation from Begapunk. Submit operating media, pressure, RPM, passages, mounting information, drawings, or replacement requirements for engineering review.">
 
  
 
@@ -42,7 +42,7 @@
 
  <meta name="twitter:title" content="Rotary Joint RFQ | Begapunk">
 
- <meta name="twitter:description" content="Submit rotary joint requirements and drawings for Begapunk engineering review within 24 hours.">
+ <meta name="twitter:description" content="Submit rotary joint operating conditions, drawings, or replacement requirements for Begapunk engineering review.">
 
  <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
@@ -51,6 +51,7 @@
  <link rel="canonical" href="https://www.begapunk.com/contact.html">
 
  <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="css/contact-rfq.css">
 
  
 
@@ -161,7 +162,7 @@
     <script src="js/analytics.js"></script>
 </head>
 
-<body>
+<body class="contact-rfq-page">
 
 
 
@@ -222,120 +223,133 @@
 
 
 
-<!-- ===== CONTACT HERO ===== -->
-
-<section class="contact-hero">
-
- <div class="container">
-
- <h1>Request a Rotary Joint Quote</h1>
-
- <p>Send your machine requirements or drawing. Begapunk aims to respond promptly to complete technical inquiries. Response time depends on the application complexity and the information provided.</p>
-
+<!-- ===== CONTACT / RFQ HERO ===== -->
+<section class="bp-rfq-hero">
+ <div class="bp-rfq-shell bp-rfq-hero-grid">
+  <div>
+   <p class="bp-rfq-eyebrow">Engineering RFQ</p>
+   <h1>Request a Rotary Joint Quote</h1>
+   <p class="bp-rfq-hero-copy">Send your machine requirements, operating conditions, drawing, or reference model. Complete technical information helps us review the application and respond more efficiently.</p>
+   <div class="bp-rfq-hero-actions">
+    <a class="bp-rfq-anchor" href="#inquiry-process">View Process</a>
+    <a class="bp-rfq-anchor bp-rfq-anchor-primary" href="#rfq-form">Send Inquiry</a>
+   </div>
+  </div>
+  <div class="bp-rfq-quick-contacts" aria-label="Quick contact options">
+   <a class="bp-rfq-quick-link" href="mailto:sales@begapunk.com">
+    <span class="bp-rfq-quick-icon" aria-hidden="true">
+     <svg viewBox="0 0 24 24"><path d="M3 6.5h18v11H3z"></path><path d="m3.5 7 8.5 6 8.5-6"></path></svg>
+    </span>
+    <span><span class="bp-rfq-quick-label">Email</span><span class="bp-rfq-quick-value">sales@begapunk.com</span></span>
+   </a>
+   <div class="bp-rfq-quick-link">
+    <span class="bp-rfq-quick-icon" aria-hidden="true">
+     <svg viewBox="0 0 24 24"><path d="M7.2 3.5 10 7.8 8.4 10a15.7 15.7 0 0 0 5.6 5.6l2.2-1.6 4.3 2.8-.8 3.1c-.2.7-.8 1.1-1.5 1.1C10 20.4 3.6 14 3 5.8c0-.7.4-1.3 1.1-1.5z"></path></svg>
+    </span>
+    <span>
+     <span class="bp-rfq-quick-label">Phone / WhatsApp / WeChat</span>
+     <span class="bp-rfq-quick-value"><a href="tel:+8618368425342">+86 183 6842 5342</a> &middot; <a href="https://wa.me/8618368425342" target="_blank" rel="noopener">WhatsApp</a></span>
+    </span>
+   </div>
+  </div>
  </div>
-
 </section>
 
+<!-- ===== PROCESS AND RFQ FORM ===== -->
+<main class="bp-rfq-shell bp-rfq-main">
+ <section id="inquiry-process" class="bp-rfq-process" aria-labelledby="process-title">
+  <div class="bp-rfq-section-heading">
+   <p class="bp-rfq-section-kicker">From requirement to shipment</p>
+   <h2 id="process-title">Inquiry to Delivery Process</h2>
+   <p>A clear engineering workflow for standard replacements and custom rotary-joint projects. The exact sequence may vary depending on application complexity and project requirements.</p>
+  </div>
 
+  <ol class="bp-rfq-process-list">
+   <li class="bp-rfq-process-item bp-rfq-stage-customer">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 3z"></path><path d="M8 9h8M8 12h5"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 01</span><span class="bp-rfq-stage-label">Customer Input</span></div>
+     <h3>Send Your Inquiry</h3>
+     <p>Share the model number or provide your operating media, pressure, rotational speed, number of passages, mounting details, drawing, photo, or reference sample.</p>
+     <span class="bp-rfq-output">Output: Initial project requirements</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-engineering">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"></circle><path d="m14.5 14.5 5 5M7.5 10h5M10 7.5v5"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 02</span><span class="bp-rfq-stage-label">Engineering Review</span></div>
+     <h3>Engineering Review</h3>
+     <p>We review the operating media, pressure, RPM, temperature, number of passages, connection type, duty cycle, installation space, and available technical information.</p>
+     <span class="bp-rfq-output">Output: Feasibility and missing-information review</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-engineering">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4v5c0 2 1.5 3 3.5 3H19"></path><path d="m16 9 3 3-3 3M5 20v-3c0-2 1.5-3 3.5-3H12"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 03</span><span class="bp-rfq-stage-label">Selection Route</span></div>
+     <h3>Standard Model or Custom Evaluation</h3>
+     <p>Where possible, we recommend a suitable standard model. If no direct match is available, the requirement moves to custom engineering evaluation.</p>
+     <span class="bp-rfq-output">Output: Recommended model or custom route</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-engineering">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v5h4M9 12h7M9 16h5"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 04</span><span class="bp-rfq-stage-label">Technical Confirmation</span></div>
+     <h3>Drawing Confirmation</h3>
+     <p>Interfaces, port layout, passages, dimensions, mounting arrangement, and applicable operating conditions are confirmed before order execution.</p>
+     <span class="bp-rfq-output">Output: Confirmed technical configuration</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-commercial">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6z"></path><path d="M9 8h6M9 12h6M9 16h3"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 05</span><span class="bp-rfq-stage-label">Commercial Offer</span></div>
+     <h3>Quotation</h3>
+     <p>We issue a quotation based on the confirmed configuration, quantity, commercial terms, and estimated project schedule.</p>
+     <span class="bp-rfq-output">Output: Formal commercial offer</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-commercial">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v14H4z"></path><path d="M8 6V4h8v2M8 11l3 3 5-6"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 06</span><span class="bp-rfq-stage-label">Order Release</span></div>
+     <h3>Order Confirmation</h3>
+     <p>After the purchase order and agreed payment terms are confirmed, the order is released for production or preparation.</p>
+     <span class="bp-rfq-output">Output: Approved order</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-delivery">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4v16M12 10l8-3v13"></path><path d="M7 11h2M7 15h2M15 12h2M15 16h2"></path></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 07</span><span class="bp-rfq-stage-label">Execution</span></div>
+     <h3>Production &amp; Inspection</h3>
+     <p>Products are manufactured or prepared, assembled where applicable, and checked against the approved drawing and order requirements.</p>
+     <span class="bp-rfq-output">Output: Completed and checked product</span>
+    </article>
+   </li>
+   <li class="bp-rfq-process-item bp-rfq-stage-delivery">
+    <span class="bp-rfq-process-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 11h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span>
+    <article class="bp-rfq-process-step">
+     <div class="bp-rfq-step-topline"><span class="bp-rfq-step-number">Step 08</span><span class="bp-rfq-stage-label">Delivery</span></div>
+     <h3>Shipment &amp; Delivery</h3>
+     <p>The order is packed and shipped using the agreed method. Tracking or shipping documents are provided where applicable.</p>
+     <span class="bp-rfq-output">Output: Customer receives the order</span>
+    </article>
+   </li>
+  </ol>
 
-<!-- ===== CONTACT GRID ===== -->
+  <p class="bp-rfq-process-note"><strong>Process note:</strong> This is a typical workflow. Standard replacement orders may move through the process faster, while complex custom projects may require additional technical review, drawing confirmation, or sample evaluation.</p>
+ </section>
 
-<section class="contact-grid container">
-
- <!-- SECTION -->
-
- <div class="contact-info">
-
- <h2>Get in Touch</h2>
-
- <p>Every RFQ is reviewed by an engineer &mdash; not a sales bot. Share the working media, pressure, RPM, passages, connection type, mounting style, and drawing if available. For standard models, we quote immediately. For custom designs, we confirm the technical details before production.</p>
-
-
-
- <div class="info-card">
-
- <div class="icon-circle">&#9993;</div>
-
- <div>
-
- <h3>Email</h3>
-
- <p><a href="mailto:sales@begapunk.com">sales@begapunk.com</a></p>
-
- <p style="font-size:0.85rem;color:var(--text-light);margin-top:2px;">Begapunk aims to respond promptly to complete technical inquiries. Response time depends on the application complexity and the information provided.</p>
-
- </div>
-
- </div>
-
-
-
- <div class="info-card">
-
- <div class="icon-circle">&#9742;</div>
-
- <div>
-
- <h3>Phone / WhatsApp / WeChat</h3>
-
- <p><a href="tel:+8618368425342">+86 183 6842 5342</a></p>
-
- <p style="font-size:0.85rem;color:var(--text-light);margin-top:2px;">Available Mon&ndash;Fri 8:30&ndash;17:30 CST (UTC+8)</p>
-
- </div>
-
- </div>
-
-
-
- <div class="info-card">
-
- <div class="icon-circle">&#127970;</div>
-
- <div>
-
- <h3>Factory Address</h3>
-
- <p>88 Yugong Road, Zonghan Industrial Park</p>
-
- <p>Cixi, Ningbo, Zhejiang 315300, China</p>
-
- </div>
-
- </div>
-
-
-
- <div class="info-card">
-
- <div class="icon-circle">&#128338;</div>
-
- <div>
-
- <h3>Working Hours</h3>
-
- <p>Monday &ndash; Friday: 8:30 AM &ndash; 5:30 PM CST</p>
-
- <p style="font-size:0.85rem;color:var(--text-light);margin-top:2px;">Weekend inquiries answered Monday morning</p>
-
- </div>
-
- </div>
-
- </div>
-
-
-
- <!-- SECTION -->
-
- <div class="form-box">
-
- <h2>Rotary Joint RFQ Form</h2>
-
- <p class="subtitle">Provide the key engineering parameters below. If you are not sure, upload a drawing or photo and our team will help check the specification.</p>
-
-
-
+ <aside id="rfq-form" class="bp-rfq-form-column" aria-labelledby="rfq-form-title">
+  <div class="bp-rfq-form-card">
+   <div class="bp-rfq-form-head">
+    <p class="bp-rfq-form-kicker">Rotary Joint RFQ Form</p>
+    <h2 id="rfq-form-title">Tell Us What You Need</h2>
+    <p>Not sure about the specification? Upload a drawing, old model photo, or machine-interface image for review.</p>
+   </div>
+   <div class="bp-rfq-form-body">
 <form id="quoteForm" method="POST" enctype="multipart/form-data" onsubmit="return false;">
 
 <input type="hidden" name="redirect" value="https://www.begapunk.com/thank-you.html">
@@ -453,7 +467,7 @@
 
  <label for="requirements">Technical Requirements <span class="req">*</span></label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="Please include:&#10;- Media type (air / water / oil / steam)&#10;- Working pressure (e.g. 1 MPa / 10 bar)&#10;- Rotation speed (e.g. 200 RPM)&#10;- Number of passages (e.g. 2-in-2-out)&#10;- Connection type (G thread / NPT / flange)&#10;- Quantity needed&#10;- Target delivery time" required></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Media, pressure, RPM, passages, port size, mounting, temperature, leakage requirement..." required></textarea>
 
  </div>
 
@@ -475,21 +489,14 @@
 
  <div class="form-group">
 
- <label>Upload Drawing or Photo (optional)</label>
+ <label for="drawing">Upload Drawing or Photo</label>
 
- <div class="file-upload">
-
- <input type="file" name="drawing" id="drawing" style="display:none;" accept=".pdf,.step,.iges,.stp,.dwg,.dxf,.jpg,.png">
-
- <label for="drawing" style="cursor:pointer; display:block;">
-
- <p>&#128206; Upload drawing, old model photo, or machine interface</p>
-
- <p class="file-hint">PDF, STEP, IGES, DWG, DXF, JPG, PNG &mdash; Max 10 MB</p>
-
+ <label class="bp-rfq-upload-label" for="drawing">
+  <input class="bp-rfq-file-input" type="file" name="drawing" id="drawing" accept=".pdf,.step,.stp,.iges,.igs,.dwg,.dxf,.jpg,.jpeg,.png" aria-describedby="drawing-help drawing-name">
+  <span class="bp-rfq-upload-title">Upload a drawing, old model photo, or machine-interface image.</span>
+  <span class="bp-rfq-upload-help" id="drawing-help">PDF, STEP, IGES, DWG, DXF, JPG, JPEG, PNG &mdash; Max 10 MB</span>
+  <span class="bp-rfq-file-name" id="drawing-name">No file selected</span>
  </label>
-
- </div>
 
  </div>
 
@@ -501,18 +508,33 @@
  <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off">
  </div>
 
+ <div class="bp-rfq-quote-help"><strong>Information that helps us quote faster:</strong>Working media &middot; Pressure &middot; RPM &middot; Passages &middot; Port thread &middot; Mounting &middot; Temperature &middot; Drawing or photo</div>
+
  <button type="submit" class="form-submit" id="submitBtn">Send Inquiry &rarr;</button>
 
- <div id="formMessage" style="display:none;"></div>
+ <div id="formMessage" role="status" aria-live="polite" style="display:none;"></div>
 
 
 
  <p class="form-note">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>. We never share your data with third parties. Response time depends on the application complexity and the information provided.</p>
 
  </form>
+   </div>
+  </div>
+ </aside>
+</main>
 
+<section class="bp-rfq-details" aria-label="Factory details">
+ <div class="bp-rfq-shell bp-rfq-details-grid">
+  <article class="bp-rfq-meta-item">
+   <span class="bp-rfq-meta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5v18M12 10l8-3v14"></path><path d="M7 11h2M7 15h2M15 12h2M15 16h2"></path></svg></span>
+   <div><h2>Factory Address</h2><p>88 Yugong Road, Zonghan Industrial Park<br>Cixi, Ningbo, Zhejiang 315300, China</p></div>
+  </article>
+  <article class="bp-rfq-meta-item">
+   <span class="bp-rfq-meta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+   <div><h2>Working Hours</h2><p>Monday &ndash; Friday: 8:30 AM &ndash; 5:30 PM CST (UTC+8)</p></div>
+  </article>
  </div>
-
 </section>
 
 
@@ -792,6 +814,7 @@ window.addEventListener('scroll', () => {
     
     // Real-time file validation
     const fileInput = document.getElementById('drawing');
+    const fileName = document.getElementById('drawing-name');
     if (fileInput) {
         fileInput.addEventListener('change', function() {
             clearError();
@@ -806,6 +829,11 @@ window.addEventListener('scroll', () => {
                     showError('File too large (' + sizeMB + ' MB). Maximum: 10 MB.');
                     this.value = '';
                 }
+            }
+            if (fileName) {
+                fileName.textContent = this.files && this.files.length > 0
+                    ? this.files[0].name
+                    : 'No file selected';
             }
         });
     }
@@ -847,9 +875,12 @@ window.addEventListener('scroll', () => {
             
             if (result.success) {
                 formMessage.className = 'form-success';
-                formMessage.textContent = '✓ Inquiry sent successfully! Our engineering team will respond within 24 hours.';
+                formMessage.textContent = '✓ Inquiry sent successfully. Our engineering team will review the information provided.';
                 formMessage.style.display = 'block';
                 form.reset();
+                if (fileName) {
+                    fileName.textContent = 'No file selected';
+                }
             } else {
                 formMessage.className = 'form-error';
                 formMessage.textContent = '✗ ' + (result.message || 'Failed to send inquiry. Please email us directly at sales@begapunk.com');
