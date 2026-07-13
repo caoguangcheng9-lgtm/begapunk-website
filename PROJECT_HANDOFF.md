@@ -128,6 +128,17 @@ If the contact page shows an inquiry-service error:
 
 Do not store panel login details, SSH passwords, or tokens here. Authentication must be completed manually when required.
 
+### Latest verified deployment
+
+- Production content commit: `3c9b95f` (`Add catalog download and SEO indexing fixes`).
+- Deployment time: 2026-07-13 19:52 Asia/Tokyo.
+- Server rollback backup: `/www/backups/begapunk-seo-catalog-20260713-192349`.
+- Server release directory: `/www/releases/seo-catalog-20260713-192349`.
+- Release archive SHA-256: `0DC8B6151B4F6D0674A5617D0679CCC77C9B554F92925269E0F65909FA984AFA`.
+- Verification: Nginx configuration test and reload passed; products, application page, PDF, search index, sitemap, contact page, legacy redirect, and inquiry endpoint checks passed.
+- Detailed record: `audit/seo/deployment-20260713-1952.md`.
+- Production-only `.env`, `PHPMailer/`, `.well-known/`, and unrelated site files were not changed.
+
 ## 8. Deployment Guardrails
 
 Before a production deployment:
