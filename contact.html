@@ -877,6 +877,13 @@ window.addEventListener('scroll', () => {
                 formMessage.className = 'form-success';
                 formMessage.textContent = '✓ Inquiry sent successfully. Our engineering team will review the information provided.';
                 formMessage.style.display = 'block';
+                document.dispatchEvent(new CustomEvent('begapunk:inquiry-success', {
+                    detail: {
+                        formId: form.id || 'quoteForm',
+                        inquiryType: String(formData.get('inquiry_type') || 'general_inquiry'),
+                        product: String(formData.get('product') || formData.get('source_product') || 'not_specified')
+                    }
+                }));
                 form.reset();
                 if (fileName) {
                     fileName.textContent = 'No file selected';

@@ -423,7 +423,7 @@ window.addEventListener('scroll', () => {
             el.textContent = 'Current status: Analytics declined — only essential cookies are used.';
             el.style.color = '#c62828';
         } else {
-            el.textContent = 'Current status: No decision yet — the cookie banner will appear on your next visit.';
+            el.textContent = 'Current status: No decision yet — choose your preference in the cookie banner.';
             el.style.color = '#666';
         }
     }
@@ -435,6 +435,7 @@ window.addEventListener('scroll', () => {
     } else {
         setTimeout(updateStatus, 100);
     }
+    document.addEventListener('begapunk:consent-change', updateStatus);
 })();
 </script>
 
