@@ -130,13 +130,14 @@ Do not store panel login details, SSH passwords, or tokens here. Authentication 
 
 ### Latest verified deployment
 
-- Production content commit: `3c9b95f` (`Add catalog download and SEO indexing fixes`).
-- Deployment time: 2026-07-13 19:52 Asia/Tokyo.
-- Server rollback backup: `/www/backups/begapunk-seo-catalog-20260713-192349`.
-- Server release directory: `/www/releases/seo-catalog-20260713-192349`.
-- Release archive SHA-256: `0DC8B6151B4F6D0674A5617D0679CCC77C9B554F92925269E0F65909FA984AFA`.
-- Verification: Nginx configuration test and reload passed; products, application page, PDF, search index, sitemap, contact page, legacy redirect, and inquiry endpoint checks passed.
-- Detailed record: `audit/seo/deployment-20260713-1952.md`.
+- Production content commit: `7e33e7f` (`Fix GA4 consent and lead tracking`).
+- Deployment time: 2026-07-14 14:48 Asia/Tokyo.
+- Server rollback backup: `/www/backups/begapunk-ga4-20260714-144643.tar.gz`.
+- Server release directory: `/www/releases/ga4-20260714-144643-7e33e7f`.
+- Release archive SHA-256: `851A84A5E301A14C46D4DFF2DE95BC12CA07F40140D00DC634F0AAE63AD94FEF`.
+- Deployed files: `contact.html`, `privacy.html`, and `js/analytics.js`.
+- Verification: live hashes matched local source; Nginx syntax passed; consent, GA4 loading, lead-event behavior, public pages, and inquiry endpoint checks passed; a real test POST returned HTTP 200 and email-send success.
+- Detailed record: `audit/technical-repairs/deployment-ga4-20260714-1448.md`.
 - Production-only `.env`, `PHPMailer/`, `.well-known/`, and unrelated site files were not changed.
 
 ## 8. Deployment Guardrails
