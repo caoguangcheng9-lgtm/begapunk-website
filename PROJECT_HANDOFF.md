@@ -130,6 +130,19 @@ Do not store panel login details, SSH passwords, or tokens here. Authentication 
 
 ### Latest verified deployment
 
+#### GA4 cache-busting follow-up - 2026-07-15
+
+- Production content commit: `b4f0fcb` (`Bust analytics script cache across site`).
+- Deployment time: 2026-07-15 19:40 Asia/Tokyo.
+- Changed scope: all 51 tracked root-level HTML pages now load `js/analytics.js?v=20260715-1`.
+- Server rollback backup: `/www/backups/begapunk-ga4-cache-20260715-185231.tar.gz`.
+- Server release directory: `/www/releases/ga4-cache-20260715-185231-b4f0fcb`.
+- Verification: all live HTML hashes matched staging; Nginx syntax and public-page checks passed; a live GA4 collection request targeted `G-D4FZF37Z07`; GA4 Realtime showed one active user and the expected page-view/session/engagement/consent events.
+- Detailed record: `audit/technical-repairs/deployment-ga4-cache-bust-20260715.md`.
+- Production-only `.env`, `PHPMailer/`, `.well-known/`, backend files, and unrelated site files were not changed.
+
+#### GA4 consent and lead tracking - 2026-07-14
+
 - Production content commit: `7e33e7f` (`Fix GA4 consent and lead tracking`).
 - Deployment time: 2026-07-14 14:48 Asia/Tokyo.
 - Server rollback backup: `/www/backups/begapunk-ga4-20260714-144643.tar.gz`.
