@@ -4,6 +4,8 @@
   "private": true,
   "description": "Build and quality-assurance tooling for the Begapunk static website.",
   "scripts": {
+    "build:minify": "node scripts/build-minified-site.mjs",
+    "build:minify:verify": "node scripts/verify-minified-site.mjs",
     "images:audit": "node scripts/optimize-images.mjs --audit",
     "images:optimize": "node scripts/optimize-images.mjs --write",
     "images:verify": "node scripts/verify-optimized-images.mjs",
@@ -11,7 +13,10 @@
     "social:verify": "node scripts/verify-social-images.mjs"
   },
   "devDependencies": {
-    "sharp": "0.35.3"
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "sharp": "0.35.3",
+    "terser": "^5.49.0"
   },
   "engines": {
     "node": ">=22"
