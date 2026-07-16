@@ -130,6 +130,20 @@ Do not store panel login details, SSH passwords, or tokens here. Authentication 
 
 ### Latest verified deployment
 
+#### Minified site, optimized images, social cards, and llms.txt - 2026-07-16
+
+- Production content commit: `66b88a7` (`Add verified minified site build`).
+- Server deployment timestamp: 2026-07-16 13:14:26 (server timestamp).
+- Changed scope: 130 minified HTML/CSS/JavaScript/JSON/text and optimized image/social-card files.
+- Server rollback backup: `/www/backups/begapunk-minified-predeploy-20260716-131426.tar.gz`.
+- Server release directory: `/www/releases/minified-20260716-66b88a7`.
+- Uploaded delta archive: `/www/releases/begapunk-minified-delta-20260716-66b88a7.zip`.
+- Archive SHA-256: `CA089BEEF4FE6497ED39BA46B2DC45A06F8CBCB7079E252E8D731A0CCE4244A0`.
+- Verification: all 130 release files matched the production copies; Nginx syntax passed; homepage, products, contact, llms.txt, CSS, JavaScript, social image, and inquiry endpoint checks passed; browser console errors were zero on the homepage, products page, and contact page.
+- Gzip verification: enabled in Nginx with compression level 5 and `gzip_vary on`; public HTML, text, CSS, and JavaScript responses returned `Content-Encoding: gzip`.
+- Detailed record: `audit/technical-repairs/deployment-minified-site-20260716.md`.
+- Production-only `.env`, `.well-known/`, backend secrets, and unrelated server files were not changed.
+
 #### GA4 cache-busting follow-up - 2026-07-15
 
 - Production content commit: `b4f0fcb` (`Bust analytics script cache across site`).
