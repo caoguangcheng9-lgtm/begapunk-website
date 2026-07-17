@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Practical rotary joint selection examples for common industrial machinery requirements.">
 <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 <link rel="canonical" href="https://www.begapunk.com/case-studies.html">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20260716-performance">
 <script type="application/ld+json">
 {
 "@context": "https://schema.org",
@@ -46,7 +46,7 @@
 </script>
 <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<style>
+<style id="legacy-case-studies-styles" media="not all">
 /* ===== Case Studies Page Styles ===== */
 .cs-hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; padding: 80px 0 60px; text-align: center; }
 .cs-hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 12px; }
@@ -160,9 +160,10 @@
 .tech-note { background: var(--bg-alt); padding: 20px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-light); text-align: center; }
 .tech-note p { margin: 0; }
 </style>
-    <script src="js/analytics.js?v=20260715-1"></script>
+<link rel="stylesheet" href="css/case-studies.css">
+    <script defer src="js/analytics.js?v=20260715-1"></script>
 </head>
-<body>
+<body class="page-case-studies">
 
 <!-- ===== HEADER ===== -->
 <header class="header">
@@ -233,7 +234,7 @@
 </div>
 </section>
 
-<section class="section" style="padding:40px 0 20px;">
+<section class="case-intro">
 <div class="container">
 <div class="key-takeaways">
 <h2>How to Use These Examples</h2>
@@ -255,10 +256,20 @@
 <div class="case-industry"><span class="dot"></span> Selection objective: separate assist-gas, clamping-air, and coolant circuits</div>
 <h3>Engineering Requirement</h3>
 <p>A rotating cutting or clamping assembly may need several independent fluid paths without twisting external hoses. The correct passage count depends on the machine circuit diagram; oxygen, nitrogen, compressed air, and coolant must not be combined unless the machine design explicitly permits it.</p>
-<table class="case-spec-table"><tr><th>Selection item</th><th>Typical question</th><th>Begapunk direction</th></tr><tr><td>Passages</td><td>How many independent circuits cross the rotating interface?</td><td>Choose the same number of isolated passages, with spare capacity only when justified.</td></tr><tr><td>Pressure and media</td><td>What are normal and peak pressure for each circuit?</td><td>Confirm every medium and pressure separately before model approval.</td></tr><tr><td>Speed</td><td>Continuous rotation or intermittent indexing?</td><td>Use continuous-duty speed, not only peak RPM.</td></tr><tr><td>Mounting</td><td>Threaded body or flange pattern?</td><td>Verify bolt pattern, port orientation, and available envelope in CAD.</td></tr></table>
+<div class="case-table-wrap">
+<table class="case-spec-table case-spec-table--three">
+<thead><tr><th>Selection item</th><th>Typical question</th><th>Begapunk direction</th></tr></thead>
+<tbody>
+<tr><td data-label="Selection item">Passages</td><td data-label="Typical question">How many independent circuits cross the rotating interface?</td><td data-label="Begapunk direction">Choose the same number of isolated passages, with spare capacity only when justified.</td></tr>
+<tr><td data-label="Selection item">Pressure and media</td><td data-label="Typical question">What are normal and peak pressure for each circuit?</td><td data-label="Begapunk direction">Confirm every medium and pressure separately before model approval.</td></tr>
+<tr><td data-label="Selection item">Speed</td><td data-label="Typical question">Continuous rotation or intermittent indexing?</td><td data-label="Begapunk direction">Use continuous-duty speed, not only peak RPM.</td></tr>
+<tr><td data-label="Selection item">Mounting</td><td data-label="Typical question">Threaded body or flange pattern?</td><td data-label="Begapunk direction">Verify bolt pattern, port orientation, and available envelope in CAD.</td></tr>
+</tbody>
+</table>
+</div>
 <h3>Candidate Products</h3>
 <p><a href="BP-2P-0001.html">BP-2P-0001</a> can be evaluated for two low-pressure circuits. Three or more circuits require a matching multi-passage model or a custom review. The machine builder must confirm gas compatibility and applicable safety requirements.</p>
-<a href="application-laser-tube-cutting.html" class="btn btn-secondary">View Laser Application Guide</a> <a href="contact.html" class="btn btn-primary">Send Circuit Requirements</a>
+<div class="case-actions"><a href="application-laser-tube-cutting.html" class="btn btn-secondary">View Laser Application Guide</a><a href="contact.html" class="btn btn-primary">Send Circuit Requirements</a></div>
 </div></div></div>
 </section>
 
@@ -270,10 +281,21 @@
 <div class="case-industry"><span class="dot"></span> Selection objective: control corrosion, contamination, and maintenance risk</div>
 <h3>Engineering Requirement</h3>
 <p>Salt, humidity, temperature cycling, and difficult maintenance access can change the required housing finish, shaft material, bearing protection, seal compound, and test plan. A standard indoor pneumatic model should not be assumed suitable for offshore service.</p>
-<table class="case-spec-table"><tr><th>Input required</th><th>Why it matters</th></tr><tr><td>Media and concentration</td><td>Determines seal and metal compatibility.</td></tr><tr><td>Pressure, RPM, and duty cycle</td><td>Defines the combined pressure-speed operating point.</td></tr><tr><td>Temperature range</td><td>Affects elastomer selection and dimensional clearances.</td></tr><tr><td>Corrosion or test standard</td><td>Defines coating, material, and validation requirements.</td></tr><tr><td>Maintenance interval</td><td>Influences bearing protection and serviceability.</td></tr></table>
+<div class="case-table-wrap">
+<table class="case-spec-table case-spec-table--two">
+<thead><tr><th>Input required</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td data-label="Input required">Media and concentration</td><td data-label="Why it matters">Determines seal and metal compatibility.</td></tr>
+<tr><td data-label="Input required">Pressure, RPM, and duty cycle</td><td data-label="Why it matters">Defines the combined pressure-speed operating point.</td></tr>
+<tr><td data-label="Input required">Temperature range</td><td data-label="Why it matters">Affects elastomer selection and dimensional clearances.</td></tr>
+<tr><td data-label="Input required">Corrosion or test standard</td><td data-label="Why it matters">Defines coating, material, and validation requirements.</td></tr>
+<tr><td data-label="Input required">Maintenance interval</td><td data-label="Why it matters">Influences bearing protection and serviceability.</td></tr>
+</tbody>
+</table>
+</div>
 <h3>Candidate Direction</h3>
 <p><a href="BP-2P-130-0001.html">BP-2P-130-0001</a> is a heavy-duty catalog reference, not an automatic offshore solution. Any corrosive or safety-critical application requires drawing review, material confirmation, and an agreed validation plan.</p>
-<a href="contact.html" class="btn btn-primary">Request Custom Feasibility Review</a>
+<div class="case-actions"><a href="contact.html" class="btn btn-primary">Request Custom Feasibility Review</a></div>
 </div></div></div>
 </section>
 
@@ -285,10 +307,21 @@
 <div class="case-industry"><span class="dot"></span> Selection objective: verify bore, flange, ports, and surrounding clearance</div>
 <h3>Engineering Requirement</h3>
 <p>Even when pressure and RPM are suitable, installation can fail because of bolt-pattern mismatch, insufficient hollow-bore clearance, hose interference, or rigid piping loads. A CAD fit check reduces dimensional risk before production.</p>
-<table class="case-spec-table"><tr><th>Check</th><th>Required confirmation</th></tr><tr><td>Hollow bore</td><td>Clearance around the shaft, drawbar, cable, or tooling.</td></tr><tr><td>Envelope</td><td>Body diameter, total length, and service access.</td></tr><tr><td>Mounting</td><td>Bolt circle, thread specification, depth, and locating feature.</td></tr><tr><td>Ports and hoses</td><td>Fitting size, bend radius, and freedom from external load.</td></tr><tr><td>Operating point</td><td>Media, normal pressure, peak pressure, RPM, and duty cycle.</td></tr></table>
+<div class="case-table-wrap">
+<table class="case-spec-table case-spec-table--two">
+<thead><tr><th>Check</th><th>Required confirmation</th></tr></thead>
+<tbody>
+<tr><td data-label="Check">Hollow bore</td><td data-label="Required confirmation">Clearance around the shaft, drawbar, cable, or tooling.</td></tr>
+<tr><td data-label="Check">Envelope</td><td data-label="Required confirmation">Body diameter, total length, and service access.</td></tr>
+<tr><td data-label="Check">Mounting</td><td data-label="Required confirmation">Bolt circle, thread specification, depth, and locating feature.</td></tr>
+<tr><td data-label="Check">Ports and hoses</td><td data-label="Required confirmation">Fitting size, bend radius, and freedom from external load.</td></tr>
+<tr><td data-label="Check">Operating point</td><td data-label="Required confirmation">Media, normal pressure, peak pressure, RPM, and duty cycle.</td></tr>
+</tbody>
+</table>
+</div>
 <h3>Candidate Product</h3>
 <p><a href="BP-2P-30-0001.html">BP-2P-30-0001</a> provides a 30 mm hollow-bore catalog option. Download or request the current drawing and confirm all interfaces in the machine assembly before ordering.</p>
-<a href="contact.html" class="btn btn-primary">Request a 3D STEP File</a>
+<div class="case-actions"><a href="contact.html" class="btn btn-primary">Request a 3D STEP File</a></div>
 </div></div></div>
 </section>
 
@@ -335,30 +368,36 @@
 <section class="related-products">
     <div class="container">
         <h2>Products Featured in These Case Studies</h2>
-        <div class="product-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="products-grid case-products-grid">
             <div class="product-card" data-href="BP-2P-0001.html">
-                <img src="images/optimized/products/BP-2P-0001-1.webp" alt="BP-2P-0001 2-in-2-out rotary joint" loading="lazy" width="500" height="500">
-                <h3>BP-2P-0001</h3>
-                <p>2-in-2-out flange mount, 1 MPa, 200 RPM. Laser cutting &amp; packaging.</p>
-                <span class="price">Request Quote</span>
+                <div class="product-img"><div class="product-img-inner"><img src="images/optimized/products/BP-2P-0001-1.webp" alt="BP-2P-0001 2-in-2-out rotary joint" loading="lazy" width="500" height="500"></div></div>
+                <div class="product-body">
+                    <h3>BP-2P-0001</h3>
+                    <p class="product-meta">2-in-2-out flange mount, 1 MPa, 200 RPM. Laser cutting &amp; packaging.</p>
+                    <div class="product-footer"><span class="product-price"><strong>Request Quote</strong></span><a class="product-btn" href="BP-2P-0001.html">Details &rarr;</a></div>
+                </div>
             </div>
             <div class="product-card" data-href="BP-2P-130-0001.html">
-                <img src="images/optimized/products/BP-2P-130-0001-1.webp" alt="BP-2P-130-0001 heavy duty rotary joint" loading="lazy" width="500" height="500">
-                <h3>BP-2P-130-0001</h3>
-                <p>Heavy-duty 2-in-2-out, 5 MPa, 80 RPM. Base for custom offshore designs.</p>
-                <span class="price">Request Quote</span>
+                <div class="product-img"><div class="product-img-inner"><img src="images/optimized/products/BP-2P-130-0001-1.webp" alt="BP-2P-130-0001 heavy duty rotary joint" loading="lazy" width="500" height="500"></div></div>
+                <div class="product-body">
+                    <h3>BP-2P-130-0001</h3>
+                    <p class="product-meta">Heavy-duty 2-in-2-out, 5 MPa, 80 RPM. Base for custom offshore designs.</p>
+                    <div class="product-footer"><span class="product-price"><strong>Request Quote</strong></span><a class="product-btn" href="BP-2P-130-0001.html">Details &rarr;</a></div>
+                </div>
             </div>
             <div class="product-card" data-href="BP-2P-30-0001.html">
-                <img src="images/optimized/products/BP-2P-30-0001-1.webp" alt="BP-2P-30-0001 2-in-2-out rotary joint" loading="lazy" width="500" height="500">
-                <h3>BP-2P-30-0001</h3>
-                <p>2-in-2-out with &Oslash;30 mm hollow bore, 1 MPa, 150 RPM. CNC coolant.</p>
-                <span class="price">Request Quote</span>
+                <div class="product-img"><div class="product-img-inner"><img src="images/optimized/products/BP-2P-30-0001-1.webp" alt="BP-2P-30-0001 2-in-2-out rotary joint" loading="lazy" width="500" height="500"></div></div>
+                <div class="product-body">
+                    <h3>BP-2P-30-0001</h3>
+                    <p class="product-meta">2-in-2-out with &Oslash;30 mm hollow bore, 1 MPa, 150 RPM. CNC coolant.</p>
+                    <div class="product-footer"><span class="product-price"><strong>Request Quote</strong></span><a class="product-btn" href="BP-2P-30-0001.html">Details &rarr;</a></div>
+                </div>
             </div>
         </div>
-        <p style="text-align:center;margin-top:24px;">
+        <div class="section-actions">
             <a href="products.html" class="btn btn-secondary">View Full Catalog</a>
-            <a href="contact.html" class="btn btn-primary" style="margin-left:12px;">Custom Design RFQ</a>
-        </p>
+            <a href="contact.html" class="btn btn-primary">Custom Design RFQ</a>
+        </div>
     </div>
 </section>
 

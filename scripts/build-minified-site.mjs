@@ -131,7 +131,7 @@ for (const relativePath of rootCopyFiles) {
   await fs.copyFile(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath));
 }
 
-const copyDirectories = ['downloads', 'images', 'PHPMailer', 'videos'];
+const copyDirectories = ['downloads', 'fonts', 'images', 'PHPMailer', 'videos'];
 for (const relativePath of copyDirectories) {
   await fs.cp(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath), {
     recursive: true,

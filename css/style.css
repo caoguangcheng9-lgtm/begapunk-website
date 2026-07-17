@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+/* Self-hosted fonts remove the Google Fonts render-blocking request while
+   preserving the site's existing typography. */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin-400-800.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700 800;
+    font-display: swap;
+    src: url('../fonts/playfair-display-latin-700-800.woff2') format('woff2');
+}
 
 :root {
  --primary: #1e6eb8;
