@@ -1,0 +1,70 @@
+{
+  "protectedTerms": [
+    "Begapunk",
+    "ISO 9001:2015",
+    "ISO9001",
+    "AL6061",
+    "PTFE",
+    "NPT",
+    "STEP",
+    "CAD",
+    "EOAT"
+  ],
+  "preferredTerms": {
+    "de": {
+      "rotary joints": "Drehdurchführungen",
+      "rotary joint": "Drehdurchführung",
+      "rotary unions": "Drehdurchführungen",
+      "rotary union": "Drehdurchführung",
+      "end-of-arm tooling": "End-of-Arm-Tooling",
+      "working pressure": "Betriebsdruck",
+      "maximum speed": "maximale Drehzahl",
+      "passages": "Kanäle",
+      "passage": "Kanal"
+    },
+    "es": {
+      "rotary joints": "juntas rotativas",
+      "rotary joint": "junta rotativa",
+      "rotary unions": "uniones rotativas",
+      "rotary union": "unión rotativa",
+      "end-of-arm tooling": "herramientas de fin de brazo",
+      "working pressure": "presión de trabajo",
+      "maximum speed": "velocidad máxima",
+      "passages": "pasos",
+      "passage": "paso"
+    },
+    "it": {
+      "rotary joints": "giunti rotanti",
+      "rotary joint": "giunto rotante",
+      "rotary unions": "raccordi rotanti",
+      "rotary union": "raccordo rotante",
+      "end-of-arm tooling": "attrezzatura di fine braccio",
+      "working pressure": "pressione di esercizio",
+      "maximum speed": "velocità massima",
+      "passages": "passaggi",
+      "passage": "passaggio"
+    },
+    "ja": {
+      "rotary joints": "ロータリージョイント",
+      "rotary joint": "ロータリージョイント",
+      "rotary unions": "ロータリーユニオン",
+      "rotary union": "ロータリーユニオン",
+      "end-of-arm tooling": "エンドオブアームツーリング",
+      "working pressure": "使用圧力",
+      "maximum speed": "最高回転速度",
+      "passages": "流路",
+      "passage": "流路"
+    },
+    "pl": {
+      "rotary joints": "złącza obrotowe",
+      "rotary joint": "złącze obrotowe",
+      "rotary unions": "złącza obrotowe",
+      "rotary union": "złącze obrotowe",
+      "end-of-arm tooling": "oprzyrządowanie końca ramienia",
+      "working pressure": "ciśnienie robocze",
+      "maximum speed": "maksymalna prędkość obrotowa",
+      "passages": "kanały",
+      "passage": "kanał"
+    }
+  }
+}

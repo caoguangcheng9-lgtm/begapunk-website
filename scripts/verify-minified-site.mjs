@@ -34,6 +34,21 @@ async function listFiles(directory, extension) {
     .sort();
 }
 
+async function listHtmlFiles(directory) {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  const files = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+    .map((entry) => entry.name);
+  for (const entry of entries.filter((item) => item.isDirectory())) {
+    const childDirectory = path.join(directory, entry.name);
+    const childFiles = (await fs.readdir(childDirectory, { withFileTypes: true }))
+      .filter((item) => item.isFile() && item.name.endsWith('.html'))
+      .map((item) => path.join(entry.name, item.name));
+    if (childFiles.some((file) => path.basename(file) === 'index.html')) files.push(...childFiles);
+  }
+  return files.sort();
+}
+
 function countMatches(text, expression) {
   return [...text.matchAll(expression)].length;
 }
@@ -120,8 +135,8 @@ async function verifyReference(reference, fromDirectory, owner) {
   }
 }
 
-const sourceHtmlFiles = (await listFiles(sourceRoot, '.html'));
-const outputHtmlFiles = (await listFiles(siteRoot, '.html'));
+const sourceHtmlFiles = await listHtmlFiles(sourceRoot);
+const outputHtmlFiles = await listHtmlFiles(siteRoot);
 if (JSON.stringify(sourceHtmlFiles) !== JSON.stringify(outputHtmlFiles)) {
   fail('The HTML file set differs between source and release.');
 }

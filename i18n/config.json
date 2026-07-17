@@ -1,0 +1,40 @@
+{
+  "siteUrl": "https://www.begapunk.com",
+  "sourceLanguage": {
+    "code": "en",
+    "label": "English",
+    "locale": "en_US",
+    "prefix": ""
+  },
+  "languages": [
+    { "code": "de", "label": "Deutsch", "locale": "de_DE" },
+    { "code": "es", "label": "Español", "locale": "es_ES" },
+    { "code": "it", "label": "Italiano", "locale": "it_IT" },
+    { "code": "ja", "label": "日本語", "locale": "ja_JP" },
+    { "code": "pl", "label": "Polski", "locale": "pl_PL" }
+  ],
+  "pages": [
+    "index.html",
+    "products.html",
+    "product-comparison.html",
+    "applications.html",
+    "application-robot-end-of-arm-tooling.html",
+    "application-vacuum-packaging-machines.html",
+    "application-packaging-machinery.html",
+    "BP-8P-0001.html",
+    "BP-2P-0001.html",
+    "BP-2P-50-0001.html",
+    "installation.html",
+    "contact.html"
+  ],
+  "translatedAttributes": ["alt", "title", "aria-label", "placeholder"],
+  "excludedSelectors": [
+    "script",
+    "style",
+    "noscript",
+    "svg",
+    "code",
+    "pre",
+    "[data-no-translate]"
+  ]
+}

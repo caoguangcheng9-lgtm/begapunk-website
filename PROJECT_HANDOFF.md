@@ -100,6 +100,7 @@ Backend-dependent field names that must not be changed without coordinated PHP r
 - `source_product`
 - `source_page`
 - `source_url`
+- `source_language`
 - `drawing`
 - `honeypot`
 

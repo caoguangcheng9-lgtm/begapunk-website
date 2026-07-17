@@ -252,6 +252,10 @@ $sourceModel = post_value('source_model', 100);
 $sourceProduct = post_value('source_product', 200);
 $sourcePage = post_value('source_page', 300);
 $sourceUrl = post_value('source_url', 500);
+$sourceLanguage = strtolower(post_value('source_language', 20));
+if ($sourceLanguage !== '' && !preg_match('/^[a-z]{2,3}(?:-[a-z0-9]{2,8})?$/', $sourceLanguage)) {
+    $sourceLanguage = '';
+}
 
 if ($name === '' || $email === '' || $company === '' || $country === '' || $product === '' || $requirements === '') {
     respond(422, false, 'Please fill in all required fields.');
@@ -276,6 +280,7 @@ $rows = [
     'Source Product' => $sourceProduct,
     'Source Page' => $sourcePage,
     'Source URL' => $sourceUrl,
+    'Source Language' => $sourceLanguage,
 ];
 
 $tableRows = '';

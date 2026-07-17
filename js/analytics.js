@@ -135,7 +135,9 @@
         if (consentState !== 'granted' || !window.gtag || !window.gtag.loaded) {
             return;
         }
-        window.gtag('event', eventName, parameters || {});
+        window.gtag('event', eventName, Object.assign({
+            content_language: document.documentElement.lang || 'en'
+        }, parameters || {}));
     }
 
     function getLinkLabel(link) {

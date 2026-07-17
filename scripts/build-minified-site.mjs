@@ -88,6 +88,20 @@ const htmlFiles = rootEntries
   .map((entry) => entry.name)
   .sort();
 
+for (const entry of rootEntries.filter((item) => item.isDirectory())) {
+  const directory = path.join(sourceRoot, entry.name);
+  let localizedFiles = [];
+  try {
+    localizedFiles = (await fs.readdir(directory, { withFileTypes: true }))
+      .filter((item) => item.isFile() && item.name.endsWith('.html'))
+      .map((item) => path.join(entry.name, item.name));
+  } catch {
+    localizedFiles = [];
+  }
+  if (localizedFiles.some((file) => path.basename(file) === 'index.html')) htmlFiles.push(...localizedFiles);
+}
+htmlFiles.sort();
+
 for (const relativePath of htmlFiles) {
   await writeMinified(relativePath, 'html', (source) => minifyHtml(source, htmlOptions));
 }
@@ -129,6 +143,14 @@ await writeMinified('search-index.json', 'json', (source) => JSON.stringify(JSON
 const rootCopyFiles = ['.htaccess', 'llms.txt', 'robots.txt', 'send_inquiry.php', 'sitemap.xml'];
 for (const relativePath of rootCopyFiles) {
   await fs.copyFile(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath));
+}
+
+for (const relativePath of ['sitemap-i18n.xml']) {
+  try {
+    await fs.copyFile(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
 }
 
 const copyDirectories = ['downloads', 'fonts', 'images', 'PHPMailer', 'videos'];
