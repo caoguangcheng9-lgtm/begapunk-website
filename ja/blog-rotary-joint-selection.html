@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>空気圧ロータリージョイントの選び方：5つの条件 | Begapunk</title>
+  <meta name="description" content="流路数、圧力、回転速度、流体適合性、取付方式からロータリージョイントを選定する技術ガイドです。Begapunkの20万台以上の実績に基づいて解説します。">
+  <meta property="og:title" content="空気圧ロータリージョイントの選び方：5つの条件 | Begapunk">
+  <meta property="og:description" content="ロータリージョイントの選択へのエンジニアのガイド:チャネルの計算、圧力、RPM、媒体の両立性および土台のタイプ。">
+  <meta property="og:url" content="https://www.begapunk.com/ja/blog-rotary-joint-selection.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
+  <meta property="og:site_name" content="Begapunk Precision Rotary Joint Manufacturer">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="空気圧ロータリージョイントの選び方：5つの条件 | Begapunk">
+  <meta name="twitter:description" content="ロータリージョイントの選択へのエンジニアのガイド:チャネルの計算、圧力、RPM、媒体の両立性および土台のタイプ。">
+  <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
+
+
+
+<link rel="alternate" hreflang="en" href="https://www.begapunk.com/blog-rotary-joint-selection.html">
+<link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/blog-rotary-joint-selection.html">
+<link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/blog-rotary-joint-selection.html">
+<link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/blog-rotary-joint-selection.html">
+<link rel="canonical" href="https://www.begapunk.com/ja/blog-rotary-joint-selection.html">
+  <link rel="stylesheet" href="../css/style.css?v=20260716-performance">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How to Select a Pneumatic Rotary Joint: 5 Parameters That Prevent Costly Mistakes","description":"Engineer's guide to rotary joint selection: channel count, pressure, RPM, media compatibility, and mounting type. Based on 200,000+ units of field experience.","image":"https://www.begapunk.com/images/Working-principle-of-rotary-joint.png","author":{"@id":"https://www.begapunk.com/#organization"},"publisher":{"@id":"https://www.begapunk.com/#organization"},"datePublished":"2026-05-24","dateModified":"2026-05-24","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.begapunk.com/ja/blog-rotary-joint-selection.html"},"proficiencyLevel":"Intermediate","dependencies":"Begapunk BP-series pneumatic rotary joints","inLanguage":"ja"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's the difference between rated pressure and test pressure for a rotary joint?","acceptedAnswer":{"@type":"Answer","text":"The 'max 1.0 MPa' figure on a datasheet is usually the burst-test or static test pressure, not the continuous operating pressure. At Begapunk, every joint is pressure-tested at 1.5x the rated spec. For continuous 24/7 operation, apply a 30% derating factor &mdash;a 1.0 MPa joint should be used at 0.7 MPa or below."}},{"@type":"Question","name":"How do I choose the right seal material for my rotary joint RPM?","acceptedAnswer":{"@type":"Answer","text":"FKM (fluoroelastomer) seals are rated for under 200 RPM. PTFE composite (Glyd Ring) handles 200-500 RPM. PTFE skeleton oil seal handles 500-2,000 RPM. Above 2,000 RPM requires custom ceramic or balanced designs. Running FKM above 200 RPM causes overheating and seal hardening within weeks."}},{"@type":"Question","name":"When should I use flange mount vs threaded mount for a rotary joint?","acceptedAnswer":{"@type":"Answer","text":"Use threaded mount (G1/8, G1/4, M5) for compact spaces and light loads. Use flange mount when the joint sees significant side load from stiff hoses, high vibration, or high torque. Flange mount provides a bolted connection that will not loosen under vibration. Begapunk offers both styles across most model ranges."}},{"@type":"Question","name":"Why does media compatibility matter when selecting a rotary joint?","acceptedAnswer":{"@type":"Answer","text":"Not all compressed air is the same. Moist air causes internal bore corrosion in aluminum bodies within 6-12 months. Oil-fog air swells FKM seals. Water and coolant require stainless steel bodies (304/316) with Glyd Ring or EPDM seals. Using a standard pneumatic joint for coolant delivery results in corrosion, seal degradation, and leaks within 3 months."}}],"inLanguage":"ja"}</script>
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.begapunk.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.begapunk.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to Select a Pneumatic Rotary Joint","item":"https://www.begapunk.com/ja/blog-rotary-joint-selection.html"}],"inLanguage":"ja"}</script>
+
+
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <style>
+    .blog-hero { background: linear-gradient(135deg, #1a1d23 0%, #252830 100%); color: #fff; padding: 60px 0 40px; }
+    .blog-hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; max-width: 800px; }
+    .blog-hero .meta { display: flex; gap: 16px; color: rgba(255,255,255,0.7); font-size: 0.9rem; flex-wrap: wrap; }
+    .blog-hero .meta span { display: flex; align-items: center; gap: 6px; }
+    .blog-content { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+    .blog-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--dark-soft); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+    .blog-content h3 { font-size: 1.2rem; font-weight: 600; color: var(--text); margin: 28px 0 12px; }
+    .blog-content p { margin-bottom: 16px; line-height: 1.8; }
+    .blog-content ul, .blog-content ol { margin: 16px 0 16px 24px; }
+    .blog-content li { margin-bottom: 8px; line-height: 1.7; }
+    .blog-content strong { color: var(--dark-soft); }
+    .blog-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .blog-content th { background: var(--dark-soft); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; }
+    .blog-content td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .blog-content tr:nth-child(even) { background: var(--bg-alt); }
+    .blog-content blockquote { border-left: 4px solid var(--primary); padding: 16px 20px; background: var(--bg-alt); margin: 20px 0; font-style: italic; color: var(--text-light); }
+    .blog-content .cta-box { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 32px; border-radius: 12px; margin: 40px 0; text-align: center; }
+    .blog-content .cta-box h3 { color: #fff; margin-bottom: 12px; }
+    .blog-content .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+    .blog-content .cta-box .btn { display: inline-block; background: #fff; color: var(--primary); padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+    .blog-content .cta-box .btn:hover { background: var(--bg-alt); }
+    .blog-content a { color: var(--primary); }
+    .blog-content a:hover { color: var(--primary-dark); }
+    .blog-content .product-link { display: inline-block; background: var(--bg-alt); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 500; text-decoration: none; margin-left: 4px; }
+    .blog-content .product-link:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .breadcrumb { padding: 16px 0; font-size: 0.85rem; color: var(--text-light); }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .related-articles { background: var(--bg-alt); padding: 48px 0; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 24px; }
+    .related-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: box-shadow 0.2s; }
+    .related-card:hover { box-shadow: var(--shadow-hover); }
+    .related-card .tag { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
+    .related-card h3 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
+    .related-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
+    .related-card a { font-size: 0.9rem; font-weight: 600; }
+    /* Social Share Buttons */
+    .social-share-wrap { margin-top: 20px; padding-top: 16px; padding-bottom: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .social-share { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social-share-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-right: 4px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; line-height: 1; }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .share-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .share-linkedin { background: #0a66c2; color: #fff; }
+    .share-linkedin:hover { background: #084e96; }
+    .share-twitter { background: #000; color: #fff; }
+    .share-twitter:hover { background: #333; }
+    .share-facebook { background: #1877f2; color: #fff; }
+    .share-facebook:hover { background: #166fe5; }
+    .share-whatsapp { background: #25d366; color: #fff; }
+    .share-whatsapp:hover { background: #1da851; }
+    @media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
+
+
+  </style>
+    <script defer="" src="../js/analytics.js?v=20260715-1"></script>
+</head>
+<body>
+
+
+<header class="header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html" class="logo">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - 精密ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
+   </a>
+   <nav class="nav" id="mainNav">
+    <a href="index.html">ふるさと</a>
+    <div class="nav-dropdown">
+     <a href="products.html" class="nav-dropdown-toggle">製品情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="products.html">製品カタログ</a>
+      <a href="product-comparison.html">機種比較の特長</a>
+      <a href="contact.html">カスタム RFQの特長</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="applications.html" class="nav-dropdown-toggle">用途の特長 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="applications.html">用途 の概要</a>
+      <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
+      <a href="application-packaging-machinery.html">包装の機械類</a>
+      <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
+      <a href="application-cnc-pneumatic-clamping.html">CNC空気の締め金で止めること</a>
+      <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
+      <a href="application-steel-dusty-environments.html">ほこりの環境</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="blog.html" class="nav-dropdown-toggle active">ナレッジセンター <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="blog.html">テクニカルブログ</a>
+      <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
+      <a href="installation.html">インストールガイド</a>
+      <a href="faq.html">よくある質問</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="about.html" class="nav-dropdown-toggle">新着情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="about.html">工場について</a>
+      <a href="case-studies.html">事例紹介</a>
+     </div>
+    </div>
+    <a href="contact.html" class="nav-cta">見積もりを依頼の特長</a>
+   </nav>
+
+   <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ja">Language</label><select id="language-ja" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="../blog-rotary-joint-selection.html">English</option><option value="../de/blog-rotary-joint-selection.html">Deutsch</option><option value="blog-rotary-joint-selection.html" selected="">日本語</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニュー">
+    <span></span><span></span><span></span>
+   </button>
+  </div>
+ </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">ふるさと</a> › <a href="blog.html">スタッフブログ</a> › 空気圧ロータリージョイントを選ぶ方法
+  </div>
+</div>
+
+<section class="blog-hero">
+  <div class="container">
+    <h1>空気圧ロータリージョイント選定の5つの重要条件</h1>
+    <div class="meta">
+      <span>日 時 5月 24, , 2026</span>
+      <span>所要時間 8分</span>
+      <span>☑ 中級</span>
+      <span>Begapunkエンジニアリング</span>
+    </div>
+  </div>
+
+    <div class="social-share-wrap">
+    <div class="container">
+    <div class="social-share">
+      <span class="social-share-label">シェア:</span>
+      <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.begapunk.com/blog-rotary-joint-selection.html" target="_blank" rel="noopener" aria-label="LinkedInで共有する"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg> リンク集</a>
+      <a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://www.begapunk.com/blog-rotary-joint-selection.html&amp;text=How%20to%20Select%20a%20Pneumatic%20Rotary%20Joint:%205%20Parameters%20%7C%20Begapunk" target="_blank" rel="noopener" aria-label="Xで共有する"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg> X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X</a>
+      <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.begapunk.com/blog-rotary-joint-selection.html" target="_blank" rel="noopener" aria-label="Facebookで共有する"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg> Facebookページ</a>
+      <a class="share-btn share-whatsapp" href="https://api.whatsapp.com/send?text=How%20to%20Select%20a%20Pneumatic%20Rotary%20Joint:%205%20Parameters%20%7C%20Begapunk%20-%20https://www.begapunk.com/blog-rotary-joint-selection.html" target="_blank" rel="noopener" aria-label="WhatsAppで共有"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg> WhatsAppについて</a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===== BLOG CONTENT ===== -->
+<article class="blog-content">
+<p>ロータリージョイントは、何年もの間サイレントを実行したり、それが失敗したときに生産ライン全体を停止するそれらのコンポーネントの1つです。 違いは、通常、エンジニアが仕様中に見下ろす5つのパラメータにダウンします。</p>
+<p>Begapunkでは、2010年以来、200,000 ロータリージョイント以上を製造しています。 私たちが受け取る保証クレームの過半数は材料の欠陥ではありません - 彼らは仕様の不一致です。 1.0 MPaで評価されるジョイントは、1.2 MPaで実行されます。 Glyd Ring シールは、仕様シートが500 RPM maxと述べたとき、1,000 RPM 用途で使用されます。 これらは、予防可能なエラーです。</p>
+<p>このガイドは、注文する前にチェックする必要がある5つのパラメータを歩きます。 これらの権利を取得し、あなたのロータリージョイントはそれが取付けられている機械を追い出します。</p>
+<h2>1。 1。 チャネルの計算:あなたの空気回路に一致して下さい、あなたのウィッシュ リストではない</h2>
+<h3>シングルチャネル、デュアルチャネル、マルチチャネルの違い</h3>
+<p>とりあえず <strong>1-in-1-out - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</strong> ロータリージョイントは1つの回転流路を通して1つの媒体を運びます。 とりあえず <strong>2-in-2-outの</strong> 設計は同じボディ–酸素および冷却剤、例えば、または圧縮空気および真空を通して2つの独立した媒体の流れを運びます。 弊社について <strong>3-in-3-outの3</strong> そして、 <strong>4-in-4-outの</strong> union はより複雑な回転式テーブルおよび索引装置にこの論理を拡張します。</p>
+<p>重要なポイント:各チャネルは機械的に分離されます。 デュアルチャネルジョイントは「2つのチャネルを分割する1つのチャネル」ではありません。 2つの完全なシールアセンブリは、単一のハウジングにパックされています。 機械に空気回路を数えるときのこの問題。</p>
+<p><strong>共通の間違い:</strong> 2チャンネルジョイントを想定し、検証せずに混合媒体を扱うことができます。 チャネル A が 圧縮空気 とチャンネル B がクーラントの切断を運ぶ場合は、シール材質 の両メディアの互換性を確認する必要があります。</p>
+<h3>チャネルのカウントを決定する方法</h3>
+<p>回転インターフェイスを通過しなければならないすべての独立した流体パスをカウントします。</p>
+<ul>
+<li>空気のグリッパー = <strong>2つのチャネル</strong> (クランプ+アンクランプ)</li>
+<li>空気のグリッパー+真空のイジェクター= <strong>4 チャンネル</strong> (クランプ+アンクランプ+真空供給+真空解放)</li>
+<li>レーザーの髭剃り部(クランプ、unclamp、打撃の塵) = <strong>3つのチャネル</strong></li>
+</ul>
+<p><strong>ヒント:</strong> マシンが後でアップグレードされる可能性が高い場合は、1つのスペアチャネルを追加します。 18か月に2チャンネルジョイントを交換するよりも、3チャンネルジョイントを今すぐ指定するのが安いです。</p>
+<p><strong>Begapunkプロダクト参照:</strong></p>
+<ul>
+<li>単一チャネル:BP-1P-0003 — ねじ取付、密集した、評価される1.0 MPa</li>
+<li>デュアルチャンネル: BP-2P-0001 — フランジ取付, 1.0 MPa, AL6061 ボディ</li>
+</ul>
+<h2>2。 操作圧力:「最高1.0 MPa」SpecはMis一流のです</h2>
+<h3>評価される圧力対。 試験圧力</h3>
+<p>データシートが「最大圧力」をリストする場合: 1.0 図が通常であるMPa、」 <strong>破裂テスト圧力</strong> または <strong>静的テスト圧力</strong> — ジョイントが動作する圧力ではなく 24/ / / / / /7. .</p>
+<p>Begapunkでは、すべての接合箇所は圧力テストされます <strong>1.5×定格仕様</strong> 郵送物の前に。 1.0 MPaに定格のジョイントは、1.5 MPaで30分間テストされます。 それは渡します。 しかし、1.0 MPaで連続して動作するべきではありません。</p>
+<p><strong>設計規則:</strong> 連続的な操作のために、適用して下さい <strong>30%のderatingの要因</strong>. . 1.0 MPa ジョイントは、0.7 MPa または、ラウンドクロックのデュースで使用する必要があります。 これにより、シール疲労が飛躍的に加速します。</p>
+<p><strong>共通の間違い:</strong> 0.9 MPaで動作する用途のための1.0 MPaジョイントを継続的に購入します。 3ヶ月後、シール リーク。 関節が失敗しなかった — 過小評価された。</p>
+<h3>用途による圧力選択</h3>
+<table>
+<thead><tr>
+<th>用途の特長</th>
+<th>典型的な圧力</th>
+<th>推奨Begapunkシリーズ</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>標準的な空気クランプ</td>
+<td>0.3–0.6 MPaの特長</td>
+<td>BP-1P-0003/BP-2P-0001</td>
+</tr>
+<tr>
+<td>高圧クーラント配送</td>
+<td>0.5–2.0 MPaの特長</td>
+<td>BP-2P-130-0001 (評価される5.0 MPa)</td>
+</tr>
+<tr>
+<td>油圧回転式移動</td>
+<td>5.0–10.0 MPaの特長</td>
+<td>BP-2P-95-0001 (評価される10.0 MPa)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Begapunkプロダクト参照:</strong></p>
+<ul>
+<li>標準的な義務(1.0 MPa): BP-2P-0001</li>
+<li>頑丈な(5.0 MPa): BP-2P-130-0001</li>
+<li>極度義務(10.0 MPa):BP-2P-95-0001</li>
+</ul>
+<h2>3。 RPM: なぜ高速は別のシールを必要とします</h2>
+<h3>スピードとシール材質間の直接的な関係</h3>
+<p>ロータリージョイント シールは消耗品です。 摩耗率は表面速度(RPM×シールの直径)に比例しています。 シール材質の侵食より速い接合箇所の回転。</p>
+<p>速度によるBegapunk シール材質の選択:</p>
+<table>
+<thead><tr>
+<th>速度の範囲</th>
+<th>推奨シール</th>
+<th>最高の連続的なRPM</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>&lt; 200 RPM&gt;</td>
+<td>FKM(フルオロエラストマー/ヴィトン)</td>
+<td>200 RPMの特長</td>
+</tr>
+<tr>
+<td>200–500 RPMの特長</td>
+<td>グリッドリング(PTFEコンポジット)</td>
+<td>500 RPMの特長</td>
+</tr>
+<tr>
+<td>500–2,000 RPMの特長</td>
+<td>PTFEの骨格オイルシール</td>
+<td>2,000 RPMの特長</td>
+</tr>
+<tr>
+<td>&gt; 2,000 RPMの特長</td>
+<td>カスタムの陶磁器かバランスをとられた設計</td>
+<td>カスタムの特長</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共通の間違い:</strong> 400 RPMの索引のテーブルに標準的なFKM密封された接合箇所を取付けて下さい。 FKM シール過熱と2週間以内に硬化します。 ジョイント漏れ。 エンジニアはメーカーを責めていますが、仕様は間違っていました。</p>
+<p>Begapunk では、すべての高速モデル (BP-2P-95 以上) 船と <strong>PTFEの骨格オイルシール標準として</strong>. . 200 RPM の上で評価される接合箇所で FKM を提供しません。</p>
+<h3>実際のRPMを確認する方法</h3>
+<p>スピンドルの最大回転数を使用しないでください。 利用する <strong>ジョイントの取り付け位置での回転数</strong>: : : :</p>
+<ul>
+<li>1秒のインデックスサイクル = 60 RPM</li>
+<li>0.5秒サイクル = 120 RPM</li>
+<li>300 RPM = 300 RPMの連続的な回転シャフト</li>
+</ul>
+<p>ほとんどの空気の回転式 用途 は 200 RPM の下でよく動きます。 マシンが100 RPMを破らない場合は、高速シールにオーバースペックしないでください。</p>
+<h2>4。 媒体の両立性:「空気」はちょうど空気ではないです</h2>
+<h3>圧縮空気は変化を持っています</h3>
+<p>すべての圧縮空気が同じで、相違は問題です:</p>
+<table>
+<thead><tr>
+<th>空気タイプ</th>
+<th>素材への影響</th>
+<th>推薦された構造</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>乾燥した、ろ過された空気</td>
+<td>ニュートラル</td>
+<td>標準的なAL6061 + FKM/Glydリング</td>
+</tr>
+<tr>
+<td>オイルフォグ潤滑空気</td>
+<td>FKMのswellsのGlydリング抵抗</td>
+<td>グリッド リングか PTFE のスケルトン シール の必須</td>
+</tr>
+<tr>
+<td>湿気がある/ろ過されていない空気</td>
+<td>AL6061は内部的に腐食します</td>
+<td>304/316 SS ボディは要求しました</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要なポイント:</strong> アルミニウム ボディの湿気がある空気は原因します <strong>内部 中空径 腐食</strong> 6〜12ヶ月以内 腐食はシールの動く表面を落とします。 新たにシールが漏れる状態でも漏れます。 植物空気が乾燥しない場合は、ステンレス鋼を指定します。</p>
+<h3>水とクーラント</h3>
+<p>水、水溶性の冷却剤および油圧オイルは乾燥した空気より異なった材料セットを要求します:</p>
+<ul>
+<li><strong>水/冷却剤</strong> → 304 SS ボディ + グリッド リングか EPDM シール</li>
+<li><strong>油圧オイル(ISO VG 32)</strong> → 316 SSボディ+ FKMかPTFEの骨格シール</li>
+<li><strong>食品対応水/蒸気</strong> → 316 SS + FDA 承認された PTFE の特別なクリーニングの議定書</li>
+</ul>
+<p><strong>共通の間違い:</strong> 空気圧ロータリージョイント規格のクーラントデリバリーでご使用ください。 アルミボディの腐食。 FKM シールデグレード。 3ヶ月のジョイント漏れ。</p>
+<p><strong>Begapunkプロダクト参照:</strong></p>
+<ul>
+<li>水/オイルの多用性がある(SSボディ): BP-2P-130-0001</li>
+<li>カスタム 食品対応構成:BP-3P-FDAの指定のための私達に連絡して下さい</li>
+</ul>
+<h2>5。 5。 設置スペースおよび関係のタイプ</h2>
+<h3>ねじ式 対. フランジ取付の特長</h3>
+<table>
+<thead><tr>
+<th>マウントタイプ</th>
+<th>最もよいのための</th>
+<th>制限事項</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>ねじ式 (G1/8、G1/4、M5)</td>
+<td>密集したスペース、軽い負荷</td>
+<td>限られたトルクの移動;振動の下でゆるみの危険</td>
+</tr>
+<tr>
+<td>フランジ取付の特長</td>
+<td>高いトルク、高いRPMの重いホース</td>
+<td>より放射状のスペースを要求して下さい;ボルトで固定された表面シールを要求して下さい</td>
+</tr>
+</tbody>
+</table>
+<p><strong>親指のルール:</strong> ロータリージョイント が堅いホースから重要な側面の負荷を見れば、または機械振動が フランジ取付 を使用すれば。 ボルト接続は緩みません。</p>
+<p>Begapunkでは、両方の取り付けスタイルがほとんどのモデル範囲で利用可能です。 マシンの図面を確認し、適切な構成をお勧めします。</p>
+<h3>サイズはいつもより小さいです</h3>
+<p>ロータリージョイント は、スペースの問題を常に解決しません。 ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ザ・ <strong>内部 中空径 の直径</strong> 流れ容量を定める:</p>
+<table>
+<thead><tr>
+<th>中空径の直径</th>
+<th>典型的な流れ(0.5 MPaの空気)</th>
+<th>適したのための</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>3 mmの特長</td>
+<td>～15L/分</td>
+<td>ミニチュアグリッパーのみ</td>
+</tr>
+<tr>
+<td>6 mmの特長</td>
+<td>～60L/分</td>
+<td>標準的な空気シリンダー</td>
+</tr>
+<tr>
+<td>10 mmの特長</td>
+<td>～150L/分</td>
+<td>大きいアクチュエーター、多数のシリンダー</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共通の間違い:</strong> 3 mm 中空径とコンパクトなジョイントを購入して、スペースを節約し、40 mm 中空径空気圧シリンダを実行しようとします。 シリンダーは負荷の下でゆっくりとまたは屋台を拡張します。</p>
+<h2>速い参照: Begapunk 機種選定表</h2>
+<table>
+<thead><tr>
+<th>用途の特長</th>
+<th>ダイバーシティ</th>
+<th>プレッシャー</th>
+<th>回転数</th>
+<th>推奨モデル</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>一般的な空気クランプ</td>
+<td>乾燥空気</td>
+<td>0.1–0.6 MPaの特長</td>
+<td>&lt; 200 RPM&gt;</td>
+<td>BP-1P-0003/BP-2P-0001</td>
+</tr>
+<tr>
+<td>高圧クーラントシステム</td>
+<td>水/乳剤</td>
+<td>0.5–2.0 MPaの特長</td>
+<td>&lt; 200 RPM&gt;</td>
+<td>BP-2P-130-0001の特長</td>
+</tr>
+<tr>
+<td>高速回転インデックス</td>
+<td>エアライン</td>
+<td>0.1–0.8 MPaの特長</td>
+<td>200–500 RPMの特長</td>
+<td>BP-2P-95-0001の特長</td>
+</tr>
+<tr>
+<td>食品/医薬品(カスタム)</td>
+<td>水/蒸気</td>
+<td>0.1–1.0 MPaの特長</td>
+<td>&lt; 200 RPM&gt;</td>
+<td>BP-3P-FDA — 仕様の連絡先</td>
+</tr>
+<tr>
+<td>防塵環境</td>
+<td>空気/水</td>
+<td>0.1–1.0 MPaの特長</td>
+<td>&lt; 200 RPM&gt;</td>
+<td>BP-2P-50-0001 (IP65 防塵)</td>
+</tr>
+</tbody>
+</table>
+<h2>コンクルージョン</h2>
+<p>ロータリージョイント を選択するのは複雑ではありませんが、具体的です。 チャンネルのカウントを右に取得します。 圧力を30%削減します。 シール材質 を RPM にマッチさせます。 ボディ素材とメディアの互換性を検証します。 あなたの流れの条件のための中空径を大きさで分類して下さい。</p>
+<p>この5つのチェックは5分かかります。 ダウンタイムの5週間を要します。</p>
+<h3>どのモデルがあなたの機械に合うか確かめませんか。</h3>
+<p>技術確認 の動作条件 — 圧力、RPM、メディアタイプ、およびチャンネル数 — を送ってください。 応答時間は、用途の複雑性および提供された情報に依存します。</p>
+<p>無料見積依頼 →</p>
+<p>または直接私達に電子メールで送って下さい: sales@begapunk.com</p>
+<p><strong>技術的なノート:</strong> この記事で参照されるすべての圧力仕様およびRPMの指定はBegapunk BPシリーズ標準空気圧ロータリージョイントに基づいています。 実際のパフォーマンスは、動作条件とメンテナンスの慣行によって異なります。 用途の外で標準仕様のために、指定の前に技術部門に相談して下さい。</p>
+</article>
+
+<!-- ===== RELATED ARTICLES ===== -->
+<section class="related-articles">
+  <div class="container">
+    <h2 style="font-size:1.5rem;font-weight:700;color:var(--dark-soft);">関連記事</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <span class="tag">メンテナンス</span>
+        <h3>ロータリージョイント シール交換:手順別ガイド</h3>
+        <p>PTFEおよびカーボンシールを取り替える時そして方法。 トルク仕様、シールの方向、およびトラブルシューティング漏れ。</p>
+        <a href="blog-seal-replacement.html">今すぐ読む →</a>
+      </div>
+      <div class="related-card">
+        <span class="tag">メンテナンス</span>
+        <h3>ねじ式対フランジマウントロータリージョイント</h3>
+        <p>初期寿命の60%は、インストールエラーに痕跡を漏らします。 トルク仕様、回り止めブラケット、圧力テストプロトコル。</p>
+        <a href="blog-threaded-vs-flange.html">今すぐ読む →</a>
+      </div>
+      <div class="related-card">
+        <span class="tag">選定ガイドの特長</span>
+        <h3>ロータリージョイントボディ材料</h3>
+        <p>AL6061、304 SS、316 SSの真鍮。 最適な寿命と所有コストの最小限の環境に材料を合わせます。</p>
+        <a href="blog-rotary-joint-materials.html">今すぐ読む →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <div class="logo">
+     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunkの特長" style="height:40px;width:auto;" loading="lazy" width="226" height="40">
+    </div>
+    <p>精密 ロータリージョイント メーカー、寧波、中国。 2010年以来、世界中の産業オートメーションOEMおよび機械の建築業者にサービスを提供しています。</p>
+    <div class="contact-line">✉ <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.comの特長</a></div>
+    <div class="contact-line">☎ <a href="tel:+8618368425342" style="color:rgba(255,255,255,0.7);">+86 183 6842 5342</a></div>
+   </div>
+   <div>
+    <h4 class="footer-title">製品情報</h4>
+    <div class="footer-links">
+     <a href="products.html">製品カタログ</a>
+     <a href="product-comparison.html">機種比較の特長</a>
+     <a href="contact.html">カスタム RFQの特長</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">用途の特長</h4>
+    <div class="footer-links">
+     <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
+     <a href="application-packaging-machinery.html">包装の機械類</a>
+     <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
+     <a href="application-cnc-pneumatic-clamping.html">CNC空気の締め金で止めること</a>
+     <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
+     <a href="application-steel-dusty-environments.html">ほこりの環境</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">ナレッジセンター</h4>
+    <div class="footer-links">
+     <a href="blog.html">テクニカルブログ</a>
+     <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
+     <a href="installation.html">インストールガイド</a>
+     <a href="faq.html">よくある質問</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">会社案内</h4>
+    <div class="footer-links">
+     <a href="about.html">工場について</a>
+     <a href="case-studies.html">事例紹介</a>
+     <a href="contact.html">コンタクト</a>
+    </div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <p>2018年12月12日 2026 Begapunkの精密回転式接合箇所の製造業者。 スタッフ募集中!</p>
+   <div class="footer-legal">
+    <a href="privacy.html">スタッフ紹介</a>
+    <a href="terms.html">利用条件</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<div class="floating-cta">
+  <a href="contact.html" class="floating-btn quote">見積もりを依頼の特長</a>
+  <a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsAppについて</a>
+</div>
+
+<script>
+const mobileToggle = document.getElementById('mobileToggle');
+const mainNav = document.getElementById('mainNav');
+if (mobileToggle && mainNav) {
+  mobileToggle.addEventListener('click', () => {
+    var isOpen = mainNav.classList.toggle('active');
+    mobileToggle.classList.toggle('active', isOpen);
+    mobileToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+const header = document.querySelector('.header');
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(15,23,42,0.08)' : 'none';
+  });
+}
+
+function copyLink(btn, url) {
+  var targetUrl = url || window.location.href;
+  var showCopied = function() {
+    if (!btn) return;
+    if (btn.copyFeedbackTimer) clearTimeout(btn.copyFeedbackTimer);
+    var original = btn.getAttribute('data-copy-original') || btn.innerHTML;
+    btn.setAttribute('data-copy-original', original);
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied';
+    btn.classList.add('copied');
+    btn.copyFeedbackTimer = setTimeout(function() {
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+      btn.removeAttribute('data-copy-original');
+      btn.copyFeedbackTimer = null;
+    }, 2000);
+  };
+  var fallbackCopy = function(error) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = targetUrl;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var copied = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (copied) showCopied();
+      else console.error('Copy link failed.', error);
+    } catch (fallbackError) {
+      console.error('Copy link failed.', fallbackError);
+    }
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(targetUrl).then(showCopied).catch(fallbackCopy);
+  } else {
+    fallbackCopy(new Error('Clipboard API unavailable.'));
+  }
+}
+
+</script>
+
+
+
+</body></html>

@@ -13,7 +13,7 @@
     { "code": "ja", "label": "日本語", "locale": "ja_JP" },
     { "code": "pl", "label": "Polski", "locale": "pl_PL" }
   ],
-  "activeLanguageCodes": ["de"],
+  "activeLanguageCodes": ["de", "ja"],
   "pages": [
     "index.html",
     "about.html",

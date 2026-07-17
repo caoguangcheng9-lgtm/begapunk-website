@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロボットEOAT向け空気圧ロータリージョイント | Begapunk</title>
+<meta name="description" content="ロボットEOAT、グリッパー、真空カップ、ツールチェンジャー向けロータリージョイントの選定方法です。重量、真空回路の分離、回転角度、手首部への取付寸法を確認します。">
+
+
+
+<link rel="alternate" hreflang="en" href="https://www.begapunk.com/application-robot-end-of-arm-tooling.html">
+<link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/application-robot-end-of-arm-tooling.html">
+<link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html">
+<link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/application-robot-end-of-arm-tooling.html">
+<link rel="canonical" href="https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html">
+<meta property="og:title" content="ロボットEOAT向け空気圧ロータリージョイント | Begapunk">
+<meta property="og:description" content="ロボットEOATの空気圧ロータリージョイントを選ぶ方法。 ロボットの手首のための重量の限界、真空の分離、回転角度および密集した土台。">
+<meta property="og:url" content="https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ロボットEOATのための空気圧ロータリージョイント:選定ガイド">
+<meta name="twitter:description" content="ロボットEOAT、グリッパー、および真空システム用の空気圧ロータリージョイントを選ぶ方法。">
+<meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
+<link rel="stylesheet" href="../css/style.css?v=20260716-performance">
+<link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.begapunk.com/"},{"@type":"ListItem","position":2,"name":"Applications","item":"https://www.begapunk.com/applications.html"},{"@type":"ListItem","position":3,"name":"Robot EOAT","item":"https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html"}]},{"@type":"WebPage","name":"Air Rotary Union for Robot End-of-Arm Tooling","url":"https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html","description":"Application guide for pneumatic rotary joints used on robot end-of-arm tooling.","publisher":{"@id":"https://www.begapunk.com/#organization"},"about":["robot end-of-arm tooling","pneumatic rotary joint","robot gripper","vacuum rotary union","EOAT","industrial automation"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can a pneumatic rotary union prevent robot air hose twisting?","acceptedAnswer":{"@type":"Answer","text":"Yes. The rotary union lets compressed air or vacuum pass through the rotating axis, eliminating external hose twisting around the wrist or tooling plate. On a 6-axis robot with ±270° wrist rotation, external hoses fatigue and fail within 2–4 weeks. A rotary joint moves the air path through the axis, keeping hoses stationary and protected."}},{"@type":"Question","name":"Can air and vacuum be carried in the same rotary union?","acceptedAnswer":{"@type":"Answer","text":"Yes, but they must use separate, mechanically isolated passages. Positive pressure (0.4–0.7 MPa for grippers) and vacuum (-0.05 to -0.08 MPa for suction cups) cannot share a channel — even a small leak between them destroys gripper force and vacuum holding power. Begapunk multi-passage joints use independent seal assemblies for each channel."}},{"@type":"Question","name":"How much weight can a robot EOAT rotary union add?","acceptedAnswer":{"@type":"Answer","text":"For small robots (5–10 kg payload), the rotary union should weigh under 0.2 kg. For medium robots (20–50 kg payload), under 0.5 kg is acceptable. Every gram on the EOAT reduces the robot's effective payload capacity and increases cycle time. Begapunk BP-2P-0001 weighs 0.12 kg — suitable for most small-to-medium robot wrists."}},{"@type":"Question","name":"What rotation angle do robot wrist rotary unions need?","acceptedAnswer":{"@type":"Answer","text":"Most 6-axis robot wrists rotate ±180° to ±270°. A rotary union for robot EOAT does not need continuous 360° rotation — it needs reliable sealing across the full wrist travel range with low friction torque so the servo motor does not fight the joint. Begapunk joints are tested for ±360° oscillation at 30 cycles/minute to simulate real robot wrist motion."}},{"@type":"Question","name":"What is the most common mistake when selecting a robot EOAT rotary union?","acceptedAnswer":{"@type":"Answer","text":"The most common mistake is ignoring the weight limit. Engineers select a rotary joint based on pressure and passage count, then discover it weighs 0.8 kg — consuming 16% of a 5 kg robot's payload. The second most common error is routing vacuum and positive pressure through the same passage, causing gripper failure when vacuum leaks into the clamp circuit."}}]}],"inLanguage":"ja"}</script>
+    <script defer="" src="../js/analytics.js?v=20260715-1"></script>
+<meta property="og:locale" content="ja_JP"></head>
+<body>
+<header class="header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html" class="logo">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - 精密ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
+   </a>
+   <nav class="nav" id="mainNav">
+    <a href="index.html">ふるさと</a>
+    <div class="nav-dropdown">
+     <a href="products.html" class="nav-dropdown-toggle">製品情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="products.html">製品カタログ</a>
+      <a href="product-comparison.html">機種比較の特長</a>
+      <a href="contact.html">カスタム RFQの特長</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="applications.html" class="nav-dropdown-toggle active">用途の特長 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="applications.html">用途 の概要</a>
+      <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
+      <a href="application-packaging-machinery.html">包装の機械類</a>
+      <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
+      <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
+      <a href="application-robot-end-of-arm-tooling.html">ロボット EOAT</a>
+      <a href="application-pneumatic-tools-hose-anti-twist.html">空気圧工具の特長</a>
+      <a href="applications.html">もっと 用途</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="blog.html" class="nav-dropdown-toggle">ナレッジセンター <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="blog.html">テクニカルブログ</a>
+      <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
+      <a href="installation.html">インストールガイド</a>
+      <a href="faq.html">よくある質問</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="about.html" class="nav-dropdown-toggle">新着情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="about.html">工場について</a>
+      <a href="case-studies.html">事例紹介</a>
+     </div>
+    </div>
+    <a href="contact.html" class="nav-cta">見積もりを依頼の特長</a>
+   </nav>
+
+   <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ja">Language</label><select id="language-ja" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="../application-robot-end-of-arm-tooling.html">English</option><option value="../de/application-robot-end-of-arm-tooling.html">Deutsch</option><option value="application-robot-end-of-arm-tooling.html" selected="">日本語</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニュー">
+    <span></span><span></span><span></span>
+   </button>
+  </div>
+ </div>
+</header>
+
+<section class="app-hero"><div class="container"><div class="breadcrumb"><a href="index.html">ふるさと</a> / <a href="applications.html">用途の特長</a> / ロボットEOAT</div><h1>ロボットEOAT向け空気圧ロータリージョイント</h1><p>ロボットEOAT、グリッパー、真空カップ、およびツールチェンジャーのための空気圧ロータリージョイントを選ぶ方法:重量の限界、真空の分離、回転角度、密集した土台およびきれいなアセンブリ条件。 Begapunkの分野の経験の200,000+単位に基づく。</p><div class="app-hero-actions"><a href="contact.html" class="btn btn-primary">EOATのSpecsを送って下さい</a><a href="product-comparison.html" class="btn btn-secondary">モデルの比較</a></div></div></section>
+
+<section class="section"><div class="container"><div class="app-detail-intro"><div class="app-detail-copy"><span class="section-label">用途は合います</span><h2 class="section-title" style="text-align:left;">回転ロボットの手首のための密集した空気インターフェイス</h2><p style="font-size:0.9rem;color:var(--text-light);font-style:italic;margin-bottom:16px;"><strong>誰がこれのためにいるのか:</strong> ロボットインテグレータ、オートメーションエンジニア、EOAT 設計者は、6軸、SCARA、デルタロボット用の空気圧グリッパーと真空システムを構築します。</p><p>6軸のロボットでは、手首はあらゆるピック・アンド・プレース・サイクルで±180°〜±270°回転します。 エアホースが外部にルーティングされると、2〜4週間以内にねじれ、キンク、疲労が発生します。 シフト当たり500回をねじる真空ラインは、マイクロクラックを開発し、保持力を失い、部品を落とす。 フィクスチャーのスナッグがロボットをクラッシュし、バッチを掻くグリッパーエアライン。 コストはホースだけではありません。それは計画されていないダウンタイム、再プログラミング、そして機械に損傷を与える落とされた部分の危険です。</p><p>コンパクトな空気圧ロータリージョイントは、代わりに回転軸を介して空気経路を移動します。 静止した側面は機械の空気供給に短い、保護されたホースによって接続します。 回転側は、内部流路を介してグリッパーや真空カップに接続します。 ホースは決してねじれません。 グリップ力は安定しています。 そして、ロボットプログラマは、すべてのモーションパスでホース配管経路を管理する必要はありません。</p><p>しかし、ロボットEOATは、固定機械がそうでない制約を課します。 <strong>重量は重要なです</strong> — 0.5 kg ロータリージョイントの5 kgのペイロード ロボットは容量の10%を消費します。 <strong>封筒は堅いです</strong> — 手首は40 mmの放射状整理だけを持っているかもしれません。 <strong>清潔な問題</strong> — オイル汚染された空気は電子工学か食糧処理の部分を汚れます。 そして、 <strong>真空および肯定的な圧力は決して混合しないで下さい</strong> — チャネル間のリークは部品を落とし、グリッパーのタイミングを破壊します。 Begapunk のロボット EOAT 用途 の大きいのための記述 <strong>コンパクトロータリージョイント販売の18%</strong>、および最も頻繁な指定の間違いは重量および回転角度を無視している間だけ圧力によって選ぶです。</p></div><div class="app-detail-visual"><img src="../images/optimized/products/BP-3P-0004-1.webp" alt="ロボットEOATのための密集した多流路 空気圧ロータリージョイント" loading="lazy" width="500" height="500"><strong>典型的な条件</strong><span>ロボットのグリッパー、真空ツーリング、回転リスト、および空気圧工具チェンジャーのための密集した空気の移動 — 0.3 kgの下の重量、50 mmの直径の封筒。</span></div></div></div></section>
+
+<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">要点の特長</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;"><li>重量は、5 kgロボットの0.5 kgジョイントが10%のペイロードを食べている#1制約です。 小さなロボットのための0.2 kgの下で指定</li><li>真空および肯定的な圧力は別の、機械的に隔離された流路を使用しなければなりません —チャネルを共有しません</li><li>ロボットの手首は±180°から±270°に回ります —接合箇所は360°連続的な回転を必要としませんが、十分に旅行範囲を渡ってシール確実に必要とします</li><li>オイルフリーの空気は、クリーンなアセンブリ(電子機器、医療、食品)のために必須です。オイルフリーのコンプレッサーとポイントオブユースろ過を指定してください。</li><li>EOAT上のすべてのグラムは、サイクルタイムを増加させ、ペイロードを削減します - コンパクトなアルミニウムボディジョイントは40〜60%重量対を保存します。 スチール</li></ul></div></div></section>
+
+<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">典型的なロボットEOAT ロータリーユニオンのSpecs</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;"><li><strong>圧力:</strong> 0.4–0.7 MPa (gripper の作動)/-0.05 への -0.08 MPa (真空) — 連続的な義務のための 20% をderate</li><li><strong>回転数:</strong> &lt;200(手元回転) — 断続的な振動ではなく、連続360°</li><li><strong>流路:</strong> 2～4(グリッパー+真空+吹き出し+センサー空気)</li><li><strong>メディア:</strong> 乾燥したろ過された空気、真空 — きれいなアセンブリ(ISO 8573-1のクラス1.2.1かよりよい)のためのオイルなし</li><li><strong>土台:</strong> コンパクト フランジ か ねじ式 — リストの封筒(典型的に 30–50 mm の放射状整理)の中で合う必要があります</li><li><strong>中空径:</strong> 標準的なグリッパーのための4–8 mm;マイクロ部分および精密真空のための3–6 mm</li><li><strong>重量:</strong> &lt;0.2 kg は小型ロボット (5–10 kg のペイロード); 中型のロボットのための &lt;0.5 kg (20–50 kg のペイロード)</li><li><strong>回転角度:</strong> 実際のロボット手首の動きをシミュレートするために30サイクル/分で±360°振動のためにテストされる</li></ul></div></div></section>
+
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">エンジニアリングポイント</span><h2 class="section-title">ロボットEOATセレクションチェックリスト</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>1。 1。 重量およびペイロードの衝撃</h3><p>ロボットのペイロードの限界は厳しく、EOATアセンブリ–グリッパー、ロータリージョイント、ケーブルおよびブラケット全体を含んでいます。 すべてのグラムの問題:</p><ul><li><strong>小さいロボット(5–10 kgのペイロード):</strong> ロータリージョイント は、&lt;0.2 kg.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X.X 0.5 kgジョイントは、ペイロードの5〜10%を消費します。</li><li><strong>中型ロボット(20–50 kgのペイロード):</strong> 0.5 kgの下の接合箇所は受諾可能ですが、より軽いですよりよいです。</li><li><strong>大型ロボット (100 + kg のペイロード):</strong> 重量はあまり重要ではありませんが、手首のクリアランスのコンパクトな封筒はまだ問題です。</li></ul><p><strong>物質的な選択:</strong> アルミボディジョイント(例、 <a href="BP-2P-0001.html">BP-2P-0001の特長</a> で 0.12 kg) 保存 40–60% 体重対. 鋼鉄ボディ設計。 高サイクルラインでは、軽量化もロボットモーターの摩耗やエネルギー消費を削減します。</p></div><div class="app-detail-card"><h3>2。 真空および肯定的な圧力分離</h3><p>ロボットEOATは、真空(部品ピックアップ用)と正圧(グリッパー作動用またはブローオフ用)の両方を使用します。 これらは流路を共有してはならない:</p><ul><li><strong>真空チャネル:</strong> -0.05〜-0.08 MPa、専用シール材質(FKMまたはPTFEは、デューティサイクルに応じて)</li><li><strong>グリッパー チャネル:</strong> 0.4–0.7 MPaの独立したシールアセンブリ</li><li><strong>ブローオフ チャネル:</strong> 0.2–0.3 MPa、頻繁に脈打たれ–真空に後送りされないで下さい</li></ul><p><strong>漏出許容:</strong> グリッパーチャンネルから0.01 MPaリークしても、15～20%の保持力が低下します。 Begapunkの多流路の接合箇所は機械的に隔離されたシールアセンブリを使用します —各チャネルは完全で、独立したシーリング システムです。</p></div><div class="app-detail-card"><h3>3。 回転角度と摩擦トルク</h3><p>ロボットの手首は連続360°回転しません —それらは±180°から±270°に振動します。 ロータリージョイント は シール を最低の摩擦トルクのフル トラベル範囲を渡って確実に必要とします:</p><ul><li><strong>摩擦トルク:</strong> &lt;0.05 N・m 小さいロボット用 — 過剰なドラッグにより、サーボハンティングと位置誤差が発生します</li><li><strong>シールの設計:</strong> 低い摩擦 PTFE か特に振動義務のための組み立てられた FKM</li><li><strong>試験:</strong> ビーガパンクの接合箇所は ± のためにテストされます360°振動で 30 サイクル/分 500,000 実際のロボットの動きをシミュレートするサイクル</li></ul><p><strong>参考:</strong> ISO 9283(産業用ロボットの操作 — 性能基準と関連試験方法)は、EOATのアクセサリによって、手首の再現性が劣化してはならないと指摘しています。  では、0.1–0.3 mm 位置誤差を ツールセンターポイント で導入できます。</p></div></div></div></section>
+
+<section class="section"><div class="container"><div class="section-header"><span class="section-label">セレクションテーブル</span><h2 class="section-title">ロボットEOAT ロータリーユニオンの条件</h2></div><div class="app-detail-table-wrap"><table class="app-detail-table"><thead><tr><th>ロボット/ツーリングタイプ</th><th>共通の機能</th><th>選択の焦点</th><th>Begapunkの方向</th></tr></thead><tbody><tr><td>小型6軸ロボット(5–10 kgペイロード)</td><td>単一のグリッパーか真空のコップ</td><td>重量 &lt;0.2 kg、密集した封筒、低い摩擦トルク、2 流路</td><td><a href="BP-2P-0001.html">BP-2P-0001の特長</a> (0.12 kgの2 流路)</td></tr><tr><td>デュアルグリッパー付き中型ロボット(20–50 kgペイロード)</td><td>クランプ + リリース + 真空 + ブローオフ</td><td>3–4 流路の重量 &lt;0.5 kg、独立した真空 シール、フランジ取付</td><td><a href="BP-3P-0004.html">BP-3P-0004の特長</a> または <a href="BP-4P-30-0001.html">BP-4P-30-0001の特長</a></td></tr><tr><td>空気圧工具のチェンジャー</td><td>ロック、解放および用具の同一証明の空気</td><td>2–3 流路、高い信頼性、手首の統合のためのコンパクト</td><td><a href="BP-2P-0001.html">BP-2P-0001の特長</a> または カスタム 2P レイアウト</td></tr><tr><td>クリーンアセンブリ(電子機器、医療、食品)</td><td>油なしのグリッパーおよび真空</td><td>オイルフリーの空気の両立性、ステンレス鋼または陽極酸化されたアルミニウム ボディ、ISO 8573-1のクラス1.2.1</td><td><a href="BP-2P-0001.html">BP-2P-0001の特長</a> オイルフリーのシールオプションまたはカスタムクリーンルームデザイン</td></tr></tbody></table></div></div></section>
+
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">普通の間違い</span><h2 class="section-title">破壊的なロボットEOAT ロータリージョイントの3つの間違い</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>間違い1:体重制限を無視する</h3><p>エンジニアは、圧力(0.6 MPa)と流路カウント(3)に基づいてロータリージョイントを選択し、0.8 kgの重量を量ることを発見します。 5 kgペイロードロボットでは、容量の16%がなくなったため、グリッパーは5 kgではなく4.2 kgを扱うことができます。 お客さまが細胞を拒絶する。 <strong>ルール:</strong> 圧力を点検する前に重量を点検して下さい。 小さいロボットの場合、0.2 kg で指定します。 0.5 kgの下の媒体のロボットのため。 Begapunk BP-2P-0001は0.12 kgの重量を量ります - 最も小さいから中型の腕時計のために適した。</p></div><div class="app-detail-card"><h3>間違い2:同じ流路による配管経路の真空そして肯定的な圧力</h3><p>"gripper、真空、およびブローオフ" の3チャンネルジョイントが指定されますが、インテグレータは、流路 を保存するために、同じチャネルを介して真空およびブローオフをルーティングします。 結果:0.3 MPaの吹き出しの脈拍が、それは真空ラインに、時機を得た保持力を破壊する戻送りました。 部品の低下。 顧客はグリッパーを非難します。 <strong>ルール:</strong> あらゆる空気機能が独立した流路を得ます。 真空、正圧、およびブローオフは決してチャネルを共有しないで下さい。 流路の追加料金は、ドロップパーツのインシデントと比較して必須です。</p></div><div class="app-detail-card"><h3>間違い3:回転角度を検証しない 共同設計</h3><p>ロータリージョイントは、リターンスプリングで連続360°回転用に設計されています。 ±270° を振動させるロボット リストでは、スプリング ロードされた設計経験はあらゆる方向変更の逆のトルクを、シール の摩耗加速します。 3ヶ月以内に、ジョイントリークとグリッパーは力を失います。 <strong>ルール:</strong> 実際の回転パターンを指定する — 振動角度、サイクル速度、およびドウェル時間 — "360°回転" だけでなく、実際のロボットのモーションプロファイルにマッチする 30 サイクル/分で ±360° 振動のための Begapunk テストジョイント。</p></div></div></div></section>
+
+<section class="section"><div class="container"><div class="section-header"><span class="section-label">インストールノート</span><h2 class="section-title">ロボットEOAT ロータリーユニオンのための土台そして維持</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>密集した土台およびケーブル管理</h3><p>ロボットの手首は30–50 mmの放射状整理を持っています。 ロータリージョイントは、サーボケーブルや近接センサーを干渉することなく、この封筒の中に収まる必要があります。 ポートとは、手首のサーボから離れるフランジ取付は、ホース配管経路を簡素化し、干渉を削減することができます。 ロボットの手首の封筒と運動パスに対する最終的な方向を確認します。 ロボットアームに沿ってホースをルートし、手首の関節を横切っていません。 BegapunkはCAD干渉確認の3D STEPファイルを提供します — クリアランス、ポート方向、および回り止めブラケットの位置を注文する前にチェックします。</p></div><div class="app-detail-card"><h3>堅いスペースの回り止め</h3><p>回り止めブラケットは、手首で回転から静止したボディを防止します。 しかし、窮屈なEOATエンベロープでは、剛性ブラケットは、ロボットケーシングや近隣のセンサーに連絡することができます。 <strong>設計先端:</strong> 回転を防止しながら±3 mmの放射状浮遊物を可能にする適用範囲が広い回り止めリンク(例えば、短い鎖かばねによって荷を積まれるピン)を使用して下さい。 ジョイントシールを強調することなく手首の不整列を吸収します。</p></div><div class="app-detail-card"><h3>予防的な交換スケジュール</h3><p>ロボットのダウンタイムコスト $500〜$2,000 失われた生産で1時間あたり。 漏れを待ちません。 サイクルカウントに基づいてシール交換をスケジュール:</p><ul><li><strong>標準的な義務(8時間のシフト、30の周期/分):</strong> 標準的なロボットの義務のために、実際のサイクルカウント、手首の動き、ホース配管経路、ペイロード効果、旋回装置のトルク、漏出観察および点検記録から間隔を定めるため。</li><li><strong>高サイクルライン(24/7、60サイクル/分)</strong> 高サイクルロボットデューティーでは、蓄積されたサイクル、連続ランタイム、手首の動き、温度、トルクトレンド、漏れトレンド、および計画されたメンテナンスレコードから検査周波数を決定します。</li><li><strong>クリーン アセンブリ(電子工学、医学):</strong> 用途 のクリーン アセンブリのために、汚染制御プロシージャ、プロセス条件、操作周期、漏出観察および文書化された点検結果から間隔を置いて下さい。</li></ul><p>ロボットセルに交換用シールキットを保管してください。 とりあえず 10計画されたメンテナンス ウィンドウが打ち破る時のシール変更分 2-時間の非常停止。</p></div></div></div></section>
+
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">提案されたモデル</span><h2 class="section-title">おすすめのポイント</h2></div><div class="app-related-products"><a class="app-related-product" href="BP-2P-0001.html"><strong>BP-2P-0001の特長</strong><span>2 流路、0.12 kgの密集したフランジ取付、1.0 MPa。 単一グリッパーか真空のコップが付いている小さいロボット リストのため。</span></a><a class="app-related-product" href="BP-3P-0004.html"><strong>BP-3P-0004の特長</strong><span>3 流路、フランジ取付の密集したボディ。 デュアルグリップまたはグリッパー+真空+ブローオフレイアウト用。</span></a><a class="app-related-product" href="BP-4P-30-0001.html"><strong>BP-4P-30-0001の特長</strong><span>4 流路、30 mm - 中空径、フランジ取付。 複雑なEOATは4つの独立した空気機能を備えています。</span></a><a class="app-related-product" href="BP-3P-S06-0001.html"><strong>BP-3P-S06-0001の特長</strong><span>3空気流路 + 6 電気回路。 センサー装備のEOATのために空気電気統合を必要とします。</span></a><a class="app-related-product" href="BP-2P-95-0001.html"><strong>BP-2P-95-0001の特長</strong><span>2 流路、PTFE シールの低い摩擦トルク。 高サイクルロボットの手首には、振動義務があります。</span></a><a class="app-related-product" href="contact.html"><strong>カスタムEOAT設計の特長</strong><span>特別な手首の封筒、用具のチェンジャーの統合、クリーンルームの条件、または結合された空気+信号のレイアウトのため。</span></a></div></div></section>
+
+<section class="section"><div class="container"><div class="app-detail-cta"><div><h2>ロボットEOATの設計か。</h2><p>ロボットのモデル、ペイロード、手首の封筒、グリッパーのタイプ、圧力、回転角度および周期率を送って下さい。 Begapunkは3D干渉確認の標準的なモデルか設計カスタムの密集したレイアウトを選ぶのを助けることができます。</p></div><a href="contact.html" class="btn btn-primary">リクエスト EOAT 選択</a></div></div></section>
+
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">よくある質問</span><h2 class="section-title">ロボットEOAT ロータリーユニオンの質問</h2></div><div class="app-faq-list"><div class="app-faq-item"><h3>空気圧ロータリージョイントはロボットエアホースのねじれを防ぐことができますか。</h3><p>はい。 ロータリーユニオンは回転軸を通した圧縮空気か真空のパスを可能にしましたり、手首か工具細工の版のまわりでねじる外的なホースを除去します。 ±270° の手首の回転の 6 軸ロボットでは、外的なホースの疲労は 2–4 週以内に失敗します。 ロータリージョイントは軸線を通って空気道を動かし、ホースを静止し、保護します。</p></div><div class="app-faq-item"><h3>同じロータリーユニオンで空気および真空は運ばれますか。</h3><p>はい、機械的に分離された流路を使用して下さい。 正圧(Grippers用0.4–0.7 MPa)と真空(-0.05〜-0.08 MPa)は、チャネルを共有できません。これにより、グリッパーの力と真空保持力が破壊されます。 Begapunkの多流路の接合箇所は各チャネルのための独立したシールアセンブリを使用します。</p></div><div class="app-faq-item"><h3>ロボットEOAT ロータリーユニオンはどのくらいの重量を量ることができますか?</h3><p>小さいロボット(5–10 kgのペイロード)のために、ロータリーユニオンは0.2 kgの下で重量を量るべきです。 中型ロボット(20–50 kgペイロード)の場合、0.5 kgの下の許容値です。 EOATのすべてのグラムは、ロボットの有効なペイロード容量を減らし、サイクル時間を増加させます。 Begapunk BP-2P-0001は0.12 kgの重量を量ります–ほとんどの小型に中型のロボット手首のために適した。</p></div><div class="app-faq-item"><h3>ロボットの手首ロータリーユニオンの必要性の回転角度は何ですか。</h3><p>ほとんどの6軸ロボットの手首は±180°から±270°に回ります。 ロボットEOATのロータリーユニオンは連続360°回転を必要としません — それは低い摩擦トルクのフル リスト旅行範囲を渡る信頼できるシーリングを必要とします従ってサーボ モーターは接合箇所を戦いません。 Begapunkの接合箇所は実際のロボット手首の動きをシミュレートするために30周期/minuteの±360°振動のためにテストされます。</p></div><div class="app-faq-item"><h3>ロボットEOAT ロータリーユニオンを選ぶときの最も一般的な間違いは何ですか?</h3><p>最も一般的な間違いは、重量制限を無視しています。 エンジニアは、圧力と流路カウントに基づいてロータリージョイントを選択し、0.8 kgの重量を量ることを発見し、5 kgロボットのペイロードの16%を消費します。 第2の最も一般的なエラーは、配管経路真空と同じ流路を介して正圧であり、クランプ回路に真空漏れた場合、グリッパーの故障を引き起こします。</p></div></div></div></section>
+
+<section class="section"><div class="container"><div class="section-header"><span class="section-label">関連するリソース</span><h2 class="section-title">続きを読みます 読書</h2></div><div class="app-related-products"><a class="app-related-product" href="blog-rotary-joint-selection.html"><strong>空気圧ロータリージョイントを選ぶ方法</strong><span>チャンネルカウント、圧力、RPM、メディアの互換性、マウントタイプを防止する5つのパラメータ。</span></a><a class="app-related-product" href="blog-rotary-joint-installation-mistakes.html"><strong>7 初期の失敗を引き起こすインストールの間違い</strong><span>過密化、堅い配管、スキップされたランイン、および間違ったろ過 —保証クレームの60%の根本原因。</span></a><a class="app-related-product" href="blog-rotary-joint-leaking.html"><strong>ロータリージョイントリーク? 診断フローチャート</strong><span>系統的なトラブルシューティング:シールを取り替える前に圧力、RPM、シール材質および空気の質を点検して下さい。</span></a><a class="app-related-product" href="installation.html"><strong>インストールガイド</strong><span>手順別 取り付け、接続、トルク仕様とチェックリストのメンテナンス手順。</span></a></div></div></section>
+
+<section class="section section-alt"><div class="container"><p style="font-size:0.85rem;color:var(--text-light);text-align:center;"><strong>技術的なノート:</strong> この記事で参照されるすべての圧力仕様、重量の指定およびRPMデータはBegapunk BPシリーズ標準空気圧ロータリージョイントに基づいています。 実際の性能は、ロボットモデル、動作条件、メンテナンス慣行によって異なります。 用途の外で標準仕様のために、指定の前に技術部門に相談して下さい。 <strong>最終更新日:</strong> 2026年6月11日</p></div></section>
+
+<footer class="footer">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <div class="logo">
+     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunkの特長" style="height:40px;width:auto;" loading="lazy" width="226" height="40">
+    </div>
+    <p>精密 ロータリージョイント メーカー、寧波、中国。 2010年以来、世界中の産業オートメーションOEMおよび機械の建築業者にサービスを提供しています。</p>
+    <div class="contact-line">✉ <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.comの特長</a></div>
+    <div class="contact-line">☎ <a href="tel:+8618368425342" style="color:rgba(255,255,255,0.7);">+86 183 6842 5342</a></div>
+   </div>
+   <div>
+    <h4 class="footer-title">製品情報</h4>
+    <div class="footer-links">
+     <a href="products.html">製品カタログ</a>
+     <a href="product-comparison.html">機種比較の特長</a>
+     <a href="contact.html">カスタム RFQの特長</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">用途の特長</h4>
+    <div class="footer-links">
+     <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
+     <a href="application-packaging-machinery.html">包装の機械類</a>
+     <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
+     <a href="application-cnc-pneumatic-clamping.html">CNC空気の締め金で止めること</a>
+     <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
+     <a href="application-steel-dusty-environments.html">ほこりの環境</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">ナレッジセンター</h4>
+    <div class="footer-links">
+     <a href="blog.html">テクニカルブログ</a>
+     <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
+     <a href="installation.html">インストールガイド</a>
+     <a href="faq.html">よくある質問</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">会社案内</h4>
+    <div class="footer-links">
+     <a href="about.html">工場について</a>
+     <a href="case-studies.html">事例紹介</a>
+     <a href="contact.html">コンタクト</a>
+    </div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <p>2018年12月12日 2026 Begapunkの精密回転式接合箇所の製造業者。 スタッフ募集中!</p>
+   <div class="footer-legal">
+    <a href="privacy.html">スタッフ紹介</a>
+    <a href="terms.html">利用条件</a>
+   </div>
+  </div>
+ </div>
+</footer>
+<div class="floating-cta"><a href="contact.html" class="floating-btn quote">見積もりを依頼の特長</a><a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsAppについて</a></div>
+<script>const mobileToggle=document.getElementById('mobileToggle');const mainNav=document.getElementById('mainNav');if(mobileToggle&&mainNav){mobileToggle.addEventListener('click',()=>{mainNav.classList.toggle('mobile-open');});}</script>
+
+</body></html>

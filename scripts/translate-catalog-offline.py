@@ -32,6 +32,16 @@ PROTECTED_VALUE_PATTERN = re.compile(
     r"|\b\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:rpm|MPa|kPa|psi|bar|mm|cm|kg|g|°C|°F)\b",
     re.IGNORECASE,
 )
+NUMBER_PATTERN = re.compile(r"\d+(?:[.,]\d+)*")
+
+
+def placeholder_code(index: int) -> str:
+    letters = []
+    value = index
+    for _ in range(4):
+        letters.append(chr(ord("A") + (value % 26)))
+        value //= 26
+    return "".join(reversed(letters))
 
 
 def load_json(path: Path) -> dict:
@@ -49,22 +59,31 @@ def replace_preferred_terms(
     text: str,
     preferred_terms: dict[str, str],
     protected_terms: Iterable[str],
-) -> str:
+) -> tuple[str, list[tuple[str, str]]]:
     result = text
+    replacements: list[tuple[str, str]] = []
     protected_exact = set(protected_terms)
+
+    def replace(match: re.Match[str], target: str) -> str:
+        if match.group(0) in protected_exact:
+            return match.group(0)
+        token = f"ZYQ{placeholder_code(len(replacements))}ZY"
+        replacements.append((token, target))
+        return token
+
     for source, target in sorted(preferred_terms.items(), key=lambda item: len(item[0]), reverse=True):
         result = term_pattern(source).sub(
-            lambda match: match.group(0) if match.group(0) in protected_exact else target,
+            lambda match, replacement=target: replace(match, replacement),
             result,
         )
-    return result
+    return result, replacements
 
 
 def protect_values(text: str, protected_terms: Iterable[str]) -> tuple[str, list[tuple[str, str]]]:
     replacements: list[tuple[str, str]] = []
 
     def replace(match: re.Match[str]) -> str:
-        token = f"ZXQ{len(replacements):04d}ZX"
+        token = f"ZXQ{placeholder_code(len(replacements))}ZX"
         replacements.append((token, match.group(0)))
         return token
 
@@ -77,6 +96,8 @@ def protect_values(text: str, protected_terms: Iterable[str]) -> tuple[str, list
 def restore_values(text: str, replacements: list[tuple[str, str]]) -> str:
     result = text
     for token, value in replacements:
+        while result.count(token) > 1:
+            result = result.replace(token, "", 1)
         result = result.replace(token, value)
     return result
 
@@ -158,6 +179,26 @@ def main() -> None:
         default=[],
         help="Retranslate cached entries whose English source matches this regular expression. May be repeated.",
     )
+    parser.add_argument(
+        "--refresh-placeholders",
+        action="store_true",
+        help="Retranslate cached entries containing damaged placeholder residue.",
+    )
+    parser.add_argument(
+        "--raw-model",
+        action="store_true",
+        help="Skip terminology/value placeholders for the entries being translated.",
+    )
+    parser.add_argument(
+        "--refresh-numbers",
+        action="store_true",
+        help="Retranslate cached entries that no longer contain every source number.",
+    )
+    parser.add_argument(
+        "--literal-numbers",
+        action="store_true",
+        help="Keep numbers outside the model and translate only the surrounding text.",
+    )
     parser.add_argument("--batch-size", type=int, default=max(8, min(64, (os.cpu_count() or 4) * 2)))
     args = parser.parse_args()
 
@@ -186,6 +227,12 @@ def main() -> None:
             return False
         if entry["id"] not in existing_translations:
             return True
+        if args.refresh_placeholders and re.search(r"(?:ZY|ZX|ザイQ)", existing_translations[entry["id"]]):
+            return True
+        if args.refresh_numbers:
+            translated = existing_translations[entry["id"]]
+            if any(value not in translated for value in set(NUMBER_PATTERN.findall(entry["source"]))):
+                return True
         return any(pattern.search(entry["source"]) for pattern in refresh_patterns)
 
     pending_entries = [entry for entry in catalog["entries"] if needs_translation(entry)]
@@ -209,18 +256,39 @@ def main() -> None:
         else:
             plain_sources.add(html.unescape(source))
 
-    jobs: dict[str, tuple[str, str, list[tuple[str, str]], list[str]]] = {}
+    jobs: dict[str, list[tuple[str, str, str, list[tuple[str, str]], list[str]]]] = {}
     all_chunks: list[str] = []
     for source in sorted(plain_sources):
-        leading = re.match(r"^\s*", source).group(0)
-        trailing = re.search(r"\s*$", source).group(0)
-        body_end = len(source) - len(trailing) if trailing else len(source)
-        body = source[len(leading):body_end]
-        prepared = replace_preferred_terms(body, preferred_terms, glossary.get("protectedTerms", []))
-        protected, replacements = protect_values(prepared, glossary.get("protectedTerms", []))
-        chunks = split_for_model(protected, tokenizer)
-        jobs[source] = (leading, trailing, replacements, chunks)
-        all_chunks.extend(chunks)
+        parts: list[tuple[str, str, str, list[tuple[str, str]], list[str]]] = []
+        pieces = re.split(f"({NUMBER_PATTERN.pattern})", source) if args.literal_numbers else [source]
+        for piece in pieces:
+            if not piece:
+                continue
+            if args.literal_numbers and NUMBER_PATTERN.fullmatch(piece):
+                parts.append(("literal", piece, "", [], []))
+                continue
+            leading = re.match(r"^\s*", piece).group(0)
+            trailing = re.search(r"\s*$", piece).group(0)
+            body_end = len(piece) - len(trailing) if trailing else len(piece)
+            body = piece[len(leading):body_end]
+            if not body:
+                parts.append(("literal", piece, "", [], []))
+                continue
+            if args.raw_model:
+                protected = body
+                replacements = []
+                term_replacements = []
+            else:
+                prepared, term_replacements = replace_preferred_terms(
+                    body,
+                    preferred_terms,
+                    glossary.get("protectedTerms", []),
+                )
+                protected, replacements = protect_values(prepared, glossary.get("protectedTerms", []))
+            chunks = split_for_model(protected, tokenizer)
+            parts.append(("model", leading, trailing, [*replacements, *term_replacements], chunks))
+            all_chunks.extend(chunks)
+        jobs[source] = parts
 
     translated_chunks: dict[str, str] = {}
     unique_chunks = list(dict.fromkeys(all_chunks))
@@ -239,9 +307,15 @@ def main() -> None:
         print(f"Translated {completed}/{len(unique_chunks)} text segments.", flush=True)
 
     plain_translations: dict[str, str] = {}
-    for source, (leading, trailing, replacements, chunks) in jobs.items():
-        translated = " ".join(translated_chunks[chunk] for chunk in chunks)
-        plain_translations[source] = f"{leading}{restore_values(translated, replacements)}{trailing}"
+    for source, parts in jobs.items():
+        translated_parts: list[str] = []
+        for kind, leading_or_value, trailing, replacements, chunks in parts:
+            if kind == "literal":
+                translated_parts.append(leading_or_value)
+                continue
+            translated = " ".join(translated_chunks[chunk] for chunk in chunks)
+            translated_parts.append(f"{leading_or_value}{restore_values(translated, replacements)}{trailing}")
+        plain_translations[source] = "".join(translated_parts)
 
     translations: dict[str, str] = {}
     for entry in catalog["entries"]:
@@ -262,7 +336,7 @@ def main() -> None:
     payload = {
         "language": args.language,
         "generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-        "engine": "local-ctranslate2-argos-en_de-1_3",
+        "engine": f"local-ctranslate2-argos-{args.model_root.name.removeprefix('translate-')}",
         "translations": translations,
     }
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
