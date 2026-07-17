@@ -8,6 +8,8 @@ const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
 const config = JSON.parse(await fs.readFile(path.join(i18nRoot, 'config.json'), 'utf8'));
 const glossary = JSON.parse(await fs.readFile(path.join(i18nRoot, 'glossary.json'), 'utf8'));
+const activeLanguageCodes = new Set(config.activeLanguageCodes || config.languages.map((language) => language.code));
+const activeLanguages = config.languages.filter((language) => activeLanguageCodes.has(language.code));
 const mode = process.argv[process.argv.indexOf('--mode') + 1] || 'extract';
 const catalogPath = path.join(i18nRoot, 'source-catalog.json');
 const cacheRoot = process.env.I18N_CACHE_ROOT
@@ -238,7 +240,7 @@ async function translateCatalog(catalog) {
     throw new Error('GOOGLE_CLOUD_TRANSLATION_API_KEY is not set. The key must be supplied through the process environment.');
   }
   await fs.mkdir(cacheRoot, { recursive: true });
-  for (const language of config.languages) {
+  for (const language of activeLanguages) {
     const cachePath = path.join(cacheRoot, `${language.code}.json`);
     let cache = { language: language.code, generatedAt: null, translations: {} };
     try {
@@ -297,7 +299,7 @@ function updateJsonLd($, languageCode, pageName) {
 function injectAlternateLinks($, currentLanguage, pageName) {
   $('link[rel="alternate"][hreflang]').remove();
   const canonical = $('link[rel="canonical"]').first();
-  const links = [config.sourceLanguage, ...config.languages]
+  const links = [config.sourceLanguage, ...activeLanguages]
     .map((language) => `<link rel="alternate" hreflang="${language.code}" href="${pageUrl(language.code, pageName)}">`)
     .concat(`<link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}">`)
     .join('\n');
@@ -307,7 +309,7 @@ function injectAlternateLinks($, currentLanguage, pageName) {
 
 function injectLanguageSwitcher($, currentLanguage, pageName) {
   $('.i18n-switcher').remove();
-  const languages = [config.sourceLanguage, ...config.languages];
+  const languages = [config.sourceLanguage, ...activeLanguages];
   const options = languages.map((language) => {
     const selected = language.code === currentLanguage ? ' selected' : '';
     return `<option value="${pageUrl(language.code, pageName)}"${selected}>${language.label}</option>`;
@@ -361,17 +363,17 @@ function applyTranslations(page, language, catalog, cache) {
     $(element).attr('srcset', localized);
   });
 
-  $('form').each((_, form) => {
-    $(form).find('input[name="source_language"]').remove();
+  $('form input[name="source_language"]').remove();
+  $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
     $(form).prepend(`<input type="hidden" name="source_language" value="${language.code}">`);
   });
   updateJsonLd($, language.code, pageName);
-  return $.html();
+  return $.html().replace(/[ \t]+$/gm, '');
 }
 
 async function buildLocalizedPages(catalog) {
   const pages = await loadPages();
-  for (const language of config.languages) {
+  for (const language of activeLanguages) {
     const cachePath = path.join(cacheRoot, `${language.code}.json`);
     const cache = JSON.parse(await fs.readFile(cachePath, 'utf8'));
     const missingCount = catalog.entries.filter((entry) => !cache.translations[entry.id]).length;
@@ -390,14 +392,14 @@ async function buildLocalizedPages(catalog) {
 }
 
 function alternateMarkup(pageName) {
-  return [config.sourceLanguage, ...config.languages]
+  return [config.sourceLanguage, ...activeLanguages]
     .map((language) => `<link rel="alternate" hreflang="${language.code}" href="${pageUrl(language.code, pageName)}">`)
     .concat(`<link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}">`)
     .join('\n');
 }
 
 function switcherMarkup(currentLanguage, pageName) {
-  const options = [config.sourceLanguage, ...config.languages].map((language) => {
+  const options = [config.sourceLanguage, ...activeLanguages].map((language) => {
     const selected = language.code === currentLanguage ? ' selected' : '';
     return `<option value="${pageUrl(language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
@@ -418,8 +420,9 @@ async function integrateEnglishPages() {
     if (!/<button\s+class=["']mobile-toggle["']/i.test(html)) throw new Error(`${pageName}: mobile navigation toggle is missing.`);
     html = html.replace(/(<button\s+class=["']mobile-toggle["'])/i, `${switcher}\n   $1`);
     html = html.replace(/<input\s+type=["']hidden["']\s+name=["']source_language["'][^>]*>\s*/gi, '');
-    if (/<form\b/i.test(html)) {
-      html = html.replace(/(<form\b[^>]*>)/i, `$1\n<input type="hidden" name="source_language" value="${config.sourceLanguage.code}">`);
+    const inquiryFormPattern = /(<form\b(?=[^>]*(?:\bid=["']quoteForm["']|\baction=["'][^"']*send_inquiry\.php[^"']*["']))[^>]*>)/i;
+    if (inquiryFormPattern.test(html)) {
+      html = html.replace(inquiryFormPattern, `$1\n<input type="hidden" name="source_language" value="${config.sourceLanguage.code}">`);
     }
     await fs.mkdir(path.dirname(filePath), { recursive: true });
     await fs.writeFile(filePath, html, 'utf8');
@@ -429,9 +432,9 @@ async function integrateEnglishPages() {
 async function writeInternationalSitemap() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [];
-  for (const language of [config.sourceLanguage, ...config.languages]) {
+  for (const language of [config.sourceLanguage, ...activeLanguages]) {
     for (const pageName of config.pages) {
-      const alternates = [config.sourceLanguage, ...config.languages]
+      const alternates = [config.sourceLanguage, ...activeLanguages]
         .map((candidate) => `    <xhtml:link rel="alternate" hreflang="${candidate.code}" href="${pageUrl(candidate.code, pageName)}" />`)
         .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}" />`)
         .join('\n');
@@ -449,7 +452,7 @@ async function writeInternationalSitemap() {
 }
 
 async function integrateLocalizedSite() {
-  for (const language of config.languages) {
+  for (const language of activeLanguages) {
     for (const pageName of config.pages) {
       await fs.access(path.join(outputRoot, language.code, pageName));
     }
@@ -457,7 +460,7 @@ async function integrateLocalizedSite() {
   await integrateEnglishPages();
   await writeInternationalSitemap();
   console.log(`Integrated hreflang and language switching into ${config.pages.length} English pages.`);
-  console.log(`Generated sitemap-i18n.xml for ${(config.languages.length + 1) * config.pages.length} URLs.`);
+  console.log(`Generated sitemap-i18n.xml for ${(activeLanguages.length + 1) * config.pages.length} URLs.`);
 }
 
 const pages = await loadPages();

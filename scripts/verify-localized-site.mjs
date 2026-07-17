@@ -4,6 +4,8 @@ import { load } from 'cheerio';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
+const activeLanguageCodes = new Set(config.activeLanguageCodes || config.languages.map((language) => language.code));
+const activeLanguages = config.languages.filter((language) => activeLanguageCodes.has(language.code));
 const localizedRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
@@ -46,7 +48,7 @@ function pageUrl(languageCode, pageName) {
   return `${config.siteUrl}/${languageCode}/${suffix}`;
 }
 
-const verifiedLanguages = [config.sourceLanguage, ...config.languages];
+const verifiedLanguages = [config.sourceLanguage, ...activeLanguages];
 for (const language of verifiedLanguages) {
   for (const pageName of config.pages) {
     const filePath = language.code === config.sourceLanguage.code
@@ -64,12 +66,12 @@ for (const language of verifiedLanguages) {
     if ($('html').attr('lang') !== language.code) failures.push(`${language.code}/${pageName}: incorrect html lang.`);
     if ($('link[rel="canonical"]').attr('href') !== pageUrl(language.code, pageName)) failures.push(`${language.code}/${pageName}: incorrect canonical.`);
     const alternates = new Map($('link[rel="alternate"][hreflang]').map((_, element) => [[$(element).attr('hreflang'), $(element).attr('href')]]).get());
-    for (const candidate of [config.sourceLanguage, ...config.languages]) {
+    for (const candidate of [config.sourceLanguage, ...activeLanguages]) {
       if (alternates.get(candidate.code) !== pageUrl(candidate.code, pageName)) failures.push(`${language.code}/${pageName}: incorrect ${candidate.code} hreflang.`);
     }
     if (alternates.get('x-default') !== pageUrl(config.sourceLanguage.code, pageName)) failures.push(`${language.code}/${pageName}: incorrect x-default hreflang.`);
     if (!$('.i18n-switcher select').length) failures.push(`${language.code}/${pageName}: language switcher is missing.`);
-    $('form').each((_, form) => {
+    $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
       if ($(form).find('input[name="source_language"]').attr('value') !== language.code) failures.push(`${language.code}/${pageName}: source_language is missing or incorrect.`);
     });
     $('script[type="application/ld+json"]').each((_, element) => {

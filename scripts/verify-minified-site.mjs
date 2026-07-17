@@ -77,7 +77,7 @@ function extractReferences(text) {
   const markupOnly = text
     .replace(/<script\b([^>]*)>[\s\S]*?<\/script>/gi, '<script$1></script>')
     .replace(/<style\b([^>]*)>[\s\S]*?<\/style>/gi, '<style$1></style>');
-  const attributeExpression = /\b(?:href|src|poster|action)=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
+  const attributeExpression = /(?:^|\s)(?:href|src|poster|action)=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
   for (const match of markupOnly.matchAll(attributeExpression)) {
     references.push(match[1] || match[2] || match[3] || '');
   }

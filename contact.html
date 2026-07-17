@@ -48,7 +48,10 @@
 
  
 
- <link rel="canonical" href="https://www.begapunk.com/contact.html">
+ <link rel="alternate" hreflang="en" href="https://www.begapunk.com/contact.html">
+<link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/contact.html">
+<link rel="canonical" href="https://www.begapunk.com/contact.html">
 
  <link rel="stylesheet" href="css/style.css?v=20260716-performance">
  <link rel="stylesheet" href="css/contact-rfq.css">
@@ -214,6 +217,7 @@
     </div>
     <a href="contact.html" class="nav-cta active">Get a Quote</a>
    </nav>
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-en">Language</label><select id="language-en" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="https://www.begapunk.com/contact.html" selected>English</option><option value="https://www.begapunk.com/de/contact.html">Deutsch</option></select></div>
    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <span></span><span></span><span></span>
    </button>
@@ -351,9 +355,8 @@
    </div>
    <div class="bp-rfq-form-body">
 <form id="quoteForm" method="POST" enctype="multipart/form-data" onsubmit="return false;">
-
-<input type="hidden" name="redirect" value="https://www.begapunk.com/thank-you.html">
 <input type="hidden" name="source_language" value="en">
+<input type="hidden" name="redirect" value="https://www.begapunk.com/thank-you.html">
 <input type="hidden" id="inquiry_type" name="inquiry_type" value="">
 <input type="hidden" id="source_model" name="source_model" value="">
 <input type="hidden" id="source_product" name="source_product" value="">
