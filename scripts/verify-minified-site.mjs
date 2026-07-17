@@ -19,6 +19,7 @@ const stats = {
   htmlFiles: 0,
   jsonLdBlocks: 0,
   localReferences: 0,
+  searchIndexes: 0,
   cssFiles: 0,
   jsFiles: 0,
 };
@@ -173,6 +174,24 @@ for (const name of outputHtmlFiles) {
 
   for (const reference of extractReferences(output)) {
     await verifyReference(reference, path.dirname(path.join(siteRoot, name)), name);
+  }
+}
+
+const localizedDirectories = [...new Set(
+  sourceHtmlFiles
+    .map((relativePath) => path.dirname(relativePath))
+    .filter((directory) => directory !== '.'),
+)];
+for (const directory of ['.', ...localizedDirectories]) {
+  const relativePath = path.join(directory, 'search-index.json');
+  try {
+    const sourceIndex = JSON.parse(await fs.readFile(path.join(sourceRoot, relativePath), 'utf8'));
+    const outputIndex = JSON.parse(await fs.readFile(path.join(siteRoot, relativePath), 'utf8'));
+    stats.searchIndexes += 1;
+    if (!Array.isArray(sourceIndex) || !sourceIndex.length) fail(`${relativePath}: source search index is empty.`);
+    if (JSON.stringify(sourceIndex) !== JSON.stringify(outputIndex)) fail(`${relativePath}: search index content changed.`);
+  } catch (error) {
+    fail(`${relativePath}: search index is missing or invalid (${error.message}).`);
   }
 }
 

@@ -89,6 +89,8 @@ for (const language of verifiedLanguages) {
     }
     $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
       if ($(form).find('input[name="source_language"]').attr('value') !== language.code) failures.push(`${language.code}/${pageName}: source_language is missing or incorrect.`);
+      const redirect = $(form).find('input[name="redirect"]').attr('value');
+      if (redirect && redirect !== pageUrl(language.code, 'thank-you.html')) failures.push(`${language.code}/${pageName}: localized form redirect is incorrect.`);
     });
     $('script[type="application/ld+json"]').each((_, element) => {
       try {
@@ -105,6 +107,16 @@ for (const language of verifiedLanguages) {
     for (const option of $('.i18n-switcher option[value]').toArray()) {
       await verifyLocalReference($(option).attr('value'), filePath);
     }
+  }
+}
+
+for (const language of activeLanguages) {
+  const searchIndexPath = path.join(localizedRoot, language.code, 'search-index.json');
+  try {
+    const searchIndex = JSON.parse(await fs.readFile(searchIndexPath, 'utf8'));
+    if (!Array.isArray(searchIndex) || !searchIndex.length) failures.push(`${language.code}/search-index.json: index is empty.`);
+  } catch (error) {
+    failures.push(`${language.code}/search-index.json: missing or invalid (${error.message}).`);
   }
 }
 

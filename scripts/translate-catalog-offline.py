@@ -45,10 +45,18 @@ def term_pattern(term: str) -> re.Pattern[str]:
     return re.compile(escaped, re.IGNORECASE)
 
 
-def replace_preferred_terms(text: str, preferred_terms: dict[str, str]) -> str:
+def replace_preferred_terms(
+    text: str,
+    preferred_terms: dict[str, str],
+    protected_terms: Iterable[str],
+) -> str:
     result = text
+    protected_exact = set(protected_terms)
     for source, target in sorted(preferred_terms.items(), key=lambda item: len(item[0]), reverse=True):
-        result = term_pattern(source).sub(lambda _match: target, result)
+        result = term_pattern(source).sub(
+            lambda match: match.group(0) if match.group(0) in protected_exact else target,
+            result,
+        )
     return result
 
 
@@ -143,6 +151,13 @@ def main() -> None:
     parser.add_argument("--glossary", type=Path, default=ROOT / "i18n" / "glossary.json")
     parser.add_argument("--overrides", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--force", action="store_true", help="Retranslate entries already present in the cache.")
+    parser.add_argument(
+        "--refresh-pattern",
+        action="append",
+        default=[],
+        help="Retranslate cached entries whose English source matches this regular expression. May be repeated.",
+    )
     parser.add_argument("--batch-size", type=int, default=max(8, min(64, (os.cpu_count() or 4) * 2)))
     args = parser.parse_args()
 
@@ -158,12 +173,34 @@ def main() -> None:
 
     output = args.output or ROOT / "i18n" / "cache" / f"{args.language}.json"
     output.parent.mkdir(parents=True, exist_ok=True)
+    existing_translations: dict[str, str] = {}
+    if output.exists() and not args.force:
+        existing_cache = load_json(output)
+        if existing_cache.get("language") != args.language:
+            raise SystemExit(f"Existing cache language does not match {args.language}: {output}")
+        existing_translations = existing_cache.get("translations", {})
+    refresh_patterns = [re.compile(pattern, re.IGNORECASE) for pattern in args.refresh_pattern]
+
+    def needs_translation(entry: dict) -> bool:
+        if entry["source"] in overrides:
+            return False
+        if entry["id"] not in existing_translations:
+            return True
+        return any(pattern.search(entry["source"]) for pattern in refresh_patterns)
+
+    pending_entries = [entry for entry in catalog["entries"] if needs_translation(entry)]
+    pending_ids = {entry["id"] for entry in pending_entries}
+    print(
+        f"Reusing {len(catalog['entries']) - len(pending_entries)} existing or manually overridden entries; "
+        f"translating {len(pending_entries)} new entries.",
+        flush=True,
+    )
     tokenizer = spm.SentencePieceProcessor(model_file=str(args.model_root / "sentencepiece.model"))
     translator = ctranslate2.Translator(str(args.model_root / "model"), device="cpu", compute_type="int8")
 
     plain_sources: set[str] = set()
     parsed_fragments: dict[str, lxml_html.HtmlElement] = {}
-    for entry in catalog["entries"]:
+    for entry in pending_entries:
         source = entry["source"]
         if HTML_TAG_PATTERN.search(source):
             wrapper, values = fragment_texts(source, translated_attributes)
@@ -179,7 +216,7 @@ def main() -> None:
         trailing = re.search(r"\s*$", source).group(0)
         body_end = len(source) - len(trailing) if trailing else len(source)
         body = source[len(leading):body_end]
-        prepared = replace_preferred_terms(body, preferred_terms)
+        prepared = replace_preferred_terms(body, preferred_terms, glossary.get("protectedTerms", []))
         protected, replacements = protect_values(prepared, glossary.get("protectedTerms", []))
         chunks = split_for_model(protected, tokenizer)
         jobs[source] = (leading, trailing, replacements, chunks)
@@ -211,6 +248,9 @@ def main() -> None:
         source = entry["source"]
         if source in overrides:
             translations[entry["id"]] = overrides[source]
+            continue
+        if entry["id"] in existing_translations and entry["id"] not in pending_ids:
+            translations[entry["id"]] = existing_translations[entry["id"]]
             continue
         if source in parsed_fragments:
             wrapper = parsed_fragments[source]

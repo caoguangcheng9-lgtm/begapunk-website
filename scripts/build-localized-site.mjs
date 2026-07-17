@@ -374,12 +374,53 @@ function applyTranslations(page, language, catalog, cache) {
     $(element).attr('srcset', localized);
   });
 
+  $('input[name="redirect"][value]').each((_, element) => {
+    const value = $(element).attr('value');
+    try {
+      const redirectUrl = new URL(value);
+      const redirectPage = redirectUrl.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
+      if (redirectUrl.origin === new URL(config.siteUrl).origin && pilotPages.has(redirectPage)) {
+        $(element).attr('value', pageUrl(language.code, redirectPage));
+      }
+    } catch {
+      // Leave non-URL form values unchanged.
+    }
+  });
+
   $('form input[name="source_language"]').remove();
   $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
     $(form).prepend(`<input type="hidden" name="source_language" value="${language.code}">`);
   });
   updateJsonLd($, language.code, pageName);
   return $.html().replace(/[ \t]+$/gm, '');
+}
+
+async function writeLocalizedSearchIndex(language, outputDirectory) {
+  const searchIndex = JSON.parse(await fs.readFile(path.join(sourceRoot, 'search-index.json'), 'utf8'));
+  const localizedItems = [];
+  for (const item of searchIndex) {
+    if (!config.pages.includes(item.url)) {
+      localizedItems.push(item);
+      continue;
+    }
+    const html = await fs.readFile(path.join(outputDirectory, item.url), 'utf8');
+    const $ = load(html, { decodeEntities: false });
+    const content = $('body').clone();
+    content.find('script,style,header,nav,footer,.cookie-banner,.i18n-switcher').remove();
+    localizedItems.push({
+      ...item,
+      title: $('title').text().trim() || item.title,
+      description: $('meta[name="description"]').attr('content')?.trim() || item.description,
+      h1: $('h1').first().text().replace(/\s+/g, ' ').trim() || item.h1,
+      h2s: $('h2').map((_, element) => $(element).text().replace(/\s+/g, ' ').trim()).get().filter(Boolean),
+      body: content.text().replace(/\s+/g, ' ').trim(),
+    });
+  }
+  await fs.writeFile(
+    path.join(outputDirectory, 'search-index.json'),
+    `${JSON.stringify(localizedItems, null, 2)}\n`,
+    'utf8',
+  );
 }
 
 async function buildLocalizedPages(catalog) {
@@ -398,6 +439,7 @@ async function buildLocalizedPages(catalog) {
       const localized = applyTranslations(page, language, catalog, cache);
       await fs.writeFile(path.join(outputDirectory, page.pageName), localized, 'utf8');
     }
+    await writeLocalizedSearchIndex(language, outputDirectory);
     console.log(`${language.code}: built ${pages.length} localized pages.`);
   }
 }

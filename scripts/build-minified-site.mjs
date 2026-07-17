@@ -140,6 +140,21 @@ for (const relativePath of jsFiles) {
 
 await writeMinified('search-index.json', 'json', (source) => JSON.stringify(JSON.parse(source)));
 
+const localizedDirectories = [...new Set(
+  htmlFiles
+    .map((relativePath) => path.dirname(relativePath))
+    .filter((directory) => directory !== '.'),
+)];
+for (const directory of localizedDirectories) {
+  const relativePath = path.join(directory, 'search-index.json');
+  try {
+    await fs.access(path.join(sourceRoot, relativePath));
+    await writeMinified(relativePath, 'json', (source) => JSON.stringify(JSON.parse(source)));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+}
+
 const rootCopyFiles = ['.htaccess', 'llms.txt', 'robots.txt', 'send_inquiry.php', 'sitemap.xml'];
 for (const relativePath of rootCopyFiles) {
   await fs.copyFile(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath));
