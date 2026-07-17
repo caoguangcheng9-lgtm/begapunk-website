@@ -75,6 +75,9 @@
     "svg",
     "code",
     "pre",
+    ".share-btn",
+    ".team-avatar",
+    ".team-card h3",
     "[data-no-translate]"
   ]
 }

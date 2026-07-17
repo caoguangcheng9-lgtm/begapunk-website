@@ -10,6 +10,15 @@ const localizedRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
 const failures = [];
+const suspiciousRepeatedTokenPattern = /(?:\bX\s+){5,}\bX\b/;
+const expectedTeamInitials = ['GC', 'LW', 'SZ'];
+const expectedTeamNames = ['GuangCheng Cao', 'Li Wei', 'Sarah Zhang'];
+
+function verifyGeneratedText(value, owner) {
+  if (suspiciousRepeatedTokenPattern.test(value)) {
+    failures.push(`${owner}: suspicious repeated X tokens detected.`);
+  }
+}
 
 async function targetExists(target, relativeFromOutput) {
   try {
@@ -72,7 +81,14 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/${pageName}: file is missing.`);
       continue;
     }
+    verifyGeneratedText(html, `${language.code}/${pageName}`);
     const $ = load(html, { decodeEntities: false });
+    if (pageName === 'about.html') {
+      const teamInitials = $('.team-avatar').map((_, element) => $(element).text().trim()).get();
+      const teamNames = $('.team-card h3').map((_, element) => $(element).text().trim()).get();
+      if (teamInitials.join('|') !== expectedTeamInitials.join('|')) failures.push(`${language.code}/${pageName}: team initials were changed by localization.`);
+      if (teamNames.join('|') !== expectedTeamNames.join('|')) failures.push(`${language.code}/${pageName}: team names were changed by localization.`);
+    }
     if ((html.match(/<!doctype html>/gi) || []).length !== 1) failures.push(`${language.code}/${pageName}: expected one HTML doctype.`);
     if ($('html').attr('lang') !== language.code) failures.push(`${language.code}/${pageName}: incorrect html lang.`);
     if ($('link[rel="canonical"]').attr('href') !== pageUrl(language.code, pageName)) failures.push(`${language.code}/${pageName}: incorrect canonical.`);
@@ -113,7 +129,9 @@ for (const language of verifiedLanguages) {
 for (const language of activeLanguages) {
   const searchIndexPath = path.join(localizedRoot, language.code, 'search-index.json');
   try {
-    const searchIndex = JSON.parse(await fs.readFile(searchIndexPath, 'utf8'));
+    const searchIndexSource = await fs.readFile(searchIndexPath, 'utf8');
+    verifyGeneratedText(searchIndexSource, `${language.code}/search-index.json`);
+    const searchIndex = JSON.parse(searchIndexSource);
     if (!Array.isArray(searchIndex) || !searchIndex.length) failures.push(`${language.code}/search-index.json: index is empty.`);
   } catch (error) {
     failures.push(`${language.code}/search-index.json: missing or invalid (${error.message}).`);
