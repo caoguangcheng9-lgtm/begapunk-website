@@ -16,6 +16,7 @@
 - Added German terminology normalization and page-specific SEO overrides.
 - Generated `/de/` pages with canonical URLs, `hreflang`, `x-default`, language switching, localized metadata, and localized form language tracking.
 - Limited active alternate links and the international sitemap to English and German until additional languages are complete.
+- Used relative language-switcher targets so the same controls work in local `file://` previews and after production deployment.
 
 ## Verification
 
@@ -30,7 +31,7 @@
   - CSS files: 3
   - JavaScript files: 2
 - Final minified release:
-  - `E:\begapunk-site-releases\de-pilot-minified-20260717-v4\site`
+  - `E:\begapunk-site-releases\de-pilot-minified-20260717-v5\site`
 
 ## Deployment note
 

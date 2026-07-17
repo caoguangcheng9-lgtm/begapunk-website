@@ -48,6 +48,17 @@ function pageUrl(languageCode, pageName) {
   return `${config.siteUrl}/${languageCode}/${suffix}`;
 }
 
+function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
+  if (currentLanguageCode === config.sourceLanguage.code) {
+    return targetLanguageCode === config.sourceLanguage.code
+      ? pageName
+      : `${targetLanguageCode}/${pageName}`;
+  }
+  if (targetLanguageCode === config.sourceLanguage.code) return `../${pageName}`;
+  if (targetLanguageCode === currentLanguageCode) return pageName;
+  return `../${targetLanguageCode}/${pageName}`;
+}
+
 const verifiedLanguages = [config.sourceLanguage, ...activeLanguages];
 for (const language of verifiedLanguages) {
   for (const pageName of config.pages) {
@@ -71,6 +82,11 @@ for (const language of verifiedLanguages) {
     }
     if (alternates.get('x-default') !== pageUrl(config.sourceLanguage.code, pageName)) failures.push(`${language.code}/${pageName}: incorrect x-default hreflang.`);
     if (!$('.i18n-switcher select').length) failures.push(`${language.code}/${pageName}: language switcher is missing.`);
+    const switcherOptions = new Map($('.i18n-switcher option[value]').map((_, element) => [[$(element).text().trim(), $(element).attr('value')]]).get());
+    for (const candidate of verifiedLanguages) {
+      const expected = switcherReference(language.code, candidate.code, pageName);
+      if (switcherOptions.get(candidate.label) !== expected) failures.push(`${language.code}/${pageName}: incorrect ${candidate.code} switcher target.`);
+    }
     $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
       if ($(form).find('input[name="source_language"]').attr('value') !== language.code) failures.push(`${language.code}/${pageName}: source_language is missing or incorrect.`);
     });
@@ -85,6 +101,9 @@ for (const language of verifiedLanguages) {
       for (const attribute of ['href', 'src', 'poster', 'action']) {
         await verifyLocalReference($(element).attr(attribute), filePath);
       }
+    }
+    for (const option of $('.i18n-switcher option[value]').toArray()) {
+      await verifyLocalReference($(option).attr('value'), filePath);
     }
   }
 }

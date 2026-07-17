@@ -35,6 +35,17 @@ function pageUrl(languageCode, pageName) {
   return `${config.siteUrl}/${languageCode}/${suffix}`;
 }
 
+function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
+  if (currentLanguageCode === config.sourceLanguage.code) {
+    return targetLanguageCode === config.sourceLanguage.code
+      ? pageName
+      : `${targetLanguageCode}/${pageName}`;
+  }
+  if (targetLanguageCode === config.sourceLanguage.code) return `../${pageName}`;
+  if (targetLanguageCode === currentLanguageCode) return pageName;
+  return `../${targetLanguageCode}/${pageName}`;
+}
+
 function shouldTranslate(value) {
   const text = value.trim();
   return text.length > 0 && /[A-Za-z]/.test(text) && !/^[-+]?\d[\d\s.,%°/:-]*$/.test(text);
@@ -312,7 +323,7 @@ function injectLanguageSwitcher($, currentLanguage, pageName) {
   const languages = [config.sourceLanguage, ...activeLanguages];
   const options = languages.map((language) => {
     const selected = language.code === currentLanguage ? ' selected' : '';
-    return `<option value="${pageUrl(language.code, pageName)}"${selected}>${language.label}</option>`;
+    return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
   const switcher = `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">Language</label><select id="language-${currentLanguage}" aria-label="Language" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
   const mobileToggle = $('.mobile-toggle').first();
@@ -401,7 +412,7 @@ function alternateMarkup(pageName) {
 function switcherMarkup(currentLanguage, pageName) {
   const options = [config.sourceLanguage, ...activeLanguages].map((language) => {
     const selected = language.code === currentLanguage ? ' selected' : '';
-    return `<option value="${pageUrl(language.code, pageName)}"${selected}>${language.label}</option>`;
+    return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
   return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">Language</label><select id="language-${currentLanguage}" aria-label="Language" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
 }
