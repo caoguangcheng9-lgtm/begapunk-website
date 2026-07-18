@@ -12,6 +12,7 @@ const localizedRoot = process.env.I18N_OUTPUT_ROOT
 const failures = [];
 const suspiciousRepeatedTokenPattern = /(?:\bX\s+){5,}\bX\b/;
 const suspiciousRepeatedSymbolPattern = /(?:★\s*){5,}|(?:⚙\s*){3,}|(?:✉\s*){2,}|(?:\b\d+\s+[-–—]\s+){5,}/u;
+const suspiciousPlaceholderPattern = /__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__/iu;
 const expectedTeamInitials = ['GC', 'LW', 'SZ'];
 const expectedTeamNames = ['GuangCheng Cao', 'Li Wei', 'Sarah Zhang'];
 
@@ -24,6 +25,9 @@ function verifyGeneratedText(value, owner) {
   }
   if (suspiciousRepeatedSymbolPattern.test(value)) {
     failures.push(`${owner}: suspicious repeated symbols detected.`);
+  }
+  if (suspiciousPlaceholderPattern.test(value)) {
+    failures.push(`${owner}: damaged translation placeholder detected.`);
   }
 }
 

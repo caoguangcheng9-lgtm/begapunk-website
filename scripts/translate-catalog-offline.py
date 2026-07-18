@@ -33,6 +33,10 @@ PROTECTED_VALUE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 NUMBER_PATTERN = re.compile(r"\d+(?:[.,]\d+)*")
+MALFORMED_PLACEHOLDER_PATTERN = re.compile(
+    r"__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__",
+    re.IGNORECASE,
+)
 
 
 def placeholder_code(index: int) -> str:
@@ -96,9 +100,31 @@ def protect_values(text: str, protected_terms: Iterable[str]) -> tuple[str, list
 def restore_values(text: str, replacements: list[tuple[str, str]]) -> str:
     result = text
     for token, value in replacements:
-        while result.count(token) > 1:
-            result = result.replace(token, "", 1)
-        result = result.replace(token, value)
+        candidates = [token]
+        match = re.fullmatch(r"__(PH|TR)([A-Z]{4})__", token)
+        if match:
+            prefix, code = match.groups()
+            code_pattern = "".join(
+                {
+                    "A": "[AА]", "B": "[BВ]", "C": "[CС]", "D": "[DД]",
+                    "E": "[EЕ]", "H": "[HН]", "K": "[KК]", "M": "[MМ]",
+                    "O": "[OО]", "P": "[PР]", "T": "[TТ]", "X": "[XХ]",
+                }.get(letter, re.escape(letter))
+                for letter in code
+            )
+            prefix_pattern = "(?:PH|PН|РH|РН|Ф)" if prefix == "PH" else "(?:TR|TР|ТР)"
+            fuzzy = re.compile(rf"__{prefix_pattern}{code_pattern}__", re.IGNORECASE)
+            candidates.extend(fuzzy.findall(result))
+            if token not in result:
+                result, count = fuzzy.subn(value, result, count=1)
+                if count:
+                    continue
+        for candidate in candidates:
+            if candidate in result:
+                while result.count(candidate) > 1:
+                    result = result.replace(candidate, "", 1)
+                result = result.replace(candidate, value)
+                break
     return result
 
 
@@ -393,12 +419,15 @@ def main() -> None:
             return False
         if entry["id"] not in existing_translations:
             return True
-        if args.refresh_placeholders and re.search(r"(?:ZY|ZX|ザイQ|__(?:TR|PH)[A-Z]{4}__)", existing_translations[entry["id"]]):
+        if args.refresh_placeholders and (
+            re.search(r"(?:ZY|ZX|ザイQ|__(?:TR|PH)[A-Z]{4}__)", existing_translations[entry["id"]])
+            or MALFORMED_PLACEHOLDER_PATTERN.search(existing_translations[entry["id"]])
+        ):
             return True
         if args.refresh_damaged_output:
             translated = existing_translations[entry["id"]]
             source_codes = set(re.findall(r"\bBP-[A-Z0-9-]+\b", entry["source"]))
-            if re.search(r"_{4,}|(?:PH|TR)[A-Z]{3,}", translated):
+            if re.search(r"_{4,}|(?:PH|TR)[A-Z]{3,}", translated) or MALFORMED_PLACEHOLDER_PATTERN.search(translated):
                 return True
             if any(code not in translated for code in source_codes):
                 return True
