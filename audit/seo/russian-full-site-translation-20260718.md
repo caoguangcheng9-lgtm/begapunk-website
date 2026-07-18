@@ -39,3 +39,13 @@
 - Mobile QA at a 390 px viewport passed for the homepage, catalog, and contact page. Browser console errors: 0.
 - `sitemap-i18n.xml` returned 192 URLs after deployment.
 - No live inquiry was submitted during this deployment verification.
+
+## Translation QA follow-up
+
+- A user screenshot exposed damaged technical placeholders and prompted a broader manual review before the correction release.
+- The review expanded from placeholder detection to source-aware terminology checks, visible-English scans, Russian title/H1 review, translated-attribute review, and product-card parameter comparison.
+- Corrected 52 generated Russian files using 162 manual overrides for critical industrial terms, product parameters, titles, headings, calls to action, and recurring machine-translation errors.
+- High-risk translation patterns initially identified by the expanded audit were reduced from 109 cache candidates to zero occurrences in visible generated content.
+- All Russian page titles and H1 headings passed the targeted quality scan; the two catalog pages preserved every product-card numeric value from the English source.
+- The verifier now rejects Latin or Cyrillic placeholder mutations, bare placeholder tokens, known Russian machine-translation artifacts, and high-risk visible English residue.
+- Full localized-site verification passed again for 204 pages. The corrected production deployment is recorded after live verification.

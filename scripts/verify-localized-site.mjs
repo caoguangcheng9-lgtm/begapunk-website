@@ -12,7 +12,9 @@ const localizedRoot = process.env.I18N_OUTPUT_ROOT
 const failures = [];
 const suspiciousRepeatedTokenPattern = /(?:\bX\s+){5,}\bX\b/;
 const suspiciousRepeatedSymbolPattern = /(?:★\s*){5,}|(?:⚙\s*){3,}|(?:✉\s*){2,}|(?:\b\d+\s+[-–—]\s+){5,}/u;
-const suspiciousPlaceholderPattern = /__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__/iu;
+const suspiciousPlaceholderPattern = /__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__|\b(?:PH|TR)AAA[A-Z]\b|\b(?:Ф|ТР)ААА[А-ЯЁ]\b/u;
+const suspiciousRussianMachineTranslationPattern = /Корабли|Тяжел(?:ый|ая|ое) долг|Протоптан|Стальная сталь|Ротари|совместн(?:ый|ое) каталог|Следующая статья/iu;
+const suspiciousVisibleEnglishPattern = /\b(?:Threaded|Heavy Duty|Rotary Joint|Rotary Union|Ships in|Flange Mount|Download PDF|Details|Previous|Next)\b/i;
 const expectedTeamInitials = ['GC', 'LW', 'SZ'];
 const expectedTeamNames = ['GuangCheng Cao', 'Li Wei', 'Sarah Zhang'];
 
@@ -28,6 +30,9 @@ function verifyGeneratedText(value, owner) {
   }
   if (suspiciousPlaceholderPattern.test(value)) {
     failures.push(`${owner}: damaged translation placeholder detected.`);
+  }
+  if (suspiciousRussianMachineTranslationPattern.test(value)) {
+    failures.push(`${owner}: known Russian machine-translation artifact detected.`);
   }
 }
 
@@ -94,6 +99,21 @@ for (const language of verifiedLanguages) {
     }
     verifyGeneratedText(html, `${language.code}/${pageName}`);
     const $ = load(html, { decodeEntities: false });
+    if (language.code === 'ru') {
+      const visibleBody = $('body').clone();
+      visibleBody.find('script,style,noscript,.notranslate,[translate="no"]').remove();
+      if (suspiciousVisibleEnglishPattern.test(visibleBody.text())) {
+        failures.push(`${language.code}/${pageName}: visible high-risk English residue detected.`);
+      }
+      for (const attribute of config.translatedAttributes || []) {
+        $(`[${attribute}]`).each((_, element) => {
+          const value = $(element).attr(attribute) || '';
+          if (suspiciousVisibleEnglishPattern.test(value)) {
+            failures.push(`${language.code}/${pageName}: high-risk English residue in ${attribute}.`);
+          }
+        });
+      }
+    }
     if (pageName === 'about.html') {
       const teamInitials = $('.team-avatar').map((_, element) => $(element).text().trim()).get();
       const teamNames = $('.team-card h3').map((_, element) => $(element).text().trim()).get();

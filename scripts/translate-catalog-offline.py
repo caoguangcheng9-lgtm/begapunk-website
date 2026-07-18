@@ -169,6 +169,42 @@ def normalize_translation(language: str, text: str, source: str = "") -> str:
         result = re.sub(r"\b(?:Боре|скважин[А-Яа-яЁё-]*)\b", "проходное отверстие", result, flags=re.IGNORECASE)
     if re.search(r"\bcustom\b", source, flags=re.IGNORECASE):
         result = re.sub(r"\bобыча(?:й|ем|я|и|ев|ю)\b", "индивидуальное исполнение", result, flags=re.IGNORECASE)
+    if re.search(r"\bships?\s+in\s+7\s+days?\b", source, flags=re.IGNORECASE):
+        result = re.sub(
+            r"\bКорабли\s+(?:через|за)\s+7\s+дн(?:ей|я)\b",
+            "Отправка в течение 7 дней",
+            result,
+            flags=re.IGNORECASE,
+        )
+    if re.search(r"\bheavy[- ]duty\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bТяжел(?:ый|ая|ое)\s+долг\b", "усиленное исполнение", result, flags=re.IGNORECASE)
+    if re.search(r"\borifice\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bПрототип\b", "проходное отверстие", result, flags=re.IGNORECASE)
+    if re.search(r"\bthreaded\b", source, flags=re.IGNORECASE):
+        result = re.sub(
+            r"\b(?:натянутый|Протоптанный|Проточная)\b",
+            "резьбовое крепление",
+            result,
+            flags=re.IGNORECASE,
+        )
+    if re.search(r"\b2D\s+Engineering\s+Drawing\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\b2D\s+инженерное\s+рисование\b", "2D-чертёж", result, flags=re.IGNORECASE)
+    if re.search(r"\brotary\s+(?:joint|union)s?\b", source, flags=re.IGNORECASE):
+        result = re.sub(
+            r"\bРотари[- ]?(?:альный\s+)?(?:ротационное\s+соединение|Джойнт|Объединенн[А-Яа-яЁё-]*)?\b",
+            "ротационное соединение",
+            result,
+            flags=re.IGNORECASE,
+        )
+    if re.search(r"\brotary\s+tables?\b", source, flags=re.IGNORECASE):
+        result = re.sub(
+            r"\b(?:Ротари[- ]?таблицы|Ротариальные\s+(?:таблицы|столы)|роторные\s+столы)\b",
+            "поворотные столы",
+            result,
+            flags=re.IGNORECASE,
+        )
+    if re.search(r"\brotary\s+stations?\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bРотариальные\s+станции\b", "ротационные станции", result, flags=re.IGNORECASE)
     result = re.sub(r"\bБегапанк[А-Яа-яЁё-]*\b", "Begapunk", result, flags=re.IGNORECASE)
     result = re.sub(r"\b(?:Фланж|Флэндж|Фланг)[ -]Маунт\b", "фланцевое крепление", result, flags=re.IGNORECASE)
     result = re.sub(r"\bПроточенная гора\b", "резьбовое крепление", result, flags=re.IGNORECASE)
