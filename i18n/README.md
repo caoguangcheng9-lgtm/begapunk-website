@@ -4,7 +4,7 @@ This directory defines the first multilingual SEO pilot for the Begapunk static 
 
 ## Scope
 
-- Languages: German, Spanish, Italian, Japanese, and Polish.
+- Languages: German, Spanish, Italian, Japanese, Polish, and Russian.
 - Pages: the 12 high-value pages listed in `config.json`.
 - Output: real static HTML files under `/de/`, `/es/`, `/it/`, `/ja/`, and `/pl/`.
 - Production deployment is intentionally separate from translation generation.

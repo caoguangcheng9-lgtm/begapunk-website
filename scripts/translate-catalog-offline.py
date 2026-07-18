@@ -67,7 +67,7 @@ def replace_preferred_terms(
     def replace(match: re.Match[str], target: str) -> str:
         if match.group(0) in protected_exact:
             return match.group(0)
-        token = f"ZYQ{placeholder_code(len(replacements))}ZY"
+        token = f"__TR{placeholder_code(len(replacements))}__"
         replacements.append((token, target))
         return token
 
@@ -83,7 +83,7 @@ def protect_values(text: str, protected_terms: Iterable[str]) -> tuple[str, list
     replacements: list[tuple[str, str]] = []
 
     def replace(match: re.Match[str]) -> str:
-        token = f"ZXQ{placeholder_code(len(replacements))}ZX"
+        token = f"__PH{placeholder_code(len(replacements))}__"
         replacements.append((token, match.group(0)))
         return token
 
@@ -99,6 +99,156 @@ def restore_values(text: str, replacements: list[tuple[str, str]]) -> str:
         while result.count(token) > 1:
             result = result.replace(token, "", 1)
         result = result.replace(token, value)
+    return result
+
+
+def normalize_translation(language: str, text: str, source: str = "") -> str:
+    if language != "ru":
+        return text
+    replacements = [
+        (r"воздушн(?:ый|ого|ому|ым|ом|ые|ых|ыми)?\s+ротационн(?:ый|ого|ому|ым|ом|ые|ых|ыми)?\s+(?:союз|сустав)(?:а|у|ом|ы|ов|ам|ами|ах)?", "пневматическое ротационное соединение"),
+        (r"пневматическ(?:ий|ого|ому|им|ом|ие|их|ими)?\s+ротационн(?:ый|ого|ому|ым|ом|ые|ых|ыми)?\s+(?:союз|сустав|стык)(?:а|у|ом|ы|ов|ам|ами|ах)?", "пневматическое ротационное соединение"),
+        (r"роторн(?:ый|ого|ому|ым|ом|ые|ых|ыми)?\s+(?:шарнирн(?:ый|ого|ому|ым|ом)?\s+)?(?:стык|сустав)(?:а|у|ом|ы|ов|ам|ами|ах)?", "ротационное соединение"),
+        (r"ротационн(?:ый|ого|ому|ым|ом|ые|ых|ыми)?\s+(?:союз|сустав)(?:а|у|ом|ы|ов|ам|ами|ах)?", "ротационное соединение"),
+        (r"\bRotary Joints\b", "Ротационные соединения"),
+        (r"\bRotary Joint\b", "Ротационное соединение"),
+        (r"\bRotary Unions\b", "Ротационные соединения"),
+        (r"\bRotary Union\b", "Ротационное соединение"),
+    ]
+    result = text
+    for pattern, replacement in replacements:
+        result = re.sub(pattern, replacement, result, flags=re.IGNORECASE)
+    if re.search(r"\brotary\s+(?:joint|union)s?\b", source, flags=re.IGNORECASE):
+        result = re.sub(
+            r"\b(?:(?:роторн|ротационн|вращающ)[А-Яа-яЁё-]*\s+)?(?:стык|сустав|союз|шарнир)[А-Яа-яЁё-]*\b",
+            "ротационное соединение",
+            result,
+            flags=re.IGNORECASE,
+        )
+        result = re.sub(r"\bРотари\s+Совместн[А-Яа-яЁё-]*\b", "Ротационное соединение", result, flags=re.IGNORECASE)
+    if re.search(r"\bjoints?\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\b(?:сустав|стык)[А-Яа-яЁё-]*\b", "соединение", result, flags=re.IGNORECASE)
+    if re.search(r"\bunions?\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bсоюз[А-Яа-яЁё-]*\b", "соединение", result, flags=re.IGNORECASE)
+        result = re.sub(r"\bпрофсоюз[А-Яа-яЁё-]*\b", "соединение", result, flags=re.IGNORECASE)
+    if re.search(r"\bseal(?:s|ing)?\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bпечат(?:ь|и|ей|ям|ями|ях)\b", "уплотнение", result, flags=re.IGNORECASE)
+        result = re.sub(r"\bтюлен[А-Яа-яЁё-]*\b", "уплотнение", result, flags=re.IGNORECASE)
+    if re.search(r"\bquote\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bцитат(?:а|у|ы|е|ой|ами|ах)\b", "коммерческое предложение", result, flags=re.IGNORECASE)
+    if re.search(r"\bmedia\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bСМИ\b", "рабочая среда", result)
+        result = re.sub(r"\bмедиа\b", "рабочая среда", result, flags=re.IGNORECASE)
+    if re.search(r"\bbore\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\b(?:Боре|скважин[А-Яа-яЁё-]*)\b", "проходное отверстие", result, flags=re.IGNORECASE)
+    if re.search(r"\bcustom\b", source, flags=re.IGNORECASE):
+        result = re.sub(r"\bобыча(?:й|ем|я|и|ев|ю)\b", "индивидуальное исполнение", result, flags=re.IGNORECASE)
+    result = re.sub(r"\bБегапанк[А-Яа-яЁё-]*\b", "Begapunk", result, flags=re.IGNORECASE)
+    result = re.sub(r"\b(?:Фланж|Флэндж|Фланг)[ -]Маунт\b", "фланцевое крепление", result, flags=re.IGNORECASE)
+    result = re.sub(r"\bПроточенная гора\b", "резьбовое крепление", result, flags=re.IGNORECASE)
+    result = re.sub(r"\bПыль-доказательство\b", "пылезащищённое исполнение", result, flags=re.IGNORECASE)
+    result = re.sub(r"\bРотари Джойтс\b", "Ротационные соединения", result, flags=re.IGNORECASE)
+    result = re.sub(r"\bРотар(?:и|ий)ный\s+ротационное соединение\b", "ротационное соединение", result, flags=re.IGNORECASE)
+    result = re.sub(r"\bРотари\s+ротационное соединение\b", "ротационные соединения", result, flags=re.IGNORECASE)
+    visible_term_replacements = [
+        (r"\b(?:Маунт|Гора)\s+(?:Фланж|Флэндж|Фланг)[А-Яа-яЁё-]*\b", "Фланцевое крепление"),
+        (r"\b(?:Фланж|Флэндж|Фланг)[А-Яа-яЁё-]*\s+(?:Маунт|Гора)\b", "фланцевое крепление"),
+        (r"\bфланжев[А-Яа-яЁё-]*\s+гор[А-Яа-яЁё-]*\b", "фланцевое крепление"),
+        (r"\b(?:Фланж|Флэндж|Фланг)[А-Яа-яЁё-]*\b", "фланец"),
+        (r"\bБольшая\s+бора\b", "Большое проходное отверстие"),
+        (r"\bБоре\b", "проходное отверстие"),
+        (r"\bRobot End-of-Arm Tooling\s*\(англ\.\)русск\.", "Оснастка конца руки робота (EOAT)"),
+        (r"\bThreaded\s+vs\.?\s+Flange\s+Mounting\b", "Резьбовое и фланцевое крепление"),
+        (r"\bA\s+Maintenance\s+Team['’]s\s+Field\s+Guide\b", "Практическое руководство для службы технического обслуживания"),
+        (r"\bflange\s+mount(?:ing)?\b", "фланцевое крепление"),
+        (r"\bthreaded\s+mount(?:ing)?\b", "резьбовое крепление"),
+        (r"\bthreaded\s+connections?\b", "резьбовые соединения"),
+        (r"\bthrough[- ]bore\b", "сквозное отверстие"),
+        (r"\bhollow[- ]bore\b", "полое проходное отверстие"),
+        (r"\bbore\b", "проходное отверстие"),
+        (r"\bRead\s+Guide\b", "Читать руководство"),
+        (r"\bView\s+Guide\b", "Смотреть руководство"),
+        (r"\bSelection\s+Guide\b", "Руководство по выбору"),
+        (r"\bFlowchart\b", "блок-схема"),
+        (r"\bChecklist\b", "контрольный список"),
+        (r"\bProduct\s+Catalog\b", "Каталог продукции"),
+        (r"\bFile\s*\(Request\)", "файл (по запросу)"),
+        (r"\bFile\b", "файл"),
+        (r"\bGuide\b", "руководство"),
+        (r"\bAir\s+Ротационное соединение\b", "Пневматическое ротационное соединение"),
+        (r"\bfor\b", "для"),
+        (r"\bThe\b", ""),
+        (r"\bCompact\b", "Компактный"),
+        (r"\bMax\b", "макс."),
+        (r"\bFlange\b", "фланец"),
+        (r"\bThreaded\b", "резьбовой"),
+    ]
+    source_channel_models = re.findall(r"\b\d+-in-\d+-out\b", source, flags=re.IGNORECASE)
+    model_index = 0
+
+    def normalize_visible_segment(segment: str) -> str:
+        nonlocal model_index
+        normalized = segment
+        for pattern, replacement in visible_term_replacements:
+            normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+        if re.search(r"\bfixtures?\b", source, flags=re.IGNORECASE):
+            normalized = re.sub(r"\bсветильник[А-Яа-яЁё-]*\b", "оснастка", normalized, flags=re.IGNORECASE)
+        if re.search(r"\bchucks?\b", source, flags=re.IGNORECASE):
+            normalized = re.sub(r"\b(?:цыпленок|цыплят|Чаков|Чак)[А-Яа-яЁё-]*\b", "патрон", normalized, flags=re.IGNORECASE)
+        if re.search(r"\bthreads?\b", source, flags=re.IGNORECASE):
+            normalized = re.sub(r"\bнит(?:ь|и|ей|ям|ями|ях)\b", "резьба", normalized, flags=re.IGNORECASE)
+        if re.search(r"\bthrough[- ]bore\b", source, flags=re.IGNORECASE):
+            normalized = re.sub(r"\bсквозн[А-Яа-яЁё-]*\s+(?:штанг|стержн)[А-Яа-яЁё-]*\b", "сквозное отверстие", normalized, flags=re.IGNORECASE)
+        if re.search(r"\bno bore\b", source, flags=re.IGNORECASE):
+            normalized = re.sub(r"\bНе скучно\.?", "Без проходного отверстия.", normalized, flags=re.IGNORECASE)
+        if "Ø" in source:
+            normalized = normalized.replace("?", "Ø")
+        if re.search(r"-?\d+°C\s+to\s+\+?-?\d+°C", source):
+            normalized = normalized.replace("_", " – ")
+        if source_channel_models:
+            def restore_channel_model(match: re.Match[str]) -> str:
+                nonlocal model_index
+                if model_index >= len(source_channel_models):
+                    return match.group(0)
+                value = source_channel_models[model_index]
+                model_index += 1
+                return value
+
+            normalized = re.sub(
+                r"\b\d+-(?:in|в)-\d+-(?:out|вне|вход)\b",
+                restore_channel_model,
+                normalized,
+                flags=re.IGNORECASE,
+            )
+        if "·" in source and "_" in normalized:
+            normalized = normalized.replace("_", "·", 1)
+        return normalized
+
+    result_parts = re.split(r"(<[^>]+>)", result)
+    result = "".join(
+        part if part.startswith("<") else normalize_visible_segment(part)
+        for part in result_parts
+    )
+    for attribute in ("href", "src", "poster", "action"):
+        source_values = re.findall(rf"\b{attribute}\s*=\s*(['\"])(.*?)\1", source, flags=re.IGNORECASE)
+        if not source_values:
+            continue
+        value_index = 0
+
+        def restore_attribute(match: re.Match[str]) -> str:
+            nonlocal value_index
+            if value_index >= len(source_values):
+                return match.group(0)
+            quote, value = source_values[value_index]
+            value_index += 1
+            return f"{attribute}={quote}{value}{quote}"
+
+        result = re.sub(
+            rf"\b{attribute}\s*=\s*(['\"])(.*?)\1",
+            restore_attribute,
+            result,
+            flags=re.IGNORECASE,
+        )
     return result
 
 
@@ -185,9 +335,19 @@ def main() -> None:
         help="Retranslate cached entries containing damaged placeholder residue.",
     )
     parser.add_argument(
+        "--refresh-damaged-output",
+        action="store_true",
+        help="Retranslate entries with malformed placeholders or missing BP-series product codes.",
+    )
+    parser.add_argument(
         "--raw-model",
         action="store_true",
         help="Skip terminology/value placeholders for the entries being translated.",
+    )
+    parser.add_argument(
+        "--raw-terms",
+        action="store_true",
+        help="Let the model translate terminology naturally while still protecting technical values.",
     )
     parser.add_argument(
         "--refresh-numbers",
@@ -200,6 +360,12 @@ def main() -> None:
         help="Keep numbers outside the model and translate only the surrounding text.",
     )
     parser.add_argument("--batch-size", type=int, default=max(8, min(64, (os.cpu_count() or 4) * 2)))
+    parser.add_argument("--beam-size", type=int, default=4)
+    parser.add_argument(
+        "--chunk-cache",
+        type=Path,
+        help="Optional resumable cache for model-level translated text chunks.",
+    )
     args = parser.parse_args()
 
     catalog = load_json(args.catalog)
@@ -227,8 +393,15 @@ def main() -> None:
             return False
         if entry["id"] not in existing_translations:
             return True
-        if args.refresh_placeholders and re.search(r"(?:ZY|ZX|ザイQ)", existing_translations[entry["id"]]):
+        if args.refresh_placeholders and re.search(r"(?:ZY|ZX|ザイQ|__(?:TR|PH)[A-Z]{4}__)", existing_translations[entry["id"]]):
             return True
+        if args.refresh_damaged_output:
+            translated = existing_translations[entry["id"]]
+            source_codes = set(re.findall(r"\bBP-[A-Z0-9-]+\b", entry["source"]))
+            if re.search(r"_{4,}|(?:PH|TR)[A-Z]{3,}", translated):
+                return True
+            if any(code not in translated for code in source_codes):
+                return True
         if args.refresh_numbers:
             translated = existing_translations[entry["id"]]
             if any(value not in translated for value in set(NUMBER_PATTERN.findall(entry["source"]))):
@@ -279,32 +452,56 @@ def main() -> None:
                 replacements = []
                 term_replacements = []
             else:
-                prepared, term_replacements = replace_preferred_terms(
-                    body,
-                    preferred_terms,
-                    glossary.get("protectedTerms", []),
-                )
-                protected, replacements = protect_values(prepared, glossary.get("protectedTerms", []))
+                if args.raw_terms:
+                    prepared = body
+                    term_replacements = []
+                    protected_terms = []
+                else:
+                    prepared, term_replacements = replace_preferred_terms(
+                        body,
+                        preferred_terms,
+                        glossary.get("protectedTerms", []),
+                    )
+                    protected_terms = glossary.get("protectedTerms", [])
+                protected, replacements = protect_values(prepared, protected_terms)
             chunks = split_for_model(protected, tokenizer)
             parts.append(("model", leading, trailing, [*replacements, *term_replacements], chunks))
             all_chunks.extend(chunks)
         jobs[source] = parts
 
     translated_chunks: dict[str, str] = {}
+    if args.chunk_cache and args.chunk_cache.exists():
+        chunk_cache_payload = load_json(args.chunk_cache)
+        translated_chunks = chunk_cache_payload.get("translations", {})
+        print(f"Reusing {len(translated_chunks)} translated text chunks from {args.chunk_cache}.", flush=True)
     unique_chunks = list(dict.fromkeys(all_chunks))
-    for start in range(0, len(unique_chunks), args.batch_size):
-        batch = unique_chunks[start:start + args.batch_size]
+    pending_chunks = [chunk for chunk in unique_chunks if chunk not in translated_chunks]
+    for start in range(0, len(pending_chunks), args.batch_size):
+        batch = pending_chunks[start:start + args.batch_size]
         results = translator.translate_batch(
             [tokenizer.encode(value, out_type=str) for value in batch],
-            beam_size=4,
+            beam_size=args.beam_size,
             max_batch_size=args.batch_size,
             batch_type="tokens",
             replace_unknowns=True,
         )
         for source, result in zip(batch, results, strict=True):
             translated_chunks[source] = tokenizer.decode_pieces(result.hypotheses[0]).strip()
-        completed = min(start + len(batch), len(unique_chunks))
+        completed = len(unique_chunks) - len(pending_chunks) + min(start + len(batch), len(pending_chunks))
+        if args.chunk_cache and (start // args.batch_size + 1) % 8 == 0:
+            args.chunk_cache.parent.mkdir(parents=True, exist_ok=True)
+            args.chunk_cache.write_text(
+                json.dumps({"language": args.language, "translations": translated_chunks}, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
         print(f"Translated {completed}/{len(unique_chunks)} text segments.", flush=True)
+
+    if args.chunk_cache:
+        args.chunk_cache.parent.mkdir(parents=True, exist_ok=True)
+        args.chunk_cache.write_text(
+            json.dumps({"language": args.language, "translations": translated_chunks}, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
 
     plain_translations: dict[str, str] = {}
     for source, parts in jobs.items():
@@ -321,17 +518,25 @@ def main() -> None:
     for entry in catalog["entries"]:
         source = entry["source"]
         if source in overrides:
-            translations[entry["id"]] = overrides[source]
+            translations[entry["id"]] = normalize_translation(args.language, overrides[source], source)
             continue
         if entry["id"] in existing_translations and entry["id"] not in pending_ids:
-            translations[entry["id"]] = existing_translations[entry["id"]]
+            translations[entry["id"]] = normalize_translation(
+                args.language,
+                existing_translations[entry["id"]],
+                source,
+            )
             continue
         if source in parsed_fragments:
             wrapper = parsed_fragments[source]
             replace_fragment_texts(wrapper, plain_translations, translated_attributes)
-            translations[entry["id"]] = serialize_fragment(wrapper)
+            translations[entry["id"]] = normalize_translation(args.language, serialize_fragment(wrapper), source)
         else:
-            translations[entry["id"]] = plain_translations[html.unescape(source)].strip()
+            translations[entry["id"]] = normalize_translation(
+                args.language,
+                plain_translations[html.unescape(source)].strip(),
+                source,
+            )
 
     payload = {
         "language": args.language,

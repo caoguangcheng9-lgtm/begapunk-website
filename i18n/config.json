@@ -11,9 +11,10 @@
     { "code": "es", "label": "Español", "locale": "es_ES" },
     { "code": "it", "label": "Italiano", "locale": "it_IT" },
     { "code": "ja", "label": "日本語", "locale": "ja_JP" },
-    { "code": "pl", "label": "Polski", "locale": "pl_PL" }
+    { "code": "pl", "label": "Polski", "locale": "pl_PL" },
+    { "code": "ru", "label": "Русский", "locale": "ru_RU" }
   ],
-  "activeLanguageCodes": ["de", "ja"],
+  "activeLanguageCodes": ["de", "ja", "ru"],
   "sitemapExcludedPages": ["404.html", "thank-you.html", "search.html"],
   "pages": [
     "index.html",
