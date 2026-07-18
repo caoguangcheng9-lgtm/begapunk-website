@@ -18,6 +18,16 @@ const cacheRoot = process.env.I18N_CACHE_ROOT
 const outputRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
+const overridesByLanguage = new Map();
+for (const language of activeLanguages) {
+  const overridePath = path.join(i18nRoot, 'overrides', `${language.code}.json`);
+  try {
+    overridesByLanguage.set(language.code, JSON.parse(await fs.readFile(overridePath, 'utf8')));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    overridesByLanguage.set(language.code, {});
+  }
+}
 const excludedSelector = config.excludedSelectors.join(',');
 const translatableMetaSelectors = [
   'meta[name="description"]',
@@ -334,9 +344,14 @@ function injectLanguageSwitcher($, currentLanguage, pageName) {
 function applyTranslations(page, language, catalog, cache) {
   const { $, records, pageName } = page;
   const idBySource = new Map(catalog.entries.map((entry) => [entry.source, entry.id]));
+  const overrides = overridesByLanguage.get(language.code) || {};
+  const preservedBrowserContent = (config.browserNoTranslateSelectors || []).map((selector) => ({
+    selector,
+    values: $(selector).map((_, element) => $(element).html()).get(),
+  }));
   for (const record of records) {
     const id = idBySource.get(record.source);
-    const translated = cache.translations[id];
+    const translated = overrides[record.source] || cache.translations[id];
     if (!translated) throw new Error(`${language.code}/${pageName}: missing translation for ${record.source}`);
     if (record.type === 'html') {
       $(record.element).html(translated);
@@ -347,6 +362,13 @@ function applyTranslations(page, language, catalog, cache) {
     } else {
       $(record.element).attr(record.attribute, translated);
     }
+  }
+
+  for (const { selector, values } of preservedBrowserContent) {
+    $(selector).each((index, element) => {
+      if (values[index] !== undefined) $(element).html(values[index]);
+      $(element).attr('translate', 'no').addClass('notranslate');
+    });
   }
 
   $('html').attr('lang', language.code);
@@ -485,8 +507,10 @@ async function integrateEnglishPages() {
 async function writeInternationalSitemap() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [];
+  const excludedPages = new Set(config.sitemapExcludedPages || []);
+  const sitemapPages = config.pages.filter((pageName) => !excludedPages.has(pageName));
   for (const language of [config.sourceLanguage, ...activeLanguages]) {
-    for (const pageName of config.pages) {
+    for (const pageName of sitemapPages) {
       const alternates = [config.sourceLanguage, ...activeLanguages]
         .map((candidate) => `    <xhtml:link rel="alternate" hreflang="${candidate.code}" href="${pageUrl(candidate.code, pageName)}" />`)
         .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}" />`)
@@ -513,7 +537,8 @@ async function integrateLocalizedSite() {
   await integrateEnglishPages();
   await writeInternationalSitemap();
   console.log(`Integrated hreflang and language switching into ${config.pages.length} English pages.`);
-  console.log(`Generated sitemap-i18n.xml for ${(activeLanguages.length + 1) * config.pages.length} URLs.`);
+  const sitemapPageCount = config.pages.length - (config.sitemapExcludedPages || []).length;
+  console.log(`Generated sitemap-i18n.xml for ${(activeLanguages.length + 1) * sitemapPageCount} URLs.`);
 }
 
 const pages = await loadPages();

@@ -14,6 +14,7 @@
     { "code": "pl", "label": "Polski", "locale": "pl_PL" }
   ],
   "activeLanguageCodes": ["de", "ja"],
+  "sitemapExcludedPages": ["404.html", "thank-you.html", "search.html"],
   "pages": [
     "index.html",
     "about.html",
@@ -68,6 +69,13 @@
     "404.html"
   ],
   "translatedAttributes": ["alt", "title", "aria-label", "placeholder"],
+  "browserNoTranslateSelectors": [
+    ".share-btn",
+    ".team-avatar",
+    ".team-card h3",
+    ".icon",
+    ".arrow"
+  ],
   "excludedSelectors": [
     "script",
     "style",
@@ -78,6 +86,8 @@
     ".share-btn",
     ".team-avatar",
     ".team-card h3",
+    ".icon",
+    ".arrow",
     "[data-no-translate]"
   ]
 }

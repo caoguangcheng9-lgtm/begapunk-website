@@ -11,12 +11,19 @@ const localizedRoot = process.env.I18N_OUTPUT_ROOT
   : sourceRoot;
 const failures = [];
 const suspiciousRepeatedTokenPattern = /(?:\bX\s+){5,}\bX\b/;
+const suspiciousRepeatedSymbolPattern = /(?:★\s*){5,}|(?:⚙\s*){3,}|(?:✉\s*){2,}|(?:\b\d+\s+[-–—]\s+){5,}/u;
 const expectedTeamInitials = ['GC', 'LW', 'SZ'];
 const expectedTeamNames = ['GuangCheng Cao', 'Li Wei', 'Sarah Zhang'];
 
 function verifyGeneratedText(value, owner) {
+  if (value.includes('\uFFFD')) {
+    failures.push(`${owner}: Unicode replacement character detected.`);
+  }
   if (suspiciousRepeatedTokenPattern.test(value)) {
     failures.push(`${owner}: suspicious repeated X tokens detected.`);
+  }
+  if (suspiciousRepeatedSymbolPattern.test(value)) {
+    failures.push(`${owner}: suspicious repeated symbols detected.`);
   }
 }
 
@@ -89,6 +96,28 @@ for (const language of verifiedLanguages) {
       if (teamInitials.join('|') !== expectedTeamInitials.join('|')) failures.push(`${language.code}/${pageName}: team initials were changed by localization.`);
       if (teamNames.join('|') !== expectedTeamNames.join('|')) failures.push(`${language.code}/${pageName}: team names were changed by localization.`);
     }
+    if (pageName === 'faq.html') {
+      const categoryIcons = $('.faq-category .icon').map((_, element) => $(element).text().trim()).get();
+      const arrows = $('.faq-question .arrow').map((_, element) => $(element).text().trim()).get();
+      if (categoryIcons.join('|') !== '?|★|✉|⚙') failures.push(`${language.code}/${pageName}: FAQ category icons were changed by localization.`);
+      if (arrows.some((value) => value !== '▼')) failures.push(`${language.code}/${pageName}: FAQ arrows were changed by localization.`);
+    }
+    if (language.code === 'ja' && pageName === 'blog-rotary-joint-selection.html') {
+      const channelHeading = $('h2').map((_, element) => $(element).text().trim()).get().find((value) => value.includes('流路数'));
+      const channelModels = $('strong').map((_, element) => $(element).text().trim()).get().filter((value) => value.includes('-in-'));
+      if (channelHeading !== '1. 流路数：空気圧回路に合わせ、希望だけで選ばない') failures.push(`${language.code}/${pageName}: channel-count heading is incorrect.`);
+      if (channelModels.some((value) => !/^\d+-in-\d+-out$/.test(value))) failures.push(`${language.code}/${pageName}: channel model labels contain translated noise.`);
+    }
+    if (language.code !== config.sourceLanguage.code) {
+      for (const selector of config.browserNoTranslateSelectors || []) {
+        $(selector).each((_, element) => {
+          const classes = ($(element).attr('class') || '').split(/\s+/);
+          if ($(element).attr('translate') !== 'no' || !classes.includes('notranslate')) {
+            failures.push(`${language.code}/${pageName}: ${selector} is not protected from browser translation.`);
+          }
+        });
+      }
+    }
     if ((html.match(/<!doctype html>/gi) || []).length !== 1) failures.push(`${language.code}/${pageName}: expected one HTML doctype.`);
     if ($('html').attr('lang') !== language.code) failures.push(`${language.code}/${pageName}: incorrect html lang.`);
     if ($('link[rel="canonical"]').attr('href') !== pageUrl(language.code, pageName)) failures.push(`${language.code}/${pageName}: incorrect canonical.`);
@@ -136,6 +165,27 @@ for (const language of activeLanguages) {
   } catch (error) {
     failures.push(`${language.code}/search-index.json: missing or invalid (${error.message}).`);
   }
+}
+
+try {
+  const sitemapSource = await fs.readFile(path.join(localizedRoot, 'sitemap-i18n.xml'), 'utf8');
+  const sitemapUrls = [...sitemapSource.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const excludedPages = new Set(config.sitemapExcludedPages || []);
+  const sitemapPages = config.pages.filter((pageName) => !excludedPages.has(pageName));
+  const expectedSitemapUrls = [config.sourceLanguage, ...activeLanguages]
+    .flatMap((language) => sitemapPages.map((pageName) => pageUrl(language.code, pageName)));
+  if (sitemapUrls.length !== expectedSitemapUrls.length) failures.push(`sitemap-i18n.xml: expected ${expectedSitemapUrls.length} URLs, found ${sitemapUrls.length}.`);
+  for (const expectedUrl of expectedSitemapUrls) {
+    if (!sitemapUrls.includes(expectedUrl)) failures.push(`sitemap-i18n.xml: missing ${expectedUrl}.`);
+  }
+  for (const language of [config.sourceLanguage, ...activeLanguages]) {
+    for (const pageName of excludedPages) {
+      const excludedUrl = pageUrl(language.code, pageName);
+      if (sitemapSource.includes(excludedUrl)) failures.push(`sitemap-i18n.xml: excluded URL is present (${excludedUrl}).`);
+    }
+  }
+} catch (error) {
+  failures.push(`sitemap-i18n.xml: missing or invalid (${error.message}).`);
 }
 
 if (failures.length) {
