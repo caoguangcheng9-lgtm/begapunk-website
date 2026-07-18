@@ -49,3 +49,17 @@
 - All Russian page titles and H1 headings passed the targeted quality scan; the two catalog pages preserved every product-card numeric value from the English source.
 - The verifier now rejects Latin or Cyrillic placeholder mutations, bare placeholder tokens, known Russian machine-translation artifacts, and high-risk visible English residue.
 - Full localized-site verification passed again for 204 pages. The corrected production deployment is recorded after live verification.
+
+## Corrected Russian QA deployment
+
+- Deployed the corrected Russian localization to production on 2026-07-18 from Git commit `916dba5` (`Improve Russian translation quality checks`).
+- Deployment scope was limited to the 52 files under `/ru/`; no English, German, Japanese, backend, environment, or mail-runtime files were replaced.
+- Corrected release archive SHA-256: `308C49E9D6388BF7E48529A9138C8F40A20F281C9D20D3E614A63D82E90C0671`.
+- Primary rollback backup: `/www/backups/begapunk-ru-pre-qafix-20260718-142938.tar.gz`; gzip integrity passed and the archive contains the expected 53 entries (the `/ru/` directory plus 52 files).
+- A second valid pre-copy backup from the first interrupted SSH session is retained at `/www/backups/begapunk-ru-pre-qafix-20260718-142932.tar.gz`.
+- Live `ru/products.html` and `ru/products-p2.html` SHA-256 values matched the local source exactly.
+- The Russian homepage, both catalog pages, two representative product pages, the seal-selection article, contact page, about page, and FAQ returned HTTP 200; tested public HTML responses used gzip.
+- Live content checks found zero `AAA`/Cyrillic-AAA/placeholder artifacts. Product catalog text included the corrected `Макс. 1 MPa` and `Макс. 500 RPM` values.
+- Chrome visual QA found zero replacement characters, placeholder artifacts, or horizontal overflow on the catalog and seven representative pages. Browser console warnings and errors: 0.
+- Production-only `.env`, `PHPMailer/`, and `.well-known/` remained present. Nginx configuration validation passed.
+- No live inquiry form was submitted during this QA deployment.
