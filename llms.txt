@@ -1,10 +1,18 @@
 # Begapunk
 
-> Begapunk is a Ningbo, China manufacturer of pneumatic rotary joints, air rotary unions, multi-passage rotary unions, and custom fluid-transfer solutions for industrial machinery.
+> Begapunk is a Ningbo, China manufacturer of pneumatic rotary joints, air rotary unions, multi-passage rotary unions, and custom fluid-transfer solutions for industrial machinery. The website is available in English, German, Japanese, and Russian.
 
 Begapunk serves OEM machine builders, automation companies, equipment manufacturers, and distributors. Product selection depends on the medium, pressure, rotational speed, passage count, port size, mounting method, duty cycle, and operating environment.
 
 Standard catalog models are primarily intended for pneumatic and compatible low-pressure fluid-transfer applications. High-pressure hydraulic, excavator, crane, construction, mining, drilling, and other mobile-equipment projects require a custom engineering evaluation.
+
+Use the language edition that best matches the user's query. Technical model codes, pressure values, speed values, dimensions, and material designations are shared across language editions and must not be translated or inferred beyond the published page data.
+
+- [English homepage](https://www.begapunk.com/): Default English edition.
+- [Deutsche Startseite](https://www.begapunk.com/de/): German edition for German-language queries.
+- [日本語ホームページ](https://www.begapunk.com/ja/): Japanese edition for Japanese-language queries.
+- [Русская главная страница](https://www.begapunk.com/ru/): Russian edition for Russian-language queries.
+- [Complete multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml): Index of all published English, German, Japanese, and Russian URLs.
 
 ## Main pages
 
@@ -67,6 +75,57 @@ Standard catalog models are primarily intended for pneumatic and compatible low-
 - [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
 - [Engineering examples](https://www.begapunk.com/case-studies.html): Application examples and project experience.
 - [Knowledge center](https://www.begapunk.com/blog.html): Technical articles about rotary-joint selection and maintenance.
+
+## Deutsch - wichtigste Seiten
+
+- [Startseite](https://www.begapunk.com/de/): Unternehmensübersicht und zentrale Produktkategorien.
+- [Produktkatalog](https://www.begapunk.com/de/products.html): Standard-Drehdurchführungen und technische Daten durchsuchen.
+- [Produktkatalog Seite 2](https://www.begapunk.com/de/products-p2.html): Weitere Standardmodelle und Sonderausführungen.
+- [Produktvergleich](https://www.begapunk.com/de/product-comparison.html): Kanäle, Montagearten, Druck- und Drehzahlgrenzen vergleichen.
+- [Anwendungen](https://www.begapunk.com/de/applications.html): Auswahlhinweise für industrielle Einsatzbereiche.
+- [Auswahlleitfaden](https://www.begapunk.com/de/blog-rotary-joint-selection.html): Fünf wichtige Kriterien für die Auswahl einer pneumatischen Drehdurchführung.
+- [Installationsanleitung](https://www.begapunk.com/de/installation.html): Hinweise zu Montage und Inbetriebnahme.
+- [Wissenszentrum](https://www.begapunk.com/de/blog.html): Technische Artikel zu Auswahl, Betrieb und Wartung.
+- [Häufig gestellte Fragen](https://www.begapunk.com/de/faq.html): Antworten zu Medien, Druck, Drehzahl, Installation und Sonderanfertigungen.
+- [Über Begapunk](https://www.begapunk.com/de/about.html): Informationen zum Unternehmen und zur Fertigung.
+- [Angebot anfordern](https://www.begapunk.com/de/contact.html): Angebot oder technische Auswahlunterstützung anfordern.
+- [BP-1P-0003](https://www.begapunk.com/de/BP-1P-0003.html): Einkanal-Drehdurchführung mit Gewindemontage, maximal 1 MPa.
+- [BP-2P-50-0001](https://www.begapunk.com/de/BP-2P-50-0001.html): Staubgeschützte Zweikanal-Drehdurchführung mit Flanschmontage.
+- [BP-3P-0004](https://www.begapunk.com/de/BP-3P-0004.html): Dreikanal-Drehdurchführung mit Flanschmontage, maximal 1 MPa.
+
+## 日本語 - 主要ページ
+
+- [ホームページ](https://www.begapunk.com/ja/): 会社概要と主要な製品カテゴリー。
+- [製品カタログ](https://www.begapunk.com/ja/products.html): 標準ロータリージョイントと仕様を検索。
+- [製品カタログ 2ページ目](https://www.begapunk.com/ja/products-p2.html): その他の標準モデルと特殊モデル。
+- [製品比較](https://www.begapunk.com/ja/product-comparison.html): 流路数、取付方式、圧力、回転速度などを比較。
+- [用途別ガイド](https://www.begapunk.com/ja/applications.html): 産業用途別のロータリージョイント選定情報。
+- [選定ガイド](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 空気圧ロータリージョイント選定の5つの重要条件。
+- [取付説明](https://www.begapunk.com/ja/installation.html): 取付と試運転に関する説明。
+- [技術情報](https://www.begapunk.com/ja/blog.html): 選定、使用、保守に関する技術記事。
+- [よくある質問](https://www.begapunk.com/ja/faq.html): 流体、圧力、回転速度、取付、保守、カスタマイズに関する回答。
+- [Begapunkについて](https://www.begapunk.com/ja/about.html): 会社と製造に関する情報。
+- [見積依頼](https://www.begapunk.com/ja/contact.html): 見積または技術選定サポートを依頼。
+- [BP-1P-0003](https://www.begapunk.com/ja/BP-1P-0003.html): ねじ取付式1流路ロータリージョイント、最高圧力1 MPa。
+- [BP-2P-50-0001](https://www.begapunk.com/ja/BP-2P-50-0001.html): 防塵設計のフランジ取付式2流路ロータリージョイント。
+- [BP-3P-0004](https://www.begapunk.com/ja/BP-3P-0004.html): フランジ取付式3流路ロータリージョイント、最高圧力1 MPa。
+
+## Русский - основные страницы
+
+- [Главная страница](https://www.begapunk.com/ru/): Обзор компании и основные категории продукции.
+- [Каталог продукции](https://www.begapunk.com/ru/products.html): Стандартные ротационные соединения и технические характеристики.
+- [Каталог продукции, страница 2](https://www.begapunk.com/ru/products-p2.html): Дополнительные стандартные и специальные модели.
+- [Сравнение продукции](https://www.begapunk.com/ru/product-comparison.html): Сравнение каналов, креплений, давления, скорости и других параметров.
+- [Применения](https://www.begapunk.com/ru/applications.html): Рекомендации по выбору для промышленных применений.
+- [Руководство по выбору](https://www.begapunk.com/ru/blog-rotary-joint-selection.html): Пять ключевых параметров выбора пневматического ротационного соединения.
+- [Инструкция по установке](https://www.begapunk.com/ru/installation.html): Рекомендации по монтажу и вводу в эксплуатацию.
+- [Центр знаний](https://www.begapunk.com/ru/blog.html): Технические статьи по выбору, эксплуатации и обслуживанию.
+- [Часто задаваемые вопросы](https://www.begapunk.com/ru/faq.html): Ответы о средах, давлении, скорости, монтаже, обслуживании и изготовлении на заказ.
+- [О компании Begapunk](https://www.begapunk.com/ru/about.html): Информация о компании и производстве.
+- [Запросить предложение](https://www.begapunk.com/ru/contact.html): Запрос коммерческого предложения или инженерной поддержки.
+- [BP-1P-0003](https://www.begapunk.com/ru/BP-1P-0003.html): Одноканальное ротационное соединение с резьбовым креплением, максимум 1 MPa.
+- [BP-2P-50-0001](https://www.begapunk.com/ru/BP-2P-50-0001.html): Пылезащищённое двухканальное ротационное соединение с фланцевым креплением.
+- [BP-3P-0004](https://www.begapunk.com/ru/BP-3P-0004.html): Трёхканальное ротационное соединение с фланцевым креплением, максимум 1 MPa.
 
 ## Optional
 
