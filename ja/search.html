@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="ja"><head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Begapunkサイト内検索 | ロータリージョイント</title>
+
+    <meta name="description" content="モデル名、仕様、用途からBegapunkのロータリージョイント、用途別ガイド、技術記事を検索できます。">
+
+    <meta name="robots" content="noindex, follow">
+
+
+
+
+
+
+<link rel="alternate" hreflang="en" href="https://www.begapunk.com/search.html">
+<link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/search.html">
+<link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/search.html">
+<link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/search.html">
+<link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/search.html">
+<link rel="canonical" href="https://www.begapunk.com/ja/search.html">
+
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+
+
+    <!-- Open Graph -->
+
+    <meta property="og:title" content="Begapunkサイト内検索 | ロータリージョイント">
+
+    <meta property="og:description" content="モデル名、仕様、用途からBegapunkのロータリージョイント、用途別ガイド、技術記事を検索できます。">
+
+    <meta property="og:url" content="https://www.begapunk.com/ja/search.html">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
+
+    <meta property="og:site_name" content="Begapunk">
+
+    <meta property="og:locale" content="ja_JP">
+
+
+
+    <!-- Twitter Card -->
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Begapunkサイト内検索 | ロータリージョイント">
+
+    <meta name="twitter:description" content="モデル名、仕様、用途からBegapunkのロータリージョイント、用途別ガイド、技術記事を検索できます。">
+
+    <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
+
+
+
+    <link rel="stylesheet" href="../css/style.css?v=20260727-render-qa4">
+
+    <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
+
+
+
+    <style>
+    /* ===== Search Page Styles ===== */
+    .search-hero {
+        background: var(--bg-alt);
+        padding: 60px 0 40px;
+        border-bottom: 1px solid var(--border);
+    }
+    .search-hero h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .search-hero p {
+        text-align: center;
+        color: var(--text-light);
+        margin-bottom: 28px;
+    }
+
+    .search-box-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .search-box-wrap input {
+        width: 100%;
+        padding: 16px 56px 16px 20px;
+        font-size: 1.05rem;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box-wrap input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(0,86,179,0.08);
+    }
+    .search-box-wrap button {
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .search-box-wrap button:hover {
+        background: var(--primary-dark);
+    }
+
+    .search-filters {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 18px;
+    }
+    .search-filter-btn {
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--text);
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .search-filter-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    .search-filter-btn.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+    }
+
+    .search-results-area {
+        padding: 40px 0 80px;
+    }
+    .search-count {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        margin-bottom: 20px;
+    }
+
+    .search-result-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .search-result-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        transform: translateY(-2px);
+    }
+    .search-result-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .search-result-badge {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--primary);
+        background: rgba(0,86,179,0.06);
+        padding: 4px 10px;
+        border-radius: 12px;
+    }
+    .search-result-score {
+        font-size: 0.75rem;
+        color: var(--text-light);
+    }
+    .search-result-title {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    .search-result-title a {
+        color: var(--text);
+        text-decoration: none;
+    }
+    .search-result-title a:hover {
+        color: var(--primary);
+    }
+    .search-result-desc {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+    .search-result-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .search-tag {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        background: var(--bg-alt);
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+    .search-result-card mark {
+        background: rgba(255, 214, 0, 0.35);
+        padding: 0 2px;
+        border-radius: 2px;
+    }
+
+    .search-empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--text-light);
+    }
+    .search-empty h3 {
+        color: var(--text);
+        margin-bottom: 8px;
+    }
+    .search-empty a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .search-loading,
+    .search-error {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-light);
+    }
+    .search-error a {
+        color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+        .search-hero {
+            padding: 40px 0 30px;
+        }
+        .search-hero h1 {
+            font-size: 1.5rem;
+        }
+        .search-box-wrap input {
+            font-size: 1rem;
+            padding: 14px 50px 14px 16px;
+        }
+        .search-box-wrap button {
+            padding: 8px 14px;
+        }
+    }
+    </style>
+
+</head>
+
+<body>
+
+
+
+<!-- ===== HEADER ===== -->
+
+<header class="header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html" class="logo">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk｜産業用ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
+   </a>
+   <nav class="nav" id="mainNav">
+    <a href="index.html">ホーム</a>
+    <div class="nav-dropdown">
+     <a href="products.html" class="nav-dropdown-toggle">製品情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="products.html">製品一覧</a>
+      <a href="product-comparison.html">機種選定表</a>
+      <a href="contact.html">特注品・見積依頼</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="applications.html" class="nav-dropdown-toggle">用途別情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="applications.html">用途一覧</a>
+      <a href="application-laser-tube-cutting.html">レーザー管切断機</a>
+      <a href="application-packaging-machinery.html">包装機械</a>
+      <a href="application-bottle-filling-capping.html">ボトル充填・キャッピング機</a>
+      <a href="application-automation-rotary-tables.html">自動化用回転テーブル</a>
+      <a href="application-robot-end-of-arm-tooling.html">ロボットハンド・EOAT</a>
+      <a href="application-pneumatic-tools-hose-anti-twist.html">空圧工具</a>
+      <a href="applications.html">その他の用途</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="blog.html" class="nav-dropdown-toggle">技術情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="blog.html">技術資料</a>
+      <a href="blog-rotary-joint-selection.html">選定ガイド</a>
+      <a href="blog-rotary-union-seal-types.html">シール技術</a>
+      <a href="installation.html">取付要領</a>
+      <a href="faq.html">よくある質問</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="about.html" class="nav-dropdown-toggle">会社情報 <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="about.html">会社・工場情報</a>
+      <a href="case-studies.html">選定事例</a>
+     </div>
+    </div>
+    <a href="contact.html" class="nav-cta">見積もり・技術相談</a>
+   </nav>
+
+   <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ja">Language</label><select id="language-ja" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="../search.html">English</option><option value="../de/search.html">Deutsch</option><option value="search.html" selected="">日本語</option><option value="../ru/search.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニュー">
+    <span></span><span></span><span></span>
+   </button>
+  </div>
+ </div>
+</header>
+
+
+
+<!-- ===== SEARCH HERO ===== -->
+
+<section class="search-hero">
+    <div class="container">
+        <h1>ロータリージョイントを検索</h1>
+        <p>型式、仕様、装置名、用途から検索できます。</p>
+
+        <div class="search-box-wrap">
+            <input id="search-input" type="search" placeholder="例：BP-2P-0001、レーザー切断、1 MPa、4流路 ..." autocomplete="off">
+            <button type="button" id="search-btn">検索</button>
+        </div>
+
+        <div class="search-filters">
+            <button class="search-filter-btn active" data-filter="all">すべて</button>
+            <button class="search-filter-btn" data-filter="product">製品情報</button>
+            <button class="search-filter-btn" data-filter="application">用途別情報</button>
+            <button class="search-filter-btn" data-filter="blog">技術記事・ガイド</button>
+            <button class="search-filter-btn" data-filter="core">ページ</button>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ===== RESULTS ===== -->
+
+<section class="search-results-area">
+    <div class="container">
+        <p class="search-count" id="search-count">検索データを読み込んでいます ...</p>
+        <div id="search-results"></div>
+
+        <div class="search-empty" id="search-empty" style="display:none;">
+            <h3>検索結果がありません</h3>
+            <p>別のキーワードをお試しいただくか、<a href="products.html">製品一覧をご覧ください</a>。</p>
+            <p style="margin-top:8px;font-size:0.9rem;">よく検索されるキーワード：<a href="search.html?q=2流路">2流路</a>、<a href="search.html?q=laser">レーザー切断</a>、<a href="search.html?q=1+MPa">1 MPa</a>、<a href="search.html?q=dust">防塵</a></p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ===== FOOTER ===== -->
+
+<footer class="footer">
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <a href="index.html" class="logo">
+     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" width="226" height="40">
+    </a>
+    <p style="margin-top:12px;color:var(--text-light);font-size:0.9rem;">産業自動化向け精密ロータリージョイント。</p>
+   </div>
+   <div>
+    <h4 class="footer-title">製品情報</h4>
+    <div class="footer-links">
+     <a href="products.html">製品一覧</a>
+     <a href="product-comparison.html">機種選定表</a>
+     <a href="contact.html">特注品・見積依頼</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">資料・情報</h4>
+    <div class="footer-links">
+     <a href="blog.html">技術資料</a>
+     <a href="installation.html">取付要領</a>
+     <a href="faq.html">よくある質問</a>
+    </div>
+   </div>
+   <div>
+    <h4 class="footer-title">会社情報</h4>
+    <div class="footer-links">
+     <a href="about.html">会社・工場情報</a>
+     <a href="case-studies.html">選定事例</a>
+     <a href="contact.html">お問い合わせ</a>
+    </div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <p>© 2026 Begapunk ロータリージョイントメーカー。無断転載を禁じます。</p>
+   <div class="footer-legal">
+    <a href="privacy.html">プライバシー</a>
+    <a href="terms.html">利用規約</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+
+
+<div class="floating-cta">
+ <a href="contact.html" class="floating-btn quote">見積もり・技術相談</a>
+<a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a>
+</div>
+
+
+
+<!-- ===== JS ===== -->
+
+<script>
+
+// Mobile Menu
+const mobileToggle = document.getElementById('mobileToggle');
+const mainNav = document.getElementById('mainNav');
+if (mobileToggle && mainNav) {
+    mobileToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('mobile-open');
+    });
+}
+
+// Header scroll effect
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.style.boxShadow = '0 2px 20px rgba(15,23,42,0.08)';
+    } else {
+        header.style.boxShadow = 'none';
+    }
+});
+
+</script>
+
+<script src="../js/search.js"></script>
+
+
+
+
+</body></html>

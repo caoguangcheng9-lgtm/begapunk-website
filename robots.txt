@@ -22,3 +22,4 @@ Disallow: /send_inquiry.php
 Sitemap: https://www.begapunk.com/sitemap.xml
 
 # Crawl-delay: 10
+Sitemap: https://www.begapunk.com/sitemap-i18n.xml

@@ -334,8 +334,8 @@
   {
     "id": "BP-2P-95-0001",
     "url": "BP-2P-95-0001.html",
-    "title": "BP-2P-95-0001 · 2-in-4-out Rotary Joint | Heavy Duty, Max 10 MPa | Begapunk",
-    "description": "BP-2P-95-0001 2-in-4-out rotary joint: heavy duty, max 10 MPa, 200 RPM, AL6061 + 45# steel body, PTFE seal. For high-pressure hydraulic clamping, injection molding rotary units, large stamping tables, and multi-outlet hydraulic systems. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
+    "title": "BP-2P-95-0001 ? 2-in-4-out Rotary Joint | Max 1 MPa | Begapunk",
+    "description": "BP-2P-95-0001 2-in-4-out rotary joint: max 1 MPa / 10 bar, 200 RPM, Aluminum Alloy 6061 body, PTFE seal. For pneumatic clamping, rotary fixtures, and multi-outlet fluid distribution. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
     "h1": "BP-2P-95-0001 · 2-in-4-out Rotary Joint",
     "h2s": [
       "Technical Specifications",
@@ -344,15 +344,15 @@
       "Downloads & Resources",
       "BP-2P-95-0001 vs. Other Begapunk Models"
     ],
-    "body": "Heavy-duty 2-passage rotary joint for high-pressure pneumatic and fluid applications. PTFE composite seal, AL6061 + 45# steel composite body. Max 10 MPa, 162 mm outer diameter, 4.26 kg. Distributes 2 inlet supplies to 4 outlet ports for multi-actuator rotary tables. Ships in 7 days. BP-2P-95-0001 is a heavy-duty 2-in-4-out rotary joint designed for high-pressure pneumatic and hydraulic applications. The composite body combines AL6061 aluminum (housing) with 45# steel (shaft and flange) to achiev",
+    "body": "2-passage rotary joint for pneumatic and light-fluid applications. PTFE composite seal, Aluminum Alloy 6061 body. Max 1 MPa / 10 bar, 162 mm outer diameter, 4.26 kg. Distributes 2 inlet supplies to 4 outlet ports for multi-actuator rotary tables.",
     "keywords": [
       "4 outlets",
       "PTFE (Teflon) composite seal with FKM O-ring backup",
       "Approx. 4.26 kg (4,260 g)",
       "200 RPM — derate to 150 RPM for continuous hydraulic oil duty",
       "162 mm",
-      "10 MPa (100 bar / 1,450 psi) — tested at 12 MPa",
-      "2-in-4-out distribution, 5–10 MPa hydraulic, heavy rotary table",
+      "1 MPa / 10 bar",
+      "1 MPa / 10 bar",
       "BP-2P-95-0001",
       "2-in-4-out",
       "2 passages",
@@ -520,7 +520,7 @@
     "id": "BP-4P-30-0001",
     "url": "BP-4P-30-0001.html",
     "title": "BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint | Flange Mount, Max 1 MPa | Begapunk",
-    "description": "BP-4P-30-0001 4-in-4-out rotary joint: flange mount, max 1 MPa, 80 RPM, AL6061 aluminum body, PTFE + Si3N4 ceramic seal. Ø30mm hollow bore for cable-through or shaft-through applications. Air, water, coolant, hydraulic oil compatible. For multi-station rotary tables, welding positioners, and packaging machinery. ISO9001 certified. Download 2D PDF drawing.",
+    "description": "BP-4P-30-0001 4-in-4-out rotary joint: flange mount, max 1 MPa, 200 rpm, AL6061 aluminum body, PTFE + Si3N4 ceramic seal. Ø30mm hollow bore for cable-through or shaft-through applications. Air, water, coolant, hydraulic oil compatible. For multi-station rotary tables, welding positioners, and packaging machinery. ISO9001 certified. Download 2D PDF drawing.",
     "h1": "BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint",
     "h2s": [
       "Technical Specifications",
@@ -541,7 +541,7 @@
       "PTFE Composite + Si3N4 Ceramic Seal",
       "4 air lines + Ø30mm hollow bore, rotary table",
       "Approx. 0.943 kg",
-      "80 RPM",
+      "200 rpm",
       "4 passages"
     ],
     "category": "product",
@@ -850,18 +850,21 @@
   {
     "id": "application-textile-printing-converting",
     "url": "application-textile-printing-converting.html",
-    "title": "Rotary Union for Textile, Printing, and Converting Equipment | Begapunk",
-    "description": "Rotary union guide for textile winding machines, printing presses, paper converting equipment, laminating machines, rollers, air blow-off, vacuum, and cooling transfer.",
-    "h1": "Rotary Union for Textile, Printing, and Converting Equipment",
+    "title": "Rotary Union for Printing Machinery & Converting Equipment | Begapunk",
+    "description": "Select a rotary union for printing machinery, printing presses, textile winders, and converting lines by media, pressure, RPM, passages, shaft bore, and contamination.",
+    "h1": "Rotary Union for Printing Machinery and Converting Equipment",
     "h2s": [
-      "Why rotating rollers and converting equipment use rotary unions",
+      "How printing machinery uses rotary unions",
       "Selection Checklist",
-      "Typical Pneumatic Rotary Union Requirements",
+      "Typical Printing Machine Rotary Union Requirements",
       "Recommended Starting Points",
-      "Need help selecting a rotary union for Textile & Printing?"
+      "Need help selecting a rotary union for printing machinery?"
     ],
-    "body": "Textile, printing, and converting equipment use rotating rollers, drums, and winding stations where air, vacuum, water, or coolant may need to pass through a moving shaft. Who this is for:Textile machinery builders, printing press manufacturers, and converting equipment designers specifying rotary transfer for rollers and winding systems. Printing presses, label machines, laminators, textile winders, and converting lines often need rotating air blow-off, vacuum, or temperature-control transfer. ",
+    "body": "Printing machines, presses, laminators, textile winders, and converting lines use rotary unions to transfer air, vacuum, water, or coolant into rotating rollers and drums without twisting fixed hoses. A rotary union for printing machinery provides a sealed path between the stationary supply and a rotating roller or drum. Start selection with media, operating pressure, roller RPM, passage count, shaft bore, mounting envelope, and contamination risk.",
     "keywords": [
+      "rotary union for printing machinery",
+      "rotary unions for printing machines",
+      "printing machine rotary union",
       "BP-2P-50-00012-passage rotary union for larger interface requirements.",
       "textile printing converting",
       "BP-2P-30-00012 passages with larger bore option for rotating equipment layouts."
@@ -1313,13 +1316,17 @@
     "id": "products-p2",
     "url": "products-p2.html",
     "title": "Rotary Joint Catalog Page 2 | Begapunk",
-    "description": "Browse 40+ rotary joint models. Single to multi-channel, threaded and flanged. Standard models in stock. Custom designs available. Get a quote.",
+    "description": "Browse Begapunk rotary joint models online or download the 2026 rotary joint product catalog PDF for offline review.",
     "h1": "Rotary Joint Catalog",
     "h2s": [
-      "Need to compare pressure, RPM, passages, and mounting?"
+      "Compare models online or download the 2026 product catalog"
     ],
-    "body": "40+ standard models in stock. Custom designs with free 3D STEP files. 7-14 day delivery worldwide. Open the full air rotary union comparison table to choose a standard model before sending your RFQ. Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010. © 2026 Begapunk Precision Rotary Joint Manufacturer. All rights reserved.",
-    "keywords": [],
+    "body": "Browse Begapunk rotary joint models by passage count, mounting style, bore size, material, and application. Use the online comparison table for pressure, RPM, passages, and mounting, or download the complete 2026 rotary joint product catalog PDF for offline review.",
+    "keywords": [
+      "rotary joint catalog pdf",
+      "rotary union product catalog",
+      "Begapunk catalog 2026"
+    ],
     "category": "core",
     "tags": [
       "core",
