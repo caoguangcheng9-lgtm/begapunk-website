@@ -2,3 +2,6 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.ps1 text eol=crlf
+de/** text=auto eol=lf
+ja/** text=auto eol=lf
+ru/** text=auto eol=lf
