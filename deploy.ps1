@@ -21,14 +21,16 @@ function Invoke-CheckedCommand {
 }
 
 function Get-RelevantGitChanges {
-    $lines = @(& git status --porcelain=v1 --untracked-files=all)
-    if ($LASTEXITCODE -ne 0) {
-        throw 'Unable to read Git status.'
-    }
+    $paths = @()
+    $paths += @(& git diff --name-only --no-ext-diff)
+    if ($LASTEXITCODE -ne 0) { throw 'Unable to read unstaged Git changes.' }
+    $paths += @(& git diff --cached --name-only --no-ext-diff)
+    if ($LASTEXITCODE -ne 0) { throw 'Unable to read staged Git changes.' }
+    $paths += @(& git ls-files --others --exclude-standard)
+    if ($LASTEXITCODE -ne 0) { throw 'Unable to read untracked Git files.' }
 
-    return @($lines | Where-Object {
-        $path = if ($_.Length -gt 3) { $_.Substring(3).Trim('"') } else { '' }
-        -not ($path -eq 'catalog-project' -or $path.StartsWith('catalog-project/'))
+    return @($paths | Sort-Object -Unique | Where-Object {
+        -not ($_ -eq 'catalog-project' -or $_.StartsWith('catalog-project/'))
     })
 }
 
