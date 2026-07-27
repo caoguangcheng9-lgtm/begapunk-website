@@ -19,6 +19,8 @@ const outputRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
 const overridesByLanguage = new Map();
+const editorialOverridesByLanguage = new Map();
+const seoByLanguage = new Map();
 for (const language of activeLanguages) {
   const overridePath = path.join(i18nRoot, 'overrides', `${language.code}.json`);
   try {
@@ -26,6 +28,20 @@ for (const language of activeLanguages) {
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
     overridesByLanguage.set(language.code, {});
+  }
+  const editorialPath = path.join(i18nRoot, 'editorial', `${language.code}.json`);
+  try {
+    editorialOverridesByLanguage.set(language.code, JSON.parse(await fs.readFile(editorialPath, 'utf8')));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    editorialOverridesByLanguage.set(language.code, {});
+  }
+  const seoPath = path.join(i18nRoot, 'seo', `${language.code}.json`);
+  try {
+    seoByLanguage.set(language.code, JSON.parse(await fs.readFile(seoPath, 'utf8')));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    seoByLanguage.set(language.code, {});
   }
 }
 const excludedSelector = config.excludedSelectors.join(',');
@@ -213,6 +229,551 @@ function decodeEntities(value) {
     .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)));
 }
 
+function normalizeJapaneseOutput(html) {
+  const replacements = [
+    ['びんの詰物及びおおう', 'ボトル充填・キャッピング'],
+    ['びんの詰物およびおおう', 'ボトル充填・キャッピング'],
+    ['詰物', '充填'],
+    ['おおう', 'キャッピング'],
+    ['締め金で止めること', 'クランプ'],
+    ['締め金', 'クランプ'],
+    ['回転式接合箇所', 'ロータリージョイント'],
+    ['中空中空径', '中空穴'],
+    ['空中空径', '中空穴'],
+    ['空 中空径', '中空穴'],
+    ['空中マニホールド', 'エアマニホールド'],
+    ['据え付け品', '治具'],
+    ['デッサン', '図面'],
+    ['インストール', '取付'],
+    ['プロシージャ', '手順'],
+    ['セリウム', 'CE'],
+    ['物質的な', '材質上の'],
+    ['物質的', '材質'],
+    ['マウントタイプ', '取付方式'],
+    ['純重量', '質量'],
+    ['提案されたモデル', '推奨機種'],
+    ['選択の焦点', '選定時の確認事項'],
+    ['共通の機能', '代表的な機能'],
+    ['機械類', '機械'],
+    ['土台', '取付'],
+    ['メディア', '使用流体'],
+    ['義務周期', 'デューティサイクル'],
+    ['義務', '使用条件'],
+    ['derate', '定格を下げる'],
+    ['流路 の', '流路の'],
+    ['用途 の', '用途の'],
+    ['最大の圧力', '最高使用圧力'],
+    ['最高の圧力', '最高使用圧力'],
+    ['最大の速度', '最高使用回転数'],
+    ['最高の速度', '最高使用回転数'],
+    ['最高のRPM', '最高使用回転数'],
+    ['ニンポー', '寧波'],
+    ['ライト オイル', '低粘度油'],
+    ['冷却剤', 'クーラント'],
+    ['1-in-1-out', '1流路'],
+    ['2-in-2-out', '2流路'],
+    ['3-in-3-out', '3流路'],
+    ['4-in-4-out', '4流路'],
+    ['8-in-8-out', '8流路'],
+    ['1-in-6-out', '1入力6出力'],
+    ['2-in-3-out', '2入力3出力'],
+    ['2-in-4-out', '2入力4出力'],
+    ['4-in-4out', '4流路'],
+    ['images/optimized/2流路-Rotary-joint.webp', 'images/optimized/2-in-2-out-Rotary-joint.webp'],
+    ['images/optimized/3流路-M8-rotary-joint-3.webp', 'images/optimized/3-in-3-out-M8-rotary-joint-3.webp'],
+    ['カスタムロータリージョイント', '特注ロータリージョイント'],
+    ['カスタム ロータリージョイント', '特注ロータリージョイント'],
+    ['カスタム RFQ', '特注品・見積依頼'],
+    ['誰がこれのためにいるのか:', '対象読者：'],
+    ['オートメーション エンジニア', '自動化設備技術者'],
+    ['メンテナンス マネージャー', '保全担当者'],
+    ['レーザーの管の切断', 'レーザー管切断'],
+    ['管の打抜き機', 'レーザー管切断機'],
+    ['援助のガス', 'アシストガス'],
+    ['助けのガス', 'アシストガス'],
+    ['索引のテーブル', 'インデックステーブル'],
+    ['シーリング頭部', 'シールヘッド'],
+    ['使用条件の周期', '運転サイクル'],
+    ['コンクルージョン', 'まとめ'],
+    ['Specs', '仕様'],
+    ['Spec', '仕様'],
+    ['Mistake', '失敗例'],
+    ['Undersizing', '径不足'],
+    ['Distroy', '損傷させる'],
+    ['Pinout', 'ピン配列'],
+    ['セレクション', '選定'],
+    ['カスタム の', '特注品の'],
+    ['適用範囲が広いホース', 'フレキシブルホース'],
+    ['堅い管', '硬質配管'],
+    ['肯定的な圧力', '正圧'],
+    ['唇シール', 'リップシール'],
+    ['O-Rings', 'Oリング'],
+    ['ポジシァヨナー', 'ポジショナー'],
+    ['電子工学及び電池のテストの治具', '電子部品・バッテリー試験治具'],
+    ['電子工学', '電子機器'],
+    ['据え付け品', '治具'],
+    ['密集した', 'コンパクトな'],
+    ['回転式点検場所', '回転検査装置'],
+    ['回転式移動', '回転部への供給'],
+    ['空気そして真空', '空気と真空'],
+    ['空気電気', '空圧・電気'],
+    ['気圧電気', '空圧・電気'],
+    ['チャネルカウント', '流路数'],
+    ['信号カウント', '信号数'],
+    ['流路の計算', '流路数'],
+    ['予備チャネル', '予備流路'],
+    ['マシンビルダー', '機械メーカー'],
+    ['工具細工', '治具'],
+    ['真空のコップ', '真空吸着パッド'],
+    ['細胞の処理', 'セル搬送'],
+    ['電池の巻上げ', '電池材料の巻取り'],
+    ['洗剤材料', '清浄性に配慮した材質'],
+    ['物質的な条件', '材質条件'],
+    ['製造業装置', '製造装置'],
+    ['空気吹き出し', 'エアブロー'],
+    ['空気の締め金で止めること', '空圧クランプ'],
+    ['空気グリッパー', '空圧グリッパー'],
+    ['見直しる', '検討する'],
+    ['送って下さい', 'お送りください'],
+    ['下さい', 'ください'],
+    ['堅い治具の封筒', '狭い治具スペース'],
+    ['土台スペース', '取付スペース'],
+    ['土台:', '取付:'],
+    ['織物及び印刷', '繊維・印刷'],
+    ['RPM', 'min⁻¹'],
+    ['rpm', 'min⁻¹'],
+    ['Max pressure', '最高使用圧力'],
+    ['max pressure', '最高使用圧力'],
+    ['Max speed', '最高使用回転数'],
+    ['max speed', '最高使用回転数'],
+    ['?78.9', 'φ78.9'],
+    ['?64', 'φ64'],
+    ['?6 mm', 'φ6 mm'],
+  ];
+  let normalized = html;
+  for (const [from, to] of replacements) normalized = normalized.replaceAll(from, to);
+  normalized = normalized
+    .replaceAll('の特長', '')
+    .replace(/最高の(\d+(?:\.\d+)?\s*MPa)/g, '最高使用圧力$1')
+    .replace(/最高の(\d[\d,]*(?:\.\d+)?\s*RPM)/g, '最高使用回転数$1')
+    .replace(/(\d+(?:\.\d+)?\s*MPa)最高/g, '最高使用圧力$1')
+    .replace(/(\d[\d,]*(?:\.\d+)?\s*RPM)最高/g, '最高使用回転数$1')
+    .replace(/最大の使用圧力/g, '最高使用圧力')
+    .replace(/圧力を変形させ/g, '圧力を下げ')
+    .replace(/速度を変形させ/g, '回転数を下げ')
+    .replace(/ボディ変形/g, '本体形状')
+    .replace(/(\d+\s*mm|G1\/\d+) の変形/g, '$1仕様')
+    .replace(/クリーンルームの変形/g, 'クリーンルーム仕様')
+    .replace(/([1-9])。\s*(?:\1。|。)\s*/g, '$1. ')
+    .replace(/([1-9])。\s*/g, '$1. ')
+    .replace(/\s+対\.\s+/g, 'と')
+    .replace(/(BP-[A-Z0-9-]+)の特長/g, '$1')
+    .replace(/sales@begapunk\.comの特長/g, 'sales@begapunk.com')
+    .replace(/ISO 9001:2015の特長/g, 'ISO 9001:2015認証')
+    .replace(/(機種比較|カスタム RFQ|空気圧工具|用途|製品情報)の特長/g, '$1');
+  return localizeJapaneseStructuredData(normalized);
+}
+
+function localizeJapaneseStructuredData(html) {
+  const $ = load(html, { decodeEntities: false });
+  const pageHeading = $('h1').first().text().replace(/\s+/g, ' ').trim();
+  const pageDescription = $('meta[name="description"]').attr('content')?.trim();
+  const propertyNames = new Map([
+    ['Product type', '製品種別'],
+    ['SKU', '型式'],
+    ['Passages', '流路数'],
+    ['Orifice size', 'オリフィス径'],
+    ['Maximum pressure', '最高使用圧力'],
+    ['Maximum speed', '最高使用回転数'],
+    ['Compatible media', '使用可能流体'],
+    ['Body material', '本体材質'],
+    ['Seal type', 'シール方式'],
+    ['Bearing type', '軸受方式'],
+    ['Thread type', 'ねじ規格'],
+    ['Rotor connection', '回転側接続'],
+    ['Stator connection', '固定側接続'],
+    ['Mounting type', '取付方式'],
+    ['Operating temperature', '使用温度範囲'],
+    ['Net weight', '質量'],
+    ['Approx. Weight', '質量'],
+    ['Dimensions', '外形寸法'],
+    ['Bore diameter', '中空穴径'],
+    ['Idle torque', '無負荷トルク'],
+    ['Running torque', '回転トルク'],
+    ['Service life', '参考寿命'],
+    ['Leakage', '漏れ'],
+    ['Certifications', '認証'],
+    ['Warranty', '保証期間'],
+    ['Duty type', '使用条件'],
+    ['Typical applications', '主な用途'],
+  ]);
+  $('script[type="application/ld+json"]').each((_, element) => {
+    try {
+      const payload = JSON.parse($(element).html());
+      const nodes = Array.isArray(payload?.['@graph']) ? payload['@graph'] : [payload];
+      for (const node of nodes) {
+        if (node?.['@type'] === 'BreadcrumbList' && Array.isArray(node.itemListElement)) {
+          for (const item of node.itemListElement) {
+            if (item?.position === 1) item.name = 'ホーム';
+            if (item?.position === 2) item.name = '製品一覧';
+          }
+        }
+        if (node?.['@type'] !== 'Product') continue;
+        if (pageHeading) node.name = pageHeading;
+        if (pageDescription) node.description = pageDescription;
+        node.category = '空圧ロータリージョイント（回転継手）';
+        if (Array.isArray(node.additionalProperty)) {
+          for (const property of node.additionalProperty) {
+            if (propertyNames.has(property?.name)) property.name = propertyNames.get(property.name);
+          }
+        }
+      }
+      $(element).text(JSON.stringify(payload));
+    } catch {
+      // Verification reports malformed JSON-LD; leave the original block intact for diagnosis.
+    }
+  });
+  return $.html();
+}
+
+function normalizeGermanOutput(html) {
+  const replacements = [
+    ['1-in-1-out', '1-Kanal'],
+    ['2-in-2-out', '2-Kanal'],
+    ['3-in-3-out', '3-Kanal'],
+    ['4-in-4-out', '4-Kanal'],
+    ['4-in-4out', '4-Kanal'],
+    ['8-in-8-out', '8-Kanal'],
+    ['1-in-6-out', '1-zu-6'],
+    ['2-in-3-out', '2-zu-3'],
+    ['2-in-4-out', '2-zu-4'],
+    ['images/optimized/2-Kanal-Rotary-joint.webp', 'images/optimized/2-in-2-out-Rotary-joint.webp'],
+    ['images/optimized/3-Kanal-M8-rotary-joint-3.webp', 'images/optimized/3-in-3-out-M8-rotary-joint-3.webp'],
+    ['RPM', 'min⁻¹'],
+    ['rpm', 'min⁻¹'],
+    ['Max pressure', 'maximaler Betriebsdruck'],
+    ['max pressure', 'maximaler Betriebsdruck'],
+    ['Max speed', 'maximale Drehzahl'],
+    ['max speed', 'maximale Drehzahl'],
+    ['Max ', 'max. '],
+    ['Mistake', 'Fehler'],
+    ['Triple-Kanal', '3-Kanal'],
+    ['PTFE Composite', 'PTFE-Verbund'],
+    ['Common Auslöser', 'Typische Gründe'],
+    ['Rigid Rohrleitungen', 'starre Rohrleitungen'],
+    ['Multi-Kanal', 'Mehrkanal'],
+    ['multi-Kanal', 'Mehrkanal'],
+    ['Multikanal-', 'Mehrkanal-'],
+    ['Rundschalt-Drehscheibe', 'Rundschalttisch'],
+    ['through-Bohrung', 'Durchgangsbohrung'],
+    ['Through-Bohrung', 'Durchgangsbohrung'],
+    ['Air Kanäle', 'Luftkanäle'],
+    ['air Kanäle', 'Luftkanäle'],
+    ['Rutschring', 'Schleifring'],
+    ['Kanal Ausführung', 'Kanalauslegung'],
+    ['5-Kanal-Joint', '5-Kanal-Drehdurchführung'],
+    ['4-Kanal-Gelenks', '4-Kanal-Drehdurchführung'],
+    ['gesamten Gelenks', 'gesamten Drehdurchführung'],
+    ['Karte jede pneumatische Funktion', 'Ordnen Sie jede pneumatische Funktion zu'],
+    ['Re-Leitungsführungsschläuche', 'erneute Verlegung der Schläuche'],
+    ['Automatisierungstabelle', 'Automatisierungs-Rundtisch'],
+    ['direkt mit dem Joint', 'direkt mit der Drehdurchführung'],
+    ['Kompatible Maschinentypen & Applikationseignung', 'Geeignete Maschinentypen und Anwendungen'],
+    ['Verbundene Produkte', 'Ähnliche Produkte'],
+    ['Starten Sie Ihr kundenspezifisch Projekt', 'Kundenspezifisches Projekt anfragen'],
+    ['kundenspezifisch Bestellungen & Lieferung', 'Kundenspezifische Ausführungen und Lieferung'],
+    ['kundenspezifisch Projekt', 'kundenspezifisches Projekt'],
+    ['Automation Rundtisch', 'Automatisierungs-Rundtisch'],
+    ['Harsche Umweltauswahl', 'Auswahl für raue Umgebungen'],
+    ['Electronics & Battery Test', 'Elektronik- und Batterietests'],
+    ['Füllen und Capping Fragen', 'Fragen zu Füll- und Verschließanlagen'],
+    ['Vergleichen Sie Modelle online oder Herunterladen den Produktkatalog 2026', 'Modelle online vergleichen oder Produktkatalog 2026 herunterladen'],
+    ['Fabrik & Qualität', 'Fertigung und Qualität'],
+    ['Kompatible Maschinentypen &amp; Applikationseignung', 'Geeignete Maschinentypen und Anwendungen'],
+    ['Wie wir eine Drehdurchführung machen', 'Wie wir Drehdurchführungen fertigen'],
+    ['Unternehmen Timeline', 'Unternehmensgeschichte'],
+    ['Empfohlene Startpunkte', 'Empfohlene Modelle'],
+    ['Automatisierungstabelle Checkliste', 'Auswahlcheckliste für Automatisierungs-Rundtische'],
+    ['Automatisierungs-Rundtisch Parameter', 'Parameter für Automatisierungs-Rundtische'],
+    ['3 Fehler, die die Automatisierung beschädigen können Rundtisch Drehdurchführungen', '3 Fehler, die Drehdurchführungen an Automatisierungs-Rundtischen beschädigen können'],
+    ['Montage und Wartung für die Automatisierung Rundtisch Drehdurchführungen', 'Montage und Wartung von Drehdurchführungen an Automatisierungs-Rundtischen'],
+    ['Flaschenbefüllung und -verschluss Drehdurchführungsparameter', 'Parameter für Drehdurchführungen an Füll- und Verschließmaschinen'],
+    ['3 Fehler, die das Füllen und Verschließen von Drehdurchführungen beschädigen können', '3 Fehler bei Drehdurchführungen an Füll- und Verschließmaschinen'],
+    ['Montage und Wartung zum Befüllen und Verschließen von Drehdurchführungen', 'Montage und Wartung an Füll- und Verschließmaschinen'],
+    ['CNC-Vorrichtung Checkliste', 'Auswahlcheckliste für CNC-Spannvorrichtungen'],
+    ['CNC-Pneumatische Klemm-Drehdurchführungsparameter', 'Parameter für Drehdurchführungen an CNC-Spannvorrichtungen'],
+    ['Elektronik &amp; Batterie Test Drehdurchführung Fragen', 'Fragen zu Drehdurchführungen für Elektronik- und Batterietests'],
+    ['Laserrohrschneiden Drehdurchführungsparameter', 'Parameter für Drehdurchführungen an Laserrohrschneidmaschinen'],
+    ['Montage und Wartung für Laserschneiden Drehdurchführungen', 'Montage und Wartung an Laserrohrschneidmaschinen'],
+    ['Verpackungsmaschinen Drehdurchführungsparameter', 'Parameter für Drehdurchführungen an Verpackungsmaschinen'],
+    ['Montage und Wartung für die Verpackung Drehdurchführungen', 'Montage und Wartung an Verpackungsmaschinen'],
+    ['Roboter EOAT Auswahl Checkliste', 'Auswahlcheckliste für Roboter-EOAT'],
+    ['Roboter EOAT Drehdurchführung Anforderungen', 'Anforderungen an Drehdurchführungen für Roboter-EOAT'],
+    ['staubgeschützt Drehdurchführungsparameter', 'Parameter für staubgeschützte Drehdurchführungen'],
+    ['Quick Reference: Material Performance Table', 'Schnellübersicht: Werkstoffvergleich'],
+    ['4. Kosten vs. Lifetime: Reale Zahlen', '4. Kosten und Lebensdauer: Praxiswerte'],
+    ['1. O-Ring Dichtungen', '1. O-Ring-Dichtungen'],
+    ['3. federunterstütztes kohlenstoffgefülltes PTFE Dichtungen', '3. Federunterstützte PTFE-Dichtungen mit Kohlenstofffüllung'],
+    ['Wann zu ersetzen vs. Wann zu reparieren', 'Wann ersetzen, wann reparieren?'],
+    ['Fabrikanschrift', 'Werksanschrift'],
+    ['kundenspezifisch Bestellungen &amp; Lieferung', 'Sonderausführungen und Lieferung'],
+    ['3. Cookies &amp; Tracking Technologien', '3. Cookies und Tracking-Technologien'],
+    ['4. Data Sharing', '4. Weitergabe von Daten'],
+    ['5. Vorratsdatenspeicherung', '5. Speicherdauer'],
+    ['8. Privatsphäre der Kinder', '8. Datenschutz für Kinder'],
+    ['10. uns benachrichtigen', '10. Kontakt'],
+    ['?230', 'Ø230'],
+    ['?78.9', 'Ø78,9'],
+    ['?78,9', 'Ø78,9'],
+    ['?64', 'Ø64'],
+    ['?6 mm', 'Ø6 mm'],
+  ];
+  let normalized = html;
+  for (const [from, to] of replacements) normalized = normalized.replaceAll(from, to);
+  normalized = normalized
+    .replace(/(BP-[A-Z0-9-]+) vs\. Andere Begapunk Modelle/g, '$1 im Vergleich zu anderen Begapunk Modellen')
+    .replace(/3 Fehler, die (.+?) zerstören/g, '3 Fehler, die $1 beschädigen können')
+    .replaceAll('3 Fehler, die die Automatisierung beschädigen können Rundtisch Drehdurchführungen', '3 Fehler bei Drehdurchführungen an Automatisierungs-Rundtischen')
+    .replaceAll('3 Fehler, die das Füllen und Verschließen von Drehdurchführungen beschädigen können', '3 Fehler bei Drehdurchführungen an Füll- und Verschließmaschinen')
+    .replaceAll('3 Fehler, die die Verpackung von Drehdurchführungen beschädigen können', '3 Fehler bei Drehdurchführungen an Verpackungsmaschinen')
+    .replaceAll('CNC-Vorrichtung Drehdurchführung', 'Drehdurchführung für CNC-Spannvorrichtungen')
+    .replaceAll('Pneumatische Werkzeugauswahl Checkliste', 'Auswahlcheckliste für Pneumatikwerkzeuge')
+    .replaceAll('Pneumatisches Werkzeug Druckluft-Drehdurchführung Anforderungen', 'Anforderungen an Drehdurchführungen für Pneumatikwerkzeuge')
+    .replaceAll('Pneumatisches Werkzeug Druckluft-Drehdurchführung Fragen', 'Fragen zu Drehdurchführungen für Pneumatikwerkzeuge')
+    .replaceAll('kundenspezifisch ', 'Sonder-')
+    .replaceAll('Blow-off', 'Abblasen')
+    .replaceAll('Envelope', 'Bauraum')
+    .replaceAll('Drehdurchführung für Druckmaschinen &amp; Converter', 'Drehdurchführung für Druck- und Verarbeitungsmaschinen')
+    .replaceAll('<span class="icon notranslate" translate="no">5</span> Start Checkliste', '<span class="icon notranslate" translate="no">5</span> Prüfung vor der Inbetriebnahme');
+  return localizeStructuredDataWithOptions(normalized, {
+    homeLabel: 'Startseite',
+    productsLabel: 'Produkte',
+    category: 'Pneumatische Drehdurchführung',
+    propertyNames: {
+      'Product type': 'Produkttyp', SKU: 'Artikelnummer', Passages: 'Kanalzahl',
+      'Orifice size': 'Durchgang', 'Maximum pressure': 'Maximaler Betriebsdruck',
+      'Maximum speed': 'Maximale Drehzahl', 'Compatible media': 'Betriebsmedien',
+      'Body material': 'Gehäusewerkstoff', 'Seal type': 'Dichtung',
+      'Bearing type': 'Lagerung', 'Thread type': 'Gewinde',
+      'Rotor connection': 'Rotoranschluss', 'Stator connection': 'Gehäuseanschluss',
+      'Mounting type': 'Montageart', 'Operating temperature': 'Betriebstemperatur',
+      'Net weight': 'Gewicht', 'Approx. Weight': 'Gewicht', Dimensions: 'Abmessungen',
+      'Bore diameter': 'Durchgangsbohrung', 'Idle torque': 'Leerlaufdrehmoment',
+      'Running torque': 'Drehmoment', 'Service life': 'Richtwert Lebensdauer',
+      Leakage: 'Leckage', Certifications: 'Zertifizierungen', Warranty: 'Garantie',
+      'Duty type': 'Betriebsart', 'Typical applications': 'Typische Anwendungen',
+    },
+  });
+}
+
+function normalizeRussianOutput(html) {
+  const replacements = [
+    ['1-in-1-out', '1 канал'],
+    ['2-in-2-out', '2 канала'],
+    ['3-in-3-out', '3 канала'],
+    ['4-in-4-out', '4 канала'],
+    ['4-in-4out', '4 канала'],
+    ['8-in-8-out', '8 каналов'],
+    ['1-in-6-out', '1 вход / 6 выходов'],
+    ['2-in-3-out', '2 входа / 3 выхода'],
+    ['2-in-4-out', '2 входа / 4 выхода'],
+    ['images/optimized/2 канала-Rotary-joint.webp', 'images/optimized/2-in-2-out-Rotary-joint.webp'],
+    ['images/optimized/3 канала-M8-rotary-joint-3.webp', 'images/optimized/3-in-3-out-M8-rotary-joint-3.webp'],
+    ['RPM', 'об/мин'],
+    ['rpm', 'об/мин'],
+    ['MPa', 'МПа'],
+    ['Max pressure', 'максимальное рабочее давление'],
+    ['max pressure', 'максимальное рабочее давление'],
+    ['Max speed', 'максимальная скорость вращения'],
+    ['max speed', 'максимальная скорость вращения'],
+    ['Макс ', 'макс. '],
+    ['Max ', 'макс. '],
+    ['Ротационное соединение Specs', 'Характеристики ротационного соединения'],
+    ['ротационное соединение Specs', 'характеристики ротационного соединения'],
+    ['Specs', 'характеристики'],
+    ['Mistake', 'Ошибка'],
+    ['Air Swivel', 'поворотное пневмосоединение'],
+    ['воздушный поворот', 'поворотное пневмосоединение'],
+    ['пневматических воздушных плющ', 'поворотного пневмосоединения'],
+    ['Пневматический инструмент поворотное пневмосоединение Вопросы', 'Вопросы о поворотных соединениях для пневмоинструмента'],
+    ['облегчение деформации', 'разгрузка натяжения'],
+    ['пломбы', 'уплотнения'],
+    ['носители', 'рабочие среды'],
+    ['конверт', 'габарит'],
+    ['Тяжелый 2-х проходной ротационное соединение', 'Усиленное двухканальное ротационное соединение'],
+    ['Приложение Fit', 'Область применения'],
+    ['приложения Fit', 'области применения'],
+    ['Связанные продукты', 'Похожие модели'],
+    ['Компания Timeline', 'История компании'],
+    ['Начните свой пользовательский проект', 'Обсудить индивидуальный проект'],
+    ['Пользовательские заказы и доставка', 'Индивидуальные исполнения и поставка'],
+    ['пользовательский обзор', 'индивидуальный анализ'],
+    ['Рекомендуемые начальные точки', 'Рекомендуемые модели'],
+    ['ротационное соединениестол ротационное соединение', 'ротационных соединений для поворотных столов'],
+    ['пневматический ротационное соединение', 'пневматическое ротационное соединение'],
+    ['индивидуальный пневматическое ротационное соединение', 'индивидуальное пневматическое ротационное соединение'],
+    ['Робот EOAT Ротационное соединение', 'Ротационное соединение для робота EOAT'],
+    ['Монтаж и техническое обслуживание ротационное соединение', 'Монтаж и обслуживание ротационных соединений'],
+    ['Печатная техника Ротационное соединение Вопросы', 'Вопросы о ротационных соединениях для печатного оборудования'],
+    ['Вакуумная упаковка ротационное соединение Вопросы', 'Вопросы о ротационных соединениях для вакуумной упаковки'],
+    ['Сварочные позиционеры Ротационное соединение Вопросы', 'Вопросы о ротационных соединениях для сварочных позиционеров'],
+    ['Когда заменить vs. Когда ремонтировать', 'Когда заменять, а когда ремонтировать'],
+    ['Стоимость vs. Время жизни', 'Стоимость и срок службы'],
+    ['Материалы для уплотнение и жилищные материалы', 'Материалы уплотнений и корпуса'],
+    ['Весочувствительные приложения', 'Применения с ограничением по массе'],
+    ['уплотнение для губ', 'Манжетные уплотнения'],
+    ['Весенние энергетические углеродные PTFE-уплотнение', 'Подпружиненные PTFE-уплотнения с углеродным наполнителем'],
+    ['Как выбрать правильный тип уплотнение', 'Как выбрать подходящий тип уплотнения'],
+    ['Установка на проточенную гору', 'Монтаж резьбового соединения'],
+    ['Small Models', 'компактные модели'],
+    ['роторные таблицы', 'поворотные столы'],
+    ['роторных таблиц', 'поворотных столов'],
+    ['роторной таблицы', 'поворотного стола'],
+    ['роторная таблица', 'поворотный стол'],
+    ['роторного стола автоматизации', 'автоматизированного поворотного стола'],
+    ['таблицы индексации', 'индексные столы'],
+    ['таблица индексации', 'индексный стол'],
+    ['многопропускной', 'многоканальный'],
+    ['многопроходный', 'многоканальный'],
+    ['Многопропускной', 'Многоканальный'],
+    ['Многопроходный', 'Многоканальный'],
+    ['Многопропуск', 'Многоканал'],
+    ['многопропуск', 'многоканал'],
+    ['Многопроход', 'Многоканал'],
+    ['многопроход', 'многоканал'],
+    ['каждый оснастка', 'каждый элемент оснастки'],
+    ['каждую оснастка', 'каждый элемент оснастки'],
+    ['несколько оснастка', 'несколько элементов оснастки'],
+    ['весь ротационное соединение', 'всё ротационное соединение'],
+    ['один ротационное соединение', 'одно ротационное соединение'],
+    ['ротационное соединение должен', 'ротационное соединение должно'],
+    ['ротационное соединение может быть выбран', 'ротационное соединение можно выбрать'],
+    ['пользовательский дизайн', 'специальное исполнение'],
+    ['Пользовательский дизайн', 'Специальное исполнение'],
+    ['пользовательский макет', 'специальную компоновку'],
+    ['счет станции', 'число станций'],
+    ['счетчик сигналов', 'число сигналов'],
+    ['радиальный клиренс', 'радиальный зазор'],
+    ['Критический:', 'Важно:'],
+    ['Общие ошибки установки и их подписи', 'Типичные ошибки монтажа и их признаки'],
+    ['Построено на реальных требованиях к машине', 'На основе реальных требований оборудования'],
+    ['Где используются Begapunk Air Ротационные соединения', 'Где применяются пневматические ротационные соединения Begapunk'],
+    ['Тип приложения для семейства продуктов', 'Соответствие областей применения сериям продукции'],
+    ['Продолжайте процесс выбора', 'Следующий этап подбора'],
+    ['Фабрика и качество', 'Производство и контроль качества'],
+    ['Ты не нашел свой ответ?', 'Не нашли ответ на свой вопрос?'],
+    ['1 Связь', '1 Подключения'],
+    ['2 антиротационный', '2 Защита от проворачивания'],
+    ['5 Стартап контрольный список', '5 Проверка перед первым запуском'],
+    ['Ценообразование и цитаты', 'Цены и коммерческие предложения'],
+    ['Доставка и доставка', 'Отгрузка и доставка'],
+    ['Возврат и возврат', 'Возврат товара и денежных средств'],
+    ['Управляющий закон', 'Применимое право'],
+    ['Изменения в терминах', 'Изменение условий'],
+    ['11. Контакт', '11. Контакты'],
+    ['Cookies и технологии отслеживания', 'Файлы cookie и технологии отслеживания'],
+    ['макс. Спид', 'Максимальная скорость'],
+    ['#####1. Тест на статическое давление (без вращения)', '1. Статическое испытание давлением (без вращения)'],
+    ['####2. Тест на низкоскоростное вращение', '2. Испытание при низкой скорости вращения'],
+    ['####3. Полная операция', '3. Работа при номинальных условиях'],
+    ['####Ключевое понимание', 'Ключевой вывод'],
+    ['Обсуждение Begapunk Ротационные соединения &amp; Ротационные соединения', 'Поиск по ротационным соединениям Begapunk'],
+    ['печатного и габаритингового оборудования', 'печатного и конвертингово оборудования'],
+    ['Как сделать ротационное соединение', 'Как мы производим ротационные соединения'],
+    ['Заполнение бутылок и захват параметров ротационное соединение', 'Параметры соединений для машин розлива и укупорки'],
+    ['3 ошибки, которые могут повредить заполнение и захват ротационное соединение', '3 ошибки при выборе соединений для линий розлива и укупорки'],
+    ['Заполнение и заполнение вопросов', 'Вопросы о соединениях для машин розлива и укупорки'],
+    ['Параметры пневматического зажима ротационное соединение с ЧПУ', 'Параметры соединений для пневматических зажимов станков с ЧПУ'],
+    ['Упаковочные машины Ротационное соединение Parameters', 'Параметры соединений для упаковочных машин'],
+    ['пневматические воздушные плюшки', 'поворотные соединения для пневмоинструмента'],
+    ['Ошибка 5: Использование неправильного метода утепления струй', 'Ошибка 5: Неправильная герметизация резьбы'],
+    ['Установка контрольный список', 'Контрольный список монтажа'],
+    ['Где появляется утечка, говорит вам о проблеме', 'Место утечки указывает на причину'],
+    ['Быстрая ссылка: таблица производительности материалов', 'Краткое сравнение материалов'],
+    ['Выводы', 'Вывод'],
+    ['Предварительный контрольный список установки: три вещи, которые вы должны проверить', 'Проверьте три пункта перед монтажом'],
+    ['Установка анти-ротационных кронштейнов', 'Монтаж кронштейна защиты от проворачивания'],
+    ['1 Связь', '1. Подключение'],
+    ['2 антиротационный', '2. Защита от проворачивания'],
+    ['4 смазка', '4. Смазка'],
+    ['5 Стартап контрольный список', '5. Проверка перед первым запуском'],
+    ['6 техническое обслуживание', '6. Техническое обслуживание'],
+    ['?230', 'Ø230'],
+    ['?78.9', 'Ø78,9'],
+    ['?78,9', 'Ø78,9'],
+    ['?64', 'Ø64'],
+    ['?6 mm', 'Ø6 мм'],
+  ];
+  let normalized = html;
+  for (const [from, to] of replacements) normalized = normalized.replaceAll(from, to);
+  normalized = normalized
+    .replace(/(BP-[A-Z0-9-]+) против\. Другие модели Begapunk/g, '$1: сравнение с другими моделями Begapunk')
+    .replace(/3 ошибки, которые (?:уничтожают|разрушают) (.+?)(?=<|\n)/g, '3 ошибки, которые могут повредить $1')
+    .replace(/Нужен (ротационное соединение|поворотное пневмосоединение)/g, 'Нужно $1')
+    .replaceAll('конвертингово оборудования', 'конвертингового оборудования')
+    .replaceAll('3 ошибки, которые могут повредить заполнение и захват ротационное соединение', '3 ошибки при выборе соединений для линий розлива и укупорки')
+    .replaceAll('поворотного ротационное соединение крепления с ЧПУ', 'ротационного соединения для зажимной оснастки станка с ЧПУ')
+    .replaceAll('Строительство или замена упаковочного станка ротационное соединение?', 'Проектируете или заменяете соединение для упаковочной машины?')
+    .replaceAll('<span class="icon notranslate" translate="no">1</span> Связь', '<span class="icon notranslate" translate="no">1</span> Подключение')
+    .replaceAll('<span class="icon notranslate" translate="no">2</span> антиротационный', '<span class="icon notranslate" translate="no">2</span> Защита от проворачивания')
+    .replaceAll('<span class="icon notranslate" translate="no">4</span> смазка', '<span class="icon notranslate" translate="no">4</span> Смазка')
+    .replaceAll('<span class="icon notranslate" translate="no">5</span> Стартап контрольный список', '<span class="icon notranslate" translate="no">5</span> Проверка перед первым запуском')
+    .replaceAll('<span class="icon notranslate" translate="no">6</span> техническое обслуживание', '<span class="icon notranslate" translate="no">6</span> Техническое обслуживание')
+    .replaceAll('соединение должен', 'соединение должно');
+  return localizeStructuredDataWithOptions(normalized, {
+    homeLabel: 'Главная',
+    productsLabel: 'Продукция',
+    category: 'Пневматическое ротационное соединение',
+    propertyNames: {
+      'Product type': 'Тип изделия', SKU: 'Артикул', Passages: 'Количество каналов',
+      'Orifice size': 'Диаметр прохода', 'Maximum pressure': 'Максимальное рабочее давление',
+      'Maximum speed': 'Максимальная скорость вращения', 'Compatible media': 'Рабочая среда',
+      'Body material': 'Материал корпуса', 'Seal type': 'Тип уплотнения',
+      'Bearing type': 'Тип подшипника', 'Thread type': 'Резьба',
+      'Rotor connection': 'Подключение ротора', 'Stator connection': 'Подключение статора',
+      'Mounting type': 'Тип крепления', 'Operating temperature': 'Рабочая температура',
+      'Net weight': 'Масса', 'Approx. Weight': 'Масса', Dimensions: 'Габариты',
+      'Bore diameter': 'Диаметр проходного отверстия', 'Idle torque': 'Момент холостого хода',
+      'Running torque': 'Крутящий момент', 'Service life': 'Расчётный срок службы',
+      Leakage: 'Утечка', Certifications: 'Сертификация', Warranty: 'Гарантия',
+      'Duty type': 'Режим работы', 'Typical applications': 'Типичные области применения',
+    },
+  });
+}
+
+function localizeStructuredDataWithOptions(html, options) {
+  const $ = load(html, { decodeEntities: false });
+  const pageHeading = $('h1').first().text().replace(/\s+/g, ' ').trim();
+  const pageDescription = $('meta[name="description"]').attr('content')?.trim();
+  $('script[type="application/ld+json"]').each((_, element) => {
+    try {
+      const payload = JSON.parse($(element).html());
+      const nodes = Array.isArray(payload?.['@graph']) ? payload['@graph'] : [payload];
+      for (const node of nodes) {
+        if (node?.['@type'] === 'BreadcrumbList' && Array.isArray(node.itemListElement)) {
+          for (const item of node.itemListElement) {
+            if (item?.position === 1) item.name = options.homeLabel;
+            if (item?.position === 2) item.name = options.productsLabel;
+          }
+        }
+        if (node?.['@type'] !== 'Product') continue;
+        if (pageHeading) node.name = pageHeading;
+        if (pageDescription) node.description = pageDescription;
+        node.category = options.category;
+        if (Array.isArray(node.additionalProperty)) {
+          for (const property of node.additionalProperty) {
+            if (options.propertyNames[property?.name]) property.name = options.propertyNames[property.name];
+          }
+        }
+      }
+      $(element).text(JSON.stringify(payload));
+    } catch {
+      // Verification reports malformed JSON-LD; leave the original block intact for diagnosis.
+    }
+  });
+  return $.html();
+}
+
 async function translateBatch(apiKey, languageCode, sources) {
   const protectedItems = sources.map((source) => protectTerms(source, languageCode));
   const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${encodeURIComponent(apiKey)}`, {
@@ -296,20 +857,137 @@ function localizeRelativeReference(value, pilotPages) {
   return `../${normalized}${suffix}`;
 }
 
+function compactText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function schemaTypes(node) {
+  const type = node?.['@type'];
+  return new Set((Array.isArray(type) ? type : [type]).filter(Boolean));
+}
+
+function visibleFaqEntities($) {
+  return $('.faq-item, .app-faq-item').map((_, item) => {
+    const questionNode = $(item).find('.faq-question, h3').first().clone();
+    questionNode.find('svg, i, .faq-icon, .faq-toggle').remove();
+    const question = compactText(questionNode.text());
+    const answer = compactText($(item).find('.faq-answer, p').first().text());
+    if (!question || !answer) return null;
+    return {
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    };
+  }).get().filter(Boolean);
+}
+
+function applySeoMetadata($, languageCode, pageName) {
+  const seo = seoByLanguage.get(languageCode)?.[pageName];
+  if (!seo?.title || !seo?.description || !seo?.h1) {
+    throw new Error(`${languageCode}/${pageName}: missing curated SEO title, description or H1.`);
+  }
+  $('title').first().text(seo.title);
+  const setMeta = (selector, attributes, content) => {
+    let element = $(selector).first();
+    if (!element.length) {
+      element = $('<meta>');
+      for (const [name, value] of Object.entries(attributes)) element.attr(name, value);
+      $('head').append(element);
+    }
+    element.attr('content', content);
+  };
+  setMeta('meta[name="description"]', { name: 'description' }, seo.description);
+  $('h1').first().text(seo.h1);
+  setMeta('meta[property="og:title"]', { property: 'og:title' }, seo.title);
+  setMeta('meta[property="og:description"]', { property: 'og:description' }, seo.description);
+  setMeta('meta[name="twitter:title"]', { name: 'twitter:title' }, seo.title);
+  setMeta('meta[name="twitter:description"]', { name: 'twitter:description' }, seo.description);
+  // Google ignores meta keywords. Removing the inherited English keyword list
+  // avoids mixed-language metadata and unsupported certification phrases.
+  $('meta[name="keywords"]').remove();
+}
+
+const schemaLocaleByLanguage = {
+  de: {
+    founderJobTitle: 'Gründer und Ingenieur',
+    factoryName: 'Begapunk Fertigung',
+    knowsAbout: ['Pneumatische Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrielle Automatisierung', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
+  },
+  ja: {
+    founderJobTitle: '創業者・技術責任者',
+    factoryName: 'Begapunk 生産拠点',
+    knowsAbout: ['空圧用ロータリージョイント', '多流路ロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
+  },
+  ru: {
+    founderJobTitle: 'Основатель и инженер',
+    factoryName: 'Производство Begapunk',
+    knowsAbout: ['Пневматические ротационные соединения', 'Многоканальные ротационные соединения', 'Специальные ротационные соединения', 'Промышленная автоматизация', 'Станки с ЧПУ', 'Лазерные станки', 'Упаковочное оборудование'],
+  },
+};
+
 function updateJsonLd($, languageCode, pageName) {
   const englishUrl = pageUrl(config.sourceLanguage.code, pageName);
   const localizedUrl = pageUrl(languageCode, pageName);
+  const seo = seoByLanguage.get(languageCode)?.[pageName];
+  const site = seoByLanguage.get(languageCode)?._site || {};
+  const schemaLocale = schemaLocaleByLanguage[languageCode] || {};
+  const faqEntities = visibleFaqEntities($);
+  const contentTypes = new Set(['Article', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo']);
   $('script[type="application/ld+json"]').each((_, element) => {
     try {
       const data = JSON.parse($(element).html());
+      const pruneHiddenFaq = (value) => {
+        if (Array.isArray(value)) return value.map(pruneHiddenFaq).filter((item) => item !== null);
+        if (!value || typeof value !== 'object') return value;
+        if (schemaTypes(value).has('FAQPage') && !faqEntities.length) return null;
+        for (const [key, child] of Object.entries(value)) value[key] = pruneHiddenFaq(child);
+        return value;
+      };
       const visit = (value) => {
         if (Array.isArray(value)) return value.map(visit);
         if (!value || typeof value !== 'object') return value === englishUrl ? localizedUrl : value;
         for (const [key, child] of Object.entries(value)) value[key] = visit(child);
+        const types = schemaTypes(value);
+        if ([...types].some((type) => contentTypes.has(type))) value.inLanguage = languageCode;
+        if (types.has('Product')) {
+          value.name = seo.h1;
+          value.description = seo.description;
+        }
+        if (types.has('WebPage')) {
+          value.name = seo.title;
+          value.description = seo.description;
+        }
+        if (types.has('Article') || types.has('BlogPosting') || types.has('TechArticle')) {
+          value.headline = seo.h1;
+          value.description = seo.description;
+        }
+        if (types.has('WebSite')) {
+          value.name = site.heading || 'Begapunk';
+          value.description = site.description || seo.description;
+        }
+        if (types.has('Organization') && value.description) {
+          value.description = site.organizationDescription || site.description || seo.description;
+          if (Array.isArray(value.founders) && schemaLocale.founderJobTitle) {
+            value.founders = value.founders.map((founder) => ({ ...founder, jobTitle: schemaLocale.founderJobTitle }));
+          }
+          if (schemaLocale.knowsAbout) value.knowsAbout = schemaLocale.knowsAbout;
+        }
+        if (types.has('LocalBusiness') && schemaLocale.factoryName) value.name = schemaLocale.factoryName;
+        if (types.has('BreadcrumbList') && Array.isArray(value.itemListElement) && value.itemListElement.length) {
+          const current = value.itemListElement[value.itemListElement.length - 1];
+          if (current && typeof current === 'object') {
+            current.name = seo.h1;
+            current.item = localizedUrl;
+          }
+        }
+        if (types.has('FAQPage') && faqEntities.length) value.mainEntity = faqEntities;
         return value;
       };
-      const localized = visit(data);
-      if (!Array.isArray(localized) && localized && typeof localized === 'object') localized.inLanguage = languageCode;
+      const localized = visit(pruneHiddenFaq(data));
+      if (localized === null) {
+        $(element).remove();
+        return;
+      }
       $(element).text(JSON.stringify(localized));
     } catch {
       // Existing JSON-LD validity is handled by the release verifier.
@@ -345,13 +1023,21 @@ function applyTranslations(page, language, catalog, cache) {
   const { $, records, pageName } = page;
   const idBySource = new Map(catalog.entries.map((entry) => [entry.source, entry.id]));
   const overrides = overridesByLanguage.get(language.code) || {};
+  const editorialOverrides = editorialOverridesByLanguage.get(language.code) || {};
+  const sharedEditorialOverrides = editorialOverrides['*'] || {};
+  const pageEditorialOverrides = editorialOverrides[pageName] || {};
   const preservedBrowserContent = (config.browserNoTranslateSelectors || []).map((selector) => ({
     selector,
     values: $(selector).map((_, element) => $(element).html()).get(),
   }));
   for (const record of records) {
     const id = idBySource.get(record.source);
-    const translated = overrides[record.source] || cache.translations[id];
+    const translated = pageEditorialOverrides[id]
+      || pageEditorialOverrides[record.source]
+      || sharedEditorialOverrides[id]
+      || sharedEditorialOverrides[record.source]
+      || overrides[record.source]
+      || cache.translations[id];
     if (!translated) throw new Error(`${language.code}/${pageName}: missing translation for ${record.source}`);
     if (record.type === 'html') {
       $(record.element).html(translated);
@@ -370,6 +1056,8 @@ function applyTranslations(page, language, catalog, cache) {
       $(element).attr('translate', 'no').addClass('notranslate');
     });
   }
+
+  applySeoMetadata($, language.code, pageName);
 
   $('html').attr('lang', language.code);
   const localizedUrl = pageUrl(language.code, pageName);
@@ -413,8 +1101,14 @@ function applyTranslations(page, language, catalog, cache) {
   $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
     $(form).prepend(`<input type="hidden" name="source_language" value="${language.code}">`);
   });
-  updateJsonLd($, language.code, pageName);
-  return $.html().replace(/[ \t]+$/gm, '');
+  let localized = $.html().replace(/[ \t]+$/gm, '');
+  if (language.code === 'ja') localized = normalizeJapaneseOutput(localized);
+  if (language.code === 'de') localized = normalizeGermanOutput(localized);
+  if (language.code === 'ru') localized = normalizeRussianOutput(localized);
+  const finalized = load(localized, { decodeEntities: false });
+  applySeoMetadata(finalized, language.code, pageName);
+  updateJsonLd(finalized, language.code, pageName);
+  return finalized.html().replace(/[ \t]+$/gm, '');
 }
 
 async function writeLocalizedSearchIndex(language, outputDirectory) {
@@ -445,6 +1139,43 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
   );
 }
 
+const llmsLabels = {
+  de: {
+    summary: 'Technischer Seitenindex für pneumatische Drehdurchführungen von Begapunk. Die Auswahl erfolgt nach Medium, Betriebsdruck, Drehzahl, Kanalzahl, Anschluss und Einbausituation.',
+    sections: { products: 'Produkte', applications: 'Anwendungen', articles: 'Technische Beiträge', other: 'Unternehmen und Service' },
+  },
+  ja: {
+    summary: 'Begapunkの空圧用ロータリージョイントに関する技術ページ索引です。使用流体、圧力、回転数、流路数、接続、取付条件から選定してください。',
+    sections: { products: '製品', applications: '用途別ガイド', articles: '技術記事', other: '会社・サポート' },
+  },
+  ru: {
+    summary: 'Технический указатель страниц Begapunk о пневматических ротационных соединениях. При подборе учитывайте среду, давление, частоту вращения, число каналов, присоединение и монтаж.',
+    sections: { products: 'Продукция', applications: 'Области применения', articles: 'Технические статьи', other: 'Компания и поддержка' },
+  },
+};
+
+function llmsGroup(pageName) {
+  if (/^BP-/.test(pageName) || ['products.html', 'products-p2.html', 'product-comparison.html'].includes(pageName)) return 'products';
+  if (pageName === 'applications.html' || pageName.startsWith('application-')) return 'applications';
+  if (pageName === 'blog.html' || pageName.startsWith('blog-')) return 'articles';
+  return 'other';
+}
+
+async function writeLocalizedLlms(language, outputDirectory) {
+  const seo = seoByLanguage.get(language.code);
+  const labels = llmsLabels[language.code];
+  if (!seo || !labels) throw new Error(`${language.code}: localized llms configuration is missing.`);
+  const grouped = new Map(['products', 'applications', 'articles', 'other'].map((group) => [group, []]));
+  for (const pageName of config.pages) {
+    const entry = seo[pageName];
+    if (!entry) throw new Error(`${language.code}/${pageName}: cannot add missing SEO entry to llms.txt.`);
+    grouped.get(llmsGroup(pageName)).push(`- [${entry.title}](${pageUrl(language.code, pageName)}): ${entry.description}`);
+  }
+  const sections = [...grouped.entries()].map(([group, lines]) => `## ${labels.sections[group]}\n\n${lines.join('\n')}`).join('\n\n');
+  const contents = `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [Multilingual sitemap](${config.siteUrl}/sitemap-i18n.xml)\n- [English AI index](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
+  await fs.writeFile(path.join(outputDirectory, 'llms.txt'), contents, 'utf8');
+}
+
 async function buildLocalizedPages(catalog) {
   const pages = await loadPages();
   for (const language of activeLanguages) {
@@ -462,6 +1193,7 @@ async function buildLocalizedPages(catalog) {
       await fs.writeFile(path.join(outputDirectory, page.pageName), localized, 'utf8');
     }
     await writeLocalizedSearchIndex(language, outputDirectory);
+    await writeLocalizedLlms(language, outputDirectory);
     console.log(`${language.code}: built ${pages.length} localized pages.`);
   }
 }

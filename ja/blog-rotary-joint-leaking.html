@@ -1,18 +1,18 @@
 <!DOCTYPE html><html lang="ja"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ロータリージョイントの漏れ診断フロー | Begapunk</title>
-  <meta name="description" content="空気圧ロータリージョイントの漏れを体系的に診断します。シール交換前に圧力、回転速度、シール材質、空気品質を確認するためのBPシリーズ保守ガイドです。">
-  <meta property="og:title" content="ロータリージョイントの漏れ診断フロー | Begapunk">
-  <meta property="og:description" content="空気圧ロータリージョイントの漏出のための全身のトラブルシューティング。 シールを取り替える前に圧力、RPM、シール材質および空気の質を点検して下さい。">
+  <title>ロータリージョイントの漏れ原因と点検手順</title>
+  <meta name="description" content="空圧用ロータリージョイントの漏れを、圧力、回転数、シール材、配管、空気品質の順に切り分ける実務向け点検手順。">
+  <meta property="og:title" content="ロータリージョイントの漏れ原因と点検手順">
+  <meta property="og:description" content="空圧用ロータリージョイントの漏れを、圧力、回転数、シール材、配管、空気品質の順に切り分ける実務向け点検手順。">
   <meta property="og:url" content="https://www.begapunk.com/ja/blog-rotary-joint-leaking.html">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
   <meta property="og:site_name" content="Begapunk Precision Rotary Joint Manufacturer">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ロータリージョイントの漏れ診断フロー | Begapunk">
-  <meta name="twitter:description" content="空気圧ロータリージョイントの漏出のための全身のトラブルシューティング。">
+  <meta name="twitter:title" content="ロータリージョイントの漏れ原因と点検手順">
+  <meta name="twitter:description" content="空圧用ロータリージョイントの漏れを、圧力、回転数、シール材、配管、空気品質の順に切り分ける実務向け点検手順。">
   <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
 
@@ -25,13 +25,13 @@
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/blog-rotary-joint-leaking.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/blog-rotary-joint-leaking.html">
 <link rel="canonical" href="https://www.begapunk.com/ja/blog-rotary-joint-leaking.html">
-  <link rel="stylesheet" href="../css/style.css?v=20260716-performance">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rotary Joint Leaking? A Practical Diagnostic Flowchart for Factory Maintenance Teams","description":"Systematic troubleshooting for leaking pneumatic rotary joints. Check pressure, RPM, seal material, and air quality before replacing seals.","image":"https://www.begapunk.com/images/4Jin-4Chu-1.png","author":{"@id":"https://www.begapunk.com/#organization"},"publisher":{"@id":"https://www.begapunk.com/#organization"},"datePublished":"2026-05-24","dateModified":"2026-05-24","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.begapunk.com/ja/blog-rotary-joint-leaking.html"},"proficiencyLevel":"Intermediate","dependencies":"Begapunk BP-series pneumatic rotary joints","inLanguage":"ja"}</script>
+  <link rel="stylesheet" href="../css/style.css?v=20260727-render-qa4">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"ロータリージョイントの漏れを順番に診断する方法","description":"空圧用ロータリージョイントの漏れを、圧力、回転数、シール材、配管、空気品質の順に切り分ける実務向け点検手順。","image":"https://www.begapunk.com/images/4Jin-4Chu-1.png","author":{"@id":"https://www.begapunk.com/#organization"},"publisher":{"@id":"https://www.begapunk.com/#organization"},"datePublished":"2026-05-24","dateModified":"2026-05-24","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.begapunk.com/ja/blog-rotary-joint-leaking.html","inLanguage":"ja","name":"ロータリージョイントの漏れ原因と点検手順","description":"空圧用ロータリージョイントの漏れを、圧力、回転数、シール材、配管、空気品質の順に切り分ける実務向け点検手順。"},"proficiencyLevel":"Intermediate","dependencies":"Begapunk BP-series pneumatic rotary joints","inLanguage":"ja"}</script>
 
   <!-- FAQPage Schema -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is my rotary joint leaking at the rotating face?","acceptedAnswer":{"@type":"Answer","text":"Face leaks usually indicate one of three issues: operating pressure exceeds 0.7 MPa continuous rating, RPM exceeds seal material limits (FKM < 200 RPM, PTFE 300–600 RPM), or contaminated air is degrading the seal. Check system pressure at the joint inlet, verify RPM during actual production, and inspect your FRL filter element and water separator."}},{"@type":"Question","name":"Can I fix a leaking rotary joint by just replacing the seal?","acceptedAnswer":{"@type":"Answer","text":"Only if the leak is at the rotating interface and the housing/shaft are mechanically sound. If threads are cracked, housing is deformed, or there is cross-channel leakage, replace the complete joint. Seal kits work for wear-related face leaks when operating conditions are within specification."}},{"@type":"Question","name":"How much air leakage is normal from a rotary joint vent port?","acceptedAnswer":{"@type":"Answer","text":"A small, steady hiss from the vent port during rotation is normal by design — it prevents internal pressure buildup. However, if the vent releases more air than the working ports, the internal shaft seal is bypassing or there is differential pressure forcing air across an internal barrier. Replace the joint; internal seals are not field-serviceable."}},{"@type":"Question","name":"What is the most common cause of rotary joint leakage in factory automation?","acceptedAnswer":{"@type":"Answer","text":"Based on field data, 80% of leaks are explained by four checks: system pressure exceeding 0.7 MPa continuous rating, RPM mismatch with seal material (FKM vs PTFE), poor air quality (moisture or particles), and incorrect thread sealant application. Check these before replacing seals to avoid repeat failures."}},{"@type":"Question","name":"How do I prevent rotary joint leaks in 24/7 automation lines?","acceptedAnswer":{"@type":"Answer","text":"Four preventive measures: install a pressure gauge at the joint inlet (not just at the compressor), log RPM during actual production runs, schedule seal replacement at 60% of estimated seal life before visible leaks appear, and keep spare seal kits at the workstation to minimize downtime."}}],"inLanguage":"ja"}</script>
+
   <!-- BreadcrumbList Schema -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.begapunk.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.begapunk.com/blog.html"},{"@type":"ListItem","position":3,"name":"Rotary Joint Leaking? Diagnostic Flowchart","item":"https://www.begapunk.com/ja/blog-rotary-joint-leaking.html"}],"inLanguage":"ja"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://www.begapunk.com/"},{"@type":"ListItem","position":2,"name":"製品一覧","item":"https://www.begapunk.com/blog.html"},{"@type":"ListItem","position":3,"name":"ロータリージョイントの漏れを順番に診断する方法","item":"https://www.begapunk.com/ja/blog-rotary-joint-leaking.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
@@ -114,7 +114,7 @@
 
 
   </style>
-    <script defer="" src="../js/analytics.js?v=20260715-1"></script>
+    <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
 </head>
 <body>
 
@@ -123,47 +123,47 @@
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - 精密ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk｜産業用ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
    </a>
    <nav class="nav" id="mainNav">
-    <a href="index.html">ふるさと</a>
+    <a href="index.html">ホーム</a>
     <div class="nav-dropdown">
      <a href="products.html" class="nav-dropdown-toggle">製品情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="products.html">製品カタログ</a>
-      <a href="product-comparison.html">機種比較の特長</a>
-      <a href="contact.html">カスタム RFQの特長</a>
+      <a href="products.html">製品一覧</a>
+      <a href="product-comparison.html">機種選定表</a>
+      <a href="contact.html">特注品・見積依頼</a>
      </div>
     </div>
     <div class="nav-dropdown">
-     <a href="applications.html" class="nav-dropdown-toggle">用途の特長 <span class="chevron"></span></a>
+     <a href="applications.html" class="nav-dropdown-toggle">用途別情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="applications.html">用途 の概要</a>
-      <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
-      <a href="application-packaging-machinery.html">包装の機械類</a>
-      <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
-      <a href="application-cnc-pneumatic-clamping.html">CNC空気の締め金で止めること</a>
-      <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
-      <a href="application-steel-dusty-environments.html">ほこりの環境</a>
+      <a href="applications.html">用途一覧</a>
+      <a href="application-laser-tube-cutting.html">レーザー管切断機</a>
+      <a href="application-packaging-machinery.html">包装機械</a>
+      <a href="application-bottle-filling-capping.html">ボトル充填・キャッピング機</a>
+      <a href="application-cnc-pneumatic-clamping.html">CNC空圧クランプ</a>
+      <a href="application-automation-rotary-tables.html">自動化用回転テーブル</a>
+      <a href="application-steel-dusty-environments.html">粉塵環境</a>
      </div>
     </div>
     <div class="nav-dropdown">
-     <a href="blog.html" class="nav-dropdown-toggle active">ナレッジセンター <span class="chevron"></span></a>
+     <a href="blog.html" class="nav-dropdown-toggle active">技術情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="blog.html">テクニカルブログ</a>
-      <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
-      <a href="installation.html">インストールガイド</a>
+      <a href="blog.html">技術資料</a>
+      <a href="blog-rotary-joint-selection.html">選定ガイド</a>
+      <a href="installation.html">取付要領</a>
       <a href="faq.html">よくある質問</a>
      </div>
     </div>
     <div class="nav-dropdown">
-     <a href="about.html" class="nav-dropdown-toggle">新着情報 <span class="chevron"></span></a>
+     <a href="about.html" class="nav-dropdown-toggle">会社情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="about.html">工場について</a>
-      <a href="case-studies.html">事例紹介</a>
+      <a href="about.html">会社・工場情報</a>
+      <a href="case-studies.html">選定事例</a>
      </div>
     </div>
-    <a href="contact.html" class="nav-cta">見積もりを依頼の特長</a>
+    <a href="contact.html" class="nav-cta">見積もり・技術相談</a>
    </nav>
 
    <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ja">Language</label><select id="language-ja" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="../blog-rotary-joint-leaking.html">English</option><option value="../de/blog-rotary-joint-leaking.html">Deutsch</option><option value="blog-rotary-joint-leaking.html" selected="">日本語</option><option value="../ru/blog-rotary-joint-leaking.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニュー">
@@ -176,14 +176,14 @@
 <!-- ===== BREADCRUMB ===== -->
 <div class="container">
   <div class="breadcrumb">
-    <a href="index.html">ふるさと</a> › <a href="blog.html">スタッフブログ</a> › ロータリージョイントリーク? 実用的な診断フローチャート
+    <a href="index.html">ホーム</a> › <a href="blog.html">スタッフブログ</a> › ロータリージョイントの漏れ：実践的な診断フロー
   </div>
 </div>
 
 <!-- ===== BLOG HERO ===== -->
 <section class="blog-hero">
   <div class="container">
-    <h1>工場保全担当者向けロータリージョイント漏れ診断フロー</h1>
+    <h1>ロータリージョイントの漏れを順番に診断する方法</h1>
     <div class="meta">
       <span>日 時 5月 24, , 2026</span>
       <span>所要時間 6分</span>
@@ -195,7 +195,7 @@
     <div class="social-share-wrap">
       <div class="container">
       <div class="social-share">
-        <span class="social-share-label">シェア:</span>
+        <span class="social-share-label">シェア：</span>
         <a class="share-btn share-linkedin notranslate" href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.begapunk.com/blog-rotary-joint-leaking.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn" translate="no"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg> LinkedIn</a>
         <a class="share-btn share-twitter notranslate" href="https://twitter.com/intent/tweet?url=https://www.begapunk.com/blog-rotary-joint-leaking.html&amp;text=Rotary%20Joint%20Leaking?%20A%20Practical%20Diagnostic%20Flowchart%20%7C%20Begapunk" target="_blank" rel="noopener" aria-label="Share on X" translate="no"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg> X</a>
         <a class="share-btn share-facebook notranslate" href="https://www.facebook.com/sharer/sharer.php?u=https://www.begapunk.com/blog-rotary-joint-leaking.html" target="_blank" rel="noopener" aria-label="Share on Facebook" translate="no"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg> Facebook</a>
@@ -208,210 +208,210 @@
 <!-- ===== BLOG CONTENT ===== -->
 <article class="blog-content">
 
-<p class="audience-tag"><strong>この記事は以下です。</strong> メンテナンス技術者、信頼性エンジニア、プラントマネージャーは、空気圧ロータリージョイント漏れを産業用オートメーション環境でトラブルシューティングします。</p>
+<p class="audience-tag"><strong>対象：</strong>産業用自動化設備で空圧ロータリージョイントの漏れを調査する保全技術者、信頼性技術者、設備管理者向けです。</p>
 
 <div class="key-takeaways">
-  <h3>問合せ先: Rémi Coulom.</h3>
+  <h3>⚡ 重要ポイント</h3>
   <ul>
-    <li>ロータリージョイントを漏らすことはあります <strong>シンポジウム</strong>、根本的な原因ではありません。漏れの80%は、圧力、RPM、空気の質、またはインストールの問題によって説明されます。</li>
-    <li>インフォメーション <strong>ジョイント入口のシステム圧力</strong> (コンプレッサーではなく) — 0.7 MPa を 1.0 MPa に比べない連続圧力</li>
-    <li>確認する <strong>RPM 対。 シール材料</strong>: FKM シール &lt; 200 RPM、300-600 RPM の PTFE、 &gt; 600 RPM の特殊複合材料</li>
-    <li>トピックス <strong>空気の質</strong> — 湿気および粒子は予期せぬ シール の失敗の最も見落とされた原因です</li>
-    <li>利用する <strong>6-手順診断フローチャート</strong> 不要なシールの交換を避けるために何かを分解する前に</li>
+    <li>漏れは<strong>症状</strong>であり、必ずしも根本原因ではありません。圧力、動作、空気品質、取付を順に確認します。</li>
+    <li>実際の運転サイクル中に<strong>ジョイント入口圧力</strong>を測定し、対象型式の連続・ピーク許容圧力と比較</li>
+    <li>具体的なデータシートで<strong>動作パターンとシール仕様</strong>を照合し、FKM、PTFE、複合材に一律の回転数上限を設定しない</li>
+    <li><strong>空気品質</strong>を確認：水分・粒子はシールリップと軸表面を損傷する場合があります</li>
+    <li>不要な部品交換を避けるため、分解前に<strong>6ステップ診断フロー</strong>を実施</li>
   </ul>
 </div>
 
 <div class="toc">
-  <h3>コンテンツの表</h3>
+  <h3>📌 目次</h3>
   <ol>
-    <li><a href="#leak-location">リークがあなたに問題を伝える場所</a></li>
-    <li><a href="#diagnostic-flowchart">速い診断フローチャート</a></li>
-    <li><a href="#replace-vs-repair">対を置換するとき。 修理するとき</a></li>
-    <li><a href="#preventive-measures">実際に働く予防策</a></li>
-    <li><a href="#conclusion">結論と次のステップ</a></li>
+    <li><a href="#leak-location">漏れ位置から原因を絞り込む</a></li>
+    <li><a href="#diagnostic-flowchart">クイック診断フロー</a></li>
+    <li><a href="#replace-vs-repair">修理と本体交換の判断</a></li>
+    <li><a href="#preventive-measures">有効な予防策</a></li>
+    <li><a href="#conclusion">まとめと次の対応</a></li>
   </ol>
 </div>
 
-<p>ロータリージョイントを漏らすことは警告なしではほとんど失敗しません。 ほとんどの場合、 <strong>ロータリージョイントの漏出</strong> 根本的な原因ではなく、症状です。 シールを操作条件を点検しないで取り替えれば、3か月にそれらを再度取り替えます。</p>
+<p>漏れには事前の兆候がある場合があります。圧力、動作、空気品質、配管、取付を確認せずにシールだけを交換すると、同じ不具合が再発する可能性があります。</p>
 
-<p>空気圧ロータリージョイントのための私達の研修会で使用される全身の診断フローチャートを通ってこのガイドは歩きます。 1.0 MPaに評価される汎用モデルに、マルチチャンネルの設定など <a href="products.html" class="product-link">BP-2Pシリーズ</a> などの高圧バリアント <a href="products.html" class="product-link">BP-2P-130の特長</a> (評価される5.0 MPa)および <a href="products.html" class="product-link">BP-2P-95の特長</a> (10.0 MPaの評価される)。</p>
+<p>本ガイドは空圧ロータリージョイントの体系的な診断手順です。標準・多流路型式の参考として使用し、許容圧力と保全方法は必ず対象BP型式の最新データシートで確認してください。高圧型式の <a href="products.html" class="product-link">BP-2P-130</a>、<a href="products.html" class="product-link">BP-2P-95</a> も個別確認が必要です。</p>
 
-<h2 id="leak-location">リークがあなたに問題を伝える場所</h2>
+<h2 id="leak-location">漏れ位置から原因を絞り込む</h2>
 
-<h3>回転インターフェイスでリーク(ジョイントフェイス)</h3>
+<h3>回転摺動部からの漏れ</h3>
 
-<p>これは最も一般的な故障ポイントです。 静止したハウジングが回転シャフトを満たしている空気のエスケープを見た場合は、次の3つの要因をチェックしてください。</p>
+<p>回転摺動部では多くのシール不具合が目視できます。固定ハウジングと回転軸の間から空気が漏れる場合、次の3項目を順に確認してください：</p>
 
-<p><strong>1。 1。 作動圧力対。 評価される圧力</strong></p>
+<p><strong>1. 使用圧力と許容圧力</strong></p>
 
-<p>連続動作圧力は、標準モデル(1.0 MPa定格/1.5 MPaテスト)の0.7 MPaを超えてはならない。 0.9 MPaでは、リップが継続的に動作する場合、シール材質の品質に関係なく、シールリップエクスペリエンスが加速されます。</p>
+<p>連続圧力とピーク圧力を対象型式の承認範囲内に保ちます。高負荷で連続運転する場合は温度、タクト、圧力変動、保全周期も併せて評価してください。</p>
 
-<p>シールを非難する前に、規制設定を確認してください。 実際の問題がコンプレッサーレギュレータセット30%をジョイントの連続定格の上で設定されたときに「感染性シール」ラベルで返されたジョイントを見てきました。 <strong>参考:</strong> <a href="https://www.iso.org/standard/46511.html" target="_blank" rel="noopener">ISO 4414:2010 認証取得</a> 最適なシール寿命のコンポーネント定格圧力の80%以内に空気圧システム圧力を維持することを推奨します。</p>
+<p>シールを原因と判断する前に、レギュレータ設定、測定位置、動的な圧力変動を確認します。<strong>注記：</strong><a href="https://www.iso.org/standard/46511.html" target="_blank" rel="noopener">ISO 4414:2010</a> は空圧システム圧力の安全な設計・管理を求めますが、シール寿命のための一律の定格比率は規定していません。</p>
 
-<p><strong>2。 回転速度対. シール材質の特長</strong></p>
+<p><strong>2. 回転・揺動条件とシール仕様</strong></p>
 
-<p>シール材質 選択は実際の RPM に一致しなければなりません:</p>
+<p>シール材と構造は、実際の動作、圧力、温度、媒体に適合させます：</p>
 
 <table>
 <thead><tr>
-<th>シール材質の特長</th>
-<th>RPMの範囲</th>
-<th>一般的な用途</th>
+<th>シール材</th>
+<th>回転・動作範囲</th>
+<th>代表的な用途</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>FKM(フッ素)</td>
-<td>&lt; 200 RPM&gt;</td>
-<td>一般的なオートメーション、インデックステーブル</td>
+<td>FKM（フッ素ゴム）</td>
+<td>&lt; 200 min⁻¹&gt;</td>
+<td>一般自動化・インデックステーブル</td>
 </tr>
 <tr>
-<td>PTFEの特長</td>
-<td>300–600 RPMの特長</td>
-<td>連続回転、包装ライン</td>
+<td>PTFE</td>
+<td>中～高回転域：型式ごとに確認</td>
+<td>包装設備の連続・高頻度回転</td>
 </tr>
 <tr>
-<td>特殊複合材料</td>
-<td>&gt; 600 RPMの特長</td>
-<td>高速スピンドル(カスタムオーダー)</td>
+<td>特殊複合材</td>
+<td>高回転域：具体的なシール仕様の承認が必要</td>
+<td>高速スピンドル：技術承認されたカスタム仕様のみ</td>
 </tr>
 </tbody>
 </table>
 
-<p>500 RPMでFKMシールされたジョイントを実行することで、シールインターフェースで過度の熱が発生します。 唇は硬化し、弾力性を失い、数週間以内に漏れます。 200 RPM 上で 用途 が実行されている場合は、ジョイントが PTFE シール を使用するかどうかを確認します。 <strong>参考:</strong> <a href="https://www.smrp.org/" target="_blank" rel="noopener">SMRP(保守・信頼性のプロフェッショナル向けSociety)</a> ガイドラインは、熱分解を防止するために、実際の動作速度にシール材質をマッチングすることを推奨します。</p>
+<p>用途に合わないシール材は、高速時の摩擦熱、媒体、変形によって早期摩耗する場合があります。FKMやPTFEという材質名だけで回転上限は決まりません。具体的な型式のシール形状、潤滑、圧力、温度、動作パターンを確認してください。</p>
 
-<p>スタンダード <a href="products.html" class="product-link">BP-2P-0001の特長</a> FKM シールの船。 200 RPM の上の連続的な義務 用途 のために、順序で PTFE シール 構成を指定して下さい。</p>
+<p><a href="products.html" class="product-link">BP-2P-0001</a> のシール仕様と許容動作は、注文前に最新データシートまたは見積仕様で確認してください。高回転または連続運転には明示的に承認された構成を選びます。</p>
 
-<p><strong>3。 空気の質(湿気および粒子の内容)</strong></p>
+<p><strong>3. 圧縮空気品質（水分・粒子）</strong></p>
 
-<p>これは最も見下ろす要因です。 圧縮空気 は、高い水分含有量で FKM シール を劣化させます。 シールの唇およびシャフトの表面間の粉砕の混合物として良い粒子(古い配管、圧縮機のカーボン残余からの錆スケール)行為。</p>
+<p>水分、さび、配管摩耗粉、コンプレッサ由来の残留物は、シールリップや軸表面を損傷する場合があります。影響はシール材、濃度、温度、保全状態によって異なります。</p>
 
-<p>FRLユニット(Filter-Regulator-Lubricator)を調べてください。</p>
-
-<ul>
-<li><strong>フィルター要素:</strong> 圧力低下がフィルターを渡る0.05 MPaを超過すれば取り替えて下さい</li>
-<li><strong>水分離器:</strong> 毎日排水します。ボウルに水が表示された場合、シールはそれを見る</li>
-<li><strong>潤滑剤はインストールされていませんか?</strong> PTFE シールを乾燥させるためには、これは正しいです。 高性能 用途 の FKM シール のために、跡の潤滑は 40-60% によって シール寿命 を拡張します。</li>
-</ul>
-
-<h3>ねじ接続部の漏出(入口/出口ポート)</h3>
-
-<p>漏れがNPTまたはG-ねじ接続に現れた場合、問題は関節自体にはほとんどありません。</p>
-
-<p><strong>チェック1:ねじシーラント用途</strong></p>
-
-<p>PTFEテープは誤って適用しました — 間違った方向か余分な層で包まれる — 空気は糸をバイパスすることを可能にします。 PTFEテープの3つの覆いは、時計回り(きつく締まることの方向に一致する)、標準です。 5つ以上のラップは、ねじの直径を増加させ、アルミニウムハウジングをクラックすることができます。</p>
-
-<p><strong>チェック 2: 過剰トルクダメージ</strong></p>
-
-<p>アルミニウム ハウジングはおよそ25–30 N·mでストリップを通します。 標準的なレンチで締められる鋼鉄付属品は頻繁にこれを超過します。 ハウジングに継手を締めることによって接合箇所が取付けられたら(六角形のボディを握り、合うホースの付属品をきつく締めることの代わりに)、ハウジングの糸は割れるかもしれません。</p>
-
-<p>ポートのハウジングの最初のねじを懐中電灯で点検して下さい。 目に見えるクラックラインはハウジングを取り替えなければならないことを意味します — ねじ の密封剤は構造的な損傷を修理できません。 <strong>参考:</strong> <a href="https://www.nfpa.com/" target="_blank" rel="noopener">NFPA(国内流体力学会)</a> 規格は、ねじギャリングやクラックを防ぐために、アルミニウム空気圧継手のトルク制限を指定します。</p>
-
-<h3>ベントまたはドレインポートから漏れる</h3>
-
-<p>一部のロータリージョイントには、内部圧力蓄積を防ぐために、制御された空気量を解放するように設計された小さなベントポートが含まれています。 回転中のこのポートから小さな、安定した彼のものは、設計で正常です。</p>
-
-<p>しかし、もし vent ポート が動作する ポート よりもより多くの空気を解放する場合:</p>
+<p>フィルタ、レギュレータ、必要に応じてルブリケータで構成されるFRLを確認：</p>
 
 <ul>
-<li>内部シャフト シール はバイパスです(壊れたか、または誤って取付けられて)</li>
-<li>チャネル間の差圧は内部の障壁を渡る空気を強制しています</li>
+<li><strong>フィルタエレメント：</strong>メーカー指定の差圧上限または記録した保全周期で交換</li>
+<li><strong>水分離器：</strong>メーカーの保全計画に従って排水。目視できる凝縮水があれば、空気処理と配管状態を確認</li>
+<li><strong>ルブリケータなし：</strong>乾式運転用として承認されたシールなら正しい場合があります。潤滑の可否・必要性はシール配合、媒体、メーカー承認で決まり、一律の寿命延長は保証できません。</li>
 </ul>
 
-<p>ジョイントを交換します。 内部 シール は標準モデルでフィールドサービスできません。</p>
+<h3>ねじ接続部からの漏れ</h3>
 
-<h2 id="diagnostic-flowchart">速い診断フローチャート</h2>
+<p>NPTまたはGねじ部の漏れでは、まずねじ、シール方式、施工を確認します。本体が原因とは限りません。</p>
 
-<p>何かを分解する前に、このシーケンスを使用する:</p>
+<p><strong>確認1：ねじシール材の施工</strong></p>
 
-<p><strong>手順 1:漏出位置を識別して下さい</strong></p>
+<p>PTFEテープは巻き方向、材質、巻き量が不適切だと漏れやめねじへの過大応力を招きます。一律の巻き数ではなく、ねじ規格、継手、テープ厚、メーカー要領に従い、流路側へテープ片を出さないでください。</p>
 
-<p>→ 共同顔:手順 2に行く</p>
+<p><strong>確認2：締付過多による損傷</strong></p>
 
-<p>→ ねじポート: 手順 5に行く</p>
+<p>アルミねじは、工具の掛け方、シール方法、斜め締め、過大な締付で損傷する場合があります。指定の二面幅で本体を保持し、図面または取付要領の方法・トルクで接続してください。一律の締付トルクは使用しません。</p>
 
-<p>→ ベント/ドレイン:ジョイントを交換し、手順 6に行く</p>
+<p>照明を使って入口側ねじ山とポート周辺を確認します。亀裂が見える場合は圧力を抜いて停止し、交換してください。シール材では構造亀裂を修理できません。許容トルクと施工方法は図面またはメーカー資料に従います。</p>
 
-<p><strong>手順 2: システム圧力をチェックして下さい</strong></p>
+<h3>ベント／ドレン開口からの漏れ</h3>
 
-<p>連続圧力 &gt; 0.7 MPa?</p>
+<p>一部のロータリージョイントにはベント／ドレン開口があります。少量の排気が正常かどうかは、具体的な構造と運転状態についてメーカー確認が必要です。急に増えた場合は設備を安全停止して原因を調査してください。</p>
 
-<p>✓ はい → 低圧, 再テスト</p>
-
-<p> → スペック内の圧力, 手順 3 に行く</p>
-
-<p><strong>手順 3: RPM 対を確認します。 シール材質の特長</strong></p>
-
-<p>FKM シールのRPM &gt; 200か。</p>
-
-<p>✓ はい → PTFE または低 RPM へのアップグレード</p>
-
-<p>∙ なし → RPM と シール のマッチ, 手順 4 に行く</p>
-
-<p><strong>手順 4:空気の質およびFRLを点検して下さい</strong></p>
-
-<p>余分な湿気か粒子か。</p>
-
-<p>✓ はい → サービスFRL、再テスト</p>
-
-<p>✓ スペック内の→条件、手順 6に行く</p>
-
-<p><strong>手順 5: ねじ接続をチェック</strong></p>
-
-<p>正しい密封剤およびトルクか。</p>
-
-<p>✓ はい → 再インストールと再テスト</p>
-
-<p>∙ なし → ひびの入ったハウジングスレッド → 置換ジョイント</p>
-
-<p><strong>手順 6: ドキュメント検索</strong></p>
-
-<p>記録圧力、RPM、空気質の状態および取り替えの部品番号。 繰り返し故障が同じ駅で起きた場合、購入に戻ります。</p>
-
-<h2 id="replace-vs-repair">対を置換するとき。 修理するとき</h2>
-
-<p><strong>完全な接合箇所を時取り替えて下さい:</strong></p>
+<p>ベント開口から、構造と運転状態で許容される量を超える空気が出る場合：</p>
 
 <ul>
-<li>ハウジングの糸は割れるか、または除去されます</li>
-<li>ハウジングは影響の損傷か変形を示します</li>
-<li>内部障壁 シール に失敗しました(チャネルの漏出)</li>
-<li>シャフト軸受け演劇は0.3 mmの放射状の操業を超過します</li>
+<li>内部軸シールの摩耗、損傷、誤組付け</li>
+<li>流路間の差圧により、損傷・不適合な内部隔壁シールを越えてクロスリークが発生</li>
 </ul>
 
-<p><strong>シールキットだけを時取り替えて下さい:</strong></p>
+<p>対象型式で内部シールの現場修理が認められていない場合は、本体を交換するか認定サービスへ点検を依頼します。</p>
+
+<h2 id="diagnostic-flowchart">クイック診断フロー</h2>
+
+<p>分解前に次の順序で確認：</p>
+
+<p><strong>ステップ1：漏れ位置を特定</strong></p>
+
+<p>→ 回転摺動部：ステップ2へ</p>
+
+<p>→ ねじポート：ステップ5へ</p>
+
+<p>→ ベント／ドレン：設備を安全停止し、取扱説明書に従って構造を確認後、ステップ6へ</p>
+
+<p><strong>ステップ2：システム圧力を確認</strong></p>
+
+<p>連続圧力またはピーク圧力が型式承認外ですか？</p>
+
+<p>✓ はい → 承認範囲まで圧力を下げて再確認</p>
+
+<p>✗ いいえ → 圧力は承認範囲内。ステップ3へ</p>
+
+<p><strong>ステップ3：動作条件とシール仕様を照合</strong></p>
+
+<p>使用中のFKM仕様に対して動作条件が承認範囲外ですか？</p>
+
+<p>✓ はい → 実動作に合うシール仕様へ変更、または運転条件を調整</p>
+
+<p>✗ いいえ → 動作とシール仕様は適合。ステップ4へ</p>
+
+<p><strong>ステップ4：空気品質とFRLを確認</strong></p>
+
+<p>過剰な水分または粒子がありますか？</p>
+
+<p>✓ はい → FRLを整備して再確認</p>
+
+<p>✗ いいえ → 条件は承認範囲内。ステップ6へ</p>
+
+<p><strong>ステップ5：ねじ接続を確認</strong></p>
+
+<p>ねじシール材と締付方法は正しいですか？</p>
+
+<p>✓ はい → 正しく再施工して再確認</p>
+
+<p>✗ いいえ → ハウジングねじに亀裂・損傷。本体を停止して交換</p>
+
+<p><strong>ステップ6：診断結果を記録</strong></p>
+
+<p>圧力、動作、空気品質、漏れ位置、交換部品番号を記録します。同じ設備で再発する場合は、設計、保全、調達へ情報を戻してください。</p>
+
+<h2 id="replace-vs-repair">修理と交換の判断</h2>
+
+<p><strong>ロータリージョイント本体を交換する条件：</strong></p>
 
 <ul>
-<li>リークは回転インターフェイスにあります</li>
-<li>ハウジングおよびシャフトは機械的に健全なです</li>
-<li>操作条件(圧力、RPM、空気質)は指定の内であります</li>
+<li>ハウジングねじに亀裂またはねじ山損傷がある</li>
+<li>ハウジングに衝撃痕または変形がある</li>
+<li>内部隔壁シールの損傷、または差圧への不適合</li>
+<li>軸受すきままたは軸振れが型式固有の摩耗限界を超える</li>
 </ul>
 
-<p>標準的なBPシリーズの接合箇所のためのシールキットは下記のものを含んでいます:シールリング、Oリングおよびばねの保持。 ばねのオリエンテーションの重要な保持 — 開いた端は中圧の側面に直面します。</p>
+<p><strong>シールキットのみを交換できる条件：</strong></p>
 
-<h2 id="preventive-measures">実際に働く予防策</h2>
+<ul>
+<li>漏れ位置は回転摺動部</li>
+<li>ハウジングと軸に機械的損傷がない</li>
+<li>圧力、動作、空気品質が承認範囲内</li>
+</ul>
 
-<p>24 / 7自動化ラインのジョイントを使用してメンテナンスチームからフィールドデータに基づいて:</p>
+<p>BPシリーズのシールキット内容は型式によって異なります。構成部品、組付け方向、現場交換の可否を、対象シリアルの部品表と取付要領で確認してください。</p>
+
+<h2 id="preventive-measures">有効な予防策</h2>
+
+<p>以下は一般的な保全事例を整理した診断手順で、型式ごとの確認に代わるものではありません。</p>
 
 <ol>
-<li><strong>ジョイント入口に圧力計を設置します。</strong> FRLではなくコンプレッサーで、ジョイントでもありません。 長いホースの操業を渡る圧力低下は実質です。 コンプレッサーで0.6 MPaを読み込むことは、レギュレータが誤っていれば、ジョイントで0.8 MPaになるかもしれません。</li>
-<li><strong>実際の生産中の RPM を idle ではなくログに記録します。</strong> 生産がフルスピードで走るときだけ多くの漏れが発見されます。 Idle RPM は、実際の動作環境をチェックします。</li>
-<li><strong>失敗前にシール交換をスケジュールします。</strong> 用途の継続的義務のために、シール寿命の推定60%でシール交換を計画して下さい。 可視漏れ待ちは、シール lip がシャフト表面を傷つけていることを意味します。</li>
-<li><strong>ワークステーションでスペアシールキットを保管しないでください。</strong> とりあえず 15-minute シールの取り替えはなります 2-技術者が中央店に歩く必要があり、間違った部品番号を発見し、戻りなさい時時間の仕事。</li>
+<li><strong>ロータリージョイント入口で圧力を測定します。</strong>コンプレッサや離れたFRLの表示では、配管・バルブ損失を正確に把握できません。実際の運転サイクル中に測定し、レギュレータ設定と測定位置を記録してください。</li>
+<li><strong>実生産時の回転数と動作パターンを記録します。</strong>無負荷運転では負荷、加減速、実タクトを再現できない場合があります。</li>
+<li><strong>シール交換は状態とリスクに基づいて計画します。</strong>漏れ、回転抵抗、圧力、温度、サイクルの傾向を使い、推定寿命に一律の割合を掛けた交換基準は使用しません。</li>
+<li><strong>適合する予備シールキットを識別表示して設備近くに保管します。</strong>保全前に部品番号、保管状態、対象型式を確認し、誤部品の組付けを防ぎます。</li>
 </ol>
 
-<h2 id="conclusion">コンクルージョン</h2>
+<h2 id="conclusion">まとめ</h2>
 
-<p>ロータリージョイントを漏れることは、ランダムな故障です。 動作環境に何か、圧力、速度、空気の質、またはインストールが、ジョイントの設計封筒を上回っているという信号です。 シールまたは新しいジョイントを注文する前に、上記の6-手順診断を実行します。 弊社の経験では、リークの80%は、最初の4つのチェックの1つで説明しています。</p>
+<p>ロータリージョイントの漏れは、圧力、動作、空気品質、取付、摩耗のいずれかが想定範囲から外れた兆候である場合があります。シールや本体を交換する前に6ステップの診断を行い、結果を記録してください。</p>
 
 <div class="cta-box">
-  <h3>シールキットまたは交換ジョイントが必要ですか?</h3>
-  <p>シールにあなたの診断ポイントが身に着ければ、私達の <a href="blog-seal-replacement.html">インストールガイド</a> 手順別はBPシリーズの接合箇所のための分解をカバーします。 特別な要件 - 高圧、高速、または腐食性環境 - 私達にあなたの操作パラメータを送ってください。</p>
-  <a href="products.html" class="btn">ロータリージョイントカタログ →</a>
-  <p style="margin-top:16px;font-size:0.9rem;">または私達に直接電子メールで送って下さい: <a href="mailto:sales@begapunk.com?subject=Leakage%20Diagnosis%20Request%20-%20BP-Series" style="color:rgba(255,255,255,0.9);text-decoration:underline;">sales@begapunk.comの特長</a></p>
+  <h3>シールキットまたは交換用ジョイントが必要ですか？</h3>
+  <p>診断結果がシール摩耗を示す場合、現場交換が認められたBP型式については <a href="blog-seal-replacement.html">取付ガイド</a> を参照してください。高圧、高速、腐食性環境では完全な使用条件をお送りください。</p>
+  <a href="products.html" class="btn">ロータリージョイントのカタログを見る →</a>
+  <p style="margin-top:16px;font-size:0.9rem;">メールでのお問い合わせ：<a href="mailto:sales@begapunk.com?subject=Leakage%20Diagnosis%20Request%20-%20BP-Series" style="color:rgba(255,255,255,0.9);text-decoration:underline;">sales@begapunk.com</a></p>
 </div>
 
-<p><strong>技術的なノート:</strong> この記事で参照されるすべての圧力仕様およびRPMの指定はBegapunk BPシリーズ標準空気圧ロータリージョイントに基づいています。 実際のパフォーマンスは、動作条件とメンテナンスの慣行によって異なります。 用途の外で標準仕様のために、指定の前に技術部門に相談して下さい。 一般的な空気システム設計の指導のため、参照して下さい <a href="https://www.iso.org/standard/46511.html" target="_blank" rel="noopener">ISO 4414:2010 空気の流体力 — システムとそのコンポーネントの一般的な規則と安全要件</a>. .</p>
+<p><strong>技術注記：</strong>圧力・回転条件は各Begapunk BP型式に固有です。実際の性能は運転、動作、保全に左右されます。データシート範囲外は事前に技術確認してください。空圧システムの一般安全要求は <a href="https://www.iso.org/standard/46511.html" target="_blank" rel="noopener">ISO 4414:2010</a> を参照できますが、個別部品の承認に代わるものではありません。</p>
 
 </article>
 
@@ -423,7 +423,7 @@
       <div class="related-card">
         <span class="tag">メンテナンス</span>
         <h3>ロータリージョイントリーク? 実用的な診断フローチャート</h3>
-        <p>系統的なトラブルシューティング:シールを取り替える前に圧力、RPM、シール材質および空気の質を点検して下さい。</p>
+        <p>系統的なトラブルシューティング:シールを取り替える前に圧力、min⁻¹、シール材質および空気の質を点検してください。</p>
         <a href="blog-rotary-joint-leaking.html">今すぐ読む →</a>
       </div>
       <div class="related-card">
@@ -435,7 +435,7 @@
       <div class="related-card">
         <span class="tag">メンテナンス</span>
         <h3>ねじ式対フランジマウントロータリージョイント</h3>
-        <p>初期寿命の60%は、インストールエラーに痕跡を漏らします。 トルク仕様、回り止めブラケット、圧力テストプロトコル。</p>
+        <p>初期寿命の60%は、取付エラーに痕跡を漏らします。 トルク仕様、回り止めブラケット、圧力テストプロトコル。</p>
         <a href="blog-threaded-vs-flange.html">今すぐ読む →</a>
       </div>
     </div>
@@ -448,54 +448,54 @@
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunkの特長" style="height:40px;width:auto;" loading="lazy" width="226" height="40">
+     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy" width="226" height="40">
     </div>
-    <p>精密 ロータリージョイント メーカー、寧波、中国。 2010年以来、世界中の産業オートメーションOEMおよび機械の建築業者にサービスを提供しています。</p>
-    <div class="contact-line">✉ <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.comの特長</a></div>
+    <p>中国・寧波の産業用ロータリージョイントメーカーです。2010年から世界の産業オートメーションOEM・装置メーカーへ供給しています。</p>
+    <div class="contact-line">✉ <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
     <div class="contact-line">☎ <a href="tel:+8618368425342" style="color:rgba(255,255,255,0.7);">+86 183 6842 5342</a></div>
    </div>
    <div>
     <h4 class="footer-title">製品情報</h4>
     <div class="footer-links">
-     <a href="products.html">製品カタログ</a>
-     <a href="product-comparison.html">機種比較の特長</a>
-     <a href="contact.html">カスタム RFQの特長</a>
+     <a href="products.html">製品一覧</a>
+     <a href="product-comparison.html">機種選定表</a>
+     <a href="contact.html">特注品・見積依頼</a>
     </div>
    </div>
    <div>
-    <h4 class="footer-title">用途の特長</h4>
+    <h4 class="footer-title">用途別情報</h4>
     <div class="footer-links">
-     <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
-     <a href="application-packaging-machinery.html">包装の機械類</a>
-     <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
-     <a href="application-cnc-pneumatic-clamping.html">CNC空気の締め金で止めること</a>
-     <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
-     <a href="application-steel-dusty-environments.html">ほこりの環境</a>
+     <a href="application-laser-tube-cutting.html">レーザー管切断機</a>
+     <a href="application-packaging-machinery.html">包装機械</a>
+     <a href="application-bottle-filling-capping.html">ボトル充填・キャッピング機</a>
+     <a href="application-cnc-pneumatic-clamping.html">CNC空圧クランプ</a>
+     <a href="application-automation-rotary-tables.html">自動化用回転テーブル</a>
+     <a href="application-steel-dusty-environments.html">粉塵環境</a>
     </div>
    </div>
    <div>
-    <h4 class="footer-title">ナレッジセンター</h4>
+    <h4 class="footer-title">技術情報</h4>
     <div class="footer-links">
-     <a href="blog.html">テクニカルブログ</a>
-     <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
-     <a href="installation.html">インストールガイド</a>
+     <a href="blog.html">技術資料</a>
+     <a href="blog-rotary-joint-selection.html">選定ガイド</a>
+     <a href="installation.html">取付要領</a>
      <a href="faq.html">よくある質問</a>
     </div>
    </div>
    <div>
-    <h4 class="footer-title">会社案内</h4>
+    <h4 class="footer-title">会社情報</h4>
     <div class="footer-links">
-     <a href="about.html">工場について</a>
-     <a href="case-studies.html">事例紹介</a>
-     <a href="contact.html">コンタクト</a>
+     <a href="about.html">会社・工場情報</a>
+     <a href="case-studies.html">選定事例</a>
+     <a href="contact.html">お問い合わせ</a>
     </div>
    </div>
   </div>
   <div class="footer-bottom">
-   <p>2018年12月12日 2026 Begapunkの精密回転式接合箇所の製造業者。 スタッフ募集中!</p>
+   <p>© 2026 Begapunk ロータリージョイントメーカー。無断転載を禁じます。</p>
    <div class="footer-legal">
-    <a href="privacy.html">スタッフ紹介</a>
-    <a href="terms.html">利用条件</a>
+    <a href="privacy.html">プライバシー</a>
+    <a href="terms.html">利用規約</a>
    </div>
   </div>
  </div>
@@ -503,8 +503,8 @@
 
 <!-- ===== FLOATING CTA ===== -->
 <div class="floating-cta">
-  <a href="contact.html" class="floating-btn quote">見積もりを依頼の特長</a>
-  <a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsAppについて</a>
+  <a href="contact.html" class="floating-btn quote">見積もり・技術相談</a>
+  <a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a>
 </div>
 
 <script>

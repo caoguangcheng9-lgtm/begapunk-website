@@ -99,6 +99,14 @@ Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains
 Header always unset X-Powered-By
 </IfModule>
 
+# ========================================
+# CHARACTER ENCODING
+# ========================================
+# Send charset=UTF-8 in the Content-Type header for text/html and text/plain
+# responses (pages already declare <meta charset="utf-8">; this adds the
+# HTTP-level declaration as a safety net).
+AddDefaultCharset UTF-8
+
 # Enable gzip compression
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript

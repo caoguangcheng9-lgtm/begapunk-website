@@ -13,6 +13,9 @@ Use the language edition that best matches the user's query. Technical model cod
 - [日本語ホームページ](https://www.begapunk.com/ja/): Japanese edition for Japanese-language queries.
 - [Русская главная страница](https://www.begapunk.com/ru/): Russian edition for Russian-language queries.
 - [Complete multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml): Index of all published English, German, Japanese, and Russian URLs.
+- [Deutscher AI-Seitenindex](https://www.begapunk.com/de/llms.txt): Vollständiger deutschsprachiger Seitenindex mit lokalisierten Beschreibungen.
+- [日本語AIページ索引](https://www.begapunk.com/ja/llms.txt): 日本語ページと技術概要をまとめた完全な索引。
+- [Русский индекс для ИИ](https://www.begapunk.com/ru/llms.txt): Полный указатель русскоязычных страниц с локализованными описаниями.
 
 ## Main pages
 

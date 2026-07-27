@@ -1,4 +1,5 @@
 {
+  "Application to product-family comparison": "Сравнение областей применения и серий продукции",
   "When should I upgrade from BP-2P-50-0001 to a different model?\n     <span class=\"icon\">▼</span>": "Когда следует заменить BP-2P-50-0001 другой моделью?\n     <span class=\"icon\">▼</span>",
   "› Threaded vs Flange Mounting for Rotary Joints: A Maintenance Team's Field Guide": "› Резьбовое и фланцевое крепление ротационных соединений: практическое руководство для службы технического обслуживания",
   "<a href=\"blog-threaded-vs-flange.html\">Threaded vs Flange Mounting for Rotary Joints: A Maintenance Team's Field Guide</a>": "<a href=\"blog-threaded-vs-flange.html\">Резьбовое и фланцевое крепление ротационных соединений: практическое руководство для службы технического обслуживания</a>",
@@ -35,8 +36,17 @@
   "Rotary Joint Selection Guide": "Руководство по выбору ротационного соединения",
   "Rotary Union for Printing Machinery & Converting Equipment | Begapunk": "Ротационные соединения для печатного и конвертингового оборудования | Begapunk",
   "Rotary Union for Printing Machinery &amp; Converting Equipment | Begapunk": "Ротационные соединения для печатного и конвертингового оборудования | Begapunk",
-  "Begapunk Rotary Joints | Custom Multi-Channel Rotary Unions for Industrial Automation": "Ротационные соединения Begapunk | Многоканальные решения для промышленной автоматизации",
+  "Begapunk Rotary Joints | Custom Multi-Channel Rotary Unions for Industrial Automation": "Пневматические ротационные (вращающиеся) соединения | Begapunk",
+  "Begapunk manufactures high-performance rotary joints and rotary unions. ISO9001 certified. 200,000+ units delivered to 40+ countries. Custom designs available. Get a quote in 24 hours.": "Begapunk производит пневматические ротационные и вращающиеся соединения для промышленной автоматизации. Доступны одно- и многоканальные модели, фланцевое и резьбовое крепление, а также исполнения по техническому заданию заказчика.",
   "<span class=\"highlight\">Air Rotary Union</span> Specialist for OEM Machinery": "Специалист по <span class=\"highlight\">пневматическим ротационным соединениям</span> для OEM-оборудования",
+  "1. Channel Count: Match Your Pneumatic Circuit, Not Your Wish List": "1. Количество каналов: выбирайте по пневматической схеме",
+  "2. Operating Pressure: The \"Max 1.0 MPa\" Spec Is Misleading": "2. Рабочее давление: как правильно понимать предел 1,0 МПа",
+  "3. RPM: Why High Speed Needs Different Seals": "3. Скорость вращения: почему для высоких оборотов нужны другие уплотнения",
+  "4. Media Compatibility: \"Air\" Is Not Just Air": "4. Совместимость с рабочей средой: сжатый воздух бывает разным",
+  "5. Installation Space and Connection Type": "5. Монтажное пространство и тип подключения",
+  "Quick Reference: Begapunk Model Selection Table": "Краткая таблица выбора моделей Begapunk",
+  "Conclusion": "Выводы",
+  "Related Articles": "Связанные материалы",
   "Rotary Joint Catalog": "Каталог ротационных соединений",
   "FAQ | Rotary Joint Frequently Asked Questions | Begapunk": "Часто задаваемые вопросы о ротационных соединениях | Begapunk",
   "Frequently Asked Questions": "Часто задаваемые вопросы",
@@ -110,22 +120,38 @@
   ,"BP-2P-16-0001 2-in-2-out 16mm bore flange mount blue anodized": "BP-2P-16-0001 2-in-2-out, проходное отверстие 16 мм, фланцевое крепление, синее анодирование"
   ,"<strong>100 RPM rating matches slow-speed heavy industry:</strong> Steel mill and foundry rotary tables typically index at 5–30 RPM; the 100 RPM rating provides 3× margin without seal overheating": "<strong>Скорость 100 RPM соответствует тихоходному тяжёлому оборудованию:</strong> поворотные столы на металлургических и литейных предприятиях обычно индексируются со скоростью 5–30 RPM; предел 100 RPM обеспечивает трёхкратный запас без перегрева уплотнения."
   ,"A machine builder needs clamp and unclamp air for a rotary table. To save $15, they buy BP-1P-0003 and T-fitting the single passage into two lines. The result: when the clamp line pressurizes at 0.6 MPa, the T-fitting leaks 0.15 MPa into the unclamp line — the fixture releases prematurely, dropping the workpiece. <strong>Rule:</strong> BP-1P-0003 is single-passage only. For 2+ independent functions, use BP-2P-0001 or BP-2P-0002. The $15 savings cost $200 in scrapped parts.": "Изготовителю оборудования требуются отдельные линии воздуха для зажима и разжима поворотного стола. Ради экономии 15 долларов он выбирает BP-1P-0003 и разделяет единственный канал тройником. Когда давление в линии зажима достигает 0,6 MPa, через тройник в линию разжима перетекает 0,15 MPa — приспособление преждевременно освобождает и роняет заготовку. <strong>Правило:</strong> BP-1P-0003 имеет только один канал. Для двух и более независимых функций используйте BP-2P-0001 или BP-2P-0002. Экономия 15 долларов привела к браку на 200 долларов."
-  ,"BP-1P-0006 · 1-in-6-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-1P-0006 · Ротационное соединение 1-in-6-out, отверстие 4 мм, резьба G1/8 | 1 MPa, 300 RPM | Begapunk"
-  ,"BP-1P-0006 · 1-in-6-out (4mm) Rotary Joint": "BP-1P-0006 · Ротационное соединение 1-in-6-out, отверстие 4 мм"
-  ,"BP-2P-0002 · 2-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-2P-0002 · Ротационное соединение 2-in-3-out, отверстие 4 мм, резьба G1/8 | 1 MPa, 300 RPM | Begapunk"
-  ,"BP-2P-0002 · 2-in-3-out (4mm) Rotary Joint": "BP-2P-0002 · Ротационное соединение 2-in-3-out, отверстие 4 мм"
-  ,"BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint | Flange Mount, Max 1 MPa, 150 RPM | Begapunk": "BP-2P-30-0001 · Ротационное соединение 2-in-2-out, отверстие Ø30 мм | Фланец, 1 MPa, 150 RPM | Begapunk"
-  ,"BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint": "BP-2P-30-0001 · Ротационное соединение 2-in-2-out, отверстие Ø30 мм"
-  ,"BP-3P-0006 · 3-in-3-out (6mm Orifice) Rotary Joint | G1/4 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0006 · Ротационное соединение 3-in-3-out, отверстие 6 мм, резьба G1/4 | 1 MPa, 200 RPM | Begapunk"
-  ,"BP-3P-0006 · 3-in-3-out (G1/4) Rotary Joint": "BP-3P-0006 · Ротационное соединение 3-in-3-out, резьба G1/4"
-  ,"BP-3P-0007 · 3-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0007 · Ротационное соединение 3-in-3-out, отверстие 4 мм, резьба G1/8 | 1 MPa, 200 RPM | Begapunk"
-  ,"BP-3P-0007 · 3-in-3-out (4mm) Rotary Joint": "BP-3P-0007 · Ротационное соединение 3-in-3-out, отверстие 4 мм"
-  ,"BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-S06-0001 · Пневмоэлектрическое ротационное соединение 3-in-3-out + 6 цепей | Фланец, 1 MPa | Begapunk"
-  ,"BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint": "BP-3P-S06-0001 · Пневмоэлектрическое ротационное соединение 3-in-3-out + 6 электрических цепей"
-  ,"BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-4P-30-0001 · Ротационное соединение 4-in-4-out, отверстие Ø30 мм | Фланец, 1 MPa | Begapunk"
-  ,"BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint": "BP-4P-30-0001 · Ротационное соединение 4-in-4-out, отверстие Ø30 мм"
-  ,"BP-8P-0001 · 8-in-8-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-8P-0001 · Ротационное соединение 8-in-8-out | Фланец, 1 MPa | Begapunk"
-  ,"BP-8P-0001 · 8-in-8-out Rotary Joint": "BP-8P-0001 · Ротационное соединение 8-in-8-out"
+  ,"BP-1P-0003 — 1-in-1-out Rotary Joint | Threaded Mount, Max 1 MPa | Begapunk": "BP-1P-0003 | Одноканальное ротационное соединение | Резьбовое крепление, 1 МПа"
+  ,"BP-1P-0003 — 1-in-1-out Rotary Joint": "BP-1P-0003 | Одноканальное ротационное соединение"
+  ,"BP-1P-0006 · 1-in-6-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-1P-0006 | Ротационное соединение, 1 вход / 6 выходов | G1/8, 1 МПа, 300 об/мин"
+  ,"BP-1P-0006 · 1-in-6-out (4mm) Rotary Joint": "BP-1P-0006 | Ротационное соединение, 1 вход / 6 выходов"
+  ,"BP-2P-0001 · 2-in-2-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-2P-0001 | Двухканальное ротационное соединение | Фланцевое крепление, 1 МПа"
+  ,"BP-2P-0001 · 2-in-2-out Rotary Joint": "BP-2P-0001 | Двухканальное ротационное соединение"
+  ,"BP-2P-0002 · 2-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-2P-0002 | Ротационное соединение, 2 входа / 3 выхода | G1/8, 1 МПа, 300 об/мин"
+  ,"BP-2P-0002 · 2-in-3-out (4mm) Rotary Joint": "BP-2P-0002 | Ротационное соединение, 2 входа / 3 выхода"
+  ,"BP-2P-08-0001 · 2-in-2-out Rotary Joint | M5 Threaded Mount, Max 1 MPa | Begapunk": "BP-2P-08-0001 | Компактное двухканальное ротационное соединение | M5, 1 МПа"
+  ,"BP-2P-08-0001 · 2-in-2-out Rotary Joint": "BP-2P-08-0001 | Компактное двухканальное ротационное соединение"
+  ,"BP-2P-130-0001 · 2-in-2-out Rotary Joint | Heavy Duty, Max 5 MPa | Begapunk": "BP-2P-130-0001 | Усиленное двухканальное ротационное соединение | 5 МПа"
+  ,"BP-2P-130-0001 · 2-in-2-out Rotary Joint": "BP-2P-130-0001 | Усиленное двухканальное ротационное соединение"
+  ,"BP-2P-16-0001 · 2-in-2-out (16mm Bore) Rotary Joint | Flange Mount (4-M5), Max 1 MPa | Begapunk": "BP-2P-16-0001 | Двухканальное ротационное соединение со сквозным отверстием 16 мм"
+  ,"BP-2P-16-0001 · 2-in-2-out (16mm Bore) Rotary Joint": "BP-2P-16-0001 | Двухканальное ротационное соединение, отверстие 16 мм"
+  ,"BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint | Flange Mount, Max 1 MPa, 150 RPM | Begapunk": "BP-2P-30-0001 | Двухканальное ротационное соединение, отверстие Ø30 мм | 1 МПа, 150 об/мин"
+  ,"BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint": "BP-2P-30-0001 | Двухканальное ротационное соединение, отверстие Ø30 мм"
+  ,"BP-2P-50-0001 · 2-in-2-out Rotary Joint | Dust-Proof, Flange Mount, Max 1 MPa | Begapunk": "BP-2P-50-0001 | Пылезащищённое двухканальное ротационное соединение | IP65, 1 МПа"
+  ,"BP-2P-50-0001 · 2-in-2-out Rotary Joint": "BP-2P-50-0001 | Пылезащищённое двухканальное ротационное соединение"
+  ,"BP-2P-95-0001 · 2-in-4-out Rotary Joint | Max 1 MPa | Begapunk": "BP-2P-95-0001 | Ротационное соединение, 2 входа / 4 выхода | 1 МПа"
+  ,"BP-2P-95-0001 · 2-in-4-out Rotary Joint": "BP-2P-95-0001 | Ротационное соединение, 2 входа / 4 выхода"
+  ,"BP-3P-0004 · 3-in-3-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-0004 | Трёхканальное ротационное соединение | Фланцевое крепление, 1 МПа"
+  ,"BP-3P-0004 · 3-in-3-out Rotary Joint": "BP-3P-0004 | Трёхканальное ротационное соединение"
+  ,"BP-3P-0006 · 3-in-3-out (6mm Orifice) Rotary Joint | G1/4 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0006 | Трёхканальное ротационное соединение | G1/4, 1 МПа, 200 об/мин"
+  ,"BP-3P-0006 · 3-in-3-out (G1/4) Rotary Joint": "BP-3P-0006 | Трёхканальное ротационное соединение G1/4"
+  ,"BP-3P-0007 · 3-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0007 | Компактное трёхканальное ротационное соединение | G1/8, 1 МПа, 200 об/мин"
+  ,"BP-3P-0007 · 3-in-3-out (4mm) Rotary Joint": "BP-3P-0007 | Компактное трёхканальное ротационное соединение"
+  ,"BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-S06-0001 | Комбинированное соединение: 3 пневмоканала и 6 электрических цепей"
+  ,"BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint": "BP-3P-S06-0001 | 3 пневмоканала и 6 электрических цепей"
+  ,"BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-4P-30-0001 | Четырёхканальное ротационное соединение, отверстие Ø30 мм"
+  ,"BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint": "BP-4P-30-0001 | Четырёхканальное ротационное соединение, отверстие Ø30 мм"
+  ,"BP-8P-0001 · 8-in-8-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-8P-0001 | Восьмиканальное ротационное соединение | Фланцевое крепление, 1 МПа"
+  ,"BP-8P-0001 · 8-in-8-out Rotary Joint": "BP-8P-0001 | Восьмиканальное ротационное соединение"
   ,"Pneumatic Rotary Union for Electronics and Battery Test Fixtures | Begapunk": "Пневматическое ротационное соединение для испытаний электроники и аккумуляторов | Begapunk"
   ,"Pneumatic Rotary Union for Electronics and Battery Test Fixtures": "Пневматическое ротационное соединение для испытательных стендов электроники и аккумуляторов"
   ,"Air Rotary Union for Laser Tube Cutting Machines": "Пневматическое ротационное соединение для станков лазерной резки труб"

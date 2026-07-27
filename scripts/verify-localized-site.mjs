@@ -9,14 +9,29 @@ const activeLanguages = config.languages.filter((language) => activeLanguageCode
 const localizedRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
+const seoByLanguage = new Map();
+for (const language of activeLanguages) {
+  const seoPath = path.join(sourceRoot, 'i18n', 'seo', `${language.code}.json`);
+  seoByLanguage.set(language.code, JSON.parse(await fs.readFile(seoPath, 'utf8')));
+}
 const failures = [];
 const suspiciousRepeatedTokenPattern = /(?:\bX\s+){5,}\bX\b/;
 const suspiciousRepeatedSymbolPattern = /(?:★\s*){5,}|(?:⚙\s*){3,}|(?:✉\s*){2,}|(?:\b\d+\s+[-–—]\s+){5,}/u;
 const suspiciousPlaceholderPattern = /__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__|\b(?:PH|TR)AAA[A-Z]\b|\b(?:Ф|ТР)ААА[А-ЯЁ]\b/u;
 const suspiciousRussianMachineTranslationPattern = /Корабли|Тяжел(?:ый|ая|ое) долг|Протоптан|Стальная сталь|Ротари|совместн(?:ый|ое) каталог|Следующая статья/iu;
 const suspiciousVisibleEnglishPattern = /\b(?:Threaded|Heavy Duty|Rotary Joint|Rotary Union|Ships in|Flange Mount|Download PDF|Details|Previous|Next)\b/i;
+const suspiciousLocalizedPhrases = {
+  de: /Erzeugnisse|Sonderanfrage|uns benachrichtigen|Multi-Kanal|multi-Kanal|through-Bohrung|Through-Bohrung|Air Kanäle|air Kanäle|Rutschring|Kanal Ausführung|Re-Leitungsführung|Automatisierungstabelle/,
+  ja: /据え付け品|電子工学|密集した|回転式移動|空気電気|気圧電気|チャネルカウント|工具細工|真空のコップ|洗剤材料|見直しる|送って下さい|物質的な条件|製造業装置/,
+  ru: /Пользователь RFQ|[Пп]ользовательский дизайн|[Мм]ногопропуск|[Мм]ногопроход|роторн(?:ая|ые|ых|ой) таблиц|кажд(?:ый|ую) оснастка|несколько оснастка|весь ротационное|один ротационное|соединение должен|радиальный клиренс|счет станции|счетчик сигналов/,
+};
 const expectedTeamInitials = ['GC', 'LW', 'SZ'];
 const expectedTeamNames = ['GuangCheng Cao', 'Li Wei', 'Sarah Zhang'];
+const expectedFounderJobTitle = {
+  de: 'Gründer und Ingenieur',
+  ja: '創業者・技術責任者',
+  ru: 'Основатель и инженер',
+};
 
 function verifyGeneratedText(value, owner) {
   if (value.includes('\uFFFD')) {
@@ -33,6 +48,10 @@ function verifyGeneratedText(value, owner) {
   }
   if (suspiciousRussianMachineTranslationPattern.test(value)) {
     failures.push(`${owner}: known Russian machine-translation artifact detected.`);
+  }
+  const languageCode = owner.split('/')[0];
+  if (suspiciousLocalizedPhrases[languageCode]?.test(value)) {
+    failures.push(`${owner}: known unnatural localized phrase detected.`);
   }
 }
 
@@ -73,6 +92,25 @@ function pageUrl(languageCode, pageName) {
   return `${config.siteUrl}/${languageCode}/${suffix}`;
 }
 
+function compactText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function schemaTypes(node) {
+  const type = node?.['@type'];
+  return new Set((Array.isArray(type) ? type : [type]).filter(Boolean));
+}
+
+function schemaNodes(value, found = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item) => schemaNodes(item, found));
+  } else if (value && typeof value === 'object') {
+    if (value['@type']) found.push(value);
+    Object.values(value).forEach((item) => schemaNodes(item, found));
+  }
+  return found;
+}
+
 function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
   if (currentLanguageCode === config.sourceLanguage.code) {
     return targetLanguageCode === config.sourceLanguage.code
@@ -99,6 +137,28 @@ for (const language of verifiedLanguages) {
     }
     verifyGeneratedText(html, `${language.code}/${pageName}`);
     const $ = load(html, { decodeEntities: false });
+    if (language.code !== config.sourceLanguage.code) {
+      const seo = seoByLanguage.get(language.code)?.[pageName];
+      if (!seo) {
+        failures.push(`${language.code}/${pageName}: curated SEO entry is missing.`);
+      } else {
+        const actual = {
+          title: compactText($('title').first().text()),
+          description: compactText($('meta[name="description"]').first().attr('content')),
+          h1: compactText($('h1').first().text()),
+          ogTitle: compactText($('meta[property="og:title"]').first().attr('content')),
+          ogDescription: compactText($('meta[property="og:description"]').first().attr('content')),
+          twitterTitle: compactText($('meta[name="twitter:title"]').first().attr('content')),
+          twitterDescription: compactText($('meta[name="twitter:description"]').first().attr('content')),
+        };
+        for (const field of ['title', 'description', 'h1']) {
+          if (actual[field] !== seo[field]) failures.push(`${language.code}/${pageName}: ${field} does not match curated SEO data.`);
+        }
+        if (actual.ogTitle !== seo.title || actual.twitterTitle !== seo.title) failures.push(`${language.code}/${pageName}: social title is not localized.`);
+        if (actual.ogDescription !== seo.description || actual.twitterDescription !== seo.description) failures.push(`${language.code}/${pageName}: social description is not localized.`);
+        if ($('meta[name="keywords"]').length) failures.push(`${language.code}/${pageName}: inherited meta keywords should be removed.`);
+      }
+    }
     if (language.code === 'ru') {
       const visibleBody = $('body').clone();
       visibleBody.find('script,style,noscript,.notranslate,[translate="no"]').remove();
@@ -128,9 +188,9 @@ for (const language of verifiedLanguages) {
     }
     if (language.code === 'ja' && pageName === 'blog-rotary-joint-selection.html') {
       const channelHeading = $('h2').map((_, element) => $(element).text().trim()).get().find((value) => value.includes('流路数'));
-      const channelModels = $('strong').map((_, element) => $(element).text().trim()).get().filter((value) => value.includes('-in-'));
-      if (channelHeading !== '1. 流路数：空気圧回路に合わせ、希望だけで選ばない') failures.push(`${language.code}/${pageName}: channel-count heading is incorrect.`);
-      if (channelModels.some((value) => !/^\d+-in-\d+-out$/.test(value))) failures.push(`${language.code}/${pageName}: channel model labels contain translated noise.`);
+      const channelModels = $('li').map((_, element) => $(element).text().trim()).get().filter((value) => /^[12]流路：/.test(value));
+      if (channelHeading !== '1. 実際の空圧・媒体回路から流路数を決める') failures.push(`${language.code}/${pageName}: channel-count heading is incorrect.`);
+      if (channelModels.length !== 2 || !channelModels[0].startsWith('1流路：') || !channelModels[1].startsWith('2流路：')) failures.push(`${language.code}/${pageName}: channel model labels are incorrect.`);
     }
     if (language.code !== config.sourceLanguage.code) {
       for (const selector of config.browserNoTranslateSelectors || []) {
@@ -163,7 +223,43 @@ for (const language of verifiedLanguages) {
     });
     $('script[type="application/ld+json"]').each((_, element) => {
       try {
-        JSON.parse($(element).html());
+        const payload = JSON.parse($(element).html());
+        if (language.code !== config.sourceLanguage.code) {
+          const contentTypes = new Set(['Article', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo']);
+          for (const node of schemaNodes(payload)) {
+            const types = schemaTypes(node);
+            if ([...types].some((type) => contentTypes.has(type)) && node.inLanguage !== language.code) {
+              failures.push(`${language.code}/${pageName}: ${[...types].join('/')} JSON-LD lacks the correct inLanguage.`);
+            }
+            if (types.has('Organization') && Array.isArray(node.founders)) {
+              if (node.founders.some((founder) => founder.jobTitle !== expectedFounderJobTitle[language.code])) {
+                failures.push(`${language.code}/${pageName}: Organization founder job title is not localized.`);
+              }
+            }
+            if (types.has('BreadcrumbList') && Array.isArray(node.itemListElement) && node.itemListElement.length) {
+              const current = node.itemListElement[node.itemListElement.length - 1];
+              if (compactText(current?.name) !== seoByLanguage.get(language.code)?.[pageName]?.h1 || current?.item !== pageUrl(language.code, pageName)) {
+                failures.push(`${language.code}/${pageName}: BreadcrumbList current page is not localized.`);
+              }
+            }
+            if (types.has('FAQPage')) {
+              const visibleFaq = $('.faq-item, .app-faq-item').map((__, item) => ({
+                question: compactText($(item).find('.faq-question, h3').first().clone().find('svg, i, .faq-icon, .faq-toggle').remove().end().text()),
+                answer: compactText($(item).find('.faq-answer, p').first().text()),
+              })).get().filter((item) => item.question && item.answer);
+              const schemaFaq = Array.isArray(node.mainEntity) ? node.mainEntity : [];
+              if (schemaFaq.length !== visibleFaq.length) {
+                failures.push(`${language.code}/${pageName}: FAQ JSON-LD count does not match visible FAQ content.`);
+              } else {
+                visibleFaq.forEach((item, index) => {
+                  if (compactText(schemaFaq[index]?.name) !== item.question || compactText(schemaFaq[index]?.acceptedAnswer?.text) !== item.answer) {
+                    failures.push(`${language.code}/${pageName}: FAQ JSON-LD item ${index + 1} does not match visible localized content.`);
+                  }
+                });
+              }
+            }
+          }
+        }
       } catch (error) {
         failures.push(`${language.code}/${pageName}: invalid JSON-LD (${error.message}).`);
       }
@@ -189,6 +285,27 @@ for (const language of activeLanguages) {
   } catch (error) {
     failures.push(`${language.code}/search-index.json: missing or invalid (${error.message}).`);
   }
+  const llmsPath = path.join(localizedRoot, language.code, 'llms.txt');
+  try {
+    const llmsSource = await fs.readFile(llmsPath, 'utf8');
+    verifyGeneratedText(llmsSource, `${language.code}/llms.txt`);
+    for (const pageName of config.pages) {
+      const expectedUrl = pageUrl(language.code, pageName);
+      if (!llmsSource.includes(expectedUrl)) failures.push(`${language.code}/llms.txt: missing ${expectedUrl}.`);
+    }
+  } catch (error) {
+    failures.push(`${language.code}/llms.txt: missing or invalid (${error.message}).`);
+  }
+}
+
+try {
+  const rootLlms = await fs.readFile(path.join(localizedRoot, 'llms.txt'), 'utf8');
+  for (const language of activeLanguages) {
+    const localizedLlmsUrl = `${config.siteUrl}/${language.code}/llms.txt`;
+    if (!rootLlms.includes(localizedLlmsUrl)) failures.push(`llms.txt: missing localized AI index link ${localizedLlmsUrl}.`);
+  }
+} catch (error) {
+  failures.push(`llms.txt: missing or invalid (${error.message}).`);
 }
 
 try {

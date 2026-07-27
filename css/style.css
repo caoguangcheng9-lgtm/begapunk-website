@@ -1391,6 +1391,7 @@ a:hover { color: var(--primary-dark); }
     .form-row { grid-template-columns:1fr; }
     .about-timeline::before { left:20px; }
     .timeline-item { padding-left:60px !important; padding-right:0 !important; text-align:left !important; }
+    .timeline-content { min-width:0; overflow-wrap:anywhere; }
     .timeline-dot { left:11px !important; right:auto !important; }
     .about-mission { grid-template-columns:1fr; }
     .about-hero h1 { font-size:1.4rem; }
@@ -3186,6 +3187,13 @@ background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%);
 border-radius: var(--radius);
 color: #fff;
 }
+.app-detail-cta > div {
+min-width: 0;
+}
+.app-detail-cta h2,
+.app-detail-cta p {
+overflow-wrap: anywhere;
+}
 .app-detail-cta h2 {
 font-size: 1.65rem;
 margin-bottom: 10px;
@@ -3699,16 +3707,38 @@ line-height: 1.65;
         height: 64px;
         min-width: 0;
         position: relative;
+        gap: 8px;
     }
 
     .logo {
         min-width: 0;
+        flex: 0 1 150px;
     }
 
     .logo img {
-        height: 34px !important;
-        max-width: calc(100vw - 104px);
+        height: 28px !important;
+        width: auto;
+        max-width: 150px;
         object-fit: contain;
+    }
+
+    .header .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .i18n-switcher {
+        margin-left: auto;
+        margin-right: 0;
+        flex-shrink: 0;
+    }
+
+    .i18n-switcher select {
+        width: 88px;
+        max-width: 88px;
+        min-height: 38px;
+        padding: 6px 24px 6px 8px;
+        font-size: 0.8rem;
     }
 
     .nav.mobile-open {
@@ -4301,9 +4331,9 @@ line-height: 1.65;
         top: auto;
         transform: none;
         z-index: 1004;
-        width: 74px;
+        width: 70px;
         height: 40px;
-        min-width: 74px;
+        min-width: 70px;
         min-height: 40px;
         flex-direction: column;
         align-items: flex-start;
@@ -4318,6 +4348,27 @@ line-height: 1.65;
         flex-shrink: 0;
     }
 
+    @media (max-width: 360px) {
+        .logo {
+            flex-basis: 118px;
+        }
+
+        .logo img {
+            height: 24px !important;
+            max-width: 118px;
+        }
+
+        .i18n-switcher select {
+            width: 78px;
+            max-width: 78px;
+        }
+
+        .mobile-toggle {
+            width: 56px;
+            min-width: 56px;
+        }
+    }
+
     .mobile-toggle::after {
         content: "Menu";
         position: absolute;
@@ -4327,6 +4378,16 @@ line-height: 1.65;
         color: #0b65b9;
         font-size: 0.74rem;
         font-weight: 800;
+    }
+
+    html[lang^="de"] .mobile-toggle::after { content: "Menü"; }
+    html[lang^="ja"] .mobile-toggle,
+    html[lang^="ru"] .mobile-toggle { width:82px; min-width:82px; }
+    html[lang^="ja"] .mobile-toggle::after { content: "メニュー"; }
+    html[lang^="ru"] .mobile-toggle::after { content: "Меню"; }
+
+    @media (max-width: 360px) {
+        html[lang] .mobile-toggle::after { content:""; }
     }
 
     .mobile-toggle span {

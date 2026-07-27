@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="ja"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>自動化用回転テーブル向け空気圧ロータリージョイント | Begapunk</title>
-<meta name="description" content="自動化用回転テーブルやインデックス装置に適した空気圧ロータリージョイントの選定ガイドです。流路数、スリップリング連携、間欠・連続回転に応じたシール選定を解説します。">
+<title>回転テーブル用ロータリージョイントの選定</title>
+<meta name="description" content="自動化設備の回転テーブルやインデックステーブル向けに、流路数、回転方式、シール、電気回路との一体化を解説します。">
 
 
 
@@ -14,67 +14,67 @@
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/application-automation-rotary-tables.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/application-automation-rotary-tables.html">
 <link rel="canonical" href="https://www.begapunk.com/ja/application-automation-rotary-tables.html">
-<meta property="og:title" content="自動化用回転テーブル向け空気圧ロータリージョイント | Begapunk">
-<meta property="og:description" content="空気圧ロータリージョイントを自動化するロータリーテーブルの選定方法 マルチ流路エアトランスファー、スリップリングインテグレーション、チャネルカウントプランニング。">
+<meta property="og:title" content="回転テーブル用ロータリージョイントの選定">
+<meta property="og:description" content="自動化設備の回転テーブルやインデックステーブル向けに、流路数、回転方式、シール、電気回路との一体化を解説します。">
 <meta property="og:url" content="https://www.begapunk.com/ja/application-automation-rotary-tables.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="オートメーションの回転式テーブルのための空気圧ロータリージョイント:選定ガイド">
-<meta name="twitter:description" content="空気圧ロータリージョイントの自動化回転テーブルとインデックスステーションの選定方法。">
+<meta name="twitter:title" content="回転テーブル用ロータリージョイントの選定">
+<meta name="twitter:description" content="自動化設備の回転テーブルやインデックステーブル向けに、流路数、回転方式、シール、電気回路との一体化を解説します。">
 <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
-<link rel="stylesheet" href="../css/style.css?v=20260716-performance">
+<link rel="stylesheet" href="../css/style.css?v=20260727-render-qa4">
 <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.begapunk.com/"},{"@type":"ListItem","position":2,"name":"Applications","item":"https://www.begapunk.com/applications.html"},{"@type":"ListItem","position":3,"name":"Automation Rotary Tables","item":"https://www.begapunk.com/ja/application-automation-rotary-tables.html"}]},{"@type":"WebPage","name":"Air Rotary Union for Automation Rotary Tables","url":"https://www.begapunk.com/ja/application-automation-rotary-tables.html","description":"Application guide for pneumatic rotary joints used on automation rotary tables.","publisher":{"@id":"https://www.begapunk.com/#organization"},"about":["automation rotary table","indexing table","air rotary union","pneumatic rotary joint"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What air functions are common on automation rotary tables?","acceptedAnswer":{"@type":"Answer","text":"Common functions include clamping, unclamping, vacuum pickup, blow-off, gripper control, sensor air, and pneumatic actuator supply. Each function typically requires its own independent passage to prevent cross-contamination and pressure interference between stations."}},{"@type":"Question","name":"When should a multi-passage rotary union be selected?","acceptedAnswer":{"@type":"Answer","text":"A multi-passage rotary union should be selected when different air functions must remain independent or when several stations need separate control lines. A good rule is to count every current function plus one spare channel for future tooling changes. Adding a spare passage now is cheaper than replacing the entire joint in 18 months."}},{"@type":"Question","name":"Can one rotary union supply several stations on a rotary table?","acceptedAnswer":{"@type":"Answer","text":"Yes, if the passage layout is planned correctly. Each independent air function should have its own channel. The rotary union acts as a central manifold: the stationary side connects to the machine's air supply, and the rotating side distributes air to each fixture or station through internal passages."}},{"@type":"Question","name":"Can air and electrical signals be combined in one rotary union?","acceptedAnswer":{"@type":"Answer","text":"Yes. Begapunk offers pneumatic-electric integrated designs (e.g., BP-3P-S06-0001 with 3 air passages + 6 electrical circuits). When signal count and air passage count are known, a custom layout can be designed with proper separation between pneumatic and electrical channels to prevent interference."}},{"@type":"Question","name":"What is the most common mistake when selecting an automation rotary table rotary union?","acceptedAnswer":{"@type":"Answer","text":"The most common mistake is not adding a spare passage. Machine builders specify exactly the channels needed today — clamp, unclamp, vacuum, blow-off — with no room for future upgrades. When the customer adds a sensor or a new gripper 12 months later, the entire rotary joint must be replaced. Another common error is using FKM seals on continuous-rotation stations above 200 RPM, causing overheating and seal hardening within weeks."}}]}],"inLanguage":"ja"}</script>
-    <script defer="" src="../js/analytics.js?v=20260715-1"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://www.begapunk.com/"},{"@type":"ListItem","position":2,"name":"製品一覧","item":"https://www.begapunk.com/applications.html"},{"@type":"ListItem","position":3,"name":"自動化設備の回転テーブル用ロータリージョイント","item":"https://www.begapunk.com/ja/application-automation-rotary-tables.html"}]},{"@type":"WebPage","name":"回転テーブル用ロータリージョイントの選定","url":"https://www.begapunk.com/ja/application-automation-rotary-tables.html","description":"自動化設備の回転テーブルやインデックステーブル向けに、流路数、回転方式、シール、電気回路との一体化を解説します。","publisher":{"@id":"https://www.begapunk.com/#organization"},"about":["automation rotary table","indexing table","air rotary union","pneumatic rotary joint"],"inLanguage":"ja"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"自動化回転テーブルで一般的な空圧機能は？","acceptedAnswer":{"@type":"Answer","text":"代表機能はクランプ、アンクランプ、真空、ブロー、グリッパ、センサ空気、アクチュエータです。独立制御回路は別流路とし、流路間許容漏れ量を規定します。"}},{"@type":"Question","name":"多流路ロータリージョイントはいつ必要ですか？","acceptedAnswer":{"@type":"Answer","text":"空圧機能の独立性やステーション別制御が必要な場合は多流路を選びます。現行機能を整理し、予備は根拠ある拡張計画がある場合のみ追加します。"}},{"@type":"Question","name":"1台で複数ステーションへ供給できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。流路構成、必要圧力、許容漏れ量、ステーション制御を正しく計画すれば可能です。固定側から供給し、回転側で独立流路へ分配します。"}},{"@type":"Question","name":"空気と電気信号を1台で伝送できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。空電複合仕様に対応できます。空気流路、電気回路、信号種、絶縁、EMC、速度、スペース、保守性を一体で仕様化・確認します。"}},{"@type":"Question","name":"最も多い選定ミスは？","acceptedAnswer":{"@type":"Answer","text":"主な誤りは流路計画不足と実運転データなしのシール選定です。拡張需要、媒体、圧力、速度、温度、デューティを承認前に確認します。"}}],"inLanguage":"ja"}]}</script>
+    <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
 <meta property="og:locale" content="ja_JP"></head>
 <body>
 <header class="header">
  <div class="container">
   <div class="header-inner">
    <a href="index.html" class="logo">
-    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - 精密ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk｜産業用ロータリージョイントメーカー" style="height:48px;width:auto;" width="226" height="40">
    </a>
    <nav class="nav" id="mainNav">
-    <a href="index.html">ふるさと</a>
+    <a href="index.html">ホーム</a>
     <div class="nav-dropdown">
      <a href="products.html" class="nav-dropdown-toggle">製品情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="products.html">製品カタログ</a>
-      <a href="product-comparison.html">機種比較の特長</a>
-      <a href="contact.html">カスタム RFQの特長</a>
+      <a href="products.html">製品一覧</a>
+      <a href="product-comparison.html">機種選定表</a>
+      <a href="contact.html">特注品・見積依頼</a>
      </div>
     </div>
     <div class="nav-dropdown">
-     <a href="applications.html" class="nav-dropdown-toggle active">用途の特長 <span class="chevron"></span></a>
+     <a href="applications.html" class="nav-dropdown-toggle active">用途別情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="applications.html">用途 の概要</a>
-      <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
-      <a href="application-packaging-machinery.html">包装の機械類</a>
-      <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
-      <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
-      <a href="application-robot-end-of-arm-tooling.html">ロボット EOAT</a>
-      <a href="application-pneumatic-tools-hose-anti-twist.html">空気圧工具の特長</a>
-      <a href="applications.html">もっと 用途</a>
+      <a href="applications.html">用途一覧</a>
+      <a href="application-laser-tube-cutting.html">レーザー管切断機</a>
+      <a href="application-packaging-machinery.html">包装機械</a>
+      <a href="application-bottle-filling-capping.html">ボトル充填・キャッピング機</a>
+      <a href="application-automation-rotary-tables.html">自動化用回転テーブル</a>
+      <a href="application-robot-end-of-arm-tooling.html">ロボットハンド・EOAT</a>
+      <a href="application-pneumatic-tools-hose-anti-twist.html">空圧工具</a>
+      <a href="applications.html">その他の用途</a>
      </div>
     </div>
     <div class="nav-dropdown">
-     <a href="blog.html" class="nav-dropdown-toggle">ナレッジセンター <span class="chevron"></span></a>
+     <a href="blog.html" class="nav-dropdown-toggle">技術情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="blog.html">テクニカルブログ</a>
-      <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
-      <a href="installation.html">インストールガイド</a>
+      <a href="blog.html">技術資料</a>
+      <a href="blog-rotary-joint-selection.html">選定ガイド</a>
+      <a href="installation.html">取付要領</a>
       <a href="faq.html">よくある質問</a>
      </div>
     </div>
     <div class="nav-dropdown">
-     <a href="about.html" class="nav-dropdown-toggle">新着情報 <span class="chevron"></span></a>
+     <a href="about.html" class="nav-dropdown-toggle">会社情報 <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
-      <a href="about.html">工場について</a>
-      <a href="case-studies.html">事例紹介</a>
+      <a href="about.html">会社・工場情報</a>
+      <a href="case-studies.html">選定事例</a>
      </div>
     </div>
-    <a href="contact.html" class="nav-cta">見積もりを依頼の特長</a>
+    <a href="contact.html" class="nav-cta">見積もり・技術相談</a>
    </nav>
 
    <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ja">Language</label><select id="language-ja" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="../application-automation-rotary-tables.html">English</option><option value="../de/application-automation-rotary-tables.html">Deutsch</option><option value="application-automation-rotary-tables.html" selected="">日本語</option><option value="../ru/application-automation-rotary-tables.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニュー">
@@ -84,90 +84,90 @@
  </div>
 </header>
 
-<section class="app-hero"><div class="container"><div class="breadcrumb"><a href="index.html">ふるさと</a> / <a href="applications.html">用途の特長</a> / オートメーションの回転式テーブル</div><h1>自動化用回転テーブル向け空気圧ロータリージョイント</h1><p>空気圧ロータリージョイントを自動化するロータリーテーブルとインデックスステーションで選ぶ方法:マルチ流路エアトランスファー、スリップリングインテグレーション、チャネルカウントプランニング、シールインデックス対のための選択。 連続回転。 Begapunkの分野の経験の200,000+単位に基づく。</p><div class="app-hero-actions"><a href="contact.html" class="btn btn-primary">回転テーブルのSpecsを送って下さい</a><a href="product-comparison.html" class="btn btn-secondary">モデルの比較</a></div></div></section>
+<section class="app-hero"><div class="container"><div class="breadcrumb"><a href="index.html">ホーム</a> / <a href="applications.html">用途別情報</a> / 自動化回転テーブル</div><h1>自動化設備の回転テーブル用ロータリージョイント</h1><p>回転テーブル用空気圧ロータリージョイントを、流路数、空電統合、動作、シール、スペースから選定。</p><div class="app-hero-actions"><a href="contact.html" class="btn btn-primary">回転テーブル仕様を送る</a><a href="product-comparison.html" class="btn btn-secondary">機種を比較</a></div></div></section>
 
-<section class="section"><div class="container"><div class="app-detail-intro"><div class="app-detail-copy"><span class="section-label">用途は合います</span><h2 class="section-title" style="text-align:left;">回転オートメーションの場所のための中央空気インターフェイス</h2><p style="font-size:0.9rem;color:var(--text-light);font-style:italic;margin-bottom:16px;"><strong>誰がこれのためにいるのか:</strong> オートメーションエンジニア、機械ビルダー、および回転式インデックステーブルおよび多場所アセンブリ装置を設計するシステムインテグレータ。</p><p>回転式索引のテーブルでは、複数の据え付け品は機械化のために締め金で止めること、部分の積み込みのための真空、破片の取り外しのための吹込み、位置の検証のためのセンサーの空気を必要とします。 ロータリーユニオンがなければ、各備品は、ねじれ、金具および疲労の独自のホースバンドルを必要とします。 マルチ流路 ロータリージョイントは中央マニホールドとして機能します:固定側は機械の空気供給に接続し、回転側は独立した内部流路を通して各ステーションに空気を配ります。</p><p>30–50 mmの直径ボディを共有している間、チャレンジは空気を移すだけでなく、交差汚染から4–8独立したチャネルを維持しています。 クランプと真空チャネル間の漏れは、グリッパーが部品をドロップすることを意味します。 ブローオフチャンネルの圧力降下は、フィクスチャーのチップを残します。 ロータリージョイントが失敗すると、全インデックスサイクルが止まり、生産バッチを掻く。</p><p>Begapunk では、大幅な自動回転テーブルアカウント <strong>私達の多流路 ロータリージョイントの販売の25%</strong>. . 最も頻繁な仕様エラーは、圧力やRPMではありません。それはチャンネルカウントです。 マシンビルダーは、センサーやグリッパーのための部屋がないので、今日必要なチャネルを正確に指定し、顧客は12か月後に追加します。</p></div><div class="app-detail-visual"><img src="../images/optimized/products/BP-8P-0001-1.webp" alt="オートメーション回転テーブルのための多流路 空気圧ロータリージョイント" width="500" height="500"><strong>典型的な条件</strong><span>回転インデックステーブルのクランプ、真空、吹き出しおよび分けられた場所制御のための2から8 流路。</span></div></div></div></section>
+<section class="section"><div class="container"><div class="app-detail-intro"><div class="app-detail-copy"><span class="section-label">用途適合性</span><h2 class="section-title" style="text-align:left;">回転自動化ステーションの中央空圧インターフェース</h2><p style="font-size:0.9rem;color:var(--text-light);font-style:italic;margin-bottom:16px;"><strong>対象：</strong> 回転割出テーブル、多ステーション組立装置を設計する自動化技術者、装置メーカー、SIer。</p><p>回転割出テーブルでは複数治具がクランプ、真空、ブロー、センサ空気を別タイミングで使用します。多流路ロータリージョイントは、外部ホース束を巻き付けず独立内部流路で供給します。</p><p>限られた本体内で複数流路の分離と許容漏れ量を規定します。クランプ、真空、ブロー間の不具合は工程やワーク保持へ影響するため、流路ごとに設計・試験条件を定めます。</p><p>自動化テーブルは代表的な多流路用途です。主な選定ミスは流路計画、スペース、運転データ不足で、裏付けのない販売比率は示しません。</p></div><div class="app-detail-visual"><img src="../images/optimized/products/BP-8P-0001-1.webp" alt="自動化回転テーブル用多流路ロータリージョイント" width="500" height="500"><strong>代表的な使用条件</strong><span>クランプ、真空、ブロー、ステーション制御用の複数独立流路。</span></div></div></div></section>
 
-<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">要点の特長</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;"><li>常に流路を追加 — 4チャンネルジョイントを5チャンネルジョイントコスト3倍に置き換える</li><li>インデックステーブル (60–120 RPM、停止開始)はFKM シールを使うことができます;連続的な回転場所はPTFEを必要とします</li><li>スリップ リングおよび ロータリージョイント は同じ軸線を共有します — 中空径 サイズを指定する前に放射状整理を確かめて下さい</li><li>各チャネルは機械的に隔離されます — 二重チャネルの接合箇所は 2 つの完全な シール アセンブリ、2 で 1 つの割れ目ではないです</li><li>フランジ取付 は、中空径 は、配線とホースを整理し続けます。 ねじ取付 は、コンパクトなサブアセンブリだけのためです</li></ul></div></div></section>
+<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">要点</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;"><li>予備流路は根拠ある拡張需要と実費比較に基づいて設定</li><li>実動作、媒体、温度、圧力、デューティに適合するシール材を確認</li><li>スリップリングとロータリージョイントが同軸の場合、中空径決定前に半径・軸方向スペースを確認</li><li>各流路は独立したシール機能を持ち、流路分離、許容漏れ量、試験条件を規定します</li><li>中空仕様は配線配管整理に有効。取付方式は実スペースと荷重条件から選定</li></ul></div></div></section>
 
-<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">典型的なオートメーション回転テーブル ロータリーユニオンのSpecs</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;"><li><strong>圧力:</strong> 0.3–0.8 MPa (clamping/作動)/-0.04への-0.08 MPa (真空) —連続的な義務のための30%をderate</li><li><strong>回転数:</strong> 60～300(インデックステーブル、ストップスタート)/100～500連続(ロータリーステーション)</li><li><strong>流路:</strong> 2～8 典型的(クランプ+アンクランプ+真空+ブローオフ+センサー空気+スペア)</li><li><strong>メディア:</strong> 乾燥したろ過空気、真空 — クーラントまたはオイルミストが存在するかどうかを指定する</li><li><strong>土台:</strong> 好まれるフランジ取付;きれいなケーブル配管経路のために利用できる通中空径</li><li><strong>中空径:</strong> 流れの要求および場所の計算による6–16 mm</li><li><strong>統合:</strong> 空気+電気信号が回転軸を共有するときスリップ リング整理を見直して下さい</li></ul></div></div></section>
+<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">代表的な選定項目</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;"><li><strong>圧力：</strong> 流路ごとの常用・ピーク・真空値と連続／間欠条件を提示し、安全余裕は用途別に設定</li><li><strong>回転速度：</strong> 連続・間欠値、加減速、停止時間、デューティを提示</li><li><strong>流路：</strong> 独立制御する機能と根拠のある将来拡張に応じて決定</li><li><strong>媒体：</strong> 乾燥ろ過空気・真空。クーラント、オイルミスト、他媒体は明示</li><li><strong>取付：</strong> 荷重、スペース、配線配管、図面に基づきフランジ、ねじ式、中空仕様を選定</li><li><strong>流路径：</strong> 総流量、圧力損失、ステーション数に基づいて設計</li><li><strong>統合：</strong> 空圧と電気が同軸の場合、スペース、信号・EMC、絶縁、保守アクセスを確認</li></ul></div></div></section>
 
-<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">エンジニアリングポイント</span><h2 class="section-title">オートメーションテーブルの選択 チェックリスト</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>1。 1。 流路のカウントおよび未来防止</h3><p>モデルを選択する前に、すべての空気関数をマップします。</p><ul><li><strong>クランプ:</strong> 1つのチャネル(クランプ空気、0.3–0.6 MPa)</li><li><strong>ウンクランプ:</strong> 1つのチャネル(解放の空気、0.2–0.4 MPa)</li><li><strong>真空の積み込み:</strong> 1つのチャネル(-0.04への-0.08 MPaの熱心な真空シール)</li><li><strong>ブローオフ:</strong> 1つのチャネル(頻繁に脈打られた0.2–0.3 MPa)</li><li><strong>センサーの空気:</strong> 1つのチャネル(位置の検証のための0.1–0.2 MPa)</li></ul><p><strong>ルール:</strong> すべての現在の関数をカウントするプラス <strong>1つの予備チャネル</strong>. . 予備の流路を加えることは顧客が新しいグリッパーかセンサーを加えるとき18か月の接合箇所全体を取り替えるより安いです。 5-流路ジョイントコストは4-流路よりも15%かかります。 4-流路を5-流路コストで300%以上交換してください。</p></div><div class="app-detail-card"><h3>2。 インデックス対。 連続回転</h3><p>シール材質は、テーブルが移動する方法によって異なります。</p><ul><li><strong>インデックステーブル (停止開始、60–120 RPM):</strong> FKM シールは受諾可能です。 シールは井戸の期間の間に、熱蓄積を減らす残ります。 典型的なシール寿命: 6～10か月の連続的な義務。</li><li><strong>連続的な回転(100–500 RPM):</strong> PTFEの合成シールは必須です。 連続的な摩擦の下の2–3週以内のFKMの過熱し、堅くして下さい。 PTFEは熱を扱い、低い摩擦トルクを維持します。</li></ul><p><strong>参考:</strong> SMRPガイドラインは、シールを連続duty 用途で回転させることを示唆しています。 PTFEまたは同等の高温材料、定格RPMの20〜30%の安全性マージンを使用する必要があります。</p></div><div class="app-detail-card"><h3>3。 結合されたユーティリティ:空気+電気信号</h3><p>多くの自動化テーブルは、回転フィクスチャーのセンサー、エンコーダ、またはサーボ信号の両方の空気と電気転送を必要とします。 2つのアプローチ:</p><ul><li><strong>統合された空気電気 ロータリージョイント:</strong> エア流路 + 1つのハウジングの電気スリップ リング。 例: <a href="BP-3P-S06-0001.html">BP-3P-S06-0001の特長</a> (3空気流路 + 6 電気回路)。 コンパクトな統合設計は、インストールスペースが限られ、必要なチャンネル数が利用可能な構成に収まる場所に適しています。</li><li><strong>別のロータリージョイント +スリップ リング:</strong> 空気の接合箇所および電気スリップ リングの同軸か側面によって取付けて下さい。 独立した空気圧ロータリージョイントおよびスリップ リングは空気および電気機能が独自に包まれ、利用できる設置スペースは2つの部品を支えるとき適しているかもしれません。 単一のコンパクト アセンブリ、調整された土台、またはより高い結合されたチャネル密度が要求されるとき統合された空気電気解決は考慮されるかもしれません。 最終的な選択は空気の流路の計算、中空径の条件、電気回路、信号のタイプ、速度、取付けの封筒およびサービス アクセスによって決まります。</li></ul><p><strong>クリティカル:</strong> 放射状クリアランスを確認します。 30 mm 中空径 ロータリージョイントと25 mmのスリップ リングは60+ mmの合計放射状のスペースを必要とします。 設定前に、CADモデルを確認してください。</p></div></div></div></section>
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">技術上の確認事項</span><h2 class="section-title">自動化回転テーブル選定チェックリスト</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>1. 流路数・拡張計画</h3><p>型式選定前に全空圧機能を整理：</p><ul><li><strong>クランプ：</strong> 専用流路とし、必要な常用・ピーク圧力を提示</li><li><strong>アンクランプ：</strong> クランプ回路と独立制御する場合は専用流路</li><li><strong>真空吸着：</strong> 専用流路とし、真空度、排気時間、許容漏れ量を提示</li><li><strong>ブロー：</strong> 専用流路とし、常用・ピーク・パルス圧力を提示</li><li><strong>センサ空気：</strong> 独立した圧力・清浄度管理が必要な場合は専用流路</li></ul><p><strong>計画：</strong> 現在の機能を漏れなく整理し、技術・経済的に根拠のある拡張時のみ予備流路を設けます。費用は実見積りで比較します。</p></div><div class="app-detail-card"><h3>2. 間欠割出か連続回転か</h3><p>シール材は最大回転速度だけでなく、動作・負荷条件全体から選定します。</p><ul><li><strong>間欠割出：</strong> 停止時間は発熱を抑える場合がありますが、シール適合性と寿命はサイクル、媒体、圧力、温度、芯出しで変わります。</li><li><strong>連続回転：</strong> 媒体、回転速度、温度、摩擦熱、圧力、デューティに基づきシールを選定します。材質限界は図面またはシール承認資料で確認し、一律の材質指定は行いません。</li></ul><p><strong>材質選定：</strong> 確認済みの媒体、温度、圧力、回転速度、デューティからシール材を承認し、根拠のない一律基準は使用しません。</p></div><div class="app-detail-card"><h3>3. 複合伝送：空気＋電気信号</h3><p>多くのテーブルでは、センサ、エンコーダ、サーボ信号と空圧の両方が必要です。基本構成は2種類です。</p><ul><li><strong>空電複合ロータリージョイント：</strong> 空気流路と電気スリップリングを一体化。必要流路・回路数、信号種、速度、絶縁、スペース、保守性を確認して選定します。</li><li><strong>分離型／一体型：</strong> 空圧部とスリップリングは別体または一体化できます。流路、中空径、回路、信号、速度、スペース、分離、保守性から選定します。</li></ul><p><strong>重要：</strong> ロータリージョイント、スリップリング、継手、ケーブル、ホース、保守工具の半径・軸方向スペースをCADで確認します。</p></div></div></div></section>
 
-<section class="section"><div class="container"><div class="section-header"><span class="section-label">セレクションテーブル</span><h2 class="section-title">オートメーション回転テーブル変数</h2></div><div class="app-detail-table-wrap"><table class="app-detail-table"><thead><tr><th>駅のタイプ</th><th>共通の機能</th><th>選択の焦点</th><th>Begapunkの方向</th></tr></thead><tbody><tr><td>小さなインデックステーブル(4-6ステーション)</td><td>クランプ、解放、吹込み</td><td>2–3 流路の密集したボディ、容易な土台、FKM シールの受諾可能</td><td><a href="BP-2P-0001.html">BP-2P-0001の特長</a> または <a href="BP-3P-0004.html">BP-3P-0004の特長</a></td></tr><tr><td>マルチステーションカルーセル(8–16ステーション)</td><td>複数の独立した空気ライン</td><td>4–8 流路の低い漏出、フランジ取付、回り止めサポート</td><td><a href="BP-4P-30-0001.html">BP-4P-30-0001の特長</a> または <a href="BP-8P-0001.html">BP-8P-0001の特長</a></td></tr><tr><td>センサー搭載ステーション</td><td>空気プラス電気信号 配管経路</td><td>空気電気の統合、信号の分離、密集した封筒</td><td><a href="BP-3P-S06-0001.html">BP-3P-S06-0001の特長</a> または カスタム 空気電気設計</td></tr><tr><td>高速連続回転</td><td>連続クランプおよび作動</td><td>PTFE シールの100–500 RPMは、低い摩擦トルクを評価しました</td><td><a href="BP-2P-95-0001.html">BP-2P-95-0001の特長</a> (PTFE標準)またはカスタム高速レイアウト</td></tr></tbody></table></div></div></section>
+<section class="section"><div class="container"><div class="section-header"><span class="section-label">機種選定表</span><h2 class="section-title">自動化回転テーブル選定条件</h2></div><div class="app-detail-table-wrap"><table class="app-detail-table"><thead><tr><th>ステーション形式</th><th>代表的な機能</th><th>選定時の確認事項</th><th>Begapunkの推奨方針</th></tr></thead><tbody><tr><td>小型インデックステーブル</td><td>クランプ、アンクランプ、ブロー</td><td>2～3流路、小型、取付容易。シールは運転条件で選定</td><td><a href="BP-2P-0001.html">BP-2P-0001</a> または <a href="BP-3P-0004.html">BP-3P-0004</a></td></tr><tr><td>多ステーション回転装置</td><td>複数の独立空気配管</td><td>4～8流路、規定漏れ量、フランジ、適切な回り止め</td><td><a href="BP-4P-30-0001.html">BP-4P-30-0001</a> または <a href="BP-8P-0001.html">BP-8P-0001</a></td></tr><tr><td>センサ付きステーション</td><td>空気・電気信号の伝送</td><td>空電統合、信号分離、省スペース</td><td><a href="BP-3P-S06-0001.html">BP-3P-S06-0001</a> または特注空電複合仕様</td></tr><tr><td>高速連続回転</td><td>連続クランプ・駆動</td><td>確認済み速度、温度、摩擦トルクに適合するシール</td><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a> または技術確認済み特注仕様</td></tr></tbody></table></div></div></section>
 
-<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">普通の間違い</span><h2 class="section-title">3 破壊的なオートメーション 回転テーブル ロータリージョイント の間違い</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>間違い1: 余分流路を加えない</h3><p>マシンビルダーは、今日必要なチャネルを正確に指定します:クランプ、アンクランプ、真空、ブローオフ。 予備無し。 顧客がセンサーまたは新しいグリッパーを12か月後に加えるとき、ロータリージョイント全体を交換しなければなりません。テーブル、再配管経路ホースを分解し、機械を再燃させます。 <strong>ルール:</strong> 流路を常に加えて下さい。 5-流路ジョイントコストは4-流路よりも15%以上です。 5-流路を交換すると、5-流路は、労力とダウンタイムで300%以上かかります。</p></div><div class="app-detail-card"><h3>間違い2:連続的な回転場所のFKM シールを使用して</h3><p>FKM (フルオロエラストマー) シールは、&lt;200 RPM で評価され、ドウェル期間のインデックステーブルでうまく動作します。 しかし、300〜500 RPM、FKM過熱で連続回転ステーションで2〜3週間以内に硬化します。 シールの唇のひび、チャネル間の空気漏出およびグリッパーは部品を落とします。 <strong>ルール:</strong> 200 の RPM の上のあらゆる場所のための PTFE の合成のシールか連続的な回転と指定して下さい。 PTFEは熱を扱い、精密な索引のための低い摩擦トルクを維持します。</p></div><div class="app-detail-card"><h3>間違い3:スリップリングスペースの競合を無視する</h3><p>オートメーションテーブルは、空気と電気の転送の両方を必要とすることが多いです。 エンジニアは 40 mm 中空径 ロータリージョイント および 35 mm のスリップ リングを指定し、80 mm の放射状の整理が必要であることを発見しましたが、テーブルハブは 60 mm だけを持っています。 結果:4〜6週間の配達を遅らせる最後の分カスタム設計。 <strong>ルール:</strong> 指定された前に、CADモデルの放射状クリアランスを確認します。 Begapunkは取付確認のための自由な3D STEPファイルを提供します。 順序を置く前に整理、ポート方向および回り止めブラケットの位置を点検して下さい。</p></div></div></div></section>
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">よくある不具合原因</span><h2 class="section-title">回転テーブル用ロータリージョイントの選定ミス3例</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>ミス1：拡張需要を確認しない</h3><p>現行機能を整理し、将来拡張を技術・経済面で評価します。具体的な拡張計画が追加スペースと費用を正当化する場合に予備流路を設け、一律の倍率は使いません。</p></div><div class="app-detail-card"><h3>ミス2：連続運転条件を確認せずシールを選ぶ</h3><p>一律の回転速度だけでシール材を選ばず、媒体、圧力、速度、温度、摩擦熱、表面、デューティを評価し、限界を承認確認します。</p></div><div class="app-detail-card"><h3>ミス3：スリップリングとのスペース干渉を見落とす</h3><p>空圧部と電気部が同軸になる場合は、半径・軸方向スペース、継手、ケーブル、回り止め、保守アクセスをCADで確認します。3Dデータは型式確定後に案件ごとに提供します。</p></div></div></div></section>
 
-<section class="section"><div class="container"><div class="section-header"><span class="section-label">インストールノート</span><h2 class="section-title">オートメーション回転テーブル ロータリーユニオンのための土台そして維持</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>フランジ取付および通中空径の設計</h3><p>フランジ取付は回転式テーブルのためにそれが堅い、振動抵抗力がある付属品を提供するので好まれます。 ボルト接続は、衝撃荷重下では緩みません。 中空径オプション(例、30 mm 中空径) <a href="BP-4P-30-0001.html">BP-4P-30-0001の特長</a>)はワイヤー、シャフト、または冷却剤ラインが中心を通って渡ることを可能にします–機械封筒をきれいにし、組織されている保って下さい。</p></div><div class="app-detail-card"><h3>回り止めブラケットの設計</h3><p>回り止めブラケットは、固定体がテーブルで回転するのを防ぎます。 しかし、それは自己揃えのための±2 mm放射状浮遊物を許可しなければなりません。 剛性ブラケットは、ジョイントを所定の位置にロックし、テーブルの誤差をシールに直接転送します。 <strong>設計先端:</strong> スロットされた土台の穴かブラケットと固定フレーム間のゴム製洗濯機を使用して浮遊物を許可して下さい。</p></div><div class="app-detail-card"><h3>予防的な交換スケジュール</h3><p>可視漏れやチャンネルの断面汚染を待ちません。 サイクルカウントに基づいてシール交換をスケジュール:</p><ul><li><strong>インデックステーブル (FKM シール):</strong> インデックスサービスでは、ストップスタートサイクルカウント、圧力変動、アライメント、温度、リークトレンド、および観察されたシール摩耗から間隔を確立します。</li><li><strong>連続的な回転(PTFE シール):</strong> 連続回転のために、計画された停止の間に記録される蓄積されたランタイム、操作速度、温度、媒体、漏出傾向、操作トルクおよびシール状態からの点検および取り替えの間隔を確立して下さい。</li><li><strong>高性能ライン(&gt;200 RPM、24/7):</strong> 高速連続サービスでは、蓄積されたランタイム、実際の速度、温度、漏出傾向、トルクの傾向および計画された維持の記録からの点検頻度を定める。</li></ul><p>ワークステーションに交換シールキットを保管してください。 とりあえず 15-minute シールの変更はなります 2-技術者が中央店に歩いて、間違った部品番号を発見しなければならない場合は、時間の仕事。</p></div></div></div></section>
+<section class="section"><div class="container"><div class="section-header"><span class="section-label">取付ノート</span><h2 class="section-title">自動化回転テーブル用ロータリージョイントの取付・保守</h2></div><div class="app-detail-grid"><div class="app-detail-card"><h3>フランジ取付・中空設計</h3><p>フランジ／ねじ取付は荷重、振動、緩み止め、保守性で選びます。中空部には配線・シャフト・配管を通せますが、全干渉・荷重条件をCADで確認します。</p></div><div class="app-detail-card"><h3>回り止めブラケット設計</h3><p>回り止めは固定側本体の共回りを防ぎますが、過大な横荷重や拘束力を加えてはいけません。必要な追従量、穴形状、弾性部材は製品図面と装置解析で決定します。</p></div><div class="app-detail-card"><h3>予防的な交換スケジュール</h3><p>目視漏れを待たず、サイクル、稼働時間、傾向データ、状態に基づいて点検・交換を計画します。</p><ul><li><strong>間欠割出運転：</strong> 起動停止回数、圧力変動、芯出し、温度、漏れ傾向、摩耗状態から時期を決定。</li><li><strong>連続運転：</strong> 累積時間、速度、温度、媒体、漏れ・トルク傾向、停止時の状態記録から点検・交換時期を決定。</li><li><strong>高サイクル運転：</strong> 累積時間、実速度、温度、漏れ・トルク傾向、保全記録から点検頻度を決定。</li></ul><p>正しい型式・改訂の交換シールを指定保管場所に置き、在庫と保管条件を記録します。</p></div></div></div></section>
 
-<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">提案されたモデル</span><h2 class="section-title">おすすめのポイント</h2></div><div class="app-related-products"><a class="app-related-product" href="BP-2P-0001.html"><strong>BP-2P-0001の特長</strong><span>2 流路、フランジ取付、1.0 MPa、FKM/PTFEの選択。 クランプ+クランプ機能の小さいインデックステーブルのため。</span></a><a class="app-related-product" href="BP-3P-0004.html"><strong>BP-3P-0004の特長</strong><span>3 流路、フランジ取付の密集したボディ。 クランプ+真空+媒体の場所の吹込みのため。</span></a><a class="app-related-product" href="BP-4P-30-0001.html"><strong>BP-4P-30-0001の特長</strong><span>4 流路、30 mm - 中空径、フランジ取付。 中心を通る配線が付いている複数の場所のカルーセルのため。</span></a><a class="app-related-product" href="BP-8P-0001.html"><strong>BP-8P-0001の特長</strong><span>8 流路、高チャンネルマニホールド、1.0 MPa。 6+独立した空気機能の複雑なオートメーション ラインのため。</span></a><a class="app-related-product" href="BP-3P-S06-0001.html"><strong>BP-3P-S06-0001の特長</strong><span>3空気流路 + 6 電気回路。 空気圧電気の統合を必要とするセンサー装備された場所のため。</span></a><a class="app-related-product" href="contact.html"><strong>カスタム設計の特長</strong><span>高速連続回転、特殊中空径サイズ、空気圧電気の統合、またはOEM固有の取り付けパターン。</span></a></div></div></section>
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">推奨機種</span><h2 class="section-title">推奨機種</h2></div><div class="app-related-products"><a class="app-related-product" href="BP-2P-0001.html"><strong>BP-2P-0001</strong><span>2流路、フランジ、1.0 MPa。媒体に応じたシール。小型テーブルのクランプ・アンクランプ向け。</span></a><a class="app-related-product" href="BP-3P-0004.html"><strong>BP-3P-0004</strong><span>3流路、フランジ、小型。クランプ、真空、ブローの独立制御向け。</span></a><a class="app-related-product" href="BP-4P-30-0001.html"><strong>BP-4P-30-0001</strong><span>4流路、30 mm中空、フランジ。中央配線を通す多ステーションテーブル向け。</span></a><a class="app-related-product" href="BP-8P-0001.html"><strong>BP-8P-0001</strong><span>8流路、1.0 MPa。複数の独立空圧機能を持つ設備向け。</span></a><a class="app-related-product" href="BP-3P-S06-0001.html"><strong>BP-3P-S06-0001</strong><span>空気3流路＋電気6回路。センサ付きステーションの空電複合伝送向け。</span></a><a class="app-related-product" href="contact.html"><strong>特注設計</strong><span>連続回転、特殊中空径、空電複合、OEM専用取付を技術確認後に対応。</span></a></div></div></section>
 
-<section class="section"><div class="container"><div class="app-detail-cta"><div><h2>回転テーブルのオートメーションの設計か。</h2><p>駅のカウント、空気の 回路 の図、圧力、RPM、索引の行動および土台スペースを送って下さい。 Begapunkは3D干渉確認の標準的なモデルか設計カスタム 流路のレイアウトを選ぶのを助けることができます。</p></div><a href="contact.html" class="btn btn-primary">リクエストテーブルの選択</a></div></div></section>
+<section class="section"><div class="container"><div class="app-detail-cta"><div><h2>自動化回転テーブルを設計中ですか？</h2><p>ステーション数、空圧回路図、媒体、圧力、回転速度、割出動作、電気条件、スペースをお送りください。標準・特注仕様と提供可能な3Dデータを確認します。</p></div><a href="contact.html" class="btn btn-primary">テーブル選定を依頼</a></div></div></section>
 
-<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">よくある質問</span><h2 class="section-title">オートメーション回転テーブルの質問</h2></div><div class="app-faq-list"><div class="app-faq-item"><h3>オートメーションの回転式テーブルでどんな空気機能が共通ですか。</h3><p>一般的な機能には、クランプ、アンクランプ、真空ピックアップ、ブローオフ、グリッパーコントロール、センサー空気、空気圧アクチュエータの供給が含まれます。 各機能は通常、独自の独立した流路を要求し、ステーション間の交差汚染と圧力干渉を防止します。</p></div><div class="app-faq-item"><h3>複数流路 ロータリーユニオンを選択したら?</h3><p>マルチ流路 ロータリーユニオンは、異なる空気機能が独立したか、複数のステーションが別の制御線を必要とするときに選択する必要があります。 よい規則は未来の工具細工の変更のためのあらゆる現在の機能と1つの予備チャネルを数えることです。 予備の流路を今加えることは18か月の接合箇所全体を取り替えるより安いです。</p></div><div class="app-faq-item"><h3>ロータリーユニオンは回転テーブルに複数の場所を供給できますか?</h3><p>はい、流路のレイアウトが正しく計画されている場合。 各独立した空気機能は、独自のチャネルを持っている必要があります。 ロータリーユニオンは中心のマニホールドとして機能します:固定側は機械の空気供給に接続し、回転側面は内部流路を通して各据え付け品か場所に空気を配ります。</p></div><div class="app-faq-item"><h3>1つのロータリーユニオンで空気および電気信号は結合することができますか。</h3><p>はい。 Begapunkは3つの空気流路 + 6 電気回路と空気圧電気の統合された設計(例えば、BP-3P-S06-0001)を提供します。 信号カウントと空気 流路 カウントが知られているとき、カスタム レイアウトは、空気と電気チャネル間の適切な分離で設計され、干渉を防ぐことができます。</p></div><div class="app-faq-item"><h3>回転テーブル ロータリーユニオンのオートメーションを選ぶときの最も一般的な間違いは何ですか。</h3><p>最もよくある間違いは、流路のスペアを追加していません。 マシンビルダーは、今日必要なチャネルを正確に特定 — クランプ、アンクランプ、真空、ブローオフ — 将来のアップグレードのための部屋はありません。 センサーや新しいグリッパーを12か月後に追加すると、ロータリージョイント全体が交換する必要があります。 もう一つの一般的なエラーは、200 RPMの上の連続回転ステーションでFKM シールを使用しており、過熱とシール硬化を数週間以内に引き起こします。</p></div></div></div></section>
+<section class="section section-alt"><div class="container"><div class="section-header"><span class="section-label">よくある質問</span><h2 class="section-title">自動化回転テーブルQ&amp;A</h2></div><div class="app-faq-list"><div class="app-faq-item"><h3>自動化回転テーブルで一般的な空圧機能は？</h3><p>代表機能はクランプ、アンクランプ、真空、ブロー、グリッパ、センサ空気、アクチュエータです。独立制御回路は別流路とし、流路間許容漏れ量を規定します。</p></div><div class="app-faq-item"><h3>多流路ロータリージョイントはいつ必要ですか？</h3><p>空圧機能の独立性やステーション別制御が必要な場合は多流路を選びます。現行機能を整理し、予備は根拠ある拡張計画がある場合のみ追加します。</p></div><div class="app-faq-item"><h3>1台で複数ステーションへ供給できますか？</h3><p>はい。流路構成、必要圧力、許容漏れ量、ステーション制御を正しく計画すれば可能です。固定側から供給し、回転側で独立流路へ分配します。</p></div><div class="app-faq-item"><h3>空気と電気信号を1台で伝送できますか？</h3><p>はい。空電複合仕様に対応できます。空気流路、電気回路、信号種、絶縁、EMC、速度、スペース、保守性を一体で仕様化・確認します。</p></div><div class="app-faq-item"><h3>最も多い選定ミスは？</h3><p>主な誤りは流路計画不足と実運転データなしのシール選定です。拡張需要、媒体、圧力、速度、温度、デューティを承認前に確認します。</p></div></div></div></section>
 
-<section class="section"><div class="container"><div class="section-header"><span class="section-label">関連するリソース</span><h2 class="section-title">続きを読みます 読書</h2></div><div class="app-related-products"><a class="app-related-product" href="blog-rotary-joint-selection.html"><strong>空気圧ロータリージョイントを選ぶ方法</strong><span>チャンネルカウント、圧力、RPM、メディアの互換性、マウントタイプを防止する5つのパラメータ。</span></a><a class="app-related-product" href="blog-rotary-joint-installation-mistakes.html"><strong>7 初期の失敗を引き起こすインストールの間違い</strong><span>過密化、堅い配管、スキップされたランイン、および間違ったろ過 —保証クレームの60%の根本原因。</span></a><a class="app-related-product" href="blog-rotary-joint-leaking.html"><strong>ロータリージョイントリーク? 診断フローチャート</strong><span>系統的なトラブルシューティング:シールを取り替える前に圧力、RPM、シール材質および空気の質を点検して下さい。</span></a><a class="app-related-product" href="installation.html"><strong>インストールガイド</strong><span>手順別 取り付け、接続、トルク仕様とチェックリストのメンテナンス手順。</span></a></div></div></section>
+<section class="section"><div class="container"><div class="section-header"><span class="section-label">関連資料</span><h2 class="section-title">続きを読む</h2></div><div class="app-related-products"><a class="app-related-product" href="blog-rotary-joint-selection.html"><strong>空気圧ロータリージョイントを選ぶ方法</strong><span>チャンネルカウント、圧力、min⁻¹、使用流体の互換性、取付方式を防止する5つのパラメータ。</span></a><a class="app-related-product" href="blog-rotary-joint-installation-mistakes.html"><strong>7 初期の失敗を引き起こす取付の間違い</strong><span>過密化、堅い配管、スキップされたランイン、および間違ったろ過 —保証クレームの60%の根本原因。</span></a><a class="app-related-product" href="blog-rotary-joint-leaking.html"><strong>ロータリージョイントリーク? 診断フローチャート</strong><span>系統的なトラブルシューティング:シールを取り替える前に圧力、min⁻¹、シール材質および空気の質を点検してください。</span></a><a class="app-related-product" href="installation.html"><strong>取付ガイド</strong><span>手順別 取り付け、接続、トルク仕様とチェックリストのメンテナンス手順。</span></a></div></div></section>
 
-<section class="section section-alt"><div class="container"><p style="font-size:0.85rem;color:var(--text-light);text-align:center;"><strong>技術的なノート:</strong> この記事で参照されるすべての圧力仕様およびRPMの指定はBegapunk BPシリーズ標準空気圧ロータリージョイントに基づいています。 実際のパフォーマンスは、動作条件とメンテナンスの慣行によって異なります。 用途の外で標準仕様のために、指定の前に技術部門に相談して下さい。 <strong>最終更新日:</strong> 2026年6月11日</p></div></section>
+<section class="section section-alt"><div class="container"><p style="font-size:0.85rem;color:var(--text-light);text-align:center;"><strong>技術的なノート:</strong> この記事で参照されるすべての圧力仕様およびmin⁻¹の指定はBegapunk BPシリーズ標準空気圧ロータリージョイントに基づいています。 実際のパフォーマンスは、動作条件とメンテナンスの慣行によって異なります。 用途の外で標準仕様のために、指定の前に技術部門に相談してください。 <strong>最終更新日:</strong> 2026年6月11日</p></div></section>
 
 <footer class="footer">
  <div class="container">
   <div class="footer-grid">
    <div class="footer-brand">
     <div class="logo">
-     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunkの特長" style="height:40px;width:auto;" loading="lazy" width="226" height="40">
+     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" style="height:40px;width:auto;" loading="lazy" width="226" height="40">
     </div>
-    <p>精密 ロータリージョイント メーカー、寧波、中国。 2010年以来、世界中の産業オートメーションOEMおよび機械の建築業者にサービスを提供しています。</p>
-    <div class="contact-line">✉ <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.comの特長</a></div>
+    <p>中国・寧波の産業用ロータリージョイントメーカーです。2010年から世界の産業オートメーションOEM・装置メーカーへ供給しています。</p>
+    <div class="contact-line">✉ <a href="mailto:sales@begapunk.com" style="color:rgba(255,255,255,0.7);">sales@begapunk.com</a></div>
     <div class="contact-line">☎ <a href="tel:+8618368425342" style="color:rgba(255,255,255,0.7);">+86 183 6842 5342</a></div>
    </div>
    <div>
     <h4 class="footer-title">製品情報</h4>
     <div class="footer-links">
-     <a href="products.html">製品カタログ</a>
-     <a href="product-comparison.html">機種比較の特長</a>
-     <a href="contact.html">カスタム RFQの特長</a>
+     <a href="products.html">製品一覧</a>
+     <a href="product-comparison.html">機種選定表</a>
+     <a href="contact.html">特注品・見積依頼</a>
     </div>
    </div>
    <div>
-    <h4 class="footer-title">用途の特長</h4>
+    <h4 class="footer-title">用途別情報</h4>
     <div class="footer-links">
-     <a href="application-laser-tube-cutting.html">レーザーの管の切断</a>
-     <a href="application-packaging-machinery.html">包装の機械類</a>
-     <a href="application-bottle-filling-capping.html">びんの詰物及びおおう</a>
-     <a href="application-cnc-pneumatic-clamping.html">CNC空気の締め金で止めること</a>
-     <a href="application-automation-rotary-tables.html">オートメーションの回転式テーブル</a>
-     <a href="application-steel-dusty-environments.html">ほこりの環境</a>
+     <a href="application-laser-tube-cutting.html">レーザー管切断機</a>
+     <a href="application-packaging-machinery.html">包装機械</a>
+     <a href="application-bottle-filling-capping.html">ボトル充填・キャッピング機</a>
+     <a href="application-cnc-pneumatic-clamping.html">CNC空圧クランプ</a>
+     <a href="application-automation-rotary-tables.html">自動化用回転テーブル</a>
+     <a href="application-steel-dusty-environments.html">粉塵環境</a>
     </div>
    </div>
    <div>
-    <h4 class="footer-title">ナレッジセンター</h4>
+    <h4 class="footer-title">技術情報</h4>
     <div class="footer-links">
-     <a href="blog.html">テクニカルブログ</a>
-     <a href="blog-rotary-joint-selection.html">選定ガイドの特長</a>
-     <a href="installation.html">インストールガイド</a>
+     <a href="blog.html">技術資料</a>
+     <a href="blog-rotary-joint-selection.html">選定ガイド</a>
+     <a href="installation.html">取付要領</a>
      <a href="faq.html">よくある質問</a>
     </div>
    </div>
    <div>
-    <h4 class="footer-title">会社案内</h4>
+    <h4 class="footer-title">会社情報</h4>
     <div class="footer-links">
-     <a href="about.html">工場について</a>
-     <a href="case-studies.html">事例紹介</a>
-     <a href="contact.html">コンタクト</a>
+     <a href="about.html">会社・工場情報</a>
+     <a href="case-studies.html">選定事例</a>
+     <a href="contact.html">お問い合わせ</a>
     </div>
    </div>
   </div>
   <div class="footer-bottom">
-   <p>2018年12月12日 2026 Begapunkの精密回転式接合箇所の製造業者。 スタッフ募集中!</p>
+   <p>© 2026 Begapunk ロータリージョイントメーカー。無断転載を禁じます。</p>
    <div class="footer-legal">
-    <a href="privacy.html">スタッフ紹介</a>
-    <a href="terms.html">利用条件</a>
+    <a href="privacy.html">プライバシー</a>
+    <a href="terms.html">利用規約</a>
    </div>
   </div>
  </div>
 </footer>
-<div class="floating-cta"><a href="contact.html" class="floating-btn quote">見積もりを依頼の特長</a><a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsAppについて</a></div>
+<div class="floating-cta"><a href="contact.html" class="floating-btn quote">見積もり・技術相談</a><a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a></div>
 <script>const mobileToggle=document.getElementById('mobileToggle');const mainNav=document.getElementById('mainNav');if(mobileToggle&&mainNav){mobileToggle.addEventListener('click',()=>{mainNav.classList.toggle('mobile-open');});}</script>
 
 </body></html>

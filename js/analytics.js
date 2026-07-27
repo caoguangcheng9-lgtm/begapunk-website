@@ -359,21 +359,57 @@
 
         injectStyles();
 
+        const language = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+        const messages = {
+            de: {
+                label: 'Cookie-Einstellungen',
+                title: 'Cookie-Einstellungen',
+                body: 'Wir verwenden Analyse-Cookies, um den Websiteverkehr zu verstehen und das Nutzungserlebnis zu verbessern. Notwendige Cookies sind immer aktiv.',
+                privacy: 'Datenschutzerklärung',
+                decline: 'Ablehnen',
+                accept: 'Alle akzeptieren'
+            },
+            ja: {
+                label: 'Cookie設定',
+                title: 'Cookie設定',
+                body: 'アクセス解析Cookieは、サイトの利用状況を把握し、利便性を改善するために使用します。必須Cookieは常に有効です。',
+                privacy: 'プライバシーポリシー',
+                decline: '拒否する',
+                accept: 'すべて許可'
+            },
+            ru: {
+                label: 'Настройки cookie',
+                title: 'Настройки cookie',
+                body: 'Аналитические cookie помогают понять использование сайта и улучшить его работу. Необходимые cookie всегда активны.',
+                privacy: 'Политика конфиденциальности',
+                decline: 'Отклонить',
+                accept: 'Принять все'
+            },
+            en: {
+                label: 'Cookie consent',
+                title: 'Cookie Preferences',
+                body: 'We use analytics cookies to understand site traffic and improve your experience. Essential cookies are always active.',
+                privacy: 'Privacy Policy',
+                decline: 'Decline',
+                accept: 'Accept All'
+            }
+        };
+        const copy = messages[language] || messages.en;
+
         const banner = document.createElement('div');
         banner.id = 'bp-consent-banner';
         banner.setAttribute('role', 'dialog');
-        banner.setAttribute('aria-label', 'Cookie consent');
+        banner.setAttribute('aria-label', copy.label);
         banner.innerHTML = `
             <div class="bp-inner">
                 <div class="bp-text">
-                    <strong>Cookie Preferences</strong>
-                    We use cookies to analyze site traffic and improve your experience. 
-                    Essential cookies are always active. You can accept or decline analytics cookies.
-                    <a href="privacy.html">Privacy Policy</a>
+                    <strong>${copy.title}</strong>
+                    ${copy.body}
+                    <a href="privacy.html">${copy.privacy}</a>
                 </div>
                 <div class="bp-actions">
-                    <button class="bp-btn-secondary" id="bp-decline-btn" type="button">Decline</button>
-                    <button class="bp-btn-primary" id="bp-accept-btn" type="button">Accept All</button>
+                    <button class="bp-btn-secondary" id="bp-decline-btn" type="button">${copy.decline}</button>
+                    <button class="bp-btn-primary" id="bp-accept-btn" type="button">${copy.accept}</button>
                 </div>
             </div>
         `;

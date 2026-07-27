@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Air Rotary Union Applications | Begapunk">
 <meta name="twitter:description" content="Pneumatic rotary joints and custom air rotary unions for industrial machinery applications.">
 <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
-<link rel="stylesheet" href="css/style.css?v=20260716-performance">
+<link rel="stylesheet" href="css/style.css?v=20260727-render-qa4">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -93,7 +93,8 @@
 .selection-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
 .selection-item strong { display: block; color: var(--dark-soft); margin-bottom: 6px; }
 .selection-item span { color: var(--text-light); font-size: 0.92rem; line-height: 1.55; }
-.mapping-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.mapping-table-wrap { width: 100%; max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+.mapping-table { width: 100%; min-width: 680px; border-collapse: collapse; background: #fff; }
 .mapping-table th { background: var(--dark-soft); color: #fff; text-align: left; padding: 14px 16px; font-weight: 600; }
 .mapping-table td { padding: 14px 16px; border-top: 1px solid var(--border); color: var(--text); vertical-align: top; }
 .mapping-table tr:nth-child(even) td { background: var(--bg); }
@@ -119,7 +120,7 @@
   .app-support { padding: 30px 20px; }
 }
 </style>
-    <script defer src="js/analytics.js?v=20260715-1"></script>
+    <script defer src="js/analytics.js?v=20260727-render-qa"></script>
 </head>
 <body>
 
@@ -376,6 +377,7 @@
 <span class="section-label">Product Mapping</span>
 <h2 class="section-title">Application Type to Product Family</h2>
 </div>
+<div class="mapping-table-wrap" role="region" aria-label="Application to product-family comparison" tabindex="0">
 <table class="mapping-table">
 <thead>
 <tr>
@@ -422,6 +424,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </section>
 
