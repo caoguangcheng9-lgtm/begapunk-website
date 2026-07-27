@@ -95,7 +95,9 @@ $shortSha = (& git rev-parse --short=8 HEAD).Trim()
 $timestamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 $tagName = "deploy-$timestamp-$shortSha"
 
-Invoke-CheckedCommand git tag -a $tagName -m "Deploy Begapunk production $shortSha"
+Invoke-CheckedCommand -Command git -Arguments @(
+    'tag', '-a', $tagName, '-m', "Deploy Begapunk production $shortSha"
+)
 try {
     Invoke-CheckedCommand git push origin "refs/tags/$tagName"
 }
