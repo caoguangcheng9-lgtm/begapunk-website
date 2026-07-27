@@ -94,6 +94,12 @@ mv -Tf "$next_link" "$CURRENT_LINK"
 cp -a "$NGINX_CONF" "$config_backup"
 sed -i "s#root[[:space:]]\+$LIVE_ROOT;#root $CURRENT_LINK;#" "$NGINX_CONF"
 
+if ! grep -Fq "root $CURRENT_LINK;" "$NGINX_CONF"; then
+  cp -a "$config_backup" "$NGINX_CONF"
+  echo "Nginx document root was not updated; configuration restored." >&2
+  exit 7
+fi
+
 if ! nginx -t; then
   cp -a "$config_backup" "$NGINX_CONF"
   nginx -t
