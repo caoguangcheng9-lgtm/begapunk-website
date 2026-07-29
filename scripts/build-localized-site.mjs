@@ -911,19 +911,299 @@ const schemaLocaleByLanguage = {
   de: {
     founderJobTitle: 'Gründer und Ingenieur',
     factoryName: 'Begapunk Fertigung',
+    slogan: 'Spezialist für pneumatische Drehdurchführungen',
     knowsAbout: ['Pneumatische Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrielle Automatisierung', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
   },
   ja: {
     founderJobTitle: '創業者・技術責任者',
     factoryName: 'Begapunk 生産拠点',
-    knowsAbout: ['空圧用ロータリージョイント', '多流路ロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
+    slogan: '空圧用ロータリージョイント専門メーカー',
+    knowsAbout: ['空圧用ロータリージョイント', '多流路・多ポートロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
   },
   ru: {
     founderJobTitle: 'Основатель и инженер',
     factoryName: 'Производство Begapunk',
-    knowsAbout: ['Пневматические ротационные соединения', 'Многоканальные ротационные соединения', 'Специальные ротационные соединения', 'Промышленная автоматизация', 'Станки с ЧПУ', 'Лазерные станки', 'Упаковочное оборудование'],
+    slogan: 'Специалист по пневматическим вращающимся соединениям',
+    knowsAbout: ['Пневматические вращающиеся соединения', 'Пневматические ротационные соединения', 'Многоканальные вращающиеся коллекторы', 'Специальные вращающиеся соединения', 'Промышленная автоматизация', 'Станки с ЧПУ', 'Лазерные станки', 'Упаковочное оборудование'],
   },
 };
+
+const structuredPropertyNames = {
+  de: {
+    'Protection rating': 'Schutzart', 'Pneumatic passages': 'Pneumatische Kanäle',
+    'Electrical circuits': 'Elektrische Stromkreise', 'Electrical contact material': 'Kontaktwerkstoff',
+    'Insulation resistance': 'Isolationswiderstand', 'Surface treatment': 'Oberflächenbehandlung',
+    'Hollow bore diameter': 'Durchmesser der Durchgangsbohrung',
+  },
+  ja: {
+    'Protection rating': '保護等級', 'Pneumatic passages': '空圧流路数',
+    'Electrical circuits': '電気回路数', 'Electrical contact material': '電気接点材質',
+    'Insulation resistance': '絶縁抵抗', 'Surface treatment': '表面処理',
+    'Hollow bore diameter': '中空穴径',
+  },
+  ru: {
+    'Protection rating': 'Степень защиты', 'Pneumatic passages': 'Пневматические каналы',
+    'Electrical circuits': 'Электрические цепи', 'Electrical contact material': 'Материал электрических контактов',
+    'Insulation resistance': 'Сопротивление изоляции', 'Surface treatment': 'Обработка поверхности',
+    'Hollow bore diameter': 'Диаметр сквозного отверстия',
+  },
+};
+
+const structuredApplicationValues = {
+  de: {
+    'BP-1P-0003.html': 'Handgeführte Pneumatikwerkzeuge, kleine Drehtische, Schlauch-Entdrallung, Etikettier- und Verschließstationen',
+    'BP-1P-0006.html': 'Montagestationen, Drehtische, Pneumatikverteiler, Dosierköpfe, Schweißpositionierer und Prüftische',
+    'BP-2P-0001.html': 'Verpackungsdrehtische, Schweißpositionierer, Rundschalttische, Abfüllstationen und Zweikanal-Spannvorrichtungen',
+    'BP-2P-0002.html': 'CNC-Rundachsen, Roboterschweißtische, pneumatische Rundschalttische, Bildverarbeitung und kundenspezifische Automation',
+    'BP-2P-08-0001.html': 'Kleine Elektronik-Drehtische, kompakte Dosier-, Prüf-, Montage- und Verpackungsstationen',
+    'BP-2P-130-0001.html': 'Hydraulische Rundschalttische, Hochdruck-Spannsysteme, schwere Schweißpositionierer und CNC-Rundachsen',
+    'BP-2P-16-0001.html': 'CNC-Rundschalttische, Schweißpositionierer, Verpackungsdrehtische, pneumatische Spann- und Prüfvorrichtungen',
+    'BP-2P-30-0001.html': 'Verpackungsdrehtische, Schweißstationen, pneumatische Spannvorrichtungen, Sprühsysteme und Automatisierungsdrehtische',
+    'BP-2P-50-0001.html': 'Stahlwerke, Gießereien, staubige Verpackungslinien, Schweißpositionierer und Rundschalttische in rauer Umgebung',
+    'BP-2P-95-0001.html': 'Pneumatische Spannvorrichtungen, Drehvorrichtungen sowie Mehrfachverteilung von Luft, Kühlmittel und leichten Flüssigkeiten',
+    'BP-3P-0004.html': 'Dreistationen-Spannvorrichtungen, Rundschalttische, Verpackungs-, Schweiß-, Abfüll- und Prüfanlagen',
+    'BP-3P-0006.html': 'Mittelgroße Dreikanal-Spannvorrichtungen, Rundschalttische, Verpackungsmaschinen, Schweißtische und Prüfanlagen',
+    'BP-3P-0007.html': 'Kompakte Dreikanal-Vorrichtungen, kleine Rundschalttische, Verpackungsköpfe, Schweißpositionierer und Roboter-EOAT',
+    'BP-3P-S06-0001.html': 'Automatisierungsdrehtische, Verpackungsmaschinen, CNC-Spanntechnik, Schweißpositionierer und pneumatisch-elektrische Rundtische',
+    'BP-4P-30-0001.html': 'Mehrstations-Drehtische, Systeme mit Kabeldurchführung, Vierstations-Spannvorrichtungen, Schweiß- und Verpackungsanlagen',
+    'BP-8P-0001.html': 'Hochdichte Mehrkanalsysteme, Achtstations-Spannvorrichtungen, große Rundschalttische, Verpackungs-, Schweiß- und Prüfanlagen',
+  },
+  ja: {
+    'BP-1P-0003.html': '手持ち空圧工具、小型回転テーブル、ホースのねじれ防止、ラベリング機、ボトルキャッピング装置',
+    'BP-1P-0006.html': '組立設備、回転テーブル、エアマニホールド、塗布ヘッド、溶接ポジショナー、検査テーブル',
+    'BP-2P-0001.html': '包装用回転テーブル、溶接ポジショナー、2ステーション割出テーブル、充填設備、2流路空圧治具',
+    'BP-2P-0002.html': 'CNC第4・第5軸、ロボット溶接テーブル、空圧割出テーブル、画像検査、特注自動化設備',
+    'BP-2P-08-0001.html': '小型電子機器用回転テーブル、コンパクトな塗布・検査・組立・包装設備',
+    'BP-2P-130-0001.html': '油圧割出テーブル、高圧油圧クランプ、重量物用溶接ポジショナー、大型CNC回転軸',
+    'BP-2P-16-0001.html': 'CNC割出テーブル、溶接ポジショナー、包装用回転テーブル、空圧クランプ治具、回転検査装置',
+    'BP-2P-30-0001.html': '包装用回転テーブル、溶接設備、空圧クランプ治具、回転スプレー装置、自動化用回転テーブル',
+    'BP-2P-50-0001.html': '製鉄所、鋳造設備、粉じんの多い包装ライン、溶接ポジショナー、大型空圧割出テーブル',
+    'BP-2P-95-0001.html': '空圧クランプ、回転治具、複数箇所へのエア分配、クーラントおよび低粘度流体の分配',
+    'BP-3P-0004.html': '3ステーション空圧クランプ、3流路割出テーブル、包装・溶接・充填・検査設備',
+    'BP-3P-0006.html': '中型3流路クランプ治具、割出テーブル、包装機、溶接テーブル、充填・検査設備',
+    'BP-3P-0007.html': '小型3流路空圧治具、コンパクトな割出テーブル、包装ヘッド、溶接ポジショナー、ロボットEOAT',
+    'BP-3P-S06-0001.html': '自動化用回転テーブル、包装機、CNC空圧クランプ、溶接ポジショナー、空圧・電気複合回転装置',
+    'BP-4P-30-0001.html': '多ステーション回転テーブル、ケーブル貫通空圧システム、4ステーションクランプ、溶接・包装設備',
+    'BP-8P-0001.html': '高密度多ポート空圧システム、8ステーションクランプ、大型割出テーブル、包装・溶接・検査設備',
+  },
+  ru: {
+    'BP-1P-0003.html': 'Ручной пневмоинструмент, малые поворотные столы, защита шланга от скручивания, этикетировочные и укупорочные машины',
+    'BP-1P-0006.html': 'Сборочные станции, поворотные столы, пневмоколлекторы, дозирующие головки, сварочные позиционеры и контрольные стенды',
+    'BP-2P-0001.html': 'Упаковочные поворотные столы, сварочные позиционеры, двухпозиционные индексные столы, линии розлива и двухканальные зажимные приспособления',
+    'BP-2P-0002.html': 'Поворотные оси станков с ЧПУ, роботизированная сварка, пневматические индексные столы, машинное зрение и специальная автоматизация',
+    'BP-2P-08-0001.html': 'Компактные поворотные столы и малогабаритные дозирующие, контрольные, сборочные и упаковочные установки',
+    'BP-2P-130-0001.html': 'Гидравлические индексные столы, системы зажима высокого давления, тяжёлые сварочные позиционеры и поворотные оси ЧПУ',
+    'BP-2P-16-0001.html': 'Индексные столы ЧПУ, сварочные позиционеры, упаковочные поворотные столы, пневматические зажимные и контрольные приспособления',
+    'BP-2P-30-0001.html': 'Упаковочные поворотные столы, сварочные станции, пневматические зажимы, распылительные установки и автоматизированные столы',
+    'BP-2P-50-0001.html': 'Металлургические и литейные производства, запылённые упаковочные линии, сварочные позиционеры и индексные столы',
+    'BP-2P-95-0001.html': 'Пневматический зажим, поворотные приспособления и распределение воздуха, СОЖ и маловязких жидкостей',
+    'BP-3P-0004.html': 'Трёхпозиционные пневмозажимы, индексные столы, упаковочные, сварочные, разливочные и контрольные установки',
+    'BP-3P-0006.html': 'Средние трёхканальные зажимные приспособления, индексные столы, упаковочные машины, сварочные столы и контрольные установки',
+    'BP-3P-0007.html': 'Компактные трёхканальные приспособления, малые индексные столы, упаковочные головки, сварочные позиционеры и оснастка роботов',
+    'BP-3P-S06-0001.html': 'Автоматизированные поворотные столы, упаковочные машины, зажимы ЧПУ, сварочные позиционеры и пневмоэлектрические системы',
+    'BP-4P-30-0001.html': 'Многопозиционные поворотные столы, системы с проходом кабеля, четырёхпозиционные зажимы, сварочные и упаковочные установки',
+    'BP-8P-0001.html': 'Многоканальные пневмосистемы высокой плотности, восьмипозиционные зажимы, большие индексные столы, упаковочные, сварочные и контрольные установки',
+  },
+};
+
+function inflectRussianCount(count, singular, paucal, plural) {
+  const mod100 = count % 100;
+  const mod10 = count % 10;
+  if (mod100 >= 11 && mod100 <= 14) return plural;
+  if (mod10 === 1) return singular;
+  if (mod10 >= 2 && mod10 <= 4) return paucal;
+  return plural;
+}
+
+function localizePassageValue(value, languageCode) {
+  return value.replace(/(\d+) inlet\s*\/\s*(\d+) outlet(?:\s*\(([^)]+)\))?/gi, (_, inletText, outletText, detail = '') => {
+    const inlet = Number(inletText);
+    const outlet = Number(outletText);
+    if (languageCode === 'de') {
+      const base = `${inlet} ${inlet === 1 ? 'Eingang' : 'Eingänge'} / ${outlet} ${outlet === 1 ? 'Ausgang' : 'Ausgänge'}`;
+      const details = detail
+        .replace(/single passage/gi, 'einkanalig').replace(/dual passage/gi, 'zweikanalig')
+        .replace(/triple passage/gi, 'dreikanalig').replace(/quad passage/gi, 'vierkanalig')
+        .replace(/single inlet, six outlets/gi, 'ein Eingang, sechs Ausgänge')
+        .replace(/dual inlet, triple outlet/gi, 'zwei Eingänge, drei Ausgänge')
+        .replace(/(\d+)mm bore/gi, '$1 mm Durchgang').replace(/8 passages/gi, 'acht Kanäle');
+      return details ? `${base} (${details})` : base;
+    }
+    if (languageCode === 'ja') {
+      const base = `${inlet}入力／${outlet}出力`;
+      const details = detail
+        .replace(/single passage/gi, '1流路').replace(/dual passage/gi, '2流路')
+        .replace(/triple passage/gi, '3流路').replace(/quad passage/gi, '4流路')
+        .replace(/single inlet, six outlets/gi, '1入力6出力').replace(/dual inlet, triple outlet/gi, '2入力3出力')
+        .replace(/(\d+)mm bore/gi, '中空穴径$1 mm').replace(/8 passages/gi, '8流路');
+      return details ? `${base}（${details}）` : base;
+    }
+    const inletWord = inflectRussianCount(inlet, 'вход', 'входа', 'входов');
+    const outletWord = inflectRussianCount(outlet, 'выход', 'выхода', 'выходов');
+    const base = `${inlet} ${inletWord} / ${outlet} ${outletWord}`;
+    const details = detail
+      .replace(/single passage/gi, 'одноканальное исполнение').replace(/dual passage/gi, 'двухканальное исполнение')
+      .replace(/triple passage/gi, 'трёхканальное исполнение').replace(/quad passage/gi, 'четырёхканальное исполнение')
+      .replace(/single inlet, six outlets/gi, 'один вход, шесть выходов').replace(/dual inlet, triple outlet/gi, 'два входа, три выхода')
+      .replace(/(\d+)mm bore/gi, 'проходное отверстие $1 мм').replace(/8 passages/gi, 'восемь каналов');
+    return details ? `${base} (${details})` : base;
+  });
+}
+
+function localizeStructuredValue(rawValue, languageCode) {
+  let value = localizePassageValue(String(rawValue), languageCode)
+    .replaceAll('&Oslash;', 'Ø').replaceAll('&le;', '≤').replaceAll('&ge;', '≥').replaceAll('&middot;', '·');
+  const replacements = {
+    de: [
+      ['Pneumatic-electric rotary joint', 'Pneumatisch-elektrische Drehdurchführung'],
+      ['Pneumatic rotary joint', 'Pneumatische Drehdurchführung'], ['air rotary union with slip ring', 'Luft-Drehdurchführung mit Schleifring'],
+      ['air rotary union', 'Luft-Drehdurchführung'], ['air swivel', 'Druckluft-Drehgelenk'],
+      ['manifold rotary joint', 'Verteiler-Drehdurchführung'], ['dual passage rotary joint', 'Zweikanal-Drehdurchführung'],
+      ['dual inlet rotary joint', 'Drehdurchführung mit zwei Eingängen'], ['heavy duty rotary joint', 'Schwerlast-Drehdurchführung'],
+      ['dust-proof rotary joint', 'staubgeschützte Drehdurchführung'], ['high pressure rotary union', 'Hochdruck-Drehdurchführung'],
+      ['triple passage rotary joint', 'Dreikanal-Drehdurchführung'], ['hollow bore rotary joint', 'Drehdurchführung mit Durchgangsbohrung'],
+      ['multi-channel rotary joint', 'Mehrkanal-Drehdurchführung'],
+      ['Air, water, water-soluble coolant, light hydraulic oil', 'Luft, Wasser, wassermischbares Kühlmittel, leichtes Hydrauliköl'],
+      ['Air, water, coolant, light hydraulic oil', 'Luft, Wasser, Kühlmittel, leichtes Hydrauliköl'],
+      ['Air, water, oil, coolant, light hydraulic oil', 'Luft, Wasser, Öl, Kühlmittel, leichtes Hydrauliköl'],
+      ['Air, water, coolant, hydraulic oil', 'Luft, Wasser, Kühlmittel, Hydrauliköl'],
+      ['ISO VG 32 max', 'max. ISO VG 32'], ['45# Steel', 'Stahl 45#'],
+      ['AL6061 Aluminum Alloy, anodized', 'Aluminiumlegierung AL6061, eloxiert'],
+      ['AL6061 aluminum alloy, anodized', 'Aluminiumlegierung AL6061, eloxiert'],
+      ['AL6061 aluminum alloy', 'Aluminiumlegierung AL6061'], ['Aluminum Alloy 6061', 'Aluminiumlegierung 6061'],
+      ['PTFE composite seal with FKM O-ring backup', 'PTFE-Verbunddichtung mit zusätzlichem FKM-O-Ring'],
+      ['PTFE composite seal with FKM O-ring', 'PTFE-Verbunddichtung mit FKM-O-Ring'],
+      ['PTFE (Teflon) composite seal with FKM O-ring backup', 'PTFE-Verbunddichtung mit zusätzlichem FKM-O-Ring'],
+      ['PTFE (Teflon) Composite Seal', 'PTFE-Verbunddichtung'], ['PTFE composite seal', 'PTFE-Verbunddichtung'],
+      ['PTFE + Graphite Composite / PEEK', 'PTFE-Graphit-Verbund / PEEK'],
+      ['PTFE Composite + Si3N4 Ceramic Seal', 'PTFE-Verbund- und Si3N4-Keramikdichtung'],
+      ['Deep Groove Ball Bearing', 'Rillenkugellager'], ['Deep groove ball bearing', 'Rillenkugellager'],
+      ['Threaded mount', 'Gewindemontage'], ['threaded mount', 'Gewindemontage'], ['Flange mount', 'Flanschmontage'],
+      ['G1/8 threaded', 'G1/8-Gewinde'], ['BSP parallel', 'BSPP (zylindrisch)'], [' or ', ' oder '],
+      ['mounting holes', 'Befestigungsbohrungen'], ['bolt pattern', 'Lochkreis'], ['rotor /', 'Rotor /'], ['stator', 'Stator'],
+      [' with ', ' mit '], [' per ISO ', ' nach ISO '], [' rotor ', ' Rotor-'],
+      ['rotating side', 'Rotorseite'], ['fixed side', 'Statorseite'], ['through-hole', 'Durchgangsbohrung'],
+      ['dust-proof structure', 'staubgeschützte Ausführung'], ['hollow bore', 'Durchgangsbohrung'],
+      ['PTFE-Verbund + Si3N4 Ceramic Seal', 'PTFE-Verbund- und Si3N4-Keramikdichtung'],
+      ['Gold-plated copper alloy', 'Vergoldete Kupferlegierung'], ['circuits', 'Stromkreise'], ['per circuit', 'je Stromkreis'],
+      ['2A max', 'max. 2 A'], ['<=500 MOhm', '≤500 MΩ'], ['at 500V DC', 'bei 500 V DC'],
+      ['Anodized (Aluminum)', 'Eloxiert (Aluminium)'], ['Diameter', 'Durchmesser'],
+      ['hours (rated conditions)', 'Stunden (unter Nennbedingungen)'], ['rated conditions', 'Nennbedingungen'],
+      ['Zero leakage (100% pressure tested)', 'Keine Leckage (100 % druckgeprüft)'], ['Zero (100% pressure tested)', 'Keine (100 % druckgeprüft)'],
+      ['Approx.', 'ca.'], ['Months', 'Monate'], ['months', 'Monate'], ['Heavy duty', 'Schwerlastausführung'], ['distribution', 'Verteilung'],
+    ],
+    ja: [
+      ['Pneumatic-electric rotary joint', '空圧・電気複合ロータリージョイント'],
+      ['Pneumatic rotary joint', '空圧用ロータリージョイント'], ['air rotary union with slip ring', 'スリップリング一体型エアロータリーユニオン'],
+      ['air rotary union', 'エアロータリーユニオン'], ['air swivel', 'エアスイベル'],
+      ['manifold rotary joint', '分配型ロータリージョイント'], ['dual passage rotary joint', '2流路ロータリージョイント'],
+      ['dual inlet rotary joint', '2入力ロータリージョイント'], ['heavy duty rotary joint', '高荷重用ロータリージョイント'],
+      ['dust-proof rotary joint', '防じんロータリージョイント'], ['high pressure rotary union', '高圧用ロータリーユニオン'],
+      ['triple passage rotary joint', '3流路ロータリージョイント'], ['hollow bore rotary joint', '中空穴付きロータリージョイント'],
+      ['multi-channel rotary joint', '多流路・多ポートロータリージョイント'],
+      ['Air, water, water-soluble coolant, light hydraulic oil', '空気、水、水溶性クーラント、低粘度作動油'],
+      ['Air, water, coolant, light hydraulic oil', '空気、水、クーラント、低粘度作動油'],
+      ['Air, water, oil, coolant, light hydraulic oil', '空気、水、油、クーラント、低粘度作動油'],
+      ['Air, water, coolant, hydraulic oil', '空気、水、クーラント、作動油'],
+      ['ISO VG 32 max', 'ISO VG 32以下'], ['45# Steel', '45#鋼'],
+      ['AL6061 Aluminum Alloy, anodized', 'AL6061アルミニウム合金（アルマイト処理）'],
+      ['AL6061 aluminum alloy, anodized', 'AL6061アルミニウム合金（アルマイト処理）'],
+      ['AL6061 aluminum alloy', 'AL6061アルミニウム合金'], ['Aluminum Alloy 6061', '6061アルミニウム合金'],
+      ['PTFE composite seal with FKM O-ring backup', 'PTFE複合シール＋FKM Oリング'],
+      ['PTFE composite seal with FKM O-ring', 'PTFE複合シール＋FKM Oリング'],
+      ['PTFE (Teflon) composite seal with FKM O-ring backup', 'PTFE複合シール＋FKM Oリング'],
+      ['PTFE (Teflon) Composite Seal', 'PTFE複合シール'], ['PTFE composite seal', 'PTFE複合シール'],
+      ['PTFE + Graphite Composite / PEEK', 'PTFE・グラファイト複合材／PEEK'],
+      ['PTFE Composite + Si3N4 Ceramic Seal', 'PTFE複合シール＋Si3N4セラミックシール'],
+      ['Deep Groove Ball Bearing', '深溝玉軸受'], ['Deep groove ball bearing', '深溝玉軸受'],
+      ['Threaded mount', 'ねじ取付'], ['threaded mount', 'ねじ取付'], ['Flange mount', 'フランジ取付'],
+      ['G1/8 threaded', 'G1/8ねじ取付'], ['BSP parallel', 'BSPP平行ねじ'], [' or ', 'または'],
+      ['mounting holes', '取付穴'], ['bolt pattern', 'ボルト穴配置'], ['rotor /', '回転側／'], ['stator', '固定側'],
+      [' with ', '、'], [' per ISO ', '、ISO '], [' rotor ', ' 回転側'],
+      ['rotating side', '回転側'], ['fixed side', '固定側'], ['through-hole', '貫通穴'],
+      ['dust-proof structure', '防じん構造'], ['hollow bore', '中空穴'],
+      ['Gold-plated copper alloy', '金めっき銅合金'], ['circuits', '回路'], ['per circuit', '各回路'],
+      ['2A max', '最大2 A'], ['<=500 MOhm', '500 MΩ以下'], ['at 500V DC', 'DC 500 V印加時'],
+      ['Anodized (Aluminum)', 'アルマイト処理（アルミニウム）'], ['Diameter', '外径'],
+      ['hours (rated conditions)', '時間（定格条件）'], ['rated conditions', '定格条件'],
+      ['Zero leakage (100% pressure tested)', '漏れなし（全数耐圧検査済み）'], ['Zero (100% pressure tested)', '漏れなし（全数耐圧検査済み）'],
+      ['Approx.', '約'], ['Months', 'か月'], ['months', 'か月'], ['Heavy duty', '高荷重仕様'], ['distribution', '分配'],
+    ],
+    ru: [
+      ['Pneumatic-electric rotary joint', 'Пневмоэлектрическое вращающееся соединение'],
+      ['Pneumatic rotary joint', 'Пневматическое вращающееся соединение'], ['air rotary union with slip ring', 'вращающееся пневмосоединение с контактным кольцом'],
+      ['air rotary union', 'вращающееся пневмосоединение'], ['air swivel', 'поворотное пневмосоединение'],
+      ['manifold rotary joint', 'вращающийся распределительный коллектор'], ['dual passage rotary joint', 'двухканальное вращающееся соединение'],
+      ['dual inlet rotary joint', 'вращающееся соединение с двумя входами'], ['heavy duty rotary joint', 'вращающееся соединение для тяжёлых условий'],
+      ['dust-proof rotary joint', 'пылезащищённое вращающееся соединение'], ['high pressure rotary union', 'вращающееся соединение высокого давления'],
+      ['triple passage rotary joint', 'трёхканальное вращающееся соединение'], ['hollow bore rotary joint', 'вращающееся соединение со сквозным отверстием'],
+      ['multi-channel rotary joint', 'многоканальный вращающийся коллектор'],
+      ['Air, water, water-soluble coolant, light hydraulic oil', 'Воздух, вода, водорастворимая СОЖ, маловязкое гидравлическое масло'],
+      ['Air, water, coolant, light hydraulic oil', 'Воздух, вода, СОЖ, маловязкое гидравлическое масло'],
+      ['Air, water, oil, coolant, light hydraulic oil', 'Воздух, вода, масло, СОЖ, маловязкое гидравлическое масло'],
+      ['Air, water, coolant, hydraulic oil', 'Воздух, вода, СОЖ, гидравлическое масло'],
+      ['ISO VG 32 max', 'не выше ISO VG 32'], ['45# Steel', 'Сталь 45#'],
+      ['AL6061 Aluminum Alloy, anodized', 'Алюминиевый сплав AL6061, анодированный'],
+      ['AL6061 aluminum alloy, anodized', 'Алюминиевый сплав AL6061, анодированный'],
+      ['AL6061 aluminum alloy', 'Алюминиевый сплав AL6061'], ['Aluminum Alloy 6061', 'Алюминиевый сплав 6061'],
+      ['PTFE composite seal with FKM O-ring backup', 'Композитное уплотнение из ПТФЭ с дополнительным кольцом FKM'],
+      ['PTFE composite seal with FKM O-ring', 'Композитное уплотнение из ПТФЭ с кольцом FKM'],
+      ['PTFE (Teflon) composite seal with FKM O-ring backup', 'Композитное уплотнение из ПТФЭ с дополнительным кольцом FKM'],
+      ['PTFE (Teflon) Composite Seal', 'Композитное уплотнение из ПТФЭ'], ['PTFE composite seal', 'Композитное уплотнение из ПТФЭ'],
+      ['PTFE + Graphite Composite / PEEK', 'Композит ПТФЭ с графитом / PEEK'],
+      ['PTFE Composite + Si3N4 Ceramic Seal', 'Композитное уплотнение из ПТФЭ и керамическое уплотнение Si3N4'],
+      ['Deep Groove Ball Bearing', 'Радиальный шариковый подшипник'], ['Deep groove ball bearing', 'Радиальный шариковый подшипник'],
+      ['Threaded mount', 'Резьбовое крепление'], ['threaded mount', 'резьбовое крепление'], ['Flange mount', 'Фланцевое крепление'],
+      ['G1/8 threaded', 'Резьбовое крепление G1/8'], ['BSP parallel', 'цилиндрическая резьба BSPP'], [' or ', ' или '],
+      ['mounting holes', 'крепёжными отверстиями'], ['bolt pattern', 'схема крепёжных отверстий'], ['rotor /', 'ротор /'], ['stator', 'статор'],
+      [' with ', ' с '], [' per ISO ', ' по ISO '], [' rotor ', ' со стороны ротора '],
+      ['rotating side', 'со стороны ротора'], ['fixed side', 'со стороны статора'], ['through-hole', 'сквозное отверстие'],
+      ['dust-proof structure', 'пылезащищённая конструкция'], ['hollow bore', 'сквозное отверстие'],
+      ['Gold-plated copper alloy', 'Позолоченный медный сплав'], ['circuits', 'цепей'], ['per circuit', 'на цепь'],
+      ['2A max', 'макс. 2 А'], ['<=500 MOhm', '≤500 МОм'], ['at 500V DC', 'при 500 В пост. тока'],
+      ['Anodized (Aluminum)', 'Анодирование (алюминий)'], ['Diameter', 'Диаметр'],
+      ['hours (rated conditions)', 'часов (при номинальных условиях)'], ['rated conditions', 'номинальные условия'],
+      ['Zero leakage (100% pressure tested)', 'Утечка отсутствует (100 % изделий испытаны давлением)'], ['Zero (100% pressure tested)', 'Отсутствует (100 % изделий испытаны давлением)'],
+      ['Approx.', 'Около'], ['Months', 'месяцев'], ['months', 'месяцев'], ['Heavy duty', 'Для тяжёлых условий'], ['distribution', 'распределение'],
+    ],
+  };
+  for (const [from, to] of replacements[languageCode] || []) value = value.replaceAll(from, to);
+  if (languageCode === 'de') {
+    value = value
+      .replaceAll('BSPP (zylindrisch) (BSPP)', 'BSPP (zylindrisch)')
+      .replace(/\b(\d+)\.(\d+)\b/g, '$1,$2')
+      .replace(/\b(\d+),(\d{3})\b/g, '$1.$2')
+      .replace(/Ø(\d+)mm/g, 'Ø$1 mm')
+      .replace(/\b(\d+(?:,\d+)?) x (\d+(?:,\d+)?)\b/g, '$1 × $2');
+  } else if (languageCode === 'ja') {
+    value = value
+      .replaceAll('BSPP平行ねじ (BSPP)', 'BSPP平行ねじ')
+      .replaceAll(' (', '（').replaceAll(')', '）')
+      .replaceAll(', ', '、').replaceAll(' / ', '／')
+      .replace(/Ø(\d+)mm/g, 'Ø$1 mm');
+  } else if (languageCode === 'ru') {
+    value = value
+      .replaceAll('цилиндрическая резьба BSPP (BSPP)', 'цилиндрическая резьба BSPP')
+      .replace(/\b(\d+),(\d{3})\b/g, '$1 $2')
+      .replace(/\b(\d+)\.(\d+)\b/g, '$1,$2')
+      .replace(/\bbar\b/g, 'бар').replace(/\bkg\b/g, 'кг').replace(/\bmm\b/g, 'мм')
+      .replace(/Ø(\d+)мм/g, 'Ø$1 мм');
+  }
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+function localizeProductProperty(property, languageCode, pageName) {
+  if (!property || typeof property !== 'object') return;
+  const nameMap = structuredPropertyNames[languageCode] || {};
+  const isApplications = property.name === 'Typical applications'
+    || ['Typische Anwendungen', '主な用途', 'Типичные области применения'].includes(property.name);
+  if (nameMap[property.name]) property.name = nameMap[property.name];
+  if (isApplications && structuredApplicationValues[languageCode]?.[pageName]) {
+    property.value = structuredApplicationValues[languageCode][pageName];
+  } else if (property.value !== undefined && property.value !== null) {
+    property.value = localizeStructuredValue(property.value, languageCode);
+  }
+}
 
 function updateJsonLd($, languageCode, pageName) {
   const englishUrl = pageUrl(config.sourceLanguage.code, pageName);
@@ -952,6 +1232,9 @@ function updateJsonLd($, languageCode, pageName) {
         if (types.has('Product')) {
           value.name = seo.h1;
           value.description = seo.description;
+          if (Array.isArray(value.additionalProperty)) {
+            for (const property of value.additionalProperty) localizeProductProperty(property, languageCode, pageName);
+          }
         }
         if (types.has('WebPage')) {
           value.name = seo.title;
@@ -967,6 +1250,7 @@ function updateJsonLd($, languageCode, pageName) {
         }
         if (types.has('Organization') && value.description) {
           value.description = site.organizationDescription || site.description || seo.description;
+          if (value.slogan && schemaLocale.slogan) value.slogan = schemaLocale.slogan;
           if (Array.isArray(value.founders) && schemaLocale.founderJobTitle) {
             value.founders = value.founders.map((founder) => ({ ...founder, jobTitle: schemaLocale.founderJobTitle }));
           }
@@ -974,6 +1258,17 @@ function updateJsonLd($, languageCode, pageName) {
         }
         if (types.has('LocalBusiness') && schemaLocale.factoryName) value.name = schemaLocale.factoryName;
         if (types.has('BreadcrumbList') && Array.isArray(value.itemListElement) && value.itemListElement.length) {
+          for (const item of value.itemListElement) {
+            if (!item || typeof item !== 'object' || typeof item.item !== 'string') continue;
+            try {
+              const itemUrl = new URL(item.item);
+              if (itemUrl.origin !== new URL(config.siteUrl).origin) continue;
+              const itemPage = itemUrl.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
+              if (config.pages.includes(itemPage)) item.item = pageUrl(languageCode, itemPage);
+            } catch {
+              // Keep malformed or non-URL breadcrumb values for the validator to report.
+            }
+          }
           const current = value.itemListElement[value.itemListElement.length - 1];
           if (current && typeof current === 'object') {
             current.name = seo.h1;
@@ -1145,11 +1440,11 @@ const llmsLabels = {
     sections: { products: 'Produkte', applications: 'Anwendungen', articles: 'Technische Beiträge', other: 'Unternehmen und Service' },
   },
   ja: {
-    summary: 'Begapunkの空圧用ロータリージョイントに関する技術ページ索引です。使用流体、圧力、回転数、流路数、接続、取付条件から選定してください。',
+    summary: 'Begapunkの空圧用ロータリージョイントに関する技術ページ索引です。使用流体、圧力、回転数、流路数・ポート数、接続、取付条件から選定してください。',
     sections: { products: '製品', applications: '用途別ガイド', articles: '技術記事', other: '会社・サポート' },
   },
   ru: {
-    summary: 'Технический указатель страниц Begapunk о пневматических ротационных соединениях. При подборе учитывайте среду, давление, частоту вращения, число каналов, присоединение и монтаж.',
+    summary: 'Технический указатель страниц Begapunk о пневматических вращающихся и ротационных соединениях. При подборе учитывайте среду, давление, частоту вращения, число каналов, присоединение и монтаж.',
     sections: { products: 'Продукция', applications: 'Области применения', articles: 'Технические статьи', other: 'Компания и поддержка' },
   },
 };
@@ -1195,6 +1490,23 @@ async function buildLocalizedPages(catalog) {
     await writeLocalizedSearchIndex(language, outputDirectory);
     await writeLocalizedLlms(language, outputDirectory);
     console.log(`${language.code}: built ${pages.length} localized pages.`);
+  }
+}
+
+async function refreshLocalizedMetadata() {
+  for (const language of activeLanguages) {
+    const outputDirectory = path.join(outputRoot, language.code);
+    for (const pageName of config.pages) {
+      const filePath = path.join(outputDirectory, pageName);
+      const html = await fs.readFile(filePath, 'utf8');
+      const $ = load(html, { decodeEntities: false });
+      applySeoMetadata($, language.code, pageName);
+      updateJsonLd($, language.code, pageName);
+      await fs.writeFile(filePath, $.html().replace(/[ \t]+$/gm, ''), 'utf8');
+    }
+    await writeLocalizedSearchIndex(language, outputDirectory);
+    await writeLocalizedLlms(language, outputDirectory);
+    console.log(`${language.code}: refreshed metadata and structured data for ${config.pages.length} pages.`);
   }
 }
 
@@ -1289,6 +1601,8 @@ if (mode === 'extract') {
 } else if (mode === 'build') {
   if (!catalog) throw new Error('Run the extract step before building localized pages.');
   await buildLocalizedPages(catalog);
+} else if (mode === 'refresh-metadata') {
+  await refreshLocalizedMetadata();
 } else if (mode === 'integrate') {
   await integrateLocalizedSite();
 } else {

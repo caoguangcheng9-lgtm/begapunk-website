@@ -32,6 +32,16 @@ const expectedFounderJobTitle = {
   ja: '創業者・技術責任者',
   ru: 'Основатель и инженер',
 };
+const expectedOrganizationSlogan = {
+  de: 'Spezialist für pneumatische Drehdurchführungen',
+  ja: '空圧用ロータリージョイント専門メーカー',
+  ru: 'Специалист по пневматическим вращающимся соединениям',
+};
+const untranslatedStructuredPropertyNames = new Set([
+  'Protection rating', 'Pneumatic passages', 'Electrical circuits', 'Electrical contact material',
+  'Insulation resistance', 'Surface treatment', 'Hollow bore diameter',
+]);
+const suspiciousStructuredEnglishPattern = /\b(?:Pneumatic rotary joint|air rotary union|air swivel|rotary joint|inlet|outlet|Threaded mount|Flange mount|Deep groove ball bearing|hours \(rated conditions\)|Zero leakage|pressure tested|Approx\.|Heavy duty|dust-proof structure|hollow bore|mounting holes|Typical applications)\b/i;
 
 function verifyGeneratedText(value, owner) {
   if (value.includes('\uFFFD')) {
@@ -231,12 +241,39 @@ for (const language of verifiedLanguages) {
             if ([...types].some((type) => contentTypes.has(type)) && node.inLanguage !== language.code) {
               failures.push(`${language.code}/${pageName}: ${[...types].join('/')} JSON-LD lacks the correct inLanguage.`);
             }
-            if (types.has('Organization') && Array.isArray(node.founders)) {
-              if (node.founders.some((founder) => founder.jobTitle !== expectedFounderJobTitle[language.code])) {
+            if (types.has('Organization')) {
+              if (Array.isArray(node.founders) && node.founders.some((founder) => founder.jobTitle !== expectedFounderJobTitle[language.code])) {
                 failures.push(`${language.code}/${pageName}: Organization founder job title is not localized.`);
+              }
+              if (node.slogan && node.slogan !== expectedOrganizationSlogan[language.code]) {
+                failures.push(`${language.code}/${pageName}: Organization slogan is not localized.`);
+              }
+            }
+            if (types.has('Product') && Array.isArray(node.additionalProperty)) {
+              for (const property of node.additionalProperty) {
+                if (untranslatedStructuredPropertyNames.has(property?.name)) {
+                  failures.push(`${language.code}/${pageName}: Product JSON-LD property name is not localized (${property.name}).`);
+                }
+                if (suspiciousStructuredEnglishPattern.test(String(property?.value || ''))) {
+                  failures.push(`${language.code}/${pageName}: Product JSON-LD property value contains untranslated English (${property.name}).`);
+                }
               }
             }
             if (types.has('BreadcrumbList') && Array.isArray(node.itemListElement) && node.itemListElement.length) {
+              for (const item of node.itemListElement) {
+                if (!item?.item || typeof item.item !== 'string') continue;
+                try {
+                  const itemUrl = new URL(item.item);
+                  if (itemUrl.origin === new URL(config.siteUrl).origin) {
+                    const itemPage = itemUrl.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
+                    if (config.pages.includes(itemPage) && item.item !== pageUrl(language.code, itemPage)) {
+                      failures.push(`${language.code}/${pageName}: BreadcrumbList contains a cross-language URL (${item.item}).`);
+                    }
+                  }
+                } catch {
+                  failures.push(`${language.code}/${pageName}: BreadcrumbList contains an invalid URL (${item.item}).`);
+                }
+              }
               const current = node.itemListElement[node.itemListElement.length - 1];
               if (compactText(current?.name) !== seoByLanguage.get(language.code)?.[pageName]?.h1 || current?.item !== pageUrl(language.code, pageName)) {
                 failures.push(`${language.code}/${pageName}: BreadcrumbList current page is not localized.`);

@@ -9,6 +9,7 @@
     "i18n:extract": "node scripts/build-localized-site.mjs --mode extract",
     "i18n:translate": "node scripts/build-localized-site.mjs --mode translate",
     "i18n:build": "node scripts/build-localized-site.mjs --mode build",
+    "i18n:refresh-metadata": "node scripts/build-localized-site.mjs --mode refresh-metadata",
     "i18n:integrate": "node scripts/build-localized-site.mjs --mode integrate",
     "i18n:verify": "node scripts/verify-localized-site.mjs",
     "images:audit": "node scripts/optimize-images.mjs --audit",
@@ -18,7 +19,7 @@
     "social:verify": "node scripts/verify-social-images.mjs",
     "deploy:build": "node scripts/build-production-release.mjs",
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production",
-    "deploy:prepare": "npm run i18n:build && npm run i18n:verify && npm run deploy:build && npm run deploy:validate"
+    "deploy:prepare": "npm run i18n:refresh-metadata && npm run i18n:verify && npm run deploy:build && npm run deploy:validate"
   },
   "devDependencies": {
     "cheerio": "1.1.2",

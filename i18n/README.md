@@ -1,12 +1,12 @@
-# Begapunk Multilingual Pilot
+# Begapunk Multilingual Site
 
-This directory defines the first multilingual SEO pilot for the Begapunk static website.
+This directory contains the translation, editorial review, SEO, and generation sources for the Begapunk static website.
 
 ## Scope
 
-- Languages: German, Spanish, Italian, Japanese, Polish, and Russian.
-- Pages: the 12 high-value pages listed in `config.json`.
-- Output: real static HTML files under `/de/`, `/es/`, `/it/`, `/ja/`, and `/pl/`.
+- Active languages: German, Japanese, and Russian (`activeLanguageCodes` in `config.json`).
+- Pages: all 51 public pages listed in `config.json`.
+- Output: real static HTML files under `/de/`, `/ja/`, and `/ru/`.
 - Production deployment is intentionally separate from translation generation.
 
 ## Credentials
@@ -38,6 +38,16 @@ Build the localized HTML pages after all translations are present:
 ```text
 npm run i18n:build
 ```
+
+Refresh curated SEO, the localized search indexes, AI indexes, and JSON-LD without rebuilding translated body copy:
+
+```text
+npm run i18n:refresh-metadata
+```
+
+Use the refresh command after editing `i18n/seo/*.json` or the structured-data localization rules. It is safe when current English copy has changed but the translation catalog has not yet been re-extracted and reviewed.
+
+Production deployment uses this refresh-and-verify path so that a release cannot silently replace human-reviewed localized body copy. Run `i18n:build` explicitly only after the English catalog and all active-language translations have been updated and reviewed.
 
 Verify the generated localized pages:
 
