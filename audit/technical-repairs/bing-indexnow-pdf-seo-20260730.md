@@ -70,4 +70,9 @@ The deployment account did not have non-interactive `sudo` permission during the
 - First workflow run `30507287402` stopped before release activation because the deployment account could not run the Nginx installer with non-interactive `sudo`. Existing production remained active.
 - Follow-up workflow run `30507600865` deployed successfully with the canonical/meta-refresh fallback. Homepage and legacy URL checks passed.
 - That run exposed a second workflow defect: it compared against the failed deployment tag and therefore sent only one IndexNow URL (HTTP 202). The workflow now resolves the active server release commit and includes a one-time 24-URL catch-up list.
-- Final catch-up deployment and live verification: pending.
+- Final workflow run `30507787959` succeeded. Active release: `20260730-021233-99ec058d304a`.
+- IndexNow prepared and submitted all 24 catch-up URLs; the API accepted the request with HTTP 200.
+- Live homepage: HTTP 200.
+- Live BP-3P-0004 target page: HTTP 200.
+- Live legacy URL: HTTP 200 compatibility page with the verified BP-3P-0004 canonical and immediate browser redirect. A true HTTP 301 remains pending because the deployment account has no non-interactive Nginx privilege; no broad sudo permission was added.
+- All 22 live PDFs matched the local SHA-256 bytes and expected metadata values.
