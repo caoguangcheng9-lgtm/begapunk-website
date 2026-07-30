@@ -19,9 +19,11 @@
     "social:verify": "node scripts/verify-social-images.mjs",
     "pdf:metadata:check": "python scripts/update-pdf-metadata.py",
     "pdf:metadata:write": "python scripts/update-pdf-metadata.py --write",
+    "downloads:manifest": "node scripts/generate-public-downloads-manifest.mjs",
     "deploy:build": "node scripts/build-production-release.mjs",
+    "claims:verify": "node scripts/verify-public-claims.mjs",
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production",
-    "deploy:prepare": "npm run i18n:refresh-metadata && npm run i18n:verify && npm run deploy:build && npm run deploy:validate"
+    "deploy:prepare": "npm run i18n:refresh-metadata && npm run i18n:verify && npm run deploy:build && npm run claims:verify && npm run deploy:validate"
   },
   "devDependencies": {
     "cheerio": "1.1.2",

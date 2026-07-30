@@ -38,6 +38,31 @@ const publicDirectories = [
   'ru',
 ];
 
+const excludedReleaseFiles = new Set([
+  'downloads/BP-2P-0001_draft.pdf',
+  'downloads/BP-2P-30-0001.pdf',
+  'downloads/BP-2P-95-0001.pdf',
+].map((fileName) => fileName.toLowerCase()));
+
+function toReleasePath(fileName) {
+  return path.relative(sourceRoot, fileName).split(path.sep).join('/');
+}
+
+function isExcludedReleasePath(fileName) {
+  const relative = toReleasePath(fileName);
+  if (!relative || relative === '.') return false;
+  if (relative === '..' || relative.startsWith('../')) {
+    throw new Error(`Refusing to evaluate a public path outside the repository: ${fileName}`);
+  }
+
+  const lower = relative.toLowerCase();
+  return lower.endsWith('.bak')
+    || lower.endsWith('.backup')
+    || excludedReleaseFiles.has(lower);
+}
+
+const excludedDuringBuild = new Set();
+
 await rm(outputRoot, { recursive: true, force: true });
 await mkdir(outputRoot, { recursive: true });
 
@@ -48,6 +73,11 @@ for (const fileName of [...rootFiles, ...explicitFiles]) {
 for (const directoryName of publicDirectories) {
   await cp(path.join(sourceRoot, directoryName), path.join(outputRoot, directoryName), {
     recursive: true,
+    filter: (source) => {
+      if (!isExcludedReleasePath(source)) return true;
+      excludedDuringBuild.add(toReleasePath(source));
+      return false;
+    },
   });
 }
 
@@ -66,6 +96,16 @@ const releaseFiles = (await walk(outputRoot))
   .filter((fileName) => path.basename(fileName) !== 'manifest.sha256')
   .sort((left, right) => left.localeCompare(right, 'en'));
 
+const forbiddenCopies = releaseFiles.filter((fileName) => {
+  const relative = path.relative(outputRoot, fileName).split(path.sep).join('/').toLowerCase();
+  return relative.endsWith('.bak')
+    || relative.endsWith('.backup')
+    || excludedReleaseFiles.has(relative);
+});
+if (forbiddenCopies.length) {
+  throw new Error(`Forbidden release files survived the copy filter: ${forbiddenCopies.join(', ')}`);
+}
+
 const manifestLines = [];
 for (const fileName of releaseFiles) {
   const digest = createHash('sha256').update(await readFile(fileName)).digest('hex');
@@ -76,3 +116,4 @@ for (const fileName of releaseFiles) {
 await writeFile(path.join(outputRoot, 'manifest.sha256'), `${manifestLines.join('\n')}\n`, 'utf8');
 
 console.log(`Production release built: ${releaseFiles.length} files in ${outputRoot}`);
+console.log(`Excluded ${excludedDuringBuild.size} forbidden backup, draft, or quarantined download path(s).`);

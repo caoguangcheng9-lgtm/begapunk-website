@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -6,6 +7,23 @@ import { load } from 'cheerio';
 
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
 const failures = [];
+
+const forbiddenReleaseFiles = new Set([
+  'downloads/BP-2P-0001_draft.pdf',
+  'downloads/BP-2P-30-0001.pdf',
+  'downloads/BP-2P-95-0001.pdf',
+].map((fileName) => fileName.toLowerCase()));
+
+function toReleasePath(fileName) {
+  return path.relative(releaseRoot, fileName).split(path.sep).join('/');
+}
+
+function isForbiddenReleasePath(relativePath) {
+  const lower = relativePath.toLowerCase();
+  return lower.endsWith('.bak')
+    || lower.endsWith('.backup')
+    || forbiddenReleaseFiles.has(lower);
+}
 
 async function exists(relativePath) {
   try {
@@ -39,6 +57,7 @@ const requiredFiles = [
   'sitemap.xml',
   'sitemap-i18n.xml',
   'manifest.sha256',
+  'downloads/public-downloads.sha256',
   'de/index.html',
   'ja/index.html',
   'ru/index.html',
@@ -54,6 +73,106 @@ for (const forbidden of ['.env', '.git', 'audit', 'catalog-project', 'i18n', 'sc
 
 const allFiles = await walk(releaseRoot);
 const htmlFiles = allFiles.filter((fileName) => fileName.endsWith('.html'));
+
+for (const fileName of allFiles) {
+  const relative = toReleasePath(fileName);
+  if (isForbiddenReleasePath(relative)) {
+    failures.push(`Forbidden backup, draft, or quarantined download in release: ${relative}`);
+  }
+}
+
+async function validatePublicDownloadsManifest() {
+  const manifestRelative = 'downloads/public-downloads.sha256';
+  if (!await exists(manifestRelative)) return 0;
+
+  const downloadsRoot = path.join(releaseRoot, 'downloads');
+  const manifestPath = path.join(releaseRoot, manifestRelative);
+  let manifestSource;
+  let downloadFiles;
+  try {
+    manifestSource = await readFile(manifestPath, 'utf8');
+    downloadFiles = (await walk(downloadsRoot))
+      .filter((fileName) => path.resolve(fileName) !== path.resolve(manifestPath));
+  } catch (error) {
+    failures.push(`${manifestRelative}: unable to read downloads manifest or directory (${error.message})`);
+    return 0;
+  }
+
+  const actualByName = new Map();
+  const actualByFoldedName = new Map();
+  for (const fileName of downloadFiles) {
+    const relative = path.relative(downloadsRoot, fileName).split(path.sep).join('/');
+    const folded = relative.normalize('NFC').toLowerCase();
+    if (actualByFoldedName.has(folded)) {
+      failures.push(`${manifestRelative}: case-insensitive or Unicode-normalized file collision (${actualByFoldedName.get(folded)} and ${relative})`);
+    }
+    actualByName.set(relative, fileName);
+    actualByFoldedName.set(folded, relative);
+  }
+
+  const records = new Map();
+  const foldedRecords = new Map();
+  const lines = manifestSource.split(/\r?\n/);
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!line.trim()) continue;
+
+    const match = /^([0-9a-f]{64})[ \t]+(\*?)(.+)$/i.exec(line);
+    if (!match) {
+      failures.push(`${manifestRelative}:${index + 1}: malformed SHA-256 entry`);
+      continue;
+    }
+
+    const digest = match[1].toLowerCase();
+    const entryName = match[3];
+    if (entryName !== entryName.trim()
+      || entryName.includes('\\')
+      || path.posix.isAbsolute(entryName)
+      || entryName === '..'
+      || entryName.startsWith('../')
+      || path.posix.normalize(entryName) !== entryName) {
+      failures.push(`${manifestRelative}:${index + 1}: entry must be a normalized path relative to downloads/ (${entryName})`);
+      continue;
+    }
+    if (entryName === 'public-downloads.sha256') {
+      failures.push(`${manifestRelative}:${index + 1}: manifest must not list itself`);
+      continue;
+    }
+    if (records.has(entryName)) {
+      failures.push(`${manifestRelative}:${index + 1}: duplicate entry (${entryName})`);
+      continue;
+    }
+
+    const folded = entryName.normalize('NFC').toLowerCase();
+    if (foldedRecords.has(folded)) {
+      failures.push(`${manifestRelative}:${index + 1}: case-insensitive or Unicode-normalized duplicate (${foldedRecords.get(folded)} and ${entryName})`);
+      continue;
+    }
+    records.set(entryName, digest);
+    foldedRecords.set(folded, entryName);
+  }
+
+  for (const [entryName] of records) {
+    if (!actualByName.has(entryName)) {
+      failures.push(`${manifestRelative}: manifest lists a missing or excluded download (${entryName})`);
+    }
+  }
+
+  for (const [entryName, fileName] of actualByName) {
+    if (!records.has(entryName)) {
+      failures.push(`${manifestRelative}: release download is not listed (${entryName})`);
+      continue;
+    }
+    const actualDigest = createHash('sha256').update(await readFile(fileName)).digest('hex');
+    if (actualDigest !== records.get(entryName)) {
+      failures.push(`${manifestRelative}: SHA-256 mismatch (${entryName})`);
+    }
+  }
+
+  return actualByName.size;
+}
+
+const validatedDownloadCount = await validatePublicDownloadsManifest();
 
 function normalizeReference(value) {
   return value.split('#')[0].split('?')[0].trim();
@@ -150,4 +269,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Deployment validation passed: ${htmlFiles.length} HTML files and ${allFiles.length} total release files.`);
+console.log(`Deployment validation passed: ${htmlFiles.length} HTML files, ${allFiles.length} total release files, and ${validatedDownloadCount} verified public downloads.`);

@@ -42,8 +42,8 @@
 │   │ TECHNICAL NOTES:                                │    │
 │   │ 1. All sharp edges deburred 0.3 mm per ISO 13715│    │
 │   │ 2. Unspecified tolerances per ISO 2768-m       │    │
-│   │ 3. 100% pressure tested at 1.5x rated pressure │    │
-│   │ 4. Material certificates available on request  │    │
+│   │ 3. Inspection scope confirmed by approved order │    │
+│   │ 4. Available records confirmed by order  │    │
 │   │ 5. Surface finish Ra 3.2 unless specified       │    │
 │   └────────────────────────────────────────────────┘    │
 │                                                         │
@@ -172,7 +172,7 @@
 这 5 条通常是固定的，除非客户有特殊要求：
 1. All sharp edges deburred 0.3 mm per ISO 13715.
 2. Unspecified tolerances per ISO 2768-m (medium class).
-3. 100% pressure tested at 1.5x rated pressure before shipment.
+3. Inspection scope is confirmed by the approved order.
 4. Material certificates (304/316 SS, AL6061) available on request.
 5. Surface finish Ra 3.2 unless otherwise specified on drawing.
 

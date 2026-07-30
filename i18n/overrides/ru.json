@@ -37,7 +37,6 @@
   "Rotary Union for Printing Machinery & Converting Equipment | Begapunk": "Ротационные соединения для печатного и конвертингового оборудования | Begapunk",
   "Rotary Union for Printing Machinery &amp; Converting Equipment | Begapunk": "Ротационные соединения для печатного и конвертингового оборудования | Begapunk",
   "Begapunk Rotary Joints | Custom Multi-Channel Rotary Unions for Industrial Automation": "Пневматические ротационные (вращающиеся) соединения | Begapunk",
-  "Begapunk manufactures high-performance rotary joints and rotary unions. ISO9001 certified. 200,000+ units delivered to 40+ countries. Custom designs available. Get a quote in 24 hours.": "Begapunk производит пневматические ротационные и вращающиеся соединения для промышленной автоматизации. Доступны одно- и многоканальные модели, фланцевое и резьбовое крепление, а также исполнения по техническому заданию заказчика.",
   "<span class=\"highlight\">Air Rotary Union</span> Specialist for OEM Machinery": "Специалист по <span class=\"highlight\">пневматическим ротационным соединениям</span> для OEM-оборудования",
   "1. Channel Count: Match Your Pneumatic Circuit, Not Your Wish List": "1. Количество каналов: выбирайте по пневматической схеме",
   "2. Operating Pressure: The \"Max 1.0 MPa\" Spec Is Misleading": "2. Рабочее давление: как правильно понимать предел 1,0 МПа",
@@ -50,7 +49,6 @@
   "Rotary Joint Catalog": "Каталог ротационных соединений",
   "FAQ | Rotary Joint Frequently Asked Questions | Begapunk": "Часто задаваемые вопросы о ротационных соединениях | Begapunk",
   "Frequently Asked Questions": "Часто задаваемые вопросы",
-  "About Begapunk | Rotary Joint Factory Ningbo, ISO9001 Certified": "О компании Begapunk | Производитель ротационных соединений в Нинбо",
   "Rotary Joint RFQ | Request a Quote from Begapunk Engineers": "Запрос цены на ротационные соединения | Инженеры Begapunk",
   "Request a Rotary Joint Quote": "Запросить цену на ротационное соединение",
   "Robot End-of-Arm Tooling (EOAT)": "Оснастка рабочего органа робота (EOAT)",
@@ -75,116 +73,113 @@
   "Max 5 MPa": "Макс. 5 MPa",
   "Max 500 RPM": "Макс. 500 RPM",
   "Max 80 RPM": "Макс. 80 RPM",
-  "BP-2P-30-0001 2-in-2-out (Ø30mm) rotary joint: flange mount, max 1 MPa, 150 RPM, AL6061 body, PTFE composite seal. Ø76 mm, approx. 0.39 kg. For packaging turntables, welding stations, pneumatic clamping fixtures, and rotary spray systems. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.": "BP-2P-30-0001 2-in-2-out (Ø30 мм) ротационное соединение: фланцевое крепление, макс. 1 MPa, 150 RPM, корпус AL6061, композитное уплотнение PTFE. Наружный диаметр Ø76 мм, приблизительная масса 0,39 кг. Для упаковочных поворотных столов, сварочных станций, пневматических зажимных приспособлений и ротационных распылительных систем. Совместимо с воздухом, водой и охлаждающей жидкостью. Сертификация ISO 9001. Скачать чертёж в формате PDF."
-  ,"Threaded": "Резьбовое крепление"
-  ,"M5 Threaded": "Резьба M5"
-  ,"4mm Orifice": "Проходное отверстие 4 мм"
-  ,"6mm Orifice": "Проходное отверстие 6 мм"
-  ,"45# Steel": "Сталь 45"
-  ,"Ships in 7 days": "Отправка в течение 7 дней"
-  ,"Ships in 7 Days from Ningbo": "Отправка из Нинбо в течение 7 дней"
-  ,"BP-2P-130-0001 · Heavy Duty": "BP-2P-130-0001 · Усиленное исполнение"
-  ,"BP-2P-95-0001 · Heavy Duty": "BP-2P-95-0001 · Усиленное исполнение"
-  ,"← Previous: Rotary Joint Catalog Page 1": "← Назад: каталог ротационных соединений, страница 1"
-  ,"Next: More Rotary Joint Models →": "Далее: другие модели ротационных соединений →"
-  ,"Rotary Joint Leaking? A Practical Diagnostic Flowchart": "Утечка в ротационном соединении? Практическая схема диагностики"
-  ,"› Rotary Joint Leaking? A Practical Diagnostic Flowchart": "› Утечка в ротационном соединении? Практическая схема диагностики"
-  ,"Rotary union for automation rotary tables": "Ротационное соединение для автоматизированных поворотных столов"
-  ,"2D Engineering Drawing (PDF)": "2D-чертёж (PDF)"
-  ,"<a href=\"blog-threaded-vs-flange.html\">Threaded vs flange mounting: how to choose for compact machinery</a>": "<a href=\"blog-threaded-vs-flange.html\">Резьбовое или фланцевое крепление: что выбрать для компактного оборудования</a>"
-  ,"<span>Packaging Lines</span>\n                            <strong>Rotary sealers and mandrels</strong>": "<span>Упаковочные линии</span>\n                            <strong>Ротационные запайщики и оправки</strong>"
-  ,"<strong>PTFE seal handles multiple media:</strong> Air, water, coolant, and light hydraulic oil with one seal compound — no seal swap needed for mixed-media prototypes": "<strong>Уплотнение PTFE совместимо с несколькими рабочими средами:</strong> воздухом, водой, охлаждающей жидкостью и лёгким гидравлическим маслом. Для прототипов со смешанными средами замена уплотнения не требуется."
-  ,"Cracked port, tape visible in joint interior": "Трещина в порте, уплотнительная лента видна внутри соединения"
-  ,"Desktop and prototype automation cells with single-air-source manifold distribution. Low cost and simple installation.": "Настольные и опытные автоматизированные установки с распределением воздуха от одного источника через коллектор. Низкая стоимость и простой монтаж."
-  ,"Educational and prototype rotary tables with single pneumatic function. Low cost and simple installation.": "Учебные и опытные поворотные столы с одной пневматической функцией. Низкая стоимость и простой монтаж."
-  ,"Every gram on the EOAT increases cycle time and reduces payload — compact aluminum-body joints save 40–60% weight vs. steel": "Каждый лишний грамм на оснастке EOAT увеличивает время цикла и снижает полезную нагрузку. Компактные соединения с алюминиевым корпусом на 40–60% легче стальных."
-  ,"Mold Rotary Stations": "Ротационные станции для пресс-форм"
-  ,"Rotary chuck": "Поворотный патрон"
-  ,"Rotary inspection station": "Ротационная станция контроля"
-  ,"Rotary packaging machines — pouch fillers, form-fill-seal lines, and rotary sealers — need compact air transfer in tight machine envelopes. Space is limited, but downtime is expensive: a single failed seal can contaminate a full batch of food or pharmaceutical product.": "Ротационным упаковочным машинам — фасовщикам пакетов, линиям формования, наполнения и запайки, а также ротационным запайщикам — требуется компактная подача воздуха в ограниченном пространстве. Простой такого оборудования обходится дорого: отказ одного уплотнения может привести к загрязнению целой партии пищевой или фармацевтической продукции."
-  ,"Rotary pouch machine": "Ротационная машина для пакетов"
-  ,"Rotary sealing head": "Ротационная запаечная головка"
-  ,"Rotary Spray Coating Systems": "Ротационные системы распылительного нанесения покрытий"
-  ,"Rotary Testing Turntables": "Поворотные столы для испытаний"
-  ,"Rotary transfer machines with 4–6 clamp positions. 2-in-4-out reduces hose count and simplifies manifold design.": "Ротационные передаточные машины с 4–6 позициями зажима. Схема 2-in-4-out уменьшает количество шлангов и упрощает конструкцию коллектора."
-  ,"Rotary vacuum packaging machines need stable vacuum and pneumatic control while the turret, sealing head, or pouch handling station rotates through each cycle.": "Ротационным вакуумным упаковочным машинам необходимы стабильный вакуум и надёжное пневматическое управление во время вращения турели, запаечной головки или станции подачи пакетов на каждом цикле."
-  ,"Rotary vacuum packaging turrets need simultaneous vacuum extraction and release air on independent channels. Cross-contamination between vacuum and compressed air destroys package seal integrity. Each channel should be specified with an application-appropriate isolation and allowable cross-port leakage criterion. Confirm the channel-isolation test conditions and acceptance limits for the selected model.": "Ротационным вакуумным упаковочным турелям требуются одновременное вакуумирование и подача воздуха на сброс по независимым каналам. Переток между вакуумом и сжатым воздухом нарушает герметичность упаковки. Для каждого канала следует задать подходящие условия изоляции и допустимый уровень межпортовой утечки. Уточните условия испытаний изоляции каналов и критерии приёмки для выбранной модели."
-  ,"Rotary Welding Stations (Dual Passage)": "Ротационные сварочные станции (два канала)"
-  ,"Standard <a href=\"products.html\" class=\"product-link\">BP-2P-0001</a> ships with FKM seals. For continuous-duty applications above 200 RPM, specify PTFE seal configuration at order.": "Стандартная модель <a href=\"products.html\" class=\"product-link\">BP-2P-0001</a> поставляется с уплотнениями FKM. Для непрерывной работы со скоростью выше 200 RPM при заказе укажите конфигурацию с уплотнениями PTFE."
-  ,"Standard models: <strong>1 piece</strong>. Custom designs: typically 5–10 pieces for the first order. We understand the need for prototypes and samples — there is no penalty for small orders.": "Стандартные модели: <strong>от 1 шт.</strong> Индивидуальные конструкции: обычно 5–10 шт. в первом заказе. Мы понимаем потребность в прототипах и образцах, поэтому не применяем надбавку за небольшой объём заказа."
-  ,"Started as a CNC machining workshop serving local automation companies. First rotary joint prototype completed.": "Компания начала работу как цех ЧПУ-обработки для местных производителей средств автоматизации. Изготовлен первый прототип ротационного соединения."
-  ,"Triple-Channel Rotary Work Tables": "Трёхканальные поворотные рабочие столы"
-  ,"Unlike general-purpose hydraulic component suppliers, we focus exclusively on rotary joints. This specialization allows us to offer deeper engineering support, faster custom prototyping, and more competitive pricing than multi-product competitors like Deublin or Kadant for equivalent specifications.": "В отличие от поставщиков широкого ассортимента гидравлических компонентов, мы специализируемся исключительно на ротационных соединениях. Это позволяет оказывать более глубокую инженерную поддержку, быстрее изготавливать индивидуальные прототипы и предлагать конкурентные цены при сопоставимых характеристиках."
-  ,"Use the online comparison table for pressure, RPM, passages, and mounting, or save the complete rotary joint catalog for offline review.": "Используйте онлайн-таблицу для сравнения давления, скорости вращения, количества каналов и типа крепления либо сохраните полный каталог ротационных соединений для просмотра без подключения к интернету."
-  ,"BP-2P-16-0001 · 16mm Bore": "BP-2P-16-0001 · Проходное отверстие 16 мм"
-  ,"BP-2P-16-0001 2-in-2-out 16mm bore flange mount blue anodized": "BP-2P-16-0001 2-in-2-out, проходное отверстие 16 мм, фланцевое крепление, синее анодирование"
-  ,"<strong>100 RPM rating matches slow-speed heavy industry:</strong> Steel mill and foundry rotary tables typically index at 5–30 RPM; the 100 RPM rating provides 3× margin without seal overheating": "<strong>Скорость 100 RPM соответствует тихоходному тяжёлому оборудованию:</strong> поворотные столы на металлургических и литейных предприятиях обычно индексируются со скоростью 5–30 RPM; предел 100 RPM обеспечивает трёхкратный запас без перегрева уплотнения."
-  ,"A machine builder needs clamp and unclamp air for a rotary table. To save $15, they buy BP-1P-0003 and T-fitting the single passage into two lines. The result: when the clamp line pressurizes at 0.6 MPa, the T-fitting leaks 0.15 MPa into the unclamp line — the fixture releases prematurely, dropping the workpiece. <strong>Rule:</strong> BP-1P-0003 is single-passage only. For 2+ independent functions, use BP-2P-0001 or BP-2P-0002. The $15 savings cost $200 in scrapped parts.": "Изготовителю оборудования требуются отдельные линии воздуха для зажима и разжима поворотного стола. Ради экономии 15 долларов он выбирает BP-1P-0003 и разделяет единственный канал тройником. Когда давление в линии зажима достигает 0,6 MPa, через тройник в линию разжима перетекает 0,15 MPa — приспособление преждевременно освобождает и роняет заготовку. <strong>Правило:</strong> BP-1P-0003 имеет только один канал. Для двух и более независимых функций используйте BP-2P-0001 или BP-2P-0002. Экономия 15 долларов привела к браку на 200 долларов."
-  ,"BP-1P-0003 — 1-in-1-out Rotary Joint | Threaded Mount, Max 1 MPa | Begapunk": "BP-1P-0003 | Одноканальное ротационное соединение | Резьбовое крепление, 1 МПа"
-  ,"BP-1P-0003 — 1-in-1-out Rotary Joint": "BP-1P-0003 | Одноканальное ротационное соединение"
-  ,"BP-1P-0006 · 1-in-6-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-1P-0006 | Ротационное соединение, 1 вход / 6 выходов | G1/8, 1 МПа, 300 об/мин"
-  ,"BP-1P-0006 · 1-in-6-out (4mm) Rotary Joint": "BP-1P-0006 | Ротационное соединение, 1 вход / 6 выходов"
-  ,"BP-2P-0001 · 2-in-2-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-2P-0001 | Двухканальное ротационное соединение | Фланцевое крепление, 1 МПа"
-  ,"BP-2P-0001 · 2-in-2-out Rotary Joint": "BP-2P-0001 | Двухканальное ротационное соединение"
-  ,"BP-2P-0002 · 2-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-2P-0002 | Ротационное соединение, 2 входа / 3 выхода | G1/8, 1 МПа, 300 об/мин"
-  ,"BP-2P-0002 · 2-in-3-out (4mm) Rotary Joint": "BP-2P-0002 | Ротационное соединение, 2 входа / 3 выхода"
-  ,"BP-2P-08-0001 · 2-in-2-out Rotary Joint | M5 Threaded Mount, Max 1 MPa | Begapunk": "BP-2P-08-0001 | Компактное двухканальное ротационное соединение | M5, 1 МПа"
-  ,"BP-2P-08-0001 · 2-in-2-out Rotary Joint": "BP-2P-08-0001 | Компактное двухканальное ротационное соединение"
-  ,"BP-2P-130-0001 · 2-in-2-out Rotary Joint | Heavy Duty, Max 5 MPa | Begapunk": "BP-2P-130-0001 | Усиленное двухканальное ротационное соединение | 5 МПа"
-  ,"BP-2P-130-0001 · 2-in-2-out Rotary Joint": "BP-2P-130-0001 | Усиленное двухканальное ротационное соединение"
-  ,"BP-2P-16-0001 · 2-in-2-out (16mm Bore) Rotary Joint | Flange Mount (4-M5), Max 1 MPa | Begapunk": "BP-2P-16-0001 | Двухканальное ротационное соединение со сквозным отверстием 16 мм"
-  ,"BP-2P-16-0001 · 2-in-2-out (16mm Bore) Rotary Joint": "BP-2P-16-0001 | Двухканальное ротационное соединение, отверстие 16 мм"
-  ,"BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint | Flange Mount, Max 1 MPa, 150 RPM | Begapunk": "BP-2P-30-0001 | Двухканальное ротационное соединение, отверстие Ø30 мм | 1 МПа, 150 об/мин"
-  ,"BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint": "BP-2P-30-0001 | Двухканальное ротационное соединение, отверстие Ø30 мм"
-  ,"BP-2P-50-0001 · 2-in-2-out Rotary Joint | Dust-Proof, Flange Mount, Max 1 MPa | Begapunk": "BP-2P-50-0001 | Пылезащищённое двухканальное ротационное соединение | IP65, 1 МПа"
-  ,"BP-2P-50-0001 · 2-in-2-out Rotary Joint": "BP-2P-50-0001 | Пылезащищённое двухканальное ротационное соединение"
-  ,"BP-2P-95-0001 · 2-in-4-out Rotary Joint | Max 1 MPa | Begapunk": "BP-2P-95-0001 | Ротационное соединение, 2 входа / 4 выхода | 1 МПа"
-  ,"BP-2P-95-0001 · 2-in-4-out Rotary Joint": "BP-2P-95-0001 | Ротационное соединение, 2 входа / 4 выхода"
-  ,"BP-3P-0004 · 3-in-3-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-0004 | Трёхканальное ротационное соединение | Фланцевое крепление, 1 МПа"
-  ,"BP-3P-0004 · 3-in-3-out Rotary Joint": "BP-3P-0004 | Трёхканальное ротационное соединение"
-  ,"BP-3P-0006 · 3-in-3-out (6mm Orifice) Rotary Joint | G1/4 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0006 | Трёхканальное ротационное соединение | G1/4, 1 МПа, 200 об/мин"
-  ,"BP-3P-0006 · 3-in-3-out (G1/4) Rotary Joint": "BP-3P-0006 | Трёхканальное ротационное соединение G1/4"
-  ,"BP-3P-0007 · 3-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0007 | Компактное трёхканальное ротационное соединение | G1/8, 1 МПа, 200 об/мин"
-  ,"BP-3P-0007 · 3-in-3-out (4mm) Rotary Joint": "BP-3P-0007 | Компактное трёхканальное ротационное соединение"
-  ,"BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-S06-0001 | Комбинированное соединение: 3 пневмоканала и 6 электрических цепей"
-  ,"BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint": "BP-3P-S06-0001 | 3 пневмоканала и 6 электрических цепей"
-  ,"BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-4P-30-0001 | Четырёхканальное ротационное соединение, отверстие Ø30 мм"
-  ,"BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint": "BP-4P-30-0001 | Четырёхканальное ротационное соединение, отверстие Ø30 мм"
-  ,"BP-8P-0001 · 8-in-8-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-8P-0001 | Восьмиканальное ротационное соединение | Фланцевое крепление, 1 МПа"
-  ,"BP-8P-0001 · 8-in-8-out Rotary Joint": "BP-8P-0001 | Восьмиканальное ротационное соединение"
-  ,"Pneumatic Rotary Union for Electronics and Battery Test Fixtures | Begapunk": "Пневматическое ротационное соединение для испытаний электроники и аккумуляторов | Begapunk"
-  ,"Pneumatic Rotary Union for Electronics and Battery Test Fixtures": "Пневматическое ротационное соединение для испытательных стендов электроники и аккумуляторов"
-  ,"Air Rotary Union for Laser Tube Cutting Machines": "Пневматическое ротационное соединение для станков лазерной резки труб"
-  ,"Air Swivel Rotary Joint for Pneumatic Tools: Selection Guide | Begapunk": "Поворотное пневматическое соединение для инструмента: руководство по выбору | Begapunk"
-  ,"Air Swivel Rotary Joint for Pneumatic Tools and Hose Anti-Twist": "Поворотное пневматическое соединение для инструмента и защиты шланга от перекручивания"
-  ,"Rotary Union for Printing Machinery and Converting Equipment": "Ротационное соединение для печатного и конвертингового оборудования"
-  ,"Rotary Union for Vacuum Packaging Machines | Begapunk": "Ротационное соединение для вакуумных упаковочных машин | Begapunk"
-  ,"Rotary Union for Vacuum Packaging Machines": "Ротационное соединение для вакуумных упаковочных машин"
-  ,"Air Rotary Union Applications | Pneumatic Rotary Joints for Industrial Machinery | Begapunk": "Применение пневматических ротационных соединений в промышленном оборудовании | Begapunk"
-  ,"Air Rotary Union Applications": "Применение пневматических ротационных соединений"
-  ,"Rotary Joint Leaking? A Practical Diagnostic Flowchart | Begapunk": "Утечка в ротационном соединении? Практическая схема диагностики | Begapunk"
-  ,"Rotary Joint Leaking? A Practical Diagnostic Flowchart for Factory Maintenance Teams": "Утечка в ротационном соединении? Практическая схема диагностики для службы ремонта"
-  ,"Rotary Joint Body Materials: Aluminum, Stainless Steel, or Brass —Which One Actually Lasts? | Begapunk": "Материалы корпуса ротационного соединения: алюминий, нержавеющая сталь или латунь | Begapunk"
-  ,"Rotary Joint Body Materials: Aluminum, Stainless Steel, or Brass —Which One Actually Lasts?": "Материалы корпуса ротационного соединения: алюминий, нержавеющая сталь или латунь — что долговечнее?"
-  ,"Rotary Union Seal Types: O-Ring, Lip Seal, and Spring-Energized PTFE Seal Compared | Begapunk": "Типы уплотнений ротационных соединений: O-ring, манжета и подпружиненное PTFE | Begapunk"
-  ,"Rotary Union Seal Types: O-Ring, Lip Seal, and Spring-Energized PTFE Seal Compared": "Сравнение уплотнений ротационных соединений: O-ring, манжета и подпружиненное PTFE"
-  ,"Rotary Joint Seal Replacement: A Step-by-Step Guide for Maintenance Teams | Begapunk": "Замена уплотнения ротационного соединения: пошаговое руководство | Begapunk"
-  ,"Rotary Joint Seal Replacement: A Step-by-Step Guide for Maintenance Teams": "Замена уплотнения ротационного соединения: пошаговое руководство для службы ремонта"
-  ,"Blog | Rotary Joint & Rotary Union Technical Resources | Begapunk": "Блог и технические материалы о ротационных соединениях | Begapunk"
-  ,"Technical Resources & Insights": "Технические материалы и рекомендации"
-  ,"Rotary Joint Engineering Examples | Begapunk": "Примеры применения ротационных соединений | Begapunk"
-  ,"Rotary Joint Engineering Examples": "Примеры применения ротационных соединений"
-  ,"Air Rotary Union Model Comparison | Begapunk Selection Table": "Сравнение моделей пневматических ротационных соединений | Begapunk"
-  ,"Air Rotary Union Model Comparison": "Сравнение моделей пневматических ротационных соединений"
-  ,"Rotary Joint Catalog Page 2 | Begapunk": "Каталог ротационных соединений — страница 2 | Begapunk"
-  ,"Rotary Joint Catalog — Page 2": "Каталог ротационных соединений — страница 2"
-  ,"Search | Begapunk Rotary Joints & Rotary Unions": "Поиск по ротационным соединениям Begapunk"
-  ,"Find the Right Rotary Joint": "Найти подходящее ротационное соединение"
-  ,"Thank You! | Begapunk Rotary Joint Inquiry Submitted": "Спасибо! Запрос отправлен | Begapunk"
-  ,"Thank You! Your Inquiry Is Submitted": "Спасибо! Ваш запрос отправлен"
-  ,"Technical Resources &amp; Insights": "Технические материалы и рекомендации"
-  ,"Blog | Rotary Joint &amp; Rotary Union Technical Resources | Begapunk": "Блог и технические материалы о ротационных соединениях | Begapunk"
-  ,"Downloads &amp; Resources": "Чертежи и технические материалы"
-  ,"Begapunk Engineering": "инженерная служба Begapunk"
-  ,"FAQ": "Часто задаваемые вопросы"
+  "Threaded": "Резьбовое крепление",
+  "M5 Threaded": "Резьба M5",
+  "4mm Orifice": "Проходное отверстие 4 мм",
+  "6mm Orifice": "Проходное отверстие 6 мм",
+  "45# Steel": "Сталь 45",
+  "BP-2P-130-0001 · Heavy Duty": "BP-2P-130-0001 · Усиленное исполнение",
+  "BP-2P-95-0001 · Heavy Duty": "BP-2P-95-0001 · Усиленное исполнение",
+  "← Previous: Rotary Joint Catalog Page 1": "← Назад: каталог ротационных соединений, страница 1",
+  "Next: More Rotary Joint Models →": "Далее: другие модели ротационных соединений →",
+  "Rotary Joint Leaking? A Practical Diagnostic Flowchart": "Утечка в ротационном соединении? Практическая схема диагностики",
+  "› Rotary Joint Leaking? A Practical Diagnostic Flowchart": "› Утечка в ротационном соединении? Практическая схема диагностики",
+  "Rotary union for automation rotary tables": "Ротационное соединение для автоматизированных поворотных столов",
+  "2D Engineering Drawing (PDF)": "2D-чертёж (PDF)",
+  "<a href=\"blog-threaded-vs-flange.html\">Threaded vs flange mounting: how to choose for compact machinery</a>": "<a href=\"blog-threaded-vs-flange.html\">Резьбовое или фланцевое крепление: что выбрать для компактного оборудования</a>",
+  "<span>Packaging Lines</span>\n                            <strong>Rotary sealers and mandrels</strong>": "<span>Упаковочные линии</span>\n                            <strong>Ротационные запайщики и оправки</strong>",
+  "<strong>PTFE seal handles multiple media:</strong> Air, water, coolant, and light hydraulic oil with one seal compound — no seal swap needed for mixed-media prototypes": "<strong>Уплотнение PTFE совместимо с несколькими рабочими средами:</strong> воздухом, водой, охлаждающей жидкостью и лёгким гидравлическим маслом. Для прототипов со смешанными средами замена уплотнения не требуется.",
+  "Cracked port, tape visible in joint interior": "Трещина в порте, уплотнительная лента видна внутри соединения",
+  "Desktop and prototype automation cells with single-air-source manifold distribution. Low cost and simple installation.": "Настольные и опытные автоматизированные установки с распределением воздуха от одного источника через коллектор. Низкая стоимость и простой монтаж.",
+  "Educational and prototype rotary tables with single pneumatic function. Low cost and simple installation.": "Учебные и опытные поворотные столы с одной пневматической функцией. Низкая стоимость и простой монтаж.",
+  "Every gram on the EOAT increases cycle time and reduces payload — compact aluminum-body joints save 40–60% weight vs. steel": "Каждый лишний грамм на оснастке EOAT увеличивает время цикла и снижает полезную нагрузку. Компактные соединения с алюминиевым корпусом на 40–60% легче стальных.",
+  "Mold Rotary Stations": "Ротационные станции для пресс-форм",
+  "Rotary chuck": "Поворотный патрон",
+  "Rotary inspection station": "Ротационная станция контроля",
+  "Rotary packaging machines — pouch fillers, form-fill-seal lines, and rotary sealers — need compact air transfer in tight machine envelopes. Space is limited, but downtime is expensive: a single failed seal can contaminate a full batch of food or pharmaceutical product.": "Ротационным упаковочным машинам — фасовщикам пакетов, линиям формования, наполнения и запайки, а также ротационным запайщикам — требуется компактная подача воздуха в ограниченном пространстве. Простой такого оборудования обходится дорого: отказ одного уплотнения может привести к загрязнению целой партии пищевой или фармацевтической продукции.",
+  "Rotary pouch machine": "Ротационная машина для пакетов",
+  "Rotary sealing head": "Ротационная запаечная головка",
+  "Rotary Spray Coating Systems": "Ротационные системы распылительного нанесения покрытий",
+  "Rotary Testing Turntables": "Поворотные столы для испытаний",
+  "Rotary transfer machines with 4–6 clamp positions. 2-in-4-out reduces hose count and simplifies manifold design.": "Ротационные передаточные машины с 4–6 позициями зажима. Схема 2-in-4-out уменьшает количество шлангов и упрощает конструкцию коллектора.",
+  "Rotary vacuum packaging machines need stable vacuum and pneumatic control while the turret, sealing head, or pouch handling station rotates through each cycle.": "Ротационным вакуумным упаковочным машинам необходимы стабильный вакуум и надёжное пневматическое управление во время вращения турели, запаечной головки или станции подачи пакетов на каждом цикле.",
+  "Rotary vacuum packaging turrets need simultaneous vacuum extraction and release air on independent channels. Cross-contamination between vacuum and compressed air destroys package seal integrity. Each channel should be specified with an application-appropriate isolation and allowable cross-port leakage criterion. Confirm the channel-isolation test conditions and acceptance limits for the selected model.": "Ротационным вакуумным упаковочным турелям требуются одновременное вакуумирование и подача воздуха на сброс по независимым каналам. Переток между вакуумом и сжатым воздухом нарушает герметичность упаковки. Для каждого канала следует задать подходящие условия изоляции и допустимый уровень межпортовой утечки. Уточните условия испытаний изоляции каналов и критерии приёмки для выбранной модели.",
+  "Rotary Welding Stations (Dual Passage)": "Ротационные сварочные станции (два канала)",
+  "Standard <a href=\"products.html\" class=\"product-link\">BP-2P-0001</a> ships with FKM seals. For continuous-duty applications above 200 RPM, specify PTFE seal configuration at order.": "Стандартная модель <a href=\"products.html\" class=\"product-link\">BP-2P-0001</a> поставляется с уплотнениями FKM. Для непрерывной работы со скоростью выше 200 RPM при заказе укажите конфигурацию с уплотнениями PTFE.",
+  "Standard models: <strong>1 piece</strong>. Custom designs: typically 5–10 pieces for the first order. We understand the need for prototypes and samples — there is no penalty for small orders.": "Стандартные модели: <strong>от 1 шт.</strong> Индивидуальные конструкции: обычно 5–10 шт. в первом заказе. Мы понимаем потребность в прототипах и образцах, поэтому не применяем надбавку за небольшой объём заказа.",
+  "Started as a CNC machining workshop serving local automation companies. First rotary joint prototype completed.": "Компания начала работу как цех ЧПУ-обработки для местных производителей средств автоматизации. Изготовлен первый прототип ротационного соединения.",
+  "Triple-Channel Rotary Work Tables": "Трёхканальные поворотные рабочие столы",
+  "Unlike general-purpose hydraulic component suppliers, we focus exclusively on rotary joints. This specialization allows us to offer deeper engineering support, faster custom prototyping, and more competitive pricing than multi-product competitors like Deublin or Kadant for equivalent specifications.": "В отличие от поставщиков широкого ассортимента гидравлических компонентов, мы специализируемся исключительно на ротационных соединениях. Это позволяет оказывать более глубокую инженерную поддержку, быстрее изготавливать индивидуальные прототипы и предлагать конкурентные цены при сопоставимых характеристиках.",
+  "Use the online comparison table for pressure, RPM, passages, and mounting, or save the complete rotary joint catalog for offline review.": "Используйте онлайн-таблицу для сравнения давления, скорости вращения, количества каналов и типа крепления либо сохраните полный каталог ротационных соединений для просмотра без подключения к интернету.",
+  "BP-2P-16-0001 · 16mm Bore": "BP-2P-16-0001 · Проходное отверстие 16 мм",
+  "BP-2P-16-0001 2-in-2-out 16mm bore flange mount blue anodized": "BP-2P-16-0001 2-in-2-out, проходное отверстие 16 мм, фланцевое крепление, синее анодирование",
+  "<strong>100 RPM rating matches slow-speed heavy industry:</strong> Steel mill and foundry rotary tables typically index at 5–30 RPM; the 100 RPM rating provides 3× margin without seal overheating": "<strong>Скорость 100 RPM соответствует тихоходному тяжёлому оборудованию:</strong> поворотные столы на металлургических и литейных предприятиях обычно индексируются со скоростью 5–30 RPM; предел 100 RPM обеспечивает трёхкратный запас без перегрева уплотнения.",
+  "A machine builder needs clamp and unclamp air for a rotary table. To save $15, they buy BP-1P-0003 and T-fitting the single passage into two lines. The result: when the clamp line pressurizes at 0.6 MPa, the T-fitting leaks 0.15 MPa into the unclamp line — the fixture releases prematurely, dropping the workpiece. <strong>Rule:</strong> BP-1P-0003 is single-passage only. For 2+ independent functions, use BP-2P-0001 or BP-2P-0002. The $15 savings cost $200 in scrapped parts.": "Изготовителю оборудования требуются отдельные линии воздуха для зажима и разжима поворотного стола. Ради экономии 15 долларов он выбирает BP-1P-0003 и разделяет единственный канал тройником. Когда давление в линии зажима достигает 0,6 MPa, через тройник в линию разжима перетекает 0,15 MPa — приспособление преждевременно освобождает и роняет заготовку. <strong>Правило:</strong> BP-1P-0003 имеет только один канал. Для двух и более независимых функций используйте BP-2P-0001 или BP-2P-0002. Экономия 15 долларов привела к браку на 200 долларов.",
+  "BP-1P-0003 — 1-in-1-out Rotary Joint | Threaded Mount, Max 1 MPa | Begapunk": "BP-1P-0003 | Одноканальное ротационное соединение | Резьбовое крепление, 1 МПа",
+  "BP-1P-0003 — 1-in-1-out Rotary Joint": "BP-1P-0003 | Одноканальное ротационное соединение",
+  "BP-1P-0006 · 1-in-6-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-1P-0006 | Ротационное соединение, 1 вход / 6 выходов | G1/8, 1 МПа, 300 об/мин",
+  "BP-1P-0006 · 1-in-6-out (4mm) Rotary Joint": "BP-1P-0006 | Ротационное соединение, 1 вход / 6 выходов",
+  "BP-2P-0001 · 2-in-2-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-2P-0001 | Двухканальное ротационное соединение | Фланцевое крепление, 1 МПа",
+  "BP-2P-0001 · 2-in-2-out Rotary Joint": "BP-2P-0001 | Двухканальное ротационное соединение",
+  "BP-2P-0002 · 2-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 300 RPM | Begapunk": "BP-2P-0002 | Ротационное соединение, 2 входа / 3 выхода | G1/8, 1 МПа, 300 об/мин",
+  "BP-2P-0002 · 2-in-3-out (4mm) Rotary Joint": "BP-2P-0002 | Ротационное соединение, 2 входа / 3 выхода",
+  "BP-2P-08-0001 · 2-in-2-out Rotary Joint | M5 Threaded Mount, Max 1 MPa | Begapunk": "BP-2P-08-0001 | Компактное двухканальное ротационное соединение | M5, 1 МПа",
+  "BP-2P-08-0001 · 2-in-2-out Rotary Joint": "BP-2P-08-0001 | Компактное двухканальное ротационное соединение",
+  "BP-2P-130-0001 · 2-in-2-out Rotary Joint | Heavy Duty, Max 5 MPa | Begapunk": "BP-2P-130-0001 | Усиленное двухканальное ротационное соединение | 5 МПа",
+  "BP-2P-130-0001 · 2-in-2-out Rotary Joint": "BP-2P-130-0001 | Усиленное двухканальное ротационное соединение",
+  "BP-2P-16-0001 · 2-in-2-out (16mm Bore) Rotary Joint | Flange Mount (4-M5), Max 1 MPa | Begapunk": "BP-2P-16-0001 | Двухканальное ротационное соединение со сквозным отверстием 16 мм",
+  "BP-2P-16-0001 · 2-in-2-out (16mm Bore) Rotary Joint": "BP-2P-16-0001 | Двухканальное ротационное соединение, отверстие 16 мм",
+  "BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint | Flange Mount, Max 1 MPa, 150 RPM | Begapunk": "BP-2P-30-0001 | Двухканальное ротационное соединение, отверстие Ø30 мм | 1 МПа, 150 об/мин",
+  "BP-2P-30-0001 · 2-in-2-out (Ø30mm) Rotary Joint": "BP-2P-30-0001 | Двухканальное ротационное соединение, отверстие Ø30 мм",
+  "BP-2P-50-0001 · 2-in-2-out Rotary Joint | Dust-Proof, Flange Mount, Max 1 MPa | Begapunk": "BP-2P-50-0001 | Пылезащищённое двухканальное ротационное соединение | IP65, 1 МПа",
+  "BP-2P-50-0001 · 2-in-2-out Rotary Joint": "BP-2P-50-0001 | Пылезащищённое двухканальное ротационное соединение",
+  "BP-2P-95-0001 · 2-in-4-out Rotary Joint | Max 1 MPa | Begapunk": "BP-2P-95-0001 | Ротационное соединение, 2 входа / 4 выхода | 1 МПа",
+  "BP-2P-95-0001 · 2-in-4-out Rotary Joint": "BP-2P-95-0001 | Ротационное соединение, 2 входа / 4 выхода",
+  "BP-3P-0004 · 3-in-3-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-0004 | Трёхканальное ротационное соединение | Фланцевое крепление, 1 МПа",
+  "BP-3P-0004 · 3-in-3-out Rotary Joint": "BP-3P-0004 | Трёхканальное ротационное соединение",
+  "BP-3P-0006 · 3-in-3-out (6mm Orifice) Rotary Joint | G1/4 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0006 | Трёхканальное ротационное соединение | G1/4, 1 МПа, 200 об/мин",
+  "BP-3P-0006 · 3-in-3-out (G1/4) Rotary Joint": "BP-3P-0006 | Трёхканальное ротационное соединение G1/4",
+  "BP-3P-0007 · 3-in-3-out (4mm Orifice) Rotary Joint | G1/8 Thread, Max 1 MPa, 200 RPM | Begapunk": "BP-3P-0007 | Компактное трёхканальное ротационное соединение | G1/8, 1 МПа, 200 об/мин",
+  "BP-3P-0007 · 3-in-3-out (4mm) Rotary Joint": "BP-3P-0007 | Компактное трёхканальное ротационное соединение",
+  "BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-3P-S06-0001 | Комбинированное соединение: 3 пневмоканала и 6 электрических цепей",
+  "BP-3P-S06-0001 · 3-in-3-out + 6-Circuit Pneumatic-Electric Rotary Joint": "BP-3P-S06-0001 | 3 пневмоканала и 6 электрических цепей",
+  "BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-4P-30-0001 | Четырёхканальное ротационное соединение, отверстие Ø30 мм",
+  "BP-4P-30-0001 · 4-in-4-out (Ø30mm Bore) Rotary Joint": "BP-4P-30-0001 | Четырёхканальное ротационное соединение, отверстие Ø30 мм",
+  "BP-8P-0001 · 8-in-8-out Rotary Joint | Flange Mount, Max 1 MPa | Begapunk": "BP-8P-0001 | Восьмиканальное ротационное соединение | Фланцевое крепление, 1 МПа",
+  "BP-8P-0001 · 8-in-8-out Rotary Joint": "BP-8P-0001 | Восьмиканальное ротационное соединение",
+  "Pneumatic Rotary Union for Electronics and Battery Test Fixtures | Begapunk": "Пневматическое ротационное соединение для испытаний электроники и аккумуляторов | Begapunk",
+  "Pneumatic Rotary Union for Electronics and Battery Test Fixtures": "Пневматическое ротационное соединение для испытательных стендов электроники и аккумуляторов",
+  "Air Rotary Union for Laser Tube Cutting Machines": "Пневматическое ротационное соединение для станков лазерной резки труб",
+  "Air Swivel Rotary Joint for Pneumatic Tools: Selection Guide | Begapunk": "Поворотное пневматическое соединение для инструмента: руководство по выбору | Begapunk",
+  "Air Swivel Rotary Joint for Pneumatic Tools and Hose Anti-Twist": "Поворотное пневматическое соединение для инструмента и защиты шланга от перекручивания",
+  "Rotary Union for Printing Machinery and Converting Equipment": "Ротационное соединение для печатного и конвертингового оборудования",
+  "Rotary Union for Vacuum Packaging Machines | Begapunk": "Ротационное соединение для вакуумных упаковочных машин | Begapunk",
+  "Rotary Union for Vacuum Packaging Machines": "Ротационное соединение для вакуумных упаковочных машин",
+  "Air Rotary Union Applications | Pneumatic Rotary Joints for Industrial Machinery | Begapunk": "Применение пневматических ротационных соединений в промышленном оборудовании | Begapunk",
+  "Air Rotary Union Applications": "Применение пневматических ротационных соединений",
+  "Rotary Joint Leaking? A Practical Diagnostic Flowchart | Begapunk": "Утечка в ротационном соединении? Практическая схема диагностики | Begapunk",
+  "Rotary Joint Leaking? A Practical Diagnostic Flowchart for Factory Maintenance Teams": "Утечка в ротационном соединении? Практическая схема диагностики для службы ремонта",
+  "Rotary Joint Body Materials: Aluminum, Stainless Steel, or Brass —Which One Actually Lasts? | Begapunk": "Материалы корпуса ротационного соединения: алюминий, нержавеющая сталь или латунь | Begapunk",
+  "Rotary Joint Body Materials: Aluminum, Stainless Steel, or Brass —Which One Actually Lasts?": "Материалы корпуса ротационного соединения: алюминий, нержавеющая сталь или латунь — что долговечнее?",
+  "Rotary Union Seal Types: O-Ring, Lip Seal, and Spring-Energized PTFE Seal Compared | Begapunk": "Типы уплотнений ротационных соединений: O-ring, манжета и подпружиненное PTFE | Begapunk",
+  "Rotary Union Seal Types: O-Ring, Lip Seal, and Spring-Energized PTFE Seal Compared": "Сравнение уплотнений ротационных соединений: O-ring, манжета и подпружиненное PTFE",
+  "Rotary Joint Seal Replacement: A Step-by-Step Guide for Maintenance Teams | Begapunk": "Замена уплотнения ротационного соединения: пошаговое руководство | Begapunk",
+  "Rotary Joint Seal Replacement: A Step-by-Step Guide for Maintenance Teams": "Замена уплотнения ротационного соединения: пошаговое руководство для службы ремонта",
+  "Blog | Rotary Joint & Rotary Union Technical Resources | Begapunk": "Блог и технические материалы о ротационных соединениях | Begapunk",
+  "Technical Resources & Insights": "Технические материалы и рекомендации",
+  "Rotary Joint Engineering Examples | Begapunk": "Примеры применения ротационных соединений | Begapunk",
+  "Rotary Joint Engineering Examples": "Примеры применения ротационных соединений",
+  "Air Rotary Union Model Comparison | Begapunk Selection Table": "Сравнение моделей пневматических ротационных соединений | Begapunk",
+  "Air Rotary Union Model Comparison": "Сравнение моделей пневматических ротационных соединений",
+  "Rotary Joint Catalog Page 2 | Begapunk": "Каталог ротационных соединений — страница 2 | Begapunk",
+  "Rotary Joint Catalog — Page 2": "Каталог ротационных соединений — страница 2",
+  "Search | Begapunk Rotary Joints & Rotary Unions": "Поиск по ротационным соединениям Begapunk",
+  "Find the Right Rotary Joint": "Найти подходящее ротационное соединение",
+  "Thank You! | Begapunk Rotary Joint Inquiry Submitted": "Спасибо! Запрос отправлен | Begapunk",
+  "Thank You! Your Inquiry Is Submitted": "Спасибо! Ваш запрос отправлен",
+  "Technical Resources &amp; Insights": "Технические материалы и рекомендации",
+  "Blog | Rotary Joint &amp; Rotary Union Technical Resources | Begapunk": "Блог и технические материалы о ротационных соединениях | Begapunk",
+  "Downloads &amp; Resources": "Чертежи и технические материалы",
+  "Begapunk Engineering": "инженерная служба Begapunk",
+  "FAQ": "Часто задаваемые вопросы"
 }

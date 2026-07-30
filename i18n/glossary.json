@@ -1,8 +1,6 @@
 {
   "protectedTerms": [
     "Begapunk",
-    "ISO 9001:2015",
-    "ISO9001",
     "AL6061",
     "PTFE",
     "NPT",
@@ -52,7 +50,6 @@
       "port positions": "Anschlusspositionen",
       "port direction": "Anschlussrichtung",
       "routing": "Leitungsführung",
-      "ships in 7 days": "Versand innerhalb von 7 Tagen",
       "2D engineering drawing": "2D-Konstruktionszeichnung",
       "engineering drawing": "Konstruktionszeichnung",
       "engineering workflow": "technischer Ablauf",
@@ -371,7 +368,6 @@
       "ports": "ポート",
       "port": "ポート",
       "routing": "配管経路",
-      "ships in 7 days": "7日以内に出荷",
       "privacy policy": "プライバシーポリシー",
       "tool center point": "ツールセンターポイント",
       "seal replacement": "シール交換",

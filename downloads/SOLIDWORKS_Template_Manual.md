@@ -33,8 +33,8 @@
 │   │ TECHNICAL NOTES:                                    │        │
 │   │ 1. All sharp edges deburred 0.3 mm per ISO 13715   │        │
 │   │ 2. Unspecified tolerances per ISO 2768-m           │        │
-│   │ 3. 100% pressure tested at 1.5x rated pressure     │        │
-│   │ 4. Material certificates available on request      │        │
+│   │ 3. Inspection scope confirmed by approved order     │        │
+│   │ 4. Available records confirmed by order      │        │
 │   │ 5. Surface finish Ra 3.2 unless specified           │        │
 │   └────────────────────────────────────────────────────┘        │
 │   左下角：x=10, y=10，宽140mm，高28mm                             │

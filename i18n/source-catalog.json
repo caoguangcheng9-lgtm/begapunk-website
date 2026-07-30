@@ -99,15 +99,15 @@
       ]
     },
     {
-      "id": "ccc848bf226a2aaf",
-      "source": "?64 × 78 mm",
+      "id": "2bc65b83d90ddcc2",
+      "source": "Ø64 × 78 mm",
       "pages": [
         "BP-3P-0006.html"
       ]
     },
     {
-      "id": "8e0a6afadb23f44b",
-      "source": "?78.9 × 63.9 mm",
+      "id": "eed26dfd768cdd78",
+      "source": "Ø78.9 × 63.9 mm",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -1870,24 +1870,10 @@
       ]
     },
     {
-      "id": "98928b6046e80914",
-      "source": "<a href=\"downloads/BP-2P-30-0001.pdf\" download=\"\">2D Engineering Drawing (PDF)</a>",
-      "pages": [
-        "BP-2P-30-0001.html"
-      ]
-    },
-    {
       "id": "096fd47bab2dc1c5",
       "source": "<a href=\"downloads/BP-2P-50-0001.pdf\" download=\"\">2D Engineering Drawing (PDF)</a>",
       "pages": [
         "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "ccd8a1ab204f278f",
-      "source": "<a href=\"downloads/BP-2P-95-0001.pdf\" download=\"\">2D Engineering Drawing (PDF)</a>",
-      "pages": [
-        "BP-2P-95-0001.html"
       ]
     },
     {
@@ -2834,8 +2820,8 @@
       ]
     },
     {
-      "id": "93af96c5f6f37e31",
-      "source": "<strong>?78.9 × 63.9 mm, 390 g envelope:</strong> Fits robot EOAT and desktop automation where every millimeter and gram matters — smaller than most 2-passage joints",
+      "id": "2cd8671087514b82",
+      "source": "<strong>Ø78.9 × 63.9 mm, 390 g envelope:</strong> Fits robot EOAT and desktop automation where every millimeter and gram matters — smaller than most 2-passage joints",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -3310,17 +3296,10 @@
       ]
     },
     {
-      "id": "046c2b427ff88b21",
-      "source": "<strong>AL6061 aluminum body:</strong> 6061-T6 aluminum alloy with yield strength 276 MPa and excellent corrosion resistance when anodized. The 0.36 kg mass and ?64 × 78 mm envelope make this one of the most compact 3-passage threaded joints available. Anodizing thickness is 15–25 microns for corrosion protection in water and coolant environments. Not recommended for abrasive coolant or high-impact environments without additional protective coating.<br><br><strong>PTFE composite seal:</strong> Polytetrafluoroethylene with glass fiber and graphite filler. Self-lubricating, chemically inert, and rated for -200°C to +260°C. The composite structure provides structural integrity while maintaining the low friction coefficient (0.05–0.10 against steel) that makes PTFE ideal for rotary seals. FKM O-ring provides static sealing at the housing interface. One seal compound handles all compatible media, simplifying maintenance.<br><br><strong>G1/4 thread advantage:</strong> BSP parallel (BSPP) per ISO 228-1 with 1.337 mm pitch. The G1/4 thread matches standard pneumatic fittings worldwide, eliminating adapter costs and leak points. The 6mm orifice provides 2.25× the flow area of a 4mm orifice, reducing pressure drop in vacuum and high-flow applications. For even smaller envelopes, the G1/8 variant BP-3P-0007 offers a 4mm orifice in a ?78.9 × 63.9 mm body.",
+      "id": "7d23e5197c982dc9",
+      "source": "<strong>AL6061 aluminum body:</strong> 6061-T6 aluminum alloy with yield strength 276 MPa and excellent corrosion resistance when anodized. The 0.36 kg mass and Ø64 × 78 mm envelope make this one of the most compact 3-passage threaded joints available. Anodizing thickness is 15–25 microns for corrosion protection in water and coolant environments. Not recommended for abrasive coolant or high-impact environments without additional protective coating.<br><br><strong>PTFE composite seal:</strong> Polytetrafluoroethylene with glass fiber and graphite filler. Self-lubricating, chemically inert, and rated for -200°C to +260°C. The composite structure provides structural integrity while maintaining the low friction coefficient (0.05–0.10 against steel) that makes PTFE ideal for rotary seals. FKM O-ring provides static sealing at the housing interface. One seal compound handles all compatible media, simplifying maintenance.<br><br><strong>G1/4 thread advantage:</strong> BSP parallel (BSPP) per ISO 228-1 with 1.337 mm pitch. The G1/4 thread matches standard pneumatic fittings worldwide, eliminating adapter costs and leak points. The 6mm orifice provides 2.25× the flow area of a 4mm orifice, reducing pressure drop in vacuum and high-flow applications. For even smaller envelopes, the G1/8 variant BP-3P-0007 offers a 4mm orifice in a Ø78.9 × 63.9 mm body.",
       "pages": [
         "BP-3P-0006.html"
-      ]
-    },
-    {
-      "id": "2d8d87e349ffb619",
-      "source": "<strong>AL6061 aluminum body:</strong> 6061-T6 aluminum alloy with yield strength 276 MPa and excellent corrosion resistance when anodized. The 0.39 kg mass and ?78.9 × 63.9 mm envelope make this ideal for robot EOAT and desktop automation where every gram and millimeter matters. Anodizing thickness is 15–25 microns for corrosion protection. Not recommended for abrasive coolant or high-impact environments.<br><br><strong>PTFE composite seal:</strong> Polytetrafluoroethylene with glass fiber and graphite filler. Self-lubricating, chemically inert, and rated for -200°C to +260°C. The composite maintains low friction (0.05–0.10 against steel) while providing the sealing integrity needed for 100% pressure testing. FKM O-ring provides static sealing at the housing interface.<br><br><strong>Deep groove ball bearing:</strong> Provides radial and axial support with ≤2 N·m idle torque. The bearing reduces seal side load and extends seal life from 6 months to 12+ months under rated conditions. Inspect bearing annually for play — replace if radial play exceeds 0.05 mm. The bearing is pre-lubricated and sealed for life under normal duty.",
-      "pages": [
-        "BP-3P-0007.html"
       ]
     },
     {
@@ -4209,8 +4188,8 @@
       ]
     },
     {
-      "id": "cb2ce0ea92e08d7d",
-      "source": "<strong>Compact ?64 × 78 mm, 360 g:</strong> Fits small machine envelopes where flange-mounted joints are too large or require precision machining",
+      "id": "e8484a83b7e04234",
+      "source": "<strong>Compact Ø64 × 78 mm, 360 g:</strong> Fits small machine envelopes where flange-mounted joints are too large or require precision machining",
       "pages": [
         "BP-3P-0006.html"
       ]
@@ -4722,13 +4701,6 @@
       "source": "<strong>Flange mount rigidity:</strong> Direct bolt-on mounting eliminates threaded-connection fatigue on indexing tables and provides superior vibration resistance",
       "pages": [
         "BP-3P-0004.html"
-      ]
-    },
-    {
-      "id": "6228162c22c1a97f",
-      "source": "<strong>Flange mount:</strong> Bolt-on flange with O-ring face seal — provides rigid, leak-free connection",
-      "pages": [
-        "faq.html"
       ]
     },
     {
@@ -7623,13 +7595,6 @@
       ]
     },
     {
-      "id": "6470a203b710f4c2",
-      "source": "✅ 24h Response Guarantee",
-      "pages": [
-        "thank-you.html"
-      ]
-    },
-    {
       "id": "92f92aec114ecb11",
       "source": "✅ Free 3D STEP Files",
       "pages": [
@@ -7706,13 +7671,6 @@
         "BP-3P-S06-0001.html",
         "BP-4P-30-0001.html",
         "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "a85d3b9ed6c77348",
-      "source": "✅ ISO 9001:2015 Certified",
-      "pages": [
-        "thank-you.html"
       ]
     },
     {
@@ -8770,13 +8728,6 @@
       ]
     },
     {
-      "id": "ea3bc062f1065b6e",
-      "source": "100% pressure tested → Shipped to your door",
-      "pages": [
-        "faq.html"
-      ]
-    },
-    {
       "id": "65a6d7ae96d42c33",
       "source": "11. Contact",
       "pages": [
@@ -9100,13 +9051,6 @@
       ]
     },
     {
-      "id": "8c764cda67a23a02",
-      "source": "2-passage rotary joint for pneumatic and light-fluid applications. PTFE composite seal, Aluminum Alloy 6061 body. Max 1 MPa / 10 bar, 162 mm outer diameter, 4.26 kg. Distributes 2 inlet supplies to 4 outlet ports for multi-actuator rotary tables. Ships in 7 days.",
-      "pages": [
-        "BP-2P-95-0001.html"
-      ]
-    },
-    {
       "id": "db07689c8094119b",
       "source": "2–3 passages, compact body, easy mounting, FKM seals acceptable",
       "pages": [
@@ -9279,13 +9223,6 @@
     {
       "id": "ce7d824329489718",
       "source": "200K+",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "0479eaea7f519a92",
-      "source": "200K+ units delivered",
       "pages": [
         "index.html"
       ]
@@ -9595,8 +9532,8 @@
       ]
     },
     {
-      "id": "d707f5bb08ffa39b",
-      "source": "3-?6 mm Through-Hole (fixed side)",
+      "id": "ac4c36d03268a514",
+      "source": "3-Ø6 mm Through-Hole (fixed side)",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -10172,21 +10109,6 @@
       ]
     },
     {
-      "id": "ddfc3c315a2de439",
-      "source": "40+ countries",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "bb6fc7b47dd5b150",
-      "source": "40+ standard models in stock. Custom designs with free 3D STEP files. 7-14 day delivery worldwide.",
-      "pages": [
-        "products-p2.html",
-        "products.html"
-      ]
-    },
-    {
       "id": "c1358f0632f417de",
       "source": "45–55 N·m",
       "pages": [
@@ -10212,13 +10134,6 @@
     {
       "id": "eb5e97eb6ef39a62",
       "source": "45# Steel Body",
-      "pages": [
-        "BP-1P-0003.html"
-      ]
-    },
-    {
-      "id": "782f06d8f41baf49",
-      "source": "45# steel material traceability, hardness test report, and RoHS compliance certificate. Available upon request with order.",
       "pages": [
         "BP-1P-0003.html"
       ]
@@ -10286,13 +10201,6 @@
       "source": "5 parameters that determine equipment life: pressure, RPM, seal material, media compatibility, and installation space.",
       "pages": [
         "blog-seal-replacement.html"
-      ]
-    },
-    {
-      "id": "2fb00cc9b3097f1e",
-      "source": "5 parameters that prevent costly mistakes: channel count, pressure, RPM, media compatibility, and mounting type. Based on 200,000+ units of Begapunk field experience.",
-      "pages": [
-        "applications.html"
       ]
     },
     {
@@ -10526,13 +10434,6 @@
       ]
     },
     {
-      "id": "da4537a451ddf426",
-      "source": "7-14 day delivery",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
       "id": "ebefb1858541b759",
       "source": "7. Data Security",
       "pages": [
@@ -10640,13 +10541,6 @@
     {
       "id": "1c5908e2b37f40f9",
       "source": "8-in-8-out (8 passages)",
-      "pages": [
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "ed6e9e76f00b7325",
-      "source": "8-passage flange-mount rotary joint for pneumatic and light fluid applications. PTFE composite seal, AL6061 aluminum body. Ships in 7 days. Used on high-density multi-station indexing tables, packaging machinery, and complex pneumatic distribution systems where 8 independent air channels must rotate through a single compact interface.",
       "pages": [
         "BP-8P-0001.html"
       ]
@@ -11347,13 +11241,6 @@
       ]
     },
     {
-      "id": "072802a143a1cdb2",
-      "source": "About Begapunk | Rotary Joint Factory Ningbo, ISO9001 Certified",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "074e70d8bf3fd267",
       "source": "About Begapunk factory",
       "pages": [
@@ -12020,13 +11907,6 @@
       ]
     },
     {
-      "id": "dbfbbfd77cdb52c7",
-      "source": "AL6061 aluminum alloy material traceability, anodizing thickness report, Si3N4 ceramic seal composition, and RoHS compliance. Available upon request.",
-      "pages": [
-        "BP-4P-30-0001.html"
-      ]
-    },
-    {
       "id": "911baabd697b7759",
       "source": "AL6061 Aluminum Alloy, Anodized",
       "pages": [
@@ -12039,34 +11919,6 @@
       "pages": [
         "BP-2P-16-0001.html",
         "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "fa7f7ecd3333c011",
-      "source": "AL6061 aluminum material traceability, anodizing thickness report, hardness test, and RoHS compliance certificate. Available upon request with order.",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "edb68f653dce9703",
-      "source": "AL6061 aluminum material traceability, anodizing thickness report, PTFE seal composition, and RoHS compliance. Available upon request.",
-      "pages": [
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "4939f15062a85a41",
-      "source": "AL6061 aluminum material traceability, hardness test report, and RoHS compliance certificate. Available upon request with order.",
-      "pages": [
-        "BP-2P-16-0001.html"
-      ]
-    },
-    {
-      "id": "8585728556ef85ed",
-      "source": "AL6061 aluminum material traceability, hardness test report, bearing specification sheet, and RoHS compliance certificate. Available upon request with order.",
-      "pages": [
-        "BP-2P-30-0001.html"
       ]
     },
     {
@@ -12107,31 +11959,6 @@
       "source": "AL6061 for dry air",
       "pages": [
         "blog-rotary-joint-materials.html"
-      ]
-    },
-    {
-      "id": "3444713f43acf6c4",
-      "source": "AL6061 material traceability, anodizing thickness report, hardness test, and RoHS compliance certificate. Available upon request with order.",
-      "pages": [
-        "BP-3P-S06-0001.html"
-      ]
-    },
-    {
-      "id": "b19e66a268e069f4",
-      "source": "AL6061 material traceability, hardness test report, and RoHS compliance certificate. Available upon request with order.",
-      "pages": [
-        "BP-1P-0006.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html"
-      ]
-    },
-    {
-      "id": "5b3c5f6e5f9d4ba2",
-      "source": "AL6061 material traceability, hardness test report, bearing specification, and RoHS compliance certificate. Available upon request with order.",
-      "pages": [
-        "BP-3P-0007.html"
       ]
     },
     {
@@ -12216,15 +12043,6 @@
         "BP-2P-95-0001.html",
         "product-comparison.html",
         "products.html"
-      ]
-    },
-    {
-      "id": "4fdfd38858df9636",
-      "source": "Aluminum Alloy 6061 material traceability and RoHS compliance documentation. Available upon request with order.",
-      "pages": [
-        "BP-2P-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-95-0001.html"
       ]
     },
     {
@@ -12655,13 +12473,6 @@
       ]
     },
     {
-      "id": "4638b968457735a1",
-      "source": "Applications where leakage must be near-zero (Class 0)",
-      "pages": [
-        "blog-rotary-union-seal-types.html"
-      ]
-    },
-    {
       "id": "d916e7567a4fdc3a",
       "source": "Applications with heavy abrasive contamination (carbon filler can wear)",
       "pages": [
@@ -12879,13 +12690,6 @@
     {
       "id": "0209a372e2e3f4bc",
       "source": "At Begapunk, both mounting styles are available across most model ranges. We review your machine drawing and recommend the appropriate configuration.",
-      "pages": [
-        "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
-      "id": "c08f58ffe19365a5",
-      "source": "At Begapunk, every joint is pressure-tested at <strong>1.5× the rated specification</strong> before shipment. A joint rated for 1.0 MPa is tested at 1.5 MPa for 30 minutes. It passes. But that does not mean you should run it at 1.0 MPa continuously.",
       "pages": [
         "blog-rotary-joint-selection.html"
       ]
@@ -13288,24 +13092,10 @@
       ]
     },
     {
-      "id": "efb5fa79f8345430",
-      "source": "Begapunk is an ISO9001-certified rotary joint manufacturer in Ningbo, China. CNC machining, in-house seal testing, 200K+ units delivered. See our factory, process, and team.",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "78437dd4809a5ca0",
       "source": "Begapunk lip seals use either:",
       "pages": [
         "blog-rotary-union-seal-types.html"
-      ]
-    },
-    {
-      "id": "c520d181caecc3ba",
-      "source": "Begapunk manufactures high-performance rotary joints and rotary unions. ISO9001 certified. 200,000+ units delivered to 40+ countries. Custom designs available. Get a quote in 24 hours.",
-      "pages": [
-        "index.html"
       ]
     },
     {
@@ -13766,13 +13556,6 @@
       ]
     },
     {
-      "id": "b801ffcdb78e94ad",
-      "source": "BP-1P-0003 single-passage rotary joint: threaded mount, 1 MPa, 500 RPM, 45# steel body, PTFE composite seal. For pneumatic tools, small rotary tables, and hose anti-twist. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-1P-0003.html"
-      ]
-    },
-    {
       "id": "5e3f07099c0d0a69",
       "source": "BP-1P-0003 uses BSP parallel (G) threads — G1/4 or G1/8. Confirm your equipment uses the same thread standard. <strong>Do not use NPT or metric adapters</strong> — they add 10–20 mm length and create a stress concentration that cracks under side load. If your tool has NPT1/4, order the NPT thread option or use a thread-matched swivel. Download the 2D drawing for exact dimensions, pitch, and tolerances.",
       "pages": [
@@ -13889,13 +13672,6 @@
     {
       "id": "1ce2fd59da9969d8",
       "source": "BP-1P-0006 1-in-6-out rotary joint with G1/8 thread. 4mm orifice, max 1 MPa, 300 RPM, AL6061 body, PTFE composite seal. Distributes one air supply to 6 outlets for assembly stations and rotary tables.",
-      "pages": [
-        "BP-1P-0006.html"
-      ]
-    },
-    {
-      "id": "aa328d0b3a514943",
-      "source": "BP-1P-0006 1-in-6-out rotary joint: G1/8 threaded, 4mm orifice, max 1 MPa, 300 RPM, AL6061 body, PTFE composite seal. Distributes one air supply to 6 outlets for assembly stations, rotary tables, and pneumatic manifolds. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
       "pages": [
         "BP-1P-0006.html"
       ]
@@ -14085,13 +13861,6 @@
       ]
     },
     {
-      "id": "2074aff8a23299a5",
-      "source": "BP-2P-0001 2-in-2-out rotary joint: flange mount, max 1 MPa, 200 RPM, Aluminum Alloy 6061 body, PTFE seal. For clamp + release welding positioners, dual-channel packaging turntables, and pneumatic rotary tables. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-2P-0001.html"
-      ]
-    },
-    {
       "id": "346862836917552f",
       "source": "BP-2P-0001 Fit",
       "pages": [
@@ -14236,13 +14005,6 @@
       ]
     },
     {
-      "id": "6f29a0964a2550b0",
-      "source": "BP-2P-0002 2-in-3-out rotary joint: G1/8 threaded, 4mm orifice, max 1 MPa, 300 RPM, AL6061 body, PTFE composite seal. For CNC 4th/5th axis pneumatic lines, robotic welding turntables, and automated assembly stations. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-2P-0002.html"
-      ]
-    },
-    {
       "id": "650f9ca2e8becd0e",
       "source": "BP-2P-0002 Fit",
       "pages": [
@@ -14379,13 +14141,6 @@
     {
       "id": "0309d09411e9eeb5",
       "source": "BP-2P-08-0001 2-in-2-out rotary joint with M5 threaded mount. Max 1 MPa, 200 RPM, AL6061 body, PTFE seal. For miniature automation and small rotary tables.",
-      "pages": [
-        "BP-2P-08-0001.html"
-      ]
-    },
-    {
-      "id": "53d492d4f9525317",
-      "source": "BP-2P-08-0001 2-in-2-out rotary joint: M5 threaded mount, max 1 MPa, 200 RPM, AL6061 body, PTFE seal. For micro electronic turntables, miniature dispensing rotary tables, and small dual-channel 3D printing bases. Air, water, coolant, hydraulic oil compatible. ISO9001 certified. Download 2D PDF drawing.",
       "pages": [
         "BP-2P-08-0001.html"
       ]
@@ -14538,13 +14293,6 @@
       ]
     },
     {
-      "id": "b8533e0f4e0280c5",
-      "source": "BP-2P-130-0001 heavy-duty 2-in-2-out rotary joint: flange mount, 5 MPa, 80 RPM, Aluminum Alloy 6061 body, PTFE composite seal. For hydraulic indexing tables, welding positioners, CNC 4th axis rotary tables, and high-pressure clamping systems. Air, water, coolant, light hydraulic oil compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-2P-130-0001.html"
-      ]
-    },
-    {
       "id": "2a3fea7c3e87703b",
       "source": "BP-2P-130-0001 includes an anti-rotation tab on the stationary housing. Secure it to a fixed bracket with an M8 bolt torqued to 15–20 N·m. Never let the body rotate freely — the 8.66 kg mass creates destructive gyroscopic torque that will shear supply hoses and damage the flange. The anti-rotation bracket must have &gt;5 mm clearance from rotating parts.",
       "pages": [
@@ -14665,20 +14413,6 @@
       ]
     },
     {
-      "id": "60cfcfe71993b47c",
-      "source": "BP-2P-16-0001 2-in-2-out (16mm Bore) rotary joint with flange mount. Max 1 MPa, 200 RPM, AL6061 body, PTFE seal. For CNC indexing tables, welding positioners, and packaging machinery. ISO9001 certified. Download 2D drawing PDF.",
-      "pages": [
-        "BP-2P-16-0001.html"
-      ]
-    },
-    {
-      "id": "26da4bd054e8911b",
-      "source": "BP-2P-16-0001 2-in-2-out (16mm Bore) rotary joint: flange mount, max 1 MPa, 200 RPM, AL6061 body, PTFE composite seal. For CNC indexing tables, welding positioners, packaging rotary tables, and pneumatic clamping. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-2P-16-0001.html"
-      ]
-    },
-    {
       "id": "ffa758c1c75f9013",
       "source": "BP-2P-16-0001 2-in-2-out 16mm bore flange mount blue anodized",
       "pages": [
@@ -14781,20 +14515,6 @@
     {
       "id": "4ec4895b49e1547b",
       "source": "BP-2P-30-0001 2-in-2-out (Ø30mm) rotary joint with flange mount. Max 1 MPa, 150 RPM, AL6061 body, PTFE composite seal. For packaging turntables and welding stations.",
-      "pages": [
-        "BP-2P-30-0001.html"
-      ]
-    },
-    {
-      "id": "4f695fc005acfce8",
-      "source": "BP-2P-30-0001 2-in-2-out (Ø30mm) rotary joint with flange mount. Max 1 MPa, 150 RPM, AL6061 body, PTFE composite seal. For packaging turntables and welding stations. ISO9001 certified. Download 2D drawing PDF.",
-      "pages": [
-        "BP-2P-30-0001.html"
-      ]
-    },
-    {
-      "id": "8405f00afcc44f6e",
-      "source": "BP-2P-30-0001 2-in-2-out (Ø30mm) rotary joint: flange mount, max 1 MPa, 150 RPM, AL6061 body, PTFE composite seal. Ø76 mm, approx. 0.39 kg. For packaging turntables, welding stations, pneumatic clamping fixtures, and rotary spray systems. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
       "pages": [
         "BP-2P-30-0001.html"
       ]
@@ -14938,13 +14658,6 @@
       ]
     },
     {
-      "id": "59ad3292959d70a5",
-      "source": "BP-2P-50-0001 2-in-2-out dust-proof rotary joint. Max 1 MPa, 100 RPM, AL6061 aluminum body, PTFE seal. IP65 rated for steel mills and foundries. ISO9001 certified. Download 2D drawing PDF.",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
       "id": "6e8a57529886295a",
       "source": "BP-2P-50-0001 2-in-2-out Rotary Joint | Begapunk",
       "pages": [
@@ -14954,13 +14667,6 @@
     {
       "id": "1545848230421a3d",
       "source": "BP-2P-50-0001 2-in-2-out rotary joint flange mount dust proof",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "e0a513e4ba9176fb",
-      "source": "BP-2P-50-0001 2-in-2-out rotary joint: dust-proof IP65 design, flange mount (6-M5), max 1 MPa, 100 RPM, AL6061 aluminum body, PTFE composite seal. For steel mills, foundries, dusty packaging lines, and abrasive environments. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
       "pages": [
         "BP-2P-50-0001.html"
       ]
@@ -15102,22 +14808,8 @@
       ]
     },
     {
-      "id": "368632d2804b8077",
-      "source": "BP-2P-95-0001 2-in-4-out rotary joint: max 1 MPa / 10 bar, 200 RPM, Aluminum Alloy 6061 body, PTFE seal. For pneumatic clamping, rotary fixtures, and multi-outlet fluid distribution. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-2P-95-0001.html"
-      ]
-    },
-    {
       "id": "70f6bcbc6ddaf5f3",
       "source": "BP-2P-95-0001 2-in-4-out rotary joint. Max 1 MPa / 10 bar, 200 RPM, Aluminum Alloy 6061 body, PTFE seal. For pneumatic clamping and multi-outlet fluid distribution.",
-      "pages": [
-        "BP-2P-95-0001.html"
-      ]
-    },
-    {
-      "id": "6a6b7b0425300e84",
-      "source": "BP-2P-95-0001 2-in-4-out rotary joint. Max 1 MPa / 10 bar, 200 RPM, Aluminum Alloy 6061 body, PTFE seal. For pneumatic clamping and multi-outlet fluid distribution. ISO9001 certified. Download 2D drawing PDF.",
       "pages": [
         "BP-2P-95-0001.html"
       ]
@@ -15281,13 +14973,6 @@
       ]
     },
     {
-      "id": "a712b2945e24f790",
-      "source": "BP-3P-0004 3-in-3-out rotary joint: flange mount, 1 MPa, 200 RPM, AL6061 body, PTFE composite seal. For three-station pneumatic clamping fixtures, triple-channel indexing tables, packaging rotary tables, and multi-channel assembly turntables. Air, water, coolant, light hydraulic oil compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-3P-0004.html"
-      ]
-    },
-    {
       "id": "2a738ebddabd2b68",
       "source": "BP-3P-0004 Fit",
       "pages": [
@@ -15418,13 +15103,6 @@
       ]
     },
     {
-      "id": "2ede1cd814bc4ab8",
-      "source": "BP-3P-0006 3-in-3-out rotary joint: G1/4 threaded, 6mm orifice, max 1 MPa, 200 RPM, AL6061 body, PTFE composite seal. For medium triple-channel clamping fixtures, mid-size indexing tables, three-channel packaging machines, and assembly turntables. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-3P-0006.html"
-      ]
-    },
-    {
       "id": "7fe2fb3023e7c34a",
       "source": "BP-3P-0006 Fit",
       "pages": [
@@ -15432,8 +15110,8 @@
       ]
     },
     {
-      "id": "abd76b4bc626e67a",
-      "source": "BP-3P-0006 is a triple-passage G1/4 threaded rotary joint designed for compact multi-channel pneumatic and light fluid applications. The 6mm orifice provides higher flow capacity than 4mm variants, while the ?64 × 78 mm envelope fits small machine frames. The PTFE composite seal handles air, water, coolant, and light hydraulic oil with one seal compound.",
+      "id": "6b1f81162853fcc7",
+      "source": "BP-3P-0006 is a triple-passage G1/4 threaded rotary joint designed for compact multi-channel pneumatic and light fluid applications. The 6mm orifice provides higher flow capacity than 4mm variants, while the Ø64 × 78 mm envelope fits small machine frames. The PTFE composite seal handles air, water, coolant, and light hydraulic oil with one seal compound.",
       "pages": [
         "BP-3P-0006.html"
       ]
@@ -15562,22 +15240,8 @@
       ]
     },
     {
-      "id": "2821acdf41c2bd02",
-      "source": "BP-3P-0007 3-in-3-out rotary joint: G1/8 threaded, 4mm orifice, max 1 MPa, 200 RPM, AL6061 body, PTFE composite seal, deep groove ball bearing. For compact triple-channel pneumatic fixtures, small indexing tables, miniature packaging heads, and robot EOAT. Air, water, coolant compatible. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-3P-0007.html"
-      ]
-    },
-    {
       "id": "78c2428e2ed8de41",
       "source": "BP-3P-0007 Fit",
-      "pages": [
-        "BP-3P-0007.html"
-      ]
-    },
-    {
-      "id": "9d49a2be6b62259c",
-      "source": "BP-3P-0007 is a precision triple-passage G1/8 threaded rotary joint with a 4mm orifice and deep groove ball bearing support. Intended for compact automation and robot EOAT applications where low idle torque and leakage control are important. Each unit is 100% pressure tested before shipment.",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -15590,8 +15254,8 @@
       ]
     },
     {
-      "id": "16061d38c5aa439b",
-      "source": "BP-3P-0007 uses G1/8 BSP parallel (BSPP) threads per ISO 228-1 with 0.907 mm pitch. BSP parallel threads seal on a gasket or O-ring at the port face, not on the thread itself. This means PTFE tape on the thread is for sealing only; the mechanical connection is made by the flat face compressing against the mating port. Download the 2D PDF drawing for exact thread dimensions, pitch, and tolerances. NPT and metric thread options are available as custom orders with 10-day lead time. The rotor side uses 3-M5 mounting holes and the stator side uses 3-?6 mm through-holes.",
+      "id": "cafe9468a65ea762",
+      "source": "BP-3P-0007 uses G1/8 BSP parallel (BSPP) threads per ISO 228-1 with 0.907 mm pitch. BSP parallel threads seal on a gasket or O-ring at the port face, not on the thread itself. This means PTFE tape on the thread is for sealing only; the mechanical connection is made by the flat face compressing against the mating port. Download the 2D PDF drawing for exact thread dimensions, pitch, and tolerances. NPT and metric thread options are available as custom orders with 10-day lead time. The rotor side uses 3-M5 mounting holes and the stator side uses 3-Ø6 mm through-holes.",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -15726,20 +15390,6 @@
       ]
     },
     {
-      "id": "78791667e4be9701",
-      "source": "BP-3P-S06-0001 pneumatic-electric rotary joint with flange mount. Max 1 MPa, 200 RPM, AL6061 Aluminum Alloy body, PTFE + Graphite / PEEK seal. 6 electrical circuits + 3 pneumatic passages. ISO9001 certified. Download 2D drawing PDF.",
-      "pages": [
-        "BP-3P-S06-0001.html"
-      ]
-    },
-    {
-      "id": "7732423d1d19197d",
-      "source": "BP-3P-S06-0001 pneumatic-electric rotary joint: 3-in-3-out + 6-circuit, flange mount, max 1 MPa, 200 RPM. AL6061 Aluminum Alloy body, PTFE + Graphite / PEEK seal. 6 electrical circuits (2A, 24V DC / 250V AC) + 3 pneumatic passages. For automation rotary tables, packaging machinery, CNC clamping, and pneumatic-electric turntables. ISO9001 certified. Download 2D PDF drawing.",
-      "pages": [
-        "BP-3P-S06-0001.html"
-      ]
-    },
-    {
       "id": "878411eda5e17be1",
       "source": "BP-3P-S06-0001 view 1",
       "pages": [
@@ -15843,20 +15493,6 @@
     {
       "id": "e9a68152e326d4d4",
       "source": "BP-4P-30-0001 4-in-4-out rotary joint with flange mount and Ø30mm hollow bore. Max 1 MPa, 200 rpm, AL6061 aluminum body, PTFE + Si3N4 ceramic seal.",
-      "pages": [
-        "BP-4P-30-0001.html"
-      ]
-    },
-    {
-      "id": "3ec844e0c7542df7",
-      "source": "BP-4P-30-0001 4-in-4-out rotary joint with flange mount and Ø30mm hollow bore. Max 1 MPa, 200 rpm, AL6061 aluminum body, PTFE + Si3N4 ceramic seal. ISO9001 certified. Download 2D drawing PDF.",
-      "pages": [
-        "BP-4P-30-0001.html"
-      ]
-    },
-    {
-      "id": "ec3c1148a5cd0d03",
-      "source": "BP-4P-30-0001 4-in-4-out rotary joint: flange mount, max 1 MPa, 200 rpm, AL6061 aluminum body, PTFE + Si3N4 ceramic seal. Ø30mm hollow bore for cable-through or shaft-through applications. Air, water, coolant, hydraulic oil compatible. For multi-station rotary tables, welding positioners, and packaging machinery. ISO9001 certified. Download 2D PDF drawing.",
       "pages": [
         "BP-4P-30-0001.html"
       ]
@@ -15988,20 +15624,6 @@
     {
       "id": "f118c96726b477d7",
       "source": "BP-8P-0001 8-in-8-out rotary joint with flange mount. Max 1 MPa, 200 RPM, AL6061 aluminum body, PTFE composite seal.",
-      "pages": [
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "52c0d1f8a4c43c4d",
-      "source": "BP-8P-0001 8-in-8-out rotary joint with flange mount. Max 1 MPa, 200 RPM, AL6061 aluminum body, PTFE composite seal. ISO9001 certified. Download 2D drawing PDF.",
-      "pages": [
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "32a7d27b9f083707",
-      "source": "BP-8P-0001 8-in-8-out rotary joint: flange mount, max 1 MPa, 200 RPM, AL6061 aluminum body, PTFE composite seal. 8 independent pneumatic passages for high-density automation. Air, water, water-soluble coolant, light hydraulic oil compatible. For multi-station indexing tables, packaging machinery, and complex pneumatic distribution. ISO9001 certified. Download 2D PDF drawing.",
       "pages": [
         "BP-8P-0001.html"
       ]
@@ -16525,13 +16147,6 @@
         "search.html",
         "terms.html",
         "thank-you.html"
-      ]
-    },
-    {
-      "id": "4e82814c739f74a6",
-      "source": "CE / RoHS",
-      "pages": [
-        "index.html"
       ]
     },
     {
@@ -18283,13 +17898,6 @@
       ]
     },
     {
-      "id": "b6c805047ba312cc",
-      "source": "Cumulative production exceeded 200,000 units. Active customers in 40+ countries. Free 3D file program launched.",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "0c83641dadbb9ceb",
       "source": "Current drawing or STEP file",
       "pages": [
@@ -18522,13 +18130,6 @@
       "source": "Custom rotary joint engineering review for corrosive outdoor equipment",
       "pages": [
         "case-studies.html"
-      ]
-    },
-    {
-      "id": "815b44f9132e1053",
-      "source": "Custom rotary unions for industrial automation. Get a quote in 24 hours.",
-      "pages": [
-        "index.html"
       ]
     },
     {
@@ -19229,52 +18830,10 @@
       ]
     },
     {
-      "id": "22d52293d315bf20",
-      "source": "Dual-inlet, triple-outlet G1/8 threaded rotary joint with 4mm orifice for pneumatic and light fluid applications. PTFE composite seal, AL6061 body. Ø64 × 61.2 mm, 220 g. Two independent inlets feed three outlets — ideal for CNC 4th/5th axis pneumatic lines, robotic welding turntables, and compact automated assembly stations. Ships in 7 days.",
-      "pages": [
-        "BP-2P-0002.html"
-      ]
-    },
-    {
-      "id": "b57d0b95905c381f",
-      "source": "Dual-passage flange-mount rotary joint with 16mm central bore. PTFE composite seal, AL6061 aluminum body. Ideal for pneumatic and light fluid applications on CNC indexing tables, welding positioners, and packaging rotary tables. Ships in 7 days.",
-      "pages": [
-        "BP-2P-16-0001.html"
-      ]
-    },
-    {
-      "id": "b0c36437d93e1857",
-      "source": "Dual-passage flange-mount rotary joint with dust-proof IP65 structure for demanding industrial environments. PTFE composite seal, AL6061 aluminum body. Max 100 RPM, 4.26 kg. Designed for steel mills, foundries, and dusty packaging lines where abrasive particles destroy standard seals. Ships in 7 days.",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "930fda59750f5411",
-      "source": "Dual-passage flange-mounted rotary joint for pneumatic and fluid transfer applications. Aluminum Alloy 6061 body with PTFE composite seal. Two independent passages for clamp + release, gripper + vacuum, or air + signal on rotary tables and welding positioners. Ships in 7 days.",
-      "pages": [
-        "BP-2P-0001.html"
-      ]
-    },
-    {
-      "id": "000c2b99b808079b",
-      "source": "Dual-passage flange-mounted rotary joint with Ø30mm central bore for pneumatic and fluid transfer applications. AL6061 body with PTFE composite seal. Max 150 RPM, Ø76 mm outer diameter, approx. 0.39 kg. Deep groove ball bearing supports radial loads up to 5 N·m. Ships in 7 days.",
-      "pages": [
-        "BP-2P-30-0001.html"
-      ]
-    },
-    {
       "id": "7347014e675d0aec",
       "source": "Dual-Passage Heavy Spray Systems",
       "pages": [
         "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "c81ce8888be29729",
-      "source": "Dual-passage M5 threaded rotary joint for pneumatic and light fluid applications. Compact design, PTFE composite seal, AL6061 body. Two independent passages for micro electronic turntables, miniature dispensing heads, and small dual-channel automation. Ships in 7 days.",
-      "pages": [
-        "BP-2P-08-0001.html"
       ]
     },
     {
@@ -19706,13 +19265,6 @@
     {
       "id": "d3ea8954b7254da6",
       "source": "Engineer's guide to rotary joint selection: channel count, pressure, RPM, media compatibility, and mounting type.",
-      "pages": [
-        "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
-      "id": "749c894bf8aa9808",
-      "source": "Engineer's guide to rotary joint selection: channel count, pressure, RPM, media compatibility, and mounting type. Based on 200,000+ units of Begapunk field experience.",
       "pages": [
         "blog-rotary-joint-selection.html"
       ]
@@ -20708,13 +20260,6 @@
       ]
     },
     {
-      "id": "55334480ca9e44a9",
-      "source": "Formalized quality management system. Introduced 100% pressure testing protocol. First export order to Germany.",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "d47a345b46b19b0f",
       "source": "Founded in Ningbo",
       "pages": [
@@ -21113,8 +20658,8 @@
       ]
     },
     {
-      "id": "a137ab8c5a7c0d85",
-      "source": "G1/4 thread, 6mm orifice, ?64 × 78 mm for higher flow",
+      "id": "23e02e8f8fdf9df1",
+      "source": "G1/4 thread, 6mm orifice, Ø64 × 78 mm for higher flow",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -21150,8 +20695,8 @@
       ]
     },
     {
-      "id": "54a5b3b1070819a5",
-      "source": "G1/8 thread, 4mm orifice, ?78.9 × 63.9 mm for miniature fixtures",
+      "id": "669e2f0de7fc9f82",
+      "source": "G1/8 thread, 4mm orifice, Ø78.9 × 63.9 mm for miniature fixtures",
       "pages": [
         "BP-3P-0006.html"
       ]
@@ -21374,15 +20919,15 @@
       ]
     },
     {
-      "id": "cdd8fc15f4c8bc8c",
-      "source": "Gripper, vacuum, and air-blow on robot rotary wrists. 0.39 kg mass and ?78.9 mm envelope fit most 5–10 kg payload robots. <a href=\"application-robot-end-of-arm-tooling.html\">Read application guide →</a>",
+      "id": "c86052ef49802fd9",
+      "source": "Gripper, vacuum, and air-blow on robot rotary wrists. 0.39 kg mass and Ø78.9 mm envelope fit most 5–10 kg payload robots. <a href=\"application-robot-end-of-arm-tooling.html\">Read application guide →</a>",
       "pages": [
         "BP-3P-0007.html"
       ]
     },
     {
-      "id": "f2e96f67a790eacc",
-      "source": "Gripper, vacuum, and part-present air on assembly automation. Compact ?64 mm body fits between fixture plates.",
+      "id": "b288fb15e3d3c2e7",
+      "source": "Gripper, vacuum, and part-present air on assembly automation. Compact Ø64 mm body fits between fixture plates.",
       "pages": [
         "BP-3P-0006.html"
       ]
@@ -21497,13 +21042,6 @@
       "source": "Heavy-duty 2-in-2-out, 5 MPa, 80 RPM. Base for custom offshore designs.",
       "pages": [
         "case-studies.html"
-      ]
-    },
-    {
-      "id": "eebf094dfa6eaf2c",
-      "source": "Heavy-duty 2-passage rotary joint for high-pressure pneumatic and fluid applications. PTFE composite seal, Aluminum Alloy 6061 body. Max 5 MPa, ?230 mm outer diameter. Ships in 7 days.",
-      "pages": [
-        "BP-2P-130-0001.html"
       ]
     },
     {
@@ -21943,13 +21481,6 @@
       ]
     },
     {
-      "id": "af126c5ddcea8d7a",
-      "source": "How to select a pneumatic rotary joint for automation rotary tables and indexing stations: multi-passage air transfer, slip ring integration, channel count planning, and seal selection for indexing vs. continuous rotation. Based on 200,000+ units of Begapunk field experience.",
-      "pages": [
-        "application-automation-rotary-tables.html"
-      ]
-    },
-    {
       "id": "d2086c178131a95f",
       "source": "How to select a pneumatic rotary joint for automation rotary tables and indexing stations.",
       "pages": [
@@ -21971,13 +21502,6 @@
       ]
     },
     {
-      "id": "7d9e98f94447a815",
-      "source": "How to select a pneumatic rotary joint for bottle filling and capping equipment: rotary filling heads, capping torque control, grippers, vacuum hold-down, and blow-off. FDA-compatible, 316 stainless steel, and washdown-rated options based on 200,000+ units of Begapunk field experience.",
-      "pages": [
-        "application-bottle-filling-capping.html"
-      ]
-    },
-    {
       "id": "655b1d256110f03a",
       "source": "How to select a pneumatic rotary joint for bottle filling and capping equipment.",
       "pages": [
@@ -21996,13 +21520,6 @@
       "source": "How to select a pneumatic rotary joint for bottle filling and capping machines. Rotary filling heads, capping torque control, grippers, and vacuum hold-down. FDA-compatible, 316SS, washdown-rated options.",
       "pages": [
         "application-bottle-filling-capping.html"
-      ]
-    },
-    {
-      "id": "70d95d03f312abeb",
-      "source": "How to select a pneumatic rotary joint for laser tube cutting equipment: assist gas transfer, pneumatic clamping, blow-off, and coolant support. Pressure, RPM, passage count, and material selection based on 200,000+ units of Begapunk field experience.",
-      "pages": [
-        "application-laser-tube-cutting.html"
       ]
     },
     {
@@ -22034,24 +21551,10 @@
       ]
     },
     {
-      "id": "75f455af03da8c06",
-      "source": "How to select a pneumatic rotary joint for packaging machinery: rotary sealing heads, indexing tables, vacuum stations, grippers, and filling mechanisms. Pressure, RPM, passage count, and food-grade compatibility based on 200,000+ units of Begapunk field experience.",
-      "pages": [
-        "application-packaging-machinery.html"
-      ]
-    },
-    {
       "id": "1358bb58c59d4f80",
       "source": "How to select a pneumatic rotary joint for packaging machinery. Rotary sealing heads, indexing tables, vacuum stations, and filling mechanisms. Pressure, RPM, passage count, and food-grade compatibility.",
       "pages": [
         "application-packaging-machinery.html"
-      ]
-    },
-    {
-      "id": "7d62123e5c37a52d",
-      "source": "How to select a pneumatic rotary joint for robot end-of-arm tooling, grippers, vacuum cups, and tool changers: weight limits, vacuum separation, rotation angle, compact mounting, and clean assembly requirements. Based on 200,000+ units of Begapunk field experience.",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -22115,13 +21618,6 @@
     {
       "id": "72800b6130093d81",
       "source": "How to select an air swivel for pneumatic tools. Thread matching, oil-fog compatibility, weight limits, and operator fatigue reduction.",
-      "pages": [
-        "application-pneumatic-tools-hose-anti-twist.html"
-      ]
-    },
-    {
-      "id": "b50e3d5f8d32ab7a",
-      "source": "How to select an air swivel rotary joint for pneumatic tools, tightening guns, grinders, and handheld air hoses: thread matching, oil-fog compatibility, weight limits, operator fatigue reduction, and seal selection for dry vs. lubricated air. Based on 200,000+ units of Begapunk field experience.",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
       ]
@@ -22863,63 +22359,6 @@
       "source": "ISO 17799 Class 2",
       "pages": [
         "blog-rotary-union-seal-types.html"
-      ]
-    },
-    {
-      "id": "8b22270e0cd51bfa",
-      "source": "ISO 9001 Certification",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
-      "id": "0e761fccd14b7d8d",
-      "source": "ISO 9001:2015",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "c19b25f9cbacd004",
-      "source": "ISO 9001:2015 | 200K+ Units Delivered | 40+ Countries",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "10b0ce003e5f9d31",
-      "source": "ISO 9001:2015, CE, RoHS",
-      "pages": [
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "e28988f14969e810",
-      "source": "ISO9001 certified manufacturer of high-performance rotary joints. 200,000+ units delivered worldwide. Custom designs with 7-14 day delivery.",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "f433f94968323c6e",
-      "source": "ISO9001-certified rotary joint manufacturer in Ningbo, China. CNC machining, in-house seal testing, 200K+ units delivered.",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -23978,28 +23417,6 @@
       "source": "Material and seals",
       "pages": [
         "applications.html"
-      ]
-    },
-    {
-      "id": "3884edbf1a4eada2",
-      "source": "Material Certificate",
-      "pages": [
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html"
       ]
     },
     {
@@ -26588,24 +26005,10 @@
       ]
     },
     {
-      "id": "02fe992f7fc90fa2",
-      "source": "Our engineering team has received your request and will respond within <strong>24 hours</strong>. \n      While you wait, here are a few things you can do right now:",
-      "pages": [
-        "thank-you.html"
-      ]
-    },
-    {
       "id": "56193742ddca1203",
       "source": "Our engineering team is happy to help with your specific application.",
       "pages": [
         "faq.html"
-      ]
-    },
-    {
-      "id": "d6dc2cb2fb59cbdf",
-      "source": "Our factory covers 3,200 square meters with 28 CNC machines, 6 seal testing stations, and a dedicated R&amp;D lab. Every rotary joint undergoes 100% pressure testing at 1.5× rated pressure before shipment.",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -27327,20 +26730,6 @@
       ]
     },
     {
-      "id": "acbc8d7bfdb72381",
-      "source": "Pneumatic-electric models (S-series) integrate a slip ring inside the rotary joint body, adding 6 electrical circuits to the 3 pneumatic passages. This eliminates the need to mount a separate slip ring alongside the rotary joint, saving Ø20–30 mm of axial space and reducing wiring complexity. The pneumatic-only version (BP-3P-0004) is lighter (no slip ring) and lower cost, but requires a separate electrical rotary interface if sensors or solenoids rotate with the table. Both use AL6061 body with PTFE seal and share the same 1 MPa / 200 RPM ratings. All versions are ISO9001 certified. Choose S06 when you need both air and electrical signals through the same rotating center.",
-      "pages": [
-        "BP-3P-S06-0001.html"
-      ]
-    },
-    {
-      "id": "26f09d022d7bcf4f",
-      "source": "Pneumatic-electric rotary joint integrating 3 pneumatic passages and 6 electrical circuits in a compact flange-mounted body. Simultaneously transmits air/fluid and electrical signals (power + data). AL6061 body with PTFE + Graphite / PEEK seal. Ships in 7 days. Used on automation rotary tables, packaging machinery, CNC clamping fixtures, and pneumatic-electric turntables where combined air and signal transmission saves space and wiring complexity.",
-      "pages": [
-        "BP-3P-S06-0001.html"
-      ]
-    },
-    {
       "id": "b0c7fae6379ec45b",
       "source": "Pneumatic-electric rotary joint. 3 air passages + 6 electrical circuits in one body.",
       "pages": [
@@ -27464,76 +26853,6 @@
       "source": "Precision Pneumatic Rotary Fixtures",
       "pages": [
         "BP-1P-0006.html"
-      ]
-    },
-    {
-      "id": "1e18f317eb318f21",
-      "source": "Precision rotary joint manufacturer based in Ningbo, China. Serving industrial automation OEMs and machine builders worldwide since 2010.",
-      "pages": [
-        "404.html",
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html",
-        "about.html",
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-cnc-pneumatic-clamping.html",
-        "application-electronics-battery-test-fixtures.html",
-        "application-laser-tube-cutting.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "application-steel-dusty-environments.html",
-        "application-textile-printing-converting.html",
-        "application-vacuum-packaging-machines.html",
-        "application-welding-positioners.html",
-        "applications.html",
-        "blog-rotary-joint-installation-mistakes.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-rotary-joint-selection.html",
-        "blog-rotary-union-seal-types.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html",
-        "blog.html",
-        "case-studies.html",
-        "contact.html",
-        "faq.html",
-        "index.html",
-        "installation.html",
-        "privacy.html",
-        "product-comparison.html",
-        "products-p2.html",
-        "products.html",
-        "terms.html",
-        "thank-you.html"
-      ]
-    },
-    {
-      "id": "1d6da4f013be318c",
-      "source": "Precision rotary joint manufacturing since 2010. Made in Ningbo, delivered worldwide.",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
-      "id": "e78fc59ae11c5eaf",
-      "source": "Precision rotary joints and unions for industrial automation. ISO 9001:2015 certified.",
-      "pages": [
-        "search.html"
       ]
     },
     {
@@ -27932,13 +27251,6 @@
       ]
     },
     {
-      "id": "a4fc93bd16189a35",
-      "source": "Production Manager<br>ISO 9001 Lead Auditor",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "4edc8bfafc6bd936",
       "source": "Products",
       "pages": [
@@ -28172,13 +27484,6 @@
       ]
     },
     {
-      "id": "5bad8e520f6ad755",
-      "source": "Proper mounting, connection, and maintenance guidelines for Begapunk rotary joints and rotary unions. Follow these steps to ensure long, leak-free operation.",
-      "pages": [
-        "installation.html"
-      ]
-    },
-    {
       "id": "f13c8e9a4f8a27a2",
       "source": "Protect the seal from dust, vibration, and abrasive particles",
       "pages": [
@@ -28376,13 +27681,6 @@
       "source": "PTFE, O-ring, lip seal, and spring-energized: when to use each.",
       "pages": [
         "case-studies.html"
-      ]
-    },
-    {
-      "id": "1fe9c5f66294d5f1",
-      "source": "Quad-passage flange-mounted rotary joint with Ø30mm hollow bore for pneumatic and fluid transfer applications. AL6061 aluminum alloy body, PTFE + Si3N4 ceramic seal. Ships in 7 days. Used on multi-station rotary tables, cable-through systems, welding positioners, and packaging machinery where a central through-bore eliminates external cable drag chains and simplifies machine design.",
-      "pages": [
-        "BP-4P-30-0001.html"
       ]
     },
     {
@@ -30847,50 +30145,6 @@
       ]
     },
     {
-      "id": "39431ec9bad2436d",
-      "source": "Ships in 7 days",
-      "pages": [
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "9d16293705e948c4",
-      "source": "Ships in 7 Days from Ningbo",
-      "pages": [
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html"
-      ]
-    },
-    {
       "id": "8618fc2a1b329459",
       "source": "Shock, side load, contamination",
       "pages": [
@@ -31029,13 +30283,6 @@
       ]
     },
     {
-      "id": "7f67f5dca9829d26",
-      "source": "Single-inlet, six-outlet G1/8 threaded rotary joint with 4mm orifice for pneumatic and light fluid applications. PTFE composite seal, AL6061 body. Ø39 × 50 mm, 265 g. Distributes one air supply to six outlets — ideal for assembly stations, rotary tables, and small pneumatic manifolds. Ships in 7 days.",
-      "pages": [
-        "BP-1P-0006.html"
-      ]
-    },
-    {
       "id": "7d9ca1de0d6e4d53",
       "source": "Single-passage air swivel for handheld pneumatic tools, assembly stations, and hose anti-twist connections — weight under 0.15 kg, thread-matched to tool inlet.",
       "pages": [
@@ -31050,129 +30297,10 @@
       ]
     },
     {
-      "id": "fb77176b8198e532",
-      "source": "Single-passage threaded rotary joint for pneumatic and light fluid applications. Compact 0.27 kg 45# steel body. PTFE composite seal rated for 1 MPa and 500 RPM. Ships in 7 days from Ningbo. Used on handheld pneumatic tools, small rotary tables, and hose anti-twist connections where weight and simplicity matter.",
-      "pages": [
-        "BP-1P-0003.html"
-      ]
-    },
-    {
       "id": "15ca3077d7baa59c",
       "source": "Size Is Not Always Smaller",
       "pages": [
         "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
-      "id": "ec39cee99902f020",
-      "source": "SKU: BP-1P-0003 — ISO 9001:2015 — CE — RoHS",
-      "pages": [
-        "BP-1P-0003.html"
-      ]
-    },
-    {
-      "id": "1e8af53e10561000",
-      "source": "SKU: BP-1P-0006 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-1P-0006.html"
-      ]
-    },
-    {
-      "id": "3efe08fe5a10837a",
-      "source": "SKU: BP-2P-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-0001.html"
-      ]
-    },
-    {
-      "id": "f4fda6f6fd43e848",
-      "source": "SKU: BP-2P-0002 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-0002.html"
-      ]
-    },
-    {
-      "id": "92c7b918975a330c",
-      "source": "SKU: BP-2P-08-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-08-0001.html"
-      ]
-    },
-    {
-      "id": "ecfb01b79cc032c7",
-      "source": "SKU: BP-2P-130-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-130-0001.html"
-      ]
-    },
-    {
-      "id": "135700aa9c2aa9c0",
-      "source": "SKU: BP-2P-16-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-16-0001.html"
-      ]
-    },
-    {
-      "id": "cd2d9a52df886f54",
-      "source": "SKU: BP-2P-30-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-30-0001.html"
-      ]
-    },
-    {
-      "id": "06d1695e81467339",
-      "source": "SKU: BP-2P-50-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "9928153f98e714ec",
-      "source": "SKU: BP-2P-95-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-2P-95-0001.html"
-      ]
-    },
-    {
-      "id": "ff4c8e9893f06d0c",
-      "source": "SKU: BP-3P-0004 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-3P-0004.html"
-      ]
-    },
-    {
-      "id": "859bba2a5e598d7c",
-      "source": "SKU: BP-3P-0006 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-3P-0006.html"
-      ]
-    },
-    {
-      "id": "87be5d557df02970",
-      "source": "SKU: BP-3P-0007 · ISO 9001:2015 · CE · RoHS ·",
-      "pages": [
-        "BP-3P-0007.html"
-      ]
-    },
-    {
-      "id": "aa28622249787e49",
-      "source": "SKU: BP-3P-S06-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-3P-S06-0001.html"
-      ]
-    },
-    {
-      "id": "a68fff2ec6b55166",
-      "source": "SKU: BP-4P-30-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-4P-30-0001.html"
-      ]
-    },
-    {
-      "id": "221e70e7ee3f1e37",
-      "source": "SKU: BP-8P-0001 · ISO 9001:2015 · CE · RoHS",
-      "pages": [
-        "BP-8P-0001.html"
       ]
     },
     {
@@ -31246,8 +30374,8 @@
       ]
     },
     {
-      "id": "0a7e3709c524d081",
-      "source": "Small gripper, vacuum, and air-blow on compact rotary fixtures. G1/8 thread matches miniature pneumatic fittings. ?78.9 mm body fits between fixture plates. <a href=\"application-cnc-pneumatic-clamping.html\">Read application guide →</a>",
+      "id": "600e3eb6954c7ec6",
+      "source": "Small gripper, vacuum, and air-blow on compact rotary fixtures. G1/8 thread matches miniature pneumatic fittings. Ø78.9 mm body fits between fixture plates. <a href=\"application-cnc-pneumatic-clamping.html\">Read application guide →</a>",
       "pages": [
         "BP-3P-0007.html"
       ]
@@ -31640,13 +30768,6 @@
       "source": "Standard Begapunk model — tell us the model number",
       "pages": [
         "contact.html"
-      ]
-    },
-    {
-      "id": "c02db598369d45b0",
-      "source": "Standard delivery: Air freight, 7–14 days to most countries.",
-      "pages": [
-        "terms.html"
       ]
     },
     {
@@ -32289,13 +31410,6 @@
       ]
     },
     {
-      "id": "10cd098c869ff112",
-      "source": "Thank you for your inquiry. We'll reply within 24 hours.",
-      "pages": [
-        "thank-you.html"
-      ]
-    },
-    {
       "id": "9d3f93584b2d8fc5",
       "source": "Thank You! | Begapunk Rotary Joint Inquiry Submitted",
       "pages": [
@@ -32527,13 +31641,6 @@
       ]
     },
     {
-      "id": "b94d4754565f1578",
-      "source": "The formal engineering drawing specifies Aluminum Alloy 6061 as the body material for BP-2P-130-0001. For alternative materials, contact our engineering team for a separately verified configuration. All versions are manufactured under ISO 9001:2015 quality management and carry CE and RoHS certifications. Material certificates with full traceability are available upon request.",
-      "pages": [
-        "BP-2P-130-0001.html"
-      ]
-    },
-    {
       "id": "58d1a0f66e929064",
       "source": "The formal engineering drawing specifies an Aluminum Alloy 6061 body, maximum pressure of 1 MPa / 10 bar, maximum speed of 200 RPM, and operating temperature of -20°C to +80°C. For alternative materials or configurations, contact Begapunk engineering for separately verified documentation.",
       "pages": [
@@ -32755,84 +31862,6 @@
       "source": "The standard BP-1P-0003 uses a 0.27 kg 45# steel body for rigidity and thread strength in handheld tools and stationary machine installations. The formal drawing identifies 45# Steel as the body material. Contact Begapunk engineering if your application requires a different material.",
       "pages": [
         "BP-1P-0003.html"
-      ]
-    },
-    {
-      "id": "8e9353dfa3f436f1",
-      "source": "The standard BP-3P-0004 uses a full AL6061 aluminum body for light weight and good corrosion resistance. The approximate weight is 0.49 kg. For full steel construction (heavier but higher rigidity) or special surface treatments, contact our engineering team. All versions are manufactured under ISO 9001:2015 quality management and carry CE and RoHS certifications. Material certificates with full traceability are available upon request with every order.",
-      "pages": [
-        "BP-3P-0004.html"
-      ]
-    },
-    {
-      "id": "73d4ad149b4299a7",
-      "source": "The standard BP-3P-0006 uses a full AL6061 aluminum body for light weight and good corrosion resistance. The 0.36 kg mass and ?64 × 78 mm envelope make it one of the most compact 3-passage threaded joints available. For full steel construction (heavier but higher rigidity) or special surface treatments, contact our engineering team. All versions are manufactured under ISO 9001:2015 quality management and carry CE and RoHS certifications. Material certificates with full traceability are available upon request with every order.",
-      "pages": [
-        "BP-3P-0006.html"
-      ]
-    },
-    {
-      "id": "2d1e72228671837a",
-      "source": "The standard BP-3P-0007 uses a full AL6061 aluminum body with deep groove ball bearing support for low idle torque and smooth rotation. Pressure and leakage checks are specified by model. Confirm the applicable test pressure, duration, and acceptance criteria with Begapunk before ordering. For full steel construction or special bearing specifications, contact our engineering team. All versions are manufactured under ISO 9001:2015 quality management and carry CE and RoHS certifications. Material certificates with full traceability are available upon request with every order.",
-      "pages": [
-        "BP-3P-0007.html"
-      ]
-    },
-    {
-      "id": "92ce596e12b8e5b6",
-      "source": "The standard version uses AL6061 Aluminum Alloy body with PTFE composite seal and deep groove ball bearing. For full steel options or higher-temperature variants, contact our team. All versions are ISO9001 certified. The export version includes English-language documentation, CE marking, and RoHS compliance certificate. Both versions have identical pressure, speed, and temperature ratings. The deep groove ball bearing is standard on all versions.",
-      "pages": [
-        "BP-2P-30-0001.html"
-      ]
-    },
-    {
-      "id": "2938d30404cc6214",
-      "source": "The standard version uses AL6061 aluminum alloy body with PTFE composite seal for lightweight and corrosion-resistant operation. All versions are manufactured to the same ISO 9001:2015 quality system and undergo 100% pressure testing before shipment. The domestic and export designations refer only to packaging and documentation language — the product itself is identical. For full steel body options or custom materials, contact our engineering team.",
-      "pages": [
-        "BP-1P-0006.html",
-        "BP-2P-0002.html"
-      ]
-    },
-    {
-      "id": "92f66ca70a1db1fd",
-      "source": "The standard version uses AL6061 Aluminum Alloy construction combining lightweight AL6061 body with high-strength 45# steel shaft. For full steel options, contact our team. All versions are ISO9001 certified. The export version includes English-language documentation, CE marking, and RoHS compliance certificate. The domestic version is identical in mechanical performance but ships with Chinese-language documentation. Both versions use the same PTFE + Si3N4 ceramic seal and are 100% pressure tested before shipment.",
-      "pages": [
-        "BP-4P-30-0001.html"
-      ]
-    },
-    {
-      "id": "42283f9ac8b8af11",
-      "source": "The standard version uses AL6061 aluminum body for lightweight and corrosion resistance. For stainless steel body options, contact our team. All versions are ISO9001 certified. The export version includes English-language documentation, CE marking, and RoHS compliance certificate. The domestic version is identical in mechanical performance but ships with Chinese-language documentation. Seal material, sealing configuration, and pressure-test criteria should be confirmed for the selected version. Test pressure, duration, and acceptance limits may differ by configuration.",
-      "pages": [
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "7fadc54f3e5805d4",
-      "source": "The standard version uses AL6061 aluminum body with dust-proof IP65-rated seal structure and protective shroud. For stainless steel body options or higher-temperature variants, contact our team. All versions are ISO9001 certified. The export version includes English-language documentation, CE marking, and RoHS compliance certificate. Both versions have identical pressure, speed, and dust protection ratings. The 6-M5 flange pattern and 4.26 kg mass are standard across all versions.",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
-      "id": "b77678f9554e3709",
-      "source": "The standard version uses Aluminum Alloy 6061 construction as specified by the formal engineering drawing. All versions are manufactured to the same ISO 9001:2015 quality system and undergo pressure testing before shipment. The domestic and export designations refer only to packaging and documentation language — the product itself is identical. For custom materials, contact our engineering team.",
-      "pages": [
-        "BP-2P-0001.html"
-      ]
-    },
-    {
-      "id": "352b444b3da4e712",
-      "source": "The standard version uses full AL6061 construction for higher strength and durability in a lightweight package. All versions are manufactured to the same ISO 9001:2015 quality system and undergo 100% pressure testing before shipment. The domestic and export designations refer only to packaging and documentation language — the product itself is identical. For full steel body options or custom materials, contact our engineering team.",
-      "pages": [
-        "BP-2P-08-0001.html"
-      ]
-    },
-    {
-      "id": "30abb087558ac9d5",
-      "source": "The standard version uses full AL6061 construction for higher strength and durability. For aluminum body options, contact our team. All versions are ISO9001 certified. The export version includes English-language documentation, CE marking, and RoHS compliance certificate. Both versions use the same PTFE composite seal and have identical pressure, speed, and temperature ratings. Lead time is the same for both versions.",
-      "pages": [
-        "BP-2P-16-0001.html"
       ]
     },
     {
@@ -33372,27 +32401,6 @@
       ]
     },
     {
-      "id": "0e8e8a5aa872c198",
-      "source": "Triple-passage flange mount rotary joint for pneumatic and light fluid applications. Compact design, PTFE composite seal, AL6061 body. Ships in 7 days.",
-      "pages": [
-        "BP-3P-0004.html"
-      ]
-    },
-    {
-      "id": "e072878b7c1393c7",
-      "source": "Triple-passage G1/4 threaded rotary joint with 6mm orifice for pneumatic and light fluid applications. PTFE composite seal, AL6061 body. ?64 × 78 mm, 360 g. Ships in 7 days.",
-      "pages": [
-        "BP-3P-0006.html"
-      ]
-    },
-    {
-      "id": "982e1505e80d1ed6",
-      "source": "Triple-passage G1/8 threaded rotary joint with 4mm orifice for pneumatic and light fluid applications. PTFE composite seal, AL6061 body. ?78.9 × 63.9 mm, 390 g. Ships in 7 days.",
-      "pages": [
-        "BP-3P-0007.html"
-      ]
-    },
-    {
       "id": "ff13619025f7a729",
       "source": "Triple-Passage Rotary Filling Stations",
       "pages": [
@@ -33714,8 +32722,8 @@
       ]
     },
     {
-      "id": "b3ba8f11535013eb",
-      "source": "Upgrade when your application exceeds the 1 MPa pressure limit, 200 RPM speed limit, or needs a different mounting style. Common triggers: (1) Your pressure requirement rises above 1.0 MPa — BP-2P-130-0001 handles 5 MPa with flange mount. (2) You need flange mount for better vibration resistance — BP-3P-0004 provides the same 3 passages with flange mounting. (3) You need a smaller G1/8 thread for miniature fixtures — BP-3P-0007 offers 4mm orifice in a ?78.9 × 63.9 mm body. (4) You need 4 or more channels — BP-8P-0001 provides 8 passages. The upgrade cost is typically $15–$90 more, but it prevents seal failure from over-pressure or mounting fatigue.",
+      "id": "c32dc103bd92d615",
+      "source": "Upgrade when your application exceeds the 1 MPa pressure limit, 200 RPM speed limit, or needs a different mounting style. Common triggers: (1) Your pressure requirement rises above 1.0 MPa — BP-2P-130-0001 handles 5 MPa with flange mount. (2) You need flange mount for better vibration resistance — BP-3P-0004 provides the same 3 passages with flange mounting. (3) You need a smaller G1/8 thread for miniature fixtures — BP-3P-0007 offers 4mm orifice in a Ø78.9 × 63.9 mm body. (4) You need 4 or more channels — BP-8P-0001 provides 8 passages. The upgrade cost is typically $15–$90 more, but it prevents seal failure from over-pressure or mounting fatigue.",
       "pages": [
         "BP-3P-0006.html"
       ]
@@ -33802,13 +32810,6 @@
       "source": "Upload Drawing or Photo",
       "pages": [
         "contact.html"
-      ]
-    },
-    {
-      "id": "cec9ef395e162557",
-      "source": "Upload your drawing or old rotary joint photo through the RFQ form. Begapunk engineers will check the interface within 24 hours.",
-      "pages": [
-        "product-comparison.html"
       ]
     },
     {
@@ -34752,13 +33753,6 @@
       "source": "Web blow-off, vacuum web holding, roller cooling, tension control air, edge trim vacuum.",
       "pages": [
         "applications.html"
-      ]
-    },
-    {
-      "id": "ddc7dd003667ccb2",
-      "source": "Website launched with full English technical documentation. DDP shipping to EU and North America. New 1,200m2 assembly hall added.",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -35893,13 +34887,6 @@
       ]
     },
     {
-      "id": "44024b5015c708ec",
-      "source": "Yes. Every single rotary joint undergoes <strong>100% pressure testing at 1.5× rated pressure</strong> before leaving our Ningbo factory. Our quality management system is ISO 9001:2015 certified. Test records are available upon request.",
-      "pages": [
-        "faq.html"
-      ]
-    },
-    {
       "id": "cdff9c67cca2de6f",
       "source": "Yes. For CNC fixtures, drawings are strongly recommended because mounting dimensions and port location usually decide the final model.",
       "pages": [
@@ -36010,13 +34997,6 @@
         "BP-3P-S06-0001.html",
         "BP-4P-30-0001.html",
         "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "66975743431ee6ed",
-      "source": "Your rotary joint inquiry has been submitted successfully. Our engineering team will respond within 24 hours. Download catalog or chat with us on WhatsApp.",
-      "pages": [
-        "thank-you.html"
       ]
     },
     {

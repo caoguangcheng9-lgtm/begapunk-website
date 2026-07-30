@@ -246,7 +246,6 @@ function normalizeJapaneseOutput(html) {
     ['デッサン', '図面'],
     ['インストール', '取付'],
     ['プロシージャ', '手順'],
-    ['セリウム', 'CE'],
     ['物質的な', '材質上の'],
     ['物質的', '材質'],
     ['マウントタイプ', '取付方式'],
@@ -369,7 +368,6 @@ function normalizeJapaneseOutput(html) {
     .replace(/\s+対\.\s+/g, 'と')
     .replace(/(BP-[A-Z0-9-]+)の特長/g, '$1')
     .replace(/sales@begapunk\.comの特長/g, 'sales@begapunk.com')
-    .replace(/ISO 9001:2015の特長/g, 'ISO 9001:2015認証')
     .replace(/(機種比較|カスタム RFQ|空気圧工具|用途|製品情報)の特長/g, '$1');
   return localizeJapaneseStructuredData(normalized);
 }
@@ -1089,7 +1087,7 @@ function localizeStructuredValue(rawValue, languageCode) {
       ['2A max', 'max. 2 A'], ['<=500 MOhm', '≤500 MΩ'], ['at 500V DC', 'bei 500 V DC'],
       ['Anodized (Aluminum)', 'Eloxiert (Aluminium)'], ['Diameter', 'Durchmesser'],
       ['hours (rated conditions)', 'Stunden (unter Nennbedingungen)'], ['rated conditions', 'Nennbedingungen'],
-      ['Zero leakage (100% pressure tested)', 'Keine Leckage (100 % druckgeprüft)'], ['Zero (100% pressure tested)', 'Keine (100 % druckgeprüft)'],
+      ['Confirmed by model-specific inspection plan', 'Nach modellbezogenem Prüfplan zu bestätigen'],
       ['Approx.', 'ca.'], ['Months', 'Monate'], ['months', 'Monate'], ['Heavy duty', 'Schwerlastausführung'], ['distribution', 'Verteilung'],
     ],
     ja: [
@@ -1126,7 +1124,7 @@ function localizeStructuredValue(rawValue, languageCode) {
       ['2A max', '最大2 A'], ['<=500 MOhm', '500 MΩ以下'], ['at 500V DC', 'DC 500 V印加時'],
       ['Anodized (Aluminum)', 'アルマイト処理（アルミニウム）'], ['Diameter', '外径'],
       ['hours (rated conditions)', '時間（定格条件）'], ['rated conditions', '定格条件'],
-      ['Zero leakage (100% pressure tested)', '漏れなし（全数耐圧検査済み）'], ['Zero (100% pressure tested)', '漏れなし（全数耐圧検査済み）'],
+      ['Confirmed by model-specific inspection plan', '型式ごとの検査計画で確認'],
       ['Approx.', '約'], ['Months', 'か月'], ['months', 'か月'], ['Heavy duty', '高荷重仕様'], ['distribution', '分配'],
     ],
     ru: [
@@ -1163,7 +1161,7 @@ function localizeStructuredValue(rawValue, languageCode) {
       ['2A max', 'макс. 2 А'], ['<=500 MOhm', '≤500 МОм'], ['at 500V DC', 'при 500 В пост. тока'],
       ['Anodized (Aluminum)', 'Анодирование (алюминий)'], ['Diameter', 'Диаметр'],
       ['hours (rated conditions)', 'часов (при номинальных условиях)'], ['rated conditions', 'номинальные условия'],
-      ['Zero leakage (100% pressure tested)', 'Утечка отсутствует (100 % изделий испытаны давлением)'], ['Zero (100% pressure tested)', 'Отсутствует (100 % изделий испытаны давлением)'],
+      ['Confirmed by model-specific inspection plan', 'Подтверждается планом контроля для модели'],
       ['Approx.', 'Около'], ['Months', 'месяцев'], ['months', 'месяцев'], ['Heavy duty', 'Для тяжёлых условий'], ['distribution', 'распределение'],
     ],
   };
