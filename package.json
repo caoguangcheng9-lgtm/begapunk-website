@@ -17,6 +17,8 @@
     "images:verify": "node scripts/verify-optimized-images.mjs",
     "social:generate": "node scripts/generate-social-images.mjs",
     "social:verify": "node scripts/verify-social-images.mjs",
+    "pdf:metadata:check": "python scripts/update-pdf-metadata.py",
+    "pdf:metadata:write": "python scripts/update-pdf-metadata.py --write",
     "deploy:build": "node scripts/build-production-release.mjs",
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production",
     "deploy:prepare": "npm run i18n:refresh-metadata && npm run i18n:verify && npm run deploy:build && npm run deploy:validate"

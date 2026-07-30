@@ -48,6 +48,23 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain=v1 --untracked-files=all)"
 
+      - name: Prepare IndexNow verification and changed URLs
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$INDEXNOW_KEY" =~ ^[A-Za-z0-9_-]{8,128}$ ]]
+          key_file="${INDEXNOW_KEY}.txt"
+          printf '%s' "$INDEXNOW_KEY" > "dist/production/$key_file"
+          (cd dist/production && sha256sum "$key_file" >> manifest.sha256)
+          git fetch --force --tags origin
+          previous_tag="$(git describe --tags --match 'deploy-*' --abbrev=0 HEAD^ 2>/dev/null || true)"
+          if [[ -n "$previous_tag" ]]; then
+            node scripts/prepare-indexnow-urls.mjs "$previous_tag" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          else
+            node scripts/prepare-indexnow-urls.mjs --all "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          fi
+
       - name: Configure SSH
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
@@ -74,13 +91,23 @@ jobs:
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
           ssh -p "$port" "$target" "mkdir -p /www/begapunk/releases/$release_id /www/begapunk/bin"
           rsync -az --delete -e "ssh -p $port" dist/production/ "$target:/www/begapunk/releases/$release_id/"
-          rsync -az -e "ssh -p $port" ops/activate-release.sh "$target:/www/begapunk/bin/activate-release.sh"
-          ssh -p "$port" "$target" "chmod 750 /www/begapunk/bin/activate-release.sh && /www/begapunk/bin/activate-release.sh '$release_id'"
+          rsync -az -e "ssh -p $port" \
+            ops/activate-release.sh \
+            ops/install-nginx-managed-redirects.sh \
+            ops/nginx-managed-redirects.conf \
+            "$target:/www/begapunk/bin/"
+          ssh -p "$port" "$target" \
+            "chmod 750 /www/begapunk/bin/activate-release.sh /www/begapunk/bin/install-nginx-managed-redirects.sh && sudo /www/begapunk/bin/install-nginx-managed-redirects.sh /www/begapunk/bin/nginx-managed-redirects.conf && /www/begapunk/bin/activate-release.sh '$release_id'"
           echo "release_id=$release_id" >> "$GITHUB_ENV"
 
       - name: Verify public homepage
         run: |
           curl --fail --silent --show-error --max-time 30 https://www.begapunk.com/ | grep -Eiq '<html|<!doctype html|BEGAPUNK'
+
+      - name: Notify IndexNow of changed URLs
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: node scripts/submit-indexnow.mjs "$RUNNER_TEMP/indexnow-urls.txt"
 
       - name: Deployment summary
         run: |
@@ -88,3 +115,4 @@ jobs:
           echo "- Release: \`$release_id\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Health check: passed" >> "$GITHUB_STEP_SUMMARY"
+          echo "- IndexNow: changed URLs accepted" >> "$GITHUB_STEP_SUMMARY"

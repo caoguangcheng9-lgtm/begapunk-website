@@ -1,7 +1,11 @@
 *.sh text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+ops/*.conf text eol=lf
 *.ps1 text eol=crlf
+*.pdf binary
 de/** text=auto eol=lf
 ja/** text=auto eol=lf
 ru/** text=auto eol=lf

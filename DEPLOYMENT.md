@@ -38,12 +38,27 @@ Create a GitHub Environment named `production`, then add these Environment secre
 | `DEPLOY_USER` | Restricted deployment account, currently planned as `codexdeploy`. |
 | `DEPLOY_SSH_KEY` | Dedicated private deployment key. Never commit it. |
 | `DEPLOY_KNOWN_HOSTS` | Verified SSH host-key line for the production server. |
+| `INDEXNOW_KEY` | Random 8-128 character IndexNow ownership key. The workflow creates the required public key file inside each immutable release; never commit the key itself. |
 
 Do not reuse a personal SSH key. Generate a dedicated Ed25519 key without placing its private half on the server:
 
 ```powershell
 ssh-keygen -t ed25519 -f "$env:USERPROFILE\.ssh\begapunk_github_actions" -C "begapunk-github-actions"
 ```
+
+Create the IndexNow secret without printing it to the terminal or writing it to the repository:
+
+```powershell
+$bytes = New-Object byte[] 16
+$rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+$rng.GetBytes($bytes)
+$rng.Dispose()
+$indexNowKey = -join ($bytes | ForEach-Object { $_.ToString('x2') })
+$indexNowKey | & 'C:\Program Files\GitHub CLI\gh.exe' secret set INDEXNOW_KEY --repo caoguangcheng9-lgtm/begapunk-website
+Remove-Variable indexNowKey
+```
+
+The deployment workflow hosts `${INDEXNOW_KEY}.txt` in the release root and sends only URLs changed since the preceding `deploy-*` tag. IndexNow acknowledges discovery requests but does not guarantee crawling, indexing, or ranking.
 
 Append only the `.pub` content to `/home/codexdeploy/.ssh/authorized_keys`. Copy the private-key content into `DEPLOY_SSH_KEY`, then delete or securely archive the local private copy after GitHub has been configured.
 
