@@ -38,7 +38,7 @@ The deployment account did not have non-interactive `sudo` permission during the
 
 - The ownership key is stored only as the GitHub Secret `INDEXNOW_KEY`.
 - The workflow creates `${INDEXNOW_KEY}.txt` inside the immutable release and adds its checksum to `manifest.sha256`.
-- URL notifications are derived from changes since the previous `deploy-*` tag.
+- URL notifications are derived from changes since the server's currently active immutable release, not merely the preceding tag.
 - Only production HTML/PDF URLs and verified redirect source/target URLs are eligible.
 - The submission script refuses non-HTTPS or non-`www.begapunk.com` URLs, deduplicates the list, enforces the 10,000 URL protocol limit, and accepts only HTTP 200/202 responses.
 - IndexNow is a discovery notification and is not treated as a ranking or indexing guarantee.
@@ -68,4 +68,6 @@ The deployment account did not have non-interactive `sudo` permission during the
 ## Deployment result
 
 - First workflow run `30507287402` stopped before release activation because the deployment account could not run the Nginx installer with non-interactive `sudo`. Existing production remained active.
-- Follow-up deployment and live verification: pending.
+- Follow-up workflow run `30507600865` deployed successfully with the canonical/meta-refresh fallback. Homepage and legacy URL checks passed.
+- That run exposed a second workflow defect: it compared against the failed deployment tag and therefore sent only one IndexNow URL (HTTP 202). The workflow now resolves the active server release commit and includes a one-time 24-URL catch-up list.
+- Final catch-up deployment and live verification: pending.

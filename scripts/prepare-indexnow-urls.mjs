@@ -70,6 +70,16 @@ if (baseRef === '--all') {
     urls.add(`${siteOrigin}/3-in-3-out-Pneumatic-rotary-joint-P6776400.html`);
     urls.add(`${siteOrigin}/BP-3P-0004.html`);
   }
+  if (diff.includes('ops/indexnow-extra-urls.txt')) {
+    const extra = await readFile(path.join(repoRoot, 'ops', 'indexnow-extra-urls.txt'), 'utf8');
+    for (const value of extra.split(/\r?\n/).map((item) => item.trim()).filter(Boolean)) {
+      const url = new URL(value);
+      if (url.protocol !== 'https:' || url.hostname !== 'www.begapunk.com') {
+        throw new Error(`Invalid extra IndexNow URL: ${value}`);
+      }
+      urls.add(url.href);
+    }
+  }
 }
 
 const sorted = [...urls].sort((left, right) => left.localeCompare(right, 'en'));

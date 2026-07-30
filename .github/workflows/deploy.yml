@@ -48,7 +48,7 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain=v1 --untracked-files=all)"
 
-      - name: Prepare IndexNow verification and changed URLs
+      - name: Prepare IndexNow verification file
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
@@ -57,13 +57,6 @@ jobs:
           key_file="${INDEXNOW_KEY}.txt"
           printf '%s' "$INDEXNOW_KEY" > "dist/production/$key_file"
           (cd dist/production && sha256sum "$key_file" >> manifest.sha256)
-          git fetch --force --tags origin
-          previous_tag="$(git describe --tags --match 'deploy-*' --abbrev=0 HEAD^ 2>/dev/null || true)"
-          if [[ -n "$previous_tag" ]]; then
-            node scripts/prepare-indexnow-urls.mjs "$previous_tag" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
-          else
-            node scripts/prepare-indexnow-urls.mjs --all "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
-          fi
 
       - name: Configure SSH
         env:
@@ -76,6 +69,23 @@ jobs:
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+
+      - name: Prepare IndexNow URLs from the active release
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          port="${DEPLOY_PORT:-22}"
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          active_release="$(ssh -p "$port" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
+          if [[ "$active_release" =~ -([0-9a-f]{12})$ ]] && git cat-file -e "${BASH_REMATCH[1]}^{commit}"; then
+            node scripts/prepare-indexnow-urls.mjs "${BASH_REMATCH[1]}" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          else
+            echo "Active release commit could not be resolved; preparing the canonical sitemap set."
+            node scripts/prepare-indexnow-urls.mjs --all "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          fi
 
       - name: Upload immutable release
         env:

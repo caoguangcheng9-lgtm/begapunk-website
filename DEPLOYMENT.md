@@ -58,7 +58,7 @@ $indexNowKey | & 'C:\Program Files\GitHub CLI\gh.exe' secret set INDEXNOW_KEY --
 Remove-Variable indexNowKey
 ```
 
-The deployment workflow hosts `${INDEXNOW_KEY}.txt` in the release root and sends only URLs changed since the preceding `deploy-*` tag. IndexNow acknowledges discovery requests but does not guarantee crawling, indexing, or ranking.
+The deployment workflow hosts `${INDEXNOW_KEY}.txt` in the release root and sends only URLs changed since the server's currently active immutable release. It deliberately reads the active `current` target instead of trusting the preceding `deploy-*` tag, because a failed workflow can leave a tag without activating that release. IndexNow acknowledges discovery requests but does not guarantee crawling, indexing, or ranking.
 
 Append only the `.pub` content to `/home/codexdeploy/.ssh/authorized_keys`. Copy the private-key content into `DEPLOY_SSH_KEY`, then delete or securely archive the local private copy after GitHub has been configured.
 
