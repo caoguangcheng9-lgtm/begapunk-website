@@ -32,6 +32,8 @@ The legacy page's three product images are byte-identical to the BP-3P-0004 prod
 
 The managed Nginx rule therefore redirects the old URL to `/BP-3P-0004.html` rather than to the homepage or generic product catalog.
 
+The deployment account did not have non-interactive `sudo` permission during the first deployment attempt. The release therefore also contains a canonical/meta-refresh compatibility page at the legacy path. The workflow uses this safe fallback when it cannot install the Nginx rule and automatically upgrades to a verified HTTP 301 when the server grants the installer permission.
+
 ## IndexNow design
 
 - The ownership key is stored only as the GitHub Secret `INDEXNOW_KEY`.
@@ -65,4 +67,5 @@ The managed Nginx rule therefore redirects the old URL to `/BP-3P-0004.html` rat
 
 ## Deployment result
 
-Pending commit, GitHub Actions deployment, and live verification.
+- First workflow run `30507287402` stopped before release activation because the deployment account could not run the Nginx installer with non-interactive `sudo`. Existing production remained active.
+- Follow-up deployment and live verification: pending.

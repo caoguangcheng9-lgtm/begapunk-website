@@ -97,12 +97,34 @@ jobs:
             ops/nginx-managed-redirects.conf \
             "$target:/www/begapunk/bin/"
           ssh -p "$port" "$target" \
-            "chmod 750 /www/begapunk/bin/activate-release.sh /www/begapunk/bin/install-nginx-managed-redirects.sh && sudo /www/begapunk/bin/install-nginx-managed-redirects.sh /www/begapunk/bin/nginx-managed-redirects.conf && /www/begapunk/bin/activate-release.sh '$release_id'"
+            "chmod 750 /www/begapunk/bin/activate-release.sh /www/begapunk/bin/install-nginx-managed-redirects.sh"
+          redirect_mode="static canonical fallback"
+          if ssh -p "$port" "$target" "sudo -n true"; then
+            ssh -p "$port" "$target" \
+              "sudo -n /www/begapunk/bin/install-nginx-managed-redirects.sh /www/begapunk/bin/nginx-managed-redirects.conf"
+            redirect_mode="verified HTTP 301"
+          else
+            echo "::warning::Deployment account has no non-interactive sudo permission; keeping the canonical/meta-refresh fallback for the legacy URL."
+          fi
+          ssh -p "$port" "$target" "/www/begapunk/bin/activate-release.sh '$release_id'"
           echo "release_id=$release_id" >> "$GITHUB_ENV"
+          echo "redirect_mode=$redirect_mode" >> "$GITHUB_ENV"
 
       - name: Verify public homepage
         run: |
           curl --fail --silent --show-error --max-time 30 https://www.begapunk.com/ | grep -Eiq '<html|<!doctype html|BEGAPUNK'
+
+      - name: Verify legacy product URL recovery
+        run: |
+          set -Eeuo pipefail
+          legacy_url="https://www.begapunk.com/3-in-3-out-Pneumatic-rotary-joint-P6776400.html"
+          result="$(curl --silent --show-error --output /dev/null --max-time 30 --write-out '%{http_code}|%{redirect_url}' "$legacy_url")"
+          if [[ "$result" == "301|https://www.begapunk.com/BP-3P-0004.html" ]]; then
+            exit 0
+          fi
+          [[ "$result" == "200|" ]]
+          curl --fail --silent --show-error --max-time 30 "$legacy_url" \
+            | grep -Fq '<link rel="canonical" href="https://www.begapunk.com/BP-3P-0004.html">'
 
       - name: Notify IndexNow of changed URLs
         env:
@@ -115,4 +137,5 @@ jobs:
           echo "- Release: \`$release_id\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Health check: passed" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Legacy URL recovery: $redirect_mode" >> "$GITHUB_STEP_SUMMARY"
           echo "- IndexNow: changed URLs accepted" >> "$GITHUB_STEP_SUMMARY"
