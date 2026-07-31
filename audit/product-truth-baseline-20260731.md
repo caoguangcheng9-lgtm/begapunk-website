@@ -64,7 +64,9 @@ Previous unresolved-conflict baseline: **56**
 
 Active conflicts after semantic correction: **31**
 
-Historical findings: **68**
+Historical findings: **3**
+
+Manual-review findings: **65**
 
 Stale references: **14**
 

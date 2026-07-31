@@ -52,7 +52,8 @@
   "summary": {
     "observation_count": 2210,
     "current_observations": 2124,
-    "historical_findings": 68,
+    "historical_findings": 3,
+    "manual_review_findings": 65,
     "stale_references": 14,
     "source_identity_mismatches": 4,
     "mismatched_document_count": 1,

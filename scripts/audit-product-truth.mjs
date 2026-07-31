@@ -1783,6 +1783,32 @@ function countMismatchedDocuments(findings) {
 function runRegressionChecks(conflictDocument) {
   const fixturePath = "tests/fixtures/product-truth-audit-regressions.json";
   const fixture = readJson(fixturePath);
+  if (
+    conflictDocument.historical_findings.some(
+      (finding) => finding.observation_status !== "historical-unverified",
+    )
+  ) {
+    throw new Error("Historical findings must contain only historical-unverified observations.");
+  }
+  if (
+    conflictDocument.manual_review_findings.some(
+      (finding) => finding.observation_status !== "manual-review-required",
+    )
+  ) {
+    throw new Error("Manual-review findings must contain only manual-review-required observations.");
+  }
+  const expectedSeparatedFindingCount = observations.filter((observation) =>
+    ["historical-unverified", "manual-review-required"].includes(
+      observation.observation_status,
+    ),
+  ).length;
+  if (
+    conflictDocument.historical_findings.length +
+      conflictDocument.manual_review_findings.length !==
+    expectedSeparatedFindingCount
+  ) {
+    throw new Error("Historical/manual-review finding separation lost one or more observations.");
+  }
   for (const regression of fixture.passage_parser) {
     const parsed = normalizeValue("passages", regression.raw_value);
     if (
@@ -1978,7 +2004,7 @@ function regressionCaseSection(conflictDocument) {
     const stale = conflictDocument.stale_references.filter(
       (finding) => finding.model === model && finding.field === field,
     );
-    const manual = conflictDocument.historical_findings.filter(
+    const manual = conflictDocument.manual_review_findings.filter(
       (finding) =>
         finding.model === model &&
         finding.field === field &&
@@ -2079,6 +2105,8 @@ function buildReport(inventoryDocument, conflictDocument) {
     `Active conflicts after semantic correction: **${conflictDocument.summary.active_conflicts}**`,
     "",
     `Historical findings: **${conflictDocument.summary.historical_findings}**`,
+    "",
+    `Manual-review findings: **${conflictDocument.summary.manual_review_findings}**`,
     "",
     `Stale references: **${conflictDocument.summary.stale_references}**`,
     "",
@@ -2193,10 +2221,8 @@ function main() {
 
   const activeConflicts = groupConflicts();
   const missingEvidence = findMissingEvidence();
-  const historicalFindings = categorizedFindings([
-    "historical-unverified",
-    "manual-review-required",
-  ]);
+  const historicalFindings = categorizedFindings(["historical-unverified"]);
+  const manualReviewFindings = categorizedFindings(["manual-review-required"]);
   const staleReferences = categorizedFindings(["stale-reference"]);
   const sourceIdentityMismatches = categorizedFindings(["source-identity-mismatch"]);
   const mismatchedDocumentCount = countMismatchedDocuments(sourceIdentityMismatches);
@@ -2223,6 +2249,7 @@ function main() {
         (observation) => observation.observation_status === "current-observed",
       ).length,
       historical_findings: historicalFindings.length,
+      manual_review_findings: manualReviewFindings.length,
       stale_references: staleReferences.length,
       source_identity_mismatches: sourceIdentityMismatches.length,
       mismatched_document_count: mismatchedDocumentCount,
@@ -2252,6 +2279,7 @@ function main() {
     summary: {
       active_conflicts: activeConflicts.length,
       historical_findings: historicalFindings.length,
+      manual_review_findings: manualReviewFindings.length,
       stale_references: staleReferences.length,
       source_identity_mismatches: sourceIdentityMismatches.length,
       mismatched_document_count: mismatchedDocumentCount,
@@ -2265,6 +2293,7 @@ function main() {
     active_conflicts: activeConflicts,
     conflicts: activeConflicts,
     historical_findings: historicalFindings,
+    manual_review_findings: manualReviewFindings,
     stale_references: staleReferences,
     source_identity_mismatches: sourceIdentityMismatches,
     coverage_differences: coverageDifferences.sort((a, b) =>
@@ -2281,7 +2310,7 @@ function main() {
   fs.writeFileSync(absolute(REPORT_PATH), buildReport(inventoryDocument, conflictDocument), "utf8");
 
   console.log(
-    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${coverageDifferences.length} coverage differences, ${historicalFindings.length} historical findings, ${staleReferences.length} stale references, ${mismatchedDocumentCount} mismatched documents affecting ${sourceIdentityMismatches.length} observations, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
+    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${coverageDifferences.length} coverage differences, ${historicalFindings.length} historical findings, ${manualReviewFindings.length} manual-review findings, ${staleReferences.length} stale references, ${mismatchedDocumentCount} mismatched documents affecting ${sourceIdentityMismatches.length} observations, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
   );
   console.log("Business conflicts were reported without selecting a winning value.");
 }

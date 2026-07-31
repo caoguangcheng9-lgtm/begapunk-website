@@ -19,7 +19,8 @@ This task does not select an engineering value and does not modify a public prod
 | Previous conflicts | 56 |
 | Active conflicts after correction | 31 |
 | Information coverage differences | 1 |
-| Historical findings | 68 |
+| Historical findings | 3 |
+| Manual-review findings | 65 |
 | Stale references | 14 |
 | Mismatched source documents | 1 |
 | Observations affected by identity mismatches | 4 |
@@ -41,6 +42,7 @@ No record was deleted to lower the conflict count. Historical records are retain
 - Parses every interface size in a multi-value port description in stable order. A strict subset of a non-exclusive multi-port statement is retained as `coverage-difference`, not promoted to a mutually exclusive active conflict.
 - Reclassified German, Japanese, and Russian G-thread terminology as `port_thread`; normalized explicit German and Russian flange terminology as `mounting_style = flange`; and retained mounting holes without a reliable stator/rotor assignment as `unassigned_mounting_pattern` with manual review.
 - Reports one mismatched source document separately from its four affected observations, while preserving every observation-level identity record.
+- Separates the 3 `historical-unverified` records from 65 current `manual-review-required` records. The two arrays retain all 68 observations without relabeling current manual-review items as history.
 - Added evidence domains so engineering, business-policy, controlled-product-master, legal-compliance, and order-specific facts request matching evidence.
 
 ## Required regression cases

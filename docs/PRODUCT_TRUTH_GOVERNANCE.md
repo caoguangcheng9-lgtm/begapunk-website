@@ -141,7 +141,9 @@ For every conflict:
 
 For multi-value interface-thread observations, normalize every listed interface in stable order (for example, `G1/4 and G1/8 ports` becomes `g1/4|g1/8`). When one current observation is a strict subset of another and neither source claims exclusivity, classify the result as `coverage-difference`; do not treat broader information coverage as a mutually exclusive active conflict.
 
-Historical values are preserved, not deleted. They are reported separately as historical findings, stale references, parser ambiguities, or manual-review items. A historical record never becomes current evidence by repetition; a separate current-source parse must establish the current observation.
+Historical values are preserved, not deleted. `historical_findings` contains only `historical-unverified` records, while stale historical references remain in `stale_references`. Current observations that require human interpretation belong in `manual_review_findings`, not in the historical count. Parser ambiguities, coverage differences, source-identity mismatches, and missing evidence remain separate report categories. A historical record never becomes current evidence by repetition; a separate current-source parse must establish the current observation.
+
+The report must preserve every categorized observation. Splitting `historical_findings` from `manual_review_findings` must not delete records or reduce their combined count.
 
 Field parsing must use field semantics. For example, `4 passages with Ø30 mm hollow bore` means four passages; the bore diameter must never be captured as the passage count. If the parser cannot distinguish the concepts, it records `parser-ambiguous` and excludes the observation from active conflict counting.
 
