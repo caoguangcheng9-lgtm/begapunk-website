@@ -1,6 +1,6 @@
 # Begapunk Product Truth Governance
 
-Version: 1.1
+Version: 1.2
 
 Baseline date: 2026-07-31
 
@@ -69,6 +69,7 @@ Observation status is separate from approval status:
 - `current-observed`: the value was re-read from a current source with field-aware parsing.
 - `historical-unverified`: a prior audit statement is retained as history and is corroborated by a separately parsed current source, but the historical record itself is not evidence.
 - `stale-reference`: a prior audit statement points to a path or location where the value is no longer present, or the referenced path no longer exists.
+- `source-identity-mismatch`: a binary or controlled artifact exists, but its internal model identity does not match the target model. The artifact remains inventoried but cannot classify field values for that target.
 - `parser-ambiguous`: the current text cannot be assigned to the field without guessing.
 - `manual-review-required`: the referenced current artifact exists but requires visual, engineering, or other manual review.
 
@@ -97,7 +98,9 @@ The baseline normalizes common labels into these canonical fields:
 - `body_material`
 - `seal_material`
 - `compatible_media`
-- `mounting_type`
+- `mounting_style`
+- `stator_mounting_pattern`
+- `rotor_mounting_pattern`
 - `weight`
 - `protection_rating`
 - `friction_torque`
@@ -138,6 +141,28 @@ For every conflict:
 Historical values are preserved, not deleted. They are reported separately as historical findings, stale references, parser ambiguities, or manual-review items. A historical record never becomes current evidence by repetition; a separate current-source parse must establish the current observation.
 
 Field parsing must use field semantics. For example, `4 passages with Ø30 mm hollow bore` means four passages; the bore diameter must never be captured as the passage count. If the parser cannot distinguish the concepts, it records `parser-ambiguous` and excludes the observation from active conflict counting.
+
+Mounting facts are structured by meaning:
+
+- `port_thread` records media-interface threads such as G1/8, G1/4, NPT, or BSP.
+- `mounting_style` records the general installation form, such as flange or threaded mount.
+- `stator_mounting_pattern` and `rotor_mounting_pattern` record their respective hole patterns.
+- Thread depth is a dimension of a threaded hole; it does not establish a `threaded` mounting style.
+- A general flange style and a detailed flange hole pattern are complementary, not mutually exclusive values.
+
+Before a visually reviewed binary artifact can classify a field, its internal model identity must match the target model. A mismatch produces `source-identity-mismatch`; no field conclusion may be derived from that artifact for the target model.
+
+## 8.1 Evidence domains
+
+Missing evidence must match the fact domain:
+
+- `engineering`: pressure, speed, temperature, weight, materials, seals, media compatibility, and mounting dimensions.
+- `business-policy`: warranty, refund, lead time, and payment terms.
+- `controlled-product-master`: model identity, SKU, and product name.
+- `legal-compliance`: certifications and regulatory claims.
+- `order-specific`: custom configurations and order-confirmed parameters.
+
+An engineering drawing is not a universal evidence requirement. For example, warranty requires an approved business policy, while model identity requires a controlled product master or a formally controlled drawing with a matching internal model.
 
 ## 9. Automatic versus manual verification
 

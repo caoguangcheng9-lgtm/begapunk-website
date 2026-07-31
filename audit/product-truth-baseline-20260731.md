@@ -52,127 +52,101 @@ Models observed: **18**
 
 `BP-1P-0003`, `BP-1P-0006`, `BP-200-0001`, `BP-2P-0001`, `BP-2P-0002`, `BP-2P-08-0001`, `BP-2P-130-0001`, `BP-2P-16-0001`, `BP-2P-30-0001`, `BP-2P-50-0001`, `BP-2P-95-0001`, `BP-2P-95-FAMILY`, `BP-3P-0004`, `BP-3P-0006`, `BP-3P-0007`, `BP-3P-S06-0001`, `BP-4P-30-0001`, `BP-8P-0001`
 
-Normalized fields observed: **18**
+Normalized fields observed: **20**
 
-`body_material`, `channel_configuration`, `compatible_media`, `friction_torque`, `maximum_pressure`, `maximum_speed`, `model`, `model_identity`, `mounting_type`, `operating_temperature`, `passages`, `port_thread`, `protection_rating`, `rated_pressure`, `seal_material`, `test_pressure`, `warranty`, `weight`
+`body_material`, `channel_configuration`, `compatible_media`, `friction_torque`, `maximum_pressure`, `maximum_speed`, `model`, `model_identity`, `mounting_style`, `operating_temperature`, `passages`, `port_thread`, `protection_rating`, `rated_pressure`, `rotor_mounting_pattern`, `seal_material`, `stator_mounting_pattern`, `test_pressure`, `warranty`, `weight`
 
-Normalized fact observations: **2138**
+Normalized fact observations: **2160**
 
 ## 4. Conflict baseline
 
 Previous unresolved-conflict baseline: **56**
 
-Active conflicts after semantic correction: **45**
+Active conflicts after semantic correction: **31**
 
-Historical findings: **17**
+Historical findings: **14**
 
-Stale references: **15**
+Stale references: **14**
 
-Parser ambiguities: **0**
+Source identity mismatches: **4**
+
+Parser ambiguities: **51**
 
 | Model | Field | Normalized values | Public HTML | JSON-LD | Search/AI |
 | --- | --- | --- | --- | --- | --- |
 | `BP-1P-0003` | `compatible_media` | `air\|coolant\|oil\|water`<br>`air\|oil\|water` | Yes | Yes | Yes |
 | `BP-1P-0003` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-1P-0006` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-1P-0006` | `mounting_type` | `4xm4`<br>`threaded` | Yes | Yes | Yes |
 | `BP-1P-0006` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-2P-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-0001` | `mounting_type` | `4xm5\|rotor`<br>`flange` | Yes | Yes | Yes |
 | `BP-2P-0001` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-2P-0002` | `channel_configuration` | `2-in-2-out`<br>`2-in-3-out` | Yes | No | Yes |
 | `BP-2P-0002` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-0002` | `mounting_type` | `m5, m6 and m8 mounting features; see drawing`<br>`threaded` | Yes | Yes | Yes |
+| `BP-2P-0002` | `port_thread` | `g1/4`<br>`g1/8` | Yes | No | Yes |
 | `BP-2P-0002` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-2P-08-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-08-0001` | `mounting_type` | `4xm4`<br>`threaded` | Yes | Yes | Yes |
 | `BP-2P-08-0001` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-2P-130-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-130-0001` | `mounting_type` | `8xm0\|8xm10\|flange`<br>`flange`<br>`m10 mounting features; see drawing` | Yes | Yes | Yes |
 | `BP-2P-130-0001` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-2P-16-0001` | `channel_configuration` | `1-in-1-out`<br>`2-in-2-out` | Yes | No | Yes |
 | `BP-2P-16-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
 | `BP-2P-16-0001` | `maximum_speed` | `200 RPM`<br>`500 RPM` | Yes | Yes | Yes |
-| `BP-2P-16-0001` | `mounting_type` | `4xm5\|flange`<br>`4xm5\|rotor\|stator`<br>`flange` | Yes | Yes | Yes |
 | `BP-2P-16-0001` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-2P-30-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-30-0001` | `mounting_type` | `4xm5`<br>`4xm5\|flange\|rotor\|stator`<br>`flange` | Yes | Yes | Yes |
-| `BP-2P-50-0001` | `mounting_type` | `4xm5\|6xm5\|rotor\|stator`<br>`4xm5\|6xm5\|rotor\|stator\|threaded` | Yes | Yes | Yes |
 | `BP-2P-95-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-95-0001` | `mounting_type` | `2xm10\|8xm5\|flange`<br>`6xm5\|8xm8`<br>`flange` | Yes | Yes | Yes |
 | `BP-2P-95-0001` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-3P-0004` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-3P-0004` | `mounting_type` | `4xm6\|rotor\|stator`<br>`flange` | Yes | Yes | Yes |
 | `BP-3P-0004` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-3P-0006` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-3P-0006` | `mounting_type` | `3xm6\|4xm6\|rotor\|stator`<br>`4xm6\|threaded`<br>`threaded` | Yes | Yes | Yes |
 | `BP-3P-0007` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-3P-0007` | `mounting_type` | `3xm5`<br>`3xm5\|rotor\|threaded`<br>`threaded` | Yes | Yes | Yes |
 | `BP-3P-0007` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-3P-S06-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-3P-S06-0001` | `mounting_type` | `2xm5\|3xm5`<br>`flange` | Yes | Yes | Yes |
 | `BP-4P-30-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-4P-30-0001` | `mounting_type` | `4xm5\|6xm6\|rotor\|stator`<br>`flange` | Yes | Yes | Yes |
 | `BP-4P-30-0001` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-8P-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-8P-0001` | `mounting_type` | `4xm5\|flange`<br>`4xm5\|rotor\|stator`<br>`flange` | Yes | Yes | Yes |
 | `BP-8P-0001` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 
 Every active conflict is `unresolved`, has decision owner `laocao`, and contains no winning or correct value. Only `current-observed` values with unambiguous field semantics and normalized units participate.
 
 ## 5. Missing evidence
 
-Public model-field groups without a parsed primary or approved supporting observation: **195**
+Public model-field groups without a parsed primary or approved supporting observation: **203**
 
-This is a traceability count, not proof that evidence does not exist. Binary drawings and datasheets were inventoried but intentionally not interpreted automatically.
+Each missing-evidence record names its evidence domain and field-appropriate evidence types. Engineering drawings are not used as a universal requirement for business policy, product-master, compliance, or order-specific facts.
 
 ## 6. Manual engineering confirmation queue
 
-- BP-1P-0003 / compatible_media: check downloads/BP-1P-0003.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-1P-0003 / seal_material: check downloads/BP-1P-0003.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-1P-0006 / compatible_media: check downloads/BP-1P-0006.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-1P-0006 / mounting_type: check downloads/BP-1P-0006.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-1P-0006 / seal_material: check downloads/BP-1P-0006.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0001 / compatible_media: check downloads/BP-2P-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0001 / mounting_type: check downloads/BP-2P-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0001 / seal_material: check downloads/BP-2P-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0002 / channel_configuration: check downloads/BP-2P-0002.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0002 / compatible_media: check downloads/BP-2P-0002.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0002 / mounting_type: check downloads/BP-2P-0002.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-0002 / seal_material: check downloads/BP-2P-0002.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-08-0001 / compatible_media: check downloads/BP-2P-08-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-08-0001 / mounting_type: check downloads/BP-2P-08-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-08-0001 / seal_material: check downloads/BP-2P-08-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-130-0001 / compatible_media: check downloads/BP-2P-130-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-130-0001 / mounting_type: check downloads/BP-2P-130-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-130-0001 / seal_material: check downloads/BP-2P-130-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-16-0001 / channel_configuration: check downloads/BP-2P-16-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-16-0001 / compatible_media: check downloads/BP-2P-16-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-16-0001 / maximum_speed: check downloads/BP-2P-16-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-16-0001 / mounting_type: check downloads/BP-2P-16-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-16-0001 / seal_material: check downloads/BP-2P-16-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-30-0001 / compatible_media: check downloads/BP-2P-30-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-30-0001 / mounting_type: check downloads/BP-2P-30-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-50-0001 / mounting_type: check downloads/BP-2P-50-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-95-0001 / compatible_media: check downloads/BP-2P-95-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-95-0001 / mounting_type: check downloads/BP-2P-95-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-2P-95-0001 / seal_material: check downloads/BP-2P-95-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0004 / compatible_media: check downloads/BP-3P-0004.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0004 / mounting_type: check downloads/BP-3P-0004.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0004 / seal_material: check downloads/BP-3P-0004.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0006 / compatible_media: check downloads/BP-3P-0006.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0006 / mounting_type: check downloads/BP-3P-0006.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0007 / compatible_media: check downloads/BP-3P-0007.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0007 / mounting_type: check downloads/BP-3P-0007.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-0007 / seal_material: check downloads/BP-3P-0007.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-S06-0001 / compatible_media: check downloads/BP-3P-S06-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-3P-S06-0001 / mounting_type: check downloads/BP-3P-S06-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-4P-30-0001 / compatible_media: check downloads/BP-4P-30-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-4P-30-0001 / mounting_type: check downloads/BP-4P-30-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-4P-30-0001 / seal_material: check downloads/BP-4P-30-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-8P-0001 / compatible_media: check downloads/BP-8P-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-8P-0001 / mounting_type: check downloads/BP-8P-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
-- BP-8P-0001 / seal_material: check downloads/BP-8P-0001.pdf; current approved engineering drawing; formal datasheet or order-specific specification
+- BP-1P-0003 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-1P-0003 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-1P-0006 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-1P-0006 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-0002 / channel_configuration: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-0002 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-0002 / port_thread: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-0002 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-08-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-08-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-130-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-130-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-16-0001 / channel_configuration: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-16-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-16-0001 / maximum_speed: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-16-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-30-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-95-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-2P-95-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-3P-0004 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-3P-0004 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-3P-0006 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-3P-0007 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-3P-0007 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-3P-S06-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-4P-30-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-4P-30-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-8P-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-8P-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 
 ## 7. Required regression cases
 
@@ -181,7 +155,8 @@ This is a traceability count, not proof that evidence does not exist. Binary dra
 | `BP-4P-30-0001` | `passages` | 4 passages retained; Ø30 mm bore excluded from passage count; current-observed without conflict |
 | `BP-4P-30-0001` | `maximum_speed` | Current sources show 200 RPM; historical 80 RPM does not create an active conflict; 2 stale-reference; 1 manual-review-required |
 | `BP-1P-0003` | `operating_temperature` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; 2 stale-reference; 1 manual-review-required |
-| `BP-2P-95-0001` | `test_pressure` | Current public page does not directly state 12 MPa. The current PDF (SHA-256 `e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c`) visibly says “Test scope confirmed by approved order,” not 1.5× rated pressure; 3 stale-reference |
+| `BP-2P-95-0001` | `test_pressure` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies `BP-2P-95-0005`; it is recorded as `source-identity-mismatch` and excluded before any test-pressure interpretation. |
+| `BP-2P-50-0001` | mounting semantics | Both current descriptions resolve to stator `4xm5` and rotor `6xm5`; thread depth does not create a threaded mounting style or active conflict. |
 
 These classifications are audit-semantics results, not engineering decisions.
 

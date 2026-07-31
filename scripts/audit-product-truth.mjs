@@ -226,7 +226,7 @@ const LABEL_RULES = [
     ],
   },
   {
-    field: "mounting_type",
+    field: "mounting_style",
     patterns: [
       /mount type/i,
       /mounting type/i,
@@ -344,6 +344,10 @@ function canonicalField(label) {
     component_materials: "body_material",
     material_and_surface_treatment: "body_material",
     maximum_temperature: "operating_temperature",
+    mounting_type: "mounting_style",
+    mount_type: "mounting_style",
+    stator_mounting: "stator_mounting_pattern",
+    rotor_mounting: "rotor_mounting_pattern",
   };
   if (aliases[normalizedAlias]) return aliases[normalizedAlias];
   for (const rule of LABEL_RULES) {
@@ -376,6 +380,47 @@ function normalizeText(value) {
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
+}
+
+function parseMountingSemantics(rawValue) {
+  const text = String(rawValue || "").normalize("NFKC").replace(/\s+/g, " ").trim();
+  const normalized = normalizeText(text);
+  let mountingStyle = null;
+  if (
+    /(?:^|\b)(?:flange(?:d)?(?:\s+mount(?:ing)?)?|flanschmontage)(?:\b|$)|フランジ取付|фланцев(?:ое|ый) креплен/i.test(
+      normalized,
+    )
+  ) {
+    mountingStyle = "flange";
+  } else if (
+    /(?:^|\b)(?:threaded(?:\s+mount(?:ing)?)?|thread mount(?:ing)?|gewindemontage)(?:\b|$)|ねじ取付|резьбов(?:ое|ой) креплен/i.test(
+      normalized,
+    )
+  ) {
+    mountingStyle = "threaded";
+  }
+
+  const mountingPattern = (role) => {
+    const rolePattern =
+      role === "stator"
+        ? "(?:stator(?:\\s+side|seite)?|固定側|сторона\\s+статора)"
+        : "(?:rotor(?:\\s+side|seite)?|回転側|сторона\\s+ротора)";
+    const patterns = [
+      new RegExp(`${rolePattern}\\s*:?\\s*(\\d+)\\s*(?:x|×|-)\\s*m\\s*(\\d+)`, "i"),
+      new RegExp(`(\\d+)\\s*(?:x|×|-)\\s*m\\s*(\\d+)\\s*${rolePattern}(?:\\s+mount)?`, "i"),
+    ];
+    for (const pattern of patterns) {
+      const match = text.match(pattern);
+      if (match) return `${Number(match[1])}xm${Number(match[2])}`;
+    }
+    return null;
+  };
+
+  return {
+    mounting_style: mountingStyle,
+    stator_mounting_pattern: mountingPattern("stator"),
+    rotor_mounting_pattern: mountingPattern("rotor"),
+  };
 }
 
 function normalizeValue(field, rawValue) {
@@ -528,19 +573,30 @@ function normalizeValue(field, rawValue) {
     if (match) return { normalized_value: `IP${match[1]}`, unit: null };
   }
 
-  if (field === "mounting_type") {
-    const text = normalizeText(raw);
-    const tokens = [];
-    if (/flange|flansch|フランジ|фланц/.test(text)) tokens.push("flange");
-    if (/thread|gewinde|ねじ|резьб/.test(text)) tokens.push("threaded");
-    if (/stator/.test(text)) tokens.push("stator");
-    if (/rotor/.test(text)) tokens.push("rotor");
-    for (const match of text.matchAll(/(\d+)\s*(?:x|×|-)\s*m\s*(\d+)/gi)) {
-      tokens.push(`${Number(match[1])}xm${Number(match[2])}`);
+  if (field === "port_thread") {
+    const match = comparableRaw.match(/\b(G\s*\d+\s*\/\s*\d+|(?:R|NPT|BSP)\s*\d+\s*\/\s*\d+)\b/i);
+    if (match) {
+      return { normalized_value: match[1].replace(/\s+/g, "").toLowerCase(), unit: null };
     }
-    if (tokens.length) {
-      return { normalized_value: [...new Set(tokens)].sort().join("|"), unit: null };
+  }
+
+  if (field === "mounting_style") {
+    const semantics = parseMountingSemantics(raw);
+    if (semantics.mounting_style) {
+      return { normalized_value: semantics.mounting_style, unit: null };
     }
+    return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
+  }
+
+  if (field === "stator_mounting_pattern" || field === "rotor_mounting_pattern") {
+    const match = comparableRaw.match(/(\d+)\s*(?:x|×|-)\s*m\s*(\d+)/i);
+    if (match) {
+      return {
+        normalized_value: `${Number(match[1])}xm${Number(match[2])}`,
+        unit: null,
+      };
+    }
+    return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
   }
 
   if (field === "warranty") {
@@ -568,10 +624,38 @@ function addObservation({
   publicClaimLevel = publicClaimLevelFor(sourceType),
   observationStatus = null,
   referencedSourcePath = null,
+  skipMountingExpansion = false,
+  sourceIdentity = null,
 }) {
   const normalizedModel = normalizeModel(model);
   const normalizedField = canonicalField(field) || field;
   if (!normalizedModel || !normalizedField || rawValue === null || rawValue === undefined) return;
+
+  if (normalizedField === "mounting_style" && !skipMountingExpansion) {
+    const semantics = parseMountingSemantics(rawValue);
+    for (const patternField of ["stator_mounting_pattern", "rotor_mounting_pattern"]) {
+      if (!semantics[patternField]) continue;
+      addObservation({
+        model: normalizedModel,
+        field: patternField,
+        rawValue: semantics[patternField],
+        language,
+        sourcePath,
+        sourceType,
+        notes: `${notes} Structured from mounting description.`.trim(),
+        evidenceLevel,
+        verificationStatus,
+        publicClaimLevel,
+        observationStatus,
+        referencedSourcePath,
+        skipMountingExpansion: true,
+        sourceIdentity,
+      });
+    }
+    if (!semantics.mounting_style && (semantics.stator_mounting_pattern || semantics.rotor_mounting_pattern)) {
+      return;
+    }
+  }
 
   const normalized = normalizeValue(normalizedField, rawValue);
   const normalized_value = normalized.normalized_value;
@@ -595,6 +679,7 @@ function addObservation({
     verification_status: verificationStatus,
     observation_status: resolvedObservationStatus,
     referenced_source_path: referencedSourcePath,
+    source_identity: sourceIdentity,
     public_claim_level: publicClaimLevel,
     last_checked_at: AUDIT_DATE,
     decision_owner:
@@ -732,8 +817,11 @@ function factFromCardTag(tag) {
     return ["maximum_pressure", value];
   }
   if (/RPM|min[⁻-]?1|об\/мин/i.test(value)) return ["maximum_speed", value];
-  if (/flange|flansch|フランジ|фланц|thread|gewinde|ねじ|резьб/i.test(value)) {
-    return ["mounting_type", value];
+  if (/\b(?:G\s*\d+\/\d+|NPT\s*\d+\/\d+|BSP\s*\d+\/\d+)\b/i.test(value)) {
+    return ["port_thread", value];
+  }
+  if (/flange|flansch|フランジ|фланц|threaded mount|gewindemontage|ねじ取付|резьбов.*креплен/i.test(value)) {
+    return ["mounting_style", value];
   }
   if (/6061|45#|steel|stahl|鋼|сталь|aluminum|aluminium|アルミ|алюмин/i.test(value)) {
     return ["body_material", value];
@@ -821,10 +909,10 @@ function addSearchAndAiSources() {
         });
       }
       if (/flange|flansch|フランジ|фланц/i.test(description)) {
-        fields.add("mounting_type");
+        fields.add("mounting_style");
         addObservation({
           model,
-          field: "mounting_type",
+          field: "mounting_style",
           rawValue: description.match(/[^.]*?(?:flange|flansch|フランジ|фланц)[^.]*\.?/i)?.[0] || description,
           language,
           sourcePath: file,
@@ -867,7 +955,7 @@ const CATALOG_FIELD_MAP = {
   body_material: "body_material",
   seal_material: "seal_material",
   compatible_media: "compatible_media",
-  mounting_type: "mounting_type",
+  mounting_type: "mounting_style",
   weight_kg: "weight",
 };
 
@@ -1033,8 +1121,24 @@ function classifyHistoricalObservation({ model, field, rawValue, sourceReference
       check.source_path === referencedSourcePath &&
       check.source_sha256 === sha256(referencedSourcePath),
   );
-  if (binaryVisualCheck?.stale_historical_values.includes(rawValue)) {
-    return { observationStatus: "stale-reference", referencedSourcePath };
+  if (binaryVisualCheck) {
+    const targetModel = normalizeModel(model);
+    const documentModel = normalizeModel(binaryVisualCheck.document_model);
+    if (documentModel !== targetModel) {
+      return {
+        observationStatus: "source-identity-mismatch",
+        referencedSourcePath,
+        sourceIdentity: {
+          target_model: targetModel,
+          document_model: documentModel,
+          source_hash: binaryVisualCheck.source_sha256,
+          page: binaryVisualCheck.page,
+        },
+      };
+    }
+    if (binaryVisualCheck.historical_values.includes(rawValue)) {
+      return { observationStatus: "stale-reference", referencedSourcePath };
+    }
   }
 
   if (ENGINEERING_EXTENSIONS.has(path.extname(referencedSourcePath).toLowerCase())) {
@@ -1128,6 +1232,7 @@ function addExistingAuditSources() {
           verificationStatus: "manual-review-required",
           observationStatus: historicalStatus.observationStatus,
           referencedSourcePath: historicalStatus.referencedSourcePath,
+          sourceIdentity: historicalStatus.sourceIdentity || null,
           publicClaimLevel:
             candidate.type === "website-audit-observation"
               ? "public-with-qualification"
@@ -1161,7 +1266,8 @@ function inferFieldTypesFromText(text) {
     ["maximum_pressure", /\b(?:MPa|bar|psi)\b|МПа/i],
     ["maximum_speed", /\bRPM\b|min⁻¹|об\/мин/i],
     ["compatible_media", /air|water|coolant|hydraulic|luft|wasser|空気|作動油|воздух|масло/i],
-    ["mounting_type", /flange|thread|flansch|gewinde|フランジ|ねじ|фланц|резьб/i],
+    ["mounting_style", /flange mount|threaded mount|flanschmontage|gewindemontage|フランジ取付|ねじ取付|фланцев.*креплен|резьбов.*креплен/i],
+    ["port_thread", /\bG\s*\d+\/\d+\b|\b(?:NPT|BSP)\s*\d+\/\d+\b/i],
     ["protection_rating", /\bIP\s*\d{2}\b|dust|staub|防じん|пыл/i],
     ["body_material", /6061|45#|stainless|steel|aluminum|aluminium|сталь|алюмин|鋼|アルミ/i],
   ];
@@ -1359,11 +1465,8 @@ function groupConflicts() {
     const sourceTypes = observedValues.flatMap((value) =>
       value.sources.map((source) => source.source_type),
     );
-    const suggested = [
-      `downloads/${model}.pdf`,
-      "current approved engineering drawing",
-      "formal datasheet or order-specific specification",
-    ].filter((candidate) => !candidate.startsWith("downloads/") || exists(candidate));
+    const requirement = evidenceRequirementFor(field);
+    const suggested = requirement.required_evidence_types;
 
     conflicts.push({
       model,
@@ -1377,6 +1480,8 @@ function groupConflicts() {
       status: "unresolved",
       decision_owner: "laocao",
       suggested_engineering_materials: suggested,
+      evidence_domain: requirement.evidence_domain,
+      suggested_evidence_materials: suggested,
       affects_public_website: sourceTypes.some(
         (type) => type.includes("website") || type.includes("translated"),
       ),
@@ -1389,18 +1494,113 @@ function groupConflicts() {
   return conflicts.sort((a, b) => `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`));
 }
 
+const EVIDENCE_REQUIREMENTS = {
+  engineering: {
+    fields: new Set([
+      "passages",
+      "channel_configuration",
+      "port_thread",
+      "maximum_pressure",
+      "rated_pressure",
+      "test_pressure",
+      "maximum_speed",
+      "operating_temperature",
+      "weight",
+      "body_material",
+      "seal_material",
+      "compatible_media",
+      "mounting_style",
+      "stator_mounting_pattern",
+      "rotor_mounting_pattern",
+      "friction_torque",
+      "protection_rating",
+    ]),
+    requiredEvidence: [
+      "Approved engineering drawing",
+      "approved technical datasheet",
+      "controlled engineering specification",
+    ],
+  },
+  "business-policy": {
+    fields: new Set(["warranty", "refund_policy", "lead_time", "payment_terms"]),
+    requiredEvidence: [
+      "Approved business policy",
+      "controlled commercial terms",
+      "authorized sales policy",
+    ],
+  },
+  "controlled-product-master": {
+    fields: new Set(["model", "model_identity", "sku", "product_name"]),
+    requiredEvidence: [
+      "Controlled product master",
+      "approved SKU register",
+      "formal drawing with matching internal model identity",
+    ],
+  },
+  "legal-compliance": {
+    fields: new Set(["certification", "regulatory_compliance", "compliance_standard"]),
+    requiredEvidence: [
+      "Valid certificate",
+      "applicable regulatory declaration",
+      "controlled compliance record",
+    ],
+  },
+  "order-specific": {
+    fields: new Set(["custom_configuration", "order_configuration"]),
+    requiredEvidence: [
+      "Approved order specification",
+      "customer-approved drawing",
+      "order confirmation",
+    ],
+  },
+};
+
+function evidenceRequirementFor(field) {
+  for (const [domain, requirement] of Object.entries(EVIDENCE_REQUIREMENTS)) {
+    if (requirement.fields.has(field)) {
+      return { evidence_domain: domain, required_evidence_types: requirement.requiredEvidence };
+    }
+  }
+  return {
+    evidence_domain: "manual-review-required",
+    required_evidence_types: ["Field-specific controlled evidence selected by the decision owner"],
+  };
+}
+
+function observationSatisfiesEvidenceDomain(observation, domain) {
+  if (domain === "engineering") {
+    return ["engineering-primary", "approved-datasheet", "controlled-catalog"].includes(
+      observation.evidence_level,
+    );
+  }
+  if (domain === "business-policy") {
+    return observation.source_type.includes("business-policy");
+  }
+  if (domain === "controlled-product-master") {
+    return (
+      observation.evidence_level === "controlled-catalog" ||
+      observation.source_type.includes("product-master")
+    );
+  }
+  if (domain === "legal-compliance") {
+    return observation.source_type.includes("compliance") || observation.source_type.includes("certificate");
+  }
+  if (domain === "order-specific") {
+    return observation.source_type.includes("order-confirmation");
+  }
+  return false;
+}
+
 function findMissingEvidence() {
   const publicGroups = new Map();
-  const engineeringGroups = new Set();
+  const supportedEvidenceGroups = new Set();
 
   for (const observation of observations) {
     if (observation.observation_status !== "current-observed") continue;
     const key = `${observation.model}\0${observation.field}`;
-    if (
-      observation.evidence_level === "engineering-primary" ||
-      observation.evidence_level === "approved-datasheet"
-    ) {
-      engineeringGroups.add(key);
+    const requirement = evidenceRequirementFor(observation.field);
+    if (observationSatisfiesEvidenceDomain(observation, requirement.evidence_domain)) {
+      supportedEvidenceGroups.add(key);
     }
     if (
       observation.public_claim_level === "public-with-qualification" ||
@@ -1412,17 +1612,19 @@ function findMissingEvidence() {
   }
 
   return [...publicGroups.entries()]
-    .filter(([key]) => !engineeringGroups.has(key))
+    .filter(([key]) => !supportedEvidenceGroups.has(key))
     .map(([key, sources]) => {
       const [model, field] = key.split("\0");
+      const requirement = evidenceRequirementFor(field);
       return {
         model,
         field,
         verification_status: "missing-evidence",
         decision_owner: "laocao",
         public_sources: [...sources].sort(),
-        required_evidence:
-          "Approved engineering drawing, approved datasheet, or formal order-specific specification.",
+        evidence_domain: requirement.evidence_domain,
+        required_evidence_types: requirement.required_evidence_types,
+        required_evidence: requirement.required_evidence_types.join("; "),
       };
     })
     .sort((a, b) => `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`));
@@ -1498,17 +1700,78 @@ function runRegressionChecks(conflictDocument) {
     if (!exists(check.source_path) || sha256(check.source_path) !== check.source_sha256) {
       throw new Error(`Binary visual-check identity changed: ${check.source_path}.`);
     }
-    for (const staleValue of check.stale_historical_values) {
+    for (const historicalValue of check.historical_values) {
       if (
-        !conflictDocument.stale_references.some(
+        !conflictDocument.source_identity_mismatches.some(
           (finding) =>
             finding.referenced_source_path === check.source_path &&
-            finding.raw_value === staleValue,
+            finding.raw_value === historicalValue &&
+            finding.source_identity?.target_model === check.target_model &&
+            finding.source_identity?.document_model === check.document_model,
         )
       ) {
-        throw new Error(`Reviewed stale binary statement was not retained: ${staleValue}.`);
+        throw new Error(`Source-identity mismatch was not retained: ${historicalValue}.`);
+      }
+      if (
+        conflictDocument.stale_references.some(
+          (finding) =>
+            finding.referenced_source_path === check.source_path &&
+            finding.raw_value === historicalValue,
+        )
+      ) {
+        throw new Error(`Mismatched binary incorrectly changed historical status: ${historicalValue}.`);
       }
     }
+  }
+  for (const regression of fixture.mounting_semantics || []) {
+    const actual = parseMountingSemantics(regression.raw_value);
+    if (JSON.stringify(actual) !== JSON.stringify(regression.expected)) {
+      throw new Error(`Mounting semantics regression failed for ${regression.raw_value}.`);
+    }
+  }
+  for (const regression of fixture.port_thread_semantics || []) {
+    const actual = normalizeValue("port_thread", regression.raw_value);
+    if (actual.normalized_value !== regression.expected_value) {
+      throw new Error(`Port-thread regression failed for ${regression.raw_value}.`);
+    }
+  }
+  for (const regression of fixture.evidence_domains || []) {
+    if (evidenceRequirementFor(regression.field).evidence_domain !== regression.expected_domain) {
+      throw new Error(`Evidence-domain regression failed for ${regression.field}.`);
+    }
+  }
+  const targetMountingFields = new Set([
+    "mounting_style",
+    "stator_mounting_pattern",
+    "rotor_mounting_pattern",
+  ]);
+  if (
+    conflictDocument.active_conflicts.some(
+      (conflict) =>
+        conflict.model === "BP-2P-50-0001" && targetMountingFields.has(conflict.field),
+    )
+  ) {
+    throw new Error("BP-2P-50-0001 equivalent mounting descriptions must not conflict.");
+  }
+  if (
+    observations.some(
+      (observation) =>
+        observation.model === "BP-2P-50-0001" &&
+        observation.field === "mounting_style" &&
+        /thread depth/i.test(observation.raw_value) &&
+        observation.normalized_value === "threaded",
+    )
+  ) {
+    throw new Error("Thread depth was incorrectly classified as threaded mounting.");
+  }
+  const warrantyMissing = conflictDocument.missing_evidence.filter(
+    (finding) => finding.field === "warranty",
+  );
+  if (
+    warrantyMissing.length &&
+    warrantyMissing.some((finding) => finding.evidence_domain !== "business-policy")
+  ) {
+    throw new Error("Warranty missing evidence must use the business-policy domain.");
   }
   if (!conflictDocument.active_conflicts.length) {
     throw new Error("No active conflicts remain; current-source conflict detection regressed.");
@@ -1558,7 +1821,8 @@ function regressionCaseSection(conflictDocument) {
     `| \`BP-4P-30-0001\` | \`passages\` | 4 passages retained; Ø30 mm bore excluded from passage count; ${caseStatus("BP-4P-30-0001", "passages")} |`,
     `| \`BP-4P-30-0001\` | \`maximum_speed\` | Current sources show 200 RPM; historical 80 RPM does not create an active conflict; ${caseStatus("BP-4P-30-0001", "maximum_speed")} |`,
     `| \`BP-1P-0003\` | \`operating_temperature\` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; ${caseStatus("BP-1P-0003", "operating_temperature")} |`,
-    `| \`BP-2P-95-0001\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The current PDF (SHA-256 \`e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c\`) visibly says “Test scope confirmed by approved order,” not 1.5× rated pressure; ${caseStatus("BP-2P-95-0001", "test_pressure")} |`,
+    `| \`BP-2P-95-0001\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies \`BP-2P-95-0005\`; it is recorded as \`source-identity-mismatch\` and excluded before any test-pressure interpretation. |`,
+    `| \`BP-2P-50-0001\` | mounting semantics | Both current descriptions resolve to stator \`4xm5\` and rotor \`6xm5\`; thread depth does not create a threaded mounting style or active conflict. |`,
     "",
     "These classifications are audit-semantics results, not engineering decisions.",
     "",
@@ -1575,7 +1839,7 @@ function buildReport(inventoryDocument, conflictDocument) {
   const manualItems = conflictDocument.conflicts
     .map(
       (conflict) =>
-        `${conflict.model} / ${conflict.field}: check ${conflict.suggested_engineering_materials.join("; ")}`,
+        `${conflict.model} / ${conflict.field}: check ${conflict.suggested_evidence_materials.join("; ")}`,
     )
     .sort();
 
@@ -1638,6 +1902,8 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Stale references: **${conflictDocument.summary.stale_references}**`,
     "",
+    `Source identity mismatches: **${conflictDocument.summary.source_identity_mismatches}**`,
+    "",
     `Parser ambiguities: **${conflictDocument.summary.parser_ambiguities}**`,
     "",
     "| Model | Field | Normalized values | Public HTML | JSON-LD | Search/AI |",
@@ -1655,7 +1921,7 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Public model-field groups without a parsed primary or approved supporting observation: **${conflictDocument.summary.missing_evidence_count}**`,
     "",
-    "This is a traceability count, not proof that evidence does not exist. Binary drawings and datasheets were inventoried but intentionally not interpreted automatically.",
+    "Each missing-evidence record names its evidence domain and field-appropriate evidence types. Engineering drawings are not used as a universal requirement for business policy, product-master, compliance, or order-specific facts.",
     "",
     "## 6. Manual engineering confirmation queue",
     "",
@@ -1748,6 +2014,7 @@ function main() {
     "manual-review-required",
   ]);
   const staleReferences = categorizedFindings(["stale-reference"]);
+  const sourceIdentityMismatches = categorizedFindings(["source-identity-mismatch"]);
   const parserAmbiguities = categorizedFindings(["parser-ambiguous"]);
   const sources = [...inventory.values()].sort((a, b) =>
     a.source_path.localeCompare(b.source_path),
@@ -1772,6 +2039,7 @@ function main() {
       ).length,
       historical_findings: historicalFindings.length,
       stale_references: staleReferences.length,
+      source_identity_mismatches: sourceIdentityMismatches.length,
       parser_ambiguities: parserAmbiguities.length,
       git_tracked_sources: sources.filter((source) => source.git_tracked).length,
       local_untracked_sources: sources.filter((source) => !source.git_tracked).length,
@@ -1797,6 +2065,7 @@ function main() {
       active_conflicts: activeConflicts.length,
       historical_findings: historicalFindings.length,
       stale_references: staleReferences.length,
+      source_identity_mismatches: sourceIdentityMismatches.length,
       parser_ambiguities: parserAmbiguities.length,
       missing_evidence_count: missingEvidence.length,
       decision_owner: "laocao",
@@ -1806,6 +2075,7 @@ function main() {
     conflicts: activeConflicts,
     historical_findings: historicalFindings,
     stale_references: staleReferences,
+    source_identity_mismatches: sourceIdentityMismatches,
     parser_ambiguities: parserAmbiguities,
     missing_evidence: missingEvidence,
   };
@@ -1817,7 +2087,7 @@ function main() {
   fs.writeFileSync(absolute(REPORT_PATH), buildReport(inventoryDocument, conflictDocument), "utf8");
 
   console.log(
-    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${historicalFindings.length} historical findings, ${staleReferences.length} stale references, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
+    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${historicalFindings.length} historical findings, ${staleReferences.length} stale references, ${sourceIdentityMismatches.length} source-identity mismatches, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
   );
   console.log("Business conflicts were reported without selecting a winning value.");
 }

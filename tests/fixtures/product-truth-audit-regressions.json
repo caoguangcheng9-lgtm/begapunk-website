@@ -47,10 +47,78 @@
       "source_path": "downloads/BP-2P-95-0001.pdf",
       "source_sha256": "e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c",
       "page": 1,
-      "visible_observation": "Note 3: Test scope confirmed by approved order.",
-      "stale_historical_values": [
+      "target_model": "BP-2P-95-0001",
+      "document_model": "BP-2P-95-0005",
+      "expected_status": "source-identity-mismatch",
+      "historical_values": [
         "No direct numeric test pressure; note says 1.5x rated pressure"
       ]
+    }
+  ],
+  "mounting_semantics": [
+    {
+      "raw_value": "Stator side: 4 × M5, thread depth 10 mm; rotor side: 6 × M5, thread depth 8 mm.",
+      "expected": {
+        "mounting_style": null,
+        "stator_mounting_pattern": "4xm5",
+        "rotor_mounting_pattern": "6xm5"
+      }
+    },
+    {
+      "raw_value": "4 x M5 stator mount, depth 10 mm; 6 x M5 rotor mount, depth 8 mm",
+      "expected": {
+        "mounting_style": null,
+        "stator_mounting_pattern": "4xm5",
+        "rotor_mounting_pattern": "6xm5"
+      }
+    },
+    {
+      "raw_value": "Flange mount; stator 4 × M5; rotor 6 × M5",
+      "expected": {
+        "mounting_style": "flange",
+        "stator_mounting_pattern": "4xm5",
+        "rotor_mounting_pattern": "6xm5"
+      }
+    },
+    {
+      "raw_value": "固定側：4 × M5、ねじ深さ10 mm；回転側：6 × M5、ねじ深さ8 mm。",
+      "expected": {
+        "mounting_style": null,
+        "stator_mounting_pattern": "4xm5",
+        "rotor_mounting_pattern": "6xm5"
+      }
+    },
+    {
+      "raw_value": "Сторона статора: 4 × M5, глубина резьбы 10 мм; сторона ротора: 6 × M5, глубина резьбы 8 мм.",
+      "expected": {
+        "mounting_style": null,
+        "stator_mounting_pattern": "4xm5",
+        "rotor_mounting_pattern": "6xm5"
+      }
+    }
+  ],
+  "port_thread_semantics": [
+    {
+      "raw_value": "G1/8",
+      "expected_value": "g1/8"
+    },
+    {
+      "raw_value": "G1/4 port thread",
+      "expected_value": "g1/4"
+    }
+  ],
+  "evidence_domains": [
+    {
+      "field": "warranty",
+      "expected_domain": "business-policy"
+    },
+    {
+      "field": "model_identity",
+      "expected_domain": "controlled-product-master"
+    },
+    {
+      "field": "maximum_pressure",
+      "expected_domain": "engineering"
     }
   ]
 }

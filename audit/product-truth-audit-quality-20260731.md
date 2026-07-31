@@ -17,11 +17,12 @@ This task does not select an engineering value and does not modify a public prod
 | Category | Count |
 | --- | ---: |
 | Previous conflicts | 56 |
-| Active conflicts after correction | 45 |
-| Historical findings | 17 |
-| Stale references | 15 |
-| Parser ambiguities | 0 |
-| Missing evidence | 195 |
+| Active conflicts after correction | 31 |
+| Historical findings | 14 |
+| Stale references | 14 |
+| Source identity mismatches | 4 |
+| Parser ambiguities | 51 |
+| Missing evidence | 203 |
 
 No record was deleted to lower the conflict count. Historical records are retained in `audit/product-truth-conflicts.json` with an observation status.
 
@@ -32,15 +33,19 @@ No record was deleted to lower the conflict count. Historical records are retain
 - Required model and canonical field equality, at least two different values, current-source re-reading, unambiguous parsing, and normalized units.
 - Preserved historical CSV observations in separate findings rather than treating the CSV as a current fact source.
 - Made passage parsing field-aware so a bore diameter cannot become a passage count.
-- Added fixed regression cases, including a hash-bound visual check for the current `BP-2P-95-0001` PDF.
+- Added fixed regression cases, including a hash-bound identity gate for the PDF stored as `BP-2P-95-0001.pdf`.
 - Added optional `PRODUCT_TRUTH_CATALOG_ROOT` support so an isolated worktree can read the protected original `catalog-project/` as an external, read-only input.
+- Split interface threads, mounting style, stator hole pattern, and rotor hole pattern into separate canonical fields. Thread depth no longer implies threaded mounting.
+- Added evidence domains so engineering, business-policy, controlled-product-master, legal-compliance, and order-specific facts request matching evidence.
 
 ## Required regression cases
 
 - `BP-4P-30-0001 / passages`: current content resolves to four passages; Ø30 mm remains the hollow-bore diameter and is never counted as 30 passages.
 - `BP-4P-30-0001 / maximum_speed`: current parsed sources state 200 RPM. Historical 80 RPM references are stale and do not form an active conflict.
 - `BP-1P-0003 / operating_temperature`: current parsed sources state -20°C to +80°C. Historical +120°C is stale and does not form an active conflict.
-- `BP-2P-95-0001 / test_pressure`: the current public product page does not directly state 12 MPa. Visual review of page 1 of the current PDF, SHA-256 `e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c`, shows `Test scope confirmed by approved order.` It does not show the historical `1.5x rated pressure` statement. These historical statements are stale references, not active facts.
+- `BP-2P-95-0001 / test_pressure`: the current public product page does not directly state 12 MPa. The PDF at the matching filename, SHA-256 `e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c`, internally identifies `BP-2P-95-0005`. The audit stops at `source-identity-mismatch` and does not use that PDF to classify test-pressure statements for `BP-2P-95-0001`.
+- `BP-2P-50-0001 / mounting`: both current descriptions resolve to stator `4xm5` and rotor `6xm5`. Thread depth is not treated as mounting style, and no active mounting conflict remains.
+- `warranty / missing evidence`: every missing warranty record requests business-policy evidence rather than an engineering drawing.
 
 These are audit classifications only. They do not establish the correct engineering values or approval status.
 
