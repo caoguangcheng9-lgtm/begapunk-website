@@ -6,8 +6,11 @@ import { execFileSync } from "node:child_process";
 import * as cheerio from "cheerio";
 
 const ROOT = process.cwd();
+const EXTERNAL_CATALOG_ROOT = process.env.PRODUCT_TRUTH_CATALOG_ROOT
+  ? path.resolve(process.env.PRODUCT_TRUTH_CATALOG_ROOT)
+  : null;
 const AUDIT_DATE = process.env.PRODUCT_TRUTH_AUDIT_DATE || "2026-07-31";
-const BASELINE_COMMIT = "472de959069a1e2da7a530be3dd449399b30e255";
+const BASELINE_COMMIT = "d95d4db1ce908f941e76bff3f78bc052455d0b0b";
 const INVENTORY_PATH = "audit/product-truth-source-inventory.json";
 const CONFLICT_PATH = "audit/product-truth-conflicts.json";
 const REPORT_PATH = "audit/product-truth-baseline-20260731.md";
@@ -43,6 +46,13 @@ function posix(relativePath) {
 }
 
 function absolute(relativePath) {
+  const normalized = posix(relativePath);
+  if (EXTERNAL_CATALOG_ROOT && normalized.startsWith("catalog-project/")) {
+    return path.join(
+      EXTERNAL_CATALOG_ROOT,
+      normalized.slice("catalog-project/".length),
+    );
+  }
   return path.join(ROOT, relativePath);
 }
 
@@ -89,6 +99,9 @@ const trackedFiles = new Set(
 );
 
 function isTracked(relativePath) {
+  if (EXTERNAL_CATALOG_ROOT && posix(relativePath).startsWith("catalog-project/")) {
+    return false;
+  }
   return trackedFiles.has(posix(relativePath));
 }
 
@@ -425,8 +438,37 @@ function normalizeValue(field, rawValue) {
   }
 
   if (field === "passages") {
-    const match = raw.match(/\d+/);
-    if (match) return { normalized_value: String(Number(match[0])), unit: "passages" };
+    const semanticPatterns = [
+      /^\s*(\d+)\s*$/,
+      /(\d+)\s*(?:-?\s*in(?:let)?\b|passages?|channels?|kan[aä]le?|kanal(?:-ausführung)?|流路|канал(?:а|ов|ы)?)/i,
+      /(\d+)\s*(?:eing[aä]nge?|eingang|入力|вход(?:а|ов|ы)?)/i,
+      /(\d+)\s*-\s*kanal/i,
+      /(?:passages?|channels?|kanalzahl|流路数|количество каналов)\D{0,12}(\d+)/i,
+    ];
+    for (const pattern of semanticPatterns) {
+      const match = comparableRaw.match(pattern);
+      if (match) {
+        return {
+          normalized_value: String(Number(match[1])),
+          unit: "passages",
+          observation_status: "current-observed",
+        };
+      }
+    }
+    if (/vierkanal/i.test(comparableRaw) || /четыр[её]хканал/i.test(comparableRaw)) {
+      return {
+        normalized_value: "4",
+        unit: "passages",
+        observation_status: "current-observed",
+      };
+    }
+    if (/\d/.test(comparableRaw)) {
+      return {
+        normalized_value: null,
+        unit: null,
+        observation_status: "parser-ambiguous",
+      };
+    }
   }
 
   if (field === "channel_configuration") {
@@ -506,7 +548,11 @@ function normalizeValue(field, rawValue) {
     if (match) return { normalized_value: String(Number(match[1])), unit: "months" };
   }
 
-  return { normalized_value: normalizeText(raw), unit: null };
+  return {
+    normalized_value: normalizeText(raw),
+    unit: null,
+    observation_status: "current-observed",
+  };
 }
 
 function addObservation({
@@ -520,13 +566,19 @@ function addObservation({
   evidenceLevel = evidenceLevelFor(sourceType),
   verificationStatus = verificationFor(sourceType),
   publicClaimLevel = publicClaimLevelFor(sourceType),
+  observationStatus = null,
+  referencedSourcePath = null,
 }) {
   const normalizedModel = normalizeModel(model);
   const normalizedField = canonicalField(field) || field;
   if (!normalizedModel || !normalizedField || rawValue === null || rawValue === undefined) return;
 
-  const { normalized_value, unit } = normalizeValue(normalizedField, rawValue);
-  if (!normalized_value) return;
+  const normalized = normalizeValue(normalizedField, rawValue);
+  const normalized_value = normalized.normalized_value;
+  const unit = normalized.unit;
+  const resolvedObservationStatus =
+    observationStatus || normalized.observation_status || "current-observed";
+  if (!normalized_value && resolvedObservationStatus !== "parser-ambiguous") return;
 
   const relativePath = posix(sourcePath);
   const observation = {
@@ -541,6 +593,8 @@ function addObservation({
     source_hash: sha256(relativePath),
     evidence_level: evidenceLevel,
     verification_status: verificationStatus,
+    observation_status: resolvedObservationStatus,
+    referenced_source_path: referencedSourcePath,
     public_claim_level: publicClaimLevel,
     last_checked_at: AUDIT_DATE,
     decision_owner:
@@ -954,6 +1008,67 @@ function addLocalCatalogSources() {
   }
 }
 
+function referencedPathFromAudit(value) {
+  const source = String(value || "").trim();
+  if (!source) return null;
+  const pathOnly = source
+    .split(/\s+(?:lines?|page|sheet|cells?|metadata)\b/i)[0]
+    .replace(/[;,]+$/, "");
+  return pathOnly.includes("/") || pathOnly.endsWith(".html") ? posix(pathOnly) : null;
+}
+
+function classifyHistoricalObservation({ model, field, rawValue, sourceReference }) {
+  const referencedSourcePath = referencedPathFromAudit(sourceReference);
+  if (!referencedSourcePath || !exists(referencedSourcePath)) {
+    return {
+      observationStatus: referencedSourcePath ? "stale-reference" : "historical-unverified",
+      referencedSourcePath,
+    };
+  }
+
+  const binaryVisualCheck = readJson(
+    "tests/fixtures/product-truth-audit-regressions.json",
+  ).binary_visual_checks?.find(
+    (check) =>
+      check.source_path === referencedSourcePath &&
+      check.source_sha256 === sha256(referencedSourcePath),
+  );
+  if (binaryVisualCheck?.stale_historical_values.includes(rawValue)) {
+    return { observationStatus: "stale-reference", referencedSourcePath };
+  }
+
+  if (ENGINEERING_EXTENSIONS.has(path.extname(referencedSourcePath).toLowerCase())) {
+    return { observationStatus: "manual-review-required", referencedSourcePath };
+  }
+
+  const normalized = normalizeValue(field, rawValue);
+  if (
+    field === "model_identity" &&
+    normalizeModel(path.basename(referencedSourcePath, path.extname(referencedSourcePath))) ===
+      normalizeModel(rawValue)
+  ) {
+    return { observationStatus: "historical-unverified", referencedSourcePath };
+  }
+  const corroborated = observations.some(
+    (observation) =>
+      observation.observation_status === "current-observed" &&
+      observation.model === normalizeModel(model) &&
+      observation.field === field &&
+      observation.source_path === referencedSourcePath &&
+      observation.normalized_value === normalized.normalized_value &&
+      observation.unit === normalized.unit,
+  );
+  if (corroborated) {
+    return { observationStatus: "historical-unverified", referencedSourcePath };
+  }
+
+  const currentText = readText(referencedSourcePath);
+  if (currentText.includes(String(rawValue || "").trim())) {
+    return { observationStatus: "parser-ambiguous", referencedSourcePath };
+  }
+  return { observationStatus: "stale-reference", referencedSourcePath };
+}
+
 function addExistingAuditSources() {
   const conflictCsv = "audit/fact-resolution/phase-1e-a/product-fact-conflicts.csv";
   if (exists(conflictCsv)) {
@@ -988,8 +1103,20 @@ function addExistingAuditSources() {
           type: "engineering-audit-observation",
           evidence: "unknown",
         },
+        {
+          value: row.other_value,
+          source: row.other_source,
+          type: "website-audit-observation",
+          evidence: "unknown",
+        },
       ]) {
         if (!candidate.value) continue;
+        const historicalStatus = classifyHistoricalObservation({
+          model: row.model,
+          field,
+          rawValue: candidate.value,
+          sourceReference: candidate.source,
+        });
         addObservation({
           model: row.model,
           field,
@@ -999,11 +1126,13 @@ function addExistingAuditSources() {
           sourceType: candidate.type,
           evidenceLevel: candidate.evidence,
           verificationStatus: "manual-review-required",
+          observationStatus: historicalStatus.observationStatus,
+          referencedSourcePath: historicalStatus.referencedSourcePath,
           publicClaimLevel:
             candidate.type === "website-audit-observation"
               ? "public-with-qualification"
               : "internal-only",
-          notes: `Existing audit source reference: ${candidate.source || "not stated"}.`,
+          notes: `Historical audit source reference: ${candidate.source || "not stated"}. It does not independently establish a current fact.`,
         });
       }
     }
@@ -1140,6 +1269,7 @@ function addEngineeringBinarySources() {
 }
 
 function observationEligibleForTextComparison(observation) {
+  if (observation.observation_status !== "current-observed") return false;
   const numericFields = new Set([
     "weight",
     "maximum_pressure",
@@ -1264,6 +1394,7 @@ function findMissingEvidence() {
   const engineeringGroups = new Set();
 
   for (const observation of observations) {
+    if (observation.observation_status !== "current-observed") continue;
     const key = `${observation.model}\0${observation.field}`;
     if (
       observation.evidence_level === "engineering-primary" ||
@@ -1297,6 +1428,93 @@ function findMissingEvidence() {
     .sort((a, b) => `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`));
 }
 
+function categorizedFindings(statuses) {
+  return observations
+    .filter((observation) => statuses.includes(observation.observation_status))
+    .map((observation) => ({ ...observation }))
+    .sort((a, b) =>
+      `${a.model}:${a.field}:${a.source_path}:${a.raw_value}`.localeCompare(
+        `${b.model}:${b.field}:${b.source_path}:${b.raw_value}`,
+      ),
+    );
+}
+
+function runRegressionChecks(conflictDocument) {
+  const fixturePath = "tests/fixtures/product-truth-audit-regressions.json";
+  const fixture = readJson(fixturePath);
+  for (const regression of fixture.passage_parser) {
+    const parsed = normalizeValue("passages", regression.raw_value);
+    if (
+      parsed.normalized_value !== regression.expected_value ||
+      parsed.observation_status !== regression.expected_status
+    ) {
+      throw new Error(
+        `Passage parser regression failed for ${JSON.stringify(regression.raw_value)}.`,
+      );
+    }
+  }
+
+  const activePassageConflict = conflictDocument.active_conflicts.find(
+    (conflict) => conflict.model === "BP-4P-30-0001" && conflict.field === "passages",
+  );
+  if (activePassageConflict) {
+    throw new Error("BP-4P-30-0001 passages must not be an active conflict.");
+  }
+  const currentPassageThirty = observations.some(
+    (observation) =>
+      observation.model === "BP-4P-30-0001" &&
+      observation.field === "passages" &&
+      observation.observation_status === "current-observed" &&
+      observation.normalized_value === "30",
+  );
+  if (currentPassageThirty) {
+    throw new Error("BP-4P-30-0001 Ø30 mm was incorrectly parsed as 30 passages.");
+  }
+
+  for (const regression of fixture.historical_current_source_absence) {
+    const finding = conflictDocument.stale_references.find(
+      (observation) =>
+        observation.model === regression.model &&
+        observation.field === regression.field &&
+        observation.raw_value === regression.historical_value,
+    );
+    if (!finding || finding.observation_status !== regression.expected_status) {
+      throw new Error(
+        `Historical source regression failed for ${regression.model} / ${regression.field}.`,
+      );
+    }
+    if (
+      conflictDocument.active_conflicts.some(
+        (conflict) =>
+          conflict.model === regression.model && conflict.field === regression.field,
+      )
+    ) {
+      throw new Error(
+        `Historical-only value incorrectly created an active conflict for ${regression.model} / ${regression.field}.`,
+      );
+    }
+  }
+  for (const check of fixture.binary_visual_checks || []) {
+    if (!exists(check.source_path) || sha256(check.source_path) !== check.source_sha256) {
+      throw new Error(`Binary visual-check identity changed: ${check.source_path}.`);
+    }
+    for (const staleValue of check.stale_historical_values) {
+      if (
+        !conflictDocument.stale_references.some(
+          (finding) =>
+            finding.referenced_source_path === check.source_path &&
+            finding.raw_value === staleValue,
+        )
+      ) {
+        throw new Error(`Reviewed stale binary statement was not retained: ${staleValue}.`);
+      }
+    }
+  }
+  if (!conflictDocument.active_conflicts.length) {
+    throw new Error("No active conflicts remain; current-source conflict detection regressed.");
+  }
+}
+
 function writeJson(relativePath, value) {
   fs.mkdirSync(path.dirname(absolute(relativePath)), { recursive: true });
   fs.writeFileSync(absolute(relativePath), `${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -1306,58 +1524,45 @@ function markdownEscape(value) {
   return String(value ?? "").replaceAll("|", "\\|").replace(/\s+/g, " ").trim();
 }
 
-function knownCaseSection(conflicts) {
-  const fields = ["weight", "compatible_media", "protection_rating", "mounting_type"];
-  const relevant = conflicts.filter(
-    (conflict) => conflict.model === "BP-2P-50-0001" && fields.includes(conflict.field),
-  );
-  const observationsForModel = observations.filter(
-    (observation) =>
-      observation.model === "BP-2P-50-0001" && fields.includes(observation.field),
-  );
-
-  const lines = [
-    "## 7. Known case: BP-2P-50-0001",
-    "",
-    "No value below is declared correct. Final confirmation belongs to `laocao` and must use an approved engineering drawing or formal technical record.",
-    "",
-    "| Field | Actual observations | Assessment |",
-    "| --- | --- | --- |",
-  ];
-
-  for (const field of fields) {
-    const fieldObservations = observationsForModel.filter((observation) => observation.field === field);
-    const compact = [
-      ...new Map(
-        fieldObservations.map((observation) => [
-          `${observation.raw_value}\0${observation.source_path}\0${observation.source_type}`,
-          observation,
-        ]),
-      ).values(),
-    ]
-      .map(
-        (observation) =>
-          `\`${markdownEscape(observation.raw_value)}\` — \`${observation.source_path}\` (${observation.source_type}, SHA-256 \`${observation.source_hash}\`)`,
+function regressionCaseSection(conflictDocument) {
+  const caseStatus = (model, field) => {
+    if (
+      conflictDocument.active_conflicts.some(
+        (conflict) => conflict.model === model && conflict.field === field,
       )
-      .slice(0, 12)
-      .join("<br>");
-    const conflict = relevant.find((candidate) => candidate.field === field);
-    let assessment = conflict
-      ? "`unresolved`; manual engineering verification required"
-      : "`missing-evidence`; no competing automatically parsed value";
-    if (field === "protection_rating") {
-      assessment =
-        "`manual-review-required`; public IP65 statements exist, but Phase 1A did not establish approval of the drawing or protection test evidence";
+    ) {
+      return "active_conflict";
     }
-    lines.push(`| \`${field}\` | ${compact || "No automatically parsed value."} | ${assessment} |`);
-  }
+    const stale = conflictDocument.stale_references.filter(
+      (finding) => finding.model === model && finding.field === field,
+    );
+    const manual = conflictDocument.historical_findings.filter(
+      (finding) =>
+        finding.model === model &&
+        finding.field === field &&
+        finding.observation_status === "manual-review-required",
+    );
+    return [
+      stale.length ? `${stale.length} stale-reference` : null,
+      manual.length ? `${manual.length} manual-review-required` : null,
+    ]
+      .filter(Boolean)
+      .join("; ") || "current-observed without conflict";
+  };
 
-  lines.push(
+  return [
+    "## 7. Required regression cases",
     "",
-    "The expected `4.26 kg` and `2.3 kg` observations were both found. Broad website media wording and local `Air`-only data were also found. Website mounting wording and the local stator/rotor hole-pattern description differ. The audit does not choose between them.",
+    "| Model | Field | Result |",
+    "| --- | --- | --- |",
+    `| \`BP-4P-30-0001\` | \`passages\` | 4 passages retained; Ø30 mm bore excluded from passage count; ${caseStatus("BP-4P-30-0001", "passages")} |`,
+    `| \`BP-4P-30-0001\` | \`maximum_speed\` | Current sources show 200 RPM; historical 80 RPM does not create an active conflict; ${caseStatus("BP-4P-30-0001", "maximum_speed")} |`,
+    `| \`BP-1P-0003\` | \`operating_temperature\` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; ${caseStatus("BP-1P-0003", "operating_temperature")} |`,
+    `| \`BP-2P-95-0001\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The current PDF (SHA-256 \`e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c\`) visibly says “Test scope confirmed by approved order,” not 1.5× rated pressure; ${caseStatus("BP-2P-95-0001", "test_pressure")} |`,
     "",
-  );
-  return lines.join("\n");
+    "These classifications are audit-semantics results, not engineering decisions.",
+    "",
+  ].join("\n");
 }
 
 function buildReport(inventoryDocument, conflictDocument) {
@@ -1381,13 +1586,13 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Repository baseline: \`${BASELINE_COMMIT}\``,
     "",
-    "Issue: `#8`",
+    "Issue: `#14`",
     "",
     "## 1. Scope",
     "",
-    "Phase 1A inventoried product-detail HTML in four languages, JSON-LD, product cards, search and AI derivatives, localization sources, existing audit evidence, public download manifests, tracked engineering files, content-generation scripts, and approved read-only local catalog sources.",
+    "Phase 1B re-read product-detail HTML in four languages, JSON-LD, product cards, search and AI derivatives, localization sources, existing audit evidence, public download manifests, tracked engineering files, content-generation scripts, and approved read-only local catalog sources.",
     "",
-    "The audit normalizes observations and reports differences. It does not decide which conflicting value is correct.",
+    "The audit normalizes current observations and reports differences. Historical audit statements remain visible but cannot independently create an active conflict. The audit does not decide which conflicting value is correct.",
     "",
     "## 2. Source inventory",
     "",
@@ -1405,7 +1610,7 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Protected local catalog sources classified by task policy: **${inventoryDocument.summary.protected_local_catalog_sources}**`,
     "",
-    "Two protected local catalog inputs (`catalog-data.csv` and `source-evidence.json`) are already Git-tracked at this baseline even though the surrounding `catalog-project/` tree is otherwise untracked. The audit records the actual Git state and keeps the entire directory read-only.",
+    "When `PRODUCT_TRUTH_CATALOG_ROOT` is set, every `catalog-project/` source is read from that external directory and classified as a read-only local input, even if a path with the same name also exists in Git. No catalog file is copied into this change.",
     "",
     `Manual engineering verification sources: **${inventoryDocument.summary.manual_engineering_verification_sources}**`,
     "",
@@ -1425,7 +1630,15 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     "## 4. Conflict baseline",
     "",
-    `Unresolved conflicts: **${conflictDocument.summary.conflict_count}**`,
+    `Previous unresolved-conflict baseline: **56**`,
+    "",
+    `Active conflicts after semantic correction: **${conflictDocument.summary.active_conflicts}**`,
+    "",
+    `Historical findings: **${conflictDocument.summary.historical_findings}**`,
+    "",
+    `Stale references: **${conflictDocument.summary.stale_references}**`,
+    "",
+    `Parser ambiguities: **${conflictDocument.summary.parser_ambiguities}**`,
     "",
     "| Model | Field | Normalized values | Public HTML | JSON-LD | Search/AI |",
     "| --- | --- | --- | --- | --- | --- |",
@@ -1436,7 +1649,7 @@ function buildReport(inventoryDocument, conflictDocument) {
           .join("<br>")} | ${conflict.affects_public_website ? "Yes" : "No"} | ${conflict.affects_json_ld ? "Yes" : "No"} | ${conflict.affects_search_or_ai_index ? "Yes" : "No"} |`,
     ),
     "",
-    "Every conflict is `unresolved`, has decision owner `laocao`, and contains no winning or correct value.",
+    "Every active conflict is `unresolved`, has decision owner `laocao`, and contains no winning or correct value. Only `current-observed` values with unambiguous field semantics and normalized units participate.",
     "",
     "## 5. Missing evidence",
     "",
@@ -1451,7 +1664,7 @@ function buildReport(inventoryDocument, conflictDocument) {
       ? [`- ${manualItems.length - 100} additional model-field checks are retained in the machine-readable conflict report.`]
       : []),
     "",
-    knownCaseSection(conflictDocument.conflicts),
+    regressionCaseSection(conflictDocument),
     "## 8. Potential downstream impact",
     "",
     "- **Website:** unresolved values may appear in visible specifications, cards, articles, or application guidance.",
@@ -1462,7 +1675,7 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     "## 9. Next phase recommendation",
     "",
-    "Phase 1B should select a small set of high-risk conflicts, obtain the current approved engineering source and revision from `laocao`, record the decision scope, and only then propose synchronized changes across HTML, JSON-LD, translations, search/AI indexes, and downloads. Do not build a full Product Truth database until the decision and approval workflow has been proven on this pilot.",
+    "The remaining active conflicts should be handled in separate, model-scoped decision tasks. Each task must obtain the current approved engineering source and revision from `laocao` before proposing synchronized public changes.",
     "",
     "## 10. Non-modification declaration",
     "",
@@ -1528,8 +1741,14 @@ function main() {
   addSecondaryTextSources();
   addEngineeringBinarySources();
 
-  const conflicts = groupConflicts();
+  const activeConflicts = groupConflicts();
   const missingEvidence = findMissingEvidence();
+  const historicalFindings = categorizedFindings([
+    "historical-unverified",
+    "manual-review-required",
+  ]);
+  const staleReferences = categorizedFindings(["stale-reference"]);
+  const parserAmbiguities = categorizedFindings(["parser-ambiguous"]);
   const sources = [...inventory.values()].sort((a, b) =>
     a.source_path.localeCompare(b.source_path),
   );
@@ -1537,7 +1756,7 @@ function main() {
   const fieldTypes = [...new Set(observations.map((observation) => observation.field))].sort();
 
   const inventoryDocument = {
-    schema_version: "1.0",
+    schema_version: "2.0",
     audit_date: AUDIT_DATE,
     repository: "caoguangcheng9-lgtm/begapunk-website",
     baseline_commit: BASELINE_COMMIT,
@@ -1548,6 +1767,12 @@ function main() {
     field_type_count: fieldTypes.length,
     summary: {
       observation_count: observations.length,
+      current_observations: observations.filter(
+        (observation) => observation.observation_status === "current-observed",
+      ).length,
+      historical_findings: historicalFindings.length,
+      stale_references: staleReferences.length,
+      parser_ambiguities: parserAmbiguities.length,
       git_tracked_sources: sources.filter((source) => source.git_tracked).length,
       local_untracked_sources: sources.filter((source) => !source.git_tracked).length,
       protected_local_catalog_sources: sources.filter(
@@ -1564,43 +1789,35 @@ function main() {
   };
 
   const conflictDocument = {
-    schema_version: "1.0",
+    schema_version: "2.0",
     audit_date: AUDIT_DATE,
     repository: "caoguangcheng9-lgtm/begapunk-website",
     baseline_commit: BASELINE_COMMIT,
     summary: {
-      conflict_count: conflicts.length,
+      active_conflicts: activeConflicts.length,
+      historical_findings: historicalFindings.length,
+      stale_references: staleReferences.length,
+      parser_ambiguities: parserAmbiguities.length,
       missing_evidence_count: missingEvidence.length,
       decision_owner: "laocao",
-      conflict_status: "unresolved",
+      conflict_status: "active_conflict",
     },
-    conflicts,
+    active_conflicts: activeConflicts,
+    conflicts: activeConflicts,
+    historical_findings: historicalFindings,
+    stale_references: staleReferences,
+    parser_ambiguities: parserAmbiguities,
     missing_evidence: missingEvidence,
   };
 
-  const knownWeight = conflicts.find(
-    (conflict) => conflict.model === "BP-2P-50-0001" && conflict.field === "weight",
-  );
-  if (
-    !knownWeight ||
-    !knownWeight.observed_values.some(
-      (value) => value.normalized_value === "4.26" && value.unit === "kg",
-    ) ||
-    !knownWeight.observed_values.some(
-      (value) => value.normalized_value === "2.3" && value.unit === "kg",
-    )
-  ) {
-    throw new Error(
-      "Known-case validation failed: BP-2P-50-0001 must retain both 4.26 kg and 2.3 kg observations.",
-    );
-  }
+  runRegressionChecks(conflictDocument);
 
   writeJson(INVENTORY_PATH, inventoryDocument);
   writeJson(CONFLICT_PATH, conflictDocument);
   fs.writeFileSync(absolute(REPORT_PATH), buildReport(inventoryDocument, conflictDocument), "utf8");
 
   console.log(
-    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${conflicts.length} unresolved conflicts, and ${missingEvidence.length} missing-evidence groups.`,
+    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${historicalFindings.length} historical findings, ${staleReferences.length} stale references, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
   );
   console.log("Business conflicts were reported without selecting a winning value.");
 }

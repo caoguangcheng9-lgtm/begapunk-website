@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "passage_parser": [
+    {
+      "raw_value": "4-in-4-out (quad passage, Ø30mm hollow bore)",
+      "expected_value": "4",
+      "expected_status": "current-observed"
+    },
+    {
+      "raw_value": "Ø30 mm中空穴付き4流路",
+      "expected_value": "4",
+      "expected_status": "current-observed"
+    },
+    {
+      "raw_value": "Четырёхканальное исполнение со сквозным отверстием Ø30 мм",
+      "expected_value": "4",
+      "expected_status": "current-observed"
+    },
+    {
+      "raw_value": "Ø30 mm hollow bore",
+      "expected_value": null,
+      "expected_status": "parser-ambiguous"
+    }
+  ],
+  "historical_current_source_absence": [
+    {
+      "model": "BP-4P-30-0001",
+      "field": "maximum_speed",
+      "historical_value": "80 RPM",
+      "expected_status": "stale-reference"
+    },
+    {
+      "model": "BP-1P-0003",
+      "field": "operating_temperature",
+      "historical_value": "-20°C to +120°C",
+      "expected_status": "stale-reference"
+    },
+    {
+      "model": "BP-2P-95-0001",
+      "field": "test_pressure",
+      "historical_value": "12 MPa",
+      "expected_status": "stale-reference"
+    }
+  ],
+  "binary_visual_checks": [
+    {
+      "source_path": "downloads/BP-2P-95-0001.pdf",
+      "source_sha256": "e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c",
+      "page": 1,
+      "visible_observation": "Note 3: Test scope confirmed by approved order.",
+      "stale_historical_values": [
+        "No direct numeric test pressure; note says 1.5x rated pressure"
+      ]
+    }
+  ]
+}

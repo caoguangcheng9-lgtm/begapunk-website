@@ -1,6 +1,6 @@
 # Begapunk Product Truth Governance
 
-Version: 1.0
+Version: 1.1
 
 Baseline date: 2026-07-31
 
@@ -28,6 +28,7 @@ Every normalized product fact must be representable with these fields:
 | `source_hash` | SHA-256 of the exact source file. |
 | `evidence_level` | Evidence classification defined below. |
 | `verification_status` | Current verification state. |
+| `observation_status` | Whether the value was re-read from a current source or retained only as a historical/manual lead. |
 | `public_claim_level` | Whether the observation may be stated publicly. |
 | `last_checked_at` | Deterministic audit date in `YYYY-MM-DD` format. |
 | `decision_owner` | Person responsible for an unresolved engineering decision. |
@@ -63,6 +64,16 @@ A filename, PDF title, local `VERIFIED` label, repeated website value, or transl
 
 Phase 1A defaults conflicts to `conflict`/`unresolved` and assigns the decision to `laocao`. The audit script must finish successfully when business conflicts are found; only parsing failures, damaged required structures, or program errors are blocking failures.
 
+Observation status is separate from approval status:
+
+- `current-observed`: the value was re-read from a current source with field-aware parsing.
+- `historical-unverified`: a prior audit statement is retained as history and is corroborated by a separately parsed current source, but the historical record itself is not evidence.
+- `stale-reference`: a prior audit statement points to a path or location where the value is no longer present, or the referenced path no longer exists.
+- `parser-ambiguous`: the current text cannot be assigned to the field without guessing.
+- `manual-review-required`: the referenced current artifact exists but requires visual, engineering, or other manual review.
+
+Only `current-observed` values may participate in an active conflict. The other statuses remain visible as findings and must not independently create a current conflict.
+
 ## 5. Public claim levels
 
 - `public-verified`: approved evidence supports the exact public claim and scope.
@@ -91,6 +102,7 @@ The baseline normalizes common labels into these canonical fields:
 - `protection_rating`
 - `friction_torque`
 - `warranty`
+- `test_pressure`
 
 Additional fields may be added only when their meaning and unit are unambiguous. Translated labels map to the same canonical field, but translated wording alone must not create a winning engineering value.
 
@@ -104,7 +116,14 @@ Additional fields may be added only when their meaning and unit are unambiguous.
 
 ## 8. Conflict rules
 
-A conflict exists when the same normalized model and field have more than one comparison-safe value from current sources.
+An `active_conflict` exists only when all of these conditions are met:
+
+1. The observations use the same normalized model.
+2. The observations use the same canonical field.
+3. At least two different normalized values remain.
+4. Every compared value was re-read from a current source.
+5. No compared parse is ambiguous.
+6. Units were normalized before comparison.
 
 For every conflict:
 
@@ -116,7 +135,9 @@ For every conflict:
 6. Record whether the conflict reaches public HTML, JSON-LD, search, or AI indexes.
 7. Do not write a `correct_value`, `winner`, or equivalent field.
 
-Historical values may be preserved as audit context, but they must not be treated as current unless the corresponding source is current.
+Historical values are preserved, not deleted. They are reported separately as historical findings, stale references, parser ambiguities, or manual-review items. A historical record never becomes current evidence by repetition; a separate current-source parse must establish the current observation.
+
+Field parsing must use field semantics. For example, `4 passages with Ø30 mm hollow bore` means four passages; the bore diameter must never be captured as the passage count. If the parser cannot distinguish the concepts, it records `parser-ambiguous` and excludes the observation from active conflict counting.
 
 ## 9. Automatic versus manual verification
 
