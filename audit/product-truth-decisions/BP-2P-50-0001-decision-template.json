@@ -1,17 +1,20 @@
 {
-  "schema_version": "1.0",
-  "phase": "1B",
+  "schema_version": "1.1",
+  "phase": "conservative-public-sync",
   "model": "BP-2P-50-0001",
-  "issue": 10,
-  "baseline_commit": "2f4e8b257acb38c1ef6ba1b4c61938079b5d648a",
+  "issue": 12,
+  "baseline_commit": "81b50b8c3158297d1190830f4ff852667baec5da",
   "decision_owner": "laocao",
+  "decision": "conservative-public-policy",
+  "approved_engineering_source": "not-established",
+  "engineering_verification": "manual-review-required",
   "evidence_packet": "audit/product-truth-decisions/BP-2P-50-0001-evidence-packet.md",
-  "instructions": [
-    "Review the evidence packet and identify the applicable current approved engineering source before making a decision.",
-    "State the exact assembly or configuration scope for every decision.",
-    "Do not authorize a public update unless the approved source and revision are identified.",
-    "A repeated website value, a local VERIFIED label, a filename, or PDF metadata does not establish approval."
-  ],
+  "authorization_boundary": {
+    "public_update_authorized": "Only the conservative public wording specified in Issue #12 for weight, compatible media, mounting, protection, and seal material.",
+    "engineering_fact_approval": "not-established",
+    "engineering_pdf_modification": false,
+    "production_deployment": false
+  },
   "engineering_files": [
     {
       "path": "downloads/BP-2P-50-0001.pdf",
@@ -26,87 +29,52 @@
   ],
   "fields": {
     "weight": {
-      "status": "pending-laocao-decision",
-      "questions": [
-        "What is the current complete sellable assembly mass for BP-2P-50-0001?",
-        "Does the 2300 g drawing observation include the flange, protective shroud, fittings, and all supplied components?",
-        "Which approved drawing, BOM, inspection record, or controlled weighing record establishes the applicable mass?"
-      ],
-      "laocao_response": {
-        "selected_evidence_source": null,
-        "decision_statement": null,
-        "applicable_configuration": null,
-        "approved_revision_or_record": null,
-        "public_update_authorized": null,
-        "notes": null
-      }
+      "status": "manual-review-required",
+      "decision": "conservative-public-policy",
+      "public_claim_level": "prohibited-until-verified",
+      "approved_engineering_source": "not-established",
+      "engineering_verification": "manual-review-required",
+      "public_update_authorized": "Do not publish a specific weight. Visible pages may state: Confirm weight for the supplied configuration. JSON-LD must omit the weight property, and search or AI indexes must not contain a numeric weight.",
+      "remaining_question": "Which controlled drawing, BOM, inspection record, or weighing record establishes the complete sellable assembly mass for the supplied configuration?"
     },
     "compatible_media": {
-      "status": "pending-laocao-decision",
-      "questions": [
-        "Is the standard approved medium Air only, or are water, water-soluble coolant, and light hydraulic oil also approved?",
-        "If liquid media are approved, what pressure, speed, temperature, filtration, corrosion, and service-life limits apply?",
-        "Which approved compatibility record or controlled technical specification establishes the applicable media?"
-      ],
-      "laocao_response": {
-        "selected_evidence_source": null,
-        "decision_statement": null,
-        "applicable_configuration": null,
-        "approved_revision_or_record": null,
-        "public_update_authorized": null,
-        "notes": null
-      }
+      "status": "manual-review-required",
+      "decision": "conservative-public-policy",
+      "public_claim_level": "public-with-qualification",
+      "approved_engineering_source": "not-established",
+      "engineering_verification": "manual-review-required",
+      "public_update_authorized": "Publish Air as the standard medium and state that other media require written compatibility confirmation for the operating conditions.",
+      "remaining_question": "Which controlled compatibility record establishes any approved non-air medium and its operating limits?"
     },
     "mounting_and_hole_pattern": {
-      "status": "pending-laocao-decision",
-      "questions": [
-        "Should the public specification describe both the 4 x M5 stator pattern and the 6 x M5 rotor pattern?",
-        "Does the current phrase Flange Mount (6-M5) describe only one side of the assembly and therefore omit the stator pattern?",
-        "Which approved drawing revision establishes the hole quantities, thread sizes, pitch circles, and thread depths?"
-      ],
-      "laocao_response": {
-        "selected_evidence_source": null,
-        "decision_statement": null,
-        "applicable_configuration": null,
-        "approved_revision_or_record": null,
-        "public_update_authorized": null,
-        "notes": null
-      }
+      "status": "manual-review-required",
+      "decision": "conservative-public-policy",
+      "public_claim_level": "public-with-qualification",
+      "approved_engineering_source": "not-established",
+      "engineering_verification": "manual-review-required",
+      "public_update_authorized": "Publish stator side 4 × M5 with 10 mm thread depth and rotor side 6 × M5 with 8 mm thread depth, with a requirement to confirm complete mounting dimensions against the supplied drawing before machining.",
+      "remaining_question": "Which controlled drawing revision establishes the complete hole pattern, pitch circles, tolerances, and mating geometry?"
     },
     "protection_rating": {
-      "status": "pending-laocao-decision",
-      "questions": [
-        "Is IP65 an approved tested rating for the complete BP-2P-50-0001 assembly?",
-        "Which test report, standard, test configuration, and approved revision support the rating?",
-        "If only a labyrinth and protective shroud are established, what qualified public wording is authorized?"
-      ],
-      "laocao_response": {
-        "selected_evidence_source": null,
-        "decision_statement": null,
-        "applicable_configuration": null,
-        "approved_revision_or_record": null,
-        "public_update_authorized": null,
-        "notes": null
-      }
+      "status": "manual-review-required",
+      "decision": "conservative-public-policy",
+      "public_claim_level": "public-with-qualification",
+      "approved_engineering_source": "not-established",
+      "engineering_verification": "manual-review-required",
+      "public_update_authorized": "Publish a protective-shroud and labyrinth design for dusty environments and state that no certified IP rating is currently claimed.",
+      "remaining_question": "Which controlled test report and approved configuration, if any, establishes an ingress-protection rating?"
     },
     "seal_material": {
-      "status": "pending-laocao-decision",
-      "questions": [
-        "Is the O-ring material specifically FKM for the standard BP-2P-50-0001 configuration?",
-        "Does PTFE refer to a composite dynamic seal, and what exact compound or construction is approved?",
-        "Which approved drawing, BOM, seal specification, or material record establishes both PTFE and FKM wording?"
-      ],
-      "laocao_response": {
-        "selected_evidence_source": null,
-        "decision_statement": null,
-        "applicable_configuration": null,
-        "approved_revision_or_record": null,
-        "public_update_authorized": null,
-        "notes": null
-      }
+      "status": "manual-review-required",
+      "decision": "conservative-public-policy",
+      "public_claim_level": "public-with-qualification",
+      "approved_engineering_source": "not-established",
+      "engineering_verification": "manual-review-required",
+      "public_update_authorized": "Publish PTFE seal with O-ring. Do not identify FKM, a specific PTFE composite, or the O-ring compound without controlled BOM evidence.",
+      "remaining_question": "Which controlled BOM or seal specification establishes the exact PTFE construction and O-ring compound?"
     }
   },
-  "codex_decisions": "none",
-  "public_product_facts_changed": false,
+  "codex_engineering_decisions": "none",
+  "public_product_facts_changed": "conservative-policy-only",
   "deployment": "not-deployed"
 }
