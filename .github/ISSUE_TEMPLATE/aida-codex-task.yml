@@ -1,0 +1,81 @@
+name: Aida-Codex Task
+description: Create one auditable task for the Aida-Codex human-relay workflow.
+title: "[Aida Relay] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include passwords, tokens, cookies, private keys, SMTP credentials, or `.env` values.
+        This Issue is the canonical task record. One Issue must describe one bounded task.
+  - type: input
+    id: source_reference
+    attributes:
+      label: Aida source reference
+      description: Link or stable reference to the original Aida analysis.
+      placeholder: "Aida review or analysis reference"
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State the outcome, not only the requested implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and rationale
+      description: Facts that justify the task and known uncertainty.
+    validations:
+      required: true
+  - type: textarea
+    id: in_scope
+    attributes:
+      label: In scope
+      description: Files, behavior, and systems Codex may change.
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: Explicitly list prohibited changes, including merge or deployment restrictions.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Use observable and testable criteria.
+      placeholder: |
+        - [ ] Expected behavior is verified
+        - [ ] Required validation passes
+        - [ ] Deployment status is stated
+    validations:
+      required: true
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Decisions required from Lao Cao
+      description: Write "None" if no commercial, legal, cost, scope, merge, or deployment decision is pending.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and rollback expectations
+      description: Include security, compliance, data, maintenance, and production risks as applicable.
+    validations:
+      required: true
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Relay readiness
+      options:
+        - label: The task contains no secrets or credentials.
+          required: true
+        - label: Scope and acceptance criteria are complete.
+          required: true
+        - label: Merge and deployment are not implicitly authorized.
+          required: true
