@@ -44,17 +44,21 @@
     "seal_material",
     "stator_mounting_pattern",
     "test_pressure",
+    "unassigned_mounting_pattern",
     "warranty",
     "weight"
   ],
-  "field_type_count": 20,
+  "field_type_count": 21,
   "summary": {
-    "observation_count": 2160,
-    "current_observations": 2077,
-    "historical_findings": 14,
+    "observation_count": 2210,
+    "current_observations": 2124,
+    "historical_findings": 68,
     "stale_references": 14,
     "source_identity_mismatches": 4,
-    "parser_ambiguities": 51,
+    "mismatched_document_count": 1,
+    "affected_observation_count": 4,
+    "coverage_differences": 1,
+    "parser_ambiguities": 0,
     "git_tracked_sources": 234,
     "local_untracked_sources": 20,
     "protected_local_catalog_sources": 4,
@@ -790,6 +794,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -816,6 +821,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -868,6 +874,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -895,6 +902,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -921,6 +929,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -948,6 +957,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1033,6 +1043,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1084,7 +1095,9 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1110,6 +1123,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "rotor_mounting_pattern",
         "seal_material",
         "warranty",
@@ -1189,6 +1203,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1469,6 +1484,7 @@
         "rotor_mounting_pattern",
         "seal_material",
         "stator_mounting_pattern",
+        "unassigned_mounting_pattern",
         "weight"
       ],
       "notes": "Protected local catalog CSV, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
@@ -1512,6 +1528,7 @@
         "rotor_mounting_pattern",
         "seal_material",
         "stator_mounting_pattern",
+        "unassigned_mounting_pattern",
         "weight"
       ],
       "notes": "Protected local catalog JSON, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
@@ -2059,6 +2076,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -2085,6 +2103,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -2137,6 +2156,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -2164,6 +2184,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2190,6 +2211,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2217,6 +2239,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2302,6 +2325,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2353,7 +2377,9 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2379,6 +2405,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "rotor_mounting_pattern",
         "seal_material",
         "warranty",
@@ -2458,6 +2485,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4131,6 +4159,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -4157,6 +4186,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -4209,6 +4239,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -4236,6 +4267,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4262,6 +4294,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4289,6 +4322,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4374,6 +4408,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4425,7 +4460,9 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4451,6 +4488,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "rotor_mounting_pattern",
         "seal_material",
         "warranty",
@@ -4530,6 +4568,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5354,6 +5393,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -5380,6 +5420,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -5432,6 +5473,7 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -5459,6 +5501,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5485,6 +5528,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5512,6 +5556,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5538,6 +5583,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5595,6 +5641,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5646,7 +5693,9 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5672,7 +5721,9 @@
         "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5750,6 +5801,7 @@
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],

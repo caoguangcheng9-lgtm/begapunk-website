@@ -32,6 +32,7 @@ const ENGINEERING_EXTENSIONS = new Set([
 
 const inventory = new Map();
 const observations = [];
+const coverageDifferences = [];
 const searchOrAiModels = new Set();
 const requiredPaths = [
   "BP-2P-50-0001.html",
@@ -382,18 +383,44 @@ function normalizeText(value) {
     .toLowerCase();
 }
 
+function extractPortThreads(rawValue) {
+  const text = String(rawValue || "").normalize("NFKC");
+  const values = [];
+  for (const match of text.matchAll(/\b(G\s*\d+\s*\/\s*\d+|(?:NPT|BSP)\s*\d+\s*\/\s*\d+)\b/gi)) {
+    values.push(match[1].replace(/\s+/g, "").toLowerCase());
+  }
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
+
+function extractUnassignedMountingPattern(rawValue) {
+  let text = String(rawValue || "").normalize("NFKC");
+  const tokens = [];
+  text = text.replace(/(\d+)\s*(?:x|×|-)\s*m\s*(\d+)/gi, (_, count, size) => {
+    tokens.push(`${Number(count)}xm${Number(size)}`);
+    return " ";
+  });
+  text = text.replace(/(\d+)\s*(?:x|×|-)\s*(\d+(?:[.,]\d+)?)\s*mm\s*(?:mounting\s*)?holes?/gi, (_, count, size) => {
+    tokens.push(`${Number(count)}x${String(size).replace(",", ".")}mm-hole`);
+    return " ";
+  });
+  for (const match of text.matchAll(/\bm\s*(\d+)\b/gi)) {
+    tokens.push(`m${Number(match[1])}`);
+  }
+  return [...new Set(tokens)].sort((a, b) => a.localeCompare(b));
+}
+
 function parseMountingSemantics(rawValue) {
   const text = String(rawValue || "").normalize("NFKC").replace(/\s+/g, " ").trim();
   const normalized = normalizeText(text);
   let mountingStyle = null;
   if (
-    /(?:^|\b)(?:flange(?:d)?(?:\s+mount(?:ing)?)?|flanschmontage)(?:\b|$)|フランジ取付|фланцев(?:ое|ый) креплен/i.test(
+    /(?:^|\b)(?:flange(?:d)?(?:\s+mount(?:ing)?)?|flanschmontage|flanschanschluss|flanschbefestigung)(?:\b|$)|フランジ取付|фланцев(?:ое|ый|ым)\s+(?:соединен|креплен)/i.test(
       normalized,
     )
   ) {
     mountingStyle = "flange";
   } else if (
-    /(?:^|\b)(?:threaded(?:\s+mount(?:ing)?)?|thread mount(?:ing)?|gewindemontage)(?:\b|$)|ねじ取付|резьбов(?:ое|ой) креплен/i.test(
+    /(?:^threaded$|threaded\s+(?:mount(?:ing)?|connection)|thread mount(?:ing)?|gewindemontage)(?:\b|$)|ねじ取付|резьбов(?:ое|ой)\s+креплен/i.test(
       normalized,
     )
   ) {
@@ -574,9 +601,9 @@ function normalizeValue(field, rawValue) {
   }
 
   if (field === "port_thread") {
-    const match = comparableRaw.match(/\b(G\s*\d+\s*\/\s*\d+|(?:R|NPT|BSP)\s*\d+\s*\/\s*\d+)\b/i);
-    if (match) {
-      return { normalized_value: match[1].replace(/\s+/g, "").toLowerCase(), unit: null };
+    const values = extractPortThreads(comparableRaw);
+    if (values.length) {
+      return { normalized_value: values.join("|"), unit: null };
     }
   }
 
@@ -596,6 +623,12 @@ function normalizeValue(field, rawValue) {
         unit: null,
       };
     }
+    return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
+  }
+
+  if (field === "unassigned_mounting_pattern") {
+    const values = extractUnassignedMountingPattern(comparableRaw);
+    if (values.length) return { normalized_value: values.join("|"), unit: null };
     return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
   }
 
@@ -633,6 +666,25 @@ function addObservation({
 
   if (normalizedField === "mounting_style" && !skipMountingExpansion) {
     const semantics = parseMountingSemantics(rawValue);
+    const portThreads = extractPortThreads(rawValue);
+    if (portThreads.length) {
+      addObservation({
+        model: normalizedModel,
+        field: "port_thread",
+        rawValue,
+        language,
+        sourcePath,
+        sourceType,
+        notes: `${notes} Reclassified from an interface-thread mounting label.`.trim(),
+        evidenceLevel,
+        verificationStatus,
+        publicClaimLevel,
+        observationStatus,
+        referencedSourcePath,
+        skipMountingExpansion: true,
+        sourceIdentity,
+      });
+    }
     for (const patternField of ["stator_mounting_pattern", "rotor_mounting_pattern"]) {
       if (!semantics[patternField]) continue;
       addObservation({
@@ -652,7 +704,38 @@ function addObservation({
         sourceIdentity,
       });
     }
-    if (!semantics.mounting_style && (semantics.stator_mounting_pattern || semantics.rotor_mounting_pattern)) {
+    const unassignedPattern =
+      !semantics.stator_mounting_pattern && !semantics.rotor_mounting_pattern
+        ? extractUnassignedMountingPattern(rawValue)
+        : [];
+    if (unassignedPattern.length) {
+      addObservation({
+        model: normalizedModel,
+        field: "unassigned_mounting_pattern",
+        rawValue,
+        language,
+        sourcePath,
+        sourceType,
+        notes: `${notes} Mounting holes lack a reliable stator/rotor assignment.`.trim(),
+        evidenceLevel,
+        verificationStatus,
+        publicClaimLevel,
+        observationStatus:
+          observationStatus === "current-observed" || observationStatus === null
+            ? "manual-review-required"
+            : observationStatus,
+        referencedSourcePath,
+        skipMountingExpansion: true,
+        sourceIdentity,
+      });
+    }
+    if (
+      !semantics.mounting_style &&
+      (portThreads.length ||
+        semantics.stator_mounting_pattern ||
+        semantics.rotor_mounting_pattern ||
+        unassignedPattern.length)
+    ) {
       return;
     }
   }
@@ -1392,6 +1475,50 @@ function observationEligibleForTextComparison(observation) {
   );
 }
 
+function portThreadSet(normalizedValue) {
+  return new Set(String(normalizedValue || "").split("|").filter(Boolean));
+}
+
+function isProperSubset(candidate, possibleSuperset) {
+  return (
+    candidate.size < possibleSuperset.size &&
+    [...candidate].every((value) => possibleSuperset.has(value))
+  );
+}
+
+function sourceMakesExclusivePortClaim(source) {
+  return /\b(?:only|sole|exclusive(?:ly)?)\b|\b(?:nur|ausschlie(?:ss|\u00df)lich)\b|(?:\u4ec5|\u53ea)\s*(?:\u9650|\u80fd|\u53ef)?|(?:\u306e\u307f|\u3060\u3051)|\b(?:\u0442\u043e\u043b\u044c\u043a\u043e|\u0438\u0441\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e)\b/i.test(
+    `${source.raw_value} ${source.notes || ""}`,
+  );
+}
+
+function buildConflictMetadata(model, field, observedValues, status) {
+  const sourceTypes = observedValues.flatMap((value) =>
+    value.sources.map((source) => source.source_type),
+  );
+  const requirement = evidenceRequirementFor(field);
+  return {
+    model,
+    field,
+    observed_values: observedValues,
+    evidence_levels: [
+      ...new Set(
+        observedValues.flatMap((value) => value.sources.map((source) => source.evidence_level)),
+      ),
+    ].sort(),
+    status,
+    decision_owner: "laocao",
+    suggested_engineering_materials: requirement.required_evidence_types,
+    evidence_domain: requirement.evidence_domain,
+    suggested_evidence_materials: requirement.required_evidence_types,
+    affects_public_website: sourceTypes.some(
+      (type) => type.includes("website") || type.includes("translated"),
+    ),
+    affects_json_ld: sourceTypes.some((type) => type.includes("json-ld")),
+    affects_search_or_ai_index: searchOrAiModels.has(model),
+  };
+}
+
 function groupConflicts() {
   const groups = new Map();
   for (const observation of observations) {
@@ -1462,31 +1589,33 @@ function groupConflicts() {
     ) {
       continue;
     }
-    const sourceTypes = observedValues.flatMap((value) =>
-      value.sources.map((source) => source.source_type),
-    );
-    const requirement = evidenceRequirementFor(field);
-    const suggested = requirement.required_evidence_types;
+    if (field === "port_thread") {
+      const setEntries = observedValues.map((value) => ({
+        value,
+        set: portThreadSet(value.normalized_value),
+      }));
+      const maximal = setEntries.filter(
+        (entry) => !setEntries.some((other) => isProperSubset(entry.set, other.set)),
+      );
+      const hasCoverageDifference = setEntries.some((entry) =>
+        setEntries.some((other) => isProperSubset(entry.set, other.set)),
+      );
+      const hasExclusiveClaim = observedValues.some((value) =>
+        value.sources.some(sourceMakesExclusivePortClaim),
+      );
+      if (hasCoverageDifference && maximal.length === 1 && !hasExclusiveClaim) {
+        coverageDifferences.push({
+          ...buildConflictMetadata(model, field, observedValues, "coverage-difference"),
+          most_complete_observation: maximal[0].value.normalized_value,
+          notes:
+            "One current source lists a strict subset of the interface sizes listed by another. This is an information-coverage difference, not an automatically mutually exclusive engineering conflict.",
+        });
+        continue;
+      }
+    }
 
     conflicts.push({
-      model,
-      field,
-      observed_values: observedValues,
-      evidence_levels: [
-        ...new Set(
-          observedValues.flatMap((value) => value.sources.map((source) => source.evidence_level)),
-        ),
-      ].sort(),
-      status: "unresolved",
-      decision_owner: "laocao",
-      suggested_engineering_materials: suggested,
-      evidence_domain: requirement.evidence_domain,
-      suggested_evidence_materials: suggested,
-      affects_public_website: sourceTypes.some(
-        (type) => type.includes("website") || type.includes("translated"),
-      ),
-      affects_json_ld: sourceTypes.some((type) => type.includes("json-ld")),
-      affects_search_or_ai_index: searchOrAiModels.has(model),
+      ...buildConflictMetadata(model, field, observedValues, "unresolved"),
       notes:
         "No correct value was selected. Confirm applicability, revision, configuration, and approval status before changing any public source.",
     });
@@ -1512,6 +1641,7 @@ const EVIDENCE_REQUIREMENTS = {
       "mounting_style",
       "stator_mounting_pattern",
       "rotor_mounting_pattern",
+      "unassigned_mounting_pattern",
       "friction_torque",
       "protection_rating",
     ]),
@@ -1641,6 +1771,15 @@ function categorizedFindings(statuses) {
     );
 }
 
+function countMismatchedDocuments(findings) {
+  return new Set(
+    findings.map(
+      (finding) =>
+        `${finding.referenced_source_path || finding.source_path}\0${finding.source_identity?.source_hash || finding.source_hash}`,
+    ),
+  ).size;
+}
+
 function runRegressionChecks(conflictDocument) {
   const fixturePath = "tests/fixtures/product-truth-audit-regressions.json";
   const fixture = readJson(fixturePath);
@@ -1735,6 +1874,18 @@ function runRegressionChecks(conflictDocument) {
       throw new Error(`Port-thread regression failed for ${regression.raw_value}.`);
     }
   }
+  for (const regression of fixture.mounting_reclassification || []) {
+    const portThread = extractPortThreads(regression.raw_value).join("|") || null;
+    const mounting = parseMountingSemantics(regression.raw_value);
+    const unassigned = extractUnassignedMountingPattern(regression.raw_value).join("|") || null;
+    if (
+      portThread !== (regression.expected_port_thread ?? null) ||
+      mounting.mounting_style !== (regression.expected_mounting_style ?? null) ||
+      unassigned !== (regression.expected_unassigned_mounting_pattern ?? null)
+    ) {
+      throw new Error(`Mounting reclassification regression failed for ${regression.raw_value}.`);
+    }
+  }
   for (const regression of fixture.evidence_domains || []) {
     if (evidenceRequirementFor(regression.field).evidence_domain !== regression.expected_domain) {
       throw new Error(`Evidence-domain regression failed for ${regression.field}.`);
@@ -1763,6 +1914,34 @@ function runRegressionChecks(conflictDocument) {
     )
   ) {
     throw new Error("Thread depth was incorrectly classified as threaded mounting.");
+  }
+  if (
+    conflictDocument.active_conflicts.some(
+      (conflict) => conflict.model === "BP-2P-0002" && conflict.field === "port_thread",
+    )
+  ) {
+    throw new Error("BP-2P-0002 port-thread coverage difference must not be an active conflict.");
+  }
+  const targetPortCoverage = conflictDocument.coverage_differences.find(
+    (finding) => finding.model === "BP-2P-0002" && finding.field === "port_thread",
+  );
+  if (!targetPortCoverage || targetPortCoverage.most_complete_observation !== "g1/4|g1/8") {
+    throw new Error("BP-2P-0002 multi-value port-thread coverage was not retained.");
+  }
+  if (
+    conflictDocument.parser_ambiguities.some(
+      (finding) =>
+        finding.field === "mounting_style" &&
+        /G\s*1\/(?:4|8)|Gewinde|\u306d\u3058|\u0440\u0435\u0437\u044c\u0431/i.test(finding.raw_value),
+    )
+  ) {
+    throw new Error("Explicit interface-thread terminology remained a mounting-style ambiguity.");
+  }
+  if (conflictDocument.summary.mismatched_document_count !== 1) {
+    throw new Error("The known source-identity mismatch must count as one mismatched document.");
+  }
+  if (conflictDocument.summary.affected_observation_count !== 4) {
+    throw new Error("The known source-identity mismatch must preserve four affected observations.");
   }
   const warrantyMissing = conflictDocument.missing_evidence.filter(
     (finding) => finding.field === "warranty",
@@ -1823,6 +2002,7 @@ function regressionCaseSection(conflictDocument) {
     `| \`BP-1P-0003\` | \`operating_temperature\` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; ${caseStatus("BP-1P-0003", "operating_temperature")} |`,
     `| \`BP-2P-95-0001\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies \`BP-2P-95-0005\`; it is recorded as \`source-identity-mismatch\` and excluded before any test-pressure interpretation. |`,
     `| \`BP-2P-50-0001\` | mounting semantics | Both current descriptions resolve to stator \`4xm5\` and rotor \`6xm5\`; thread depth does not create a threaded mounting style or active conflict. |`,
+    `| \`BP-2P-0002\` | \`port_thread\` | \`G1/4 and G1/8 ports\` resolves to \`g1/4\\|g1/8\`; the \`g1/8\` subset is retained as \`coverage-difference\`, not an active conflict. |`,
     "",
     "These classifications are audit-semantics results, not engineering decisions.",
     "",
@@ -1902,7 +2082,11 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Stale references: **${conflictDocument.summary.stale_references}**`,
     "",
-    `Source identity mismatches: **${conflictDocument.summary.source_identity_mismatches}**`,
+    `Mismatched source documents: **${conflictDocument.summary.mismatched_document_count}**`,
+    "",
+    `Observations affected by source identity mismatches: **${conflictDocument.summary.affected_observation_count}**`,
+    "",
+    `Port-thread coverage differences: **${conflictDocument.summary.coverage_differences}**`,
     "",
     `Parser ambiguities: **${conflictDocument.summary.parser_ambiguities}**`,
     "",
@@ -2015,6 +2199,7 @@ function main() {
   ]);
   const staleReferences = categorizedFindings(["stale-reference"]);
   const sourceIdentityMismatches = categorizedFindings(["source-identity-mismatch"]);
+  const mismatchedDocumentCount = countMismatchedDocuments(sourceIdentityMismatches);
   const parserAmbiguities = categorizedFindings(["parser-ambiguous"]);
   const sources = [...inventory.values()].sort((a, b) =>
     a.source_path.localeCompare(b.source_path),
@@ -2040,6 +2225,9 @@ function main() {
       historical_findings: historicalFindings.length,
       stale_references: staleReferences.length,
       source_identity_mismatches: sourceIdentityMismatches.length,
+      mismatched_document_count: mismatchedDocumentCount,
+      affected_observation_count: sourceIdentityMismatches.length,
+      coverage_differences: coverageDifferences.length,
       parser_ambiguities: parserAmbiguities.length,
       git_tracked_sources: sources.filter((source) => source.git_tracked).length,
       local_untracked_sources: sources.filter((source) => !source.git_tracked).length,
@@ -2066,6 +2254,9 @@ function main() {
       historical_findings: historicalFindings.length,
       stale_references: staleReferences.length,
       source_identity_mismatches: sourceIdentityMismatches.length,
+      mismatched_document_count: mismatchedDocumentCount,
+      affected_observation_count: sourceIdentityMismatches.length,
+      coverage_differences: coverageDifferences.length,
       parser_ambiguities: parserAmbiguities.length,
       missing_evidence_count: missingEvidence.length,
       decision_owner: "laocao",
@@ -2076,6 +2267,9 @@ function main() {
     historical_findings: historicalFindings,
     stale_references: staleReferences,
     source_identity_mismatches: sourceIdentityMismatches,
+    coverage_differences: coverageDifferences.sort((a, b) =>
+      `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`),
+    ),
     parser_ambiguities: parserAmbiguities,
     missing_evidence: missingEvidence,
   };
@@ -2087,7 +2281,7 @@ function main() {
   fs.writeFileSync(absolute(REPORT_PATH), buildReport(inventoryDocument, conflictDocument), "utf8");
 
   console.log(
-    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${historicalFindings.length} historical findings, ${staleReferences.length} stale references, ${sourceIdentityMismatches.length} source-identity mismatches, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
+    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${coverageDifferences.length} coverage differences, ${historicalFindings.length} historical findings, ${staleReferences.length} stale references, ${mismatchedDocumentCount} mismatched documents affecting ${sourceIdentityMismatches.length} observations, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
   );
   console.log("Business conflicts were reported without selecting a winning value.");
 }

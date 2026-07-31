@@ -101,6 +101,7 @@ The baseline normalizes common labels into these canonical fields:
 - `mounting_style`
 - `stator_mounting_pattern`
 - `rotor_mounting_pattern`
+- `unassigned_mounting_pattern`
 - `weight`
 - `protection_rating`
 - `friction_torque`
@@ -138,6 +139,8 @@ For every conflict:
 6. Record whether the conflict reaches public HTML, JSON-LD, search, or AI indexes.
 7. Do not write a `correct_value`, `winner`, or equivalent field.
 
+For multi-value interface-thread observations, normalize every listed interface in stable order (for example, `G1/4 and G1/8 ports` becomes `g1/4|g1/8`). When one current observation is a strict subset of another and neither source claims exclusivity, classify the result as `coverage-difference`; do not treat broader information coverage as a mutually exclusive active conflict.
+
 Historical values are preserved, not deleted. They are reported separately as historical findings, stale references, parser ambiguities, or manual-review items. A historical record never becomes current evidence by repetition; a separate current-source parse must establish the current observation.
 
 Field parsing must use field semantics. For example, `4 passages with Ø30 mm hollow bore` means four passages; the bore diameter must never be captured as the passage count. If the parser cannot distinguish the concepts, it records `parser-ambiguous` and excludes the observation from active conflict counting.
@@ -147,10 +150,11 @@ Mounting facts are structured by meaning:
 - `port_thread` records media-interface threads such as G1/8, G1/4, NPT, or BSP.
 - `mounting_style` records the general installation form, such as flange or threaded mount.
 - `stator_mounting_pattern` and `rotor_mounting_pattern` record their respective hole patterns.
+- A hole pattern without a reliable stator or rotor assignment is retained as `unassigned_mounting_pattern` with manual review, not as a `mounting_style` ambiguity.
 - Thread depth is a dimension of a threaded hole; it does not establish a `threaded` mounting style.
 - A general flange style and a detailed flange hole pattern are complementary, not mutually exclusive values.
 
-Before a visually reviewed binary artifact can classify a field, its internal model identity must match the target model. A mismatch produces `source-identity-mismatch`; no field conclusion may be derived from that artifact for the target model.
+Before a visually reviewed binary artifact can classify a field, its internal model identity must match the target model. A mismatch produces `source-identity-mismatch`; no field conclusion may be derived from that artifact for the target model. Reports count unique mismatched documents separately from the number of observations affected by those documents; all affected observations remain traceable.
 
 ## 8.1 Evidence domains
 

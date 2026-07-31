@@ -52,11 +52,11 @@ Models observed: **18**
 
 `BP-1P-0003`, `BP-1P-0006`, `BP-200-0001`, `BP-2P-0001`, `BP-2P-0002`, `BP-2P-08-0001`, `BP-2P-130-0001`, `BP-2P-16-0001`, `BP-2P-30-0001`, `BP-2P-50-0001`, `BP-2P-95-0001`, `BP-2P-95-FAMILY`, `BP-3P-0004`, `BP-3P-0006`, `BP-3P-0007`, `BP-3P-S06-0001`, `BP-4P-30-0001`, `BP-8P-0001`
 
-Normalized fields observed: **20**
+Normalized fields observed: **21**
 
-`body_material`, `channel_configuration`, `compatible_media`, `friction_torque`, `maximum_pressure`, `maximum_speed`, `model`, `model_identity`, `mounting_style`, `operating_temperature`, `passages`, `port_thread`, `protection_rating`, `rated_pressure`, `rotor_mounting_pattern`, `seal_material`, `stator_mounting_pattern`, `test_pressure`, `warranty`, `weight`
+`body_material`, `channel_configuration`, `compatible_media`, `friction_torque`, `maximum_pressure`, `maximum_speed`, `model`, `model_identity`, `mounting_style`, `operating_temperature`, `passages`, `port_thread`, `protection_rating`, `rated_pressure`, `rotor_mounting_pattern`, `seal_material`, `stator_mounting_pattern`, `test_pressure`, `unassigned_mounting_pattern`, `warranty`, `weight`
 
-Normalized fact observations: **2160**
+Normalized fact observations: **2210**
 
 ## 4. Conflict baseline
 
@@ -64,17 +64,22 @@ Previous unresolved-conflict baseline: **56**
 
 Active conflicts after semantic correction: **31**
 
-Historical findings: **14**
+Historical findings: **68**
 
 Stale references: **14**
 
-Source identity mismatches: **4**
+Mismatched source documents: **1**
 
-Parser ambiguities: **51**
+Observations affected by source identity mismatches: **4**
+
+Port-thread coverage differences: **1**
+
+Parser ambiguities: **0**
 
 | Model | Field | Normalized values | Public HTML | JSON-LD | Search/AI |
 | --- | --- | --- | --- | --- | --- |
 | `BP-1P-0003` | `compatible_media` | `air\|coolant\|oil\|water`<br>`air\|oil\|water` | Yes | Yes | Yes |
+| `BP-1P-0003` | `port_thread` | `g1/4\|g1/8`<br>`g3/8` | Yes | Yes | Yes |
 | `BP-1P-0003` | `seal_material` | `fkm\|o-ring\|ptfe`<br>`o-ring\|ptfe` | Yes | Yes | Yes |
 | `BP-1P-0006` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
 | `BP-1P-0006` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
@@ -82,7 +87,6 @@ Parser ambiguities: **51**
 | `BP-2P-0001` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-2P-0002` | `channel_configuration` | `2-in-2-out`<br>`2-in-3-out` | Yes | No | Yes |
 | `BP-2P-0002` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
-| `BP-2P-0002` | `port_thread` | `g1/4`<br>`g1/8` | Yes | No | Yes |
 | `BP-2P-0002` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
 | `BP-2P-08-0001` | `compatible_media` | `air`<br>`air\|coolant\|oil\|water` | Yes | Yes | Yes |
 | `BP-2P-08-0001` | `seal_material` | `o-ring\|ptfe`<br>`ptfe` | Yes | Yes | Yes |
@@ -110,13 +114,14 @@ Every active conflict is `unresolved`, has decision owner `laocao`, and contains
 
 ## 5. Missing evidence
 
-Public model-field groups without a parsed primary or approved supporting observation: **203**
+Public model-field groups without a parsed primary or approved supporting observation: **204**
 
 Each missing-evidence record names its evidence domain and field-appropriate evidence types. Engineering drawings are not used as a universal requirement for business policy, product-master, compliance, or order-specific facts.
 
 ## 6. Manual engineering confirmation queue
 
 - BP-1P-0003 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
+- BP-1P-0003 / port_thread: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-1P-0003 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-1P-0006 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-1P-0006 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
@@ -124,7 +129,6 @@ Each missing-evidence record names its evidence domain and field-appropriate evi
 - BP-2P-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-2P-0002 / channel_configuration: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-2P-0002 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
-- BP-2P-0002 / port_thread: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-2P-0002 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-2P-08-0001 / compatible_media: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
 - BP-2P-08-0001 / seal_material: check Approved engineering drawing; approved technical datasheet; controlled engineering specification
@@ -157,6 +161,7 @@ Each missing-evidence record names its evidence domain and field-appropriate evi
 | `BP-1P-0003` | `operating_temperature` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; 2 stale-reference; 1 manual-review-required |
 | `BP-2P-95-0001` | `test_pressure` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies `BP-2P-95-0005`; it is recorded as `source-identity-mismatch` and excluded before any test-pressure interpretation. |
 | `BP-2P-50-0001` | mounting semantics | Both current descriptions resolve to stator `4xm5` and rotor `6xm5`; thread depth does not create a threaded mounting style or active conflict. |
+| `BP-2P-0002` | `port_thread` | `G1/4 and G1/8 ports` resolves to `g1/4\|g1/8`; the `g1/8` subset is retained as `coverage-difference`, not an active conflict. |
 
 These classifications are audit-semantics results, not engineering decisions.
 
