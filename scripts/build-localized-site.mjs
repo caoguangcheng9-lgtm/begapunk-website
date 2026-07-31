@@ -1004,6 +1004,32 @@ const structuredApplicationValues = {
   },
 };
 
+const conservativeProductPropertyValues = {
+  de: {
+    Produkttyp: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth; keine zertifizierte IP-Schutzart angegeben.',
+    Betriebsmedien: 'Luft. Andere Medien erfordern eine schriftliche Kompatibilitätsbestätigung für die Betriebsbedingungen.',
+    Dichtung: 'PTFE-Dichtung mit O-Ring.',
+    Schutzart: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen; derzeit wird keine zertifizierte IP-Schutzart angegeben.',
+    Montageart: 'Statorseite: 4 × M5, Gewindetiefe 10 mm; Rotorseite: 6 × M5, Gewindetiefe 8 mm. Vor der Bearbeitung vollständige Einbaumaße anhand der mitgelieferten Zeichnung bestätigen.',
+  },
+  ja: {
+    製品種別: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。認証済みIP保護等級の表示なし。',
+    使用可能流体: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
+    シール方式: 'PTFEシール＋Oリング。',
+    保護等級: '粉じん環境向けの保護カバー・ラビリンス構造。現時点で認証済みIP保護等級は表示していません。',
+    取付方式: '固定側：4 × M5、ねじ深さ10 mm；回転側：6 × M5、ねじ深さ8 mm。加工前に、支給図面で取付寸法全体をご確認ください。',
+  },
+  ru: {
+    'Тип изделия': 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий; сертифицированная степень защиты IP не заявляется.',
+    'Рабочая среда': 'Стандартная рабочая среда: воздух. Для других сред требуется письменное подтверждение совместимости с рабочими условиями.',
+    'Тип уплотнения': 'Уплотнение из ПТФЭ с O-кольцом.',
+    'Степень защиты': 'Защитный кожух и лабиринт для запылённых условий; сертифицированная степень защиты IP в настоящее время не заявляется.',
+    'Тип крепления': 'Сторона статора: 4 × M5, глубина резьбы 10 мм; сторона ротора: 6 × M5, глубина резьбы 8 мм. До механической обработки сверьте все монтажные размеры с предоставленным чертежом.',
+  },
+};
+
+const localizedWeightPropertyNames = new Set(['Net weight', 'Weight', 'Gewicht', 'Nettogewicht', '質量', '製品質量', 'Масса', 'Масса нетто']);
+
 function inflectRussianCount(count, singular, paucal, plural) {
   const mod100 = count % 100;
   const mod10 = count % 10;
@@ -1196,6 +1222,13 @@ function localizeProductProperty(property, languageCode, pageName) {
   const isApplications = property.name === 'Typical applications'
     || ['Typische Anwendungen', '主な用途', 'Типичные области применения'].includes(property.name);
   if (nameMap[property.name]) property.name = nameMap[property.name];
+  const conservativeValue = pageName === 'BP-2P-50-0001.html'
+    ? conservativeProductPropertyValues[languageCode]?.[property.name]
+    : undefined;
+  if (conservativeValue) {
+    property.value = conservativeValue;
+    return;
+  }
   if (isApplications && structuredApplicationValues[languageCode]?.[pageName]) {
     property.value = structuredApplicationValues[languageCode][pageName];
   } else if (property.value !== undefined && property.value !== null) {
@@ -1231,6 +1264,11 @@ function updateJsonLd($, languageCode, pageName) {
           value.name = seo.h1;
           value.description = seo.description;
           if (Array.isArray(value.additionalProperty)) {
+            if (pageName === 'BP-2P-50-0001.html') {
+              value.additionalProperty = value.additionalProperty.filter(
+                (property) => !localizedWeightPropertyNames.has(property?.name),
+              );
+            }
             for (const property of value.additionalProperty) localizeProductProperty(property, languageCode, pageName);
           }
         }
@@ -1408,6 +1446,26 @@ function applyTranslations(page, language, catalog, cache) {
 
 async function writeLocalizedSearchIndex(language, outputDirectory) {
   const searchIndex = JSON.parse(await fs.readFile(path.join(sourceRoot, 'search-index.json'), 'utf8'));
+  const conservativeSearchKeywords = {
+    de: [
+      'BP-2P-50-0001', '2 Kanäle', 'Standardmedium Luft', 'PTFE-Dichtung mit O-Ring',
+      'Schutzhaube und Labyrinth', 'keine zertifizierte IP-Schutzart angegeben',
+      'Stator 4 × M5 Gewindetiefe 10 mm', 'Rotor 6 × M5 Gewindetiefe 8 mm',
+      'Gewicht der gelieferten Konfiguration bestätigen',
+    ],
+    ja: [
+      'BP-2P-50-0001', '2流路', '標準使用流体 空気', 'PTFEシール Oリング',
+      '保護カバー ラビリンス', '認証済みIP保護等級の表示なし',
+      '固定側 4 × M5 ねじ深さ10 mm', '回転側 6 × M5 ねじ深さ8 mm',
+      '納入仕様の質量を確認',
+    ],
+    ru: [
+      'BP-2P-50-0001', '2 канала', 'стандартная среда воздух', 'уплотнение ПТФЭ с O-кольцом',
+      'защитный кожух и лабиринт', 'сертифицированная степень защиты IP не заявляется',
+      'статор 4 × M5 глубина резьбы 10 мм', 'ротор 6 × M5 глубина резьбы 8 мм',
+      'уточнить массу поставляемой конфигурации',
+    ],
+  };
   const localizedItems = [];
   for (const item of searchIndex) {
     if (!config.pages.includes(item.url)) {
@@ -1425,6 +1483,9 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
       h1: $('h1').first().text().replace(/\s+/g, ' ').trim() || item.h1,
       h2s: $('h2').map((_, element) => $(element).text().replace(/\s+/g, ' ').trim()).get().filter(Boolean),
       body: content.text().replace(/\s+/g, ' ').trim(),
+      ...(item.url === 'BP-2P-50-0001.html'
+        ? { keywords: conservativeSearchKeywords[language.code] }
+        : {}),
     });
   }
   await fs.writeFile(
