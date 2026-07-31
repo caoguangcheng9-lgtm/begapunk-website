@@ -117,19 +117,21 @@ Common visible drawing observations on page 1:
 - `4-M5` thread depth `10`;
 - `6-M5` thread depth `8`;
 - `2-G1/8 IN` and `2-G1/8 OUT`;
-- common principal dimensions and hole pattern.
+- common principal dimensions and hole pattern;
+- issuer presentation and document-control identifier `QC-2023-0806-001`.
 
 Observed differences:
 
 - The public PDF is 237,382 bytes; the protected catalog PDF is 118,512 bytes.
+- The public PDF uses PDF 1.3; the protected catalog PDF uses an optimized PDF 1.4 container. Their file size, PDF version and compression differ.
 - The public PDF metadata uses the complete model and Begapunk company identity. The protected PDF metadata title omits one zero (`BP-2P-50-001`) and identifies a local Windows/SOLIDWORKS producer.
-- The public PDF visibly adds issuer/document-control presentation including `QC-2023-0806-001`.
 - Public note 3 says `Test scope confirmed by approved order`; protected-drawing note 3 says `100% pressure tested at 1.5x rated pressure`.
 - Public note 5 says `Available records confirmed by order`; protected-drawing note 5 says `Material certificates available on request`.
-- The protected PDF text layer contains issuer/document-control strings, but the local Poppler render did not display that area reliably because the source uses unavailable fonts. Those text-layer strings are not promoted to visible drawing observations.
 - Neither file displays an explicit revision field, approval signature, approval status, or controlled statement proving that it is the current released drawing.
 
-The newer protected-PDF metadata timestamp does not establish drawing approval or supersession. The public document-control string also does not, by itself, establish current approval.
+Both PDFs contain and can display the issuer presentation and `QC-2023-0806-001`. One local Poppler rendering environment presented that area differently because the required source fonts were unavailable. This is a renderer-specific environment difference and cannot be used to conclude that the content is absent or not visible in the PDF.
+
+The newer protected-PDF metadata timestamp does not establish drawing approval or supersession. The document-control identifier shared by both PDFs also does not, by itself, establish current approval.
 
 ## 5. Five-field decision matrix
 
