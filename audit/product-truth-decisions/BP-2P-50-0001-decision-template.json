@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "phase": "1B",
+  "model": "BP-2P-50-0001",
+  "issue": 10,
+  "baseline_commit": "2f4e8b257acb38c1ef6ba1b4c61938079b5d648a",
+  "decision_owner": "laocao",
+  "evidence_packet": "audit/product-truth-decisions/BP-2P-50-0001-evidence-packet.md",
+  "instructions": [
+    "Review the evidence packet and identify the applicable current approved engineering source before making a decision.",
+    "State the exact assembly or configuration scope for every decision.",
+    "Do not authorize a public update unless the approved source and revision are identified.",
+    "A repeated website value, a local VERIFIED label, a filename, or PDF metadata does not establish approval."
+  ],
+  "engineering_files": [
+    {
+      "path": "downloads/BP-2P-50-0001.pdf",
+      "sha256": "652375676687345701f7b497d661fb4f6dedb9ddcb31a6d18df1f99ec5cf915c",
+      "approval_status": "not-established"
+    },
+    {
+      "path": "catalog-project/assets/drawings/BP-2P-50-0001.pdf",
+      "sha256": "31c63b5f52574bed72d4bb2260b1307df73d0023a734d8dd6bc1ee84509ac644",
+      "approval_status": "not-established"
+    }
+  ],
+  "fields": {
+    "weight": {
+      "status": "pending-laocao-decision",
+      "questions": [
+        "What is the current complete sellable assembly mass for BP-2P-50-0001?",
+        "Does the 2300 g drawing observation include the flange, protective shroud, fittings, and all supplied components?",
+        "Which approved drawing, BOM, inspection record, or controlled weighing record establishes the applicable mass?"
+      ],
+      "laocao_response": {
+        "selected_evidence_source": null,
+        "decision_statement": null,
+        "applicable_configuration": null,
+        "approved_revision_or_record": null,
+        "public_update_authorized": null,
+        "notes": null
+      }
+    },
+    "compatible_media": {
+      "status": "pending-laocao-decision",
+      "questions": [
+        "Is the standard approved medium Air only, or are water, water-soluble coolant, and light hydraulic oil also approved?",
+        "If liquid media are approved, what pressure, speed, temperature, filtration, corrosion, and service-life limits apply?",
+        "Which approved compatibility record or controlled technical specification establishes the applicable media?"
+      ],
+      "laocao_response": {
+        "selected_evidence_source": null,
+        "decision_statement": null,
+        "applicable_configuration": null,
+        "approved_revision_or_record": null,
+        "public_update_authorized": null,
+        "notes": null
+      }
+    },
+    "mounting_and_hole_pattern": {
+      "status": "pending-laocao-decision",
+      "questions": [
+        "Should the public specification describe both the 4 x M5 stator pattern and the 6 x M5 rotor pattern?",
+        "Does the current phrase Flange Mount (6-M5) describe only one side of the assembly and therefore omit the stator pattern?",
+        "Which approved drawing revision establishes the hole quantities, thread sizes, pitch circles, and thread depths?"
+      ],
+      "laocao_response": {
+        "selected_evidence_source": null,
+        "decision_statement": null,
+        "applicable_configuration": null,
+        "approved_revision_or_record": null,
+        "public_update_authorized": null,
+        "notes": null
+      }
+    },
+    "protection_rating": {
+      "status": "pending-laocao-decision",
+      "questions": [
+        "Is IP65 an approved tested rating for the complete BP-2P-50-0001 assembly?",
+        "Which test report, standard, test configuration, and approved revision support the rating?",
+        "If only a labyrinth and protective shroud are established, what qualified public wording is authorized?"
+      ],
+      "laocao_response": {
+        "selected_evidence_source": null,
+        "decision_statement": null,
+        "applicable_configuration": null,
+        "approved_revision_or_record": null,
+        "public_update_authorized": null,
+        "notes": null
+      }
+    },
+    "seal_material": {
+      "status": "pending-laocao-decision",
+      "questions": [
+        "Is the O-ring material specifically FKM for the standard BP-2P-50-0001 configuration?",
+        "Does PTFE refer to a composite dynamic seal, and what exact compound or construction is approved?",
+        "Which approved drawing, BOM, seal specification, or material record establishes both PTFE and FKM wording?"
+      ],
+      "laocao_response": {
+        "selected_evidence_source": null,
+        "decision_statement": null,
+        "applicable_configuration": null,
+        "approved_revision_or_record": null,
+        "public_update_authorized": null,
+        "notes": null
+      }
+    }
+  },
+  "codex_decisions": "none",
+  "public_product_facts_changed": false,
+  "deployment": "not-deployed"
+}
