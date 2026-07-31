@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "audit_date": "2026-07-31",
   "repository": "caoguangcheng9-lgtm/begapunk-website",
-  "baseline_commit": "472de959069a1e2da7a530be3dd449399b30e255",
+  "baseline_commit": "d95d4db1ce908f941e76bff3f78bc052455d0b0b",
   "source_count": 254,
   "models": [
     "BP-1P-0003",
@@ -34,22 +34,34 @@
     "maximum_speed",
     "model",
     "model_identity",
-    "mounting_type",
+    "mounting_style",
     "operating_temperature",
     "passages",
     "port_thread",
     "protection_rating",
     "rated_pressure",
+    "rotor_mounting_pattern",
     "seal_material",
+    "stator_mounting_pattern",
     "test_pressure",
+    "unassigned_mounting_pattern",
     "warranty",
     "weight"
   ],
-  "field_type_count": 18,
+  "field_type_count": 21,
   "summary": {
-    "observation_count": 2130,
-    "git_tracked_sources": 236,
-    "local_untracked_sources": 18,
+    "observation_count": 2210,
+    "current_observations": 2124,
+    "historical_findings": 3,
+    "manual_review_findings": 65,
+    "stale_references": 14,
+    "source_identity_mismatches": 4,
+    "mismatched_document_count": 1,
+    "affected_observation_count": 4,
+    "coverage_differences": 1,
+    "parser_ambiguities": 0,
+    "git_tracked_sources": 234,
+    "local_untracked_sources": 20,
     "protected_local_catalog_sources": 4,
     "automatically_parseable_sources": 202,
     "manual_engineering_verification_sources": 56
@@ -59,7 +71,7 @@
       "source_path": "application-automation-rotary-tables.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "064c807b1a6277c3155a8f22228b388f3a5617ba0fa695fadef903192a58d13f",
+      "source_hash": "b40dbb957db3d4a5bc018022cc5ff79c6e42029dd43b5c174c9bda1640b20b73",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 6,
@@ -76,7 +88,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -86,7 +98,7 @@
       "source_path": "application-bottle-filling-capping.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "21e4756b75b1a2d5c9ddb2b13cf77b9e76f5d2576826e9f8bed23ad9b509246a",
+      "source_hash": "02c58237ef7132012a29a32b5157982146620fee0b787c53157d126070fc298a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -101,7 +113,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -110,7 +123,7 @@
       "source_path": "application-cnc-pneumatic-clamping.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "3d10970ed8ace3116b7799d399cd2113bec274e1d5c0e6e929cfe7a63714207d",
+      "source_hash": "6ef6e38f4a34561ef565bfbfa870bd9a116d8653e937397142b7364c573fae64",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -124,7 +137,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -133,7 +146,7 @@
       "source_path": "application-electronics-battery-test-fixtures.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "886e5560a044d3300e67683f26d4c596105881e9bee037910501883ff79d1952",
+      "source_hash": "dc66bc672e247806e641ce1bd2d34067e593329794e02ec9d89b1eaad04998d6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -146,7 +159,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -155,7 +167,7 @@
       "source_path": "application-laser-tube-cutting.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "b069f8471a9c2d02247230893fcf1664279261ea04605f5558899324bdcf2878",
+      "source_hash": "e5b2323c1a6411c1ddd3ce51e93e31ce93f27d394f43f5cad82434ef5ad29640",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -170,7 +182,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -179,7 +192,7 @@
       "source_path": "application-packaging-machinery.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "57cf43fc86c5fd9d9d6cc09532e88e9017f6835aaa1b4ef5eb526916d807097a",
+      "source_hash": "13f5bcb816f16f9536074c5d9f1f849af7a7168ffd6e481e290c9f3bd8c80132",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -194,7 +207,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -204,7 +218,7 @@
       "source_path": "application-pneumatic-tools-hose-anti-twist.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "899a87aabb455555c6f821dbf93930dc9d8059e8fa696bc288b4a69d30e78271",
+      "source_hash": "c0a7a0b67c8d1a837d63c46fb724a4251258fe5216ecd1baf5932bbd8f440776",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -220,7 +234,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -230,7 +245,7 @@
       "source_path": "application-robot-end-of-arm-tooling.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "ff65cb9b4dbe2134b595dfa85ba221439115361a9831cd4ab427e6ef40ca76a8",
+      "source_hash": "c775b4407fb166d39328063391a55e8d7122ecd01192613d86b7b06b0e9b32aa",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -246,7 +261,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -256,7 +271,7 @@
       "source_path": "application-steel-dusty-environments.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "fb99046db4cab9671a878ab50613238d2bd49bfdc058f799632fbc9baaf914b1",
+      "source_hash": "737d5de9dd71bf114936cd509b60ee842620e8aa8ca1752c43ccd4d6b5a1a207",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -270,7 +285,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -279,7 +294,7 @@
       "source_path": "application-textile-printing-converting.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "f7950d0e924e76953eb95e136473fdd1fbe711b7340ef19c766bc5ab8fa1b44b",
+      "source_hash": "f05788b14a92708980489ea2f02284b7c034fe16e40dcd5e40af72ccf9bb589d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -294,7 +309,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -303,7 +317,7 @@
       "source_path": "application-vacuum-packaging-machines.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "1bf9afe08c99ab864cdbbbff0a71bdc46a1054ad0206a60560470266d8bc8fad",
+      "source_hash": "c47cc6278c0d3249d82c769b72774a373615a4020e00817763c5db5ef09b70ed",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -316,7 +330,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -325,7 +338,7 @@
       "source_path": "application-welding-positioners.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "b6c94420fa45a77b3ed92e3f0ff5e2477e4038510a84a51404d8b3a13dbdb3a4",
+      "source_hash": "e75acf9d9cc26b7befdcc8dae372474526f1f05c6637aedd44562b7aaf7e813b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -338,7 +351,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -347,7 +359,7 @@
       "source_path": "applications.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "fd60799121b41277425f9af7e2d5413adf66200ae6430fa26b8777832ec9a64c",
+      "source_hash": "aad46ed043ac1120a4454ea78aa799fccc9bfea5811413dd2a5aadf37352de8f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 11,
@@ -369,7 +381,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -585,7 +598,7 @@
       "source_path": "blog-rotary-joint-installation-mistakes.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "78fadbda4c35f3b0a9d943f4f72fac806016a1125a183e92927016fb7d908d35",
+      "source_hash": "e37d2ea4306a51ccc833a8380b571382860ca480d19c2a5c18a6e7305591d59d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -594,7 +607,7 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -603,7 +616,7 @@
       "source_path": "blog-rotary-joint-leaking.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "91bfe1623d311c787e7d0abff2c91dc554ccd17abd254a4b568472f52e9bbda4",
+      "source_hash": "7af12917734f8ebdc597b4de7d06896aeee5a9e9054746de2290861b03dde328",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -615,7 +628,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -625,7 +638,7 @@
       "source_path": "blog-rotary-joint-materials.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "8a283dbdd54ae66ec757660e45b8d96603b35d06c93e25666d745f1115b5eb0e",
+      "source_hash": "c67c0202ab28f403e2435a9b96d27dcedb8883ff2cf8c9c7e65687008a33dc38",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -641,7 +654,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating",
         "weight"
       ],
@@ -651,7 +663,7 @@
       "source_path": "blog-rotary-joint-selection.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "8bd7a15df8fd1e7b62ab14956bdbb551b4cb45912dd0c2ae6b837a445c62d768",
+      "source_hash": "de9753c7f37214ebf77c4595b81f20cf8080b1dc263da171dc430c4ccb6b9f22",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -667,7 +679,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -676,7 +689,7 @@
       "source_path": "blog-rotary-union-seal-types.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "af881f706dcb7182665e72e158447285aaa6ed561ea5523902f747a5a096970a",
+      "source_hash": "25d4f8b01dd7633ac2ec5be4f90ac859b7675b406450fee640f6092f29298577",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -692,7 +705,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -701,7 +713,7 @@
       "source_path": "blog-seal-replacement.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "93f1bd8e670b5f917efe26926deb3e4fadbd9e153a2481186501be6388dd8390",
+      "source_hash": "9582a4346cac650a04564b1a0092c39ebd233b435f8ed36c468fcb94b9285df4",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -715,7 +727,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -724,7 +736,7 @@
       "source_path": "blog-threaded-vs-flange.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "bd79a4f0d285873de4c184ad8243a89ba053d7a4b7c73d7cd530c0802d0ff72b",
+      "source_hash": "14406155460626ea28487c7fb6b729b7c886372431e0e3b68155ec0a2788d251",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -737,7 +749,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -747,7 +760,7 @@
       "source_path": "blog.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "d498412a50bf434f3d80abef8d0bd398ef83c3a81dc5b1adadd50637a052afc4",
+      "source_hash": "1ea699ba777319c9eadc29f094ebb71c913366a368a32e11fb5c86216d89a973",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -756,7 +769,7 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -765,7 +778,7 @@
       "source_path": "BP-1P-0003.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "160129fa2b0ae6cf6c629a0be4f34315b054b27bf76a0e2ac33dd58b7a26b1e7",
+      "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -779,9 +792,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -792,7 +806,7 @@
       "source_path": "BP-1P-0006.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "3f0aff5223ddce41918c3da2b2ae0bb58f7ec7fec70054fd1804559e2f800fbb",
+      "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -805,9 +819,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -818,7 +833,7 @@
       "source_path": "BP-2P-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "278da701738c3442329d0fdeb022417533771a9acd4632106e8b8dedd1840c5b",
+      "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -831,7 +846,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -844,7 +859,7 @@
       "source_path": "BP-2P-0002.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "c4fb4551d005bb78fe77abac87f357ce321e7f2ca861c5b7d991aa83b4d014ef",
+      "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -857,9 +872,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -870,7 +886,7 @@
       "source_path": "BP-2P-08-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "f422a5730da92350dcaa5f1d18fefa1a50b982b59407ccc1ebd87d8012526c3a",
+      "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -883,10 +899,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -896,7 +913,7 @@
       "source_path": "BP-2P-130-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "b15f26e074295ec98e3d409c4f45ada26a7c254ed2bc06e22ef94a9341f9d407",
+      "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -909,10 +926,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -922,7 +940,7 @@
       "source_path": "BP-2P-16-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "3c1f79b3e3acd82e6b6b1e998196bba8814f3f37150de1ab6ef23e559cc3e6df",
+      "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -936,10 +954,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -949,7 +968,7 @@
       "source_path": "BP-2P-30-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "a93fbef34bf8733f5e9ef40b98cf0632517952e11bf9981f27610b028fd03d87",
+      "source_hash": "76d979847fd60bd94a9f444fac96e4a00bbf55920fc6e975a0059c1cee008718",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -962,10 +981,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -975,7 +996,7 @@
       "source_path": "BP-2P-50-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "bc033bf9d2b93a9121c132ee5aa1cabd4026d3f89c37b05514d95fd7673942e2",
+      "source_hash": "bc101237a12cde1902acb14ef95e1c1943318e5b5731262bc3c7fdad029670d6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -989,11 +1010,13 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "protection_rating",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1003,7 +1026,7 @@
       "source_path": "BP-2P-95-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "c3d5533b6c31a47884bc1d63c8beebaacfd62caeb7dfe0f38ee4c67d12a81d0d",
+      "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1017,10 +1040,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1030,7 +1054,7 @@
       "source_path": "BP-3P-0004.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "96a0cb48c653360b6db1d805934c369e0930ce6c0e166563b73273c93aead67f",
+      "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1043,7 +1067,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -1056,7 +1080,7 @@
       "source_path": "BP-3P-0006.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "58ed79e7a0d69fa768d8da3402398937bcbd8c179c8b067879f999a397e37396",
+      "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1069,10 +1093,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1082,7 +1108,7 @@
       "source_path": "BP-3P-0007.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "e0e91e5cd7f4334c522a5982e7f38eee1850dc481a05f2c5568d400c8b7e1579",
+      "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1095,9 +1121,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
         "seal_material",
         "warranty",
         "weight"
@@ -1108,7 +1136,7 @@
       "source_path": "BP-3P-S06-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "45e3cca2371b0e5726bc258f1d49e34f714c887a6fd5b93540ccbde7153d8cab",
+      "source_hash": "112fe9bb162f8063e424fcdd6dd0647fb055a426c2c8e6214a76879a3f8a9649",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1121,7 +1149,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "seal_material",
         "warranty",
@@ -1133,7 +1161,7 @@
       "source_path": "BP-4P-30-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "e927ea1feb1b5a760083ada834cfbed2871eaf7600c5589d2efc0fc1163801a2",
+      "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1146,7 +1174,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -1159,7 +1187,7 @@
       "source_path": "BP-8P-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "424794c1bb29e8ec9f23668c5897428835fe40fa5239cb72eb652765b29e4b97",
+      "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1172,10 +1200,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -1420,7 +1449,7 @@
     {
       "source_path": "catalog-project/data/catalog-data.csv",
       "source_type": "local-untracked-source",
-      "git_tracked": true,
+      "git_tracked": false,
       "source_hash": "e366e2f2d699fc387065795904b280860bfc146d8dd8a16034dfaed4beb1a510",
       "automatically_parseable": true,
       "manual_engineering_verification_required": true,
@@ -1449,11 +1478,14 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "port_thread",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
+        "unassigned_mounting_pattern",
         "weight"
       ],
       "notes": "Protected local catalog CSV, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
@@ -1490,11 +1522,14 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "port_thread",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
+        "unassigned_mounting_pattern",
         "weight"
       ],
       "notes": "Protected local catalog JSON, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
@@ -1502,7 +1537,7 @@
     {
       "source_path": "catalog-project/data/source-evidence.json",
       "source_type": "local-untracked-source",
-      "git_tracked": true,
+      "git_tracked": false,
       "source_hash": "e2c0b764af3746512b9d4c312a281b03367229a8717d81db2cd291303239c6ff",
       "automatically_parseable": true,
       "manual_engineering_verification_required": true,
@@ -1555,7 +1590,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1578,7 +1613,8 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1601,7 +1637,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1623,7 +1659,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1647,7 +1682,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1671,7 +1707,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1696,7 +1733,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -1722,7 +1759,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -1746,7 +1783,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1770,7 +1807,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1792,7 +1828,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1814,7 +1849,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1843,7 +1878,8 @@
       "field_types": [
         "body_material",
         "compatible_media",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1860,7 +1896,6 @@
       "field_types": [
         "body_material",
         "compatible_media",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1880,7 +1915,6 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
         "protection_rating",
         "weight"
       ],
@@ -1931,7 +1965,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1956,7 +1991,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1978,7 +2012,6 @@
         "body_material",
         "compatible_media",
         "maximum_pressure",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -1999,7 +2032,8 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -2017,7 +2051,7 @@
       "field_types": [
         "body_material",
         "compatible_media",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -2040,9 +2074,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -2066,9 +2101,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -2092,7 +2128,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -2118,9 +2154,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -2144,10 +2181,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2170,10 +2208,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2197,10 +2236,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2223,10 +2263,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2250,11 +2292,13 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "protection_rating",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2278,10 +2322,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2304,7 +2349,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -2330,10 +2375,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2356,9 +2403,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
         "seal_material",
         "warranty",
         "weight"
@@ -2382,7 +2431,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "seal_material",
         "warranty",
@@ -2407,7 +2456,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -2433,10 +2482,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -2456,7 +2506,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -2472,7 +2522,6 @@
       "models": [],
       "field_types": [
         "body_material",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -2537,7 +2586,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -2563,7 +2613,8 @@
       "field_types": [
         "body_material",
         "maximum_pressure",
-        "mounting_type"
+        "mounting_style",
+        "port_thread"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -2589,7 +2640,7 @@
       "field_types": [
         "body_material",
         "maximum_pressure",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -2621,7 +2672,7 @@
       ],
       "field_types": [
         "maximum_pressure",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Derived website search index; not an independent engineering source."
     },
@@ -2953,7 +3004,7 @@
       "source_path": "downloads/public-downloads.sha256",
       "source_type": "product-download-manifest",
       "git_tracked": true,
-      "source_hash": "183835f36ca884c8a74912ce921c379aef98f55065b961f2d310e37abc3051d6",
+      "source_hash": "11690d2def0f152d9e933bb98f8ecfd33b5833e0a075f849c9be97d199cc93d0",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 15,
@@ -2993,7 +3044,7 @@
       "source_path": "faq.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "041e331c987bbd3c09734118dc790902ec465c50166bd3451659a07d1e018b13",
+      "source_hash": "428e9fc7bc89976b501e0905818f2f4ed1e63d126e983654b33b5760d2ef875c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -3003,7 +3054,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3012,7 +3063,7 @@
       "source_path": "i18n/cache/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "de52f8accfbdd8528c7090cb88bcfdad10ed86915eebcbd833f528bdf2095aad",
+      "source_hash": "d3cfdbb0a7d67599c43c5b3a613b6162b2ebb0caeeeae54ffde413adb1401b0d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3039,7 +3090,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3049,7 +3101,7 @@
       "source_path": "i18n/cache/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "649c0d2dfdaa7541709d65052505142a14fe6b064f54b6dd059a644572dcb6a1",
+      "source_hash": "aa616900c697d9584cf7319ea47cdad555cbba9487b68cb6a833269bc7c8fa44",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3076,7 +3128,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3086,7 +3139,7 @@
       "source_path": "i18n/cache/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "594898d9386190bd979128e88819b3bf40e0537af4addb2de67273532b73dcb0",
+      "source_hash": "6a91fa800eb883320d10c7ea492118c06c659c146a9d8546acbd2802456b19ce",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3113,7 +3166,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3123,7 +3177,7 @@
       "source_path": "i18n/config.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "bff0aee6f81ed60218e8fe6c489c523a83eea81fe1f715ee55477c3073b36bae",
+      "source_hash": "9712422ac24828af6edea98acf032d3d05ad054c25ce86a01853af5e50137e65",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3147,7 +3201,6 @@
       ],
       "field_types": [
         "body_material",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3156,7 +3209,7 @@
       "source_path": "i18n/editorial/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "57d0145cba4f515431b98508178039906aa672937a72fbdafe982691986670b2",
+      "source_hash": "86c0f90fa4934fa34966ef030cdcba9552a928636be7375859e9b90f902c182c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3183,7 +3236,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3193,7 +3247,7 @@
       "source_path": "i18n/editorial/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "822c4d97b22908221b9c91351a6ca7c69b406da67927be9c7408f55049f021ea",
+      "source_hash": "4904081c29cf496d9bec40e59061683fabba1ff455282bbbd65219963dc1ebfb",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3220,7 +3274,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3230,7 +3285,7 @@
       "source_path": "i18n/editorial/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "63b181623d03b1789db912208fae0dc61aa23d9e3af423fdd54a690f3aa9fdcc",
+      "source_hash": "a91335532d442266c0dc9a6bce046df60f38ca2589964216f0fbd62418af6ad6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3257,7 +3312,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3291,7 +3347,6 @@
       ],
       "field_types": [
         "body_material",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3300,7 +3355,7 @@
       "source_path": "i18n/glossary.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "aae0465821e7d6d55ee1a3cd4e44fecd50d8c0031ee10b954c7a94d0bc083302",
+      "source_hash": "258e220bc8ae4e61bd7b574fdba43fcbbb5ab39d328dd5dd3031e06249ae06d3",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -3309,7 +3364,7 @@
         "body_material",
         "compatible_media",
         "maximum_pressure",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3318,7 +3373,7 @@
       "source_path": "i18n/overrides/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "0147f67280e7e9087ea2d20b61bea99236bb67affed181b1e41a581b4874178c",
+      "source_hash": "f56a92f20e0ed9ded377347f775d45350a4541f75edde4c1e8963aa9029375d7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3345,7 +3400,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3354,7 +3410,7 @@
       "source_path": "i18n/overrides/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "341037ab15ac819238d6dc4c66859f29f7290f06b54ea53d58ec1bcdce460fac",
+      "source_hash": "2f14b7a87b77579fa1fd3e183d4523ba3fa59927d696b5d8519b98e96e4f30ba",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3381,7 +3437,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3391,7 +3448,7 @@
       "source_path": "i18n/overrides/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "0b33aa3aafcdf8558c1316fc6d1657a8ff1d750951d7984bfaeddc9294d4519d",
+      "source_hash": "72508bf92b85b176f410b74ff1fb77fc89ce5f7b4b1b4c3278c8ef7b0e3b9c19",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3418,7 +3475,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3427,7 +3485,7 @@
       "source_path": "i18n/seo/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "e9a7cfd17924674477e63994d745860f0aa9fb9a86624eede3581bb33a128512",
+      "source_hash": "18ffa53615dfd379470a6aeceebf52e50f438aa92d7443e3013467b977bf9250",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3454,7 +3512,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3463,7 +3522,7 @@
       "source_path": "i18n/seo/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "65917d825ac7744eaf32c4298739e535e97d03d24b6d7a5e029313f993aee3cf",
+      "source_hash": "14e1e7eb6a247aced82cb1396d53e28096fa71e03f3cf2ff6724a6cf221170bc",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3490,7 +3549,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3500,7 +3560,7 @@
       "source_path": "i18n/seo/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "991614870a76c3f7785d0904c9df2e34314fd5de5d494a27aa8a85cdde54fca2",
+      "source_hash": "0966497c813d686754b92ac7e7b3d8db84910ddbef3825cab3807bd3cbd8d5ab",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3527,7 +3587,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
@@ -3536,7 +3597,7 @@
       "source_path": "i18n/source-catalog.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "a1ed21ad435524bb18d94701d52ee757b4f930752dbbb2de86b979b404bca74d",
+      "source_hash": "16f9c6d1065ed2a742a7b0436e7203cf7a46b9cc9551762b38389e9ace161e97",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3563,7 +3624,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3573,14 +3635,13 @@
       "source_path": "installation.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "c217f30435ffdedab28bd37c80801450e28504d53fe1c696f22c224e276c6ed1",
+      "source_hash": "61edadc1b899720ac6c60337e7d59926bf450bd3775a68ff19ad4d10cba2e9cd",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
         "body_material",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3606,7 +3667,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3629,7 +3690,8 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3652,7 +3714,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3674,7 +3736,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3698,7 +3760,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3722,7 +3785,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3747,7 +3811,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3773,7 +3838,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -3797,7 +3862,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3821,7 +3886,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3843,7 +3907,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3865,7 +3928,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3894,7 +3957,8 @@
       "field_types": [
         "body_material",
         "compatible_media",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -3913,7 +3977,6 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -3933,7 +3996,6 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
         "protection_rating",
         "weight"
       ],
@@ -3984,7 +4046,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -4010,7 +4073,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4032,7 +4095,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4053,7 +4115,8 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -4071,7 +4134,7 @@
       "field_types": [
         "body_material",
         "compatible_media",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4094,9 +4157,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -4120,9 +4184,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -4146,7 +4211,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -4172,9 +4237,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -4198,10 +4264,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4224,10 +4291,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4251,10 +4319,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4277,10 +4346,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4304,11 +4375,13 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "protection_rating",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4332,10 +4405,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4358,7 +4432,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -4384,10 +4458,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4410,9 +4486,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
         "seal_material",
         "warranty",
         "weight"
@@ -4436,7 +4514,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "seal_material",
         "warranty",
@@ -4461,7 +4539,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -4487,10 +4565,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -4510,7 +4589,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4526,7 +4605,6 @@
       "models": [],
       "field_types": [
         "body_material",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4591,7 +4669,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4618,7 +4697,8 @@
         "body_material",
         "channel_configuration",
         "maximum_pressure",
-        "mounting_type"
+        "mounting_style",
+        "port_thread"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -4645,7 +4725,7 @@
         "body_material",
         "channel_configuration",
         "maximum_pressure",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -4677,7 +4757,7 @@
       ],
       "field_types": [
         "maximum_pressure",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Derived website search index; not an independent engineering source."
     },
@@ -4685,7 +4765,7 @@
       "source_path": "llms.txt",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "07b2115abc003b60cfb93cabf18c56f5bd9bce522b519cc3ab2600fc9de19144",
+      "source_hash": "3cb7820cda356eabee7e045db60a41b12f1d2bb9d16c9dafa54ec80b061e22dc",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4714,7 +4794,7 @@
       "source_path": "product-comparison.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "125d5691bd4ad59e9c1dd3f9e77aa9de254adb470a132895422837262ffb9d99",
+      "source_hash": "2d44dde489145648cd56168bea6109ef5882917f3c652525d1032d765ddfd784",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4741,7 +4821,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4750,7 +4831,7 @@
       "source_path": "products-p2.html",
       "source_type": "website-product-list",
       "git_tracked": true,
-      "source_hash": "246aed87789c44beac45258c03a7efe62a39c79055e89168f5a7c95d40a4574e",
+      "source_hash": "4dd94437cf993092284339302b0fc6a82324b7bcd07120e440fa19f6755ab020",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 8,
@@ -4769,7 +4850,8 @@
         "channel_configuration",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style",
+        "port_thread"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -4777,7 +4859,7 @@
       "source_path": "products.html",
       "source_type": "website-product-list",
       "git_tracked": true,
-      "source_hash": "1a9683d1f4d386522f12640da98be2fd2f0e09b56e13a3803d58410c1c863ee3",
+      "source_hash": "cc477e6ebc22d2dc9161e19f42129e707d94d73f94986a2f50f5e4d01ec223db",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 9,
@@ -4797,7 +4879,7 @@
         "channel_configuration",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -4822,7 +4904,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4846,7 +4927,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4869,7 +4951,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4891,7 +4973,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4915,7 +4996,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4939,7 +5020,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4964,7 +5045,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -4990,7 +5071,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating",
         "weight"
       ],
@@ -5014,7 +5094,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5110,7 +5189,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5129,7 +5208,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5150,7 +5229,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -5200,7 +5279,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5225,7 +5305,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5248,7 +5327,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5270,7 +5349,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -5289,7 +5369,6 @@
         "body_material",
         "compatible_media",
         "maximum_pressure",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5312,9 +5391,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -5338,9 +5418,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -5364,7 +5445,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -5390,9 +5471,10 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
         "warranty",
         "weight"
@@ -5416,10 +5498,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5442,10 +5525,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5469,10 +5553,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5495,10 +5580,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5522,11 +5608,13 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "protection_rating",
+        "rotor_mounting_pattern",
         "seal_material",
+        "stator_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5550,10 +5638,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5576,7 +5665,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -5602,10 +5691,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5628,10 +5719,12 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
+        "port_thread",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5654,7 +5747,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "seal_material",
         "warranty",
@@ -5679,7 +5772,7 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
@@ -5705,10 +5798,11 @@
         "maximum_pressure",
         "maximum_speed",
         "model",
-        "mounting_type",
+        "mounting_style",
         "operating_temperature",
         "passages",
         "seal_material",
+        "unassigned_mounting_pattern",
         "warranty",
         "weight"
       ],
@@ -5728,7 +5822,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5745,7 +5838,6 @@
       "field_types": [
         "body_material",
         "maximum_pressure",
-        "mounting_type",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5810,7 +5902,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5838,7 +5931,8 @@
         "channel_configuration",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style",
+        "port_thread"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -5866,7 +5960,7 @@
         "channel_configuration",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Product listing and product-card claims."
     },
@@ -5899,7 +5993,7 @@
       "field_types": [
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Derived website search index; not an independent engineering source."
     },
@@ -5934,7 +6028,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
+        "port_thread",
         "protection_rating",
         "weight"
       ],
@@ -5959,7 +6054,7 @@
       "source_path": "scripts/translate-catalog-offline.py",
       "source_type": "content-generation-script",
       "git_tracked": true,
-      "source_hash": "18ad8a854d60c75793a774eaec88d927a8eff4f95766b2b33879e7b0ed2dac06",
+      "source_hash": "d8e10f75b20a47c27f897333d1d4e16eadadd37c9a9e30abacbce3dce9e88457",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -5968,7 +6063,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type",
+        "mounting_style",
         "protection_rating",
         "weight"
       ],
@@ -5987,7 +6082,6 @@
       ],
       "field_types": [
         "compatible_media",
-        "mounting_type",
         "protection_rating",
         "weight"
       ],
@@ -5997,7 +6091,7 @@
       "source_path": "search-index.json",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "8b565e57a47fa4119d5e53ec1767a1fa4c84c4bbe6f774cbf1ba54480810b5ae",
+      "source_hash": "eceb59df07e5cd5dfdbfe2fb673958d573adbb4825d4d8484d715f1dc288df9b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -6022,7 +6116,7 @@
       "field_types": [
         "maximum_pressure",
         "maximum_speed",
-        "mounting_type"
+        "mounting_style"
       ],
       "notes": "Derived website search index; not an independent engineering source."
     }

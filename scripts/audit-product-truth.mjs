@@ -6,8 +6,11 @@ import { execFileSync } from "node:child_process";
 import * as cheerio from "cheerio";
 
 const ROOT = process.cwd();
+const EXTERNAL_CATALOG_ROOT = process.env.PRODUCT_TRUTH_CATALOG_ROOT
+  ? path.resolve(process.env.PRODUCT_TRUTH_CATALOG_ROOT)
+  : null;
 const AUDIT_DATE = process.env.PRODUCT_TRUTH_AUDIT_DATE || "2026-07-31";
-const BASELINE_COMMIT = "472de959069a1e2da7a530be3dd449399b30e255";
+const BASELINE_COMMIT = "d95d4db1ce908f941e76bff3f78bc052455d0b0b";
 const INVENTORY_PATH = "audit/product-truth-source-inventory.json";
 const CONFLICT_PATH = "audit/product-truth-conflicts.json";
 const REPORT_PATH = "audit/product-truth-baseline-20260731.md";
@@ -29,6 +32,7 @@ const ENGINEERING_EXTENSIONS = new Set([
 
 const inventory = new Map();
 const observations = [];
+const coverageDifferences = [];
 const searchOrAiModels = new Set();
 const requiredPaths = [
   "BP-2P-50-0001.html",
@@ -43,6 +47,13 @@ function posix(relativePath) {
 }
 
 function absolute(relativePath) {
+  const normalized = posix(relativePath);
+  if (EXTERNAL_CATALOG_ROOT && normalized.startsWith("catalog-project/")) {
+    return path.join(
+      EXTERNAL_CATALOG_ROOT,
+      normalized.slice("catalog-project/".length),
+    );
+  }
   return path.join(ROOT, relativePath);
 }
 
@@ -89,6 +100,9 @@ const trackedFiles = new Set(
 );
 
 function isTracked(relativePath) {
+  if (EXTERNAL_CATALOG_ROOT && posix(relativePath).startsWith("catalog-project/")) {
+    return false;
+  }
   return trackedFiles.has(posix(relativePath));
 }
 
@@ -213,7 +227,7 @@ const LABEL_RULES = [
     ],
   },
   {
-    field: "mounting_type",
+    field: "mounting_style",
     patterns: [
       /mount type/i,
       /mounting type/i,
@@ -331,6 +345,10 @@ function canonicalField(label) {
     component_materials: "body_material",
     material_and_surface_treatment: "body_material",
     maximum_temperature: "operating_temperature",
+    mounting_type: "mounting_style",
+    mount_type: "mounting_style",
+    stator_mounting: "stator_mounting_pattern",
+    rotor_mounting: "rotor_mounting_pattern",
   };
   if (aliases[normalizedAlias]) return aliases[normalizedAlias];
   for (const rule of LABEL_RULES) {
@@ -363,6 +381,73 @@ function normalizeText(value) {
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
+}
+
+function extractPortThreads(rawValue) {
+  const text = String(rawValue || "").normalize("NFKC");
+  const values = [];
+  for (const match of text.matchAll(/\b(G\s*\d+\s*\/\s*\d+|(?:NPT|BSP)\s*\d+\s*\/\s*\d+)\b/gi)) {
+    values.push(match[1].replace(/\s+/g, "").toLowerCase());
+  }
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
+
+function extractUnassignedMountingPattern(rawValue) {
+  let text = String(rawValue || "").normalize("NFKC");
+  const tokens = [];
+  text = text.replace(/(\d+)\s*(?:x|×|-)\s*m\s*(\d+)/gi, (_, count, size) => {
+    tokens.push(`${Number(count)}xm${Number(size)}`);
+    return " ";
+  });
+  text = text.replace(/(\d+)\s*(?:x|×|-)\s*(\d+(?:[.,]\d+)?)\s*mm\s*(?:mounting\s*)?holes?/gi, (_, count, size) => {
+    tokens.push(`${Number(count)}x${String(size).replace(",", ".")}mm-hole`);
+    return " ";
+  });
+  for (const match of text.matchAll(/\bm\s*(\d+)\b/gi)) {
+    tokens.push(`m${Number(match[1])}`);
+  }
+  return [...new Set(tokens)].sort((a, b) => a.localeCompare(b));
+}
+
+function parseMountingSemantics(rawValue) {
+  const text = String(rawValue || "").normalize("NFKC").replace(/\s+/g, " ").trim();
+  const normalized = normalizeText(text);
+  let mountingStyle = null;
+  if (
+    /(?:^|\b)(?:flange(?:d)?(?:\s+mount(?:ing)?)?|flanschmontage|flanschanschluss|flanschbefestigung)(?:\b|$)|フランジ取付|фланцев(?:ое|ый|ым)\s+(?:соединен|креплен)/i.test(
+      normalized,
+    )
+  ) {
+    mountingStyle = "flange";
+  } else if (
+    /(?:^threaded$|threaded\s+(?:mount(?:ing)?|connection)|thread mount(?:ing)?|gewindemontage)(?:\b|$)|ねじ取付|резьбов(?:ое|ой)\s+креплен/i.test(
+      normalized,
+    )
+  ) {
+    mountingStyle = "threaded";
+  }
+
+  const mountingPattern = (role) => {
+    const rolePattern =
+      role === "stator"
+        ? "(?:stator(?:\\s+side|seite)?|固定側|сторона\\s+статора)"
+        : "(?:rotor(?:\\s+side|seite)?|回転側|сторона\\s+ротора)";
+    const patterns = [
+      new RegExp(`${rolePattern}\\s*:?\\s*(\\d+)\\s*(?:x|×|-)\\s*m\\s*(\\d+)`, "i"),
+      new RegExp(`(\\d+)\\s*(?:x|×|-)\\s*m\\s*(\\d+)\\s*${rolePattern}(?:\\s+mount)?`, "i"),
+    ];
+    for (const pattern of patterns) {
+      const match = text.match(pattern);
+      if (match) return `${Number(match[1])}xm${Number(match[2])}`;
+    }
+    return null;
+  };
+
+  return {
+    mounting_style: mountingStyle,
+    stator_mounting_pattern: mountingPattern("stator"),
+    rotor_mounting_pattern: mountingPattern("rotor"),
+  };
 }
 
 function normalizeValue(field, rawValue) {
@@ -425,8 +510,37 @@ function normalizeValue(field, rawValue) {
   }
 
   if (field === "passages") {
-    const match = raw.match(/\d+/);
-    if (match) return { normalized_value: String(Number(match[0])), unit: "passages" };
+    const semanticPatterns = [
+      /^\s*(\d+)\s*$/,
+      /(\d+)\s*(?:-?\s*in(?:let)?\b|passages?|channels?|kan[aä]le?|kanal(?:-ausführung)?|流路|канал(?:а|ов|ы)?)/i,
+      /(\d+)\s*(?:eing[aä]nge?|eingang|入力|вход(?:а|ов|ы)?)/i,
+      /(\d+)\s*-\s*kanal/i,
+      /(?:passages?|channels?|kanalzahl|流路数|количество каналов)\D{0,12}(\d+)/i,
+    ];
+    for (const pattern of semanticPatterns) {
+      const match = comparableRaw.match(pattern);
+      if (match) {
+        return {
+          normalized_value: String(Number(match[1])),
+          unit: "passages",
+          observation_status: "current-observed",
+        };
+      }
+    }
+    if (/vierkanal/i.test(comparableRaw) || /четыр[её]хканал/i.test(comparableRaw)) {
+      return {
+        normalized_value: "4",
+        unit: "passages",
+        observation_status: "current-observed",
+      };
+    }
+    if (/\d/.test(comparableRaw)) {
+      return {
+        normalized_value: null,
+        unit: null,
+        observation_status: "parser-ambiguous",
+      };
+    }
   }
 
   if (field === "channel_configuration") {
@@ -486,19 +600,36 @@ function normalizeValue(field, rawValue) {
     if (match) return { normalized_value: `IP${match[1]}`, unit: null };
   }
 
-  if (field === "mounting_type") {
-    const text = normalizeText(raw);
-    const tokens = [];
-    if (/flange|flansch|フランジ|фланц/.test(text)) tokens.push("flange");
-    if (/thread|gewinde|ねじ|резьб/.test(text)) tokens.push("threaded");
-    if (/stator/.test(text)) tokens.push("stator");
-    if (/rotor/.test(text)) tokens.push("rotor");
-    for (const match of text.matchAll(/(\d+)\s*(?:x|×|-)\s*m\s*(\d+)/gi)) {
-      tokens.push(`${Number(match[1])}xm${Number(match[2])}`);
+  if (field === "port_thread") {
+    const values = extractPortThreads(comparableRaw);
+    if (values.length) {
+      return { normalized_value: values.join("|"), unit: null };
     }
-    if (tokens.length) {
-      return { normalized_value: [...new Set(tokens)].sort().join("|"), unit: null };
+  }
+
+  if (field === "mounting_style") {
+    const semantics = parseMountingSemantics(raw);
+    if (semantics.mounting_style) {
+      return { normalized_value: semantics.mounting_style, unit: null };
     }
+    return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
+  }
+
+  if (field === "stator_mounting_pattern" || field === "rotor_mounting_pattern") {
+    const match = comparableRaw.match(/(\d+)\s*(?:x|×|-)\s*m\s*(\d+)/i);
+    if (match) {
+      return {
+        normalized_value: `${Number(match[1])}xm${Number(match[2])}`,
+        unit: null,
+      };
+    }
+    return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
+  }
+
+  if (field === "unassigned_mounting_pattern") {
+    const values = extractUnassignedMountingPattern(comparableRaw);
+    if (values.length) return { normalized_value: values.join("|"), unit: null };
+    return { normalized_value: null, unit: null, observation_status: "parser-ambiguous" };
   }
 
   if (field === "warranty") {
@@ -506,7 +637,11 @@ function normalizeValue(field, rawValue) {
     if (match) return { normalized_value: String(Number(match[1])), unit: "months" };
   }
 
-  return { normalized_value: normalizeText(raw), unit: null };
+  return {
+    normalized_value: normalizeText(raw),
+    unit: null,
+    observation_status: "current-observed",
+  };
 }
 
 function addObservation({
@@ -520,13 +655,97 @@ function addObservation({
   evidenceLevel = evidenceLevelFor(sourceType),
   verificationStatus = verificationFor(sourceType),
   publicClaimLevel = publicClaimLevelFor(sourceType),
+  observationStatus = null,
+  referencedSourcePath = null,
+  skipMountingExpansion = false,
+  sourceIdentity = null,
 }) {
   const normalizedModel = normalizeModel(model);
   const normalizedField = canonicalField(field) || field;
   if (!normalizedModel || !normalizedField || rawValue === null || rawValue === undefined) return;
 
-  const { normalized_value, unit } = normalizeValue(normalizedField, rawValue);
-  if (!normalized_value) return;
+  if (normalizedField === "mounting_style" && !skipMountingExpansion) {
+    const semantics = parseMountingSemantics(rawValue);
+    const portThreads = extractPortThreads(rawValue);
+    if (portThreads.length) {
+      addObservation({
+        model: normalizedModel,
+        field: "port_thread",
+        rawValue,
+        language,
+        sourcePath,
+        sourceType,
+        notes: `${notes} Reclassified from an interface-thread mounting label.`.trim(),
+        evidenceLevel,
+        verificationStatus,
+        publicClaimLevel,
+        observationStatus,
+        referencedSourcePath,
+        skipMountingExpansion: true,
+        sourceIdentity,
+      });
+    }
+    for (const patternField of ["stator_mounting_pattern", "rotor_mounting_pattern"]) {
+      if (!semantics[patternField]) continue;
+      addObservation({
+        model: normalizedModel,
+        field: patternField,
+        rawValue: semantics[patternField],
+        language,
+        sourcePath,
+        sourceType,
+        notes: `${notes} Structured from mounting description.`.trim(),
+        evidenceLevel,
+        verificationStatus,
+        publicClaimLevel,
+        observationStatus,
+        referencedSourcePath,
+        skipMountingExpansion: true,
+        sourceIdentity,
+      });
+    }
+    const unassignedPattern =
+      !semantics.stator_mounting_pattern && !semantics.rotor_mounting_pattern
+        ? extractUnassignedMountingPattern(rawValue)
+        : [];
+    if (unassignedPattern.length) {
+      addObservation({
+        model: normalizedModel,
+        field: "unassigned_mounting_pattern",
+        rawValue,
+        language,
+        sourcePath,
+        sourceType,
+        notes: `${notes} Mounting holes lack a reliable stator/rotor assignment.`.trim(),
+        evidenceLevel,
+        verificationStatus,
+        publicClaimLevel,
+        observationStatus:
+          observationStatus === "current-observed" || observationStatus === null
+            ? "manual-review-required"
+            : observationStatus,
+        referencedSourcePath,
+        skipMountingExpansion: true,
+        sourceIdentity,
+      });
+    }
+    if (
+      !semantics.mounting_style &&
+      (portThreads.length ||
+        semantics.stator_mounting_pattern ||
+        semantics.rotor_mounting_pattern ||
+        unassignedPattern.length)
+    ) {
+      return;
+    }
+  }
+
+  const normalized = normalizeValue(normalizedField, rawValue);
+  const normalized_value = normalized.normalized_value;
+  const unit = normalized.unit;
+  const resolvedObservationStatus =
+    observationStatus || normalized.observation_status || "current-observed";
+  if (!normalized_value && resolvedObservationStatus !== "parser-ambiguous") return;
 
   const relativePath = posix(sourcePath);
   const observation = {
@@ -541,6 +760,9 @@ function addObservation({
     source_hash: sha256(relativePath),
     evidence_level: evidenceLevel,
     verification_status: verificationStatus,
+    observation_status: resolvedObservationStatus,
+    referenced_source_path: referencedSourcePath,
+    source_identity: sourceIdentity,
     public_claim_level: publicClaimLevel,
     last_checked_at: AUDIT_DATE,
     decision_owner:
@@ -678,8 +900,11 @@ function factFromCardTag(tag) {
     return ["maximum_pressure", value];
   }
   if (/RPM|min[⁻-]?1|об\/мин/i.test(value)) return ["maximum_speed", value];
-  if (/flange|flansch|フランジ|фланц|thread|gewinde|ねじ|резьб/i.test(value)) {
-    return ["mounting_type", value];
+  if (/\b(?:G\s*\d+\/\d+|NPT\s*\d+\/\d+|BSP\s*\d+\/\d+)\b/i.test(value)) {
+    return ["port_thread", value];
+  }
+  if (/flange|flansch|フランジ|фланц|threaded mount|gewindemontage|ねじ取付|резьбов.*креплен/i.test(value)) {
+    return ["mounting_style", value];
   }
   if (/6061|45#|steel|stahl|鋼|сталь|aluminum|aluminium|アルミ|алюмин/i.test(value)) {
     return ["body_material", value];
@@ -767,10 +992,10 @@ function addSearchAndAiSources() {
         });
       }
       if (/flange|flansch|フランジ|фланц/i.test(description)) {
-        fields.add("mounting_type");
+        fields.add("mounting_style");
         addObservation({
           model,
-          field: "mounting_type",
+          field: "mounting_style",
           rawValue: description.match(/[^.]*?(?:flange|flansch|フランジ|фланц)[^.]*\.?/i)?.[0] || description,
           language,
           sourcePath: file,
@@ -813,7 +1038,7 @@ const CATALOG_FIELD_MAP = {
   body_material: "body_material",
   seal_material: "seal_material",
   compatible_media: "compatible_media",
-  mounting_type: "mounting_type",
+  mounting_type: "mounting_style",
   weight_kg: "weight",
 };
 
@@ -954,6 +1179,83 @@ function addLocalCatalogSources() {
   }
 }
 
+function referencedPathFromAudit(value) {
+  const source = String(value || "").trim();
+  if (!source) return null;
+  const pathOnly = source
+    .split(/\s+(?:lines?|page|sheet|cells?|metadata)\b/i)[0]
+    .replace(/[;,]+$/, "");
+  return pathOnly.includes("/") || pathOnly.endsWith(".html") ? posix(pathOnly) : null;
+}
+
+function classifyHistoricalObservation({ model, field, rawValue, sourceReference }) {
+  const referencedSourcePath = referencedPathFromAudit(sourceReference);
+  if (!referencedSourcePath || !exists(referencedSourcePath)) {
+    return {
+      observationStatus: referencedSourcePath ? "stale-reference" : "historical-unverified",
+      referencedSourcePath,
+    };
+  }
+
+  const binaryVisualCheck = readJson(
+    "tests/fixtures/product-truth-audit-regressions.json",
+  ).binary_visual_checks?.find(
+    (check) =>
+      check.source_path === referencedSourcePath &&
+      check.source_sha256 === sha256(referencedSourcePath),
+  );
+  if (binaryVisualCheck) {
+    const targetModel = normalizeModel(model);
+    const documentModel = normalizeModel(binaryVisualCheck.document_model);
+    if (documentModel !== targetModel) {
+      return {
+        observationStatus: "source-identity-mismatch",
+        referencedSourcePath,
+        sourceIdentity: {
+          target_model: targetModel,
+          document_model: documentModel,
+          source_hash: binaryVisualCheck.source_sha256,
+          page: binaryVisualCheck.page,
+        },
+      };
+    }
+    if (binaryVisualCheck.historical_values.includes(rawValue)) {
+      return { observationStatus: "stale-reference", referencedSourcePath };
+    }
+  }
+
+  if (ENGINEERING_EXTENSIONS.has(path.extname(referencedSourcePath).toLowerCase())) {
+    return { observationStatus: "manual-review-required", referencedSourcePath };
+  }
+
+  const normalized = normalizeValue(field, rawValue);
+  if (
+    field === "model_identity" &&
+    normalizeModel(path.basename(referencedSourcePath, path.extname(referencedSourcePath))) ===
+      normalizeModel(rawValue)
+  ) {
+    return { observationStatus: "historical-unverified", referencedSourcePath };
+  }
+  const corroborated = observations.some(
+    (observation) =>
+      observation.observation_status === "current-observed" &&
+      observation.model === normalizeModel(model) &&
+      observation.field === field &&
+      observation.source_path === referencedSourcePath &&
+      observation.normalized_value === normalized.normalized_value &&
+      observation.unit === normalized.unit,
+  );
+  if (corroborated) {
+    return { observationStatus: "historical-unverified", referencedSourcePath };
+  }
+
+  const currentText = readText(referencedSourcePath);
+  if (currentText.includes(String(rawValue || "").trim())) {
+    return { observationStatus: "parser-ambiguous", referencedSourcePath };
+  }
+  return { observationStatus: "stale-reference", referencedSourcePath };
+}
+
 function addExistingAuditSources() {
   const conflictCsv = "audit/fact-resolution/phase-1e-a/product-fact-conflicts.csv";
   if (exists(conflictCsv)) {
@@ -988,8 +1290,20 @@ function addExistingAuditSources() {
           type: "engineering-audit-observation",
           evidence: "unknown",
         },
+        {
+          value: row.other_value,
+          source: row.other_source,
+          type: "website-audit-observation",
+          evidence: "unknown",
+        },
       ]) {
         if (!candidate.value) continue;
+        const historicalStatus = classifyHistoricalObservation({
+          model: row.model,
+          field,
+          rawValue: candidate.value,
+          sourceReference: candidate.source,
+        });
         addObservation({
           model: row.model,
           field,
@@ -999,11 +1313,14 @@ function addExistingAuditSources() {
           sourceType: candidate.type,
           evidenceLevel: candidate.evidence,
           verificationStatus: "manual-review-required",
+          observationStatus: historicalStatus.observationStatus,
+          referencedSourcePath: historicalStatus.referencedSourcePath,
+          sourceIdentity: historicalStatus.sourceIdentity || null,
           publicClaimLevel:
             candidate.type === "website-audit-observation"
               ? "public-with-qualification"
               : "internal-only",
-          notes: `Existing audit source reference: ${candidate.source || "not stated"}.`,
+          notes: `Historical audit source reference: ${candidate.source || "not stated"}. It does not independently establish a current fact.`,
         });
       }
     }
@@ -1032,7 +1349,8 @@ function inferFieldTypesFromText(text) {
     ["maximum_pressure", /\b(?:MPa|bar|psi)\b|МПа/i],
     ["maximum_speed", /\bRPM\b|min⁻¹|об\/мин/i],
     ["compatible_media", /air|water|coolant|hydraulic|luft|wasser|空気|作動油|воздух|масло/i],
-    ["mounting_type", /flange|thread|flansch|gewinde|フランジ|ねじ|фланц|резьб/i],
+    ["mounting_style", /flange mount|threaded mount|flanschmontage|gewindemontage|フランジ取付|ねじ取付|фланцев.*креплен|резьбов.*креплен/i],
+    ["port_thread", /\bG\s*\d+\/\d+\b|\b(?:NPT|BSP)\s*\d+\/\d+\b/i],
     ["protection_rating", /\bIP\s*\d{2}\b|dust|staub|防じん|пыл/i],
     ["body_material", /6061|45#|stainless|steel|aluminum|aluminium|сталь|алюмин|鋼|アルミ/i],
   ];
@@ -1140,6 +1458,7 @@ function addEngineeringBinarySources() {
 }
 
 function observationEligibleForTextComparison(observation) {
+  if (observation.observation_status !== "current-observed") return false;
   const numericFields = new Set([
     "weight",
     "maximum_pressure",
@@ -1154,6 +1473,50 @@ function observationEligibleForTextComparison(observation) {
     observation.source_type.includes("local-untracked") ||
     observation.source_type.includes("engineering-audit")
   );
+}
+
+function portThreadSet(normalizedValue) {
+  return new Set(String(normalizedValue || "").split("|").filter(Boolean));
+}
+
+function isProperSubset(candidate, possibleSuperset) {
+  return (
+    candidate.size < possibleSuperset.size &&
+    [...candidate].every((value) => possibleSuperset.has(value))
+  );
+}
+
+function sourceMakesExclusivePortClaim(source) {
+  return /\b(?:only|sole|exclusive(?:ly)?)\b|\b(?:nur|ausschlie(?:ss|\u00df)lich)\b|(?:\u4ec5|\u53ea)\s*(?:\u9650|\u80fd|\u53ef)?|(?:\u306e\u307f|\u3060\u3051)|\b(?:\u0442\u043e\u043b\u044c\u043a\u043e|\u0438\u0441\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e)\b/i.test(
+    `${source.raw_value} ${source.notes || ""}`,
+  );
+}
+
+function buildConflictMetadata(model, field, observedValues, status) {
+  const sourceTypes = observedValues.flatMap((value) =>
+    value.sources.map((source) => source.source_type),
+  );
+  const requirement = evidenceRequirementFor(field);
+  return {
+    model,
+    field,
+    observed_values: observedValues,
+    evidence_levels: [
+      ...new Set(
+        observedValues.flatMap((value) => value.sources.map((source) => source.evidence_level)),
+      ),
+    ].sort(),
+    status,
+    decision_owner: "laocao",
+    suggested_engineering_materials: requirement.required_evidence_types,
+    evidence_domain: requirement.evidence_domain,
+    suggested_evidence_materials: requirement.required_evidence_types,
+    affects_public_website: sourceTypes.some(
+      (type) => type.includes("website") || type.includes("translated"),
+    ),
+    affects_json_ld: sourceTypes.some((type) => type.includes("json-ld")),
+    affects_search_or_ai_index: searchOrAiModels.has(model),
+  };
 }
 
 function groupConflicts() {
@@ -1226,32 +1589,33 @@ function groupConflicts() {
     ) {
       continue;
     }
-    const sourceTypes = observedValues.flatMap((value) =>
-      value.sources.map((source) => source.source_type),
-    );
-    const suggested = [
-      `downloads/${model}.pdf`,
-      "current approved engineering drawing",
-      "formal datasheet or order-specific specification",
-    ].filter((candidate) => !candidate.startsWith("downloads/") || exists(candidate));
+    if (field === "port_thread") {
+      const setEntries = observedValues.map((value) => ({
+        value,
+        set: portThreadSet(value.normalized_value),
+      }));
+      const maximal = setEntries.filter(
+        (entry) => !setEntries.some((other) => isProperSubset(entry.set, other.set)),
+      );
+      const hasCoverageDifference = setEntries.some((entry) =>
+        setEntries.some((other) => isProperSubset(entry.set, other.set)),
+      );
+      const hasExclusiveClaim = observedValues.some((value) =>
+        value.sources.some(sourceMakesExclusivePortClaim),
+      );
+      if (hasCoverageDifference && maximal.length === 1 && !hasExclusiveClaim) {
+        coverageDifferences.push({
+          ...buildConflictMetadata(model, field, observedValues, "coverage-difference"),
+          most_complete_observation: maximal[0].value.normalized_value,
+          notes:
+            "One current source lists a strict subset of the interface sizes listed by another. This is an information-coverage difference, not an automatically mutually exclusive engineering conflict.",
+        });
+        continue;
+      }
+    }
 
     conflicts.push({
-      model,
-      field,
-      observed_values: observedValues,
-      evidence_levels: [
-        ...new Set(
-          observedValues.flatMap((value) => value.sources.map((source) => source.evidence_level)),
-        ),
-      ].sort(),
-      status: "unresolved",
-      decision_owner: "laocao",
-      suggested_engineering_materials: suggested,
-      affects_public_website: sourceTypes.some(
-        (type) => type.includes("website") || type.includes("translated"),
-      ),
-      affects_json_ld: sourceTypes.some((type) => type.includes("json-ld")),
-      affects_search_or_ai_index: searchOrAiModels.has(model),
+      ...buildConflictMetadata(model, field, observedValues, "unresolved"),
       notes:
         "No correct value was selected. Confirm applicability, revision, configuration, and approval status before changing any public source.",
     });
@@ -1259,17 +1623,114 @@ function groupConflicts() {
   return conflicts.sort((a, b) => `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`));
 }
 
+const EVIDENCE_REQUIREMENTS = {
+  engineering: {
+    fields: new Set([
+      "passages",
+      "channel_configuration",
+      "port_thread",
+      "maximum_pressure",
+      "rated_pressure",
+      "test_pressure",
+      "maximum_speed",
+      "operating_temperature",
+      "weight",
+      "body_material",
+      "seal_material",
+      "compatible_media",
+      "mounting_style",
+      "stator_mounting_pattern",
+      "rotor_mounting_pattern",
+      "unassigned_mounting_pattern",
+      "friction_torque",
+      "protection_rating",
+    ]),
+    requiredEvidence: [
+      "Approved engineering drawing",
+      "approved technical datasheet",
+      "controlled engineering specification",
+    ],
+  },
+  "business-policy": {
+    fields: new Set(["warranty", "refund_policy", "lead_time", "payment_terms"]),
+    requiredEvidence: [
+      "Approved business policy",
+      "controlled commercial terms",
+      "authorized sales policy",
+    ],
+  },
+  "controlled-product-master": {
+    fields: new Set(["model", "model_identity", "sku", "product_name"]),
+    requiredEvidence: [
+      "Controlled product master",
+      "approved SKU register",
+      "formal drawing with matching internal model identity",
+    ],
+  },
+  "legal-compliance": {
+    fields: new Set(["certification", "regulatory_compliance", "compliance_standard"]),
+    requiredEvidence: [
+      "Valid certificate",
+      "applicable regulatory declaration",
+      "controlled compliance record",
+    ],
+  },
+  "order-specific": {
+    fields: new Set(["custom_configuration", "order_configuration"]),
+    requiredEvidence: [
+      "Approved order specification",
+      "customer-approved drawing",
+      "order confirmation",
+    ],
+  },
+};
+
+function evidenceRequirementFor(field) {
+  for (const [domain, requirement] of Object.entries(EVIDENCE_REQUIREMENTS)) {
+    if (requirement.fields.has(field)) {
+      return { evidence_domain: domain, required_evidence_types: requirement.requiredEvidence };
+    }
+  }
+  return {
+    evidence_domain: "manual-review-required",
+    required_evidence_types: ["Field-specific controlled evidence selected by the decision owner"],
+  };
+}
+
+function observationSatisfiesEvidenceDomain(observation, domain) {
+  if (domain === "engineering") {
+    return ["engineering-primary", "approved-datasheet", "controlled-catalog"].includes(
+      observation.evidence_level,
+    );
+  }
+  if (domain === "business-policy") {
+    return observation.source_type.includes("business-policy");
+  }
+  if (domain === "controlled-product-master") {
+    return (
+      observation.evidence_level === "controlled-catalog" ||
+      observation.source_type.includes("product-master")
+    );
+  }
+  if (domain === "legal-compliance") {
+    return observation.source_type.includes("compliance") || observation.source_type.includes("certificate");
+  }
+  if (domain === "order-specific") {
+    return observation.source_type.includes("order-confirmation");
+  }
+  return false;
+}
+
 function findMissingEvidence() {
   const publicGroups = new Map();
-  const engineeringGroups = new Set();
+  const supportedEvidenceGroups = new Set();
 
   for (const observation of observations) {
+    if (observation.observation_status !== "current-observed") continue;
     const key = `${observation.model}\0${observation.field}`;
-    if (
-      observation.evidence_level === "engineering-primary" ||
-      observation.evidence_level === "approved-datasheet"
-    ) {
-      engineeringGroups.add(key);
+    const requirement = evidenceRequirementFor(observation.field);
+    if (observationSatisfiesEvidenceDomain(observation, requirement.evidence_domain)) {
+      supportedEvidenceGroups.add(key);
     }
     if (
       observation.public_claim_level === "public-with-qualification" ||
@@ -1281,20 +1742,245 @@ function findMissingEvidence() {
   }
 
   return [...publicGroups.entries()]
-    .filter(([key]) => !engineeringGroups.has(key))
+    .filter(([key]) => !supportedEvidenceGroups.has(key))
     .map(([key, sources]) => {
       const [model, field] = key.split("\0");
+      const requirement = evidenceRequirementFor(field);
       return {
         model,
         field,
         verification_status: "missing-evidence",
         decision_owner: "laocao",
         public_sources: [...sources].sort(),
-        required_evidence:
-          "Approved engineering drawing, approved datasheet, or formal order-specific specification.",
+        evidence_domain: requirement.evidence_domain,
+        required_evidence_types: requirement.required_evidence_types,
+        required_evidence: requirement.required_evidence_types.join("; "),
       };
     })
     .sort((a, b) => `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`));
+}
+
+function categorizedFindings(statuses) {
+  return observations
+    .filter((observation) => statuses.includes(observation.observation_status))
+    .map((observation) => ({ ...observation }))
+    .sort((a, b) =>
+      `${a.model}:${a.field}:${a.source_path}:${a.raw_value}`.localeCompare(
+        `${b.model}:${b.field}:${b.source_path}:${b.raw_value}`,
+      ),
+    );
+}
+
+function countMismatchedDocuments(findings) {
+  return new Set(
+    findings.map(
+      (finding) =>
+        `${finding.referenced_source_path || finding.source_path}\0${finding.source_identity?.source_hash || finding.source_hash}`,
+    ),
+  ).size;
+}
+
+function runRegressionChecks(conflictDocument) {
+  const fixturePath = "tests/fixtures/product-truth-audit-regressions.json";
+  const fixture = readJson(fixturePath);
+  if (
+    conflictDocument.historical_findings.some(
+      (finding) => finding.observation_status !== "historical-unverified",
+    )
+  ) {
+    throw new Error("Historical findings must contain only historical-unverified observations.");
+  }
+  if (
+    conflictDocument.manual_review_findings.some(
+      (finding) => finding.observation_status !== "manual-review-required",
+    )
+  ) {
+    throw new Error("Manual-review findings must contain only manual-review-required observations.");
+  }
+  const expectedSeparatedFindingCount = observations.filter((observation) =>
+    ["historical-unverified", "manual-review-required"].includes(
+      observation.observation_status,
+    ),
+  ).length;
+  if (
+    conflictDocument.historical_findings.length +
+      conflictDocument.manual_review_findings.length !==
+    expectedSeparatedFindingCount
+  ) {
+    throw new Error("Historical/manual-review finding separation lost one or more observations.");
+  }
+  for (const regression of fixture.passage_parser) {
+    const parsed = normalizeValue("passages", regression.raw_value);
+    if (
+      parsed.normalized_value !== regression.expected_value ||
+      parsed.observation_status !== regression.expected_status
+    ) {
+      throw new Error(
+        `Passage parser regression failed for ${JSON.stringify(regression.raw_value)}.`,
+      );
+    }
+  }
+
+  const activePassageConflict = conflictDocument.active_conflicts.find(
+    (conflict) => conflict.model === "BP-4P-30-0001" && conflict.field === "passages",
+  );
+  if (activePassageConflict) {
+    throw new Error("BP-4P-30-0001 passages must not be an active conflict.");
+  }
+  const currentPassageThirty = observations.some(
+    (observation) =>
+      observation.model === "BP-4P-30-0001" &&
+      observation.field === "passages" &&
+      observation.observation_status === "current-observed" &&
+      observation.normalized_value === "30",
+  );
+  if (currentPassageThirty) {
+    throw new Error("BP-4P-30-0001 Ø30 mm was incorrectly parsed as 30 passages.");
+  }
+
+  for (const regression of fixture.historical_current_source_absence) {
+    const finding = conflictDocument.stale_references.find(
+      (observation) =>
+        observation.model === regression.model &&
+        observation.field === regression.field &&
+        observation.raw_value === regression.historical_value,
+    );
+    if (!finding || finding.observation_status !== regression.expected_status) {
+      throw new Error(
+        `Historical source regression failed for ${regression.model} / ${regression.field}.`,
+      );
+    }
+    if (
+      conflictDocument.active_conflicts.some(
+        (conflict) =>
+          conflict.model === regression.model && conflict.field === regression.field,
+      )
+    ) {
+      throw new Error(
+        `Historical-only value incorrectly created an active conflict for ${regression.model} / ${regression.field}.`,
+      );
+    }
+  }
+  for (const check of fixture.binary_visual_checks || []) {
+    if (!exists(check.source_path) || sha256(check.source_path) !== check.source_sha256) {
+      throw new Error(`Binary visual-check identity changed: ${check.source_path}.`);
+    }
+    for (const historicalValue of check.historical_values) {
+      if (
+        !conflictDocument.source_identity_mismatches.some(
+          (finding) =>
+            finding.referenced_source_path === check.source_path &&
+            finding.raw_value === historicalValue &&
+            finding.source_identity?.target_model === check.target_model &&
+            finding.source_identity?.document_model === check.document_model,
+        )
+      ) {
+        throw new Error(`Source-identity mismatch was not retained: ${historicalValue}.`);
+      }
+      if (
+        conflictDocument.stale_references.some(
+          (finding) =>
+            finding.referenced_source_path === check.source_path &&
+            finding.raw_value === historicalValue,
+        )
+      ) {
+        throw new Error(`Mismatched binary incorrectly changed historical status: ${historicalValue}.`);
+      }
+    }
+  }
+  for (const regression of fixture.mounting_semantics || []) {
+    const actual = parseMountingSemantics(regression.raw_value);
+    if (JSON.stringify(actual) !== JSON.stringify(regression.expected)) {
+      throw new Error(`Mounting semantics regression failed for ${regression.raw_value}.`);
+    }
+  }
+  for (const regression of fixture.port_thread_semantics || []) {
+    const actual = normalizeValue("port_thread", regression.raw_value);
+    if (actual.normalized_value !== regression.expected_value) {
+      throw new Error(`Port-thread regression failed for ${regression.raw_value}.`);
+    }
+  }
+  for (const regression of fixture.mounting_reclassification || []) {
+    const portThread = extractPortThreads(regression.raw_value).join("|") || null;
+    const mounting = parseMountingSemantics(regression.raw_value);
+    const unassigned = extractUnassignedMountingPattern(regression.raw_value).join("|") || null;
+    if (
+      portThread !== (regression.expected_port_thread ?? null) ||
+      mounting.mounting_style !== (regression.expected_mounting_style ?? null) ||
+      unassigned !== (regression.expected_unassigned_mounting_pattern ?? null)
+    ) {
+      throw new Error(`Mounting reclassification regression failed for ${regression.raw_value}.`);
+    }
+  }
+  for (const regression of fixture.evidence_domains || []) {
+    if (evidenceRequirementFor(regression.field).evidence_domain !== regression.expected_domain) {
+      throw new Error(`Evidence-domain regression failed for ${regression.field}.`);
+    }
+  }
+  const targetMountingFields = new Set([
+    "mounting_style",
+    "stator_mounting_pattern",
+    "rotor_mounting_pattern",
+  ]);
+  if (
+    conflictDocument.active_conflicts.some(
+      (conflict) =>
+        conflict.model === "BP-2P-50-0001" && targetMountingFields.has(conflict.field),
+    )
+  ) {
+    throw new Error("BP-2P-50-0001 equivalent mounting descriptions must not conflict.");
+  }
+  if (
+    observations.some(
+      (observation) =>
+        observation.model === "BP-2P-50-0001" &&
+        observation.field === "mounting_style" &&
+        /thread depth/i.test(observation.raw_value) &&
+        observation.normalized_value === "threaded",
+    )
+  ) {
+    throw new Error("Thread depth was incorrectly classified as threaded mounting.");
+  }
+  if (
+    conflictDocument.active_conflicts.some(
+      (conflict) => conflict.model === "BP-2P-0002" && conflict.field === "port_thread",
+    )
+  ) {
+    throw new Error("BP-2P-0002 port-thread coverage difference must not be an active conflict.");
+  }
+  const targetPortCoverage = conflictDocument.coverage_differences.find(
+    (finding) => finding.model === "BP-2P-0002" && finding.field === "port_thread",
+  );
+  if (!targetPortCoverage || targetPortCoverage.most_complete_observation !== "g1/4|g1/8") {
+    throw new Error("BP-2P-0002 multi-value port-thread coverage was not retained.");
+  }
+  if (
+    conflictDocument.parser_ambiguities.some(
+      (finding) =>
+        finding.field === "mounting_style" &&
+        /G\s*1\/(?:4|8)|Gewinde|\u306d\u3058|\u0440\u0435\u0437\u044c\u0431/i.test(finding.raw_value),
+    )
+  ) {
+    throw new Error("Explicit interface-thread terminology remained a mounting-style ambiguity.");
+  }
+  if (conflictDocument.summary.mismatched_document_count !== 1) {
+    throw new Error("The known source-identity mismatch must count as one mismatched document.");
+  }
+  if (conflictDocument.summary.affected_observation_count !== 4) {
+    throw new Error("The known source-identity mismatch must preserve four affected observations.");
+  }
+  const warrantyMissing = conflictDocument.missing_evidence.filter(
+    (finding) => finding.field === "warranty",
+  );
+  if (
+    warrantyMissing.length &&
+    warrantyMissing.some((finding) => finding.evidence_domain !== "business-policy")
+  ) {
+    throw new Error("Warranty missing evidence must use the business-policy domain.");
+  }
+  if (!conflictDocument.active_conflicts.length) {
+    throw new Error("No active conflicts remain; current-source conflict detection regressed.");
+  }
 }
 
 function writeJson(relativePath, value) {
@@ -1306,58 +1992,47 @@ function markdownEscape(value) {
   return String(value ?? "").replaceAll("|", "\\|").replace(/\s+/g, " ").trim();
 }
 
-function knownCaseSection(conflicts) {
-  const fields = ["weight", "compatible_media", "protection_rating", "mounting_type"];
-  const relevant = conflicts.filter(
-    (conflict) => conflict.model === "BP-2P-50-0001" && fields.includes(conflict.field),
-  );
-  const observationsForModel = observations.filter(
-    (observation) =>
-      observation.model === "BP-2P-50-0001" && fields.includes(observation.field),
-  );
-
-  const lines = [
-    "## 7. Known case: BP-2P-50-0001",
-    "",
-    "No value below is declared correct. Final confirmation belongs to `laocao` and must use an approved engineering drawing or formal technical record.",
-    "",
-    "| Field | Actual observations | Assessment |",
-    "| --- | --- | --- |",
-  ];
-
-  for (const field of fields) {
-    const fieldObservations = observationsForModel.filter((observation) => observation.field === field);
-    const compact = [
-      ...new Map(
-        fieldObservations.map((observation) => [
-          `${observation.raw_value}\0${observation.source_path}\0${observation.source_type}`,
-          observation,
-        ]),
-      ).values(),
-    ]
-      .map(
-        (observation) =>
-          `\`${markdownEscape(observation.raw_value)}\` — \`${observation.source_path}\` (${observation.source_type}, SHA-256 \`${observation.source_hash}\`)`,
+function regressionCaseSection(conflictDocument) {
+  const caseStatus = (model, field) => {
+    if (
+      conflictDocument.active_conflicts.some(
+        (conflict) => conflict.model === model && conflict.field === field,
       )
-      .slice(0, 12)
-      .join("<br>");
-    const conflict = relevant.find((candidate) => candidate.field === field);
-    let assessment = conflict
-      ? "`unresolved`; manual engineering verification required"
-      : "`missing-evidence`; no competing automatically parsed value";
-    if (field === "protection_rating") {
-      assessment =
-        "`manual-review-required`; public IP65 statements exist, but Phase 1A did not establish approval of the drawing or protection test evidence";
+    ) {
+      return "active_conflict";
     }
-    lines.push(`| \`${field}\` | ${compact || "No automatically parsed value."} | ${assessment} |`);
-  }
+    const stale = conflictDocument.stale_references.filter(
+      (finding) => finding.model === model && finding.field === field,
+    );
+    const manual = conflictDocument.manual_review_findings.filter(
+      (finding) =>
+        finding.model === model &&
+        finding.field === field &&
+        finding.observation_status === "manual-review-required",
+    );
+    return [
+      stale.length ? `${stale.length} stale-reference` : null,
+      manual.length ? `${manual.length} manual-review-required` : null,
+    ]
+      .filter(Boolean)
+      .join("; ") || "current-observed without conflict";
+  };
 
-  lines.push(
+  return [
+    "## 7. Required regression cases",
     "",
-    "The expected `4.26 kg` and `2.3 kg` observations were both found. Broad website media wording and local `Air`-only data were also found. Website mounting wording and the local stator/rotor hole-pattern description differ. The audit does not choose between them.",
+    "| Model | Field | Result |",
+    "| --- | --- | --- |",
+    `| \`BP-4P-30-0001\` | \`passages\` | 4 passages retained; Ø30 mm bore excluded from passage count; ${caseStatus("BP-4P-30-0001", "passages")} |`,
+    `| \`BP-4P-30-0001\` | \`maximum_speed\` | Current sources show 200 RPM; historical 80 RPM does not create an active conflict; ${caseStatus("BP-4P-30-0001", "maximum_speed")} |`,
+    `| \`BP-1P-0003\` | \`operating_temperature\` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; ${caseStatus("BP-1P-0003", "operating_temperature")} |`,
+    `| \`BP-2P-95-0001\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies \`BP-2P-95-0005\`; it is recorded as \`source-identity-mismatch\` and excluded before any test-pressure interpretation. |`,
+    `| \`BP-2P-50-0001\` | mounting semantics | Both current descriptions resolve to stator \`4xm5\` and rotor \`6xm5\`; thread depth does not create a threaded mounting style or active conflict. |`,
+    `| \`BP-2P-0002\` | \`port_thread\` | \`G1/4 and G1/8 ports\` resolves to \`g1/4\\|g1/8\`; the \`g1/8\` subset is retained as \`coverage-difference\`, not an active conflict. |`,
     "",
-  );
-  return lines.join("\n");
+    "These classifications are audit-semantics results, not engineering decisions.",
+    "",
+  ].join("\n");
 }
 
 function buildReport(inventoryDocument, conflictDocument) {
@@ -1370,7 +2045,7 @@ function buildReport(inventoryDocument, conflictDocument) {
   const manualItems = conflictDocument.conflicts
     .map(
       (conflict) =>
-        `${conflict.model} / ${conflict.field}: check ${conflict.suggested_engineering_materials.join("; ")}`,
+        `${conflict.model} / ${conflict.field}: check ${conflict.suggested_evidence_materials.join("; ")}`,
     )
     .sort();
 
@@ -1381,13 +2056,13 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Repository baseline: \`${BASELINE_COMMIT}\``,
     "",
-    "Issue: `#8`",
+    "Issue: `#14`",
     "",
     "## 1. Scope",
     "",
-    "Phase 1A inventoried product-detail HTML in four languages, JSON-LD, product cards, search and AI derivatives, localization sources, existing audit evidence, public download manifests, tracked engineering files, content-generation scripts, and approved read-only local catalog sources.",
+    "Phase 1B re-read product-detail HTML in four languages, JSON-LD, product cards, search and AI derivatives, localization sources, existing audit evidence, public download manifests, tracked engineering files, content-generation scripts, and approved read-only local catalog sources.",
     "",
-    "The audit normalizes observations and reports differences. It does not decide which conflicting value is correct.",
+    "The audit normalizes current observations and reports differences. Historical audit statements remain visible but cannot independently create an active conflict. The audit does not decide which conflicting value is correct.",
     "",
     "## 2. Source inventory",
     "",
@@ -1405,7 +2080,7 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     `Protected local catalog sources classified by task policy: **${inventoryDocument.summary.protected_local_catalog_sources}**`,
     "",
-    "Two protected local catalog inputs (`catalog-data.csv` and `source-evidence.json`) are already Git-tracked at this baseline even though the surrounding `catalog-project/` tree is otherwise untracked. The audit records the actual Git state and keeps the entire directory read-only.",
+    "When `PRODUCT_TRUTH_CATALOG_ROOT` is set, every `catalog-project/` source is read from that external directory and classified as a read-only local input, even if a path with the same name also exists in Git. No catalog file is copied into this change.",
     "",
     `Manual engineering verification sources: **${inventoryDocument.summary.manual_engineering_verification_sources}**`,
     "",
@@ -1425,7 +2100,23 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     "## 4. Conflict baseline",
     "",
-    `Unresolved conflicts: **${conflictDocument.summary.conflict_count}**`,
+    `Previous unresolved-conflict baseline: **56**`,
+    "",
+    `Active conflicts after semantic correction: **${conflictDocument.summary.active_conflicts}**`,
+    "",
+    `Historical findings: **${conflictDocument.summary.historical_findings}**`,
+    "",
+    `Manual-review findings: **${conflictDocument.summary.manual_review_findings}**`,
+    "",
+    `Stale references: **${conflictDocument.summary.stale_references}**`,
+    "",
+    `Mismatched source documents: **${conflictDocument.summary.mismatched_document_count}**`,
+    "",
+    `Observations affected by source identity mismatches: **${conflictDocument.summary.affected_observation_count}**`,
+    "",
+    `Port-thread coverage differences: **${conflictDocument.summary.coverage_differences}**`,
+    "",
+    `Parser ambiguities: **${conflictDocument.summary.parser_ambiguities}**`,
     "",
     "| Model | Field | Normalized values | Public HTML | JSON-LD | Search/AI |",
     "| --- | --- | --- | --- | --- | --- |",
@@ -1436,13 +2127,13 @@ function buildReport(inventoryDocument, conflictDocument) {
           .join("<br>")} | ${conflict.affects_public_website ? "Yes" : "No"} | ${conflict.affects_json_ld ? "Yes" : "No"} | ${conflict.affects_search_or_ai_index ? "Yes" : "No"} |`,
     ),
     "",
-    "Every conflict is `unresolved`, has decision owner `laocao`, and contains no winning or correct value.",
+    "Every active conflict is `unresolved`, has decision owner `laocao`, and contains no winning or correct value. Only `current-observed` values with unambiguous field semantics and normalized units participate.",
     "",
     "## 5. Missing evidence",
     "",
     `Public model-field groups without a parsed primary or approved supporting observation: **${conflictDocument.summary.missing_evidence_count}**`,
     "",
-    "This is a traceability count, not proof that evidence does not exist. Binary drawings and datasheets were inventoried but intentionally not interpreted automatically.",
+    "Each missing-evidence record names its evidence domain and field-appropriate evidence types. Engineering drawings are not used as a universal requirement for business policy, product-master, compliance, or order-specific facts.",
     "",
     "## 6. Manual engineering confirmation queue",
     "",
@@ -1451,7 +2142,7 @@ function buildReport(inventoryDocument, conflictDocument) {
       ? [`- ${manualItems.length - 100} additional model-field checks are retained in the machine-readable conflict report.`]
       : []),
     "",
-    knownCaseSection(conflictDocument.conflicts),
+    regressionCaseSection(conflictDocument),
     "## 8. Potential downstream impact",
     "",
     "- **Website:** unresolved values may appear in visible specifications, cards, articles, or application guidance.",
@@ -1462,7 +2153,7 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     "## 9. Next phase recommendation",
     "",
-    "Phase 1B should select a small set of high-risk conflicts, obtain the current approved engineering source and revision from `laocao`, record the decision scope, and only then propose synchronized changes across HTML, JSON-LD, translations, search/AI indexes, and downloads. Do not build a full Product Truth database until the decision and approval workflow has been proven on this pilot.",
+    "The remaining active conflicts should be handled in separate, model-scoped decision tasks. Each task must obtain the current approved engineering source and revision from `laocao` before proposing synchronized public changes.",
     "",
     "## 10. Non-modification declaration",
     "",
@@ -1528,8 +2219,14 @@ function main() {
   addSecondaryTextSources();
   addEngineeringBinarySources();
 
-  const conflicts = groupConflicts();
+  const activeConflicts = groupConflicts();
   const missingEvidence = findMissingEvidence();
+  const historicalFindings = categorizedFindings(["historical-unverified"]);
+  const manualReviewFindings = categorizedFindings(["manual-review-required"]);
+  const staleReferences = categorizedFindings(["stale-reference"]);
+  const sourceIdentityMismatches = categorizedFindings(["source-identity-mismatch"]);
+  const mismatchedDocumentCount = countMismatchedDocuments(sourceIdentityMismatches);
+  const parserAmbiguities = categorizedFindings(["parser-ambiguous"]);
   const sources = [...inventory.values()].sort((a, b) =>
     a.source_path.localeCompare(b.source_path),
   );
@@ -1537,7 +2234,7 @@ function main() {
   const fieldTypes = [...new Set(observations.map((observation) => observation.field))].sort();
 
   const inventoryDocument = {
-    schema_version: "1.0",
+    schema_version: "2.0",
     audit_date: AUDIT_DATE,
     repository: "caoguangcheng9-lgtm/begapunk-website",
     baseline_commit: BASELINE_COMMIT,
@@ -1548,6 +2245,17 @@ function main() {
     field_type_count: fieldTypes.length,
     summary: {
       observation_count: observations.length,
+      current_observations: observations.filter(
+        (observation) => observation.observation_status === "current-observed",
+      ).length,
+      historical_findings: historicalFindings.length,
+      manual_review_findings: manualReviewFindings.length,
+      stale_references: staleReferences.length,
+      source_identity_mismatches: sourceIdentityMismatches.length,
+      mismatched_document_count: mismatchedDocumentCount,
+      affected_observation_count: sourceIdentityMismatches.length,
+      coverage_differences: coverageDifferences.length,
+      parser_ambiguities: parserAmbiguities.length,
       git_tracked_sources: sources.filter((source) => source.git_tracked).length,
       local_untracked_sources: sources.filter((source) => !source.git_tracked).length,
       protected_local_catalog_sources: sources.filter(
@@ -1564,43 +2272,45 @@ function main() {
   };
 
   const conflictDocument = {
-    schema_version: "1.0",
+    schema_version: "2.0",
     audit_date: AUDIT_DATE,
     repository: "caoguangcheng9-lgtm/begapunk-website",
     baseline_commit: BASELINE_COMMIT,
     summary: {
-      conflict_count: conflicts.length,
+      active_conflicts: activeConflicts.length,
+      historical_findings: historicalFindings.length,
+      manual_review_findings: manualReviewFindings.length,
+      stale_references: staleReferences.length,
+      source_identity_mismatches: sourceIdentityMismatches.length,
+      mismatched_document_count: mismatchedDocumentCount,
+      affected_observation_count: sourceIdentityMismatches.length,
+      coverage_differences: coverageDifferences.length,
+      parser_ambiguities: parserAmbiguities.length,
       missing_evidence_count: missingEvidence.length,
       decision_owner: "laocao",
-      conflict_status: "unresolved",
+      conflict_status: "active_conflict",
     },
-    conflicts,
+    active_conflicts: activeConflicts,
+    conflicts: activeConflicts,
+    historical_findings: historicalFindings,
+    manual_review_findings: manualReviewFindings,
+    stale_references: staleReferences,
+    source_identity_mismatches: sourceIdentityMismatches,
+    coverage_differences: coverageDifferences.sort((a, b) =>
+      `${a.model}:${a.field}`.localeCompare(`${b.model}:${b.field}`),
+    ),
+    parser_ambiguities: parserAmbiguities,
     missing_evidence: missingEvidence,
   };
 
-  const knownWeight = conflicts.find(
-    (conflict) => conflict.model === "BP-2P-50-0001" && conflict.field === "weight",
-  );
-  if (
-    !knownWeight ||
-    !knownWeight.observed_values.some(
-      (value) => value.normalized_value === "4.26" && value.unit === "kg",
-    ) ||
-    !knownWeight.observed_values.some(
-      (value) => value.normalized_value === "2.3" && value.unit === "kg",
-    )
-  ) {
-    throw new Error(
-      "Known-case validation failed: BP-2P-50-0001 must retain both 4.26 kg and 2.3 kg observations.",
-    );
-  }
+  runRegressionChecks(conflictDocument);
 
   writeJson(INVENTORY_PATH, inventoryDocument);
   writeJson(CONFLICT_PATH, conflictDocument);
   fs.writeFileSync(absolute(REPORT_PATH), buildReport(inventoryDocument, conflictDocument), "utf8");
 
   console.log(
-    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${conflicts.length} unresolved conflicts, and ${missingEvidence.length} missing-evidence groups.`,
+    `Product truth audit completed: ${sources.length} sources, ${models.length} models, ${fieldTypes.length} normalized fields, ${activeConflicts.length} active conflicts, ${coverageDifferences.length} coverage differences, ${historicalFindings.length} historical findings, ${manualReviewFindings.length} manual-review findings, ${staleReferences.length} stale references, ${mismatchedDocumentCount} mismatched documents affecting ${sourceIdentityMismatches.length} observations, ${parserAmbiguities.length} parser ambiguities, and ${missingEvidence.length} missing-evidence groups.`,
   );
   console.log("Business conflicts were reported without selecting a winning value.");
 }

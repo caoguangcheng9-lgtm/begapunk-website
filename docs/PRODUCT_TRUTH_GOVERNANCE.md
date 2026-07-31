@@ -1,6 +1,6 @@
 # Begapunk Product Truth Governance
 
-Version: 1.0
+Version: 1.2
 
 Baseline date: 2026-07-31
 
@@ -28,6 +28,7 @@ Every normalized product fact must be representable with these fields:
 | `source_hash` | SHA-256 of the exact source file. |
 | `evidence_level` | Evidence classification defined below. |
 | `verification_status` | Current verification state. |
+| `observation_status` | Whether the value was re-read from a current source or retained only as a historical/manual lead. |
 | `public_claim_level` | Whether the observation may be stated publicly. |
 | `last_checked_at` | Deterministic audit date in `YYYY-MM-DD` format. |
 | `decision_owner` | Person responsible for an unresolved engineering decision. |
@@ -63,6 +64,17 @@ A filename, PDF title, local `VERIFIED` label, repeated website value, or transl
 
 Phase 1A defaults conflicts to `conflict`/`unresolved` and assigns the decision to `laocao`. The audit script must finish successfully when business conflicts are found; only parsing failures, damaged required structures, or program errors are blocking failures.
 
+Observation status is separate from approval status:
+
+- `current-observed`: the value was re-read from a current source with field-aware parsing.
+- `historical-unverified`: a prior audit statement is retained as history and is corroborated by a separately parsed current source, but the historical record itself is not evidence.
+- `stale-reference`: a prior audit statement points to a path or location where the value is no longer present, or the referenced path no longer exists.
+- `source-identity-mismatch`: a binary or controlled artifact exists, but its internal model identity does not match the target model. The artifact remains inventoried but cannot classify field values for that target.
+- `parser-ambiguous`: the current text cannot be assigned to the field without guessing.
+- `manual-review-required`: the referenced current artifact exists but requires visual, engineering, or other manual review.
+
+Only `current-observed` values may participate in an active conflict. The other statuses remain visible as findings and must not independently create a current conflict.
+
 ## 5. Public claim levels
 
 - `public-verified`: approved evidence supports the exact public claim and scope.
@@ -86,11 +98,15 @@ The baseline normalizes common labels into these canonical fields:
 - `body_material`
 - `seal_material`
 - `compatible_media`
-- `mounting_type`
+- `mounting_style`
+- `stator_mounting_pattern`
+- `rotor_mounting_pattern`
+- `unassigned_mounting_pattern`
 - `weight`
 - `protection_rating`
 - `friction_torque`
 - `warranty`
+- `test_pressure`
 
 Additional fields may be added only when their meaning and unit are unambiguous. Translated labels map to the same canonical field, but translated wording alone must not create a winning engineering value.
 
@@ -104,7 +120,14 @@ Additional fields may be added only when their meaning and unit are unambiguous.
 
 ## 8. Conflict rules
 
-A conflict exists when the same normalized model and field have more than one comparison-safe value from current sources.
+An `active_conflict` exists only when all of these conditions are met:
+
+1. The observations use the same normalized model.
+2. The observations use the same canonical field.
+3. At least two different normalized values remain.
+4. Every compared value was re-read from a current source.
+5. No compared parse is ambiguous.
+6. Units were normalized before comparison.
 
 For every conflict:
 
@@ -116,7 +139,36 @@ For every conflict:
 6. Record whether the conflict reaches public HTML, JSON-LD, search, or AI indexes.
 7. Do not write a `correct_value`, `winner`, or equivalent field.
 
-Historical values may be preserved as audit context, but they must not be treated as current unless the corresponding source is current.
+For multi-value interface-thread observations, normalize every listed interface in stable order (for example, `G1/4 and G1/8 ports` becomes `g1/4|g1/8`). When one current observation is a strict subset of another and neither source claims exclusivity, classify the result as `coverage-difference`; do not treat broader information coverage as a mutually exclusive active conflict.
+
+Historical values are preserved, not deleted. `historical_findings` contains only `historical-unverified` records, while stale historical references remain in `stale_references`. Current observations that require human interpretation belong in `manual_review_findings`, not in the historical count. Parser ambiguities, coverage differences, source-identity mismatches, and missing evidence remain separate report categories. A historical record never becomes current evidence by repetition; a separate current-source parse must establish the current observation.
+
+The report must preserve every categorized observation. Splitting `historical_findings` from `manual_review_findings` must not delete records or reduce their combined count.
+
+Field parsing must use field semantics. For example, `4 passages with Ø30 mm hollow bore` means four passages; the bore diameter must never be captured as the passage count. If the parser cannot distinguish the concepts, it records `parser-ambiguous` and excludes the observation from active conflict counting.
+
+Mounting facts are structured by meaning:
+
+- `port_thread` records media-interface threads such as G1/8, G1/4, NPT, or BSP.
+- `mounting_style` records the general installation form, such as flange or threaded mount.
+- `stator_mounting_pattern` and `rotor_mounting_pattern` record their respective hole patterns.
+- A hole pattern without a reliable stator or rotor assignment is retained as `unassigned_mounting_pattern` with manual review, not as a `mounting_style` ambiguity.
+- Thread depth is a dimension of a threaded hole; it does not establish a `threaded` mounting style.
+- A general flange style and a detailed flange hole pattern are complementary, not mutually exclusive values.
+
+Before a visually reviewed binary artifact can classify a field, its internal model identity must match the target model. A mismatch produces `source-identity-mismatch`; no field conclusion may be derived from that artifact for the target model. Reports count unique mismatched documents separately from the number of observations affected by those documents; all affected observations remain traceable.
+
+## 8.1 Evidence domains
+
+Missing evidence must match the fact domain:
+
+- `engineering`: pressure, speed, temperature, weight, materials, seals, media compatibility, and mounting dimensions.
+- `business-policy`: warranty, refund, lead time, and payment terms.
+- `controlled-product-master`: model identity, SKU, and product name.
+- `legal-compliance`: certifications and regulatory claims.
+- `order-specific`: custom configurations and order-confirmed parameters.
+
+An engineering drawing is not a universal evidence requirement. For example, warranty requires an approved business policy, while model identity requires a controlled product master or a formally controlled drawing with a matching internal model.
 
 ## 9. Automatic versus manual verification
 
