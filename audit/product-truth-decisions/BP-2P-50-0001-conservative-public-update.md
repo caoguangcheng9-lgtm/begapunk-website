@@ -48,6 +48,25 @@ The conservative policy is synchronized across:
 
 Other product pages were changed only where their text refers to BP-2P-50-0001. Their own model facts were not changed.
 
+## Aida PR #13 review correction
+
+Aida reviewed commit `73d840fc39abc134875877469c85c67709dd8bbb` and returned `CHANGES_REQUIRED`. The review found that the target English page still contained `dust seal` wording and unsupported fixed inspection, replacement, and service-time statements. It also found that the German, Japanese, and Russian Product JSON-LD still used absolute dust-protected product-type names, while localized maintenance copy described water or coolant as an operating scenario without first requiring written compatibility confirmation.
+
+The correction:
+
+- replaces every target-specific English `dust seal` reference with wording about the protective shroud, labyrinth, visible sealing area, or separately confirmed environmental protection;
+- removes the monthly, weekly, 6–8 month, 3–4 month, and fixed 20-minute maintenance or replacement statements;
+- states that inspection, cleaning, replacement, and spare-parts planning must be based on actual contamination, duty cycle, the supplied configuration, and a written maintenance plan;
+- replaces absolute dust-protected product-type wording in German, Japanese, and Russian visible content and Product JSON-LD with localized protective-shroud/labyrinth wording and an explicit statement that no certified IP rating is claimed;
+- requires written compatibility confirmation before any water, coolant, liquid, or other non-air medium is operated, and requires the maintenance plan to be established only after that confirmation;
+- regenerates the English, German, Japanese, and Russian target search records from the corrected product pages.
+
+The strengthened product validator now checks the target detail pages themselves, target Product JSON-LD, all four target search records, localized non-air-medium statements, target-associated public blocks, and fixed maintenance or seal-replacement intervals. Embedded regression cases prove that the previously published English, German, Japanese, and Russian phrases are rejected, while a generic technical article not associated with `BP-2P-50-0001` is not flagged.
+
+The new checks failed against the pre-correction search records and localized JSON-LD, then passed after the pages and indexes were synchronized. This is a public-claim correction only. Engineering verification remains `manual-review-required`; no approved engineering source has been established.
+
+The post-correction target scan reports zero occurrences for unauthorized numeric weight, `IP65`, `FKM`, target-specific dust-seal or absolute dust-protected product-type claims, fixed maintenance or seal-replacement intervals, and unapproved non-air-medium implications. The English target search record contains zero `dust seal` occurrences.
+
 ## Affected files
 
 ### Target pages

@@ -15,6 +15,8 @@ const failures = [];
 const conservativeModel = 'BP-2P-50-0001';
 const conservativePolicyByLocale = {
   en: {
+    productTypeName: 'Product type',
+    productTypeValue: 'Pneumatic rotary joint / air rotary union with protective shroud and labyrinth',
     mediaName: 'Compatible media',
     mediaValue: 'Air. Other media require written compatibility confirmation for the operating conditions.',
     sealName: 'Seal type',
@@ -29,8 +31,12 @@ const conservativePolicyByLocale = {
     llmsText: 'no certified IP rating is claimed',
     searchText: 'no certified IP rating is currently claimed',
     mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
+    nonAirTerms: /\b(?:water|coolant|liquid|non-air)\b/i,
+    nonAirQualification: /\b(?:written (?:compatibility )?confirmation|must not|not (?:recommended|approved|intended)|outside|consult|requires? (?:a )?(?:separate )?(?:written |engineering )?(?:confirmation|review)|before operation)\b/i,
   },
   de: {
+    productTypeName: 'Produkttyp',
+    productTypeValue: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth; keine zertifizierte IP-Schutzart angegeben.',
     mediaName: 'Betriebsmedien',
     mediaValue: 'Luft. Andere Medien erfordern eine schriftliche Kompatibilitätsbestätigung für die Betriebsbedingungen.',
     sealName: 'Dichtung',
@@ -45,8 +51,12 @@ const conservativePolicyByLocale = {
     llmsText: 'keine zertifizierte IP-Schutzart angegeben',
     searchText: 'keine zertifizierte IP-Schutzart',
     mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
+    nonAirTerms: /\b(?:Wasser|Kühlmittel|Flüssigkeit|Nicht-Luft-Medium)\b/iu,
+    nonAirQualification: /\b(?:schriftliche Kompatibilitätsbestätigung|nicht vorgesehen|nicht angegeben|nicht direkt|keine geeignete|außerhalb|vor der Inbetriebnahme|vor jeder Flüssigkeitszufuhr|konsultieren)\b/iu,
   },
   ja: {
+    productTypeName: '製品種別',
+    productTypeValue: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。認証済みIP保護等級の表示なし。',
     mediaName: '使用可能流体',
     mediaValue: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
     sealName: 'シール方式',
@@ -61,8 +71,12 @@ const conservativePolicyByLocale = {
     llmsText: '認証済みIP保護等級',
     searchText: '認証済みIP保護等級',
     mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
+    nonAirTerms: /(?:水|クーラント|液体|空気以外)/u,
+    nonAirQualification: /(?:書面|想定していません|おそれがあります|向けないでください|標準仕様外|運転前|事前に.*確認)/u,
   },
   ru: {
+    productTypeName: 'Тип изделия',
+    productTypeValue: 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий; сертифицированная степень защиты IP не заявляется.',
     mediaName: 'Рабочая среда',
     mediaValue: 'Стандартная рабочая среда: воздух. Для других сред требуется письменное подтверждение совместимости с рабочими условиями.',
     sealName: 'Тип уплотнения',
@@ -77,6 +91,8 @@ const conservativePolicyByLocale = {
     llmsText: 'сертифицированная степень защиты IP не заявляется',
     searchText: 'сертифицированная степень защиты IP',
     mountingFragments: ['4 × M5', '10 мм', '6 × M5', '8 мм'],
+    nonAirTerms: /\b(?:вод[аы]|СОЖ|жидк\w*|кроме воздуха)\b/iu,
+    nonAirQualification: /\b(?:письменн\w+ подтвержден\w+|не предусмотр\w+|не заявля\w+|вне стандарт\w+|до начала эксплуатации|до подачи|требуется.*подтвержден\w+)\b/iu,
   },
 };
 const conservativeForbiddenPatterns = [
@@ -84,11 +100,28 @@ const conservativeForbiddenPatterns = [
   { label: 'IP65 claim', pattern: /\bIP65\b/i },
   { label: 'FKM claim', pattern: /\bFKM\b/i },
 ];
-const conservativeAssociatedForbiddenPatterns = [
-  ...conservativeForbiddenPatterns,
-  { label: 'dust-proof equivalence claim', pattern: /\bdust[- ]proof\b/i },
-  { label: 'unverified dust-seal claim', pattern: /\bdust seal\b/i },
-];
+const conservativeTargetForbiddenByLocale = {
+  en: [
+    { label: 'unverified dust-seal claim', pattern: /\bdust seal(?:s)?\b/i },
+    { label: 'dust-proof equivalence claim', pattern: /\bdust[- ]proof\b/i },
+    { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:weekly|monthly|every\s+\d+\s+(?:week|month)s?|\d+\s*[–—-]\s*\d+\s+months|20-minute\s+seal\s+change)\b/i },
+  ],
+  de: [
+    { label: 'absolute dust-protected product-type claim', pattern: /\bstaubgeschützte[nrms]?\s+(?:Drehdurchführung|Ausführung)\b/iu },
+    { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:wöchentlich|monatlich|alle\s+\d+\s+(?:Wochen|Monate)|\d+\s*[–—-]\s*\d+\s+Monate)\b/iu },
+    { label: 'unapproved non-air operating implication', pattern: /\bWasser- oder Kühlmittelbetrieb\b/iu },
+  ],
+  ja: [
+    { label: 'absolute dust-protected product-type claim', pattern: /(?:防じんロータリージョイント|防じん型)/u },
+    { label: 'fixed maintenance or seal-replacement interval', pattern: /(?:毎週|毎月|\d+\s*(?:か|ヶ)?月ごと|\d+\s*[～〜–—-]\s*\d+\s*(?:か|ヶ)?月)/u },
+    { label: 'unapproved non-air operating implication', pattern: /粉じん環境での水・クーラント使用/u },
+  ],
+  ru: [
+    { label: 'absolute dust-protected product-type claim', pattern: /пылезащищ[ёе]нн(?:ое|ая|ую|ый|ые)\s+(?:вращающееся соединение|соединение|версия|исполнение)/iu },
+    { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:еженедельно|ежемесячно|кажд(?:ую|ые)\s+\d*\s*(?:недел|месяц)\w*|\d+\s*[–—-]\s*\d+\s+месяц\w*)\b/iu },
+    { label: 'unapproved non-air operating implication', pattern: /Вода или СОЖ в запылённой среде/iu },
+  ],
+};
 const conservativeAssociationSelectors = [
   'tr',
   'li',
@@ -109,6 +142,47 @@ function publicPath(locale, fileName) {
 
 function publicUrl(locale, fileName) {
   return `${siteOrigin}/${publicPath(locale, fileName)}`;
+}
+
+function targetClaimViolations(source, localeCode, targetAssociated = true) {
+  if (!targetAssociated) return [];
+  return [
+    ...conservativeForbiddenPatterns,
+    ...(conservativeTargetForbiddenByLocale[localeCode] || []),
+  ].filter(({ pattern }) => pattern.test(source));
+}
+
+function runConservativeValidatorCases() {
+  const cases = [
+    { locale: 'en', text: 'Inspect dust seal weekly and replace it every 3–4 months.', expected: true },
+    { locale: 'de', text: 'BP-2P-50-0001 ist eine staubgeschützte Drehdurchführung.', expected: true },
+    { locale: 'ja', text: 'BP-2P-50-0001 防じんロータリージョイント', expected: true },
+    { locale: 'ru', text: 'BP-2P-50-0001 — пылезащищённое вращающееся соединение.', expected: true },
+    { locale: 'de', text: 'Wasser- oder Kühlmittelbetrieb in staubiger Umgebung', expected: true },
+    { locale: 'ja', text: '粉じん環境での水・クーラント使用', expected: true },
+    { locale: 'ru', text: 'Вода или СОЖ в запылённой среде', expected: true },
+    {
+      locale: 'en',
+      text: 'A general article compares dust seal designs without referring to the target model.',
+      targetAssociated: false,
+      expected: false,
+    },
+    {
+      locale: 'en',
+      text: 'Protective shroud and labyrinth for dusty environments; no certified IP rating is claimed.',
+      expected: false,
+    },
+  ];
+  for (const testCase of cases) {
+    const actual = targetClaimViolations(
+      testCase.text,
+      testCase.locale,
+      testCase.targetAssociated ?? true,
+    ).length > 0;
+    if (actual !== testCase.expected) {
+      failures.push(`Conservative validator regression case failed for ${testCase.locale}: ${testCase.text}`);
+    }
+  }
 }
 
 async function readHtml(locale, fileName) {
@@ -243,8 +317,8 @@ async function validateConservativePublicPolicy(locale) {
 
   const detailSource = $.html();
   const visibleText = $('body').text().replace(/\s+/g, ' ').trim();
-  for (const { label, pattern } of conservativeForbiddenPatterns) {
-    if (pattern.test(detailSource)) failures.push(`${detailRelative}: conservative policy forbids ${label}`);
+  for (const { label } of targetClaimViolations(detailSource, locale.code)) {
+    failures.push(`${detailRelative}: conservative policy forbids ${label}`);
   }
   if (!visibleText.includes(expected.weightText)) failures.push(`${detailRelative}: conservative weight wording is missing`);
   for (const fragment of expected.mountingFragments) {
@@ -254,6 +328,7 @@ async function validateConservativePublicPolicy(locale) {
   const product = collectJsonLd($, detailRelative).find((node) => node?.['@type'] === 'Product');
   if (!product) return;
   for (const [nameKey, valueKey] of [
+    ['productTypeName', 'productTypeValue'],
     ['mediaName', 'mediaValue'],
     ['sealName', 'sealValue'],
     ['protectionName', 'protectionValue'],
@@ -268,6 +343,16 @@ async function validateConservativePublicPolicy(locale) {
   if (product.additionalProperty?.some((property) => weightNames.has(property?.name))) {
     failures.push(`${detailRelative}: Product JSON-LD must omit the weight property`);
   }
+
+  const reviewedNonAirBlocks = new Set();
+  $('tr, li, .compat-item, .faq-item, .app-detail-card, p').each((_, element) => {
+    const blockText = $(element).text().replace(/\s+/g, ' ').trim();
+    if (!blockText || reviewedNonAirBlocks.has(blockText)) return;
+    reviewedNonAirBlocks.add(blockText);
+    if (expected.nonAirTerms.test(blockText) && !expected.nonAirQualification.test(blockText)) {
+      failures.push(`${detailRelative}: non-air medium appears without written-confirmation or prohibition wording (${blockText.slice(0, 120)})`);
+    }
+  });
 
   const catalog = await readHtml(locale, 'products.html');
   const card = catalog?.(`.product-card-large[data-href="${detailFile}"]`);
@@ -291,8 +376,8 @@ async function validateConservativePublicPolicy(locale) {
   const searchIndex = JSON.parse(await readFile(path.join(repoRoot, searchRelative), 'utf8'));
   const searchRecord = searchIndex.find((entry) => entry?.id === conservativeModel);
   const searchSource = JSON.stringify(searchRecord || {});
-  for (const { label, pattern } of conservativeForbiddenPatterns) {
-    if (pattern.test(searchSource)) failures.push(`${searchRelative}: ${conservativeModel} record contains forbidden ${label}`);
+  for (const { label } of targetClaimViolations(searchSource, locale.code)) {
+    failures.push(`${searchRelative}: ${conservativeModel} record contains forbidden ${label}`);
   }
   if (!searchSource.toLocaleLowerCase().includes(expected.searchText.toLocaleLowerCase())) {
     failures.push(`${searchRelative}: ${conservativeModel} conservative protection wording is missing`);
@@ -304,8 +389,8 @@ async function validateConservativePublicPolicy(locale) {
   if (!llmsLine.toLocaleLowerCase().includes(expected.llmsText.toLocaleLowerCase())) {
     failures.push(`${llmsRelative}: ${conservativeModel} conservative entry is missing`);
   }
-  for (const { label, pattern } of conservativeForbiddenPatterns) {
-    if (pattern.test(llmsLine)) failures.push(`${llmsRelative}: ${conservativeModel} entry contains forbidden ${label}`);
+  for (const { label } of targetClaimViolations(llmsLine, locale.code)) {
+    failures.push(`${llmsRelative}: ${conservativeModel} entry contains forbidden ${label}`);
   }
 
   const localeDirectory = path.join(repoRoot, locale.directory);
@@ -318,10 +403,8 @@ async function validateConservativePublicPolicy(locale) {
     publicPage(conservativeAssociationSelectors).each((_, element) => {
       const associatedText = publicPage(element).text().replace(/\s+/g, ' ').trim();
       if (!associatedText.includes(conservativeModel)) return;
-      for (const { label, pattern } of conservativeAssociatedForbiddenPatterns) {
-        if (pattern.test(associatedText)) {
-          failures.push(`${relative}: ${conservativeModel} associated public block contains forbidden ${label}`);
-        }
+      for (const { label } of targetClaimViolations(associatedText, locale.code)) {
+        failures.push(`${relative}: ${conservativeModel} associated public block contains forbidden ${label}`);
       }
     });
   }
@@ -331,6 +414,8 @@ const rootFiles = await readdir(repoRoot);
 const productFiles = rootFiles.filter((fileName) => /^BP-[A-Z0-9-]+\.html$/i.test(fileName)).sort();
 const models = new Set(productFiles.map((fileName) => path.basename(fileName, '.html')));
 if (!models.size) failures.push('No product detail pages were found.');
+
+runConservativeValidatorCases();
 
 for (const locale of locales) {
   for (const fileName of productFiles) {

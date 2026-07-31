@@ -1006,18 +1006,21 @@ const structuredApplicationValues = {
 
 const conservativeProductPropertyValues = {
   de: {
+    Produkttyp: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth; keine zertifizierte IP-Schutzart angegeben.',
     Betriebsmedien: 'Luft. Andere Medien erfordern eine schriftliche Kompatibilitätsbestätigung für die Betriebsbedingungen.',
     Dichtung: 'PTFE-Dichtung mit O-Ring.',
     Schutzart: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen; derzeit wird keine zertifizierte IP-Schutzart angegeben.',
     Montageart: 'Statorseite: 4 × M5, Gewindetiefe 10 mm; Rotorseite: 6 × M5, Gewindetiefe 8 mm. Vor der Bearbeitung vollständige Einbaumaße anhand der mitgelieferten Zeichnung bestätigen.',
   },
   ja: {
+    製品種別: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。認証済みIP保護等級の表示なし。',
     使用可能流体: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
     シール方式: 'PTFEシール＋Oリング。',
     保護等級: '粉じん環境向けの保護カバー・ラビリンス構造。現時点で認証済みIP保護等級は表示していません。',
     取付方式: '固定側：4 × M5、ねじ深さ10 mm；回転側：6 × M5、ねじ深さ8 mm。加工前に、支給図面で取付寸法全体をご確認ください。',
   },
   ru: {
+    'Тип изделия': 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий; сертифицированная степень защиты IP не заявляется.',
     'Рабочая среда': 'Стандартная рабочая среда: воздух. Для других сред требуется письменное подтверждение совместимости с рабочими условиями.',
     'Тип уплотнения': 'Уплотнение из ПТФЭ с O-кольцом.',
     'Степень защиты': 'Защитный кожух и лабиринт для запылённых условий; сертифицированная степень защиты IP в настоящее время не заявляется.',
