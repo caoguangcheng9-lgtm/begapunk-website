@@ -21,6 +21,8 @@
     "pdf:metadata:write": "python scripts/update-pdf-metadata.py --write",
     "downloads:manifest": "node scripts/generate-public-downloads-manifest.mjs",
     "products:validate": "node scripts/validate-product-data.mjs",
+    "audit:product-truth": "node scripts/audit-product-truth.mjs",
+    "quality": "npm run quality:pr",
     "quality:source": "node scripts/validate-source-quality.mjs",
     "collab:validate": "node scripts/validate-collaboration-model.mjs",
     "quality:pr": "npm run collab:validate && npm run i18n:verify && npm run products:validate && npm run quality:source && npm run deploy:build && npm run claims:verify && npm run deploy:validate",
