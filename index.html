@@ -25,7 +25,6 @@
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/">
 <link rel="canonical" href="https://www.begapunk.com/">
 
-    <link rel="icon" type="image/png" href="images/favicon.png">
 
     
 
@@ -934,24 +933,9 @@
 
  <a href="contact.html" class="floating-btn quote">Get a Quote</a>
 
-<a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a>
+<a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp">WhatsApp</a>
 
 </div>
-
-
-
-<!-- ===== COOKIE BAR ===== -->
-
-<div class="cookie-bar" id="cookieBar">
-
-    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
-
-    <button class="cookie-btn" id="cookieAccept">Accept</button>
-
-</div>
-
-
-
 <!-- ===== JS ===== -->
 
 <script>
@@ -994,31 +978,6 @@ if (mobileToggle && mainNav) {
 
 }
 
-
-
-// Cookie Bar
-
-const cookieBar = document.getElementById('cookieBar');
-
-const cookieAccept = document.getElementById('cookieAccept');
-
-if (cookieBar && cookieAccept) {
-
-    if (!localStorage.getItem('cookiesAccepted')) {
-
-        setTimeout(() => cookieBar.classList.add('show'), 1000);
-
-    }
-
-    cookieAccept.addEventListener('click', () => {
-
-        localStorage.setItem('cookiesAccepted', 'true');
-
-        cookieBar.classList.remove('show');
-
-    });
-
-}
 
 
 // Factory video: load only after visitor clicks play

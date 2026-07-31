@@ -6,6 +6,14 @@
 ops/*.conf text eol=lf
 *.ps1 text eol=crlf
 *.pdf binary
+
+# These public download payloads are protected by SHA-256 checksums.
+# Preserve their exact bytes across Windows and Linux checkouts.
+downloads/Begapunk_A4_Horizontal_R2000.dxf -text -diff
+downloads/Begapunk_A4_Horizontal_Template.dxf -text -diff
+downloads/SOLIDWORKS_Template_Guide.md -text -diff
+downloads/SOLIDWORKS_Template_Manual.md -text -diff
+
 de/** text=auto eol=lf
 ja/** text=auto eol=lf
 ru/** text=auto eol=lf

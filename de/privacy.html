@@ -135,7 +135,7 @@
 
     <p><strong>Gültig ab:</strong> 11. Juni 2026<br>
 
-    <strong>Zuletzt aktualisiert:</strong> 11. Juni 2026</p>
+    <strong>Zuletzt aktualisiert:</strong> 31. Juli 2026</p>
 
 
 
@@ -149,11 +149,11 @@
 
     <ul>
 
-        <li><strong>Personenbezogene Daten:</strong> Name, E-Mail-Adresse, Telefonnummer, Unternehmen und Land, die Sie freiwillig bei einer Angebotsanfrage oder über das Kontaktformular angeben.</li>
+        <li><strong>Anfrage- und Kontaktdaten:</strong> Name, E-Mail-Adresse, Unternehmen, Land, Produktinteresse, Anwendung, technische Anforderungen, Anfrageart und Angaben zur Quellseite, die Sie über das Anfrageformular übermitteln.</li>
 
-        <li><strong>Technische Daten:</strong> IP-Adresse, Browsertyp, Betriebssystem, verweisende URL und aufgerufene Seiten, soweit diese über Cookies, Serverprotokolle oder Analysedienste erfasst werden.</li>
+        <li><strong>Technische Daten:</strong> IP-Adresse und Anfragemetadaten, die der Webserver für Auslieferung, Sicherheit und Protokollierung verarbeiten kann. Der Anfrage-Handler bildet aus der IP-Adresse einen Einweg-Hash und speichert aktuelle Zeitstempel von Versuchen im temporären Serverbereich für ein 15-minütiges Rate-Limit-Fenster.</li>
 
-        <li><strong>Geschäftliche Informationen:</strong> Maschinenzeichnungen (STEP, PDF, DWG) und technische Spezifikationen, die im Rahmen einer Anfrage hochgeladen werden.</li>
+        <li><strong>Geschäftliche und technische Informationen:</strong> Technische Anforderungen und optionale Zeichnungsdateien in den vom Formular akzeptierten Formaten PDF, STEP/STP, IGES/IGS, DWG, DXF, JPG/JPEG oder PNG bis 10 MB.</li>
 
     </ul>
 
@@ -173,7 +173,9 @@
 
         <li>unsere Website und unser Produktangebot verbessern</li>
 
-        <li>gelegentlich Produktinformationen senden, wenn Sie ausdrücklich eingewilligt haben</li>
+        <li>die Anfrage über authentifiziertes SMTP an unser konfiguriertes Vertriebs-Postfach senden</li>
+
+        <li>Missbrauch verhindern und die Verfügbarkeit des Anfrage-Dienstes schützen</li>
 
         <li>gesetzliche Pflichten erfüllen</li>
 
@@ -185,23 +187,23 @@
 
     <p>Wir verwenden Cookies und ähnliche Technologien, um die Website bereitzustellen und zu verbessern. Nachfolgend finden Sie die eingesetzten Kategorien, ihre Zwecke und Ihre Auswahlmöglichkeiten.</p>
 
-    <h3>3.1 Erforderliche Cookies (immer aktiv)</h3>
+    <h3>3.1 Erforderlicher lokaler Speicher (immer aktiv)</h3>
 
-    <p>Diese Cookies sind für die Funktion der Website erforderlich und können über das Banner nicht deaktiviert werden. Abgesehen von Ihrer Cookie-Auswahl speichern sie keine unmittelbar personenbezogenen Angaben.</p>
+    <p>Der Einwilligungsmanager verwendet den lokalen Browserspeicher statt eines erforderlichen Cookies, um Ihre Analyse-Auswahl zu speichern. Dieser Datensatz identifiziert Sie nicht unmittelbar und wird bei normalen Seitenaufrufen nicht an unseren Server gesendet.</p>
 
     <ul>
 
-        <li><strong>Einwilligungsstatus</strong> — Speichert Ihre Cookie-Auswahl (akzeptiert/abgelehnt), damit das Banner nicht bei jedem Besuch erneut erscheint. Laufzeit: 365 Tage.</li>
+        <li><strong>Einwilligungsstatus</strong> — Wird unter <code>begapunk_cookie_consent</code> in <code>localStorage</code> mit Auswahl, Banner-Version und Zeitstempel gespeichert. Die Website behandelt den Datensatz nach 365 Tagen als abgelaufen.</li>
 
     </ul>
 
     <h3>3.2 Analyse-Cookies (optional)</h3>
 
-    <p>Diese Cookies helfen uns zu verstehen, wie Besucher die Website nutzen. Sie werden erst gesetzt, wenn Sie Analyse-Cookies akzeptieren. Bei Ablehnung werden keine optionalen Analyse-Cookies gesetzt und GA4 wird nicht geladen.</p>
+    <p>Google Analytics 4 wird erst geladen, nachdem Sie „Alle akzeptieren“ gewählt haben. Davor stehen Analyse- und Werbeeinwilligung auf „verweigert“. Bei Ablehnung lädt die Website GA4 nicht und entfernt erreichbare GA-Cookies.</p>
 
     <ul>
 
-        <li><strong>Google Analytics 4</strong> — Nach Ihrer Einwilligung verwenden wir GA4 zur Erfassung von Nutzungsdaten wie Seitenaufrufen, Sitzungsdauer und Verweisquellen. Werbefunktionen sind deaktiviert. Die Speicherdauer richtet sich nach der aktuellen Konfiguration der GA4-Property. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a></li>
+        <li><strong>Google Analytics 4</strong> — Nach Ihrer Einwilligung erfasst GA4 Seiten- und Sitzungsaktivität, Verweisquellen, Einwilligungsereignisse, Kontakt- und Download-Interaktionen, Formularversuche und bestätigte Anfragen. Bei einer bestätigten Anfrage können Anfrageart und gewünschtes Produkt übermittelt werden; Name, E-Mail-Adresse, Unternehmen, Land, Freitext und Anhänge sendet unser Code nicht an GA4. Google Signals und personalisierte Werbung sind deaktiviert. Die Speicherdauer richtet sich nach der aktuellen GA4-Property-Konfiguration. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Google</a></li>
 
     </ul>
 
@@ -225,7 +227,7 @@
 
     </div>
 
-    <p>Sie können Cookies außerdem in Ihren Browsereinstellungen deaktivieren. Der lokale Einwilligungsstatus ist erforderlich, damit das Banner Ihre Auswahl korrekt berücksichtigt.</p>
+    <p>Sie können Cookies und lokalen Speicher außerdem im Browser blockieren oder löschen. Wenn der Einwilligungsdatensatz gelöscht wird, erscheint das Auswahlbanner erneut.</p>
 
 
 
@@ -235,7 +237,9 @@
 
     <ul>
 
-        <li><strong>Dienstleister:</strong> Hosting-, E-Mail- und Analysedienste, soweit diese für den Betrieb der Website und die Bearbeitung Ihrer Anfrage erforderlich sind</li>
+        <li><strong>Hosting- und E-Mail-Dienstleister:</strong> Der PHP-Handler prüft die Anfrage und sendet sie mit PHPMailer über authentifiziertes SMTP an das konfigurierte Begapunk-Vertriebs-Postfach. Anfragefelder und Anhänge werden nicht in eine Website-Datenbank geschrieben.</li>
+
+        <li><strong>Analysedienst:</strong> Google Analytics erhält die oben beschriebenen Analysedaten ausschließlich nach Ihrer Einwilligung.</li>
 
         <li><strong>Versanddienstleister:</strong> DHL, FedEx oder regionale Frachtführer, soweit für den Versand erforderlich; übermittelt werden nur Versand- und Kontaktdaten</li>
 
@@ -247,15 +251,19 @@
 
     <h2>5. Speicherdauer</h2>
 
-    <p>Wir speichern personenbezogene Daten nur so lange, wie dies für die in dieser Erklärung beschriebenen Zwecke oder aufgrund gesetzlicher Aufbewahrungspflichten erforderlich ist. Dazu gehören typischerweise:</p>
+    <p>Wir speichern personenbezogene Daten nur so lange, wie dies für die beschriebenen Zwecke und gesetzliche Pflichten erforderlich ist:</p>
 
     <ul>
 
-        <li>Anfragedaten: nur so lange, wie dies für Bearbeitung, Nachverfolgung und Gewährleistungsfragen erforderlich ist</li>
+        <li><strong>Anfragedaten:</strong> Der aktuelle Website-Handler legt keinen Datenbankeintrag an. E-Mail und Anhang verbleiben entsprechend den betrieblichen, rechtlichen sowie Nachverfolgungs- und Gewährleistungsanforderungen im Vertriebs-Postfach.</li>
 
-        <li>Bestelldaten: entsprechend den geltenden steuer- und handelsrechtlichen Aufbewahrungspflichten</li>
+        <li><strong>Hochgeladene Dateien:</strong> PHP verarbeitet den Anhang aus dem temporären Upload-Speicher für die SMTP-Nachricht; der Website-Code bewahrt danach keine separate Serverkopie absichtlich auf.</li>
 
-        <li>Analysedaten: gemäß der in Google Analytics eingestellten Speicherdauer</li>
+        <li><strong>Rate-Limit-Daten:</strong> Aktuelle Versuchsdaten werden in einem 15-minütigen Fenster im temporären Serverbereich ausgewertet.</li>
+
+        <li><strong>Bestelldaten:</strong> Aufbewahrung entsprechend den geltenden steuer-, handels-, gewährleistungs- und sonstigen gesetzlichen Pflichten.</li>
+
+        <li><strong>Analysedaten:</strong> Aufbewahrung gemäß der aktuellen Google-Analytics-Property-Konfiguration.</li>
 
     </ul>
 
@@ -287,7 +295,7 @@
 
     <h2>7. Datensicherheit</h2>
 
-    <p>Wir setzen angemessene technische und organisatorische Schutzmaßnahmen ein, darunter TLS-Verschlüsselung und Zugriffsbeschränkungen. Dennoch kann keine Datenübertragung über das Internet absolute Sicherheit gewährleisten.</p>
+    <p>Zu den Schutzmaßnahmen gehören TLS-Verschlüsselung, Same-Origin-Prüfung, Rate-Limiting, Honeypot-Feld, Längen- und E-Mail-Prüfung, Datei-Größen-/Typ-/Signaturprüfung, authentifiziertes SMTP und beschränkter Zugriff auf das Empfängerpostfach. Dennoch kann kein Internet- oder Speichersystem vollständig sicher garantiert werden.</p>
 
 
 
@@ -377,7 +385,7 @@
 
 <div class="floating-cta">
  <a href="contact.html" class="floating-btn quote">Angebot anfordern</a>
-<a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a>
+<a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp">WhatsApp</a>
 </div>
 
 
@@ -445,6 +453,7 @@ window.addEventListener('scroll', () => {
     document.addEventListener('begapunk:consent-change', updateStatus);
 })();
 </script>
+
 
 
 
