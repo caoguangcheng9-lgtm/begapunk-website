@@ -1249,8 +1249,10 @@ function updateJsonLd($, languageCode, pageName) {
         if (types.has('Organization') && value.description) {
           value.description = site.organizationDescription || site.description || seo.description;
           if (value.slogan && schemaLocale.slogan) value.slogan = schemaLocale.slogan;
-          if (Array.isArray(value.founders) && schemaLocale.founderJobTitle) {
-            value.founders = value.founders.map((founder) => ({ ...founder, jobTitle: schemaLocale.founderJobTitle }));
+          if (value.founder && schemaLocale.founderJobTitle) {
+            value.founder = Array.isArray(value.founder)
+              ? value.founder.map((founder) => ({ ...founder, jobTitle: schemaLocale.founderJobTitle }))
+              : { ...value.founder, jobTitle: schemaLocale.founderJobTitle };
           }
           if (schemaLocale.knowsAbout) value.knowsAbout = schemaLocale.knowsAbout;
         }

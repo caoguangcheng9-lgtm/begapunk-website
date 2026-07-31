@@ -202,28 +202,9 @@
 
  <a href="contact.html" class="floating-btn quote">Get a Quote</a>
 
-<a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a>
+<a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp">WhatsApp</a>
 
 </div>
-
-
-
-<!-- ===== COOKIE BAR ===== -->
-
-<div class="cookie-bar" id="cookieBar">
-
- <div class="container" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-
- <p style="margin:0; font-size:0.9rem; color:var(--text-light);">&#127850; We use cookies to improve your experience. By continuing, you agree to our <a href="privacy.html" style="color:var(--primary);">Privacy Policy</a>.</p>
-
- <button class="btn btn-primary" id="cookieAccept" style="padding:8px 20px; font-size:0.85rem;">Accept</button>
-
- </div>
-
-</div>
-
-
-
 <script>
 
 const mobileToggle = document.getElementById('mobileToggle');
@@ -256,31 +237,6 @@ window.addEventListener('scroll', () => {
 
 });
 
-
-
-// Cookie Bar
-
-const cookieBar = document.getElementById('cookieBar');
-
-const cookieAccept = document.getElementById('cookieAccept');
-
-if (cookieBar && cookieAccept) {
-
- if (!localStorage.getItem('cookiesAccepted')) {
-
- setTimeout(() => cookieBar.classList.add('show'), 1000);
-
- }
-
- cookieAccept.addEventListener('click', () => {
-
- localStorage.setItem('cookiesAccepted', 'true');
-
- cookieBar.classList.remove('show');
-
- });
-
-}
 
 </script>
 

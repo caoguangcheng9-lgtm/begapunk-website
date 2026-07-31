@@ -5,9 +5,14 @@
 (function () {
     'use strict';
 
+    const currentScript = document.currentScript;
+    const scriptBaseUrl = currentScript && currentScript.src
+        ? new URL('.', currentScript.src)
+        : new URL('js/', window.location.href);
+
     const CONFIG = {
         INDEX_URL: 'search-index.json',
-        FUSE_CDN: 'https://unpkg.com/fuse.js@7.0.0/dist/fuse.min.js',
+        FUSE_SCRIPT: new URL('vendor/fuse.min.js?v=7.0.0', scriptBaseUrl).toString(),
         MIN_QUERY_LENGTH: 2,
         RESULTS_PER_PAGE: 20
     };
@@ -236,7 +241,7 @@
 
         // Load Fuse.js + index in parallel
         Promise.all([
-            loadScript(CONFIG.FUSE_CDN),
+            loadScript(CONFIG.FUSE_SCRIPT),
             fetchJSON(CONFIG.INDEX_URL)
         ]).then(function (results) {
             indexData = results[1];

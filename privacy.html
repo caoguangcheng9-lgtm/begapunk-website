@@ -40,7 +40,7 @@
 
     <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
-    <meta name="description" content="Begapunk privacy policy. How we collect, use, and protect your personal data. GDPR compliant.">
+    <meta name="description" content="Begapunk privacy policy explaining website analytics, inquiry form processing, data use, retention, security, and user choices.">
 
     <link rel="alternate" hreflang="en" href="https://www.begapunk.com/privacy.html">
 <link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/privacy.html">
@@ -134,7 +134,7 @@
 
     <p><strong>Effective Date:</strong> June 11, 2026<br>
 
-    <strong>Last Updated:</strong> June 11, 2026</p>
+    <strong>Last Updated:</strong> July 31, 2026</p>
 
 
 
@@ -148,11 +148,11 @@
 
     <ul>
 
-        <li><strong>Personal Information:</strong> Name, email address, phone number, company name, and country &mdash; provided voluntarily when you submit a quote request or contact form.</li>
+        <li><strong>Inquiry and contact information:</strong> Name, email address, company name, country, product interest, application details, technical requirements, inquiry type, and source-page information that you submit through the quote request form.</li>
 
-        <li><strong>Technical Information:</strong> IP address, browser type, operating system, referring URLs, and pages visited &mdash; collected automatically via cookies and analytics tools.</li>
+        <li><strong>Technical information:</strong> IP address and request metadata that may be processed by the web server for delivery, security, and logging. The inquiry handler derives a one-way hash from the request IP address and keeps recent attempt timestamps in server temporary storage for a 15-minute rate-limit window.</li>
 
-        <li><strong>Business Information:</strong> Machine drawings (STEP, PDF, DWG) and technical specifications uploaded during the inquiry process.</li>
+        <li><strong>Business and technical information:</strong> Technical requirements and optional drawing files in the formats accepted by the form (PDF, STEP/STP, IGES/IGS, DWG, DXF, JPG/JPEG, or PNG), up to 10 MB.</li>
 
     </ul>
 
@@ -172,7 +172,9 @@
 
         <li>Improve our website and product offerings</li>
 
-        <li>Send occasional product updates (only if you opt in)</li>
+        <li>Send the inquiry to our configured sales mailbox through authenticated SMTP</li>
+
+        <li>Prevent abuse and protect the availability of the inquiry service</li>
 
         <li>Comply with legal obligations</li>
 
@@ -184,23 +186,23 @@
 
     <p>We use cookies and similar technologies to operate and improve our website. Below is a breakdown of the cookies we use, their purpose, and how you can control them.</p>
 
-    <h3>3.1 Essential Cookies (Always Active)</h3>
+    <h3>3.1 Essential Local Storage (Always Active)</h3>
 
-    <p>These cookies are necessary for the website to function and cannot be disabled. They do not store any personally identifiable information beyond your cookie preference.</p>
+    <p>The consent manager uses browser local storage rather than an essential cookie to remember your analytics choice. This record does not directly identify you and is not sent to our server with normal page requests.</p>
 
     <ul>
 
-        <li><strong>Consent State</strong> — Stores your cookie preference (accept/decline) so the banner does not reappear on every visit. Expires after 365 days.</li>
+        <li><strong>Consent state</strong> — Stored under <code>begapunk_cookie_consent</code> in <code>localStorage</code>, including the choice, banner version, and timestamp. The site treats the record as expired after 365 days.</li>
 
     </ul>
 
     <h3>3.2 Analytics Cookies (Optional)</h3>
 
-    <p>These cookies help us understand how visitors interact with our website. They are only placed if you click "Accept All" on the cookie banner. If you decline, no analytics cookies are set and no tracking data is sent.</p>
+    <p>Google Analytics 4 is loaded only after you choose "Accept All". Before that decision, analytics and advertising consent are set to denied. If you decline, the site does not load GA4 and removes GA cookies that it can access.</p>
 
     <ul>
 
-        <li><strong>Google Analytics 4</strong> — We use GA4 to collect anonymized traffic data (page views, session duration, referral sources). GA4 is configured with advertising features disabled and IP anonymization enabled. Data is retained for 14 months. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        <li><strong>Google Analytics 4</strong> — After consent, GA4 records page and session activity, referral information, consent events, contact/download interactions, form attempts, and confirmed inquiry events. A confirmed inquiry event may include the inquiry type and requested product, but our code does not send your name, email address, company, country, free-text requirements, or attachment to GA4. Google Signals and advertising personalization are disabled. Analytics retention follows the current GA4 property configuration. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
 
     </ul>
 
@@ -224,7 +226,7 @@
 
     </div>
 
-    <p>You can also disable cookies entirely through your browser settings. Note that essential cookies (consent state) are required for the banner to function correctly.</p>
+    <p>You can also block or delete cookies and local storage in your browser. Clearing the consent record causes the preference banner to appear again.</p>
 
 
 
@@ -234,7 +236,9 @@
 
     <ul>
 
-        <li><strong>Service providers:</strong> FormBold (form processing), Google Analytics (website analytics)</li>
+        <li><strong>Hosting and email providers:</strong> The PHP form handler validates the request and uses PHPMailer to send it through authenticated SMTP to the configured Begapunk sales mailbox. The handler does not write inquiry fields or attachments to a website database.</li>
+
+        <li><strong>Analytics provider:</strong> Google Analytics receives the analytics data described above only after consent.</li>
 
         <li><strong>Shipping carriers:</strong> DHL, FedEx, or local carriers (only shipping address and contact info)</li>
 
@@ -246,15 +250,19 @@
 
     <h2>5. Data Retention</h2>
 
-    <p>We retain your personal data for as long as necessary to fulfill the purposes outlined in this policy, typically:</p>
+    <p>We retain personal data only as long as needed for the purposes described above and for applicable legal obligations:</p>
 
     <ul>
 
-        <li>Inquiry data: 3 years (for follow-up and warranty support)</li>
+        <li><strong>Inquiry data:</strong> The current website handler does not create a database record. The email and any attachment remain in the sales mailbox according to operational, follow-up, warranty, and legal needs.</li>
 
-        <li>Order data: 7 years (for tax and accounting compliance)</li>
+        <li><strong>Uploaded files:</strong> PHP processes an attachment from temporary upload storage for the SMTP message; the website code does not intentionally retain a separate server copy after the request.</li>
 
-        <li>Analytics data: 26 months (Google Analytics default)</li>
+        <li><strong>Rate-limit data:</strong> Recent attempt timestamps are evaluated within a 15-minute window in server temporary storage.</li>
+
+        <li><strong>Order data:</strong> Retained as required by applicable tax, accounting, warranty, and commercial laws.</li>
+
+        <li><strong>Analytics data:</strong> Retained according to the current Google Analytics property configuration.</li>
 
     </ul>
 
@@ -286,7 +294,7 @@
 
     <h2>7. Data Security</h2>
 
-    <p>We implement appropriate technical and organizational measures to protect your data, including SSL encryption, access controls, and regular security reviews. However, no internet transmission is 100% secure.</p>
+    <p>We use safeguards including TLS encryption, same-origin checks, rate limiting, a honeypot field, length and email validation, file-size/type/signature checks, authenticated SMTP, and restricted access to the receiving mailbox. However, no internet transmission or storage system can be guaranteed completely secure.</p>
 
 
 
@@ -376,7 +384,7 @@
 
 <div class="floating-cta">
  <a href="contact.html" class="floating-btn quote">Get a Quote</a>
-<a href="https://wa.me/8618368425342" target="_blank" rel="noopener" class="floating-btn whatsapp">WhatsApp</a>
+<a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp">WhatsApp</a>
 </div>
 
 

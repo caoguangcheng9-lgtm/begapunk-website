@@ -242,7 +242,8 @@ for (const language of verifiedLanguages) {
               failures.push(`${language.code}/${pageName}: ${[...types].join('/')} JSON-LD lacks the correct inLanguage.`);
             }
             if (types.has('Organization')) {
-              if (Array.isArray(node.founders) && node.founders.some((founder) => founder.jobTitle !== expectedFounderJobTitle[language.code])) {
+              const founders = Array.isArray(node.founder) ? node.founder : (node.founder ? [node.founder] : []);
+              if (founders.some((founder) => founder.jobTitle !== expectedFounderJobTitle[language.code])) {
                 failures.push(`${language.code}/${pageName}: Organization founder job title is not localized.`);
               }
               if (node.slogan && node.slogan !== expectedOrganizationSlogan[language.code]) {
