@@ -56,7 +56,7 @@ set +e
 PATH="$test_root/fake-bin:$PATH" \
   BEGAPUNK_DEPLOY_BASE="$base" \
   BEGAPUNK_HEALTH_URL='https://www.begapunk.com/' \
-  "$repo_root/ops/activate-release.sh" "$(basename "$new_release")"
+  bash "$repo_root/ops/activate-release.sh" "$(basename "$new_release")"
 activation_status=$?
 set -e
 
