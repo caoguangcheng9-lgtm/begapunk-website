@@ -160,7 +160,7 @@
      <svg viewBox="0 0 24 24"><path d="M7.2 3.5 10 7.8 8.4 10a15.7 15.7 0 0 0 5.6 5.6l2.2-1.6 4.3 2.8-.8 3.1c-.2.7-.8 1.1-1.5 1.1C10 20.4 3.6 14 3 5.8c0-.7.4-1.3 1.1-1.5z"></path></svg>
     </span>
     <span><span class="bp-rfq-quick-label">電話番号 / WhatsApp / WeChat</span>
-     <span class="bp-rfq-quick-value"><a href="tel:+8618368425342">ファックス: 183 6842 5342</a> ・ <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer">WhatsAppについて</a></span></span>
+     <span class="bp-rfq-quick-value"><a href="tel:+8618368425342">電話: +86 183 6842 5342</a> ・ <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer">WhatsApp</a></span></span>
    </div>
   </div>
  </div>
@@ -212,15 +212,15 @@
 
  <div class="form-group">
 
- <label for="fullname">完全な名前 <span class="req">* 必須 *</span></label>
+ <label for="fullname">お名前 <span class="req">*</span></label>
 
- <input type="text" id="fullname" name="fullname" placeholder="ジョン・ドー" required="">
+ <input type="text" id="fullname" name="fullname" placeholder="山田 太郎" required="">
 
  </div>
 
  <div class="form-group">
 
- <label for="email">電子メール <span class="req">* 必須 *</span></label>
+ <label for="email">メールアドレス <span class="req">*</span></label>
 
  <input type="email" id="email" name="email" placeholder="john@company.com" required="">
 
@@ -236,27 +236,27 @@
 
  <div class="form-group">
 
- <label for="company">会社名 <span class="req">* 必須 *</span></label>
+ <label for="company">会社名 <span class="req">*</span></label>
 
- <input type="text" id="company" name="company" placeholder="あなたの会社株式会社。" required="">
+ <input type="text" id="company" name="company" placeholder="株式会社〇〇" required="">
 
  </div>
 
  <div class="form-group">
 
- <label for="country">カントリー <span class="req">* 必須 *</span></label>
+ <label for="country">国・地域 <span class="req">*</span></label>
 
  <select id="country" name="country" required="">
 
- <option value="">国を選択...</option>
+ <option value="">国・地域を選択してください</option>
 
  <option value="US">アメリカ合衆国</option>
 
- <option value="DE">ドイツ, ドイツ</option>
+ <option value="DE">ドイツ</option>
 
  <option value="UK">イギリス</option>
 
- <option value="FR">フランチェスコ</option>
+ <option value="FR">フランス</option>
 
  <option value="IT">イタリア</option>
 
@@ -270,11 +270,11 @@
 
  <option value="IN">インド</option>
 
- <option value="JP">ジャパン・ジャパン</option>
+ <option value="JP">日本</option>
 
  <option value="KR">韓国</option>
 
- <option value="other">その他:</option>
+ <option value="other">その他</option>
 
  </select>
 
@@ -292,15 +292,15 @@
 
  <select id="product" name="product" required="">
 
- <option value="">選択する</option>
+ <option value="">選択してください</option>
 
- <option value="standard-model">標準のBegapunkモデルは、モデル番号を教えてください</option>
+ <option value="standard-model">Begapunk標準品（型式をご記入ください）</option>
 
- <option value="custom">カスタム設計 — あなたの要件を以下に記述します</option>
+ <option value="custom">特注設計（ご要望を下記にご記入ください）</option>
 
- <option value="replacement">交換 — 私は古いモデルを持っているか、マッチする図面</option>
+ <option value="replacement">既存品の置き換え（型式または図面あり）</option>
 
- <option value="not-sure">確かに、私はエンジニアがお勧めする必要があります</option>
+ <option value="not-sure">選定相談（推奨型式を相談したい）</option>
 
  </select>
 
@@ -314,7 +314,7 @@
 
  <label for="requirements">技術条件 <span class="req">*</span></label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="媒体、圧力、min⁻¹、流路、ポートのサイズ、取付、温度、漏出条件..." required=""></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="使用流体、圧力、回転数、流路数、接続口径、取付方法、温度、許容漏れ量 ..." required=""></textarea>
 
  </div>
 
@@ -324,7 +324,7 @@
 
  <div class="form-group">
 
- <label for="application">用途 / 機械型式</label>
+ <label for="application">用途・機械型式</label>
 
  <input type="text" id="application" name="application" placeholder="例) TRUMPF TruLaser 5030、Haas VF-2、カスタムの包装ライン">
 
@@ -350,7 +350,7 @@
  <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off">
  </div>
 
- <div class="bp-rfq-quote-help"><strong>より速く引用するのに役立つ情報:</strong>ワーキング使用流体・圧力・min⁻¹・流路・ポート ねじ・取付・温度・図面・写真</div>
+ <div class="bp-rfq-quote-help"><strong>お見積もりに必要な情報：</strong>使用流体 · 圧力 · 回転数 · 流路数 · 接続ねじ · 取付方法 · 温度 · 図面または写真</div>
 
  <button type="submit" class="form-submit" id="submitBtn">お問い合わせを送信 →</button>
 
@@ -747,6 +747,7 @@ window.addEventListener('scroll', () => {
 })();
 
 </script>
+
 
 
 

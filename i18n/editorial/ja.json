@@ -236,7 +236,7 @@
     "0627f4a7d47a926c": "仕様が不明な場合は、図面、既存品の写真、または機械側インターフェースの画像をお送りください。",
     "3bb1135626b30285": "ご相談内容 <span class=\"req\">*</span>",
     "e59aa9b87b5a4ef7": "技術条件 <span class=\"req\">*</span>",
-    "cc9af4d26d582ec0": "用途 / 機械型式",
+    "cc9af4d26d582ec0": "用途・機械型式",
     "bf13abe7d51ec649": "図面または写真をアップロード",
     "942821724cf9e240": "お問い合わせを送信",
     "0ef606c7760647e7": "お問い合わせを送信 →",
@@ -244,7 +244,32 @@
     "7c339e15097b2889": "工場所在地",
     "ae89bf04efb2615a": "中国 浙江省寧波市慈渓市宗漢工業団地<br>Yugong Road 88、315300",
     "d256dbf1eac22229": "営業時間",
-    "8e49f7a9fb8d57de": "月曜日〜金曜日 8:30〜17:30（CST / UTC+8）"
+    "8e49f7a9fb8d57de": "月曜日〜金曜日 8:30〜17:30（CST / UTC+8）",
+    "5b48d32f6a8a42ee": "お名前 <span class=\"req\">*</span>",
+    "2ada6c6b3ccc8f9d": "メールアドレス <span class=\"req\">*</span>",
+    "9fe95014dfdb5a61": "会社名 <span class=\"req\">*</span>",
+    "c63accb3e856d948": "国・地域 <span class=\"req\">*</span>",
+    "879b0d65000e0462": "国・地域を選択してください",
+    "7a1ca4ef7515f727": "フランス",
+    "647294383b2cbc24": "日本",
+    "f97e9da0e3b879f0": "その他",
+    "1339bddc2b289b6f": "選択してください",
+    "69e74f827514db49": "Begapunk標準品（型式をご記入ください）",
+    "98ded671b5edaa59": "特注設計（ご要望を下記にご記入ください）",
+    "43ccc4961ef27ac2": "既存品の置き換え（型式または図面あり）",
+    "8e888c83b5546cc5": "選定相談（推奨型式を相談したい）",
+    "07676efae1fb060f": "使用流体、圧力、回転数、流路数、接続口径、取付方法、温度、許容漏れ量 ...",
+    "db72256304bbafc0": "株式会社〇〇",
+    "6cea57c2fb6cbc2a": "山田 太郎",
+    "f4586e2d24337da3": "お見積もりに必要な情報：",
+    "2621d6fc66be7b83": "使用流体 · 圧力 · 回転数 · 流路数 · 接続ねじ · 取付方法 · 温度 · 図面または写真",
+    "2720fc6b7dc5bb3e": "<strong>電話:</strong> <a href=\"tel:+8618368425342\">+86 183 6842 5342</a><br><strong>WhatsApp:</strong> <a href=\"https://wa.me/8618368425342\" target=\"_blank\" rel=\"noopener noreferrer\">チャット</a><br><strong>WeChat:</strong> 183 6842 5342",
+    "c36ee81b7dc5bb3e": "<strong>メール:</strong> <a href=\"mailto:sales@begapunk.com\">sales@begapunk.com</a>",
+    "a52ace420f2175d0": "すべて",
+    "7ada6b4424109315": "1流路",
+    "7c4fdd83eaafe13c": "2流路",
+    "52b63decd7bb079b": "3流路",
+    "20feba66f32d38fb": "4流路以上"
   },
   "application-electronics-battery-test-fixtures.html": {
     "cad0c902b78909fe": "/ 電子機器・バッテリー試験",
@@ -4314,5 +4339,8 @@
     "a4cfacf6249aace4": "溶接ポジショナ・パイプローテータ",
     "59f71bd3c0735be5": "溶接、繊維、電子部品検査治具",
     "d8c384964362f335": "Begapunk空圧ロータリージョイントの使用分野"
+  },
+  "index.html": {
+    "ea47cd2409e8b2d1": "OEM機械向け空圧用ロータリージョイント | Begapunk"
   }
 }

@@ -212,9 +212,9 @@
 
  <div class="form-group">
 
- <label for="fullname">Vollständiger Name <span class="req">*</span></label>
+ <label for="fullname">Vor- und Nachname <span class="req">*</span></label>
 
- <input type="text" id="fullname" name="fullname" placeholder="John Doe" required="">
+ <input type="text" id="fullname" name="fullname" placeholder="Max Mustermann" required="">
 
  </div>
 
@@ -236,9 +236,9 @@
 
  <div class="form-group">
 
- <label for="company">Name des Unternehmens <span class="req">*</span></label>
+ <label for="company">Unternehmen <span class="req">*</span></label>
 
- <input type="text" id="company" name="company" placeholder="Your Company Ltd." required="">
+ <input type="text" id="company" name="company" placeholder="Firmenname" required="">
 
  </div>
 
@@ -248,7 +248,7 @@
 
  <select id="country" name="country" required="">
 
- <option value="">Land auswählen...</option>
+ <option value="">Bitte Land auswählen ...</option>
 
  <option value="US">Vereinigte Staaten</option>
 
@@ -274,7 +274,7 @@
 
  <option value="KR">Südkorea</option>
 
- <option value="other">andere</option>
+ <option value="other">Sonstiges</option>
 
  </select>
 
@@ -288,19 +288,19 @@
 
  <div class="form-group">
 
- <label for="product">Worum geht es? <span class="req">*</span></label>
+ <label for="product">Anliegen <span class="req">*</span></label>
 
  <select id="product" name="product" required="">
 
- <option value="">Auswählen...</option>
+ <option value="">Bitte auswählen ...</option>
 
- <option value="standard-model">Standard Begapunk Modell — sagen Sie uns die Modellnummer</option>
+ <option value="standard-model">Begapunk-Standardmodell – Modellnummer angeben</option>
 
- <option value="custom">Sonderausführung - Beschreiben Sie Ihre Anforderungen unten</option>
+ <option value="custom">Sonderausführung – Anforderungen unten beschreiben</option>
 
- <option value="replacement">Ersatz - ich habe ein altes modell oder eine zeichnung, die passt.</option>
+ <option value="replacement">Ersatz – vorhandenes Modell oder Zeichnung abgleichen</option>
 
- <option value="not-sure">Nicht sicher - ich brauche einen Ingenieur zu empfehlen</option>
+ <option value="not-sure">Auswahlhilfe – technische Empfehlung benötigt</option>
 
  </select>
 
@@ -314,7 +314,7 @@
 
  <label for="requirements">Technische Anforderungen <span class="req">*</span></label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="Medien, Druck, Drehzahl, Kanäle, Anschlussgröße, Montage, Temperatur, Leckageanforderung ..." required=""></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Betriebsmedium, Druck, Drehzahl, Kanalzahl, Anschlussgröße, Montage, Temperatur, zulässige Leckage ..." required=""></textarea>
 
  </div>
 
@@ -324,7 +324,7 @@
 
  <div class="form-group">
 
- <label for="application">Anwendung / Maschinenmodell</label>
+ <label for="application">Anwendung / Maschinentyp</label>
 
  <input type="text" id="application" name="application" placeholder="z.B. TRUMPF TruLaser 5030, Haas VF-2, Sonder-Verpackungslinie">
 
@@ -350,7 +350,7 @@
  <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off">
  </div>
 
- <div class="bp-rfq-quote-help"><strong>Informationen, die uns helfen, schneller zu zitieren:</strong>Arbeitsmedium · Druck · Drehzahl · Kanäle · Anschlussgewinde · Montage · Temperatur · Zeichnung oder Foto</div>
+ <div class="bp-rfq-quote-help"><strong>Angaben für eine schnelle Angebotsprüfung:</strong>Betriebsmedium · Druck · Drehzahl · Kanalzahl · Anschlussgewinde · Montage · Temperatur · Zeichnung oder Foto</div>
 
  <button type="submit" class="form-submit" id="submitBtn">Anfrage senden →</button>
 

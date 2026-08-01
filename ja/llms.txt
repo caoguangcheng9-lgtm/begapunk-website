@@ -56,7 +56,7 @@
 
 ## 会社・サポート
 
-- [空圧用ロータリージョイント・回転継手 | Begapunk](https://www.begapunk.com/ja/): 回転テーブル、治具、自動化設備向けの空圧用ロータリージョイント。1流路から多流路・多ポート、貫通穴付き、特注仕様まで対応します。
+- [OEM機械向け空圧用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/): 回転テーブル、治具、自動化設備向けの空圧用ロータリージョイント。1流路から多流路・多ポート、貫通穴付き、特注仕様まで対応します。
 - [Begapunkについて | ロータリージョイントメーカー](https://www.begapunk.com/ja/about.html): Begapunkの会社概要、寧波の生産体制、品質検査、設計・加工工程、特注ロータリージョイントへの取り組みをご紹介します。
 - [ロータリージョイント取付手順 | Begapunk](https://www.begapunk.com/ja/installation.html): ロータリージョイントの取付手順。芯ずれ防止、配管接続、回り止め、ろ過、試運転、保守の要点を確認できます。
 - [ロータリージョイント選定事例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): レーザー切断機、海洋設備、CNC機械の選定例を、流路数、圧力、回転数、取付、CADによる干渉確認の観点から紹介します。
