@@ -33,6 +33,18 @@ jobs:
       - name: Run source, product, localization, claim, and release checks
         run: npm run quality:pr
 
+      - name: Check deployment shell syntax
+        run: bash -n ops/activate-release.sh ops/verify-current-release.sh
+
+      - name: Check deployment PowerShell syntax
+        shell: pwsh
+        run: |
+          [void][ScriptBlock]::Create((Get-Content -Raw deploy.ps1))
+          [void][ScriptBlock]::Create((Get-Content -Raw sync-production-main.ps1))
+
+      - name: Test deployment rollback safety
+        run: bash tests/test-deployment-rollback.sh
+
       - name: Confirm generated assets are committed
         run: |
           git diff --exit-code

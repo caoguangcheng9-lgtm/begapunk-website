@@ -5,6 +5,7 @@ BASE_DIR="${BEGAPUNK_DEPLOY_BASE:-/www/begapunk}"
 RELEASES_DIR="$BASE_DIR/releases"
 SHARED_DIR="$BASE_DIR/shared"
 CURRENT_LINK="$BASE_DIR/current"
+VERIFY_CURRENT_SCRIPT="$BASE_DIR/bin/verify-current-release.sh"
 HEALTH_URL="${BEGAPUNK_HEALTH_URL:-https://www.begapunk.com/}"
 KEEP_RELEASES="${BEGAPUNK_KEEP_RELEASES:-5}"
 
@@ -32,6 +33,14 @@ if ! flock -n 9; then
   exit 4
 fi
 
+if [[ ! -x "$VERIFY_CURRENT_SCRIPT" ]]; then
+  echo "Rollback verification script is missing or not executable: $VERIFY_CURRENT_SCRIPT" >&2
+  exit 8
+fi
+
+previous_release_id="$($VERIFY_CURRENT_SCRIPT)"
+previous_target="$RELEASES_DIR/$previous_release_id"
+
 (
   cd "$release_dir"
   sha256sum -c manifest.sha256 >/dev/null
@@ -58,7 +67,6 @@ for verification_file in "$SHARED_DIR"/WW_verify_*.txt; do
 done
 shopt -u nullglob
 
-previous_target="$(readlink -f "$CURRENT_LINK" 2>/dev/null || true)"
 next_link="$BASE_DIR/.current-${release_id}-$$"
 ln -s "$release_dir" "$next_link"
 mv -Tf "$next_link" "$CURRENT_LINK"
@@ -82,12 +90,14 @@ done
 
 if [[ "$healthy" != true ]]; then
   echo "Health check failed; restoring previous release." >&2
-  if [[ -n "$previous_target" && -d "$previous_target" ]]; then
-    rollback_link="$BASE_DIR/.rollback-$$"
-    ln -s "$previous_target" "$rollback_link"
-    mv -Tf "$rollback_link" "$CURRENT_LINK"
-  else
-    rm -f "$CURRENT_LINK"
+  rollback_link="$BASE_DIR/.rollback-$$"
+  ln -s "$previous_target" "$rollback_link"
+  mv -Tf "$rollback_link" "$CURRENT_LINK"
+
+  restored_target="$(readlink -f "$CURRENT_LINK" 2>/dev/null || true)"
+  if [[ "$restored_target" != "$previous_target" ]]; then
+    echo "Rollback link verification failed. Expected: $previous_target Actual: $restored_target" >&2
+    exit 9
   fi
   exit 6
 fi
