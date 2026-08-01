@@ -56,7 +56,7 @@
 
 ## Unternehmen und Service
 
-- [Pneumatische Drehdurchführungen für Maschinen | Begapunk](https://www.begapunk.com/de/): Pneumatische Ein- und Mehrkanal-Drehdurchführungen für Drehtische, Vorrichtungen und Automatisierung. Modelle vergleichen oder Sonderausführung anfragen.
+- [Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk](https://www.begapunk.com/de/): Pneumatische Ein- und Mehrkanal-Drehdurchführungen für Drehtische, Vorrichtungen und Automatisierung. Modelle vergleichen oder Sonderausführung anfragen.
 - [Über Begapunk | Hersteller von Drehdurchführungen](https://www.begapunk.com/de/about.html): Erfahren Sie mehr über Begapunk, unsere Fertigung in Ningbo, Qualitätsprüfung und Entwicklung kundenspezifischer Drehdurchführungen.
 - [Drehdurchführung montieren: Anleitung | Begapunk](https://www.begapunk.com/de/installation.html): Montageanleitung für Begapunk Drehdurchführungen: Ausrichtung, Leitungsanschluss, Verdrehschutz, Filtration, Inbetriebnahme und Wartung.
 - [Auslegungsbeispiele für Drehdurchführungen | Begapunk](https://www.begapunk.com/de/case-studies.html): Technische Auslegungsbeispiele für Rohrlaser, Offshore-Anlagen und CNC-Maschinen mit Angaben zu Kanälen, Druck, Drehzahl, Einbau und CAD-Prüfung.
