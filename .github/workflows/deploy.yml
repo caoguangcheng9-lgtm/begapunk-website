@@ -70,7 +70,7 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
 
-      - name: Prepare IndexNow URLs from the active release
+      - name: Verify rollback baseline and prepare IndexNow URLs
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
@@ -79,7 +79,9 @@ jobs:
           set -Eeuo pipefail
           port="${DEPLOY_PORT:-22}"
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
-          active_release="$(ssh -p "$port" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
+          active_release="$(ssh -p "$port" "$target" 'bash -s' < ops/verify-current-release.sh)"
+          echo "Verified rollback release: $active_release"
+          echo "previous_release_id=$active_release" >> "$GITHUB_ENV"
           if [[ "$active_release" =~ -([0-9a-f]{12})$ ]] && git cat-file -e "${BASH_REMATCH[1]}^{commit}"; then
             node scripts/prepare-indexnow-urls.mjs "${BASH_REMATCH[1]}" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
           else
@@ -103,11 +105,12 @@ jobs:
           rsync -az --delete -e "ssh -p $port" dist/production/ "$target:/www/begapunk/releases/$release_id/"
           rsync -az -e "ssh -p $port" \
             ops/activate-release.sh \
+            ops/verify-current-release.sh \
             ops/install-nginx-managed-redirects.sh \
             ops/nginx-managed-redirects.conf \
             "$target:/www/begapunk/bin/"
           ssh -p "$port" "$target" \
-            "chmod 750 /www/begapunk/bin/activate-release.sh /www/begapunk/bin/install-nginx-managed-redirects.sh"
+            "chmod 750 /www/begapunk/bin/activate-release.sh /www/begapunk/bin/verify-current-release.sh /www/begapunk/bin/install-nginx-managed-redirects.sh"
           redirect_mode="static canonical fallback"
           if ssh -p "$port" "$target" "sudo -n true"; then
             ssh -p "$port" "$target" \
@@ -117,6 +120,11 @@ jobs:
             echo "::warning::Deployment account has no non-interactive sudo permission; keeping the canonical/meta-refresh fallback for the legacy URL."
           fi
           ssh -p "$port" "$target" "/www/begapunk/bin/activate-release.sh '$release_id'"
+          active_after="$(ssh -p "$port" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
+          if [[ "$active_after" != "$release_id" ]]; then
+            echo "Activated release verification failed. Expected: $release_id Actual: $active_after" >&2
+            exit 1
+          fi
           echo "release_id=$release_id" >> "$GITHUB_ENV"
           echo "redirect_mode=$redirect_mode" >> "$GITHUB_ENV"
 
@@ -146,6 +154,7 @@ jobs:
           echo "### Begapunk production deployment" >> "$GITHUB_STEP_SUMMARY"
           echo "- Release: \`$release_id\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Verified rollback baseline: \`$previous_release_id\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Health check: passed" >> "$GITHUB_STEP_SUMMARY"
           echo "- Legacy URL recovery: $redirect_mode" >> "$GITHUB_STEP_SUMMARY"
           echo "- IndexNow: changed URLs accepted" >> "$GITHUB_STEP_SUMMARY"
