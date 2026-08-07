@@ -313,16 +313,36 @@ for (const language of verifiedLanguages) {
   }
 }
 
-for (const language of activeLanguages) {
-  const searchIndexPath = path.join(localizedRoot, language.code, 'search-index.json');
+const excludedPages = new Set(config.sitemapExcludedPages || []);
+const discoverablePages = config.pages.filter((pageName) => !excludedPages.has(pageName));
+
+for (const language of verifiedLanguages) {
+  const searchIndexPath = language.code === config.sourceLanguage.code
+    ? path.join(localizedRoot, 'search-index.json')
+    : path.join(localizedRoot, language.code, 'search-index.json');
+  const searchOwner = language.code === config.sourceLanguage.code
+    ? 'search-index.json'
+    : `${language.code}/search-index.json`;
   try {
     const searchIndexSource = await fs.readFile(searchIndexPath, 'utf8');
-    verifyGeneratedText(searchIndexSource, `${language.code}/search-index.json`);
+    verifyGeneratedText(searchIndexSource, searchOwner);
     const searchIndex = JSON.parse(searchIndexSource);
-    if (!Array.isArray(searchIndex) || !searchIndex.length) failures.push(`${language.code}/search-index.json: index is empty.`);
+    if (!Array.isArray(searchIndex) || !searchIndex.length) {
+      failures.push(`${searchOwner}: index is empty.`);
+    } else {
+      const urls = searchIndex.map((record) => record?.url).filter(Boolean);
+      const duplicateUrls = [...new Set(urls.filter((url, index) => urls.indexOf(url) !== index))];
+      if (urls.length !== discoverablePages.length) failures.push(`${searchOwner}: expected ${discoverablePages.length} records, found ${urls.length}.`);
+      duplicateUrls.forEach((url) => failures.push(`${searchOwner}: duplicate URL ${url}.`));
+      discoverablePages.forEach((pageName) => {
+        if (!urls.includes(pageName)) failures.push(`${searchOwner}: missing ${pageName}.`);
+      });
+      urls.filter((url) => !discoverablePages.includes(url)).forEach((url) => failures.push(`${searchOwner}: unexpected URL ${url}.`));
+    }
   } catch (error) {
-    failures.push(`${language.code}/search-index.json: missing or invalid (${error.message}).`);
+    failures.push(`${searchOwner}: missing or invalid (${error.message}).`);
   }
+  if (language.code === config.sourceLanguage.code) continue;
   const llmsPath = path.join(localizedRoot, language.code, 'llms.txt');
   try {
     const llmsSource = await fs.readFile(llmsPath, 'utf8');
@@ -338,6 +358,10 @@ for (const language of activeLanguages) {
 
 try {
   const rootLlms = await fs.readFile(path.join(localizedRoot, 'llms.txt'), 'utf8');
+  for (const pageName of discoverablePages) {
+    const expectedUrl = pageUrl(config.sourceLanguage.code, pageName);
+    if (!rootLlms.includes(expectedUrl)) failures.push(`llms.txt: missing ${expectedUrl}.`);
+  }
   for (const language of activeLanguages) {
     const localizedLlmsUrl = `${config.siteUrl}/${language.code}/llms.txt`;
     if (!rootLlms.includes(localizedLlmsUrl)) failures.push(`llms.txt: missing localized AI index link ${localizedLlmsUrl}.`);
@@ -347,10 +371,79 @@ try {
 }
 
 try {
+  const sitemapSource = await fs.readFile(path.join(localizedRoot, 'sitemap.xml'), 'utf8');
+  const sitemapUrls = [...sitemapSource.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const expectedSitemapUrls = discoverablePages.map((pageName) => pageUrl(config.sourceLanguage.code, pageName));
+  if (sitemapUrls.length !== expectedSitemapUrls.length) failures.push(`sitemap.xml: expected ${expectedSitemapUrls.length} URLs, found ${sitemapUrls.length}.`);
+  expectedSitemapUrls.forEach((url) => {
+    if (!sitemapUrls.includes(url)) failures.push(`sitemap.xml: missing ${url}.`);
+  });
+  sitemapUrls.filter((url) => !expectedSitemapUrls.includes(url)).forEach((url) => failures.push(`sitemap.xml: unexpected ${url}.`));
+} catch (error) {
+  failures.push(`sitemap.xml: missing or invalid (${error.message}).`);
+}
+
+const applicationCasePage = 'case-bp-2p-95-pneumatic-chuck-integration.html';
+const unsupportedApplicationCaseClaims = {
+  en: /workshop assembly and commissioning|separate compressed-air paths/i,
+  de: /Werkstattmontage und Inbetriebnahme|Getrennte Druckluftkreise/i,
+  ja: /組立・試運転|独立した空圧回路/,
+  ru: /Сборка и пусконаладка|несколько независимых[^.]{0,80}канал/iu,
+};
+for (const language of verifiedLanguages) {
+  const languageRoot = language.code === config.sourceLanguage.code ? localizedRoot : path.join(localizedRoot, language.code);
+  try {
+    const caseCenter = await fs.readFile(path.join(languageRoot, 'case-studies.html'), 'utf8');
+    const product = await fs.readFile(path.join(languageRoot, 'BP-2P-95-0001.html'), 'utf8');
+    const detail = await fs.readFile(path.join(languageRoot, applicationCasePage), 'utf8');
+    if (!caseCenter.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/case-studies.html: application case link is missing.`);
+    if (!product.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/BP-2P-95-0001.html: application case link is missing.`);
+    if (!detail.includes('href="BP-2P-95-0001.html"')) failures.push(`${language.code}/${applicationCasePage}: product backlink is missing.`);
+    const $center = load(caseCenter, { decodeEntities: false });
+    const $product = load(product, { decodeEntities: false });
+    const $detail = load(detail, { decodeEntities: false });
+    if ($center('#real-application-cases').length !== 1 || $center('#engineering-selection-examples').length !== 1) {
+      failures.push(`${language.code}/case-studies.html: real cases and selection examples are not separated.`);
+    }
+    if (caseCenter.indexOf('id="real-application-cases"') > caseCenter.indexOf('id="engineering-selection-examples"')) {
+      failures.push(`${language.code}/case-studies.html: the real application case category is not first.`);
+    }
+    if ($product('.app-related-products .app-related-product').first().attr('href') !== applicationCasePage) {
+      failures.push(`${language.code}/BP-2P-95-0001.html: the application case is not the first related resource.`);
+    }
+    for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.tech-note', '.cta-section']) {
+      if (!$detail(selector).length) failures.push(`${language.code}/${applicationCasePage}: required standard component ${selector} is missing.`);
+    }
+    if ($detail('.nav-dropdown').length !== 4) failures.push(`${language.code}/${applicationCasePage}: expected four standard navigation dropdowns.`);
+    if ($detail('.footer-grid > .footer-brand').length !== 1 || $detail('.footer-grid > div:has(.footer-title)').length !== 4) {
+      failures.push(`${language.code}/${applicationCasePage}: standard five-column footer is missing.`);
+    }
+    if ($detail('.floating-cta .floating-btn.quote').length !== 1 || $detail('.floating-cta .floating-btn.whatsapp').length !== 1) {
+      failures.push(`${language.code}/${applicationCasePage}: standard floating quote/WhatsApp actions are missing.`);
+    }
+    const caseImages = $detail('main .case-image img');
+    const detailImages = caseImages.filter((_, element) => /bp-2p-95-pneumatic-connection-detail\.(?:webp|jpg)$/i.test($detail(element).attr('src') || ''));
+    const overviewImages = caseImages.filter((_, element) => /bp-2p-95-chuck-assembly-overview\.(?:webp|jpg)$/i.test($detail(element).attr('src') || ''));
+    if (detailImages.length !== 1 || overviewImages.length !== 1) failures.push(`${language.code}/${applicationCasePage}: each case photograph must appear exactly once.`);
+    caseImages.each((_, element) => {
+      if ($detail(element).attr('loading') !== 'lazy') failures.push(`${language.code}/${applicationCasePage}: every case photograph must be lazy-loaded.`);
+    });
+    if (!/bp-2p-95-pneumatic-connection-detail/i.test($detail('.case-row').first().find('.case-image img').attr('src') || '')) {
+      failures.push(`${language.code}/${applicationCasePage}: connection detail is not the primary evidence image.`);
+    }
+    const visibleDetail = compactText($detail('main').text());
+    if (unsupportedApplicationCaseClaims[language.code]?.test(visibleDetail)) {
+      failures.push(`${language.code}/${applicationCasePage}: unsupported commissioning or independent-circuit claim detected.`);
+    }
+  } catch (error) {
+    failures.push(`${language.code}/${applicationCasePage}: three-way link verification failed (${error.message}).`);
+  }
+}
+
+try {
   const sitemapSource = await fs.readFile(path.join(localizedRoot, 'sitemap-i18n.xml'), 'utf8');
   const sitemapUrls = [...sitemapSource.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  const excludedPages = new Set(config.sitemapExcludedPages || []);
-  const sitemapPages = config.pages.filter((pageName) => !excludedPages.has(pageName));
+  const sitemapPages = discoverablePages;
   const expectedSitemapUrls = [config.sourceLanguage, ...activeLanguages]
     .flatMap((language) => sitemapPages.map((pageName) => pageUrl(language.code, pageName)));
   if (sitemapUrls.length !== expectedSitemapUrls.length) failures.push(`sitemap-i18n.xml: expected ${expectedSitemapUrls.length} URLs, found ${sitemapUrls.length}.`);
@@ -373,4 +466,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log(`Localized site verification passed for ${verifiedLanguages.length * config.pages.length} pages.`);
+  console.log(`BP-2P-95 application-case coverage passed for ${verifiedLanguages.length} localized detail pages, case-center links, product-page links, search indexes, canonical/hreflang sets, JSON-LD language values, and both sitemap sources.`);
 }

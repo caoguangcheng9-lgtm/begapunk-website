@@ -1512,7 +1512,7 @@ const llmsLabels = {
 
 function llmsGroup(pageName) {
   if (/^BP-/.test(pageName) || ['products.html', 'products-p2.html', 'product-comparison.html'].includes(pageName)) return 'products';
-  if (pageName === 'applications.html' || pageName.startsWith('application-')) return 'applications';
+  if (pageName === 'applications.html' || pageName.startsWith('application-') || pageName.startsWith('case-')) return 'applications';
   if (pageName === 'blog.html' || pageName.startsWith('blog-')) return 'articles';
   return 'other';
 }

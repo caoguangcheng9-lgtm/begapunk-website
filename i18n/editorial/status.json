@@ -1,19 +1,19 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must be reviewed for local industrial terminology, grammar and natural business usage. Automated pattern scans alone do not qualify a page as reviewed.",
-  "updatedAt": "2026-07-27",
+  "updatedAt": "2026-08-07",
   "seoGeo": {
     "standard": "Curated local-language title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page.",
     "de": {
       "reviewed": 51,
-      "total": 51
+      "total": 52
     },
     "ja": {
       "reviewed": 51,
-      "total": 51
+      "total": 52
     },
     "ru": {
       "reviewed": 51,
-      "total": 51
+      "total": 52
     }
   },
   "languages": {
@@ -72,8 +72,10 @@
         "thank-you.html"
       ],
       "copyReviewedAwaitingRender": [],
-      "inProgress": [],
-      "remaining": 0
+      "inProgress": [
+        "case-bp-2p-95-pneumatic-chuck-integration.html"
+      ],
+      "remaining": 1
     },
     "ru": {
       "reviewed": [
@@ -130,8 +132,10 @@
         "thank-you.html"
       ],
       "copyReviewedAwaitingRender": [],
-      "inProgress": [],
-      "remaining": 0
+      "inProgress": [
+        "case-bp-2p-95-pneumatic-chuck-integration.html"
+      ],
+      "remaining": 1
     },
     "ja": {
       "reviewed": [
@@ -188,8 +192,10 @@
         "thank-you.html"
       ],
       "copyReviewedAwaitingRender": [],
-      "inProgress": [],
-      "remaining": 0
+      "inProgress": [
+        "case-bp-2p-95-pneumatic-chuck-integration.html"
+      ],
+      "remaining": 1
     }
   },
   "renderQa": {

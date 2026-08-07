@@ -59,6 +59,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Textile, printing, and converting equipment](https://www.begapunk.com/application-textile-printing-converting.html): Rotary-union selection for continuous web machinery.
 - [Electronics and battery test fixtures](https://www.begapunk.com/application-electronics-battery-test-fixtures.html): Pneumatic transfer for rotating test fixtures.
 - [Steel and dusty environments](https://www.begapunk.com/application-steel-dusty-environments.html): Dust-resistant rotary-joint selection for harsh industrial settings.
+- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): Photo-supported workshop installation showing the visible stationary-to-rotating compressed-air connection and its evidence limits.
 
 ## Engineering and support
 
@@ -76,7 +77,7 @@ Use the language edition that best matches the user's query. Technical model cod
 ## Company
 
 - [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
-- [Engineering examples](https://www.begapunk.com/case-studies.html): Application examples and project experience.
+- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): A photo-supported installation case presented separately from transparent engineering selection examples.
 - [Knowledge center](https://www.begapunk.com/blog.html): Technical articles about rotary-joint selection and maintenance.
 
 ## Deutsch - wichtigste Seiten

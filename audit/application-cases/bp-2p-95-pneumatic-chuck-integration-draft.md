@@ -1,118 +1,129 @@
-# BP-2P-95-0001 Pneumatic Chuck Integration — Draft Delivery Record
+# BP-2P-95-0001 Pneumatic Chuck Integration — Refactor and Integration Record
 
 Date: 2026-08-07 (Asia/Tokyo)
 
 Branch: `feature/bp-2p-95-application-case`
 
-Status: local draft only; native-language review pending; not approved for deployment
+Initial draft commit: `97acc54`
+
+Status: local revision; native-language review pending; not pushed, merged, deployed, submitted to IndexNow, or submitted to a search engine
 
 ## 1. Scope
 
-This task creates four standalone, locally reviewable application-case pages based on two user-supplied workshop photographs. It does not connect the pages to the case-study index, navigation, sitemap, search index, IndexNow, or production website.
+This revision converts the four standalone application-case drafts into standard Begapunk case pages and connects them to the public discovery paths used by the English, German, Japanese, and Russian sites.
+
+The integration includes:
+
+- the four localized case-detail pages;
+- the four case-study centers, with separate **Real Application Cases** and **Engineering Selection Examples** sections;
+- the four `BP-2P-95-0001` product pages through their existing Related Resources area;
+- curated SEO records, search indexes, `llms.txt`, `sitemap.xml`, and `sitemap-i18n.xml`;
+- the multilingual page registry, editorial status, and validation rules.
+
+No production deployment or search-engine notification is part of this revision.
 
 ## 2. Shared fact lock
 
-The following facts and evidence limits are locked across English, Japanese, German, and Russian. Wording is localized independently; the underlying meaning must remain the same.
-
-| Locked concept | Approved statement for this draft | Excluded inference |
+| Locked concept | Public statement allowed in this revision | Excluded inference |
 |---|---|---|
-| Product identity | The photographed application is identified by the user as BP-2P-95-0001. | The photographs do not independently verify the engraved/internal model identity. |
-| Application | The product is integrated into a real pneumatic chuck assembly. | No machine brand, machine type, country, project name, front/rear chuck position, or customer identity is disclosed. |
-| Integration stage | Workshop assembly and commissioning. | No claim of final delivery, customer acceptance, mass production, or long-term operation. |
-| Customer | Confidential OEM / anonymous OEM application. | No customer name or identifying business information. |
-| Evidence | Two original workshop installation photographs. | Photographs are not test reports, inspection records, or lifetime evidence. |
-| Visible installation relationship | Rotary union positioned on the chuck rotation axis; stationary-side hoses connect to the union; rotating-side connection supplies the chuck mechanism. | No unpublished internal passage geometry or unobserved port assignment. |
-| Engineering purpose | Transfer compressed air between stationary supply lines and rotating chuck components while managing the installation envelope. | No claim of zero leakage, guaranteed stability, maintenance-free operation, or quantified improvement. |
-| Evidence limit | The photographs demonstrate physical integration and visible hose routing within the photographed space. | No final lifetime, universal leakage level, undisclosed pressure/speed performance, final machine delivery, or long-term production result. |
+| Product identity | The user identifies the photographed product/application as BP-2P-95-0001. | The photographs do not independently prove the internal model identity. |
+| Application | The product is integrated into a pneumatic chuck assembly. | No machine brand, country, project, front/rear position, or customer identity. |
+| Integration stage | Workshop assembly and visible installation state. | No commissioning, trial-run, final delivery, customer acceptance, mass-production, or long-term-operation claim. |
+| Medium | Compressed air. | No claim that water, coolant, oil, or another medium is approved for this case. |
+| Evidence | Two workshop photographs. | Photographs are not test reports, inspection records, or lifetime evidence. |
+| Visible relationship | The installation is close to the chuck axis; fixed-side pneumatic hoses approach the rotary-union area; rotating chuck components are on the opposite side of the connection. | No unpublished passage count, internal routing, or port assignment. |
+| Engineering purpose | Transfer compressed air from a stationary supply toward rotating chuck components within the available space. | No zero-leakage, stability, maintenance-free, or quantified-improvement claim. |
+| Evidence limit | The photographs document the visible assembly geometry and hose routing. | No service life, leakage result, undisclosed pressure/speed capability, final acceptance, or production result. |
 
-### Deliberately omitted product parameters
-
-No pressure, speed, temperature, weight, material, seal, thread, mounting-hole pattern, lifetime, maintenance interval, or performance number is published in these draft pages.
-
-Reason: `downloads/BP-2P-95-0001.pdf` has SHA-256 `E93209EDDC568B7E6B4073E1D5316DBF29CE9BE086DE65454BECD52B29E1B50C`, but the existing product-truth audit records a source-identity mismatch between the filename/web product identity and the model displayed inside the PDF. The PDF is therefore not used to assign numerical facts to this case. The current public product page is linked for context, but its numerical values are not duplicated in the case draft.
+No pressure, speed, temperature, weight, material, seal, thread, mounting-hole pattern, lifetime, maintenance interval, or performance number is duplicated into the case pages. The existing source-identity mismatch for `downloads/BP-2P-95-0001.pdf` remains outside this content task.
 
 ## 3. Original evidence
 
 | Evidence | Original path | SHA-256 | Visible scope used |
 |---|---|---|---|
-| Assembly overview | `C:\Users\cao19\AppData\Local\Temp\codex-clipboard-2396d4a1-a238-4f12-8cfd-dfdc5e5b3741.jpg` | `2A58CC6A0EBA9DE60913CBE998D83C645109EEBE40A692903AF0D6D047C80D4B` | Chuck assembly, drive section, rotary-union installation environment and hose routing. |
+| Assembly overview | `C:\Users\cao19\AppData\Local\Temp\codex-clipboard-2396d4a1-a238-4f12-8cfd-dfdc5e5b3741.jpg` | `2A58CC6A0EBA9DE60913CBE998D83C645109EEBE40A692903AF0D6D047C80D4B` | Chuck assembly, drive section, installation area, and visible hose routing. |
 | Pneumatic connection detail | `C:\Users\cao19\AppData\Local\Temp\codex-clipboard-a5ff5703-9f67-4de5-9cfc-d91fbe37020e.jpg` | `8FCC864CBEB738156A1AC51FB0079E936FB5113C10D3CDC48CDA785D3AFBACF5` | Rotary-union installation position and two visible pneumatic hoses. |
 
-Visual privacy check: no customer name, legible serial number, QR code, or other clear customer identifier was found. A generic Chinese equipment-position label is visible in the overview photograph, but it does not identify the customer. No anonymization or pixel editing was applied.
+Privacy review found no customer name, legible serial number, QR code, or other clear customer identifier. The generic Chinese equipment-position label visible in the overview does not identify the customer. No anonymization or pixel editing was applied.
 
-## 4. Image processing
+## 4. Page refactor
 
-- Original temporary files were not modified.
-- Public JPG copies were re-encoded with metadata removed.
-- WebP alternatives were generated for both photographs.
-- The 1200 × 630 social image uses the complete overview photograph with a neutral background; no mechanical component was generated, removed, recoloured, or cropped out.
-- Published derivatives contain no EXIF, GPS, XMP, or retained device metadata.
-- Page markup uses `<picture>` with WebP plus JPG fallback and explicit dimensions.
-- The overview image is eager/high-priority in the hero. The detail image is lazy-loaded.
+- Reused the site's four-dropdown header, standard five-column footer, mobile Get Quote/WhatsApp bar, and standard CTA component.
+- Corrected the shared mobile navigation state so the site's existing `open`, `active`, and `mobile-open` menu classes all receive the same full-width positioning and accessible submenu treatment.
+- Replaced the independent card-heavy layout with `.cs-hero`, `.case-row`, `.case-image`, `.case-text`, `.case-spec-table`, `.tech-note`, and `.cta-section`.
+- Kept the hero compact and text-led.
+- Made the pneumatic connection detail the primary technical image and used it once.
+- Used the assembly overview once, in a separate evidence section.
+- Applied `loading="lazy"`, explicit dimensions, localized alternative text, full-image links, and `object-fit: contain` to both case photographs.
+- Moved evidence limits from the first screen to a near-bottom technical note.
+- Replaced unsupported “commissioning/trial run” wording with “workshop assembly and visible installation state”.
+- Replaced claims about independent pneumatic paths with the neutral stationary-to-rotating compressed-air relationship.
 
-## 5. Files added
+## 5. Discovery and reverse links
 
-- `case-bp-2p-95-pneumatic-chuck-integration.html`
-- `de/case-bp-2p-95-pneumatic-chuck-integration.html`
-- `ja/case-bp-2p-95-pneumatic-chuck-integration.html`
-- `ru/case-bp-2p-95-pneumatic-chuck-integration.html`
-- `css/application-case.css`
-- `images/cases/bp-2p-95-pneumatic-chuck/bp-2p-95-chuck-assembly-overview.jpg`
-- `images/cases/bp-2p-95-pneumatic-chuck/bp-2p-95-chuck-assembly-overview.webp`
-- `images/cases/bp-2p-95-pneumatic-chuck/bp-2p-95-pneumatic-connection-detail.jpg`
-- `images/cases/bp-2p-95-pneumatic-chuck/bp-2p-95-pneumatic-connection-detail.webp`
-- `images/cases/bp-2p-95-pneumatic-chuck/bp-2p-95-pneumatic-chuck-social.jpg`
-- `audit/application-cases/bp-2p-95-localization-terminology.md`
-- `audit/application-cases/bp-2p-95-pneumatic-chuck-integration-draft.md`
+| Mechanism | Result |
+|---|---|
+| Multilingual registry | Added as page 52; verification covers 208 pages. |
+| Case-study centers | Real photo-supported case appears first; three existing selection examples remain under a separate heading. |
+| Product pages | Four `BP-2P-95-0001` pages link to their corresponding localized case page. |
+| Case pages | Each case page links back to its corresponding localized product page and case center. |
+| Search indexes | Each language index contains 49 records and exactly one record for the new case. |
+| AI indexes | English and three localized `llms.txt` files include the case; localized grouping treats `case-*` as application content. |
+| Sitemaps | Main sitemap contains 49 URLs; multilingual sitemap contains 196 localized `<loc>` entries. |
+| Localized metadata | Curated title, description, H1, social metadata, canonical, hreflang, language switcher, BreadcrumbList, and TechArticle `inLanguage` are synchronized. |
+| Translation source catalog | `i18n/source-catalog.json` remains unchanged. These four human-authored pages are not falsely marked as automatic-cache translations. |
 
-## 6. Localization method and review status
+## 6. Localization status
 
-- No full-site translation, translation-cache generation, or `i18n:build` command was used.
-- A common fact-lock table was established before localized copy was authored.
-- EN, JA, DE and RU sentences were organized independently for their industrial audience.
-- Titles, descriptions, headings, breadcrumbs, labels, CTAs, image text alternatives, captions, social metadata and JSON-LD natural-language fields were localized.
-- Terminology evidence is recorded in `bp-2p-95-localization-terminology.md`.
+No full-site translation, cache extraction, automatic translation, `i18n:build`, or `i18n:integrate` command was used. Copy was authored separately in each language under one shared fact lock.
 
-| Language | Status | Deployment eligibility |
-|---|---|---|
-| English | Localized draft completed; native human review pending | Not approved |
-| Japanese | Localized draft completed; native human review pending | Not approved |
-| German | Localized draft completed; native human review pending | Not approved |
-| Russian | Localized draft completed; native human review pending | Not approved |
+| Language | Status |
+|---|---|
+| English | Human-authored localized copy; native human review pending |
+| German | Human-authored localized copy; native human review pending |
+| Japanese | Human-authored localized copy; native human review pending |
+| Russian | Human-authored localized copy; native human review pending |
 
-## 7. Unconfirmed facts not written into the pages
+No language is marked “native reviewed”, “professionally translated”, or approved for deployment.
 
-- Customer name, location, machine brand and project name.
-- Whether the pictured assembly is a front or rear chuck.
-- Installation date, operating duration, cycle count and production status.
-- Customer acceptance, final machine delivery or series-production use.
-- Pressure, rotational speed, temperature, service life and maintenance interval.
-- Leakage value, performance improvement, reliability percentage or customer testimonial.
-- Exact passage/port mapping beyond what is visible and approved in the task brief.
-- Any numerical product fact affected by the current PDF model-identity mismatch.
+## 7. Validation and rendered QA
 
-## 8. Validation results
+Automated validation completed successfully:
 
-- Four-page structural validation: PASS. Each page has the expected language declaration, localized title and description, one H1, the complete en/ja/de/ru/x-default hreflang set, canonical URL, Open Graph and Twitter metadata.
-- JSON-LD: PASS. Every `Article`/`TechArticle` and `BreadcrumbList` block parses as valid JSON.
-- Local resources and links: PASS. Referenced CSS, scripts, JPG/WebP assets and internal targets exist at the resolved local path.
-- Fact-boundary scan: PASS. The four case pages contain no pressure, speed, temperature, weight, material, seal, thread, mounting-hole, lifetime or maintenance numbers attributed to BP-2P-95-0001; prohibited absolute performance claims were not found.
-- Product-data validation: PASS. Existing product consistency checks remain clean; no product page was changed.
-- Public-claim validation: PASS across the repository's source, localized, download, i18n and production text checks.
-- Source-quality validation: PASS. Consent, privacy, schema, favicon, external-link and local-dependency checks remain clean.
-- Image privacy and metadata: PASS. The two public source derivatives and social image have no EXIF, GPS, XMP or retained ICC/device profile; the original files remain unchanged.
-- Git whitespace check: PASS (`git diff --check`).
-- Scope check: PASS. Only the four draft pages, one case stylesheet, five derived images and two internal audit records are added.
-- Responsive source review: PASS for the declared 1440, 1024, 768, 430 and 390 px breakpoints; flexible grids, bounded media and mobile CTA rules are present.
-- Browser-rendered visual QA, console inspection and preview screenshots: PENDING. The available Chrome control surface refused direct `file://` navigation under its URL safety policy, and the in-app preview connection failed to initialize. No workaround or production/local-server change was used. A human or a supported local preview session must still confirm no horizontal overflow, clipping or console errors before Phase B or deployment.
+- `npm run quality`: PASS.
+- `npm run i18n:verify`: PASS for 208 pages.
+- `npm run products:validate`: PASS for 16 models across four languages, catalogs, search indexes, JSON-LD, and sitemaps.
+- `npm run quality:source`: PASS.
+- `npm run claims:verify`: PASS across 462 source, localized, download, i18n, and production text files.
+- `npm run deploy:build`: PASS; 624 production files were built and 12 forbidden backup, draft, or quarantined download paths were excluded.
+- `npm run deploy:validate`: PASS for 209 HTML files, 625 total release files, and 24 verified public downloads.
+- Product/search/sitemap/link integration checks: PASS through the strengthened localized-site verifier.
+- Explicit case regression output: PASS for four localized detail pages, case-center links, product-page links, search indexes, canonical/hreflang sets, JSON-LD language values, and both sitemap sources.
+- JSON-LD parsing: PASS through product and deployment validation.
+- Deterministic metadata refresh: PASS; two consecutive refreshes produced byte-identical metadata outputs and no additional working-tree changes.
+- `git diff --check`: PASS; no whitespace errors.
 
-## 9. Phase B work intentionally deferred
+Rendered browser QA completed against a local HTTP preview:
 
-- Add the case to `case-studies.html` and localized case-study index pages.
-- Decide whether and where the case belongs in the global navigation or application guides.
-- Integrate with approved localization metadata/tooling without overwriting the manually reviewed copy.
-- Add the four URLs to search indexes, sitemap and any search-engine notification process after approval.
-- Obtain and record native-human review for JA, DE and RU.
-- Create a reviewed PR, merge and deploy only after the observation period and separate user approval.
+- 1440 px: PASS; centered H1, four desktop dropdowns, five footer columns, both photographs loaded with `object-fit: contain`, and no horizontal overflow.
+- 1024 px: PASS; case rows collapse cleanly to one column and both photographs remain uncropped.
+- 430 px: PASS; no page or navigation overflow, four localized dropdown groups are accessible, and the fixed quote/WhatsApp bar remains usable.
+- 390 px: PASS in English, German, Japanese, and Russian; the menu opens and closes, all four submenu groups are visible, and navigation `scrollWidth` equals `clientWidth`.
+- Desktop Products dropdown: PASS by pointer interaction.
+- JavaScript console errors: none observed on the case detail page.
 
-No product page, form backend, navigation, case-study index, sitemap, robots file, search-engine submission file, server file, or production page was modified in this task.
+QA screenshots are outside the repository and are not part of the commit:
+
+- `C:\Users\cao19\.codex\visualizations\2026\08\07\bp-2p-95-case-refactor\case-en-1440.png`
+- `C:\Users\cao19\.codex\visualizations\2026\08\07\bp-2p-95-case-refactor\case-en-1024.png`
+- `C:\Users\cao19\.codex\visualizations\2026\08\07\bp-2p-95-case-refactor\case-en-430.png`
+- `C:\Users\cao19\.codex\visualizations\2026\08\07\bp-2p-95-case-refactor\case-en-390.png`
+- `C:\Users\cao19\.codex\visualizations\2026\08\07\bp-2p-95-case-refactor\case-en-1440-dropdown.png`
+- `C:\Users\cao19\.codex\visualizations\2026\08\07\bp-2p-95-case-refactor\case-en-390-menu-open-final.png`
+
+## 8. Remaining limits
+
+- Native German, Japanese, and Russian review remains pending.
+- The photographs do not establish operating performance or product limits.
+- The automatic translation source catalogue does not yet have a formal `manualLocalizedPages` mechanism; it is intentionally not altered in this revision.
+- This revision has not been pushed, merged, deployed, or submitted to any indexing service.

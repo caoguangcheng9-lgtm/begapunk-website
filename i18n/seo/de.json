@@ -220,9 +220,14 @@
     "h1": "Gewinde- und Flanschmontage bei Drehdurchführungen vergleichen"
   },
   "case-studies.html": {
-    "title": "Auslegungsbeispiele für Drehdurchführungen | Begapunk",
-    "description": "Technische Auslegungsbeispiele für Rohrlaser, Offshore-Anlagen und CNC-Maschinen mit Angaben zu Kanälen, Druck, Drehzahl, Einbau und CAD-Prüfung.",
-    "h1": "Auslegungsbeispiele für Drehdurchführungen"
+    "title": "Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen | Begapunk",
+    "description": "Fotodokumentierter Einbau der BP-2P-95-0001 in ein pneumatisches Spannfutter sowie technische Auswahlbeispiele für Drehdurchführungen.",
+    "h1": "Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen"
+  },
+  "case-bp-2p-95-pneumatic-chuck-integration.html": {
+    "title": "BP-2P-95-0001 im pneumatischen Spannfutter | Begapunk",
+    "description": "Fotodokumentiertes Einbaubeispiel der Drehdurchführung BP-2P-95-0001 in einem pneumatischen Spannfutter zur stationär-rotierenden Druckluftzuführung.",
+    "h1": "BP-2P-95-0001 – Einbaubeispiel in einem pneumatischen Spannfutter"
   },
   "faq.html": {
     "title": "Häufige Fragen zu Drehdurchführungen | Begapunk",
