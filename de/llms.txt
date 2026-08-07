@@ -42,7 +42,7 @@
 - [Drehdurchführungen für Druck- und Veredelungsanlagen](https://www.begapunk.com/de/application-textile-printing-converting.html): Drehdurchführungen für Druckmaschinen, Textilwickler und Converting-Anlagen nach Medium, Druck, Drehzahl, Kanalzahl und Durchgangsbohrung auswählen.
 - [Drehdurchführungen für Vakuumverpackungsmaschinen](https://www.begapunk.com/de/application-vacuum-packaging-machines.html): Pneumatische und Vakuum-Drehdurchführungen für Rundläufer, Beutelfüller, Vakuum-Siegelköpfe und rotierende Verpackungsstationen.
 - [Drehdurchführungen für Schweißpositionierer | Begapunk](https://www.begapunk.com/de/application-welding-positioners.html): Pneumatische Drehdurchführungen für Schweißdrehtische, Positionierer und Roboterschweißvorrichtungen mit Spannfunktionen während der Drehung.
-- [Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen | Begapunk](https://www.begapunk.com/de/case-studies.html): Fotodokumentierter Einbau der BP-2P-95-0001 in ein pneumatisches Spannfutter sowie technische Auswahlbeispiele für Drehdurchführungen.
+- [Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen | Begapunk](https://www.begapunk.com/de/case-studies.html): Zwei fotodokumentierte Einbaufälle – BP-2P-95-0001 im pneumatischen Spannfutter und eine Drehdurchführung am hinteren Spannfutter einer Laser-Rohrschneidmaschine – plus zwei Auslegungsbeispiele.
 - [BP-2P-95-0001 im pneumatischen Spannfutter | Begapunk](https://www.begapunk.com/de/case-bp-2p-95-pneumatic-chuck-integration.html): Fotodokumentiertes Einbaubeispiel der Drehdurchführung BP-2P-95-0001 in einem pneumatischen Spannfutter zur stationär-rotierenden Druckluftzuführung.
 
 ## Technische Beiträge

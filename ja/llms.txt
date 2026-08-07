@@ -42,8 +42,8 @@
 - [印刷・繊維・加工機用ロータリージョイント](https://www.begapunk.com/ja/application-textile-printing-converting.html): 印刷機、繊維ワインダ、コンバーティング設備向けに、流体、圧力、回転数、流路数、貫通穴からロータリージョイントを選定します。
 - [真空包装機用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/application-vacuum-packaging-machines.html): ロータリー式真空包装機、袋詰め機、真空シールヘッド、回転包装ステーション向けの空圧・真空ロータリージョイント。
 - [溶接ポジショナ用ロータリージョイント](https://www.begapunk.com/ja/application-welding-positioners.html): 溶接ポジショナ、回転溶接台、ロボット溶接治具で回転中に空圧クランプを使用するためのロータリージョイント選定ガイド。
-- [ロータリージョイントの用途事例・選定例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): BP-2P-95-0001を空圧式チャックへ組み込んだ写真付き用途事例と、流路・使用流体・取付条件を検討する技術選定例を紹介します。
-- [BP-2P-95-0001 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0001空圧用ロータリージョイントを空圧式チャックへ組み込んだ事例です。固定側から回転側への空圧供給と取付状態を現場写真で紹介します。
+- [ロータリージョイントの用途事例・選定例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): BP-2P-95-0001の空圧式チャック組込みと、レーザー切断機の後方チャックへの空圧用ロータリジョイント組込みを、実際の写真と確認範囲に基づいて紹介します。
+- [BP-2P-95-0001 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0001空圧用ロータリージョイントを空圧式チャックへ組み込んだ事例です。固定側から回転側への圧縮空気の供給と取付状態を工場内の組立写真で紹介します。
 
 ## 技術記事
 

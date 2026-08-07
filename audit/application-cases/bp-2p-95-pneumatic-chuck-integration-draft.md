@@ -2,6 +2,8 @@
 
 Date: 2026-08-07 (Asia/Tokyo)
 
+> Historical note: this record captures the first BP-2P-95 integration pass. The current four-language case-center structure, including the second photo-supported rear-chuck application, is documented in `case-center-reacceptance-20260807.md`.
+
 Branch: `feature/bp-2p-95-application-case`
 
 Initial draft commit: `97acc54`

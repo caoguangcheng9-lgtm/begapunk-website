@@ -390,6 +390,23 @@ const unsupportedApplicationCaseClaims = {
   ja: /組立・試運転|独立した空圧回路/,
   ru: /Сборка и пусконаладка|несколько независимых[^.]{0,80}канал/iu,
 };
+const laserCaseForbiddenClaims = {
+  en: /BP-\d|\boxygen\b|\bnitrogen\b|\bcoolant\b|assist[- ]gas|\b\d+(?:\.\d+)?\s*(?:MPa|bar|RPM|passages?|channels?)\b/i,
+  de: /BP-\d|Sauerstoff|Stickstoff|Kühlmittel|Schneidgas|\b\d+(?:[,.]\d+)?\s*(?:MPa|bar|min⁻¹|U\/min|Kanäle?)\b/iu,
+  ja: /BP-\d|酸素|窒素|冷却液|クーラント|アシストガス|\d+(?:\.\d+)?\s*(?:MPa|bar|min⁻¹|回転\/分|流路)/u,
+  ru: /BP-\d|кислород|азот|охлаждающ|СОЖ|вспомогательн(?:ый|ого) газ|\b\d+(?:[,.]\d+)?\s*(?:МПа|бар|об\/мин|канал)/iu,
+};
+const caseCenterSearchForbiddenClaims = {
+  en: /\boxygen\b|\bnitrogen\b|\bcoolant\b|assist[- ]gas|Laser cutting & packaging/i,
+  de: /Sauerstoff|Stickstoff|Kühlmittel|Schneidgas|Begapunk-Prüfrichtung|Portrichtung/iu,
+  ja: /酸素|窒素|冷却液|クーラント|アシストガス|現場写真|空圧供給/u,
+  ru: /кислород|азот|охлаждающ|СОЖ|Лазерная трубка режет|\bгорный\b|фланцевый рисунок/iu,
+};
+const localizedCaseCenterEnglishLabels = [
+  'Selection item', 'Typical question', 'Begapunk direction', 'Input required',
+  'Why it matters', 'Check', 'Required confirmation',
+];
+const caseCssVersion = 'v=20260807-case-integration2';
 for (const language of verifiedLanguages) {
   const languageRoot = language.code === config.sourceLanguage.code ? localizedRoot : path.join(localizedRoot, language.code);
   try {
@@ -407,6 +424,90 @@ for (const language of verifiedLanguages) {
     }
     if (caseCenter.indexOf('id="real-application-cases"') > caseCenter.indexOf('id="engineering-selection-examples"')) {
       failures.push(`${language.code}/case-studies.html: the real application case category is not first.`);
+    }
+    const realCases = $center('.case-block.real-case');
+    if (realCases.length !== 2) failures.push(`${language.code}/case-studies.html: expected exactly two photo-supported real cases.`);
+    if (realCases.eq(0).attr('id') !== 'bp-2p-95-pneumatic-chuck' || realCases.eq(1).attr('id') !== 'laser-tube-rear-chuck') {
+      failures.push(`${language.code}/case-studies.html: real case ordering must be BP-2P-95 first and laser rear chuck second.`);
+    }
+    const ordering = [
+      caseCenter.indexOf('id="real-application-cases"'),
+      caseCenter.indexOf('id="bp-2p-95-pneumatic-chuck"'),
+      caseCenter.indexOf('id="laser-tube-rear-chuck"'),
+      caseCenter.indexOf('class="case-intro"'),
+      caseCenter.indexOf('id="engineering-selection-examples"'),
+    ];
+    if (ordering.some((position) => position < 0) || ordering.some((position, index) => index > 0 && position <= ordering[index - 1])) {
+      failures.push(`${language.code}/case-studies.html: required real-cases, how-to, and selection-example order is incorrect.`);
+    }
+    if ($center('#offshore').length !== 1 || $center('#cnc').length !== 1 || $center('#laser').length) {
+      failures.push(`${language.code}/case-studies.html: engineering examples must contain only offshore and CNC entries.`);
+    }
+    const $laserCase = $center('#laser-tube-rear-chuck');
+    const laserText = compactText($laserCase.text());
+    if ($laserCase.length !== 1) {
+      failures.push(`${language.code}/case-studies.html: model-neutral laser rear-chuck case is missing.`);
+    } else {
+      const expectedLaserImages = [
+        'laser-tube-rear-chuck-rotary-union-overview.webp',
+        'laser-tube-rear-chuck-rotary-union-mounting-detail.webp',
+      ];
+      for (const imageName of expectedLaserImages) {
+        const matches = $laserCase.find(`img[src$="${imageName}"]`);
+        if (matches.length !== 1) failures.push(`${language.code}/case-studies.html: ${imageName} must appear exactly once in the laser case.`);
+        if (matches.attr('loading') !== 'lazy') failures.push(`${language.code}/case-studies.html: ${imageName} must be lazy-loaded.`);
+      }
+      if ($laserCase.find('a[href*="BP-"]').length) failures.push(`${language.code}/case-studies.html: laser case must not link to an unconfirmed product model.`);
+      if (laserCaseForbiddenClaims[language.code]?.test(laserText)) failures.push(`${language.code}/case-studies.html: unsupported laser-case model, media, numeric specification, or performance claim detected.`);
+      if ($laserCase.find('.case-image.case-thumbnail').length !== 1 || $laserCase.find('.case-image.laser-case-detail').length !== 1) {
+        failures.push(`${language.code}/case-studies.html: laser case must use one 4:3 overview and one contained detail image.`);
+      }
+    }
+    const engineeringImages = [$center('#offshore img').attr('src'), $center('#cnc img').attr('src')];
+    if (!/BP-2P-130-0001-1\.webp$/.test(engineeringImages[0] || '') || !/BP-2P-30-0001-1\.webp$/.test(engineeringImages[1] || '')) {
+      failures.push(`${language.code}/case-studies.html: engineering examples must use the approved product reference images.`);
+    }
+    const productCards = $center('.case-products-grid .product-card');
+    if (productCards.length !== 4 || productCards.first().attr('data-href') !== 'BP-2P-95-0001.html') {
+      failures.push(`${language.code}/case-studies.html: related products must contain four cards with BP-2P-95-0001 first.`);
+    }
+    if ($center('#legacy-case-studies-styles').length) failures.push(`${language.code}/case-studies.html: disabled legacy style block must be removed.`);
+    if ($center('.faq-item[onclick]').length || $center('.faq-question').length !== 4) {
+      failures.push(`${language.code}/case-studies.html: FAQ must use four accessible buttons without inline item click handlers.`);
+    }
+    const faqIds = new Set();
+    $center('.faq-question').each((_, element) => {
+      const button = $center(element);
+      const answerId = button.attr('aria-controls');
+      if (element.tagName !== 'button' || button.attr('type') !== 'button' || button.attr('aria-expanded') !== 'false' || !answerId) {
+        failures.push(`${language.code}/case-studies.html: FAQ button accessibility attributes are incomplete.`);
+      } else if (faqIds.has(answerId) || $center(`#${answerId}[hidden]`).length !== 1) {
+        failures.push(`${language.code}/case-studies.html: FAQ answer id ${answerId} is missing, duplicated, or not initially hidden.`);
+      }
+      faqIds.add(answerId);
+    });
+    if (language.code !== config.sourceLanguage.code) {
+      for (const label of localizedCaseCenterEnglishLabels) {
+        if ($center(`[data-label="${label}"]`).length) failures.push(`${language.code}/case-studies.html: English mobile table label "${label}" detected.`);
+      }
+    }
+    if (!$center(`link[href*="case-studies.css?${caseCssVersion}"]`).length) failures.push(`${language.code}/case-studies.html: case-study CSS cache version is stale.`);
+    if (!$detail(`link[href*="case-studies.css?${caseCssVersion}"]`).length || !$detail(`link[href*="application-case.css?${caseCssVersion}"]`).length) {
+      failures.push(`${language.code}/${applicationCasePage}: case CSS cache version is stale.`);
+    }
+    if (language.code === 'en') {
+      const structuredText = $center('script[type="application/ld+json"]').text();
+      if (!structuredText.includes('"name": "Case Studies"')) failures.push('en/case-studies.html: JSON-LD breadcrumb must use Case Studies.');
+    }
+    try {
+      const searchIndex = JSON.parse(await fs.readFile(path.join(languageRoot, 'search-index.json'), 'utf8'));
+      const centerRecord = searchIndex.find((entry) => entry.url === 'case-studies.html');
+      if (!centerRecord) failures.push(`${language.code}/search-index.json: case-studies record is missing.`);
+      else if (caseCenterSearchForbiddenClaims[language.code]?.test(JSON.stringify(centerRecord))) {
+        failures.push(`${language.code}/search-index.json: stale or unsupported case-center wording detected.`);
+      }
+    } catch (error) {
+      failures.push(`${language.code}/search-index.json: case-center claim verification failed (${error.message}).`);
     }
     if ($product('.app-related-products .app-related-product').first().attr('href') !== applicationCasePage) {
       failures.push(`${language.code}/BP-2P-95-0001.html: the application case is not the first related resource.`);
