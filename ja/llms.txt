@@ -14,13 +14,13 @@
 - [BP-1P-0006 1入口6出口ロータリージョイント](https://www.begapunk.com/ja/BP-1P-0006.html): 1入口から6出口へ分配するロータリージョイント。G1/8、流路径4 mm、最高使用圧力1 MPa、最高回転数300 min⁻¹。
 - [BP-2P-0001 2流路ロータリージョイント | Begapunk](https://www.begapunk.com/ja/BP-2P-0001.html): フランジ取付の2流路ロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。空圧クランプ回路に適します。
 - [BP-2P-0002 2入口3出口ロータリージョイント](https://www.begapunk.com/ja/BP-2P-0002.html): 2入口3出口、G1/8接続、流路径4 mmのロータリージョイント。最高使用圧力1 MPa、最高回転数300 min⁻¹。
-- [BP-2P-08-0001 小型2流路ロータリージョイント](https://www.begapunk.com/ja/BP-2P-08-0001.html): M5接続の小型2流路ロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。小型治具や検査装置向けです。
+- [BP-2P-08-0001 小型2流路ロータリジョイント](https://www.begapunk.com/ja/BP-2P-08-0001.html): BP-2P-08-0001は圧縮空気用の小型2流路ロータリジョイントです。レーザー管切断機の後方チャックでの採用実績があり、仕様はチャック図面に基づいて確認します。
 - [BP-2P-130-0001 高圧2流路ロータリージョイント](https://www.begapunk.com/ja/BP-2P-130-0001.html): フランジ取付の高圧2流路ロータリージョイント。最高使用圧力5 MPa、最高回転数80 min⁻¹。油圧クランプ用途に適します。
 - [BP-2P-16-0001 貫通穴16 mmロータリージョイント](https://www.begapunk.com/ja/BP-2P-16-0001.html): 貫通穴径16 mm、フランジ取付の2流路ロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。
 - [BP-2P-30-0001 貫通穴30 mmロータリージョイント](https://www.begapunk.com/ja/BP-2P-30-0001.html): 貫通穴径30 mm、フランジ取付の2流路ロータリージョイント。最高使用圧力1 MPa、最高回転数150 min⁻¹。
 - [BP-2P-50-0001 粉じん環境向け2流路ロータリージョイント](https://www.begapunk.com/ja/BP-2P-50-0001.html): 空気用2流路ロータリージョイントBP-2P-50-0001。粉じん環境向けの保護カバー・ラビリンス構造で、認証済みIP保護等級は表示していません。
 - [BP-2P-95-0001 2入口4出口ロータリージョイント](https://www.begapunk.com/ja/BP-2P-95-0001.html): 2入口から4出口へ分配するロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。回転治具の空圧分配向けです。
-- [BP-3P-0004 3流路ロータリージョイント | Begapunk](https://www.begapunk.com/ja/BP-3P-0004.html): フランジ取付の3流路ロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。多回路の空圧治具に適します。
+- [BP-3P-0004 3流路ロータリジョイント | Begapunk](https://www.begapunk.com/ja/BP-3P-0004.html): BP-3P-0004は圧縮空気用の3流路ロータリジョイントです。レーザー管切断機の後方チャックでの採用実績があり、仕様はチャック図面に基づいて確認します。
 - [BP-3P-0006 G1/4 3流路ロータリージョイント](https://www.begapunk.com/ja/BP-3P-0006.html): G1/4接続、流路径6 mmの3流路ロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。
 - [BP-3P-0007 G1/8 3流路ロータリージョイント](https://www.begapunk.com/ja/BP-3P-0007.html): G1/8接続、流路径4 mmの小型3流路ロータリージョイント。最高使用圧力1 MPa、最高回転数200 min⁻¹。
 - [BP-3P-S06-0001 空圧・電気複合ロータリージョイント](https://www.begapunk.com/ja/BP-3P-S06-0001.html): 空圧3流路と電気6回路を一体化した複合ロータリージョイント。自動化設備の回転テーブルや治具に適します。
@@ -34,7 +34,7 @@
 - [充填・キャッピング機用ロータリージョイント](https://www.begapunk.com/ja/application-bottle-filling-capping.html): ロータリー式充填機やキャッピング機のグリッパ、真空保持、流体供給に用いるロータリージョイントの選定ポイント。
 - [CNC空圧クランプ用ロータリージョイント](https://www.begapunk.com/ja/application-cnc-pneumatic-clamping.html): CNC回転テーブル、割出し治具、空圧クランプに用いるロータリージョイントを、流路分離、圧力、取付方式から選定します。
 - [電子・電池検査治具用ロータリージョイント](https://www.begapunk.com/ja/application-electronics-battery-test-fixtures.html): 回転検査装置、空圧グリッパ、真空吸着、電池試験治具向けの空圧用・空圧電気複合ロータリージョイント選定ガイド。
-- [レーザー管切断機用ロータリージョイント](https://www.begapunk.com/ja/application-laser-tube-cutting.html): レーザー管切断機のクランプ、アシストガス、エアブロー、冷却液に用いるロータリージョイントの圧力・流路数・回転数を解説。
+- [レーザー管切断機の後方チャック用空圧ロータリジョイント | Begapunk](https://www.begapunk.com/ja/application-laser-tube-cutting.html): レーザー管切断機の後方チャックに圧縮空気を供給するロータリジョイントを、空圧回路数、使用圧力、回転数、取付スペース、接続寸法、配管方向から選定します。
 - [包装機械用ロータリージョイントの選定 | Begapunk](https://www.begapunk.com/ja/application-packaging-machinery.html): ロータリーシール、インデックステーブル、真空ステーション、充填機構に用いるロータリージョイントの選定ポイント。
 - [空圧工具・ホース用スイベルジョイント](https://www.begapunk.com/ja/application-pneumatic-tools-hose-anti-twist.html): エアドライバ、グラインダ、空圧ホースのねじれを抑えるスイベルジョイントを、ねじ規格、流量、使用流体、重量から選定します。
 - [ロボットハンド用ロータリージョイント](https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html): ロボット手首のグリッパ、真空吸着、ツールチェンジャ向けロータリージョイントを、重量、流路分離、取付寸法から選定します。
@@ -42,7 +42,7 @@
 - [印刷・繊維・加工機用ロータリージョイント](https://www.begapunk.com/ja/application-textile-printing-converting.html): 印刷機、繊維ワインダ、コンバーティング設備向けに、流体、圧力、回転数、流路数、貫通穴からロータリージョイントを選定します。
 - [真空包装機用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/application-vacuum-packaging-machines.html): ロータリー式真空包装機、袋詰め機、真空シールヘッド、回転包装ステーション向けの空圧・真空ロータリージョイント。
 - [溶接ポジショナ用ロータリージョイント](https://www.begapunk.com/ja/application-welding-positioners.html): 溶接ポジショナ、回転溶接台、ロボット溶接治具で回転中に空圧クランプを使用するためのロータリージョイント選定ガイド。
-- [ロータリージョイントの用途事例・選定例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): BP-2P-95-0001の空圧式チャック組込みと、レーザー切断機の後方チャックへの空圧用ロータリジョイント組込みを、実際の写真と確認範囲に基づいて紹介します。
+- [ロータリジョイントの用途事例・選定例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): 写真で確認できる2件の組込み事例と2件の選定例を紹介します。レーザー管切断機の後方チャック用途ではBP-3P-0004とBP-2P-08-0001の採用実績がありますが、各写真の型式は個別特定していません。
 - [BP-2P-95-0001 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0001空圧用ロータリージョイントを空圧式チャックへ組み込んだ事例です。固定側から回転側への圧縮空気の供給と取付状態を工場内の組立写真で紹介します。
 
 ## 技術記事

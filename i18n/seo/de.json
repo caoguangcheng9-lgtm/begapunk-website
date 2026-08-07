@@ -51,7 +51,7 @@
   },
   "BP-2P-08-0001.html": {
     "title": "BP-2P-08-0001 kompakte Zweikanal-Drehdurchführung",
-    "description": "Kompakte Zweikanal-Drehdurchführung BP-2P-08-0001 mit M5-Anschluss, bis 1 MPa und 200 min⁻¹ für kleine Drehtische und Prüfvorrichtungen.",
+    "description": "BP-2P-08-0001 ist eine kompakte Zweikanal-Drehdurchführung für Druckluft. Der Einsatz am hinteren Spannfutter von Laser-Rohrschneidmaschinen ist bestätigt; die Auslegung erfolgt anhand der Spannfutterzeichnung.",
     "h1": "BP-2P-08-0001 kompakte Zweikanal-Drehdurchführung"
   },
   "BP-2P-130-0001.html": {
@@ -81,7 +81,7 @@
   },
   "BP-3P-0004.html": {
     "title": "BP-3P-0004 Dreikanal-Drehdurchführung | Begapunk",
-    "description": "Dreikanal-Drehdurchführung BP-3P-0004 mit Flanschanschluss, bis 1 MPa und 200 min⁻¹ für Mehrkreis-Spannvorrichtungen und Drehtische.",
+    "description": "BP-3P-0004 ist eine pneumatische Dreikanal-Drehdurchführung. Der Einsatz am hinteren Spannfutter von Laser-Rohrschneidmaschinen ist bestätigt; die Auslegung erfolgt anhand der Spannfutterzeichnung.",
     "h1": "BP-3P-0004 Dreikanal-Drehdurchführung"
   },
   "BP-3P-0006.html": {
@@ -135,9 +135,9 @@
     "h1": "Drehdurchführungen für Elektronik- und Batterieprüfanlagen"
   },
   "application-laser-tube-cutting.html": {
-    "title": "Drehdurchführungen für Rohrlaserschneidmaschinen",
-    "description": "Auswahl pneumatischer Drehdurchführungen für Rohrlaser: Spannluft, Ausblasen, Kühlmittel, Kanalzahl, Betriebsdruck und Drehzahl richtig festlegen.",
-    "h1": "Drehdurchführungen für Rohrlaserschneidmaschinen"
+    "title": "Pneumatische Drehdurchführungen für hintere Spannfutter | Begapunk",
+    "description": "Auswahl pneumatischer Drehdurchführungen für Druckluftkreise am hinteren Spannfutter von Laser-Rohrschneidmaschinen anhand der Anzahl der Pneumatikkreise, des Betriebsdrucks, der Drehzahl, des Bauraums, der Anschlüsse und der Schlauchausrichtung.",
+    "h1": "Pneumatische Drehdurchführungen für hintere Spannfutter von Laser-Rohrschneidmaschinen"
   },
   "application-packaging-machinery.html": {
     "title": "Drehdurchführungen für Verpackungsmaschinen | Begapunk",
@@ -221,7 +221,7 @@
   },
   "case-studies.html": {
     "title": "Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen | Begapunk",
-    "description": "Zwei fotodokumentierte Einbaufälle – BP-2P-95-0001 im pneumatischen Spannfutter und eine Drehdurchführung am hinteren Spannfutter einer Laser-Rohrschneidmaschine – plus zwei Auslegungsbeispiele.",
+    "description": "Zwei fotodokumentierte Einbaufälle und zwei Auslegungsbeispiele. Für hintere Spannfutter von Laser-Rohrschneidmaschinen sind BP-3P-0004 und BP-2P-08-0001 als eingesetzte Modelle bestätigt; eine Zuordnung zu einzelnen Fotos liegt nicht vor.",
     "h1": "Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen"
   },
   "case-bp-2p-95-pneumatic-chuck-integration.html": {

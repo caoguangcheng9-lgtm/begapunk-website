@@ -391,10 +391,72 @@ const unsupportedApplicationCaseClaims = {
   ru: /Сборка и пусконаладка|несколько независимых[^.]{0,80}канал/iu,
 };
 const laserCaseForbiddenClaims = {
-  en: /BP-\d|\boxygen\b|\bnitrogen\b|\bcoolant\b|assist[- ]gas|\b\d+(?:\.\d+)?\s*(?:MPa|bar|RPM|passages?|channels?)\b/i,
-  de: /BP-\d|Sauerstoff|Stickstoff|Kühlmittel|Schneidgas|\b\d+(?:[,.]\d+)?\s*(?:MPa|bar|min⁻¹|U\/min|Kanäle?)\b/iu,
-  ja: /BP-\d|酸素|窒素|冷却液|クーラント|アシストガス|\d+(?:\.\d+)?\s*(?:MPa|bar|min⁻¹|回転\/分|流路)/u,
-  ru: /BP-\d|кислород|азот|охлаждающ|СОЖ|вспомогательн(?:ый|ого) газ|\b\d+(?:[,.]\d+)?\s*(?:МПа|бар|об\/мин|канал)/iu,
+  en: /\boxygen\b|\bnitrogen\b|\bcoolant\b|(?:process|assist)[- ]gas|\b\d+(?:\.\d+)?\s*(?:MPa|bar|RPM)\b/i,
+  de: /Sauerstoff|Stickstoff|Kühlmittel|Prozessgas|Schneidgas|\b\d+(?:[,.]\d+)?\s*(?:MPa|bar|min⁻¹|U\/min)\b/iu,
+  ja: /酸素|窒素|冷却液|クーラント|プロセスガス|アシストガス|\d+(?:\.\d+)?\s*(?:MPa|bar|min⁻¹|回転\/分)/u,
+  ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ|\b\d+(?:[,.]\d+)?\s*(?:МПа|бар|об\/мин)\b/iu,
+};
+const laserPhotoModelBoundary = {
+  en: /has not been individually identified as either model/i,
+  de: /eindeutige Zuordnung[^.]{0,160}(?:liegt nicht vor|nicht vorliegt)/iu,
+  ja: /各写真[^。]{0,120}(?:個別特定|個別に特定)[^。]{0,80}(?:していません|したものではありません)/u,
+  ru: /соответстви[ея][^.]{0,180}(?:конкретной модели|отдельн)[^.]{0,120}не установлено/iu,
+};
+const laserSameCategoryBoundary = {
+  en: /same application category[^.]{0,180}not presented as two views of the same machine/i,
+  de: /selben Anwendungskategorie[^.]{0,180}nicht als zwei Ansichten derselben Maschine/iu,
+  ja: /同じ用途区分[^。]{0,180}同一装置[^。]{0,100}別角度[^。]{0,100}位置付けていません/u,
+  ru: /(?:одной категории применения[\s\S]{0,320}не представлены как два (?:вида|ракурса) одной и той же машины|не представлены как два (?:вида|ракурса) одного и того же оборудования[\s\S]{0,320}одной категории применения)/iu,
+};
+const productPhotoModelBoundary = {
+  en: /has not been individually identified as this model/i,
+  de: /nicht einzeln als dieses Modell identifiziert/iu,
+  ja: /本型式に個別特定したものではありません/u,
+  ru: /модель изделия[^.]{0,120}отдельно не идентифицирована/iu,
+};
+const permittedLaserCaseSafetyBoundary = {
+  en: /The confirmed scope for the two standard models is the rear chuck's compressed-air circuits; process or assist-gas transfer is not included\./i,
+  de: /$^/,
+  ja: /$^/,
+  ru: /$^/,
+};
+const productApplicationForbiddenClaims = {
+  en: /\boxygen\b|\bnitrogen\b|\bcoolant\b|(?:process|assist)[- ]gas|(?:clamp|unclamp|purge)\s+(?:port|passage|channel)|(?:port|passage|channel)[^.]{0,40}(?:clamp|unclamp|purge)/i,
+  de: /Sauerstoff|Stickstoff|Kühlmittel|Prozessgas|Schneidgas|(?:Spannen|Lösen|Abblasen|Spülluft)[^.]{0,50}(?:Anschluss|Kanal)|(?:Anschluss|Kanal)[^.]{0,50}(?:Spannen|Lösen|Abblasen|Spülluft)/iu,
+  ja: /酸素|窒素|冷却液|クーラント|プロセスガス|アシストガス|(?:クランプ|アンクランプ|パージ|吹き飛ばし)[^。]{0,50}(?:ポート|流路)|(?:ポート|流路)[^。]{0,50}(?:クランプ|アンクランプ|パージ|吹き飛ばし)/u,
+  ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ|(?:зажим|разжим|продувк)[^.]{0,60}(?:порт|канал)|(?:порт|канал)[^.]{0,60}(?:зажим|разжим|продувк)/iu,
+};
+const laserApplicationMediaClaims = {
+  en: /\boxygen\b|\bnitrogen\b|\bcoolant\b|(?:process|assist)[- ]gas/i,
+  de: /Sauerstoff|Stickstoff|Kühlmittel|Prozessgas|Schneidgas/iu,
+  ja: /酸素|窒素|冷却液|クーラント|プロセスガス|アシストガス/u,
+  ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ/iu,
+};
+const permittedNegativeMediaClaim = {
+  en: /does not establish suitability|outside the verified scope|requires a separately|\bNo\./i,
+  de: /keine Freigabe|außerhalb des bestätigten Einsatzbereichs|erfordert ein getrennt|\bNein\./iu,
+  ja: /適合を示すものではありません|確認済み用途には含まれません|確認済み範囲外|別系統[^。]{0,80}必要/u,
+  ru: /не является подтверждением|не входит в подтверждённую область|требуется отдельно|\bНет\./iu,
+};
+const laserApplicationNumericClaims = /(?:\b\d+(?:[.,]\d+)?\s*(?:MPa|МПа|bar|бар|RPM|rpm|об\/мин|min⁻¹|L\/min|л\/мин)\b|30\s*%|ISO\s*4414|(?:orifice|bore|孔径|オリフィス|диаметр прохода)[^.;。]{0,40}\d+\s*mm)/iu;
+const staleLaserApplicationModels = /BP-2P-0001|BP-3P-0006|BP-2P-130-0001/i;
+const expectedLaserApplicationHeadings = {
+  en: 'Pneumatic Rotary Unions for Laser Tube Cutting Rear Chucks',
+  de: 'Pneumatische Drehdurchführungen für hintere Spannfutter von Laser-Rohrschneidmaschinen',
+  ja: 'レーザー管切断機の後方チャック用空圧ロータリジョイント',
+  ru: 'Пневматические ротационные соединения для задних патронов станков лазерной резки труб',
+};
+const rearChuckTerms = {
+  en: /rear[- ]chuck/i,
+  de: /hinter(?:en|e[msn]?) Spannfutter/iu,
+  ja: /後方チャック/u,
+  ru: /задн(?:его|ем|ий|их)[^.]{0,40}патрон/iu,
+};
+const laserMachineTerms = {
+  en: /laser tube cutting/i,
+  de: /Laser-Rohrschneidmaschinen/iu,
+  ja: /レーザー管切断機/u,
+  ru: /лазерной резки труб/iu,
 };
 const caseCenterSearchForbiddenClaims = {
   en: /\boxygen\b|\bnitrogen\b|\bcoolant\b|assist[- ]gas|Laser cutting & packaging/i,
@@ -406,19 +468,28 @@ const localizedCaseCenterEnglishLabels = [
   'Selection item', 'Typical question', 'Begapunk direction', 'Input required',
   'Why it matters', 'Check', 'Required confirmation',
 ];
-const caseCssVersion = 'v=20260807-case-integration2';
+const caseCenterCssVersion = 'v=20260807-laser-models';
+const caseDetailCssVersion = 'v=20260807-case-integration2';
 for (const language of verifiedLanguages) {
   const languageRoot = language.code === config.sourceLanguage.code ? localizedRoot : path.join(localizedRoot, language.code);
   try {
     const caseCenter = await fs.readFile(path.join(languageRoot, 'case-studies.html'), 'utf8');
     const product = await fs.readFile(path.join(languageRoot, 'BP-2P-95-0001.html'), 'utf8');
     const detail = await fs.readFile(path.join(languageRoot, applicationCasePage), 'utf8');
+    const laserApplicationPageName = 'application-laser-tube-cutting.html';
+    const laserApplication = await fs.readFile(path.join(languageRoot, laserApplicationPageName), 'utf8');
+    const verifiedProductPageNames = ['BP-3P-0004.html', 'BP-2P-08-0001.html'];
+    const verifiedProductSources = new Map(await Promise.all(verifiedProductPageNames.map(async (pageName) => [
+      pageName,
+      await fs.readFile(path.join(languageRoot, pageName), 'utf8'),
+    ])));
     if (!caseCenter.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/case-studies.html: application case link is missing.`);
     if (!product.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/BP-2P-95-0001.html: application case link is missing.`);
     if (!detail.includes('href="BP-2P-95-0001.html"')) failures.push(`${language.code}/${applicationCasePage}: product backlink is missing.`);
     const $center = load(caseCenter, { decodeEntities: false });
     const $product = load(product, { decodeEntities: false });
     const $detail = load(detail, { decodeEntities: false });
+    const $laserApplication = load(laserApplication, { decodeEntities: false });
     if ($center('#real-application-cases').length !== 1 || $center('#engineering-selection-examples').length !== 1) {
       failures.push(`${language.code}/case-studies.html: real cases and selection examples are not separated.`);
     }
@@ -457,8 +528,29 @@ for (const language of verifiedLanguages) {
         if (matches.length !== 1) failures.push(`${language.code}/case-studies.html: ${imageName} must appear exactly once in the laser case.`);
         if (matches.attr('loading') !== 'lazy') failures.push(`${language.code}/case-studies.html: ${imageName} must be lazy-loaded.`);
       }
-      if ($laserCase.find('a[href*="BP-"]').length) failures.push(`${language.code}/case-studies.html: laser case must not link to an unconfirmed product model.`);
-      if (laserCaseForbiddenClaims[language.code]?.test(laserText)) failures.push(`${language.code}/case-studies.html: unsupported laser-case model, media, numeric specification, or performance claim detected.`);
+      const modelLinks = $laserCase.find('a[href^="BP-"]').map((_, element) => $center(element).attr('href')).get();
+      const expectedModelLinks = ['BP-3P-0004.html', 'BP-2P-08-0001.html'];
+      const uniqueModelLinks = [...new Set(modelLinks)];
+      if (uniqueModelLinks.length !== expectedModelLinks.length || expectedModelLinks.some((href) => !uniqueModelLinks.includes(href))) {
+        failures.push(`${language.code}/case-studies.html: laser case must link only to the two factory-confirmed application models.`);
+      }
+      if ($laserCase.find('figure a[href^="BP-"], .case-image a[href^="BP-"]').length) {
+        failures.push(`${language.code}/case-studies.html: a photograph must not be linked to a specific product model.`);
+      }
+      const imageContext = compactText($laserCase.find('figure, figcaption, .case-image').text());
+      if (/\bBP-[A-Z0-9-]+\b/i.test(imageContext)) {
+        failures.push(`${language.code}/case-studies.html: photograph captions must remain model-neutral.`);
+      }
+      if (!laserText.includes('BP-3P-0004') || !laserText.includes('BP-2P-08-0001') || !laserPhotoModelBoundary[language.code]?.test(laserText)) {
+        failures.push(`${language.code}/case-studies.html: confirmed application models or the photograph-identification boundary is missing.`);
+      }
+      if (!laserSameCategoryBoundary[language.code]?.test(laserText)) {
+        failures.push(`${language.code}/case-studies.html: the same-category and not-the-same-machine evidence boundary is missing.`);
+      }
+      const laserClaimText = laserText.replace(permittedLaserCaseSafetyBoundary[language.code], '');
+      if (laserCaseForbiddenClaims[language.code]?.test(laserClaimText) || staleLaserApplicationModels.test(laserClaimText)) {
+        failures.push(`${language.code}/case-studies.html: unsupported laser-case model, media, numeric specification, or performance claim detected.`);
+      }
       if ($laserCase.find('.case-image.case-thumbnail').length !== 1 || $laserCase.find('.case-image.laser-case-detail').length !== 1) {
         failures.push(`${language.code}/case-studies.html: laser case must use one 4:3 overview and one contained detail image.`);
       }
@@ -467,9 +559,18 @@ for (const language of verifiedLanguages) {
     if (!/BP-2P-130-0001-1\.webp$/.test(engineeringImages[0] || '') || !/BP-2P-30-0001-1\.webp$/.test(engineeringImages[1] || '')) {
       failures.push(`${language.code}/case-studies.html: engineering examples must use the approved product reference images.`);
     }
-    const productCards = $center('.case-products-grid .product-card');
-    if (productCards.length !== 4 || productCards.first().attr('data-href') !== 'BP-2P-95-0001.html') {
-      failures.push(`${language.code}/case-studies.html: related products must contain four cards with BP-2P-95-0001 first.`);
+    const verifiedApplicationCards = $center('.verified-application-products .product-card');
+    const verifiedApplicationHrefs = verifiedApplicationCards.map((_, element) => $center(element).attr('data-href')).get();
+    const selectionExampleCards = $center('.selection-example-products .product-card');
+    const selectionExampleHrefs = selectionExampleCards.map((_, element) => $center(element).attr('data-href')).get();
+    if (verifiedApplicationCards.length !== 3 || verifiedApplicationHrefs.join('|') !== 'BP-2P-95-0001.html|BP-3P-0004.html|BP-2P-08-0001.html') {
+      failures.push(`${language.code}/case-studies.html: verified-application products must contain BP-2P-95, BP-3P-0004 and BP-2P-08-0001 in that order.`);
+    }
+    if (selectionExampleCards.length !== 2 || selectionExampleHrefs.join('|') !== 'BP-2P-130-0001.html|BP-2P-30-0001.html') {
+      failures.push(`${language.code}/case-studies.html: selection-example products must contain BP-2P-130-0001 and BP-2P-30-0001.`);
+    }
+    if ($center('.case-products-grid .product-card[data-href="BP-2P-0001.html"]').length) {
+      failures.push(`${language.code}/case-studies.html: BP-2P-0001 must not remain in the related-product groups.`);
     }
     if ($center('#legacy-case-studies-styles').length) failures.push(`${language.code}/case-studies.html: disabled legacy style block must be removed.`);
     if ($center('.faq-item[onclick]').length || $center('.faq-question').length !== 4) {
@@ -478,12 +579,15 @@ for (const language of verifiedLanguages) {
     const faqIds = new Set();
     $center('.faq-question').each((_, element) => {
       const button = $center(element);
+      const buttonId = button.attr('id');
       const answerId = button.attr('aria-controls');
-      if (element.tagName !== 'button' || button.attr('type') !== 'button' || button.attr('aria-expanded') !== 'false' || !answerId) {
+      const answer = answerId ? $center(`#${answerId}`) : $center();
+      if (element.tagName !== 'button' || button.attr('type') !== 'button' || button.attr('aria-expanded') !== 'false' || !buttonId || !answerId) {
         failures.push(`${language.code}/case-studies.html: FAQ button accessibility attributes are incomplete.`);
-      } else if (faqIds.has(answerId) || $center(`#${answerId}[hidden]`).length !== 1) {
-        failures.push(`${language.code}/case-studies.html: FAQ answer id ${answerId} is missing, duplicated, or not initially hidden.`);
+      } else if (faqIds.has(buttonId) || faqIds.has(answerId) || answer.length !== 1 || !answer.is('[hidden]') || answer.attr('role') !== 'region' || answer.attr('aria-labelledby') !== buttonId) {
+        failures.push(`${language.code}/case-studies.html: FAQ ids, region semantics, labels, or initial hidden state are incomplete for ${answerId}.`);
       }
+      faqIds.add(buttonId);
       faqIds.add(answerId);
     });
     if (language.code !== config.sourceLanguage.code) {
@@ -491,8 +595,8 @@ for (const language of verifiedLanguages) {
         if ($center(`[data-label="${label}"]`).length) failures.push(`${language.code}/case-studies.html: English mobile table label "${label}" detected.`);
       }
     }
-    if (!$center(`link[href*="case-studies.css?${caseCssVersion}"]`).length) failures.push(`${language.code}/case-studies.html: case-study CSS cache version is stale.`);
-    if (!$detail(`link[href*="case-studies.css?${caseCssVersion}"]`).length || !$detail(`link[href*="application-case.css?${caseCssVersion}"]`).length) {
+    if (!$center(`link[href*="case-studies.css?${caseCenterCssVersion}"]`).length) failures.push(`${language.code}/case-studies.html: case-study CSS cache version is stale.`);
+    if (!$detail(`link[href*="case-studies.css?${caseDetailCssVersion}"]`).length || !$detail(`link[href*="application-case.css?${caseDetailCssVersion}"]`).length) {
       failures.push(`${language.code}/${applicationCasePage}: case CSS cache version is stale.`);
     }
     if (language.code === 'en') {
@@ -503,8 +607,33 @@ for (const language of verifiedLanguages) {
       const searchIndex = JSON.parse(await fs.readFile(path.join(languageRoot, 'search-index.json'), 'utf8'));
       const centerRecord = searchIndex.find((entry) => entry.url === 'case-studies.html');
       if (!centerRecord) failures.push(`${language.code}/search-index.json: case-studies record is missing.`);
-      else if (caseCenterSearchForbiddenClaims[language.code]?.test(JSON.stringify(centerRecord))) {
+      else if (caseCenterSearchForbiddenClaims[language.code]?.test(
+        JSON.stringify(centerRecord).replace(permittedLaserCaseSafetyBoundary[language.code], ''),
+      )) {
         failures.push(`${language.code}/search-index.json: stale or unsupported case-center wording detected.`);
+      } else if (!JSON.stringify(centerRecord).includes('BP-3P-0004') || !JSON.stringify(centerRecord).includes('BP-2P-08-0001')) {
+        failures.push(`${language.code}/search-index.json: case-studies record does not include both confirmed laser rear-chuck models.`);
+      }
+      const laserApplicationRecord = searchIndex.find((entry) => entry.url === 'application-laser-tube-cutting.html');
+      if (!laserApplicationRecord) {
+        failures.push(`${language.code}/search-index.json: laser application record is missing.`);
+      } else {
+        const recordText = JSON.stringify(laserApplicationRecord);
+        if (laserApplicationRecord.h1 !== expectedLaserApplicationHeadings[language.code]) {
+          failures.push(`${language.code}/search-index.json: laser application H1 is not synchronized.`);
+        }
+        if (!recordText.includes('BP-3P-0004') || !recordText.includes('BP-2P-08-0001') || staleLaserApplicationModels.test(recordText)) {
+          failures.push(`${language.code}/search-index.json: laser application model coverage is missing or stale.`);
+        }
+        if (laserApplicationMediaClaims[language.code]?.test(laserApplicationRecord.description || '')) {
+          failures.push(`${language.code}/search-index.json: laser application description contains unsupported medium wording.`);
+        }
+      }
+      for (const pageName of ['BP-3P-0004.html', 'BP-2P-08-0001.html']) {
+        const productRecord = searchIndex.find((entry) => entry.url === pageName);
+        if (!productRecord || !rearChuckTerms[language.code]?.test(JSON.stringify(productRecord))) {
+          failures.push(`${language.code}/search-index.json: ${pageName} does not expose the verified rear-chuck application.`);
+        }
       }
     } catch (error) {
       failures.push(`${language.code}/search-index.json: case-center claim verification failed (${error.message}).`);
@@ -535,6 +664,78 @@ for (const language of verifiedLanguages) {
     const visibleDetail = compactText($detail('main').text());
     if (unsupportedApplicationCaseClaims[language.code]?.test(visibleDetail)) {
       failures.push(`${language.code}/${applicationCasePage}: unsupported commissioning or independent-circuit claim detected.`);
+    }
+
+    const laserApplicationH1 = compactText($laserApplication('h1').first().text());
+    if (laserApplicationH1 !== expectedLaserApplicationHeadings[language.code]) {
+      failures.push(`${language.code}/${laserApplicationPageName}: H1 does not match the approved rear-chuck positioning.`);
+    }
+    const verifiedModels = $laserApplication('#verified-laser-rear-chuck-models');
+    const verifiedModelLinks = verifiedModels.find('a[href^="BP-"]').map((_, element) => $laserApplication(element).attr('href')).get();
+    if (verifiedModels.length !== 1 || verifiedModelLinks.join('|') !== 'BP-3P-0004.html|BP-2P-08-0001.html') {
+      failures.push(`${language.code}/${laserApplicationPageName}: the confirmed-model section must link only BP-3P-0004 and BP-2P-08-0001.`);
+    }
+    const safetyBoundary = $laserApplication('#process-gas-safety-boundary');
+    if (safetyBoundary.length !== 1 || safetyBoundary.find('a[href^="BP-"]').length || /BP-3P-0004|BP-2P-08-0001/i.test(safetyBoundary.text())) {
+      failures.push(`${language.code}/${laserApplicationPageName}: the separate process-gas boundary is missing or recommends a standard model.`);
+    }
+    if (!$laserApplication('a[href="case-studies.html#laser-tube-rear-chuck"]').length) {
+      failures.push(`${language.code}/${laserApplicationPageName}: real laser rear-chuck case link is missing.`);
+    }
+    const metadataText = [
+      $laserApplication('meta[name="description"]').attr('content'),
+      $laserApplication('meta[property="og:description"]').attr('content'),
+      $laserApplication('meta[name="twitter:description"]').attr('content'),
+    ].filter(Boolean).join(' ');
+    if (laserApplicationMediaClaims[language.code]?.test(metadataText)) {
+      failures.push(`${language.code}/${laserApplicationPageName}: metadata still mixes process gas or coolant with the pneumatic rear-chuck scope.`);
+    }
+    const applicationMain = $laserApplication('body').clone();
+    applicationMain.find('header, nav, footer, script, style, .cookie-banner, .i18n-switcher').remove();
+    applicationMain.find('#process-gas-safety-boundary').remove();
+    applicationMain.find('.app-faq-item').each((_, element) => {
+      const faq = $laserApplication(element);
+      const faqText = compactText(faq.text());
+      if (!laserApplicationMediaClaims[language.code]?.test(faqText)) return;
+      if (!permittedNegativeMediaClaim[language.code]?.test(faqText)) failures.push(`${language.code}/${laserApplicationPageName}: FAQ contains an affirmative process-gas or coolant claim.`);
+      faq.remove();
+    });
+    const applicationMainText = compactText(applicationMain.text());
+    if (laserApplicationMediaClaims[language.code]?.test(applicationMainText)) {
+      failures.push(`${language.code}/${laserApplicationPageName}: process-gas or coolant wording appears outside the separate safety boundary.`);
+    }
+    if (staleLaserApplicationModels.test(laserApplication)) {
+      failures.push(`${language.code}/${laserApplicationPageName}: a stale direct-recommendation model remains.`);
+    }
+    if (laserApplicationNumericClaims.test(applicationMainText)) {
+      failures.push(`${language.code}/${laserApplicationPageName}: an unsupported numeric pressure, speed, derating, flow, or orifice conclusion remains.`);
+    }
+
+    for (const pageName of verifiedProductPageNames) {
+      const productSource = verifiedProductSources.get(pageName);
+      const $verifiedProduct = load(productSource, { decodeEntities: false });
+      const applicationEntry = $verifiedProduct('[data-verified-application="laser-rear-chuck"]');
+      const applicationEntryText = compactText(applicationEntry.text());
+      if (applicationEntry.length !== 1) {
+        failures.push(`${language.code}/${pageName}: verified laser rear-chuck application entry is missing or duplicated.`);
+        continue;
+      }
+      if (applicationEntry.find('a[href="case-studies.html#laser-tube-rear-chuck"]').length !== 1
+          || applicationEntry.find('a[href="application-laser-tube-cutting.html"]').length !== 1) {
+        failures.push(`${language.code}/${pageName}: verified application entry must link to the case center and application guide.`);
+      }
+      if (productApplicationForbiddenClaims[language.code]?.test(applicationEntryText)) {
+        failures.push(`${language.code}/${pageName}: verified application entry contains an unsupported medium or port-function claim.`);
+      }
+      if (!productPhotoModelBoundary[language.code]?.test(applicationEntryText)) {
+        failures.push(`${language.code}/${pageName}: photograph-to-model identification boundary is missing from the verified application entry.`);
+      }
+      const structuredText = $verifiedProduct('script[type="application/ld+json"]').text();
+      if (!structuredText.includes('2026-08-07')
+          || !laserMachineTerms[language.code]?.test(structuredText)
+          || !rearChuckTerms[language.code]?.test(structuredText)) {
+        failures.push(`${language.code}/${pageName}: structured data date or verified laser application description is not synchronized.`);
+      }
     }
   } catch (error) {
     failures.push(`${language.code}/${applicationCasePage}: three-way link verification failed (${error.message}).`);

@@ -32,13 +32,13 @@ Use the language edition that best matches the user's query. Technical model cod
 - [BP-1P-0006](https://www.begapunk.com/BP-1P-0006.html): 1-in-6-out rotary joint with 4 mm orifices and G1/8 connections.
 - [BP-2P-0001](https://www.begapunk.com/BP-2P-0001.html): 2-in-2-out flange-mounted rotary joint, maximum pressure 1 MPa.
 - [BP-2P-0002](https://www.begapunk.com/BP-2P-0002.html): 2-in-3-out rotary joint with 4 mm orifices and G1/8 connections.
-- [BP-2P-08-0001](https://www.begapunk.com/BP-2P-08-0001.html): Compact 2-in-2-out rotary joint with M5 threaded mounting.
+- [BP-2P-08-0001](https://www.begapunk.com/BP-2P-08-0001.html): Compact two-passage pneumatic rotary union with confirmed use in laser tube-cutting rear-chuck compressed-air applications; the photographed unit has not been individually identified as this model.
 - [BP-2P-16-0001](https://www.begapunk.com/BP-2P-16-0001.html): 2-in-2-out flange-mounted rotary joint with a 16 mm bore.
 - [BP-2P-30-0001](https://www.begapunk.com/BP-2P-30-0001.html): 2-in-2-out flange-mounted rotary joint with a 30 mm bore.
 - [BP-2P-50-0001](https://www.begapunk.com/BP-2P-50-0001.html): Two-passage air rotary joint with a protective shroud and labyrinth for dusty environments; no certified IP rating is claimed. Stator 4 × M5 × 10 mm, rotor 6 × M5 × 8 mm; confirm the supplied drawing and configuration weight.
 - [BP-2P-95-0001](https://www.begapunk.com/BP-2P-95-0001.html): 2-in-4-out rotary joint, maximum pressure 1 MPa.
 - [BP-2P-130-0001](https://www.begapunk.com/BP-2P-130-0001.html): Heavy-duty 2-in-2-out rotary joint, maximum pressure 5 MPa.
-- [BP-3P-0004](https://www.begapunk.com/BP-3P-0004.html): 3-in-3-out flange-mounted rotary joint, maximum pressure 1 MPa.
+- [BP-3P-0004](https://www.begapunk.com/BP-3P-0004.html): Three-passage pneumatic rotary union with confirmed use in laser tube-cutting rear-chuck compressed-air applications; the photographed unit has not been individually identified as this model.
 - [BP-3P-0006](https://www.begapunk.com/BP-3P-0006.html): 3-in-3-out rotary joint with 6 mm orifices and G1/4 connections.
 - [BP-3P-0007](https://www.begapunk.com/BP-3P-0007.html): 3-in-3-out rotary joint with 4 mm orifices and G1/8 connections.
 - [BP-3P-S06-0001](https://www.begapunk.com/BP-3P-S06-0001.html): Combined 3-passage pneumatic and 6-circuit electrical rotary joint.
@@ -47,7 +47,7 @@ Use the language edition that best matches the user's query. Technical model cod
 
 ## Application guides
 
-- [Laser tube cutting machines](https://www.begapunk.com/application-laser-tube-cutting.html): Selection considerations for pneumatic circuits on rotating cutting equipment.
+- [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck; BP-3P-0004 and BP-2P-08-0001 have confirmed use in this application category, without photograph-to-model identification.
 - [Packaging machinery](https://www.begapunk.com/application-packaging-machinery.html): Rotary-union selection for packaging equipment.
 - [Bottle filling and capping](https://www.begapunk.com/application-bottle-filling-capping.html): Fluid and pneumatic transfer for filling and capping machines.
 - [CNC pneumatic clamping](https://www.begapunk.com/application-cnc-pneumatic-clamping.html): Selection for rotating pneumatic fixtures and clamps.
@@ -77,7 +77,7 @@ Use the language edition that best matches the user's query. Technical model cod
 ## Company
 
 - [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
-- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Two photo-supported rotary-union installations are presented separately from two transparent engineering selection examples; the laser rear-chuck case remains model-neutral.
+- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Two photo-supported rotary-union installations are presented separately from two engineering selection examples. BP-3P-0004 and BP-2P-08-0001 have confirmed use in the laser rear-chuck application category, but neither photograph has been individually matched to either model.
 - [Knowledge center](https://www.begapunk.com/blog.html): Technical articles about rotary-joint selection and maintenance.
 
 ## Deutsch - wichtigste Seiten
