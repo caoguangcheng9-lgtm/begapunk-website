@@ -1,4 +1,4 @@
-/* BP-2P-95 pneumatic chuck application case: only styles not supplied by case-studies.css. */
+/* Shared application-case styles not supplied by case-studies.css. */
 
 .page-application-case .cs-hero {
     padding: 56px 0 50px;
@@ -103,7 +103,8 @@
 
 @media (max-width: 640px) {
     .page-application-case .case-summary-table td {
-        grid-template-columns: minmax(92px, 0.34fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4px;
     }
 
     .page-application-case .case-final-actions {

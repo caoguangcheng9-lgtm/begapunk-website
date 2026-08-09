@@ -1,0 +1,287 @@
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+
+const root = path.resolve(import.meta.dirname, '..');
+const checkOnly = process.argv.includes('--check');
+
+const technicalNoteVariants = [
+  { sourceThreshold: '', deThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
+  { sourceThreshold: '', deThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'August 7, 2026', deDate: '7. August 2026', jaDate: '2026年8月7日', ruDate: '7 августа 2026 г.' },
+  { sourceThreshold: ' above 5 MPa', deThreshold: ' über 5 MPa', jaThreshold: '（5 MPa超）', ruThreshold: ' свыше 5 МПа', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
+  { sourceThreshold: ' above 1 MPa', deThreshold: ' über 1 MPa', jaThreshold: '（1 MPa超）', ruThreshold: ' свыше 1 МПа', sourceDate: 'August 7, 2026', deDate: '7. August 2026', jaDate: '2026年8月7日', ruDate: '7 августа 2026 г.' },
+  { sourceThreshold: ' above 1 MPa', deThreshold: ' über 1 MPa', jaThreshold: '（1 MPa超）', ruThreshold: ' свыше 1 МПа', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
+];
+
+const technicalNoteRows = technicalNoteVariants.map((variant) => ({
+  source: `<strong>Technical Note:</strong> Published operating limits must be confirmed against the current product page and approved drawing; production inspection is separate from operating-rating validation. Actual performance depends on operating conditions, media quality, installation practices, and maintenance schedule. For applications outside standard ratings — including high-pressure hydraulic${variant.sourceThreshold}, continuous water immersion, food-grade, or cleanroom environments — consult Begapunk factory engineering before specification. <strong>Last updated:</strong> ${variant.sourceDate}.`,
+  de: `<strong>Technischer Hinweis:</strong> Die veröffentlichten Betriebsgrenzen sind anhand der aktuellen Produktseite und der freigegebenen Zeichnung zu bestätigen; die Produktionsprüfung ist von der Validierung der Einsatzgrenzen getrennt. Die tatsächliche Leistung hängt von den Betriebsbedingungen, der Medienqualität, der Montage und den Wartungsintervallen ab. Bei Anwendungen außerhalb der Standardgrenzen – einschließlich Hochdruckhydraulik${variant.deThreshold}, dauerhaftem Eintauchen in Wasser, Lebensmittelanwendungen oder Reinraumumgebungen – ist vor der Spezifikation eine Abstimmung mit der Anwendungstechnik von Begapunk erforderlich. <strong>Letzte Aktualisierung:</strong> ${variant.deDate}.`,
+  ja: `<strong>技術注記：</strong> 公開されている使用限界は、最新の製品ページおよび承認図面で確認してください。生産検査は、使用定格の妥当性確認とは別のものです。実際の性能は、運転条件、使用流体の品質、取付方法および保守周期によって異なります。高圧油圧${variant.jaThreshold}、水中での連続使用、食品用途、クリーンルーム環境など、標準定格外の用途については、仕様決定前にBegapunkの技術部門へご相談ください。<strong>最終更新：</strong>${variant.jaDate}`,
+  ru: `<strong>Техническое примечание:</strong> Опубликованные рабочие пределы необходимо подтвердить по актуальной странице изделия и согласованному чертежу; производственный контроль не является подтверждением рабочих характеристик. Фактические характеристики зависят от условий эксплуатации, качества рабочей среды, монтажа и графика технического обслуживания. Для применений за пределами стандартных характеристик — включая гидравлические системы высокого давления${variant.ruThreshold}, длительное погружение в воду, пищевые применения и чистые помещения — до выбора спецификации необходимо проконсультироваться с инженерной службой Begapunk. <strong>Последнее обновление:</strong> ${variant.ruDate}`,
+}));
+
+const rows = [
+  {
+    source: `Application Guides`,
+    de: `Anwendungsleitfäden`,
+    ja: `用途別ガイド`,
+    ru: `Руководства по применению`,
+  },
+  {
+    source: `Per Order`,
+    de: `Je Auftrag`,
+    ja: `注文ごと`,
+    ru: `По заказу`,
+  },
+  {
+    source: `Warranty Terms`,
+    de: `Garantiebedingungen`,
+    ja: `保証条件`,
+    ru: `Условия гарантии`,
+  },
+  {
+    source: `By Order`,
+    de: `Je Auftrag`,
+    ja: `注文ごと`,
+    ru: `По заказу`,
+  },
+  {
+    source: `Company Established`,
+    de: `Unternehmen gegründet`,
+    ja: `会社設立`,
+    ru: `Основание компании`,
+  },
+  {
+    source: `Company established in 2022`,
+    de: `Unternehmen 2022 gegründet`,
+    ja: `2022年に会社設立`,
+    ru: `Компания основана в 2022 году`,
+  },
+  {
+    source: `Rotary Joint Manufacturing | Established 2022 | Standard & Custom Designs`,
+    de: `Fertigung von Drehdurchführungen | Gegründet 2022 | Standard- und Sonderausführungen`,
+    ja: `ロータリージョイント製造｜2022年設立｜標準品・特注品`,
+    ru: `Производство вращающихся соединений | Основано в 2022 году | Стандартные и специальные исполнения`,
+  },
+  {
+    source: `Ningbo-based manufacturer of standard and custom rotary joints for industrial automation, established in 2022.`,
+    de: `2022 gegründeter Hersteller von Standard- und Sonderdrehdurchführungen für die industrielle Automatisierung mit Sitz in Ningbo.`,
+    ja: `2022年設立、寧波を拠点に産業オートメーション向けの標準・特注ロータリージョイントを製造しています。`,
+    ru: `Основанный в 2022 году производитель стандартных и специальных вращающихся соединений для промышленной автоматизации, расположенный в Нинбо.`,
+  },
+  {
+    source: `Precision Machining Career Begins`,
+    de: `Beginn der Tätigkeit in der Präzisionsbearbeitung`,
+    ja: `精密機械加工のキャリアを開始`,
+    ru: `Начало работы в области прецизионной механообработки`,
+  },
+  {
+    source: `Founder GuangCheng Cao began working in precision machining.`,
+    de: `Gründer GuangCheng Cao begann seine Tätigkeit in der Präzisionsbearbeitung.`,
+    ja: `創業者のGuangCheng Caoが精密機械加工の仕事に携わり始めました。`,
+    ru: `Основатель GuangCheng Cao начал работать в области прецизионной механообработки.`,
+  },
+  {
+    source: `Begapunk Established in Ningbo`,
+    de: `Gründung von Begapunk in Ningbo`,
+    ja: `寧波でBegapunkを設立`,
+    ru: `Компания Begapunk основана в Нинбо`,
+  },
+  {
+    source: `Ningbo Begapunk Pneumatic Components Co., Ltd. was established to develop and manufacture pneumatic rotary joints for industrial machinery.`,
+    de: `Ningbo Begapunk Pneumatic Components Co., Ltd. wurde gegründet, um pneumatische Drehdurchführungen für Industriemaschinen zu entwickeln und herzustellen.`,
+    ja: `Ningbo Begapunk Pneumatic Components Co., Ltd.は、産業機械向け空圧ロータリージョイントの開発・製造を目的として設立されました。`,
+    ru: `Компания Ningbo Begapunk Pneumatic Components Co., Ltd. была основана для разработки и производства пневматических вращающихся соединений для промышленного оборудования.`,
+  },
+  {
+    source: `Founder &amp; Chief Engineer<br>Working in precision machining since 2006`,
+    de: `Gründer &amp; leitender Ingenieur<br>Seit 2006 in der Präzisionsbearbeitung tätig`,
+    ja: `創業者・技術責任者<br>2006年より精密機械加工に従事`,
+    ru: `Основатель и главный инженер<br>Работает в области прецизионной механообработки с 2006 года`,
+  },
+  {
+    source: `Meet Begapunk, a Ningbo-based manufacturer of pneumatic rotary unions established in 2022, led by a founder working in precision machining since 2006.`,
+    de: `Lernen Sie Begapunk kennen, einen 2022 gegründeten Hersteller pneumatischer Drehdurchführungen mit Sitz in Ningbo, dessen Gründer seit 2006 in der Präzisionsbearbeitung tätig ist.`,
+    ja: `Begapunkは2022年設立の寧波を拠点とする空圧ロータリージョイントメーカーです。創業者は2006年から精密機械加工に携わっています。`,
+    ru: `Begapunk — основанный в 2022 году производитель пневматических вращающихся соединений из Нинбо. Основатель компании работает в области прецизионной механообработки с 2006 года.`,
+  },
+  {
+    source: `Ningbo-based rotary joint manufacturer established in 2022, led by a founder working in precision machining since 2006.`,
+    de: `2022 gegründeter Hersteller von Drehdurchführungen mit Sitz in Ningbo, geleitet von einem Gründer, der seit 2006 in der Präzisionsbearbeitung tätig ist.`,
+    ja: `2022年設立、寧波を拠点とするロータリージョイントメーカーです。創業者は2006年から精密機械加工に携わっています。`,
+    ru: `Основанный в 2022 году производитель вращающихся соединений из Нинбо, руководимый основателем, который работает в области прецизионной механообработки с 2006 года.`,
+  },
+  {
+    source: `Warranty terms`,
+    de: `Garantiebedingungen`,
+    ja: `保証条件`,
+    ru: `Условия гарантии`,
+  },
+  {
+    source: `Confirmed in quotation/order`,
+    de: `Im Angebot/Auftrag bestätigt`,
+    ja: `見積書・注文書で確認`,
+    ru: `Указаны в коммерческом предложении/заказе`,
+  },
+  ...technicalNoteRows,
+  {
+    source: `Specification mismatches are an avoidable source of application problems. Operating above a model's published limits, or selecting a seal and material combination without reviewing the medium and duty, can lead to leakage or damage. Confirm the current product page and approved drawing before ordering.`,
+    de: `Nicht übereinstimmende Spezifikationen sind eine vermeidbare Ursache für Anwendungsprobleme. Der Betrieb oberhalb der veröffentlichten Grenzwerte eines Modells oder die Auswahl einer Dichtungs- und Werkstoffkombination ohne Prüfung von Medium und Einsatzbedingungen kann zu Leckage oder Schäden führen. Prüfen Sie vor der Bestellung die aktuelle Produktseite und die freigegebene Zeichnung.`,
+    ja: `仕様の不一致は、回避できる用途トラブルの原因です。各型式の公開限界を超えて使用したり、使用流体や運転条件を確認せずにシールと材質の組合せを選定したりすると、漏れや損傷につながるおそれがあります。ご注文前に、最新の製品ページと承認図面をご確認ください。`,
+    ru: `Несоответствие спецификации — предотвратимая причина проблем при эксплуатации. Работа за пределами опубликованных характеристик модели или выбор сочетания уплотнения и материала без учета рабочей среды и режима эксплуатации может привести к утечке или повреждению. Перед заказом проверьте актуальную страницу изделия и согласованный чертеж.`,
+  },
+  {
+    source: `<strong>Critical point:</strong> Moisture and contaminants in compressed air can promote <strong>internal bore corrosion</strong> in susceptible materials. The rate depends on air treatment, condensate exposure, alloy, surface treatment and operating conditions. Review filtration, drying and material selection for the actual environment.`,
+    de: `<strong>Wichtiger Hinweis:</strong> Feuchtigkeit und Verunreinigungen in der Druckluft können bei anfälligen Werkstoffen die <strong>Korrosion der Innenbohrung</strong> begünstigen. Die Korrosionsrate hängt von der Druckluftaufbereitung, der Kondensatbelastung, der Legierung, der Oberflächenbehandlung und den Betriebsbedingungen ab. Prüfen Sie Filtration, Trocknung und Werkstoffauswahl für die tatsächliche Einsatzumgebung.`,
+    ja: `<strong>重要：</strong> 圧縮空気中の水分や異物は、腐食しやすい材質の<strong>内部流路の腐食</strong>を促進することがあります。腐食の進行は、空気処理、凝縮水への曝露、合金、表面処理および運転条件によって異なります。実際の使用環境に合わせて、ろ過、乾燥および材質選定を確認してください。`,
+    ru: `<strong>Важный момент:</strong> Влага и загрязнения в сжатом воздухе могут ускорять <strong>коррозию внутреннего канала</strong> в материалах, подверженных коррозии. Скорость процесса зависит от подготовки воздуха, воздействия конденсата, сплава, обработки поверхности и условий эксплуатации. Выбирайте фильтрацию, осушение и материалы с учетом фактической рабочей среды.`,
+  },
+  {
+    source: `Any prices shown on the website are indicative only. The formal quotation and accepted order govern the final price, currency, quantity, specification, and commercial conditions.`,
+    de: `Alle auf der Website genannten Preise sind ausschließlich unverbindliche Richtwerte. Für den endgültigen Preis, die Währung, Menge, Spezifikation und die kaufmännischen Bedingungen sind das formelle Angebot und der angenommene Auftrag maßgeblich.`,
+    ja: `ウェブサイトに表示される価格は参考価格にすぎません。最終的な価格、通貨、数量、仕様および取引条件は、正式な見積書および受諾済み注文書に従います。`,
+    ru: `Все цены, указанные на сайте, носят исключительно ориентировочный характер. Окончательные цена, валюта, количество, спецификация и коммерческие условия определяются официальным коммерческим предложением и принятым заказом.`,
+  },
+  {
+    source: `Quotation validity and any conditions for acceptance are stated in the formal quotation; no fixed validity period is promised by this page.`,
+    de: `Die Gültigkeitsdauer des Angebots und etwaige Annahmebedingungen sind im formellen Angebot angegeben; diese Seite sagt keine feste Gültigkeitsdauer zu.`,
+    ja: `見積書の有効期間および受諾条件は正式な見積書に記載されます。本ページは一律の有効期間を保証するものではありません。`,
+    ru: `Срок действия коммерческого предложения и условия его принятия указываются в официальном коммерческом предложении; настоящая страница не устанавливает фиксированный срок действия.`,
+  },
+  {
+    source: `Freight, insurance, customs clearance, duties, taxes, and other destination charges are allocated only by the Incoterm and written conditions stated in the formal quotation and accepted order.`,
+    de: `Die Zuordnung von Fracht-, Versicherungs-, Zollabfertigungs-, Zoll-, Steuer- und sonstigen Bestimmungsortkosten richtet sich ausschließlich nach dem Incoterm und den schriftlichen Bedingungen im formellen Angebot und angenommenen Auftrag.`,
+    ja: `運賃、保険、通関、関税、税金および仕向地で発生するその他の費用の負担は、正式な見積書および受諾済み注文書に記載されたインコタームズと書面条件によってのみ決定されます。`,
+    ru: `Распределение расходов на перевозку, страхование, таможенное оформление, пошлины, налоги и иных расходов в пункте назначения определяется исключительно условием Incoterms и письменными условиями, указанными в официальном коммерческом предложении и принятом заказе.`,
+  },
+  {
+    source: `An order is confirmed only when its commercial and technical conditions have been accepted in writing by both parties.`,
+    de: `Ein Auftrag gilt erst als bestätigt, wenn beide Parteien seine kaufmännischen und technischen Bedingungen schriftlich angenommen haben.`,
+    ja: `注文は、その取引条件および技術条件について両当事者が書面で合意した時点で確定します。`,
+    ru: `Заказ считается подтвержденным только после письменного принятия его коммерческих и технических условий обеими сторонами.`,
+  },
+  {
+    source: `Deposit, balance, credit, and payment timing are confirmed in the formal quotation and accepted order; this page does not establish a standard deposit percentage.`,
+    de: `Anzahlung, Restzahlung, Zahlungsziel und Zahlungstermine werden im formellen Angebot und angenommenen Auftrag festgelegt; diese Seite legt keinen einheitlichen Anzahlungsprozentsatz fest.`,
+    ja: `前払金、残金、掛取引および支払時期は、正式な見積書および受諾済み注文書で確定します。本ページは一律の前払率を定めるものではありません。`,
+    ru: `Размер аванса, остаточный платеж, условия кредита и сроки оплаты указываются в официальном коммерческом предложении и принятом заказе; настоящая страница не устанавливает стандартный размер аванса.`,
+  },
+  {
+    source: `Available payment methods and any transaction fees are confirmed for the specific quotation and order.`,
+    de: `Die verfügbaren Zahlungsmethoden und etwaige Transaktionsgebühren werden für das jeweilige Angebot und den jeweiligen Auftrag bestätigt.`,
+    ja: `利用可能な支払方法および取引手数料は、個別の見積書および注文書で確認されます。`,
+    ru: `Доступные способы оплаты и возможные комиссии подтверждаются для конкретного коммерческого предложения и заказа.`,
+  },
+  {
+    source: `Production lead time, estimated dispatch date, shipping method, carrier, and transit estimate are confirmed for the specific quotation and accepted order. Unless expressly guaranteed in writing, dates are estimates rather than fixed delivery commitments.`,
+    de: `Produktionszeit, voraussichtlicher Versandtermin, Versandart, Frachtführer und voraussichtliche Laufzeit werden für das jeweilige Angebot und den angenommenen Auftrag bestätigt. Sofern nicht ausdrücklich schriftlich verbindlich zugesagt, sind Termine Schätzwerte und keine festen Lieferzusagen.`,
+    ja: `生産リードタイム、出荷予定日、輸送方法、運送業者および輸送所要日数の見込みは、個別の見積書および受諾済み注文書で確認されます。書面で明示的に保証されない限り、日程は目安であり、確定した納期ではありません。`,
+    ru: `Срок производства, расчетная дата отгрузки, способ перевозки, перевозчик и расчетный срок доставки подтверждаются для конкретного коммерческого предложения и принятого заказа. Если иное прямо не гарантировано в письменной форме, даты являются ориентировочными и не представляют собой твердых обязательств по поставке.`,
+  },
+  {
+    source: `Custom-product lead time depends on drawing approval, material availability, inspection scope, quantity, destination, and other order requirements; it is confirmed in writing for each order.`,
+    de: `Die Lieferzeit für Sonderprodukte hängt von Zeichnungsfreigabe, Materialverfügbarkeit, Prüfumfang, Menge, Bestimmungsort und weiteren Auftragsanforderungen ab und wird für jeden Auftrag schriftlich bestätigt.`,
+    ja: `特注品のリードタイムは、図面承認、材料の調達状況、検査範囲、数量、仕向地およびその他の注文要件によって異なり、注文ごとに書面で確定します。`,
+    ru: `Срок изготовления специального изделия зависит от согласования чертежа, наличия материалов, объема контроля, количества, пункта назначения и других требований заказа и подтверждается в письменной форме для каждого заказа.`,
+  },
+  {
+    source: `EXW, FOB, CIF, DDP, or another Incoterm may be considered when expressly stated in the formal quotation and accepted order. Mention of an Incoterm on this page does not promise its availability for every order.`,
+    de: `EXW, FOB, CIF, DDP oder ein anderer Incoterm kann vereinbart werden, wenn er ausdrücklich im formellen Angebot und angenommenen Auftrag genannt ist. Die Erwähnung eines Incoterms auf dieser Seite bedeutet nicht, dass er für jeden Auftrag verfügbar ist.`,
+    ja: `EXW、FOB、CIF、DDPその他のインコタームズは、正式な見積書および受諾済み注文書に明記される場合に検討できます。本ページにインコタームズを記載していても、すべての注文で利用できることを保証するものではありません。`,
+    ru: `EXW, FOB, CIF, DDP или иное условие Incoterms может применяться, если оно прямо указано в официальном коммерческом предложении и принятом заказе. Упоминание условия Incoterms на этой странице не означает, что оно доступно для каждого заказа.`,
+  },
+  {
+    source: `Responsibility for freight, insurance, export or import clearance, duties, taxes, transfer of risk, and delivery is determined only by the confirmed Incoterm and written order conditions. Begapunk does not assume import clearance, duties, or taxes unless that responsibility is expressly accepted in writing.`,
+    de: `Die Verantwortung für Fracht, Versicherung, Ausfuhr- oder Einfuhrabfertigung, Zölle, Steuern, Gefahrübergang und Lieferung richtet sich ausschließlich nach dem bestätigten Incoterm und den schriftlichen Auftragsbedingungen. Begapunk übernimmt Einfuhrabfertigung, Zölle oder Steuern nur, wenn diese Verantwortung ausdrücklich schriftlich übernommen wurde.`,
+    ja: `運賃、保険、輸出入通関、関税、税金、危険負担の移転および引渡しに関する責任は、確定したインコタームズと書面による注文条件によってのみ決定されます。Begapunkは、その責任を書面で明示的に引き受けない限り、輸入通関、関税または税金を負担しません。`,
+    ru: `Ответственность за перевозку, страхование, экспортное или импортное таможенное оформление, пошлины, налоги, переход рисков и поставку определяется исключительно согласованным условием Incoterms и письменными условиями заказа. Begapunk не принимает на себя импортное оформление, пошлины или налоги, если такая ответственность прямо не принята в письменной форме.`,
+  },
+  {
+    source: `Customs, weather, carrier disruption, force majeure, or other events outside the parties' reasonable control may affect estimated dates; any resulting handling follows the accepted order and applicable law.`,
+    de: `Zollabwicklung, Wetter, Störungen beim Frachtführer, höhere Gewalt oder andere Ereignisse außerhalb der zumutbaren Kontrolle der Parteien können voraussichtliche Termine beeinflussen; die weitere Behandlung richtet sich nach dem angenommenen Auftrag und dem anwendbaren Recht.`,
+    ja: `通関、天候、運送業者の混乱、不可抗力その他当事者の合理的な支配を超える事象により予定日が影響を受ける場合があります。その際の対応は、受諾済み注文書および適用法令に従います。`,
+    ru: `Таможенные процедуры, погодные условия, сбои в работе перевозчика, обстоятельства непреодолимой силы и другие события вне разумного контроля сторон могут повлиять на расчетные сроки; последующие действия определяются принятым заказом и применимым законодательством.`,
+  },
+  {
+    source: `Warranty duration, start date, coverage, exclusions, evidence requirements, and remedies are established only by the formal quotation, accepted order, and any written warranty document supplied for that order.`,
+    de: `Garantiedauer, Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen werden ausschließlich durch das formelle Angebot, den angenommenen Auftrag und etwaige für diesen Auftrag bereitgestellte schriftliche Garantieunterlagen festgelegt.`,
+    ja: `保証期間、保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書および当該注文について交付される書面の保証文書によってのみ定められます。`,
+    ru: `Срок и дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются исключительно официальным коммерческим предложением, принятым заказом и письменным гарантийным документом, предоставленным для данного заказа.`,
+  },
+  {
+    source: `A reported issue is subject to review against the approved specification, documented operating conditions, installation, maintenance, and inspection information.`,
+    de: `Eine gemeldete Beanstandung wird anhand der freigegebenen Spezifikation sowie der dokumentierten Betriebs-, Montage-, Wartungs- und Prüfinformationen bewertet.`,
+    ja: `申告された不具合は、承認済み仕様、記録された運転条件、取付状況、保守内容および検査情報に照らして審査されます。`,
+    ru: `Заявленная проблема рассматривается с учетом согласованной спецификации, документированных условий эксплуатации, монтажа, технического обслуживания и данных контроля.`,
+  },
+  {
+    source: `Begapunk may require photographs, operating records, inspection results, or return of the unit before determining whether a claim is covered.`,
+    de: `Bevor über die Deckung eines Anspruchs entschieden wird, kann Begapunk Fotos, Betriebsaufzeichnungen, Prüfergebnisse oder die Rücksendung der Einheit verlangen.`,
+    ja: `Begapunkは、申請が保証対象に該当するかを判断する前に、写真、運転記録、検査結果または製品の返送を求める場合があります。`,
+    ru: `До принятия решения о том, подпадает ли претензия под гарантию, Begapunk может запросить фотографии, эксплуатационные записи, результаты контроля или возврат изделия.`,
+  },
+  {
+    source: `Repair, replacement, credit, refund, or another remedy is not automatic. The approved remedy, timing, return requirement, and shipping responsibility are confirmed in writing for the specific claim.`,
+    de: `Reparatur, Ersatz, Gutschrift, Rückerstattung oder eine andere Abhilfemaßnahme erfolgt nicht automatisch. Die genehmigte Maßnahme, deren Zeitpunkt, eine etwaige Rücksendepflicht und die Versandverantwortung werden für den jeweiligen Anspruch schriftlich bestätigt.`,
+    ja: `修理、交換、相殺、返金その他の救済措置が自動的に適用されるものではありません。承認された措置、その実施時期、返送の要否および輸送責任は、個別の申請ごとに書面で確認されます。`,
+    ru: `Ремонт, замена, зачет, возврат денежных средств или иной способ урегулирования не предоставляются автоматически. Одобренный способ урегулирования, сроки, необходимость возврата и ответственность за перевозку подтверждаются в письменной форме для конкретной претензии.`,
+  },
+  {
+    source: `No automatic return period or full-refund right is promised by this page. Any return or refund requires prior written authorization and follows the formal quotation, accepted order, and applicable law.`,
+    de: `Diese Seite gewährt weder eine automatische Rückgabefrist noch einen Anspruch auf vollständige Rückerstattung. Jede Rückgabe oder Rückerstattung bedarf der vorherigen schriftlichen Genehmigung und richtet sich nach dem formellen Angebot, dem angenommenen Auftrag und dem anwendbaren Recht.`,
+    ja: `本ページは、自動的な返品期間または全額返金の権利を保証するものではありません。返品または返金には事前の書面による承認が必要であり、正式な見積書、受諾済み注文書および適用法令に従います。`,
+    ru: `Настоящая страница не предоставляет автоматического срока возврата или права на полный возврат денежных средств. Любой возврат изделия или денежных средств требует предварительного письменного разрешения и регулируется официальным коммерческим предложением, принятым заказом и применимым законодательством.`,
+  },
+  {
+    source: `Eligibility for standard or custom products depends on the approved specification, product condition, production status, reason for the request, and written order conditions.`,
+    de: `Ob Standard- oder Sonderprodukte für eine Rückgabe oder andere Abwicklung in Betracht kommen, hängt von der freigegebenen Spezifikation, dem Produktzustand, dem Produktionsstatus, dem Grund der Anfrage und den schriftlichen Auftragsbedingungen ab.`,
+    ja: `標準品または特注品が返品その他の対応対象となるかは、承認済み仕様、製品の状態、生産状況、申請理由および書面による注文条件に基づいて判断されます。`,
+    ru: `Возможность возврата или иного урегулирования для стандартных и специальных изделий зависит от согласованной спецификации, состояния изделия, стадии производства, причины обращения и письменных условий заказа.`,
+  },
+  {
+    source: `Return address, inspection procedure, freight, insurance, customs charges, duties, taxes, restocking costs, and any refund or credit amount are confirmed in the written return authorization.`,
+    de: `Rücksendeadresse, Prüfverfahren, Fracht, Versicherung, Zollkosten, Zölle, Steuern, Wiedereinlagerungskosten sowie die Höhe einer etwaigen Rückerstattung oder Gutschrift werden in der schriftlichen Rücksendegenehmigung bestätigt.`,
+    ja: `返送先、検査手順、運賃、保険、通関費用、関税、税金、再入庫費用ならびに返金額または相殺額は、書面による返品承認書で確認されます。`,
+    ru: `Адрес возврата, процедура проверки, расходы на перевозку, страхование, таможенное оформление, пошлины, налоги, повторное размещение на складе, а также сумма возврата или зачета указываются в письменном разрешении на возврат.`,
+  },
+  {
+    source: `Nothing in these Terms limits rights or obligations that cannot lawfully be excluded under the applicable law.`,
+    de: `Diese Bedingungen beschränken keine Rechte oder Pflichten, die nach dem anwendbaren Recht nicht wirksam ausgeschlossen werden können.`,
+    ja: `本規約のいかなる条項も、適用法令上適法に排除できない権利または義務を制限するものではありません。`,
+    ru: `Ничто в настоящих Условиях не ограничивает права или обязанности, которые в соответствии с применимым законодательством не могут быть правомерно исключены.`,
+  },
+];
+
+const sourceSet = new Set(rows.map((row) => row.source));
+if (sourceSet.size !== rows.length) {
+  throw new Error('Owner-confirmed translation rows contain duplicate source strings.');
+}
+
+const catalog = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'source-catalog.json'), 'utf8'));
+const catalogSources = new Set(catalog.entries.map((entry) => entry.source));
+const absentSources = rows.filter((row) => !catalogSources.has(row.source));
+if (absentSources.length) {
+  throw new Error(`Owner-confirmed source strings are absent from the current catalog:\n${absentSources.map((row) => `- ${row.source}`).join('\n')}`);
+}
+
+let changed = 0;
+for (const language of ['de', 'ja', 'ru']) {
+  const filePath = path.join(root, 'i18n', 'overrides', `${language}.json`);
+  const before = await fs.readFile(filePath, 'utf8');
+  const current = JSON.parse(before);
+  const missing = rows.filter((row) => current[row.source] !== row[language]);
+  if (checkOnly) {
+    if (missing.length) {
+      throw new Error(`${language}: ${missing.length} owner-confirmed translation(s) are not synchronized.`);
+    }
+    continue;
+  }
+  if (!missing.length) continue;
+  for (const row of rows) current[row.source] = row[language];
+  await fs.writeFile(filePath, `${JSON.stringify(current, null, 2)}\n`, 'utf8');
+  changed += 1;
+}
+
+console.log(checkOnly
+  ? `Owner-confirmed translations are synchronized for ${rows.length} exact source statements in three languages.`
+  : `Synchronized owner-confirmed translations in ${changed} localization file(s).`);

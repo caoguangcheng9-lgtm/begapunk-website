@@ -3,10 +3,52 @@ import path from 'node:path';
 import process from 'node:process';
 import crypto from 'node:crypto';
 import { load } from 'cheerio';
+import { discoveryExcludedPageSet, patchDiscoveryRobotsMeta } from './discovery-exclusions.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
 const config = JSON.parse(await fs.readFile(path.join(i18nRoot, 'config.json'), 'utf8'));
+const discoveryExcludedPages = discoveryExcludedPageSet(config);
+const llmsExcludedPages = new Set([...(config.sitemapExcludedPages || []), ...discoveryExcludedPages]);
+const translationManagedPages = config.translationManagedPages || config.pages;
+const manualLocalizedPages = config.manualLocalizedPages || [];
+const canonicalOrganizationId = `${config.siteUrl}/#organization`;
+const canonicalFounderId = `${config.siteUrl}/#founder-g-c-cao`;
+const canonicalLocalBusinessId = `${config.siteUrl}/#localbusiness`;
+const canonicalBrandName = 'Begapunk';
+const canonicalLegalName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
+const canonicalFoundingDate = '2022';
+const canonicalBrandSameAs = [
+  'https://www.youtube.com/@BEGAPUNKRotaryJointsTV',
+  'https://www.facebook.com/profile.php?id=61591616523667',
+  'https://x.com/Begapunk728',
+];
+const canonicalFounderSameAs = ['https://www.linkedin.com/in/guangcheng-cao/'];
+const languageSwitcherLabels = {
+  en: 'Language',
+  de: 'Sprache',
+  es: 'Idioma',
+  it: 'Lingua',
+  ja: '言語',
+  pl: 'Język',
+  ru: 'Язык',
+};
+const configuredPages = new Set(config.pages);
+const translationPageSet = new Set(translationManagedPages);
+const manualPageSet = new Set(manualLocalizedPages);
+if (configuredPages.size !== config.pages.length
+  || translationPageSet.size !== translationManagedPages.length
+  || manualPageSet.size !== manualLocalizedPages.length) {
+  throw new Error('i18n page groups must not contain duplicate page names.');
+}
+for (const pageName of manualPageSet) {
+  if (translationPageSet.has(pageName)) throw new Error(`${pageName}: page cannot be both translation-managed and manually localized.`);
+}
+const groupedPages = new Set([...translationManagedPages, ...manualLocalizedPages]);
+if (groupedPages.size !== configuredPages.size
+  || [...configuredPages].some((pageName) => !groupedPages.has(pageName))) {
+  throw new Error('translationManagedPages and manualLocalizedPages must be a complete, non-overlapping partition of config.pages.');
+}
 const glossary = JSON.parse(await fs.readFile(path.join(i18nRoot, 'glossary.json'), 'utf8'));
 const activeLanguageCodes = new Set(config.activeLanguageCodes || config.languages.map((language) => language.code));
 const activeLanguages = config.languages.filter((language) => activeLanguageCodes.has(language.code));
@@ -143,9 +185,9 @@ function collectRecords($) {
   return records;
 }
 
-async function loadPages() {
+async function loadPages(pageNames = translationManagedPages) {
   const pages = [];
-  for (const pageName of config.pages) {
+  for (const pageName of pageNames) {
     const filePath = path.join(sourceRoot, pageName);
     const html = await fs.readFile(filePath, 'utf8');
     const $ = load(html, { decodeEntities: false });
@@ -176,13 +218,40 @@ async function extractCatalog(pages) {
   const catalog = {
     sourceLanguage: config.sourceLanguage.code,
     generatedAt: new Date().toISOString(),
-    pages: config.pages,
+    pages: translationManagedPages,
     entries,
   };
   await fs.writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
-  console.log(`Extracted ${entries.length} unique strings from ${config.pages.length} pages.`);
+  console.log(`Extracted ${entries.length} unique strings from ${translationManagedPages.length} translation-managed pages.`);
   console.log(`Catalog: ${catalogPath}`);
   return catalog;
+}
+
+async function pruneTranslationCaches(catalog) {
+  const validIds = new Set(catalog.entries.map((entry) => entry.id));
+  for (const language of activeLanguages) {
+    const cachePath = path.join(cacheRoot, `${language.code}.json`);
+    let cache;
+    try {
+      cache = JSON.parse(await fs.readFile(cachePath, 'utf8'));
+    } catch (error) {
+      if (error.code === 'ENOENT') continue;
+      throw error;
+    }
+    const translations = cache.translations || {};
+    let removed = 0;
+    for (const id of Object.keys(translations)) {
+      if (!validIds.has(id)) {
+        delete translations[id];
+        removed += 1;
+      }
+    }
+    if (removed) {
+      cache.translations = translations;
+      await fs.writeFile(cachePath, `${JSON.stringify(cache, null, 2)}\n`, 'utf8');
+    }
+    console.log(`${language.code}: pruned ${removed} orphaned translation-cache entr${removed === 1 ? 'y' : 'ies'}.`);
+  }
 }
 
 function protectTerms(source, languageCode) {
@@ -844,6 +913,13 @@ async function translateCatalog(catalog) {
   }
 }
 
+function assertCatalogPageContract(catalog, operation) {
+  if (!catalog) throw new Error(`Run the extract step before ${operation}.`);
+  if (JSON.stringify(catalog.pages) !== JSON.stringify(translationManagedPages)) {
+    throw new Error(`source-catalog pages must exactly match translationManagedPages before ${operation}.`);
+  }
+}
+
 function localizeRelativeReference(value, pilotPages) {
   if (!value || value.startsWith('#') || value.startsWith('/') || /^(?:[a-z]+:|\/\/)/i.test(value)) return value;
   const match = value.match(/^([^?#]*)([?#].*)?$/);
@@ -851,6 +927,14 @@ function localizeRelativeReference(value, pilotPages) {
   const suffix = match?.[2] || '';
   if (!pathname) return value;
   const normalized = pathname.replace(/^\.\//, '');
+  if (normalized.startsWith('../')) {
+    const rootRelative = normalized.slice(3);
+    if (rootRelative.startsWith('../')) {
+      throw new Error(`Nested parent-relative reference is not allowed in localized output: ${value}`);
+    }
+    if (pilotPages.has(rootRelative)) return `${rootRelative}${suffix}`;
+    return `../${rootRelative}${suffix}`;
+  }
   if (pilotPages.has(normalized)) return `${normalized}${suffix}`;
   return `../${normalized}${suffix}`;
 }
@@ -867,7 +951,7 @@ function schemaTypes(node) {
 function visibleFaqEntities($) {
   return $('.faq-item, .app-faq-item').map((_, item) => {
     const questionNode = $(item).find('.faq-question, h3').first().clone();
-    questionNode.find('svg, i, .faq-icon, .faq-toggle').remove();
+    questionNode.find('svg, i, .faq-icon, .faq-toggle, .arrow').remove();
     const question = compactText(questionNode.text());
     const answer = compactText($(item).find('.faq-answer, p').first().text());
     if (!question || !answer) return null;
@@ -907,18 +991,21 @@ function applySeoMetadata($, languageCode, pageName) {
 
 const schemaLocaleByLanguage = {
   de: {
+    founderDescription: 'Seit 2006 in der Präzisionsbearbeitung tätig.',
     founderJobTitle: 'Gründer und Ingenieur',
     factoryName: 'Begapunk Fertigung',
     slogan: 'Spezialist für pneumatische Drehdurchführungen',
     knowsAbout: ['Pneumatische Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrielle Automatisierung', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
   },
   ja: {
+    founderDescription: '2006年より精密機械加工に従事。',
     founderJobTitle: '創業者・技術責任者',
     factoryName: 'Begapunk 生産拠点',
     slogan: '空圧用ロータリージョイント専門メーカー',
     knowsAbout: ['空圧用ロータリージョイント', '多流路・多ポートロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
   },
   ru: {
+    founderDescription: 'Работает в области прецизионной механообработки с 2006 года.',
     founderJobTitle: 'Основатель и инженер',
     factoryName: 'Производство Begapunk',
     slogan: 'Специалист по пневматическим вращающимся соединениям',
@@ -945,6 +1032,12 @@ const structuredPropertyNames = {
     'Insulation resistance': 'Сопротивление изоляции', 'Surface treatment': 'Обработка поверхности',
     'Hollow bore diameter': 'Диаметр сквозного отверстия',
   },
+};
+
+const structuredWarrantyTerms = {
+  de: { name: 'Garantiebedingungen', value: 'Im Angebot/Auftrag bestätigt' },
+  ja: { name: '保証条件', value: '見積書・注文書で確認' },
+  ru: { name: 'Условия гарантии', value: 'Указаны в коммерческом предложении/заказе' },
 };
 
 const structuredApplicationValues = {
@@ -1219,6 +1312,12 @@ function localizeStructuredValue(rawValue, languageCode) {
 function localizeProductProperty(property, languageCode, pageName) {
   if (!property || typeof property !== 'object') return;
   const nameMap = structuredPropertyNames[languageCode] || {};
+  const warranty = structuredWarrantyTerms[languageCode];
+  if (property.name === 'Warranty terms' && warranty) {
+    property.name = warranty.name;
+    property.value = warranty.value;
+    return;
+  }
   const isApplications = property.name === 'Typical applications'
     || ['Typische Anwendungen', '主な用途', 'Типичные области применения'].includes(property.name);
   if (nameMap[property.name]) property.name = nameMap[property.name];
@@ -1236,6 +1335,71 @@ function localizeProductProperty(property, languageCode, pageName) {
   }
 }
 
+function normalizeOrganizationIdentity(value, schemaLocale = {}, seo = {}, site = {}) {
+  value['@id'] = canonicalOrganizationId;
+  value.url = `${config.siteUrl}/`;
+  value.name = canonicalBrandName;
+  value.legalName = canonicalLegalName;
+  value.foundingDate = canonicalFoundingDate;
+  delete value.alternateName;
+  value.sameAs = canonicalBrandSameAs;
+  const localizedDescription = site.organizationDescription || site.description || seo.description;
+  if (value.description && localizedDescription) value.description = localizedDescription;
+  if (value.slogan && schemaLocale.slogan) value.slogan = schemaLocale.slogan;
+  if (value.founder) {
+    const normalizeFounder = (founder) => ({
+      ...founder,
+      '@type': 'Person',
+      '@id': canonicalFounderId,
+      ...(schemaLocale.founderJobTitle ? { jobTitle: schemaLocale.founderJobTitle } : {}),
+      ...(schemaLocale.founderDescription ? { description: schemaLocale.founderDescription } : {}),
+      sameAs: canonicalFounderSameAs,
+    });
+    value.founder = Array.isArray(value.founder)
+      ? value.founder.map(normalizeFounder)
+      : normalizeFounder(value.founder);
+  }
+  if (schemaLocale.knowsAbout) value.knowsAbout = schemaLocale.knowsAbout;
+}
+
+function normalizeLocalBusinessIdentity(value) {
+  // Preserve source-owned location and contact properties. Only identity and
+  // entity-link fields are canonicalized here.
+  value['@id'] = canonicalLocalBusinessId;
+  value.url = `${config.siteUrl}/`;
+  value.name = canonicalBrandName;
+  value.legalName = canonicalLegalName;
+  delete value.alternateName;
+  value.sameAs = canonicalBrandSameAs;
+  value.parentOrganization = { '@id': canonicalOrganizationId };
+}
+
+function normalizeEntityIdentities(value, schemaLocale = {}, seo = {}, site = {}) {
+  if (Array.isArray(value)) return value.map((item) => normalizeEntityIdentities(item, schemaLocale, seo, site));
+  if (!value || typeof value !== 'object') return value;
+  for (const [key, child] of Object.entries(value)) {
+    value[key] = normalizeEntityIdentities(child, schemaLocale, seo, site);
+  }
+  const types = schemaTypes(value);
+  if (types.has('Organization')) normalizeOrganizationIdentity(value, schemaLocale, seo, site);
+  if (types.has('LocalBusiness')) normalizeLocalBusinessIdentity(value);
+  return value;
+}
+
+function normalizeEntityIdentitiesInMarkup(html) {
+  return html.replace(
+    /(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi,
+    (match, opening, json, closing) => {
+      try {
+        const payload = JSON.parse(json);
+        return `${opening}${JSON.stringify(normalizeEntityIdentities(payload))}${closing}`;
+      } catch {
+        return match;
+      }
+    },
+  );
+}
+
 function updateJsonLd($, languageCode, pageName) {
   const englishUrl = pageUrl(config.sourceLanguage.code, pageName);
   const localizedUrl = pageUrl(languageCode, pageName);
@@ -1243,7 +1407,42 @@ function updateJsonLd($, languageCode, pageName) {
   const site = seoByLanguage.get(languageCode)?._site || {};
   const schemaLocale = schemaLocaleByLanguage[languageCode] || {};
   const faqEntities = visibleFaqEntities($);
-  const contentTypes = new Set(['Article', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo']);
+  const contentTypes = new Set(['Article', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
+  const localizedCollectionAbout = {
+    de: [
+      'Drehdurchführungen für Druckluft',
+      'Pneumatische Drehdurchführungen',
+      'Industrieautomation',
+      'Verpackungsmaschinen',
+      'Pneumatische Spanntechnik',
+      'Roboter-Endeffektoren',
+      'Vakuumverpackungsmaschinen',
+      'Druckluftwerkzeuge',
+      'Hintere Spannfutter von Laser-Rohrschneidmaschinen',
+    ],
+    ja: [
+      '空圧用ロータリジョイント',
+      '空圧式ロータリジョイント',
+      '産業オートメーション',
+      '包装機械',
+      '空圧式クランプ',
+      'ロボットエンドエフェクタ',
+      '真空包装機',
+      '空圧工具',
+      'レーザー切管機の後方チャック',
+    ],
+    ru: [
+      'Пневматические ротационные соединения',
+      'Поворотные соединения для сжатого воздуха',
+      'Промышленная автоматизация',
+      'Упаковочное оборудование',
+      'Пневматический зажим',
+      'Концевые органы роботов',
+      'Вакуумные упаковочные машины',
+      'Пневматический инструмент',
+      'Задние патроны станков лазерной резки труб',
+    ],
+  };
   $('script[type="application/ld+json"]').each((_, element) => {
     try {
       const data = JSON.parse($(element).html());
@@ -1276,6 +1475,12 @@ function updateJsonLd($, languageCode, pageName) {
           value.name = seo.title;
           value.description = seo.description;
         }
+        if (types.has('CollectionPage')) {
+          value.name = seo.h1;
+          value.description = seo.description;
+          value.url = localizedUrl;
+          if (localizedCollectionAbout[languageCode]) value.about = localizedCollectionAbout[languageCode];
+        }
         if (types.has('Article') || types.has('BlogPosting') || types.has('TechArticle')) {
           value.headline = seo.h1;
           value.description = seo.description;
@@ -1284,17 +1489,10 @@ function updateJsonLd($, languageCode, pageName) {
           value.name = site.heading || 'Begapunk';
           value.description = site.description || seo.description;
         }
-        if (types.has('Organization') && value.description) {
-          value.description = site.organizationDescription || site.description || seo.description;
-          if (value.slogan && schemaLocale.slogan) value.slogan = schemaLocale.slogan;
-          if (value.founder && schemaLocale.founderJobTitle) {
-            value.founder = Array.isArray(value.founder)
-              ? value.founder.map((founder) => ({ ...founder, jobTitle: schemaLocale.founderJobTitle }))
-              : { ...value.founder, jobTitle: schemaLocale.founderJobTitle };
-          }
-          if (schemaLocale.knowsAbout) value.knowsAbout = schemaLocale.knowsAbout;
+        if (types.has('Organization')) {
+          normalizeOrganizationIdentity(value, schemaLocale, seo, site);
         }
-        if (types.has('LocalBusiness') && schemaLocale.factoryName) value.name = schemaLocale.factoryName;
+        if (types.has('LocalBusiness')) normalizeLocalBusinessIdentity(value);
         if (types.has('BreadcrumbList') && Array.isArray(value.itemListElement) && value.itemListElement.length) {
           for (const item of value.itemListElement) {
             if (!item || typeof item !== 'object' || typeof item.item !== 'string') continue;
@@ -1346,7 +1544,8 @@ function injectLanguageSwitcher($, currentLanguage, pageName) {
     const selected = language.code === currentLanguage ? ' selected' : '';
     return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
-  const switcher = `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">Language</label><select id="language-${currentLanguage}" aria-label="Language" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
+  const accessibleLabel = languageSwitcherLabels[currentLanguage] || languageSwitcherLabels.en;
+  const switcher = `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
   const mobileToggle = $('.mobile-toggle').first();
   if (mobileToggle.length) mobileToggle.before(switcher);
   else $('.header-inner').first().append(switcher);
@@ -1365,12 +1564,14 @@ function applyTranslations(page, language, catalog, cache) {
   }));
   for (const record of records) {
     const id = idBySource.get(record.source);
-    const translated = pageEditorialOverrides[id]
-      || pageEditorialOverrides[record.source]
-      || sharedEditorialOverrides[id]
-      || sharedEditorialOverrides[record.source]
-      || overrides[record.source]
-      || cache.translations[id];
+    const translated = resolveTranslation({
+      id,
+      source: record.source,
+      pageEditorialOverrides,
+      sharedEditorialOverrides,
+      overrides,
+      cache,
+    });
     if (!translated) throw new Error(`${language.code}/${pageName}: missing translation for ${record.source}`);
     if (record.type === 'html') {
       $(record.element).html(translated);
@@ -1441,7 +1642,81 @@ function applyTranslations(page, language, catalog, cache) {
   const finalized = load(localized, { decodeEntities: false });
   applySeoMetadata(finalized, language.code, pageName);
   updateJsonLd(finalized, language.code, pageName);
-  return finalized.html().replace(/[ \t]+$/gm, '');
+  return patchDiscoveryRobotsMeta(
+    finalized.html().replace(/[ \t]+$/gm, ''),
+    discoveryExcludedPages.has(pageName),
+  );
+}
+
+function resolveTranslation({
+  id,
+  source,
+  pageEditorialOverrides,
+  sharedEditorialOverrides,
+  overrides,
+  cache,
+}) {
+  return pageEditorialOverrides[id]
+    || pageEditorialOverrides[source]
+    || sharedEditorialOverrides[id]
+    || sharedEditorialOverrides[source]
+    || overrides[source]
+    || cache.translations?.[id];
+}
+
+async function loadTranslationCaches() {
+  const caches = new Map();
+  for (const language of activeLanguages) {
+    const cachePath = path.join(cacheRoot, `${language.code}.json`);
+    caches.set(language.code, JSON.parse(await fs.readFile(cachePath, 'utf8')));
+  }
+  return caches;
+}
+
+function assertCompleteTranslationCoverage(pages, catalog, caches) {
+  const idBySource = new Map(catalog.entries.map((entry) => [entry.source, entry.id]));
+  const missing = [];
+  for (const language of activeLanguages) {
+    const cache = caches.get(language.code);
+    const overrides = overridesByLanguage.get(language.code) || {};
+    const editorialOverrides = editorialOverridesByLanguage.get(language.code) || {};
+    const sharedEditorialOverrides = editorialOverrides['*'] || {};
+    for (const page of pages) {
+      const seo = seoByLanguage.get(language.code)?.[page.pageName];
+      if (!seo?.title || !seo?.description || !seo?.h1) {
+        missing.push(`${language.code}/${page.pageName}: curated SEO title, description or H1`);
+      }
+      const pageEditorialOverrides = editorialOverrides[page.pageName] || {};
+      const seenSources = new Set();
+      for (const record of page.records) {
+        if (seenSources.has(record.source)) continue;
+        seenSources.add(record.source);
+        const id = idBySource.get(record.source);
+        if (!id) {
+          missing.push(`${language.code}/${page.pageName}: source is absent from source-catalog.json: ${record.source}`);
+          continue;
+        }
+        const translated = resolveTranslation({
+          id,
+          source: record.source,
+          pageEditorialOverrides,
+          sharedEditorialOverrides,
+          overrides,
+          cache,
+        });
+        if (!translated) missing.push(`${language.code}/${page.pageName}: ${record.source}`);
+      }
+    }
+  }
+  if (!missing.length) return;
+  const previewLimit = 200;
+  const preview = missing.slice(0, previewLimit).map((item) => `- ${item}`).join('\n');
+  const remainder = missing.length > previewLimit
+    ? `\n- ... ${missing.length - previewLimit} additional missing item(s)`
+    : '';
+  throw new Error(
+    `Localized build preflight found ${missing.length} missing translation or SEO item(s). No HTML was written.\n${preview}${remainder}`,
+  );
 }
 
 async function writeLocalizedSearchIndex(language, outputDirectory) {
@@ -1466,8 +1741,19 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
       'уточнить массу поставляемой конфигурации',
     ],
   };
+  const manufacturingQualityKeywords = {
+    de: ['Statorbearbeitung', '4-Achs-Dreh-Fräs-Bearbeitung', 'Aluminium 6061', 'Aluminium 7075', 'Farbeloxieren', 'Fertigungsablauf', 'harteloxierter Rotor', 'farbeloxiertes Statorgehäuse', 'Schichtdicke', 'O-Ring-Abdichtung', '51,7 µm'],
+    ja: ['ステータ加工', '4軸複合旋盤加工', '6061アルミ合金', '7075アルミ合金', 'カラーアルマイト', '製造工程', '硬質アルマイト処理ロータ', 'カラーアルマイト処理ステータハウジング', 'アルマイト皮膜厚さ', 'Oリングシール', '51.7 μm'],
+    ru: ['обработка статора', '4-осевая токарно-фрезерная обработка', 'алюминий 6061', 'алюминий 7075', 'цветное анодирование', 'процесс изготовления', 'ротор с твёрдым анодированием', 'корпус статора с цветным анодированием', 'толщина анодного покрытия', 'уплотнение O-ring', '51,7 мкм'],
+  };
+  const productionInspectionKeywords = {
+    de: ['100%-Dichtheitsprüfung', 'kanalweise Dichtheitsprüfung', 'Druckhaltephase', 'Druckluft 1,0 MPa', 'NG-Sperrprozess'],
+    ja: ['全数漏れ検査', '各回路漏れ検査', '保圧工程', '圧縮空気 1.0 MPa', '不適合品管理'],
+    ru: ['100%-ный контроль герметичности', 'поканальная проверка', 'выдержка под давлением', 'сжатый воздух 1,0 МПа', 'изоляция изделий NG'],
+  };
   const localizedItems = [];
   for (const item of searchIndex) {
+    if (discoveryExcludedPages.has(item.url)) continue;
     if (!config.pages.includes(item.url)) {
       localizedItems.push(item);
       continue;
@@ -1485,6 +1771,10 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
       body: content.text().replace(/\s+/g, ' ').trim(),
       ...(item.url === 'BP-2P-50-0001.html'
         ? { keywords: conservativeSearchKeywords[language.code] }
+        : item.url === 'manufacturing-quality.html'
+          ? { keywords: manufacturingQualityKeywords[language.code] }
+        : item.url === 'production-inspection-testing.html'
+          ? { keywords: productionInspectionKeywords[language.code] }
         : {}),
     });
   }
@@ -1523,6 +1813,7 @@ async function writeLocalizedLlms(language, outputDirectory) {
   if (!seo || !labels) throw new Error(`${language.code}: localized llms configuration is missing.`);
   const grouped = new Map(['products', 'applications', 'articles', 'other'].map((group) => [group, []]));
   for (const pageName of config.pages) {
+    if (llmsExcludedPages.has(pageName)) continue;
     const entry = seo[pageName];
     if (!entry) throw new Error(`${language.code}/${pageName}: cannot add missing SEO entry to llms.txt.`);
     grouped.get(llmsGroup(pageName)).push(`- [${entry.title}](${pageUrl(language.code, pageName)}): ${entry.description}`);
@@ -1533,12 +1824,11 @@ async function writeLocalizedLlms(language, outputDirectory) {
 }
 
 async function buildLocalizedPages(catalog) {
-  const pages = await loadPages();
+  const pages = await loadPages(translationManagedPages);
+  const caches = await loadTranslationCaches();
+  assertCompleteTranslationCoverage(pages, catalog, caches);
   for (const language of activeLanguages) {
-    const cachePath = path.join(cacheRoot, `${language.code}.json`);
-    const cache = JSON.parse(await fs.readFile(cachePath, 'utf8'));
-    const missingCount = catalog.entries.filter((entry) => !cache.translations[entry.id]).length;
-    if (missingCount) throw new Error(`${language.code}: ${missingCount} translations are missing.`);
+    const cache = caches.get(language.code);
     const outputDirectory = path.join(outputRoot, language.code);
     await fs.mkdir(outputDirectory, { recursive: true });
     for (const sourcePage of pages) {
@@ -1557,17 +1847,21 @@ async function buildLocalizedPages(catalog) {
 async function refreshLocalizedMetadata() {
   for (const language of activeLanguages) {
     const outputDirectory = path.join(outputRoot, language.code);
-    for (const pageName of config.pages) {
+    for (const pageName of translationManagedPages) {
       const filePath = path.join(outputDirectory, pageName);
       const html = await fs.readFile(filePath, 'utf8');
       const $ = load(html, { decodeEntities: false });
       applySeoMetadata($, language.code, pageName);
       updateJsonLd($, language.code, pageName);
-      await fs.writeFile(filePath, $.html().replace(/[ \t]+$/gm, ''), 'utf8');
+      const refreshed = patchDiscoveryRobotsMeta(
+        $.html().replace(/[ \t]+$/gm, ''),
+        discoveryExcludedPages.has(pageName),
+      );
+      await fs.writeFile(filePath, refreshed, 'utf8');
     }
     await writeLocalizedSearchIndex(language, outputDirectory);
     await writeLocalizedLlms(language, outputDirectory);
-    console.log(`${language.code}: refreshed metadata and structured data for ${config.pages.length} pages.`);
+    console.log(`${language.code}: refreshed metadata and structured data for ${translationManagedPages.length} translation-managed pages; manual localized pages were not rewritten.`);
   }
 }
 
@@ -1583,11 +1877,12 @@ function switcherMarkup(currentLanguage, pageName) {
     const selected = language.code === currentLanguage ? ' selected' : '';
     return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
-  return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">Language</label><select id="language-${currentLanguage}" aria-label="Language" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
+  const accessibleLabel = languageSwitcherLabels[currentLanguage] || languageSwitcherLabels.en;
+  return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
 }
 
 async function integrateEnglishPages() {
-  for (const pageName of config.pages) {
+  for (const pageName of translationManagedPages) {
     const sourcePath = path.join(sourceRoot, pageName);
     const filePath = path.join(outputRoot, pageName);
     let html = await fs.readFile(sourcePath, 'utf8');
@@ -1604,6 +1899,8 @@ async function integrateEnglishPages() {
     if (inquiryFormPattern.test(html)) {
       html = html.replace(inquiryFormPattern, `$1\n<input type="hidden" name="source_language" value="${config.sourceLanguage.code}">`);
     }
+    html = normalizeEntityIdentitiesInMarkup(html);
+    html = patchDiscoveryRobotsMeta(html, discoveryExcludedPages.has(pageName));
     await fs.mkdir(path.dirname(filePath), { recursive: true });
     await fs.writeFile(filePath, html, 'utf8');
   }
@@ -1612,7 +1909,7 @@ async function integrateEnglishPages() {
 async function writeInternationalSitemap() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [];
-  const excludedPages = new Set(config.sitemapExcludedPages || []);
+  const excludedPages = new Set([...(config.sitemapExcludedPages || []), ...discoveryExcludedPages]);
   const sitemapPages = config.pages.filter((pageName) => !excludedPages.has(pageName));
   for (const language of [config.sourceLanguage, ...activeLanguages]) {
     for (const pageName of sitemapPages) {
@@ -1641,8 +1938,11 @@ async function integrateLocalizedSite() {
   }
   await integrateEnglishPages();
   await writeInternationalSitemap();
-  console.log(`Integrated hreflang and language switching into ${config.pages.length} English pages.`);
-  const sitemapPageCount = config.pages.length - (config.sitemapExcludedPages || []).length;
+  console.log(`Integrated hreflang and language switching into ${translationManagedPages.length} translation-managed English pages; ${manualLocalizedPages.length} manual English pages were not rewritten.`);
+  const sitemapPageCount = config.pages.length - new Set([
+    ...(config.sitemapExcludedPages || []),
+    ...discoveryExcludedPages,
+  ]).size;
   console.log(`Generated sitemap-i18n.xml for ${(activeLanguages.length + 1) * sitemapPageCount} URLs.`);
 }
 
@@ -1655,12 +1955,13 @@ try {
 }
 
 if (mode === 'extract') {
-  await extractCatalog(pages);
+  catalog = await extractCatalog(pages);
+  await pruneTranslationCaches(catalog);
 } else if (mode === 'translate') {
-  catalog ||= await extractCatalog(pages);
+  assertCatalogPageContract(catalog, 'translating');
   await translateCatalog(catalog);
 } else if (mode === 'build') {
-  if (!catalog) throw new Error('Run the extract step before building localized pages.');
+  assertCatalogPageContract(catalog, 'building localized pages');
   await buildLocalizedPages(catalog);
 } else if (mode === 'refresh-metadata') {
   await refreshLocalizedMetadata();

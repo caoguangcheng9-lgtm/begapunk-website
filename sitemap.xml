@@ -45,30 +45,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.begapunk.com/blog-rotary-joint-leaking.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.begapunk.com/blog-seal-replacement.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.begapunk.com/blog-threaded-vs-flange.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.begapunk.com/blog-rotary-joint-materials.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://www.begapunk.com/blog-rotary-union-seal-types.html</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>yearly</changefreq>
@@ -97,19 +73,7 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://www.begapunk.com/application-packaging-machinery.html</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
-  <url>
-    <loc>https://www.begapunk.com/application-bottle-filling-capping.html</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <url>
     <loc>https://www.begapunk.com/application-cnc-pneumatic-clamping.html</loc>
@@ -118,12 +82,6 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://www.begapunk.com/application-automation-rotary-tables.html</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <url>
     <loc>https://www.begapunk.com/application-steel-dusty-environments.html</loc>
@@ -133,20 +91,8 @@
   </url>
 
 
-  <url>
-    <loc>https://www.begapunk.com/application-robot-end-of-arm-tooling.html</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
 
-  <url>
-    <loc>https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
 
   <url>
@@ -190,6 +136,13 @@
   <url>
     <loc>https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html</loc>
     <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html</loc>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -349,6 +302,18 @@
     <lastmod>2026-05-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/manufacturing-quality.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/production-inspection-testing.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 
 </urlset>

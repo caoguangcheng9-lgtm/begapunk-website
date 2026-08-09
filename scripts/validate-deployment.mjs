@@ -231,7 +231,14 @@ for (const htmlFile of htmlFiles) {
     ...$('a[href]').map((_, element) => $(element).attr('href')).get(),
     ...$('img[src],script[src],source[src]').map((_, element) => $(element).attr('src')).get(),
     ...$('link[href]').map((_, element) => $(element).attr('href')).get(),
+    ...$('[poster]').map((_, element) => $(element).attr('poster')).get(),
+    ...$('[action]').map((_, element) => $(element).attr('action')).get(),
   ].filter(Boolean);
+  $('[srcset]').each((_, element) => {
+    for (const candidate of ($(element).attr('srcset') || '').split(',')) {
+      references.push(candidate.trim().split(/\s+/)[0]);
+    }
+  });
   for (const reference of references) await verifyReference(reference, htmlFile);
 }
 

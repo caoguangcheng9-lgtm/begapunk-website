@@ -3,7 +3,7 @@
   "audit_date": "2026-07-31",
   "repository": "caoguangcheng9-lgtm/begapunk-website",
   "baseline_commit": "d95d4db1ce908f941e76bff3f78bc052455d0b0b",
-  "source_count": 254,
+  "source_count": 236,
   "models": [
     "BP-1P-0003",
     "BP-1P-0006",
@@ -50,28 +50,28 @@
   ],
   "field_type_count": 21,
   "summary": {
-    "observation_count": 2210,
-    "current_observations": 2124,
+    "observation_count": 2020,
+    "current_observations": 1942,
     "historical_findings": 3,
-    "manual_review_findings": 65,
+    "manual_review_findings": 57,
     "stale_references": 14,
     "source_identity_mismatches": 4,
     "mismatched_document_count": 1,
     "affected_observation_count": 4,
     "coverage_differences": 1,
     "parser_ambiguities": 0,
-    "git_tracked_sources": 234,
-    "local_untracked_sources": 20,
-    "protected_local_catalog_sources": 4,
-    "automatically_parseable_sources": 202,
-    "manual_engineering_verification_sources": 56
+    "git_tracked_sources": 236,
+    "local_untracked_sources": 0,
+    "protected_local_catalog_sources": 2,
+    "automatically_parseable_sources": 200,
+    "manual_engineering_verification_sources": 39
   },
   "sources": [
     {
       "source_path": "application-automation-rotary-tables.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "b40dbb957db3d4a5bc018022cc5ff79c6e42029dd43b5c174c9bda1640b20b73",
+      "source_hash": "b92168afbab2cf620d36fb1c03dc13feef67a47096faf48a6ba3730bff93351f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 6,
@@ -84,7 +84,6 @@
         "BP-8P-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
@@ -98,7 +97,7 @@
       "source_path": "application-bottle-filling-capping.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "02c58237ef7132012a29a32b5157982146620fee0b787c53157d126070fc298a",
+      "source_hash": "880768aa9cfdabc78a38e3e522d0f84cf842b4acbcca8665cdb685b11b38aa1d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -115,7 +114,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -123,7 +123,7 @@
       "source_path": "application-cnc-pneumatic-clamping.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "6ef6e38f4a34561ef565bfbfa870bd9a116d8653e937397142b7364c573fae64",
+      "source_hash": "115ae4f9417712c0c91272b97e96b2d27fe0a843c009a35f5e31119a58c992ed",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -133,12 +133,12 @@
         "BP-4P-30-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -146,7 +146,7 @@
       "source_path": "application-electronics-battery-test-fixtures.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "dc66bc672e247806e641ce1bd2d34067e593329794e02ec9d89b1eaad04998d6",
+      "source_hash": "971429f0c7412d905c054a309499a3b1307cc1a08a1dc4c36bc131aae28aa1bc",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -159,7 +159,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -167,24 +168,18 @@
       "source_path": "application-laser-tube-cutting.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "e5b2323c1a6411c1ddd3ce51e93e31ce93f27d394f43f5cad82434ef5ad29640",
+      "source_hash": "7c235bca8ddee69198cd9c7f2ddd62bdbef79a210b29555dca1b3b34217f901c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 4,
+      "model_count": 2,
       "models": [
-        "BP-2P-0001",
-        "BP-2P-130-0001",
-        "BP-3P-0004",
-        "BP-3P-0006"
+        "BP-2P-08-0001",
+        "BP-3P-0004"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "mounting_style",
-        "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -192,7 +187,7 @@
       "source_path": "application-packaging-machinery.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "13f5bcb816f16f9536074c5d9f1f849af7a7168ffd6e481e290c9f3bd8c80132",
+      "source_hash": "f89275a8494c4975a0fb6e71aacc3a5c8fffcec36425688c4aef48c1018288e7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -218,7 +213,7 @@
       "source_path": "application-pneumatic-tools-hose-anti-twist.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "c0a7a0b67c8d1a837d63c46fb724a4251258fe5216ecd1baf5932bbd8f440776",
+      "source_hash": "fb87b7546651b53854815cda567eb7f3fa073128b7741a482cff3d9d6996f907",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -230,7 +225,6 @@
         "BP-2P-95-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
@@ -245,7 +239,7 @@
       "source_path": "application-robot-end-of-arm-tooling.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "c775b4407fb166d39328063391a55e8d7122ecd01192613d86b7b06b0e9b32aa",
+      "source_hash": "86b7eeaabf9ef2664f483d9a888e360b6639d766f251f708afdf3950dd5578aa",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -271,7 +265,7 @@
       "source_path": "application-steel-dusty-environments.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "737d5de9dd71bf114936cd509b60ee842620e8aa8ca1752c43ccd4d6b5a1a207",
+      "source_hash": "3ed3a57b5ae46539b6b63be62e19c378806f13b7047db49d0e1cba95db1a69be",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -286,7 +280,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -294,7 +289,7 @@
       "source_path": "application-textile-printing-converting.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "f05788b14a92708980489ea2f02284b7c034fe16e40dcd5e40af72ccf9bb589d",
+      "source_hash": "d5c12199e9ed0f3b4d2f2f7bdbdb59b9cd64fb2a180f84d61a824c74c3ad977f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -305,11 +300,11 @@
         "BP-2P-50-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -317,7 +312,7 @@
       "source_path": "application-vacuum-packaging-machines.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "c47cc6278c0d3249d82c769b72774a373615a4020e00817763c5db5ef09b70ed",
+      "source_hash": "73b13ffa0745bc65506621775bfaa96914f659899dfb69af06e5912cd219abb5",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -326,11 +321,11 @@
         "BP-3P-0006"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -338,7 +333,7 @@
       "source_path": "application-welding-positioners.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "e75acf9d9cc26b7befdcc8dae372474526f1f05c6637aedd44562b7aaf7e813b",
+      "source_hash": "18c8a94e380b0b5f9999ff567e35bb4ca14c12d895f0f5b5ce758e61b8b7352b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -351,7 +346,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -359,15 +355,16 @@
       "source_path": "applications.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "aad46ed043ac1120a4454ea78aa799fccc9bfea5811413dd2a5aadf37352de8f",
+      "source_hash": "fc1e876c9baf591b5d0105a870e14c2271be53ac1ff0489ad2785af3d8c10afb",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 11,
+      "model_count": 12,
       "models": [
         "BP-1P-0003",
         "BP-1P-0006",
         "BP-2P-0001",
         "BP-2P-0002",
+        "BP-2P-08-0001",
         "BP-2P-130-0001",
         "BP-2P-50-0001",
         "BP-3P-0004",
@@ -383,7 +380,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -598,17 +596,17 @@
       "source_path": "blog-rotary-joint-installation-mistakes.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "e37d2ea4306a51ccc833a8380b571382860ca480d19c2a5c18a6e7305591d59d",
+      "source_hash": "13c3edbb7ca654b46b4e4b54dd726b565aa7dffd7c54ea6242d8e846987b8889",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -616,7 +614,7 @@
       "source_path": "blog-rotary-joint-leaking.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "7af12917734f8ebdc597b4de7d06896aeee5a9e9054746de2290861b03dde328",
+      "source_hash": "60ae8190b0cbc27657bbc05a12e6b1bbf7ac9a2b115b731f62792b56fc21aad3",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -638,7 +636,7 @@
       "source_path": "blog-rotary-joint-materials.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "c67c0202ab28f403e2435a9b96d27dcedb8883ff2cf8c9c7e65687008a33dc38",
+      "source_hash": "8947547295346e9a631f9fa0e5dfb98cf92a863347161a1a853bab2b13da595a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -663,7 +661,7 @@
       "source_path": "blog-rotary-joint-selection.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "de9753c7f37214ebf77c4595b81f20cf8080b1dc263da171dc430c4ccb6b9f22",
+      "source_hash": "ed2e7c528c515c5b87942358a98e9a17c4240f68943ea147c75bc8c4250bbeec",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -681,7 +679,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -689,7 +688,7 @@
       "source_path": "blog-rotary-union-seal-types.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "25d4f8b01dd7633ac2ec5be4f90ac859b7675b406450fee640f6092f29298577",
+      "source_hash": "544847cff41af93530a5f26871ce8e68105ea4ded3570f4678a010732ff1cf88",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -705,7 +704,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -713,7 +713,7 @@
       "source_path": "blog-seal-replacement.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "9582a4346cac650a04564b1a0092c39ebd233b435f8ed36c468fcb94b9285df4",
+      "source_hash": "1acbe6f5f8937914e2f836e1a85886d77bd3dd305ae1075d0b7ee44f6c4982a8",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -728,7 +728,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -736,7 +737,7 @@
       "source_path": "blog-threaded-vs-flange.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "14406155460626ea28487c7fb6b729b7c886372431e0e3b68155ec0a2788d251",
+      "source_hash": "4e7d13e35de47372791027a91c419ebfd9e23262f6e64aa1f5e457de6724b06a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -760,7 +761,7 @@
       "source_path": "blog.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "1ea699ba777319c9eadc29f094ebb71c913366a368a32e11fb5c86216d89a973",
+      "source_hash": "95742b6774caf24f479a794c62d0b74dac927736d8b82b26ef81c0615fe01062",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -770,7 +771,8 @@
         "compatible_media",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -778,7 +780,7 @@
       "source_path": "BP-1P-0003.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+      "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -806,7 +808,7 @@
       "source_path": "BP-1P-0006.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+      "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -833,7 +835,7 @@
       "source_path": "BP-2P-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+      "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -859,7 +861,7 @@
       "source_path": "BP-2P-0002.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+      "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -886,7 +888,7 @@
       "source_path": "BP-2P-08-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+      "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -913,7 +915,7 @@
       "source_path": "BP-2P-130-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+      "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -940,7 +942,7 @@
       "source_path": "BP-2P-16-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+      "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -968,7 +970,7 @@
       "source_path": "BP-2P-30-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "76d979847fd60bd94a9f444fac96e4a00bbf55920fc6e975a0059c1cee008718",
+      "source_hash": "2a0ada2a1b6fbb7ea184202020bc1cbe8c04bc54b451ec9585e8f1b5be4cb61d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -996,7 +998,7 @@
       "source_path": "BP-2P-50-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "bc101237a12cde1902acb14ef95e1c1943318e5b5731262bc3c7fdad029670d6",
+      "source_hash": "686edb55939c424201605e680f3d091f1f11190940a156ff91b73f88bdc5681b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1026,7 +1028,7 @@
       "source_path": "BP-2P-95-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+      "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1054,7 +1056,7 @@
       "source_path": "BP-3P-0004.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+      "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1080,7 +1082,7 @@
       "source_path": "BP-3P-0006.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
+      "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1108,7 +1110,7 @@
       "source_path": "BP-3P-0007.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+      "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1136,7 +1138,7 @@
       "source_path": "BP-3P-S06-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "112fe9bb162f8063e424fcdd6dd0647fb055a426c2c8e6214a76879a3f8a9649",
+      "source_hash": "5e22e75d9f71f939c74b535754ccd70e2b348f3b85465e999110f685ac4b71ff",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1161,7 +1163,7 @@
       "source_path": "BP-4P-30-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+      "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1187,7 +1189,7 @@
       "source_path": "BP-8P-0001.html",
       "source_type": "website-product-html",
       "git_tracked": true,
-      "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+      "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1211,245 +1213,9 @@
       "notes": "Product detail HTML containing visible specifications and JSON-LD."
     },
     {
-      "source_path": "catalog-project/assets/drawings/BP-1P-0003.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "9b28353101539a8504af3cb101b208a3cdf6980fdc20469b91e2d773885124ec",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-1P-0003"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-1P-0006.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "2dfe25838ff8c5db99fc2e6dcce84a0146922ba2ce66fe9d539b174f99d74beb",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-1P-0006"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "8f5fbf4217a4d3b27b5ec1c9779f5e2eb857c5cb696f13e98953a864720f18a2",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-0002.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "89b3e36b2e9347c1121893156ca5ac98288cafdc930d9f29a251a9b0fc6296b0",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-0002"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-08-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "45eab10e6fb6b35eabbc8d848e6e2d84d0cfd09a68187236627df8420c6f2bb9",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-08-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-130-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "c9a95981343efe6bf29782ea94a71203b8772277a0cf5ea53675450ad6801130",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-130-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-16-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "813eea491e58c0a890215296b0fd55d9817057ac5cc594ecf093d64aed963fa1",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-16-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-30-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "374940953627ea289086e61ab5b4efafa35596eac93d41769051c961be463fcc",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-30-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-50-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "31c63b5f52574bed72d4bb2260b1307df73d0023a734d8dd6bc1ee84509ac644",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-50-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-2P-95-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "a6451acfcbe27f9122246fb7e04b885ef5276307d8255b3101a54b342c2a1e9a",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-2P-95-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-3P-0004.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "885023524f84fdb566a45a819438122404905793fd1635b23d9a3ecbe10715c6",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-3P-0004"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-3P-0006.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "8c236f7f73100ea28fec03502f10aa06d497115124b3691f1d3b5d924bd70183",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-3P-0006"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-3P-0007.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "f6e9722520a182bedf9bda90a6958b30a525e9efc2db84b36d14bf7313194781",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-3P-0007"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-3P-S06-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "efceba357c8709dff1fd426100658aaacb766339f8bea4c183bbaf2f0e91be4c",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-3P-S06-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-4P-30-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "56d4d93e5da914b5863948f53c120e0f9bfb58ce9e4b24953315ce29093ec3bf",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-4P-30-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/assets/drawings/BP-8P-0001.pdf",
-      "source_type": "local-untracked-engineering-binary",
-      "git_tracked": false,
-      "source_hash": "2f21037466dfc635ddd230b6bb4028e7f1d67f77423fd4bd6094802533925ab3",
-      "automatically_parseable": false,
-      "manual_engineering_verification_required": true,
-      "model_count": 1,
-      "models": [
-        "BP-8P-0001"
-      ],
-      "field_types": [],
-      "notes": "Read-only local binary. Not copied into Git; approval and parameter content require manual engineering verification."
-    },
-    {
-      "source_path": "catalog-project/data/catalog-data-schema.json",
-      "source_type": "local-untracked-source",
-      "git_tracked": false,
-      "source_hash": "6ffa62f4a672b8bb9fe11ba15e5f2d2a33c8ecbea2da1bac2d3dfb1a232b8808",
-      "automatically_parseable": true,
-      "manual_engineering_verification_required": false,
-      "model_count": 0,
-      "models": [],
-      "field_types": [],
-      "notes": "Schema for read-only local catalog data; contains no product fact values."
-    },
-    {
       "source_path": "catalog-project/data/catalog-data.csv",
       "source_type": "local-untracked-source",
-      "git_tracked": false,
+      "git_tracked": true,
       "source_hash": "e366e2f2d699fc387065795904b280860bfc146d8dd8a16034dfaed4beb1a510",
       "automatically_parseable": true,
       "manual_engineering_verification_required": true,
@@ -1491,53 +1257,9 @@
       "notes": "Protected local catalog CSV, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
     },
     {
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "git_tracked": false,
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "automatically_parseable": true,
-      "manual_engineering_verification_required": true,
-      "model_count": 16,
-      "models": [
-        "BP-1P-0003",
-        "BP-1P-0006",
-        "BP-2P-0001",
-        "BP-2P-0002",
-        "BP-2P-08-0001",
-        "BP-2P-130-0001",
-        "BP-2P-16-0001",
-        "BP-2P-30-0001",
-        "BP-2P-50-0001",
-        "BP-2P-95-0001",
-        "BP-3P-0004",
-        "BP-3P-0006",
-        "BP-3P-0007",
-        "BP-3P-S06-0001",
-        "BP-4P-30-0001",
-        "BP-8P-0001"
-      ],
-      "field_types": [
-        "body_material",
-        "channel_configuration",
-        "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "mounting_style",
-        "operating_temperature",
-        "passages",
-        "port_thread",
-        "rotor_mounting_pattern",
-        "seal_material",
-        "stator_mounting_pattern",
-        "unassigned_mounting_pattern",
-        "weight"
-      ],
-      "notes": "Protected local catalog JSON, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
-    },
-    {
       "source_path": "catalog-project/data/source-evidence.json",
       "source_type": "local-untracked-source",
-      "git_tracked": false,
+      "git_tracked": true,
       "source_hash": "e2c0b764af3746512b9d4c312a281b03367229a8717d81db2cd291303239c6ff",
       "automatically_parseable": true,
       "manual_engineering_verification_required": true,
@@ -1573,7 +1295,7 @@
       "source_path": "de/application-automation-rotary-tables.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "3e49446156a98e22b8cc223f726decfb13956e419d7d3861d259644ed98442d4",
+      "source_hash": "6279f01031c254e7e38d66b747aa8b2912f1e34c05a226f46babb6d29427b837",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 6,
@@ -1586,12 +1308,12 @@
         "BP-8P-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1599,7 +1321,7 @@
       "source_path": "de/application-bottle-filling-capping.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "6b4c57b72f9a89dcd16b5d4cf4f7f138ee96e2fd93c0b70a197525b969018846",
+      "source_hash": "0342a4baf141bd2d6600719cd2ca741a06461465a8e37f65675cad0ff72f2c7e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -1615,7 +1337,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1623,7 +1346,7 @@
       "source_path": "de/application-cnc-pneumatic-clamping.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "1295fd3cbe6113f3b1a64e94b130f02cb7c3cabddc992df4ecb8c0c649d55c1b",
+      "source_hash": "46cac84b3309b73902692449372a0dc093784a0ae9daec1e8055cbd69bc53bab",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -1633,12 +1356,12 @@
         "BP-4P-30-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1646,7 +1369,7 @@
       "source_path": "de/application-electronics-battery-test-fixtures.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "3c29bcf43d466ccf9ee61ad60592ed8a3e36c4e9e06e34a657b1a69537312c9c",
+      "source_hash": "008aced214e27adc79f565e2059960ff56a4afcedbbf798ca08566de659d9316",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -1659,7 +1382,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1667,24 +1391,18 @@
       "source_path": "de/application-laser-tube-cutting.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "5619d9205ef591386624fbf830f4adf4cf027497d2d71910db6e1f9b3b8f0caf",
+      "source_hash": "3bc9a4d6fb5f3f885abea3f5613f9a89fe94402f874599d1538d38bd40e95b39",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 4,
+      "model_count": 2,
       "models": [
-        "BP-2P-0001",
-        "BP-2P-130-0001",
-        "BP-3P-0004",
-        "BP-3P-0006"
+        "BP-2P-08-0001",
+        "BP-3P-0004"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "mounting_style",
-        "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1692,7 +1410,7 @@
       "source_path": "de/application-packaging-machinery.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "22fc89ae78442cd8fdc8cffb5ec0590bb8d9faed336df793d47adf9e204e5e4b",
+      "source_hash": "1ba249bea884bf13ca3c8c5a3c1edd692145e5013360f90fea71726b6b28c3d7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -1709,7 +1427,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1717,7 +1436,7 @@
       "source_path": "de/application-pneumatic-tools-hose-anti-twist.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "33f058a3446009e3e2006ddcefdf495cd60489f2370de5c6c79e647bac4e20a5",
+      "source_hash": "f0555fd4887381e90d3b30f416e0c73eb02d08b8334682e6021bcaa7a16c4943",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -1729,7 +1448,6 @@
         "BP-2P-95-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
@@ -1743,7 +1461,7 @@
       "source_path": "de/application-robot-end-of-arm-tooling.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "753e338592d768d5bd5cb0c69e6e5ef411a60cacef4a362040b3474d089304c1",
+      "source_hash": "1ee243871c9a735daa2bf3c8722a47300eb17f3e9e09ed30ab8e23770277c2fb",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -1769,7 +1487,7 @@
       "source_path": "de/application-steel-dusty-environments.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "b988d4a2dc5a0aefe7b0aa736a94775193882f4454b5937b3a3c1b46f4ec4289",
+      "source_hash": "74770fa1b6aa64b76ad6bc1444cff982db0b307c7d26d845ea43340b9258d674",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -1784,7 +1502,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1792,7 +1511,7 @@
       "source_path": "de/application-textile-printing-converting.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "2d61bf31b0ed89dd3e129154ebb8f0516374142a0a620e7f517736c4d34c3c97",
+      "source_hash": "9beec5a2325451a50b3daf7fa07dc4cb3dd68ba455c939aa0b0dcfd2b99ff38b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -1803,11 +1522,11 @@
         "BP-2P-50-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1815,7 +1534,7 @@
       "source_path": "de/application-vacuum-packaging-machines.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "58890636433ede37ad4d023987c930830276efd89a5292fa05f6d5541e309cf9",
+      "source_hash": "b7e1837afc9ba23a50c3a3455a3d2a8ad56f4a8c5594991cedc48d3e55b5d47a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -1828,7 +1547,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1836,7 +1556,7 @@
       "source_path": "de/application-welding-positioners.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "5780fdee40ea79cc975976a414d287c3b07e2de75194ff876d7eabb16b8d226a",
+      "source_hash": "1b16de64b00447443035600534822115e91e5b7b574cbfb41cfcd4bd4cb808ed",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -1850,7 +1570,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1858,15 +1579,16 @@
       "source_path": "de/applications.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "284193e10f78251d13547bcb990b5c787fb0afb0506b59892f1736a23eb81aa3",
+      "source_hash": "4058be9b8bbc07c4708657f97c3edb145cb038df94fb6fc0d09a9bc4726f5007",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 11,
+      "model_count": 12,
       "models": [
         "BP-1P-0003",
         "BP-1P-0006",
         "BP-2P-0001",
         "BP-2P-0002",
+        "BP-2P-08-0001",
         "BP-2P-130-0001",
         "BP-2P-50-0001",
         "BP-3P-0004",
@@ -1880,7 +1602,8 @@
         "compatible_media",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1888,15 +1611,15 @@
       "source_path": "de/blog-rotary-joint-installation-mistakes.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "cd1082fe15dd49aa1e306bdbde0e957606a54b50cd4de16a9adef59faf3b47e0",
+      "source_hash": "21887fdbb00507ae8c5b6a8ab7ec5be40f7505063ffcfe381a1c0fe98f961f64",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
         "compatible_media",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1904,7 +1627,7 @@
       "source_path": "de/blog-rotary-joint-leaking.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "95ae2105ab05f6debaf5ceebb55e5a1842dfc108e0ce42f2e29b50c44cb5bedd",
+      "source_hash": "b65f863a461365035a6ec22042c797d84053aa6e132fa91e2e76648df43ec9d8",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -1924,7 +1647,7 @@
       "source_path": "de/blog-rotary-joint-materials.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "a2cc61ed3cdeb407c5600bd2269b2b397b3b29ec01bbdbd67a89ce2c207a7a59",
+      "source_hash": "394201ed4018cf2f066a73d07b15147192d7b2a55b0d82938241f124e97065f6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -1949,7 +1672,7 @@
       "source_path": "de/blog-rotary-joint-selection.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "6c305c58b9f7f36e4e742d35da9b4d9c21f3a92c097eeb47cce252069bb43782",
+      "source_hash": "b88c1bb9810d5733ab27387d343670d7777d42f57566120565a9c099dbedd3ac",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -1967,7 +1690,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1975,7 +1699,7 @@
       "source_path": "de/blog-rotary-union-seal-types.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "af1d897a5433123d9ee51b79fcd352869a0f601092cc70d904dd59aaed712751",
+      "source_hash": "57bea0ae9d1ff3e802320aaa67e5d932025c69f206e284a2ad6857fff0d34bd5",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -1991,7 +1715,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -1999,7 +1724,7 @@
       "source_path": "de/blog-seal-replacement.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "16de846d241c21319e8e6e57c99cba7348426c82ca715e6c32190bf3b57e63a4",
+      "source_hash": "8a312bbdf6db01eb2bb1de83cc6ba0d25d7835bfccaec90462c14be64bedb7b7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -2012,7 +1737,8 @@
         "body_material",
         "compatible_media",
         "maximum_pressure",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -2020,7 +1746,7 @@
       "source_path": "de/blog-threaded-vs-flange.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "fb18afdedb9813663c5345026cfab0bc14d2189b957714791170ab3682d0e494",
+      "source_hash": "b54f4db27af487b07e591cf707cfa491283eaf1c47ddef4a3ada8734aa52ef74",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -2043,7 +1769,7 @@
       "source_path": "de/blog.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "50a77de421101043e5a7206d4d87cf0be3f10ac0462c583e7f9249f1a5f3e640",
+      "source_hash": "e4f1f6a824c97ab22a1e4e4477d51958fdc72863cb608327dfcc5c3dc3279bbc",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -2052,7 +1778,8 @@
         "body_material",
         "compatible_media",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -2060,7 +1787,7 @@
       "source_path": "de/BP-1P-0003.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "a21be63f6f12b36caafe7b7bb6b041c22f474c5d0714bba8c6c2a6ec2c9d6541",
+      "source_hash": "3c9626b337a56e1a6f68e4026b33b5cb8a2bf44aa95898d0683791bb6fc701eb",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2088,7 +1815,7 @@
       "source_path": "de/BP-1P-0006.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "a929ff80393f12d247b7d72468710d4f65a72000d5fb77add76acef5c6464840",
+      "source_hash": "7eed41761d8b591e3163a0413ac34acf9484c9e482a154311186e3ec00919e14",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2115,7 +1842,7 @@
       "source_path": "de/BP-2P-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "35f73165e30742efdba2d4ee37c223781b0841d90c4ea33b0935d04af0287d8f",
+      "source_hash": "47ec6e819ee867da349c897e90e965d78b9c42e504a4915057bebb06f900e925",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2141,7 +1868,7 @@
       "source_path": "de/BP-2P-0002.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "976ff0794abecb861831df74c521e969f0766555684fd203c211cb84e0566c87",
+      "source_hash": "fc1def9b01697c394f5cead22af4c1404e3bcc26551ec7bd051dd0c31f2b314f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2168,7 +1895,7 @@
       "source_path": "de/BP-2P-08-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "479d65d3129a02ba2cce43e79153b0d713974980ff7b6f25b8947cd7df3fc1c6",
+      "source_hash": "1d6bee0198b8e9ad33b22b7ee7fa8707ecac99651dfe42b9fcc2905ed975f676",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2195,7 +1922,7 @@
       "source_path": "de/BP-2P-130-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "96388aae1a02a74312751d7665cb36c56ad0693fe5c6876eb846cab0fb24fc30",
+      "source_hash": "2de0f8bf6708fb6f5abec55344378828b815892216bd328e38654eac3905eec6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2222,7 +1949,7 @@
       "source_path": "de/BP-2P-16-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+      "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2250,7 +1977,7 @@
       "source_path": "de/BP-2P-30-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "9e985c7ca44cfb8dc525dccfbfcb5775cd15f4dde1847fc83e7f89fe13b653be",
+      "source_hash": "4142090863b7e4d19fc30a4646c34bd76efb51746daca34dc0218da072e6c194",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2278,7 +2005,7 @@
       "source_path": "de/BP-2P-50-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "a2a6e595526a66428ae48ffc3f21b8f4f0005a44360cdffdb5a352f72a0679a1",
+      "source_hash": "33e41d8f3a0496230db7712de4a8195446b1a4b3829609598af92cb1a24ee825",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2308,7 +2035,7 @@
       "source_path": "de/BP-2P-95-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "f0b9096aab7a8629b34eef1ce0d01012af0c99bb57c83d5dedc193e87cf87f5c",
+      "source_hash": "889ae592505913e3a7221cd17ef17cca01672f0606e793dcf8fc3dd37fb52723",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2336,7 +2063,7 @@
       "source_path": "de/BP-3P-0004.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "e686d281c578681a49859c3d57f54883acf421787b3339c9c3beb9ad5fd71c53",
+      "source_hash": "bcc7828538f9e1178ea3666c29c5780064ec228d65ef05d77713b0ef694de4f5",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2362,7 +2089,7 @@
       "source_path": "de/BP-3P-0006.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "b2f0c20986b973be036eef3f3194c8f67e20b029b348fb77150cc4215fa35856",
+      "source_hash": "974008b3c10044c660abcf6ac455da470f7cd6b345fb137b4c0a9b619afa7974",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2390,7 +2117,7 @@
       "source_path": "de/BP-3P-0007.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "d08baf8ac050af3366ffedc3056230d3ff683074f4edfa86045911a818be0786",
+      "source_hash": "9bbe0cfbfacb3e42c36c6be458aa49c083802e108b654dd83f77bec2e670598e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2418,7 +2145,7 @@
       "source_path": "de/BP-3P-S06-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "86fe10537529b3dcd69d492214b8c49e733051722bdc90a39b8f535b38c0b939",
+      "source_hash": "01ba559426a8c126614eb87fa10bec65e27184983d90edf442abe21856be6cdf",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2443,7 +2170,7 @@
       "source_path": "de/BP-4P-30-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "c0a74ab06b2fa7fb95a6f3df1609444940583b43bb434d2ae174a644a00bffce",
+      "source_hash": "238c22d0f2cfc03eed9817becbca203abc5cd76cbf9b257074992954975d543e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2469,7 +2196,7 @@
       "source_path": "de/BP-8P-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "7a3b49c9f630801b299c5c52c446ec2242b54b7d45585e6894af6a84d0e25dfe",
+      "source_hash": "8e68fddec526453ea842aeb2c15c0f057988b3fafa2a2ecb276a0bfbd5291ebd",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -2496,7 +2223,7 @@
       "source_path": "de/faq.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "a8fce38fc9675ccf847b6c2cc64cbc17c38dce49db0fc809770cc71d9a23c7fb",
+      "source_hash": "a7ccf21655a2c310aae4acedc83c69281f56a3338402c3c35f92781f7719e884",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -2507,7 +2234,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -2515,14 +2243,14 @@
       "source_path": "de/installation.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "9b9249dab82b78174cb554f578efbfc7466ad04218739824edc0b778b9a66350",
+      "source_hash": "fe9cc5e04239e79f9af5d58e143ef65668a320901e3d3d8e74c49e4c9b61842c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -2530,7 +2258,7 @@
       "source_path": "de/llms.txt",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "81f2ed3db3e23323eefb14ee31c20bd4d33dce038c69c623018023c8522fc613",
+      "source_hash": "98d5903af4c84685eaa5d04331c396abd08280c029a6b12d4cec1fc7fe8a5dcf",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -2559,7 +2287,7 @@
       "source_path": "de/product-comparison.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "87f5cbb49c6485890dd2e9c8a6585ff850cf54c8d714b348711675971fd0fc7f",
+      "source_hash": "88e3d1763474924c510023ef2d531e57cacf3c18197710ae51507ff0fc6506f1",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -2588,7 +2316,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -2596,7 +2325,7 @@
       "source_path": "de/products-p2.html",
       "source_type": "translated-product-list",
       "git_tracked": true,
-      "source_hash": "a5e5d94f44426975ab495aa9193abc17a2c53f442ad54f902e31999b8c79984a",
+      "source_hash": "7858b89dfe7ef7909d941212b66567770fefa5a4589d6e1d51be84a783d4fc72",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 8,
@@ -2622,7 +2351,7 @@
       "source_path": "de/products.html",
       "source_type": "translated-product-list",
       "git_tracked": true,
-      "source_hash": "80569db0794b026e3707034dde3830911d054a8fba15e5d3bbbba272f197757f",
+      "source_hash": "454dd7285b046e0bb4e86d00f0d90b53e13c7dd576dc70757141adf02183f2cc",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 9,
@@ -2648,7 +2377,7 @@
       "source_path": "de/search-index.json",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "25594a1ec9318a90e80e910d2b431c0a0f1c610b1b6359a7aeada40b4441a332",
+      "source_hash": "c1208c2f7b17334a0f69b97a2ff9f941acaffa83fd5913ffa9495225e1f07df7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3044,7 +2773,7 @@
       "source_path": "faq.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "428e9fc7bc89976b501e0905818f2f4ed1e63d126e983654b33b5760d2ef875c",
+      "source_hash": "761bb5211a744cab275ed71a0980ee9cfec57ee181f559257ac6cb1aa5b15188",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -3055,7 +2784,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3063,7 +2793,7 @@
       "source_path": "i18n/cache/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "d3cfdbb0a7d67599c43c5b3a613b6162b2ebb0caeeeae54ffde413adb1401b0d",
+      "source_hash": "88f4e5975b6cb63d43f8420bb9e58dccdaa84876dc39662245e90671da3ef64a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3101,7 +2831,7 @@
       "source_path": "i18n/cache/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "aa616900c697d9584cf7319ea47cdad555cbba9487b68cb6a833269bc7c8fa44",
+      "source_hash": "2e63b19d9de28b09a93e2b5d221cc1022664adb6788f6d69462baab70dbf5424",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3139,7 +2869,7 @@
       "source_path": "i18n/cache/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "6a91fa800eb883320d10c7ea492118c06c659c146a9d8546acbd2802456b19ce",
+      "source_hash": "d76df7e0aca2e02fa557c9b85927b73639874cc9fd02664990b9541fa8860760",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3177,7 +2907,7 @@
       "source_path": "i18n/config.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "9712422ac24828af6edea98acf032d3d05ad054c25ce86a01853af5e50137e65",
+      "source_hash": "dde3a27c21bcec67762936ee74306164e561806ef3dd28ce3526c4665f5d4343",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3209,7 +2939,7 @@
       "source_path": "i18n/editorial/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "86c0f90fa4934fa34966ef030cdcba9552a928636be7375859e9b90f902c182c",
+      "source_hash": "1ed39b4154acb00d8c31f7390316f6dce57afc2a3c03e04c2f6fc49df26a5b8c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3247,7 +2977,7 @@
       "source_path": "i18n/editorial/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "4904081c29cf496d9bec40e59061683fabba1ff455282bbbd65219963dc1ebfb",
+      "source_hash": "f945877978c2edff9d3a328c6c81a17b8b6e12d2883947cad618cb7945e0e63d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3285,7 +3015,7 @@
       "source_path": "i18n/editorial/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "a91335532d442266c0dc9a6bce046df60f38ca2589964216f0fbd62418af6ad6",
+      "source_hash": "6ba9b3d8b98d1b8df0308c14bc6090b11e2358b5e701492ca553f830db135736",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3323,7 +3053,7 @@
       "source_path": "i18n/editorial/status.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "bdc59a80be2d39155b7ceba42d8167ca3eaed22e68b9dafa1ac795b79d42e701",
+      "source_hash": "ad50aee544386e054e841a10792af32e7bffc8e3f657f1cb58ac325df1b4e2c6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3373,7 +3103,7 @@
       "source_path": "i18n/overrides/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "f56a92f20e0ed9ded377347f775d45350a4541f75edde4c1e8963aa9029375d7",
+      "source_hash": "eb182ebcdff53e6e236b6b330b0ecfddfd786850519601a4af0776a97e2e7db6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3410,7 +3140,7 @@
       "source_path": "i18n/overrides/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "2f14b7a87b77579fa1fd3e183d4523ba3fa59927d696b5d8519b98e96e4f30ba",
+      "source_hash": "04feb844811796c1394e23390e6bb632354e97a09905cbce2bb032c0fa02de7f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3448,7 +3178,7 @@
       "source_path": "i18n/overrides/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "72508bf92b85b176f410b74ff1fb77fc89ce5f7b4b1b4c3278c8ef7b0e3b9c19",
+      "source_hash": "0692aae56a4661648b5b1f63c4e313596c1e6aa4a5fcc255f7554cf5c020c3e8",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3485,7 +3215,7 @@
       "source_path": "i18n/seo/de.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "18ffa53615dfd379470a6aeceebf52e50f438aa92d7443e3013467b977bf9250",
+      "source_hash": "2d3abfbcd24c65d053fe5bf7fc908d227e07c2c4e57b688c75b191b64a9ca7a1",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3522,7 +3252,7 @@
       "source_path": "i18n/seo/ja.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "14e1e7eb6a247aced82cb1396d53e28096fa71e03f3cf2ff6724a6cf221170bc",
+      "source_hash": "d23b557abe96e23986b316a6fd371839d6daf156e84c2c46f342a43e2edab1bc",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3560,7 +3290,7 @@
       "source_path": "i18n/seo/ru.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "0966497c813d686754b92ac7e7b3d8db84910ddbef3825cab3807bd3cbd8d5ab",
+      "source_hash": "c1295884a00a33a26def4795d2394e87bc3e2711284d843be4070ddbf31432b4",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3597,7 +3327,7 @@
       "source_path": "i18n/source-catalog.json",
       "source_type": "translated-content-source",
       "git_tracked": true,
-      "source_hash": "16f9c6d1065ed2a742a7b0436e7203cf7a46b9cc9551762b38389e9ace161e97",
+      "source_hash": "5baa8dfccea96122b70fd13c6ccaad22865807d23c53c45558604324643145d5",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -3635,14 +3365,14 @@
       "source_path": "installation.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "61edadc1b899720ac6c60337e7d59926bf450bd3775a68ff19ad4d10cba2e9cd",
+      "source_hash": "171ca626426036d65cef3026e6cc4542d11a625221e24708b737c691a170bb44",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3650,7 +3380,7 @@
       "source_path": "ja/application-automation-rotary-tables.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "4bf8b3a9743d7ba8356a367784adf8ec521af06f454e920da5c3d02b6f62224e",
+      "source_hash": "6f4ab3d1ff97cb52c730c23c9adab9e6b76557fdac733bb0621ab4d94d6214ad",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 6,
@@ -3663,12 +3393,11 @@
         "BP-8P-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3676,7 +3405,7 @@
       "source_path": "ja/application-bottle-filling-capping.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "af21ae7ee46df36046d10897923cf8315bd87f507e48ef2df2681273b8978a3d",
+      "source_hash": "5979131b8e14530d3f95b661147eb7b33ac4917dbcb0b837d4d258b69e56851e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -3692,7 +3421,7 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3700,7 +3429,7 @@
       "source_path": "ja/application-cnc-pneumatic-clamping.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "477dfbc866a19a7453824c2ca35126a80b04f61918d05013b8a793568a4e01e6",
+      "source_hash": "73de4c4ee2fba8fd0840c55310bd8a9eb1cde1f9623d0104195ea22af8e334bf",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -3710,12 +3439,11 @@
         "BP-4P-30-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3723,7 +3451,7 @@
       "source_path": "ja/application-electronics-battery-test-fixtures.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "b3e10538a14506dd4389cb93f555836591fcf45863802ea24c11c0c1f896e534",
+      "source_hash": "628cdcfa0d73c21d0e240fe3087a2ac738c8ccd906a12214d923c14731e06eee",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -3737,7 +3465,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3745,24 +3474,17 @@
       "source_path": "ja/application-laser-tube-cutting.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "a9807f74c98185fc81868a148f485c83585b04abea50f40df1de245367705336",
+      "source_hash": "42c8fd91982ff59d906ba70d75012e5137af2d9b6832c9f5e1503ffe77f4788a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 4,
+      "model_count": 2,
       "models": [
-        "BP-2P-0001",
-        "BP-2P-130-0001",
-        "BP-3P-0004",
-        "BP-3P-0006"
+        "BP-2P-08-0001",
+        "BP-3P-0004"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "mounting_style",
-        "port_thread",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3770,7 +3492,7 @@
       "source_path": "ja/application-packaging-machinery.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "6ce6d780c9fa0c84a95bc3a4c8d55624ff14c821944009bb209cf8a6a8cf4f3a",
+      "source_hash": "934ed66c0ba39604e338e9d51baecd80fcb7aa66f7b5b0e436cd006d6efa0c19",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -3787,7 +3509,7 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3795,7 +3517,7 @@
       "source_path": "ja/application-pneumatic-tools-hose-anti-twist.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "96b8a6df581db677dbad005924aa661c439ea814fe99d86cc3160a6d33df6781",
+      "source_hash": "076615260a71eb6cd684c5290a1149bbb8116859ea5ce95f8ef4c970a195ccde",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -3807,7 +3529,6 @@
         "BP-2P-95-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
@@ -3822,7 +3543,7 @@
       "source_path": "ja/application-robot-end-of-arm-tooling.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "b3a746f8fc531621430b0ab0e5576204cd05d3851792c204f8e7c7f8e6a6433a",
+      "source_hash": "252c87f3355dd9898e0d14625a960b92acde9c25848e0750ec00555f4becbbf9",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -3848,7 +3569,7 @@
       "source_path": "ja/application-steel-dusty-environments.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "2e6e434316503c079d8e2a29c11ed2040dacf9a7bd49b503435fdefc79881349",
+      "source_hash": "0365bfd2b2bb0c8a07e4e403f7602f67e0e943a0ae1eaee8076d312466e7a4c6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -3863,7 +3584,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3871,7 +3593,7 @@
       "source_path": "ja/application-textile-printing-converting.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "da883e6aaee0101cf3e51d800bfc547d76ec69c958fdc7f45b6169410d60ba21",
+      "source_hash": "a340267688386dc04f7ecb52136da893209db9dda0f90f99868fe7aa9989ea82",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -3882,11 +3604,10 @@
         "BP-2P-50-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3894,7 +3615,7 @@
       "source_path": "ja/application-vacuum-packaging-machines.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "33767631f4c5e78f9fda683fcc1390faf4305a888ac1e57f74aff939a0fefd11",
+      "source_hash": "eac3739653da23226083df706ff842675c3bf3a92a5173fd8a039a691f450393",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -3907,7 +3628,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3915,7 +3637,7 @@
       "source_path": "ja/application-welding-positioners.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "90e578618cdf1af5a56cccff0f71d2ac7d667adab93614cdfca95b9f76a7099e",
+      "source_hash": "8324a74155508504a15584c6eb57edc9f0543d09a77391d4e51944acf86e5230",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -3929,7 +3651,8 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3937,15 +3660,16 @@
       "source_path": "ja/applications.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "15d8274533c7e09154f36410799d6942eb2a251fa0b881cf944238ae47f95cd4",
+      "source_hash": "51f9ee14c7d87bc050726bc24900d1f151855ad015433592849938e4663d8d87",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 11,
+      "model_count": 12,
       "models": [
         "BP-1P-0003",
         "BP-1P-0006",
         "BP-2P-0001",
         "BP-2P-0002",
+        "BP-2P-08-0001",
         "BP-2P-130-0001",
         "BP-2P-50-0001",
         "BP-3P-0004",
@@ -3968,16 +3692,15 @@
       "source_path": "ja/blog-rotary-joint-installation-mistakes.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "67cc75ce0e0f79068bafc6b443a73aad2515f2d832bf70f95a8f3c80b201b9bf",
+      "source_hash": "e36736540433054e322ef03c90dd0f7393d25759e89e10e131e18e886b3935d7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_speed",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -3985,7 +3708,7 @@
       "source_path": "ja/blog-rotary-joint-leaking.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "9f1d01cf4316973b335b9c8384aef17021a263f4ec0005cf00b471615a174aea",
+      "source_hash": "407c23d78b521e596adebf28e317b80968a606df95c7925b34200e176afcc4ba",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -3996,7 +3719,6 @@
         "body_material",
         "compatible_media",
         "maximum_speed",
-        "protection_rating",
         "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4005,7 +3727,7 @@
       "source_path": "ja/blog-rotary-joint-materials.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "183f03843eacf9ca84a1be27a499a7faff6a72a7d387a9367674e1fe8c11f3a5",
+      "source_hash": "d4d95c79c44a079dba0afe800d482ad7f91e575037234c8b254497e955f88af6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -4021,7 +3743,6 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating",
         "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4030,7 +3751,7 @@
       "source_path": "ja/blog-rotary-joint-selection.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "78720dba668287ae4ef46cb24d8408a30edeac18265934e536e9ebf51b148b1f",
+      "source_hash": "297fe74479e85218067012b2252448c7f865519fac88b06ccc4eef4c7f034331",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -4048,7 +3769,6 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating",
         "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4057,7 +3777,7 @@
       "source_path": "ja/blog-rotary-union-seal-types.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "530584981cc66ef050c3e4f0c708a75c18f93fdbfd53bb25f4f206794ecd36b5",
+      "source_hash": "cb4e7a66cb2e00c5ffcdfe89b798542fba733e3e8e9a029c4eaac28effe672b9",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -4073,7 +3793,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "mounting_style"
+        "mounting_style",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4081,7 +3802,7 @@
       "source_path": "ja/blog-seal-replacement.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "9a705c4eed3a3d0650ccbb4efb7ca04a20411f4ac8ff9e09dfd4975480eee354",
+      "source_hash": "45f9ebe8e54651a1a1e651c67352a0b0c14379885290058acdaa5a22c6693082",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -4095,7 +3816,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4103,7 +3825,7 @@
       "source_path": "ja/blog-threaded-vs-flange.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "115701c1f0528b2c382633bab40d7a21ece778ad7468fbee4fd75e07c9719c9f",
+      "source_hash": "16fff15076732bf5bbd48976b861b66260838e6126c227b297954dbc4b1ff9a8",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -4117,7 +3839,6 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating",
         "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -4126,7 +3847,7 @@
       "source_path": "ja/blog.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "ab699d31518440138dd476ebbb167d42e342798f10b043df3791e9a394ddefa7",
+      "source_hash": "380cafb6f19baa99a5b4ad79f47aced969610e793a59fdb554ab9b4bd300d0a6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -4135,7 +3856,8 @@
         "body_material",
         "compatible_media",
         "mounting_style",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4143,7 +3865,7 @@
       "source_path": "ja/BP-1P-0003.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "29053a10226088700f1b962ffe27dc819ea88707fa31792b99b078365f8e2675",
+      "source_hash": "cad6d6c15064a162b46bd7532cf4c75f4cfb5d22692f983349c675e8c9c4a52e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4171,7 +3893,7 @@
       "source_path": "ja/BP-1P-0006.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "e7a469396f42ad36bfee16fff8e67e2ddcf2d06fdd5f2367690ecda11ab2ea8b",
+      "source_hash": "bb964c897f4fe456d6306e7a4f1bf7dc499f56658c480add5358f902c9897025",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4198,7 +3920,7 @@
       "source_path": "ja/BP-2P-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "1830e7b1432a5e7f5ff76b4f5bb2f3d25ace3191023ec7b5d0a3619cc191c0fb",
+      "source_hash": "bac3cdfa44af0565a4d33046a62313c8e11f59e62a9cf5804c3a90d6e8bbf591",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4224,7 +3946,7 @@
       "source_path": "ja/BP-2P-0002.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "bcfbca6bbfc85a23ab491e19a6288f1d77fcf3c11094db47b53a2fb6a4e3ace3",
+      "source_hash": "c47fe2571224cd84eb475b301aa1453c075fbc9af9683caeefa1cf3343aa7981",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4251,7 +3973,7 @@
       "source_path": "ja/BP-2P-08-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "8e4b310c27a272930553da87d7174149552a35d6763044917b92c3e403a06ce2",
+      "source_hash": "5e873cb0e1676d57ff601c7c70f67ec050cb88e38d8cfbf2069ab74fd749c416",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4278,7 +4000,7 @@
       "source_path": "ja/BP-2P-130-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "e7583fcfe3c4d8f18c84f5cfd67642806e4c594862a52bb8ff2685e80246d395",
+      "source_hash": "cc7bde617b1ba86626b7f310dd5b810d2bfe4ac752d2856ee0d5cda97f1089e4",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4305,7 +4027,7 @@
       "source_path": "ja/BP-2P-16-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+      "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4333,7 +4055,7 @@
       "source_path": "ja/BP-2P-30-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "9542dca10d7d673cfbd52915b74f159b24dd38a4a1877e747b742ad241eebc50",
+      "source_hash": "5864a50f0ca98138cab8bed408c599822a7075ecc2b20da819c7cbfc6d88dbb6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4361,7 +4083,7 @@
       "source_path": "ja/BP-2P-50-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "cd575aa1571b0c9a62a32dca9c3971f30e1a713fef3e64a27ee292424bee08d0",
+      "source_hash": "0efa39ea78e0ec16a3278d3b51b1735b275f42e9139a579ea90b62977f82b454",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4391,7 +4113,7 @@
       "source_path": "ja/BP-2P-95-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "ad972e604102dea944a26c7eff3e3247845a250cea39622925d3bf4503281352",
+      "source_hash": "9276b5abada1c296b25842af4e6fa537d9386bdc47743d05b1c0d1a8b8c4b243",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4419,7 +4141,7 @@
       "source_path": "ja/BP-3P-0004.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "e048f90974be315fb913e28e34f7c09a198215bb83ab362b9b19e9643589f0e7",
+      "source_hash": "25a7b29640394d7730b74c7d0e9c019ca45f01cafee67ed993a4b76c45e6698c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4445,7 +4167,7 @@
       "source_path": "ja/BP-3P-0006.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "61ed4cc68540b2b0a7bfdadd0a0148d06f817fb4c3e8b9d40a519a51ee917e44",
+      "source_hash": "48c0cb6d78243612102ce50fe58d36d363d57eebca2c459d04b7f23e47444672",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4473,7 +4195,7 @@
       "source_path": "ja/BP-3P-0007.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "9bf4a84bcb6e6137c27264a6eb1f2af4b0718015a3b78d607c234072d80a01c5",
+      "source_hash": "5a9fbc3db0f11e0cfe926b536812335ed626f2968f08db244d21ba0611fe9c79",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4501,7 +4223,7 @@
       "source_path": "ja/BP-3P-S06-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "b657b90d02809df6673a944870d49648074c4608790407b67e4ff880a6a8fb30",
+      "source_hash": "95a9fa9fc28c4aaba41d3d1a47118dbfa8a8580e6ca47d6d72ea717a42c1389f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4526,7 +4248,7 @@
       "source_path": "ja/BP-4P-30-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "611e1eded03746cf3ec81d4e0d8d00b86abb6c981f84ba637c95596929e8ea30",
+      "source_hash": "84f8d579b2d9e362796473c47c7eec82935839dce7d87e67c9dfaa2a6aa63ef9",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4552,7 +4274,7 @@
       "source_path": "ja/BP-8P-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "0e54ea8e7e4d1a519d2e11cdbc28da48405c481a155b8272a8f55c3952e8dd0e",
+      "source_hash": "efaf80990e9c03942d16f8876d143db96ab1b58e1fda1b056f0ef7d7c0838816",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -4579,7 +4301,7 @@
       "source_path": "ja/faq.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "2b6c824041c51d1e9753f656be9841061e04c6d9491de64c79241ad4144fe23f",
+      "source_hash": "4542a6a4e0294622ce213f4b5e6ef4498cb590f1784af3399ded6fc921972bad",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -4590,7 +4312,7 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4598,14 +4320,13 @@
       "source_path": "ja/installation.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "25883eaa381b92b9dbe4fe3115e593df491dc7dadd5f63cd491293f3ecd862da",
+      "source_hash": "31d02e4c04d1cb3193499ccd03ef0cbc34027e60babdbcb95e9765d88d835ede",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4613,7 +4334,7 @@
       "source_path": "ja/llms.txt",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "7b60e170a6d1f9e7627c25ab7f2c332710f1934d712880e55623d3eb8f55c23f",
+      "source_hash": "9f75a6e2c7f22d6d813c9f9a73c8172d074e521d36ceec1b7fe3b80014d8fdab",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4642,7 +4363,7 @@
       "source_path": "ja/product-comparison.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "ce947427fd015324d616c9579257d0a2c86f68581ae06cb1f229fb4dbf6a8f00",
+      "source_hash": "d0e5d07927a9668b5ed5dff8cb05ae7fc21977440bb01653d40fa716f68b5788",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4671,7 +4392,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4679,7 +4401,7 @@
       "source_path": "ja/products-p2.html",
       "source_type": "translated-product-list",
       "git_tracked": true,
-      "source_hash": "097a96d1d62c6432743445260a862442f8db0f548eb5f3a21c6052b86ffc8e88",
+      "source_hash": "9bdf4e41cf95bad1ede216df752d3c49305ba9dc04c3e49c94ba32eafecce8be",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 8,
@@ -4706,7 +4428,7 @@
       "source_path": "ja/products.html",
       "source_type": "translated-product-list",
       "git_tracked": true,
-      "source_hash": "2a63adf8ef58616d15afe94611f7d5647857b99c24b76d065e0343032d418469",
+      "source_hash": "5769fcfc7ef74e836d65de0fc66b8bffd0064d28e36f4a320f0d5e0f982cd113",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 9,
@@ -4733,7 +4455,7 @@
       "source_path": "ja/search-index.json",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "bed1ce623b8f4cc1d3e4e28330f80359bf7a849b59277d2f2c0437769fe67021",
+      "source_hash": "d0274c27140f428001b36061113cd9baab5920b4c7dac383caeeeddc33b94afb",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4765,7 +4487,7 @@
       "source_path": "llms.txt",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "3cb7820cda356eabee7e045db60a41b12f1d2bb9d16c9dafa54ec80b061e22dc",
+      "source_hash": "96eb4280020b2f3ca7c190deb794a94fc8d260927cb12c73b6f260d77b289d10",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4794,7 +4516,7 @@
       "source_path": "product-comparison.html",
       "source_type": "website-technical-content",
       "git_tracked": true,
-      "source_hash": "2d44dde489145648cd56168bea6109ef5882917f3c652525d1032d765ddfd784",
+      "source_hash": "6c86552baa152401df616b8227cc337cc2e83239704a4e240a6df08d2eb7d90e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -4823,7 +4545,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4831,7 +4554,7 @@
       "source_path": "products-p2.html",
       "source_type": "website-product-list",
       "git_tracked": true,
-      "source_hash": "4dd94437cf993092284339302b0fc6a82324b7bcd07120e440fa19f6755ab020",
+      "source_hash": "d49682e58b4d04ba2786f0f2688bfd2611a3312be06ba0f845ed8569b4b39b57",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 8,
@@ -4859,7 +4582,7 @@
       "source_path": "products.html",
       "source_type": "website-product-list",
       "git_tracked": true,
-      "source_hash": "cc477e6ebc22d2dc9161e19f42129e707d94d73f94986a2f50f5e4d01ec223db",
+      "source_hash": "bff0f4f10ac73578c88f03ad6294a0a64bc2269e2694ddef110455441f7cb40b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 9,
@@ -4887,7 +4610,7 @@
       "source_path": "ru/application-automation-rotary-tables.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "46c49c5a95cad8c71ba8cfd179e35a8681151ce39010c0df5b4044a0fe9838ac",
+      "source_hash": "145dbbcf27aacb39871282a843bd768355f86ff68c3e01505bfd0d6c1a9ca6fe",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 6,
@@ -4900,11 +4623,10 @@
         "BP-8P-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4912,7 +4634,7 @@
       "source_path": "ru/application-bottle-filling-capping.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "8b0eb5963318812e3362a7b3dc22252707b55e9be6e1044e873a52176f2b8558",
+      "source_hash": "bc6c5467fcc6c46511bdb57281d0d5fad6ad8cd36ed42a6af686158303afbcc7",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -4929,7 +4651,7 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4937,7 +4659,7 @@
       "source_path": "ru/application-cnc-pneumatic-clamping.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "ed10f92119f88281001e4dfaaa9bfcfb79efdc13f420859ab25c48469e301e95",
+      "source_hash": "631920c0f505c94a869cac71560c629610cfbeecce5ad0482d9e3ec75bee48ee",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -4947,12 +4669,11 @@
         "BP-4P-30-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4960,7 +4681,7 @@
       "source_path": "ru/application-electronics-battery-test-fixtures.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "90a3abc87b30a32f7aa59f9bb09bbd45368d8d758215e99e9ceded28e0b3416b",
+      "source_hash": "990b88cc2adec0d3218ba0d878306f8c51ea9540c00963e35eb4270b005b1c41",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -4973,7 +4694,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -4981,23 +4703,18 @@
       "source_path": "ru/application-laser-tube-cutting.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "4f9d0cf98df9c547f88eced1edffc636d03c565fceefc1b9cfa2104f80795f51",
+      "source_hash": "e496487a2e5591de6c5fffd221c9219cd2dfa68c0c5e9ff9b021f7ee94ba4fe5",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 4,
+      "model_count": 2,
       "models": [
-        "BP-2P-0001",
-        "BP-2P-130-0001",
-        "BP-3P-0004",
-        "BP-3P-0006"
+        "BP-2P-08-0001",
+        "BP-3P-0004"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
-        "maximum_speed",
-        "port_thread",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5005,7 +4722,7 @@
       "source_path": "ru/application-packaging-machinery.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "365f1da586fc58270fe191aa11fe4feee846d6c88b958882fad6e2bf0e582303",
+      "source_hash": "841507ff1795ed21f68ac6eb94d3f76e552b20c90c9eeeeea53bcccda821e732",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -5021,7 +4738,7 @@
         "maximum_pressure",
         "maximum_speed",
         "port_thread",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5029,7 +4746,7 @@
       "source_path": "ru/application-pneumatic-tools-hose-anti-twist.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "5653f347a42cba58eefdbf1681d65194c5ba7fd10a8c6937388325697d07c397",
+      "source_hash": "294065972a64cc40cbe752ebbedce8a77e82b1a9b6534bbd5b4b687e6c100b9d",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -5055,7 +4772,7 @@
       "source_path": "ru/application-robot-end-of-arm-tooling.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "1650db58d6aef7add8863e8fa14a93d890b8bfe5529a6e6dcfced13c7d274adc",
+      "source_hash": "c764967e7de046d835522aa91366d9bec5aa906dc22c8bd86f47a11f34fe159b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -5080,7 +4797,7 @@
       "source_path": "ru/application-steel-dusty-environments.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "793764ce8b4c3cda65427fde53457be97ab91816eb9776cc253640cf4ba2f50a",
+      "source_hash": "c3c0173e30dfbea98c1bd8a9dfb8ff16cd180c868331c59c8ead85ff20749bba",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 3,
@@ -5094,7 +4811,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5102,7 +4820,7 @@
       "source_path": "ru/application-textile-printing-converting.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "452d485063e5bdd0ff7370287bffee625c1863e512d1baf2abbfbd7f1eea1be8",
+      "source_hash": "0a93193a4687cf7e80ef8919122828919c2b36f8a63190548351f98c7fecae97",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 4,
@@ -5113,11 +4831,11 @@
         "BP-2P-50-0001"
       ],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5125,7 +4843,7 @@
       "source_path": "ru/application-vacuum-packaging-machines.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "533f4087875d1aa4523396a880eb80196dbfb8e22682fb5984a01e456e9eaf7b",
+      "source_hash": "14c735683e9386353d1e36ecc23ad65c14f75f46b7508dbd2f95e0243be261fd",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -5138,7 +4856,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5146,7 +4865,7 @@
       "source_path": "ru/application-welding-positioners.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "ced79dda928019e66e54b7b0c75bb98723b42913031b04ee8fdf1ee7756cc683",
+      "source_hash": "e725c0cb329a92ba6344098425aaa8c1e04d41a5f1522ea32be240c0a95ef1c9",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 2,
@@ -5159,7 +4878,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5167,15 +4887,16 @@
       "source_path": "ru/applications.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "eb4bf97ecf9081da8809a2ed169a71d8d43403d626da7be09320806cb69d7733",
+      "source_hash": "4c1844d22f17d5a823df853d10926e61a3eb956b4c65f4573126d4d9cba6638e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
-      "model_count": 11,
+      "model_count": 12,
       "models": [
         "BP-1P-0003",
         "BP-1P-0006",
         "BP-2P-0001",
         "BP-2P-0002",
+        "BP-2P-08-0001",
         "BP-2P-130-0001",
         "BP-2P-50-0001",
         "BP-3P-0004",
@@ -5190,7 +4911,8 @@
         "maximum_pressure",
         "maximum_speed",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5198,18 +4920,17 @@
       "source_path": "ru/blog-rotary-joint-installation-mistakes.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "9a643365d0c2481ed441b25bcbd55db7533b011746c7b7c65d127a6f12fe1fc7",
+      "source_hash": "0ba4522a6a6f23186ebbc782611399287d8c66a439fcd7e308f740473bb946ad",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5217,7 +4938,7 @@
       "source_path": "ru/blog-rotary-joint-leaking.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "2239714ac3c395b78c01cbe46b0e3e4ec544ad9f2c30de567dec771f7529b08e",
+      "source_hash": "7dddc3e3f29c3824d3c085439aafad082f9f87fb699dad097befabffd24806f0",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5230,7 +4951,6 @@
         "maximum_pressure",
         "maximum_speed",
         "mounting_style",
-        "protection_rating",
         "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
@@ -5239,7 +4959,7 @@
       "source_path": "ru/blog-rotary-joint-materials.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "96a81357e2eb6643431585f8c2e40ed42c8231ee98eb43ded97d161fdafeff0d",
+      "source_hash": "f74430f468ef1c2a9e1ae9f0eb313bd110a5a2cb19fba5afc88e11669a87da71",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -5255,7 +4975,8 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5263,7 +4984,7 @@
       "source_path": "ru/blog-rotary-joint-selection.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "23dfd499cf1b9a0da8a149c9c0328b992abccbc1ddc275bfa26513666046c50f",
+      "source_hash": "1dbaba882a5f5f42ec280e5bfebf3576d2c23e38b555b68e54b21b87a2fbd8ef",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 5,
@@ -5273,76 +4994,6 @@
         "BP-2P-130-0001",
         "BP-2P-50-0001",
         "BP-2P-95-0001"
-      ],
-      "field_types": [
-        "body_material",
-        "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "mounting_style",
-        "port_thread",
-        "protection_rating"
-      ],
-      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
-    },
-    {
-      "source_path": "ru/blog-rotary-union-seal-types.html",
-      "source_type": "translated-content",
-      "git_tracked": true,
-      "source_hash": "3bb9e2d7b2e03f52d7ade770484b2776f547b9049220aee91bf9e16850916cb0",
-      "automatically_parseable": true,
-      "manual_engineering_verification_required": false,
-      "model_count": 5,
-      "models": [
-        "BP-1P-0003",
-        "BP-2P-0001",
-        "BP-2P-130-0001",
-        "BP-2P-50-0001",
-        "BP-2P-95-0001"
-      ],
-      "field_types": [
-        "body_material",
-        "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "protection_rating"
-      ],
-      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
-    },
-    {
-      "source_path": "ru/blog-seal-replacement.html",
-      "source_type": "translated-content",
-      "git_tracked": true,
-      "source_hash": "3922890b7563f0500355ce2ad779644c1d9bb57024743135de1b0d89dbff3d19",
-      "automatically_parseable": true,
-      "manual_engineering_verification_required": false,
-      "model_count": 3,
-      "models": [
-        "BP-2P-0001",
-        "BP-2P-130-0001",
-        "BP-2P-50-0001"
-      ],
-      "field_types": [
-        "body_material",
-        "compatible_media",
-        "maximum_pressure",
-        "maximum_speed",
-        "mounting_style",
-        "protection_rating"
-      ],
-      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
-    },
-    {
-      "source_path": "ru/blog-threaded-vs-flange.html",
-      "source_type": "translated-content",
-      "git_tracked": true,
-      "source_hash": "c51af198b64a5df37170e748628f77a7fa151ff0343d4d583729173a87494b7a",
-      "automatically_parseable": true,
-      "manual_engineering_verification_required": false,
-      "model_count": 2,
-      "models": [
-        "BP-1P-0003",
-        "BP-2P-0001"
       ],
       "field_types": [
         "body_material",
@@ -5357,10 +5008,82 @@
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
     {
+      "source_path": "ru/blog-rotary-union-seal-types.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "ae527a3537660cea713abdd1092b672291b534298dbd2afdca54fed5e61566e2",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-seal-replacement.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "eb6bc9bf700c5d75d2f86b0624d270512b387d4ab41c5a44a5fc2a517d6d1615",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-threaded-vs-flange.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "dbc5882ccbde3cef034c89c7c983ff22143aebb968e903b9389d7aa2d3eb3edc",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
       "source_path": "ru/blog.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "038bc8e7cb6ffac32fa6520217a93d102c830ebf39ccdb5fb7b67e13c0b4a203",
+      "source_hash": "9a1c57529adb74c6b32003675bbfb02a2fdb14816f260cecf853edbf391959a6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -5369,7 +5092,8 @@
         "body_material",
         "compatible_media",
         "maximum_pressure",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5377,7 +5101,7 @@
       "source_path": "ru/BP-1P-0003.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "6b162f48596a91db050df1ee4edd680e1248c0aa305f0c863b72f64fc33b6eaf",
+      "source_hash": "80aa298fc8c07a63aa2cc886c5704d402da75f6b463495179d00e1291e25260f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5405,7 +5129,7 @@
       "source_path": "ru/BP-1P-0006.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "95cf395e205bbc3383a658e2bb56e29c5a7bdbbd8c81425a6677aeaa2d53c523",
+      "source_hash": "01a2a6c3c493a35722063f29c7dba462bb90c3fd94ed2397b99158a6a51dae1f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5432,7 +5156,7 @@
       "source_path": "ru/BP-2P-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "f526ba182703cb5368715c1056d9c79cb81a0b582e70707cbc6841ee84050b6d",
+      "source_hash": "a26ae231ddae64d13f2a13457e7a650933b9ba8da8418e9b554beb61fbf8c168",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5458,7 +5182,7 @@
       "source_path": "ru/BP-2P-0002.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "06c3e316c05dff9d35653aed2872171f4faa1139b018d70fd06beb3f21a10c08",
+      "source_hash": "d06edcf6662400aa972ce9a3fd5030cf12ee2187156d7572616fb62812ec7e72",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5485,7 +5209,7 @@
       "source_path": "ru/BP-2P-08-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "bd1997f7821978d0d8f0ebbd7e17571a214bf58bf182f84c5bfd57afd26fa990",
+      "source_hash": "1936ff214b9717ff708e6bc33a433e2a655b68d378411e7e458da332a1c8e590",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5512,7 +5236,7 @@
       "source_path": "ru/BP-2P-130-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "987001c22869314ef988043ecf5d90cabffdfb798372681a68ecfd2094c03e23",
+      "source_hash": "6b6c70436d49732abfe620e37bd7d74d44eddb7d967fce9f9b1a1884fa7b0d89",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5539,7 +5263,7 @@
       "source_path": "ru/BP-2P-16-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "8c37b57d042409f613a1fe50716b5b91252c8eec7e92527eacee6345386e36e0",
+      "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5567,7 +5291,7 @@
       "source_path": "ru/BP-2P-30-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "3cb453fe14fbae464ac6a52c06d45708fe0a9a15ba2f3b0affed314c7b9f120e",
+      "source_hash": "bbd13d3716272f593f7bd6e711cfad737b8a0f3ed0d672d944b1500d29c3937b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5594,7 +5318,7 @@
       "source_path": "ru/BP-2P-50-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "ccc25b38ba1c88f09db0485bacda8ac96359bed92223d060ad11c30f8e8c2fce",
+      "source_hash": "d71823145b195e46c1060873f05dc5f141249cd66bc5f6092cfd37b3121e9da6",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5624,7 +5348,7 @@
       "source_path": "ru/BP-2P-95-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "9c1e6b1d8552ca95ee059f30c17a5b8d53f229bd9b7f4ec3b6d61e47a3817d4b",
+      "source_hash": "6f683e9616ac9a95c626bfe08d04bf65e9d9d562397d8aa61cc30cce11e8492e",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5652,7 +5376,7 @@
       "source_path": "ru/BP-3P-0004.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "4452dd9565f135f93df8bda3aebf87c53d318c8b32a9dc86bd63d346c757ec20",
+      "source_hash": "8d65b18a43df50bec8416f465b2d8d11d99500568f56577cb419fd653ef9e88b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5678,7 +5402,7 @@
       "source_path": "ru/BP-3P-0006.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "269167325b208902eaa86335f4196ea80c83affd2f9e1882371d12abae253b6f",
+      "source_hash": "979ccf71a9a746846e7908ae3d16ea8047659af5bea88db497643caaba814390",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5706,7 +5430,7 @@
       "source_path": "ru/BP-3P-0007.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "c7ccd55bf2a7d0213f20289c081ffc296c7e522c52ae549eb51f84709e94dc39",
+      "source_hash": "2603f3afd26451d957b5a5f48cd0e610bff6a228c5349ab1543bc6ca0800d70f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5734,7 +5458,7 @@
       "source_path": "ru/BP-3P-S06-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "d8e12dbe8867dc2e131fe056172929ed6c8b43e31833de7b3afb06bf38bf69db",
+      "source_hash": "6842424426b032d2d86d2cb20d78983af4caaa8d0829ffbf272c261e553a51f1",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5759,7 +5483,7 @@
       "source_path": "ru/BP-4P-30-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "e484a0fa4d0623f6759d7f57db5490d59bb5fc39b67dc09ac7b4e04457196e3d",
+      "source_hash": "96cf809846b35c1286c6305450fb62ff11f4f69500bf5297ce3a37d3f0914378",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5785,7 +5509,7 @@
       "source_path": "ru/BP-8P-0001.html",
       "source_type": "translated-product-html",
       "git_tracked": true,
-      "source_hash": "bed08c19c4a547d1fc281da7df80ab149ebad4a809841ed82723ba1ca30a9737",
+      "source_hash": "bdb9203dc491b2d27387d95991685f5dc1382e225f33c91d46af6473936ec439",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 1,
@@ -5812,7 +5536,7 @@
       "source_path": "ru/faq.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "7676683f84d06fc83512f6fb72f855593e19ec48e59e5b71de2cec2ac1336c4b",
+      "source_hash": "f72f42082180758b2c2b3d7df91426b205d58a621a4f0e7df72e94672a69bac0",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
@@ -5822,7 +5546,7 @@
         "compatible_media",
         "maximum_pressure",
         "maximum_speed",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5830,15 +5554,14 @@
       "source_path": "ru/installation.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "fb0cb80f36367a177e3665fda37fa667230de92e427302f0441e168d855b6388",
+      "source_hash": "ca67b46563642050fa904c393808342e9260024e48c8770318629186bfcce5f1",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 0,
       "models": [],
       "field_types": [
-        "body_material",
         "maximum_pressure",
-        "protection_rating"
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5846,7 +5569,7 @@
       "source_path": "ru/llms.txt",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "d7d961f6792607b1a89a97c9d60287faf91ff5c77c4e22f4dfcb683250c4e584",
+      "source_hash": "f9f70ab01e4a57cd918d54be43ffaa8ae27f00ac964ca400a3a3323ac067570b",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -5875,7 +5598,7 @@
       "source_path": "ru/product-comparison.html",
       "source_type": "translated-content",
       "git_tracked": true,
-      "source_hash": "8d0458b22407b468e45fe7d685d51ba27ef2c4da2555fd72e8238cc30919e74f",
+      "source_hash": "d7119826d68c846f4f8ee4a22e782d6458ca1255499d9191bfe3f56db5cbcb5c",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -5904,7 +5627,8 @@
         "maximum_speed",
         "mounting_style",
         "port_thread",
-        "protection_rating"
+        "protection_rating",
+        "weight"
       ],
       "notes": "Technical, FAQ, application, comparison, or article content containing product references."
     },
@@ -5912,7 +5636,7 @@
       "source_path": "ru/products-p2.html",
       "source_type": "translated-product-list",
       "git_tracked": true,
-      "source_hash": "b4e64759249a0866290c9d0ac74c538eb00581152b81367f25238ae24bb6c4af",
+      "source_hash": "599bf6ff95971a3d81d92eac8b0df22fbec2fd8854e8f9930428d394bf0b6176",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 8,
@@ -5940,7 +5664,7 @@
       "source_path": "ru/products.html",
       "source_type": "translated-product-list",
       "git_tracked": true,
-      "source_hash": "282670f404cdc3b85b28da3c5a480561b921bde8144ea0bf076a17be6143ba73",
+      "source_hash": "8027e56805e4a3368c261cbcdb263b264b5c09dad6c6dd60d49bbbc3c0e2ae3f",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 9,
@@ -5968,7 +5692,7 @@
       "source_path": "ru/search-index.json",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "b35f86279c083b36a18ff5d48f56cf5da42638e2d4a1fbbc13689558a30f4aa6",
+      "source_hash": "998a66f26a0678a110b12c0d76a2a171e0f37b8cd1c331faf2c17f55ff4fc67a",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -6001,7 +5725,7 @@
       "source_path": "scripts/build-localized-site.mjs",
       "source_type": "content-generation-script",
       "git_tracked": true,
-      "source_hash": "e3140b8f6e9bc682cf81ffd711711d79816b8c7f660d19ad4706765db4e3209a",
+      "source_hash": "e98e88901c275d4245c4fddf974bc9f1f98df7374a8b359f3317f3f1e96f9f76",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,
@@ -6091,7 +5815,7 @@
       "source_path": "search-index.json",
       "source_type": "search-or-ai-index",
       "git_tracked": true,
-      "source_hash": "eceb59df07e5cd5dfdbfe2fb673958d573adbb4825d4d8484d715f1dc288df9b",
+      "source_hash": "ccdf07c266f75e8f4bdfb8bac380e85702691fa1f8897a2b96927a0f49397ed8",
       "automatically_parseable": true,
       "manual_engineering_verification_required": false,
       "model_count": 16,

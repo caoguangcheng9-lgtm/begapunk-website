@@ -72,7 +72,7 @@ const conservativePolicyByLocale = {
     searchText: '認証済みIP保護等級',
     mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
     nonAirTerms: /(?:水|クーラント|液体|空気以外)/u,
-    nonAirQualification: /(?:書面|想定していません|おそれがあります|向けないでください|標準仕様外|運転前|事前に.*確認)/u,
+    nonAirQualification: /(?:書面|想定していません|おそれがあります|向けないでください|標準(?:仕様|定格)外|運転前|仕様決定前|事前に.*確認|相談)/u,
   },
   ru: {
     productTypeName: 'Тип изделия',

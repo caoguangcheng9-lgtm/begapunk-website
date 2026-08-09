@@ -20,8 +20,7 @@ The audit normalizes current observations and reports differences. Historical au
 | `audit-evidence-card` | 11 |
 | `content-generation-script` | 4 |
 | `engineering-binary` | 25 |
-| `local-untracked-engineering-binary` | 16 |
-| `local-untracked-source` | 4 |
+| `local-untracked-source` | 2 |
 | `product-download-manifest` | 1 |
 | `search-or-ai-index` | 8 |
 | `translated-content` | 72 |
@@ -32,17 +31,17 @@ The audit normalizes current observations and reports differences. Historical au
 | `website-product-list` | 2 |
 | `website-technical-content` | 24 |
 
-Total source files: **254**
+Total source files: **236**
 
-Git-tracked sources: **234**
+Git-tracked sources: **236**
 
-Git-untracked sources: **20**
+Git-untracked sources: **0**
 
-Protected local catalog sources classified by task policy: **4**
+Protected local catalog sources classified by task policy: **2**
 
 When `PRODUCT_TRUTH_CATALOG_ROOT` is set, every `catalog-project/` source is read from that external directory and classified as a read-only local input, even if a path with the same name also exists in Git. No catalog file is copied into this change.
 
-Manual engineering verification sources: **56**
+Manual engineering verification sources: **39**
 
 The complete path, source type, Git state, SHA-256, parseability, model count, and field types are in `audit/product-truth-source-inventory.json`.
 
@@ -56,7 +55,7 @@ Normalized fields observed: **21**
 
 `body_material`, `channel_configuration`, `compatible_media`, `friction_torque`, `maximum_pressure`, `maximum_speed`, `model`, `model_identity`, `mounting_style`, `operating_temperature`, `passages`, `port_thread`, `protection_rating`, `rated_pressure`, `rotor_mounting_pattern`, `seal_material`, `stator_mounting_pattern`, `test_pressure`, `unassigned_mounting_pattern`, `warranty`, `weight`
 
-Normalized fact observations: **2210**
+Normalized fact observations: **2020**
 
 ## 4. Conflict baseline
 
@@ -66,7 +65,7 @@ Active conflicts after semantic correction: **31**
 
 Historical findings: **3**
 
-Manual-review findings: **65**
+Manual-review findings: **57**
 
 Stale references: **14**
 

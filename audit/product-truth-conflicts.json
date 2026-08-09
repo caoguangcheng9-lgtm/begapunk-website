@@ -6,7 +6,7 @@
   "summary": {
     "active_conflicts": 31,
     "historical_findings": 3,
-    "manual_review_findings": 65,
+    "manual_review_findings": 57,
     "stale_references": 14,
     "source_identity_mismatches": 4,
     "mismatched_document_count": 1,
@@ -30,7 +30,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-json-ld",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -41,7 +41,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-product-spec",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -64,17 +64,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air, oil, water",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         }
@@ -113,7 +102,7 @@
               "raw_value": "Threaded mount (G1/4 or G1/8, BSP parallel)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-json-ld",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -124,7 +113,7 @@
               "raw_value": "Threaded (BSP parallel, G1/4 or G1/8)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-product-spec",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -147,17 +136,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: port_thread; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "G3/8 inlet; M10 x 1.5 outlet",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: port_thread; local verification label: VERIFIED."
             }
           ]
         }
@@ -196,7 +174,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-json-ld",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -207,7 +185,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-product-spec",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -230,17 +208,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -285,17 +252,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -307,7 +263,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -318,7 +274,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -368,17 +324,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -390,7 +335,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -401,7 +346,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -451,17 +396,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -473,7 +407,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -484,7 +418,7 @@
               "raw_value": "Air, Water, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -534,17 +468,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -556,7 +479,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -567,7 +490,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -611,7 +534,7 @@
               "raw_value": "2 Passages",
               "source_path": "products-p2.html",
               "source_type": "website-product-card",
-              "source_hash": "4dd94437cf993092284339302b0fc6a82324b7bcd07120e440fa19f6755ab020",
+              "source_hash": "d49682e58b4d04ba2786f0f2688bfd2611a3312be06ba0f845ed8569b4b39b57",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -634,17 +557,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: channel_configuration; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "2-in-3-out (2 inlets, 3 outlets)",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: channel_configuration; local verification label: VERIFIED."
             }
           ]
         }
@@ -689,17 +601,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -711,7 +612,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -722,7 +623,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -772,17 +673,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -794,7 +684,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -805,7 +695,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -855,17 +745,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -877,7 +756,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -888,7 +767,7 @@
               "raw_value": "Air, Water, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -938,17 +817,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -960,7 +828,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -971,7 +839,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1021,17 +889,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -1043,7 +900,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1054,7 +911,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1098,7 +955,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1109,7 +966,7 @@
               "raw_value": "PTFE (Teflon) Composite Seal with FKM O-ring backup",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1132,17 +989,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -1181,7 +1027,7 @@
               "raw_value": "1 Passage",
               "source_path": "products.html",
               "source_type": "website-product-card",
-              "source_hash": "cc477e6ebc22d2dc9161e19f42129e707d94d73f94986a2f50f5e4d01ec223db",
+              "source_hash": "bff0f4f10ac73578c88f03ad6294a0a64bc2269e2694ddef110455441f7cb40b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1204,17 +1050,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: channel_configuration; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "2-in-2-out (16mm Bore)",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: channel_configuration; local verification label: VERIFIED."
             }
           ]
         }
@@ -1259,17 +1094,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -1281,7 +1105,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1292,7 +1116,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1336,7 +1160,7 @@
               "raw_value": "200 RPM",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1347,7 +1171,7 @@
               "raw_value": "200 RPM — derate to 150 RPM for continuous water or coolant",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1366,21 +1190,10 @@
               "notes": "CSV field: maximum_speed_rpm; local verification label: VERIFIED."
             },
             {
-              "raw_value": "200 RPM",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: maximum_speed_rpm; local verification label: VERIFIED."
-            },
-            {
               "raw_value": "200 min⁻¹",
               "source_path": "de/BP-2P-16-0001.html",
               "source_type": "translated-json-ld",
-              "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+              "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
               "language": "de",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1391,7 +1204,7 @@
               "raw_value": "200 min⁻¹ — Drehzahlverringerung zu 150 min⁻¹ für kontinuierliches Wasser oder Kühlmittel",
               "source_path": "de/BP-2P-16-0001.html",
               "source_type": "translated-product-spec",
-              "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+              "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
               "language": "de",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1402,7 +1215,7 @@
               "raw_value": "200 min⁻¹",
               "source_path": "ja/BP-2P-16-0001.html",
               "source_type": "translated-json-ld",
-              "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+              "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
               "language": "ja",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1413,7 +1226,7 @@
               "raw_value": "200 min⁻¹ — 150 min⁻¹ に連続した水かクーラントのための定格を下げる",
               "source_path": "ja/BP-2P-16-0001.html",
               "source_type": "translated-product-spec",
-              "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+              "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
               "language": "ja",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1424,7 +1237,7 @@
               "raw_value": "200 об/мин",
               "source_path": "ru/BP-2P-16-0001.html",
               "source_type": "translated-json-ld",
-              "source_hash": "8c37b57d042409f613a1fe50716b5b91252c8eec7e92527eacee6345386e36e0",
+              "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
               "language": "ru",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1435,7 +1248,7 @@
               "raw_value": "200 об/мин - смягчить до 150 об/мин для непрерывной воды или охлаждающей жидкости",
               "source_path": "ru/BP-2P-16-0001.html",
               "source_type": "translated-product-spec",
-              "source_hash": "8c37b57d042409f613a1fe50716b5b91252c8eec7e92527eacee6345386e36e0",
+              "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
               "language": "ru",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1446,7 +1259,7 @@
               "raw_value": "200 об/мин",
               "source_path": "ru/search-index.json",
               "source_type": "search-or-ai-index",
-              "source_hash": "b35f86279c083b36a18ff5d48f56cf5da42638e2d4a1fbbc13689558a30f4aa6",
+              "source_hash": "998a66f26a0678a110b12c0d76a2a171e0f37b8cd1c331faf2c17f55ff4fc67a",
               "language": "ru",
               "evidence_level": "search-or-ai-index",
               "verification_status": "unverified",
@@ -1457,7 +1270,7 @@
               "raw_value": "200 RPM",
               "source_path": "search-index.json",
               "source_type": "search-or-ai-index",
-              "source_hash": "eceb59df07e5cd5dfdbfe2fb673958d573adbb4825d4d8484d715f1dc288df9b",
+              "source_hash": "ccdf07c266f75e8f4bdfb8bac380e85702691fa1f8897a2b96927a0f49397ed8",
               "language": "en",
               "evidence_level": "search-or-ai-index",
               "verification_status": "unverified",
@@ -1474,7 +1287,7 @@
               "raw_value": "Max 500 RPM",
               "source_path": "products.html",
               "source_type": "website-product-card",
-              "source_hash": "cc477e6ebc22d2dc9161e19f42129e707d94d73f94986a2f50f5e4d01ec223db",
+              "source_hash": "bff0f4f10ac73578c88f03ad6294a0a64bc2269e2694ddef110455441f7cb40b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1485,7 +1298,7 @@
               "raw_value": "Макс. 500 об/мин",
               "source_path": "ru/products.html",
               "source_type": "translated-product-card",
-              "source_hash": "282670f404cdc3b85b28da3c5a480561b921bde8144ea0bf076a17be6143ba73",
+              "source_hash": "8027e56805e4a3368c261cbcdb263b264b5c09dad6c6dd60d49bbbc3c0e2ae3f",
               "language": "ru",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -1531,7 +1344,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1542,7 +1355,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1565,17 +1378,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -1620,17 +1422,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: PARTIALLY_VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: PARTIALLY_VERIFIED."
             }
           ]
         },
@@ -1642,7 +1433,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil",
               "source_path": "BP-2P-30-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "76d979847fd60bd94a9f444fac96e4a00bbf55920fc6e975a0059c1cee008718",
+              "source_hash": "2a0ada2a1b6fbb7ea184202020bc1cbe8c04bc54b451ec9585e8f1b5be4cb61d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1653,7 +1444,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil",
               "source_path": "BP-2P-30-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "76d979847fd60bd94a9f444fac96e4a00bbf55920fc6e975a0059c1cee008718",
+              "source_hash": "2a0ada2a1b6fbb7ea184202020bc1cbe8c04bc54b451ec9585e8f1b5be4cb61d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1703,17 +1494,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: PARTIALLY_VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: PARTIALLY_VERIFIED."
             }
           ]
         },
@@ -1725,7 +1505,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1736,7 +1516,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1780,7 +1560,7 @@
               "raw_value": "PTFE (Teflon) composite seal with FKM O-ring backup",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1791,7 +1571,7 @@
               "raw_value": "PTFE (Teflon) composite seal with FKM O-ring backup",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1814,17 +1594,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: PARTIALLY_VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: PARTIALLY_VERIFIED."
             }
           ]
         }
@@ -1869,17 +1638,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -1891,7 +1649,7 @@
               "raw_value": "Air, water, oil, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-json-ld",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1902,7 +1660,7 @@
               "raw_value": "Air, Water, Oil, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-product-spec",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1946,7 +1704,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-json-ld",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1957,7 +1715,7 @@
               "raw_value": "PTFE Composite Seal with FKM O-ring backup",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-product-spec",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -1980,17 +1738,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -2035,17 +1782,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -2057,7 +1793,7 @@
               "raw_value": "Air, water, oil, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-3P-0006.html",
               "source_type": "website-json-ld",
-              "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
+              "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2068,7 +1804,7 @@
               "raw_value": "Air, Water, Oil, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-3P-0006.html",
               "source_type": "website-product-spec",
-              "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
+              "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2118,17 +1854,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -2140,7 +1865,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-json-ld",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2151,7 +1876,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-product-spec",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2195,7 +1920,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-json-ld",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2206,7 +1931,7 @@
               "raw_value": "PTFE Composite Seal with FKM O-ring backup",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-product-spec",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2229,17 +1954,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -2284,17 +1998,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -2306,7 +2009,7 @@
               "raw_value": "Air, water, coolant, hydraulic oil",
               "source_path": "BP-3P-S06-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "112fe9bb162f8063e424fcdd6dd0647fb055a426c2c8e6214a76879a3f8a9649",
+              "source_hash": "5e22e75d9f71f939c74b535754ccd70e2b348f3b85465e999110f685ac4b71ff",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2317,7 +2020,7 @@
               "raw_value": "Air, Water, Oil, Coolant, Hydraulic Oil",
               "source_path": "BP-3P-S06-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "112fe9bb162f8063e424fcdd6dd0647fb055a426c2c8e6214a76879a3f8a9649",
+              "source_hash": "5e22e75d9f71f939c74b535754ccd70e2b348f3b85465e999110f685ac4b71ff",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2367,17 +2070,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -2389,7 +2081,7 @@
               "raw_value": "Air, water, coolant, hydraulic oil",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2400,7 +2092,7 @@
               "raw_value": "Air, Water, Coolant, Hydraulic Oil",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2450,17 +2142,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -2472,7 +2153,7 @@
               "raw_value": "PTFE Composite + Si3N4 Ceramic Seal",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2483,7 +2164,7 @@
               "raw_value": "PTFE Composite + Si3N4 Ceramic Seal",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2533,17 +2214,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -2555,7 +2225,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2566,7 +2236,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2616,17 +2286,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -2638,7 +2297,7 @@
               "raw_value": "PTFE (Teflon) Composite Seal",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2649,7 +2308,7 @@
               "raw_value": "PTFE (Teflon) Composite Seal",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2695,7 +2354,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-json-ld",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2706,7 +2365,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-product-spec",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2729,17 +2388,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air, oil, water",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         }
@@ -2778,7 +2426,7 @@
               "raw_value": "Threaded mount (G1/4 or G1/8, BSP parallel)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-json-ld",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2789,7 +2437,7 @@
               "raw_value": "Threaded (BSP parallel, G1/4 or G1/8)",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-product-spec",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2812,17 +2460,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: port_thread; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "G3/8 inlet; M10 x 1.5 outlet",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: port_thread; local verification label: VERIFIED."
             }
           ]
         }
@@ -2861,7 +2498,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-json-ld",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2872,7 +2509,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-1P-0003.html",
               "source_type": "website-product-spec",
-              "source_hash": "9a79060014e6d20264ef010bb4c4ceb81e1d343a7b0a7a81aa91784ede936572",
+              "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2895,17 +2532,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -2950,17 +2576,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -2972,7 +2587,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -2983,7 +2598,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3033,17 +2648,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -3055,7 +2659,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3066,7 +2670,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-1P-0006.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf62975fb2d48b88081aaea22a7e20dda249fcbc9d5587cdb21e9aa1e9e9b320",
+              "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3116,17 +2720,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -3138,7 +2731,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3149,7 +2742,7 @@
               "raw_value": "Air, Water, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3199,17 +2792,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -3221,7 +2803,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3232,7 +2814,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-2P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "ee59d492b7acf21921d910dac7848a11358b52c8d27d57144b9520d5120b7d64",
+              "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3276,7 +2858,7 @@
               "raw_value": "2 Passages",
               "source_path": "products-p2.html",
               "source_type": "website-product-card",
-              "source_hash": "4dd94437cf993092284339302b0fc6a82324b7bcd07120e440fa19f6755ab020",
+              "source_hash": "d49682e58b4d04ba2786f0f2688bfd2611a3312be06ba0f845ed8569b4b39b57",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3299,17 +2881,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: channel_configuration; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "2-in-3-out (2 inlets, 3 outlets)",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: channel_configuration; local verification label: VERIFIED."
             }
           ]
         }
@@ -3354,17 +2925,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -3376,7 +2936,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3387,7 +2947,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3437,17 +2997,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -3459,7 +3008,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3470,7 +3019,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3520,17 +3069,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -3542,7 +3080,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3553,7 +3091,7 @@
               "raw_value": "Air, Water, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3603,17 +3141,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -3625,7 +3152,7 @@
               "raw_value": "PTFE composite seal",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3636,7 +3163,7 @@
               "raw_value": "PTFE Composite Seal",
               "source_path": "BP-2P-08-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+              "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3686,17 +3213,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -3708,7 +3224,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3719,7 +3235,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3763,7 +3279,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3774,7 +3290,7 @@
               "raw_value": "PTFE (Teflon) Composite Seal with FKM O-ring backup",
               "source_path": "BP-2P-130-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+              "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3797,17 +3313,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -3846,7 +3351,7 @@
               "raw_value": "1 Passage",
               "source_path": "products.html",
               "source_type": "website-product-card",
-              "source_hash": "cc477e6ebc22d2dc9161e19f42129e707d94d73f94986a2f50f5e4d01ec223db",
+              "source_hash": "bff0f4f10ac73578c88f03ad6294a0a64bc2269e2694ddef110455441f7cb40b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3869,17 +3374,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: channel_configuration; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "2-in-2-out (16mm Bore)",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: channel_configuration; local verification label: VERIFIED."
             }
           ]
         }
@@ -3924,17 +3418,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -3946,7 +3429,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -3957,7 +3440,7 @@
               "raw_value": "Air, water, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4001,7 +3484,7 @@
               "raw_value": "200 RPM",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4012,7 +3495,7 @@
               "raw_value": "200 RPM — derate to 150 RPM for continuous water or coolant",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4031,21 +3514,10 @@
               "notes": "CSV field: maximum_speed_rpm; local verification label: VERIFIED."
             },
             {
-              "raw_value": "200 RPM",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: maximum_speed_rpm; local verification label: VERIFIED."
-            },
-            {
               "raw_value": "200 min⁻¹",
               "source_path": "de/BP-2P-16-0001.html",
               "source_type": "translated-json-ld",
-              "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+              "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
               "language": "de",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4056,7 +3528,7 @@
               "raw_value": "200 min⁻¹ — Drehzahlverringerung zu 150 min⁻¹ für kontinuierliches Wasser oder Kühlmittel",
               "source_path": "de/BP-2P-16-0001.html",
               "source_type": "translated-product-spec",
-              "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+              "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
               "language": "de",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4067,7 +3539,7 @@
               "raw_value": "200 min⁻¹",
               "source_path": "ja/BP-2P-16-0001.html",
               "source_type": "translated-json-ld",
-              "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+              "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
               "language": "ja",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4078,7 +3550,7 @@
               "raw_value": "200 min⁻¹ — 150 min⁻¹ に連続した水かクーラントのための定格を下げる",
               "source_path": "ja/BP-2P-16-0001.html",
               "source_type": "translated-product-spec",
-              "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+              "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
               "language": "ja",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4089,7 +3561,7 @@
               "raw_value": "200 об/мин",
               "source_path": "ru/BP-2P-16-0001.html",
               "source_type": "translated-json-ld",
-              "source_hash": "8c37b57d042409f613a1fe50716b5b91252c8eec7e92527eacee6345386e36e0",
+              "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
               "language": "ru",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4100,7 +3572,7 @@
               "raw_value": "200 об/мин - смягчить до 150 об/мин для непрерывной воды или охлаждающей жидкости",
               "source_path": "ru/BP-2P-16-0001.html",
               "source_type": "translated-product-spec",
-              "source_hash": "8c37b57d042409f613a1fe50716b5b91252c8eec7e92527eacee6345386e36e0",
+              "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
               "language": "ru",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4111,7 +3583,7 @@
               "raw_value": "200 об/мин",
               "source_path": "ru/search-index.json",
               "source_type": "search-or-ai-index",
-              "source_hash": "b35f86279c083b36a18ff5d48f56cf5da42638e2d4a1fbbc13689558a30f4aa6",
+              "source_hash": "998a66f26a0678a110b12c0d76a2a171e0f37b8cd1c331faf2c17f55ff4fc67a",
               "language": "ru",
               "evidence_level": "search-or-ai-index",
               "verification_status": "unverified",
@@ -4122,7 +3594,7 @@
               "raw_value": "200 RPM",
               "source_path": "search-index.json",
               "source_type": "search-or-ai-index",
-              "source_hash": "eceb59df07e5cd5dfdbfe2fb673958d573adbb4825d4d8484d715f1dc288df9b",
+              "source_hash": "ccdf07c266f75e8f4bdfb8bac380e85702691fa1f8897a2b96927a0f49397ed8",
               "language": "en",
               "evidence_level": "search-or-ai-index",
               "verification_status": "unverified",
@@ -4139,7 +3611,7 @@
               "raw_value": "Max 500 RPM",
               "source_path": "products.html",
               "source_type": "website-product-card",
-              "source_hash": "cc477e6ebc22d2dc9161e19f42129e707d94d73f94986a2f50f5e4d01ec223db",
+              "source_hash": "bff0f4f10ac73578c88f03ad6294a0a64bc2269e2694ddef110455441f7cb40b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4150,7 +3622,7 @@
               "raw_value": "Макс. 500 об/мин",
               "source_path": "ru/products.html",
               "source_type": "translated-product-card",
-              "source_hash": "282670f404cdc3b85b28da3c5a480561b921bde8144ea0bf076a17be6143ba73",
+              "source_hash": "8027e56805e4a3368c261cbcdb263b264b5c09dad6c6dd60d49bbbc3c0e2ae3f",
               "language": "ru",
               "evidence_level": "translated-content",
               "verification_status": "unverified",
@@ -4196,7 +3668,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4207,7 +3679,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-2P-16-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+              "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4230,17 +3702,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -4285,17 +3746,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: PARTIALLY_VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: PARTIALLY_VERIFIED."
             }
           ]
         },
@@ -4307,7 +3757,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil",
               "source_path": "BP-2P-30-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "76d979847fd60bd94a9f444fac96e4a00bbf55920fc6e975a0059c1cee008718",
+              "source_hash": "2a0ada2a1b6fbb7ea184202020bc1cbe8c04bc54b451ec9585e8f1b5be4cb61d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4318,7 +3768,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil",
               "source_path": "BP-2P-30-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "76d979847fd60bd94a9f444fac96e4a00bbf55920fc6e975a0059c1cee008718",
+              "source_hash": "2a0ada2a1b6fbb7ea184202020bc1cbe8c04bc54b451ec9585e8f1b5be4cb61d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4368,17 +3818,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: PARTIALLY_VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: PARTIALLY_VERIFIED."
             }
           ]
         },
@@ -4390,7 +3829,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4401,7 +3840,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4445,7 +3884,7 @@
               "raw_value": "PTFE (Teflon) composite seal with FKM O-ring backup",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4456,7 +3895,7 @@
               "raw_value": "PTFE (Teflon) composite seal with FKM O-ring backup",
               "source_path": "BP-2P-95-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+              "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4479,17 +3918,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: PARTIALLY_VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: PARTIALLY_VERIFIED."
             }
           ]
         }
@@ -4534,17 +3962,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -4556,7 +3973,7 @@
               "raw_value": "Air, water, oil, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-json-ld",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4567,7 +3984,7 @@
               "raw_value": "Air, Water, Oil, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-product-spec",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4611,7 +4028,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-json-ld",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4622,7 +4039,7 @@
               "raw_value": "PTFE Composite Seal with FKM O-ring backup",
               "source_path": "BP-3P-0004.html",
               "source_type": "website-product-spec",
-              "source_hash": "5d012919600164fd1a2517883f04ddb7200c44b8787a298155882d8afeee9a31",
+              "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4645,17 +4062,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -4700,17 +4106,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -4722,7 +4117,7 @@
               "raw_value": "Air, water, oil, coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-3P-0006.html",
               "source_type": "website-json-ld",
-              "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
+              "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4733,7 +4128,7 @@
               "raw_value": "Air, Water, Oil, Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-3P-0006.html",
               "source_type": "website-product-spec",
-              "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
+              "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4783,17 +4178,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -4805,7 +4189,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-json-ld",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4816,7 +4200,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-product-spec",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4860,7 +4244,7 @@
               "raw_value": "PTFE composite seal with FKM O-ring backup",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-json-ld",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4871,7 +4255,7 @@
               "raw_value": "PTFE Composite Seal with FKM O-ring backup",
               "source_path": "BP-3P-0007.html",
               "source_type": "website-product-spec",
-              "source_hash": "a273cf740035b9f890ba2e8bd06c260afa4eadc10618ba686a3c12a8b827ab8d",
+              "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4894,17 +4278,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         }
@@ -4949,17 +4322,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -4971,7 +4333,7 @@
               "raw_value": "Air, water, coolant, hydraulic oil",
               "source_path": "BP-3P-S06-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "112fe9bb162f8063e424fcdd6dd0647fb055a426c2c8e6214a76879a3f8a9649",
+              "source_hash": "5e22e75d9f71f939c74b535754ccd70e2b348f3b85465e999110f685ac4b71ff",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -4982,7 +4344,7 @@
               "raw_value": "Air, Water, Oil, Coolant, Hydraulic Oil",
               "source_path": "BP-3P-S06-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "112fe9bb162f8063e424fcdd6dd0647fb055a426c2c8e6214a76879a3f8a9649",
+              "source_hash": "5e22e75d9f71f939c74b535754ccd70e2b348f3b85465e999110f685ac4b71ff",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5032,17 +4394,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -5054,7 +4405,7 @@
               "raw_value": "Air, water, coolant, hydraulic oil",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5065,7 +4416,7 @@
               "raw_value": "Air, Water, Coolant, Hydraulic Oil",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5115,17 +4466,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -5137,7 +4477,7 @@
               "raw_value": "PTFE Composite + Si3N4 Ceramic Seal",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5148,7 +4488,7 @@
               "raw_value": "PTFE Composite + Si3N4 Ceramic Seal",
               "source_path": "BP-4P-30-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "674309279c2d2ccde73e4e113c2938204af85c2f61129b9427946b4ed156f724",
+              "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5198,17 +4538,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: compatible_media; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "Air",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: compatible_media; local verification label: VERIFIED."
             }
           ]
         },
@@ -5220,7 +4549,7 @@
               "raw_value": "Air, water, water-soluble coolant, light hydraulic oil (ISO VG 32 max)",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5231,7 +4560,7 @@
               "raw_value": "Air, Water, Water-Soluble Coolant, Light Hydraulic Oil (ISO VG 32 max)",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5281,17 +4610,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: seal_material; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "PTFE, O-Ring",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: seal_material; local verification label: VERIFIED."
             }
           ]
         },
@@ -5303,7 +4621,7 @@
               "raw_value": "PTFE (Teflon) Composite Seal",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-json-ld",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5314,7 +4632,7 @@
               "raw_value": "PTFE (Teflon) Composite Seal",
               "source_path": "BP-8P-0001.html",
               "source_type": "website-product-spec",
-              "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+              "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -5471,26 +4789,6 @@
       "notes": "CSV field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
     },
     {
-      "model": "BP-1P-0006",
-      "field": "unassigned_mounting_pattern",
-      "raw_value": "4 x M4 mounting holes at each end",
-      "normalized_value": "4xm4",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
       "model": "BP-2P-0001",
       "field": "body_material",
       "raw_value": "Material field also lists Aluminum Alloy 6061",
@@ -5591,26 +4889,6 @@
       "notes": "CSV field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
     },
     {
-      "model": "BP-2P-0002",
-      "field": "unassigned_mounting_pattern",
-      "raw_value": "M5, M6 and M8 mounting features; see drawing",
-      "normalized_value": "m5|m6|m8",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
       "model": "BP-2P-08-0001",
       "field": "unassigned_mounting_pattern",
       "raw_value": "M5 Threaded",
@@ -5619,7 +4897,7 @@
       "language": "en",
       "source_path": "BP-2P-08-0001.html",
       "source_type": "website-product-spec",
-      "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+      "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5639,7 +4917,7 @@
       "language": "en",
       "source_path": "BP-2P-08-0001.html",
       "source_type": "website-json-ld",
-      "source_hash": "3bb9b7c04082f9c7c84e7a630ab0622a6994afc235d0e017847f9c2d5d1bb9f3",
+      "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5673,33 +4951,13 @@
     {
       "model": "BP-2P-08-0001",
       "field": "unassigned_mounting_pattern",
-      "raw_value": "4 x M4, depth 10 mm",
-      "normalized_value": "4xm4",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
-      "model": "BP-2P-08-0001",
-      "field": "unassigned_mounting_pattern",
       "raw_value": "M5 Gewinde",
       "normalized_value": "m5",
       "unit": null,
       "language": "de",
       "source_path": "de/BP-2P-08-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "479d65d3129a02ba2cce43e79153b0d713974980ff7b6f25b8947cd7df3fc1c6",
+      "source_hash": "1d6bee0198b8e9ad33b22b7ee7fa8707ecac99651dfe42b9fcc2905ed975f676",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5719,7 +4977,7 @@
       "language": "de",
       "source_path": "de/BP-2P-08-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "479d65d3129a02ba2cce43e79153b0d713974980ff7b6f25b8947cd7df3fc1c6",
+      "source_hash": "1d6bee0198b8e9ad33b22b7ee7fa8707ecac99651dfe42b9fcc2905ed975f676",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5739,7 +4997,7 @@
       "language": "ja",
       "source_path": "ja/BP-2P-08-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "8e4b310c27a272930553da87d7174149552a35d6763044917b92c3e403a06ce2",
+      "source_hash": "5e873cb0e1676d57ff601c7c70f67ec050cb88e38d8cfbf2069ab74fd749c416",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5759,7 +5017,7 @@
       "language": "ja",
       "source_path": "ja/BP-2P-08-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "8e4b310c27a272930553da87d7174149552a35d6763044917b92c3e403a06ce2",
+      "source_hash": "5e873cb0e1676d57ff601c7c70f67ec050cb88e38d8cfbf2069ab74fd749c416",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5779,7 +5037,7 @@
       "language": "ru",
       "source_path": "ru/BP-2P-08-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "bd1997f7821978d0d8f0ebbd7e17571a214bf58bf182f84c5bfd57afd26fa990",
+      "source_hash": "1936ff214b9717ff708e6bc33a433e2a655b68d378411e7e458da332a1c8e590",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5799,7 +5057,7 @@
       "language": "ru",
       "source_path": "ru/BP-2P-08-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "bd1997f7821978d0d8f0ebbd7e17571a214bf58bf182f84c5bfd57afd26fa990",
+      "source_hash": "1936ff214b9717ff708e6bc33a433e2a655b68d378411e7e458da332a1c8e590",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5819,7 +5077,7 @@
       "language": "en",
       "source_path": "BP-2P-130-0001.html",
       "source_type": "website-json-ld",
-      "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+      "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5839,7 +5097,7 @@
       "language": "en",
       "source_path": "BP-2P-130-0001.html",
       "source_type": "website-product-spec",
-      "source_hash": "e986b3e7a88250bffe8683495133c7c8002e7df26432575d4e25c778defafb24",
+      "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5873,33 +5131,13 @@
     {
       "model": "BP-2P-130-0001",
       "field": "unassigned_mounting_pattern",
-      "raw_value": "M10 mounting features; see drawing",
-      "normalized_value": "m10",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
-      "model": "BP-2P-130-0001",
-      "field": "unassigned_mounting_pattern",
       "raw_value": "Flanschmontage (8-M0 + 8-M10 Lochkreis)",
       "normalized_value": "8xm0|8xm10",
       "unit": null,
       "language": "de",
       "source_path": "de/BP-2P-130-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "96388aae1a02a74312751d7665cb36c56ad0693fe5c6876eb846cab0fb24fc30",
+      "source_hash": "2de0f8bf6708fb6f5abec55344378828b815892216bd328e38654eac3905eec6",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5919,7 +5157,7 @@
       "language": "ja",
       "source_path": "ja/BP-2P-130-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "e7583fcfe3c4d8f18c84f5cfd67642806e4c594862a52bb8ff2685e80246d395",
+      "source_hash": "cc7bde617b1ba86626b7f310dd5b810d2bfe4ac752d2856ee0d5cda97f1089e4",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5939,7 +5177,7 @@
       "language": "ru",
       "source_path": "ru/BP-2P-130-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "987001c22869314ef988043ecf5d90cabffdfb798372681a68ecfd2094c03e23",
+      "source_hash": "6b6c70436d49732abfe620e37bd7d74d44eddb7d967fce9f9b1a1884fa7b0d89",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5959,7 +5197,7 @@
       "language": "en",
       "source_path": "BP-2P-16-0001.html",
       "source_type": "website-json-ld",
-      "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+      "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5979,7 +5217,7 @@
       "language": "en",
       "source_path": "BP-2P-16-0001.html",
       "source_type": "website-product-spec",
-      "source_hash": "dd9218215d5a035df5b6bfb1af0de14ad6b23fcf1d4f2a9d33b39fb255d05b8c",
+      "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -5999,7 +5237,7 @@
       "language": "de",
       "source_path": "de/BP-2P-16-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+      "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6019,7 +5257,7 @@
       "language": "de",
       "source_path": "de/BP-2P-16-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "4e01b898ed8f16da8779bf3a106ff161fbb8277864318b7817bb75c0d35bec79",
+      "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6039,7 +5277,7 @@
       "language": "ja",
       "source_path": "ja/BP-2P-16-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+      "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6059,7 +5297,7 @@
       "language": "ja",
       "source_path": "ja/BP-2P-16-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "2361d419853453c565968e3c3a6ba3dc3837a6491e3bc526326566ff308a387e",
+      "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6079,7 +5317,7 @@
       "language": "ru",
       "source_path": "ru/BP-2P-16-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "8c37b57d042409f613a1fe50716b5b91252c8eec7e92527eacee6345386e36e0",
+      "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6133,33 +5371,13 @@
     {
       "model": "BP-2P-30-0001",
       "field": "unassigned_mounting_pattern",
-      "raw_value": "4 x M5 mounting holes at each end",
-      "normalized_value": "4xm5",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: PARTIALLY_VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
-      "model": "BP-2P-30-0001",
-      "field": "unassigned_mounting_pattern",
       "raw_value": "Фланцевое крепление (4-M5 ротор / 4-M5 статор)",
       "normalized_value": "4xm5",
       "unit": null,
       "language": "ru",
       "source_path": "ru/BP-2P-30-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "3cb453fe14fbae464ac6a52c06d45708fe0a9a15ba2f3b0affed314c7b9f120e",
+      "source_hash": "bbd13d3716272f593f7bd6e711cfad737b8a0f3ed0d672d944b1500d29c3937b",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6219,7 +5437,7 @@
       "language": "en",
       "source_path": "BP-2P-95-0001.html",
       "source_type": "website-json-ld",
-      "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+      "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6239,7 +5457,7 @@
       "language": "en",
       "source_path": "BP-2P-95-0001.html",
       "source_type": "website-product-spec",
-      "source_hash": "e2ba43018c5366536e38b49f9f0a089b65350094c4d4b40caed4a6694a96d506",
+      "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6273,33 +5491,13 @@
     {
       "model": "BP-2P-95-0001",
       "field": "unassigned_mounting_pattern",
-      "raw_value": "6 x M5 and 8 x M8 mounting holes, depth 12 mm",
-      "normalized_value": "6xm5|8xm8",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: PARTIALLY_VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
-      "model": "BP-2P-95-0001",
-      "field": "unassigned_mounting_pattern",
       "raw_value": "Flanschmontage (8-M5 + 2-M10)",
       "normalized_value": "2xm10|8xm5",
       "unit": null,
       "language": "de",
       "source_path": "de/BP-2P-95-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "f0b9096aab7a8629b34eef1ce0d01012af0c99bb57c83d5dedc193e87cf87f5c",
+      "source_hash": "889ae592505913e3a7221cd17ef17cca01672f0606e793dcf8fc3dd37fb52723",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6319,7 +5517,7 @@
       "language": "ja",
       "source_path": "ja/BP-2P-95-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "ad972e604102dea944a26c7eff3e3247845a250cea39622925d3bf4503281352",
+      "source_hash": "9276b5abada1c296b25842af4e6fa537d9386bdc47743d05b1c0d1a8b8c4b243",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6339,7 +5537,7 @@
       "language": "ru",
       "source_path": "ru/BP-2P-95-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "9c1e6b1d8552ca95ee059f30c17a5b8d53f229bd9b7f4ec3b6d61e47a3817d4b",
+      "source_hash": "6f683e9616ac9a95c626bfe08d04bf65e9d9d562397d8aa61cc30cce11e8492e",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6379,7 +5577,7 @@
       "language": "en",
       "source_path": "BP-3P-0006.html",
       "source_type": "website-json-ld",
-      "source_hash": "4c3513218a522f499f6f696ba94b62e4cf1355de3c513619992d352768a4064c",
+      "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6399,7 +5597,7 @@
       "language": "de",
       "source_path": "de/BP-3P-0006.html",
       "source_type": "translated-json-ld",
-      "source_hash": "b2f0c20986b973be036eef3f3194c8f67e20b029b348fb77150cc4215fa35856",
+      "source_hash": "974008b3c10044c660abcf6ac455da470f7cd6b345fb137b4c0a9b619afa7974",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6419,7 +5617,7 @@
       "language": "ja",
       "source_path": "ja/BP-3P-0006.html",
       "source_type": "translated-json-ld",
-      "source_hash": "61ed4cc68540b2b0a7bfdadd0a0148d06f817fb4c3e8b9d40a519a51ee917e44",
+      "source_hash": "48c0cb6d78243612102ce50fe58d36d363d57eebca2c459d04b7f23e47444672",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6439,7 +5637,7 @@
       "language": "ru",
       "source_path": "ru/BP-3P-0006.html",
       "source_type": "translated-json-ld",
-      "source_hash": "269167325b208902eaa86335f4196ea80c83affd2f9e1882371d12abae253b6f",
+      "source_hash": "979ccf71a9a746846e7908ae3d16ea8047659af5bea88db497643caaba814390",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6469,26 +5667,6 @@
       "last_checked_at": "2026-07-31",
       "decision_owner": "laocao",
       "notes": "CSV field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
-      "model": "BP-3P-0007",
-      "field": "unassigned_mounting_pattern",
-      "raw_value": "3 x M5 and 3 x 6 mm mounting holes",
-      "normalized_value": "3x6mm-hole|3xm5",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
     },
     {
       "model": "BP-3P-0007",
@@ -6499,7 +5677,7 @@
       "language": "ru",
       "source_path": "ru/BP-3P-0007.html",
       "source_type": "translated-json-ld",
-      "source_hash": "c7ccd55bf2a7d0213f20289c081ffc296c7e522c52ae549eb51f84709e94dc39",
+      "source_hash": "2603f3afd26451d957b5a5f48cd0e610bff6a228c5349ab1543bc6ca0800d70f",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6529,26 +5707,6 @@
       "last_checked_at": "2026-07-31",
       "decision_owner": "laocao",
       "notes": "CSV field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
-    },
-    {
-      "model": "BP-3P-S06-0001",
-      "field": "unassigned_mounting_pattern",
-      "raw_value": "2 x M5, depth 10 mm; 3 x M5, depth 8 mm",
-      "normalized_value": "2xm5|3xm5",
-      "unit": null,
-      "language": "en",
-      "source_path": "catalog-project/data/catalog-data.json",
-      "source_type": "local-untracked-source",
-      "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-      "evidence_level": "local-untracked-source",
-      "verification_status": "manual-review-required",
-      "observation_status": "manual-review-required",
-      "referenced_source_path": null,
-      "source_identity": null,
-      "public_claim_level": "internal-only",
-      "last_checked_at": "2026-07-31",
-      "decision_owner": "laocao",
-      "notes": "JSON field: mounting_type; local verification label: VERIFIED. Mounting holes lack a reliable stator/rotor assignment."
     },
     {
       "model": "BP-4P-30-0001",
@@ -6579,7 +5737,7 @@
       "language": "en",
       "source_path": "BP-8P-0001.html",
       "source_type": "website-json-ld",
-      "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+      "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6599,7 +5757,7 @@
       "language": "en",
       "source_path": "BP-8P-0001.html",
       "source_type": "website-product-spec",
-      "source_hash": "95926056e88c945103f646018961ab1e368fd6c20dee62273b29a4527efa22ce",
+      "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
       "evidence_level": "website-generated",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6619,7 +5777,7 @@
       "language": "de",
       "source_path": "de/BP-8P-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "7a3b49c9f630801b299c5c52c446ec2242b54b7d45585e6894af6a84d0e25dfe",
+      "source_hash": "8e68fddec526453ea842aeb2c15c0f057988b3fafa2a2ecb276a0bfbd5291ebd",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6639,7 +5797,7 @@
       "language": "de",
       "source_path": "de/BP-8P-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "7a3b49c9f630801b299c5c52c446ec2242b54b7d45585e6894af6a84d0e25dfe",
+      "source_hash": "8e68fddec526453ea842aeb2c15c0f057988b3fafa2a2ecb276a0bfbd5291ebd",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6659,7 +5817,7 @@
       "language": "ja",
       "source_path": "ja/BP-8P-0001.html",
       "source_type": "translated-product-spec",
-      "source_hash": "0e54ea8e7e4d1a519d2e11cdbc28da48405c481a155b8272a8f55c3952e8dd0e",
+      "source_hash": "efaf80990e9c03942d16f8876d143db96ab1b58e1fda1b056f0ef7d7c0838816",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6679,7 +5837,7 @@
       "language": "ja",
       "source_path": "ja/BP-8P-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "0e54ea8e7e4d1a519d2e11cdbc28da48405c481a155b8272a8f55c3952e8dd0e",
+      "source_hash": "efaf80990e9c03942d16f8876d143db96ab1b58e1fda1b056f0ef7d7c0838816",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -6699,7 +5857,7 @@
       "language": "ru",
       "source_path": "ru/BP-8P-0001.html",
       "source_type": "translated-json-ld",
-      "source_hash": "bed08c19c4a547d1fc281da7df80ab149ebad4a809841ed82723ba1ca30a9737",
+      "source_hash": "bdb9203dc491b2d27387d95991685f5dc1382e225f33c91d46af6473936ec439",
       "evidence_level": "translated-content",
       "verification_status": "unverified",
       "observation_status": "manual-review-required",
@@ -7114,17 +6272,6 @@
               "verification_status": "manual-review-required",
               "last_checked_at": "2026-07-31",
               "notes": "CSV field: port_thread; local verification label: VERIFIED."
-            },
-            {
-              "raw_value": "G1/4 and G1/8 ports; see drawing",
-              "source_path": "catalog-project/data/catalog-data.json",
-              "source_type": "local-untracked-source",
-              "source_hash": "0e277cdc4156ed949e3b6e8fc6d9d2647729e0e0f80a59ed4006608369b82e2e",
-              "language": "en",
-              "evidence_level": "local-untracked-source",
-              "verification_status": "manual-review-required",
-              "last_checked_at": "2026-07-31",
-              "notes": "JSON field: port_thread; local verification label: VERIFIED."
             }
           ]
         },
@@ -7136,7 +6283,7 @@
               "raw_value": "G1/8 threaded",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-json-ld",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -7147,7 +6294,7 @@
               "raw_value": "G1/8 Threaded",
               "source_path": "BP-2P-0002.html",
               "source_type": "website-product-spec",
-              "source_hash": "cf3f74e8dfec8f8ba67ebba00e0a013ab29a18b10972c0941853944b509e476b",
+              "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -7158,7 +6305,7 @@
               "raw_value": "G1/8 Thread",
               "source_path": "products-p2.html",
               "source_type": "website-product-card",
-              "source_hash": "4dd94437cf993092284339302b0fc6a82324b7bcd07120e440fa19f6755ab020",
+              "source_hash": "d49682e58b4d04ba2786f0f2688bfd2611a3312be06ba0f845ed8569b4b39b57",
               "language": "en",
               "evidence_level": "website-generated",
               "verification_status": "unverified",
@@ -8303,14 +7450,11 @@
         "BP-2P-08-0001.html",
         "de/BP-2P-08-0001.html",
         "de/products-p2.html",
-        "de/search-index.json",
         "ja/BP-2P-08-0001.html",
         "ja/products-p2.html",
-        "ja/search-index.json",
         "products-p2.html",
         "ru/BP-2P-08-0001.html",
         "ru/products-p2.html",
-        "ru/search-index.json",
         "search-index.json"
       ],
       "evidence_domain": "engineering",
@@ -8333,7 +7477,6 @@
         "products-p2.html",
         "ru/BP-2P-08-0001.html",
         "ru/products-p2.html",
-        "ru/search-index.json",
         "search-index.json"
       ],
       "evidence_domain": "engineering",
@@ -9906,14 +9049,11 @@
         "BP-3P-0004.html",
         "de/BP-3P-0004.html",
         "de/products.html",
-        "de/search-index.json",
         "ja/BP-3P-0004.html",
         "ja/products.html",
-        "ja/search-index.json",
         "products.html",
         "ru/BP-3P-0004.html",
         "ru/products.html",
-        "ru/search-index.json",
         "search-index.json"
       ],
       "evidence_domain": "engineering",
@@ -9936,7 +9076,6 @@
         "products.html",
         "ru/BP-3P-0004.html",
         "ru/products.html",
-        "ru/search-index.json",
         "search-index.json"
       ],
       "evidence_domain": "engineering",
@@ -9975,14 +9114,11 @@
         "BP-3P-0004.html",
         "de/BP-3P-0004.html",
         "de/products.html",
-        "de/search-index.json",
         "ja/BP-3P-0004.html",
         "ja/products.html",
-        "ja/search-index.json",
         "products.html",
         "ru/BP-3P-0004.html",
         "ru/products.html",
-        "ru/search-index.json",
         "search-index.json"
       ],
       "evidence_domain": "engineering",

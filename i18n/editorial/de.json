@@ -210,7 +210,6 @@
     "471078a818fed755": "BP-2P-50-0001 — staubgeschützte Ausführung",
     "0973e6f2bb08185f": "<h3>BP-1P-0006 — 1 Eingang / 6 Ausgänge (G1/8)</h3><p>Verteilerausführung mit 4-mm-Bohrung für Montagestationen, die sechs Werkzeuge aus einer Druckluftleitung versorgen.</p><div class=\"price\">Ab 42 USD</div>",
     "1d71388d958de224": "<h3>BP-2P-0001 — 2 Kanäle (Flansch)</h3><p>Zweikanal-Ausführung mit Flanschmontage bis 1,0 MPa, zum Beispiel für Spannen/Lösen oder Greifer/Vakuum.</p><div class=\"price\">Ab 55 USD</div>",
-    "6d4d3b01a3c78419": "<h3>BP-2P-0002 — 2 Kanäle (G1/8)</h3><p>Zweikanal-Ausführung mit Gewindeanschluss bis 1,5 MPa für Anwendungen mit höherem Druck oder geeigneten Hydraulikmedien.</p><div class=\"price\">Ab 48 USD</div>",
     "2bc24733f4769f82": "<h3>BP-2P-50-0001 — staubgeschützte Ausführung</h3><p>Zweikanal-Flanschausführung mit Staubschutz für Stahlwerke, Gießereien und abrasive Umgebungen.</p><div class=\"price\">Ab 85 USD</div>",
     "cfaafd5b08403d20": "Flanschdichtung einsetzen und Schrauben gleichmäßig anziehen",
     "401574754c10124f": "<strong>7 Montagefehler, die zu vorzeitigem Ausfall führen</strong><span>Zu hohes Anzugsmoment, starre Leitungen, fehlender Einlauf und ungeeignete Filtration sind häufige Ursachen für Reklamationen.</span>",
@@ -300,7 +299,8 @@
     "d41ef3007d48e755": "<strong>Anwendungsübersicht</strong><span>Drehdurchführung nach Maschinentyp finden</span>",
     "5234d0e6d10b1b42": "<strong>FAQ</strong><span>Antworten zu Auswahl und Wartung</span>",
     "9aa2d85de104f530": "<strong>Anleitungen / Anfrage</strong><span>Betriebsdaten zur technischen Prüfung senden</span>",
-    "ea47cd2409e8b2d1": "Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk"
+    "ea47cd2409e8b2d1": "Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk",
+    "2aafd7cd79068463": "Modellspezifische Prüfanforderungen"
   },
   "application-electronics-battery-test-fixtures.html": {
     "cad0c902b78909fe": "/ Elektronik- und Batterieprüfung",
@@ -410,7 +410,8 @@
     "1b0c39e5a9ef82a7": "Drehdurchführungen mit Spezifikationen, Zeichnungen und Anwendungshinweisen vergleichen.",
     "9d3f93584b2d8fc5": "Vielen Dank | Anfrage bei Begapunk gesendet",
     "c2417460c6b4b034": "Vielen Dank! Ihre Anfrage wurde gesendet.",
-    "0e2b2fe2dcb7bca6": "Produkte ansehen →"
+    "0e2b2fe2dcb7bca6": "Produkte ansehen →",
+    "2aafd7cd79068463": "✅ Projektspezifische Dokumentation"
   },
   "about.html": {
     "72eb7aa4e7459e35": "/ Über Begapunk",
@@ -918,7 +919,6 @@
     "ed05eb020ee35a47": "BP-2P-130-0001 große Hochdruck-Drehdurchführung für hohe Belastungen bis 5 MPa",
     "82859828ae863cb1": "BP-2P-16-0001 · 16 mm Nennweite",
     "ffa758c1c75f9013": "BP-2P-16-0001 Zweikanal-Drehdurchführung mit 16 mm Nennweite und blau eloxiertem Flanschgehäuse",
-    "bd4ece89a1059409": "BP-2P-50-0001 Zweikanal-Drehdurchführung mit Flansch in staubgeschützter IP65-Ausführung",
     "23bf5d1e68530ab2": "BP-2P-95-0001 · 2 Eingänge / 4 Ausgänge",
     "dcb87f509d36306a": "BP-2P-95-0001 große Drehdurchführung mit 2 Eingängen, 4 Ausgängen und bis zu 1 MPa",
     "b0e3e6c89934d01a": "BP-3P-0004 Dreikanal-Drehdurchführung mit blau eloxiertem Flanschgehäuse",
@@ -929,7 +929,6 @@
     "6183be0883d2a89c": "PDF herunterladen",
     "b04a71294c64df29": "Staubgeschützt",
     "c30a45605d61c8e7": "Für hohe Belastungen",
-    "42624a8921dbe5b4": "Staubgeschützt nach IP65",
     "9f8c64afe55cd409": "Große Nennweite",
     "77369094625056d2": "Max. 1 MPa / 10 bar",
     "980bbbecacb0cffa": "Max. 100 min⁻¹",
@@ -939,7 +938,12 @@
     "5aff238259917352": "Weiter: Weitere Drehdurchführungen →",
     "0f56424f6b5dbc3b": "Drehdurchführungs-Katalog",
     "4995273fef0cb810": "Produktkatalog für Drehdurchführungen | Begapunk",
-    "568911be4a6db812": "Vergleichen Sie Druck, Drehzahl, Kanalzahl und Montageart online oder speichern Sie den vollständigen Drehdurchführungs-Katalog zur Offline-Prüfung."
+    "568911be4a6db812": "Vergleichen Sie Druck, Drehzahl, Kanalzahl und Montageart online oder speichern Sie den vollständigen Drehdurchführungs-Katalog zur Offline-Prüfung.",
+    "dbe27e29b1539001": "Drehdurchführungen: Produktübersicht | Begapunk",
+    "d87c965c52ad810d": "BP-3P-0004 · 3 Kanäle",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube + Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung 6061"
   },
   "products-p2.html": {
     "0117a1d3380c4f25": "← Zurück: Drehdurchführungs-Katalog Seite 1",
@@ -972,7 +976,13 @@
     "bda0339836efaa20": "Öffnen Sie die vollständige Vergleichstabelle für pneumatische Drehdurchführungen und wählen Sie vor der Anfrage ein passendes Standardmodell aus.",
     "d2e61bfcd9450993": "Pneumatisch-elektrisch",
     "cc1a2161a41e9b05": "Drehdurchführungs-Katalog — Seite 2",
-    "afa2c6e37142653e": "Drehdurchführungs-Katalog Seite 2 | Begapunk"
+    "afa2c6e37142653e": "Drehdurchführungs-Katalog Seite 2 | Begapunk",
+    "dbe27e29b1539001": "Drehdurchführungen: weitere Modelle | Begapunk",
+    "46151cdac2e2602e": "BP-3P-S06-0001 · 3 Luftkanäle + 6 Stromkreise",
+    "e1810dbab10aca4d": "BP-2P-30-0001 · 2-Kanal (Ø30mm)",
+    "cb774b554629c77e": "BP-3P-0006 · 3-Kanal (G1/4)",
+    "e5ab3d8f36118a91": "BP-2P-0002 · 2-zu-3 (G1/8)",
+    "ac948fbeaddd5160": "BP-1P-0006 · 1-zu-6 (G1/8)"
   },
   "privacy.html": {
     "fe379b00f7250f9a": "<strong>Geschäftliche Informationen:</strong> Maschinenzeichnungen (STEP, PDF, DWG) und technische Spezifikationen, die im Rahmen einer Anfrage hochgeladen werden.",
@@ -1109,7 +1119,18 @@
     "cbbb733da929fd14": "Vakuumaufnahme, Abblasen und Spannen an Drehköpfen von Verpackungsmaschinen. Die kompakte Bauform reduziert den zusätzlichen Bauraum. <a href=\"application-packaging-machinery.html\">Anwendungsleitfaden lesen →</a>",
     "96da9392e01ade51": "Vakuum, Spannen und Lösen an Drehtischen mit drei Stationen. Flanschmontage bietet eine starre Schnittstelle für getaktete Bewegungen. <a href=\"application-automation-rotary-tables.html\">Anwendungsleitfaden lesen →</a>",
     "f12242dfcab01587": "Wann sollte BP-3P-0004 durch eine leistungsfähigere Ausführung ersetzt werden?\n     <span class=\"icon\">—</span>",
-    "494af66979b6a1b4": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung einer qualifizierten Anfrage bereitgestellt werden. Inhalt und Verfügbarkeit hängen vom Modell und den vollständigen Projektangaben ab. Verwenden Sie die Daten zur Prüfung von Bauraum, Lochkreis, Anschlüssen und Schlauchführung in Ihrer CAD-Baugruppe. Die Bearbeitungszeit für Sonderausführungen richtet sich nach der technischen Prüfung."
+    "494af66979b6a1b4": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung einer qualifizierten Anfrage bereitgestellt werden. Inhalt und Verfügbarkeit hängen vom Modell und den vollständigen Projektangaben ab. Verwenden Sie die Daten zur Prüfung von Bauraum, Lochkreis, Anschlüssen und Schlauchführung in Ihrer CAD-Baugruppe. Die Bearbeitungszeit für Sonderausführungen richtet sich nach der technischen Prüfung.",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "cb774b554629c77e": "BP-3P-0006 · 3 Eingänge / 3 Ausgänge (G1/4)",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "c019ecdf6e30b5f2": "1.5 MPa ausgelegt, Gewindemontage, Zweikanal",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge / 2 Ausgänge (Flansch)",
+    "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge / 3 Ausgänge (4 mm)",
+    "5f8166385cab47dc": "<strong>Staubige oder abrasive Umgebungen</strong> - keine Staubdichtung oder Schutzhülle; abrasive Partikel punkten die PTFE Dichtungsfläche; verwenden Sie BP-2P-50-0001 oder fügen Sie externe Balgen hinzu",
+    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3>\n    <p>Abweichende Kanalzahl, Werkstoffe, Dichtungsoptionen oder Druckbereiche werden nach Prüfung der Anwendung ausgelegt. Die Verfügbarkeit von 3D-Daten hängt von Modell und Projektangaben ab.</p>\n    <div class=\"price\">Angebot anfragen</div>"
   },
   "BP-3P-0006.html": {
     "2bc65b83d90ddcc2": "Abmessungen gemäß aktueller 2D-Zeichnung",
@@ -1185,13 +1206,24 @@
     "559c1a7eb7e5370e": "Das Gehäuse mit der vorgesehenen Verdrehsicherung an einer festen Halterung abstützen. Befestigungsschrauben und Drehmoment der aktuellen Zeichnung oder Anleitung entnehmen. Das Gehäuse darf nicht frei mit der Welle rotieren; Schläuche müssen spannungsfrei geführt werden und dürfen keine Querlast einleiten.",
     "59d7df5f882a17e1": "Vakuum, Abblasen und Spannen an rotierenden Verpackungsköpfen. Kompakte Bauform für geringe Zusatzlast und begrenzten Einbauraum. <a href=\"application-packaging-machinery.html\">Anwendungsleitfaden lesen →</a>",
     "40dfc7d0158f60df": "Wann sollte BP-3P-0006 durch ein anderes Modell ersetzt werden? <span class=\"icon\">—</span>",
-    "651eba9b3240b249": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung einer qualifizierten Anfrage bereitgestellt werden. Inhalt und Verfügbarkeit hängen von Modell und vollständigen Projektangaben ab. Verwenden Sie die Daten zur Prüfung von Bauraum, Anschlussrichtung, Gewindeeingriff und Schlauchführung in Ihrer CAD-Baugruppe. Sonderkonfigurationen werden nach technischer Prüfung modelliert."
+    "651eba9b3240b249": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung einer qualifizierten Anfrage bereitgestellt werden. Inhalt und Verfügbarkeit hängen von Modell und vollständigen Projektangaben ab. Verwenden Sie die Daten zur Prüfung von Bauraum, Anschlussrichtung, Gewindeeingriff und Schlauchführung in Ihrer CAD-Baugruppe. Sonderkonfigurationen werden nach technischer Prüfung modelliert.",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge / 2 Ausgänge (Flansch)",
+    "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge / 3 Ausgänge (4 mm)",
+    "442507aa15c80a03": "BP-3P-0004 · 3 Eingänge / 3 Ausgänge (Flansch)",
+    "5f8166385cab47dc": "<strong>Staubige oder abrasive Umgebungen</strong> - keine Staubdichtung oder Schutzhülle; abrasive Partikel punkten die PTFE Dichtungsfläche; verwenden Sie BP-2P-50-0001 oder fügen Sie externe Balgen hinzu",
+    "856aff6a43bfb285": "G1/8-Gewinde, 1 MPa, zwei Eingänge / drei Ausgänge",
+    "4d8f0195e7fdf4f7": "<h3>BP-3P-0004 · 3 Eingänge / 3 Ausgänge (Flansch)</h3> <p>Drei Kanäle und Flanschmontage, max. 1,0 MPa. Für Anwendungen, bei denen ein Flansch besser zur Maschinenkonstruktion passt.</p> <div class=\"price\">Preis auf Anfrage</div>",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-2P-08-0001.html": {
     "4331b6e5ed2faf38": "/ BP-2P-08-0001 · Zweikanal-Drehdurchführung",
     "b7ac036a641634e2": "<a href=\"contact.html?request=3d-step&amp;model=BP-2P-08-0001&amp;product=BP-2P-08-0001%20%C2%B7%202-in-2-out%20Rotary%20Joint&amp;source=BP-2P-08-0001.html\">3D-Datei STEP/IGES anfragen</a>",
     "f355ab49c00078a3": "<a href=\"downloads/BP-2P-08-0001.pdf\" download=\"\">Technische 2D-Zeichnung (PDF)</a>",
-    "98e7a108f259cf16": "<h3>BP-2P-0002 · 2 Eingänge / 3 Ausgänge (G1/8)</h3> <p>Zweikanal-Ausführung mit Gewindeanschluss bis 1,5 MPa. Für höheren Druck oder größeren Volumenstrom.</p> <div class=\"price\">Preis auf Anfrage</div>",
     "edb4125267954e05": "<strong>Bis 200 min⁻¹:</strong> Für kleine Indexier- und Prüfvorrichtungen, sofern Lastprofil, Anschlüsse und Medium der Modellspezifikation entsprechen",
     "259148e54223e266": "<strong>Gehäuse aus Aluminium 6061:</strong> Die freigegebene Zeichnung nennt ein ungefähres Gewicht von 0,39 kg. Die Eignung für Wasser, Kühlschmierstoff, Korrosion und Dauerbetrieb ist anwendungsbezogen zu bestätigen.<br><br><strong>PTFE-Verbunddichtung:</strong> Zwei getrennte Dichtstellen für zwei unabhängige Kanäle. Medien-, Temperatur- und Drehzahleignung anhand der Modellspezifikation prüfen; eine absolute Freiheit von Kanalübersprechen wird nicht zugesichert.<br><br><strong>Hinweis zum M5-Anschluss:</strong> Das kompakte M5-Gewinde passt zu entsprechenden Pneumatikfittings. Der mögliche Volumenstrom ist geringer als bei größeren Anschlüssen; benötigten Durchfluss und Druckverlust vor der Auswahl berechnen. Für größeren Durchlass BP-2P-0002 prüfen.",
     "771881bbdf4b1aba": "<strong>Gehäuse aus Aluminium 6061, ca. 0,39 kg:</strong> Kompakte Zweikanal-Konstruktion für kleine schritt- oder servogetriebene Rundvorrichtungen",
@@ -1266,7 +1298,15 @@
     "39978085aa34b868": "Für M5 nur das in Zeichnung oder Montageanleitung freigegebene Dichtmittel und Anzugsverfahren verwenden. Zu starkes Anziehen kann Gewinde oder Aluminiumgehäuse beschädigen. Mit geeignetem kleinen Drehmomentwerkzeug kontrollieren und stoppen, wenn der Widerstand unerwartet ansteigt.",
     "2dc91ef7bb75e675": "Wann sollte BP-2P-08-0001 durch ein größeres Modell ersetzt werden? <span class=\"icon\">—</span>",
     "cb26f7d814fc0b3d": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung einer qualifizierten Anfrage bereitgestellt werden. Inhalt und Verfügbarkeit hängen von Modell und Projektangaben ab. Verwenden Sie die Daten zur Prüfung von Bauraum, Anschlussrichtung und Gewindeeingriff in Ihrer CAD-Baugruppe; nennen Sie bei Bedarf das gewünschte CAD-Format.",
-    "cf8ea553ad2fb979": "Ein Einsatz mit Wasser oder Kühlschmierstoff ist nur nach Prüfung von Dichtung, O-Ring, Oberflächen, Druck, Drehzahl und Dauerbetrieb zulässig. Für deionisiertes Wasser, aggressive Kühlschmierstoffe oder dauerhafte Benetzung ist eine gesonderte Werkstoff- und Dichtungsprüfung erforderlich; keine pauschale Druck- oder Drehzahlreduzierung ohne modellspezifischen Nachweis anwenden."
+    "cf8ea553ad2fb979": "Ein Einsatz mit Wasser oder Kühlschmierstoff ist nur nach Prüfung von Dichtung, O-Ring, Oberflächen, Druck, Drehzahl und Dauerbetrieb zulässig. Für deionisiertes Wasser, aggressive Kühlschmierstoffe oder dauerhafte Benetzung ist eine gesonderte Werkstoff- und Dichtungsprüfung erforderlich; keine pauschale Druck- oder Drehzahlreduzierung ohne modellspezifischen Nachweis anwenden.",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "e5ab3d8f36118a91": "BP-2P-0002 · 2 Eingänge / 3 Ausgänge (G1/8)",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2-Kanal (Flansch)",
+    "ce03742c522550c6": "BP-8P-0001 · 8-Kanal (Flansch)",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-2P-0002.html": {
     "ec47c731b6514941": "/ BP-2P-0002 · Drehdurchführung mit 2 Eingängen und 3 Ausgängen (4 mm)",
@@ -1348,7 +1388,14 @@
     "ec7943d8bfa211f5": "Die vorgesehenen M6-/M8-Bohrungen zur sicheren Befestigung und Drehmomentabstützung verwenden. Das feststehende Gehäuse darf nicht mit der Welle mitdrehen; Schläuche müssen zug- und torsionsfrei geführt werden. Schraubenanzug, Halterung und zulässige Axiallast anhand der Zeichnung und des Einbaufalls festlegen.",
     "34aac20a97e52b3d": "Wann sollte ich von BP-2P-0002 auf eine Ausführung mit mehr getrennten Kanälen wechseln? <span class=\"icon\">—</span>",
     "2ae10634b17279c1": "STEP-/IGES-Daten können für geeignete Projekte nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Bauraum, Anschlussrichtung, Lochbild und Gewindeeingriff im CAD-Modell kontrollieren. Bitte gewünschtes Dateiformat und CAD-System in der Anfrage angeben; Verfügbarkeit und Bearbeitungszeit hängen von Modell und Projektangaben ab.",
-    "f44864943a57dcaa": "Ein Einsatz mit Wasser oder wasserlöslichem Kühlmittel ist nur nach Prüfung der genauen Zusammensetzung, Temperatur, Druck-, Drehzahl- und Einschaltdaten freizugeben. Eloxiertes AL6061 eignet sich nicht automatisch für dauerhafte Immersion oder aggressive Reinigungsmedien. Für deionisiertes Wasser, korrosive Medien oder hohe Reinheitsanforderungen bitte Werkstoff und Dichtung mit Begapunk abstimmen."
+    "f44864943a57dcaa": "Ein Einsatz mit Wasser oder wasserlöslichem Kühlmittel ist nur nach Prüfung der genauen Zusammensetzung, Temperatur, Druck-, Drehzahl- und Einschaltdaten freizugeben. Eloxiertes AL6061 eignet sich nicht automatisch für dauerhafte Immersion oder aggressive Reinigungsmedien. Für deionisiertes Wasser, korrosive Medien oder hohe Reinheitsanforderungen bitte Werkstoff und Dichtung mit Begapunk abstimmen.",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2-Kanal (Flansch)",
+    "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge/3 Ausgänge (4 mm)",
+    "ce03742c522550c6": "BP-8P-0001 · 8-Kanal (Flansch)",
+    "d2090f2c0b0b6b3f": "BP-2P-08-0001 · 2 Eingänge/2 Ausgänge (M5)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-1P-0003.html": {
     "7513a8c4427bbe1c": "/ BP-1P-0003 · Einkanal-Drehdurchführung",
@@ -1356,7 +1403,6 @@
     "9c6c02d21f294e81": "<a href=\"downloads/BP-1P-0003.pdf\" download=\"\">Technische 2D-Zeichnung (PDF)</a>",
     "0973e6f2bb08185f": "<h3>BP-1P-0006 · 1 Eingang/6 Ausgänge (G1/8)</h3> <p>Ein Versorgungskanal wird auf sechs 4-mm-Ausgänge verteilt; für Montageanlagen mit gemeinsamem Druckniveau.</p>",
     "1d71388d958de224": "<h3>BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)</h3> <p>Zwei getrennte Kanäle mit Flanschbefestigung, etwa für Spann- und Lösefunktionen.</p>",
-    "6d4d3b01a3c78419": "<h3>BP-2P-0002 · 2 Eingänge/3 Ausgänge (G1/8)</h3> <p>Gewindeausführung mit zwei unabhängigen Versorgungen und drei Ausgängen. Betriebsdaten gemäß Zeichnung.</p>",
     "2bc24733f4769f82": "<h3>BP-2P-50-0001 · staubgeschützte Ausführung</h3> <p>Zweikanalige Flanschausführung für staubige und abrasive Umgebungen; Eignung nach Einsatzdaten prüfen.</p>",
     "8ebaff9390639b24": "<h3>BP-3P-0004 · 3 Eingänge/3 Ausgänge (Flansch)</h3> <p>Drei getrennte Kanäle für multifunktionale Rundtische und Verpackungsmaschinen.</p>",
     "017d993feeeebd53": "<strong>Gehäuse aus 45#-Stahl:</strong> Die technische Zeichnung weist 45#-Stahl als Gehäusewerkstoff aus. Der Werkstoff bietet hohe Steifigkeit und belastbare Gewinde, benötigt bei Wasser, Kühlmittel oder korrosiver Umgebung jedoch eine anwendungsspezifische Korrosionsschutzprüfung.<br><br><strong>PTFE-Verbunddichtung:</strong> Die Dichtung ist für reibungsarmen Betrieb ausgelegt. Medienverträglichkeit und zulässige Druck-, Drehzahl- und Temperaturbereiche sind für die konkrete Anwendung zu bestätigen; die statische Abdichtung erfolgt über ein zusätzliches Elastomerelement.",
@@ -1446,7 +1492,12 @@
     "501d7ee243e6668f": "Worin unterscheiden sich Stahl- und Aluminiumgehäuse? <span class=\"icon\">—</span>",
     "19e478f468683276": "Wann sollte ich von BP-1P-0003 auf eine Mehrkanal-Drehdurchführung wechseln? <span class=\"icon\">—</span>",
     "67ffadbb29e0312f": "STEP-/IGES-Daten können für geeignete Projekte nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Bauraum, Anschlussrichtung und Gewindeeingriff im CAD-Modell kontrollieren. Verfügbarkeit und Bearbeitungszeit hängen von Modell, Ausführung und Vollständigkeit der Projektangaben ab.",
-    "cf2be27e125fe3b1": "Der Betrieb mit Wasser, wasserlöslichem Kühlmittel oder Öl ist nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer freizugeben. Ein Gehäuse aus 45#-Stahl benötigt bei dauerhafter Feuchtigkeit einen geeigneten Korrosionsschutz. Für deionisiertes Wasser oder aggressive Medien Werkstoff und Dichtung mit Begapunk abstimmen."
+    "cf2be27e125fe3b1": "Der Betrieb mit Wasser, wasserlöslichem Kühlmittel oder Öl ist nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer freizugeben. Ein Gehäuse aus 45#-Stahl benötigt bei dauerhafter Feuchtigkeit einen geeigneten Korrosionsschutz. Für deionisiertes Wasser oder aggressive Medien Werkstoff und Dichtung mit Begapunk abstimmen.",
+    "6e868161df691820": "<strong>Systeme über 1 MPa</strong> — die Standardausführung BP-2P-0002 ist ebenfalls für maximal 1 MPa ausgelegt; für eine separat verifizierte Hochdruckausführung ist eine technische Prüfung erforderlich",
+    "5e7ec3442e009cdf": "Werkstoff- und Prüfunterlagen können für die konkrete Lieferung nach Verfügbarkeit angefragt werden. Benötigte Nachweise bitte vor Bestellung nennen.",
+    "c019ecdf6e30b5f2": "Zweikanalige Gewindeausführung; zulässiger Druck gemäß aktueller Zeichnung",
+    "d520df287af59a9b": "Zweikanalige Ausführung mit Schutzhaube und Labyrinth für staubige und abrasive Umgebungen; derzeit wird keine zertifizierte IP-Schutzart angegeben.",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-1P-0006.html": {
     "cdfa8a681e3c543a": "/ BP-1P-0006 · Drehverteiler mit 1 Eingang und 6 Ausgängen (4 mm)",
@@ -1532,7 +1583,16 @@
     "0fe456542aa1abdf": "Prüfstationen mit pneumatischer Teilebereitstellung und Auswurf. Erforderliches Antriebsmoment im Gesamtsystem prüfen. <a href=\"application-automation-rotary-tables.html\">Anwendungsleitfaden lesen →</a>",
     "02f53c77ee7ca5d1": "Wann sollte ich von BP-1P-0006 auf eine Mehrkanal-Drehdurchführung wechseln? <span class=\"icon\">—</span>",
     "e6e1c229579609ee": "STEP-/IGES-Daten können für geeignete Projekte nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Bauraum, Anschlussrichtung, M4-Lochbild und Gewindeeingriff im CAD-Modell kontrollieren. Verfügbarkeit und Bearbeitungszeit hängen von Modell und Projektangaben ab.",
-    "fca4bdb05fb1b067": "Der Betrieb mit Wasser, wasserlöslichem Kühlmittel oder Öl ist nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer freizugeben. Eloxiertes AL6061 eignet sich nicht automatisch für dauerhafte Immersion oder aggressive Reinigung. Für deionisiertes Wasser und korrosive Medien Werkstoff und Dichtung abstimmen."
+    "fca4bdb05fb1b067": "Der Betrieb mit Wasser, wasserlöslichem Kühlmittel oder Öl ist nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer freizugeben. Eloxiertes AL6061 eignet sich nicht automatisch für dauerhafte Immersion oder aggressive Reinigung. Für deionisiertes Wasser und korrosive Medien Werkstoff und Dichtung abstimmen.",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "e5ab3d8f36118a91": "BP-2P-0002 · 2 Eingänge/3 Ausgänge (G1/8)",
+    "6e868161df691820": "<strong>Systeme über 1 MPa</strong> — die Standardausführung BP-2P-0002 ist ebenfalls für maximal 1 MPa ausgelegt; für eine separat verifizierte Hochdruckausführung ist eine technische Prüfung erforderlich",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "c019ecdf6e30b5f2": "Zweikanalige Alternative; zulässiger Druck gemäß Zeichnung",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)",
+    "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge/3 Ausgänge (4 mm)",
+    "ce03742c522550c6": "BP-8P-0001 · 8 Eingänge/8 Ausgänge (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-2P-0001.html": {
     "aa81900c0d36e4ef": "/ BP-2P-0001 · Zweikanal-Drehdurchführung",
@@ -1618,7 +1678,17 @@
     "f9a48cd4dde18855": "Wann sollte ich von BP-2P-0001 auf eine Mehrkanal-Drehdurchführung wechseln? <span class=\"icon\">—</span>",
     "0c4aafafb1f946d7": "Spannen und Lösen von Werkstücken auf rotierenden Schweißvorrichtungen. Druckreserve anhand der tatsächlichen Anlage prüfen. <a href=\"application-cnc-pneumatic-clamping.html\">Anwendungsleitfaden lesen →</a>",
     "3fa76901f9793325": "STEP-/IGES-Daten können für geeignete Projekte nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Bauraum, Lochbild, Portlage und Flanschgeometrie im CAD prüfen. Verfügbarkeit und Bearbeitungszeit hängen von Modell und Projektangaben ab.",
-    "9066e43e448cd2b1": "Der Betrieb mit Wasser, wasserlöslichem Kühlmittel oder Öl ist nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer freizugeben. Eloxiertes Aluminium 6061 eignet sich nicht automatisch für dauerhafte Immersion oder aggressive Medien. Werkstoff und Dichtung projektbezogen abstimmen."
+    "9066e43e448cd2b1": "Der Betrieb mit Wasser, wasserlöslichem Kühlmittel oder Öl ist nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer freizugeben. Eloxiertes Aluminium 6061 eignet sich nicht automatisch für dauerhafte Immersion oder aggressive Medien. Werkstoff und Dichtung projektbezogen abstimmen.",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung 6061",
+    "e5ab3d8f36118a91": "BP-2P-0002 · 2 Eingänge/3 Ausgänge (G1/8)",
+    "6e868161df691820": "<strong>Systeme über 1 MPa</strong> — die Standardausführung BP-2P-0002 ist ebenfalls für maximal 1 MPa ausgelegt; für eine separat verifizierte Hochdruckausführung ist eine technische Prüfung erforderlich",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "c019ecdf6e30b5f2": "1.5 MPa ausgelegt, Gewindemontage, Zweikanal",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "ce03742c522550c6": "BP-8P-0001 · 8-Kanal (Flansch)",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3> <p>Sonderflansch, anderer Gehäusewerkstoff, spezielle Dichtung oder abweichende Betriebsdaten nach technischer Prüfung.</p> <div class=\"price\">Angebot anfragen</div>"
   },
   "BP-2P-130-0001.html": {
     "fb91d967c29b4c35": "/ BP-2P-130-0001 · Hochdruck-Zweikanal-Drehdurchführung",
@@ -1714,7 +1784,15 @@
     "6682da7a1536d404": "Hochdruckgeeignete flexible Schläuche nach Systemdruck und Sicherheitsfaktor auswählen. Starre Leitungen unabhängig abstützen. Filterfeinheit anhand von Medium, Komponentenanforderungen und Reinheitsziel festlegen, nicht aus einer pauschalen Webseitenangabe.",
     "8fa1ae0ff9c9220b": "Wann ist eine Ausführung mit höherem Druck oder mehr Kanälen erforderlich? <span class=\"icon\">—</span>",
     "3a558dc059306357": "STEP-/IGES-Daten können nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Einbauraum, Lochkreis, Portlage und Schlauchführung im CAD prüfen. Verfügbarkeit und Bearbeitungszeit hängen von Modell und Projektumfang ab.",
-    "9f46e1b9d56a6a4c": "Wasser, wasserlösliches Kühlmittel oder Hydrauliköl nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer einsetzen. Für dauerhafte Immersion, deionisiertes Wasser oder Korrosionsrisiken Werkstoff, Oberfläche, Dichtung und Filtration technisch abstimmen."
+    "9f46e1b9d56a6a4c": "Wasser, wasserlösliches Kühlmittel oder Hydrauliköl nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer einsetzen. Für dauerhafte Immersion, deionisiertes Wasser oder Korrosionsrisiken Werkstoff, Oberfläche, Dichtung und Filtration technisch abstimmen.",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung 6061",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)",
+    "442507aa15c80a03": "BP-3P-0004 · 3 Eingänge/3 Ausgänge (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3> <p>Abweichender Druck, Werkstoff, Dichtung, Drehzahl oder Flansch nach technischer Prüfung.</p> <div class=\"price\">Angebot anfragen</div>"
   },
   "BP-2P-16-0001.html": {
     "113a73c3653b7d1f": "/ BP-2P-16-0001 · Zweikanal-Drehdurchführung mit 16-mm-Durchgangsbohrung",
@@ -1804,7 +1882,15 @@
     "bc05b17c39d1e4d0": "Vakuumaufnahme und Ausblasfunktion an Etikettier- und Kartoniermaschinen; erforderliche Taktzahl und Drehzahl prüfen. <a href=\"application-packaging-machinery.html\">Anwendungsleitfaden lesen →</a>",
     "419a126d7d9d14bf": "Wann sollte ich von BP-2P-16-0001 auf eine größere Ausführung wechseln? <span class=\"icon\">▼</span>",
     "a111feeb742190c4": "STEP-/IGES-Daten können nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Bauraum, Portlage, Flansch und 16-mm-Bohrung im CAD prüfen. Verfügbarkeit und Bearbeitungszeit hängen von Modell und Projektangaben ab.",
-    "53b0678208e6dd7a": "Wasser, wasserlösliches Kühlmittel oder Öl nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer einsetzen. Für Dauerbenetzung, deionisiertes Wasser oder aggressive Medien Werkstoff, Oberfläche und Dichtung technisch abstimmen."
+    "53b0678208e6dd7a": "Wasser, wasserlösliches Kühlmittel oder Öl nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer einsetzen. Für Dauerbenetzung, deionisiertes Wasser oder aggressive Medien Werkstoff, Oberfläche und Dichtung technisch abstimmen.",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "e1810dbab10aca4d": "BP-2P-30-0001 · 2 Eingänge/2 Ausgänge (Ø30 mm)",
+    "5e7ec3442e009cdf": "Werkstoff- und Prüfunterlagen können für die konkrete Lieferung nach Verfügbarkeit angefragt werden. Benötigte Nachweise vor Bestellung nennen.",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Bohrungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-2P-30-0001.html": {
     "15206b3faf30e463": "/ BP-2P-30-0001 · Zweikanal-Drehdurchführung mit Ø30-mm-Durchgangsbohrung",
@@ -1907,7 +1993,13 @@
     "b462cd4506c9faed": "Vakuumaufnahme und Ausblasfunktion an Etikettier- und Kartoniermaschinen; Taktzahl und Drehzahl anhand der Maschine prüfen. <a href=\"application-packaging-machinery.html\">Anwendungsleitfaden lesen →</a>",
     "2a4aa8c46412dc56": "Wann ist eine größere oder leistungsfähigere Ausführung erforderlich? <span class=\"icon\">▼</span>",
     "cef8974e628439dd": "STEP-/IGES-Daten können nach Prüfung der Anwendungsangaben bereitgestellt werden. Damit lassen sich Einbauraum, Portlage, Flansch, Bohrung und Lagergehäuse im CAD prüfen. Verfügbarkeit und Bearbeitungszeit hängen von Modell und Projekt ab.",
-    "e1b3f497c0b85af0": "Wasser, wasserlösliches Kühlmittel oder Öl nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer einsetzen. Für Dauerbenetzung, deionisiertes Wasser oder aggressive Medien Werkstoff, Oberfläche und Dichtung technisch abstimmen."
+    "e1b3f497c0b85af0": "Wasser, wasserlösliches Kühlmittel oder Öl nur nach Prüfung von Zusammensetzung, Temperatur, Druck, Drehzahl und Einschaltdauer einsetzen. Für Dauerbenetzung, deionisiertes Wasser oder aggressive Medien Werkstoff, Oberfläche und Dichtung technisch abstimmen.",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "46151cdac2e2602e": "BP-3P-S06-0001 · 3 Fluidkanäle + 6 Stromkreise",
+    "5e7ec3442e009cdf": "Werkstoff-, Lager- und Prüfunterlagen können für die konkrete Lieferung nach Verfügbarkeit angefragt werden. Benötigte Nachweise vor Bestellung nennen.",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Bohrungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-2P-50-0001.html": {
     "13586d8a5e8ac363": "/ BP-2P-50-0001 · 2-Kanal-Drehdurchführung",
@@ -2013,7 +2105,13 @@
     "5f1c97197d0d1a6d": "Stationäre Seite mit flexiblen, spannungsfrei verlegten Schläuchen anschließen. Filterung und Abscheidung passend zu Medium und Verschmutzung auslegen; beide Kanäle eindeutig kennzeichnen und Kreuzanschlüsse vermeiden.",
     "b0e0b53c9ad72be7": "Wann ist statt BP-2P-50-0001 ein anderes Modell erforderlich?<span class=\"icon\">▼</span>",
     "c89407787893d759": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung der Anwendung bereitgestellt werden. Vor der Bestellung damit Einbauraum, Anschlussrichtung, Schraubeneingriff und Freigängigkeit im CAD-Modell prüfen.",
-    "f74ebd812be5ffb5": "Die Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betriebsbedingungen ab. Wasser, Kühlmittel oder Öl nur nach technischer Bestätigung verwenden; direktes Hochdruckreinigen und Untertauchen vermeiden."
+    "f74ebd812be5ffb5": "Die Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betriebsbedingungen ab. Wasser, Kühlmittel oder Öl nur nach technischer Bestätigung verwenden; direktes Hochdruckreinigen und Untertauchen vermeiden.",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "5e7ec3442e009cdf": "Werkstoffzeugnisse, Oberflächenberichte oder Konformitätsunterlagen sind auftragsbezogen anzufragen und vor Bestellung schriftlich zu bestätigen.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2-Kanal-Ausführung (Flansch)",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3><p>Edelstahlgehäuse, Sonderdichtungen, Sperrluftanschluss oder kundenspezifischer Flansch nach technischer Prüfung.</p><div class=\"price\">Angebot anfragen</div>"
   },
   "BP-2P-95-0001.html": {
     "21934a5de270789b": "/ BP-2P-95-0001 · 2-Eingang-/4-Ausgang-Drehdurchführung",
@@ -2128,7 +2226,14 @@
     "6dae357cb273b184": "Wann ist statt BP-2P-95-0001 eine Sonderausführung erforderlich?<span class=\"icon\">▼</span>",
     "706522c421fd1133": "Gründe für den Wechsel zu einer anderen Ausführung",
     "3d1631b43f41b281": "3D-Dateien im STEP- oder IGES-Format können nach Prüfung der Anwendung bereitgestellt werden. Vor Bestellung Einbauraum, Anschlussrichtung, Flansch und Schlauchführung im CAD-Modell prüfen.",
-    "c25549616e0763c3": "Die Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betrieb ab. Wasser, Kühlmittel oder Leichtöl nur innerhalb der bestätigten Grenzen verwenden; unklare Medien separat prüfen lassen."
+    "c25549616e0763c3": "Die Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betrieb ab. Wasser, Kühlmittel oder Leichtöl nur innerhalb der bestätigten Grenzen verwenden; unklare Medien separat prüfen lassen.",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal-Ausführung",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung 6061",
+    "5e7ec3442e009cdf": "Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2-Kanal-Ausführung (Flansch)",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal-Ausführung (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3><p>Vier unabhängige Eingänge, Edelstahlgehäuse, Sonderdichtung oder andere Druckklasse nach technischer Prüfung.</p><div class=\"price\">Angebot anfragen</div>"
   },
   "BP-3P-0007.html": {
     "eed26dfd768cdd78": "Ø78,90 × 63,90 mm",
@@ -2221,7 +2326,17 @@
     "cf1c2aa43047ae59": "Vakuumaufnahme, Luftblasen und Spannen auf kleinen Verpackungsdrehköpfen. 0.39 kg Gehäuse fügt vernachlässigbare Last zu kompakten Servoantrieben hinzu. <a href=\"application-packaging-machinery.html\">Lesen Sie Anwendungsleitfaden</a>",
     "ed14723737388239": "Wann ist statt BP-3P-0007 ein anderes Modell erforderlich?<span class=\"icon\">—</span>",
     "d0f1e940d2339085": "3D-Dateien können nach Prüfung der Anwendung bereitgestellt werden. Vor Bestellung Einbauraum, Anschlussrichtung, Gewindeeingriff und Lagerzugang im CAD-Modell prüfen.",
-    "8f75e33b0fb415bb": "Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betriebsbedingungen ab. Wasser, Kühlmittel oder Öl nur nach technischer Bestätigung einsetzen; Lager gegen Feuchtigkeit schützen."
+    "8f75e33b0fb415bb": "Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betriebsbedingungen ab. Wasser, Kühlmittel oder Öl nur nach technischer Bestätigung einsetzen; Lager gegen Feuchtigkeit schützen.",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "cb774b554629c77e": "BP-3P-0006 · 3-Kanal-Ausführung (G1/4)",
+    "ac948fbeaddd5160": "BP-1P-0006 · 1 Eingang / 6 Ausgänge (G1/8)",
+    "5e7ec3442e009cdf": "Werkstoffzeugnisse, Lagerdaten oder Konformitätsunterlagen sind auftragsbezogen anzufragen.",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal-Ausführung (Flansch)",
+    "d2090f2c0b0b6b3f": "BP-2P-08-0001 · 2-Kanal-Ausführung (M5)",
+    "5f8166385cab47dc": "<strong>Staubige oder abrasive Umgebungen</strong> — zusätzliche Einhausung oder ein dafür freigegebenes Modell vorsehen.",
+    "856aff6a43bfb285": "G1/8-Gewinde, 1 MPa, zwei Eingänge / drei Ausgänge",
+    "4d8f0195e7fdf4f7": "<h3>BP-3P-0004 · 3-Kanal-Ausführung (Flansch)</h3><p>Drei Kanäle mit Flanschmontage für Anwendungen mit abweichender Befestigung.</p><div class=\"price\">Angebot anfragen</div>",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Öffnungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-3P-S06-0001.html": {
     "b680631069f51493": "/ BP-3P-S06-0001 · Pneumatisch-elektrische Drehdurchführung mit 3 Medienkanälen und 6 Stromkreisen",
@@ -2344,7 +2459,15 @@
     "d7bca53f4a0abbcb": "Was ist der Unterschied zwischen rein pneumatischen und pneumatisch-elektrischen Modellen?<span class=\"icon\">▼</span>",
     "4bf7a0bd8f291c30": "Wann ist statt BP-3P-S06-0001 ein größeres Modell erforderlich?<span class=\"icon\">▼</span>",
     "4d3cfdf9bb49aaad": "3D-Dateien können nach Anwendungsprüfung bereitgestellt werden. Vor Bestellung Einbauraum, Anschlusslage, Gewindeeingriff und Kabelabgang im CAD-Modell prüfen.",
-    "484fe69eb6c75932": "Medienverträglichkeit und Feuchtigkeitsschutz hängen von Dichtungswerkstoff, Temperatur, Konzentration und Betrieb ab. Wasser, Kühlmittel oder Öl nur nach technischer und elektrischer Prüfung einsetzen."
+    "484fe69eb6c75932": "Medienverträglichkeit und Feuchtigkeitsschutz hängen von Dichtungswerkstoff, Temperatur, Konzentration und Betrieb ab. Wasser, Kühlmittel oder Öl nur nach technischer und elektrischer Prüfung einsetzen.",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "cb774b554629c77e": "BP-3P-0006 · 3-Kanal-Ausführung (G1/4)",
+    "5e7ec3442e009cdf": "Werkstoffzeugnisse, Oberflächenberichte und Konformitätsunterlagen auftragsbezogen anfragen.",
+    "c019ecdf6e30b5f2": "1.5 MPa abspritzen, Stahlgehäuse, Gewindemontage für höheren Druck",
+    "324e9db449dc8ffe": "BP-2P-0001 · 2-Kanal-Ausführung (Flansch)",
+    "f17b51fa42ad5181": "BP-3P-0007 · 3-Kanal-Ausführung",
+    "442507aa15c80a03": "BP-3P-0004 · 3-Kanal-Ausführung (Flansch)",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3><p>Weitere Stromkreise, Edelstahlgehäuse, Sonderdichtung oder andere Druckklasse nach technischer Prüfung.</p><div class=\"price\">Angebot anfragen</div>"
   },
   "BP-4P-30-0001.html": {
     "c53598e22b2ab066": "/ BP-4P-30-0001 · 4-Kanal-Drehdurchführung mit Ø30-mm-Hohlbohrung",
@@ -2437,7 +2560,14 @@
     "46b303a825b8c34a": "Flanschlochbild und Ausrichtung der Hohlbohrung prüfen",
     "7de0485fb331c0f9": "Wann ist statt BP-4P-30-0001 ein größeres Modell erforderlich?<span class=\"icon\">▼</span>",
     "7adc5dd6aaf02b29": "3D-Dateien können nach Anwendungsprüfung bereitgestellt werden. Vor Bestellung Freiraum, Bohrungsausrichtung, Flansch und Gewindeeingriff im CAD-Modell prüfen.",
-    "e87b7a08da9bc011": "Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betrieb ab. Wasser, Kühlmittel oder Öl nur nach technischer Bestätigung einsetzen."
+    "e87b7a08da9bc011": "Medienverträglichkeit hängt von Dichtungswerkstoff, Temperatur, Konzentration und Betrieb ab. Wasser, Kühlmittel oder Öl nur nach technischer Bestätigung einsetzen.",
+    "d87c965c52ad810d": "BP-3P-0004 · 3-Kanal-Ausführung",
+    "b1419666795eba22": "BP-8P-0001 · 8-Kanal-Ausführung",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "46151cdac2e2602e": "BP-3P-S06-0001 · 3 Kanäle + 6 Stromkreise",
+    "5e7ec3442e009cdf": "Werkstoff-, Oberflächen- und Dichtungsunterlagen auftragsbezogen anfragen.",
+    "c019ecdf6e30b5f2": "1.5 MPa abspritzen, Stahlgehäuse, Gewindemontage für höheren Druck",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Bohrungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-8P-0001.html": {
     "0db74c28f83a5363": "/ BP-8P-0001 · 8-Kanal-Drehdurchführung",
@@ -2528,7 +2658,14 @@
     "b30baee165725fb5": "Alle acht Kanäle mit flexiblen, spannungsfrei verlegten Schläuchen anschließen. Filtration nach Medium und Verschmutzung auslegen und Anschlüsse eindeutig nummerieren.",
     "ab461ca81e4ca7c6": "Flanschlochbild (4 × M5) prüfen",
     "76732841d0cbf751": "Wann ist statt BP-8P-0001 eine Sonderausführung erforderlich?<span class=\"icon\">▼</span>",
-    "b70dc0b8c317a9b4": "3D-Dateien können nach Anwendungsprüfung bereitgestellt werden. Vor Bestellung Einbauraum, Anschlüsse, Schraubeneingriff und Schlauchführung im CAD-Modell prüfen."
+    "b70dc0b8c317a9b4": "3D-Dateien können nach Anwendungsprüfung bereitgestellt werden. Vor Bestellung Einbauraum, Anschlüsse, Schraubeneingriff und Schlauchführung im CAD-Modell prüfen.",
+    "d87c965c52ad810d": "BP-3P-0004 · 3-Kanal-Ausführung",
+    "e465d1f8073ca668": "BP-2P-50-0001 · Schutzhaube und Labyrinth",
+    "fa5bb7f2929660bc": "Aluminiumlegierung AL6061",
+    "5e7ec3442e009cdf": "Werkstoff-, Oberflächen- und Dichtungsunterlagen auftragsbezogen anfragen.",
+    "c019ecdf6e30b5f2": "1.5 MPa abspritzen, Stahlgehäuse, Gewindemontage für höheren Druck",
+    "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3><p>Mehr als acht Kanäle, Edelstahlgehäuse, Sonderdichtung oder andere Druckklasse nach technischer Prüfung.</p><div class=\"price\">Angebot anfragen</div>"
   },
   "product-comparison.html": {
     "2688ebb6eba63062": "/ Modellvergleich",
@@ -2593,7 +2730,6 @@
     "4c4a435635f33f8c": "Pneumatische Drehdurchführungen nach Kanalzahl, Druck, Drehzahl, Montageart und Maschinenanwendung vergleichen.",
     "940615305202d560": "Kundenspezifische kompakte Pneumatikführung, Vorrichtungen für kleine Maschinen",
     "45989de49fb7f66d": "Details",
-    "5be8340ef9ed2274": "Staubbelastete Verpackungslinien, Pulverhandling, staubgeschützte IP65-Umgebungen",
     "2d1adcb69e603bdf": "Technische Auswahltabelle für pneumatische Begapunk-Drehdurchführungen. Vergleichen Sie Kanalzahl, Druck, Drehzahl, Montageart und Anwendungen.",
     "34994cf01bdf7a54": "G1/4-Gewinde",
     "21a46eba51b12a66": "G1/8-Gewinde",
@@ -2616,7 +2752,8 @@
     "a4426635babd390d": "Beginnen Sie mit Kanalzahl, Medium, Druck und Drehzahl. Prüfen Sie anschließend den verfügbaren Einbauraum und die Anschlussart, bevor Sie ein Standardmodell auswählen.",
     "c98cb7f6c6fac1d2": "Dreikanalige Pneumatikübertragung, Flaschenabfüllung, Vorrichtungen mit mehreren Aktoren",
     "9f799d415b180eed": "Typische Anwendungen",
-    "43068b4a3a779593": "Mit dieser technischen Auswahltabelle vergleichen Sie pneumatische Begapunk-Drehdurchführungen nach Kanalzahl, maximalem Druck, maximaler Drehzahl, Montageart, Gehäusewerkstoff und typischer Maschinenanwendung."
+    "43068b4a3a779593": "Mit dieser technischen Auswahltabelle vergleichen Sie pneumatische Begapunk-Drehdurchführungen nach Kanalzahl, maximalem Druck, maximaler Drehzahl, Montageart, Gehäusewerkstoff und typischer Maschinenanwendung.",
+    "fa5bb7f2929660bc": "Aluminiumlegierung 6061"
   },
   "blog-rotary-joint-installation-mistakes.html": {
     "5a17143efd0aaa71": "› Pneumatische Drehdurchführung montieren: 7 Fehler, die zu vorzeitigem Ausfall führen",
@@ -2774,7 +2911,6 @@
     "0358200db48b00db": "› Dichtungswechsel an Drehdurchführungen: Schritt-für-Schritt-Anleitung für die Instandhaltung",
     "28ca465e7d869b54": "<a href=\"BP-2P-0001.html\" class=\"product-link\">BP-2P-0001</a> — 2 Einlässe/2 Auslässe, AL6061-Gehäuse, FKM- und Glyd-Ring-Dichtung, max. 1 MPa.",
     "2fb3376840da1c27": "<a href=\"BP-2P-130-0001.html\" class=\"product-link\">BP-2P-130-0001</a> — robuste Ausführung, Edelstahl 304 + AL6061, Glyd Ring, max. 5 MPa.",
-    "d3f35dfe4bab69b8": "<a href=\"BP-2P-50-0001.html\" class=\"product-link\">BP-2P-50-0001</a> — staubgeschützte IP65-Ausführung für staubige oder feuchte Umgebungen; Dichtungssatz gemäß Stückliste prüfen.",
     "16fac6db34a697fe": "<span class=\"correct\">Richtig:</span> Nut mit geeignetem Reiniger und fusselfreiem Tuch rückstandsfrei säubern, beleuchten und bei sichtbaren Rückständen erneut reinigen.",
     "4a1f2c0a783281f2": "<span class=\"correct\">Richtig:</span> Nach modellspezifischer Prüfanweisung mit einer freigegebenen niedrigen Druckstufe beginnen, Dichtheit prüfen und Druck kontrolliert erhöhen.",
     "c6fcc3a207efc24f": "<span class=\"correct\">Richtig:</span> Bohrung der Halterung auf ovalen Verschleiß und Spiel am Gehäusestift prüfen; verschlissene Teile ersetzen.",
@@ -3331,7 +3467,6 @@
     "cf7b24ca6ccbd088": "<strong>BP-1P-0003</strong><span>Einkanal-Ausführung mit 0,08 kg, zulässigem Druck bis 1,0 MPa sowie G1/4- oder G1/8-Anschlussoption. Für handgeführte Montagewerkzeuge, Schrauber und Schleifgeräte; Datenblatt und Anschlussvariante prüfen.</span>",
     "9c27874d664c9649": "<strong>BP-1P-0006</strong><span>Kompakte Druckluftverteilung auf mehrere Abgänge. Für Montagestationen, an denen mehrere Werkzeuge aus einer Zuleitung versorgt werden; Gleichzeitigkeit und Gesamtvolumenstrom prüfen.</span>",
     "9c497158e3b93910": "<strong>BP-2P-0001</strong><span>Zweikanal-Ausführung mit Flansch und zulässigem Druck bis 1,0 MPa. Für Anwendungen mit getrennten Zu- und Abluftwegen; konkrete Verschaltung technisch prüfen.</span>",
-    "1e49b2556a32b444": "<strong>BP-2P-0002</strong><span>Zweikanal-Ausführung mit zulässigem Druck bis 1,5 MPa. Für höhere Betriebsdrücke, sofern Druckspitzen, Anschlüsse und übrige Komponenten ebenfalls freigegeben sind.</span>",
     "6bcfef86b31c9f50": "<strong>BP-2P-95-0001</strong><span>Zweikanal-Ausführung mit PTFE-Dichtung. Für Präzisionsanwendungen, bei denen das Reibmoment wichtig ist; Eignung anhand Medium, Druck, Bewegung und Datenblatt bestätigen.</span>",
     "6de5e79f0688956c": "<strong>BSP-Gewinde:</strong> verfügbare Größen wie G1/4 oder G1/8 exakt mit Werkzeug und Schlauchanschluss abgleichen",
     "ad0e85cae878051f": "<strong>Sonderausführung für Werkzeuge</strong><span>Für besondere metrische oder NPT-Gewinde, sehr kleine Bauräume oder Druckluft mit Ölnebel; Werkstoff- und Dichtungseignung vorab klären.</span>",
@@ -4219,8 +4354,6 @@
     "fbfa67c9f7b005fc": "(G1/4, kompakt)",
     "4226766450eff1f5": "(G1/8 dual)",
     "45ef882306e4a90b": "(Schwerlast 4-Kanal), kundenspezifisch geschützte Layouts mit Staubstiefeln und abgedichteten Lagern.",
-    "fdf68c9e766fd871": "(IP65 staubgeschützt, 2-Kanal)",
-    "5960008107628cc5": "(IP65 staubgeschützt)",
     "d1ec357591a6a076": "(SS Gehäuse, wasser-/kühlmittelkompatibel), kundenspezifisch through-Bohrung zur Schachtintegration.",
     "b9c7168ff6b72b52": "(Ultrakompakt)",
     "7621614566cba604": "(Vakuum + Luft),",
@@ -4372,5 +4505,28 @@
     "a4cfacf6249aace4": "Schweißpositionierer und Rohrdreher",
     "59f71bd3c0735be5": "Schweiß-, Textil- und Elektronikvorrichtungen",
     "d8c384964362f335": "Wo Begapunk pneumatische Drehdurchführungen verwendet werden"
+  },
+  "manufacturing-quality.html": {
+    "Stator manufacturing process": "Fertigungsablauf des Statorgehäuses",
+    "From Aluminum Billet to Color-Anodized Stator Housing": "Vom Aluminium-Rohling zum farbeloxierten Statorgehäuse",
+    "Begapunk's standard stator-housing workflow uses two setups on a 4-axis turn-mill machine. Machined dimensions are sample-inspected before the parts leave for external color anodizing.": "Der Standardablauf bei Begapunk umfasst zwei Aufspannungen auf einer 4-Achs-Dreh-Fräsmaschine. Nach der Bearbeitung werden die Zeichnungsmaße stichprobenartig geprüft, bevor die Teile zum externen Farbeloxieren gehen.",
+    "Cut round billets prepared for stator-housing machining": "Zugeschnittene Rundrohlinge für die Bearbeitung von Statorgehäusen",
+    "Stator-housing workpiece during 4-axis turn-mill machining": "Werkstück eines Statorgehäuses bei der 4-Achs-Dreh-Fräs-Bearbeitung",
+    "Machined stator housing before external color anodizing": "Bearbeitetes Statorgehäuse vor dem externen Farbeloxieren",
+    "Cut round billets prepared for stator-housing machining.": "Zugeschnittene Rundrohlinge, bereit für die Bearbeitung von Statorgehäusen.",
+    "A stator-housing workpiece during 4-axis turn-mill machining.": "Werkstück eines Statorgehäuses während der 4-Achs-Dreh-Fräs-Bearbeitung.",
+    "A machined stator housing before external color anodizing.": "Bearbeitetes Statorgehäuse vor dem externen Farbeloxieren.",
+    "Material preparation": "Materialvorbereitung",
+    "Two machining setups": "Zwei Aufspannungen",
+    "Dimensional sampling": "Stichprobenprüfung der Maße",
+    "External anodizing and return inspection": "Externes Farbeloxieren und Wareneingangsprüfung",
+    "6061 aluminum is the standard material. 7075 is available when specified by the customer. Cut round billets are prepared for stator-housing machining.": "Standardmäßig wird Aluminium 6061 verwendet. Aluminium 7075 ist bei entsprechender Kundenvorgabe möglich. Zugeschnittene Rundrohlinge werden für die Bearbeitung der Statorgehäuse bereitgestellt.",
+    "The first setup machines the initial features. The part is then reversed and clamped for a second setup to complete the remaining required features.": "In der ersten Aufspannung werden die ersten Merkmale bearbeitet. Anschließend wird das Teil gewendet und für die zweite Aufspannung neu gespannt, um die verbleibenden erforderlichen Merkmale fertigzustellen.",
+    "After machining, finished stator housings are sample-inspected against the drawing before surface treatment.": "Nach der Bearbeitung werden die fertigen Statorgehäuse vor der Oberflächenbehandlung stichprobenartig gegen die Zeichnung geprüft.",
+    "Parts are sent to an external anodizing supplier. Available colors are agreed by sample. The stator color-anodizing thickness is approximately 5 µm. The supplier checks coating thickness before return shipment, and Begapunk performs incoming sample inspection. Specified product tolerances accommodate the expected coating growth.": "Die Teile gehen an einen externen Eloxalbetrieb. Verfügbare Farben werden anhand eines Musters vereinbart. Die Farbeloxalschicht am Stator ist ca. 5 µm dick. Der Lieferant prüft die Schichtdicke vor der Rücklieferung; Begapunk führt nach Wareneingang erneut eine Stichprobenprüfung durch. Die festgelegten Produkttoleranzen berücksichtigen das erwartete Schichtwachstum.",
+    "After final assembly, every finished rotary union and every individual passage enters the existing 100% leak-testing process.": "Nach der Endmontage wird bei jeder fertigen Drehdurchführung jeder einzelne Kanal im bestehenden 100%-Dichtheitsprüfprozess geprüft.",
+    "View 100% Leak Testing →": "100%-Dichtheitsprüfung ansehen →",
+    "Evidence boundary:": "Nachweisgrenze:",
+    "These photographs show several visible production states. They are not a continuous traceability record for the same part or batch and do not prove the alloy grade, the dimensional result of every part, coating thickness of every part, an exact color match, test PASS status or shipment release. Order drawings and agreed inspection requirements remain controlling.": "Diese Fotos zeigen mehrere sichtbare Fertigungszustände. Sie bilden keine lückenlose Rückverfolgbarkeit desselben Teils oder Loses ab und belegen weder die Legierung noch das Maßresultat jedes Teils, die Schichtdicke jedes Teils, eine exakte Farbübereinstimmung, den Prüfstatus PASS oder die Freigabe zum Versand. Maßgeblich bleiben die Auftragszeichnung und die vereinbarten Prüfanforderungen."
   }
 }

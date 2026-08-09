@@ -1,14 +1,12 @@
-# Laser Tube Rear-Chuck Application — Verified Models and Evidence Boundary
+# Laser Tube Rear-Chuck Application — Verified Models and Sitewide Evidence Boundary
 
 Date: 2026-08-07 (Asia/Tokyo)
 
 Branch: `feature/bp-2p-95-application-case`
 
-Baseline: `ac3571bd8c8b1eb0197c05499ba458fc9349d0ae`
+Current baseline: `aadd050ec0a7baffe55a69fb8ce8fd716ffe3b65`
 
 Status: local source revision and validation only; not pushed, merged, packaged, or deployed
-
-This record supersedes the model-neutral application-category wording in `case-center-reacceptance-20260807.md`. It does not supersede that report's photographic privacy controls or its statement that the two photographs are not individually matched to product models.
 
 ## 1. Factory confirmation and evidence boundary
 
@@ -16,155 +14,126 @@ This record supersedes the model-neutral application-category wording in `case-c
 
 Confirmed facts:
 
-- `BP-3P-0004` has actual application experience in pneumatic rear-chuck circuits on laser tube cutting machines.
-- `BP-2P-08-0001` has actual application experience in pneumatic rear-chuck circuits on laser tube cutting machines.
-- The approved application scope for these two standard models is compressed-air supply between the stationary and rotating sides of the rear chuck.
-- The two workshop photographs document the same application category.
-- The photographs are separate installation records and are not represented as two views of one machine.
+- `BP-3P-0004` and `BP-2P-08-0001` have actual application experience in compressed-air circuits on rear chucks of laser tube cutting machines.
+- The verified function is compressed-air transfer from the stationary supply to the rotating rear chuck.
+- The two workshop photographs document the same application category, but are separate installation records and are not presented as two views of one machine.
+- Neither photograph is individually identified as either confirmed model.
+- Circuit count, port assignment and mounting interfaces must be confirmed from the customer's chuck and complete machine design.
 
-Evidence limits retained in every language:
+Not established by the evidence:
 
-- Neither photograph is identified as `BP-3P-0004`, `BP-2P-08-0001`, or any other individual model.
-- The photographs do not establish passage count, passage assignment, port function, pressure, speed, temperature, lifetime, leakage, customer acceptance, or operating performance.
-- The pages do not associate either standard pneumatic model with oxygen, nitrogen, cutting-assist gas, process gas, or coolant transfer.
-- `BP-3P-0004` may be described as a three-passage model and `BP-2P-08-0001` as a two-passage model because those are existing approved product facts. Final passage assignment and all operating and mounting conditions still require review against the chuck drawing.
+- oxygen, nitrogen, cutting-assist gas, process gas, coolant, lubricant, vacuum, rotary laser-head or cutting-head use;
+- a verified pressure, speed, service life, leakage rate, customer result or universal fit;
+- a confirmed clamp, release, purge or blow-off assignment for any individual port;
+- any use of the separate `BP-3P-S06-0001` smart-chuck function description for these two standard models.
 
-## 2. Public-content changes
+## 2. Current sitewide cleanup scope
 
-### Case centers
+This phase did not redesign or rewrite the already reviewed case centers, laser application pages, or the `BP-3P-0004` and `BP-2P-08-0001` product pages. It corrected the remaining aggregate-page wording only:
 
-The English, German, Japanese, and Russian case centers now present:
+- four home pages now describe laser tube rear-chuck compressed-air transfer and name only the two factory-confirmed application models;
+- four application overview pages now describe stationary-to-rotating rear-chuck compressed-air transfer, require chuck-specific confirmation, and retain an explicit negative process-gas/coolant boundary;
+- the application overview structured data is localized and carries the same safe rear-chuck description;
+- four FAQ pages now explain passage-count selection using independent medium circuits and rear-chuck compressed-air circuits, without the former oxygen + nitrogen + coolant example;
+- each visible FAQ answer is synchronized exactly with its `FAQPage` JSON-LD answer;
+- the Russian navigation label `Лазерная трубка режет` was replaced with `Лазерная резка труб` in the affected FAQ page;
+- the four search indexes were regenerated only for `index.html`, `applications.html`, and `faq.html` using the repository's existing extraction semantics. No duplicate record was added.
 
-1. the documented `BP-2P-95-0001` pneumatic-chuck installation;
-2. the photo-supported laser tube cutting rear-chuck installation category;
-3. a use guide;
-4. two engineering selection examples.
+The explicit negative safety paragraph remains visible on each application overview page. It is intentionally excluded from the search-body extraction so the index does not create an oxygen/nitrogen/process-gas association with the verified pneumatic models; the current positive rear-chuck content remains synchronized.
 
-The laser case links `BP-3P-0004` and `BP-2P-08-0001` as confirmed application-category models while stating that the photographed products have not been individually identified. Related products are split into:
+## 3. Terminology sources
 
-- three models used in real applications: `BP-2P-95-0001`, `BP-3P-0004`, and `BP-2P-08-0001`;
-- two reference models used only in engineering selection examples: `BP-2P-130-0001` and `BP-2P-30-0001`.
+Competitor and manufacturer sources were used only as terminology evidence. No third-party performance value, compatibility claim, or sentence was copied.
 
-`BP-2P-0001` is no longer presented as a related product for this case center.
+| Language | Terms adopted in the affected blocks | Official terminology source |
+|---|---|---|
+| German | `Drehdurchführung`, `Druckluft`, `hinteres Spannfutter`, `Laser-Rohrschneidmaschine` | https://www.deublin.eu/drehdurchfuehrungen ; https://www.deublin.eu/drehverteiler-fuer-druckluft |
+| Japanese | `ロータリジョイント`, `圧縮空気`, `後側チャック`, `レーザー管切断機` | https://www.pascaleng.co.jp/jp/products/work_clamp/rotary_joint/ ; https://www.rix.co.jp/products_services/products/category/rotary/_2ees-2p03/ |
+| Russian | `ротационное соединение`, `сжатый воздух`, `задний патрон`, `станок лазерной резки труб` | https://www.deublin.com/-/media/API-Sync-Assets/INS/040-501-GB-JP.pdf?ts=20250406T1917118096 ; https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki |
 
-### Product pages
+No external native-language sign-off is claimed. The wording was reviewed for high-confidence industrial usage and remains subject to future native-speaker review.
 
-Eight product pages now include a verified rear-chuck application entry for the appropriate model and language. Each entry links to the localized case section and localized laser-tube application page, and preserves the photograph-to-model boundary. Existing specification tables were compared with the baseline and were not changed.
+## 4. Current working-tree files
 
-### Laser tube cutting application pages
+Public pages:
 
-The four application pages are now limited to pneumatic rotary supply for compressed-air circuits on rear chucks. The previously mixed treatment of rear-chuck pneumatics, cutting-assist gases, coolant, unsupported operating ranges, and unrelated recommended models was removed. A separate safety boundary states that process or assist-gas transfer is outside the verified scope and requires a separately engineered, cleaned, tested, and approved system; that safety section recommends no standard product.
+- `index.html`
+- `de/index.html`
+- `ja/index.html`
+- `ru/index.html`
+- `applications.html`
+- `de/applications.html`
+- `ja/applications.html`
+- `ru/applications.html`
+- `faq.html`
+- `de/faq.html`
+- `ja/faq.html`
+- `ru/faq.html`
 
-### Discovery metadata
+Discovery data:
 
-- Four language search indexes, four `llms.txt` entries, SEO sources, page metadata, OG/Twitter text, and JSON-LD share the same evidence boundary.
-- `sitemap.xml` and `sitemap-i18n.xml` keep their URL sets and ordering; only the affected modification dates were synchronized to 2026-08-07.
-- Canonical and hreflang coverage remains unchanged.
-
-## 3. Localization terminology and sources
-
-| Language | Preferred terms used in this scope | Evidence/source | Review note |
-|---|---|---|---|
-| German | `Drehdurchführung`, `Betriebsdruck`, `Anzahl der Pneumatikkreise`, `Zu bestätigende Bestellausführung` | https://www.deublin.eu/drehdurchfuehrungen ; https://fluidhandling.kadant.com/de/produkte/drehdurchfuehrungen/standard-drehdurchfuehrungen | Industrial terminology and sentence structure were reviewed internally; no external native-language sign-off is claimed. |
-| Japanese | `ロータリジョイント`, `空圧回路`, `最高回転数`, `連続運転回転数`, `取付部の仕様` | https://www.sealtech.co.jp/products/rotodisk.html ; https://www.rix.co.jp/products_services/products/category/rotary/post_6/ | `ロータリジョイント` is the project-owner-approved spelling for this task's affected pages. No external native-language sign-off is claimed. |
-| Russian | `ротационное соединение`, `пневматический контур`, `частота вращения`, `присоединительные размеры`, `проверяемый параметр` | https://rotaryjoint.ru/products/ ; https://feedsystems.ru/products/rotatsionnoe-soedinenie/ | Industrial terminology and sentence structure were reviewed internally; no external native-language sign-off is claimed. |
-
-The localized pages were not generated by mirroring English sentences line by line. High-confidence terminology and syntax corrections were applied only within the affected case, application, product, SEO, search, and AI-discovery records.
-
-## 4. Modified files
-
-Public pages and styles:
-
-- `case-studies.html`
-- `de/case-studies.html`
-- `ja/case-studies.html`
-- `ru/case-studies.html`
-- `application-laser-tube-cutting.html`
-- `de/application-laser-tube-cutting.html`
-- `ja/application-laser-tube-cutting.html`
-- `ru/application-laser-tube-cutting.html`
-- `BP-3P-0004.html`
-- `BP-2P-08-0001.html`
-- `de/BP-3P-0004.html`
-- `de/BP-2P-08-0001.html`
-- `ja/BP-3P-0004.html`
-- `ja/BP-2P-08-0001.html`
-- `ru/BP-3P-0004.html`
-- `ru/BP-2P-08-0001.html`
-- `css/case-studies.css`
-
-Persistent localization and discovery sources:
-
-- `i18n/seo/de.json`
-- `i18n/seo/ja.json`
-- `i18n/seo/ru.json`
 - `search-index.json`
 - `de/search-index.json`
 - `ja/search-index.json`
 - `ru/search-index.json`
-- `llms.txt`
-- `de/llms.txt`
-- `ja/llms.txt`
-- `ru/llms.txt`
-- `sitemap.xml`
-- `sitemap-i18n.xml`
 
 Validation and audit:
 
 - `scripts/verify-localized-site.mjs`
 - `audit/application-cases/laser-tube-verified-models-20260807.md`
 
-## 5. Automated validation
+No product page, product specification table, case-center page, direct laser application page, sitemap, `llms.txt`, image, or `catalog-project/` file is part of this working-tree change.
 
-- `npm run i18n:verify`: PASS — 52 pages per language, 208 pages total.
-- `npm run products:validate`: PASS — 16 product models across four languages, including catalog, search, JSON-LD, and sitemap consistency.
-- `npm run quality:source`: PASS.
-- `npm run claims:verify`: PASS — 462 checked source, localized, download, i18n, and production text files.
-- `npm run quality`: PASS, including the repository's temporary deployment-tree validation. No release archive, tag, upload, or deployment was created.
-- Product specification table comparison against `ac3571b`: PASS; all eight affected product specification tables are unchanged.
-- Targeted fact-boundary scan: PASS — 20 affected pages, zero failures.
-- JSON-LD parsing: PASS on all 20 affected pages.
-- Local link and image checks: PASS; no failed images in the browser checks.
-- Public image metadata: PASS — both WebP derivatives have no EXIF, GPS, XMP, IPTC, or ICC metadata.
-- Two consecutive `i18n:refresh-metadata` runs: deterministic; Git diff hash remained `7d483894d2cfa3e06363d1a89e00b676ff2db3f2`.
-- `git diff --check`: PASS after audit creation and immediately before staging.
+## 5. New automated safeguards
 
-## 6. Browser acceptance
+The localized-site validator now checks the following scoped elements in all four languages:
 
-The local site was served over HTTP and checked at 1440, 1024, 900, 768, 430, and 390 CSS pixels.
+- the compact and overview laser entries on the home page;
+- the detailed laser block, mapping row and summary card on the application overview;
+- the explicit negative safety boundary and the exact two-model link set;
+- localized `CollectionPage` structured data;
+- the visible passage-selection FAQ and its accessibility relationship;
+- exact visible-answer parity with the matching `FAQPage` JSON-LD Question;
+- the corresponding `index.html`, `applications.html`, and `faq.html` search records and their current scoped snippets;
+- known legacy wording, unsupported media/function/performance wording, stale laser-model recommendations, unsupported numeric claims, and missing rear-chuck/compressed-air semantics.
 
-- Horizontal overflow: none at all six widths.
-- Desktop navigation: four dropdowns present; Products dropdown visibly opens on hover.
-- Responsive navigation: menu opens as a single-column navigation at 1024 px and below.
-- Real case order: `BP-2P-95-0001`, then the laser rear-chuck application.
-- Laser overview image: 4:3 source and container; the rotary-union subject remains visible.
-- Laser detail image: `object-fit: contain`; the 3:4 source is not cropped at any tested width.
-- Confirmed application products: three columns at desktop, two at tablet, one at phone.
-- Selection-example products: two columns at desktop/tablet, one at phone.
-- Footer: rendered at every tested width.
-- Console warnings/errors: 0 in both the responsive run and Chrome keyboard run.
-- FAQ: actual Chrome Tab and Enter input opened the second question; `aria-expanded="true"`, answer `hidden=false`, and the answer was visibly rendered.
-- Twelve localized application/product pages were separately checked at 390 px: no overflow, failed images, or JSON-LD parse errors.
+The checks are scoped to marked laser blocks or exact URL records. They do not scan unrelated page sections where media such as coolant or vacuum may be legitimate.
 
-Screenshot directory:
+## 6. Automated validation
 
-`C:\Users\cao19\.codex\visualizations\2026\08\07\begapunk-laser-verified-models\`
+The required commands were run serially on the current working tree:
 
-Key evidence:
+- `git diff --check`: PASS.
+- `npm run i18n:verify`: PASS — 52 configured pages per language, 208 pages total.
+- `npm run products:validate`: PASS — 16 product models across four languages, catalogs, search indexes, JSON-LD and sitemaps.
+- `npm run quality:source`: PASS — consent, privacy, schema, favicon, external-link and local dependency checks.
+- `npm run claims:verify`: PASS — 462 source, localized, download, i18n and production text files.
+- `npm run quality`: PASS.
+- The quality chain's temporary production-tree build copied 626 source files. Deployment-tree validation passed with 209 HTML files, 627 total release files and 24 verified public downloads. No archive, release tag, upload or deployment was created.
+- Targeted legacy-phrase scan across the four home, application overview and FAQ pages and their four search indexes: 0 matches for the replaced laser claims.
+- Targeted JSON-LD parse and exact search-record uniqueness check: PASS for all 12 affected pages and all 12 corresponding records.
+- Canonical, hreflang, local links/resources, four-language search indexes, sitemap and `llms.txt` checks remain covered by the passing localized and full quality chains.
+- Product specification tables: unchanged. No product page is present in the current diff.
+- `catalog-project/`: Git status unchanged; two protected local files remain outside this task.
 
-- `case-center-en-1440-full.png` — valid English desktop full-page capture without repeated Hero tiles.
-- `case-center-en-faq-keyboard-1440.png` — real keyboard-expanded FAQ with the answer visible.
-- `case-center-en-laser-390.png`
-- `case-center-de-laser-390.png`
-- `case-center-ja-laser-390.png`
-- `case-center-ru-laser-390.png`
-- `case-center-en-laser-detail-390.png`
-- `case-center-en-product-groups-1440.png`
-- `case-center-en-product-groups-390.png`
+## 7. Browser acceptance
 
-## 7. Change and release boundary
+The earlier valid case-center capture remains preserved, but is not used as proof for the newly changed aggregate pages:
+
+`C:\Users\cao19\.codex\visualizations\2026\08\07\begapunk-laser-verified-models\case-center-en-1440-full.png`
+
+The two known invalid stitched files were moved and renamed:
+
+- `rejected/FAILED-case-center-en-1440-full-valid.png`
+- `rejected/FAILED-case-center-en-1440-full-valid2.png`
+
+Current aggregate-page browser acceptance is **incomplete**. The required in-app browser connector was invoked, but its bundled client failed during bootstrap with `Cannot redefine property: process`. Therefore no new screenshots were produced and the 1440, 1024, 900, 768, 430 and 390 CSS-pixel checks, mobile menu/footer checks, keyboard FAQ expansion and four-language phone-card checks are not reported as passed. Source-level and automated DOM checks passed, but are not substituted for browser evidence.
+
+Because the required current visual acceptance is incomplete, this working tree is not yet declared finally accepted and no local commit is created in this phase.
+
+## 8. Change and release boundary
 
 - Existing approved product specification values were not changed.
 - `catalog-project/` was not modified, staged, copied, or included in public assets.
-- Original source photographs remain outside Git; only the previously approved metadata-free WebP derivatives are referenced.
-- No push, merge, release archive, tag, server change, deployment, IndexNow submission, or search-engine submission was performed.
+- No real form was submitted.
+- No push, merge, release package, tag, server change, deployment, upload, IndexNow submission, or search-engine submission was performed.
