@@ -22,51 +22,51 @@ const conservativePolicyByLocale = {
     sealName: 'Seal type',
     sealValue: 'PTFE seal with O-ring',
     protectionName: 'Protection rating',
-    protectionValue: 'Protective-shroud and labyrinth design for dusty environments; no certified IP rating is currently claimed.',
+    protectionValue: 'Protective-shroud and labyrinth design for dusty environments.',
     mountingName: 'Mounting type',
     mountingValue: 'Stator side: 4 × M5, thread depth 10 mm; rotor side: 6 × M5, thread depth 8 mm. Confirm the complete mounting dimensions against the supplied drawing before machining.',
     weightText: 'Confirm weight for the supplied configuration.',
-    cardText: 'No Certified IP Rating Claimed',
+    cardText: 'Protective Shroud & Labyrinth',
     comparisonText: 'Stator 4 × M5 × 10 mm; rotor 6 × M5 × 8 mm',
     llmsText: 'no certified IP rating is claimed',
     searchText: 'no certified IP rating is currently claimed',
     mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
     nonAirTerms: /\b(?:water|coolant|liquid|non-air)\b/i,
-    nonAirQualification: /\b(?:written (?:compatibility )?confirmation|must not|not (?:recommended|approved|intended)|outside|consult|requires? (?:a )?(?:separate )?(?:written |engineering )?(?:confirmation|review)|before operation)\b/i,
+    nonAirQualification: /\b(?:written (?:compatibility )?confirmation|must not|do not direct|not (?:recommended|approved|intended)|outside|consult|requires? (?:a )?(?:separate )?(?:written |engineering )?(?:confirmation|review)|before operation)\b/i,
   },
   de: {
     productTypeName: 'Produkttyp',
-    productTypeValue: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth; keine zertifizierte IP-Schutzart angegeben.',
+    productTypeValue: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth.',
     mediaName: 'Betriebsmedien',
     mediaValue: 'Luft. Andere Medien erfordern eine schriftliche Kompatibilitätsbestätigung für die Betriebsbedingungen.',
     sealName: 'Dichtung',
     sealValue: 'PTFE-Dichtung mit O-Ring.',
     protectionName: 'Schutzart',
-    protectionValue: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen; derzeit wird keine zertifizierte IP-Schutzart angegeben.',
+    protectionValue: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen.',
     mountingName: 'Montageart',
     mountingValue: 'Statorseite: 4 × M5, Gewindetiefe 10 mm; Rotorseite: 6 × M5, Gewindetiefe 8 mm. Vor der Bearbeitung vollständige Einbaumaße anhand der mitgelieferten Zeichnung bestätigen.',
     weightText: 'Gewicht der gelieferten Konfiguration bestätigen.',
-    cardText: 'Keine zertifizierte IP-Schutzart angegeben',
+    cardText: 'Schutzhaube & Labyrinth',
     comparisonText: 'Stator 4 × M5 × 10 mm; Rotor 6 × M5 × 8 mm',
     llmsText: 'keine zertifizierte IP-Schutzart angegeben',
     searchText: 'keine zertifizierte IP-Schutzart',
     mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
     nonAirTerms: /\b(?:Wasser|Kühlmittel|Flüssigkeit|Nicht-Luft-Medium)\b/iu,
-    nonAirQualification: /\b(?:schriftliche Kompatibilitätsbestätigung|nicht vorgesehen|nicht angegeben|nicht direkt|keine geeignete|außerhalb|vor der Inbetriebnahme|vor jeder Flüssigkeitszufuhr|konsultieren)\b/iu,
+    nonAirQualification: /\b(?:schriftliche Kompatibilitätsbestätigung|nicht vorgesehen|nicht angegeben|nicht direkt|Waschstrahl nicht|keine geeignete|außerhalb|vor der Inbetriebnahme|vor jeder Flüssigkeitszufuhr|konsultieren)\b/iu,
   },
   ja: {
     productTypeName: '製品種別',
-    productTypeValue: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。認証済みIP保護等級の表示なし。',
+    productTypeValue: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。',
     mediaName: '使用可能流体',
     mediaValue: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
     sealName: 'シール方式',
     sealValue: 'PTFEシール＋Oリング。',
     protectionName: '保護等級',
-    protectionValue: '粉じん環境向けの保護カバー・ラビリンス構造。現時点で認証済みIP保護等級は表示していません。',
+    protectionValue: '粉じん環境向けの保護カバー・ラビリンス構造。',
     mountingName: '取付方式',
     mountingValue: '固定側：4 × M5、ねじ深さ10 mm；回転側：6 × M5、ねじ深さ8 mm。加工前に、支給図面で取付寸法全体をご確認ください。',
     weightText: '納入仕様の質量をご確認ください。',
-    cardText: '認証済みIP保護等級の表示なし',
+    cardText: '保護カバー・ラビリンス構造',
     comparisonText: '固定側4 × M5 × 10 mm／回転側6 × M5 × 8 mm',
     llmsText: '認証済みIP保護等級',
     searchText: '認証済みIP保護等級',
@@ -76,17 +76,17 @@ const conservativePolicyByLocale = {
   },
   ru: {
     productTypeName: 'Тип изделия',
-    productTypeValue: 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий; сертифицированная степень защиты IP не заявляется.',
+    productTypeValue: 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий.',
     mediaName: 'Рабочая среда',
     mediaValue: 'Стандартная рабочая среда: воздух. Для других сред требуется письменное подтверждение совместимости с рабочими условиями.',
     sealName: 'Тип уплотнения',
     sealValue: 'Уплотнение из ПТФЭ с O-кольцом.',
     protectionName: 'Степень защиты',
-    protectionValue: 'Защитный кожух и лабиринт для запылённых условий; сертифицированная степень защиты IP в настоящее время не заявляется.',
+    protectionValue: 'Защитный кожух и лабиринт для запылённых условий.',
     mountingName: 'Тип крепления',
     mountingValue: 'Сторона статора: 4 × M5, глубина резьбы 10 мм; сторона ротора: 6 × M5, глубина резьбы 8 мм. До механической обработки сверьте все монтажные размеры с предоставленным чертежом.',
     weightText: 'Уточните массу поставляемой конфигурации.',
-    cardText: 'Сертифицированная степень IP не заявляется',
+    cardText: 'Защитный кожух и лабиринт',
     comparisonText: 'статор 4 × M5 × 10 мм; ротор 6 × M5 × 8 мм',
     llmsText: 'сертифицированная степень защиты IP не заявляется',
     searchText: 'сертифицированная степень защиты IP',
@@ -144,6 +144,19 @@ function publicUrl(locale, fileName) {
   return `${siteOrigin}/${publicPath(locale, fileName)}`;
 }
 
+function countCaseInsensitive(source = '', needle = '') {
+  if (!needle) return 0;
+  const haystack = String(source).toLocaleLowerCase();
+  const normalizedNeedle = String(needle).toLocaleLowerCase();
+  let count = 0;
+  let offset = 0;
+  while ((offset = haystack.indexOf(normalizedNeedle, offset)) !== -1) {
+    count += 1;
+    offset += normalizedNeedle.length;
+  }
+  return count;
+}
+
 function targetClaimViolations(source, localeCode, targetAssociated = true) {
   if (!targetAssociated) return [];
   return [
@@ -170,6 +183,11 @@ function runConservativeValidatorCases() {
     {
       locale: 'en',
       text: 'Protective shroud and labyrinth for dusty environments; no certified IP rating is claimed.',
+      expected: false,
+    },
+    {
+      locale: 'en',
+      text: 'Direct pressure washing can force water past protective features. Do not direct the wash jet at the shroud or labyrinth.',
       expected: false,
     },
   ];
@@ -324,9 +342,25 @@ async function validateConservativePublicPolicy(locale) {
   for (const fragment of expected.mountingFragments) {
     if (!visibleText.includes(fragment)) failures.push(`${detailRelative}: mounting text is missing ${fragment}`);
   }
+  const visibleIpFactCount = countCaseInsensitive(visibleText, expected.searchText);
+  if (visibleIpFactCount !== 1) {
+    failures.push(`${detailRelative}: the uncertified-IP fact must appear exactly once in visible product copy; found ${visibleIpFactCount}`);
+  }
+  for (const [label, value] of [
+    ['meta description', $('meta[name="description"]').attr('content')],
+    ['Open Graph description', $('meta[property="og:description"]').attr('content')],
+    ['Twitter description', $('meta[name="twitter:description"]').attr('content')],
+  ]) {
+    if (countCaseInsensitive(value, expected.searchText) !== 0) {
+      failures.push(`${detailRelative}: ${label} must describe the protective design without repeating the uncertified-IP caveat`);
+    }
+  }
 
   const product = collectJsonLd($, detailRelative).find((node) => node?.['@type'] === 'Product');
   if (!product) return;
+  if (countCaseInsensitive(product.description, expected.searchText) !== 0) {
+    failures.push(`${detailRelative}: Product JSON-LD description must not use the uncertified-IP caveat as marketing copy`);
+  }
   for (const [nameKey, valueKey] of [
     ['productTypeName', 'productTypeValue'],
     ['mediaName', 'mediaValue'],
@@ -357,7 +391,7 @@ async function validateConservativePublicPolicy(locale) {
   const catalog = await readHtml(locale, 'products.html');
   const card = catalog?.(`.product-card-large[data-href="${detailFile}"]`);
   if (!card?.length || !card.text().replace(/\s+/g, ' ').includes(expected.cardText)) {
-    failures.push(`${publicPath(locale, 'products.html')}: ${conservativeModel} card does not expose the conservative protection wording`);
+    failures.push(`${publicPath(locale, 'products.html')}: ${conservativeModel} card does not expose the protective-shroud and labyrinth design`);
   }
   for (const { label, pattern } of conservativeForbiddenPatterns) {
     if (pattern.test(card?.html() || '')) failures.push(`${publicPath(locale, 'products.html')}: ${conservativeModel} card contains forbidden ${label}`);
@@ -379,15 +413,21 @@ async function validateConservativePublicPolicy(locale) {
   for (const { label } of targetClaimViolations(searchSource, locale.code)) {
     failures.push(`${searchRelative}: ${conservativeModel} record contains forbidden ${label}`);
   }
-  if (!searchSource.toLocaleLowerCase().includes(expected.searchText.toLocaleLowerCase())) {
-    failures.push(`${searchRelative}: ${conservativeModel} conservative protection wording is missing`);
+  const searchBodyIpFactCount = countCaseInsensitive(searchRecord?.body, expected.searchText);
+  if (searchBodyIpFactCount !== 1) {
+    failures.push(`${searchRelative}: ${conservativeModel} body must contain the uncertified-IP fact exactly once; found ${searchBodyIpFactCount}`);
+  }
+  if (countCaseInsensitive(searchRecord?.description, expected.searchText) !== 0
+      || countCaseInsensitive((searchRecord?.keywords || []).join(' '), expected.searchText) !== 0) {
+    failures.push(`${searchRelative}: ${conservativeModel} description and keywords must not repeat the uncertified-IP caveat`);
   }
 
   const llmsRelative = publicPath(locale, 'llms.txt');
   const llmsSource = await readFile(path.join(repoRoot, llmsRelative), 'utf8');
   const llmsLine = llmsSource.split(/\r?\n/).find((line) => line.includes(`${detailFile})`)) || '';
-  if (!llmsLine.toLocaleLowerCase().includes(expected.llmsText.toLocaleLowerCase())) {
-    failures.push(`${llmsRelative}: ${conservativeModel} conservative entry is missing`);
+  const llmsIpFactCount = countCaseInsensitive(llmsSource, expected.llmsText);
+  if (llmsIpFactCount !== 1 || countCaseInsensitive(llmsLine, expected.llmsText) !== 1) {
+    failures.push(`${llmsRelative}: ${conservativeModel} uncertified-IP fact must appear exactly once in its model entry; found ${llmsIpFactCount} in the file`);
   }
   for (const { label } of targetClaimViolations(llmsLine, locale.code)) {
     failures.push(`${llmsRelative}: ${conservativeModel} entry contains forbidden ${label}`);
@@ -426,6 +466,14 @@ for (const locale of locales) {
   await validateCatalog(locale, models);
   await validateSearchIndex(locale, models);
   await validateConservativePublicPolicy(locale);
+}
+
+const rootLlmsSource = await readFile(path.join(repoRoot, 'llms.txt'), 'utf8');
+for (const locale of locales.filter(({ code }) => code !== 'en')) {
+  const duplicateCount = countCaseInsensitive(rootLlmsSource, conservativePolicyByLocale[locale.code].llmsText);
+  if (duplicateCount !== 0) {
+    failures.push(`llms.txt: localized ${locale.code} summary repeats the uncertified-IP caveat; found ${duplicateCount}`);
+  }
 }
 
 const conservativeDecision = JSON.parse(await readFile(

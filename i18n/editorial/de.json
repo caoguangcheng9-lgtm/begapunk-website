@@ -1130,7 +1130,9 @@
     "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge / 2 Ausgänge (Flansch)",
     "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge / 3 Ausgänge (4 mm)",
     "5f8166385cab47dc": "<strong>Staubige oder abrasive Umgebungen</strong> - keine Staubdichtung oder Schutzhülle; abrasive Partikel punkten die PTFE Dichtungsfläche; verwenden Sie BP-2P-50-0001 oder fügen Sie externe Balgen hinzu",
-    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3>\n    <p>Abweichende Kanalzahl, Werkstoffe, Dichtungsoptionen oder Druckbereiche werden nach Prüfung der Anwendung ausgelegt. Die Verfügbarkeit von 3D-Daten hängt von Modell und Projektangaben ab.</p>\n    <div class=\"price\">Angebot anfragen</div>"
+    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3>\n    <p>Abweichende Kanalzahl, Werkstoffe, Dichtungsoptionen oder Druckbereiche werden nach Prüfung der Anwendung ausgelegt. Die Verfügbarkeit von 3D-Daten hängt von Modell und Projektangaben ab.</p>\n    <div class=\"price\">Angebot anfragen</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "1be60f9735e6735b": "<strong>Staubige oder abrasive Umgebungen</strong> - keine Staubdichtung oder Schutzhülle; abrasive Partikel punkten die PTFE Dichtungsfläche; verwenden Sie BP-2P-50-0001 oder fügen Sie externe Balgen hinzu"
   },
   "BP-3P-0006.html": {
     "2bc65b83d90ddcc2": "Abmessungen gemäß aktueller 2D-Zeichnung",
@@ -1218,7 +1220,9 @@
     "5f8166385cab47dc": "<strong>Staubige oder abrasive Umgebungen</strong> - keine Staubdichtung oder Schutzhülle; abrasive Partikel punkten die PTFE Dichtungsfläche; verwenden Sie BP-2P-50-0001 oder fügen Sie externe Balgen hinzu",
     "856aff6a43bfb285": "G1/8-Gewinde, 1 MPa, zwei Eingänge / drei Ausgänge",
     "4d8f0195e7fdf4f7": "<h3>BP-3P-0004 · 3 Eingänge / 3 Ausgänge (Flansch)</h3> <p>Drei Kanäle und Flanschmontage, max. 1,0 MPa. Für Anwendungen, bei denen ein Flansch besser zur Maschinenkonstruktion passt.</p> <div class=\"price\">Preis auf Anfrage</div>",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
+    "1be60f9735e6735b": "<strong>Staubige oder abrasive Umgebungen</strong> - keine Staubdichtung oder Schutzhülle; abrasive Partikel punkten die PTFE Dichtungsfläche; verwenden Sie BP-2P-50-0001 oder fügen Sie externe Balgen hinzu"
   },
   "BP-2P-08-0001.html": {
     "4331b6e5ed2faf38": "/ BP-2P-08-0001 · Zweikanal-Drehdurchführung",
@@ -1306,7 +1310,8 @@
     "324e9db449dc8ffe": "BP-2P-0001 · 2-Kanal (Flansch)",
     "ce03742c522550c6": "BP-8P-0001 · 8-Kanal (Flansch)",
     "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen."
   },
   "BP-2P-0002.html": {
     "ec47c731b6514941": "/ BP-2P-0002 · Drehdurchführung mit 2 Eingängen und 3 Ausgängen (4 mm)",
@@ -1395,7 +1400,7 @@
     "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge/3 Ausgänge (4 mm)",
     "ce03742c522550c6": "BP-8P-0001 · 8-Kanal (Flansch)",
     "d2090f2c0b0b6b3f": "BP-2P-08-0001 · 2 Eingänge/2 Ausgänge (M5)",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-1P-0003.html": {
     "7513a8c4427bbe1c": "/ BP-1P-0003 · Einkanal-Drehdurchführung",
@@ -1497,7 +1502,8 @@
     "5e7ec3442e009cdf": "Werkstoff- und Prüfunterlagen können für die konkrete Lieferung nach Verfügbarkeit angefragt werden. Benötigte Nachweise bitte vor Bestellung nennen.",
     "c019ecdf6e30b5f2": "Zweikanalige Gewindeausführung; zulässiger Druck gemäß aktueller Zeichnung",
     "d520df287af59a9b": "Zweikanalige Ausführung mit Schutzhaube und Labyrinth für staubige und abrasive Umgebungen; derzeit wird keine zertifizierte IP-Schutzart angegeben.",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>",
+    "87571454fa374b79": "Zweikanalige Ausführung mit Schutzhaube und Labyrinth für staubige und abrasive Umgebungen."
   },
   "BP-1P-0006.html": {
     "cdfa8a681e3c543a": "/ BP-1P-0006 · Drehverteiler mit 1 Eingang und 6 Ausgängen (4 mm)",
@@ -1592,7 +1598,7 @@
     "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)",
     "f17b51fa42ad5181": "BP-3P-0007 · 3 Eingänge/3 Ausgänge (4 mm)",
     "ce03742c522550c6": "BP-8P-0001 · 8 Eingänge/8 Ausgänge (Flansch)",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezialgewinde, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-2P-0001.html": {
     "aa81900c0d36e4ef": "/ BP-2P-0001 · Zweikanal-Drehdurchführung",
@@ -1688,7 +1694,8 @@
     "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
     "ce03742c522550c6": "BP-8P-0001 · 8-Kanal (Flansch)",
     "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
-    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3> <p>Sonderflansch, anderer Gehäusewerkstoff, spezielle Dichtung oder abweichende Betriebsdaten nach technischer Prüfung.</p> <div class=\"price\">Angebot anfragen</div>"
+    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3> <p>Sonderflansch, anderer Gehäusewerkstoff, spezielle Dichtung oder abweichende Betriebsdaten nach technischer Prüfung.</p> <div class=\"price\">Angebot anfragen</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen."
   },
   "BP-2P-130-0001.html": {
     "fb91d967c29b4c35": "/ BP-2P-130-0001 · Hochdruck-Zweikanal-Drehdurchführung",
@@ -1792,7 +1799,8 @@
     "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
     "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)",
     "442507aa15c80a03": "BP-3P-0004 · 3 Eingänge/3 Ausgänge (Flansch)",
-    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3> <p>Abweichender Druck, Werkstoff, Dichtung, Drehzahl oder Flansch nach technischer Prüfung.</p> <div class=\"price\">Angebot anfragen</div>"
+    "c6d36ee1a63a6495": "<h3>Kundenspezifische Ausführung</h3> <p>Abweichender Druck, Werkstoff, Dichtung, Drehzahl oder Flansch nach technischer Prüfung.</p> <div class=\"price\">Angebot anfragen</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen."
   },
   "BP-2P-16-0001.html": {
     "113a73c3653b7d1f": "/ BP-2P-16-0001 · Zweikanal-Drehdurchführung mit 16-mm-Durchgangsbohrung",
@@ -1890,7 +1898,8 @@
     "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
     "324e9db449dc8ffe": "BP-2P-0001 · 2 Eingänge/2 Ausgänge (Flansch)",
     "442507aa15c80a03": "BP-3P-0004 · 3-Kanal (Flansch)",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Bohrungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen."
   },
   "BP-2P-30-0001.html": {
     "15206b3faf30e463": "/ BP-2P-30-0001 · Zweikanal-Drehdurchführung mit Ø30-mm-Durchgangsbohrung",
@@ -1999,7 +2008,8 @@
     "46151cdac2e2602e": "BP-3P-S06-0001 · 3 Fluidkanäle + 6 Stromkreise",
     "5e7ec3442e009cdf": "Werkstoff-, Lager- und Prüfunterlagen können für die konkrete Lieferung nach Verfügbarkeit angefragt werden. Benötigte Nachweise vor Bestellung nennen.",
     "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Bohrungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen."
   },
   "BP-2P-50-0001.html": {
     "13586d8a5e8ac363": "/ BP-2P-50-0001 · 2-Kanal-Drehdurchführung",
@@ -2336,7 +2346,8 @@
     "5f8166385cab47dc": "<strong>Staubige oder abrasive Umgebungen</strong> — zusätzliche Einhausung oder ein dafür freigegebenes Modell vorsehen.",
     "856aff6a43bfb285": "G1/8-Gewinde, 1 MPa, zwei Eingänge / drei Ausgänge",
     "4d8f0195e7fdf4f7": "<h3>BP-3P-0004 · 3-Kanal-Ausführung (Flansch)</h3><p>Drei Kanäle mit Flanschmontage für Anwendungen mit abweichender Befestigung.</p><div class=\"price\">Angebot anfragen</div>",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Öffnungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>",
+    "1be60f9735e6735b": "<strong>Staubige oder abrasive Umgebungen</strong> — zusätzliche Einhausung oder ein dafür freigegebenes Modell vorsehen."
   },
   "BP-3P-S06-0001.html": {
     "b680631069f51493": "/ BP-3P-S06-0001 · Pneumatisch-elektrische Drehdurchführung mit 3 Medienkanälen und 6 Stromkreisen",
@@ -2567,7 +2578,7 @@
     "46151cdac2e2602e": "BP-3P-S06-0001 · 3 Kanäle + 6 Stromkreise",
     "5e7ec3442e009cdf": "Werkstoff-, Oberflächen- und Dichtungsunterlagen auftragsbezogen anfragen.",
     "c019ecdf6e30b5f2": "1.5 MPa abspritzen, Stahlgehäuse, Gewindemontage für höheren Druck",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Spezielle Bohrungsgröße, Edelstahlgehäuse, FDA Dichtung oder Hochdruckausführung. Kostenlose 3D-Datei mit Anfrage.</p>\n    <div class=\"price\">Angebot anfordern</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class=\"price\">Angebot anfordern</div>"
   },
   "BP-8P-0001.html": {
     "0db74c28f83a5363": "/ BP-8P-0001 · 8-Kanal-Drehdurchführung",
@@ -2665,7 +2676,8 @@
     "5e7ec3442e009cdf": "Werkstoff-, Oberflächen- und Dichtungsunterlagen auftragsbezogen anfragen.",
     "c019ecdf6e30b5f2": "1.5 MPa abspritzen, Stahlgehäuse, Gewindemontage für höheren Druck",
     "d520df287af59a9b": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen.",
-    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3><p>Mehr als acht Kanäle, Edelstahlgehäuse, Sonderdichtung oder andere Druckklasse nach technischer Prüfung.</p><div class=\"price\">Angebot anfragen</div>"
+    "c6d36ee1a63a6495": "<h3>Sonderausführung</h3><p>Mehr als acht Kanäle, Edelstahlgehäuse, Sonderdichtung oder andere Druckklasse nach technischer Prüfung.</p><div class=\"price\">Angebot anfragen</div>",
+    "87571454fa374b79": "2-Kanal, Flansch, staubgeschützt Dichtung. Für Stahlwerke, Gießereien und abrasive Umgebungen."
   },
   "product-comparison.html": {
     "2688ebb6eba63062": "/ Modellvergleich",
@@ -2982,6 +2994,20 @@
     "3b158ba1f4eca9d1": "Dieser Schritt wird häufig ausgelassen und kann Leckagen nach dem Wechsel verursachen."
   },
   "application-laser-tube-cutting.html": {
+    "9234fd8831dfbfb6": "<a href=\"BP-3P-0004.html\">BP-3P-0004</a> und <a href=\"BP-2P-08-0001.html\">BP-2P-08-0001</a> sind Standardmodelle für unabhängige Druckluftkreise am hinteren Spannfutter in dieser Anwendungskategorie. Die Werkstattfotos dokumentieren die Anwendungskategorie; die abgebildeten Produkte wurden keinem der beiden Modelle einzeln zugeordnet.",
+    "c13420a88f70f241": "<strong>Realer Einbaufall am hinteren Spannfutter</strong><span>Werkstattfotos und technischer Kontext zur dokumentierten Anwendung am hinteren Spannfutter.</span>",
+    "9dafb1ee8c5ce8ff": "BP-3P-0004 und BP-2P-08-0001 werden für unabhängige Druckluftkreise am hinteren Spannfutter eingesetzt. Kanalzahl und Schnittstellen werden anhand der Maschinenkonstruktion ausgewählt.",
+    "d05c4f7f09f037a1": "BP-3P-0004 und BP-2P-08-0001 werden für Druckluftkreise am hinteren Spannfutter eingesetzt. Die endgültige Ausführung wird anhand der Maschinenzeichnung und einer schriftlichen technischen Prüfung festgelegt.",
+    "875b7cb3dee63253": "Nur die Druckluftkreise zählen, die unabhängig geregelt werden müssen. Die endgültige Kanalbelegung wird aus dem Pneumatikplan der Maschine dokumentiert.",
+    "6c2116131e75be18": "Engineering-Lösung für Prozess- und Hilfsgase",
+    "0f3700ca13ac5805": "Legt die maschinenspezifische Ausführung anhand der Maschinenkonstruktion fest",
+    "e00c3c82d709fa3b": "Für Prozess- oder Hilfsgase wird eine separate technische Lösung mit anwendungsspezifischen Werkstoffen sowie abgestimmter Reinigung, Prüfung und Freigabe ausgelegt.",
+    "ee4d3d4160154f01": "Wie werden Prozess- oder Hilfsgase umgesetzt?",
+    "b6192f9e57feb6a0": "Für Prozess- oder Hilfsgase wird eine separate technische Lösung mit anwendungsspezifischen Werkstoffen, Reinigung, Prüfung und Freigabe ausgelegt.",
+    "ba6355ea90d44023": "Druckluft-Drehversorgung am hinteren Spannfutter einer Laser-Rohrschneidmaschine.",
+    "2beece2908f624f6": "Standardmodelle für Druckluft am hinteren Spannfutter",
+    "553d3017aefd0006": "Das Fallbeispiel zeigt zwei Werkstattfotos der Druckluftübertragung am hinteren Spannfutter in dieser Anwendungskategorie.",
+    "27bc91c2480b7f08": "Welche Standardmodelle werden für Druckluft am hinteren Spannfutter eingesetzt?",
     "f750db8118491756": "/ Laser-Rohrschneiden",
     "d8cf5a062c50eccd": "<a href=\"BP-2P-0001.html\">BP-2P-0001</a> oder <a href=\"BP-3P-0006.html\">BP-3P-0006</a>",
     "22fdbd53033cf0ba": "<a href=\"BP-2P-130-0001.html\">BP-2P-130-0001</a> (Edelstahlgehäuse, Nennwert 5 MPa)",
@@ -4328,6 +4354,24 @@
     "4432df56369e261c": "Anwendungen mit niedriger Leckage, etwa Vakuum, Reinraum oder Präzisionsspannen; zulässige Leckage quantitativ festlegen"
   },
   "applications.html": {
+    "dff0938053ce6b7c": ". Kanalzahl und Schnittstellen werden aus der Spannfutter- und Maschinenkonstruktion ausgewählt.",
+    "efeaec3f196f0901": "(Zweikanal-Luftausführung mit Schutzhaube und Labyrinth),",
+    "9a46b89135d3b2aa": "(kompakte 3-Kanal-Ausführung). Werkstoffe und anwendbare Konformitätsnachweise werden durch eine dokumentierte Prüfung der konkreten Ausführung festgelegt.",
+    "b24efd347118b7aa": "(Schutzhaube und Labyrinth für staubige Umgebungen; keine zertifizierte IP-Schutzart ist ausgewiesen),",
+    "81d3cd847c7b9a63": "<strong>Typische Anforderungen:</strong> 1–3 Kanäle bei 0,4–0,8 MPa, kompakte Gewindemontage für enge Karussells sowie Schnellkupplungen für einen zügigen Wartungswechsel. Edelstahlausführungen, Reinigungsbedingungen und erforderliche Nachweise für Lebensmittel- oder Pharmaanwendungen werden für die gewählte Ausführung geprüft.",
+    "ac26a39518fdc80a": "<strong>Typische Anforderungen:</strong> 2–3 Kanäle für Vakuum, Belüftung und Spannen; 0,05–0,1 MPa auf der Vakuumseite, 0,4–0,6 MPa auf der Druckluftseite und 60–120 U/min am Karussell, mit Flanschmontage für eine steife Integration. Dichtungswerkstoffe und erforderliche Lebensmittelkontakt-Nachweise werden für die gewählte Ausführung geprüft.",
+    "d709acbb0ec6fec9": "<strong>Typische Auswahlpunkte:</strong> Kanalzahl, Druck, Drehzahl, Montage, Gehäusewerkstoff, Filtration, Partikelart, Abschirmung, Schwingung und erforderliche Schutzart bestätigen. Die Schutzausführung wird aus der realen Maschinenumgebung abgeleitet.",
+    "62728272ea0f12c0": "<strong>Typische Auswahlpunkte:</strong> Kanalzahl, Druck, Drehzahl, Montage, Werkstoff, Schweißspritzer, Schwingung und die geforderte Schutzart aus der Maschinenspezifikation bestätigen. Abschirmung und äußeren Schutz an den tatsächlichen Einbau anpassen.",
+    "4d0aebc27b7e04cd": "<strong>Typische Anforderungen:</strong> Kanalzahl, Druck, Einbauraum, medienberührte Werkstoffe, Reinigungschemie sowie anwendbare Lebensmittelkontakt- und regulatorische Anforderungen werden für die gewählte Ausführung geprüft. Die erforderlichen Nachweise werden vor der Bestellung abgestimmt.",
+    "cfa0d41d31688e8f": "Kompakte Drehdurchführungen für Form-Fill-Seal-Anlagen, Beutelfüller und Rotationssiegler. Edelstahl- und reinigungsgeeignete Optionen werden anhand von Medium, Reinigungsprozess, Produktkontakt und erforderlichen Nachweisen geprüft.",
+    "fb65a0f1bb8ecf85": "Pneumatische Drehmomentsteuerung und Vakuumfixierung für rotierende Türme in Getränke- und Pharmaanlagen. Medienberührte Werkstoffe, Reinigungschemie, anwendbare Anforderungen und Nachweise werden in der Konfigurationsprüfung festgelegt.",
+    "9c98740cf506c66a": "Prozess- oder Hilfsgase werden als separates Engineering-Projekt mit anwendungsspezifischen Werkstoffen, Reinigung, Prüfung und Freigabe umgesetzt.",
+    "4ead9b320e14b11f": "Schutzhauben- und Labyrinthoptionen für staubige Umgebungen; Schutzkonzept aus den Maschinenanforderungen auswählen.",
+    "e7cdcffbbfc8b68a": "Rotierende Verpackungsmaschinen benötigen eine kompakte Druckluftübertragung bei engem Bauraum. Die Auswahl richtet sich nach Medienfunktionen, Einbauraum, Reinigungsverfahren und Wartungszugang.",
+    "568816ff0694c632": "Technische Prüfung für Schweißspritzer, Schleifstaub und Schwingung. Schutzhauben, Labyrinthe, Werkstoffe und äußere Abdeckungen an die tatsächliche Umgebung anpassen.",
+    "2beece2908f624f6": "Standardmodelle für Druckluft am hinteren Spannfutter",
+    "e4319307c2410867": "Stahlwerke, Gießereien, Zementwerke und Bergbauanlagen können Drehdurchführungen abrasivem Staub, Metallspänen und Schwingungen aussetzen. Verunreinigung, Abschirmung, Montage und Wartung werden gemeinsam geprüft; Schutzhaube und Labyrinth können die direkte Belastung reduzieren.",
+    "2f387266698a2bca": "Diese Standardmodellanwendungen übertragen Druckluft von der stationären Versorgung zum rotierenden hinteren Spannfutter.",
     "75f698ae92cda592": "› Anwendungen",
     "4bc80b1ddc396131": "(1-in-6-out, G1/8, 4mm Öffnung),",
     "a5943eb6504d10ff": "(2-Kanal-Band),",

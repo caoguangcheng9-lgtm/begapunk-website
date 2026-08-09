@@ -11,10 +11,8 @@ const locales = {
     prefix: '',
     warrantyName: 'Warranty terms',
     warrantyValue: 'Confirmed in quotation/order',
-    ratingBoundary: 'production inspection is separate from operating-rating validation',
-    founderEvidence: 'Working in precision machining since 2006',
-    caseEvidence: "Evidence scope: The installation photograph is published with the customer's authorization. It documents the installation, but does not by itself prove service life or all aspects of product performance.",
-    founderSince: /(?:working\s+)?in\s+precision\s+machining\s+since\s+2006/i,
+    ratingBoundary: 'each finished unit follows the documented production inspection process',
+    caseEvidence: 'Photo note: These customer-authorized workshop photographs document the installation state shown. Operating parameters and acceptance requirements are confirmed for the order and approved drawing.',
     authorization: /published with the customer(?:'s|’s) authorization/i,
     installation: /documents? the installation/i,
     life: /service life/i,
@@ -32,10 +30,8 @@ const locales = {
     prefix: 'de',
     warrantyName: 'Garantiebedingungen',
     warrantyValue: 'Im Angebot/Auftrag bestätigt',
-    ratingBoundary: 'die Produktionsprüfung ist von der Validierung der Einsatzgrenzen getrennt',
-    founderEvidence: 'Seit 2006 in der Präzisionsbearbeitung tätig',
-    caseEvidence: 'Nachweisumfang: Das Installationsfoto wird mit Genehmigung des Kunden veröffentlicht. Es dokumentiert den Einbau, belegt für sich allein jedoch weder die Lebensdauer noch sämtliche Leistungsmerkmale.',
-    founderSince: /seit\s+2006[^.!?]{0,80}(?:Präzisionsbearbeitung|Zerspanung)|(?:Präzisionsbearbeitung|Zerspanung)[^.!?]{0,80}seit\s+2006/i,
+    ratingBoundary: 'jede fertige Einheit durchläuft den dokumentierten Produktionsprüfprozess',
+    caseEvidence: 'Fotohinweis: Diese mit Genehmigung des Kunden veröffentlichten Werkstattfotos dokumentieren den dargestellten Einbauzustand. Betriebsparameter und Abnahmeanforderungen werden für den Auftrag und in der freigegebenen Zeichnung bestätigt.',
     authorization: /(?:mit (?:Genehmigung|Zustimmung|Autorisierung) des Kunden|vom Kunden[^.!?]{0,50}(?:genehmigt|autorisiert))/i,
     installation: /dokumentiert[^.!?]{0,50}(?:Installation|Einbau)|(?:Installation|Einbau)[^.!?]{0,50}dokumentiert/i,
     life: /(?:Lebensdauer|Nutzungsdauer)/i,
@@ -53,10 +49,8 @@ const locales = {
     prefix: 'ja',
     warrantyName: '保証条件',
     warrantyValue: '見積書・注文書で確認',
-    ratingBoundary: '生産検査は、使用定格の妥当性確認とは別のものです',
-    founderEvidence: '2006年より精密機械加工に従事',
-    caseEvidence: '証拠の範囲： 設置写真はお客様の許可を得て公開しています。この写真は設置状態を示すものであり、それ自体で寿命や製品性能のすべてを証明するものではありません。',
-    founderSince: /2006年[^。]{0,80}(?:精密加工|機械加工)|(?:精密加工|機械加工)[^。]{0,80}2006年/,
+    ratingBoundary: '完成品はすべて、公開された生産検査工程に従って検査します',
+    caseEvidence: '写真に関する注記：これらのお客様の許可を得た工場写真は、掲載した組込み状態を記録しています。運転条件および受入基準は、注文書と承認図面で確認します。',
     authorization: /顧客[^。]{0,50}(?:許可|承認)/,
     installation: /(?:設置|取付)[^。]{0,50}(?:記録|示し)|(?:記録|示し)[^。]{0,50}(?:設置|取付)/,
     life: /寿命/,
@@ -74,10 +68,8 @@ const locales = {
     prefix: 'ru',
     warrantyName: 'Условия гарантии',
     warrantyValue: 'Указаны в коммерческом предложении/заказе',
-    ratingBoundary: 'производственный контроль не является подтверждением рабочих характеристик',
-    founderEvidence: 'Работает в области прецизионной механообработки с 2006 года',
-    caseEvidence: 'Границы подтверждённых данных: Фотография установки опубликована с разрешения заказчика. Она подтверждает факт установки, но сама по себе не подтверждает срок службы или все характеристики изделия.',
-    founderSince: /(?:с\s+2006\s+года[^.!?]{0,80}(?:точн|механическ)|(?:точн|механическ)[^.!?]{0,80}с\s+2006\s+года)/i,
+    ratingBoundary: 'каждое готовое изделие проходит предусмотренный производственный контроль',
+    caseEvidence: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
     authorization: /(?:разрешен|согласован|авторизац)[^.!?]{0,60}заказчик|заказчик[^.!?]{0,60}(?:разрешен|согласован|авторизац)/i,
     installation: /(?:документирует|подтверждает|показывает)[^.!?]{0,60}установ|установ[^.!?]{0,60}(?:документирует|подтверждает|показывает)/i,
     life: /срок[^.!?]{0,20}служб/i,
@@ -105,7 +97,10 @@ const expectedBusiness = {
 };
 
 const productPages = config.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
-const casePage = 'case-bp-3p-s06-sensor-monitored-chuck.html';
+const casePages = [
+  'case-bp-2p-95-pneumatic-chuck-integration.html',
+  'case-bp-3p-s06-sensor-monitored-chuck.html',
+];
 
 const bp2p95DrawingBoundary = {
   en: /formal\s+engineering\s+drawing|approved\s+drawing/i,
@@ -191,8 +186,8 @@ function checkOrganizationFacts($, relativePath, locale) {
   }
   if (!organization.founder || organization.founder['@type'] !== 'Person') {
     fail(`${relativePath}: Organization founder must be a Person.`);
-  } else if (!containsText(organization.founder.description, locale.founderEvidence)) {
-    fail(`${relativePath}: founder description must state precision/machining experience since 2006 in the page language.`);
+  } else if (Object.hasOwn(organization.founder, 'description')) {
+    fail(`${relativePath}: the founder JSON-LD must not publish a biographical description.`);
   }
 }
 
@@ -243,6 +238,7 @@ for (const language of ['de', 'ja', 'ru']) {
 claimFiles.push(...await collectFiles(path.join(root, 'i18n'), (name) => /\.json$/i.test(name)));
 
 const globalForbidden = [
+  { label: 'retired founder-history claim from 2006', pattern: /\b2006\b|2006年/i },
   { label: 'unsupported 200,000/200K production-volume claim', pattern: /\b(?:200(?:,|\s)?000\+?|200K\+?)\b/i },
   { label: 'unsupported 20+ years claim', pattern: /\b20\+\s*years?\b|\b20\+\s*Jahre\b|20年以上|\b20\+\s*лет\b/i },
   { label: 'controlled-laboratory validation claim', pattern: /controlled\s+laboratory\s+conditions|kontrollierten?\s+Laborbedingungen|管理された(?:試験|実験)(?:条件|環境)|контролируем(?:ых|ые)\s+лабораторн(?:ых|ые)\s+услов/i },
@@ -316,13 +312,16 @@ for (const [language, locale] of Object.entries(locales)) {
     }
   }
 
-  const localizedCase = relativeFile(locale, casePage);
-  const caseSource = await read(localizedCase);
-  if (caseSource) {
-    const $ = load(caseSource, { decodeEntities: false });
-    const notes = $('.tech-note').filter((_, element) => compact($(element).text()) === compact(locale.caseEvidence));
-    if (notes.length !== 1) {
-      fail(`${localizedCase}: expected one exact customer-authorized installation-evidence boundary, found ${notes.length}.`);
+  for (const casePage of casePages) {
+    const localizedCase = relativeFile(locale, casePage);
+    const caseSource = await read(localizedCase);
+    if (caseSource) {
+      const $ = load(caseSource, { decodeEntities: false });
+      const notes = $('.tech-note');
+      const exactNotes = notes.filter((_, element) => compact($(element).text()) === compact(locale.caseEvidence));
+      if (notes.length !== 1 || exactNotes.length !== 1) {
+        fail(`${localizedCase}: expected exactly one concise customer-authorized photo note, found ${notes.length} note(s) and ${exactNotes.length} exact match(es).`);
+      }
     }
   }
 
@@ -345,7 +344,7 @@ for (const [language, locale] of Object.entries(locales)) {
     if (pageName === 'about.html') {
       const text = visiblePageText($);
       if (!/\b2022\b/.test(text)) fail(`${relativePath}: visible company history must state establishment in 2022.`);
-      if (!containsText(text, locale.founderEvidence)) fail(`${relativePath}: visible founder history must state machining experience since 2006.`);
+      if (/\b2006\b|2006年/.test(text)) fail(`${relativePath}: visible company copy must not publish the retired founder-history claim.`);
       const businesses = parseJsonLd($, relativePath).filter((node) => node['@type'] === 'LocalBusiness'
         && node['@id'] === 'https://www.begapunk.com/#localbusiness');
       if (businesses.length !== 1) fail(`${relativePath}: expected exactly one canonical LocalBusiness, found ${businesses.length}.`);
@@ -373,5 +372,5 @@ if (failures.length) {
   failures.forEach((message, index) => console.error(`${index + 1}. ${message}`));
   process.exitCode = 1;
 } else {
-  console.log(`Owner-confirmed facts verified: ${productPages.length} products × ${Object.keys(locales).length} languages, company history, commercial boundaries, case-photo authorization, and LocalBusiness facts.`);
+  console.log(`Owner-confirmed facts verified: ${productPages.length} products × ${Object.keys(locales).length} languages, 2022 company history, commercial boundaries, case-photo authorization, and LocalBusiness facts.`);
 }

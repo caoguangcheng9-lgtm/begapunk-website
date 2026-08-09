@@ -257,6 +257,17 @@ function isP1BoundaryContext(source, match) {
   return projectConfirmationPatterns.some((pattern) => pattern.test(context));
 }
 
+const orderConfirmedDeratingPatterns = [
+  /\bderat(?:e|ing|ed)\w*\b[^.!?。！？]{0,90}\b(?:confirmed|specified|agreed|defined|stated)\b[^.!?。！？]{0,55}\b(?:approved\s+)?(?:order|quotation|drawing|specification|model|configuration)\b/i,
+  /\b(?:approved\s+)?(?:order|quotation|drawing|specification|model|configuration)\b[^.!?。！？]{0,70}\b(?:confirms?|specifies?|defines?|states?|agrees?)\b[^.!?。！？]{0,55}\bderat(?:e|ing|ed)\w*\b/i,
+  /\bderat(?:e|ing|ed)\w*\b[^.!?。！？]{0,75}\b(?:must|needs?\s+to|will)\s+be\s+(?:confirmed|specified|agreed|defined)\b[^.!?。！？]{0,45}\b(?:per|for)\b[^.!?。！？]{0,25}\b(?:order|project|model|configuration)\b/i,
+];
+
+function isOrderConfirmedDeratingContext(source, match) {
+  const context = getSemanticStatementContext(source, match.index || 0, match[0].length);
+  return orderConfirmedDeratingPatterns.some((pattern) => pattern.test(context));
+}
+
 const banned = [
   {
     name: 'unsupported 60/80/18/22 marketing statistic',
@@ -282,6 +293,31 @@ const banned = [
     name: 'unsupported product-level FDA approval or compatibility claim',
     pattern: /(?:FDA[-\s]?(?:approved|compatible|grade|compliant|zugelassen|kompatibel|konform)|FDA(?:承認|適合|対応|グレード)|FDA[-\s]?(?:одобрен\w*|совместим\w*|класс\w*))[^.!?。！？\n]{0,70}(?:seals?|PTFE|FKM|materials?|options?|rotary\s+joints?|products?|Dicht|Werkstoff|シール|材料|製品|уплотнен\w*|материал\w*|издели\w*)|(?:seals?|PTFE|FKM|materials?|options?|rotary\s+joints?|products?|Dicht|Werkstoff|シール|材料|製品|уплотнен\w*|материал\w*|издели\w*)[^.!?。！？\n]{0,70}(?:FDA[-\s]?(?:approved|compatible|grade|compliant|zugelassen|kompatibel|konform)|FDA(?:承認|適合|対応|グレード)|FDA[-\s]?(?:одобрен\w*|совместим\w*|класс\w*))/giu,
     p1Boundary: true,
+  },
+  {
+    name: 'misleading FDA seal shorthand',
+    pattern: /\bFDA\s*[- ]?\s*(?:seals?|Dichtung(?:en)?)\b|FDA\s*シール|シール\s*FDA|(?:уплотнен[а-яё]*)\s*FDA\b|\bFDA\s*(?:уплотнен[а-яё]*)/giu,
+  },
+  {
+    name: 'unsupported absolute product-fit label',
+    pattern: /(?:✅\s*)?\b(?:Perfect|Perfekt)\b(?=\s*(?:[—–-]|<|$))|\*Идеальн[а-яё]*\*|<td\b[^>]*>\s*(?:✅\s*)?Идеальн[а-яё]*/giu,
+  },
+  {
+    name: 'invalid BP-2P-130 M0 mounting designation',
+    pattern: /\b8\s*(?:[-×x])\s*M0\b/giu,
+  },
+  {
+    name: 'unsupported BP-2P-16 identical-rating or same-lead-time claim',
+    pattern: /\bNo\s+bore\s*=\s*simpler,?\s+lower\s+cost\s+for\s+same\s+pressure\s+and\s+speed\b|\bidentical\s+pressure,?\s+speed,?\s+and\s+temperature\s+ratings\b|\blead\s+time\s+is\s+the\s+same\s+for\s+both\s+versions\b/giu,
+  },
+  {
+    name: 'known unsupported absolute performance sentence',
+    pattern: /\b3\s*(?:×|x|times)\s+margin\b[^.!?。！？\n]{0,65}\bwithout\s+seal\s+overheating\b|\b(?:pressurized\s+)?purge\s+port\b[^.!?。！？\n]{0,55}\bprevents?\s+dust\s+ingress\b[^.!?。！？\n]{0,55}\bextreme\s+environments?\b|\b(?:the\s+)?FKM\s+seal\b[^.!?。！？\n]{0,65}\bhardens?\s+within\s+(?:two|2)\s+weeks?\b|\bwill\s+cause\s+seal\s+wear\s+and\s+leakage\s+within\s+weeks\b|\bside\s+loads?\s*(?:>|&gt;|above|over)\s*5\s*N\b[^.!?。！？\n]{0,55}\bwill\s+damage\b/giu,
+  },
+  {
+    name: 'unsupported fixed generic derating',
+    pattern: /\b(?:\d+(?:[.,]\d+)?\s*%\s+derating(?:\s+factor)?|derat(?:e|ing|ed)(?:\s+factor)?\b[^.!?。！？\n]{0,120}(?:\d+(?:[.,]\d+)?\s*%|\b(?:to|by)\s+\d+(?:[.,]\d+)?\s*(?:MPa|bar|psi|RPM|U\/min|min⁻¹|об\/мин)))/giu,
+    semantic: 'fixed-derating',
   },
   { name: 'unsourced SMRP attribution', pattern: /\bSMRP\b/gi, semantic: 'smrp' },
   {
@@ -403,6 +439,11 @@ function isExactProductionInspectionFragment(value) {
     /dokumentierten Produktions-Dichtheitsprüfprozess[^.!?]{0,80}angegebenen Prüfbedingungen/i,
     /公開済みの生産時漏れ検査工程[^。！？]{0,80}試験条件/,
     /описанный процесс производственной проверки герметичности[^.!?]{0,100}указанные условия испытания/i,
+    /current passage-by-passage production inspection process/i,
+    /aktuellen kanalweisen Produktionsprüfprozess/i,
+    /現在実施している流路ごとの生産検査工程/,
+    /現在実施している流路別の量産検査工程/,
+    /действующий поканальный процесс производственного контроля/i,
   ].some((pattern) => pattern.test(evidence));
 }
 
@@ -508,6 +549,9 @@ function matchIsBlocked(rule, source, match, relativePath = '') {
   }
   if (rule.semantic === 'model-limit') {
     return !isExplicitModelLimitNegation(source, match);
+  }
+  if (rule.semantic === 'fixed-derating') {
+    return !isOrderConfirmedDeratingContext(source, match);
   }
   if (rule.name === 'unsupported 100-percent pressure-test claim'
     && isApprovedProductionInspectionClaim(relativePath, source, match)) {
@@ -769,6 +813,90 @@ verifyRuleSamples('unsupported product-level FDA approval or compatibility claim
     'This seal is not FDA-compatible.',
     'No FDA approval is claimed for this rotary joint or its seals.',
     'FDA 21 CFR 177.1550 is a regulatory reference; it is not a product approval.',
+  ],
+});
+
+verifyRuleSamples('misleading FDA seal shorthand', {
+  blocked: [
+    'Specify FDA seal if required.',
+    'FDA-Dichtung optional.',
+    'FDA シールを指定してください。',
+    'Доступно уплотнение FDA.',
+  ],
+  allowed: [
+    'Food-contact requirements must be reviewed for the selected wetted materials, seal compound, and project.',
+    'Any FDA-related requirement must be documented for the selected configuration.',
+    'No FDA approval is claimed for this rotary joint or its seals.',
+  ],
+});
+
+verifyRuleSamples('unsupported absolute product-fit label', {
+  blocked: [
+    '<td>✅ Perfect — 220 g, Ø64 mm</td>',
+    '<td>✅ Perfekt - 265 g AL6061</td>',
+    '<td>*Идеальный*</td>',
+    'RequirementFit✅ Perfect——Alternative',
+  ],
+  allowed: [
+    'The selected configuration may be a perfect fit after engineering review.',
+    'A perfectly aligned flange helps reduce external load.',
+    '<td>Suitable configuration to review</td>',
+  ],
+});
+
+verifyRuleSamples('invalid BP-2P-130 M0 mounting designation', {
+  blocked: [
+    'Flange Mount (8-M0 + 8-M10)',
+    'BP-2P-130 rotor connection: 8×M0.',
+  ],
+  allowed: [
+    'Flange Mount (8-M10)',
+    'Rotor connection: 8×M8.',
+    'Confirm the mounting pattern from the approved BP-2P-130 drawing.',
+  ],
+});
+
+verifyRuleSamples('unsupported BP-2P-16 identical-rating or same-lead-time claim', {
+  blocked: [
+    'No bore = simpler, lower cost for same pressure and speed.',
+    'Both versions have identical pressure, speed, and temperature ratings.',
+    'Lead time is the same for both versions.',
+  ],
+  allowed: [
+    'Compare pressure and speed against the approved drawing for each model.',
+    'Lead time for each version is confirmed in the quotation or order.',
+    'The BP-2P-16 maximum pressure is 1 MPa and maximum speed is 200 RPM.',
+  ],
+});
+
+verifyRuleSamples('known unsupported absolute performance sentence', {
+  blocked: [
+    'The 100 RPM rating provides 3× margin without seal overheating.',
+    'A pressurized purge port prevents dust ingress even in extreme environments.',
+    'The FKM seal overheats and hardens within two weeks.',
+    'A rigid setup will cause seal wear and leakage within weeks.',
+    'Side loads >5 N will damage the deep groove ball bearing.',
+  ],
+  allowed: [
+    'Confirm the required speed margin against the approved duty cycle.',
+    'A purge port may reduce direct dust exposure; effectiveness requires engineering confirmation.',
+    'A rigid setup can contribute to premature seal wear and leakage.',
+    'Support external radial loads separately and confirm the allowable load from the approved drawing.',
+  ],
+});
+
+verifyRuleSamples('unsupported fixed generic derating', {
+  blocked: [
+    'Derate pressure by 30% for continuous duty.',
+    'Maximum pressure is 1 MPa — derate to 0.7 MPa for continuous water duty.',
+    'Maximum speed is 200 RPM — derate to 150 RPM for continuous coolant.',
+    'Apply a 30% derating factor for round-the-clock operation.',
+  ],
+  allowed: [
+    'Maximum pressure is 1 MPa and maximum speed is 200 RPM.',
+    'Pressure-speed derating is confirmed for the selected model and order.',
+    'The approved order specifies a 30% pressure derating for this configuration.',
+    'Published running torque is ≤5 N·m; support external radial and axial loads separately.',
   ],
 });
 

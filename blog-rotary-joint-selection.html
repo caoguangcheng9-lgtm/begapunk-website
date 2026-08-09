@@ -189,7 +189,7 @@
 <li>Pneumatic gripper + vacuum ejector = <strong>4 channels</strong> (clamp + unclamp + vacuum supply + vacuum release)</li>
 <li>Laser cutting head (clamp, unclamp, blow dust) = <strong>3 channels</strong></li>
 </ul>
-<p><strong>Tip:</strong> Add one spare channel if your machine is likely to be upgraded later. It is cheaper to specify a 3-passage joint now than to replace a 2-passage joint in 18 months.</p>
+<p><strong>Tip:</strong> If a future machine upgrade is likely, compare the cost and space of one spare passage with replacing the rotary joint later.</p>
 <p><strong>Begapunk product reference:</strong></p>
 <ul>
 <li>Single channel: BP-1P-0003 — threaded mount, compact, rated 1.0 MPa</li>
@@ -199,7 +199,7 @@
 <h3>Rated Pressure vs. Test Pressure</h3>
 <p>When a product page or approved drawing lists "Maximum pressure: 1.0 MPa," treat that value as the model's operating limit unless the approved engineering document explicitly states otherwise. Do not use a production inspection pressure or any assumed test margin to raise the operating rating.</p>
 <p>Operating limits and production inspection conditions are separate. The current standard production leak check is performed after assembly at 1.0 MPa, with approximately 1 second of pressurization and 4 seconds of hold per passage. Any additional project-specific inspection must be agreed before order.</p>
-<p><strong>Design rule:</strong> For continuous operation, apply a <strong>30% derating factor</strong>. A 1.0 MPa joint should be used at 0.7 MPa or below for round-the-clock duty. Exceed this, and seal fatigue accelerates dramatically.</p>
+<p><strong>Design rule:</strong> For continuous operation, confirm the allowable combined pressure and speed for the selected model against the current product page, approved drawing, medium, temperature, duty cycle, and installation conditions.</p>
 <p><strong>Common mistake:</strong> Buying a 1.0 MPa joint for an application that runs at 0.9 MPa continuously. Three months later, the seal leaks. The joint did not fail — it was overspecified.</p>
 <h3>Pressure Selection by Application</h3>
 <table>
@@ -266,7 +266,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Common mistake:</strong> Installing a standard FKM-sealed joint on a 400 RPM indexing table. The FKM seal overheats and hardens within two weeks. The joint leaks. The engineer blames the manufacturer — but the specification was wrong.</p>
+<p><strong>Common mistake:</strong> Selecting an FKM-sealed joint for a high-speed indexing table without reviewing pressure, speed, temperature, duty cycle, lubrication, and seal suitability. Confirm the combined operating conditions against the selected model and approved specification.</p>
 <p>At Begapunk, all high-speed models (BP-2P-95 and above) ship with <strong>PTFE skeleton oil seals as standard</strong>. We do not offer FKM on any joint rated above 200 RPM.</p>
 <h3>How to Confirm Your Actual RPM</h3>
 <p>Do not use the spindle's maximum RPM. Use the <strong>RPM at the joint's mounting location</strong>:</p>
@@ -311,11 +311,11 @@
 <li><strong>Hydraulic oil (ISO VG 32)</strong> → 316 SS body + FKM or PTFE skeleton seal</li>
 <li><strong>Regulated or food-contact service</strong> → document the complete wetted-material list, seal compound, cleaning chemistry, temperature, and applicable requirements before selection</li>
 </ul>
-<p><strong>Common mistake:</strong> Using a standard pneumatic rotary joint for coolant delivery. The aluminum body corrodes. The FKM seal degrades. The joint leaks in 3 months.</p>
+<p><strong>Common mistake:</strong> Selecting a pneumatic rotary joint for coolant without reviewing the wetted materials, seal compound, concentration, temperature, filtration, and cleaning chemistry. Confirm the complete fluid-contact configuration before selection.</p>
 <p><strong>Begapunk product reference:</strong></p>
 <ul>
 <li>Water/oil compatible (SS body): BP-2P-130-0001</li>
-<li>Custom food-grade configurations: Contact us for BP-3P-FDA specifications</li>
+<li>Food-contact applications: request a documented review of wetted materials, seal compound, cleaning chemistry, temperature, and applicable requirements</li>
 </ul>
 <h2>5. Installation Space and Connection Type</h2>
 <h3>Threaded vs. Flange Mount</h3>
@@ -403,20 +403,20 @@
 <td>Water / steam</td>
 <td>0.1–1.0 MPa</td>
 <td>&lt; 200 RPM</td>
-<td>BP-3P-FDA — contact for spec</td>
+<td>Project-specific configuration — engineering review</td>
 </tr>
 <tr>
 <td>Dust-heavy environment</td>
 <td>Air / water</td>
 <td>0.1–1.0 MPa</td>
 <td>&lt; 200 RPM</td>
-<td>BP-2P-50-0001 (protective shroud and labyrinth; no certified IP rating claimed)</td>
+<td>BP-2P-50-0001 (protective shroud and labyrinth for dusty environments)</td>
 </tr>
 </tbody>
 </table>
 <h2>Conclusion</h2>
-<p>Selecting a rotary joint is not complicated — but it is specific. Get the passage count right. Derate the pressure by 30%. Match the seal material to your RPM. Verify media compatibility with the body material. Size the bore for your flow requirement.</p>
-<p>These five checks take five minutes. Getting them wrong takes five weeks of downtime.</p>
+<p>Selecting a rotary joint is not complicated — but it is specific. Confirm the passage count, allowable combined pressure and speed, seal material, media compatibility, mounting, and required flow against the current product page, approved drawing, and actual duty conditions.</p>
+<p>These five checks help narrow the model before the drawing and operating conditions are reviewed.</p>
 <h3>Still Not Sure Which Model Fits Your Machine?</h3>
 <p>Send us your operating conditions — pressure, RPM, media type, and passage count — for engineering review. Response time depends on the application complexity and the information provided.</p>
 <p>Request a Free Quote →</p>

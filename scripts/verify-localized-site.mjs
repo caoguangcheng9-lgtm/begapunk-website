@@ -385,6 +385,27 @@ function compactText(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
 
+function visibleFaqEntries($) {
+  const cardEntries = $('.faq-item, .app-faq-item').map((_, item) => ({
+    question: compactText($(item).find('.faq-question, h3').first().clone().find('svg, i, .faq-icon, .faq-toggle, .arrow').remove().end().text()),
+    answer: compactText($(item).find('.faq-answer, p').first().text()),
+  })).get().filter((item) => item.question && item.answer);
+  if (cardEntries.length) return cardEntries;
+
+  const articleEntries = [];
+  let current = $('h2#faq').first().next();
+  while (current.length && !current.is('h2')) {
+    if (current.is('h3') && current.next().is('p')) {
+      articleEntries.push({
+        question: compactText(current.text()),
+        answer: compactText(current.next().text()),
+      });
+    }
+    current = current.next();
+  }
+  return articleEntries;
+}
+
 function schemaTypes(node) {
   const type = node?.['@type'];
   return new Set((Array.isArray(type) ? type : [type]).filter(Boolean));
@@ -705,22 +726,20 @@ for (const language of verifiedLanguages) {
                 failures.push(`${language.code}/${pageName}: BreadcrumbList current page is not localized.`);
               }
             }
-            if (types.has('FAQPage')) {
-              const visibleFaq = $('.faq-item, .app-faq-item').map((__, item) => ({
-                question: compactText($(item).find('.faq-question, h3').first().clone().find('svg, i, .faq-icon, .faq-toggle, .arrow').remove().end().text()),
-                answer: compactText($(item).find('.faq-answer, p').first().text()),
-              })).get().filter((item) => item.question && item.answer);
-              const schemaFaq = Array.isArray(node.mainEntity) ? node.mainEntity : [];
-              if (schemaFaq.length !== visibleFaq.length) {
-                failures.push(`${language.code}/${pageName}: FAQ JSON-LD count does not match visible FAQ content.`);
-              } else {
-                visibleFaq.forEach((item, index) => {
-                  if (compactText(schemaFaq[index]?.name) !== item.question || compactText(schemaFaq[index]?.acceptedAnswer?.text) !== item.answer) {
-                    failures.push(`${language.code}/${pageName}: FAQ JSON-LD item ${index + 1} does not match visible localized content.`);
-                  }
-                });
+          }
+        }
+        for (const node of schemaNodes(payload)) {
+          if (!schemaTypes(node).has('FAQPage')) continue;
+          const visibleFaq = visibleFaqEntries($);
+          const schemaFaq = Array.isArray(node.mainEntity) ? node.mainEntity : [];
+          if (schemaFaq.length !== visibleFaq.length) {
+            failures.push(`${language.code}/${pageName}: FAQ JSON-LD count does not match visible FAQ content.`);
+          } else {
+            visibleFaq.forEach((item, index) => {
+              if (compactText(schemaFaq[index]?.name) !== item.question || compactText(schemaFaq[index]?.acceptedAnswer?.text) !== item.answer) {
+                failures.push(`${language.code}/${pageName}: FAQ JSON-LD item ${index + 1} does not match visible content.`);
               }
-            }
+            });
           }
         }
       } catch (error) {
@@ -979,11 +998,17 @@ const manufacturingQualityHeadings = {
   ja: '空圧用ロータリージョイントの製造・品質管理',
   ru: 'Производство и контроль качества вращающихся соединений',
 };
+const manufacturingQualityHeroCopy = {
+  en: 'Function-led surface treatment for aluminum rotary-union components, documented with production photographs and a recorded coating-thickness measurement.',
+  de: 'Funktionsgerechte Oberflächenbehandlung für Aluminiumbauteile, dokumentiert mit Produktionsfotos und einer aufgezeichneten Schichtdickenmessung.',
+  ja: 'アルミニウム製ロータリージョイント部品の機能に応じた表面処理を、製造写真と皮膜厚さの測定記録とともに紹介します。',
+  ru: 'Функциональная обработка алюминиевых деталей ротационных соединений показана на производственных фотографиях и дополнена зафиксированным измерением толщины покрытия.',
+};
 const manufacturingQualityRequiredTerms = {
-  en: [/hard-anodized rotor/i, /color-anodized stator housing/i, /low-speed[\s\S]{0,80}O-ring/i, /single-part, single-point/i],
-  de: [/harteloxierte[rsn]? Rotor/i, /farbeloxierte[sn]? Statorgehäuse/i, /langsam[\s\S]{0,100}O-Ring/i, /Einzelmessung an einem Einzelteil/i],
-  ja: [/硬質アルマイト処理ロータ/, /カラーアルマイト処理ステータハウジング/, /低速回転[\s\S]{0,80}Oリング/, /単一部品・単一点/],
-  ru: [/ротор[\s\S]{0,80}твёрдым анодированием/i, /корпус статора[\s\S]{0,80}цветным анодированием/i, /низкоскоростн[\s\S]{0,120}O-ring/i, /единичное измерение/i],
+  en: [/hard-anodized rotor/i, /color-anodized stator housing/i, /low-speed[\s\S]{0,80}O-ring/i],
+  de: [/harteloxierte[rsn]? Rotor/i, /farbeloxierte[sn]? Statorgehäuse/i, /langsam[\s\S]{0,100}O-Ring/i],
+  ja: [/硬質アルマイト処理ロータ/, /カラーアルマイト処理ステータハウジング/, /低速回転[\s\S]{0,80}Oリング/],
+  ru: [/ротор[\s\S]{0,80}твёрдым анодированием/i, /корпус статора[\s\S]{0,80}цветным анодированием/i, /низкоскоростн[\s\S]{0,120}O-ring/i],
 };
 const manufacturingQualityForbiddenClaims = /(?:all|every|entire batch|batch-wide)[^.!?]{0,80}51[.,]7|51[.,]7[^.!?]{0,80}(?:all|every|entire batch|batch average)|zero wear|maintenance[- ]free|MIL(?:-PRF-8625)?\s*Type\s*III\s*(?:certified|compliant)|50\s*[±+\/-]\s*\d+\s*(?:μm|µm|um)|耐磨性提高\d|寿命提高\d|нулев(?:ой|ого)\s+износ/i;
 const manufacturingPhotoPassageClaims = {
@@ -1023,7 +1048,19 @@ const statorProcessSearchTerms = {
   ja: ['ステータ加工', '4軸複合旋盤加工', '6061アルミ合金', '7075アルミ合金', 'カラーアルマイト', '製造工程'],
   ru: ['обработка статора', '4-осевая токарно-фрезерная обработка', 'алюминий 6061', 'алюминий 7075', 'цветное анодирование', 'процесс изготовления'],
 };
-const statorProcessEnglishResidue = /\b(?:Stator manufacturing process|Material preparation|Two machining setups|Dimensional sampling|External anodizing and return inspection|View 100% Leak Testing|Evidence boundary)\b/i;
+const statorProcessEnglishResidue = /\b(?:Stator manufacturing process|Material preparation|Two machining setups|Dimensional sampling|External anodizing and return inspection|View 100% Leak Testing|Evidence boundary|Photo note)\b/i;
+const statorPhotoNoteLabels = {
+  en: /^Photo note:/i,
+  de: /^Fotohinweis:/i,
+  ja: /^写真について：/,
+  ru: /^Примечание к фотографиям:/i,
+};
+const rotorMeasurementNoteLabels = {
+  en: /^Coating thickness:/i,
+  de: /^Schichtdicke:/i,
+  ja: /^皮膜厚さ：/,
+  ru: /^Толщина покрытия:/i,
+};
 const statorProcessImages = [
   { name: 'stator-cut-billets-4x5', width: 864, height: 1080 },
   { name: 'stator-turn-mill-machining-4x5', width: 864, height: 1080 },
@@ -1055,6 +1092,9 @@ for (const language of verifiedLanguages) {
     if ($page('h1').length !== 1 || compactText($page('h1').text()) !== manufacturingQualityHeadings[language.code]) {
       failures.push(`${language.code}/${manufacturingQualityPage}: H1 is missing, duplicated, or not localized as approved.`);
     }
+    if (compactText($page('.mq-hero > .container > p').text()) !== manufacturingQualityHeroCopy[language.code]) {
+      failures.push(`${language.code}/${manufacturingQualityPage}: the production-photo and coating-thickness hero summary is missing or stale.`);
+    }
     if ($page('.mq-breadcrumb a').length !== 1 || $page('.mq-breadcrumb a').attr('href') !== 'index.html') failures.push(`${language.code}/${manufacturingQualityPage}: visible breadcrumb must be flattened to Home / Quality.`);
     if ($page('link[rel="canonical"]').attr('href') !== pageUrl(language.code, manufacturingQualityPage)) {
       failures.push(`${language.code}/${manufacturingQualityPage}: canonical URL is incorrect.`);
@@ -1064,7 +1104,7 @@ for (const language of verifiedLanguages) {
       if (hreflangs.filter((value) => value === code).length !== 1) failures.push(`${language.code}/${manufacturingQualityPage}: hreflang ${code} is missing or duplicated.`);
     }
     for (const pattern of manufacturingQualityRequiredTerms[language.code] || []) {
-      if (!pattern.test(mainText)) failures.push(`${language.code}/${manufacturingQualityPage}: required localized manufacturing or evidence-boundary terminology is missing (${pattern}).`);
+      if (!pattern.test(mainText)) failures.push(`${language.code}/${manufacturingQualityPage}: required localized manufacturing or inspection terminology is missing (${pattern}).`);
     }
     const photographedThicknessPattern = language.code === 'ru'
       ? /51[.,]7\s*мкм/i
@@ -1094,8 +1134,10 @@ for (const language of verifiedLanguages) {
     if (/51[.,]7\s*(?:μm|µm|мкм)/iu.test(statorText)) failures.push(`${language.code}/${manufacturingQualityPage}: the rotor-only 51.7 µm reading leaked into the stator process module.`);
     if (language.code !== config.sourceLanguage.code && statorProcessEnglishResidue.test(statorText)) failures.push(`${language.code}/${manufacturingQualityPage}: English stator-process heading, step, CTA, or evidence label remains.`);
     if (statorProcess.find('.mq-process-gallery .mq-figure').length !== 3 || statorProcess.find('.mq-process-steps .mq-control').length !== 4 || statorProcess.find('.mq-stator-boundary').length !== 1) {
-      failures.push(`${language.code}/${manufacturingQualityPage}: stator-process gallery, four process steps, or evidence boundary is incomplete.`);
+      failures.push(`${language.code}/${manufacturingQualityPage}: stator-process gallery, four process steps, or photo note is incomplete.`);
     }
+    const statorPhotoNote = compactText(statorProcess.find('.mq-stator-boundary').text());
+    if (!statorPhotoNoteLabels[language.code]?.test(statorPhotoNote)) failures.push(`${language.code}/${manufacturingQualityPage}: the stator-process photo note is missing or not localized.`);
     if (statorProcess.find('.mq-process-gallery .mq-process-figure').length !== 3 || statorProcess.find('.mq-figure-landscape, .mq-figure-portrait').length) {
       failures.push(`${language.code}/${manufacturingQualityPage}: all three stator-process figures must use the common 4:5 module class.`);
     }
@@ -1125,12 +1167,14 @@ for (const language of verifiedLanguages) {
     }
     const rotorInspectionSection = $page('.mq-reading').closest('.mq-section');
     const rotorInspectionText = compactText(rotorInspectionSection.text());
-    if ($page('.mq-reading').length !== 1 || $page('.mq-boundary').length !== 2 || $page('.mq-stator-boundary').length !== 1 || $page('.mq-evidence').length !== 1) {
-      failures.push(`${language.code}/${manufacturingQualityPage}: rotor reading, two distinct evidence boundaries, or evidence summary is missing.`);
+    if ($page('.mq-reading').length !== 1 || $page('.mq-boundary').length !== 2 || $page('.mq-stator-boundary').length !== 1 || $page('.mq-evidence').length !== 0) {
+      failures.push(`${language.code}/${manufacturingQualityPage}: expected one rotor reading, one stator photo note, one rotor measurement boundary, and no duplicate photo-evidence summary.`);
     }
     if (!/51[.,]7\s*(?:μm|µm|мкм)/iu.test(rotorInspectionText) || !rotorInspectionSection.find('.mq-boundary:not(.mq-stator-boundary)').length) {
-      failures.push(`${language.code}/${manufacturingQualityPage}: the rotor 51.7 µm single-part, single-point evidence module was weakened or removed.`);
+      failures.push(`${language.code}/${manufacturingQualityPage}: the rotor 51.7 µm production coating measurement is missing.`);
     }
+    const rotorMeasurementNote = compactText(rotorInspectionSection.find('.mq-boundary:not(.mq-stator-boundary)').text());
+    if (!rotorMeasurementNoteLabels[language.code]?.test(rotorMeasurementNote)) failures.push(`${language.code}/${manufacturingQualityPage}: the 51.7 µm coating-thickness note is missing or not localized.`);
     const ids = $page('[id]').map((_, element) => $page(element).attr('id')).get();
     if (new Set(ids).size !== ids.length) failures.push(`${language.code}/${manufacturingQualityPage}: duplicate HTML id detected.`);
     if (statorProcess.find('a[href="production-inspection-testing.html"]').length !== 1) failures.push(`${language.code}/${manufacturingQualityPage}: localized 100% leak-testing process link is missing or duplicated.`);
@@ -1194,10 +1238,10 @@ const productionInspectionHeadings = {
   ru: '100%-ный поканальный контроль герметичности пневматических вращающихся соединений',
 };
 const productionInspectionBoundaryHeadings = {
-  en: 'Confirmed current production process',
-  de: 'Bestätigter Umfang',
-  ja: '確認できる範囲',
-  ru: 'Границы подтверждения',
+  en: 'Current production process',
+  de: 'Aktueller Produktionsablauf',
+  ja: '現在の量産検査工程',
+  ru: 'Действующий производственный процесс',
 };
 const productionInspectionRequiredTerms = {
   en: [/100% of finished units/i, /Every passage tested individually/i, /1\.0 MPa/i, /Approximately 1 second/i, /4 seconds/i, /Unpressurized and open/i, /yellow quarantine container/i, /(?:fully|completely) retest|complete passage-by-passage test/i, /Every passage must pass before packing and storage/i],
@@ -1218,10 +1262,10 @@ const productionInspectionPendingPassClaims = {
   ru: /(?:ожидают|очереди)[^.]{0,100}(?:прошли|одобрены|готовы к отгрузке)/i,
 };
 const productionInspectionPassBoundaries = {
-  en: /pictured individual cycle[\s\S]{0,100}not a batch test certificate/i,
-  de: /abgebildeten einzelnen Prüfzyklus[\s\S]{0,120}kein Prüfzeugnis für ein Fertigungslos/i,
-  ja: /写真に写る1回の検査サイクル[\s\S]{0,120}ロット全体の検査証明書ではありません/,
-  ru: /показанному отдельному циклу[\s\S]{0,140}не является протоколом проверки партии/i,
+  en: /PASS[^.!?]{0,100}photographed passage-test cycle/i,
+  de: /PASS-Anzeige[^.!?]{0,120}abgebildeten Kanalprüfzyklus/i,
+  ja: /写真に写る流路別検査サイクル[^\u3002]{0,120}PASS/,
+  ru: /PASS[^.]{0,140}изображённого цикла проверки одного канала/i,
 };
 const productionInspectionTableLabels = {
   de: 'Aktueller Produktionsablauf',
@@ -1281,7 +1325,7 @@ for (const language of verifiedLanguages) {
     }
     const passContext = compactText(figures.eq(1).text() + ' ' + $page('.pit-evidence-boundary').text());
     if (!productionInspectionPassBoundaries[language.code]?.test(passContext)) {
-      failures.push(`${language.code}/${productionInspectionPage}: the individual PASS image is not bounded from batch or serial-number certification.`);
+      failures.push(`${language.code}/${productionInspectionPage}: the PASS caption is not tied to the photographed passage-test cycle.`);
     }
     for (const imageName of productionInspectionImages) {
       const jpg = $page(`img[src$="${imageName}.jpg"]`);
@@ -1359,6 +1403,17 @@ try {
       if (rootLlms.includes(excludedUrl)) failures.push(`llms.txt: excluded URL is present (${excludedUrl}).`);
     }
   }
+  const laserApplicationStatement = 'BP-2P-08-0001 and BP-3P-0004 are used in this application category.';
+  if (rootLlms.split(laserApplicationStatement).length - 1 !== 1) {
+    failures.push('llms.txt: the confirmed laser rear-chuck application-model statement must appear exactly once.');
+  }
+  if (/evidence limits|photographed unit has not been individually identified|without photograph-to-model identification/i.test(rootLlms)) {
+    failures.push('llms.txt: a repeated evidence-limit or photograph-to-model disclaimer remains.');
+  }
+  const productionInspectionSummary = rootLlms.split(/\r?\n/).find((line) => line.includes('/production-inspection-testing.html')) || '';
+  if (!productionInspectionSummary.includes('PASS/NG handling')) {
+    failures.push('llms.txt: the production-inspection summary must mention PASS/NG handling.');
+  }
 } catch (error) {
   failures.push(`llms.txt: missing or invalid (${error.message}).`);
 }
@@ -1384,6 +1439,65 @@ const caseBreadcrumbCopy = {
   ja: { home: 'ホーム', applications: '用途別情報', cases: '選定事例' },
   ru: { home: 'Главная', applications: 'Применение', cases: 'Примеры применения' },
 };
+const detailPhotoNotes = {
+  en: 'Photo note: These customer-authorized workshop photographs document the installation state shown. Operating parameters and acceptance requirements are confirmed for the order and approved drawing.',
+  de: 'Fotohinweis: Diese mit Genehmigung des Kunden veröffentlichten Werkstattfotos dokumentieren den dargestellten Einbauzustand. Betriebsparameter und Abnahmeanforderungen werden für den Auftrag und in der freigegebenen Zeichnung bestätigt.',
+  ja: '写真に関する注記：これらのお客様の許可を得た工場写真は、掲載した組込み状態を記録しています。運転条件および受入基準は、注文書と承認図面で確認します。',
+  ru: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
+};
+const bp2p95CaseCenterSummaryCopy = {
+  en: 'Two customer-authorized workshop photographs document the BP-2P-95-0001 mounting area, the surrounding chuck assembly and visible pneumatic hose routing. Open the detail page for the installation layout and project review inputs.',
+  de: 'Zwei mit Genehmigung des Kunden veröffentlichte Werkstattaufnahmen dokumentieren den Einbaubereich der BP-2P-95-0001, die umgebende Spannfuttereinheit und die sichtbare Schlauchführung. Die Detailseite zeigt die Einbauanordnung und die Angaben für die projektbezogene Prüfung.',
+  ja: 'お客様の許可を得た2点の工場内組立写真で、BP-2P-95-0001の取付部、チャック周辺の構成、空圧ホースの配管状態を紹介しています。詳細ページでは、組込みレイアウトと案件確認に必要な情報をご覧いただけます。',
+  ru: 'Две цеховые фотографии, опубликованные с разрешения заказчика, документируют зону установки BP-2P-95-0001, окружающий узел патрона и видимую прокладку пневматических шлангов. На отдельной странице приведены компоновка установки и исходные данные для проектной проверки.',
+};
+const bp2p95EnglishOgDescription = 'Customer-authorized workshop photographs document BP-2P-95-0001 installed in a pneumatic chuck assembly with visible compressed-air routing.';
+const caseCenterGuideCopy = {
+  en: 'The three entries above are real applications supported by workshop photographs; the two entries below are engineering selection examples, not customer performance results. Final selection requires the actual machine drawing and operating conditions.',
+  de: 'Die drei oben aufgeführten Einträge sind reale Anwendungen, die durch Werkstattfotos belegt sind; die beiden folgenden Einträge sind technische Auswahlbeispiele und keine Leistungsnachweise aus Kundenanlagen. Für die endgültige Auswahl sind die tatsächliche Maschinenzeichnung und die Betriebsbedingungen erforderlich.',
+  ja: '上の3項目は工場内写真に基づく実際の用途事例で、以下の2項目は顧客装置の性能実績ではなく技術選定例です。最終的な機種選定には、実際の装置図面と使用条件の確認が必要です。',
+  ru: 'Три записи выше — реальные примеры, подтверждённые цеховыми фотографиями; две записи ниже — инженерные примеры подбора, а не результаты работы оборудования заказчика. Для окончательного выбора необходимы чертёж машины и фактические условия эксплуатации.',
+};
+const caseCenterHeroCopy = {
+  en: 'Review documented rotary-union installations and the engineering inputs needed for model and fit discussions.',
+  de: 'Dokumentierte Einbauten von Drehdurchführungen und die technischen Angaben für Modell- und Einbauprüfungen im Überblick.',
+  ja: 'ロータリジョイントの組込み事例と、機種・取付検討に必要な技術条件を紹介します。',
+  ru: 'Документированные примеры установки ротационных соединений и исходные данные для подбора модели и проверки монтажа.',
+};
+const caseCenterDetailFaqCopy = {
+  en: {
+    question: 'Where can I review the detailed installation cases?',
+    answer: 'Open the BP-2P-95-0001 pneumatic chuck case or the BP-3P-S06-0001 sensor-monitored chuck case from their case cards. The laser rear-chuck evidence is summarized on this page.',
+    laserAnswer: 'Yes. BP-3P-0004 and BP-2P-08-0001 are confirmed for pneumatic rear-chuck applications on laser tube cutting machines. Provide the chuck drawing and operating conditions to confirm the ordered model and interface.',
+  },
+  de: {
+    question: 'Wo finde ich die ausführlichen Einbaufälle?',
+    answer: 'Öffnen Sie über die Fallkarten den Einbaufall BP-2P-95-0001 im pneumatischen Spannfutter oder den Fall BP-3P-S06-0001 im sensorüberwachten Spannfutter. Der Nachweis für das hintere Laser-Spannfutter ist auf dieser Seite zusammengefasst.',
+    laserAnswer: 'Ja. BP-3P-0004 und BP-2P-08-0001 sind für pneumatische Anwendungen am hinteren Spannfutter von Laser-Rohrschneidmaschinen bestätigt. Senden Sie Spannfutterzeichnung und Betriebsbedingungen, um Bestellausführung und Schnittstelle zu bestätigen.',
+  },
+  ja: {
+    question: '詳細な組込み事例はどこで確認できますか？',
+    answer: '各事例カードから、BP-2P-95-0001の空圧チャック組込み事例またはBP-3P-S06-0001のセンサ監視対応チャック組込み事例を開けます。レーザー後方チャックの資料はこのページにまとめています。',
+    laserAnswer: 'はい。BP-3P-0004およびBP-2P-08-0001は、レーザー管切断機の後方チャック空圧用途で採用実績があります。発注型式と取付インターフェースの確認には、チャック図面と使用条件をご提示ください。',
+  },
+  ru: {
+    question: 'Где посмотреть подробные примеры установки?',
+    answer: 'Откройте с карточек подробный пример BP-2P-95-0001 в пневматическом патроне или BP-3P-S06-0001 в патроне с контролем по датчикам. Материалы по заднему патрону лазерного станка приведены на этой странице.',
+    laserAnswer: 'Да. BP-3P-0004 и BP-2P-08-0001 подтверждены для пневматических систем заднего патрона станков лазерной резки труб. Для подтверждения заказной модели и интерфейса направьте чертёж патрона и условия эксплуатации.',
+  },
+};
+const laserApplicationProductMetaCopy = {
+  en: 'Confirmed for pneumatic laser tube cutting rear-chuck applications.',
+  de: 'Für pneumatische Anwendungen am hinteren Spannfutter einer Laser-Rohrschneidmaschine bestätigt.',
+  ja: 'レーザー管切断機の後方チャック空圧回路で採用実績があります。',
+  ru: 'Применение в пневмосистеме заднего патрона лазерного станка подтверждено.',
+};
+const detailEngineeringInputs = {
+  en: { drawing: /chuck drawing/i, conditions: /operating conditions/i, interface: /mechanical interface/i },
+  de: { drawing: /Spannfutterzeichnung/iu, conditions: /Betriebsbedingungen/iu, interface: /Mechanische Schnittstelle/iu },
+  ja: { drawing: /チャック図面/u, conditions: /使用条件/u, interface: /(?:機械取合い|取付部)/u },
+  ru: { drawing: /Чертёж патрона/iu, conditions: /Условия работы/iu, interface: /Механический интерфейс/iu },
+};
 const unsupportedApplicationCaseClaims = {
   en: /workshop assembly and commissioning|separate compressed-air paths/i,
   de: /Werkstattmontage und Inbetriebnahme|Getrennte Druckluftkreise/i,
@@ -1397,16 +1511,16 @@ const laserCaseForbiddenClaims = {
   ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ|\b\d+(?:[,.]\d+)?\s*(?:МПа|бар|об\/мин)\b/iu,
 };
 const laserPhotoModelBoundary = {
-  en: /has not been individually identified as either model/i,
-  de: /eindeutige Zuordnung[^.]{0,160}(?:liegt nicht vor|nicht vorliegt)/iu,
-  ja: /各写真[^。]{0,120}(?:個別特定|個別に特定)[^。]{0,80}(?:していません|したものではありません)/u,
-  ru: /соответстви[ея][^.]{0,180}(?:конкретной модели|отдельн)[^.]{0,120}не установлено/iu,
+  en: 'The product shown in each photograph has not been individually identified as either model.',
+  de: 'Eine eindeutige Zuordnung der beiden Fotos zu jeweils einem dieser Modelle liegt nicht vor.',
+  ja: 'ただし、各写真に写る製品をいずれかの型式に個別特定したものではありません。',
+  ru: 'При этом соответствие каждого изделия на фотографиях конкретной модели отдельно не установлено.',
 };
 const laserSameCategoryBoundary = {
   en: /same application category[^.]{0,180}not presented as two views of the same machine/i,
   de: /selben Anwendungskategorie[^.]{0,180}nicht als zwei Ansichten derselben Maschine/iu,
   ja: /同じ用途区分[^。]{0,180}同一装置[^。]{0,100}別角度[^。]{0,100}位置付けていません/u,
-  ru: /(?:одной категории применения[\s\S]{0,320}не представлены как два (?:вида|ракурса) одной и той же машины|не представлены как два (?:вида|ракурса) одного и того же оборудования[\s\S]{0,320}одной категории применения)/iu,
+  ru: /(?:одной категории применения[\s\S]{0,320}не представлены как два (?:вида|ракурса) (?:одной и той же машины|одного и того же оборудования)|не представлены как два (?:вида|ракурса) (?:одной и той же машины|одного и того же оборудования)[\s\S]{0,320}одной категории применения)/iu,
 };
 const productPhotoModelBoundary = {
   en: /has not been individually identified as this model/i,
@@ -1432,11 +1546,11 @@ const laserApplicationMediaClaims = {
   ja: /酸素|窒素|冷却液|クーラント|プロセスガス|アシストガス/u,
   ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ/iu,
 };
-const permittedNegativeMediaClaim = {
-  en: /does not establish suitability|outside the verified scope|requires a separately|\bNo\./i,
-  de: /keine Freigabe|außerhalb des bestätigten Einsatzbereichs|erfordert ein getrennt|\bNein\./iu,
-  ja: /適合を示すものではありません|確認済み用途には含まれません|確認済み範囲外|別系統[^。]{0,80}必要/u,
-  ru: /не является подтверждением|не входит в подтверждённую область|требуется отдельно|\bНет\./iu,
+const permittedSeparateMediaEngineering = {
+  en: /separate engineering solution[^.]{0,180}(?:materials|cleaning|testing|approval)/i,
+  de: /separate technische Lösung[^.]{0,180}(?:Werkstoff|Reinigung|Prüfung|Freigabe)/iu,
+  ja: /独立したエンジニアリング仕様[^。]{0,180}(?:材質|洗浄|試験|承認)/u,
+  ru: /отдельное инженерное решение[^.]{0,180}(?:материал|очистк|испытан|согласован)/iu,
 };
 const laserApplicationNumericClaims = /(?:\b\d+(?:[.,]\d+)?\s*(?:MPa|МПа|bar|бар|RPM|rpm|об\/мин|min⁻¹|L\/min|л\/мин)\b|30\s*%|ISO\s*4414|(?:orifice|bore|孔径|オリフィス|диаметр прохода)[^.;。]{0,40}\d+\s*mm)/iu;
 const staleLaserApplicationModels = /BP-2P-0001|BP-3P-0006|BP-2P-130-0001/i;
@@ -1489,11 +1603,35 @@ const sitewideLaserUnsupportedPerformance = {
   ja: /寿命|漏れ率|確認済み(?:圧力|回転数)|すべてのレーザー/u,
   ru: /срок службы|уровень утеч|подтверждённ(?:ое|ая) (?:давление|частота вращения)|для всех лазер/iu,
 };
-const sitewideNegativeSafetyBoundary = {
-  en: /does not establish suitability[^.]{0,180}oxygen[^.]{0,80}nitrogen[^.]{0,100}(?:assist|process)[- ]gas[^.]{0,80}coolant/i,
-  de: /belegen keine Eignung[^.]{0,160}Sauerstoff[^.]{0,80}Stickstoff[^.]{0,100}(?:Hilfs-|Prozessgas)[^.]{0,80}Kühlmittel/iu,
-  ja: /適合性を示すものではありません/u,
-  ru: /не подтверждают пригодность[^.]{0,160}кислород[^.]{0,80}азот[^.]{0,120}(?:вспомогательн|технологическ)[^.]{0,100}охлаждающ/iu,
+const sitewideSeparateGasEngineering = {
+  en: /separate engineering project[^.]{0,180}(?:materials|cleaning|testing|approval)/i,
+  de: /separates Engineering-Projekt[^.]{0,180}(?:Werkstoff|Reinigung|Prüfung|Freigabe)/iu,
+  ja: /個別のエンジニアリング案件[^。]{0,180}(?:材質|洗浄|試験|承認)/u,
+  ru: /отдельный инженерный проект[^.]{0,180}(?:материал|очистк|испытан|согласован)/iu,
+};
+const laserApplicationPhotoModelNote = {
+  en: /photograph[\s\S]{0,320}has not been individually identified as either model/i,
+  de: /Werkstattfotos[\s\S]{0,320}keinem der beiden Modelle einzeln zugeordnet/iu,
+  ja: /現場写真[\s\S]{0,320}個別対応付けしたものではありません/u,
+  ru: /фотограф[\s\S]{0,320}не сопоставлены[\s\S]{0,180}модел/iu,
+};
+const applicationsRepeatedIpCaveat = {
+  en: /no certified IP rating is currently claimed/giu,
+  de: /keine zertifizierte IP-Schutzart ist ausgewiesen/giu,
+  ja: /認証済みIP保護等級の記載はありません/gu,
+  ru: /сертифицированная степень защиты IP не заявляется/giu,
+};
+const applicationsDefensiveFoodClaim = {
+  en: /\bFDA\b|no product-level|without configuration-specific documentation/i,
+  de: /\bFDA\b|keine (?:Produkt|Konform)|ohne konfigurationsbezogene Nachweise/iu,
+  ja: /FDA|うたうものではありません|裏付け資料がない限り/u,
+  ru: /\bFDA\b|без документации[^.]{0,120}(?:соответств|пищев)|соответств[^.]{0,120}не заявляется/iu,
+};
+const applicationsPositiveConfigurationReview = {
+  en: /selected configuration[^.]{0,180}(?:documentation|food-contact|regulatory)|configuration review/i,
+  de: /gewählte Ausführung[^.]{0,180}(?:Nachweise|Lebensmittelkontakt|regulatorisch)|Konfigurationsprüfung/iu,
+  ja: /選定仕様[^。]{0,180}(?:必要資料|食品接触|規制)|仕様審査/u,
+  ru: /выбранн(?:ой|ого) (?:конфигурации|исполнения)[^.]{0,180}(?:документац|пищев|регулятор)|проверке исполнения/iu,
 };
 const sitewideSearchLegacyClaims = {
   en: /Air, oxygen assist, clamp control|Assist gas, clamping, and coolant|Oxygen \+ Nitrogen \+ Coolant|Assist gas, cooling support|oxygen, nitrogen, and compressed air/i,
@@ -1633,17 +1771,17 @@ for (const language of verifiedLanguages) {
     if (applicationBlock.length !== 1 || applicationMap.length !== 1 || applicationSummary.length !== 1) {
       failures.push(`${language.code}/applications.html: scoped laser application, mapping, and summary blocks must each remain present exactly once.`);
     }
-    const sitewideSafetyBoundary = applicationBlock.find('.laser-safety-boundary');
-    if (sitewideSafetyBoundary.length !== 1
-        || !sitewideNegativeSafetyBoundary[language.code]?.test(compactText(sitewideSafetyBoundary.text()))
-        || /BP-3P-0004|BP-2P-08-0001/.test(sitewideSafetyBoundary.text())) {
-      failures.push(`${language.code}/applications.html: explicit negative process-gas safety boundary is missing or recommends a standard model.`);
+    const sitewideEngineeringPath = applicationBlock.find('.laser-engineering-path');
+    if (sitewideEngineeringPath.length !== 1
+        || !sitewideSeparateGasEngineering[language.code]?.test(compactText(sitewideEngineeringPath.text()))
+        || /BP-3P-0004|BP-2P-08-0001/.test(sitewideEngineeringPath.text())) {
+      failures.push(`${language.code}/applications.html: separate process-gas engineering path is missing or recommends a standard model.`);
     }
     const applicationCore = applicationBlock.clone();
-    applicationCore.find('.laser-safety-boundary').remove();
+    applicationCore.find('.laser-engineering-path').remove();
     const applicationCoreText = compactText(applicationCore.text());
     const applicationSearchSnippets = applicationBlock.children()
-      .filter((_, element) => !$applications(element).hasClass('laser-safety-boundary'))
+      .filter((_, element) => !$applications(element).hasClass('laser-engineering-path'))
       .map((_, element) => compactText($applications(element).text()))
       .get()
       .filter(Boolean);
@@ -1656,6 +1794,18 @@ for (const language of verifiedLanguages) {
     }
     if (applicationMap.length === 1) verifySitewideLaserScope(language.code, compactText(applicationMap.text()), `${language.code}/applications.html laser mapping row`, { requireModels: true });
     if (applicationSummary.length === 1) verifySitewideLaserScope(language.code, compactText(applicationSummary.text()), `${language.code}/applications.html laser summary card`, { requireModels: true });
+
+    const applicationsVisible = $applications('body').clone();
+    applicationsVisible.find('header, nav, footer, script, style, .cookie-banner, .i18n-switcher').remove();
+    const applicationsVisibleText = compactText(applicationsVisible.text());
+    const repeatedIpCaveatCount = (applicationsVisibleText.match(applicationsRepeatedIpCaveat[language.code]) || []).length;
+    if (repeatedIpCaveatCount !== 0) {
+      failures.push(`${language.code}/applications.html: the product-level uncertified-IP caveat must not be repeated on the applications overview; found ${repeatedIpCaveatCount}.`);
+    }
+    if (applicationsDefensiveFoodClaim[language.code]?.test(applicationsVisibleText)
+        || !applicationsPositiveConfigurationReview[language.code]?.test(applicationsVisibleText)) {
+      failures.push(`${language.code}/applications.html: food or regulated-use copy must use a positive configuration-review statement without defensive FDA wording.`);
+    }
 
     const collectionPages = [];
     $applications('script[type="application/ld+json"]').each((_, element) => {
@@ -1724,6 +1874,14 @@ for (const language of verifiedLanguages) {
     if ($center('#real-application-cases').length !== 1 || $center('#engineering-selection-examples').length !== 1) {
       failures.push(`${language.code}/case-studies.html: real cases and selection examples are not separated.`);
     }
+    const caseCenterGuide = $center('.case-intro .key-takeaways > p');
+    if (compactText($center('.cs-hero > .container > p').text()) !== caseCenterHeroCopy[language.code]
+        || caseCenterGuide.length !== 1
+        || compactText(caseCenterGuide.text()) !== caseCenterGuideCopy[language.code]
+        || $center('.case-category-heading > .container > p').length
+        || $center('.tech-note').length) {
+      failures.push(`${language.code}/case-studies.html: the neutral hero or single real-case versus engineering-example guide boundary is missing, duplicated, or stale.`);
+    }
     if (caseCenter.indexOf('id="real-application-cases"') > caseCenter.indexOf('id="engineering-selection-examples"')) {
       failures.push(`${language.code}/case-studies.html: the real application case category is not first.`);
     }
@@ -1733,6 +1891,10 @@ for (const language of verifiedLanguages) {
         || realCases.eq(1).attr('id') !== 'laser-tube-rear-chuck'
         || realCases.eq(2).attr('id') !== 'bp-3p-s06-sensor-monitored-chuck') {
       failures.push(`${language.code}/case-studies.html: real case ordering must be BP-2P-95, laser rear chuck, then BP-3P-S06.`);
+    }
+    const bp2p95CaseCenterSummary = compactText($center('#bp-2p-95-pneumatic-chuck .case-text > p').text());
+    if (bp2p95CaseCenterSummary !== bp2p95CaseCenterSummaryCopy[language.code]) {
+      failures.push(`${language.code}/case-studies.html: the BP-2P-95 installation summary is missing, duplicated, or stale.`);
     }
     const ordering = [
       caseCenter.indexOf('id="real-application-cases"'),
@@ -1790,8 +1952,13 @@ for (const language of verifiedLanguages) {
       if (/\bBP-[A-Z0-9-]+\b/i.test(imageContext)) {
         failures.push(`${language.code}/case-studies.html: photograph captions must remain model-neutral.`);
       }
-      if (!laserText.includes('BP-3P-0004') || !laserText.includes('BP-2P-08-0001') || !laserPhotoModelBoundary[language.code]?.test(laserText)) {
-        failures.push(`${language.code}/case-studies.html: confirmed application models or the photograph-identification boundary is missing.`);
+      const photoModelBoundary = laserPhotoModelBoundary[language.code];
+      const photoModelBoundaryCount = photoModelBoundary ? laserText.split(photoModelBoundary).length - 1 : 0;
+      if (!laserText.includes('BP-3P-0004')
+          || !laserText.includes('BP-2P-08-0001')
+          || photoModelBoundaryCount !== 1
+          || $laserCase.find('.case-spec-table tbody tr').length !== 5) {
+        failures.push(`${language.code}/case-studies.html: confirmed application models or the single photograph-identification boundary is missing or duplicated.`);
       }
       if (!laserSameCategoryBoundary[language.code]?.test(laserText)) {
         failures.push(`${language.code}/case-studies.html: the same-category and not-the-same-machine evidence boundary is missing.`);
@@ -1815,6 +1982,11 @@ for (const language of verifiedLanguages) {
     if (verifiedApplicationCards.length !== 4 || verifiedApplicationHrefs.join('|') !== 'BP-2P-95-0001.html|BP-3P-0004.html|BP-2P-08-0001.html|BP-3P-S06-0001.html') {
       failures.push(`${language.code}/case-studies.html: verified-application products must contain BP-2P-95, BP-3P-0004, BP-2P-08-0001 and BP-3P-S06-0001 in that order.`);
     }
+    const laserApplicationCardCopy = ['BP-3P-0004.html', 'BP-2P-08-0001.html']
+      .map((href) => compactText($center(`.verified-application-products .product-card[data-href="${href}"] .product-meta`).text()));
+    if (laserApplicationCardCopy.some((copy) => copy !== laserApplicationProductMetaCopy[language.code])) {
+      failures.push(`${language.code}/case-studies.html: laser application product cards must retain the concise confirmed-application copy without repeated photograph-to-model disclaimers.`);
+    }
     if (selectionExampleCards.length !== 2 || selectionExampleHrefs.join('|') !== 'BP-2P-130-0001.html|BP-2P-30-0001.html') {
       failures.push(`${language.code}/case-studies.html: selection-example products must contain BP-2P-130-0001 and BP-2P-30-0001.`);
     }
@@ -1824,6 +1996,12 @@ for (const language of verifiedLanguages) {
     if ($center('#legacy-case-studies-styles').length) failures.push(`${language.code}/case-studies.html: disabled legacy style block must be removed.`);
     if ($center('.faq-item[onclick]').length || $center('.faq-question').length !== 4) {
       failures.push(`${language.code}/case-studies.html: FAQ must use four accessible buttons without inline item click handlers.`);
+    }
+    const expectedDetailFaq = caseCenterDetailFaqCopy[language.code];
+    if (compactText($center(`#faq-question-${language.code}-1`).text()) !== expectedDetailFaq?.question
+        || compactText($center(`#faq-answer-${language.code}-1`).text()) !== expectedDetailFaq?.answer
+        || compactText($center(`#faq-answer-${language.code}-2`).text()) !== expectedDetailFaq?.laserAnswer) {
+      failures.push(`${language.code}/case-studies.html: the case-center FAQs must link to detail cases and keep the laser answer free of repeated photograph-to-model copy.`);
     }
     const faqIds = new Set();
     $center('.faq-question').each((_, element) => {
@@ -1978,8 +2156,25 @@ for (const language of verifiedLanguages) {
     if ($detail('.floating-cta .floating-btn.quote').length !== 1 || $detail('.floating-cta .floating-btn.whatsapp').length !== 1) {
       failures.push(`${language.code}/${applicationCasePage}: standard floating quote/WhatsApp actions are missing.`);
     }
+    if (language.code === config.sourceLanguage.code
+        && $detail('meta[property="og:description"]').attr('content') !== bp2p95EnglishOgDescription) {
+      failures.push(`${language.code}/${applicationCasePage}: the positive customer-authorized Open Graph description is missing or stale.`);
+    }
     for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.tech-note', '.cta-section']) {
       if (!$smartDetail(selector).length) failures.push(`${language.code}/${smartChuckCasePage}: required standard component ${selector} is missing.`);
+    }
+    for (const [pageName, $casePage] of [[applicationCasePage, $detail], [smartChuckCasePage, $smartDetail]]) {
+      const photoNotes = $casePage('.tech-note');
+      if (photoNotes.length !== 1 || compactText(photoNotes.text()) !== detailPhotoNotes[language.code]) {
+        failures.push(`${language.code}/${pageName}: expected exactly one concise customer-authorized photo note.`);
+      }
+      const engineeringSectionText = compactText($casePage('[aria-labelledby="engineering-checks-title"]').text());
+      const requiredInputs = detailEngineeringInputs[language.code];
+      if (!requiredInputs?.drawing.test(engineeringSectionText)
+          || !requiredInputs.conditions.test(engineeringSectionText)
+          || !requiredInputs.interface.test(engineeringSectionText)) {
+        failures.push(`${language.code}/${pageName}: drawing, operating-condition, or interface confirmation is missing from the engineering checks.`);
+      }
     }
     if ($smartDetail('.nav-dropdown').length !== 4) failures.push(`${language.code}/${smartChuckCasePage}: expected four standard navigation dropdowns.`);
     if ($smartDetail('.footer-brand-band').length !== 1 || $smartDetail('.footer-contact-band').length !== 1 || $smartDetail('.footer-navigation > .footer-column').length !== 4) {
@@ -2012,9 +2207,12 @@ for (const language of verifiedLanguages) {
     if (verifiedModels.length !== 1 || verifiedModelLinks.join('|') !== 'BP-3P-0004.html|BP-2P-08-0001.html') {
       failures.push(`${language.code}/${laserApplicationPageName}: the confirmed-model section must link only BP-3P-0004 and BP-2P-08-0001.`);
     }
-    const safetyBoundary = $laserApplication('#process-gas-safety-boundary');
-    if (safetyBoundary.length !== 1 || safetyBoundary.find('a[href^="BP-"]').length || /BP-3P-0004|BP-2P-08-0001/i.test(safetyBoundary.text())) {
-      failures.push(`${language.code}/${laserApplicationPageName}: the separate process-gas boundary is missing or recommends a standard model.`);
+    const engineeringPath = $laserApplication('#process-gas-engineering-path');
+    if (engineeringPath.length !== 1
+        || !permittedSeparateMediaEngineering[language.code]?.test(compactText(engineeringPath.text()))
+        || engineeringPath.find('a[href^="BP-"]').length
+        || /BP-3P-0004|BP-2P-08-0001/i.test(engineeringPath.text())) {
+      failures.push(`${language.code}/${laserApplicationPageName}: the separate process-gas engineering path is missing or recommends a standard model.`);
     }
     if (!$laserApplication('a[href="case-studies.html#laser-tube-rear-chuck"]').length) {
       failures.push(`${language.code}/${laserApplicationPageName}: real laser rear-chuck case link is missing.`);
@@ -2029,12 +2227,12 @@ for (const language of verifiedLanguages) {
     }
     const applicationMain = $laserApplication('body').clone();
     applicationMain.find('header, nav, footer, script, style, .cookie-banner, .i18n-switcher').remove();
-    applicationMain.find('#process-gas-safety-boundary').remove();
+    applicationMain.find('#process-gas-engineering-path').remove();
     applicationMain.find('.app-faq-item').each((_, element) => {
       const faq = $laserApplication(element);
       const faqText = compactText(faq.text());
       if (!laserApplicationMediaClaims[language.code]?.test(faqText)) return;
-      if (!permittedNegativeMediaClaim[language.code]?.test(faqText)) failures.push(`${language.code}/${laserApplicationPageName}: FAQ contains an affirmative process-gas or coolant claim.`);
+      if (!permittedSeparateMediaEngineering[language.code]?.test(faqText)) failures.push(`${language.code}/${laserApplicationPageName}: FAQ must route process or assist gas to a separate engineering solution.`);
       faq.remove();
     });
     const applicationMainText = compactText(applicationMain.text());
@@ -2046,6 +2244,19 @@ for (const language of verifiedLanguages) {
     }
     if (laserApplicationNumericClaims.test(applicationMainText)) {
       failures.push(`${language.code}/${laserApplicationPageName}: an unsupported numeric pressure, speed, derating, flow, or orifice conclusion remains.`);
+    }
+    const photoModelNotes = $laserApplication('[data-photo-model-note]');
+    const photoNoteText = compactText(photoModelNotes.text());
+    if (photoModelNotes.length !== 1 || !laserApplicationPhotoModelNote[language.code]?.test(photoNoteText)) {
+      failures.push(`${language.code}/${laserApplicationPageName}: the photograph-to-model note must appear exactly once in the designated paragraph.`);
+    }
+    const laserWithoutPhotoNote = $laserApplication('body').clone();
+    laserWithoutPhotoNote.find('[data-photo-model-note], header, nav, footer, script, style, .cookie-banner, .i18n-switcher').remove();
+    if (laserApplicationPhotoModelNote[language.code]?.test(compactText(laserWithoutPhotoNote.text()))) {
+      failures.push(`${language.code}/${laserApplicationPageName}: the photograph-to-model note is repeated outside the designated paragraph.`);
+    }
+    if ($laserApplication('.app-faq-item').length !== 3) {
+      failures.push(`${language.code}/${laserApplicationPageName}: the concise laser application FAQ must contain exactly three complementary items.`);
     }
 
     for (const pageName of verifiedProductPageNames) {
@@ -2107,6 +2318,6 @@ if (failures.length) {
   console.log(`Localized site verification passed for ${verifiedLanguages.length * config.pages.length} pages.`);
   console.log(`Discovery quarantine passed for ${discoveryExcludedPages.size} routes and ${verifiedDiscoveryNoindexPages} localized noindex,follow pages, with zero entries in search, AI indexes, and sitemap sources.`);
   console.log(`Application-case coverage passed for BP-2P-95 and BP-3P-S06 across ${verifiedLanguages.length} languages, including detail pages, case-center links, product-page links, search indexes, canonical/hreflang sets, JSON-LD language values, and both sitemap sources.`);
-  console.log(`Manufacturing-quality coverage passed across ${verifiedLanguages.length} languages and ${verifiedLanguages.length * config.pages.length} canonical navigation/footer surfaces, including image pairs, the 51.7 μm single-point boundary, discovery metadata, and model-neutral evidence controls.`);
+  console.log(`Manufacturing-quality coverage passed across ${verifiedLanguages.length} languages and ${verifiedLanguages.length * config.pages.length} canonical navigation/footer surfaces, including image pairs, the 51.7 μm production coating measurement, discovery metadata, and localized photo notes.`);
   console.log(`Production leak-testing coverage passed across ${verifiedLanguages.length} languages, including 100% unit and passage coverage, 1.0 MPa compressed-air testing, timed pressure-hold stages, NG segregation, evidence boundaries, discovery metadata, and localized mobile labels.`);
 }

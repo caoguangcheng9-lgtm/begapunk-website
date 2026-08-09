@@ -14,11 +14,23 @@ const technicalNoteVariants = [
 ];
 
 const technicalNoteRows = technicalNoteVariants.map((variant) => ({
-  source: `<strong>Technical Note:</strong> Published operating limits must be confirmed against the current product page and approved drawing; production inspection is separate from operating-rating validation. Actual performance depends on operating conditions, media quality, installation practices, and maintenance schedule. For applications outside standard ratings — including high-pressure hydraulic${variant.sourceThreshold}, continuous water immersion, food-grade, or cleanroom environments — consult Begapunk factory engineering before specification. <strong>Last updated:</strong> ${variant.sourceDate}.`,
-  de: `<strong>Technischer Hinweis:</strong> Die veröffentlichten Betriebsgrenzen sind anhand der aktuellen Produktseite und der freigegebenen Zeichnung zu bestätigen; die Produktionsprüfung ist von der Validierung der Einsatzgrenzen getrennt. Die tatsächliche Leistung hängt von den Betriebsbedingungen, der Medienqualität, der Montage und den Wartungsintervallen ab. Bei Anwendungen außerhalb der Standardgrenzen – einschließlich Hochdruckhydraulik${variant.deThreshold}, dauerhaftem Eintauchen in Wasser, Lebensmittelanwendungen oder Reinraumumgebungen – ist vor der Spezifikation eine Abstimmung mit der Anwendungstechnik von Begapunk erforderlich. <strong>Letzte Aktualisierung:</strong> ${variant.deDate}.`,
-  ja: `<strong>技術注記：</strong> 公開されている使用限界は、最新の製品ページおよび承認図面で確認してください。生産検査は、使用定格の妥当性確認とは別のものです。実際の性能は、運転条件、使用流体の品質、取付方法および保守周期によって異なります。高圧油圧${variant.jaThreshold}、水中での連続使用、食品用途、クリーンルーム環境など、標準定格外の用途については、仕様決定前にBegapunkの技術部門へご相談ください。<strong>最終更新：</strong>${variant.jaDate}`,
-  ru: `<strong>Техническое примечание:</strong> Опубликованные рабочие пределы необходимо подтвердить по актуальной странице изделия и согласованному чертежу; производственный контроль не является подтверждением рабочих характеристик. Фактические характеристики зависят от условий эксплуатации, качества рабочей среды, монтажа и графика технического обслуживания. Для применений за пределами стандартных характеристик — включая гидравлические системы высокого давления${variant.ruThreshold}, длительное погружение в воду, пищевые применения и чистые помещения — до выбора спецификации необходимо проконсультироваться с инженерной службой Begapunk. <strong>Последнее обновление:</strong> ${variant.ruDate}`,
+  legacySource: `<strong>Technical Note:</strong> Published operating limits must be confirmed against the current product page and approved drawing; production inspection is separate from operating-rating validation. Actual performance depends on operating conditions, media quality, installation practices, and maintenance schedule. For applications outside standard ratings — including high-pressure hydraulic${variant.sourceThreshold}, continuous water immersion, food-grade, or cleanroom environments — consult Begapunk factory engineering before specification. <strong>Last updated:</strong> ${variant.sourceDate}.`,
+  source: `<strong>Technical Note:</strong> Use the current product page and approved drawing to select and operate the model within its published limits. Each finished unit follows the documented production inspection process. Actual performance depends on operating conditions, media quality, installation practices, and maintenance schedule. For applications outside standard ratings — including high-pressure hydraulic${variant.sourceThreshold}, continuous water immersion, food-grade, or cleanroom environments — consult Begapunk factory engineering before specification. <strong>Last updated:</strong> ${variant.sourceDate}.`,
+  de: `<strong>Technischer Hinweis:</strong> Für Auswahl und Betrieb des Modells gelten die veröffentlichten Grenzen auf der aktuellen Produktseite und in der freigegebenen Zeichnung. Jede fertige Einheit durchläuft den dokumentierten Produktionsprüfprozess. Die tatsächliche Leistung hängt von den Betriebsbedingungen, der Medienqualität, der Montage und den Wartungsintervallen ab. Bei Anwendungen außerhalb der Standardgrenzen – einschließlich Hochdruckhydraulik${variant.deThreshold}, dauerhaftem Eintauchen in Wasser, Lebensmittelanwendungen oder Reinraumumgebungen – ist vor der Spezifikation eine Abstimmung mit der Anwendungstechnik von Begapunk erforderlich. <strong>Letzte Aktualisierung:</strong> ${variant.deDate}.`,
+  ja: `<strong>技術注記：</strong> 型式の選定・使用は、最新の製品ページおよび承認図面に記載された公開限界内で行ってください。完成品はすべて、公開された生産検査工程に従って検査します。実際の性能は、運転条件、使用流体の品質、取付方法および保守周期によって異なります。高圧油圧${variant.jaThreshold}、水中での連続使用、食品用途、クリーンルーム環境など、標準定格外の用途については、仕様決定前にBegapunkの技術部門へご相談ください。<strong>最終更新：</strong>${variant.jaDate}`,
+  ru: `<strong>Техническое примечание:</strong> При выборе и эксплуатации модели соблюдайте опубликованные пределы, указанные на актуальной странице изделия и согласованном чертеже. Каждое готовое изделие проходит предусмотренный производственный контроль. Фактические характеристики зависят от условий эксплуатации, качества рабочей среды, монтажа и графика технического обслуживания. Для применений за пределами стандартных характеристик — включая гидравлические системы высокого давления${variant.ruThreshold}, длительное погружение в воду, пищевые применения и чистые помещения — до выбора спецификации необходимо проконсультироваться с инженерной службой Begapunk. <strong>Последнее обновление:</strong> ${variant.ruDate}`,
 }));
+
+const retiredAboutSources = [
+  `Precision Machining Career Begins`,
+  `Founder GuangCheng Cao began working in precision machining.`,
+  `Founder &amp; Chief Engineer<br>Working in precision machining since 2006`,
+  `Meet Begapunk, a Ningbo-based manufacturer of pneumatic rotary unions established in 2022, led by a founder working in precision machining since 2006.`,
+  `Ningbo-based rotary joint manufacturer established in 2022, led by a founder working in precision machining since 2006.`,
+  `Begapunk is a specialized rotary joint (rotary union) manufacturer based in Ningbo, Zhejiang Province, China. We design and produce single-passage and multi-passage rotary unions for industrial automation, CNC machining, laser cutting, plastic extrusion, wind energy, and other rotating machinery applications.`,
+  `Unlike general-purpose hydraulic component suppliers, we focus exclusively on rotary joints. This specialization allows us to offer deeper engineering support, faster custom prototyping, and more competitive pricing than multi-product competitors like Deublin or Kadant for equivalent specifications.`,
+  `Our Ningbo facility combines CNC machining, assembly, inspection, and engineering support. Inspection scope, test pressure, and acceptance criteria are confirmed for each model and order.`,
+];
 
 const rows = [
   {
@@ -70,18 +82,6 @@ const rows = [
     ru: `Основанный в 2022 году производитель стандартных и специальных вращающихся соединений для промышленной автоматизации, расположенный в Нинбо.`,
   },
   {
-    source: `Precision Machining Career Begins`,
-    de: `Beginn der Tätigkeit in der Präzisionsbearbeitung`,
-    ja: `精密機械加工のキャリアを開始`,
-    ru: `Начало работы в области прецизионной механообработки`,
-  },
-  {
-    source: `Founder GuangCheng Cao began working in precision machining.`,
-    de: `Gründer GuangCheng Cao begann seine Tätigkeit in der Präzisionsbearbeitung.`,
-    ja: `創業者のGuangCheng Caoが精密機械加工の仕事に携わり始めました。`,
-    ru: `Основатель GuangCheng Cao начал работать в области прецизионной механообработки.`,
-  },
-  {
     source: `Begapunk Established in Ningbo`,
     de: `Gründung von Begapunk in Ningbo`,
     ja: `寧波でBegapunkを設立`,
@@ -94,22 +94,40 @@ const rows = [
     ru: `Компания Ningbo Begapunk Pneumatic Components Co., Ltd. была основана для разработки и производства пневматических вращающихся соединений для промышленного оборудования.`,
   },
   {
-    source: `Founder &amp; Chief Engineer<br>Working in precision machining since 2006`,
-    de: `Gründer &amp; leitender Ingenieur<br>Seit 2006 in der Präzisionsbearbeitung tätig`,
-    ja: `創業者・技術責任者<br>2006年より精密機械加工に従事`,
-    ru: `Основатель и главный инженер<br>Работает в области прецизионной механообработки с 2006 года`,
+    source: `Founder &amp; Chief Engineer`,
+    de: `Gründer &amp; leitender Ingenieur`,
+    ja: `創業者・技術責任者`,
+    ru: `Основатель и главный инженер`,
   },
   {
-    source: `Meet Begapunk, a Ningbo-based manufacturer of pneumatic rotary unions established in 2022, led by a founder working in precision machining since 2006.`,
-    de: `Lernen Sie Begapunk kennen, einen 2022 gegründeten Hersteller pneumatischer Drehdurchführungen mit Sitz in Ningbo, dessen Gründer seit 2006 in der Präzisionsbearbeitung tätig ist.`,
-    ja: `Begapunkは2022年設立の寧波を拠点とする空圧ロータリージョイントメーカーです。創業者は2006年から精密機械加工に携わっています。`,
-    ru: `Begapunk — основанный в 2022 году производитель пневматических вращающихся соединений из Нинбо. Основатель компании работает в области прецизионной механообработки с 2006 года.`,
+    source: `Meet Begapunk, a Ningbo-based manufacturer of standard and custom pneumatic rotary joints for industrial automation and rotating machinery.`,
+    de: `Lernen Sie Begapunk kennen, einen Hersteller von Standard- und Sonderdrehdurchführungen für industrielle Automatisierung und rotierende Maschinen mit Sitz in Ningbo.`,
+    ja: `Begapunkは、産業オートメーションおよび回転機械向けの標準・特注空圧用ロータリージョイントを製造する寧波のメーカーです。`,
+    ru: `Begapunk — производитель стандартных и специальных пневматических вращающихся соединений из Нинбо для промышленной автоматизации и вращающегося оборудования.`,
   },
   {
-    source: `Ningbo-based rotary joint manufacturer established in 2022, led by a founder working in precision machining since 2006.`,
-    de: `2022 gegründeter Hersteller von Drehdurchführungen mit Sitz in Ningbo, geleitet von einem Gründer, der seit 2006 in der Präzisionsbearbeitung tätig ist.`,
-    ja: `2022年設立、寧波を拠点とするロータリージョイントメーカーです。創業者は2006年から精密機械加工に携わっています。`,
-    ru: `Основанный в 2022 году производитель вращающихся соединений из Нинбо, руководимый основателем, который работает в области прецизионной механообработки с 2006 года.`,
+    source: `Ningbo-based pneumatic rotary joint manufacturer established in 2022, serving industrial automation and rotating machinery projects.`,
+    de: `2022 gegründeter Hersteller pneumatischer Drehdurchführungen mit Sitz in Ningbo für Projekte in der industriellen Automatisierung und im Maschinenbau.`,
+    ja: `2022年設立、産業オートメーションおよび回転機械プロジェクト向けの空圧用ロータリージョイントを製造する寧波のメーカーです。`,
+    ru: `Основанный в 2022 году производитель пневматических вращающихся соединений из Нинбо для проектов промышленной автоматизации и вращающегося оборудования.`,
+  },
+  {
+    source: `Begapunk is a Ningbo-based manufacturer of pneumatic rotary joints for industrial automation and rotating machinery. Established in 2022, we develop standard and custom single-passage and multi-passage solutions for transferring compressed air between stationary and rotating machine components.`,
+    de: `Begapunk ist ein in Ningbo ansässiger Hersteller pneumatischer Drehdurchführungen für industrielle Automatisierung und rotierende Maschinen. Seit der Gründung im Jahr 2022 entwickeln wir Standard- und Sonderausführungen mit einem oder mehreren Kanälen für die Druckluftübertragung zwischen feststehenden und rotierenden Maschinenteilen.`,
+    ja: `Begapunkは、産業オートメーションおよび回転機械向けの空圧用ロータリージョイントを製造する寧波のメーカーです。2022年の設立以来、固定側と回転側の機械部品間で圧縮空気を供給する、1流路・多流路の標準品および特注品を開発しています。`,
+    ru: `Begapunk — производитель пневматических вращающихся соединений из Нинбо для промышленной автоматизации и вращающегося оборудования. Компания основана в 2022 году и разрабатывает стандартные и специальные одно- и многоканальные решения для передачи сжатого воздуха между неподвижными и вращающимися частями машин.`,
+  },
+  {
+    source: `Our team works with machine builders to review passage count, pressure, speed, mounting space, materials, and connection requirements before production. This helps align each standard model or custom configuration with the actual machine layout and operating conditions.`,
+    de: `Unser Team stimmt mit Maschinenbauern Kanalzahl, Druck, Drehzahl, Einbauraum, Werkstoffe und Anschlussanforderungen vor Fertigungsbeginn ab. So lässt sich jedes Standardmodell oder jede Sonderausführung auf den tatsächlichen Maschinenaufbau und die Betriebsbedingungen abstimmen.`,
+    ja: `製造前に、機械メーカーと流路数、圧力、回転数、設置スペース、材質、接続条件を確認します。これにより、標準型式または特注仕様を実際の機械レイアウトと運転条件に合わせます。`,
+    ru: `До начала производства наша команда согласует с изготовителями оборудования количество каналов, давление, частоту вращения, монтажное пространство, материалы и требования к присоединению. Это позволяет подобрать стандартную модель или специальное исполнение с учётом фактической компоновки машины и условий эксплуатации.`,
+  },
+  {
+    source: `At our Ningbo facility, aluminum and steel components are CNC-machined, assembled, and inspected. After final assembly, every finished rotary joint is leak-tested passage by passage before packing and storage. Project drawings, inspection requirements, and documentation are confirmed during quotation and order review.`,
+    de: `In unserem Werk in Ningbo werden Bauteile aus Aluminium und Stahl CNC-bearbeitet, montiert und geprüft. Nach der Endmontage wird bei jeder fertigen Drehdurchführung jeder einzelne Kanal auf Dichtheit geprüft, bevor das Produkt verpackt und eingelagert wird. Projektzeichnungen, Prüfvorgaben und Dokumentationsumfang werden im Angebots- und Auftragsprozess abgestimmt.`,
+    ja: `寧波の生産拠点では、アルミニウムおよび鋼製部品のCNC加工、組立、検査を行っています。最終組立後、完成したロータリージョイントはすべて、梱包・保管前に各流路ごとの漏れ検査を実施します。案件図面、検査要件、提供資料は、見積・注文確認の段階で確定します。`,
+    ru: `На нашем производстве в Нинбо детали из алюминия и стали обрабатываются на станках с ЧПУ, собираются и проходят контроль. После окончательной сборки каждый канал готового вращающегося соединения проверяется на герметичность перед упаковкой и хранением. Проектные чертежи, требования к контролю и состав документации согласуются при подготовке коммерческого предложения и подтверждении заказа.`,
   },
   {
     source: `Warranty terms`,
@@ -269,6 +287,9 @@ for (const language of ['de', 'ja', 'ru']) {
   const filePath = path.join(root, 'i18n', 'overrides', `${language}.json`);
   const before = await fs.readFile(filePath, 'utf8');
   const current = JSON.parse(before);
+  for (const legacySource of [...technicalNoteRows.map((row) => row.legacySource), ...retiredAboutSources]) {
+    delete current[legacySource];
+  }
   const missing = rows.filter((row) => current[row.source] !== row[language]);
   if (checkOnly) {
     if (missing.length) {

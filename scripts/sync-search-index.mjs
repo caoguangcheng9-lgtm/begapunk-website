@@ -14,13 +14,25 @@ const locales = [
 ];
 const failures = [];
 let changedFiles = 0;
+const conservativeIpKeywordByLocale = {
+  en: 'no certified IP rating claimed',
+  de: 'keine zertifizierte IP-Schutzart angegeben',
+  ja: '認証済みIP保護等級の表示なし',
+  ru: 'сертифицированная степень защиты IP не заявляется',
+};
 
 function compact(value = '') {
   return value.replace(/\s+/g, ' ').trim();
 }
 
-async function synchronizedRecord(directory, record) {
-  const filePath = path.join(directory, record.url);
+function normalizedKeywords(localeCode, record) {
+  if (record.id !== 'BP-2P-50-0001' || !Array.isArray(record.keywords)) return record.keywords;
+  const excluded = compact(conservativeIpKeywordByLocale[localeCode]).toLocaleLowerCase();
+  return record.keywords.filter((keyword) => compact(keyword).toLocaleLowerCase() !== excluded);
+}
+
+async function synchronizedRecord(locale, record) {
+  const filePath = path.join(locale.directory, record.url);
   const html = await fs.readFile(filePath, 'utf8');
   const $ = load(html, { decodeEntities: false });
   const content = $('body').clone();
@@ -32,6 +44,7 @@ async function synchronizedRecord(directory, record) {
     h1: compact($('h1').first().text()) || record.h1,
     h2s: $('h2').map((_, element) => compact($(element).text())).get().filter(Boolean),
     body: compact(content.text()),
+    ...(record.id === 'BP-2P-50-0001' ? { keywords: normalizedKeywords(locale.code, record) } : {}),
   };
 }
 
@@ -44,7 +57,7 @@ for (const locale of locales) {
       synchronized.push(record);
       continue;
     }
-    synchronized.push(await synchronizedRecord(locale.directory, record));
+    synchronized.push(await synchronizedRecord(locale, record));
   }
   const next = `${JSON.stringify(synchronized, null, 2)}\n`;
   const before = await fs.readFile(indexPath, 'utf8');

@@ -7,7 +7,7 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const pages = {
   'blog-rotary-union-seal-types.html': `
 <p>Seal selection is a system decision. Media, pressure, speed, temperature, motion pattern, allowable leakage, counterface condition, contamination and maintenance access must be considered together. A material name by itself is not enough to approve a rotary union.</p>
-<p><strong>Rating boundary:</strong> this guide does not increase any model's pressure, speed, temperature or media rating. Use the current product page and the approved drawing for the selected configuration.</p>
+<p><strong>Model-specific limits:</strong> Select within the pressure, speed, temperature and media limits on the current product page and approved drawing for the chosen configuration.</p>
 
 <h2>Three seal families, three different design roles</h2>
 <table>
@@ -21,17 +21,17 @@ const pages = {
 <p>None of these families is universally better. The correct choice depends on the complete operating envelope and on the approved construction of the selected model.</p>
 
 <h2>Current published Begapunk model examples</h2>
-<p>The table below repeats values from the current public model pages. It is not an independent certification. If it differs from an approved drawing or model-specific datasheet, the approved document controls.</p>
+<p>The table below summarizes values from the current public model pages. For order-specific selection, use the approved drawing or model-specific datasheet.</p>
 <table>
 <thead><tr><th>Model</th><th>Maximum pressure</th><th>Maximum speed</th><th>Selection boundary</th></tr></thead>
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 MPa</td><td>200 RPM</td><td>Two independent passages; confirm medium, temperature and duty</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 MPa</td><td>80 RPM</td><td>High-pressure, low-speed model; use only within its published limits</td></tr>
 <tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 MPa</td><td>200 RPM</td><td>2-inlet/4-outlet distribution; use the published 1 MPa limit</td></tr>
-<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 RPM</td><td>Protective shroud and labyrinth; no certified IP rating is claimed</td></tr>
+<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 RPM</td><td>Protective shroud and labyrinth for dusty environments</td></tr>
 </tbody>
 </table>
-<p>These values describe the public standard configurations. A custom request is not approved until its material, dimensions, seal arrangement and operating limits are confirmed in writing.</p>
+<p>These values describe the public standard configurations. For custom configurations, material, dimensions, seal arrangement and operating limits are confirmed in writing.</p>
 
 <h2>Information needed before seal selection</h2>
 <ol>
@@ -46,24 +46,18 @@ const pages = {
 
 <h2>How production leak testing fits</h2>
 <p>Begapunk's current standard production check is performed after final assembly. Each passage is checked separately with compressed air at 1.0 MPa while the other passages remain vented. The test uses approximately 1 second of pressurization and 4 seconds of hold time; a detector alarm identifies a nonconforming unit for segregation and investigation.</p>
-<p>This is a production inspection step. It is not a service-life test, a universal leakage class, or permission to operate above the model's published rating. See the documented process under <a href="production-inspection-testing.html">100% Leak Testing</a>.</p>
+<p>This production inspection verifies each finished unit under the documented conditions. Model operating limits, service-life expectations and application-specific leakage requirements are evaluated separately. See the documented process under <a href="production-inspection-testing.html">100% Leak Testing</a>.</p>
 
-<h2>Claims this guide does not make</h2>
-<ul>
-<li>No ISO leakage class is claimed.</li>
-<li>No universal replacement interval or service life is claimed.</li>
-<li>No generic seal family has one pressure, speed or temperature limit that applies to every geometry.</li>
-<li>"Zero leakage" is not claimed. A leakage statement requires a defined limit and an agreed test method.</li>
-</ul>
+<h2>Selection note</h2>
+<p>Seal performance and maintenance intervals depend on the selected model, seal geometry and actual operating conditions. Any leakage requirement should be expressed as a measurable limit with an agreed test method. Confirm the final operating limits for the selected configuration before ordering.</p>
 
 <h2>Request an engineering review</h2>
 <p>Send the media, pressure, motion, temperature, passage count, mounting drawing and leakage criterion. Begapunk can then review a standard model or a separately documented custom configuration.</p>
-<p><a href="contact.html"><strong>Request a seal and rotary-union review &rarr;</strong></a></p>
-<p><strong>Technical note:</strong> when this guide and a product page differ, stop the selection and request written confirmation. The current approved product page and drawing control the model-specific decision.</p>`,
+<p><a href="contact.html"><strong>Request a seal and rotary-union review &rarr;</strong></a></p>`,
 
   'de/blog-rotary-union-seal-types.html': `
 <p>Die Dichtungsauswahl ist eine Systementscheidung. Medium, Druck, Drehzahl, Temperatur, Bewegungsart, zul&auml;ssige Leckage, Gegenlauffl&auml;che, Verunreinigung und Wartungszugang m&uuml;ssen gemeinsam bewertet werden. Eine Werkstoffbezeichnung allein reicht nicht zur Freigabe einer Drehdurchf&uuml;hrung.</p>
-<p><strong>Grenze der Angaben:</strong> Dieser Leitfaden erh&ouml;ht keine Druck-, Drehzahl-, Temperatur- oder Medienfreigabe eines Modells. Ma&szlig;geblich sind die aktuelle Produktseite und die freigegebene Zeichnung der gew&auml;hlten Ausf&uuml;hrung.</p>
+<p><strong>Modellspezifische Betriebsgrenzen:</strong> W&auml;hlen Sie die Ausf&uuml;hrung innerhalb der Druck-, Drehzahl-, Temperatur- und Mediengrenzen der aktuellen Produktseite und der freigegebenen Zeichnung aus.</p>
 
 <h2>Drei Dichtungsfamilien mit unterschiedlichen Aufgaben</h2>
 <table>
@@ -77,17 +71,17 @@ const pages = {
 <p>Keine dieser Familien ist allgemein die beste. Entscheidend sind das vollst&auml;ndige Lastprofil und die freigegebene Konstruktion des ausgew&auml;hlten Modells.</p>
 
 <h2>Aktuell ver&ouml;ffentlichte Begapunk-Modellbeispiele</h2>
-<p>Die folgende Tabelle gibt Angaben der aktuell ver&ouml;ffentlichten Modellseiten wieder; sie ist keine unabh&auml;ngige Zertifizierung. Bei Abweichungen haben die freigegebene Zeichnung und das modellspezifische Datenblatt Vorrang.</p>
+<p>Die folgende Tabelle fasst Angaben der aktuell ver&ouml;ffentlichten Modellseiten zusammen. F&uuml;r die auftragsbezogene Auswahl gelten die freigegebene Zeichnung und das modellspezifische Datenblatt.</p>
 <table>
 <thead><tr><th>Modell</th><th>Maximaldruck</th><th>Maximaldrehzahl</th><th>Auswahlgrenze</th></tr></thead>
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>Zwei unabh&auml;ngige Kan&auml;le; Medium, Temperatur und Lastprofil best&auml;tigen</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 MPa</td><td>80 min<sup>-1</sup></td><td>Hochdruck-/Niederdrehzahlmodell; nur innerhalb der ver&ouml;ffentlichten Grenzen einsetzen</td></tr>
 <tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>Verteilung 2 Eing&auml;nge/4 Ausg&auml;nge; die ver&ouml;ffentlichte Grenze von 1 MPa einhalten</td></tr>
-<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 min<sup>-1</sup></td><td>Schutzhaube und Labyrinth; keine zertifizierte IP-Schutzart angegeben</td></tr>
+<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 min<sup>-1</sup></td><td>Schutzhaube und Labyrinth für staubige Umgebungen</td></tr>
 </tbody>
 </table>
-<p>Diese Werte gelten f&uuml;r die ver&ouml;ffentlichten Standardausf&uuml;hrungen. Eine kundenspezifische Ausf&uuml;hrung ist erst freigegeben, wenn Werkstoff, Abmessungen, Dichtungsanordnung und Betriebsgrenzen schriftlich best&auml;tigt sind.</p>
+<p>Diese Werte gelten f&uuml;r die ver&ouml;ffentlichten Standardausf&uuml;hrungen. Bei kundenspezifischen Ausf&uuml;hrungen werden Werkstoff, Abmessungen, Dichtungsanordnung und Betriebsgrenzen schriftlich best&auml;tigt.</p>
 
 <h2>Erforderliche Angaben vor der Dichtungsauswahl</h2>
 <ol>
@@ -102,24 +96,18 @@ const pages = {
 
 <h2>Einordnung der Produktions-Dichtheitspr&uuml;fung</h2>
 <p>Die aktuelle Standardpr&uuml;fung von Begapunk erfolgt nach der Endmontage. Jeder Kanal wird einzeln mit Druckluft bei 1,0 MPa gepr&uuml;ft, w&auml;hrend die &uuml;brigen Kan&auml;le drucklos und offen bleiben. Die Pr&uuml;fung umfasst etwa 1 Sekunde Druckaufbau und 4 Sekunden Haltezeit. Ein Alarm des Pr&uuml;fger&auml;ts kennzeichnet ein nichtkonformes Teil zur Sperrung und Ursachenanalyse.</p>
-<p>Dies ist eine Produktionspr&uuml;fung. Sie ist weder eine Lebensdauerpr&uuml;fung noch eine allgemeine Leckageklasse oder eine Freigabe oberhalb der ver&ouml;ffentlichten Modellgrenze. Der dokumentierte Pr&uuml;fablauf ist unter <a href="production-inspection-testing.html">100% Leak Testing</a> beschrieben.</p>
+<p>Diese Produktionspr&uuml;fung kontrolliert jedes fertige Teil unter den dokumentierten Bedingungen. Betriebsgrenzen, erwartete Lebensdauer und anwendungsspezifische Leckageanforderungen werden separat bewertet. Der dokumentierte Pr&uuml;fablauf ist unter <a href="production-inspection-testing.html">100% Leak Testing</a> beschrieben.</p>
 
-<h2>Was dieser Leitfaden nicht behauptet</h2>
-<ul>
-<li>Es wird keine ISO-Leckageklasse beansprucht.</li>
-<li>Es wird kein allgemeines Wechselintervall und keine pauschale Lebensdauer angegeben.</li>
-<li>Keine Dichtungsfamilie besitzt eine universelle Druck-, Drehzahl- oder Temperaturgrenze f&uuml;r alle Geometrien.</li>
-<li>&bdquo;Nullleckage&ldquo; wird nicht behauptet. Eine Aussage zur Leckage erfordert einen definierten Grenzwert und ein vereinbartes Pr&uuml;fverfahren.</li>
-</ul>
+<h2>Hinweis zur Auswahl</h2>
+<p>Dichtverhalten und Wartungsintervalle h&auml;ngen vom gew&auml;hlten Modell, der Dichtungsgeometrie und den tats&auml;chlichen Betriebsbedingungen ab. F&uuml;r Leckageanforderungen sind ein messbarer Grenzwert und ein vereinbartes Pr&uuml;fverfahren festzulegen. Best&auml;tigen Sie vor der Bestellung die zul&auml;ssigen Betriebsgrenzen der gew&auml;hlten Ausf&uuml;hrung.</p>
 
 <h2>Technische Pr&uuml;fung anfragen</h2>
 <p>Senden Sie Medium, Druck, Bewegung, Temperatur, Kanalzahl, Einbauzeichnung und Leckagekriterium. Begapunk kann daraufhin ein Standardmodell oder eine separat dokumentierte Sonderausf&uuml;hrung pr&uuml;fen.</p>
-<p><a href="contact.html"><strong>Dichtungs- und Drehdurchf&uuml;hrungspr&uuml;fung anfragen &rarr;</strong></a></p>
-<p><strong>Technischer Hinweis:</strong> Weicht dieser Leitfaden von einer Produktseite ab, ist die Auswahl zu stoppen und schriftlich zu kl&auml;ren. F&uuml;r die modellspezifische Entscheidung gelten die aktuelle freigegebene Produktseite und Zeichnung.</p>`,
+<p><a href="contact.html"><strong>Dichtungs- und Drehdurchf&uuml;hrungspr&uuml;fung anfragen &rarr;</strong></a></p>`,
 
   'ja/blog-rotary-union-seal-types.html': `
 <p>シール選定は、シール材だけで決められるものではありません。使用流体、圧力、回転速度、温度、動作パターン、許容漏れ量、摺動相手面、異物、保守性を一体で確認する必要があります。</p>
-<p><strong>仕様上の境界：</strong>本ページは、各型式の圧力・回転速度・温度・使用流体の許容範囲を拡大するものではありません。選定時は、最新の製品ページと承認図面を優先してください。</p>
+<p><strong>型式ごとの使用限界：</strong>選定する仕様は、最新の製品ページと承認図面に記載された圧力・回転速度・温度・使用流体の範囲内でご使用ください。</p>
 
 <h2>3種類のシール構造と役割</h2>
 <table>
@@ -133,17 +121,17 @@ const pages = {
 <p>どの構造も万能ではありません。実際の使用条件と、選定する型式で承認された構造を照合して判断します。</p>
 
 <h2>現在公開中のBegapunk型式例</h2>
-<p>以下の表は、現在公開中の各型式ページの数値を再掲したものであり、独立した認証を示すものではありません。承認図面または型式別データシートと異なる場合は、承認済み文書を優先します。</p>
+<p>以下の表は、現在公開中の各型式ページの数値をまとめたものです。注文仕様の選定には、承認図面または型式別データシートを適用します。</p>
 <table>
 <thead><tr><th>型式</th><th>最高使用圧力</th><th>最高回転速度</th><th>選定上の境界</th></tr></thead>
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>2回路独立。流体、温度、デューティを確認</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 MPa</td><td>80 min<sup>-1</sup></td><td>高圧・低速型。公開仕様範囲内で使用</td></tr>
 <tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>2入力・4出力の分配構造。公開仕様の1 MPa上限を適用</td></tr>
-<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 min<sup>-1</sup></td><td>保護カバーとラビリンス構造。認証済みIP等級の表示なし</td></tr>
+<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 min<sup>-1</sup></td><td>粉じん環境向けの保護カバーとラビリンス構造</td></tr>
 </tbody>
 </table>
-<p>上記は公開されている標準仕様です。特注仕様は、材質、寸法、シール構成、使用限界が書面で確認されるまで承認済みとはみなしません。</p>
+<p>上記は公開されている標準仕様です。特注仕様では、材質、寸法、シール構成、使用限界を書面で確認します。</p>
 
 <h2>シール選定前に必要な情報</h2>
 <ol>
@@ -158,24 +146,18 @@ const pages = {
 
 <h2>出荷前漏れ検査の位置づけ</h2>
 <p>Begapunkの現行標準検査は総組立後に行います。各回路を1回路ずつ、圧縮空気1.0 MPaで検査し、検査していない回路は大気開放とします。約1秒加圧した後、約4秒保圧し、検査装置が警報を出した製品は不適合品として隔離し、原因を確認します。</p>
-<p>これは出荷前の工程検査です。耐久試験、共通の漏れ等級、または製品ページの使用圧力を超える運転許可ではありません。検査手順の記録範囲は<a href="production-inspection-testing.html">100% Leak Testing</a>に記載しています。</p>
+<p>この工程検査では、記載された条件で完成品ごとに確認します。型式の使用限界、想定寿命、用途別の漏れ要求は、それぞれ個別に評価します。検査手順の記録範囲は<a href="production-inspection-testing.html">100% Leak Testing</a>に記載しています。</p>
 
-<h2>本ページで保証しない事項</h2>
-<ul>
-<li>ISO漏れ等級は表示していません。</li>
-<li>一律の交換周期や寿命は表示していません。</li>
-<li>シール構造だけで全ての形状に共通する圧力・速度・温度限界は決まりません。</li>
-<li>「漏れゼロ」は主張しません。漏れに関する記載には、定量的な許容値と合意済みの試験方法が必要です。</li>
-</ul>
+<h2>選定時の確認</h2>
+<p>シール性能と保守間隔は、選定する型式、シール形状、実際の使用条件によって異なります。漏れ量に関する要求には、測定可能な許容値と合意した試験方法を明記してください。ご注文前に、選定した仕様の許容運転範囲をご確認ください。</p>
 
 <h2>技術選定をご依頼ください</h2>
 <p>使用流体、圧力、動作、温度、回路数、取付図、漏れ判定基準をご提示ください。標準型式または個別に文書化した特注仕様を検討します。</p>
-<p><a href="contact.html"><strong>シールとロータリジョイントの選定を依頼する &rarr;</strong></a></p>
-<p><strong>技術注記：</strong>本ページと製品ページの記載が異なる場合は選定を中止し、書面で確認してください。型式固有の判断には、最新の承認済み製品ページと図面を適用します。</p>`,
+<p><a href="contact.html"><strong>シールとロータリジョイントの選定を依頼する &rarr;</strong></a></p>`,
 
   'ru/blog-rotary-union-seal-types.html': `
 <p>Выбор уплотнения является системной инженерной задачей. Необходимо совместно учитывать рабочую среду, давление, скорость, температуру, характер движения, допустимую утечку, состояние ответной поверхности, загрязнение и доступность обслуживания. Одного названия материала недостаточно для одобрения вращающегося соединения.</p>
-<p><strong>Граница применимости:</strong> данное руководство не повышает допустимые давление, скорость, температуру или перечень сред ни для одной модели. При выборе приоритет имеют актуальная страница изделия и утверждённый чертёж конкретного исполнения.</p>
+<p><strong>Пределы конкретной модели:</strong> Выбирайте исполнение в пределах давления, скорости, температуры и рабочих сред, указанных на актуальной странице изделия и в утверждённом чертеже.</p>
 
 <h2>Три семейства уплотнений и разные задачи</h2>
 <table>
@@ -189,17 +171,17 @@ const pages = {
 <p>Ни одно семейство не является универсально лучшим. Выбор выполняют по полному набору рабочих условий и по одобренной конструкции конкретной модели.</p>
 
 <h2>Актуальные опубликованные примеры моделей Begapunk</h2>
-<p>Таблица ниже повторяет значения с актуальных публичных страниц моделей и не является независимой сертификацией. При расхождении приоритет имеют утверждённый чертёж и технический лист конкретной модели.</p>
+<p>Таблица ниже обобщает значения с актуальных публичных страниц моделей. Для выбора исполнения под конкретный заказ используйте утверждённый чертёж или технический лист модели.</p>
 <table>
 <thead><tr><th>Модель</th><th>Максимальное давление</th><th>Максимальная скорость</th><th>Граница выбора</th></tr></thead>
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 МПа</td><td>200 об/мин</td><td>Два независимых канала; подтвердить среду, температуру и режим работы</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 МПа</td><td>80 об/мин</td><td>Модель для высокого давления и низкой скорости; использовать только в опубликованных пределах</td></tr>
 <tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 МПа</td><td>200 об/мин</td><td>Распределение 2 входа/4 выхода; применять опубликованный предел 1 МПа</td></tr>
-<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 МПа</td><td>100 об/мин</td><td>Защитный кожух и лабиринт; сертифицированная степень IP не заявлена</td></tr>
+<tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 МПа</td><td>100 об/мин</td><td>Защитный кожух и лабиринт для запылённых условий</td></tr>
 </tbody>
 </table>
-<p>Эти значения относятся к опубликованным стандартным исполнениям. Специальный запрос не считается одобренным, пока материал, размеры, схема уплотнений и рабочие пределы не подтверждены письменно.</p>
+<p>Эти значения относятся к опубликованным стандартным исполнениям. Для специальных исполнений материал, размеры, схема уплотнений и рабочие пределы подтверждаются в письменной форме.</p>
 
 <h2>Данные, необходимые до выбора уплотнения</h2>
 <ol>
@@ -214,20 +196,14 @@ const pages = {
 
 <h2>Роль производственной проверки герметичности</h2>
 <p>Текущая стандартная проверка Begapunk выполняется после окончательной сборки. Каждый канал проверяют отдельно сжатым воздухом при 1,0 МПа, а остальные каналы оставляют открытыми без давления. Подача давления занимает около 1 секунды, выдержка — около 4 секунд. Сигнал прибора означает несоответствие: изделие изолируют и направляют на поиск причины.</p>
-<p>Это производственный контроль. Он не является испытанием ресурса, общей классификацией утечки или разрешением работать выше опубликованного предела модели. Документированный процесс описан на странице <a href="production-inspection-testing.html">100% Leak Testing</a>.</p>
+<p>Этот производственный контроль проверяет каждое готовое изделие в документированных условиях. Рабочие пределы модели, ожидаемый ресурс и требования к утечке для конкретного применения оцениваются отдельно. Документированный процесс описан на странице <a href="production-inspection-testing.html">100% Leak Testing</a>.</p>
 
-<h2>Чего это руководство не заявляет</h2>
-<ul>
-<li>Класс утечки по ISO не заявляется.</li>
-<li>Универсальный срок службы или период замены не заявляется.</li>
-<li>Ни одно семейство уплотнений не имеет единого предела давления, скорости или температуры для всех геометрий.</li>
-<li>«Нулевая утечка» не заявляется. Любое заявление об утечке требует определённого предела и согласованного метода испытаний.</li>
-</ul>
+<h2>Примечание по подбору</h2>
+<p>Рабочие характеристики уплотнения и периодичность технического обслуживания зависят от выбранной модели, геометрии уплотнения и фактических условий эксплуатации. Требования к утечке должны включать измеримое предельное значение и согласованную методику испытаний. До оформления заказа подтвердите допустимые пределы эксплуатации выбранного исполнения.</p>
 
 <h2>Запросить инженерный подбор</h2>
 <p>Передайте данные о среде, давлении, движении, температуре, числе каналов, монтажный чертёж и критерий утечки. Begapunk сможет рассмотреть стандартную модель или отдельно документированное специальное исполнение.</p>
-<p><a href="contact.html"><strong>Запросить подбор уплотнения и вращающегося соединения &rarr;</strong></a></p>
-<p><strong>Техническое примечание:</strong> если данное руководство расходится со страницей изделия, выбор необходимо остановить и получить письменное подтверждение. Для конкретной модели действуют актуальная одобренная страница изделия и чертёж.</p>`
+<p><a href="contact.html"><strong>Запросить подбор уплотнения и вращающегося соединения &rarr;</strong></a></p>`
 };
 
 const relatedSections = {
@@ -414,7 +390,7 @@ for (const [relativePath, body] of Object.entries(pages)) {
     .replace(markerPattern, replacement)
     .replace(relatedPattern, relatedReplacement)
     .replace(/spring-energized carbon-filled PTFE/g, 'spring-energized PTFE')
-    .replace(/"dateModified"\s*:\s*"\d{4}-\d{2}-\d{2}"/, '"dateModified": "2026-08-08"'), relativePath);
+    .replace(/"dateModified"\s*:\s*"\d{4}-\d{2}-\d{2}"/, '"dateModified": "2026-08-09"'), relativePath);
   assertNoFaqPage(next, relativePath);
   if (next !== source) {
     fs.writeFileSync(filePath, next, 'utf8');

@@ -15,11 +15,11 @@ export const faqTrustCopy = {
   cad: 'STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.',
   moq: 'Minimum order quantity is confirmed for the selected model, customization scope, and quotation or order.',
   media: 'Compatible media are model-specific. Review the current product page and approved drawing; confirm wetted materials, seal compound, pressure, temperature, viscosity, cleaning chemistry, and filtration for the selected configuration.',
-  materials: 'Body, shaft, and seal materials vary by model and configuration. Use the current product page and approved drawing; material substitutions or regulated and food-contact service require documented engineering review.',
+  materials: 'Body, shaft, and seal materials vary by model and configuration. Use the current product page and approved drawing, and confirm any material substitution or regulated or food-contact requirement for the selected project.',
   mounting: 'Threaded and flange mounting are available on selected models. Confirm the exact interface on the current product page and approved drawing, and use flexible connections unless the approved installation specifies otherwise.',
   causes: 'Potential contributors to early leakage include rigid piping, misalignment or side load, contamination, operation outside approved limits, and unsuitable anti-rotation. Review the approved installation and inspection procedure.',
   repair: 'Repairability and seal-kit availability depend on the model and its condition. Contact Begapunk with the model, serial or order details, operating conditions, and inspection findings before repair.',
-  filtration: 'Filtration requirements are model- and medium-specific. Confirm the required grade for the selected configuration; a clean supply helps reduce abrasive wear, but no universal micron value is claimed here.',
+  filtration: 'Filtration requirements are model- and medium-specific. Confirm the required grade for the selected configuration; a clean supply helps reduce abrasive wear.',
 };
 
 const answerByQuestion = new Map([

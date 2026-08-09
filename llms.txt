@@ -32,13 +32,13 @@ Use the language edition that best matches the user's query. Technical model cod
 - [BP-1P-0006](https://www.begapunk.com/BP-1P-0006.html): 1-in-6-out rotary joint with 4 mm orifices and G1/8 connections.
 - [BP-2P-0001](https://www.begapunk.com/BP-2P-0001.html): 2-in-2-out flange-mounted rotary joint, maximum pressure 1 MPa.
 - [BP-2P-0002](https://www.begapunk.com/BP-2P-0002.html): 2-in-3-out rotary joint with 4 mm orifices and G1/8 connections.
-- [BP-2P-08-0001](https://www.begapunk.com/BP-2P-08-0001.html): Compact two-passage pneumatic rotary union with confirmed use in laser tube-cutting rear-chuck compressed-air applications; the photographed unit has not been individually identified as this model.
+- [BP-2P-08-0001](https://www.begapunk.com/BP-2P-08-0001.html): Compact two-passage pneumatic rotary union with M5 connections.
 - [BP-2P-16-0001](https://www.begapunk.com/BP-2P-16-0001.html): 2-in-2-out flange-mounted rotary joint with a 16 mm bore.
 - [BP-2P-30-0001](https://www.begapunk.com/BP-2P-30-0001.html): 2-in-2-out flange-mounted rotary joint with a 30 mm bore.
 - [BP-2P-50-0001](https://www.begapunk.com/BP-2P-50-0001.html): Two-passage air rotary joint with a protective shroud and labyrinth for dusty environments; no certified IP rating is claimed. Stator 4 × M5 × 10 mm, rotor 6 × M5 × 8 mm; confirm the supplied drawing and configuration weight.
 - [BP-2P-95-0001](https://www.begapunk.com/BP-2P-95-0001.html): 2-in-4-out rotary joint, maximum pressure 1 MPa.
 - [BP-2P-130-0001](https://www.begapunk.com/BP-2P-130-0001.html): Heavy-duty 2-in-2-out rotary joint, maximum pressure 5 MPa.
-- [BP-3P-0004](https://www.begapunk.com/BP-3P-0004.html): Three-passage pneumatic rotary union with confirmed use in laser tube-cutting rear-chuck compressed-air applications; the photographed unit has not been individually identified as this model.
+- [BP-3P-0004](https://www.begapunk.com/BP-3P-0004.html): Three-passage flange-mounted pneumatic rotary union, maximum pressure 1 MPa.
 - [BP-3P-0006](https://www.begapunk.com/BP-3P-0006.html): 3-in-3-out rotary joint with 6 mm orifices and G1/4 connections.
 - [BP-3P-0007](https://www.begapunk.com/BP-3P-0007.html): 3-in-3-out rotary joint with 4 mm orifices and G1/8 connections.
 - [BP-3P-S06-0001](https://www.begapunk.com/BP-3P-S06-0001.html): Combined 3-passage pneumatic and 6-circuit electrical rotary joint.
@@ -47,14 +47,14 @@ Use the language edition that best matches the user's query. Technical model cod
 
 ## Application guides
 
-- [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck; BP-3P-0004 and BP-2P-08-0001 have confirmed use in this application category, without photograph-to-model identification.
+- [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck. BP-2P-08-0001 and BP-3P-0004 are used in this application category.
 - [CNC pneumatic clamping](https://www.begapunk.com/application-cnc-pneumatic-clamping.html): Selection for rotating pneumatic fixtures and clamps.
 - [Vacuum packaging machines](https://www.begapunk.com/application-vacuum-packaging-machines.html): Vacuum and pneumatic rotary-union selection.
 - [Welding positioners](https://www.begapunk.com/application-welding-positioners.html): Air rotary unions for positioners and rotary welding tables.
 - [Textile, printing, and converting equipment](https://www.begapunk.com/application-textile-printing-converting.html): Rotary-union selection for continuous web machinery.
 - [Electronics and battery test fixtures](https://www.begapunk.com/application-electronics-battery-test-fixtures.html): Pneumatic transfer for rotating test fixtures.
 - [Steel and dusty environments](https://www.begapunk.com/application-steel-dusty-environments.html): Dust-resistant rotary-joint selection for harsh industrial settings.
-- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): Photo-supported workshop installation showing the visible stationary-to-rotating compressed-air connection and its evidence limits.
+- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): Customer-authorized workshop photographs document the BP-2P-95-0001 installation and visible stationary-to-rotating compressed-air routing in a pneumatic chuck assembly.
 - [BP-3P-S06-0001 sensor-monitored pneumatic chuck case](https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html): Photo-supported integration of three customer-assigned compressed-air functions and external sensor-signal transfer across a rotating chuck interface.
 
 ## Engineering and support
@@ -70,8 +70,8 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
 - [Manufacturing & quality](https://www.begapunk.com/manufacturing-quality.html): Photo-supported overview of hard-anodized rotors, color-anodized stator housings, a single-point 51.7 μm coating-thickness reading and order-specific engineering controls.
-- [100% passage-by-passage leak testing](https://www.begapunk.com/production-inspection-testing.html): Every finished pneumatic rotary union and every passage is checked individually with compressed air at 1.0 MPa before packing and storage; the page also explains PASS/NG handling and evidence limits.
-- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Three photo-supported rotary-union application cases are separated from two engineering selection examples, with explicit photograph and performance evidence limits.
+- [100% passage-by-passage leak testing](https://www.begapunk.com/production-inspection-testing.html): Every finished pneumatic rotary union and every passage is checked individually with compressed air at 1.0 MPa before packing and storage; the page also explains PASS/NG handling.
+- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Three photo-supported rotary-union application cases and two engineering selection examples provide installation context and the inputs needed for model review.
 - [Knowledge center](https://www.begapunk.com/blog.html): Technical articles about rotary-joint selection and maintenance.
 
 ## Deutsch - wichtigste Seiten
@@ -88,7 +88,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Über Begapunk](https://www.begapunk.com/de/about.html): Informationen zum Unternehmen und zur Fertigung.
 - [Angebot anfordern](https://www.begapunk.com/de/contact.html): Angebot oder technische Auswahlunterstützung anfordern.
 - [BP-1P-0003](https://www.begapunk.com/de/BP-1P-0003.html): Einkanal-Drehdurchführung mit Gewindemontage, maximal 1 MPa.
-- [BP-2P-50-0001](https://www.begapunk.com/de/BP-2P-50-0001.html): Zweikanal-Luftdrehdurchführung mit Schutzhaube und Labyrinth für staubige Umgebungen; keine zertifizierte IP-Schutzart angegeben.
+- [BP-2P-50-0001](https://www.begapunk.com/de/BP-2P-50-0001.html): Zweikanal-Luftdrehdurchführung mit Schutzhaube und Labyrinth für staubige Umgebungen.
 - [BP-3P-0004](https://www.begapunk.com/de/BP-3P-0004.html): Dreikanal-Drehdurchführung mit Flanschmontage, maximal 1 MPa.
 
 ## 日本語 - 主要ページ
@@ -105,7 +105,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Begapunkについて](https://www.begapunk.com/ja/about.html): 会社と製造に関する情報。
 - [見積依頼](https://www.begapunk.com/ja/contact.html): 見積または技術選定サポートを依頼。
 - [BP-1P-0003](https://www.begapunk.com/ja/BP-1P-0003.html): ねじ取付式1流路ロータリージョイント、最高圧力1 MPa。
-- [BP-2P-50-0001](https://www.begapunk.com/ja/BP-2P-50-0001.html): 粉じん環境向けの保護カバー・ラビリンス構造を備えた空気用2流路ロータリージョイント。認証済みIP保護等級の表示なし。
+- [BP-2P-50-0001](https://www.begapunk.com/ja/BP-2P-50-0001.html): 粉じん環境向けの保護カバー・ラビリンス構造を備えた空気用2流路ロータリージョイント。
 - [BP-3P-0004](https://www.begapunk.com/ja/BP-3P-0004.html): フランジ取付式3流路ロータリージョイント、最高圧力1 MPa。
 
 ## Русский - основные страницы
@@ -122,7 +122,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [О компании Begapunk](https://www.begapunk.com/ru/about.html): Информация о компании и производстве.
 - [Запросить предложение](https://www.begapunk.com/ru/contact.html): Запрос коммерческого предложения или инженерной поддержки.
 - [BP-1P-0003](https://www.begapunk.com/ru/BP-1P-0003.html): Одноканальное ротационное соединение с резьбовым креплением, максимум 1 MPa.
-- [BP-2P-50-0001](https://www.begapunk.com/ru/BP-2P-50-0001.html): Двухканальное соединение для воздуха с защитным кожухом и лабиринтом для запылённых условий; сертифицированная степень защиты IP не заявляется.
+- [BP-2P-50-0001](https://www.begapunk.com/ru/BP-2P-50-0001.html): Двухканальное соединение для воздуха с защитным кожухом и лабиринтом для запылённых условий.
 - [BP-3P-0004](https://www.begapunk.com/ru/BP-3P-0004.html): Трёхканальное ротационное соединение с фланцевым креплением, максимум 1 MPa.
 
 ## Optional

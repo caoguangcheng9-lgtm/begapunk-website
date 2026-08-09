@@ -991,21 +991,18 @@ function applySeoMetadata($, languageCode, pageName) {
 
 const schemaLocaleByLanguage = {
   de: {
-    founderDescription: 'Seit 2006 in der Präzisionsbearbeitung tätig.',
     founderJobTitle: 'Gründer und Ingenieur',
     factoryName: 'Begapunk Fertigung',
     slogan: 'Spezialist für pneumatische Drehdurchführungen',
     knowsAbout: ['Pneumatische Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrielle Automatisierung', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
   },
   ja: {
-    founderDescription: '2006年より精密機械加工に従事。',
     founderJobTitle: '創業者・技術責任者',
     factoryName: 'Begapunk 生産拠点',
     slogan: '空圧用ロータリージョイント専門メーカー',
     knowsAbout: ['空圧用ロータリージョイント', '多流路・多ポートロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
   },
   ru: {
-    founderDescription: 'Работает в области прецизионной механообработки с 2006 года.',
     founderJobTitle: 'Основатель и инженер',
     factoryName: 'Производство Begapunk',
     slogan: 'Специалист по пневматическим вращающимся соединениям',
@@ -1099,25 +1096,43 @@ const structuredApplicationValues = {
 
 const conservativeProductPropertyValues = {
   de: {
-    Produkttyp: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth; keine zertifizierte IP-Schutzart angegeben.',
+    Produkttyp: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth.',
     Betriebsmedien: 'Luft. Andere Medien erfordern eine schriftliche Kompatibilitätsbestätigung für die Betriebsbedingungen.',
     Dichtung: 'PTFE-Dichtung mit O-Ring.',
-    Schutzart: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen; derzeit wird keine zertifizierte IP-Schutzart angegeben.',
+    Schutzart: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen.',
     Montageart: 'Statorseite: 4 × M5, Gewindetiefe 10 mm; Rotorseite: 6 × M5, Gewindetiefe 8 mm. Vor der Bearbeitung vollständige Einbaumaße anhand der mitgelieferten Zeichnung bestätigen.',
   },
   ja: {
-    製品種別: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。認証済みIP保護等級の表示なし。',
+    製品種別: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。',
     使用可能流体: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
     シール方式: 'PTFEシール＋Oリング。',
-    保護等級: '粉じん環境向けの保護カバー・ラビリンス構造。現時点で認証済みIP保護等級は表示していません。',
+    保護等級: '粉じん環境向けの保護カバー・ラビリンス構造。',
     取付方式: '固定側：4 × M5、ねじ深さ10 mm；回転側：6 × M5、ねじ深さ8 mm。加工前に、支給図面で取付寸法全体をご確認ください。',
   },
   ru: {
-    'Тип изделия': 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий; сертифицированная степень защиты IP не заявляется.',
+    'Тип изделия': 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий.',
     'Рабочая среда': 'Стандартная рабочая среда: воздух. Для других сред требуется письменное подтверждение совместимости с рабочими условиями.',
     'Тип уплотнения': 'Уплотнение из ПТФЭ с O-кольцом.',
-    'Степень защиты': 'Защитный кожух и лабиринт для запылённых условий; сертифицированная степень защиты IP в настоящее время не заявляется.',
+    'Степень защиты': 'Защитный кожух и лабиринт для запылённых условий.',
     'Тип крепления': 'Сторона статора: 4 × M5, глубина резьбы 10 мм; сторона ротора: 6 × M5, глубина резьбы 8 мм. До механической обработки сверьте все монтажные размеры с предоставленным чертежом.',
+  },
+};
+
+const pageSpecificProductPropertyValues = {
+  de: {
+    'BP-2P-130-0001.html': {
+      Montageart: 'Flanschbefestigung mit zwei Lochkreisen; freigegebene Zeichnung beachten.',
+    },
+  },
+  ja: {
+    'BP-2P-130-0001.html': {
+      取付方式: '2つのボルト円配置によるフランジ取付；承認図面を参照してください。',
+    },
+  },
+  ru: {
+    'BP-2P-130-0001.html': {
+      'Тип крепления': 'Фланцевое крепление с двумя окружностями отверстий; см. согласованный чертёж.',
+    },
   },
 };
 
@@ -1328,6 +1343,11 @@ function localizeProductProperty(property, languageCode, pageName) {
     property.value = conservativeValue;
     return;
   }
+  const pageSpecificValue = pageSpecificProductPropertyValues[languageCode]?.[pageName]?.[property.name];
+  if (pageSpecificValue) {
+    property.value = pageSpecificValue;
+    return;
+  }
   if (isApplications && structuredApplicationValues[languageCode]?.[pageName]) {
     property.value = structuredApplicationValues[languageCode][pageName];
   } else if (property.value !== undefined && property.value !== null) {
@@ -1347,14 +1367,16 @@ function normalizeOrganizationIdentity(value, schemaLocale = {}, seo = {}, site 
   if (value.description && localizedDescription) value.description = localizedDescription;
   if (value.slogan && schemaLocale.slogan) value.slogan = schemaLocale.slogan;
   if (value.founder) {
-    const normalizeFounder = (founder) => ({
-      ...founder,
-      '@type': 'Person',
-      '@id': canonicalFounderId,
-      ...(schemaLocale.founderJobTitle ? { jobTitle: schemaLocale.founderJobTitle } : {}),
-      ...(schemaLocale.founderDescription ? { description: schemaLocale.founderDescription } : {}),
-      sameAs: canonicalFounderSameAs,
-    });
+    const normalizeFounder = (founder) => {
+      const { description: _removedFounderDescription, ...founderWithoutDescription } = founder;
+      return {
+        ...founderWithoutDescription,
+        '@type': 'Person',
+        '@id': canonicalFounderId,
+        ...(schemaLocale.founderJobTitle ? { jobTitle: schemaLocale.founderJobTitle } : {}),
+        sameAs: canonicalFounderSameAs,
+      };
+    };
     value.founder = Array.isArray(value.founder)
       ? value.founder.map(normalizeFounder)
       : normalizeFounder(value.founder);
@@ -1724,19 +1746,19 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
   const conservativeSearchKeywords = {
     de: [
       'BP-2P-50-0001', '2 Kanäle', 'Standardmedium Luft', 'PTFE-Dichtung mit O-Ring',
-      'Schutzhaube und Labyrinth', 'keine zertifizierte IP-Schutzart angegeben',
+      'Schutzhaube und Labyrinth',
       'Stator 4 × M5 Gewindetiefe 10 mm', 'Rotor 6 × M5 Gewindetiefe 8 mm',
       'Gewicht der gelieferten Konfiguration bestätigen',
     ],
     ja: [
       'BP-2P-50-0001', '2流路', '標準使用流体 空気', 'PTFEシール Oリング',
-      '保護カバー ラビリンス', '認証済みIP保護等級の表示なし',
+      '保護カバー ラビリンス',
       '固定側 4 × M5 ねじ深さ10 mm', '回転側 6 × M5 ねじ深さ8 mm',
       '納入仕様の質量を確認',
     ],
     ru: [
       'BP-2P-50-0001', '2 канала', 'стандартная среда воздух', 'уплотнение ПТФЭ с O-кольцом',
-      'защитный кожух и лабиринт', 'сертифицированная степень защиты IP не заявляется',
+      'защитный кожух и лабиринт',
       'статор 4 × M5 глубина резьбы 10 мм', 'ротор 6 × M5 глубина резьбы 8 мм',
       'уточнить массу поставляемой конфигурации',
     ],
@@ -1800,6 +1822,12 @@ const llmsLabels = {
   },
 };
 
+const conservativeLlmsDescription = {
+  de: 'Zweikanal-Drehdurchführung BP-2P-50-0001 für Luft mit Schutzhaube und Labyrinth für staubige Umgebungen. Keine zertifizierte IP-Schutzart angegeben.',
+  ja: '空気用2流路ロータリージョイントBP-2P-50-0001。粉じん環境向けの保護カバー・ラビリンス構造です。認証済みIP保護等級の表示はありません。',
+  ru: 'Двухканальное соединение BP-2P-50-0001 для воздуха с защитным кожухом и лабиринтом для запылённых условий. Сертифицированная степень защиты IP не заявляется.',
+};
+
 function llmsGroup(pageName) {
   if (/^BP-/.test(pageName) || ['products.html', 'products-p2.html', 'product-comparison.html'].includes(pageName)) return 'products';
   if (pageName === 'applications.html' || pageName.startsWith('application-') || pageName.startsWith('case-')) return 'applications';
@@ -1816,7 +1844,10 @@ async function writeLocalizedLlms(language, outputDirectory) {
     if (llmsExcludedPages.has(pageName)) continue;
     const entry = seo[pageName];
     if (!entry) throw new Error(`${language.code}/${pageName}: cannot add missing SEO entry to llms.txt.`);
-    grouped.get(llmsGroup(pageName)).push(`- [${entry.title}](${pageUrl(language.code, pageName)}): ${entry.description}`);
+    const description = pageName === 'BP-2P-50-0001.html'
+      ? conservativeLlmsDescription[language.code]
+      : entry.description;
+    grouped.get(llmsGroup(pageName)).push(`- [${entry.title}](${pageUrl(language.code, pageName)}): ${description}`);
   }
   const sections = [...grouped.entries()].map(([group, lines]) => `## ${labels.sections[group]}\n\n${lines.join('\n')}`).join('\n\n');
   const contents = `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [Multilingual sitemap](${config.siteUrl}/sitemap-i18n.xml)\n- [English AI index](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
