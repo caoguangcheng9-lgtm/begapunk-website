@@ -126,6 +126,9 @@ const htmlEscape = (value) => String(value)
   .replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;');
 
+const lineEndingFor = (source) => source.includes('\r\n') ? '\r\n' : '\n';
+const normalizeLineEndings = (value, lineEnding) => String(value).replace(/\r\n|\r|\n/g, lineEnding);
+
 function buildBody(strings, preservedH1) {
   const reviewItems = strings.reviewItems
     .map((item) => `      <li>${htmlEscape(item)}</li>`)
@@ -197,7 +200,10 @@ function ensureNoindex(prefix) {
     });
   }
   const descriptionPattern = /<meta\s+name=["']description["'][^>]*>\s*/i;
-  return prefix.replace(descriptionPattern, (match) => `${match}${robots}\n`);
+  return prefix.replace(
+    descriptionPattern,
+    (match) => `${match}${robots}${lineEndingFor(prefix)}`,
+  );
 }
 
 function isolatePage(html, strings, relativePath) {
@@ -223,7 +229,9 @@ function isolatePage(html, strings, relativePath) {
   prefix = updateDescriptionMeta(prefix, strings.metaDescription);
   prefix = ensureNoindex(prefix);
 
-  const next = `${prefix}${originalHeader}\n\n${buildBody(strings, preservedH1)}\n\n${originalFooter}`;
+  const lineEnding = lineEndingFor(html);
+  const generatedBody = normalizeLineEndings(buildBody(strings, preservedH1), lineEnding);
+  const next = `${prefix}${originalHeader}${lineEnding}${lineEnding}${generatedBody}${lineEnding}${lineEnding}${originalFooter}`;
   if (!next.includes(title)) throw new Error(`${relativePath}: title changed unexpectedly.`);
   if (!next.includes(canonical)) throw new Error(`${relativePath}: canonical changed unexpectedly.`);
   const nextHeaderStart = next.indexOf('<header class="header">');

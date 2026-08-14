@@ -25,6 +25,11 @@ function compact(value = '') {
   return value.replace(/\s+/g, ' ').trim();
 }
 
+function serializeJsonWithSourceEol(value, source) {
+  const lineEnding = source.includes('\r\n') ? '\r\n' : '\n';
+  return `${JSON.stringify(value, null, 2).replace(/\n/g, lineEnding)}${lineEnding}`;
+}
+
 function normalizedKeywords(localeCode, record) {
   if (record.id !== 'BP-2P-50-0001' || !Array.isArray(record.keywords)) return record.keywords;
   const excluded = compact(conservativeIpKeywordByLocale[localeCode]).toLocaleLowerCase();
@@ -50,7 +55,8 @@ async function synchronizedRecord(locale, record) {
 
 for (const locale of locales) {
   const indexPath = path.join(locale.directory, 'search-index.json');
-  const current = JSON.parse(await fs.readFile(indexPath, 'utf8'));
+  const before = await fs.readFile(indexPath, 'utf8');
+  const current = JSON.parse(before);
   const synchronized = [];
   for (const record of filterDiscoverySearchRecords(current, discoveryExcludedPages)) {
     if (!config.pages.includes(record.url)) {
@@ -59,8 +65,7 @@ for (const locale of locales) {
     }
     synchronized.push(await synchronizedRecord(locale, record));
   }
-  const next = `${JSON.stringify(synchronized, null, 2)}\n`;
-  const before = await fs.readFile(indexPath, 'utf8');
+  const next = serializeJsonWithSourceEol(synchronized, before);
   if (before === next) continue;
   changedFiles += 1;
   if (checkOnly) failures.push(`${locale.code}/search-index.json is not synchronized with current HTML.`);

@@ -27,6 +27,11 @@ const excludedUrls = new Set(locales.flatMap((locale) => [...discoveryExcludedPa
   .map((pageName) => publicPageUrl(config, locale.code, pageName))));
 const changed = [];
 
+function serializeJsonWithSourceEol(value, source) {
+  const lineEnding = source.includes('\r\n') ? '\r\n' : '\n';
+  return `${JSON.stringify(value, null, 2).replace(/\n/g, lineEnding)}${lineEnding}`;
+}
+
 async function synchronize(relativePath, transform) {
   const filePath = path.join(root, relativePath);
   const before = await fs.readFile(filePath, 'utf8');
@@ -48,7 +53,7 @@ for (const locale of locales) {
   const indexPath = path.relative(root, path.join(locale.directory, 'search-index.json'));
   await synchronize(indexPath, (source) => {
     const records = filterDiscoverySearchRecords(JSON.parse(source), discoveryExcludedPages);
-    return `${JSON.stringify(records, null, 2)}\n`;
+    return serializeJsonWithSourceEol(records, source);
   });
 
   const llmsPath = path.relative(root, path.join(locale.directory, 'llms.txt'));
