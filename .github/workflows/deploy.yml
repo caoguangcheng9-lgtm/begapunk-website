@@ -14,8 +14,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  inquiry-php:
+    name: Inquiry PHP ${{ matrix.php }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.2', '8.3']
+
+    steps:
+      - name: Check out release source
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Set up PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: none
+        env:
+          fail-fast: true
+
+      - name: Verify isolated inquiry failure paths
+        run: npm run inquiry:php:verify
+        env:
+          BEGAPUNK_EXPECTED_PHP_MINOR: ${{ matrix.php }}
+
   validate-and-deploy:
-    runs-on: ubuntu-latest
+    needs: inquiry-php
+    runs-on: ubuntu-24.04
     environment: production
     timeout-minutes: 20
 

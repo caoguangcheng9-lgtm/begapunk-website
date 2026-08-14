@@ -15,6 +15,8 @@
     "discovery:sync": "node scripts/sync-discovery-exclusions.mjs",
     "discovery:verify": "node scripts/sync-discovery-exclusions.mjs --check",
     "soft-isolation:verify": "node scripts/sync-soft-isolation-content.mjs --check",
+    "inquiry:verify": "node scripts/verify-inquiry-contract.mjs",
+    "inquiry:php:verify": "node scripts/verify-inquiry-php-runtime.mjs",
     "product-trust:sync": "node scripts/sync-product-trust-content.mjs",
     "product-trust:verify": "node scripts/sync-product-trust-content.mjs --check",
     "faq-trust:sync": "node scripts/sync-faq-trust-content.mjs",
@@ -46,11 +48,11 @@
     "quality": "npm run quality:pr",
     "quality:source": "node scripts/validate-source-quality.mjs",
     "collab:validate": "node scripts/validate-collaboration-model.mjs",
-    "quality:pr": "npm run collab:validate && npm run product-trust:verify && npm run faq-trust:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run discovery:verify && npm run search:verify && npm run i18n:verify && npm run owner-facts:verify && npm run products:validate && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run claims:verify && npm run deploy:validate",
+    "quality:pr": "npm run collab:validate && npm run product-trust:verify && npm run faq-trust:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run inquiry:verify && npm run discovery:verify && npm run search:verify && npm run i18n:verify && npm run owner-facts:verify && npm run products:validate && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run claims:verify && npm run deploy:validate",
     "deploy:build": "node scripts/build-production-release.mjs",
     "claims:verify": "node scripts/verify-public-claims.mjs",
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production",
-    "deploy:prepare": "npm run i18n:refresh-metadata && npm run product-trust:verify && npm run faq-trust:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run discovery:verify && npm run search:verify && npm run i18n:verify && npm run owner-facts:verify && npm run editorial:release:verify && npm run products:validate && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run claims:verify && npm run deploy:validate"
+    "deploy:prepare": "npm run i18n:refresh-metadata && npm run product-trust:verify && npm run faq-trust:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run inquiry:verify && npm run discovery:verify && npm run search:verify && npm run i18n:verify && npm run owner-facts:verify && npm run editorial:release:verify && npm run products:validate && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run claims:verify && npm run deploy:validate"
   },
   "devDependencies": {
     "cheerio": "1.1.2",

@@ -80,7 +80,9 @@ These files are not part of the contact-page commit and are intentionally exclud
 - Local backend file: `E:\begapunk-site-v2\send_inquiry.php`
 - Method: `POST`
 - Encoding: `multipart/form-data`
-- Submission: existing page JavaScript posts `FormData` to `/send_inquiry.php`.
+- Submission: the form has a native `POST` action to `/send_inquiry.php`; page JavaScript progressively enhances it with `fetch` and `FormData` when those APIs are available.
+- AJAX negotiation: enhanced submissions send `Accept: application/json`. The JSON response retains `success` and `message` and adds a stable `code`.
+- Native response: successful non-AJAX submissions receive a fixed language-specific `303` redirect to `/thank-you.html`, `/de/thank-you.html`, `/ja/thank-you.html`, or `/ru/thank-you.html`; failures receive a minimal localized HTML page with the original HTTP error status.
 - Maximum attachment size: 10 MB.
 - Supported extensions: PDF, STEP/STP, IGES/IGS, DWG, DXF, JPG/JPEG, PNG.
 - Anti-spam field: `honeypot`.
@@ -104,7 +106,33 @@ Backend-dependent field names that must not be changed without coordinated PHP r
 - `drawing`
 - `honeypot`
 
-The HTML also retains the hidden `redirect` field. `send_inquiry.php` did not change during the contact-page refactor.
+The HTML also retains the hidden `redirect` field for compatibility, but `send_inquiry.php` does not read it or use it for navigation.
+
+Supported RFQ context parameters are `request`, `model`, `product`, `application`, legacy `inquiry_type`, and `source`. A valid `request` takes precedence over legacy `inquiry_type`; unknown values fall back to `general_inquiry`. Stable internal inquiry codes are `quote`, `3d_step`, `application_review`, `seal_review`, `verified_drawing`, `technical_consultation`, and `general_inquiry`. User-visible labels remain localized and are not used as machine classifications.
+
+`source` is accepted only as a same-site relative `.html` path with no scheme, protocol-relative prefix, backslash, or dot segment. The browser and server derive `source_url` from that validated path; submitted `source_url` text is never trusted as a navigation target.
+
+The local Node contract validator statically checks selected DOM, mapping, fixed-path, and security-order contracts. It does not execute PHP, so that validator alone does not establish PHP syntax, runtime responses, SMTP behavior, or mailbox delivery. Separately authorized runtime evidence is recorded below; any real submission or delivery test still requires separate authorization.
+
+### Phase 1B/1D isolated PHP runtime validation - 2026-08-14
+
+- The current local PR-quality and deployment workflows define an independent `ubuntu-24.04` PHP matrix for the supported `8.2` and `8.3` minor branches. The existing quality or deployment job has `needs: inquiry-php`, so either PHP matrix failure blocks the downstream job.
+- The PHP setup action is pinned to the full commit SHA for `shivammathur/setup-php` 2.37.2. This pins the action code, not the runner image or the PHP patch release installed within each minor branch; the verifier separately requires the actual runtime minor to match the matrix value.
+- The verifier copies only `send_inquiry.php` into a unique system-temporary site, does not copy or read the repository or production `.env`, and does not copy `PHPMailer/`.
+- Both the PHP test server and the SMTP trap bind only to `127.0.0.1`. SMTP settings used by the guarded validation cases point only to the loopback trap, and the verified SMTP connection count was zero.
+- The verified scope is PHP 8.2/8.3 syntax plus eight selected pre-mail error responses per runtime, covering HTTP 405, 403, 400, 422, and 503.
+- Local isolated runs used official Windows NTS builds PHP `8.2.33` and `8.3.33`; both passed 8/8 cases and each recorded zero SMTP connections. Temporary PHP packages and test roots were removed after verification.
+- Production was observed running PHP `8.2.28` on 2026-08-14. The CI matrix establishes current 8.2-minor compatibility but is not an exact reproduction of that production patch, Nginx, or PHP-FPM configuration.
+- The current Inquiry contract validator is deliberately independent of Hero and CNC-case gates. It verifies the Contact/PHP/package contract immediately before `discovery:verify`; the CNC case remains covered by its own generator check.
+- Success responses 200/303, PHPMailer sending, SMTP TLS or authentication, and mailbox receipt are not exercised by the isolated CI test. Production evidence for one separately authorized transaction is recorded below; CRM handling, UTM handling, inquiry numbering, and future availability remain unverified.
+
+### Phase 1C authorized production mail-path verification - 2026-08-14
+
+- Production inspection confirmed PHP CLI and the active PHP-FPM branch at `8.2.28`.
+- One explicitly authorized test inquiry was submitted through the current public Contact page. `/send_inquiry.php` returned HTTP 200 JSON success, the browser showed the success state, and the exact unique test marker was found in the actual `sales@begapunk.com` mailbox.
+- This is evidence that the then-live legacy page, endpoint, SMTP path, and recipient mailbox completed that one transaction. It does not establish ongoing availability or CRM-qualified conversion.
+- The live Contact page observed during that test still used the older JavaScript-required submission contract and older JSON response. The local native-POST fallback, stable result codes, four-language server responses, and dual-version CI described above were not deployed by Phase 1C.
+- No production file or configuration was changed during the inspection and test. The message was not replied to, forwarded, or deleted; opening it may have marked it as read.
 
 ## 6. Mail Incident Knowledge
 

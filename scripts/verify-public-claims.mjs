@@ -533,6 +533,50 @@ function isApprovedProductionInspectionClaim(relativePath, source, match) {
   return false;
 }
 
+function isInlineScriptDotSegmentComparison(source, match, relativePath) {
+  if (!/\.html?$/i.test(relativePath) || match[0] !== '..') return false;
+
+  const index = match.index ?? -1;
+  if (index < 1) return false;
+
+  const quote = source[index - 1];
+  if (!["'", '"', '`'].includes(quote) || source[index + 2] !== quote) {
+    return false;
+  }
+
+  const sourceBeforeMatch = source.slice(0, index).toLowerCase();
+  const scriptStart = sourceBeforeMatch.lastIndexOf('<script');
+  const scriptEnd = sourceBeforeMatch.lastIndexOf('</script>');
+  if (scriptStart <= scriptEnd) return false;
+
+  const startTagEnd = source.indexOf('>', scriptStart);
+  if (startTagEnd < 0 || startTagEnd >= index) return false;
+
+  const startTag = source.slice(scriptStart, startTagEnd + 1);
+  const typeMatch = startTag.match(
+    /\btype\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+  );
+  const scriptType = (
+    typeMatch?.[1]
+    ?? typeMatch?.[2]
+    ?? typeMatch?.[3]
+    ?? ''
+  ).toLowerCase();
+
+  const executableScript = !scriptType
+    || scriptType === 'module'
+    || /^(?:text|application)\/(?:java|ecma)script(?:;|$)/.test(scriptType);
+
+  if (!executableScript) return false;
+
+  const beforeLiteral = source.slice(
+    Math.max(startTagEnd + 1, index - 32),
+    index - 1,
+  );
+
+  return /(?:===|!==|==|!=)\s*$/.test(beforeLiteral);
+}
+
 function matchIsBlocked(rule, source, match, relativePath = '') {
   if (rule.p1Boundary) {
     return !isP1BoundaryContext(source, match);
@@ -563,6 +607,12 @@ function matchIsBlocked(rule, source, match, relativePath = '') {
     if (/\d+\s*(?:[-‐‑‒–—~～〜]|&(?:n|m)dash;)\s*7\s*[-‐‑‒–—]?\s*(?:business\s*)?(?:days?|Tage?|日|дн\w*)/iu.test(rangeContext)) {
       return false;
     }
+  }
+  if (
+    rule.name === 'broken double punctuation'
+    && isInlineScriptDotSegmentComparison(source, match, relativePath)
+  ) {
+    return false;
   }
   if (!rule.allowDisclaimer) return true;
   return !isDisclaimerContext(source, match.index || 0, match[0].length);
@@ -656,23 +706,37 @@ for (const sample of allowedSamples) {
   }
 }
 
-function verifyRuleSamples(ruleName, { blocked: blockedRuleSamples, allowed: allowedRuleSamples }) {
+function verifyRuleSamples(ruleName, { blocked: blockedRuleSamples, allowed: allowedRuleSamples }, relativePath = '') {
   const rule = banned.find((candidate) => candidate.name === ruleName);
   if (!rule) {
     failures.push(`Verifier self-test could not find rule: ${ruleName}`);
     return;
   }
   for (const sample of blockedRuleSamples) {
-    if (!hasBlockedMatch(rule, sample)) {
+    if (!hasBlockedMatch(rule, sample, relativePath)) {
       failures.push(`Verifier self-test did not block ${ruleName}: ${sample}`);
     }
   }
   for (const sample of allowedRuleSamples) {
-    if (hasBlockedMatch(rule, sample)) {
+    if (hasBlockedMatch(rule, sample, relativePath)) {
       failures.push(`Verifier self-test incorrectly blocked ${ruleName}: ${sample}`);
     }
   }
 }
+
+verifyRuleSamples('broken double punctuation', {
+  blocked: [
+    '<p>Visible copy..</p>',
+    '<meta name="description" content="Visible copy..">',
+    '<script>const message = "Visible copy..";</script>',
+    '<script type="application/ld+json">{"description":".."}</script>',
+    '<p>Visible copy. .</p>',
+  ],
+  allowed: [
+    "<script>const invalid = segment === '.' || segment === '..';</script>",
+    '<script type="module">const invalid = segment !== "..";</script>',
+  ],
+}, 'contact.html');
 
 verifyRuleSamples('unsupported affirmative IP65 claim', {
   blocked: [
