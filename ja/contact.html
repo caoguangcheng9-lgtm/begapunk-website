@@ -194,10 +194,10 @@
     <p>仕様が不明な場合は、図面、既存品の写真、または機械側インターフェースの画像をお送りください。</p>
    </div>
    <div class="bp-rfq-form-body">
-<form id="quoteForm" method="POST" enctype="multipart/form-data" onsubmit="return false;"><input type="hidden" name="source_language" value="ja">
+<form id="quoteForm" action="/send_inquiry.php" method="POST" enctype="multipart/form-data"><input type="hidden" name="source_language" value="ja">
 
 <input type="hidden" name="redirect" value="https://www.begapunk.com/ja/thank-you.html">
-<input type="hidden" id="inquiry_type" name="inquiry_type" value="">
+<input type="hidden" id="inquiry_type" name="inquiry_type" value="general_inquiry">
 <input type="hidden" id="source_model" name="source_model" value="">
 <input type="hidden" id="source_product" name="source_product" value="">
 <input type="hidden" id="source_page" name="source_page" value="">
@@ -495,80 +495,181 @@ window.addEventListener('scroll', () => {
 
 });
 
-// Prefill RFQ context when visitors arrive from a product detail page.
+const REQUEST_CODE_MAP = Object.freeze({"quote":"quote","3d-step":"3d_step","application-review":"application_review","seal-review":"seal_review","verified-drawing":"verified_drawing"});
+const INQUIRY_TYPE_CODE_MAP = Object.freeze({"quote":"quote","3d_step":"3d_step","application_review":"application_review","seal_review":"seal_review","verified_drawing":"verified_drawing","technical_consultation":"technical_consultation","technical-consultation":"technical_consultation","general_inquiry":"general_inquiry"});
+const RFQ_COPY = Object.freeze({
+    requestLabels: {
+        quote: '見積依頼',
+        '3d_step': '3D STEPデータ依頼',
+        application_review: '用途・仕様確認',
+        seal_review: 'シール選定確認',
+        verified_drawing: '図面確認依頼',
+        technical_consultation: '技術相談',
+        general_inquiry: 'その他のお問い合わせ'
+    },
+    requestTemplates: {
+        quote: '必要数量、納入先、使用条件、必要書類、ご希望の納入条件をご記入ください。',
+        '3d_step': 'STEPデータの有無を確認するため、使用用途と取付インターフェースをご記入ください。',
+        application_review: '使用流体、圧力、回転速度、温度、流路数、取付スペース、運転条件をご記入ください。',
+        seal_review: '使用流体と成分、温度、圧力、回転速度、異物・ろ過条件、運転条件をご記入ください。',
+        verified_drawing: '型式、注文番号または案件番号をご記入のうえ、確認が必要なインターフェースまたは寸法を明記してください。',
+        technical_consultation: '技術的なご質問と関連する使用条件・型式をご記入のうえ、必要に応じて図面または写真を添付してください。',
+        general_inquiry: 'ご相談内容と関連する型式・用途・使用条件をご記入のうえ、必要に応じて図面または写真を添付してください。'
+    },
+    contextLabels: {
+        request: 'お問い合わせ種別',
+        model: '製品型式',
+        product: '製品',
+        application: '用途・機械',
+        source: '参照ページ'
+    },
+    requiredFields: {
+        fullname: 'お名前',
+        email: 'メールアドレス',
+        company: '会社名',
+        country: '国・地域',
+        product: 'ご相談内容',
+        requirements: '技術条件'
+    },
+    required: '「{field}」を入力してください。',
+    invalidEmail: '有効なメールアドレスを入力してください（例：name@company.com）。',
+    emailSuggestion: '「{domain}」ではありませんか？メールアドレスをご確認ください。',
+    invalidFileType: 'このファイル形式には対応していません：.{ext}。対応形式：PDF、STEP、STP、IGES、IGS、DWG、DXF、JPG、JPEG、PNG。',
+    fileTooLarge: 'ファイルサイズが上限を超えています（{size} MB）。最大10 MBです。',
+    noFile: 'ファイルが選択されていません',
+    sending: '送信中…',
+    success: 'お問い合わせを送信しました。技術担当がご入力内容を確認します。',
+    serviceUnavailable: '現在、お問い合わせサービスをご利用いただけません。時間をおいてからもう一度お試しいただくか、sales@begapunk.com までメールでご連絡ください。',
+    invalidResponse: 'お問い合わせが送信されたか確認できませんでした。再送信する前に、sales@begapunk.com までご連絡ください。',
+    networkFailure: 'ネットワークエラーが発生しました。接続をご確認のうえ再度お試しいただくか、sales@begapunk.com までメールでご連絡ください。',
+    stepButton: '3D STEPデータを依頼 →'
+});
+
+// Apply validated RFQ context without treating query-string text as HTML.
 (function prefillProductInquiry() {
- const params = new URLSearchParams(window.location.search);
- const requestType = params.get('request') || '';
- const sourceModel = params.get('model') || '';
- const sourceProduct = params.get('product') || sourceModel;
- const sourcePage = params.get('source') || '';
- const sourceUrl = sourcePage ? new URL(sourcePage, window.location.origin + '/').href : '';
+    const params = new URLSearchParams(window.location.search);
 
- if (!sourceModel && !sourcePage && !requestType) {
- return;
- }
+    function readTextParameter(name, maxLength) {
+        const value = params.get(name);
+        return typeof value === 'string'
+            ? value.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, maxLength)
+            : '';
+    }
 
- const inquiryLabel = requestType === '3d-step' ? '3D STEP file request' : 'Engineering quote request';
- const hiddenValues = {
- inquiry_type: inquiryLabel,
- source_model: sourceModel,
- source_product: sourceProduct,
- source_page: sourcePage,
- source_url: sourceUrl
- };
+    function normalizeSourcePath(value) {
+        if (!value || value.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(value)) {
+            return '';
+        }
+        const relativePath = value.replace(/^\/+/, '');
+        const segments = relativePath.split('/');
+        if (segments.some((segment) => segment === '.' || segment === '..')) {
+            return '';
+        }
+        return /^[A-Za-z0-9._~-]+(?:\/[A-Za-z0-9._~-]+)*\.html$/.test(relativePath)
+            ? relativePath
+            : '';
+    }
 
- Object.entries(hiddenValues).forEach(([id, value]) => {
- const field = document.getElementById(id);
- if (field) {
- field.value = value;
- }
- });
+    const requestValue = readTextParameter('request', 50);
+    const inquiryTypeValue = readTextParameter('inquiry_type', 100);
+    const mappedCode = (mapping, value) => Object.prototype.hasOwnProperty.call(mapping, value)
+        ? mapping[value]
+        : '';
+    const requestCode = mappedCode(REQUEST_CODE_MAP, requestValue);
+    const legacyInquiryCode = mappedCode(INQUIRY_TYPE_CODE_MAP, inquiryTypeValue);
+    const inquiryCode = requestCode
+        || legacyInquiryCode
+        || 'general_inquiry';
+    const sourceModel = readTextParameter('model', 100);
+    const sourceProduct = readTextParameter('product', 200);
+    const applicationValue = readTextParameter('application', 500);
+    const sourcePage = normalizeSourcePath(readTextParameter('source', 300));
+    const sourceUrl = sourcePage ? new URL('/' + sourcePage, window.location.origin).href : '';
+    const hasInquiryContext = Boolean(
+        requestCode || legacyInquiryCode || sourceModel || sourceProduct || applicationValue || sourcePage
+    );
 
- const productSelect = document.getElementById('product');
- if (productSelect && sourceModel) {
- const option = document.createElement('option');
- option.value = sourceModel;
- option.textContent = sourceProduct;
- option.selected = true;
- productSelect.insertBefore(option, productSelect.options[1] || null);
- }
+    const hiddenValues = {
+        inquiry_type: inquiryCode,
+        source_model: sourceModel,
+        source_product: sourceProduct,
+        source_page: sourcePage,
+        source_url: sourceUrl
+    };
+    Object.entries(hiddenValues).forEach(([id, value]) => {
+        const field = document.getElementById(id);
+        if (field) field.value = value;
+    });
 
- const requirements = document.getElementById('requirements');
- if (requirements && !requirements.value.trim()) {
- const lines = [
- `Request type: ${inquiryLabel}`,
- sourceModel ? `Product model: ${sourceModel}` : '',
- sourceProduct ? `Product name: ${sourceProduct}` : '',
- sourceUrl ? `Product page: ${sourceUrl}` : '',
- '',
- 'Please send quotation, lead time, and available 3D STEP file for engineering review.'
- ].filter(Boolean);
+    const productSelect = document.getElementById('product');
+    const productSelection = sourceModel || sourceProduct;
+    if (productSelect && productSelection) {
+        let option = Array.from(productSelect.options).find((item) => item.value === productSelection);
+        if (!option) {
+            option = document.createElement('option');
+            option.value = productSelection;
+            option.textContent = sourceProduct || sourceModel;
+            productSelect.insertBefore(option, productSelect.options[1] || null);
+        }
+        productSelect.value = productSelection;
+    }
 
- requirements.value = lines.join('\n');
- }
+    const applicationField = document.getElementById('application');
+    if (applicationField && applicationValue && !applicationField.value.trim()) {
+        applicationField.value = applicationValue;
+    }
 
- const submitBtn = document.getElementById('submitBtn');
- if (submitBtn && requestType === '3d-step') {
- submitBtn.innerHTML = 'Request 3D STEP File &rarr;';
- }
+    const requirements = document.getElementById('requirements');
+    if (requirements && hasInquiryContext && !requirements.value.trim()) {
+        const lines = [
+            `${RFQ_COPY.contextLabels.request}：${RFQ_COPY.requestLabels[inquiryCode]}`,
+            sourceModel ? `${RFQ_COPY.contextLabels.model}：${sourceModel}` : '',
+            sourceProduct ? `${RFQ_COPY.contextLabels.product}：${sourceProduct}` : '',
+            applicationValue ? `${RFQ_COPY.contextLabels.application}：${applicationValue}` : '',
+            sourceUrl ? `${RFQ_COPY.contextLabels.source}：${sourceUrl}` : '',
+            '',
+            RFQ_COPY.requestTemplates[inquiryCode]
+        ].filter(Boolean);
+        requirements.value = lines.join('\n');
+    }
+
+    const submitButton = document.getElementById('submitBtn');
+    if (submitButton && inquiryCode === '3d_step') {
+        submitButton.textContent = RFQ_COPY.stepButton;
+    }
 })();
 
-// ===== FRONTEND FORM VALIDATION =====
-(function() {
+// ===== FRONTEND FORM VALIDATION AND AJAX PROGRESSIVE ENHANCEMENT =====
+(function enhanceInquiryForm() {
     const form = document.getElementById('quoteForm');
     const formMessage = document.getElementById('formMessage');
-    const submitBtn = document.getElementById('submitBtn');
+    const submitButton = document.getElementById('submitBtn');
+    if (!form || !formMessage || !submitButton) return;
 
-    // Allowed file extensions and max size
     const ALLOWED_EXTS = ['pdf', 'step', 'stp', 'iges', 'igs', 'dwg', 'dxf', 'jpg', 'jpeg', 'png'];
-    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+    const MAX_FILE_SIZE = 10 * 1024 * 1024;
+    const TYPO_MAP = {
+        'gmail.con': 'gmail.com',
+        'gmail.co': 'gmail.com',
+        'yahoo.con': 'yahoo.com',
+        'hotmail.con': 'hotmail.com',
+        'outlook.con': 'outlook.com'
+    };
 
-    function showError(msg) {
+    function interpolate(template, values) {
+        return Object.entries(values).reduce(
+            (message, [key, value]) => message.replace(`{${key}}`, value),
+            template
+        );
+    }
+
+    function showError(message) {
         formMessage.className = 'form-error';
-        formMessage.textContent = '✗ ' + msg;
+        formMessage.textContent = '✗ ' + message;
         formMessage.style.display = 'block';
-        // Scroll to message
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (typeof formMessage.scrollIntoView === 'function') {
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
 
     function clearError() {
@@ -576,176 +677,143 @@ window.addEventListener('scroll', () => {
     }
 
     function validateEmail(email) {
-        // RFC 5322 simplified regex
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validateFile(file) {
+        const extension = file.name.includes('.') ? file.name.split('.').pop().toLowerCase() : '';
+        if (!ALLOWED_EXTS.includes(extension)) {
+            showError(interpolate(RFQ_COPY.invalidFileType, { ext: extension || '?' }));
+            return false;
+        }
+        if (file.size > MAX_FILE_SIZE) {
+            showError(interpolate(RFQ_COPY.fileTooLarge, { size: (file.size / (1024 * 1024)).toFixed(1) }));
+            return false;
+        }
+        return true;
     }
 
     function validateForm() {
         clearError();
-
-        // 1. Required text fields
-        const requiredFields = [
-            { id: 'fullname', name: 'Full Name' },
-            { id: 'email', name: 'Email' },
-            { id: 'company', name: 'Company Name' },
-            { id: 'country', name: 'Country' },
-            { id: 'product', name: 'What do you need?' },
-            { id: 'requirements', name: 'Technical Requirements' }
-        ];
-
-        for (const field of requiredFields) {
-            const el = document.getElementById(field.id);
-            if (!el || !el.value.trim()) {
-                el.focus();
-                showError(field.name + ' is required. Please fill it in.');
+        for (const [id, label] of Object.entries(RFQ_COPY.requiredFields)) {
+            const field = document.getElementById(id);
+            if (!field || !String(field.value).trim()) {
+                if (field) field.focus();
+                showError(interpolate(RFQ_COPY.required, { field: label }));
                 return false;
             }
         }
 
-        // 2. Email format
-        const emailEl = document.getElementById('email');
-        const emailVal = emailEl.value.trim();
-        if (!validateEmail(emailVal)) {
-            emailEl.focus();
-            showError('Please enter a valid email address (e.g. john@company.com).');
+        const emailField = document.getElementById('email');
+        const emailValue = emailField.value.trim();
+        if (!validateEmail(emailValue)) {
+            emailField.focus();
+            showError(RFQ_COPY.invalidEmail);
+            return false;
+        }
+        const domain = emailValue.split('@')[1].toLowerCase();
+        if (TYPO_MAP[domain]) {
+            emailField.focus();
+            showError(interpolate(RFQ_COPY.emailSuggestion, { domain: TYPO_MAP[domain] }));
             return false;
         }
 
-        // 3. Common email domain typos
-        const domain = emailVal.split('@')[1].toLowerCase();
-        const typoMap = {
-            'gmail.con': 'gmail.com',
-            'gmail.co': 'gmail.com',
-            'yahoo.con': 'yahoo.com',
-            'hotmail.con': 'hotmail.com',
-            'outlook.con': 'outlook.com'
-        };
-        if (typoMap[domain]) {
-            emailEl.focus();
-            showError('Did you mean ' + typoMap[domain] + '? Please check your email address.');
-            return false;
-        }
-
-        // 4. File upload validation
-        const fileInput = document.getElementById('drawing');
-        if (fileInput && fileInput.files && fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const ext = file.name.split('.').pop().toLowerCase();
-
-            if (!ALLOWED_EXTS.includes(ext)) {
-                showError('Invalid file type: .' + ext + '. Allowed: PDF, STEP, IGES, DWG, DXF, JPG, PNG.');
-                return false;
-            }
-
-            if (file.size > MAX_FILE_SIZE) {
-                const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
-                showError('File too large (' + sizeMB + ' MB). Maximum allowed: 10 MB.');
-                return false;
-            }
-        }
-
-        return true;
+        const drawing = document.getElementById('drawing');
+        return !(drawing && drawing.files && drawing.files.length > 0) || validateFile(drawing.files[0]);
     }
 
-    // Real-time validation: clear error when user starts typing
-    ['fullname', 'email', 'company', 'country', 'product', 'requirements'].forEach(function(id) {
-        const el = document.getElementById(id);
-        if (el) {
-            el.addEventListener('input', clearError);
-            el.addEventListener('change', clearError);
+    ['fullname', 'email', 'company', 'country', 'product', 'requirements'].forEach((id) => {
+        const field = document.getElementById(id);
+        if (field) {
+            field.addEventListener('input', clearError);
+            field.addEventListener('change', clearError);
         }
     });
 
-    // Real-time file validation
     const fileInput = document.getElementById('drawing');
     const fileName = document.getElementById('drawing-name');
     if (fileInput) {
-        fileInput.addEventListener('change', function() {
+        fileInput.addEventListener('change', function handleFileChange() {
             clearError();
-            if (this.files && this.files.length > 0) {
-                const file = this.files[0];
-                const ext = file.name.split('.').pop().toLowerCase();
-                if (!ALLOWED_EXTS.includes(ext)) {
-                    showError('Invalid file type: .' + ext + '. Allowed: PDF, STEP, IGES, DWG, DXF, JPG, PNG.');
-                    this.value = ''; // Clear invalid file
-                } else if (file.size > MAX_FILE_SIZE) {
-                    const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
-                    showError('File too large (' + sizeMB + ' MB). Maximum: 10 MB.');
-                    this.value = '';
-                }
+            if (this.files && this.files.length > 0 && !validateFile(this.files[0])) {
+                this.value = '';
             }
             if (fileName) {
                 fileName.textContent = this.files && this.files.length > 0
                     ? this.files[0].name
-                    : 'No file selected';
+                    : RFQ_COPY.noFile;
             }
         });
     }
 
-    // ===== AJAX form submit (with validation) =====
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    const ajaxFetch = typeof window.fetch === 'function' ? window.fetch.bind(window) : null;
+    const AjaxFormData = typeof window.FormData === 'function' ? window.FormData : null;
+    if (!ajaxFetch || !AjaxFormData) return;
 
-        // Run validation first
+    form.addEventListener('submit', async function submitWithAjax(event) {
         if (!validateForm()) {
+            event.preventDefault();
             return;
         }
 
-        const originalText = submitBtn.innerHTML;
+        let formData;
+        try {
+            formData = new AjaxFormData(this);
+        } catch (formDataError) {
+            return;
+        }
+        event.preventDefault();
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending...';
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = RFQ_COPY.sending;
         formMessage.style.display = 'none';
 
-        const formData = new FormData(this);
-
         try {
-            const response = await fetch('/send_inquiry.php', {
+            const response = await ajaxFetch(this.action, {
                 method: 'POST',
+                headers: { Accept: 'application/json' },
                 body: formData
             });
-
-            const responseText = await response.text();
             let result;
             try {
-                result = JSON.parse(responseText);
+                result = await response.json();
             } catch (parseError) {
-                throw new Error('The inquiry service returned an invalid response.');
+                throw new Error('invalid_json');
             }
 
-            if (!response.ok && !result.message) {
-                throw new Error('The inquiry service is temporarily unavailable.');
-            }
-
-            if (result.success) {
+            if (result && result.success === true) {
                 formMessage.className = 'form-success';
-                formMessage.textContent = '✓ Inquiry sent successfully. Our engineering team will review the information provided.';
+                formMessage.textContent = '✓ ' + (result.message || RFQ_COPY.success);
                 formMessage.style.display = 'block';
-                document.dispatchEvent(new CustomEvent('begapunk:inquiry-success', {
-                    detail: {
-                        formId: form.id || 'quoteForm',
-                        inquiryType: String(formData.get('inquiry_type') || 'general_inquiry'),
-                        product: String(formData.get('product') || formData.get('source_product') || 'not_specified')
-                    }
-                }));
-                form.reset();
-                if (fileName) {
-                    fileName.textContent = 'No file selected';
+                try {
+                    document.dispatchEvent(new CustomEvent('begapunk:inquiry-success', {
+                        detail: {
+                            formId: form.id || 'quoteForm',
+                            inquiryType: String(formData.get('inquiry_type') || 'general_inquiry'),
+                            product: String(formData.get('product') || formData.get('source_product') || 'not_specified')
+                        }
+                    }));
+                } catch (analyticsEventError) {
+                    // A non-critical analytics event must never turn a successful inquiry into an error state.
                 }
+                form.reset();
+                if (fileName) fileName.textContent = RFQ_COPY.noFile;
             } else {
-                formMessage.className = 'form-error';
-                formMessage.textContent = '✗ ' + (result.message || 'Failed to send inquiry. Please email us directly at sales@begapunk.com');
-                formMessage.style.display = 'block';
+                showError(result && typeof result.message === 'string' && result.message
+                    ? result.message
+                    : RFQ_COPY.serviceUnavailable);
             }
         } catch (error) {
-            formMessage.className = 'form-error';
-            formMessage.textContent = '✗ Inquiry service error. Please try again or email sales@begapunk.com directly.';
-            formMessage.style.display = 'block';
+            showError(error && error.message === 'invalid_json'
+                ? RFQ_COPY.invalidResponse
+                : RFQ_COPY.networkFailure);
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
         }
-
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
     });
+    form.noValidate = true;
 })();
 
 </script>

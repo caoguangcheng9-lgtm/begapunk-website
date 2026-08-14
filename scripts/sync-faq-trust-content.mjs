@@ -78,6 +78,7 @@ function replaceRanges(source, replacements) {
 }
 
 function synchronizeVisibleAnswers(source) {
+  const lineEnding = source.includes('\r\n') ? '\r\n' : '\n';
   const $ = load(source, { decodeEntities: false, sourceCodeLocationInfo: true });
   const replacements = [];
 
@@ -90,7 +91,7 @@ function synchronizeVisibleAnswers(source) {
     replacements.push({
       start: location.startTag.endOffset,
       end: location.endTag.startOffset,
-      text: `\n\n <p>${escapeHtml(answer)}</p>\n\n `,
+      text: `${lineEnding}${lineEnding} <p>${escapeHtml(answer)}</p>${lineEnding}${lineEnding} `,
     });
   }
 

@@ -54,7 +54,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Textile, printing, and converting equipment](https://www.begapunk.com/application-textile-printing-converting.html): Rotary-union selection for continuous web machinery.
 - [Electronics and battery test fixtures](https://www.begapunk.com/application-electronics-battery-test-fixtures.html): Pneumatic transfer for rotating test fixtures.
 - [Steel and dusty environments](https://www.begapunk.com/application-steel-dusty-environments.html): Dust-resistant rotary-joint selection for harsh industrial settings.
-- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): Customer-authorized workshop photographs document the BP-2P-95-0001 installation and visible stationary-to-rotating compressed-air routing in a pneumatic chuck assembly.
+- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): The project owner confirmed the model as BP-2P-95-0001. Customer-authorized workshop photographs show the visible stationary-to-rotating compressed-air routing in a pneumatic chuck assembly but do not independently establish model identity.
 - [BP-3P-S06-0001 sensor-monitored pneumatic chuck case](https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html): Photo-supported integration of three customer-assigned compressed-air functions and external sensor-signal transfer across a rotating chuck interface.
 
 ## Engineering and support

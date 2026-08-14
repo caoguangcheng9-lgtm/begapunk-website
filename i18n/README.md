@@ -5,7 +5,7 @@ This directory contains the translation, editorial review, SEO, and generation s
 ## Scope
 
 - Active languages: German, Japanese, and Russian (`activeLanguageCodes` in `config.json`).
-- Pages: all 51 public pages listed in `config.json`.
+- Pages: all 55 public pages listed in `config.json`.
 - Output: real static HTML files under `/de/`, `/ja/`, and `/ru/`.
 - Production deployment is intentionally separate from translation generation.
 
