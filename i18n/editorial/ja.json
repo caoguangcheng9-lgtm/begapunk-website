@@ -4545,7 +4545,7 @@
     "Parts are sent to an external anodizing supplier. Available colors are agreed by sample. The stator color-anodizing thickness is approximately 5 µm. The supplier checks coating thickness before return shipment, and Begapunk performs incoming sample inspection. Specified product tolerances accommodate the expected coating growth.": "部品は外部のアルマイト処理会社へ送ります。対応色は現物見本で合意します。ステータのカラーアルマイト膜厚は約5 µmです。処理会社が返送前に膜厚を確認し、Begapunkでも受入時に抜き取り検査を行います。製品に指定された公差は、想定される皮膜成長を考慮しています。",
     "After final assembly, every finished rotary union and every individual passage enters the existing 100% leak-testing process.": "最終組立後は、完成したすべてのロータリージョイントについて、各流路を既存の全数漏れ検査工程で個別に確認します。",
     "View 100% Leak Testing →": "全数漏れ検査を見る →",
-    "Evidence boundary:": "確認できる範囲：",
-    "These photographs show several visible production states. They are not a continuous traceability record for the same part or batch and do not prove the alloy grade, the dimensional result of every part, coating thickness of every part, an exact color match, test PASS status or shipment release. Order drawings and agreed inspection requirements remain controlling.": "これらの写真は複数の製造状態を示していますが、同一部品または同一ロットを連続して追跡した記録ではありません。合金の種類、全数の寸法結果、全数の膜厚、色の完全一致、試験合格、出荷判定を写真だけで確認することはできません。注文図面と合意済みの検査要求が優先されます。"
+    "Photo note:": "写真で確認できる範囲：",
+    "These photographs document different stages of stator production. Final material, dimensions, color and inspection requirements are confirmed by the order drawing and agreed inspection plan.": "これらの写真は複数の製造段階を示していますが、同一部品または同一ロットを連続的に追跡した記録ではありません。写真だけでは、合金種、各部品の寸法結果および皮膜厚さ、色の完全一致、試験合格、出荷承認を確認できません。最終的には、注文図面と合意済みの検査要求が優先されます。"
   }
 }

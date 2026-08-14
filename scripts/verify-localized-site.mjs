@@ -1051,9 +1051,9 @@ const statorProcessSearchTerms = {
 const statorProcessEnglishResidue = /\b(?:Stator manufacturing process|Material preparation|Two machining setups|Dimensional sampling|External anodizing and return inspection|View 100% Leak Testing|Evidence boundary|Photo note)\b/i;
 const statorPhotoNoteLabels = {
   en: /^Photo note:/i,
-  de: /^Fotohinweis:/i,
-  ja: /^写真について：/,
-  ru: /^Примечание к фотографиям:/i,
+  de: /^Aussagegrenze der Fotos:/i,
+  ja: /^写真で確認できる範囲：/,
+  ru: /^Границы подтверждения по фотографиям:/i,
 };
 const rotorMeasurementNoteLabels = {
   en: /^Coating thickness:/i,
@@ -1246,8 +1246,8 @@ const productionInspectionBoundaryHeadings = {
 const productionInspectionRequiredTerms = {
   en: [/100% of finished units/i, /Every passage tested individually/i, /1\.0 MPa/i, /Approximately 1 second/i, /4 seconds/i, /Unpressurized and open/i, /yellow quarantine container/i, /(?:fully|completely) retest|complete passage-by-passage test/i, /Every passage must pass before packing and storage/i],
   de: [/100 % der Fertigteile/i, /Jeder Kanal wird einzeln geprüft/i, /1,0 MPa/i, /Etwa 1 Sekunde/i, /4 Sekunden/i, /Drucklos und offen/i, /gelben Sperrbehälter/i, /vollständig erneut prüfen/i, /Alle Kanäle müssen vor Verpackung und Einlagerung bestanden sein/i],
-  ja: [/完成品の100％（全数）/, /すべての流路を個別に検査/, /1\.0 MPa/, /約1秒/, /4秒/, /無加圧で大気開放/, /黄色の不適合品用通い箱/, /全流路(?:を)?再検査/, /すべての流路が合格した後に梱包・入庫/],
-  ru: [/100% готовых изделий/i, /Каждый канал проверяется отдельно/i, /1,0 МПа/i, /Около 1 секунды/i, /4 секунды/i, /Без давления[^.]{0,30}открыт/i, /жёлт(?:ый|ого|ую) (?:контейнер|карантинн)/i, /полн(?:ый|ую) повторн(?:ый|ого) контрол/i, /Все каналы должны пройти контроль до упаковки и передачи на склад/i],
+  ja: [/完成品の100％（全数）/, /すべての流路を個別に検査/, /1\.0 MPa/, /約1秒/, /4秒/, /無加圧で大気開放/, /黄色の不適合品隔離容器/, /全流路(?:を)?再検査/, /すべての流路が合格した後に梱包・入庫/],
+  ru: [/100\s% готовых изделий/i, /Каждый канал проверяется отдельно/i, /1,0 МПа/i, /Около 1 секунды/i, /4 секунды/i, /Без давления[^.]{0,30}открыт/i, /жёлт(?:ый|ого|ую) (?:контейнер|карантинн)/i, /полн(?:ый|ую) повторн(?:ый|ого) контрол/i, /неремонтопригодное изделие списывают в брак/i, /либо списание в брак/i, /Все каналы должны пройти контроль до упаковки и передачи на склад/i],
 };
 const productionInspectionForbiddenClaims = {
   en: [/zero leakage/i, /detects? (?:any|every) (?:minute|small) leak/i, /\b\d+(?:\.\d+)?\s*(?:mL\/min|Pa\/s)\b/i, /annual(?:ly)? calibrat/i, /calibration certificate/i, /QR code traceability/i, /CRM traceability/i, /100% first-pass/i],
@@ -1451,7 +1451,36 @@ const bp2p95CaseCenterSummaryCopy = {
   ja: 'お客様の許可を得た2点の工場内組立写真で、BP-2P-95-0001の取付部、チャック周辺の構成、空圧ホースの配管状態を紹介しています。詳細ページでは、組込みレイアウトと案件確認に必要な情報をご覧いただけます。',
   ru: 'Две цеховые фотографии, опубликованные с разрешения заказчика, документируют зону установки BP-2P-95-0001, окружающий узел патрона и видимую прокладку пневматических шлангов. На отдельной странице приведены компоновка установки и исходные данные для проектной проверки.',
 };
-const bp2p95EnglishOgDescription = 'Customer-authorized workshop photographs document BP-2P-95-0001 installed in a pneumatic chuck assembly with visible compressed-air routing.';
+const bp2p95Descriptions = {
+  en: 'The project owner confirmed the model as BP-2P-95-0001. Customer-authorized workshop photographs show the visible chuck assembly and air routing, not model identity.',
+  de: 'Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0001. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.',
+  ja: '案件責任者が型式をBP-2P-95-0001と確認しました。公開許可済みの工場写真は、目視可能なチャック組立状態と空圧配管を示しますが、型式自体を証明するものではありません。',
+  ru: 'Владелец проекта подтвердил модель BP-2P-95-0001. Опубликованные с разрешения заказчика цеховые фотографии показывают видимую компоновку патрона и пневмолинии, но не подтверждают модель.',
+};
+const bp2p95ModelIdentityBoundaries = {
+  en: 'Project-owner confirmation; the photographs alone do not establish the internal model identity.',
+  de: 'Bestätigung durch den Projektverantwortlichen; die genaue Modellzuordnung lässt sich nicht allein aus den Fotos ableiten.',
+  ja: '案件責任者による確認。写真だけでは、写っている製品の正確な型式を特定できません。',
+  ru: 'Модель подтверждена владельцем проекта; по самим фотографиям нельзя установить точное обозначение модели.',
+};
+const applicationCaseSearchKeywords = {
+  en: {
+    [applicationCasePage]: ['BP-2P-95-0001', 'pneumatic chuck', 'compressed air', 'rotary union integration'],
+    [smartChuckCasePage]: ['BP-3P-S06-0001', 'sensor-monitored pneumatic chuck', 'pneumatic chuck', 'sensor signal transfer'],
+  },
+  de: {
+    [applicationCasePage]: ['BP-2P-95-0001', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+    [smartChuckCasePage]: ['BP-3P-S06-0001', 'sensorüberwachtes pneumatisches Spannfutter', 'pneumatisches Spannfutter', 'Sensorsignalübertragung'],
+  },
+  ja: {
+    [applicationCasePage]: ['BP-2P-95-0001', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
+    [smartChuckCasePage]: ['BP-3P-S06-0001', '外部センサ信号伝送', 'エアチャック', '空圧回路', '電気信号伝送'],
+  },
+  ru: {
+    [applicationCasePage]: ['BP-2P-95-0001', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
+    [smartChuckCasePage]: ['BP-3P-S06-0001', 'пневматический патрон с контролем по датчикам', 'пневматический патрон', 'передача сигналов датчиков'],
+  },
+};
 const caseCenterGuideCopy = {
   en: 'The three entries above are real applications supported by workshop photographs; the two entries below are engineering selection examples, not customer performance results. Final selection requires the actual machine drawing and operating conditions.',
   de: 'Die drei oben aufgeführten Einträge sind reale Anwendungen, die durch Werkstattfotos belegt sind; die beiden folgenden Einträge sind technische Auswahlbeispiele und keine Leistungsnachweise aus Kundenanlagen. Für die endgültige Auswahl sind die tatsächliche Maschinenzeichnung und die Betriebsbedingungen erforderlich.',
@@ -1496,7 +1525,7 @@ const detailEngineeringInputs = {
   en: { drawing: /chuck drawing/i, conditions: /operating conditions/i, interface: /mechanical interface/i },
   de: { drawing: /Spannfutterzeichnung/iu, conditions: /Betriebsbedingungen/iu, interface: /Mechanische Schnittstelle/iu },
   ja: { drawing: /チャック図面/u, conditions: /使用条件/u, interface: /(?:機械取合い|取付部)/u },
-  ru: { drawing: /Чертёж патрона/iu, conditions: /Условия работы/iu, interface: /Механический интерфейс/iu },
+  ru: { drawing: /Чертёж патрона/iu, conditions: /Условия работы/iu, interface: /Монтажные размеры и крепление/iu },
 };
 const unsupportedApplicationCaseClaims = {
   en: /workshop assembly and commissioning|separate compressed-air paths/i,
@@ -1721,6 +1750,27 @@ for (const language of verifiedLanguages) {
     const $home = load(home, { decodeEntities: false });
     const $applications = load(applications, { decodeEntities: false });
     const $faqPage = load(faqPage, { decodeEntities: false });
+    const expectedBp2p95Description = bp2p95Descriptions[language.code];
+    if ($detail('meta[name="description"]').attr('content') !== expectedBp2p95Description
+        || $detail('meta[property="og:description"]').attr('content') !== expectedBp2p95Description
+        || $detail('meta[name="twitter:description"]').attr('content') !== expectedBp2p95Description) {
+      failures.push(`${language.code}/${applicationCasePage}: model provenance is missing or inconsistent across description metadata.`);
+    }
+    const detailArticles = [];
+    $detail('script[type="application/ld+json"]').each((_, element) => {
+      try {
+        schemaNodes(JSON.parse($detail(element).html())).forEach((node) => {
+          if (schemaTypes(node).has('TechArticle')) detailArticles.push(node);
+        });
+      } catch {
+        // General JSON-LD parsing is reported by the all-page validation above.
+      }
+    });
+    if (detailArticles.length !== 1
+        || detailArticles[0].inLanguage !== language.code
+        || detailArticles[0].description !== expectedBp2p95Description) {
+      failures.push(`${language.code}/${applicationCasePage}: TechArticle language or model-provenance description is missing or stale.`);
+    }
     const breadcrumbCopy = caseBreadcrumbCopy[language.code];
     const casePages = [
       ['case-studies.html', $center, 3],
@@ -2076,6 +2126,18 @@ for (const language of verifiedLanguages) {
       if (!smartRecord || !JSON.stringify(smartRecord).includes('BP-3P-S06-0001')) {
         failures.push(`${language.code}/search-index.json: BP-3P-S06 sensor-monitored chuck case record is missing.`);
       }
+      const detailRecord = searchIndex.find((entry) => entry.url === applicationCasePage);
+      if (!detailRecord
+          || detailRecord.description !== expectedBp2p95Description
+          || !compactText(detailRecord.body).includes(bp2p95ModelIdentityBoundaries[language.code])) {
+        failures.push(`${language.code}/search-index.json: BP-2P-95 model provenance is missing or not synchronized.`);
+      }
+      for (const [pageName, record] of [[applicationCasePage, detailRecord], [smartChuckCasePage, smartRecord]]) {
+        const expectedKeywords = applicationCaseSearchKeywords[language.code]?.[pageName];
+        if (!record || JSON.stringify(record.keywords) !== JSON.stringify(expectedKeywords)) {
+          failures.push(`${language.code}/search-index.json: ${pageName} target-market keywords are missing or stale.`);
+        }
+      }
       const laserApplicationRecord = searchIndex.find((entry) => entry.url === 'application-laser-tube-cutting.html');
       if (!laserApplicationRecord) {
         failures.push(`${language.code}/search-index.json: laser application record is missing.`);
@@ -2156,10 +2218,6 @@ for (const language of verifiedLanguages) {
     if ($detail('.floating-cta .floating-btn.quote').length !== 1 || $detail('.floating-cta .floating-btn.whatsapp').length !== 1) {
       failures.push(`${language.code}/${applicationCasePage}: standard floating quote/WhatsApp actions are missing.`);
     }
-    if (language.code === config.sourceLanguage.code
-        && $detail('meta[property="og:description"]').attr('content') !== bp2p95EnglishOgDescription) {
-      failures.push(`${language.code}/${applicationCasePage}: the positive customer-authorized Open Graph description is missing or stale.`);
-    }
     for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.tech-note', '.cta-section']) {
       if (!$smartDetail(selector).length) failures.push(`${language.code}/${smartChuckCasePage}: required standard component ${selector} is missing.`);
     }
@@ -2190,10 +2248,16 @@ for (const language of verifiedLanguages) {
     caseImages.each((_, element) => {
       if ($detail(element).attr('loading') !== 'lazy') failures.push(`${language.code}/${applicationCasePage}: every case photograph must be lazy-loaded.`);
     });
+    if (caseImages.map((_, element) => $detail(element).attr('alt') || '').get().some((alt) => /BP-2P-95-0001/i.test(alt))) {
+      failures.push(`${language.code}/${applicationCasePage}: photograph alt text must describe visible content without asserting model identity.`);
+    }
     if (!/bp-2p-95-pneumatic-connection-detail/i.test($detail('.case-row').first().find('.case-image img').attr('src') || '')) {
       failures.push(`${language.code}/${applicationCasePage}: connection detail is not the primary evidence image.`);
     }
     const visibleDetail = compactText($detail('main').text());
+    if (!visibleDetail.includes(bp2p95ModelIdentityBoundaries[language.code])) {
+      failures.push(`${language.code}/${applicationCasePage}: project-owner model confirmation and photograph identity boundary are missing.`);
+    }
     if (unsupportedApplicationCaseClaims[language.code]?.test(visibleDetail)) {
       failures.push(`${language.code}/${applicationCasePage}: unsupported commissioning or independent-circuit claim detected.`);
     }

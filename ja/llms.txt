@@ -38,7 +38,7 @@
 - [真空包装機用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/application-vacuum-packaging-machines.html): ロータリー式真空包装機、袋詰め機、真空シールヘッド、回転包装ステーション向けの空圧・真空ロータリージョイント。
 - [溶接ポジショナ用ロータリージョイント](https://www.begapunk.com/ja/application-welding-positioners.html): 溶接ポジショナ、回転溶接台、ロボット溶接治具で回転中に空圧クランプを使用するためのロータリージョイント選定ガイド。
 - [ロータリジョイントの用途事例・選定例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): 写真で確認できる3件の組込み事例と2件の技術選定例を紹介します。BP-3P-S06-0001のセンサ監視対応空圧チャック事例を含みます。
-- [BP-2P-95-0001 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0001の空圧用ロータリージョイントをエアチャックへ組み込んだ事例です。固定側から回転側への圧縮空気の供給と取付状態を工場内の組立写真で紹介します。
+- [BP-2P-95-0001 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): 案件責任者が型式をBP-2P-95-0001と確認しました。公開許可済みの工場写真は、目視可能なチャック組立状態と空圧配管を示しますが、型式自体を証明するものではありません。
 - [BP-3P-S06-0001 外部センサ信号伝送対応エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-3p-s06-sensor-monitored-chuck.html): BP-3P-S06-0001をエアチャックに組み込み、独立した3系統の空圧流路を介して圧縮空気を供給するとともに、外部センサ信号を固定側から回転側へ伝送した実例です。
 
 ## 技術記事

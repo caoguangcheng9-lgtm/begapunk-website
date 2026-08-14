@@ -1773,6 +1773,20 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
     ja: ['全数漏れ検査', '各回路漏れ検査', '保圧工程', '圧縮空気 1.0 MPa', '不適合品管理'],
     ru: ['100%-ный контроль герметичности', 'поканальная проверка', 'выдержка под давлением', 'сжатый воздух 1,0 МПа', 'изоляция изделий NG'],
   };
+  const applicationCaseKeywords = {
+    de: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'sensorüberwachtes pneumatisches Spannfutter', 'pneumatisches Spannfutter', 'Sensorsignalübertragung'],
+    },
+    ja: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', '外部センサ信号伝送', 'エアチャック', '空圧回路', '電気信号伝送'],
+    },
+    ru: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'пневматический патрон с контролем по датчикам', 'пневматический патрон', 'передача сигналов датчиков'],
+    },
+  };
   const localizedItems = [];
   for (const item of searchIndex) {
     if (discoveryExcludedPages.has(item.url)) continue;
@@ -1797,6 +1811,8 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
           ? { keywords: manufacturingQualityKeywords[language.code] }
         : item.url === 'production-inspection-testing.html'
           ? { keywords: productionInspectionKeywords[language.code] }
+        : applicationCaseKeywords[language.code]?.[item.url]
+          ? { keywords: applicationCaseKeywords[language.code][item.url] }
         : {}),
     });
   }
