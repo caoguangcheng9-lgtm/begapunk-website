@@ -220,13 +220,21 @@ let chrome;
 let cleanupError = null;
 const routeResults = [];
 let configEvidence = null;
+const chromeFlags = ['--headless=new', '--no-first-run', '--disable-extensions', '--disable-background-networking'];
+if (process.platform === 'linux') chromeFlags.push('--no-sandbox', '--disable-dev-shm-usage');
 try {
-  chrome = await chromeLauncher.launch({
-    chromePath,
-    userDataDir: browserProfileDirectory,
-    chromeFlags: ['--headless=new', '--no-first-run', '--disable-extensions', '--disable-background-networking'],
-    logLevel: 'silent',
-  });
+  try {
+    chrome = await chromeLauncher.launch({
+      chromePath,
+      userDataDir: browserProfileDirectory,
+      chromeFlags,
+      logLevel: process.platform === 'linux' ? 'error' : 'silent',
+    });
+  } catch (error) {
+    const cleanupErrors = chromeLauncher.killAll();
+    if (cleanupErrors.length > 0) throw new AggregateError([error, ...cleanupErrors], 'Chrome failed to launch and cleanup was incomplete.');
+    throw error;
+  }
   for (const { language, item } of targets) {
       const publicPath = routePath(language, item.route);
       const runCount = selectedRunCount || (item.critical ? 3 : 1);
