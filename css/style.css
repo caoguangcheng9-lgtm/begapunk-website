@@ -4,7 +4,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400 800;
-    font-display: swap;
+    font-display: optional;
     src: url('../fonts/inter-latin-400-800.woff2') format('woff2');
 }
 
@@ -12,7 +12,7 @@
     font-family: 'Playfair Display';
     font-style: normal;
     font-weight: 700 800;
-    font-display: swap;
+    font-display: optional;
     src: url('../fonts/playfair-display-latin-700-800.woff2') format('woff2');
 }
 

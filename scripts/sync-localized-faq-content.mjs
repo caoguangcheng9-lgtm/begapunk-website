@@ -261,10 +261,10 @@ function buildLocalizedHtml({ sourceHtml, targetHtml, data, languageCode }) {
   }
 
   html = html.replace(/function\s+toggleFAQ\s*\(btn\)\s*\{[\s\S]*?\n\s*\}/g, '');
-  html = html.replace(/\s*<script\s+defer(?:=["']["'])?\s+src=["']\.\.\/js\/faq\.js[^"']*["']><\/script>\s*/gi, '\n');
+  html = html.replace(/\s*<script\s+(?:defer(?:=["']["'])?\s+)?src=["']\.\.\/js\/faq\.js[^"']*["']><\/script>\s*/gi, '\n');
   const navigationScriptPattern = /(<script\s+defer(?:=["']["'])?\s+src=["']\.\.\/js\/site-navigation\.js[^"']*["']><\/script>)/i;
   assert(navigationScriptPattern.test(html), `${languageCode}/faq.html: site-navigation script was not found.`);
-  html = html.replace(navigationScriptPattern, `<script defer src="../js/faq.js?v=20260815-faq1"></script>\n$1`);
+  html = html.replace(navigationScriptPattern, `<script src="../js/faq.js?v=20260815-faq1"></script>\n$1`);
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(data.meta.title)}</title>`);
   html = replaceMetaContent(html, /(<meta\s+name=["']description["']\s+content=["'])[^"']*(["'][^>]*>)/i, data.meta.description, `${languageCode}: description`);
@@ -360,7 +360,9 @@ assert(source$('main#main-content').length === 1, 'faq.html: exactly one main la
 assertExactIds(source$('.faq-item[id]').map((_, item) => source$(item).attr('id')).get(), questionIds, 'faq.html: question IDs');
 assertExactIds(source$('.faq-section[id]').map((_, item) => source$(item).attr('id')).get(), sectionIds, 'faq.html: section IDs');
 assert(source$('.faq-related-link').length === 8, 'faq.html: exactly eight contextual internal links are required.');
-assert(source$('script[src="js/faq.js?v=20260815-faq1"]').length === 1, 'faq.html: the shared progressive-enhancement script is missing.');
+const sourceFaqScript = source$('script[src="js/faq.js?v=20260815-faq1"]');
+assert(sourceFaqScript.length === 1, 'faq.html: the shared progressive-enhancement script is missing.');
+assert(sourceFaqScript.attr('defer') === undefined, 'faq.html: the FAQ enhancement script must execute at the end of parsing before first paint.');
 
 const planned = [];
 for (const languageCode of languageCodes) {

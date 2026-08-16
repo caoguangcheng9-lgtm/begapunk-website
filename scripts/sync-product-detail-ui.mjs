@@ -395,7 +395,7 @@ function transformLegacyPage(source, relativePath, contract) {
   const styleBlocks = source.match(/<style>[\s\S]*?<\/style>/g);
   let next = source;
 
-  const globalCss = `<link rel="stylesheet" href="${prefix}css/style.css?v=20260815-mobile-lang1">`;
+  const globalCss = `<link rel="stylesheet" href="${prefix}css/style.css?v=20260817-cls1">`;
   const productCss = `<link rel="stylesheet" href="${prefix}css/product-detail.css?v=${RESOURCE_VERSION}">`;
   next = replaceLiteralOnce(next, globalCss, `${globalCss}${eol} ${productCss}`, `${relativePath} CSS resource`);
   next = replaceLiteralOnce(next, styleBlocks[0], '', `${relativePath} inline CSS removal`);

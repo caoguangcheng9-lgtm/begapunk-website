@@ -27,7 +27,7 @@ const routeFamilies = Object.freeze([
   { family: 'product-detail', route: 'BP-3P-S06-0001.html', critical: true },
   { family: 'application-guide', route: 'application-vacuum-packaging-machines.html', critical: true },
   { family: 'verified-case', route: 'case-bp-2p-95-pneumatic-chuck-integration.html', critical: true },
-  { family: 'technical-faq', route: 'faq.html', critical: false },
+  { family: 'technical-faq', route: 'faq.html', critical: true },
   { family: 'quality-evidence', route: 'manufacturing-quality.html', critical: false },
   { family: 'contact-rfq', route: 'contact.html', critical: true },
 ]);
@@ -181,6 +181,7 @@ function extractDiagnostics(lhr) {
   const auditIds = [
     'document-latency-insight', 'font-display-insight', 'lcp-breakdown-insight',
     'lcp-discovery-insight', 'render-blocking-insight', 'image-delivery-insight',
+    'layout-shifts', 'cls-culprits-insight',
   ];
   return Object.fromEntries(auditIds.map((id) => {
     const audit = lhr.audits[id];
