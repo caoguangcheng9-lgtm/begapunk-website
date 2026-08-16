@@ -70,6 +70,20 @@ h1, h2, h3, h4, .section-title, .logo {
     font-family: 'Playfair Display', 'Inter', Georgia, serif;
 }
 
+/* Japanese pages use the platform's native Japanese fonts. This avoids
+   downloading Latin-only web fonts that cannot supply the Japanese glyphs. */
+html[lang="ja"] body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', Meiryo, sans-serif;
+}
+html[lang="ja"] h1,
+html[lang="ja"] h2,
+html[lang="ja"] h3,
+html[lang="ja"] h4,
+html[lang="ja"] .section-title,
+html[lang="ja"] .logo {
+    font-family: inherit;
+}
+
 img { max-width:100%; height:auto; display:block; }
 a { color: var(--primary); text-decoration:none; transition: var(--transition); }
 a:hover { color: var(--primary-dark); }
