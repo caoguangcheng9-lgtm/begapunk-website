@@ -238,7 +238,7 @@ try {
   }
   for (const { language, item } of targets) {
       const publicPath = routePath(language, item.route);
-      const runCount = selectedRunCount || (item.critical ? 3 : 1);
+      const runCount = selectedRunCount || 3;
       const runs = [];
       for (let run = 1; run <= runCount; run += 1) {
         const result = await lighthouse(`${baseUrl}/${publicPath}`, {
