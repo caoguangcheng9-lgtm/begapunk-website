@@ -1,0 +1,217 @@
+.bottle-capping-case {
+  margin: 36px 0 42px;
+  padding: clamp(22px, 4vw, 38px);
+  border: 1px solid #cbdde8;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f7fbfd 0%, #ffffff 72%);
+  box-shadow: 0 16px 38px rgba(17, 59, 86, 0.08);
+}
+
+.bottle-capping-case__header {
+  max-width: 820px;
+  margin-bottom: 28px;
+}
+
+.bottle-capping-case__header h2 {
+  margin: 8px 0 12px;
+  color: var(--dark-soft);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.bottle-capping-case__header p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.bottle-capping-case__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(24px, 4vw, 42px);
+  align-items: start;
+}
+
+.bottle-capping-case__media {
+  margin: 0;
+}
+
+.bottle-capping-case__image-link {
+  display: block;
+  border-radius: 12px;
+}
+
+.bottle-capping-case__media picture {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #eaf1f5;
+}
+
+.bottle-capping-case__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bottle-capping-case__media figcaption {
+  margin-top: 10px;
+  color: var(--text-light);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.bottle-capping-case__details h3 {
+  margin: 0 0 12px;
+  color: var(--dark-soft);
+  font-size: 1.2rem;
+}
+
+.bottle-capping-facts {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.bottle-capping-fact {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.72fr) minmax(0, 1.28fr);
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.bottle-capping-fact dt,
+.bottle-capping-fact dd {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.bottle-capping-fact dt {
+  color: var(--dark-soft);
+  font-weight: 700;
+}
+
+.bottle-capping-fact dd {
+  color: var(--text);
+}
+
+.bottle-capping-model-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.bottle-capping-case__image-link:focus-visible,
+.bottle-capping-model-link:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.bottle-capping-boundary {
+  margin-top: 22px;
+  padding: 17px 18px;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  background: #eef6fa;
+}
+
+.bottle-capping-boundary strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--dark-soft);
+}
+
+.bottle-capping-boundary p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.bottle-capping-alternative {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid #d6e2e9;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.bottle-capping-alternative strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--dark-soft);
+}
+
+.bottle-capping-alternative p {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.bottle-capping-alternative a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.bottle-capping-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.bottle-capping-actions .btn {
+  min-height: 44px;
+}
+
+.bottle-capping-actions .btn-outline {
+  border: 1px solid var(--primary);
+  background: #fff;
+  color: var(--primary);
+}
+
+.bottle-capping-actions .btn-outline:hover,
+.bottle-capping-actions .btn-outline:focus-visible {
+  background: var(--primary);
+  color: #fff;
+}
+
+@media (max-width: 820px) {
+  .bottle-capping-case__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottle-capping-case__media {
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 520px) {
+  .bottle-capping-case {
+    margin: 28px 0 34px;
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .bottle-capping-fact {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .bottle-capping-actions {
+    flex-direction: column;
+  }
+
+  .bottle-capping-actions .btn {
+    width: 100%;
+  }
+}

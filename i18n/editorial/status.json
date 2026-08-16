@@ -1,18 +1,47 @@
 {
-  "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must be reviewed for local industrial terminology, grammar and natural business usage. Automated pattern scans alone do not qualify a page as reviewed.",
-  "updatedAt": "2026-08-08",
+  "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must be reviewed for local industrial terminology, grammar and natural business usage. Machine translation and automated pattern scans alone do not qualify a page as reviewed. Every new or changed localized page additionally requires a recorded AI-assisted target-market review using representative local manufacturer, industry or peer pages as terminology, reading-pattern and search-intent references. Peer wording must not be copied, peer facts must not become Begapunk facts, and AI review must not be represented as independent native-speaker confirmation.",
+  "updatedAt": "2026-08-17",
+  "localMarketReview": {
+    "schemaVersion": 1,
+    "effectiveDate": "2026-08-14",
+    "requiredFor": [
+      "new-localized-page",
+      "changed-localized-page"
+    ],
+    "machineTranslationDraftOnly": true,
+    "aiAssistedTargetMarketReviewRequired": true,
+    "targetMarketPeerReferenceRequired": true,
+    "targetMarketSearchPatternReviewRequired": true,
+    "referenceUse": "terminology-and-search-intent-only",
+    "competitorContentMayBeCopied": false,
+    "competitorFactsMayBeUsedAsBegapunkFacts": false,
+    "independentNativeSpeakerEquivalent": false,
+    "recordDirectory": "audit/localization",
+    "requiredRecordFields": [
+      "page",
+      "language",
+      "referenceUrls",
+      "referenceAccessDates",
+      "terminologyDecisions",
+      "searchIntentDecisions",
+      "reviewMethod",
+      "reviewedAt",
+      "reviewedByRole",
+      "unresolvedIssues"
+    ]
+  },
   "seoGeo": {
-    "standard": "Curated local-language title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page.",
+    "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
     "de": {
-      "reviewed": 51,
+      "reviewed": 55,
       "total": 55
     },
     "ja": {
-      "reviewed": 51,
+      "reviewed": 55,
       "total": 55
     },
     "ru": {
-      "reviewed": 51,
+      "reviewed": 55,
       "total": 55
     }
   },
@@ -23,6 +52,8 @@
         "contact.html",
         "404.html",
         "about.html",
+        "manufacturing-quality.html",
+        "production-inspection-testing.html",
         "applications.html",
         "application-automation-rotary-tables.html",
         "application-bottle-filling-capping.html",
@@ -61,6 +92,8 @@
         "blog-seal-replacement.html",
         "blog-threaded-vs-flange.html",
         "case-studies.html",
+        "case-bp-2p-95-pneumatic-chuck-integration.html",
+        "case-bp-3p-s06-sensor-monitored-chuck.html",
         "faq.html",
         "installation.html",
         "privacy.html",
@@ -72,13 +105,8 @@
         "thank-you.html"
       ],
       "copyReviewedAwaitingRender": [],
-      "inProgress": [
-        "case-bp-2p-95-pneumatic-chuck-integration.html",
-        "case-bp-3p-s06-sensor-monitored-chuck.html",
-        "manufacturing-quality.html",
-        "production-inspection-testing.html"
-      ],
-      "remaining": 4
+      "inProgress": [],
+      "remaining": 0
     },
     "ru": {
       "reviewed": [
@@ -86,6 +114,8 @@
         "contact.html",
         "404.html",
         "about.html",
+        "manufacturing-quality.html",
+        "production-inspection-testing.html",
         "applications.html",
         "application-automation-rotary-tables.html",
         "application-bottle-filling-capping.html",
@@ -124,6 +154,8 @@
         "blog-seal-replacement.html",
         "blog-threaded-vs-flange.html",
         "case-studies.html",
+        "case-bp-2p-95-pneumatic-chuck-integration.html",
+        "case-bp-3p-s06-sensor-monitored-chuck.html",
         "faq.html",
         "installation.html",
         "privacy.html",
@@ -135,13 +167,8 @@
         "thank-you.html"
       ],
       "copyReviewedAwaitingRender": [],
-      "inProgress": [
-        "case-bp-2p-95-pneumatic-chuck-integration.html",
-        "case-bp-3p-s06-sensor-monitored-chuck.html",
-        "manufacturing-quality.html",
-        "production-inspection-testing.html"
-      ],
-      "remaining": 4
+      "inProgress": [],
+      "remaining": 0
     },
     "ja": {
       "reviewed": [
@@ -149,6 +176,8 @@
         "contact.html",
         "404.html",
         "about.html",
+        "manufacturing-quality.html",
+        "production-inspection-testing.html",
         "applications.html",
         "application-automation-rotary-tables.html",
         "application-bottle-filling-capping.html",
@@ -187,6 +216,8 @@
         "blog-seal-replacement.html",
         "blog-threaded-vs-flange.html",
         "case-studies.html",
+        "case-bp-2p-95-pneumatic-chuck-integration.html",
+        "case-bp-3p-s06-sensor-monitored-chuck.html",
         "faq.html",
         "installation.html",
         "privacy.html",
@@ -198,21 +229,16 @@
         "thank-you.html"
       ],
       "copyReviewedAwaitingRender": [],
-      "inProgress": [
-        "case-bp-2p-95-pneumatic-chuck-integration.html",
-        "case-bp-3p-s06-sensor-monitored-chuck.html",
-        "manufacturing-quality.html",
-        "production-inspection-testing.html"
-      ],
-      "remaining": 4
+      "inProgress": [],
+      "remaining": 0
     }
   },
   "renderQa": {
-    "completedAt": "2026-07-27",
-    "browser": "Google Chrome",
-    "pagesPerLanguage": 49,
+    "completedAt": "2026-08-17T02:55:54.3078892+09:00",
+    "browser": "Google Chrome (prior 294 checks) + Codex in-app Browser (current 36 checks)",
+    "pagesPerLanguage": 55,
     "viewportsPerPage": 2,
-    "checkedViewports": 294,
+    "checkedViewports": 330,
     "criteria": [
       "one visible H1",
       "correct html lang",

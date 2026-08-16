@@ -37,6 +37,7 @@ async function synchronizedRecord(locale, record) {
   const $ = load(html, { decodeEntities: false });
   const content = $('body').clone();
   content.find('script,style,header,nav,footer,.cookie-banner,.i18n-switcher').remove();
+  content.find('a.skip-link[data-search-exclude][href="#main-content"]').remove();
   return {
     ...record,
     title: compact($('title').first().text()) || record.title,

@@ -533,6 +533,160 @@ function isApprovedProductionInspectionClaim(relativePath, source, match) {
   return false;
 }
 
+function isJavaScriptCodePosition(source, start, end) {
+  let state = 'code';
+  let canStartRegex = true;
+  for (let index = start; index < end; index += 1) {
+    const character = source[index];
+    const next = source[index + 1];
+    if (state === 'single-quote') {
+      if (character === '\\') index += 1;
+      else if (character === "'") {
+        state = 'code';
+        canStartRegex = false;
+      }
+      continue;
+    }
+    if (state === 'double-quote') {
+      if (character === '\\') index += 1;
+      else if (character === '"') {
+        state = 'code';
+        canStartRegex = false;
+      }
+      continue;
+    }
+    if (state === 'template') {
+      if (character === '\\') index += 1;
+      else if (character === '`') {
+        state = 'code';
+        canStartRegex = false;
+      }
+      continue;
+    }
+    if (state === 'line-comment') {
+      if (character === '\n' || character === '\r') {
+        state = 'code';
+        canStartRegex = true;
+      }
+      continue;
+    }
+    if (state === 'block-comment') {
+      if (character === '*' && next === '/') {
+        state = 'code';
+        canStartRegex = true;
+        index += 1;
+      }
+      continue;
+    }
+    if (state === 'regex') {
+      if (character === '\\') index += 1;
+      else if (character === '[') state = 'regex-class';
+      else if (character === '/') {
+        state = 'code';
+        canStartRegex = false;
+      }
+      continue;
+    }
+    if (state === 'regex-class') {
+      if (character === '\\') index += 1;
+      else if (character === ']') state = 'regex';
+      continue;
+    }
+    if (/\s/.test(character)) continue;
+    if (character === "'") {
+      state = 'single-quote';
+      continue;
+    }
+    if (character === '"') {
+      state = 'double-quote';
+      continue;
+    }
+    if (character === '`') {
+      state = 'template';
+      continue;
+    }
+    if (character === '/' && next === '/') {
+      state = 'line-comment';
+      index += 1;
+      continue;
+    }
+    if (character === '/' && next === '*') {
+      state = 'block-comment';
+      index += 1;
+      continue;
+    }
+    if (character === '/' && canStartRegex) {
+      state = 'regex';
+      continue;
+    }
+    if (/[A-Za-z_$]/.test(character)) {
+      const identifier = source.slice(index, end).match(/^[A-Za-z_$][\w$]*/)?.[0] || character;
+      index += identifier.length - 1;
+      canStartRegex = /^(?:return|throw|case|delete|void|typeof|new|yield|await|instanceof|in|of)$/.test(identifier);
+      continue;
+    }
+    if (/[0-9]/.test(character)) {
+      const number = source.slice(index, end).match(/^(?:0[xob])?[\dA-Fa-f._]+/)?.[0] || character;
+      index += number.length - 1;
+      canStartRegex = false;
+      continue;
+    }
+    if (character === ')' || character === ']' || character === '}') {
+      canStartRegex = false;
+      continue;
+    }
+    if ((character === '+' || character === '-') && next === character) {
+      canStartRegex = false;
+      index += 1;
+      continue;
+    }
+    canStartRegex = character !== '.';
+  }
+  return state === 'code';
+}
+
+function isInlineScriptDotSegmentComparison(source, match, relativePath) {
+  if (!/\.html?$/i.test(relativePath) || match[0] !== '..') return false;
+
+  const index = match.index ?? -1;
+  if (index < 1) return false;
+
+  const quote = source[index - 1];
+  if (!["'", '"'].includes(quote) || source[index + 2] !== quote || source[index - 2] === '\\') {
+    return false;
+  }
+
+  const sourceBeforeMatch = source.slice(0, index).toLowerCase();
+  const scriptStart = sourceBeforeMatch.lastIndexOf('<script');
+  const scriptEnd = sourceBeforeMatch.lastIndexOf('</script>');
+  if (scriptStart <= scriptEnd) return false;
+
+  const startTagEnd = source.indexOf('>', scriptStart);
+  if (startTagEnd < 0 || startTagEnd >= index) return false;
+  const closeTagStart = source.toLowerCase().indexOf('</script>', startTagEnd + 1);
+  if (closeTagStart < index) return false;
+
+  const startTag = source.slice(scriptStart, startTagEnd + 1);
+  if (/\bsrc\s*=/i.test(startTag)) return false;
+  const typeMatch = startTag.match(
+    /\btype\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+  );
+  const scriptType = (
+    typeMatch?.[1]
+    ?? typeMatch?.[2]
+    ?? typeMatch?.[3]
+    ?? ''
+  ).toLowerCase();
+  const executableScript = !scriptType
+    || scriptType === 'module'
+    || /^(?:text|application)\/(?:java|ecma)script(?:;|$)/.test(scriptType);
+  if (!executableScript) return false;
+
+  if (!isJavaScriptCodePosition(source, startTagEnd + 1, index - 1)) return false;
+  const beforeLiteral = source.slice(startTagEnd + 1, index - 1);
+  return /(?:===|!==|==|!=)\s*$/.test(beforeLiteral);
+}
+
 function matchIsBlocked(rule, source, match, relativePath = '') {
   if (rule.p1Boundary) {
     return !isP1BoundaryContext(source, match);
@@ -563,6 +717,12 @@ function matchIsBlocked(rule, source, match, relativePath = '') {
     if (/\d+\s*(?:[-‐‑‒–—~～〜]|&(?:n|m)dash;)\s*7\s*[-‐‑‒–—]?\s*(?:business\s*)?(?:days?|Tage?|日|дн\w*)/iu.test(rangeContext)) {
       return false;
     }
+  }
+  if (
+    rule.name === 'broken double punctuation'
+    && isInlineScriptDotSegmentComparison(source, match, relativePath)
+  ) {
+    return false;
   }
   if (!rule.allowDisclaimer) return true;
   return !isDisclaimerContext(source, match.index || 0, match[0].length);
@@ -656,19 +816,19 @@ for (const sample of allowedSamples) {
   }
 }
 
-function verifyRuleSamples(ruleName, { blocked: blockedRuleSamples, allowed: allowedRuleSamples }) {
+function verifyRuleSamples(ruleName, { blocked: blockedRuleSamples, allowed: allowedRuleSamples }, relativePath = '') {
   const rule = banned.find((candidate) => candidate.name === ruleName);
   if (!rule) {
     failures.push(`Verifier self-test could not find rule: ${ruleName}`);
     return;
   }
   for (const sample of blockedRuleSamples) {
-    if (!hasBlockedMatch(rule, sample)) {
+    if (!hasBlockedMatch(rule, sample, relativePath)) {
       failures.push(`Verifier self-test did not block ${ruleName}: ${sample}`);
     }
   }
   for (const sample of allowedRuleSamples) {
-    if (hasBlockedMatch(rule, sample)) {
+    if (hasBlockedMatch(rule, sample, relativePath)) {
       failures.push(`Verifier self-test incorrectly blocked ${ruleName}: ${sample}`);
     }
   }
@@ -933,6 +1093,32 @@ verifyRuleSamples('unsupported fixed downtime or upgrade cost', {
     'Tighten initially to 60% of final torque.',
   ],
 });
+
+verifyRuleSamples('broken double punctuation', {
+  blocked: [
+    '<p>Bad.. copy</p>',
+    '<meta name="description" content="Bad.. copy">',
+    '<script>const message = "Bad.. copy";</script>',
+    '<script>const message = "..";</script>',
+    '<script type="application/ld+json">{"description":".."}</script>',
+    '<p>Bad. . copy</p>',
+    "<script>const path = '..';</script>",
+    '<script>const message = "segment === \'..\'";</script>',
+    "<script>// segment === '..'\nconst safe = true;</script>",
+    "<script>const pattern = /segment === '..'/;</script>",
+    "<script src=\"local.js\">const invalid = segment === '..';</script>",
+  ],
+  allowed: [
+    "<script>const invalid = segment === '.' || segment === '..';</script>",
+    '<script type="module">const invalid = segment !== "..";</script>',
+  ],
+}, 'contact.html');
+
+const dotSlashSample = "<script>const path = '../private.html';</script>";
+const dotSlashIndex = dotSlashSample.indexOf('..');
+if (isInlineScriptDotSegmentComparison(dotSlashSample, { 0: '..', index: dotSlashIndex }, 'contact.html')) {
+  failures.push('Verifier self-test allowed a ../ path through the inline-script comparison exception.');
+}
 
 const approvedProductionInspectionSample = '<body class="page-production-inspection-testing"><a href="production-inspection-testing.html">100% passage-by-passage leak testing</a><p>Every passage is tested individually with compressed air at 1.0 MPa.</p></body>';
 const pressureTestRule = banned.find((rule) => rule.name === 'unsupported 100-percent pressure-test claim');

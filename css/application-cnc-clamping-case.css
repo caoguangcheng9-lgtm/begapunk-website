@@ -1,0 +1,206 @@
+.cnc-saw-intro-section {
+  padding-bottom: 32px;
+}
+
+.cnc-saw-case-section {
+  padding-top: 20px;
+}
+
+.cnc-saw-case {
+  max-width: 1120px;
+  margin: 0 auto 42px;
+  padding: clamp(22px, 4vw, 38px);
+  border: 1px solid #cbdde8;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f7fbfd 0%, #ffffff 72%);
+  box-shadow: 0 16px 38px rgba(17, 59, 86, 0.08);
+}
+
+.cnc-saw-case__header {
+  max-width: 860px;
+  margin-bottom: 28px;
+}
+
+.cnc-saw-case__header h2 {
+  margin: 8px 0 12px;
+  color: var(--dark-soft);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.cnc-saw-case__header p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.cnc-saw-case__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(24px, 4vw, 42px);
+  align-items: start;
+}
+
+.cnc-saw-case__media {
+  margin: 0;
+  max-width: 480px;
+}
+
+.cnc-saw-case__image-link,
+.cnc-saw-case__media picture {
+  display: block;
+  border-radius: 12px;
+}
+
+.cnc-saw-case__media picture {
+  overflow: hidden;
+  background: #eaf1f5;
+}
+
+.cnc-saw-case__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cnc-saw-case__media figcaption {
+  margin-top: 10px;
+  color: var(--text-light);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.cnc-saw-case__details h3 {
+  margin: 0 0 12px;
+  color: var(--dark-soft);
+  font-size: 1.2rem;
+}
+
+.cnc-saw-facts {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.cnc-saw-fact {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.72fr) minmax(0, 1.28fr);
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cnc-saw-fact dt,
+.cnc-saw-fact dd {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.cnc-saw-fact dt {
+  color: var(--dark-soft);
+  font-weight: 700;
+}
+
+.cnc-saw-model-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.cnc-saw-case__image-link:focus-visible,
+.cnc-saw-model-link:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.cnc-saw-boundary {
+  margin-top: 22px;
+  padding: 17px 18px;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  background: #eef6fa;
+}
+
+.cnc-saw-boundary strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--dark-soft);
+}
+
+.cnc-saw-boundary p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.cnc-saw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.cnc-saw-actions .btn {
+  min-height: 44px;
+}
+
+.cnc-saw-actions .btn-outline {
+  border: 1px solid var(--primary);
+  background: #fff;
+  color: var(--primary);
+}
+
+.cnc-saw-actions .btn-outline:hover,
+.cnc-saw-actions .btn-outline:focus-visible {
+  background: var(--primary);
+  color: #fff;
+}
+
+@media (max-width: 820px) {
+  .cnc-saw-case__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cnc-saw-case__media {
+    width: min(100%, 360px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .cnc-saw-intro-section {
+    padding-bottom: 20px;
+  }
+
+  .cnc-saw-case-section {
+    padding-top: 12px;
+  }
+
+  .cnc-saw-case {
+    margin: 0 auto 34px;
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .cnc-saw-case__media {
+    width: min(100%, 320px);
+  }
+
+  .cnc-saw-fact {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .cnc-saw-actions {
+    flex-direction: column;
+  }
+
+  .cnc-saw-actions .btn {
+    width: 100%;
+  }
+}

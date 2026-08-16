@@ -48,13 +48,13 @@ Use the language edition that best matches the user's query. Technical model cod
 ## Application guides
 
 - [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck. BP-2P-08-0001 and BP-3P-0004 are used in this application category.
-- [CNC pneumatic clamping](https://www.begapunk.com/application-cnc-pneumatic-clamping.html): Selection for rotating pneumatic fixtures and clamps.
+- [CNC pneumatic clamping](https://www.begapunk.com/application-cnc-pneumatic-clamping.html): Selection guidance plus a customer-authorized BP-2P-130-0001 production application on a custom low-speed circular-saw fixture, using two independent compressed-air passages for clamp and release.
 - [Vacuum packaging machines](https://www.begapunk.com/application-vacuum-packaging-machines.html): Vacuum and pneumatic rotary-union selection.
 - [Welding positioners](https://www.begapunk.com/application-welding-positioners.html): Air rotary unions for positioners and rotary welding tables.
 - [Textile, printing, and converting equipment](https://www.begapunk.com/application-textile-printing-converting.html): Rotary-union selection for continuous web machinery.
 - [Electronics and battery test fixtures](https://www.begapunk.com/application-electronics-battery-test-fixtures.html): Pneumatic transfer for rotating test fixtures.
 - [Steel and dusty environments](https://www.begapunk.com/application-steel-dusty-environments.html): Dust-resistant rotary-joint selection for harsh industrial settings.
-- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): Customer-authorized workshop photographs document the BP-2P-95-0001 installation and visible stationary-to-rotating compressed-air routing in a pneumatic chuck assembly.
+- [BP-2P-95-0001 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): The project owner confirmed the model as BP-2P-95-0001. Customer-authorized workshop photographs show the visible stationary-to-rotating compressed-air routing in a pneumatic chuck assembly but do not independently establish model identity.
 - [BP-3P-S06-0001 sensor-monitored pneumatic chuck case](https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html): Photo-supported integration of three customer-assigned compressed-air functions and external sensor-signal transfer across a rotating chuck interface.
 
 ## Engineering and support
@@ -72,7 +72,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Manufacturing & quality](https://www.begapunk.com/manufacturing-quality.html): Photo-supported overview of hard-anodized rotors, color-anodized stator housings, a single-point 51.7 μm coating-thickness reading and order-specific engineering controls.
 - [100% passage-by-passage leak testing](https://www.begapunk.com/production-inspection-testing.html): Every finished pneumatic rotary union and every passage is checked individually with compressed air at 1.0 MPa before packing and storage; the page also explains PASS/NG handling.
 - [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Three photo-supported rotary-union application cases and two engineering selection examples provide installation context and the inputs needed for model review.
-- [Knowledge center](https://www.begapunk.com/blog.html): Technical articles about rotary-joint selection and maintenance.
+- [Engineering knowledge center](https://www.begapunk.com/blog.html): Practical guides for pneumatic rotary joint selection, installation, seal comparison, application review, and production leak-testing evidence.
 
 ## Deutsch - wichtigste Seiten
 
@@ -83,7 +83,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Anwendungen](https://www.begapunk.com/de/applications.html): Auswahlhinweise für industrielle Einsatzbereiche.
 - [Auswahlleitfaden](https://www.begapunk.com/de/blog-rotary-joint-selection.html): Fünf wichtige Kriterien für die Auswahl einer pneumatischen Drehdurchführung.
 - [Installationsanleitung](https://www.begapunk.com/de/installation.html): Hinweise zu Montage und Inbetriebnahme.
-- [Wissenszentrum](https://www.begapunk.com/de/blog.html): Technische Artikel zu Auswahl, Betrieb und Wartung.
+- [Wissenszentrum](https://www.begapunk.com/de/blog.html): Praxisnahe Leitfäden zu Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen.
 - [Häufig gestellte Fragen](https://www.begapunk.com/de/faq.html): Antworten zu Medien, Druck, Drehzahl, Installation und Sonderanfertigungen.
 - [Über Begapunk](https://www.begapunk.com/de/about.html): Informationen zum Unternehmen und zur Fertigung.
 - [Angebot anfordern](https://www.begapunk.com/de/contact.html): Angebot oder technische Auswahlunterstützung anfordern.
@@ -100,7 +100,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [用途別ガイド](https://www.begapunk.com/ja/applications.html): 産業用途別のロータリージョイント選定情報。
 - [選定ガイド](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 空気圧ロータリージョイント選定の5つの重要条件。
 - [取付説明](https://www.begapunk.com/ja/installation.html): 取付と試運転に関する説明。
-- [技術情報](https://www.begapunk.com/ja/blog.html): 選定、使用、保守に関する技術記事。
+- [技術情報](https://www.begapunk.com/ja/blog.html): 空圧用ロータリージョイントの選定、取付、シール方式の比較、用途確認、出荷前の漏れ検査に関する実務的な技術ガイドです。
 - [よくある質問](https://www.begapunk.com/ja/faq.html): 流体、圧力、回転速度、取付、保守、カスタマイズに関する回答。
 - [Begapunkについて](https://www.begapunk.com/ja/about.html): 会社と製造に関する情報。
 - [見積依頼](https://www.begapunk.com/ja/contact.html): 見積または技術選定サポートを依頼。
@@ -117,7 +117,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Применения](https://www.begapunk.com/ru/applications.html): Рекомендации по выбору для промышленных применений.
 - [Руководство по выбору](https://www.begapunk.com/ru/blog-rotary-joint-selection.html): Пять ключевых параметров выбора пневматического ротационного соединения.
 - [Инструкция по установке](https://www.begapunk.com/ru/installation.html): Рекомендации по монтажу и вводу в эксплуатацию.
-- [Центр знаний](https://www.begapunk.com/ru/blog.html): Технические статьи по выбору, эксплуатации и обслуживанию.
+- [Центр знаний](https://www.begapunk.com/ru/blog.html): Практические руководства по выбору и монтажу пневматических ротационных соединений, сравнению уплотнений, анализу применения и проверке герметичности.
 - [Часто задаваемые вопросы](https://www.begapunk.com/ru/faq.html): Ответы о средах, давлении, скорости, монтаже, обслуживании и изготовлении на заказ.
 - [О компании Begapunk](https://www.begapunk.com/ru/about.html): Информация о компании и производстве.
 - [Запросить предложение](https://www.begapunk.com/ru/contact.html): Запрос коммерческого предложения или инженерной поддержки.

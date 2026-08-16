@@ -55,7 +55,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/products-p2.html">
 <link rel="canonical" href="https://www.begapunk.com/products-p2.html">
 
- <link rel="stylesheet" href="css/style.css?v=20260809-mobile3">
+ <link rel="stylesheet" href="css/style.css?v=20260815-mobile-lang1">
 
  
 
@@ -153,17 +153,17 @@
 
  <span class="filter-label">Filter:</span>
 
- <button class="filter-btn active">All</button>
+ <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
 
- <button class="filter-btn">1-Channel</button>
+ <button class="filter-btn" type="button" data-filter="1-channel" aria-pressed="false">1-Channel</button>
 
- <button class="filter-btn">2-Channel</button>
+ <button class="filter-btn" type="button" data-filter="2-channel" aria-pressed="false">2-Channel</button>
 
- <button class="filter-btn">3-Channel</button>
+ <button class="filter-btn" type="button" data-filter="3-channel" aria-pressed="false">3-Channel</button>
 
- <button class="filter-btn">4-Channel+</button>
+ <button class="filter-btn" type="button" data-filter="4-channel-plus" aria-pressed="false">4-Channel+</button>
 
- <button class="filter-btn">Custom</button>
+ <button class="filter-btn" type="button" data-filter="custom" aria-pressed="false">Custom</button>
 
  </div>
 
@@ -769,47 +769,46 @@ const productCards = document.querySelectorAll('.product-card-large');
 
 const pagination = document.querySelector('.pagination');
 
+const validFilters = new Set([
+    'all',
+    '1-channel',
+    '2-channel',
+    '3-channel',
+    '4-channel-plus',
+    'custom'
+]);
+
+const fourChannelPlus = new Set(['4-channel+', '6-channel', '8-channel']);
+
 
 
 filterBtns.forEach(btn => {
 
     btn.addEventListener('click', () => {
 
-        filterBtns.forEach(b => b.classList.remove('active'));
+        const filter = btn.dataset.filter;
 
-        btn.classList.add('active');
+        if (!validFilters.has(filter)) return;
 
-        
-
-        const filterText = btn.textContent.trim();
+        filterBtns.forEach(b => {
+            const isActive = b === btn;
+            b.classList.toggle('active', isActive);
+            b.setAttribute('aria-pressed', String(isActive));
+        });
 
         
 
         productCards.forEach(card => {
 
-            const channel = card.getAttribute('data-channel');
+            const channel = card.dataset.channel;
 
             
 
-            if (filterText === 'All') {
+            const visible = filter === 'all'
+                || (filter === '4-channel-plus' && fourChannelPlus.has(channel))
+                || channel === filter;
 
-                card.style.display = '';
-
-            } else if (filterText === '4-Channel+') {
-
-                card.style.display = (channel === '4-channel+' || channel === '6-channel' || channel === '8-channel') ? '' : 'none';
-
-            } else if (filterText === 'Custom') {
-
-                card.style.display = (channel === 'custom') ? '' : 'none';
-
-            } else {
-
-                const target = filterText.toLowerCase().replace(' ', '-');
-
-                card.style.display = (channel === target) ? '' : 'none';
-
-            }
+            card.style.display = visible ? '' : 'none';
 
         });
 
@@ -817,7 +816,7 @@ filterBtns.forEach(btn => {
 
         if (pagination) {
 
-            pagination.style.display = (filterText === 'All') ? '' : 'none';
+            pagination.style.display = filter === 'all' ? '' : 'none';
 
         }
 

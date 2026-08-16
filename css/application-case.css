@@ -1,7 +1,19 @@
-/* Shared application-case styles not supplied by case-studies.css. */
+/* Compatibility source: active case pages bundle this scoped block in case-studies.css. */
 
 .page-application-case .cs-hero {
-    padding: 56px 0 50px;
+    padding: var(--page-hero-padding);
+}
+
+@media (max-width: 1024px) {
+    .page-application-case .cs-hero {
+        padding: var(--page-hero-padding-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-application-case .cs-hero {
+        padding: var(--page-hero-padding-mobile);
+    }
 }
 
 .page-application-case .case-kicker {

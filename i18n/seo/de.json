@@ -180,9 +180,9 @@
     "h1": "Montageanleitung für Drehdurchführungen"
   },
   "blog.html": {
-    "title": "Fachwissen zu Drehdurchführungen | Begapunk",
-    "description": "Technische Beiträge zur Auswahl, Montage, Dichtung, Werkstoffwahl, Fehlersuche und Wartung pneumatischer Drehdurchführungen.",
-    "h1": "Technisches Wissen zu Drehdurchführungen"
+    "title": "Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk",
+    "description": "Praxisnahe Leitfäden zu Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen.",
+    "h1": "Auswahl, Montage und Dichtungen von Drehdurchführungen"
   },
   "blog-rotary-joint-installation-mistakes.html": {
     "title": "Drehdurchführung montieren: 7 häufige Fehler",
@@ -226,7 +226,7 @@
   },
   "case-bp-2p-95-pneumatic-chuck-integration.html": {
     "title": "BP-2P-95-0001 im pneumatischen Spannfutter | Begapunk",
-    "description": "Fotodokumentiertes Einbaubeispiel der Drehdurchführung BP-2P-95-0001 in einem pneumatischen Spannfutter zur Druckluftübertragung von der stationären auf die rotierende Seite.",
+    "description": "Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0001. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.",
     "h1": "BP-2P-95-0001 – Einbaubeispiel in einem pneumatischen Spannfutter"
   },
   "case-bp-3p-s06-sensor-monitored-chuck.html": {
@@ -235,9 +235,9 @@
     "h1": "BP-3P-S06-0001: Druckluft- und Signalübertragung in einem sensorüberwachten Spannfutter"
   },
   "faq.html": {
-    "title": "Häufige Fragen zu Drehdurchführungen | Begapunk",
-    "description": "Antworten zu Medienverträglichkeit, Betriebsdruck, Drehzahl, Sonderausführungen, Montage, Lieferumfang und Wartung von Drehdurchführungen.",
-    "h1": "Häufige Fragen zu Drehdurchführungen"
+    "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
+    "description": "27 technische Antworten zu Funktion, Auswahl, Medien, kundenspezifischer Auslegung, Montage, Dichtheitsprüfung, Rückverfolgbarkeit und Anwendungsprüfung von Drehdurchführungen.",
+    "h1": "Technische FAQ zu Drehdurchführungen"
   },
   "contact.html": {
     "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",

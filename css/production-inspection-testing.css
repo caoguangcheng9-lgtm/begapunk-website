@@ -4,9 +4,9 @@
 }
 
 .pit-hero {
-  padding: 72px 0 64px;
-  color: #fff;
-  background: linear-gradient(135deg, #0b1f35 0%, #123c5f 58%, #0b6670 100%);
+  padding: var(--page-hero-padding);
+  color: var(--page-hero-color);
+  background: var(--page-hero-background);
 }
 
 .pit-breadcrumb {
@@ -37,17 +37,19 @@
 .pit-hero h1 {
   max-width: 920px;
   margin: 0 0 20px;
-  color: #fff;
-  font-size: clamp(2.2rem, 4vw, 3.65rem);
-  line-height: 1.08;
+  color: var(--page-hero-color);
+  font-size: var(--page-hero-title-size);
+  line-height: var(--page-hero-title-line-height);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
 .pit-hero p {
   max-width: 800px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 1.12rem;
-  line-height: 1.78;
+  color: var(--page-hero-copy-color);
+  font-size: var(--page-hero-copy-size);
+  line-height: 1.72;
 }
 
 .pit-section {
@@ -340,6 +342,14 @@
 }
 
 @media (max-width: 1024px) {
+  .pit-hero {
+    padding: var(--page-hero-padding-tablet);
+  }
+
+  .pit-hero h1 {
+    font-size: var(--page-hero-title-size-tablet);
+  }
+
   .pit-facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -378,7 +388,7 @@
 
 @media (max-width: 700px) {
   .pit-hero {
-    padding: 46px 0 42px;
+    padding: var(--page-hero-padding-mobile);
   }
 
   .pit-table-wrap {
@@ -434,7 +444,7 @@
 
 @media (max-width: 430px) {
   .pit-hero h1 {
-    font-size: 1.9rem;
+    font-size: var(--page-hero-title-size-mobile);
   }
 
   .pit-hero p {

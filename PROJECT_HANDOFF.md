@@ -80,7 +80,9 @@ These files are not part of the contact-page commit and are intentionally exclud
 - Local backend file: `E:\begapunk-site-v2\send_inquiry.php`
 - Method: `POST`
 - Encoding: `multipart/form-data`
-- Submission: existing page JavaScript posts `FormData` to `/send_inquiry.php`.
+- Submission: the form has a native `POST` action to `/send_inquiry.php`; page JavaScript progressively enhances it with `fetch` and `FormData` when those APIs are available.
+- AJAX negotiation: enhanced submissions send `Accept: application/json`. The JSON response retains `success` and `message` and adds a stable `code`.
+- Native response: successful non-AJAX submissions receive a fixed language-specific `303` redirect to `/thank-you.html`, `/de/thank-you.html`, `/ja/thank-you.html`, or `/ru/thank-you.html`; failures receive a minimal localized HTML page with the original HTTP error status.
 - Maximum attachment size: 10 MB.
 - Supported extensions: PDF, STEP/STP, IGES/IGS, DWG, DXF, JPG/JPEG, PNG.
 - Anti-spam field: `honeypot`.
@@ -93,6 +95,7 @@ Backend-dependent field names that must not be changed without coordinated PHP r
 - `company`
 - `country`
 - `product`
+- `quantity`
 - `application`
 - `requirements`
 - `inquiry_type`
@@ -104,7 +107,42 @@ Backend-dependent field names that must not be changed without coordinated PHP r
 - `drawing`
 - `honeypot`
 
-The HTML also retains the hidden `redirect` field. `send_inquiry.php` did not change during the contact-page refactor.
+The HTML also retains the hidden `redirect` field for compatibility, but `send_inquiry.php` does not read it or use it for navigation.
+
+`quantity` is optional free text with a 100-character limit. Native and AJAX submissions both carry it through the same multipart form contract; the mail summary omits the row when it is empty and escapes it through the shared row renderer when present.
+
+Supported RFQ context parameters are `request`, `model`, `product`, `application`, legacy `inquiry_type`, and `source`. A valid `request` takes precedence over legacy `inquiry_type`; unknown values fall back to `general_inquiry`. Stable internal inquiry codes are `quote`, `3d_step`, `application_review`, `seal_review`, `verified_drawing`, `technical_consultation`, and `general_inquiry`. User-visible labels remain localized and are not used as machine classifications.
+
+`source` is accepted only as a same-site relative `.html` path with no scheme, protocol-relative prefix, backslash, or dot segment. The browser and server derive `source_url` from that validated path; submitted `source_url` text is never trusted as a navigation target.
+
+The local Node contract validator statically checks selected DOM, mapping, fixed-path, and security-order contracts. It does not execute PHP, so that validator alone does not establish PHP syntax, runtime responses, SMTP behavior, or mailbox delivery. Separately authorized runtime evidence is recorded below; any real submission or delivery test still requires separate authorization.
+
+### Contact multilingual generation contract - 2026-08-16
+
+- The Contact body, `script#contact-rfq-copy` localization data, and executable RFQ behavior script are owned by the Contact generation contract. The read-only `--mode verify-contact` path regenerates those regions in memory and compares them exactly after normalizing only line endings and outer whitespace.
+- Header and Footer markup are owned by the separate navigation synchronization system and are intentionally outside the RFQ generation gate; no other RFQ selector or content is ignored.
+- A repository-external diagnostic build on 2026-08-16 found pre-existing whole-page non-idempotence in 47 translation-managed pages per target language, totaling 141 non-Contact HTML files. None of those pages was synchronized or modified during the Contact RFQ generation work.
+- Until that wider builder and navigation ownership debt is separately governed, do not run the generic `i18n:build` command against the repository to overwrite the current localized pages. The observed whole-page drift does not mean that German, Japanese, or Russian RFQ dynamic prompts fell back to English; the Contact-owned-region gate verifies those localized prompts independently.
+
+### Phase 1B/1D isolated PHP runtime validation - 2026-08-14
+
+- The current local PR-quality and deployment workflows define an independent `ubuntu-24.04` PHP matrix for the supported `8.2` and `8.3` minor branches. The existing quality or deployment job has `needs: inquiry-php`, so either PHP matrix failure blocks the downstream job.
+- The PHP setup action is pinned to the full commit SHA for `shivammathur/setup-php` 2.37.2. This pins the action code, not the runner image or the PHP patch release installed within each minor branch; the verifier separately requires the actual runtime minor to match the matrix value.
+- The verifier copies only `send_inquiry.php` into a unique system-temporary site, does not copy or read the repository or production `.env`, and does not copy `PHPMailer/`.
+- Both the PHP test server and the SMTP trap bind only to `127.0.0.1`. SMTP settings used by the guarded validation cases point only to the loopback trap, and the verified SMTP connection count was zero.
+- The verified scope is PHP 8.2/8.3 syntax plus nine selected pre-mail error responses per runtime, covering HTTP 405, 403, 400, 422, and 503. The ninth case verifies that an optional `quantity` value over 100 ASCII characters returns `422 field_too_long` before PHPMailer or SMTP.
+- Local isolated runs used official Windows NTS builds PHP `8.2.33` and `8.3.33`; both passed 9/9 cases and each recorded zero SMTP connections. Temporary PHP packages and test roots were removed after verification.
+- Production was observed running PHP `8.2.28` on 2026-08-14. The CI matrix establishes current 8.2-minor compatibility but is not an exact reproduction of that production patch, Nginx, or PHP-FPM configuration.
+- The current Inquiry contract validator is deliberately independent of Hero and CNC-case gates. It verifies the Contact/PHP/package contract immediately before `discovery:verify`; the CNC case remains covered by its own generator check.
+- Success responses 200/303, PHPMailer sending, SMTP TLS or authentication, and mailbox receipt are not exercised by the isolated CI test. Production evidence for one separately authorized transaction is recorded below; CRM handling, UTM handling, inquiry numbering, and future availability remain unverified.
+
+### Phase 1C authorized production mail-path verification - 2026-08-14
+
+- Production inspection confirmed PHP CLI and the active PHP-FPM branch at `8.2.28`.
+- One explicitly authorized test inquiry was submitted through the current public Contact page. `/send_inquiry.php` returned HTTP 200 JSON success, the browser showed the success state, and the exact unique test marker was found in the actual `sales@begapunk.com` mailbox.
+- This is evidence that the then-live legacy page, endpoint, SMTP path, and recipient mailbox completed that one transaction. It does not establish ongoing availability or CRM-qualified conversion.
+- The live Contact page observed during that test still used the older JavaScript-required submission contract and older JSON response. The local native-POST fallback, stable result codes, four-language server responses, and dual-version CI described above were not deployed by Phase 1C.
+- No production file or configuration was changed during the inspection and test. The message was not replied to, forwarded, or deleted; opening it may have marked it as read.
 
 ## 6. Mail Incident Knowledge
 
@@ -173,7 +211,7 @@ Do not store panel login details, SSH passwords, or tokens here. Authentication 
 Before a production deployment:
 
 1. Confirm the intended Git commit and list changed files.
-2. Run HTML, JSON-LD, JavaScript, link, resource, responsive, and `git diff --check` validation.
+2. Run HTML, JSON-LD, JavaScript, link, resource, responsive, and `git diff --check` validation. Also complete the availability, laboratory-performance, resource-budget, and visual evidence required by `docs/WEBSITE_EXPERIENCE_STANDARD.md`.
 3. Build a clean release package that excludes Git metadata, audit-only material, local backups, logs, temporary files, and `catalog-project/` unless specifically needed.
 4. Back up the current production document root to a dated path outside the live root.
 5. Preserve production-only files and runtime state, especially `.env`, `PHPMailer/`, and `.well-known/` where applicable.
@@ -185,10 +223,62 @@ Before a production deployment:
 ## 9. SEO and GEO Baseline
 
 - Preserve canonical URLs, metadata, Open Graph, Twitter metadata, JSON-LD, sitemap, robots, internal links, and legacy redirects during page work.
+- Treat machine translation as draft content only. After adding or changing any localized page, complete and record an AI-assisted target-market localization review covering local industrial terminology, natural reading patterns, search vocabulary and intent, metadata, calls to action, and structured-data text.
+- Use representative target-country manufacturer, industry, and peer pages only as terminology, reading-pattern, and search-intent references. Do not copy their wording or import their product claims, parameters, certifications, or customer evidence into Begapunk content.
+- AI-assisted localization review is a mandatory minimum gate, not a substitute for independent native-speaker confirmation. Keep native-speaker status explicit and never claim it when it has not occurred.
+- The 27-question FAQ is a manually localized controlled page, not a generic translation-cache page. Maintain German, Japanese, and Russian source copy in `i18n/manual/faq-*.json`; run `npm run faq:i18n:sync` after an approved English fact change and require `npm run faq:i18n:verify` before PR or deployment checks. Never run the generic translation builder as a substitute for the recorded target-market line-by-line FAQ review.
 - Do not add unsupported certifications, guarantees, fixed response times, absolute quality claims, or invented engineering data.
 - Product facts must follow approved drawings and evidence records.
 - Existing GEO and claim-remediation records are under `audit/geo-audit/`, `audit/geo-remediation/`, and `audit/fact-resolution/`.
 - Existing release and technical-repair records are under `audit/technical-repairs/`.
+
+## 9A. Website Experience Contract
+
+- `docs/WEBSITE_EXPERIENCE_STANDARD.md` is the mandatory source of truth for UI consistency, B2B page-family structure, responsive/accessibility behavior, multilingual presentation, page availability, and page performance. Read it before adding a page, changing shared UI/CSS, preparing a release, or evaluating production acceptance.
+- Keep static HTML as the public output unless a separately approved business case justifies a platform migration. Do not add a generic theme or framework merely to make the site look consistent.
+- New and changed pages must use the approved page family, design tokens, shared components, CTA hierarchy, and four-language validation matrix. Existing inline/page-specific styles are migration debt and must not increase without a recorded exception.
+- Treat "can open" and "opens quickly" as separate release gates. Unexpected timeout, 4xx/5xx, soft 404, blank/error content, missing critical same-origin resources, or blocked navigation/RFQ is an immediate release failure.
+- Record laboratory performance, resource-budget, availability, and post-deployment evidence under `audit/website-experience/`. Real-user targets are p75 LCP <= 2.5 s, INP <= 200 ms, and CLS <= 0.10; missing field data is not a pass.
+- The current repository does not yet automate every requirement in the experience standard. Until automation is implemented and verified, complete and record the required manual checks; never claim an unmeasured or unimplemented check passed.
+
+### UI-B1 product-detail progressive-enhancement contract - 2026-08-16
+
+- The 16 product models across English, German, Japanese, and Russian (64 pages) share `css/product-detail.css`, deferred `js/product-detail.js`, localized UI labels in `i18n/manual/product-detail-ui.json`, and the source-text synchronizer `scripts/sync-product-detail-ui.mjs`. The synchronizer preserves each file's original line endings and does not perform whole-page serialization.
+- Product-detail source markup is intentionally fail-open: four ordinary fragment-link tabs target four initially visible panels, five FAQ items use open native `details`, and three thumbnail links open their full-size images. JavaScript enhances a feature only after its complete expected structure is validated; failed validation leaves the corresponding source content and native controls usable.
+- Each page has one localized skip link and one `main#main-content`. Header, Footer, and the floating inquiry control remain outside `main`; the Header and Footer continue to be owned by the separate navigation synchronization system and were not rewritten by UI-B1.
+- Search generation excludes only the exact UI-only selector `a.skip-link[data-search-exclude][href="#main-content"]`; it does not treat arbitrary `data-search-exclude` elements as hidden content. The four tracked search-index files remain generated artifacts and were not rewritten by UI-B1.
+- The only UI-B1 change to the generic localized builder is adding `summary` to the primary translation selector so existing FAQ-question translation IDs remain stable. UI-B1 did not run the generic `i18n:build` command.
+- `product-ui:verify` runs immediately before `products:validate` in both `quality:pr` and `deploy:prepare`. As of 2026-08-16, these changes remain local and unstaged; they have not been committed, pushed, or deployed.
+
+### UI-B1C product-detail generation closure - 2026-08-16
+
+- `scripts/build-localized-site.mjs` now treats the direct product skip link and the two product-region `aria-label` values as the three exact fields owned by `i18n/manual/product-detail-ui.json`. It does not exclude the surrounding product content from generic translation.
+- `--mode verify-product-ui-generation` performs the full translation-coverage preflight, generates 16 products for DE/JA/RU in memory, and compares 144 controlled values with the current 48 localized product pages without writing files. `product-ui:verify` runs both the 64-page source synchronizer check and this 48-page generation check.
+- The prior product-only build preflight gap was 144 items: 16 products × 3 target languages × the three controlled UI values. The generation gate now reports zero missing items for this page family.
+- Product Tab history now returns to the default Specifications panel when navigation returns to an empty or non-panel hash. No product HTML, Search Index, localization Catalog/Cache/Editorial data, CSS, product facts, or resource version was changed by UI-B1C.
+- At UI-B1C completion, real 200% browser zoom and Lighthouse evidence were still pending; the later release-performance section closes the Lighthouse item. Real 200% zoom and the duplicate first/second BP-8P thumbnail asset remain separate release-before or content follow-up items. UI-B1C does not authorize a commit, push, or deployment.
+
+### Localization release-safety gate - 2026-08-17
+
+- The generic `i18n:build`, `i18n:refresh-metadata`, and `i18n:integrate` write modes now refuse any output root inside the source repository after canonical-path resolution. Use an explicit external `I18N_OUTPUT_ROOT` for diagnostic generation; never point those commands back at the reviewed localized source pages.
+- `i18n:metadata:verify` is the source-tree read-only release gate. It checks 48 managed routes across DE/JA/RU (144 pages), the three localized Search Index files, and the three localized `llms.txt` files without writing. `deploy:prepare` runs this gate instead of a metadata refresh.
+- This safety control does not resolve the older 141-page whole-page non-idempotence. It prevents that debt from silently overwriting reviewed pages and leaves Header/Footer ownership for a separate task.
+- Detailed evidence: `audit/website-experience/2026-08-17-i18n-release-safety.md`.
+
+### Local release experience and Lighthouse gate - 2026-08-17
+
+- `release:experience:verify` runs after the production package is built in both `quality:pr` and `deploy:prepare`. It serves the package on loopback, checks all 221 HTML pages plus critical same-origin resources, requires a Contact/RFQ path outside the approved legacy recovery page, and enforces the compressed resource budgets in `docs/WEBSITE_EXPERIENCE_STANDARD.md`.
+- The deployment workflow has a separate Lighthouse job with no production environment or deployment secrets. It installs the allowlisted Chrome for Testing archive, builds the candidate, and runs the four-language performance matrix; the production job depends on both this job and the PHP matrix.
+- Final local evidence used Lighthouse 13.4.1 and Chrome for Testing 152.0.7977.42: 32 routes, 72 runs, minimum score 97, maximum median LCP 2,110.5 ms, FCP 1,659.8 ms, TBT 20.0 ms, and CLS 0.08383. Home is now part of the three-run critical median set. All strict thresholds passed with no tolerance or waiver.
+- Real 200% zoom, externally reachable preview/production full-sitemap checks, geographic uptime, and real-user p75 data remain explicit open gates. Local success is not deployment authorization.
+- Detailed evidence: `audit/website-experience/2026-08-17-release-experience-and-performance.md` and `audit/website-experience/2026-08-16-lighthouse-release-performance.json`.
+
+### Editorial evidence reconciliation - 2026-08-17
+
+- The approved DE/JA/RU Manufacturing, Production Inspection, BP-2P-95 case, and BP-3P-S06 case wording was reconciled into the current UI and metadata candidate without restoring older Header/Footer or cache output.
+- The current content contract matches 13/13 accepted sources, and the current candidate passed 36/36 new render checks across the three languages, six routes, and 1440/390 widths. The governed cumulative status is 55 reviewed pages per language and 330 viewport checks.
+- Review method remains `AI-assisted target-market line-by-line localization review`; there is no independent native-speaker sign-off. The expired historical release approval remains unchanged and is not a deployment authorization.
+- Detailed evidence: `audit/localization/2026-08-17-editorial-evidence-reconciliation.md`.
 
 ## 10. Backups and Recovery
 

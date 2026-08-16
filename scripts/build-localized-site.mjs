@@ -54,12 +54,53 @@ const activeLanguageCodes = new Set(config.activeLanguageCodes || config.languag
 const activeLanguages = config.languages.filter((language) => activeLanguageCodes.has(language.code));
 const mode = process.argv[process.argv.indexOf('--mode') + 1] || 'extract';
 const catalogPath = path.join(i18nRoot, 'source-catalog.json');
+const contactRfqCopyPath = path.join(i18nRoot, 'manual', 'contact-rfq-copy.json');
+const contactRfqContract = JSON.parse(await fs.readFile(contactRfqCopyPath, 'utf8'));
+const productDetailUiCopyPath = path.join(i18nRoot, 'manual', 'product-detail-ui.json');
+const productDetailUiContract = JSON.parse(await fs.readFile(productDetailUiCopyPath, 'utf8'));
+const productDetailPagePattern = /^BP-[A-Za-z0-9-]+\.html$/;
+const productDetailPageNames = translationManagedPages.filter((pageName) => productDetailPagePattern.test(pageName));
+const PRODUCT_UI_SKIP_SELECTOR = 'body.page-product-detail > a.skip-link[data-search-exclude][href="#main-content"]';
+const PRODUCT_UI_IMAGES_SELECTOR = 'body.page-product-detail .pd-gallery[role="region"]';
+const PRODUCT_UI_INFO_SELECTOR = 'body.page-product-detail .pd-info[role="region"]';
 const cacheRoot = process.env.I18N_CACHE_ROOT
   ? path.resolve(process.env.I18N_CACHE_ROOT)
   : path.join(i18nRoot, 'cache');
 const outputRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
+
+async function canonicalPathThroughNearestAncestor(targetPath) {
+  let current = path.resolve(targetPath);
+  const suffix = [];
+  for (;;) {
+    try {
+      const canonical = await fs.realpath(current);
+      return path.join(canonical, ...suffix);
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+      const parent = path.dirname(current);
+      if (parent === current) throw error;
+      suffix.unshift(path.basename(current));
+      current = parent;
+    }
+  }
+}
+
+async function assertExternalOutputRoot(operation) {
+  const canonicalSource = await fs.realpath(sourceRoot);
+  const canonicalOutput = await canonicalPathThroughNearestAncestor(outputRoot);
+  const relative = path.relative(canonicalSource, canonicalOutput);
+  const isOutsideSource = path.isAbsolute(relative)
+    || relative === '..'
+    || relative.startsWith(`..${path.sep}`);
+  const isInsideSource = !isOutsideSource;
+  if (isInsideSource) {
+    throw new Error(
+      `${operation} refuses to write inside the source repository. Set I18N_OUTPUT_ROOT to an external directory.`,
+    );
+  }
+}
 const overridesByLanguage = new Map();
 const editorialOverridesByLanguage = new Map();
 const seoByLanguage = new Map();
@@ -94,6 +135,195 @@ const translatableMetaSelectors = [
   'meta[name="twitter:title"]',
   'meta[name="twitter:description"]',
 ];
+const contactRfqNestedKeys = Object.freeze({
+  requestLabels: ['quote', '3d_step', 'application_review', 'seal_review', 'verified_drawing', 'technical_consultation', 'general_inquiry'],
+  requestTemplates: ['quote', '3d_step', 'application_review', 'seal_review', 'verified_drawing', 'technical_consultation', 'general_inquiry'],
+  contextLabels: ['request', 'model', 'product', 'application', 'source'],
+  requiredFields: ['fullname', 'email', 'company', 'country', 'product', 'requirements'],
+});
+const contactRfqScalarKeys = Object.freeze([
+  'contextSeparator',
+  'required',
+  'invalidEmail',
+  'emailSuggestion',
+  'invalidFileType',
+  'fileTooLarge',
+  'noFile',
+  'sending',
+  'success',
+  'serviceUnavailable',
+  'invalidResponse',
+  'networkFailure',
+  'stepButton',
+]);
+const contactRfqPlaceholderContract = Object.freeze({
+  required: ['field'],
+  emailSuggestion: ['domain'],
+  invalidFileType: ['ext'],
+  fileTooLarge: ['size'],
+});
+
+function sameKeys(actual, expected) {
+  return [...actual].sort().join('\0') === [...expected].sort().join('\0');
+}
+
+function placeholdersIn(value) {
+  return [...String(value).matchAll(/\{([a-z]+)\}/g)].map((match) => match[1]).sort();
+}
+
+function assertContactRfqCopy(copy, label) {
+  if (!copy || typeof copy !== 'object' || Array.isArray(copy)) {
+    throw new Error(`${label}: RFQ copy must be an object.`);
+  }
+  const expectedTopLevelKeys = [...Object.keys(contactRfqNestedKeys), ...contactRfqScalarKeys];
+  if (!sameKeys(Object.keys(copy), expectedTopLevelKeys)) {
+    throw new Error(`${label}: RFQ copy keys do not match the approved contract.`);
+  }
+  for (const [group, expectedKeys] of Object.entries(contactRfqNestedKeys)) {
+    if (!copy[group] || typeof copy[group] !== 'object' || Array.isArray(copy[group])) {
+      throw new Error(`${label}: ${group} must be an object.`);
+    }
+    if (!sameKeys(Object.keys(copy[group]), expectedKeys)) {
+      throw new Error(`${label}: ${group} keys do not match the approved contract.`);
+    }
+    for (const key of expectedKeys) {
+      if (typeof copy[group][key] !== 'string' || !copy[group][key]) {
+        throw new Error(`${label}: ${group}.${key} must be a non-empty string.`);
+      }
+    }
+  }
+  for (const key of contactRfqScalarKeys) {
+    if (typeof copy[key] !== 'string' || !copy[key]) {
+      throw new Error(`${label}: ${key} must be a non-empty string.`);
+    }
+    const expectedPlaceholders = contactRfqPlaceholderContract[key] || [];
+    if (!sameKeys(placeholdersIn(copy[key]), expectedPlaceholders)) {
+      throw new Error(`${label}: ${key} placeholders do not match the approved contract.`);
+    }
+  }
+}
+
+function serializeContactRfqCopy(copy) {
+  return JSON.stringify(copy)
+    .replaceAll('<', '\\u003c')
+    .replaceAll('\u2028', '\\u2028')
+    .replaceAll('\u2029', '\\u2029');
+}
+
+function contactRfqBlock($, label) {
+  const blocks = $('script#contact-rfq-copy[type="application/json"]');
+  if (blocks.length !== 1) {
+    throw new Error(`${label}: expected exactly one Contact RFQ JSON data block.`);
+  }
+  return blocks.first();
+}
+
+function parseContactRfqBlock($, label) {
+  const block = contactRfqBlock($, label);
+  let copy;
+  try {
+    copy = JSON.parse(block.html() || '');
+  } catch {
+    throw new Error(`${label}: Contact RFQ JSON data block is invalid.`);
+  }
+  assertContactRfqCopy(copy, label);
+  return copy;
+}
+
+function applyContactRfqCopy($, languageCode, pageName) {
+  if (pageName !== 'contact.html') return;
+  const copy = languageCode === config.sourceLanguage.code
+    ? parseContactRfqBlock($, `${languageCode}/${pageName}`)
+    : contactRfqContract.copies?.[languageCode];
+  assertContactRfqCopy(copy, `${languageCode}/${pageName}`);
+  contactRfqBlock($, `${languageCode}/${pageName}`).text(serializeContactRfqCopy(copy));
+}
+
+function assertContactRfqManualContract() {
+  if (contactRfqContract.schemaVersion !== 1) {
+    throw new Error('Contact RFQ manual contract schemaVersion must be 1.');
+  }
+  if (contactRfqContract.review?.method !== 'AI-assisted target-market line-by-line localization review') {
+    throw new Error('Contact RFQ manual contract review method is missing or unsupported.');
+  }
+  if (contactRfqContract.review?.independentNativeSpeakerReview !== false) {
+    throw new Error('Contact RFQ manual contract must not claim independent native-speaker review.');
+  }
+  const targetLanguageCodes = activeLanguages.map((language) => language.code);
+  if (!sameKeys(Object.keys(contactRfqContract.copies || {}), targetLanguageCodes)) {
+    throw new Error('Contact RFQ manual copies must exactly cover the active target languages.');
+  }
+  for (const languageCode of targetLanguageCodes) {
+    const copy = contactRfqContract.copies[languageCode];
+    assertContactRfqCopy(copy, `manual/${languageCode}`);
+    const expectedSeparator = languageCode === 'ja' ? '：' : ': ';
+    if (copy.contextSeparator !== expectedSeparator) {
+      throw new Error(`manual/${languageCode}: contextSeparator must be ${JSON.stringify(expectedSeparator)}.`);
+    }
+  }
+  const unsafeProbe = '</script>\u2028\u2029';
+  const serializedProbe = serializeContactRfqCopy({ value: unsafeProbe });
+  if (serializedProbe.includes('<') || serializedProbe.includes('\u2028') || serializedProbe.includes('\u2029')) {
+    throw new Error('Contact RFQ JSON serializer did not escape script-sensitive characters.');
+  }
+  if (JSON.parse(serializedProbe).value !== unsafeProbe) {
+    throw new Error('Contact RFQ JSON serializer did not preserve the original value.');
+  }
+}
+
+assertContactRfqManualContract();
+
+function assertProductDetailUiManualContract() {
+  if (productDetailUiContract.schemaVersion !== 1) {
+    throw new Error('Product-detail UI manual contract schemaVersion must be 1.');
+  }
+  if (productDetailUiContract.review?.method !== 'AI-assisted target-market line-by-line localization review') {
+    throw new Error('Product-detail UI manual contract review method is missing or unsupported.');
+  }
+  if (productDetailUiContract.review?.independentNativeSpeakerReview !== false) {
+    throw new Error('Product-detail UI manual contract must not claim independent native-speaker review.');
+  }
+  const expectedLanguageCodes = [config.sourceLanguage.code, ...activeLanguages.map((language) => language.code)];
+  if (!sameKeys(Object.keys(productDetailUiContract.locales || {}), expectedLanguageCodes)) {
+    throw new Error('Product-detail UI manual copies must exactly cover the source and active target languages.');
+  }
+  const expectedKeys = ['productImagesLabel', 'productInformationLabel', 'skipLink'];
+  for (const languageCode of expectedLanguageCodes) {
+    const copy = productDetailUiContract.locales[languageCode];
+    if (!copy || typeof copy !== 'object' || Array.isArray(copy)
+      || !sameKeys(Object.keys(copy), expectedKeys)) {
+      throw new Error(`${languageCode}: product-detail UI copy keys do not match the approved contract.`);
+    }
+    for (const key of expectedKeys) {
+      if (typeof copy[key] !== 'string' || !copy[key].trim()) {
+        throw new Error(`${languageCode}: product-detail UI ${key} must be a non-empty string.`);
+      }
+    }
+  }
+  if (productDetailPageNames.length !== 16) {
+    throw new Error(`Expected 16 translation-managed product-detail pages; found ${productDetailPageNames.length}.`);
+  }
+}
+
+function applyProductDetailUiCopy($, languageCode, pageName) {
+  if (!productDetailPagePattern.test(pageName)) return;
+  const copy = productDetailUiContract.locales[languageCode];
+  if (!copy) throw new Error(`${languageCode}/${pageName}: product-detail UI copy is missing.`);
+  const scopes = [
+    [PRODUCT_UI_SKIP_SELECTOR, 'skip link', (node) => node.text(copy.skipLink)],
+    [PRODUCT_UI_IMAGES_SELECTOR, 'product images region', (node) => node.attr('aria-label', copy.productImagesLabel)],
+    [PRODUCT_UI_INFO_SELECTOR, 'product information region', (node) => node.attr('aria-label', copy.productInformationLabel)],
+  ];
+  for (const [selector, label, apply] of scopes) {
+    const nodes = $(selector);
+    if (nodes.length !== 1) {
+      throw new Error(`${languageCode}/${pageName}: expected one ${label}; found ${nodes.length}.`);
+    }
+    apply(nodes.first());
+  }
+}
+
+assertProductDetailUiManualContract();
 
 function pageUrl(languageCode, pageName) {
   const suffix = pageName === 'index.html' ? '' : pageName;
@@ -122,7 +352,7 @@ function shouldTranslate(value) {
 function collectRecords($) {
   const records = [];
   const coveredTextNodes = new WeakSet();
-  const primarySelector = 'title,p,h1,h2,h3,h4,h5,h6,li,td,th,label,button,option,figcaption,legend';
+  const primarySelector = 'title,p,h1,h2,h3,h4,h5,h6,li,td,th,label,button,summary,option,figcaption,legend';
 
   const markCovered = (element) => {
     $(element).find('*').addBack().contents().each((_, node) => {
@@ -132,6 +362,10 @@ function collectRecords($) {
 
   const addHtmlElement = (element) => {
     if ($(element).closest(excludedSelector).length) return;
+    if ($(element).is(PRODUCT_UI_SKIP_SELECTOR)) {
+      markCovered(element);
+      return;
+    }
     const source = ($(element).html() || '').trim();
     if (!shouldTranslate($(element).text())) return;
     records.push({ type: 'html', element, source });
@@ -142,6 +376,7 @@ function collectRecords($) {
     if (coveredTextNodes.has(node)) return;
     const parent = $(node).parent();
     if (parent.closest(excludedSelector).length) return;
+    if (parent.is(PRODUCT_UI_SKIP_SELECTOR)) return;
     const original = node.data || '';
     const trimmed = original.trim();
     if (!shouldTranslate(trimmed)) return;
@@ -166,6 +401,8 @@ function collectRecords($) {
   for (const attribute of config.translatedAttributes) {
     $(`[${attribute}]`).each((_, element) => {
       if ($(element).closest(excludedSelector).length) return;
+      if (attribute === 'aria-label'
+        && ($(element).is(PRODUCT_UI_IMAGES_SELECTOR) || $(element).is(PRODUCT_UI_INFO_SELECTOR))) return;
       const source = ($(element).attr(attribute) || '').trim();
       if (shouldTranslate(source)) records.push({ type: 'attribute', element, attribute, source });
     });
@@ -482,7 +719,7 @@ function localizeJapaneseStructuredData(html) {
         if (node?.['@type'] === 'BreadcrumbList' && Array.isArray(node.itemListElement)) {
           for (const item of node.itemListElement) {
             if (item?.position === 1) item.name = 'ホーム';
-            if (item?.position === 2) item.name = '製品一覧';
+            if (item?.position === 2) item.name = String(item?.item || '').endsWith('/applications.html') ? '用途別情報' : '製品一覧';
           }
         }
         if (node?.['@type'] !== 'Product') continue;
@@ -615,6 +852,7 @@ function normalizeGermanOutput(html) {
   return localizeStructuredDataWithOptions(normalized, {
     homeLabel: 'Startseite',
     productsLabel: 'Produkte',
+    applicationsLabel: 'Anwendungen',
     category: 'Pneumatische Drehdurchführung',
     propertyNames: {
       'Product type': 'Produkttyp', SKU: 'Artikelnummer', Passages: 'Kanalzahl',
@@ -790,6 +1028,7 @@ function normalizeRussianOutput(html) {
   return localizeStructuredDataWithOptions(normalized, {
     homeLabel: 'Главная',
     productsLabel: 'Продукция',
+    applicationsLabel: 'Применение',
     category: 'Пневматическое ротационное соединение',
     propertyNames: {
       'Product type': 'Тип изделия', SKU: 'Артикул', Passages: 'Количество каналов',
@@ -820,7 +1059,11 @@ function localizeStructuredDataWithOptions(html, options) {
         if (node?.['@type'] === 'BreadcrumbList' && Array.isArray(node.itemListElement)) {
           for (const item of node.itemListElement) {
             if (item?.position === 1) item.name = options.homeLabel;
-            if (item?.position === 2) item.name = options.productsLabel;
+            if (item?.position === 2) {
+              item.name = String(item?.item || '').endsWith('/applications.html')
+                ? options.applicationsLabel
+                : options.productsLabel;
+            }
           }
         }
         if (node?.['@type'] !== 'Product') continue;
@@ -1422,14 +1665,19 @@ function normalizeEntityIdentitiesInMarkup(html) {
   );
 }
 
-function updateJsonLd($, languageCode, pageName) {
+function updateJsonLd($, languageCode, pageName, strict = false) {
   const englishUrl = pageUrl(config.sourceLanguage.code, pageName);
   const localizedUrl = pageUrl(languageCode, pageName);
   const seo = seoByLanguage.get(languageCode)?.[pageName];
   const site = seoByLanguage.get(languageCode)?._site || {};
   const schemaLocale = schemaLocaleByLanguage[languageCode] || {};
   const faqEntities = visibleFaqEntities($);
-  const contentTypes = new Set(['Article', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
+  const applicationBreadcrumbLabels = {
+    de: 'Anwendungen',
+    ja: '用途別情報',
+    ru: 'Применение',
+  };
+  const contentTypes = new Set(['Article', 'Blog', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
   const localizedCollectionAbout = {
     de: [
       'Drehdurchführungen für Druckluft',
@@ -1465,6 +1713,48 @@ function updateJsonLd($, languageCode, pageName) {
       'Задние патроны станков лазерной резки труб',
     ],
   };
+  const bottleCappingCreativeWork = {
+    de: {
+      name: 'BP-2P-16-0001 in einer Kunden-Produktionsmaschine zum Verschließen von Flaschen',
+      description: 'Ein vom Kunden freigegebener Produktionsnachweis bestätigt zwei getrennte Druckluftkanäle, über die ein pneumatischer 3-Finger-Zentrischgreifer Druckluft zum Schließen und Öffnen erhält. Der Greifer hält und dreht den Flaschenverschluss. Die Identität des Kunden wird nicht genannt; Anschlussbelegung, Betriebsbedingungen und Maschinenschnittstelle bleiben anlagenspezifisch.',
+    },
+    ja: {
+      name: 'お客様のボトルキャッピング生産設備に組み込まれたBP-2P-16-0001',
+      description: 'お客様から公開許可を得た生産実績として、独立した2流路を介して、ボトルキャップを把持・回転させる3爪エアチャックに把持・開放用圧縮空気を供給することを確認しています。お客様名は非公開で、ポート機能、使用条件、装置取合いは実機ごとの確認が必要です。',
+    },
+    ru: {
+      name: 'BP-2P-16-0001 на производственной укупорочной машине заказчика',
+      description: 'Разрешённая заказчиком к публикации производственная фотография подтверждает подачу сжатого воздуха по двум независимым каналам для зажима и разжима трёхкулачкового пневматического захвата, который удерживает и вращает крышку. Название заказчика не раскрывается; назначение портов, рабочие условия и интерфейс машины зависят от конкретной установки.',
+    },
+  };
+  const bottleCappingAlternativeCreativeWork = {
+    de: {
+      name: 'Eignung der BP-2P-08-0001 für einen pneumatischen 3-Finger-Zentrischgreifer für Flaschenverschlüsse',
+      description: 'Der Projektinhaber bestätigt, dass BP-2P-08-0001 für diese Zweikanal-Druckluftanwendung beim Verschließen von Flaschen ausgewählt werden kann. Das vom Kunden freigegebene Produktionsfoto zeigt BP-2P-16-0001 und nicht BP-2P-08-0001. Kanalzahl, Einbauschnittstelle, Druck, Drehzahl, Abmessungen und freigegebene Zeichnung sind anwendungsspezifisch zu bestätigen.',
+    },
+    ja: {
+      name: 'ボトルキャップ用3爪エアチャックに対するBP-2P-08-0001の適用範囲',
+      description: 'Begapunkは、BP-2P-08-0001をこの2流路の圧縮空気式キャッピング用途で選定できることを確認しています。ただし、お客様から公開許可を得た生産設備の写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001ではありません。流路数、取付インターフェース、圧力、回転数、寸法、承認図面は用途ごとに確認が必要です。',
+    },
+    ru: {
+      name: 'Применимость BP-2P-08-0001 для трёхкулачкового пневматического захвата крышек',
+      description: 'Begapunk подтверждает, что BP-2P-08-0001 можно выбрать для укупорочной установки с двумя независимыми каналами подачи сжатого воздуха. На разрешённой заказчиком производственной фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Число каналов, монтажный интерфейс, давление, частоту вращения, размеры и утверждённый чертёж необходимо подтвердить для конкретного применения.',
+    },
+  };
+  const cncSawFixtureCreativeWork = {
+    de: {
+      name: 'BP-2P-130-0001 in einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine',
+      description: 'Ein vom Kunden freigegebener Produktionsnachweis bestätigt BP-2P-130-0001 an der Rückseite einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine. Zwei getrennte Druckluftkanäle übernehmen das Spannen und Lösen. Für vergleichbare Anwendungen sind Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle anhand der Vorrichtungszeichnung und freigegebener Produktdaten technisch abzustimmen.',
+    },
+    ja: {
+      name: 'CNC丸鋸盤用特注クランプ治具に組み込まれたBP-2P-130-0001',
+      description: 'お客様から公開許可を得た生産設備の映像により、CNC丸鋸盤用特注クランプ治具の後端に組み込まれたBP-2P-130-0001を確認しています。独立した2つの圧縮空気流路でクランプ／アンクランプを行います。同様の設備では、治具図面と承認済み製品データに基づき、ポート配置、圧力、回転数、運転サイクル、取合いを確認します。',
+    },
+    ru: {
+      name: 'BP-2P-130-0001 в нестандартном зажимном приспособлении круглопильного станка с ЧПУ',
+      description: 'Разрешённое заказчиком производственное подтверждение показывает BP-2P-130-0001 в задней части нестандартного зажимного приспособления круглопильного станка с ЧПУ. Два независимых канала сжатого воздуха используются для зажима и разжима. Для аналогичного оборудования назначение портов, давление, частота вращения, режим работы и монтажное сопряжение согласуются по чертежу приспособления и утверждённым данным изделия.',
+    },
+  };
   $('script[type="application/ld+json"]').each((_, element) => {
     try {
       const data = JSON.parse($(element).html());
@@ -1481,6 +1771,63 @@ function updateJsonLd($, languageCode, pageName) {
         for (const [key, child] of Object.entries(value)) value[key] = visit(child);
         const types = schemaTypes(value);
         if ([...types].some((type) => contentTypes.has(type))) value.inLanguage = languageCode;
+        if (types.has('CreativeWork') && String(value['@id'] || '').endsWith('#bottle-capping-production-application')) {
+          const localizedCreativeWork = bottleCappingCreativeWork[languageCode];
+          if (!localizedCreativeWork) throw new Error(`Missing bottle-capping CreativeWork localization for ${languageCode}.`);
+          value['@id'] = `${localizedUrl}#bottle-capping-production-application`;
+          value.url = `${localizedUrl}#panel-compat`;
+          value.name = localizedCreativeWork.name;
+          value.description = localizedCreativeWork.description;
+          value.inLanguage = languageCode;
+        }
+        if (types.has('CreativeWork') && String(value['@id'] || '').endsWith('#bottle-capping-application-fit')) {
+          const localizedCreativeWork = bottleCappingAlternativeCreativeWork[languageCode];
+          if (!localizedCreativeWork) throw new Error(`Missing alternative bottle-capping CreativeWork localization for ${languageCode}.`);
+          value['@id'] = `${localizedUrl}#bottle-capping-application-fit`;
+          value.url = `${localizedUrl}#panel-compat`;
+          value.name = localizedCreativeWork.name;
+          value.description = localizedCreativeWork.description;
+          value.inLanguage = languageCode;
+        }
+        if (types.has('CreativeWork') && String(value['@id'] || '').endsWith('#bp-2p-130-cnc-saw-fixture-evidence')) {
+          const localizedCreativeWork = cncSawFixtureCreativeWork[languageCode];
+          if (!localizedCreativeWork) throw new Error(`Missing CNC saw-fixture CreativeWork localization for ${languageCode}.`);
+          const localizedApplicationUrl = pageUrl(languageCode, 'application-cnc-pneumatic-clamping.html');
+          value['@id'] = `${localizedApplicationUrl}#bp-2p-130-cnc-saw-fixture-evidence`;
+          value.url = `${localizedApplicationUrl}#verified-bp-2p-130-cnc-saw-fixture`;
+          value.name = localizedCreativeWork.name;
+          value.description = localizedCreativeWork.description;
+          value.image = `${config.siteUrl}/images/applications/cnc-pneumatic-clamping/bp-2p-130-custom-cnc-circular-saw-fixture-rear-view.jpg`;
+          value.inLanguage = languageCode;
+        }
+        if (types.has('Blog')) {
+          value['@id'] = `${localizedUrl}#blog`;
+          value.name = seo.h1;
+          value.url = localizedUrl;
+          value.description = seo.description;
+        }
+        let linkedBlogPostPage = null;
+        if (types.has('BlogPosting') && pageName === 'blog.html' && typeof value.url === 'string') {
+          try {
+            const postUrl = new URL(value.url);
+            const siteOrigin = new URL(config.siteUrl).origin;
+            const candidate = postUrl.pathname.split('/').filter(Boolean).at(-1);
+            if (postUrl.origin === siteOrigin && candidate?.startsWith('blog-') && configuredPages.has(candidate)) {
+              linkedBlogPostPage = candidate;
+            }
+          } catch {
+            // Leave malformed BlogPosting URLs for the localized-site validator to report.
+          }
+          if (!linkedBlogPostPage) throw new Error(`${languageCode}/blog.html: BlogPosting URL does not resolve to a configured article page.`);
+          const linkedSeo = seoByLanguage.get(languageCode)?.[linkedBlogPostPage];
+          if (!linkedSeo?.h1 || !linkedSeo?.description) {
+            throw new Error(`${languageCode}/${linkedBlogPostPage}: curated BlogPosting SEO is incomplete.`);
+          }
+          value.headline = linkedSeo.h1;
+          value.description = linkedSeo.description;
+          value.url = pageUrl(languageCode, linkedBlogPostPage);
+          value.inLanguage = languageCode;
+        }
         if (types.has('Product')) {
           value.name = seo.h1;
           value.description = seo.description;
@@ -1503,7 +1850,7 @@ function updateJsonLd($, languageCode, pageName) {
           value.url = localizedUrl;
           if (localizedCollectionAbout[languageCode]) value.about = localizedCollectionAbout[languageCode];
         }
-        if (types.has('Article') || types.has('BlogPosting') || types.has('TechArticle')) {
+        if ((types.has('Article') || types.has('BlogPosting') || types.has('TechArticle')) && !linkedBlogPostPage) {
           value.headline = seo.h1;
           value.description = seo.description;
         }
@@ -1522,7 +1869,12 @@ function updateJsonLd($, languageCode, pageName) {
               const itemUrl = new URL(item.item);
               if (itemUrl.origin !== new URL(config.siteUrl).origin) continue;
               const itemPage = itemUrl.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
-              if (config.pages.includes(itemPage)) item.item = pageUrl(languageCode, itemPage);
+              if (config.pages.includes(itemPage)) {
+                item.item = pageUrl(languageCode, itemPage);
+                if (item?.position === 2 && itemPage === 'applications.html') {
+                  item.name = applicationBreadcrumbLabels[languageCode] || item.name;
+                }
+              }
             } catch {
               // Keep malformed or non-URL breadcrumb values for the validator to report.
             }
@@ -1542,8 +1894,11 @@ function updateJsonLd($, languageCode, pageName) {
         return;
       }
       $(element).text(JSON.stringify(localized));
-    } catch {
-      // Existing JSON-LD validity is handled by the release verifier.
+    } catch (error) {
+      if (strict) {
+        throw new Error(`${languageCode}/${pageName}: JSON-LD localization failed: ${error.message}`, { cause: error });
+      }
+      // Existing JSON-LD validity is handled by the release verifier in non-strict maintenance modes.
     }
   });
 }
@@ -1657,13 +2012,15 @@ function applyTranslations(page, language, catalog, cache) {
   $('form#quoteForm, form[action*="send_inquiry.php"]').each((_, form) => {
     $(form).prepend(`<input type="hidden" name="source_language" value="${language.code}">`);
   });
+  applyContactRfqCopy($, language.code, pageName);
   let localized = $.html().replace(/[ \t]+$/gm, '');
   if (language.code === 'ja') localized = normalizeJapaneseOutput(localized);
   if (language.code === 'de') localized = normalizeGermanOutput(localized);
   if (language.code === 'ru') localized = normalizeRussianOutput(localized);
   const finalized = load(localized, { decodeEntities: false });
+  applyProductDetailUiCopy(finalized, language.code, pageName);
   applySeoMetadata(finalized, language.code, pageName);
-  updateJsonLd(finalized, language.code, pageName);
+  updateJsonLd(finalized, language.code, pageName, true);
   return patchDiscoveryRobotsMeta(
     finalized.html().replace(/[ \t]+$/gm, ''),
     discoveryExcludedPages.has(pageName),
@@ -1741,7 +2098,7 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
   );
 }
 
-async function writeLocalizedSearchIndex(language, outputDirectory) {
+async function renderLocalizedSearchIndex(language, outputDirectory) {
   const searchIndex = JSON.parse(await fs.readFile(path.join(sourceRoot, 'search-index.json'), 'utf8'));
   const conservativeSearchKeywords = {
     de: [
@@ -1773,6 +2130,20 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
     ja: ['全数漏れ検査', '各回路漏れ検査', '保圧工程', '圧縮空気 1.0 MPa', '不適合品管理'],
     ru: ['100%-ный контроль герметичности', 'поканальная проверка', 'выдержка под давлением', 'сжатый воздух 1,0 МПа', 'изоляция изделий NG'],
   };
+  const applicationCaseKeywords = {
+    de: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'sensorüberwachtes pneumatisches Spannfutter', 'pneumatisches Spannfutter', 'Sensorsignalübertragung'],
+    },
+    ja: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', '外部センサ信号伝送', 'エアチャック', '空圧回路', '電気信号伝送'],
+    },
+    ru: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'пневматический патрон с контролем по датчикам', 'пневматический патрон', 'передача сигналов датчиков'],
+    },
+  };
   const localizedItems = [];
   for (const item of searchIndex) {
     if (discoveryExcludedPages.has(item.url)) continue;
@@ -1784,6 +2155,7 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
     const $ = load(html, { decodeEntities: false });
     const content = $('body').clone();
     content.find('script,style,header,nav,footer,.cookie-banner,.i18n-switcher').remove();
+    content.find('a.skip-link[data-search-exclude][href="#main-content"]').remove();
     localizedItems.push({
       ...item,
       title: $('title').text().trim() || item.title,
@@ -1797,14 +2169,17 @@ async function writeLocalizedSearchIndex(language, outputDirectory) {
           ? { keywords: manufacturingQualityKeywords[language.code] }
         : item.url === 'production-inspection-testing.html'
           ? { keywords: productionInspectionKeywords[language.code] }
+        : applicationCaseKeywords[language.code]?.[item.url]
+          ? { keywords: applicationCaseKeywords[language.code][item.url] }
         : {}),
     });
   }
-  await fs.writeFile(
-    path.join(outputDirectory, 'search-index.json'),
-    `${JSON.stringify(localizedItems, null, 2)}\n`,
-    'utf8',
-  );
+  return localizedItems;
+}
+
+async function writeLocalizedSearchIndex(language, outputDirectory) {
+  const localizedItems = await renderLocalizedSearchIndex(language, outputDirectory);
+  await fs.writeFile(path.join(outputDirectory, 'search-index.json'), `${JSON.stringify(localizedItems, null, 2)}\n`, 'utf8');
 }
 
 const llmsLabels = {
@@ -1827,6 +2202,11 @@ const conservativeLlmsDescription = {
   ja: '空気用2流路ロータリージョイントBP-2P-50-0001。粉じん環境向けの保護カバー・ラビリンス構造です。認証済みIP保護等級の表示はありません。',
   ru: 'Двухканальное соединение BP-2P-50-0001 для воздуха с защитным кожухом и лабиринтом для запылённых условий. Сертифицированная степень защиты IP не заявляется.',
 };
+const cncSawFixtureLlmsDescription = {
+  de: 'Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.',
+  ja: 'お客様から公開許可を得た実生産事例を含む選定ガイドです。低速のCNC丸鋸盤用特注クランプ治具にBP-2P-130-0001を組み込み、独立した2つの圧縮空気流路でクランプ／アンクランプを行います。',
+  ru: 'Руководство по подбору с разрешённым заказчиком производственным примером BP-2P-130-0001 в низкооборотном нестандартном зажимном приспособлении круглопильного станка с ЧПУ; два независимых канала сжатого воздуха используются для зажима и разжима.',
+};
 
 function llmsGroup(pageName) {
   if (/^BP-/.test(pageName) || ['products.html', 'products-p2.html', 'product-comparison.html'].includes(pageName)) return 'products';
@@ -1835,7 +2215,7 @@ function llmsGroup(pageName) {
   return 'other';
 }
 
-async function writeLocalizedLlms(language, outputDirectory) {
+function renderLocalizedLlms(language) {
   const seo = seoByLanguage.get(language.code);
   const labels = llmsLabels[language.code];
   if (!seo || !labels) throw new Error(`${language.code}: localized llms configuration is missing.`);
@@ -1846,15 +2226,21 @@ async function writeLocalizedLlms(language, outputDirectory) {
     if (!entry) throw new Error(`${language.code}/${pageName}: cannot add missing SEO entry to llms.txt.`);
     const description = pageName === 'BP-2P-50-0001.html'
       ? conservativeLlmsDescription[language.code]
-      : entry.description;
+      : pageName === 'application-cnc-pneumatic-clamping.html'
+        ? cncSawFixtureLlmsDescription[language.code]
+        : entry.description;
     grouped.get(llmsGroup(pageName)).push(`- [${entry.title}](${pageUrl(language.code, pageName)}): ${description}`);
   }
   const sections = [...grouped.entries()].map(([group, lines]) => `## ${labels.sections[group]}\n\n${lines.join('\n')}`).join('\n\n');
-  const contents = `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [Multilingual sitemap](${config.siteUrl}/sitemap-i18n.xml)\n- [English AI index](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
-  await fs.writeFile(path.join(outputDirectory, 'llms.txt'), contents, 'utf8');
+  return `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [Multilingual sitemap](${config.siteUrl}/sitemap-i18n.xml)\n- [English AI index](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
+}
+
+async function writeLocalizedLlms(language, outputDirectory) {
+  await fs.writeFile(path.join(outputDirectory, 'llms.txt'), renderLocalizedLlms(language), 'utf8');
 }
 
 async function buildLocalizedPages(catalog) {
+  await assertExternalOutputRoot('Localized page build');
   const pages = await loadPages(translationManagedPages);
   const caches = await loadTranslationCaches();
   assertCompleteTranslationCoverage(pages, catalog, caches);
@@ -1875,7 +2261,341 @@ async function buildLocalizedPages(catalog) {
   }
 }
 
+async function verifyContactGeneration(catalog) {
+  const normalizeScopeMarkup = (value) => String(value).replace(/\r\n?/g, '\n').trim();
+  const scopeHash = (value) => crypto.createHash('sha256').update(value).digest('hex').toUpperCase();
+  const stringLeafCount = (value) => {
+    if (typeof value === 'string') return value ? 1 : 0;
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return 0;
+    return Object.values(value).reduce((total, child) => total + stringLeafCount(child), 0);
+  };
+  const deeplyEqual = (left, right) => {
+    if (Object.is(left, right)) return true;
+    if (!left || !right || typeof left !== 'object' || typeof right !== 'object') return false;
+    if (Array.isArray(left) || Array.isArray(right)) {
+      return Array.isArray(left)
+        && Array.isArray(right)
+        && left.length === right.length
+        && left.every((value, index) => deeplyEqual(value, right[index]));
+    }
+    const leftKeys = Object.keys(left).sort();
+    const rightKeys = Object.keys(right).sort();
+    return sameKeys(leftKeys, rightKeys)
+      && leftKeys.every((key) => deeplyEqual(left[key], right[key]));
+  };
+  const canonicalJson = (value) => JSON.stringify((function sortValue(input) {
+    if (Array.isArray(input)) return input.map(sortValue);
+    if (!input || typeof input !== 'object') return input;
+    return Object.fromEntries(
+      Object.keys(input).sort().map((key) => [key, sortValue(input[key])]),
+    );
+  }(value)));
+  const domScopes = Object.freeze([
+    ['section.bp-rfq-hero', 'section.bp-rfq-hero'],
+    ['main.bp-rfq-main', 'main.bp-rfq-main'],
+    ['section.bp-rfq-details', 'section.bp-rfq-details'],
+    ['form#quoteForm', 'form#quoteForm'],
+  ]);
+  const jsonScope = 'script#contact-rfq-copy[type="application/json"]';
+  const behaviorScope = 'RFQ behavior script';
+  const mismatches = [];
+
+  const uniqueNode = ($, selector, fileLabel, side, scopeLabel = selector) => {
+    const nodes = $(selector);
+    if (nodes.length !== 1) {
+      mismatches.push(
+        `${fileLabel} [${scopeLabel}] ${side}: expected exactly one node; found ${nodes.length}`,
+      );
+      return null;
+    }
+    return nodes.first();
+  };
+
+  const executableContactScript = ($, fileLabel, side) => {
+    const candidates = $('script').toArray().filter((node) => {
+      const element = $(node);
+      if (element.is('[src]')) return false;
+      const type = String(element.attr('type') || '').trim().toLowerCase();
+      const executable = !type
+        || type === 'module'
+        || /^(?:text|application)\/(?:java|ecma)script(?:;|$)/.test(type);
+      const source = element.html() || '';
+      return executable
+        && source.includes('const rfqCopyData')
+        && source.includes('REQUEST_CODE_MAP');
+    });
+    if (candidates.length !== 1) {
+      mismatches.push(
+        `${fileLabel} [${behaviorScope}] ${side}: expected exactly one executable inline script; found ${candidates.length}`,
+      );
+      return null;
+    }
+    return $(candidates[0]);
+  };
+
+  const inspectDocument = ($, fileLabel, side, languageCode) => {
+    const scopes = new Map();
+    for (const [scopeLabel, selector] of domScopes) {
+      const node = uniqueNode($, selector, fileLabel, side, scopeLabel);
+      if (node) scopes.set(scopeLabel, normalizeScopeMarkup($.html(node[0])));
+    }
+
+    const jsonNode = uniqueNode($, jsonScope, fileLabel, side, jsonScope);
+    let jsonCopy = null;
+    if (jsonNode) {
+      const rawJson = jsonNode.html() || '';
+      try {
+        jsonCopy = JSON.parse(rawJson);
+        assertContactRfqCopy(jsonCopy, `${fileLabel} ${side}`);
+        if (stringLeafCount(jsonCopy) !== 38) {
+          mismatches.push(`${fileLabel} [${jsonScope}] ${side}: expected 38 non-empty string leaves.`);
+        }
+        const expectedSeparator = languageCode === 'ja' ? '：' : ': ';
+        if (jsonCopy.contextSeparator !== expectedSeparator) {
+          mismatches.push(
+            `${fileLabel} [${jsonScope}] ${side}: contextSeparator must be ${JSON.stringify(expectedSeparator)}.`,
+          );
+        }
+        if (rawJson.includes('<') || rawJson.includes('\u2028') || rawJson.includes('\u2029')) {
+          mismatches.push(
+            `${fileLabel} [${jsonScope}] ${side}: script-sensitive characters are not safely escaped.`,
+          );
+        }
+        const safelySerialized = serializeContactRfqCopy(jsonCopy);
+        if (safelySerialized.includes('<')
+          || safelySerialized.includes('\u2028')
+          || safelySerialized.includes('\u2029')
+          || !deeplyEqual(JSON.parse(safelySerialized), jsonCopy)) {
+          mismatches.push(
+            `${fileLabel} [${jsonScope}] ${side}: safe serialization contract failed.`,
+          );
+        }
+        scopes.set(jsonScope, canonicalJson(jsonCopy));
+      } catch (error) {
+        mismatches.push(`${fileLabel} [${jsonScope}] ${side}: ${error.message}`);
+      }
+    }
+
+    const behaviorNode = executableContactScript($, fileLabel, side);
+    if (behaviorNode) {
+      scopes.set(behaviorScope, normalizeScopeMarkup(behaviorNode.html() || ''));
+    }
+    return { scopes, jsonCopy };
+  };
+
+  const compareScope = (languageCode, scopeLabel, generatedValue, currentValue, report) => {
+    if (generatedValue === undefined || currentValue === undefined) return;
+    const generatedHash = scopeHash(generatedValue);
+    const currentHash = scopeHash(currentValue);
+    if (generatedValue !== currentValue) {
+      mismatches.push(
+        `${languageCode}/contact.html [${scopeLabel}]: generated SHA-256 ${generatedHash} `
+        + `does not match current SHA-256 ${currentHash}`,
+      );
+      return;
+    }
+    report.push({
+      language: languageCode,
+      file: `${languageCode}/contact.html`,
+      scope: scopeLabel,
+      sha256: generatedHash,
+    });
+  };
+
+  const [sourcePage] = await loadPages(['contact.html']);
+  const sourceInspection = inspectDocument(sourcePage.$, 'contact.html', 'source', config.sourceLanguage.code);
+  const sourceCopy = sourceInspection.jsonCopy;
+  if (sourceCopy && sourceCopy.contextSeparator !== ': ') {
+    mismatches.push(`contact.html [${jsonScope}] source: contextSeparator must be ": ".`);
+  }
+  const caches = await loadTranslationCaches();
+  assertCompleteTranslationCoverage([sourcePage], catalog, caches);
+  const comparisons = [];
+  for (const language of activeLanguages) {
+    const html = await fs.readFile(path.join(sourceRoot, 'contact.html'), 'utf8');
+    const $ = load(html, { decodeEntities: false });
+    const page = { pageName: 'contact.html', $, records: collectRecords($) };
+    const localized = applyTranslations(page, language, catalog, caches.get(language.code));
+    const current = await fs.readFile(
+      path.join(sourceRoot, language.code, 'contact.html'),
+      'utf8',
+    );
+    const generatedInspection = inspectDocument(
+      load(localized, { decodeEntities: false }),
+      `${language.code}/contact.html`,
+      'generated',
+      language.code,
+    );
+    const currentInspection = inspectDocument(
+      load(current, { decodeEntities: false }),
+      `${language.code}/contact.html`,
+      'current',
+      language.code,
+    );
+    if (generatedInspection.jsonCopy && currentInspection.jsonCopy
+      && !deeplyEqual(generatedInspection.jsonCopy, currentInspection.jsonCopy)) {
+      mismatches.push(
+        `${language.code}/contact.html [${jsonScope}]: generated and current JSON are not deeply equal.`,
+      );
+    }
+    for (const [scopeLabel] of domScopes) {
+      compareScope(
+        language.code,
+        scopeLabel,
+        generatedInspection.scopes.get(scopeLabel),
+        currentInspection.scopes.get(scopeLabel),
+        comparisons,
+      );
+    }
+    compareScope(
+      language.code,
+      jsonScope,
+      generatedInspection.scopes.get(jsonScope),
+      currentInspection.scopes.get(jsonScope),
+      comparisons,
+    );
+    compareScope(
+      language.code,
+      behaviorScope,
+      generatedInspection.scopes.get(behaviorScope),
+      currentInspection.scopes.get(behaviorScope),
+      comparisons,
+    );
+  }
+  if (mismatches.length) {
+    throw new Error(`Contact-owned region mismatch. No file was written.\n- ${mismatches.join('\n- ')}`);
+  }
+  console.log(JSON.stringify({
+    result: 'Contact-owned regions verified',
+    targetLanguageCount: activeLanguages.length,
+    wroteFiles: false,
+    comparisons,
+  }));
+}
+
+function inspectProductDetailUi($, languageCode, pageName, side) {
+  const label = `${languageCode}/${pageName} ${side}`;
+  const copy = productDetailUiContract.locales[languageCode];
+  const uniqueNode = (selector, scope) => {
+    const nodes = $(selector);
+    if (nodes.length !== 1) {
+      throw new Error(`${label}: expected one ${scope}; found ${nodes.length}.`);
+    }
+    return nodes.first();
+  };
+  if (!$('body').hasClass('page-product-detail')) {
+    throw new Error(`${label}: page-product-detail body class is missing.`);
+  }
+  const skip = uniqueNode(PRODUCT_UI_SKIP_SELECTOR, 'skip link');
+  const imagesRegion = uniqueNode(PRODUCT_UI_IMAGES_SELECTOR, 'product images region');
+  const informationRegion = uniqueNode(PRODUCT_UI_INFO_SELECTOR, 'product information region');
+  const main = uniqueNode('main#main-content[tabindex="-1"]', 'main content');
+  const tabs = main.find('.pd-tabs > a.pd-tab');
+  const panels = main.find('.pd-panel');
+  const details = main.find('details.faq-item');
+  const summaries = details.children('summary.faq-question');
+  const thumbnails = main.find('.thumbnail-row > a.thumb-link');
+  if (tabs.length !== 4 || panels.length !== 4 || details.length !== 5
+    || summaries.length !== 5 || thumbnails.length !== 3) {
+    throw new Error(
+      `${label}: expected 4 tabs / 4 panels / 5 FAQs / 5 summaries / 3 thumbnails; `
+      + `found ${tabs.length}/${panels.length}/${details.length}/${summaries.length}/${thumbnails.length}.`,
+    );
+  }
+  const controlled = {
+    skipLink: skip.text(),
+    productImagesLabel: imagesRegion.attr('aria-label') || '',
+    productInformationLabel: informationRegion.attr('aria-label') || '',
+  };
+  for (const [key, expected] of Object.entries(copy)) {
+    if (controlled[key] !== expected) {
+      throw new Error(`${label}: ${key} does not match the approved manual copy.`);
+    }
+  }
+  const textWithoutIcons = (collection) => collection.map((_, element) => {
+    const node = $(element).clone();
+    node.find('.icon,.arrow').remove();
+    return compactText(node.text());
+  }).get();
+  return {
+    controlled,
+    tabTexts: textWithoutIcons(tabs),
+    summaryTexts: textWithoutIcons(summaries),
+    counts: {
+      tabs: tabs.length,
+      panels: panels.length,
+      details: details.length,
+      summaries: summaries.length,
+      thumbnails: thumbnails.length,
+    },
+  };
+}
+
+async function verifyProductUiGeneration(catalog) {
+  const sourcePages = await loadPages(productDetailPageNames);
+  const caches = await loadTranslationCaches();
+  assertCompleteTranslationCoverage(sourcePages, catalog, caches);
+  const sourceCounts = { tabs: 0, panels: 0, details: 0, summaries: 0, thumbnails: 0 };
+  for (const sourcePage of sourcePages) {
+    const inspection = inspectProductDetailUi(
+      sourcePage.$,
+      config.sourceLanguage.code,
+      sourcePage.pageName,
+      'source',
+    );
+    for (const key of Object.keys(sourceCounts)) sourceCounts[key] += inspection.counts[key];
+  }
+
+  const generatedCounts = { tabs: 0, panels: 0, details: 0, summaries: 0, thumbnails: 0 };
+  let generatedPageCount = 0;
+  let controlledComparisonCount = 0;
+  for (const language of activeLanguages) {
+    for (const pageName of productDetailPageNames) {
+      const html = await fs.readFile(path.join(sourceRoot, pageName), 'utf8');
+      const $ = load(html, { decodeEntities: false });
+      const page = { pageName, $, records: collectRecords($) };
+      const localized = applyTranslations(page, language, catalog, caches.get(language.code));
+      const generatedInspection = inspectProductDetailUi(
+        load(localized, { decodeEntities: false }),
+        language.code,
+        pageName,
+        'generated',
+      );
+      const currentHtml = await fs.readFile(path.join(sourceRoot, language.code, pageName), 'utf8');
+      const currentInspection = inspectProductDetailUi(
+        load(currentHtml, { decodeEntities: false }),
+        language.code,
+        pageName,
+        'current',
+      );
+      if (JSON.stringify(generatedInspection.controlled) !== JSON.stringify(currentInspection.controlled)) {
+        throw new Error(`${language.code}/${pageName}: generated and current manual UI copy differ.`);
+      }
+      if (JSON.stringify(generatedInspection.tabTexts) !== JSON.stringify(currentInspection.tabTexts)) {
+        throw new Error(`${language.code}/${pageName}: generated and current tab labels differ.`);
+      }
+      if (JSON.stringify(generatedInspection.summaryTexts) !== JSON.stringify(currentInspection.summaryTexts)) {
+        throw new Error(`${language.code}/${pageName}: generated and current FAQ summary labels differ.`);
+      }
+      for (const key of Object.keys(generatedCounts)) generatedCounts[key] += generatedInspection.counts[key];
+      generatedPageCount += 1;
+      controlledComparisonCount += Object.keys(generatedInspection.controlled).length;
+    }
+  }
+  console.log(JSON.stringify({
+    result: 'Product-detail UI generation verified',
+    sourcePageCount: sourcePages.length,
+    targetLanguageCount: activeLanguages.length,
+    generatedPageCount,
+    controlledComparisonCount,
+    sourceCounts,
+    generatedCounts,
+    wroteFiles: false,
+  }));
+}
+
 async function refreshLocalizedMetadata() {
+  await assertExternalOutputRoot('Localized metadata refresh');
   for (const language of activeLanguages) {
     const outputDirectory = path.join(outputRoot, language.code);
     for (const pageName of translationManagedPages) {
@@ -1883,7 +2603,7 @@ async function refreshLocalizedMetadata() {
       const html = await fs.readFile(filePath, 'utf8');
       const $ = load(html, { decodeEntities: false });
       applySeoMetadata($, language.code, pageName);
-      updateJsonLd($, language.code, pageName);
+      updateJsonLd($, language.code, pageName, true);
       const refreshed = patchDiscoveryRobotsMeta(
         $.html().replace(/[ \t]+$/gm, ''),
         discoveryExcludedPages.has(pageName),
@@ -1894,6 +2614,121 @@ async function refreshLocalizedMetadata() {
     await writeLocalizedLlms(language, outputDirectory);
     console.log(`${language.code}: refreshed metadata and structured data for ${translationManagedPages.length} translation-managed pages; manual localized pages were not rewritten.`);
   }
+}
+
+function canonicalJson(value) {
+  const sortValue = (input) => {
+    if (Array.isArray(input)) return input.map(sortValue);
+    if (!input || typeof input !== 'object') return input;
+    return Object.fromEntries(
+      Object.keys(input).sort().map((key) => [key, sortValue(input[key])]),
+    );
+  };
+  return JSON.stringify(sortValue(value));
+}
+
+function inspectLocalizedMetadata($, languageCode, pageName, phase) {
+  const uniqueText = (selector, label) => {
+    const nodes = $(selector);
+    if (nodes.length !== 1) {
+      throw new Error(`${languageCode}/${pageName} [${phase}/${label}]: expected one node, found ${nodes.length}.`);
+    }
+    return compactText(nodes.first().text());
+  };
+  const uniqueContent = (selector, label) => {
+    const nodes = $(selector);
+    if (nodes.length !== 1) {
+      throw new Error(`${languageCode}/${pageName} [${phase}/${label}]: expected one node, found ${nodes.length}.`);
+    }
+    return nodes.first().attr('content') || '';
+  };
+  const jsonLd = $('script[type="application/ld+json"]').map((index, element) => {
+    try {
+      return canonicalJson(JSON.parse($(element).html() || ''));
+    } catch (error) {
+      throw new Error(`${languageCode}/${pageName} [${phase}/json-ld-${index + 1}]: ${error.message}`);
+    }
+  }).get();
+  const robotsNodes = $('meta[name="robots"]');
+  if (robotsNodes.length > 1) {
+    throw new Error(`${languageCode}/${pageName} [${phase}/robots]: expected at most one node, found ${robotsNodes.length}.`);
+  }
+  return {
+    title: uniqueText('title', 'title'),
+    description: uniqueContent('meta[name="description"]', 'description'),
+    h1: uniqueText('h1', 'h1'),
+    h1Html: $('h1').first().html()?.trim() || '',
+    ogTitle: uniqueContent('meta[property="og:title"]', 'og-title'),
+    ogDescription: uniqueContent('meta[property="og:description"]', 'og-description'),
+    twitterTitle: uniqueContent('meta[name="twitter:title"]', 'twitter-title'),
+    twitterDescription: uniqueContent('meta[name="twitter:description"]', 'twitter-description'),
+    keywordCount: $('meta[name="keywords"]').length,
+    robots: robotsNodes.first().attr('content') || '',
+    robotsManagedBy: robotsNodes.first().attr('data-discovery-exclusion') || '',
+    jsonLd,
+  };
+}
+
+async function verifyLocalizedMetadata() {
+  const failures = [];
+  let checkedPages = 0;
+  let checkedSearchIndexes = 0;
+  let checkedLlmsIndexes = 0;
+  for (const language of activeLanguages) {
+    for (const pageName of translationManagedPages) {
+      const filePath = path.join(sourceRoot, language.code, pageName);
+      const html = await fs.readFile(filePath, 'utf8');
+      const current = inspectLocalizedMetadata(
+        load(html, { decodeEntities: false }),
+        language.code,
+        pageName,
+        'current',
+      );
+      const expected$ = load(html, { decodeEntities: false });
+      applySeoMetadata(expected$, language.code, pageName);
+      updateJsonLd(expected$, language.code, pageName, true);
+      const expectedHtml = patchDiscoveryRobotsMeta(
+        expected$.html(),
+        discoveryExcludedPages.has(pageName),
+      );
+      const expected = inspectLocalizedMetadata(
+        load(expectedHtml, { decodeEntities: false }),
+        language.code,
+        pageName,
+        'expected',
+      );
+      if (JSON.stringify(current) !== JSON.stringify(expected)) {
+        const changedScopes = Object.keys(current).filter(
+          (key) => JSON.stringify(current[key]) !== JSON.stringify(expected[key]),
+        );
+        failures.push(`${language.code}/${pageName}: ${changedScopes.join(', ')}`);
+      }
+      checkedPages += 1;
+    }
+    const languageDirectory = path.join(sourceRoot, language.code);
+    const currentSearchIndex = JSON.parse(await fs.readFile(path.join(languageDirectory, 'search-index.json'), 'utf8'));
+    const expectedSearchIndex = await renderLocalizedSearchIndex(language, languageDirectory);
+    if (canonicalJson(currentSearchIndex) !== canonicalJson(expectedSearchIndex)) {
+      failures.push(`${language.code}/search-index.json: generated semantic content differs.`);
+    }
+    checkedSearchIndexes += 1;
+    const currentLlms = (await fs.readFile(path.join(languageDirectory, 'llms.txt'), 'utf8')).replace(/\r\n?/g, '\n');
+    const expectedLlms = renderLocalizedLlms(language).replace(/\r\n?/g, '\n');
+    if (currentLlms !== expectedLlms) failures.push(`${language.code}/llms.txt: generated content differs.`);
+    checkedLlmsIndexes += 1;
+  }
+  if (failures.length) {
+    throw new Error(`Localized metadata verification failed (${failures.length}):\n${failures.join('\n')}`);
+  }
+  console.log(JSON.stringify({
+    result: 'Localized metadata and structured data verified',
+    checkedPages,
+    targetLanguageCount: activeLanguages.length,
+    translationManagedPageCount: translationManagedPages.length,
+    checkedSearchIndexes,
+    checkedLlmsIndexes,
+    wroteFiles: false,
+  }));
 }
 
 function alternateMarkup(pageName) {
@@ -1962,6 +2797,7 @@ async function writeInternationalSitemap() {
 }
 
 async function integrateLocalizedSite() {
+  await assertExternalOutputRoot('Localized site integration');
   for (const language of activeLanguages) {
     for (const pageName of config.pages) {
       await fs.access(path.join(outputRoot, language.code, pageName));
@@ -1977,7 +2813,6 @@ async function integrateLocalizedSite() {
   console.log(`Generated sitemap-i18n.xml for ${(activeLanguages.length + 1) * sitemapPageCount} URLs.`);
 }
 
-const pages = await loadPages();
 let catalog;
 try {
   catalog = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
@@ -1985,19 +2820,30 @@ try {
   if (error.code !== 'ENOENT') throw error;
 }
 
-if (mode === 'extract') {
+if (mode === 'verify-contact') {
+  assertCatalogPageContract(catalog, 'verifying Contact RFQ generation');
+  await verifyContactGeneration(catalog);
+} else if (mode === 'verify-product-ui-generation') {
+  assertCatalogPageContract(catalog, 'verifying product-detail UI generation');
+  await verifyProductUiGeneration(catalog);
+} else if (mode === 'verify-metadata') {
+  await verifyLocalizedMetadata();
+} else {
+  const pages = await loadPages();
+  if (mode === 'extract') {
   catalog = await extractCatalog(pages);
   await pruneTranslationCaches(catalog);
-} else if (mode === 'translate') {
-  assertCatalogPageContract(catalog, 'translating');
-  await translateCatalog(catalog);
-} else if (mode === 'build') {
-  assertCatalogPageContract(catalog, 'building localized pages');
-  await buildLocalizedPages(catalog);
-} else if (mode === 'refresh-metadata') {
-  await refreshLocalizedMetadata();
-} else if (mode === 'integrate') {
-  await integrateLocalizedSite();
-} else {
-  throw new Error(`Unsupported mode: ${mode}`);
+  } else if (mode === 'translate') {
+    assertCatalogPageContract(catalog, 'translating');
+    await translateCatalog(catalog);
+  } else if (mode === 'build') {
+    assertCatalogPageContract(catalog, 'building localized pages');
+    await buildLocalizedPages(catalog);
+  } else if (mode === 'refresh-metadata') {
+    await refreshLocalizedMetadata();
+  } else if (mode === 'integrate') {
+    await integrateLocalizedSite();
+  } else {
+    throw new Error(`Unsupported mode: ${mode}`);
+  }
 }

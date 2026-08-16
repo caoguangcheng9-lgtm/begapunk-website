@@ -5,11 +5,9 @@
 .mq-hero {
   position: relative;
   overflow: hidden;
-  padding: 70px 0 62px;
-  color: #fff;
-  background:
-    radial-gradient(circle at 85% 15%, rgba(45, 140, 140, 0.34), transparent 34%),
-    linear-gradient(132deg, #15273a 0%, #1d3f5e 58%, #174c65 100%);
+  padding: var(--page-hero-padding);
+  color: var(--page-hero-color);
+  background: var(--page-hero-background);
 }
 
 .mq-hero::after {
@@ -59,17 +57,19 @@
 .mq-hero h1 {
   max-width: 850px;
   margin: 0 0 18px;
-  font-size: clamp(2.15rem, 4.5vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  color: var(--page-hero-color);
+  font-size: var(--page-hero-title-size);
+  line-height: var(--page-hero-title-line-height);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
 .mq-hero p {
   max-width: 760px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1.08rem;
-  line-height: 1.75;
+  color: var(--page-hero-copy-color);
+  font-size: var(--page-hero-copy-size);
+  line-height: 1.72;
 }
 
 .mq-section {
@@ -416,6 +416,16 @@
   white-space: nowrap;
 }
 
+@media (max-width: 1024px) {
+  .mq-hero {
+    padding: var(--page-hero-padding-tablet);
+  }
+
+  .mq-hero h1 {
+    font-size: var(--page-hero-title-size-tablet);
+  }
+}
+
 @media (max-width: 900px) {
   .mq-grid,
   .mq-evidence {
@@ -455,7 +465,7 @@
 
 @media (max-width: 700px) {
   .mq-hero {
-    padding: 42px 0 38px;
+    padding: var(--page-hero-padding-mobile);
   }
 
   .mq-hero p {
@@ -519,11 +529,24 @@
   .mq-subpage-card {
     padding: 24px 22px;
   }
+
+  .mq-subpage-card > * {
+    min-width: 0;
+  }
+
+  .mq-subpage-card .btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
 }
 
 @media (max-width: 430px) {
   .mq-hero h1 {
-    font-size: 1.85rem;
+    font-size: var(--page-hero-title-size-mobile);
   }
 
   .mq-copy h2,

@@ -56,7 +56,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/products-p2.html">
 <link rel="canonical" href="https://www.begapunk.com/de/products-p2.html">
 
- <link rel="stylesheet" href="../css/style.css?v=20260809-mobile3">
+ <link rel="stylesheet" href="../css/style.css?v=20260815-mobile-lang1">
 
 
 
@@ -154,17 +154,17 @@
 
  <span class="filter-label">Filter:</span>
 
- <button class="filter-btn active">alle</button>
+ <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">alle</button>
 
- <button class="filter-btn">1-Kanal</button>
+ <button class="filter-btn" type="button" data-filter="1-channel" aria-pressed="false">1-Kanal</button>
 
- <button class="filter-btn">2-Kanal</button>
+ <button class="filter-btn" type="button" data-filter="2-channel" aria-pressed="false">2-Kanal</button>
 
- <button class="filter-btn">3-Kanal</button>
+ <button class="filter-btn" type="button" data-filter="3-channel" aria-pressed="false">3-Kanal</button>
 
- <button class="filter-btn">4-Kanal +</button>
+ <button class="filter-btn" type="button" data-filter="4-channel-plus" aria-pressed="false">4-Kanal +</button>
 
- <button class="filter-btn">kundenspezifisch</button>
+ <button class="filter-btn" type="button" data-filter="custom" aria-pressed="false">kundenspezifisch</button>
 
  </div>
 
@@ -634,44 +634,44 @@
   </div>
   <div class="footer-contact-band">
    <address class="footer-contact">
-    <span class="footer-address"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>Ningbo, Zhejiang, China</span></span>
-    <a href="mailto:sales@begapunk.com"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"></path><path d="m3 6 9 7 9-7"></path></svg><span>sales@begapunk.com</span></a>
-    <a href="tel:+8618368425342"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.2 3.5 10 7l-2 2.4a15.5 15.5 0 0 0 6.6 6.6l2.4-2 3.5 2.8-1.5 3a2.5 2.5 0 0 1-2.6 1.3C9.2 20 4 14.8 2.9 7.6A2.5 2.5 0 0 1 4.2 5z"></path></svg><span>+86 183 6842 5342</span></a>
-    <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M8.5 8.2c.5 2.7 2.6 4.8 5.3 5.3"></path></svg><span>WhatsApp</span></a>
+    <span class="footer-address"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Ningbo, Zhejiang, China</span></span>
+    <a href="mailto:sales@begapunk.com"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg><span>sales@begapunk.com</span></a>
+    <a href="tel:+8618368425342"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.2 3.5 10 7l-2 2.4a15.5 15.5 0 0 0 6.6 6.6l2.4-2 3.5 2.8-1.5 3a2.5 2.5 0 0 1-2.6 1.3C9.2 20 4 14.8 2.9 7.6A2.5 2.5 0 0 1 4.2 5z"/></svg><span>+86 183 6842 5342</span></a>
+    <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 8.2c.5 2.7 2.6 4.8 5.3 5.3"/></svg><span>WhatsApp</span></a>
    </address>
    <nav class="footer-social" aria-label="Begapunk folgen">
     <ul class="footer-social-links">
-      <li><a href="https://www.linkedin.com/in/guangcheng-cao/" target="_blank" rel="noopener noreferrer" aria-label="G. C. Cao auf LinkedIn"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M5.4 8.2H2V22h3.4V8.2ZM3.7 2A2 2 0 1 0 3.7 6a2 2 0 0 0 0-4ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.3V22h3.4v-6.8c0-1.8.3-3.6 2.6-3.6 2.3 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a></li>
-      <li><a href="https://www.youtube.com/@BEGAPUNKRotaryJointsTV" target="_blank" rel="noopener noreferrer" aria-label="Begapunk auf YouTube"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6ZM9.8 15.4V8.6L16 12l-6.2 3.4Z"></path></svg></a></li>
-      <li><a href="https://www.facebook.com/profile.php?id=61591616523667" target="_blank" rel="noopener noreferrer" aria-label="Begapunk auf Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M14 22v-8h2.8l.4-3H14V9.1c0-.9.3-1.6 1.7-1.6h1.7V4.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V11H7.5v3h2.9v8H14Z"></path></svg></a></li>
-      <li><a href="https://x.com/Begapunk728" target="_blank" rel="noopener noreferrer" aria-label="Begapunk auf X"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M3 3h4.7l4.8 6.4L18 3h3l-7.1 8.7L22 21h-4.7l-5.2-6.9L6 21H3l7.7-9.2L3 3Zm3.5 2 11.8 14h1.2L7.7 5H6.5Z"></path></svg></a></li>
+      <li><a href="https://www.linkedin.com/in/guangcheng-cao/" target="_blank" rel="noopener noreferrer" aria-label="G. C. Cao auf LinkedIn"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M5.4 8.2H2V22h3.4V8.2ZM3.7 2A2 2 0 1 0 3.7 6a2 2 0 0 0 0-4ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.3V22h3.4v-6.8c0-1.8.3-3.6 2.6-3.6 2.3 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg></a></li>
+      <li><a href="https://www.youtube.com/@BEGAPUNKRotaryJointsTV" target="_blank" rel="noopener noreferrer" aria-label="Begapunk auf YouTube"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6ZM9.8 15.4V8.6L16 12l-6.2 3.4Z"/></svg></a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61591616523667" target="_blank" rel="noopener noreferrer" aria-label="Begapunk auf Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M14 22v-8h2.8l.4-3H14V9.1c0-.9.3-1.6 1.7-1.6h1.7V4.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V11H7.5v3h2.9v8H14Z"/></svg></a></li>
+      <li><a href="https://x.com/Begapunk728" target="_blank" rel="noopener noreferrer" aria-label="Begapunk auf X"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M3 3h4.7l4.8 6.4L18 3h3l-7.1 8.7L22 21h-4.7l-5.2-6.9L6 21H3l7.7-9.2L3 3Zm3.5 2 11.8 14h1.2L7.7 5H6.5Z"/></svg></a></li>
     </ul>
    </nav>
   </div>
   <nav class="footer-navigation" aria-label="Fußzeilennavigation">
    <section class="footer-column">
-     <h2 class="footer-title">Produkte &amp; Auswahl</h2>
+     <h2 class="footer-title">Produkte & Auswahl</h2>
      <ul class="footer-links">
       <li><a href="products.html">Produktkatalog</a></li>
       <li><a href="product-comparison.html">Modellvergleich</a></li>
      </ul>
     </section>
     <section class="footer-column">
-     <h2 class="footer-title">Anwendungen &amp; Praxisbeispiele</h2>
+     <h2 class="footer-title">Anwendungen & Praxisbeispiele</h2>
      <ul class="footer-links">
       <li><a href="case-studies.html">Reale Anwendungsbeispiele</a></li>
       <li><a href="application-laser-tube-cutting.html">Laser-Rohrschneiden</a></li>
       <li><a href="application-packaging-machinery.html">Verpackungsmaschinen</a></li>
-      <li><a href="application-bottle-filling-capping.html">Flaschenfüllen &amp; Verschließen</a></li>
+      <li><a href="application-bottle-filling-capping.html">Flaschenfüllen & Verschließen</a></li>
       <li><a href="applications.html">Alle Anwendungen</a></li>
      </ul>
     </section>
     <section class="footer-column">
-     <h2 class="footer-title">Qualität &amp; Werk</h2>
+     <h2 class="footer-title">Qualität & Werk</h2>
      <ul class="footer-links">
-      <li><a href="manufacturing-quality.html">Fertigung &amp; Qualität</a></li>
+      <li><a href="manufacturing-quality.html">Fertigung & Qualität</a></li>
       <li><a href="production-inspection-testing.html">100%-Dichtheitsprüfung</a></li>
-      <li><a href="about.html">Unternehmen &amp; Werk</a></li>
+      <li><a href="about.html">Unternehmen & Werk</a></li>
      </ul>
     </section>
     <section class="footer-column">
@@ -770,47 +770,46 @@ const productCards = document.querySelectorAll('.product-card-large');
 
 const pagination = document.querySelector('.pagination');
 
+const validFilters = new Set([
+    'all',
+    '1-channel',
+    '2-channel',
+    '3-channel',
+    '4-channel-plus',
+    'custom'
+]);
+
+const fourChannelPlus = new Set(['4-channel+', '6-channel', '8-channel']);
+
 
 
 filterBtns.forEach(btn => {
 
     btn.addEventListener('click', () => {
 
-        filterBtns.forEach(b => b.classList.remove('active'));
+        const filter = btn.dataset.filter;
 
-        btn.classList.add('active');
+        if (!validFilters.has(filter)) return;
 
-
-
-        const filterText = btn.textContent.trim();
+        filterBtns.forEach(b => {
+            const isActive = b === btn;
+            b.classList.toggle('active', isActive);
+            b.setAttribute('aria-pressed', String(isActive));
+        });
 
 
 
         productCards.forEach(card => {
 
-            const channel = card.getAttribute('data-channel');
+            const channel = card.dataset.channel;
 
 
 
-            if (filterText === 'All') {
+            const visible = filter === 'all'
+                || (filter === '4-channel-plus' && fourChannelPlus.has(channel))
+                || channel === filter;
 
-                card.style.display = '';
-
-            } else if (filterText === '4-Channel+') {
-
-                card.style.display = (channel === '4-channel+' || channel === '6-channel' || channel === '8-channel') ? '' : 'none';
-
-            } else if (filterText === 'Custom') {
-
-                card.style.display = (channel === 'custom') ? '' : 'none';
-
-            } else {
-
-                const target = filterText.toLowerCase().replace(' ', '-');
-
-                card.style.display = (channel === target) ? '' : 'none';
-
-            }
+            card.style.display = visible ? '' : 'none';
 
         });
 
@@ -818,7 +817,7 @@ filterBtns.forEach(btn => {
 
         if (pagination) {
 
-            pagination.style.display = (filterText === 'All') ? '' : 'none';
+            pagination.style.display = filter === 'all' ? '' : 'none';
 
         }
 

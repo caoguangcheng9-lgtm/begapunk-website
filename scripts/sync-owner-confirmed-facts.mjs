@@ -4,6 +4,10 @@ import process from 'node:process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const checkOnly = process.argv.includes('--check');
+const bottleCappingProductPage = 'BP-2P-16-0001.html';
+const legacyBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to supply two compressed-air circuits for clamp and release of a pneumatic three-jaw bottle-cap gripper.';
+const previousBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to supply clamp and release air through two independent compressed-air passages to a pneumatic three-jaw bottle-cap gripper.';
+const approvedBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to route compressed air through two independent passages for clamping and releasing a pneumatic three-jaw bottle-cap gripper.';
 
 const technicalNoteVariants = [
   { sourceThreshold: '', deThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
@@ -30,6 +34,16 @@ const retiredAboutSources = [
   `Begapunk is a specialized rotary joint (rotary union) manufacturer based in Ningbo, Zhejiang Province, China. We design and produce single-passage and multi-passage rotary unions for industrial automation, CNC machining, laser cutting, plastic extrusion, wind energy, and other rotating machinery applications.`,
   `Unlike general-purpose hydraulic component suppliers, we focus exclusively on rotary joints. This specialization allows us to offer deeper engineering support, faster custom prototyping, and more competitive pricing than multi-product competitors like Deublin or Kadant for equivalent specifications.`,
   `Our Ningbo facility combines CNC machining, assembly, inspection, and engineering support. Inspection scope, test pressure, and acceptance criteria are confirmed for each model and order.`,
+];
+
+const retiredBottleCappingSources = [
+  `This customer-authorized photograph shows BP-2P-08-0001 installed on a customer production machine. Two independent compressed-air circuits control clamping and release of a pneumatic three-jaw gripper, allowing it to hold the bottle cap and rotate during the capping operation.`,
+  `The photograph and project-owner confirmation establish the application, product model, and clamp/release function. They do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output. Confirm these conditions from the machine design and approved product data.`,
+  `Two independent compressed-air circuits for gripper clamp and release`,
+  `Owner-Confirmed Application Fit: Pneumatic Three-Jaw Bottle-Cap Gripper`,
+  `This customer-authorized photograph shows BP-2P-16-0001 installed on a customer production machine. Two independent compressed-air circuits control clamping and release of a pneumatic three-jaw gripper, allowing it to hold the bottle cap and rotate during the capping operation.`,
+  `BP-2P-16-0001 supplies two independent compressed-air circuits for clamp and release of a pneumatic three-jaw gripper on a customer production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Port numbering, operating pressure, rotational speed, and machine interface remain machine-specific and must be confirmed against the machine design and approved product data. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the verified production application →</a>`,
+  `BP-2P-16-0001 supplies clamp and release air through two independent compressed-air passages to a pneumatic three-jaw gripper on a customer production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Port numbering, operating pressure, rotational speed, and machine interface remain machine-specific and must be confirmed against the machine design and approved product data. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the verified production application →</a>`,
 ];
 
 const rows = [
@@ -140,6 +154,30 @@ const rows = [
     de: `Im Angebot/Auftrag bestätigt`,
     ja: `見積書・注文書で確認`,
     ru: `Указаны в коммерческом предложении/заказе`,
+  },
+  {
+    source: `Verified Production Application: Pneumatic Three-Jaw Bottle-Cap Gripper`,
+    de: `Bestätigte Produktionsanwendung: pneumatischer 3-Finger-Zentrischgreifer für Flaschenverschlüsse`,
+    ja: `確認済みの量産用途：ボトルキャップ用3爪エアチャック`,
+    ru: `Подтверждённое применение на производстве: трёхкулачковый пневматический захват для крышек`,
+  },
+  {
+    source: `BP-2P-16-0001 routes compressed air through two independent passages for clamping and releasing a pneumatic three-jaw gripper on a customer's production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Port assignment, operating pressure, rotational speed, and machine interface remain machine-specific and must be confirmed against the machine design and approved product data. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the verified production application →</a>`,
+    de: `BP-2P-16-0001 führt einem pneumatischen 3-Finger-Zentrischgreifer in einer Produktionsmaschine des Kunden über zwei getrennte Druckluftkanäle Druckluft zum Schließen und Öffnen zu. Der Greifer hält und dreht den Flaschenverschluss beim Verschließen. Die Identität des Kunden bleibt anonym. Anschlussbelegung, Betriebsdruck, Drehzahl und Maschinenschnittstelle sind anlagenspezifisch und anhand der Maschinenkonstruktion sowie der freigegebenen Produktdaten zu bestätigen. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Bestätigte Produktionsanwendung ansehen →</a>`,
+    ja: `BP-2P-16-0001は、お客様の量産用キャッピング機で、独立した2流路を介して3爪エアチャックの把持・開放用圧縮空気を供給しています。エアチャックはキャッピング時にボトルキャップを把持して回転させます。お客様名は非公開です。ポート機能、使用圧力、回転数、装置取合いは実機ごとに、装置設計および承認済み製品データに基づく確認が必要です。<a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">確認済みの量産用途を見る →</a>`,
+    ru: `BP-2P-16-0001 по двум независимым каналам подаёт сжатый воздух для зажима и разжима трёхкулачкового пневматического захвата на производственной укупорочной машине заказчика. Захват удерживает и вращает крышку при укупорке. Название заказчика не раскрывается. Назначение портов, рабочее давление, частота вращения и интерфейс машины зависят от конкретной установки и должны быть подтверждены по конструкции машины и утверждённым данным изделия. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Посмотреть подтверждённое применение →</a>`,
+  },
+  {
+    source: `Confirmed Application Fit: Pneumatic Three-Jaw Bottle-Cap Gripper`,
+    de: `Bestätigte Eignung für die Anwendung: pneumatischer 3-Finger-Zentrischgreifer für Flaschenverschlüsse`,
+    ja: `確認済みの適用範囲：ボトルキャップ用3爪エアチャック`,
+    ru: `Подтверждённая применимость: трёхкулачковый пневматический захват для крышек`,
+  },
+  {
+    source: `BP-2P-08-0001 can also be selected for this application type. The customer-authorized photograph identifies BP-2P-16-0001, not BP-2P-08-0001. Confirm the passage count, mounting interface, pressure, speed, dimensions, and approved drawing before selection. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Review the production application and model boundary →</a>`,
+    de: `BP-2P-08-0001 kann ebenfalls für diesen Anwendungstyp ausgewählt werden. Das vom Kunden freigegebene Foto zeigt BP-2P-16-0001 und nicht BP-2P-08-0001. Vor der Auswahl sind Kanalzahl, Einbauschnittstelle, Druck, Drehzahl, Abmessungen und freigegebene Zeichnung zu prüfen. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Produktionsanwendung und Modellgrenze ansehen →</a>`,
+    ja: `BP-2P-08-0001もこの用途で選定できます。ただし、お客様から公開許可を得た写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001ではありません。選定時は流路数、取付インターフェース、圧力、回転数、寸法、承認図面を確認してください。<a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">量産用途と型式の境界を確認 →</a>`,
+    ru: `BP-2P-08-0001 также можно выбрать для такого применения. На разрешённой заказчиком фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Перед выбором необходимо проверить число каналов, монтажный интерфейс, давление, частоту вращения, размеры и утверждённый чертёж. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">См. производственное применение и границу идентификации модели →</a>`,
   },
   ...technicalNoteRows,
   {
@@ -287,22 +325,48 @@ for (const language of ['de', 'ja', 'ru']) {
   const filePath = path.join(root, 'i18n', 'overrides', `${language}.json`);
   const before = await fs.readFile(filePath, 'utf8');
   const current = JSON.parse(before);
-  for (const legacySource of [...technicalNoteRows.map((row) => row.legacySource), ...retiredAboutSources]) {
-    delete current[legacySource];
-  }
+  const retiredSources = [
+    ...technicalNoteRows.map((row) => row.legacySource),
+    ...retiredAboutSources,
+    ...retiredBottleCappingSources,
+  ];
+  const retiredPresent = retiredSources.filter((source) => Object.hasOwn(current, source));
   const missing = rows.filter((row) => current[row.source] !== row[language]);
   if (checkOnly) {
-    if (missing.length) {
-      throw new Error(`${language}: ${missing.length} owner-confirmed translation(s) are not synchronized.`);
+    if (missing.length || retiredPresent.length) {
+      throw new Error(`${language}: ${missing.length} owner-confirmed translation(s) are not synchronized and ${retiredPresent.length} retired source key(s) remain.`);
     }
     continue;
   }
-  if (!missing.length) continue;
+  for (const legacySource of retiredPresent) delete current[legacySource];
+  if (!missing.length && !retiredPresent.length) continue;
   for (const row of rows) current[row.source] = row[language];
   await fs.writeFile(filePath, `${JSON.stringify(current, null, 2)}\n`, 'utf8');
   changed += 1;
 }
 
+const bottleProductPath = path.join(root, bottleCappingProductPage);
+const bottleProductHtml = await fs.readFile(bottleProductPath, 'utf8');
+const bottleProductClaimIsCurrent = bottleProductHtml.includes(approvedBottleCappingProductClaim)
+  && !bottleProductHtml.includes(legacyBottleCappingProductClaim);
+if (checkOnly) {
+  if (!bottleProductClaimIsCurrent) {
+    throw new Error(`${bottleCappingProductPage}: bottle-capping Product JSON-LD claim is not synchronized.`);
+  }
+} else if (!bottleProductClaimIsCurrent) {
+  const replacedClaim = [legacyBottleCappingProductClaim, previousBottleCappingProductClaim]
+    .find((claim) => bottleProductHtml.includes(claim));
+  if (!replacedClaim) {
+    throw new Error(`${bottleCappingProductPage}: expected legacy bottle-capping Product JSON-LD claim was not found.`);
+  }
+  await fs.writeFile(
+    bottleProductPath,
+    bottleProductHtml.replace(replacedClaim, approvedBottleCappingProductClaim),
+    'utf8',
+  );
+  changed += 1;
+}
+
 console.log(checkOnly
-  ? `Owner-confirmed translations are synchronized for ${rows.length} exact source statements in three languages.`
-  : `Synchronized owner-confirmed translations in ${changed} localization file(s).`);
+  ? `Owner-confirmed translations and bottle-capping structured data are synchronized for ${rows.length} exact source statements in three languages.`
+  : `Synchronized owner-confirmed translations and structured data in ${changed} file(s).`);

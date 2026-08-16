@@ -1,0 +1,28 @@
+.app-laser-authorized-photo {
+  display: block;
+  margin: 34px 0 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.app-laser-authorized-photo picture,
+.app-laser-authorized-photo img {
+  display: block;
+  width: 100%;
+}
+
+.app-laser-authorized-photo img {
+  height: auto;
+  aspect-ratio: 1280 / 683;
+  object-fit: contain;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .app-laser-authorized-photo {
+    margin-top: 24px;
+  }
+}

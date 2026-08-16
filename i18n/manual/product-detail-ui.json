@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "review": {
+    "method": "AI-assisted target-market line-by-line localization review",
+    "independentNativeSpeakerReview": false,
+    "reviewedAt": "2026-08-16"
+  },
+  "locales": {
+    "en": {
+      "skipLink": "Skip to main content",
+      "productInformationLabel": "Product information",
+      "productImagesLabel": "Product images"
+    },
+    "de": {
+      "skipLink": "Zum Hauptinhalt springen",
+      "productInformationLabel": "Produktinformationen",
+      "productImagesLabel": "Produktbilder"
+    },
+    "ja": {
+      "skipLink": "メインコンテンツへ移動",
+      "productInformationLabel": "製品情報",
+      "productImagesLabel": "製品画像"
+    },
+    "ru": {
+      "skipLink": "Перейти к основному содержанию",
+      "productInformationLabel": "Информация о продукте",
+      "productImagesLabel": "Изображения продукта"
+    }
+  }
+}

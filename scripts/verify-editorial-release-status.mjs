@@ -7,6 +7,7 @@ const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json
 const status = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'editorial', 'status.json'), 'utf8'));
 const approvalPath = path.join(root, 'i18n', 'editorial', 'release-approval.json');
 const failures = [];
+const policyFailures = [];
 
 const pages = [...config.pages];
 const pageSet = new Set(pages);
@@ -24,9 +25,65 @@ function sameSet(actual, expected) {
   return JSON.stringify(normalizedSet(actual)) === JSON.stringify(normalizedSet(expected));
 }
 
+function policyFail(message) {
+  policyFailures.push(message);
+}
+
 function sha256(buffer) {
   return crypto.createHash('sha256').update(buffer).digest('hex');
 }
+
+const localMarketReview = status.localMarketReview ?? {};
+const requiredReviewScopes = ['new-localized-page', 'changed-localized-page'];
+const requiredRecordFields = [
+  'page',
+  'language',
+  'referenceUrls',
+  'referenceAccessDates',
+  'terminologyDecisions',
+  'searchIntentDecisions',
+  'reviewMethod',
+  'reviewedAt',
+  'reviewedByRole',
+  'unresolvedIssues'
+];
+
+if (localMarketReview.schemaVersion !== 1) policyFail('schemaVersion must be 1.');
+if (localMarketReview.effectiveDate !== '2026-08-14') policyFail('effectiveDate must be 2026-08-14.');
+if (!sameSet(Array.isArray(localMarketReview.requiredFor) ? localMarketReview.requiredFor : [], requiredReviewScopes)) {
+  policyFail('requiredFor must cover new and changed localized pages.');
+}
+if (localMarketReview.machineTranslationDraftOnly !== true) policyFail('machine translation must be draft-only.');
+if (localMarketReview.aiAssistedTargetMarketReviewRequired !== true) {
+  policyFail('AI-assisted target-market review must be required.');
+}
+if (localMarketReview.targetMarketPeerReferenceRequired !== true) {
+  policyFail('target-market peer references must be required.');
+}
+if (localMarketReview.targetMarketSearchPatternReviewRequired !== true) {
+  policyFail('target-market search-pattern review must be required.');
+}
+if (localMarketReview.referenceUse !== 'terminology-and-search-intent-only') {
+  policyFail('peer references must be limited to terminology and search intent.');
+}
+if (localMarketReview.competitorContentMayBeCopied !== false) policyFail('competitor content copying must be prohibited.');
+if (localMarketReview.competitorFactsMayBeUsedAsBegapunkFacts !== false) {
+  policyFail('competitor facts must not be accepted as Begapunk facts.');
+}
+if (localMarketReview.independentNativeSpeakerEquivalent !== false) {
+  policyFail('AI review must not be treated as independent native-speaker confirmation.');
+}
+if (localMarketReview.recordDirectory !== 'audit/localization') {
+  policyFail('review records must be stored under audit/localization.');
+}
+if (!sameSet(
+  Array.isArray(localMarketReview.requiredRecordFields) ? localMarketReview.requiredRecordFields : [],
+  requiredRecordFields
+)) {
+  policyFail('requiredRecordFields do not match the target-market review evidence contract.');
+}
+
+failures.push(...policyFailures.map((message) => `local-market review policy: ${message}`));
 
 for (const language of languages) {
   const record = status.languages?.[language];
@@ -77,6 +134,7 @@ if (!failures.length) {
 
 const exceptionFailures = [];
 const exceptionFail = (message) => exceptionFailures.push(message);
+policyFailures.forEach((message) => exceptionFail(`local-market review policy: ${message}`));
 const allowedEditorialDebtPages = [
   'case-bp-2p-95-pneumatic-chuck-integration.html',
   'case-bp-3p-s06-sensor-monitored-chuck.html',

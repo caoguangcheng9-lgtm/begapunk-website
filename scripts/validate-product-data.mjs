@@ -1,6 +1,7 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
 import { load } from 'cheerio';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -12,6 +13,18 @@ const locales = [
   { code: 'ru', directory: 'ru' },
 ];
 const failures = [];
+const catalogFilterCodes = [
+  'all',
+  '1-channel',
+  '2-channel',
+  '3-channel',
+  '4-channel-plus',
+  'custom',
+];
+const catalogFilterCounts = {
+  'products.html': [8, 1, 5, 1, 1, 0],
+  'products-p2.html': [8, 1, 3, 2, 1, 1],
+};
 const conservativeModel = 'BP-2P-50-0001';
 const conservativePolicyByLocale = {
   en: {
@@ -269,11 +282,171 @@ function validateDetailPage($, locale, fileName, model) {
   }
 }
 
+function runCatalogFilterScript(filterSource, relative, channels, expectedCounts) {
+  class FakeClassList {
+    constructor(initial = []) {
+      this.values = new Set(initial);
+    }
+
+    contains(value) {
+      return this.values.has(value);
+    }
+
+    toggle(value, force) {
+      if (force) this.values.add(value);
+      else this.values.delete(value);
+      return Boolean(force);
+    }
+  }
+
+  const buttons = catalogFilterCodes.map((filter, index) => ({
+    dataset: { filter },
+    textContent: `display-label-${catalogFilterCodes.length - index}`,
+    attributes: { 'aria-pressed': index === 0 ? 'true' : 'false' },
+    classList: new FakeClassList(index === 0 ? ['active'] : []),
+    listeners: {},
+    addEventListener(type, listener) {
+      this.listeners[type] = listener;
+    },
+    setAttribute(name, value) {
+      this.attributes[name] = value;
+    },
+  }));
+  const cards = channels.map((channel) => ({ dataset: { channel }, style: { display: '' } }));
+  const pagination = { style: { display: '' } };
+  const document = {
+    querySelectorAll(selector) {
+      if (selector === '.filter-btn') return buttons;
+      if (selector === '.product-card-large') return cards;
+      return [];
+    },
+    querySelector(selector) {
+      return selector === '.pagination' ? pagination : null;
+    },
+  };
+
+  try {
+    vm.runInNewContext(filterSource, { document }, { timeout: 500 });
+  } catch (error) {
+    failures.push(`${relative}: filter script could not run in the contract harness (${error.message})`);
+    return;
+  }
+
+  for (const [index, button] of buttons.entries()) {
+    if (typeof button.listeners.click !== 'function') {
+      failures.push(`${relative}: filter ${catalogFilterCodes[index]} has no click handler`);
+      continue;
+    }
+    button.listeners.click();
+    const visibleCount = cards.filter((card) => card.style.display !== 'none').length;
+    if (visibleCount !== expectedCounts[index]) {
+      failures.push(`${relative}: filter ${catalogFilterCodes[index]} shows ${visibleCount} cards; expected ${expectedCounts[index]}`);
+    }
+    const activeButtons = buttons.filter((candidate) => candidate.classList.contains('active'));
+    const pressedButtons = buttons.filter((candidate) => candidate.attributes['aria-pressed'] === 'true');
+    if (activeButtons.length !== 1 || activeButtons[0] !== button) {
+      failures.push(`${relative}: filter ${catalogFilterCodes[index]} must be the only active button after click`);
+    }
+    if (pressedButtons.length !== 1 || pressedButtons[0] !== button) {
+      failures.push(`${relative}: filter ${catalogFilterCodes[index]} must be the only aria-pressed=true button after click`);
+    }
+    const expectedPagination = catalogFilterCodes[index] === 'all' ? '' : 'none';
+    if (pagination.style.display !== expectedPagination) {
+      failures.push(`${relative}: filter ${catalogFilterCodes[index]} sets pagination display to ${pagination.style.display || '(empty)'}; expected ${expectedPagination || '(empty)'}`);
+    }
+  }
+
+  const snapshot = JSON.stringify({
+    buttons: buttons.map((button) => ({
+      active: button.classList.contains('active'),
+      pressed: button.attributes['aria-pressed'],
+    })),
+    cards: cards.map((card) => card.style.display),
+    pagination: pagination.style.display,
+  });
+  const lastButton = buttons.at(-1);
+  lastButton.dataset.filter = 'unexpected-filter';
+  lastButton.listeners.click();
+  const afterUnknown = JSON.stringify({
+    buttons: buttons.map((button) => ({
+      active: button.classList.contains('active'),
+      pressed: button.attributes['aria-pressed'],
+    })),
+    cards: cards.map((card) => card.style.display),
+    pagination: pagination.style.display,
+  });
+  if (afterUnknown !== snapshot) {
+    failures.push(`${relative}: unknown filter codes must leave the catalog state unchanged`);
+  }
+}
+
+function validateCatalogFilter($, locale, catalogName) {
+  const relative = publicPath(locale, catalogName);
+  const expectedCounts = catalogFilterCounts[catalogName];
+  const buttons = $('.filter-btn').toArray();
+  if (buttons.length !== catalogFilterCodes.length) {
+    failures.push(`${relative}: expected ${catalogFilterCodes.length} filter buttons, found ${buttons.length}`);
+  }
+  buttons.forEach((button, index) => {
+    const element = $(button);
+    const expectedFilter = catalogFilterCodes[index];
+    if (element.attr('type') !== 'button') failures.push(`${relative}: filter button ${index + 1} must use type=button`);
+    if (element.attr('data-filter') !== expectedFilter) failures.push(`${relative}: filter button ${index + 1} must use data-filter=${expectedFilter}`);
+    const expectedPressed = index === 0 ? 'true' : 'false';
+    if (element.attr('aria-pressed') !== expectedPressed) failures.push(`${relative}: filter button ${index + 1} must start with aria-pressed=${expectedPressed}`);
+    if (element.hasClass('active') !== (index === 0)) failures.push(`${relative}: only the All filter may start active`);
+  });
+
+  const cards = $('.product-card-large').toArray();
+  if (cards.length !== expectedCounts[0]) failures.push(`${relative}: expected ${expectedCounts[0]} catalog cards, found ${cards.length}`);
+  const channels = cards.map((card) => $(card).attr('data-channel') || '');
+  cards.forEach((card, index) => {
+    const element = $(card);
+    const style = element.attr('style') || '';
+    if (element.attr('hidden') !== undefined
+        || element.attr('aria-hidden') === 'true'
+        || /(?:^|;)\s*display\s*:\s*none\b/i.test(style)) {
+      failures.push(`${relative}: card ${index + 1} must remain visible without JavaScript`);
+    }
+  });
+
+  const pagination = $('.pagination');
+  if (pagination.length !== 1) failures.push(`${relative}: expected one pagination element, found ${pagination.length}`);
+  if (pagination.attr('hidden') !== undefined || /(?:^|;)\s*display\s*:\s*none\b/i.test(pagination.attr('style') || '')) {
+    failures.push(`${relative}: pagination must be visible before JavaScript runs`);
+  }
+
+  const filterScripts = $('script:not([src])').toArray()
+    .map((script) => $(script).html() || '')
+    .filter((source) => source.includes('FILTER BAR (data-channel based)'));
+  if (filterScripts.length !== 1) {
+    failures.push(`${relative}: expected one inline catalog filter script, found ${filterScripts.length}`);
+    return;
+  }
+  const filterSource = filterScripts[0].slice(filterScripts[0].indexOf('// ===== FILTER BAR'));
+  if (!/\bbtn\s*\.\s*dataset\s*\.\s*filter\b/.test(filterSource)) {
+    failures.push(`${relative}: filter script must read btn.dataset.filter`);
+  }
+  if (/\b(?:textContent|innerText)\b/.test(filterSource)
+      || /getAttribute\s*\(\s*['"]data-filter['"]\s*\)/.test(filterSource)) {
+    failures.push(`${relative}: filter script must not derive machine categories from visible button text or alternate attribute reads`);
+  }
+  runCatalogFilterScript(filterSource, relative, channels, expectedCounts);
+  runCatalogFilterScript(filterSource, `${relative} synthetic channel contract`, [
+    '4-channel+',
+    '6-channel',
+    '8-channel',
+    '2-channel',
+    '2-channel-extra',
+  ], [5, 0, 1, 0, 3, 0]);
+}
+
 async function validateCatalog(locale, models) {
   const references = [];
   for (const catalogName of ['products.html', 'products-p2.html']) {
     const $ = await readHtml(locale, catalogName);
     if (!$) continue;
+    validateCatalogFilter($, locale, catalogName);
     $('.product-card-large[data-href]').each((_, element) => {
       const card = $(element);
       const href = card.attr('data-href') || '';

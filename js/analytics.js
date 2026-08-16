@@ -34,6 +34,17 @@
     let bannerRemovalTimer = null;
     let consentState = null; // 'granted' | 'denied' | null
 
+    function setConsentUiState(state) {
+        document.documentElement.setAttribute('data-bp-consent-ui', state);
+    }
+
+    function cancelBannerRemoval() {
+        if (bannerRemovalTimer !== null) {
+            clearTimeout(bannerRemovalTimer);
+            bannerRemovalTimer = null;
+        }
+    }
+
     // Queue Consent Mode commands before Google Analytics is loaded. Advertising
     // storage and personalization stay disabled because this site only uses GA4.
     window.dataLayer = window.dataLayer || [];
@@ -266,7 +277,7 @@
             #bp-consent-banner .bp-inner {
                 max-width: 1200px;
                 margin: 0 auto;
-                padding: 16px 24px;
+                padding: 16px 24px calc(16px + env(safe-area-inset-bottom, 0px));
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -335,7 +346,7 @@
                 #bp-consent-banner .bp-inner {
                     flex-direction: column;
                     align-items: flex-start;
-                    padding: 14px 16px;
+                    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
                     gap: 14px;
                 }
                 #bp-consent-banner .bp-actions {
@@ -347,6 +358,12 @@
                     text-align: center;
                 }
             }
+            @media (prefers-reduced-motion: reduce) {
+                #bp-consent-banner,
+                #bp-consent-banner button {
+                    transition: none;
+                }
+            }
         `;
         const style = document.createElement('style');
         style.id = 'bp-consent-styles';
@@ -355,7 +372,11 @@
     }
 
     function createBanner() {
-        if (document.getElementById('bp-consent-banner')) return;
+        const existingBanner = document.getElementById('bp-consent-banner');
+        if (existingBanner) {
+            bannerEl = existingBanner;
+            return bannerEl;
+        }
 
         injectStyles();
 
@@ -423,42 +444,56 @@
         document.getElementById('bp-decline-btn').addEventListener('click', function () {
             handleDecline();
         });
+
+        return bannerEl;
     }
 
     function showBanner() {
-        if (bannerRemovalTimer) {
-            clearTimeout(bannerRemovalTimer);
-            bannerRemovalTimer = null;
-        }
+        cancelBannerRemoval();
         if (!bannerEl) createBanner();
+        if (!bannerEl) {
+            setConsentUiState('settled');
+            return;
+        }
+        const bannerToShow = bannerEl;
+        setConsentUiState('open');
         // Small delay to ensure CSS transition works
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
-                bannerEl.classList.add('bp-visible');
+                if (bannerEl === bannerToShow
+                    && bannerToShow.parentNode
+                    && document.documentElement.getAttribute('data-bp-consent-ui') === 'open') {
+                    bannerToShow.classList.add('bp-visible');
+                }
             });
         });
     }
 
     function hideBanner() {
-        if (bannerRemovalTimer) {
-            clearTimeout(bannerRemovalTimer);
+        cancelBannerRemoval();
+        if (!bannerEl) {
+            setConsentUiState('settled');
+            return;
+        }
+        const closingBanner = bannerEl;
+        closingBanner.classList.remove('bp-visible');
+        const reducedMotion = window.matchMedia
+            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Remove from DOM after animation, then allow the fixed CTA to return.
+        bannerRemovalTimer = setTimeout(function () {
+            if (bannerEl === closingBanner
+                && document.documentElement.getAttribute('data-bp-consent-ui') === 'closing') {
+                if (closingBanner.parentNode) closingBanner.parentNode.removeChild(closingBanner);
+                bannerEl = null;
+                setConsentUiState('settled');
+            }
             bannerRemovalTimer = null;
-        }
-        if (bannerEl) {
-            bannerEl.classList.remove('bp-visible');
-            // Remove from DOM after animation
-            bannerRemovalTimer = setTimeout(function () {
-                if (bannerEl && bannerEl.parentNode) {
-                    bannerEl.parentNode.removeChild(bannerEl);
-                    bannerEl = null;
-                }
-                bannerRemovalTimer = null;
-            }, 500);
-        }
+        }, reducedMotion ? 0 : 500);
     }
 
     /* ===================== HANDLERS ===================== */
     function handleAccept() {
+        setConsentUiState('closing');
         setConsent('granted');
         window['ga-disable-' + CONFIG.GA_ID] = false;
         initGA4();
@@ -467,6 +502,7 @@
     }
 
     function handleDecline() {
+        setConsentUiState('closing');
         setConsent('denied');
         updateGoogleConsent('denied');
         window['ga-disable-' + CONFIG.GA_ID] = true;
@@ -494,6 +530,7 @@
 
         /** Reset consent to show banner again */
         reset: function () {
+            cancelBannerRemoval();
             try { localStorage.removeItem(CONFIG.STORAGE_KEY); } catch (e) {}
             consentState = null;
             updateGoogleConsent('denied');
@@ -521,16 +558,19 @@
         bindSuccessfulInquiryTracking();
 
         if (consentState === 'granted') {
+            setConsentUiState('settled');
             window['ga-disable-' + CONFIG.GA_ID] = false;
             initGA4();
             // Banner not shown
         } else if (consentState === 'denied') {
+            setConsentUiState('settled');
             updateGoogleConsent('denied');
             window['ga-disable-' + CONFIG.GA_ID] = true;
             // Banner not shown, GA4 not loaded
         } else {
             // No decision yet — show banner when DOM is ready
             if (document.readyState === 'loading') {
+                setConsentUiState('open');
                 document.addEventListener('DOMContentLoaded', showBanner);
             } else {
                 showBanner();

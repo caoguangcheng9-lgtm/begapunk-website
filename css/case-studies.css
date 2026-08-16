@@ -23,26 +23,28 @@
 }
 
 .page-case-studies .cs-hero {
-    padding: 72px 0 64px;
-    color: #fff;
+    padding: var(--page-hero-padding);
+    color: var(--page-hero-color);
     text-align: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: var(--page-hero-background);
 }
 
 .page-case-studies .cs-hero h1 {
     margin: 0 0 14px;
-    color: #fff;
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--page-hero-color);
+    font-size: var(--page-hero-title-size);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: var(--page-hero-title-line-height);
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
 }
 
 .page-case-studies .cs-hero p {
     max-width: 720px;
     margin: 0 auto;
-    color: rgba(255, 255, 255, 0.86);
-    font-size: 1.075rem;
-    line-height: 1.7;
+    color: var(--page-hero-copy-color);
+    font-size: var(--page-hero-copy-size);
+    line-height: 1.72;
 }
 
 .page-case-studies .case-intro {
@@ -579,6 +581,14 @@
 }
 
 @media (max-width: 1024px) {
+    .page-case-studies .cs-hero {
+        padding: var(--page-hero-padding-tablet);
+    }
+
+    .page-case-studies .cs-hero h1 {
+        font-size: var(--page-hero-title-size-tablet);
+    }
+
     .page-case-studies .case-row,
     .page-case-studies .case-row.reverse {
         grid-template-columns: minmax(0, 1fr);
@@ -606,7 +616,12 @@
 
 @media (max-width: 768px) {
     .page-case-studies .cs-hero {
-        padding: 54px 0 48px;
+        padding: var(--page-hero-padding-mobile);
+    }
+
+    .page-case-studies .cs-hero h1 {
+        font-size: var(--page-hero-title-size-mobile);
+        line-height: 1.18;
     }
 
     .page-case-studies .case-intro {
@@ -637,7 +652,7 @@
 
 @media (max-width: 640px) {
     .page-case-studies .cs-hero p {
-        font-size: 1rem;
+        font-size: 0.98rem;
     }
 
     .page-case-studies .case-image {
@@ -761,5 +776,138 @@
     .page-case-studies .faq-answer {
         padding-right: 16px;
         padding-left: 16px;
+    }
+}
+
+/* Application-case refinements are bundled here to avoid a second render-blocking request. */
+
+.page-application-case .cs-hero {
+    padding: var(--page-hero-padding);
+}
+
+@media (max-width: 1024px) {
+    .page-application-case .cs-hero {
+        padding: var(--page-hero-padding-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-application-case .cs-hero {
+        padding: var(--page-hero-padding-mobile);
+    }
+}
+
+.page-application-case .case-kicker {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.page-application-case .cs-hero h1 {
+    max-width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.page-application-case .case-summary-table th:first-child,
+.page-application-case .case-summary-table td:first-child {
+    width: 28%;
+}
+
+.page-application-case .case-image {
+    background: #eef4fb;
+}
+
+.page-application-case .case-image a,
+.page-application-case .case-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.page-application-case .case-image img {
+    object-fit: contain;
+    background: #eef4fb;
+}
+
+.page-application-case .case-image-link:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.page-application-case .case-evidence-list,
+.page-application-case .case-check-list {
+    margin: 0;
+    padding-left: 21px;
+}
+
+.page-application-case .case-evidence-list li,
+.page-application-case .case-check-list li {
+    margin-bottom: 8px;
+    color: var(--text);
+    line-height: 1.68;
+}
+
+.page-application-case .case-evidence-list li:last-child,
+.page-application-case .case-check-list li:last-child {
+    margin-bottom: 0;
+}
+
+.page-application-case .case-caption-note {
+    margin: 14px 0 0;
+    color: var(--text-light);
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+.page-application-case .tech-note {
+    text-align: left;
+}
+
+.page-application-case .tech-note strong {
+    color: var(--dark-soft);
+}
+
+.page-application-case .case-final-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.page-application-case .cta-section .btn-secondary {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+}
+
+.page-application-case .cta-section .btn-secondary:hover {
+    color: var(--primary);
+    background: #fff;
+}
+
+@media (max-width: 640px) {
+    .page-application-case .case-summary-table td {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4px;
+    }
+
+    .page-application-case .case-final-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .page-application-case .case-final-actions .btn {
+        width: 100%;
+        margin: 0;
+        justify-content: center;
     }
 }

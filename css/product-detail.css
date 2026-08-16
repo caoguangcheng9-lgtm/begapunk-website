@@ -1,0 +1,159 @@
+/* Social Share Buttons */
+.social-share-wrap { margin-top: 24px; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.social-share { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.social-share-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-right: 4px; }
+.share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; line-height: 1; }
+.share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.share-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+.share-linkedin { background: #0a66c2; color: #fff; }
+.share-linkedin:hover { background: #084e96; }
+.share-twitter { background: #000; color: #fff; }
+.share-twitter:hover { background: #333; }
+.share-facebook { background: #1877f2; color: #fff; }
+.share-facebook:hover { background: #166fe5; }
+.share-whatsapp { background: #25d366; color: #fff; }
+.share-whatsapp:hover { background: #1da851; }
+@media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
+
+.page-product-detail .skip-link {
+  position: fixed;
+  z-index: 100000;
+  top: 8px;
+  left: 16px;
+  padding: 10px 16px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 16px));
+}
+
+.page-product-detail .skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-product-detail #main-content:focus {
+  outline: none;
+}
+
+.page-product-detail #main-content:focus-visible,
+.page-product-detail .pd-tab:focus-visible,
+.page-product-detail .thumb-link:focus-visible,
+.page-product-detail summary.faq-question:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.page-product-detail .pd-gallery,
+.page-product-detail .pd-info,
+.page-product-detail .pd-tabs,
+.page-product-detail .pd-panel,
+.page-product-detail .thumbnail-row,
+.page-product-detail .faq-item,
+.page-product-detail .faq-question,
+.page-product-detail .faq-answer {
+  min-width: 0;
+}
+
+.page-product-detail .pd-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: visible;
+  white-space: normal;
+}
+
+.page-product-detail .pd-tab {
+  display: flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.page-product-detail .pd-tab[aria-selected="true"] {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.page-product-detail .pd-panel {
+  display: block;
+  animation: none;
+  scroll-margin-top: 96px;
+}
+
+.page-product-detail .pd-panel[hidden] {
+  display: none;
+}
+
+.page-product-detail details.faq-item {
+  overflow: visible;
+}
+
+.page-product-detail summary.faq-question {
+  list-style: none;
+}
+
+.page-product-detail summary.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.page-product-detail details.faq-item .faq-answer {
+  max-height: none;
+  overflow: visible;
+  padding-bottom: 18px;
+  transition: none;
+}
+
+.page-product-detail details.faq-item[open] .faq-question .icon,
+.page-product-detail details.faq-item[open] .faq-question .arrow {
+  transform: rotate(180deg);
+}
+
+.page-product-detail .thumb-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.page-product-detail .thumb-link .thumb {
+  margin: 0;
+}
+
+.page-product-detail .thumb-link[aria-current="true"] .thumb {
+  border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .page-product-detail .pd-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    border-bottom: 0;
+  }
+
+  .page-product-detail .pd-tab {
+    margin-bottom: 0;
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 8px;
+  }
+
+  .page-product-detail .pd-tab[aria-selected="true"] {
+    border-color: var(--primary);
+  }
+
+  .page-product-detail .pd-grid,
+  .page-product-detail .pd-gallery,
+  .page-product-detail .pd-info,
+  .page-product-detail .pd-panel,
+  .page-product-detail .faq-mini {
+    max-width: 100%;
+  }
+}

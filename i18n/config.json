@@ -159,7 +159,6 @@
     "blog-rotary-joint-selection.html",
     "blog-seal-replacement.html",
     "blog-threaded-vs-flange.html",
-    "faq.html",
     "contact.html",
     "search.html",
     "privacy.html",
@@ -168,6 +167,7 @@
     "404.html"
   ],
   "manualLocalizedPages": [
+    "faq.html",
     "manufacturing-quality.html",
     "production-inspection-testing.html",
     "case-bp-2p-95-pneumatic-chuck-integration.html",
