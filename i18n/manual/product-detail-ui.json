@@ -1,30 +1,176 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 4,
   "review": {
     "method": "AI-assisted target-market line-by-line localization review",
     "independentNativeSpeakerReview": false,
-    "reviewedAt": "2026-08-16"
+    "reviewedAt": "2026-08-19"
+  },
+  "modelKeySpecKeys": {
+    "BP-1P-0003": ["performance", "body", "seal", "ports", "media", "leadTime"],
+    "BP-1P-0006": ["performance", "ports", "body", "seal", "media", "leadTime"],
+    "BP-2P-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-2P-0002": ["performance", "ports", "body", "seal", "media", "leadTime"],
+    "BP-2P-08-0001": ["performance", "body", "seal", "ports", "media", "leadTime"],
+    "BP-2P-130-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-2P-16-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-2P-30-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-2P-50-0001": ["performance", "protection", "seal", "mount", "media", "leadTime"],
+    "BP-2P-95-0005": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-3P-0004": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-3P-0006": ["performance", "ports", "body", "seal", "media", "leadTime"],
+    "BP-3P-0007": ["performance", "ports", "body", "seal", "media", "leadTime"],
+    "BP-3P-S06-0001": ["channels", "performance", "body", "seal", "mount", "leadTime"],
+    "BP-4P-30-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
+    "BP-8P-0001": ["performance", "body", "seal", "mount", "media", "leadTime"]
   },
   "locales": {
     "en": {
       "skipLink": "Skip to main content",
       "productInformationLabel": "Product information",
-      "productImagesLabel": "Product images"
+      "productImagesLabel": "Product images",
+      "onThisPageLabel": "On this page",
+      "jumpToLabel": "Jump to:",
+      "jumpLinks": {
+        "specs": "Specifications",
+        "compat": "Compatible Machines",
+        "install": "Installation",
+        "downloads": "Downloads",
+        "faq": "FAQ"
+      },
+      "shareMenuLabel": "Share",
+      "keyProductParametersLabel": "Key product parameters",
+      "keySpecLabels": {
+        "performance": "Pressure / speed",
+        "body": "Body",
+        "seal": "Seal",
+        "mount": "Mount",
+        "media": "Suitable media",
+        "leadTime": "Lead time",
+        "ports": "Ports",
+        "protection": "Protection",
+        "channels": "Channels"
+      },
+      "keySpecPropertyNames": {
+        "media": "Suitable Media",
+        "mount": "Mount Type"
+      },
+      "keySpecValueOverrides": {
+        "BP-2P-50-0001": {
+          "media": "Standard medium: air"
+        }
+      },
+      "leadTimeValue": "Confirmed in quotation/order"
     },
     "de": {
       "skipLink": "Zum Hauptinhalt springen",
       "productInformationLabel": "Produktinformationen",
-      "productImagesLabel": "Produktbilder"
+      "productImagesLabel": "Produktbilder",
+      "onThisPageLabel": "Auf dieser Seite",
+      "jumpToLabel": "Direkt zu:",
+      "jumpLinks": {
+        "specs": "Technische Daten",
+        "compat": "Geeignete Maschinen",
+        "install": "Installation",
+        "downloads": "Downloads",
+        "faq": "FAQ"
+      },
+      "shareMenuLabel": "Teilen",
+      "keyProductParametersLabel": "Wichtige Produktparameter",
+      "keySpecLabels": {
+        "performance": "Druck / Drehzahl",
+        "body": "Gehäuse",
+        "seal": "Dichtung",
+        "mount": "Montage",
+        "media": "Geeignete Medien",
+        "leadTime": "Lieferzeit",
+        "ports": "Anschlüsse",
+        "protection": "Schutz",
+        "channels": "Kanäle"
+      },
+      "keySpecPropertyNames": {
+        "media": "Geeignete Medien",
+        "mount": "Montageart"
+      },
+      "keySpecValueOverrides": {
+        "BP-2P-50-0001": {
+          "media": "Standardmedium: Luft"
+        }
+      },
+      "leadTimeValue": "Im Angebot/Auftrag bestätigt"
     },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
       "productInformationLabel": "製品情報",
-      "productImagesLabel": "製品画像"
+      "productImagesLabel": "製品画像",
+      "onThisPageLabel": "このページ内",
+      "jumpToLabel": "移動先：",
+      "jumpLinks": {
+        "specs": "仕様",
+        "compat": "適用機械",
+        "install": "取付",
+        "downloads": "ダウンロード",
+        "faq": "FAQ"
+      },
+      "shareMenuLabel": "シェア",
+      "keyProductParametersLabel": "主要製品仕様",
+      "keySpecLabels": {
+        "performance": "圧力／回転数",
+        "body": "ボディ",
+        "seal": "シール",
+        "mount": "取付",
+        "media": "適用流体",
+        "leadTime": "納期",
+        "ports": "ポート",
+        "protection": "保護構造",
+        "channels": "流路／回路"
+      },
+      "keySpecPropertyNames": {
+        "media": "適用流体",
+        "mount": "取付方法"
+      },
+      "keySpecValueOverrides": {
+        "BP-2P-50-0001": {
+          "media": "標準流体：空気"
+        }
+      },
+      "leadTimeValue": "見積書・注文書で確認"
     },
     "ru": {
       "skipLink": "Перейти к основному содержанию",
       "productInformationLabel": "Информация о продукте",
-      "productImagesLabel": "Изображения продукта"
+      "productImagesLabel": "Изображения продукта",
+      "onThisPageLabel": "На этой странице",
+      "jumpToLabel": "Перейти к:",
+      "jumpLinks": {
+        "specs": "Характеристики",
+        "compat": "Подходящее оборудование",
+        "install": "Установка",
+        "downloads": "Файлы для скачивания",
+        "faq": "FAQ"
+      },
+      "shareMenuLabel": "Поделиться",
+      "keyProductParametersLabel": "Основные параметры изделия",
+      "keySpecLabels": {
+        "performance": "Давление / частота вращения",
+        "body": "Корпус",
+        "seal": "Уплотнение",
+        "mount": "Монтаж",
+        "media": "Подходящая среда",
+        "leadTime": "Срок поставки",
+        "ports": "Порты",
+        "protection": "Защита",
+        "channels": "Каналы"
+      },
+      "keySpecPropertyNames": {
+        "media": "Подходящая среда",
+        "mount": "Способ монтажа"
+      },
+      "keySpecValueOverrides": {
+        "BP-2P-50-0001": {
+          "media": "Стандартная среда: воздух"
+        }
+      },
+      "leadTimeValue": "Подтверждается в коммерческом предложении/заказе"
     }
   }
 }

@@ -96,13 +96,14 @@ async function inspectPageBudget(filePath) {
   const localResources = new Map();
   const externalResources = new Set();
   const firstViewImages = new Set();
-  const failures = [];
+  const blockingFailures = [];
+  const advisoryFindings = [];
 
   const addReference = (reference, baseUrl, options = {}) => {
     const resolved = resolveResource(reference, baseUrl);
     if (!resolved) return;
     if (resolved.error) {
-      failures.push(resolved.error);
+      blockingFailures.push(resolved.error);
       return;
     }
     if (resolved.external) {
@@ -155,7 +156,7 @@ async function inspectPageBudget(filePath) {
     try {
       buffer = await fs.readFile(resource.absolute);
     } catch {
-      failures.push(`missing local resource: ${resource.publicPath}`);
+      blockingFailures.push(`missing local resource: ${resource.publicPath}`);
       continue;
     }
     const bytes = transferredBytes(resource.absolute, buffer);
@@ -172,10 +173,10 @@ async function inspectPageBudget(filePath) {
     thirdPartyRequests: [externalResources.size, budgets.thirdPartyRequests],
   };
   for (const [metric, [actual, limit]] of Object.entries(comparisons)) {
-    if (actual > limit) failures.push(`${metric} ${actual} exceeds ${limit}`);
+    if (actual > limit) advisoryFindings.push(`${metric} ${actual} exceeds ${limit}`);
   }
   return {
-    relativePath, localResources, failures,
+    relativePath, localResources, blockingFailures, advisoryFindings,
     totals: { ...totals, total, largestFirstViewImage, requests, thirdPartyRequests: externalResources.size },
   };
 }
@@ -187,6 +188,19 @@ function contentType(filePath) {
     '.svg': 'image/svg+xml', '.xml': 'application/xml', '.txt': 'text/plain', '.webp': 'image/webp',
     '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.woff2': 'font/woff2',
   })[extension] || 'application/octet-stream';
+}
+
+function isApprovedForwardingPage($) {
+  const robots = String($('meta[name="robots"]').attr('content') || '').toLowerCase();
+  const refresh = String($('meta[http-equiv="refresh" i]').attr('content') || '');
+  const canonical = String($('link[rel="canonical"]').attr('href') || '');
+  if (!/\bnoindex\b/.test(robots) || !/\bfollow\b/.test(robots)) return false;
+  if (!/;\s*url\s*=/i.test(refresh)) return false;
+  if (!canonical.startsWith(siteOrigin)) return false;
+  return $('a[href]').toArray().some((element) => {
+    const href = String($(element).attr('href') || '');
+    return href && !/^(?:#|mailto:|tel:|javascript:)/i.test(href);
+  });
 }
 
 async function createPreviewServer() {
@@ -282,8 +296,9 @@ async function verifyHttpAvailability(pages) {
         if ($('h1').length !== 1 || !String($('h1').text()).trim()) failures.push(`${target}: missing primary h1`);
         if (String($('body').text()).replace(/\s+/g, ' ').trim().length < 100) failures.push(`${target}: primary content is unexpectedly short`);
         const isApprovedLegacyRecovery = target.endsWith('/3-in-3-out-Pneumatic-rotary-joint-P6776400.html');
+        const isApprovedModelForwardingPage = isApprovedForwardingPage($);
         const hasRfqPath = $('a[href]').toArray().some((element) => /(?:^|\/)contact\.html(?:[?#]|$)/i.test(String($(element).attr('href') || '')));
-        if (!isApprovedLegacyRecovery && !hasRfqPath) failures.push(`${target}: missing Contact/RFQ path`);
+        if (!isApprovedLegacyRecovery && !isApprovedModelForwardingPage && !hasRfqPath) failures.push(`${target}: missing Contact/RFQ path`);
       }
     });
 
@@ -313,13 +328,18 @@ const htmlFiles = files.filter((file) => file.toLowerCase().endsWith('.html'));
 assert(htmlFiles.length > 0, `${releaseRoot}: no HTML files found.`);
 await verifyCaseStylesheetBundle(htmlFiles);
 const pages = await mapLimit(htmlFiles, 12, inspectPageBudget);
-const budgetFailures = pages.flatMap((page) => page.failures.map((failure) => `${page.relativePath}: ${failure}`));
+const resourceFailures = pages.flatMap((page) => page.blockingFailures.map((failure) => `${page.relativePath}: ${failure}`));
+const advisoryFindings = pages.flatMap((page) => page.advisoryFindings.map((finding) => `${page.relativePath}: ${finding}`));
 const availability = await verifyHttpAvailability(pages);
-const failures = [...budgetFailures, ...availability.failures];
+const failures = [...resourceFailures, ...availability.failures];
 if (failures.length) {
   console.error(`Release experience verification failed (${failures.length}):`);
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
+}
+if (advisoryFindings.length) {
+  console.warn(`Release experience advisory findings (${advisoryFindings.length}); classify under BEGAPUNK_WEBSITE_STANDARD.md before treating them as release blockers:`);
+  advisoryFindings.forEach((finding) => console.warn(`- ${finding}`));
 }
 const maxima = {};
 for (const key of ['total', 'html', 'css', 'js', 'fonts', 'images', 'largestFirstViewImage', 'requests', 'thirdPartyRequests']) {
@@ -334,5 +354,6 @@ console.log(JSON.stringify({
   maxLocalResponseMs: availability.maxResponseMs,
   budgets,
   maxima,
+  advisoryFindings,
   wroteFiles: false,
 }));

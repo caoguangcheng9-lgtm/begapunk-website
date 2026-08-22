@@ -31,10 +31,10 @@ const rows = [
     ru: 'Объём гарантии и порядок рассмотрения рекламаций определяются согласованным коммерческим предложением, заказом и применимыми условиями. При обращении в Begapunk укажите данные заказа и сведения о проведённом контроле.',
   },
   {
-    source: 'STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.',
-    de: 'STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden. Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.',
-    ja: 'STEP/IGESデータは、型式および用途の確認後、対象となる案件に提供できる場合があります。ファイル形式と提供時期は案件ごとに確定します。',
-    ru: 'Файлы STEP/IGES могут быть предоставлены для проектов, прошедших предварительную оценку модели и условий применения. Формат и срок предоставления согласовываются отдельно для каждого проекта.',
+    source: 'Standard and custom pneumatic rotary joints for CNC, packaging, filling, laser cutting, and automation equipment. STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.',
+    de: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden; Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.',
+    ja: '工作機械、包装機、充填機、レーザー加工機、自動化設備向けに、標準品および特注の空圧ロータリージョイントを提供します。STEP/IGESデータは、型式および用途の確認後、対象となる案件に提供できる場合があり、ファイル形式と提供時期は案件ごとに確定します。',
+    ru: 'Стандартные и индивидуальные пневматические ротационные соединения для станков с ЧПУ, упаковочных и разливочных машин, лазерных станков и систем автоматизации. Файлы STEP/IGES могут быть предоставлены для проектов после проверки модели и условий применения; формат и срок предоставления согласовываются для каждого проекта.',
   },
   {
     source: 'Material and seal suitability for regulated or food-contact service requires documented review of wetted materials, cleaning chemistry, temperature, and applicable requirements; no product-level FDA compliance is claimed without configuration-specific documentation.',
@@ -260,11 +260,11 @@ const toneRows = [
     ru: 'Раздельные вакуумные и пневматические каналы помогают независимо реализовать функции вакуумирования и подачи воздуха для освобождения на вращающихся упаковочных каруселях.',
   },
   {
-    legacySource: '<strong>Reduces leak points by 70%:</strong> One BP-1P-0006 replaces 6 external T-fittings (each with 2 potential leak points), consolidating 12 connections into 1 rotating component',
-    source: '<strong>Six outlets from one inlet:</strong> One BP-1P-0006 can replace six external T-fittings and consolidate the pneumatic distribution into one rotating component.',
-    de: '<strong>Sechs Ausgänge aus einem Eingang:</strong> Eine BP-1P-0006 kann sechs externe T-Stücke ersetzen und die pneumatische Verteilung in einem rotierenden Bauteil zusammenfassen.',
-    ja: '<strong>1入力から6出力：</strong> BP-1P-0006 1台で外部T継手6個を置き換え、空圧分配を1つの回転部品に集約できます。',
-    ru: '<strong>Шесть выходов от одного входа:</strong> Один BP-1P-0006 может заменить шесть внешних тройников и объединить пневматическое распределение в одном вращающемся компоненте.',
+    legacySource: '<strong>Six outlets from one inlet:</strong> One BP-1P-0006 can replace six external T-fittings and consolidate the pneumatic distribution into one rotating component.',
+    source: '<strong>One inlet and eight outlets:</strong> The BP-1P-0006 drawing shows one G1/8 inlet and eight G1/8 outlets.',
+    de: '<strong>Ein Eingang und acht Ausgänge:</strong> Die Zeichnung des BP-1P-0006 zeigt einen G1/8-Eingang und acht G1/8-Ausgänge.',
+    ja: '<strong>1入口・8出口：</strong> BP-1P-0006の図面には、G1/8入口1個とG1/8出口8個が示されています。',
+    ru: '<strong>Один вход и восемь выходов:</strong> На чертеже BP-1P-0006 показаны один вход G1/8 и восемь выходов G1/8.',
   },
   {
     legacySource: '<strong>Zero cross-talk:</strong> Independent passages prevent pressure interference — perfect for clamp + unclamp on compact rotary tables',
@@ -1535,8 +1535,104 @@ fixedDeratingRows.push(
   },
 );
 
-const allPositiveToneRows = [...toneRows, ...productHighlightRows, ...guideToneRows, ...runInToneRows, ...tighteningToneRows, ...leadTimeToneRows, ...dustyEnvironmentRows, ...residualToneRows, ...dustyApplicationRows, ...remainingToneRows, ...p0FreezeRows, ...p1SelectionRows, ...p1LocalizedFaqRows, ...fixedDeratingRows];
+const drawingTruthRows = [
+  {
+    legacySource: '<strong>Pneumatic + electric in one body:</strong> Three air passages and six electrical circuits are integrated into one Ø54 mm flange-mounted body, avoiding a separate slip-ring assembly and simplifying machine wiring.',
+    source: '<strong>Pneumatic and electrical interfaces in one body:</strong> Three air passages and six electrical leads are integrated into one Ø54 mm flange-mounted body. Circuit allocation and electrical ratings must be confirmed in the approved electrical specification.',
+    de: '<strong>Pneumatische und elektrische Schnittstellen in einem Gehäuse:</strong> Drei Luftkanäle und sechs elektrische Anschlussleitungen sind in einem flanschmontierten Gehäuse Ø54 mm integriert. Schaltungszuordnung und elektrische Nennwerte sind anhand der freigegebenen elektrischen Spezifikation zu bestätigen.',
+    ja: '<strong>空圧・電気インターフェースを一体化：</strong> Ø54 mmのフランジ取付ボディに3本の空気流路と6本の電気リード線を統合しています。回路の割当てと電気定格は、承認済み電気仕様書で確認してください。',
+    ru: '<strong>Пневматические и электрические интерфейсы в одном корпусе:</strong> Три воздушных канала и шесть электрических выводов объединены в одном фланцевом корпусе Ø54 мм. Назначение цепей и электрические номиналы следует подтвердить по согласованной электрической спецификации.',
+  },
+  {
+    legacySource: '<strong>Si3N4 ceramic seal option:</strong> Silicon nitride ceramic is used where the selected medium and contamination profile call for a hard seal face; confirm material compatibility and duty conditions before selection.',
+    source: '<strong>Drawing-listed standard seal:</strong> The BP-4P-30-0001 drawing lists PTFE with an O-ring for standard air service. Other seal systems or media require separate written approval for the selected configuration.',
+    de: '<strong>In der Zeichnung angegebene Standarddichtung:</strong> Die Zeichnung des BP-4P-30-0001 nennt PTFE mit O-Ring für den standardmäßigen Luftbetrieb. Andere Dichtungssysteme oder Medien bedürfen einer gesonderten schriftlichen Freigabe für die gewählte Ausführung.',
+    ja: '<strong>図面記載の標準シール：</strong> BP-4P-30-0001の図面では、標準の空気用途にPTFEシールとOリングが指定されています。ほかのシール方式または流体には、選定仕様ごとの書面承認が必要です。',
+    ru: '<strong>Стандартное уплотнение по чертежу:</strong> В чертеже BP-4P-30-0001 для стандартной работы с воздухом указаны ПТФЭ и уплотнительное кольцо. Другие системы уплотнений или рабочие среды требуют отдельного письменного согласования выбранного исполнения.',
+  },
+  {
+    legacySource: 'Run at low pressure (0.2 MPa) and low speed (50 RPM) for 5 minutes without load. Check all 3 pneumatic passages for leaks with soapy water. Test electrical continuity across all 6 circuits with a multimeter — resistance should be &lt;0.1 Ω per circuit. If any circuit shows &gt;1 Ω, stop and inspect brush contact. This staged run-in allows the PTFE seal and slip-ring brush contacts to settle before full duty.',
+    source: 'Before commissioning BP-3P-S06-0001, follow the approved pneumatic and electrical test procedure. Check the three air passages for leakage, and verify the six electrical leads only against the approved pinout and acceptance limits. The public drawing does not define circuit allocation or electrical test thresholds.',
+    de: 'Befolgen Sie vor der Inbetriebnahme des BP-3P-S06-0001 das freigegebene pneumatische und elektrische Prüfverfahren. Prüfen Sie die drei Luftkanäle auf Leckage und die sechs elektrischen Anschlussleitungen ausschließlich anhand der freigegebenen Anschlussbelegung und Annahmegrenzen. Die öffentliche Zeichnung legt weder die Schaltungszuordnung noch elektrische Prüfgrenzwerte fest.',
+    ja: 'BP-3P-S06-0001の運転開始前に、承認済みの空圧・電気試験手順に従ってください。3本の空気流路の漏れを確認し、6本の電気リード線は承認済みの結線表と合否基準に基づいてのみ確認してください。公開図面には、回路の割当てや電気試験の判定値は規定されていません。',
+    ru: 'Перед вводом BP-3P-S06-0001 в эксплуатацию следуйте согласованной процедуре пневматических и электрических испытаний. Проверьте три воздушных канала на утечки, а шесть электрических выводов — только по согласованной распиновке и критериям приёмки. В открытом чертеже не определены ни назначение цепей, ни предельные значения электрических испытаний.',
+  },
+  {
+    legacySource: 'Run at low pressure (0.2 MPa) and low speed (20 RPM) for 5 minutes without load. This beds the PTFE + Si3N4 seal against the shaft surface and distributes lubricant across the contact. Check all 4 passages for leaks with soapy water. If dry, gradually increase to operating pressure and speed over 10 minutes. This staged run-in allows the seal contact to settle before full duty.',
+    source: 'Before commissioning BP-4P-30-0001, follow the approved installation and test procedure and check all four air passages for leakage. The standard drawing lists a PTFE seal with O-ring; use only the commissioning procedure approved for that configuration.',
+    de: 'Befolgen Sie vor der Inbetriebnahme des BP-4P-30-0001 das freigegebene Montage- und Prüfverfahren und prüfen Sie alle vier Luftkanäle auf Leckage. Die Standardzeichnung nennt eine PTFE-Dichtung mit O-Ring; verwenden Sie ausschließlich das für diese Ausführung freigegebene Inbetriebnahmeverfahren.',
+    ja: 'BP-4P-30-0001の運転開始前に、承認済みの取付・試験手順に従い、4本の空気流路すべてについて漏れを確認してください。標準図面に記載されているのはPTFEシールとOリングです。その仕様について承認された運転開始手順のみを使用してください。',
+    ru: 'Перед вводом BP-4P-30-0001 в эксплуатацию следуйте согласованной процедуре монтажа и испытаний и проверьте все четыре воздушных канала на утечки. В стандартном чертеже указано уплотнение из ПТФЭ с уплотнительным кольцом; используйте только процедуру ввода в эксплуатацию, согласованную для данного исполнения.',
+  },
+  {
+    legacySource: 'BP-3P-0006 uses G1/4 BSP parallel (BSPP) threads per ISO 228-1. Confirm your equipment has G1/4 female threads or appropriate adapters. The 4× M6 mounting holes on the body are for anti-rotation brackets, not for torque reaction. Download the 2D drawing for exact thread dimensions, pitch (1.337 mm), and tolerances. NPT and metric thread options can be reviewed; scope and lead time are confirmed in the quotation or order.',
+    source: 'The current public drawing does not establish a verified standard port designation for BP-3P-0006. Before selecting adapters or machining the equipment interface, obtain an approved corrected drawing that confirms the exact thread designation, dimensions, tolerances, and sealing interface. Alternative port threads require separate review.',
+    de: 'Die derzeitige öffentliche Zeichnung weist für den BP-3P-0006 keine verifizierte normgerechte Anschlussbezeichnung aus. Fordern Sie vor der Auswahl von Adaptern oder der Bearbeitung der Maschinenschnittstelle eine freigegebene korrigierte Zeichnung an, die Gewindebezeichnung, Maße, Toleranzen und Dichtschnittstelle eindeutig bestätigt. Alternative Anschlussgewinde bedürfen einer gesonderten Prüfung.',
+    ja: '現在公開されている図面では、BP-3P-0006の標準ポート呼びが確定できません。アダプタ選定や装置側加工の前に、ねじ呼び、寸法、公差、シール方式を明確にした承認済み訂正版図面を入手してください。別ねじ仕様は個別確認が必要です。',
+    ru: 'Текущий открытый чертёж не устанавливает для BP-3P-0006 проверенное стандартное обозначение портов. До выбора переходников или обработки интерфейса оборудования получите согласованный исправленный чертёж с точным обозначением резьбы, размерами, допусками и способом герметизации. Альтернативная резьба портов требует отдельного рассмотрения.',
+  },
+  {
+    legacySource: 'BP-3P-0006 uses G1/4 BSP parallel (BSPP) threads per ISO 228-1. BSP parallel threads seal on a gasket or O-ring at the port face, not on the thread itself. This means PTFE tape on the thread is for sealing only; the mechanical connection is made by the flat face compressing against the mating port. Download the 2D PDF drawing for exact thread dimensions, pitch (1.337 mm for G1/4), and tolerances. NPT and metric thread options can be reviewed; scope and lead time are confirmed in the quotation or order.',
+    source: 'The current public material does not verify a port size, thread standard, thread pitch, or sealing method for BP-3P-0006. Use only an approved corrected drawing and the configuration-specific installation specification before selecting fittings or assembling the connection.',
+    de: 'Die derzeit veröffentlichten Unterlagen bestätigen für den BP-3P-0006 weder Anschlussgröße, Gewindenorm und Gewindesteigung noch die Dichtmethode. Verwenden Sie vor der Auswahl von Verschraubungen oder der Montage der Verbindung ausschließlich eine freigegebene korrigierte Zeichnung und die einbauspezifische Montagevorgabe.',
+    ja: '現在公開されている資料では、BP-3P-0006のポートサイズ、ねじ規格、ねじピッチ、シール方式はいずれも確定していません。継手の選定や接続組立の前に、承認済み訂正版図面と選定仕様専用の取付仕様書のみを使用してください。',
+    ru: 'Текущие открытые материалы не подтверждают размер порта, стандарт и шаг резьбы либо способ герметизации BP-3P-0006. До выбора фитингов или сборки соединения используйте только согласованный исправленный чертёж и монтажную спецификацию конкретного исполнения.',
+  },
+  {
+    legacySource: '<strong>Dusty or abrasive external environments</strong> — while the Si3N4 seal handles abrasive media, external steel dust will contaminate the bearing and flange threads; use BP-2P-50-0001 (protective shroud and labyrinth) or add a protective shroud and bellows',
+    source: '<strong>Dusty or abrasive external environments</strong> — the standard BP-4P-30-0001 drawing lists a PTFE seal with O-ring and does not establish suitability for abrasive media. Protect the joint from external particles and confirm the selected configuration for the actual contamination and duty conditions.',
+    de: '<strong>Staubige oder abrasive Außenumgebungen</strong> – die Standardzeichnung des BP-4P-30-0001 nennt eine PTFE-Dichtung mit O-Ring und weist keine Eignung für abrasive Medien aus. Schützen Sie die Drehdurchführung vor äußeren Partikeln und bestätigen Sie die gewählte Ausführung für die tatsächliche Verschmutzung und die Betriebsbedingungen.',
+    ja: '<strong>粉じんまたは研磨性粒子のある外部環境</strong> — BP-4P-30-0001の標準図面にはPTFEシールとOリングが記載されており、研磨性流体への適合性は示されていません。外部粒子からロータリージョイントを保護し、実際の汚染状態と運転条件に対して選定仕様を確認してください。',
+    ru: '<strong>Запылённая или абразивная внешняя среда</strong> — в стандартном чертеже BP-4P-30-0001 указано уплотнение из ПТФЭ с уплотнительным кольцом, но пригодность для абразивных сред не установлена. Защитите соединение от внешних частиц и подтвердите выбранное исполнение с учётом фактического загрязнения и режима работы.',
+  },
+  {
+    legacySource: 'The integrated S06 slip ring provides six electrical circuits. Confirm voltage, current, contact material, insulation resistance, dielectric strength, signal type, wire color, and conductor size against the approved electrical specification for the selected configuration. Review inductive loads, sensors, encoder signals, Ethernet, and other high-frequency requirements with engineering before wiring.',
+    source: 'The S06 drawing confirms six electrical leads. Circuit count and allocation are not defined by the drawing. Confirm circuit allocation, voltage, current, contact material, insulation resistance, dielectric strength, signal type, wire identification, conductor size, and any high-frequency requirement against the approved electrical specification before wiring.',
+    de: 'Die S06-Zeichnung bestätigt sechs elektrische Anschlussleitungen. Anzahl und Zuordnung der Stromkreise sind darin nicht festgelegt. Bestätigen Sie vor der Verdrahtung Schaltungszuordnung, Spannung, Strom, Kontaktwerkstoff, Isolationswiderstand, Spannungsfestigkeit, Signalart, Aderkennzeichnung, Leiterquerschnitt und etwaige Hochfrequenzanforderungen anhand der freigegebenen elektrischen Spezifikation.',
+    ja: 'S06の図面で確認できるのは6本の電気リード線です。回路数と割当ては図面に規定されていません。配線前に、回路割当て、電圧、電流、接点材質、絶縁抵抗、耐電圧、信号種別、電線識別、導体サイズ、高周波要件を承認済み電気仕様書で確認してください。',
+    ru: 'Чертёж S06 подтверждает шесть электрических выводов. Количество и назначение цепей в чертеже не определены. До подключения сверьте назначение цепей, напряжение, ток, материал контактов, сопротивление изоляции, электрическую прочность, тип сигнала, маркировку проводов, сечение проводника и требования к высокочастотным сигналам с согласованной электрической спецификацией.',
+  },
+  {
+    legacySource: 'Yes — the PTFE composite seal and FKM O-ring are compatible with water, water-soluble coolant, and light hydraulic oil up to ISO VG 32. For continuous water duty, confirm allowable pressure and speed for the selected configuration against the current product page, approved drawing, medium, temperature, and duty cycle. The 6061 aluminum alloy body is anodized for corrosion resistance, making it suitable for intermittent water and coolant exposure. For continuous water immersion or deionized water, specify a nickel-plated or stainless steel (304/316) version. Confirm the required filtration for the selected medium and contamination conditions.',
+    source: 'For this model, the standard drawing identifies Air as the medium and PTFE with an O-ring as the seal. Air is the only medium established by that drawing, and the O-ring compound is not specified. Obtain written, configuration-specific compatibility confirmation before specifying any other medium or seal.',
+    de: 'Für dieses Modell nennt die Standardzeichnung Luft als Medium sowie PTFE mit O-Ring als Dichtung. Luft ist das einzige in dieser Zeichnung ausgewiesene Medium; der Werkstoff des O-Rings ist nicht angegeben. Bevor Sie ein anderes Medium oder eine andere Dichtung festlegen, ist eine schriftliche, ausführungsspezifische Kompatibilitätsbestätigung einzuholen.',
+    ja: 'この型式の標準図面では、使用流体は空気、シールはPTFEとOリングと記載されています。この図面で確認できる流体は空気のみで、Oリングの材質は特定されていません。ほかの流体またはシールを指定する前に、仕様ごとの適合性を書面で確認してください。',
+    ru: 'Для этой модели в стандартном чертеже указаны воздух в качестве рабочей среды и ПТФЭ с уплотнительным кольцом в качестве уплотнения. Воздух — единственная среда, установленная этим чертежом; материал уплотнительного кольца не указан. До назначения другой среды или уплотнения получите письменное подтверждение совместимости для конкретного исполнения.',
+  },
+  {
+    legacySource: 'Yes — the PTFE composite seal and FKM O-ring are compatible with water, water-soluble coolant, and light hydraulic oil. For continuous water duty, confirm allowable pressure and speed for the selected configuration against the current product page, approved drawing, medium, temperature, and duty cycle. The 6061 aluminum alloy body is anodized for corrosion resistance, making it suitable for intermittent water and coolant exposure. However, the deep groove ball bearing is not sealed against water ingress — for continuous water duty, specify a sealed bearing option or use BP-3P-0004 (flange mount) with external bearing protection. Confirm the required filtration for the selected medium and contamination conditions.',
+    source: 'For BP-3P-0007, the standard drawing identifies Air as the medium and PTFE with an O-ring as the seal. Air is the only medium established by that drawing, and the O-ring compound is not specified. Obtain written, configuration-specific compatibility confirmation before specifying any other medium or seal.',
+    de: 'Für den BP-3P-0007 nennt die Standardzeichnung Luft als Medium sowie PTFE mit O-Ring als Dichtung. Luft ist das einzige in dieser Zeichnung ausgewiesene Medium; der Werkstoff des O-Rings ist nicht angegeben. Bevor Sie ein anderes Medium oder eine andere Dichtung festlegen, ist eine schriftliche, ausführungsspezifische Kompatibilitätsbestätigung einzuholen.',
+    ja: 'BP-3P-0007の標準図面では、使用流体は空気、シールはPTFEとOリングと記載されています。この図面で確認できる流体は空気のみで、Oリングの材質は特定されていません。ほかの流体またはシールを指定する前に、仕様ごとの適合性を書面で確認してください。',
+    ru: 'Для BP-3P-0007 в стандартном чертеже указаны воздух в качестве рабочей среды и ПТФЭ с уплотнительным кольцом в качестве уплотнения. Воздух — единственная среда, установленная этим чертежом; материал уплотнительного кольца не указан. До назначения другой среды или уплотнения получите письменное подтверждение совместимости для конкретного исполнения.',
+  },
+  {
+    legacySource: 'Yes — the PTFE + Graphite composite seal and anodized 6061 aluminum alloy body are compatible with water, water-soluble coolant, and light hydraulic oil (up to ISO VG 32). For continuous water duty, confirm allowable pressure and speed for the selected configuration against the current product page, approved drawing, medium, temperature, duty cycle, and electrical protection requirements. The anodized surface provides good corrosion resistance for intermittent water exposure, but continuous immersion or aggressive synthetic coolant may require a PEEK seal option or nickel-plated port treatment. If your application involves deionized water or phosphate ester coolant, contact Begapunk for seal compatibility review before ordering.',
+    source: 'For BP-3P-S06-0001, the standard drawing identifies Air as the medium and PTFE with an O-ring as the seal. Air is the only medium established by that drawing. Obtain written, configuration-specific compatibility confirmation for another medium. Circuit allocation, electrical ratings, and ingress protection must also be confirmed in the approved electrical specification.',
+    de: 'Für den BP-3P-S06-0001 nennt die Standardzeichnung Luft als Medium sowie PTFE mit O-Ring als Dichtung. Luft ist das einzige in dieser Zeichnung ausgewiesene Medium. Für ein anderes Medium ist eine schriftliche, ausführungsspezifische Kompatibilitätsbestätigung einzuholen. Schaltungszuordnung, elektrische Nennwerte und Schutzart sind zusätzlich anhand der freigegebenen elektrischen Spezifikation zu bestätigen.',
+    ja: 'BP-3P-S06-0001の標準図面では、使用流体は空気、シールはPTFEとOリングと記載されています。この図面で確認できる流体は空気のみです。ほかの流体には、仕様ごとの適合性を書面で確認してください。回路割当て、電気定格、保護等級についても、承認済み電気仕様書で確認する必要があります。',
+    ru: 'Для BP-3P-S06-0001 в стандартном чертеже указаны воздух в качестве рабочей среды и ПТФЭ с уплотнительным кольцом в качестве уплотнения. Воздух — единственная среда, установленная этим чертежом. Для другой среды получите письменное подтверждение совместимости конкретного исполнения. Назначение цепей, электрические номиналы и степень защиты также следует подтвердить по согласованной электрической спецификации.',
+  },
+  {
+    legacySource: 'Yes — the PTFE + Si3N4 ceramic seal is compatible with water, water-soluble coolant, and light hydraulic oil (up to ISO VG 32). The ceramic-filled seal option is intended for applications where the selected medium and contamination profile call for a hard seal face. For continuous water exposure, confirm allowable pressure and speed for the selected configuration against the current product page, approved drawing, medium, temperature, and duty cycle. Review body material, surface treatment, and seal compatibility separately for deionized water or aggressive synthetic coolant.',
+    source: 'For BP-4P-30-0001, the standard drawing identifies Air as the medium and PTFE with an O-ring as the seal. Air is the only medium established by that drawing. Obtain written, configuration-specific compatibility confirmation before specifying any other medium or seal.',
+    de: 'Für den BP-4P-30-0001 nennt die Standardzeichnung Luft als Medium sowie PTFE mit O-Ring als Dichtung. Luft ist das einzige in dieser Zeichnung ausgewiesene Medium. Bevor Sie ein anderes Medium oder eine andere Dichtung festlegen, ist eine schriftliche, ausführungsspezifische Kompatibilitätsbestätigung einzuholen.',
+    ja: 'BP-4P-30-0001の標準図面では、使用流体は空気、シールはPTFEとOリングと記載されています。この図面で確認できる流体は空気のみです。ほかの流体またはシールを指定する前に、仕様ごとの適合性を書面で確認してください。',
+    ru: 'Для BP-4P-30-0001 в стандартном чертеже указаны воздух в качестве рабочей среды и ПТФЭ с уплотнительным кольцом в качестве уплотнения. Воздух — единственная среда, установленная этим чертежом. До назначения другой среды или уплотнения получите письменное подтверждение совместимости для конкретного исполнения.',
+  },
+  {
+    legacySource: 'Yes — the PTFE composite seal is compatible with water, water-soluble coolant, and light hydraulic oil (up to ISO VG 32). The 6061 aluminum alloy body is anodized for additional corrosion resistance. For continuous water duty, confirm allowable pressure and speed for the selected configuration against the current product page, approved drawing, medium, temperature, and duty cycle. The anodized surface provides good protection for intermittent water exposure, but continuous immersion or aggressive synthetic coolant may require a nickel-plated or stainless steel (304/316) version. If your application involves deionized water or phosphate ester coolant, contact Begapunk for seal compatibility review before ordering.',
+    source: 'For BP-8P-0001, the standard drawing identifies Air as the medium and PTFE with an O-ring as the seal. Air is the only medium established by that drawing. Obtain written, configuration-specific compatibility confirmation before specifying any other medium or seal.',
+    de: 'Für den BP-8P-0001 nennt die Standardzeichnung Luft als Medium sowie PTFE mit O-Ring als Dichtung. Luft ist das einzige in dieser Zeichnung ausgewiesene Medium. Bevor Sie ein anderes Medium oder eine andere Dichtung festlegen, ist eine schriftliche, ausführungsspezifische Kompatibilitätsbestätigung einzuholen.',
+    ja: 'BP-8P-0001の標準図面では、使用流体は空気、シールはPTFEとOリングと記載されています。この図面で確認できる流体は空気のみです。ほかの流体またはシールを指定する前に、仕様ごとの適合性を書面で確認してください。',
+    ru: 'Для BP-8P-0001 в стандартном чертеже указаны воздух в качестве рабочей среды и ПТФЭ с уплотнительным кольцом в качестве уплотнения. Воздух — единственная среда, установленная этим чертежом. До назначения другой среды или уплотнения получите письменное подтверждение совместимости для конкретного исполнения.',
+  },
+];
+
+const allPositiveToneRows = [...toneRows, ...productHighlightRows, ...guideToneRows, ...runInToneRows, ...tighteningToneRows, ...leadTimeToneRows, ...dustyEnvironmentRows, ...residualToneRows, ...dustyApplicationRows, ...remainingToneRows, ...p0FreezeRows, ...p1SelectionRows, ...p1LocalizedFaqRows, ...fixedDeratingRows, ...drawingTruthRows];
 const legacyToneSources = new Set(allPositiveToneRows.map((row) => row.legacySource).filter(Boolean));
+legacyToneSources.add('<strong>Reduces leak points by 70%:</strong> One BP-1P-0006 replaces 6 external T-fittings (each with 2 potential leak points), consolidating 12 connections into 1 rotating component');
+legacyToneSources.add('STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.');
 const positiveToneRows = allPositiveToneRows.filter((row) => !legacyToneSources.has(row.source));
 rows.push(...positiveToneRows, ...resolverRows);
 

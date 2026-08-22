@@ -1,5 +1,7 @@
 # Begapunk Automated Deployment
 
+> Status: operational implementation guide. It does not authorize commit, push, deployment, or server changes. Current project decisions and release severity come from docs/standards/README.md and docs/standards/BEGAPUNK_WEBSITE_STANDARD.md. Any statement about live server state is a dated observation and must be verified before use.
+
 ## Outcome
 
 The production workflow is designed around an immutable release directory and an atomic `current` symlink:

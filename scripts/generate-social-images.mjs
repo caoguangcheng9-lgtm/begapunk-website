@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import process from 'node:process';
 import sharp from 'sharp';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -9,11 +10,20 @@ const AUDIT_ROOT = path.join(ROOT, 'audit', 'social-sharing');
 const MANIFEST_PATH = path.join(AUDIT_ROOT, 'manifest.json');
 const REPORT_PATH = path.join(AUDIT_ROOT, 'report.md');
 const IMAGE_MANIFEST_PATH = path.join(ROOT, 'audit', 'image-optimization', 'manifest.json');
+const DRAWING_FACTS_PATH = path.join(ROOT, 'data', 'product-drawing-facts.json');
 const SITE_ORIGIN = 'https://www.begapunk.com/';
 
-const productPages = (await fs.readdir(ROOT))
-  .filter((file) => /^BP-.*\.html$/i.test(file))
-  .sort();
+const drawingFacts = JSON.parse(await fs.readFile(DRAWING_FACTS_PATH, 'utf8'));
+const productModels = Object.keys(drawingFacts.products || {}).sort();
+const modelArgument = process.argv.find((argument) => argument.startsWith('--model='));
+const requestedModel = modelArgument?.slice('--model='.length) || null;
+const unexpectedArguments = process.argv.slice(2).filter((argument) => !argument.startsWith('--model='));
+if (unexpectedArguments.length) throw new Error(`Unsupported argument(s): ${unexpectedArguments.join(', ')}`);
+if (requestedModel && !productModels.includes(requestedModel)) {
+  throw new Error(`Unknown drawing-backed product model: ${requestedModel}`);
+}
+const productPages = (requestedModel ? [requestedModel] : productModels)
+  .map((model) => `${model}.html`);
 
 const imageManifest = JSON.parse(await fs.readFile(IMAGE_MANIFEST_PATH, 'utf8'));
 const originalByOptimized = new Map(
@@ -143,7 +153,10 @@ async function createCard({ model, descriptor, sourceImage }) {
 await fs.mkdir(SOCIAL_ROOT, { recursive: true });
 await fs.mkdir(AUDIT_ROOT, { recursive: true });
 
-const manifest = [];
+const previousManifest = requestedModel
+  ? JSON.parse(await fs.readFile(MANIFEST_PATH, 'utf8'))
+  : { images: [] };
+const generatedImages = [];
 for (const file of productPages) {
   const filePath = path.join(ROOT, file);
   let html = await fs.readFile(filePath, 'utf8');
@@ -164,7 +177,7 @@ for (const file of productPages) {
   await fs.writeFile(outputPath, card);
 
   const imageUrl = `${SITE_ORIGIN}${outputRelative}?v=${digest.slice(0, 12)}`;
-  const alt = `${ogTitle} product overview`;
+  const alt = decodeHtml(getMeta(html, 'property', 'og:image:alt') ?? `${ogTitle} product overview`);
   html = setMeta(html, 'property', 'og:image', imageUrl, 'og:type');
   html = setMeta(html, 'property', 'og:image:secure_url', imageUrl, 'og:image');
   html = setMeta(html, 'property', 'og:image:type', 'image/jpeg', 'og:image:secure_url');
@@ -175,7 +188,7 @@ for (const file of productPages) {
   html = setMeta(html, 'name', 'twitter:image:alt', alt, 'twitter:image');
   await fs.writeFile(filePath, html, 'utf8');
 
-  manifest.push({
+  generatedImages.push({
     page: file,
     model,
     title: ogTitle,
@@ -188,6 +201,12 @@ for (const file of productPages) {
     sha256: digest,
   });
 }
+
+const replacedModels = new Set(generatedImages.map((image) => image.model));
+const manifest = [
+  ...previousManifest.images.filter((image) => productModels.includes(image.model) && !replacedModels.has(image.model)),
+  ...generatedImages,
+].sort((left, right) => left.page.localeCompare(right.page));
 
 await fs.writeFile(MANIFEST_PATH, `${JSON.stringify({ generatedAt: new Date().toISOString(), images: manifest }, null, 2)}\n`, 'utf8');
 const totalBytes = manifest.reduce((sum, image) => sum + image.bytes, 0);
@@ -212,6 +231,7 @@ await fs.writeFile(REPORT_PATH, report, 'utf8');
 
 console.log(JSON.stringify({
   pages: manifest.length,
+  generatedPages: generatedImages.length,
   dimensions: '1200x630',
   outputBytes: totalBytes,
   outputDirectory: 'images/social',

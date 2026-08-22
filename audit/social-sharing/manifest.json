@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T03:03:12.247Z",
+  "generatedAt": "2026-08-20T10:05:08.252Z",
   "images": [
     {
       "page": "BP-1P-0003.html",
@@ -110,16 +110,16 @@
       "sha256": "ce223348044b78a74fb60c92ab669dcf488f34f7354c070335ac0cb3480f505a"
     },
     {
-      "page": "BP-2P-95-0001.html",
-      "model": "BP-2P-95-0001",
-      "title": "BP-2P-95-0001 2-in-4-out Rotary Joint | Begapunk",
-      "sourceImage": "images/products/BP-2P-95-0001-1.webp",
-      "output": "images/social/BP-2P-95-0001-social.jpg",
-      "url": "https://www.begapunk.com/images/social/BP-2P-95-0001-social.jpg?v=641de6265725",
+      "page": "BP-2P-95-0005.html",
+      "model": "BP-2P-95-0005",
+      "title": "BP-2P-95-0005 2-Passage Pneumatic Rotary Union | Begapunk",
+      "sourceImage": "images/optimized/products/BP-2P-95-0005-1.webp",
+      "output": "images/social/BP-2P-95-0005-social.jpg",
+      "url": "https://www.begapunk.com/images/social/BP-2P-95-0005-social.jpg?v=b6ea3906ac44",
       "width": 1200,
       "height": 630,
-      "bytes": 72590,
-      "sha256": "641de6265725c3859d2406874cde3d8ce462afb24cdad6bde18f71063d489a9d"
+      "bytes": 75988,
+      "sha256": "b6ea3906ac440365b89752a34633857f60222b5be60607221122112639a4878c"
     },
     {
       "page": "BP-3P-0004.html",

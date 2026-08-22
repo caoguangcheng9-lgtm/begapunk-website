@@ -3,9 +3,17 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { load } from 'cheerio';
+import {
+  drawingBackedProductKeywords,
+  drawingBackedProductLinkLabel,
+  drawingBackedProductMetadata,
+  drawingBackedProductSummary,
+  drawingBackedUiContract,
+} from './lib/drawing-backed-product-facts.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteOrigin = 'https://www.begapunk.com';
+const drawingManifest = JSON.parse(await readFile(path.join(repoRoot, 'data/product-drawing-facts.json'), 'utf8'));
 const locales = [
   { code: 'en', directory: '' },
   { code: 'de', directory: 'de' },
@@ -25,117 +33,68 @@ const catalogFilterCounts = {
   'products.html': [8, 1, 5, 1, 1, 0],
   'products-p2.html': [8, 1, 3, 2, 1, 1],
 };
-const conservativeModel = 'BP-2P-50-0001';
-const conservativePolicyByLocale = {
+const drawingBackedModel = 'BP-2P-50-0001';
+const drawingBackedPolicyByLocale = {
   en: {
-    productTypeName: 'Product type',
-    productTypeValue: 'Pneumatic rotary joint / air rotary union with protective shroud and labyrinth',
-    mediaName: 'Compatible media',
-    mediaValue: 'Air. Other media require written compatibility confirmation for the operating conditions.',
-    sealName: 'Seal type',
-    sealValue: 'PTFE seal with O-ring',
-    protectionName: 'Protection rating',
-    protectionValue: 'Protective-shroud and labyrinth design for dusty environments.',
-    mountingName: 'Mounting type',
-    mountingValue: 'Stator side: 4 × M5, thread depth 10 mm; rotor side: 6 × M5, thread depth 8 mm. Confirm the complete mounting dimensions against the supplied drawing before machining.',
-    weightText: 'Confirm weight for the supplied configuration.',
     cardText: 'Protective Shroud & Labyrinth',
-    comparisonText: 'Stator 4 × M5 × 10 mm; rotor 6 × M5 × 8 mm',
-    llmsText: 'no certified IP rating is claimed',
-    searchText: 'no certified IP rating is currently claimed',
-    mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
+    catalogFragments: ['2-in-2-out', 'Standard Medium: Air', 'Stator 4 × M5 / Rotor 6 × M5', 'Max 1 MPa', 'Max 100 RPM', 'AL6061', 'PTFE Seal + O-Ring'],
+    comparisonFragments: ['2 passages', '2-in-2-out', '1 MPa', '100 RPM', '4 × M5 × 10 mm', '6 × M5 × 8 mm', 'AL6061', 'Air service'],
     nonAirTerms: /\b(?:water|coolant|liquid|non-air)\b/i,
     nonAirQualification: /\b(?:written (?:compatibility )?confirmation|must not|do not direct|not (?:recommended|approved|intended)|outside|consult|requires? (?:a )?(?:separate )?(?:written |engineering )?(?:confirmation|review)|before operation)\b/i,
   },
   de: {
-    productTypeName: 'Produkttyp',
-    productTypeValue: 'Pneumatische Drehdurchführung für staubige Umgebungen mit Schutzhaube und Labyrinth.',
-    mediaName: 'Betriebsmedien',
-    mediaValue: 'Luft. Andere Medien erfordern eine schriftliche Kompatibilitätsbestätigung für die Betriebsbedingungen.',
-    sealName: 'Dichtung',
-    sealValue: 'PTFE-Dichtung mit O-Ring.',
-    protectionName: 'Schutzart',
-    protectionValue: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen.',
-    mountingName: 'Montageart',
-    mountingValue: 'Statorseite: 4 × M5, Gewindetiefe 10 mm; Rotorseite: 6 × M5, Gewindetiefe 8 mm. Vor der Bearbeitung vollständige Einbaumaße anhand der mitgelieferten Zeichnung bestätigen.',
-    weightText: 'Gewicht der gelieferten Konfiguration bestätigen.',
     cardText: 'Schutzhaube & Labyrinth',
-    comparisonText: 'Stator 4 × M5 × 10 mm; Rotor 6 × M5 × 8 mm',
-    llmsText: 'keine zertifizierte IP-Schutzart angegeben',
-    searchText: 'keine zertifizierte IP-Schutzart',
-    mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
+    catalogFragments: ['2 Eingänge / 2 Ausgänge', 'Standardmedium: Luft', 'Stator 4 × M5 / Rotor 6 × M5', 'max. 1 MPa', 'Max. 100 min⁻¹', 'AL6061', 'PTFE-Dichtung + O-Ring'],
+    comparisonFragments: ['2 Kanäle', '2 Einlässe / 2 Auslässe', '1 MPa', '100 min⁻¹', '4 × M5 × 10 mm', '6 × M5 × 8 mm', 'AL6061', 'Luftbetrieb'],
     nonAirTerms: /\b(?:Wasser|Kühlmittel|Flüssigkeit|Nicht-Luft-Medium)\b/iu,
     nonAirQualification: /\b(?:schriftliche Kompatibilitätsbestätigung|nicht vorgesehen|nicht angegeben|nicht direkt|Waschstrahl nicht|keine geeignete|außerhalb|vor der Inbetriebnahme|vor jeder Flüssigkeitszufuhr|konsultieren)\b/iu,
   },
   ja: {
-    productTypeName: '製品種別',
-    productTypeValue: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。',
-    mediaName: '使用可能流体',
-    mediaValue: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
-    sealName: 'シール方式',
-    sealValue: 'PTFEシール＋Oリング。',
-    protectionName: '保護等級',
-    protectionValue: '粉じん環境向けの保護カバー・ラビリンス構造。',
-    mountingName: '取付方式',
-    mountingValue: '固定側：4 × M5、ねじ深さ10 mm；回転側：6 × M5、ねじ深さ8 mm。加工前に、支給図面で取付寸法全体をご確認ください。',
-    weightText: '納入仕様の質量をご確認ください。',
     cardText: '保護カバー・ラビリンス構造',
-    comparisonText: '固定側4 × M5 × 10 mm／回転側6 × M5 × 8 mm',
-    llmsText: '認証済みIP保護等級',
-    searchText: '認証済みIP保護等級',
-    mountingFragments: ['4 × M5', '10 mm', '6 × M5', '8 mm'],
+    catalogFragments: ['2入力・2出力', '標準使用流体：空気', '固定側4 × M5／回転側6 × M5', '最高 1 MPa', '最高100 min⁻¹', 'AL6061', 'PTFEシール＋Oリング'],
+    comparisonFragments: ['2流路', '2入口／2出口', '1 MPa', '100 min⁻¹', '固定側4 × M5 × 10 mm', '回転側6 × M5 × 8 mm', 'AL6061', '空気用途'],
     nonAirTerms: /(?:水|クーラント|液体|空気以外)/u,
     nonAirQualification: /(?:書面|想定していません|おそれがあります|向けないでください|標準(?:仕様|定格)外|運転前|仕様決定前|事前に.*確認|相談)/u,
   },
   ru: {
-    productTypeName: 'Тип изделия',
-    productTypeValue: 'Пневматическое вращающееся соединение с защитным кожухом и лабиринтом для запылённых условий.',
-    mediaName: 'Рабочая среда',
-    mediaValue: 'Стандартная рабочая среда: воздух. Для других сред требуется письменное подтверждение совместимости с рабочими условиями.',
-    sealName: 'Тип уплотнения',
-    sealValue: 'Уплотнение из ПТФЭ с O-кольцом.',
-    protectionName: 'Степень защиты',
-    protectionValue: 'Защитный кожух и лабиринт для запылённых условий.',
-    mountingName: 'Тип крепления',
-    mountingValue: 'Сторона статора: 4 × M5, глубина резьбы 10 мм; сторона ротора: 6 × M5, глубина резьбы 8 мм. До механической обработки сверьте все монтажные размеры с предоставленным чертежом.',
-    weightText: 'Уточните массу поставляемой конфигурации.',
     cardText: 'Защитный кожух и лабиринт',
-    comparisonText: 'статор 4 × M5 × 10 мм; ротор 6 × M5 × 8 мм',
-    llmsText: 'сертифицированная степень защиты IP не заявляется',
-    searchText: 'сертифицированная степень защиты IP',
-    mountingFragments: ['4 × M5', '10 мм', '6 × M5', '8 мм'],
+    catalogFragments: ['2 входа / 2 выхода', 'Стандартная среда: воздух', 'Статор 4 × M5 / ротор 6 × M5', 'Макс. 1 МПа', 'Макс. 100 об/мин', 'AL6061', 'Уплотнение ПТФЭ + O-кольцо'],
+    comparisonFragments: ['2 канала', '2 входа / 2 выхода', '1 МПа', '100 об/мин', 'статор 4 × M5 × 10 мм', 'ротор 6 × M5 × 8 мм', 'AL6061', 'Воздушная среда'],
     nonAirTerms: /\b(?:вод[аы]|СОЖ|жидк\w*|кроме воздуха)\b/iu,
     nonAirQualification: /\b(?:письменн\w+ подтвержден\w+|не предусмотр\w+|не заявля\w+|вне стандарт\w+|до начала эксплуатации|до подачи|требуется.*подтвержден\w+)\b/iu,
   },
 };
-const conservativeForbiddenPatterns = [
-  { label: 'specific public weight', pattern: /\b(?:4[.,]26\s*kg|4[.,\s]?260\s*g|2[.,]3\s*kg|2300\s*g)\b/i },
+const drawingBackedForbiddenPatterns = [
   { label: 'IP65 claim', pattern: /\bIP65\b/i },
   { label: 'FKM claim', pattern: /\bFKM\b/i },
 ];
-const conservativeTargetForbiddenByLocale = {
+const drawingBackedTargetForbiddenByLocale = {
   en: [
     { label: 'unverified dust-seal claim', pattern: /\bdust seal(?:s)?\b/i },
     { label: 'dust-proof equivalence claim', pattern: /\bdust[- ]proof\b/i },
     { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:weekly|monthly|every\s+\d+\s+(?:week|month)s?|\d+\s*[–—-]\s*\d+\s+months|20-minute\s+seal\s+change)\b/i },
+    { label: 'stale unverified-weight fallback', pattern: /(?:\b(?:confirm|verify|request|check|determine)\b[^.!?\n]{0,120}\bweight\b|\bweight\b[^.!?\n]{0,120}\b(?:confirm|verify|request|check|determine)\b)/i },
   ],
   de: [
     { label: 'absolute dust-protected product-type claim', pattern: /\bstaubgeschützte[nrms]?\s+(?:Drehdurchführung|Ausführung)\b/iu },
     { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:wöchentlich|monatlich|alle\s+\d+\s+(?:Wochen|Monate)|\d+\s*[–—-]\s*\d+\s+Monate)\b/iu },
     { label: 'unapproved non-air operating implication', pattern: /\bWasser- oder Kühlmittelbetrieb\b/iu },
+    { label: 'stale unverified-weight fallback', pattern: /(?:(?:Gewicht|Masse)[^.!?\n]{0,120}(?:bestätigen|prüfen|klären|anfragen)|(?:bestätigen|prüfen|klären|anfragen)[^.!?\n]{0,120}(?:Gewicht|Masse))/iu },
   ],
   ja: [
     { label: 'absolute dust-protected product-type claim', pattern: /(?:防じんロータリージョイント|防じん型)/u },
     { label: 'fixed maintenance or seal-replacement interval', pattern: /(?:毎週|毎月|\d+\s*(?:か|ヶ)?月ごと|\d+\s*[～〜–—-]\s*\d+\s*(?:か|ヶ)?月)/u },
     { label: 'unapproved non-air operating implication', pattern: /粉じん環境での水・クーラント使用/u },
+    { label: 'stale unverified-weight fallback', pattern: /(?:質量|重量)[^。！？\n]{0,100}(?:確認|照会)/u },
   ],
   ru: [
     { label: 'absolute dust-protected product-type claim', pattern: /пылезащищ[ёе]нн(?:ое|ая|ую|ый|ые)\s+(?:вращающееся соединение|соединение|версия|исполнение)/iu },
     { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:еженедельно|ежемесячно|кажд(?:ую|ые)\s+\d*\s*(?:недел|месяц)\w*|\d+\s*[–—-]\s*\d+\s+месяц\w*)\b/iu },
     { label: 'unapproved non-air operating implication', pattern: /Вода или СОЖ в запылённой среде/iu },
+    { label: 'stale unverified-weight fallback', pattern: /(?:(?:уточн|подтверд|провер|запрос)\p{L}*(?:\s+\S+){0,3}\s+(?:масс|вес)\p{L}*|(?:масс|вес)\p{L}*(?:\s+\S+){0,3}\s+(?:уточн|подтверд|провер|запрос)\p{L}*)/iu },
   ],
 };
-const conservativeAssociationSelectors = [
+const drawingBackedAssociationSelectors = [
   'tr',
   'li',
   '.product-card',
@@ -157,28 +116,15 @@ function publicUrl(locale, fileName) {
   return `${siteOrigin}/${publicPath(locale, fileName)}`;
 }
 
-function countCaseInsensitive(source = '', needle = '') {
-  if (!needle) return 0;
-  const haystack = String(source).toLocaleLowerCase();
-  const normalizedNeedle = String(needle).toLocaleLowerCase();
-  let count = 0;
-  let offset = 0;
-  while ((offset = haystack.indexOf(normalizedNeedle, offset)) !== -1) {
-    count += 1;
-    offset += normalizedNeedle.length;
-  }
-  return count;
-}
-
 function targetClaimViolations(source, localeCode, targetAssociated = true) {
   if (!targetAssociated) return [];
   return [
-    ...conservativeForbiddenPatterns,
-    ...(conservativeTargetForbiddenByLocale[localeCode] || []),
+    ...drawingBackedForbiddenPatterns,
+    ...(drawingBackedTargetForbiddenByLocale[localeCode] || []),
   ].filter(({ pattern }) => pattern.test(source));
 }
 
-function runConservativeValidatorCases() {
+function runDrawingBackedValidatorCases() {
   const cases = [
     { locale: 'en', text: 'Inspect dust seal weekly and replace it every 3–4 months.', expected: true },
     { locale: 'de', text: 'BP-2P-50-0001 ist eine staubgeschützte Drehdurchführung.', expected: true },
@@ -203,6 +149,11 @@ function runConservativeValidatorCases() {
       text: 'Direct pressure washing can force water past protective features. Do not direct the wash jet at the shroud or labyrinth.',
       expected: false,
     },
+    { locale: 'en', text: 'Net weight: 2.3 kg (2,300 g).', expected: false },
+    { locale: 'en', text: 'Confirm weight for the supplied configuration.', expected: true },
+    { locale: 'de', text: 'Gewicht der gelieferten Konfiguration bestätigen.', expected: true },
+    { locale: 'ja', text: '納入仕様の質量をご確認ください。', expected: true },
+    { locale: 'ru', text: 'Уточните массу поставляемой конфигурации.', expected: true },
   ];
   for (const testCase of cases) {
     const actual = targetClaimViolations(
@@ -211,8 +162,56 @@ function runConservativeValidatorCases() {
       testCase.targetAssociated ?? true,
     ).length > 0;
     if (actual !== testCase.expected) {
-      failures.push(`Conservative validator regression case failed for ${testCase.locale}: ${testCase.text}`);
+      failures.push(`Drawing-backed validator regression case failed for ${testCase.locale}: ${testCase.text}`);
     }
+  }
+}
+
+function validateDrawingBackedSourceContract() {
+  const product = drawingManifest.products?.[drawingBackedModel];
+  const facts = product?.drawingFacts;
+  const actual = {
+    schemaVersion: drawingManifest.schemaVersion,
+    status: product?.status,
+    websiteModel: product?.websiteModel,
+    drawingPath: product?.drawing?.path,
+    titleBlockModel: product?.drawing?.titleBlockModel,
+    media: facts?.media,
+    maximumPressure: facts?.maximumPressure,
+    maximumSpeed: facts?.maximumSpeed,
+    bodyMaterial: facts?.bodyMaterial,
+    weight: facts?.weight,
+    sealMaterials: facts?.sealMaterials,
+    mountingStatus: facts?.mounting?.status,
+    mounting: facts?.mounting?.features?.map(({ side, count, thread, depthMm }) => ({ side, count, thread, depthMm })),
+    portStatus: facts?.ports?.status,
+    ports: facts?.ports?.annotations?.map(({ role, count, thread }) => ({ role, count, thread })),
+  };
+  const expected = {
+    schemaVersion: 1,
+    status: drawingManifest.sourcePolicy?.verifiedStatus,
+    websiteModel: drawingBackedModel,
+    drawingPath: 'downloads/BP-2P-50-0001.pdf',
+    titleBlockModel: drawingBackedModel,
+    media: ['air'],
+    maximumPressure: { value: 1, unit: 'MPa' },
+    maximumSpeed: { value: 100, unit: 'RPM' },
+    bodyMaterial: 'Aluminum Alloy 6061',
+    weight: { value: 2300, unit: 'g' },
+    sealMaterials: ['PTFE', 'O-ring'],
+    mountingStatus: 'verified',
+    mounting: [
+      { side: 'stator', count: 4, thread: 'M5', depthMm: 10 },
+      { side: 'rotor', count: 6, thread: 'M5', depthMm: 8 },
+    ],
+    portStatus: 'verified',
+    ports: [
+      { role: 'inlet', count: 2, thread: 'G1/8' },
+      { role: 'outlet', count: 2, thread: 'G1/8' },
+    ],
+  };
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    failures.push(`${drawingBackedModel}: data/product-drawing-facts.json no longer matches the verified drawing-first contract`);
   }
 }
 
@@ -495,60 +494,46 @@ async function validateSearchIndex(locale, models) {
   }
 }
 
-function propertyValue(product, name) {
-  return product.additionalProperty?.find((property) => property?.name === name)?.value;
-}
-
-async function validateConservativePublicPolicy(locale) {
-  const expected = conservativePolicyByLocale[locale.code];
-  const detailFile = `${conservativeModel}.html`;
+async function validateDrawingBackedPublicPolicy(locale) {
+  const expected = drawingBackedPolicyByLocale[locale.code];
+  const contract = drawingBackedUiContract(locale.code, drawingBackedModel);
+  const detailFile = `${drawingBackedModel}.html`;
   const detailRelative = publicPath(locale, detailFile);
   const $ = await readHtml(locale, detailFile);
   if (!$) return;
+  if (contract?.status !== drawingManifest.sourcePolicy?.verifiedStatus) {
+    failures.push(`${detailRelative}: shared localized contract is not drawing-verified`);
+    return;
+  }
 
   const detailSource = $.html();
   const visibleText = $('body').text().replace(/\s+/g, ' ').trim();
   for (const { label } of targetClaimViolations(detailSource, locale.code)) {
-    failures.push(`${detailRelative}: conservative policy forbids ${label}`);
+    failures.push(`${detailRelative}: drawing-backed policy forbids ${label}`);
   }
-  if (!visibleText.includes(expected.weightText)) failures.push(`${detailRelative}: conservative weight wording is missing`);
-  for (const fragment of expected.mountingFragments) {
-    if (!visibleText.includes(fragment)) failures.push(`${detailRelative}: mounting text is missing ${fragment}`);
+  for (const field of contract.requiredJsonFields) {
+    if (!visibleText.includes(contract.fields[field])) {
+      failures.push(`${detailRelative}: visible product data is missing drawing-backed ${field} value (${contract.fields[field]})`);
+    }
   }
-  const visibleIpFactCount = countCaseInsensitive(visibleText, expected.searchText);
-  if (visibleIpFactCount !== 1) {
-    failures.push(`${detailRelative}: the uncertified-IP fact must appear exactly once in visible product copy; found ${visibleIpFactCount}`);
-  }
-  for (const [label, value] of [
-    ['meta description', $('meta[name="description"]').attr('content')],
-    ['Open Graph description', $('meta[property="og:description"]').attr('content')],
-    ['Twitter description', $('meta[name="twitter:description"]').attr('content')],
-  ]) {
-    if (countCaseInsensitive(value, expected.searchText) !== 0) {
-      failures.push(`${detailRelative}: ${label} must describe the protective design without repeating the uncertified-IP caveat`);
+  for (const field of ['performance', 'seal', 'mount', 'media']) {
+    const actual = $(`.pd-key-spec[data-spec-key="${field}"] dd`).first().text().replace(/\s+/g, ' ').trim();
+    if (actual !== contract.keyValues[field]) {
+      failures.push(`${detailRelative}: key specification ${field} does not match the drawing-backed localized contract`);
     }
   }
 
   const product = collectJsonLd($, detailRelative).find((node) => node?.['@type'] === 'Product');
   if (!product) return;
-  if (countCaseInsensitive(product.description, expected.searchText) !== 0) {
-    failures.push(`${detailRelative}: Product JSON-LD description must not use the uncertified-IP caveat as marketing copy`);
+  if (product.description !== contract.structuredDescription) {
+    failures.push(`${detailRelative}: Product JSON-LD description does not match the drawing-backed localized contract`);
   }
-  for (const [nameKey, valueKey] of [
-    ['productTypeName', 'productTypeValue'],
-    ['mediaName', 'mediaValue'],
-    ['sealName', 'sealValue'],
-    ['protectionName', 'protectionValue'],
-    ['mountingName', 'mountingValue'],
-  ]) {
-    const actual = propertyValue(product, expected[nameKey]);
-    if (actual !== expected[valueKey]) {
-      failures.push(`${detailRelative}: Product JSON-LD ${expected[nameKey]} does not match conservative policy`);
+  for (const field of contract.requiredJsonFields) {
+    const propertyName = contract.jsonPropertyNames[field];
+    const matchingProperties = product.additionalProperty?.filter((property) => property?.name === propertyName) || [];
+    if (matchingProperties.length !== 1 || matchingProperties[0].value !== contract.fields[field]) {
+      failures.push(`${detailRelative}: Product JSON-LD ${propertyName} does not match drawing-backed ${field}`);
     }
-  }
-  const weightNames = new Set(['Net weight', 'Weight', 'Gewicht', 'Nettogewicht', '質量', '製品質量', 'Масса', 'Масса нетто']);
-  if (product.additionalProperty?.some((property) => weightNames.has(property?.name))) {
-    failures.push(`${detailRelative}: Product JSON-LD must omit the weight property`);
   }
 
   const reviewedNonAirBlocks = new Set();
@@ -563,72 +548,86 @@ async function validateConservativePublicPolicy(locale) {
 
   const catalog = await readHtml(locale, 'products.html');
   const card = catalog?.(`.product-card-large[data-href="${detailFile}"]`);
-  if (!card?.length || !card.text().replace(/\s+/g, ' ').includes(expected.cardText)) {
-    failures.push(`${publicPath(locale, 'products.html')}: ${conservativeModel} card does not expose the protective-shroud and labyrinth design`);
+  const cardText = card?.text().replace(/\s+/g, ' ').trim() || '';
+  if (!card?.length || !cardText.includes(expected.cardText)) {
+    failures.push(`${publicPath(locale, 'products.html')}: ${drawingBackedModel} card does not expose the protective-shroud and labyrinth design`);
   }
-  for (const { label, pattern } of conservativeForbiddenPatterns) {
-    if (pattern.test(card?.html() || '')) failures.push(`${publicPath(locale, 'products.html')}: ${conservativeModel} card contains forbidden ${label}`);
+  for (const fragment of expected.catalogFragments) {
+    if (!cardText.toLocaleLowerCase(locale.code).includes(fragment.toLocaleLowerCase(locale.code))) {
+      failures.push(`${publicPath(locale, 'products.html')}: ${drawingBackedModel} drawing-backed card is missing ${fragment}`);
+    }
+  }
+  for (const { label } of targetClaimViolations(card?.html() || '', locale.code)) {
+    failures.push(`${publicPath(locale, 'products.html')}: ${drawingBackedModel} card contains forbidden ${label}`);
   }
 
   const comparison = await readHtml(locale, 'product-comparison.html');
-  const row = comparison?.('tr').filter((_, element) => comparison(element).text().includes(conservativeModel)).first();
-  if (!row?.length || !row.text().replace(/\s+/g, ' ').toLocaleLowerCase().includes(expected.comparisonText.toLocaleLowerCase())) {
-    failures.push(`${publicPath(locale, 'product-comparison.html')}: ${conservativeModel} mounting summary is incomplete`);
+  const row = comparison?.('tr').filter((_, element) => comparison(element).text().includes(drawingBackedModel)).first();
+  const comparisonText = row?.text().replace(/\s+/g, ' ').trim() || '';
+  if (!row?.length) {
+    failures.push(`${publicPath(locale, 'product-comparison.html')}: ${drawingBackedModel} row is missing`);
+  } else {
+    for (const fragment of expected.comparisonFragments) {
+      if (!comparisonText.toLocaleLowerCase(locale.code).includes(fragment.toLocaleLowerCase(locale.code))) {
+        failures.push(`${publicPath(locale, 'product-comparison.html')}: ${drawingBackedModel} drawing-backed summary is missing ${fragment}`);
+      }
+    }
   }
-  for (const { label, pattern } of conservativeForbiddenPatterns) {
-    if (pattern.test(row?.html() || '')) failures.push(`${publicPath(locale, 'product-comparison.html')}: ${conservativeModel} row contains forbidden ${label}`);
+  for (const { label } of targetClaimViolations(row?.html() || '', locale.code)) {
+    failures.push(`${publicPath(locale, 'product-comparison.html')}: ${drawingBackedModel} row contains forbidden ${label}`);
   }
 
   const searchRelative = publicPath(locale, 'search-index.json');
   const searchIndex = JSON.parse(await readFile(path.join(repoRoot, searchRelative), 'utf8'));
-  const searchRecord = searchIndex.find((entry) => entry?.id === conservativeModel);
+  const searchRecord = searchIndex.find((entry) => entry?.id === drawingBackedModel);
   const searchSource = JSON.stringify(searchRecord || {});
   for (const { label } of targetClaimViolations(searchSource, locale.code)) {
-    failures.push(`${searchRelative}: ${conservativeModel} record contains forbidden ${label}`);
+    failures.push(`${searchRelative}: ${drawingBackedModel} record contains forbidden ${label}`);
   }
-  const searchBodyIpFactCount = countCaseInsensitive(searchRecord?.body, expected.searchText);
-  if (searchBodyIpFactCount !== 1) {
-    failures.push(`${searchRelative}: ${conservativeModel} body must contain the uncertified-IP fact exactly once; found ${searchBodyIpFactCount}`);
+  const expectedSearchDescription = drawingBackedProductMetadata(locale.code, drawingBackedModel).description;
+  const expectedSearchKeywords = drawingBackedProductKeywords(locale.code, drawingBackedModel);
+  if (searchRecord?.description !== expectedSearchDescription) {
+    failures.push(`${searchRelative}: ${drawingBackedModel} description is not drawing-backed`);
   }
-  if (countCaseInsensitive(searchRecord?.description, expected.searchText) !== 0
-      || countCaseInsensitive((searchRecord?.keywords || []).join(' '), expected.searchText) !== 0) {
-    failures.push(`${searchRelative}: ${conservativeModel} description and keywords must not repeat the uncertified-IP caveat`);
+  if (JSON.stringify(searchRecord?.keywords) !== JSON.stringify(expectedSearchKeywords)) {
+    failures.push(`${searchRelative}: ${drawingBackedModel} keywords are not drawing-backed`);
   }
 
   const llmsRelative = publicPath(locale, 'llms.txt');
   const llmsSource = await readFile(path.join(repoRoot, llmsRelative), 'utf8');
   const llmsLine = llmsSource.split(/\r?\n/).find((line) => line.includes(`${detailFile})`)) || '';
-  const llmsIpFactCount = countCaseInsensitive(llmsSource, expected.llmsText);
-  if (llmsIpFactCount !== 1 || countCaseInsensitive(llmsLine, expected.llmsText) !== 1) {
-    failures.push(`${llmsRelative}: ${conservativeModel} uncertified-IP fact must appear exactly once in its model entry; found ${llmsIpFactCount} in the file`);
+  const expectedLlmsLine = `- [${drawingBackedProductLinkLabel(locale.code, drawingBackedModel)}](${publicUrl(locale, detailFile)}): ${drawingBackedProductSummary(locale.code, drawingBackedModel)}`;
+  if (llmsLine !== expectedLlmsLine) {
+    failures.push(`${llmsRelative}: ${drawingBackedModel} entry is not drawing-backed`);
   }
   for (const { label } of targetClaimViolations(llmsLine, locale.code)) {
-    failures.push(`${llmsRelative}: ${conservativeModel} entry contains forbidden ${label}`);
+    failures.push(`${llmsRelative}: ${drawingBackedModel} entry contains forbidden ${label}`);
   }
 
   const localeDirectory = path.join(repoRoot, locale.directory);
   const publicHtmlFiles = (await readdir(localeDirectory)).filter((fileName) => fileName.endsWith('.html'));
   for (const fileName of publicHtmlFiles) {
     const relative = publicPath(locale, fileName);
+    if (relative === detailRelative) continue;
     const source = await readFile(path.join(localeDirectory, fileName), 'utf8');
-    if (!source.includes(conservativeModel)) continue;
+    if (!source.includes(drawingBackedModel)) continue;
     const publicPage = load(source);
-    publicPage(conservativeAssociationSelectors).each((_, element) => {
+    publicPage(drawingBackedAssociationSelectors).each((_, element) => {
       const associatedText = publicPage(element).text().replace(/\s+/g, ' ').trim();
-      if (!associatedText.includes(conservativeModel)) return;
+      if (!associatedText.includes(drawingBackedModel)) return;
       for (const { label } of targetClaimViolations(associatedText, locale.code)) {
-        failures.push(`${relative}: ${conservativeModel} associated public block contains forbidden ${label}`);
+        failures.push(`${relative}: ${drawingBackedModel} associated public block contains forbidden ${label}`);
       }
     });
   }
 }
 
-const rootFiles = await readdir(repoRoot);
-const productFiles = rootFiles.filter((fileName) => /^BP-[A-Z0-9-]+\.html$/i.test(fileName)).sort();
+const productFiles = Object.keys(drawingManifest.products || {}).map((model) => `${model}.html`).sort();
 const models = new Set(productFiles.map((fileName) => path.basename(fileName, '.html')));
 if (!models.size) failures.push('No product detail pages were found.');
 
-runConservativeValidatorCases();
+runDrawingBackedValidatorCases();
+validateDrawingBackedSourceContract();
 
 for (const locale of locales) {
   for (const fileName of productFiles) {
@@ -638,27 +637,7 @@ for (const locale of locales) {
   }
   await validateCatalog(locale, models);
   await validateSearchIndex(locale, models);
-  await validateConservativePublicPolicy(locale);
-}
-
-const rootLlmsSource = await readFile(path.join(repoRoot, 'llms.txt'), 'utf8');
-for (const locale of locales.filter(({ code }) => code !== 'en')) {
-  const duplicateCount = countCaseInsensitive(rootLlmsSource, conservativePolicyByLocale[locale.code].llmsText);
-  if (duplicateCount !== 0) {
-    failures.push(`llms.txt: localized ${locale.code} summary repeats the uncertified-IP caveat; found ${duplicateCount}`);
-  }
-}
-
-const conservativeDecision = JSON.parse(await readFile(
-  path.join(repoRoot, 'audit/product-truth-decisions/BP-2P-50-0001-decision-template.json'),
-  'utf8',
-));
-if (conservativeDecision.decision !== 'conservative-public-policy') {
-  failures.push(`${conservativeModel}: conservative policy validator requires a recorded laocao decision`);
-}
-if (conservativeDecision.approved_engineering_source !== 'not-established'
-  || conservativeDecision.engineering_verification !== 'manual-review-required') {
-  failures.push(`${conservativeModel}: engineering approval must remain not-established and manual-review-required`);
+  await validateDrawingBackedPublicPolicy(locale);
 }
 
 const sitemapSources = {

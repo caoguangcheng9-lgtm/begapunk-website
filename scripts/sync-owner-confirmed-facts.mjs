@@ -4,6 +4,39 @@ import process from 'node:process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const checkOnly = process.argv.includes('--check');
+const i18nConfig = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const productPageNames = (i18nConfig.translationManagedPages || i18nConfig.pages)
+  .filter((pageName) => /^BP-[A-Za-z0-9-]+\.html$/.test(pageName));
+const productWarrantyByLocale = Object.freeze({
+  en: Object.freeze({
+    prefix: '',
+    legacyName: 'Warranty terms',
+    legacyValue: 'Confirmed in quotation/order',
+    name: 'Warranty period',
+    value: '1 year',
+  }),
+  de: Object.freeze({
+    prefix: 'de',
+    legacyName: 'Garantiebedingungen',
+    legacyValue: 'Im Angebot/Auftrag bestätigt',
+    name: 'Garantiezeitraum',
+    value: '1 Jahr',
+  }),
+  ja: Object.freeze({
+    prefix: 'ja',
+    legacyName: '保証条件',
+    legacyValue: '見積書・注文書で確認',
+    name: '保証期間',
+    value: '1年',
+  }),
+  ru: Object.freeze({
+    prefix: 'ru',
+    legacyName: 'Условия гарантии',
+    legacyValue: 'Указаны в коммерческом предложении/заказе',
+    name: 'Гарантийный срок',
+    value: '1 год',
+  }),
+});
 const bottleCappingProductPage = 'BP-2P-16-0001.html';
 const legacyBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to supply two compressed-air circuits for clamp and release of a pneumatic three-jaw bottle-cap gripper.';
 const previousBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to supply clamp and release air through two independent compressed-air passages to a pneumatic three-jaw bottle-cap gripper.';
@@ -36,6 +69,11 @@ const retiredAboutSources = [
   `Our Ningbo facility combines CNC machining, assembly, inspection, and engineering support. Inspection scope, test pressure, and acceptance criteria are confirmed for each model and order.`,
 ];
 
+const retiredHomepageSources = [
+  `Rotary Joint Manufacturing | Established 2022 | Standard & Custom Designs`,
+  `Standard and custom pneumatic rotary joints for CNC, packaging, filling, laser cutting, and automation equipment.`,
+];
+
 const retiredBottleCappingSources = [
   `This customer-authorized photograph shows BP-2P-08-0001 installed on a customer production machine. Two independent compressed-air circuits control clamping and release of a pneumatic three-jaw gripper, allowing it to hold the bottle cap and rotate during the capping operation.`,
   `The photograph and project-owner confirmation establish the application, product model, and clamp/release function. They do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output. Confirm these conditions from the machine design and approved product data.`,
@@ -46,48 +84,17 @@ const retiredBottleCappingSources = [
   `BP-2P-16-0001 supplies clamp and release air through two independent compressed-air passages to a pneumatic three-jaw gripper on a customer production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Port numbering, operating pressure, rotational speed, and machine interface remain machine-specific and must be confirmed against the machine design and approved product data. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the verified production application →</a>`,
 ];
 
+const retiredWarrantySources = [
+  `Warranty terms`,
+  `Warranty duration, start date, coverage, exclusions, evidence requirements, and remedies are established only by the formal quotation, accepted order, and any written warranty document supplied for that order.`,
+];
+
 const rows = [
-  {
-    source: `Application Guides`,
-    de: `Anwendungsleitfäden`,
-    ja: `用途別ガイド`,
-    ru: `Руководства по применению`,
-  },
-  {
-    source: `Per Order`,
-    de: `Je Auftrag`,
-    ja: `注文ごと`,
-    ru: `По заказу`,
-  },
-  {
-    source: `Warranty Terms`,
-    de: `Garantiebedingungen`,
-    ja: `保証条件`,
-    ru: `Условия гарантии`,
-  },
-  {
-    source: `By Order`,
-    de: `Je Auftrag`,
-    ja: `注文ごと`,
-    ru: `По заказу`,
-  },
-  {
-    source: `Company Established`,
-    de: `Unternehmen gegründet`,
-    ja: `会社設立`,
-    ru: `Основание компании`,
-  },
   {
     source: `Company established in 2022`,
     de: `Unternehmen 2022 gegründet`,
     ja: `2022年に会社設立`,
     ru: `Компания основана в 2022 году`,
-  },
-  {
-    source: `Rotary Joint Manufacturing | Established 2022 | Standard & Custom Designs`,
-    de: `Fertigung von Drehdurchführungen | Gegründet 2022 | Standard- und Sonderausführungen`,
-    ja: `ロータリージョイント製造｜2022年設立｜標準品・特注品`,
-    ru: `Производство вращающихся соединений | Основано в 2022 году | Стандартные и специальные исполнения`,
   },
   {
     source: `Ningbo-based manufacturer of standard and custom rotary joints for industrial automation, established in 2022.`,
@@ -144,10 +151,16 @@ const rows = [
     ru: `На нашем производстве в Нинбо детали из алюминия и стали обрабатываются на станках с ЧПУ, собираются и проходят контроль. После окончательной сборки каждый канал готового вращающегося соединения проверяется на герметичность перед упаковкой и хранением. Проектные чертежи, требования к контролю и состав документации согласуются при подготовке коммерческого предложения и подтверждении заказа.`,
   },
   {
-    source: `Warranty terms`,
-    de: `Garantiebedingungen`,
-    ja: `保証条件`,
-    ru: `Условия гарантии`,
+    source: `Warranty period`,
+    de: `Garantiezeitraum`,
+    ja: `保証期間`,
+    ru: `Гарантийный срок`,
+  },
+  {
+    source: `1 year`,
+    de: `1 Jahr`,
+    ja: `1年`,
+    ru: `1 год`,
   },
   {
     source: `Confirmed in quotation/order`,
@@ -259,10 +272,10 @@ const rows = [
     ru: `Таможенные процедуры, погодные условия, сбои в работе перевозчика, обстоятельства непреодолимой силы и другие события вне разумного контроля сторон могут повлиять на расчетные сроки; последующие действия определяются принятым заказом и применимым законодательством.`,
   },
   {
-    source: `Warranty duration, start date, coverage, exclusions, evidence requirements, and remedies are established only by the formal quotation, accepted order, and any written warranty document supplied for that order.`,
-    de: `Garantiedauer, Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen werden ausschließlich durch das formelle Angebot, den angenommenen Auftrag und etwaige für diesen Auftrag bereitgestellte schriftliche Garantieunterlagen festgelegt.`,
-    ja: `保証期間、保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書および当該注文について交付される書面の保証文書によってのみ定められます。`,
-    ru: `Срок и дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются исключительно официальным коммерческим предложением, принятым заказом и письменным гарантийным документом, предоставленным для данного заказа.`,
+    source: `The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.`,
+    de: `Der Garantiezeitraum für alle Begapunk-Produkte beträgt ein Jahr. Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen richten sich nach dem formellen Angebot, dem angenommenen Auftrag und etwaigen schriftlichen Garantieunterlagen für den jeweiligen Auftrag.`,
+    ja: `Begapunkの全製品の保証期間は1年間です。保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書、および当該注文に関する書面の保証文書に従います。`,
+    ru: `Гарантийный срок на всю продукцию Begapunk составляет один год. Дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются официальным коммерческим предложением, принятым заказом и письменным гарантийным документом для соответствующего заказа.`,
   },
   {
     source: `A reported issue is subject to review against the approved specification, documented operating conditions, installation, maintenance, and inspection information.`,
@@ -313,36 +326,111 @@ if (sourceSet.size !== rows.length) {
   throw new Error('Owner-confirmed translation rows contain duplicate source strings.');
 }
 
-const catalog = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'source-catalog.json'), 'utf8'));
-const catalogSources = new Set(catalog.entries.map((entry) => entry.source));
-const absentSources = rows.filter((row) => !catalogSources.has(row.source));
-if (absentSources.length) {
-  throw new Error(`Owner-confirmed source strings are absent from the current catalog:\n${absentSources.map((row) => `- ${row.source}`).join('\n')}`);
+const directManagedProductSources = new Set([
+  `Warranty period`,
+  `1 year`,
+  `Confirmed in quotation/order`,
+  `Verified Production Application: Pneumatic Three-Jaw Bottle-Cap Gripper`,
+  `BP-2P-16-0001 routes compressed air through two independent passages for clamping and releasing a pneumatic three-jaw gripper on a customer's production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Port assignment, operating pressure, rotational speed, and machine interface remain machine-specific and must be confirmed against the machine design and approved product data. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the verified production application →</a>`,
+  `Confirmed Application Fit: Pneumatic Three-Jaw Bottle-Cap Gripper`,
+  `BP-2P-08-0001 can also be selected for this application type. The customer-authorized photograph identifies BP-2P-16-0001, not BP-2P-08-0001. Confirm the passage count, mounting interface, pressure, speed, dimensions, and approved drawing before selection. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Review the production application and model boundary →</a>`,
+  ...technicalNoteRows.map((row) => row.source),
+]);
+if (directManagedProductSources.size !== 12
+  || [...directManagedProductSources].some((source) => !sourceSet.has(source))) {
+  throw new Error('Direct-managed product owner facts must identify exactly 12 declared translation rows.');
 }
 
+const catalog = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'source-catalog.json'), 'utf8'));
+const catalogSources = new Set(catalog.entries.map((entry) => entry.source));
+const absentSourceSet = new Set(rows.filter((row) => !catalogSources.has(row.source)).map((row) => row.source));
+const unexpectedAbsentSources = [...absentSourceSet].filter((source) => !directManagedProductSources.has(source));
+const unexpectedlyCatalogedDirectSources = [...directManagedProductSources]
+  .filter((source) => !absentSourceSet.has(source));
+if (unexpectedAbsentSources.length || unexpectedlyCatalogedDirectSources.length) {
+  throw new Error(
+    `Owner-confirmed catalog boundary differs from the explicit 12-row direct-managed product contract:`
+    + `\n- unexpected catalog absences: ${unexpectedAbsentSources.join(' | ') || 'none'}`
+    + `\n- direct-managed sources still in catalog: ${unexpectedlyCatalogedDirectSources.join(' | ') || 'none'}`,
+  );
+}
+const catalogManagedRows = rows.filter((row) => !directManagedProductSources.has(row.source));
+
 let changed = 0;
+const checkFailures = [];
 for (const language of ['de', 'ja', 'ru']) {
   const filePath = path.join(root, 'i18n', 'overrides', `${language}.json`);
   const before = await fs.readFile(filePath, 'utf8');
   const current = JSON.parse(before);
   const retiredSources = [
     ...technicalNoteRows.map((row) => row.legacySource),
+    ...retiredHomepageSources,
     ...retiredAboutSources,
     ...retiredBottleCappingSources,
+    ...retiredWarrantySources,
   ];
   const retiredPresent = retiredSources.filter((source) => Object.hasOwn(current, source));
-  const missing = rows.filter((row) => current[row.source] !== row[language]);
+  const directManagedPresent = [...directManagedProductSources]
+    .filter((source) => Object.hasOwn(current, source));
+  const missing = catalogManagedRows.filter((row) => current[row.source] !== row[language]);
   if (checkOnly) {
-    if (missing.length || retiredPresent.length) {
-      throw new Error(`${language}: ${missing.length} owner-confirmed translation(s) are not synchronized and ${retiredPresent.length} retired source key(s) remain.`);
+    if (missing.length || retiredPresent.length || directManagedPresent.length) {
+      checkFailures.push(
+        `${language}: missing catalog-managed=${missing.length}; retired legacy=${retiredPresent.length}; direct-managed orphan=${directManagedPresent.length}.`,
+      );
     }
     continue;
   }
-  for (const legacySource of retiredPresent) delete current[legacySource];
-  if (!missing.length && !retiredPresent.length) continue;
-  for (const row of rows) current[row.source] = row[language];
+  for (const legacySource of [...retiredPresent, ...directManagedPresent]) delete current[legacySource];
+  if (!missing.length && !retiredPresent.length && !directManagedPresent.length) continue;
+  for (const row of catalogManagedRows) current[row.source] = row[language];
   await fs.writeFile(filePath, `${JSON.stringify(current, null, 2)}\n`, 'utf8');
   changed += 1;
+}
+
+if (productPageNames.length !== 16) {
+  throw new Error(`Expected 16 translation-managed product pages; found ${productPageNames.length}.`);
+}
+
+const exactCount = (source, value) => source.split(value).length - 1;
+for (const [language, warranty] of Object.entries(productWarrantyByLocale)) {
+  for (const pageName of productPageNames) {
+    const relativePath = warranty.prefix ? `${warranty.prefix}/${pageName}` : pageName;
+    const filePath = path.join(root, ...relativePath.split('/'));
+    const before = await fs.readFile(filePath, 'utf8');
+    const legacyVisible = `<th>${warranty.legacyName}</th><td>${warranty.legacyValue}</td>`;
+    const currentVisible = `<th>${warranty.name}</th><td>${warranty.value}</td>`;
+    const legacyStructured = `"name":"${warranty.legacyName}","value":"${warranty.legacyValue}"`;
+    const currentStructured = `"name":"${warranty.name}","value":"${warranty.value}"`;
+    const visibleLegacyCount = exactCount(before, legacyVisible);
+    const visibleCurrentCount = exactCount(before, currentVisible);
+    const structuredLegacyCount = exactCount(before, legacyStructured);
+    const structuredCurrentCount = exactCount(before, currentStructured);
+    if (visibleLegacyCount + visibleCurrentCount !== 1
+      || structuredLegacyCount + structuredCurrentCount !== 1) {
+      throw new Error(
+        `${relativePath}: expected exactly one visible and one structured warranty pair; `
+        + `found visible legacy/current ${visibleLegacyCount}/${visibleCurrentCount} and `
+        + `structured legacy/current ${structuredLegacyCount}/${structuredCurrentCount}.`,
+      );
+    }
+    const synchronized = visibleCurrentCount === 1 && structuredCurrentCount === 1;
+    if (checkOnly) {
+      if (!synchronized) throw new Error(`${relativePath}: one-year product warranty is not synchronized.`);
+      continue;
+    }
+    if (synchronized) continue;
+    const after = before
+      .replace(legacyVisible, currentVisible)
+      .replace(legacyStructured, currentStructured);
+    if (after === before
+      || exactCount(after, currentVisible) !== 1
+      || exactCount(after, currentStructured) !== 1) {
+      throw new Error(`${relativePath}: failed to synchronize the one-year warranty atomically.`);
+    }
+    await fs.writeFile(filePath, after, 'utf8');
+    changed += 1;
+  }
 }
 
 const bottleProductPath = path.join(root, bottleCappingProductPage);
@@ -367,6 +455,10 @@ if (checkOnly) {
   changed += 1;
 }
 
+if (checkOnly && checkFailures.length) {
+  throw new Error(`Owner-confirmed translation synchronization required:\n${checkFailures.map((item) => `- ${item}`).join('\n')}`);
+}
+
 console.log(checkOnly
-  ? `Owner-confirmed translations and bottle-capping structured data are synchronized for ${rows.length} exact source statements in three languages.`
+  ? `Owner-confirmed translations, 64 one-year product warranties, and bottle-capping structured data are synchronized for ${catalogManagedRows.length} catalog-managed and ${directManagedProductSources.size} direct-managed source statements in three languages.`
   : `Synchronized owner-confirmed translations and structured data in ${changed} file(s).`);

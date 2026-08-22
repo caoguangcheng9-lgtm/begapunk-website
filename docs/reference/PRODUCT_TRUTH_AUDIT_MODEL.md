@@ -1,5 +1,9 @@
 # Begapunk Product Truth Governance
 
+> Status: technical audit reference retained for data fields, evidence inventory, and conflict-report implementation. It is not the current customer-content standard and does not define release severity. Public wording, source priority, P0/P1/P2/P3 classification, and authorization follow ../standards/BEGAPUNK_WEBSITE_STANDARD.md.
+
+> Internal labels such as evidence level, verification status, drawing status, QC number, title-block match, and conflict state must not be copied into customer-facing product copy unless the information itself has clear customer value.
+
 Version: 1.2
 
 Baseline date: 2026-07-31

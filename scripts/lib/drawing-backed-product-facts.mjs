@@ -1,0 +1,1318 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+const manifestPath = path.resolve(import.meta.dirname, '..', '..', 'data', 'product-drawing-facts.json');
+const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+const products = manifest.products || {};
+const verifiedStatus = manifest.sourcePolicy?.verifiedStatus;
+const quarantineStatus = manifest.sourcePolicy?.quarantineStatus;
+const identityPendingModels = new Set(manifest.sourcePolicy?.identityPendingModels || []);
+
+if (manifest.schemaVersion !== 1 || verifiedStatus !== 'verified-drawing' || quarantineStatus !== 'identity-pending') {
+  throw new Error('Drawing-backed product-fact manifest schema or status policy is unsupported.');
+}
+
+export const drawingBackedProductModels = Object.freeze(Object.keys(products).sort());
+
+if (drawingBackedProductModels.length !== 16 || identityPendingModels.size !== 1) {
+  throw new Error('Drawing-backed product-fact manifest must contain 16 products and one identity-pending model.');
+}
+
+for (const model of drawingBackedProductModels) {
+  const product = products[model];
+  if (product.websiteModel !== model) throw new Error(`${model}: websiteModel does not match the manifest key.`);
+  if (identityPendingModels.has(model)) {
+    if (product.status !== quarantineStatus) throw new Error(`${model}: identity-pending status is missing.`);
+  } else if (product.status !== verifiedStatus || product.drawing?.titleBlockModel !== model) {
+    throw new Error(`${model}: verified drawing identity is not internally consistent.`);
+  }
+}
+
+const copy = {
+  en: {
+    productType: 'pneumatic rotary joint',
+    pneumaticElectricType: 'pneumatic-electric rotary union',
+    electricalLeadsBoundary: '6 electrical leads shown; circuit allocation and ratings per approved specification',
+    verifiedDrawingRequired: 'project confirmation required',
+    pressure: (value) => `maximum pressure ${value} MPa`,
+    speed: (value) => `maximum speed ${value} RPM`,
+    temperature: (minimum, maximum) => `temperature range ${minimum} to +${maximum} °C`,
+    weight: (value) => `weight ${value} g`,
+    aluminumBody: '6061 aluminum alloy body',
+    steel45Body: 'Grade 45 carbon steel body',
+    seal: 'PTFE seal with O-ring',
+    media: (values) => `media: ${values.join(', ')}`,
+    portCountPending: 'Outlet count pending engineering confirmation; request the approved drawing before ordering',
+    portPending: 'port specification pending approved corrected drawing',
+    portDepth: (value) => `, depth ${value} mm`,
+    mountingDepth: (value) => `, thread depth ${value} mm`,
+    throughHole: 'through holes',
+    hole: 'holes',
+    antiRotation: 'anti-rotation',
+    antiRotationSetScrew: 'anti-rotation set-screw',
+    diameterEnvelope: (diameter, length) => `dimensions: maximum diameter Ø${diameter} mm × overall length ${length} mm`,
+    widthEnvelope: (width, length) => `dimensions: maximum width ${width} mm × overall length ${length} mm`,
+    throughBore: (diameter) => `through bore Ø${diameter} mm`,
+    verifiedPorts: 'verified port annotations',
+    portFunctionPending: 'port functional assignment is not confirmed',
+    airInletUnclear: 'air inlet not unambiguously identified',
+  },
+  de: {
+    productType: 'pneumatische Drehdurchführung',
+    pneumaticElectricType: 'pneumatisch-elektrische Drehdurchführung',
+    electricalLeadsBoundary: '6 elektrische Leitungen dargestellt; Kreiszuordnung und Nennwerte gemäß freigegebener Spezifikation',
+    verifiedDrawingRequired: 'Projektbestätigung erforderlich',
+    pressure: (value) => `maximaler Druck ${value} MPa`,
+    speed: (value) => `maximale Drehzahl ${value} U/min`,
+    temperature: (minimum, maximum) => `Temperaturbereich ${minimum} bis +${maximum} °C`,
+    weight: (value) => `Gewicht ${value} g`,
+    aluminumBody: 'Gehäuse aus Aluminiumlegierung 6061',
+    steel45Body: 'Gehäuse aus Stahl 45',
+    seal: 'PTFE-Dichtung mit O-Ring',
+    media: (values) => `${values.length === 1 ? 'Medium' : 'Medien'}: ${values.join(', ')}`,
+    portCountPending: 'Ausgangsanzahl bis zur technischen Bestätigung offen; vor Bestellung projektbezogen prüfen',
+    portPending: 'Anschlussspezifikation vor Auswahl projektbezogen prüfen',
+    portDepth: (value) => `, Tiefe ${value} mm`,
+    mountingDepth: (value) => `, Gewindetiefe ${value} mm`,
+    throughHole: 'Durchgangsbohrungen',
+    hole: 'Bohrungen',
+    antiRotation: 'Verdrehsicherung',
+    antiRotationSetScrew: 'Verdrehsicherungs-Gewindestift',
+    diameterEnvelope: (diameter, length) => `Abmessungen: maximaler Durchmesser Ø${diameter} mm × Gesamtlänge ${length} mm`,
+    widthEnvelope: (width, length) => `Abmessungen: maximale Breite ${width} mm × Gesamtlänge ${length} mm`,
+    throughBore: (diameter) => `Durchgangsbohrung Ø${diameter} mm`,
+    verifiedPorts: 'Anschlussangaben',
+    portFunctionPending: 'Funktionszuordnung der Anschlüsse ist nicht bestätigt',
+    airInletUnclear: 'Lufteingang nicht eindeutig gekennzeichnet',
+  },
+  ja: {
+    productType: '空圧ロータリージョイント',
+    pneumaticElectricType: '空圧・電気複合ロータリージョイント',
+    electricalLeadsBoundary: '電気リード6本。回路割当・定格は承認済み仕様書で確認',
+    verifiedDrawingRequired: '案件確認が必要',
+    pressure: (value) => `最高使用圧力 ${value} MPa`,
+    speed: (value) => `最高回転数 ${value} min⁻¹`,
+    temperature: (minimum, maximum) => `温度範囲 ${minimum}～+${maximum} °C`,
+    weight: (value) => `質量 ${value} g`,
+    aluminumBody: '6061アルミニウム合金ボディ',
+    steel45Body: '45鋼ボディ',
+    seal: 'PTFEシールとOリング',
+    media: (values) => `使用流体 ${values.join('・')}`,
+    portCountPending: '出口数は担当設計部門の確認待ちです。注文前に案件ごとに確認してください',
+    portPending: 'ポート仕様は選定前に案件ごとの確認が必要です',
+    portDepth: (value) => `、深さ${value} mm`,
+    mountingDepth: (value) => `、ねじ深さ${value} mm`,
+    throughHole: '通し穴',
+    hole: '穴',
+    antiRotation: '回り止め',
+    antiRotationSetScrew: '回り止め止めねじ',
+    diameterEnvelope: (diameter, length) => `外形寸法 最大径Ø${diameter} mm × 全長${length} mm`,
+    widthEnvelope: (width, length) => `外形寸法 最大幅${width} mm × 全長${length} mm`,
+    throughBore: (diameter) => `中空径 Ø${diameter} mm`,
+    verifiedPorts: 'ポート表記',
+    portFunctionPending: 'ポートの機能割当は確認できません',
+    airInletUnclear: '空気入口は明確に特定できません',
+  },
+  ru: {
+    productType: 'пневматическое ротационное соединение',
+    pneumaticElectricType: 'пневмоэлектрическое ротационное соединение',
+    electricalLeadsBoundary: 'показано 6 электрических выводов; распределение цепей и номиналы — по согласованной спецификации',
+    verifiedDrawingRequired: 'требуется проектное подтверждение',
+    pressure: (value) => `максимальное давление ${value} МПа`,
+    speed: (value) => `максимальная частота вращения ${value} об/мин`,
+    temperature: (minimum, maximum) => `температурный диапазон ${minimum}…+${maximum} °C`,
+    weight: (value) => `масса ${value} г`,
+    aluminumBody: 'корпус из алюминиевого сплава 6061',
+    steel45Body: 'корпус из стали 45',
+    seal: 'уплотнение из ПТФЭ с уплотнительным кольцом',
+    media: (values) => `${values.length === 1 ? 'рабочая среда' : 'рабочие среды'}: ${values.join(', ')}`,
+    portCountPending: 'Количество выходов должно быть подтверждено ответственной конструкторской службой; проверьте проект до заказа',
+    portPending: 'Спецификацию портов нужно подтвердить для проекта перед выбором',
+    portDepth: (value) => `, глубина ${value} мм`,
+    mountingDepth: (value) => `, глубина резьбы ${value} мм`,
+    throughHole: 'сквозные отверстия',
+    hole: 'отверстия',
+    antiRotation: 'фиксация от проворачивания',
+    antiRotationSetScrew: 'установочный винт от проворачивания',
+    diameterEnvelope: (diameter, length) => `габариты: максимальный диаметр Ø${diameter} мм × общая длина ${length} мм`,
+    widthEnvelope: (width, length) => `габариты: максимальная ширина ${width} мм × общая длина ${length} мм`,
+    throughBore: (diameter) => `сквозное отверстие Ø${diameter} мм`,
+    verifiedPorts: 'проверенные обозначения портов',
+    portFunctionPending: 'Функциональное назначение портов не подтверждено',
+    airInletUnclear: 'вход воздуха однозначно не обозначен',
+  },
+};
+
+const mediaTerms = {
+  en: { air: 'air', oil: 'oil', water: 'water' },
+  de: { air: 'Luft', oil: 'Öl', water: 'Wasser' },
+  ja: { air: '空気', oil: '油', water: '水' },
+  ru: { air: 'воздух', oil: 'масло', water: 'вода' },
+};
+
+const portRoleTerms = {
+  en: {
+    inlet: 'inlet',
+    'media-inlet': 'media inlet',
+    outlet: 'outlet',
+    'media-outlet': 'media outlet',
+    'side-group': 'side ports',
+    'end-face-group': 'end-face ports',
+    'opposite-face': 'opposite-face port',
+    'side-a': 'side A ports',
+    'side-b': 'side B ports',
+    'face-a': 'face A ports',
+    'face-b': 'face B ports',
+    'air-port-group': 'air ports',
+    'air-outlet': 'air outlet',
+    'release-port': 'release port',
+    'clamp-port': 'clamp port',
+  },
+  de: {
+    inlet: 'Einlass',
+    'media-inlet': 'Medieneinlass',
+    outlet: 'Auslass',
+    'media-outlet': 'Medienauslass',
+    'side-group': 'seitliche Anschlüsse',
+    'end-face-group': 'stirnseitige Anschlüsse',
+    'opposite-face': 'Anschluss Gegenseite',
+    'side-a': 'Anschlüsse Seite A',
+    'side-b': 'Anschlüsse Seite B',
+    'face-a': 'Anschlüsse Fläche A',
+    'face-b': 'Anschlüsse Fläche B',
+    'air-port-group': 'Luftanschlüsse',
+    'air-outlet': 'Luftausgang',
+    'release-port': 'Löseanschluss',
+    'clamp-port': 'Klemmanschluss',
+  },
+  ja: {
+    inlet: '入口',
+    'media-inlet': '流体入口',
+    outlet: '出口',
+    'media-outlet': '流体出口',
+    'side-group': '側面ポート',
+    'end-face-group': '端面ポート',
+    'opposite-face': '反対面ポート',
+    'side-a': 'A側ポート',
+    'side-b': 'B側ポート',
+    'face-a': 'A面ポート',
+    'face-b': 'B面ポート',
+    'air-port-group': '空気ポート',
+    'air-outlet': '空気出口',
+    'release-port': '解除ポート',
+    'clamp-port': 'クランプポート',
+  },
+  ru: {
+    inlet: 'вход',
+    'media-inlet': 'вход рабочей среды',
+    outlet: 'выход',
+    'media-outlet': 'выход рабочей среды',
+    'side-group': 'боковые порты',
+    'end-face-group': 'торцевые порты',
+    'opposite-face': 'порт на противоположной стороне',
+    'side-a': 'порты стороны A',
+    'side-b': 'порты стороны B',
+    'face-a': 'порты торца A',
+    'face-b': 'порты торца B',
+    'air-port-group': 'воздушные порты',
+    'air-outlet': 'выход воздуха',
+    'release-port': 'порт разжима',
+    'clamp-port': 'порт зажима',
+  },
+};
+
+const mountingSideTerms = {
+  en: { stator: 'stator mount', rotor: 'rotor mount', 'face-a': 'face A mount', 'face-b': 'face B mount', body: 'body mount' },
+  de: { stator: 'Statorbefestigung', rotor: 'Rotorbefestigung', 'face-a': 'Befestigung Fläche A', 'face-b': 'Befestigung Fläche B', body: 'Gehäusebefestigung' },
+  ja: { stator: '固定側取付', rotor: '回転側取付', 'face-a': 'A面取付', 'face-b': 'B面取付', body: '本体取付' },
+  ru: { stator: 'крепление статора', rotor: 'крепление ротора', 'face-a': 'крепление торца A', 'face-b': 'крепление торца B', body: 'крепление корпуса' },
+};
+
+function localeCopy(locale) {
+  const localized = copy[locale];
+  if (!localized) throw new Error(`Unsupported drawing-backed product locale: ${locale}`);
+  return localized;
+}
+
+function localizedNumber(locale, value) {
+  const normalized = String(value);
+  return locale === 'de' || locale === 'ru' ? normalized.replace('.', ',') : normalized;
+}
+
+function localizedThread(locale, value) {
+  const normalized = String(value).replace(/x/gi, '×');
+  return locale === 'de' || locale === 'ru' ? normalized.replace(/\.(?=\d)/g, ',') : normalized;
+}
+
+function searchMillimeterUnit(locale) {
+  return locale === 'ru' ? 'мм' : 'mm';
+}
+
+function russianCount(value, one, few, many) {
+  const mod10 = value % 10;
+  const mod100 = value % 100;
+  if (mod10 === 1 && mod100 !== 11) return `${value} ${one}`;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${value} ${few}`;
+  return `${value} ${many}`;
+}
+
+function russianInstrumentalCount(value, singular, plural) {
+  return `${value} ${value === 1 ? singular : plural}`;
+}
+
+function passageCountForModel(model) {
+  const match = /^BP-(\d+)P-/.exec(model);
+  if (!match) throw new Error(`${model}: passage count is not encoded in the verified model name.`);
+  return Number(match[1]);
+}
+
+function inletOutletCounts(facts) {
+  const annotations = facts.ports?.annotations || [];
+  const total = (roles) => annotations
+    .filter((annotation) => roles.has(annotation.role))
+    .reduce((sum, annotation) => sum + annotation.count, 0);
+  return {
+    inlets: total(new Set(['inlet', 'media-inlet'])),
+    outlets: total(new Set(['outlet', 'media-outlet'])),
+  };
+}
+
+function passageKeyword(locale, passages, inlets, outlets) {
+  if (locale === 'en') {
+    const base = `${passages} ${passages === 1 ? 'passage' : 'passages'}`;
+    return inlets && outlets
+      ? `${base} · ${inlets} ${inlets === 1 ? 'inlet' : 'inlets'} / ${outlets} ${outlets === 1 ? 'outlet' : 'outlets'}`
+      : base;
+  }
+  if (locale === 'de') {
+    const base = `${passages} ${passages === 1 ? 'Kanal' : 'Kanäle'}`;
+    return inlets && outlets
+      ? `${base} · ${inlets} ${inlets === 1 ? 'Eingang' : 'Eingänge'} / ${outlets} ${outlets === 1 ? 'Ausgang' : 'Ausgänge'}`
+      : base;
+  }
+  if (locale === 'ja') return inlets && outlets ? `${passages}流路・入口${inlets} / 出口${outlets}` : `${passages}流路`;
+  const base = russianCount(passages, 'канал', 'канала', 'каналов');
+  return inlets && outlets
+    ? `${base} · ${russianCount(inlets, 'вход', 'входа', 'входов')} / ${russianCount(outlets, 'выход', 'выхода', 'выходов')}`
+    : base;
+}
+
+function productTypeKeyword(locale, model) {
+  const localized = localeCopy(locale);
+  return model === 'BP-3P-S06-0001' ? localized.pneumaticElectricType : localized.productType;
+}
+
+function productTypeSearchSynonym(locale) {
+  return uiPhrase(locale, {
+    en: 'pneumatic rotary union',
+    de: 'Pneumatik-Drehdurchführung',
+    ja: 'エアロータリージョイント',
+    ru: 'пневматическое вращающееся соединение',
+  });
+}
+
+function productDescriptor(locale, model, passages, inlets = 0, outlets = 0) {
+  if (model === 'BP-3P-S06-0001') {
+    if (locale === 'en') return `${passages}-passage pneumatic-electric rotary union`;
+    if (locale === 'de') return `pneumatisch-elektrische Drehdurchführung mit ${passages} Kanälen`;
+    if (locale === 'ja') return `${passages}流路の空圧・電気複合ロータリージョイント`;
+    return `${passages}-канальное пневмоэлектрическое ротационное соединение`;
+  }
+  if (locale === 'en') {
+    const io = inlets && outlets
+      ? ` with ${inlets} ${inlets === 1 ? 'inlet' : 'inlets'} and ${outlets} ${outlets === 1 ? 'outlet' : 'outlets'}`
+      : '';
+    return `${passages}-passage pneumatic rotary joint${io}`;
+  }
+  if (locale === 'de') {
+    const io = inlets && outlets
+      ? `, ${inlets} ${inlets === 1 ? 'Eingang' : 'Eingängen'} und ${outlets} ${outlets === 1 ? 'Ausgang' : 'Ausgängen'}`
+      : '';
+    return `pneumatische Drehdurchführung mit ${passages} ${passages === 1 ? 'Kanal' : 'Kanälen'}${io}`;
+  }
+  if (locale === 'ja') {
+    const io = inlets && outlets ? `、入口${inlets}・出口${outlets}` : '';
+    return `${passages}流路${io}の空圧ロータリージョイント`;
+  }
+  const io = inlets && outlets
+    ? ` с ${russianInstrumentalCount(inlets, 'входом', 'входами')} и ${russianInstrumentalCount(outlets, 'выходом', 'выходами')}`
+    : '';
+  return `${passages}-канальное пневматическое ротационное соединение${io}`;
+}
+
+function bodyKeyword(locale, bodyMaterial) {
+  const localized = localeCopy(locale);
+  if (bodyMaterial === 'Aluminum Alloy 6061') return localized.aluminumBody;
+  if (bodyMaterial === 'Steel 45#') return localized.steel45Body;
+  throw new Error(`Unsupported drawing-backed body material: ${bodyMaterial}`);
+}
+
+function sealKeyword(locale, sealMaterials) {
+  if (JSON.stringify(sealMaterials) !== JSON.stringify(['PTFE', 'O-ring'])) {
+    throw new Error(`Unsupported drawing-backed seal materials: ${JSON.stringify(sealMaterials)}`);
+  }
+  return localeCopy(locale).seal;
+}
+
+function mediaKeyword(locale, media) {
+  const terms = mediaTerms[locale];
+  const values = media.map((medium) => {
+    if (!terms[medium]) throw new Error(`Unsupported drawing-backed medium: ${medium}`);
+    return terms[medium];
+  });
+  return localeCopy(locale).media(values);
+}
+
+function portKeywords(locale, model, facts) {
+  const localized = localeCopy(locale);
+  if (model === 'BP-3P-0006') return [localized.portPending];
+  if (!['verified', 'verified-threads-only', 'verified-outlets-only'].includes(facts.ports?.status)) return [];
+  const keywords = (facts.ports.annotations || []).map((annotation) => {
+    const role = portRoleTerms[locale][annotation.role];
+    const interfaceSize = annotation.thread
+      ? localizedThread(locale, annotation.thread)
+      : annotation.diameterMm !== undefined
+        ? `Ø${localizedNumber(locale, annotation.diameterMm)} ${searchMillimeterUnit(locale)}`
+        : null;
+    if (!role || !annotation.count || !interfaceSize) {
+      throw new Error(`${model}: verified port annotation is incomplete or unsupported.`);
+    }
+    const depth = annotation.depthMm === undefined
+      ? ''
+      : localized.portDepth(localizedNumber(locale, annotation.depthMm));
+    const separator = locale === 'ja' ? '：' : ': ';
+    return `${role}${separator}${annotation.count} × ${interfaceSize}${depth}`;
+  });
+  if (facts.ports.status === 'verified-outlets-only') keywords.push(localized.airInletUnclear);
+  if (facts.ports.status === 'verified-threads-only') keywords.push(localized.portFunctionPending);
+  return keywords;
+}
+
+function mountingKeywords(locale, facts) {
+  if (facts.mounting?.status !== 'verified') return [];
+  const localized = localeCopy(locale);
+  return (facts.mounting.features || []).map((feature) => {
+    const side = mountingSideTerms[locale][feature.side];
+    if (!side || !feature.count) throw new Error('Verified mounting feature is incomplete or unsupported.');
+    let interfaceText;
+    if (feature.thread) interfaceText = `${feature.count} × ${localizedThread(locale, feature.thread)}`;
+    else if (feature.diameterMm !== undefined && ['through-hole', 'hole'].includes(feature.feature)) {
+      const holeType = feature.feature === 'through-hole' ? localized.throughHole : localized.hole;
+      interfaceText = `${feature.count} × Ø${localizedNumber(locale, feature.diameterMm)} ${searchMillimeterUnit(locale)} ${holeType}`;
+    } else throw new Error('Verified mounting interface is incomplete or unsupported.');
+    const depth = feature.depthMm === undefined
+      ? ''
+      : localized.mountingDepth(localizedNumber(locale, feature.depthMm));
+    const antiRotation = feature.feature === 'anti-rotation'
+      ? ` · ${localized.antiRotation}`
+      : feature.feature === 'anti-rotation-set-screw'
+        ? ` · ${localized.antiRotationSetScrew}`
+        : '';
+    const separator = locale === 'ja' ? '：' : ': ';
+    return `${side}${separator}${interfaceText}${depth}${antiRotation}`;
+  });
+}
+
+function dimensionKeywords(locale, facts) {
+  const localized = localeCopy(locale);
+  const keywords = [];
+  const envelope = facts.envelope;
+  if (envelope && envelope.status !== 'drawing-audit-only') {
+    const length = localizedNumber(locale, envelope.overallLengthMm);
+    if (envelope.maximumDiameterMm !== undefined) {
+      keywords.push(localized.diameterEnvelope(localizedNumber(locale, envelope.maximumDiameterMm), length));
+    } else if (envelope.maximumWidthMm !== undefined) {
+      keywords.push(localized.widthEnvelope(localizedNumber(locale, envelope.maximumWidthMm), length));
+    }
+  }
+  if (facts.throughBore?.status === 'verified') {
+    keywords.push(localized.throughBore(localizedNumber(locale, facts.throughBore.diameterMm)));
+  }
+  return keywords;
+}
+
+const uiPortCategoryModels = new Set(['BP-1P-0003', 'BP-2P-08-0001']);
+
+const uiJsonPropertyNames = Object.freeze({
+  en: Object.freeze({
+    pressure: 'Maximum pressure', speed: 'Maximum speed', media: 'Suitable media',
+    body: 'Body material', seal: 'Seal type', mount: 'Mounting type',
+    temperature: 'Temperature range', weight: 'Weight', dimensions: 'Envelope dimensions',
+    bore: 'Hollow bore diameter', ports: 'Port configuration', pneumaticPassages: 'Pneumatic passages', electricalCircuits: 'Electrical circuits',
+    voltage: 'Voltage rating', electricalContact: 'Electrical contact material',
+    insulationResistance: 'Insulation resistance', dielectricStrength: 'Dielectric strength',
+  }),
+  de: Object.freeze({
+    pressure: 'Maximaldruck', speed: 'Maximale Drehzahl', media: 'Geeignete Medien',
+    body: 'Gehäusewerkstoff', seal: 'Dichtung', mount: 'Montageart',
+    temperature: 'Temperaturbereich', weight: 'Gewicht', dimensions: 'Abmessungen',
+    bore: 'Durchgangsbohrung', ports: 'Medienanschlüsse', pneumaticPassages: 'Pneumatische Kanäle', electricalCircuits: 'Elektrische Stromkreise',
+    voltage: 'Nennspannung', electricalContact: 'Kontaktwerkstoff',
+    insulationResistance: 'Isolationswiderstand', dielectricStrength: 'Spannungsfestigkeit',
+  }),
+  ja: Object.freeze({
+    pressure: '最高圧力', speed: '最高回転数', media: '適用流体',
+    body: '本体材質', seal: 'シール方式', mount: '取付方式',
+    temperature: '温度範囲', weight: '質量', dimensions: '外形寸法',
+    bore: '中空穴径', ports: '流体ポート', pneumaticPassages: '空圧流路数', electricalCircuits: '電気回路数',
+    voltage: '定格電圧', electricalContact: '電気接点材質',
+    insulationResistance: '絶縁抵抗', dielectricStrength: '耐電圧',
+  }),
+  ru: Object.freeze({
+    pressure: 'Максимальное давление', speed: 'Максимальная частота вращения',
+    media: 'Подходящая среда', body: 'Материал корпуса', seal: 'Тип уплотнения',
+    mount: 'Тип крепления', temperature: 'Температурный диапазон', weight: 'Масса',
+    dimensions: 'Габариты', bore: 'Диаметр проходного отверстия', ports: 'Порты рабочей среды', pneumaticPassages: 'Пневматические каналы',
+    electricalCircuits: 'Электрические цепи', voltage: 'Номинальное напряжение',
+    electricalContact: 'Материал электрических контактов',
+    insulationResistance: 'Сопротивление изоляции', dielectricStrength: 'Электрическая прочность',
+  }),
+});
+
+const uiFieldAliases = Object.freeze({
+  ports: ['Port configuration', 'Media ports', 'Medienanschlüsse', '流体ポート', 'Порты рабочей среды', 'Конфигурация портов'],
+  passages: ['Passages', 'Kanal', 'Kanalzahl', '流路', '流路数', 'Количество каналов', 'Проходы'],
+  pneumaticPassages: ['Pneumatic passages', 'Pneumatische Kanäle', '空圧流路数', '空圧流路', 'Пневматические каналы'],
+  pressure: ['Maximum pressure', 'Maximum pressure per drawing', 'Max Pressure', 'Maximaler Betriebsdruck', 'Maximaldruck', 'Maximaldruck laut Zeichnung', '最高圧力', '最高使用圧力', '図面記載最高圧力', 'Максимальное рабочее давление', 'Максимальное давление', 'Максимальное давление по чертежу'],
+  speed: ['Maximum speed', 'Maximum speed per drawing', 'Max Speed', 'Maximale Drehzahl', 'Maximale Drehzahl laut Zeichnung', '最高使用回転数', '最高回転数', '図面記載最高回転数', 'Максимальная скорость вращения', 'Максимальная частота вращения', 'Максимальная частота вращения по чертежу'],
+  media: ['Compatible media', 'Suitable media', 'Media listed in drawing', 'Betriebsmedien', 'Geeignete Medien', 'Geeignete Betriebsmedien', 'Medien laut Zeichnung', '適用流体', '使用可能流体', '図面記載流体', 'Рабочая среда', 'Подходящая среда', 'Совместимые рабочие среды', 'Среда по чертежу'],
+  body: ['Body material', 'Gehäusewerkstoff', '本体材質', 'Материал корпуса'],
+  seal: ['Seal type', 'Dichtung', 'Dichtungsart', 'シール方式', 'Тип уплотнения'],
+  mount: ['Mounting type', 'Mount Type', 'Montageart', '取付方式', '取付方法', 'Тип крепления', 'Способ монтажа'],
+  thread: ['Thread type', 'Thread Type', 'Gewinde', 'Gewindetyp', 'ねじ規格', 'ねじタイプ', 'Резьба', 'Тип резьба'],
+  rotor: ['Rotor connection', 'Rotor Connection', 'Rotoranschluss', '回転側接続', 'ロータ側接続口', 'Подключение ротора', 'Присоединение ротора'],
+  stator: ['Stator connection', 'Stator Connection', 'Gehäuseanschluss', 'Statoranschluss', '固定側接続', 'ステータ側接続口', 'Подключение статора', 'Присоединение статора'],
+  temperature: ['Operating temperature', 'Temperature range', 'Temperature range per drawing', 'Betriebstemperatur', 'Temperaturbereich', 'Temperaturbereich laut Zeichnung', '使用温度範囲', '温度範囲', '図面記載温度範囲', 'Рабочая температура', 'Температурный диапазон', 'Температурный диапазон по чертежу'],
+  weight: ['Approx. Weight', 'Weight', 'Weight per drawing', 'Net weight', 'Net Weight', 'Gewicht', 'Gewicht laut Zeichnung', 'Nettogewicht', 'Ungefähres Gewicht', '質量', '図面記載質量', '製品質量', '概算質量', 'Масса', 'Масса по чертежу', 'Масса нетто', 'Приблизительная масса'],
+  dimensions: ['Dimensions', 'Envelope dimensions', 'Envelope dimensions per drawing', 'Abmessungen', 'Abmessungen laut Zeichnung', '外形寸法', '図面記載外形寸法', 'Габариты', 'Габариты по чертежу', 'Габаритные размеры'],
+  bore: ['Bore diameter', 'Bore Diameter', 'Hollow bore diameter', 'Bohrungsdurchmesser', 'Durchgangsbohrung', 'Durchmesser der Durchgangsbohrung', '中空穴径', '中空径の直径', 'Диаметр прохода', 'Диаметр проходного отверстия', 'Диаметр сквозного отверстия', 'Боровой диаметр'],
+  outerDiameter: ['Outer diameter', 'Außendurchmesser', '外の直径', 'Внешний диаметр'],
+  electricalCircuits: ['Electrical circuits', 'Elektrische Stromkreise', '電気回路数', '電気回路', 'Электрические цепи'],
+  voltage: ['Voltage rating', 'Nennspannung', '定格電圧', 'Номинальное напряжение'],
+  electricalContact: ['Electrical contact material', 'Electrical Contact', 'Kontaktwerkstoff', 'Elektrischer Kontakt', '電気接点材質', '電気接点', 'Материал электрических контактов', 'Электрический контакт'],
+  signalType: ['Signal type', 'Signalart', '信号種別', 'Тип сигнала'],
+  insulationResistance: ['Insulation resistance', 'Isolationswiderstand', '絶縁抵抗', 'Сопротивление изоляции'],
+  dielectricStrength: ['Dielectric strength', 'Spannungsfestigkeit', '耐電圧', 'Электрическая прочность'],
+  warranty: ['Warranty period', 'Garantiezeitraum', '保証期間', 'Гарантийный срок'],
+});
+
+const uiCanonicalByLabel = new Map();
+for (const [field, aliases] of Object.entries(uiFieldAliases)) {
+  for (const alias of aliases) {
+    const normalized = String(alias).replace(/\s+/g, ' ').trim().toLocaleLowerCase();
+    if (uiCanonicalByLabel.has(normalized) && uiCanonicalByLabel.get(normalized) !== field) {
+      throw new Error(`Duplicate drawing-backed UI field alias: ${alias}`);
+    }
+    uiCanonicalByLabel.set(normalized, field);
+  }
+}
+
+export function drawingBackedCanonicalField(label) {
+  if (typeof label !== 'string') return null;
+  return uiCanonicalByLabel.get(label.replace(/\s+/g, ' ').trim().toLocaleLowerCase()) || null;
+}
+
+function uiPhrase(locale, values) {
+  if (!Object.hasOwn(values, locale)) throw new Error(`Missing drawing-backed UI phrase for ${locale}.`);
+  return values[locale];
+}
+
+function uiFormatPressure(locale, pressure) {
+  const unit = locale === 'ru' ? 'МПа' : pressure.unit;
+  return `${localizedNumber(locale, pressure.value)} ${unit}`;
+}
+
+function uiFormatSpeed(locale, speed) {
+  const unit = locale === 'en' ? 'RPM' : locale === 'ru' ? 'об/мин' : 'min⁻¹';
+  return `${localizedNumber(locale, speed.value)} ${unit}`;
+}
+
+function uiFormatBody(locale, material) {
+  return uiPhrase(locale, material === 'Steel 45#' ? {
+    en: 'Grade 45 carbon steel', de: 'Stahl 45#', ja: '45#鋼', ru: 'Сталь 45#',
+  } : {
+    en: '6061 aluminum alloy', de: 'Aluminiumlegierung 6061', ja: '6061アルミニウム合金', ru: 'Алюминиевый сплав 6061',
+  });
+}
+
+function uiFormatSeal(locale, materials) {
+  if (materials.length !== 2 || materials[0] !== 'PTFE' || materials[1] !== 'O-ring') {
+    throw new Error(`Unexpected drawing seal contract: ${materials.join(', ')}`);
+  }
+  return uiPhrase(locale, {
+    en: 'PTFE + O-ring', de: 'PTFE + O-Ring', ja: 'PTFE＋Oリング', ru: 'ПТФЭ + O-кольцо',
+  });
+}
+
+function uiFormatMedia(locale, media) {
+  const supported = media.join(',');
+  if (!['air', 'air,oil,water'].includes(supported)) throw new Error(`Unexpected drawing media contract: ${supported}`);
+  if (supported === 'air') {
+    return uiPhrase(locale, {
+      en: 'Air', de: 'Luft',
+      ja: '空気', ru: 'воздух',
+    });
+  }
+  return uiPhrase(locale, {
+    en: 'Air, oil, and water', de: 'Luft, Öl und Wasser',
+    ja: '空気・油・水', ru: 'воздух, масло и вода',
+  });
+}
+
+function uiSignedNumber(locale, value, showPositive) {
+  const absolute = localizedNumber(locale, Math.abs(value));
+  if (value < 0) return `−${absolute}`;
+  if (showPositive && value > 0) return `+${absolute}`;
+  return absolute;
+}
+
+function uiFormatTemperature(locale, range) {
+  const minimum = uiSignedNumber(locale, range.minimum, false);
+  const maximum = uiSignedNumber(locale, range.maximum, true);
+  return uiPhrase(locale, {
+    en: `${minimum} to ${maximum} °C`, de: `${minimum} bis ${maximum} °C`,
+    ja: `${minimum}～${maximum} °C`, ru: `от ${minimum} до ${maximum} °C`,
+  });
+}
+
+function trimDecimal(value, digits) {
+  return value.toFixed(digits).replace(/\.0+$|(?<=\.[0-9]*?)0+$/g, '').replace(/\.$/, '');
+}
+
+function separatedInteger(value, separator) {
+  return String(Math.trunc(value)).replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+}
+
+function uiFormatWeight(locale, weight) {
+  if (weight.unit !== 'g') throw new Error(`Unexpected weight unit: ${weight.unit}`);
+  const grams = Number(weight.value);
+  const kilograms = trimDecimal(grams / 1000, 3);
+  if (locale === 'en') return `${kilograms} kg (${separatedInteger(grams, ',')} g)`;
+  if (locale === 'de') return `${kilograms.replace('.', ',')} kg (${separatedInteger(grams, '.')} g)`;
+  if (locale === 'ja') return `${kilograms} kg（${separatedInteger(grams, ',')} g）`;
+  return `${kilograms.replace('.', ',')} кг (${separatedInteger(grams, ' ')} г)`;
+}
+
+function uiPendingOutletCount(locale) {
+  return localeCopy(locale).portCountPending;
+}
+
+function uiFormatPorts(locale, model, ports) {
+  if (ports.status === 'annotation-conflict') return uiPendingOutletCount(locale);
+  if (ports.status === 'anomaly-unresolved') {
+    return uiPhrase(locale, {
+      en: 'Port thread pending engineering confirmation',
+      de: 'Anschlussgewinde bis zur technischen Bestätigung offen',
+      ja: 'ポートねじは担当設計部門の確認待ちです',
+      ru: 'Резьба портов должна быть подтверждена ответственной конструкторской службой',
+    });
+  }
+  if (!Array.isArray(ports.annotations) || !ports.annotations.length) {
+    throw new Error(`${model}: verified port contract has no annotations.`);
+  }
+  const roles = {
+    en: { 'media-inlet': 'media inlet', inlet: 'inlet', 'media-outlet': 'media outlet', outlet: 'outlet', 'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B', 'side-group': 'side port group', 'end-face-group': 'end-face port group', 'opposite-face': 'opposite-face port', 'air-port-group': 'air-port group', 'air-outlet': 'air outlet', 'release-port': 'release port', 'clamp-port': 'clamp port' },
+    de: { 'media-inlet': 'Medieneingang', inlet: 'Eingang', 'media-outlet': 'Medienausgang', outlet: 'Ausgang', 'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', 'side-group': 'seitliche Anschlussgruppe', 'end-face-group': 'stirnseitige Anschlussgruppe', 'opposite-face': 'Anschluss auf der Gegenseite', 'air-port-group': 'Luftanschlussgruppe', 'air-outlet': 'Luftausgang', 'release-port': 'Löseanschluss', 'clamp-port': 'Klemmanschluss' },
+    ja: { 'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口', 'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面', 'side-group': '側面ポート群', 'end-face-group': '端面ポート群', 'opposite-face': '反対側ポート', 'air-port-group': '空気ポート群', 'air-outlet': '空気出口', 'release-port': '解除ポート', 'clamp-port': 'クランプポート' },
+    ru: { 'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход', 'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B', 'side-group': 'группа боковых портов', 'end-face-group': 'группа торцевых портов', 'opposite-face': 'порт на противоположном торце', 'air-port-group': 'группа воздушных портов', 'air-outlet': 'выход воздуха', 'release-port': 'порт разжима', 'clamp-port': 'порт зажима' },
+  }[locale];
+  const parts = ports.annotations.map((annotation) => {
+    const role = roles[annotation.role];
+    if (!role) throw new Error(`${model}: unsupported port role ${annotation.role}.`);
+    const interfaceSize = annotation.thread
+      ? localizedThread(locale, annotation.thread)
+      : `Ø${localizedNumber(locale, annotation.diameterMm)} ${searchMillimeterUnit(locale)}`;
+    const depth = annotation.depthMm === undefined ? '' : uiPhrase(locale, {
+      en: `, depth ${localizedNumber(locale, annotation.depthMm)} mm`,
+      de: `, Tiefe ${localizedNumber(locale, annotation.depthMm)} mm`,
+      ja: `、深さ${localizedNumber(locale, annotation.depthMm)} mm`,
+      ru: `, глубина ${localizedNumber(locale, annotation.depthMm)} мм`,
+    });
+    return `${annotation.count} × ${interfaceSize}${depth} ${role}`;
+  });
+  let result = parts.join(' · ');
+  if (ports.status === 'verified-threads-only') {
+    result += uiPhrase(locale, {
+      en: '; functional assignment is not confirmed', de: '; Funktionszuordnung der Anschlüsse ist nicht bestätigt',
+      ja: '（ポートの機能割当は確認できません）', ru: '; функциональное назначение портов не подтверждено',
+    });
+  }
+  if (ports.status === 'verified-outlets-only') {
+    result += uiPhrase(locale, {
+      en: '; air inlet is not unambiguously identified', de: '; der Lufteingang ist nicht eindeutig gekennzeichnet',
+      ja: '（空気入口は明確に特定できません）', ru: '; вход воздуха однозначно не обозначен',
+    });
+  }
+  return result;
+}
+
+function uiFormatPortsKey(locale, model, ports) {
+  if (ports.status === 'annotation-conflict' || ports.status === 'anomaly-unresolved') {
+    return uiFormatPorts(locale, model, ports);
+  }
+  const compactRoles = {
+    en: { 'media-inlet': 'media in', inlet: 'in', 'media-outlet': 'media out', outlet: 'out', 'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B', 'side-group': 'side', 'end-face-group': 'end face', 'opposite-face': 'opposite face', 'air-port-group': 'air', 'air-outlet': 'air out', 'release-port': 'release', 'clamp-port': 'clamp' },
+    de: { 'media-inlet': 'Medieneingang', inlet: 'ein', 'media-outlet': 'Medienausgang', outlet: 'aus', 'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', 'side-group': 'seitlich', 'end-face-group': 'stirnseitig', 'opposite-face': 'Gegenseite', 'air-port-group': 'Luft', 'air-outlet': 'Luft aus', 'release-port': 'Lösen', 'clamp-port': 'Klemmen' },
+    ja: { 'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口', 'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面', 'side-group': '側面', 'end-face-group': '端面', 'opposite-face': '反対面', 'air-port-group': '空気', 'air-outlet': '空気出口', 'release-port': '解除', 'clamp-port': 'クランプ' },
+    ru: { 'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход', 'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B', 'side-group': 'сбоку', 'end-face-group': 'на торце', 'opposite-face': 'противоположный торец', 'air-port-group': 'воздух', 'air-outlet': 'выход воздуха', 'release-port': 'разжим', 'clamp-port': 'зажим' },
+  }[locale];
+  const parts = ports.annotations.map((annotation) => {
+    const size = annotation.thread
+      ? localizedThread(locale, annotation.thread)
+      : `Ø${localizedNumber(locale, annotation.diameterMm)} ${searchMillimeterUnit(locale)}`;
+    const depth = annotation.depthMm === undefined ? '' : uiPhrase(locale, {
+      en: `×${localizedNumber(locale, annotation.depthMm)} mm deep`,
+      de: `, ${localizedNumber(locale, annotation.depthMm)} mm tief`,
+      ja: `、深さ${localizedNumber(locale, annotation.depthMm)} mm`,
+      ru: `, глуб. ${localizedNumber(locale, annotation.depthMm)} мм`,
+    });
+    return `${annotation.count}×${size}${depth} ${compactRoles[annotation.role]}`;
+  });
+  let result = parts.join(' · ');
+  if (ports.status === 'verified-threads-only') {
+    result += uiPhrase(locale, {
+      en: '; function not confirmed', de: '; Funktion nicht bestätigt',
+      ja: '（機能割当は未確認）', ru: '; назначение не подтверждено',
+    });
+  }
+  return result;
+}
+
+function uiMountingSide(locale, side) {
+  const labels = {
+    en: { stator: 'stator', rotor: 'rotor', 'face-a': 'face A', 'face-b': 'face B', body: 'body' },
+    de: { stator: 'Stator', rotor: 'Rotor', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', body: 'Gehäuse' },
+    ja: { stator: 'ステータ側', rotor: 'ロータ側', 'face-a': 'A面', 'face-b': 'B面', body: '本体' },
+    ru: { stator: 'статор', rotor: 'ротор', 'face-a': 'торец A', 'face-b': 'торец B', body: 'корпус' },
+  }[locale];
+  if (!labels[side]) throw new Error(`Unsupported mounting side: ${side}`);
+  return labels[side];
+}
+
+function uiMountingFeatureType(locale, feature) {
+  const labels = {
+    'through-hole': { en: ' through-hole', de: ' Durchgangsbohrung', ja: ' 貫通穴', ru: ' сквозное отверстие' },
+    hole: { en: ' hole', de: ' Bohrung', ja: ' 穴', ru: ' отверстие' },
+    'anti-rotation': { en: ' anti-rotation', de: ' Verdrehsicherung', ja: ' 回り止め', ru: ' против проворачивания' },
+    'anti-rotation-set-screw': { en: ' anti-rotation set-screw', de: ' Gewindestift zur Verdrehsicherung', ja: ' 回り止め止めねじ', ru: ' установочный винт против проворачивания' },
+  }[feature];
+  if (!labels) throw new Error(`Unsupported mounting feature type: ${feature}`);
+  return labels[locale];
+}
+
+function uiFormatMountingFeature(locale, feature) {
+  const side = uiMountingSide(locale, feature.side);
+  const size = feature.thread
+    ? localizedThread(locale, feature.thread)
+    : (feature.diameterMm !== undefined
+      ? `Ø${localizedNumber(locale, feature.diameterMm)} ${searchMillimeterUnit(locale)}`
+      : null);
+  if (!size) throw new Error(`Mounting feature on ${feature.side} has no thread or diameter.`);
+  const depth = feature.depthMm === undefined ? '' : uiPhrase(locale, {
+    en: `, depth ${localizedNumber(locale, feature.depthMm)} mm`,
+    de: `, Tiefe ${localizedNumber(locale, feature.depthMm)} mm`,
+    ja: `、深さ${localizedNumber(locale, feature.depthMm)} mm`,
+    ru: `, глубина ${localizedNumber(locale, feature.depthMm)} мм`,
+  });
+  const featureType = feature.feature ? uiMountingFeatureType(locale, feature.feature) : '';
+  return `${side}: ${feature.count} × ${size}${depth}${featureType}`;
+}
+
+function uiFormatMounting(locale, model, mounting) {
+  if (mounting.status === 'not-separately-specified') {
+    return uiPhrase(locale, {
+      en: 'No separate mounting feature specified; media ports are not mounting holes',
+      de: 'Keine separate Montageangabe; Medienanschlüsse sind keine Montagebohrungen',
+      ja: '独立した取付部の記載なし（流体ポートは取付穴ではありません）',
+      ru: 'Отдельный монтажный элемент не указан; порты среды не являются монтажными отверстиями',
+    });
+  }
+  if (mounting.status !== 'verified' || !Array.isArray(mounting.features) || !mounting.features.length) {
+    throw new Error(`${model}: mounting facts are not publishable.`);
+  }
+  return mounting.features.map((feature) => uiFormatMountingFeature(locale, feature)).join(' · ');
+}
+
+function uiFormatMountingKey(locale, model, mounting) {
+  if (mounting.status === 'not-separately-specified') {
+    return uiPhrase(locale, {
+      en: 'No separate mount specified', de: 'Keine separate Montageangabe',
+      ja: '独立した取付部の記載なし', ru: 'Отдельное крепление не указано',
+    });
+  }
+  if (mounting.status !== 'verified') throw new Error(`${model}: mounting key is not publishable.`);
+  return mounting.features.map((feature) => {
+    const side = uiMountingSide(locale, feature.side);
+    const size = feature.thread
+      ? localizedThread(locale, feature.thread)
+      : `Ø${localizedNumber(locale, feature.diameterMm)} ${searchMillimeterUnit(locale)}`;
+    const depth = feature.depthMm === undefined ? '' : uiPhrase(locale, {
+      en: `, ${localizedNumber(locale, feature.depthMm)} mm deep`,
+      de: `, ${localizedNumber(locale, feature.depthMm)} mm tief`,
+      ja: `、深さ${localizedNumber(locale, feature.depthMm)} mm`,
+      ru: `, глуб. ${localizedNumber(locale, feature.depthMm)} мм`,
+    });
+    return `${side} ${feature.count}×${size}${depth}`;
+  }).join(' · ');
+}
+
+function uiFormatMountingSide(locale, model, mounting, side) {
+  if (mounting.status === 'not-separately-specified') return uiFormatMounting(locale, model, mounting);
+  const exact = mounting.features.filter((feature) => feature.side === side);
+  if (exact.length) return exact.map((feature) => uiFormatMountingFeature(locale, feature)).join(' · ');
+  return uiPhrase(locale, {
+    en: 'See the approved drawing; the reviewed source data do not confirm which face is the rotor or stator side',
+    de: 'Siehe freigegebene Zeichnung; die Zuordnung der Stirnseiten zu Rotor und Stator ist in den geprüften Quelldaten nicht bestätigt',
+    ja: '承認図面を参照してください。確認済み情報だけでは、各面とロータ／ステータの対応を確定できません',
+    ru: 'См. согласованный чертёж: по проверенным исходным данным соответствие торцов ротору и статору не подтверждено',
+  });
+}
+
+function uiFormatEnvelope(locale, envelope) {
+  if (envelope.status === 'drawing-audit-only') throw new Error('Audit-only envelope must not be formatted for publication.');
+  const length = localizedNumber(locale, envelope.overallLengthMm);
+  if (envelope.shape === 'cylindrical') {
+    const diameter = localizedNumber(locale, envelope.maximumDiameterMm);
+    return uiPhrase(locale, {
+      en: `Maximum Ø${diameter} × ${length} mm overall`, de: `Max. Ø${diameter} × ${length} mm Gesamtlänge`,
+      ja: `最大Ø${diameter} × 全長${length} mm`, ru: `Макс. Ø${diameter} × общая длина ${length} мм`,
+    });
+  }
+  if (envelope.shape === 'hex-body') {
+    const width = localizedNumber(locale, envelope.maximumWidthMm);
+    return uiPhrase(locale, {
+      en: `Maximum width ${width} × ${length} mm overall`, de: `Max. Breite ${width} × ${length} mm Gesamtlänge`,
+      ja: `最大幅${width} × 全長${length} mm`, ru: `Макс. ширина ${width} × общая длина ${length} мм`,
+    });
+  }
+  throw new Error(`Unsupported envelope shape: ${envelope.shape}`);
+}
+
+function uiFormatEnvelopeDiameter(locale, envelope) {
+  if (envelope.shape !== 'cylindrical' || envelope.status === 'drawing-audit-only') return uiFormatEnvelope(locale, envelope);
+  const diameter = localizedNumber(locale, envelope.maximumDiameterMm);
+  return uiPhrase(locale, {
+    en: `Maximum Ø${diameter} mm`, de: `Max. Ø${diameter} mm`, ja: `最大Ø${diameter} mm`, ru: `Макс. Ø${diameter} мм`,
+  });
+}
+
+function uiFormatBore(locale, bore) {
+  const diameter = localizedNumber(locale, bore.diameterMm);
+  return uiPhrase(locale, {
+    en: `Ø${diameter} mm through bore`, de: `Durchgangsbohrung Ø${diameter} mm`,
+    ja: `貫通穴Ø${diameter} mm`, ru: `Сквозное отверстие Ø${diameter} мм`,
+  });
+}
+
+function uiDetailedLimit(locale, value) {
+  return value;
+}
+
+function uiPerformance(locale, pressure, speed) {
+  return `${pressure} · ${speed}`;
+}
+
+function lowercaseInitial(value) {
+  return value ? `${value[0].toLocaleLowerCase()}${value.slice(1)}` : value;
+}
+
+function appendUiClause(locale, sentence, clause) {
+  const terminal = locale === 'ja' ? '。' : '.';
+  const trimmed = sentence.trimEnd();
+  const withoutTerminal = trimmed.endsWith(terminal) ? trimmed.slice(0, -terminal.length) : trimmed;
+  if (locale === 'ja') return `${withoutTerminal}。${clause}${terminal}`;
+  return `${withoutTerminal}; ${clause}${terminal}`;
+}
+
+function uiVerifiedPriceNote(locale, model, pressure, speed, media) {
+  return uiPhrase(locale, {
+    en: `${model}: ${pressure} pressure, ${speed} speed; suitable media: ${lowercaseInitial(media)}. Confirm continuous-duty limits for the selected configuration and operating conditions.`,
+    de: `${model}: ${pressure} Maximaldruck, ${speed} Maximaldrehzahl; geeignete Medien: ${lowercaseInitial(media)}. Dauerbetriebswerte für die gewählte Ausführung und Betriebsbedingungen bestätigen.`,
+    ja: `${model}：圧力${pressure}、回転数${speed}、適用流体：${media}。選定仕様と運転条件に対する連続運転許容値を確認してください。`,
+    ru: `${model}: максимальное давление ${pressure}, максимальная частота ${speed}; подходящая среда: ${lowercaseInitial(media)}. Допустимые значения для непрерывной работы подтвердите для выбранного исполнения и условий эксплуатации.`,
+  });
+}
+
+function uiIdentityPendingContract(locale, model) {
+  const pending = uiPhrase(locale, {
+    en: 'Project confirmation required before selection',
+    de: 'Projektbestätigung vor Auswahl erforderlich',
+    ja: '選定前に案件確認が必要',
+    ru: 'Перед выбором требуется проектное подтверждение',
+  });
+  const priceNote = uiPhrase(locale, {
+    en: `${model} requires project confirmation before technical selection. Request the current model-specific file before design release or ordering.`,
+    de: `${model} erfordert eine projektbezogene Bestätigung vor der technischen Auswahl. Die aktuelle modellspezifische Datei vor Konstruktionsfreigabe oder Bestellung anfordern.`,
+    ja: `${model}は技術選定前に案件ごとの確認が必要です。設計リリースまたは注文前に、現在の型式専用ファイルを依頼してください。`,
+    ru: `${model} требует проектного подтверждения перед техническим выбором. Перед выпуском конструкции или заказом запросите актуальный файл для этой модели.`,
+  });
+  return {
+    status: quarantineStatus,
+    priceNote,
+    structuredDescription: priceNote,
+    mediaPortsPropertyName: uiPhrase(locale, { en: 'Media ports', de: 'Medienanschlüsse', ja: '流体ポート', ru: 'Порты рабочей среды' }),
+    specificationLabels: {
+      ports: uiPhrase(locale, { en: 'Port configuration', de: 'Medienanschlüsse', ja: '流体ポート', ru: 'Порты рабочей среды' }),
+      bore: uiPhrase(locale, { en: 'Hollow bore diameter', de: 'Durchgangsbohrung', ja: '中空穴径', ru: 'Диаметр проходного отверстия' }),
+    },
+    fields: Object.fromEntries([
+      'passages', 'pneumaticPassages', 'pressure', 'speed', 'media', 'body', 'seal', 'mount', 'thread', 'ports', 'rotor', 'stator',
+      'temperature', 'weight', 'dimensions', 'bore', 'outerDiameter', 'electricalCircuits', 'voltage',
+      'electricalContact', 'signalType', 'insulationResistance', 'dielectricStrength',
+    ].map((field) => [field, pending])),
+    keyValues: { performance: pending, body: pending, seal: pending, media: pending, mount: pending, ports: pending },
+    keyCategoryOverrides: {},
+    keyCategoryLabels: { ports: uiPhrase(locale, { en: 'Ports', de: 'Anschlüsse', ja: 'ポート', ru: 'Порты' }) },
+    productName: metadataHeading(locale, model, products[model]),
+    hybridInterfacePropertyName: null,
+    requiredJsonFields: [],
+    jsonPropertyNames: uiJsonPropertyNames[locale],
+    addMediaPortsProperty: false,
+  };
+}
+
+export function drawingBackedUiContract(locale, model) {
+  const product = products[model];
+  if (!product) return null;
+  localeCopy(locale);
+  if (product.status === quarantineStatus) return uiIdentityPendingContract(locale, model);
+
+  const facts = product.drawingFacts;
+  const pressure = uiFormatPressure(locale, facts.maximumPressure);
+  const speed = uiFormatSpeed(locale, facts.maximumSpeed);
+  const body = uiFormatBody(locale, facts.bodyMaterial);
+  const seal = uiFormatSeal(locale, facts.sealMaterials);
+  const media = uiFormatMedia(locale, facts.media);
+  const ports = uiFormatPorts(locale, model, facts.ports);
+  const mount = uiFormatMounting(locale, model, facts.mounting);
+  const bore = facts.throughBore?.status === 'verified' ? uiFormatBore(locale, facts.throughBore) : null;
+  const electrical = uiPhrase(locale, {
+    en: 'Not stated; use the approved electrical specification',
+    de: 'Nicht angegeben; maßgeblich ist die freigegebene elektrische Spezifikation',
+    ja: '記載なし。承認済み電気仕様書で確認',
+    ru: 'Не указано; см. согласованную электрическую спецификацию',
+  });
+  const channels = uiPhrase(locale, {
+    en: '3 pneumatic passages · 6 electrical leads; circuit allocation/ratings per approved specification',
+    de: '3 Pneumatikkanäle · 6 elektrische Leitungen; Kreiszuordnung/Nennwerte gemäß freigegebener Spezifikation',
+    ja: '空圧3流路・電気リード6本。回路割当／定格は承認済み仕様書で確認',
+    ru: '3 пневматических канала · 6 электрических выводов; распределение цепей/номиналы — по согласованной спецификации',
+  });
+  const s06PneumaticPassages = uiPhrase(locale, {
+    en: '3 pneumatic passages; inlet connection not unambiguously labeled',
+    de: '3 Pneumatikkanäle; Lufteingang nicht eindeutig gekennzeichnet',
+    ja: '空圧3流路。空気入口は明確に特定できません',
+    ru: '3 пневматических канала; вход воздуха однозначно не обозначен',
+  });
+  let priceNote = uiVerifiedPriceNote(locale, model, pressure, speed, media);
+  if (model === 'BP-3P-S06-0001') {
+    priceNote += `${locale === 'ja' ? '' : ' '}${uiPhrase(locale, {
+      en: 'Electrical data: approved specification governs.',
+      de: 'Elektrik: Die freigegebene Spezifikation ist maßgeblich.',
+      ja: '電気仕様は承認済み仕様書を優先します。',
+      ru: 'Электрические данные — по согласованной спецификации.',
+    })}`;
+  }
+  if (model === 'BP-3P-0006') {
+    priceNote = appendUiClause(locale, priceNote, uiPhrase(locale, {
+      en: 'port thread remains unpublished pending confirmation of the anomalous annotation',
+      de: 'das Anschlussgewinde bleibt bis zur Klärung der abweichenden Angabe unveröffentlicht',
+      ja: '図面のねじ表記に不整合があるため、訂正版の承認図面で確認できるまでポートねじを確定値として公開しません',
+      ru: 'резьба портов не публикуется до подтверждения аномального обозначения',
+    }));
+  }
+  const fields = {
+    pressure: uiDetailedLimit(locale, pressure),
+    speed: uiDetailedLimit(locale, speed),
+    media,
+    body,
+    seal,
+    mount,
+    thread: ports,
+    ports,
+    rotor: uiFormatMountingSide(locale, model, facts.mounting, 'rotor'),
+    stator: uiFormatMountingSide(locale, model, facts.mounting, 'stator'),
+    temperature: uiFormatTemperature(locale, facts.temperatureRange),
+    weight: uiFormatWeight(locale, facts.weight),
+    dimensions: uiFormatEnvelope(locale, facts.envelope),
+    outerDiameter: uiFormatEnvelopeDiameter(locale, facts.envelope),
+    ...(bore ? { bore } : {}),
+    electricalCircuits: electrical,
+    voltage: electrical,
+    electricalContact: electrical,
+    signalType: electrical,
+    insulationResistance: electrical,
+    dielectricStrength: electrical,
+    ...(model === 'BP-3P-S06-0001' ? { pneumaticPassages: s06PneumaticPassages } : {}),
+  };
+  const requiredJsonFields = ['pressure', 'speed', 'media', 'body', 'seal', 'mount', 'ports', 'temperature', 'weight', 'dimensions'];
+  if (bore) requiredJsonFields.push('bore');
+  const structuredDescription = model === 'BP-2P-16-0001'
+    ? `${priceNote} ${uiPhrase(locale, {
+      en: 'A customer-authorized production application uses BP-2P-16-0001 to route compressed air through two independent passages for clamping and releasing a pneumatic three-jaw bottle-cap gripper.',
+      de: 'Eine vom Kunden zur Veröffentlichung freigegebene Produktionsanwendung nutzt BP-2P-16-0001, um Druckluft durch zwei unabhängige Kanäle zum Spannen und Lösen eines pneumatischen Drei-Finger-Greifers für Flaschenverschlüsse zu führen.',
+      ja: 'お客様から公開許可を得た量産用途では、BP-2P-16-0001が2つの独立流路を介して、ボトルキャップ用3爪エアチャックの把持・開放用圧縮空気を供給します。',
+      ru: 'В производственном применении, разрешённом заказчиком к публикации, BP-2P-16-0001 подаёт сжатый воздух по двум независимым каналам для зажима и разжима трёхкулачкового пневматического захвата крышки бутылки.',
+    })}`
+    : priceNote;
+  return {
+    status: verifiedStatus,
+    priceNote,
+    structuredDescription,
+    mediaPortsPropertyName: uiPhrase(locale, { en: 'Media ports', de: 'Medienanschlüsse', ja: '流体ポート', ru: 'Порты рабочей среды' }),
+    specificationLabels: {
+      ports: uiPhrase(locale, { en: 'Port configuration', de: 'Medienanschlüsse', ja: '流体ポート', ru: 'Порты рабочей среды' }),
+      bore: uiPhrase(locale, { en: 'Hollow bore diameter', de: 'Durchgangsbohrung', ja: '中空穴径', ru: 'Диаметр проходного отверстия' }),
+    },
+    fields,
+    keyValues: {
+      performance: uiPerformance(locale, pressure, speed), body, seal, media,
+      mount: uiFormatMountingKey(locale, model, facts.mounting),
+      ports: uiFormatPortsKey(locale, model, facts.ports),
+      ...(model === 'BP-3P-S06-0001' ? { channels } : {}),
+    },
+    keyCategoryOverrides: uiPortCategoryModels.has(model) ? { mount: 'ports' } : {},
+    keyCategoryLabels: { ports: uiPhrase(locale, { en: 'Ports', de: 'Anschlüsse', ja: 'ポート', ru: 'Порты' }) },
+    productName: metadataHeading(locale, model, product),
+    hybridInterfacePropertyName: model === 'BP-3P-S06-0001'
+      ? uiPhrase(locale, {
+        en: 'Pneumatic / electrical interface', de: 'Pneumatische / elektrische Schnittstelle',
+        ja: '空圧／電気インターフェース', ru: 'Пневматический / электрический интерфейс',
+      })
+      : null,
+    requiredJsonFields,
+    jsonPropertyNames: uiJsonPropertyNames[locale],
+    addMediaPortsProperty: false,
+  };
+}
+
+function verifiedParts(locale, model, product) {
+  const localized = localeCopy(locale);
+  const facts = product.drawingFacts;
+  const passages = passageCountForModel(model);
+  const { inlets, outlets } = inletOutletCounts(facts);
+  const requiredFacts = [facts.maximumPressure, facts.maximumSpeed, facts.weight];
+  if (requiredFacts.some((fact) => fact?.value === undefined)) {
+    throw new Error(`${model}: a required drawing-backed numeric fact is missing.`);
+  }
+  const core = [
+    localized.pressure(localizedNumber(locale, facts.maximumPressure.value)),
+    localized.speed(localizedNumber(locale, facts.maximumSpeed.value)),
+    localized.temperature(
+      localizedNumber(locale, facts.temperatureRange.minimum),
+      localizedNumber(locale, facts.temperatureRange.maximum),
+    ),
+    localized.weight(localizedNumber(locale, facts.weight.value)),
+    bodyKeyword(locale, facts.bodyMaterial),
+    sealKeyword(locale, facts.sealMaterials),
+    mediaKeyword(locale, facts.media),
+  ];
+  return {
+    passages,
+    inlets,
+    outlets,
+    passage: passageKeyword(locale, passages, inlets, outlets),
+    descriptor: productDescriptor(locale, model, passages, inlets, outlets),
+    core,
+    ports: portKeywords(locale, model, facts),
+    mounting: mountingKeywords(locale, facts),
+    dimensions: dimensionKeywords(locale, facts),
+  };
+}
+
+function uniqueKeywords(values) {
+  const keywords = [...new Set(values.map((value) => value.trim()).filter(Boolean))];
+  if (keywords.some((value) => /\p{Extended_Pictographic}|[$€¥]|\b(?:price|compare|comparison|Preis|Vergleich|цена|сравнен)|価格|比較/iu.test(value))) {
+    throw new Error('Drawing-backed product keywords contain a prohibited commercial or comparison term.');
+  }
+  return keywords;
+}
+
+export function drawingBackedProductKeywords(locale, model) {
+  const product = products[model];
+  if (!product) return null;
+  const localized = localeCopy(locale);
+  if (product.status === quarantineStatus) {
+    return [model, localized.productType, localized.verifiedDrawingRequired];
+  }
+  const parts = verifiedParts(locale, model, product);
+  const electricalBoundary = model === 'BP-3P-S06-0001' ? [localized.electricalLeadsBoundary] : [];
+  const leadingPorts = model === 'BP-3P-S06-0001' ? parts.ports.slice(0, 1) : [];
+  const remainingPorts = model === 'BP-3P-S06-0001' ? parts.ports.slice(1) : parts.ports;
+  return uniqueKeywords([
+    model,
+    productTypeKeyword(locale, model),
+    parts.passage,
+    ...electricalBoundary,
+    ...leadingPorts,
+    ...parts.core.slice(0, 2),
+    ...remainingPorts,
+    ...parts.mounting,
+    ...parts.dimensions,
+    ...parts.core.slice(2),
+    productTypeSearchSynonym(locale),
+  ]);
+}
+
+export function drawingBackedProductSummary(locale, model) {
+  const product = products[model];
+  if (!product) return null;
+  const localized = localeCopy(locale);
+  if (product.status === quarantineStatus) {
+    if (locale === 'en') return `${model} is a ${localized.productType}; project confirmation is required before technical selection.`;
+    if (locale === 'de') return `${model} ist eine ${localized.productType}; vor der technischen Auswahl ist eine Projektbestätigung erforderlich.`;
+    if (locale === 'ja') return `${model}は${localized.productType}です。技術選定前に案件ごとの確認が必要です。`;
+    return `${model} — ${localized.productType}; перед техническим выбором требуется проектное подтверждение.`;
+  }
+  const parts = verifiedParts(locale, model, product);
+  const portText = parts.ports.length ? parts.ports.join(locale === 'ja' ? '・' : '; ') : '';
+  const pendingPortBoundary = model === 'BP-3P-0006';
+  const portClause = !portText
+    ? ''
+    : pendingPortBoundary
+        ? `; ${portText}`
+      : `; ${localized.verifiedPorts}: ${portText}`;
+  const electricalBoundary = model === 'BP-3P-S06-0001' ? `; ${localized.electricalLeadsBoundary}` : '';
+  if (locale === 'en') {
+    const article = /^8(?:-|\s)/.test(parts.descriptor) ? 'an' : 'a';
+    return `${model} is ${article} ${parts.descriptor}. Published values: ${parts.core.join(', ')}${portClause}${electricalBoundary}.`;
+  }
+  if (locale === 'de') {
+    return `${model} ist eine ${parts.descriptor}. Veröffentlichte Werte: ${parts.core.join(', ')}${portClause}${electricalBoundary}.`;
+  }
+  if (locale === 'ja') {
+    const japanesePortClause = !portText
+      ? ''
+      : pendingPortBoundary
+        ? `。${portText}`
+        : `。${localized.verifiedPorts}：${portText}`;
+    const japaneseElectricalBoundary = model === 'BP-3P-S06-0001' ? `。${localized.electricalLeadsBoundary}` : '';
+    return `${model}は${parts.descriptor}です。公開値：${parts.core.join('、')}${japanesePortClause}${japaneseElectricalBoundary}。`;
+  }
+  return `${model} — ${parts.descriptor}. Опубликованные значения: ${parts.core.join(', ')}${portClause}${electricalBoundary}.`;
+}
+
+export function drawingBackedProductLinkLabel(locale, model) {
+  const product = products[model];
+  if (!product) return null;
+  const localized = localeCopy(locale);
+  if (product.status === quarantineStatus) {
+    return `${model} — ${localized.productType} — ${localized.verifiedDrawingRequired}`;
+  }
+  return `${model} — ${productDescriptor(locale, model, passageCountForModel(model))}`;
+}
+
+function metadataHeading(locale, model, product) {
+  if (product.status === quarantineStatus) {
+    return uiPhrase(locale, {
+      en: `${model} Pneumatic Rotary Union`,
+      de: `${model} Pneumatik-Drehdurchführung`,
+      ja: `${model} 空圧ロータリージョイント`,
+      ru: `${model} пневматическое вращающееся соединение`,
+    });
+  }
+  const passages = passageCountForModel(model);
+  if (model === 'BP-3P-S06-0001') {
+    return uiPhrase(locale, {
+      en: `${model} ${passages}-Passage Pneumatic-Electrical Rotary Union`,
+      de: `${model} ${passages}-Kanal-Pneumatik-Elektro-Drehdurchführung`,
+      ja: `${model} ${passages}流路 空圧・電気複合ロータリージョイント`,
+      ru: `${model} ${passages}-канальное пневмоэлектрическое вращающееся соединение`,
+    });
+  }
+  return uiPhrase(locale, {
+    en: `${model} ${passages}-Passage Pneumatic Rotary Union`,
+    de: `${model} pneumatische ${passages}-Kanal-Drehdurchführung`,
+    ja: `${model} ${passages}流路 空圧ロータリージョイント`,
+    ru: `${model} ${passages}-канальное пневматическое вращающееся соединение`,
+  });
+}
+
+function metadataMedia(locale, media) {
+  const values = media.map((medium) => mediaTerms[locale][medium]);
+  if (values.some((value) => !value)) throw new Error(`${locale}: unsupported metadata medium.`);
+  if (locale === 'en') return values.length === 1 ? values[0] : `${values.slice(0, -1).join(', ')} and ${values.at(-1)}`;
+  if (locale === 'de') return values.length === 1 ? values[0] : `${values.slice(0, -1).join(', ')} und ${values.at(-1)}`;
+  if (locale === 'ja') return values.join('・');
+  return values.join(', ');
+}
+
+function verifiedMetadataDescription(locale, model, product, heading) {
+  const facts = product.drawingFacts;
+  const pressure = localizedNumber(locale, facts.maximumPressure.value);
+  const speed = localizedNumber(locale, facts.maximumSpeed.value);
+  const media = metadataMedia(locale, facts.media);
+  const germanMediaLabel = facts.media.length === 1 ? 'Medium' : 'Medien';
+  const russianMediaLabel = facts.media.length === 1 ? 'среда' : 'среды';
+
+  if (model === 'BP-3P-0006') {
+    return uiPhrase(locale, {
+      en: `${heading}. ${pressure} MPa, ${speed} RPM; suitable medium: ${media}. Port thread requires project confirmation before fittings or machining.`,
+      de: `${heading}. ${pressure} MPa, ${speed} min⁻¹; geeignetes Medium: ${media}. Anschlussgewinde vor Auswahl von Verschraubungen oder Bearbeitung projektbezogen bestätigen.`,
+      ja: `${heading}。${pressure} MPa、${speed} min⁻¹。適用流体：${media}。ポートねじは継手選定や加工前に案件ごとの確認が必要です。`,
+      ru: `${heading}. ${pressure} МПа, ${speed} об/мин; подходящая среда: ${media}. Резьбу портов подтвердить до выбора фитингов или обработки.`,
+    });
+  }
+  if (model === 'BP-3P-S06-0001') {
+    return uiPhrase(locale, {
+      en: `${model} pneumatic-electric rotary union. ${pressure} MPa, ${speed} RPM; medium: ${media}; six electrical leads, with circuit allocation and ratings per specification.`,
+      de: `${heading}. ${pressure} MPa, ${speed} min⁻¹; Medium ${media}; sechs elektrische Leitungen, Kreiszuordnung und Nennwerte gemäß Spezifikation.`,
+      ja: `${heading}。${pressure} MPa、${speed} min⁻¹。流体は${media}、電気リード6本。回路割当・定格は仕様書で確認。`,
+      ru: `${heading}. ${pressure} МПа, ${speed} об/мин; среда ${media}; шесть электровыводов, распределение цепей и номиналы по спецификации.`,
+    });
+  }
+  return uiPhrase(locale, {
+    en: `${heading}. ${pressure} MPa, ${speed} RPM; suitable media: ${media}. Confirm continuous-duty values for the selected configuration.`,
+    de: `${heading}. ${pressure} MPa, ${speed} min⁻¹, geeignete Medien: ${media}. Dauerbetrieb für die gewählte Ausführung bestätigen.`,
+    ja: `${heading}。${pressure} MPa、${speed} min⁻¹。適用流体：${media}。連続運転値は選定仕様で確認。`,
+    ru: `${heading}. ${pressure} МПа, ${speed} об/мин, подходящая среда: ${media}. Непрерывный режим подтвердить для выбранного исполнения.`,
+  });
+}
+
+function pendingIdentityMetadataDescription(locale, model, heading) {
+  return uiPhrase(locale, {
+    en: `${heading}. Project confirmation is required before selection or ordering; send medium, pressure, speed, mounting, and quantity for review.`,
+    de: `${heading}. Vor technischer Auswahl oder Bestellung ist eine Projektbestätigung erforderlich; Medium, Druck, Drehzahl, Montage und Menge zur Prüfung senden.`,
+    ja: `${heading}。技術選定または発注前に案件ごとの確認が必要です。流体、圧力、回転数、取付け、数量をお知らせください。`,
+    ru: `${heading}. Перед техническим выбором или заказом требуется проектное подтверждение; укажите среду, давление, скорость, монтаж и количество для проверки.`,
+  });
+}
+
+export function drawingBackedProductMetadata(locale, model) {
+  const product = products[model];
+  if (!product) return null;
+  localeCopy(locale);
+  const h1 = metadataHeading(locale, model, product);
+  const description = product.status === quarantineStatus
+    ? pendingIdentityMetadataDescription(locale, model, h1)
+    : verifiedMetadataDescription(locale, model, product, h1);
+  const title = `${h1} | Begapunk`;
+  return Object.freeze({
+    title,
+    description,
+    h1,
+    breadcrumb: h1,
+    imageAlt: h1,
+    linkLabel: h1,
+    openGraphTitle: title,
+    openGraphDescription: description,
+    openGraphImageAlt: h1,
+    twitterTitle: title,
+    twitterDescription: description,
+    twitterImageAlt: h1,
+  });
+}
+
+export function assertDrawingBackedProductRecordCoverage(records, context = 'search index') {
+  const counts = new Map(drawingBackedProductModels.map((model) => [model, 0]));
+  for (const record of records) {
+    if (!counts.has(record.id)) continue;
+    counts.set(record.id, counts.get(record.id) + 1);
+    if (record.url !== `${record.id}.html`) {
+      throw new Error(`${context}: ${record.id} must use its model-specific product URL.`);
+    }
+  }
+  const missing = [...counts].filter(([, count]) => count === 0).map(([model]) => model);
+  const duplicates = [...counts].filter(([, count]) => count > 1).map(([model]) => model);
+  if (missing.length || duplicates.length) {
+    throw new Error(`${context}: drawing-backed product coverage mismatch; missing=${missing.join(',') || 'none'}; duplicates=${duplicates.join(',') || 'none'}.`);
+  }
+}
+
+const metadataLengthRanges = {
+  en: { titleMax: 70, descriptionMin: 140, descriptionMax: 170 },
+  de: { titleMax: 80, descriptionMin: 140, descriptionMax: 200 },
+  ja: { titleMax: 50, descriptionMin: 60, descriptionMax: 100 },
+  ru: { titleMax: 85, descriptionMin: 155, descriptionMax: 205 },
+};
+
+for (const locale of Object.keys(copy)) {
+  for (const model of drawingBackedProductModels) {
+    const keywords = drawingBackedProductKeywords(locale, model);
+    const summary = drawingBackedProductSummary(locale, model);
+    const linkLabel = drawingBackedProductLinkLabel(locale, model);
+    const metadata = drawingBackedProductMetadata(locale, model);
+    const uiContract = drawingBackedUiContract(locale, model);
+    if (!keywords?.length || !summary || !linkLabel || !uiContract?.priceNote
+      || !uiContract.structuredDescription || !uiContract.fields || !uiContract.keyValues) {
+      throw new Error(`${locale}/${model}: drawing-backed text or UI generation is incomplete.`);
+    }
+    if (!metadata || metadata.title !== `${metadata.h1} | Begapunk`
+      || metadata.breadcrumb !== metadata.h1 || metadata.imageAlt !== metadata.h1
+      || metadata.linkLabel !== metadata.h1 || metadata.openGraphDescription !== metadata.description
+      || metadata.twitterDescription !== metadata.description || metadata.openGraphImageAlt !== metadata.imageAlt
+      || metadata.twitterImageAlt !== metadata.imageAlt) {
+      throw new Error(`${locale}/${model}: drawing-backed metadata contract is incomplete or internally inconsistent.`);
+    }
+    const metadataLengths = metadataLengthRanges[locale];
+    if (metadata.title.length > metadataLengths.titleMax
+      || metadata.description.length < metadataLengths.descriptionMin
+      || metadata.description.length > metadataLengths.descriptionMax) {
+      throw new Error(`${locale}/${model}: drawing-backed metadata length is outside the localized search range.`);
+    }
+    if (identityPendingModels.has(model) && keywords.length !== 3) {
+      throw new Error(`${locale}/${model}: identity-pending keywords must contain exactly model, product type, and drawing boundary.`);
+    }
+    if (identityPendingModels.has(model)) {
+      const boundary = uiPhrase(locale, {
+        en: 'Project confirmation', de: 'Projektbestätigung',
+        ja: '案件ごとの確認', ru: 'проектное подтверждение',
+      });
+      if (!metadata.description.includes(boundary)) {
+        throw new Error(`${locale}/${model}: identity-pending metadata omits the drawing-verification boundary.`);
+      }
+      if (uiContract.requiredJsonFields.length !== 0 || uiContract.hybridInterfacePropertyName !== null) {
+        throw new Error(`${locale}/${model}: identity-pending Product JSON-LD must not publish pseudo technical properties.`);
+      }
+    }
+    if (!identityPendingModels.has(model) && !keywords.includes(productTypeSearchSynonym(locale))) {
+      throw new Error(`${locale}/${model}: verified keywords lack the localized rotary-union search synonym.`);
+    }
+    if (model === 'BP-3P-0006' && [keywords.join(' '), summary, linkLabel, JSON.stringify(metadata)].some((value) => /G4\/1|G1\/4/.test(value))) {
+      throw new Error(`${locale}/${model}: unresolved or normalized port text must not be published.`);
+    }
+    if (model === 'BP-1P-0006') {
+      const surfaces = [keywords.join(' '), summary, linkLabel, JSON.stringify(uiContract), JSON.stringify(metadata)];
+      if (!uiContract.fields.ports.includes('8')
+        || !surfaces.some((value) => /8\s*(?:×|-)?\s*G1\/8|8[ -]?(?:outlet|Ausg(?:ang|änge)|出口|выход)/iu.test(value))) {
+        throw new Error(`${locale}/${model}: owner-confirmed eight-outlet drawing fact is missing from generated surfaces.`);
+      }
+    }
+    if (model === 'BP-1P-0003') {
+      const expectedThread = localizedThread(locale, 'M10x1.5');
+      const uiSurfaces = [uiContract.fields.ports, uiContract.keyValues.ports];
+      if (uiSurfaces.some((value) => !value.includes(expectedThread) || value.includes('M10x1.5'))) {
+        throw new Error(`${locale}/${model}: UI or structured-data thread notation is not localized.`);
+      }
+    }
+    if (model === 'BP-3P-S06-0001') {
+      const s06Ports = verifiedParts(locale, model, products[model]).ports;
+      const metadataBoundaries = {
+        en: ['six electrical leads', 'ratings per specification'],
+        de: ['sechs elektrische Leitungen', 'gemäß Spezifikation'],
+        ja: ['電気リード6本', '仕様書'],
+        ru: ['шесть электровыводов', 'по спецификации'],
+      }[locale];
+      if (!summary.includes(localeCopy(locale).electricalLeadsBoundary)
+        || linkLabel.includes(localeCopy(locale).electricalLeadsBoundary)
+        || uiContract.keyValues.channels.includes('6 circuits')
+        || metadataBoundaries.some((boundary) => !metadata.description.includes(boundary))
+        || !s06Ports.some((value) => keywords.slice(0, 6).includes(value))) {
+        throw new Error(`${locale}/${model}: hybrid electrical evidence boundary is inconsistent.`);
+      }
+    } else if (Object.hasOwn(uiContract.keyValues, 'channels')) {
+      throw new Error(`${locale}/${model}: hybrid channel text leaked into a non-hybrid product contract.`);
+    }
+    if (products[model].status === verifiedStatus) {
+      const parts = verifiedParts(locale, model, products[model]);
+      const firstNonInterface = Math.min(
+        ...parts.core.slice(2).map((value) => keywords.indexOf(value)).filter((index) => index >= 0),
+      );
+      for (const value of [...parts.ports, ...parts.mounting, ...parts.dimensions]) {
+        if (keywords.indexOf(value) >= firstNonInterface) {
+          throw new Error(`${locale}/${model}: drawing interface keywords must precede weight/body/search-detail terms.`);
+        }
+      }
+    }
+  }
+}

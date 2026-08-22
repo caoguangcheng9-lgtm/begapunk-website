@@ -8,7 +8,6 @@ const manifestPath = path.join(downloadsRoot, 'public-downloads.sha256');
 const excluded = new Set([
   'BP-2P-0001_draft.pdf',
   'BP-2P-30-0001.pdf',
-  'BP-2P-95-0001.pdf',
 ].map((name) => name.toLowerCase()));
 
 async function walk(directory) {

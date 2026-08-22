@@ -164,6 +164,37 @@ const copy = {
   },
 };
 
+const productEvidenceFragments = Object.freeze({
+  en: [
+    'BP-2P-130-0001',
+    'Two independent compressed-air passages',
+    'fixture clamp and release',
+    'operates at low speed',
+    'exact speed, pressure, port assignment and interface must be confirmed',
+  ],
+  de: [
+    'BP-2P-130-0001',
+    'Zwei getrennte Druckluftkanäle',
+    'Spannen und Lösen der Vorrichtung',
+    'läuft mit niedriger Drehzahl',
+    'genaue Drehzahl, Druck, Portzuordnung und Schnittstelle',
+  ],
+  ja: [
+    'BP-2P-130-0001',
+    '独立した2つの圧縮空気流路',
+    '治具のクランプ／アンクランプ',
+    '設備は低速運転',
+    '正確な回転数、圧力、ポート割当、取合い',
+  ],
+  ru: [
+    'BP-2P-130-0001',
+    'Два независимых канала сжатого воздуха',
+    'зажима и разжима приспособления',
+    'Оборудование низкооборотное',
+    'точную частоту вращения, давление, назначение портов и интерфейс',
+  ],
+});
+
 const changes = [];
 
 function withNewlineStyle(text, fragment) {
@@ -263,12 +294,6 @@ ${factsMarkup(locale)}
 ${markerEnd}`;
 }
 
-function productEntry(locale) {
-  return `${productMarkerStart}
-    <div class="compat-item" data-verified-application="cnc-circular-saw-fixture"><strong>${locale.productEntryHeading}</strong><span style="display:block;font-size:0.85rem;color:var(--text-light);margin-top:4px;">${locale.productEntry} <a href="${applicationPage}#${moduleAnchor}">${locale.productEntryLink}</a></span></div>
-${productMarkerEnd}`;
-}
-
 function stripManagedBlock(html, start, end) {
   const pattern = new RegExp(`${start.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?${end.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*`, 'g');
   return html.replace(pattern, '');
@@ -316,16 +341,75 @@ async function syncApplicationPage(languageCode) {
   await planWrite(relativePath, html);
 }
 
-async function syncProductPage(languageCode) {
+function countOccurrences(value, needle) {
+  return value.split(needle).length - 1;
+}
+
+function readJsonLdGraph(html, relativePath) {
+  const graph = [];
+  const blocks = html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
+  for (const block of blocks) {
+    let payload;
+    try {
+      payload = JSON.parse(block[1]);
+    } catch (error) {
+      throw new Error(`${relativePath}: invalid JSON-LD (${error.message}).`);
+    }
+    if (Array.isArray(payload?.['@graph'])) graph.push(...payload['@graph']);
+    else if (payload && typeof payload === 'object') graph.push(payload);
+  }
+  return graph;
+}
+
+async function verifyProductPage(languageCode) {
   const locale = copy[languageCode];
   const relativePath = `${locale.prefix}${productPage}`;
   const absolute = path.join(root, relativePath);
-  const original = await fs.readFile(absolute, 'utf8');
-  let html = stripManagedBlock(original, productMarkerStart, productMarkerEnd);
-  if (!html.includes('<div class="compat-grid">')) throw new Error(`${relativePath}: compatibility grid not found.`);
-  html = html.replace('<div class="compat-grid">', `<div class="compat-grid">\n${withNewlineStyle(html, productEntry(locale))}`);
-  html = syncJsonLd(html, languageCode);
-  await planWrite(relativePath, html);
+  const html = await fs.readFile(absolute, 'utf8');
+  const expectedAttribute = 'data-verified-application="cnc-circular-saw-fixture"';
+  const unexpectedAttribute = 'data-confirmed-application-fit="cnc-circular-saw-fixture"';
+
+  if (countOccurrences(html, productMarkerStart) !== 1 || countOccurrences(html, productMarkerEnd) !== 1) {
+    throw new Error(`${relativePath}: expected one CNC product-evidence marker pair.`);
+  }
+  if (countOccurrences(html, expectedAttribute) !== 1 || html.includes(unexpectedAttribute)) {
+    throw new Error(`${relativePath}: verified CNC application evidence marker is missing, duplicated or downgraded.`);
+  }
+
+  const managedStart = html.indexOf(productMarkerStart);
+  const managedEnd = html.indexOf(productMarkerEnd, managedStart + productMarkerStart.length);
+  const managedBlock = html.slice(managedStart, managedEnd + productMarkerEnd.length);
+  if (!managedBlock.includes(expectedAttribute)) {
+    throw new Error(`${relativePath}: verified CNC application evidence is outside its preserved marker pair.`);
+  }
+  const expectedHref = `${applicationPage}#${moduleAnchor}`;
+  if (!managedBlock.includes(`href="${expectedHref}"`)) {
+    throw new Error(`${relativePath}: verified CNC application evidence link must target ${expectedHref}.`);
+  }
+  for (const fragment of productEvidenceFragments[languageCode]) {
+    if (!managedBlock.includes(fragment)) {
+      throw new Error(`${relativePath}: verified CNC application evidence lost required fact boundary: ${fragment}`);
+    }
+  }
+
+  const creativeWorks = readJsonLdGraph(html, relativePath).filter((node) => (
+    node?.['@type'] === 'CreativeWork'
+    && String(node?.['@id'] || '').endsWith(`#${evidenceAnchor}`)
+  ));
+  if (creativeWorks.length !== 1) {
+    throw new Error(`${relativePath}: expected exactly one CNC application CreativeWork evidence node.`);
+  }
+  const evidence = creativeWorks[0];
+  const expectedEvidenceUrl = `${applicationUrl(languageCode)}#${moduleAnchor}`;
+  if (
+    evidence.url !== expectedEvidenceUrl
+    || evidence.about?.['@id'] !== `${productUrl()}#product`
+    || evidence.inLanguage !== languageCode
+    || evidence.name !== locale.creativeName
+    || evidence.description !== locale.creativeDescription
+  ) {
+    throw new Error(`${relativePath}: CNC application CreativeWork evidence identity, link or localized fact boundary drifted.`);
+  }
 }
 
 async function syncOverrides(languageCode) {
@@ -395,7 +479,10 @@ async function syncSitemap(relativePath, urls) {
 
 for (const languageCode of Object.keys(copy)) {
   await syncApplicationPage(languageCode);
-  await syncProductPage(languageCode);
+  // The drawing-backed content synchronizer owns the product-page deep block.
+  // This case synchronizer verifies the preserved evidence contract instead of
+  // replacing that block with a stale whole-block snapshot.
+  await verifyProductPage(languageCode);
   await syncOverrides(languageCode);
   await syncLlms(languageCode);
 }

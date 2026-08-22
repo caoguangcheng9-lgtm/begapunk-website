@@ -1,5 +1,7 @@
 # Begapunk Website Audit Report
 
+> Historical audit evidence only. The P0/P1/P2/P3 labels in this 2026-07-27 report predate the current Begapunk standard and must not be used as current release severity. Reclassify any still-relevant finding under docs/standards/BEGAPUNK_WEBSITE_STANDARD.md.
+
 **Date:** 2026-07-27
 **Site:** https://www.begapunk.com/
 **Scope:** HTML, CSS, JavaScript, SEO, Schema, Sitemap, robots.txt, Multi-language, Security Headers

@@ -4,6 +4,15 @@ import process from 'node:process';
 import crypto from 'node:crypto';
 import { load } from 'cheerio';
 import { discoveryExcludedPageSet, patchDiscoveryRobotsMeta } from './discovery-exclusions.mjs';
+import {
+  assertDrawingBackedProductRecordCoverage,
+  drawingBackedProductLinkLabel,
+  drawingBackedCanonicalField,
+  drawingBackedProductKeywords,
+  drawingBackedProductMetadata,
+  drawingBackedProductSummary,
+  drawingBackedUiContract,
+} from './lib/drawing-backed-product-facts.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
@@ -63,6 +72,21 @@ const productDetailPageNames = translationManagedPages.filter((pageName) => prod
 const PRODUCT_UI_SKIP_SELECTOR = 'body.page-product-detail > a.skip-link[data-search-exclude][href="#main-content"]';
 const PRODUCT_UI_IMAGES_SELECTOR = 'body.page-product-detail .pd-gallery[role="region"]';
 const PRODUCT_UI_INFO_SELECTOR = 'body.page-product-detail .pd-info[role="region"]';
+const PRODUCT_UI_JUMP_SELECTOR = 'body.page-product-detail .pd-info > nav.pd-jump-nav';
+const PRODUCT_UI_KEY_SPECS_SELECTOR = 'body.page-product-detail .pd-info > dl.pd-key-specs';
+const PRODUCT_UI_SHARE_MENU_SELECTOR = 'body.page-product-detail .pd-info .pd-utility-links > details.pd-share-menu[data-search-exclude]';
+const PRODUCT_UI_SHARE_SELECTOR = `${PRODUCT_UI_SHARE_MENU_SELECTOR} > summary.pd-share-trigger`;
+const PRODUCT_UI_SHARE_OPTIONS_SELECTOR = `${PRODUCT_UI_SHARE_MENU_SELECTOR} > .pd-share-options`;
+const DRAWING_BACKED_DIRECT_CONTENT_SELECTOR = 'body.page-product-detail main#main-content > section.section';
+const PRODUCT_UI_MANUAL_TEXT_SELECTOR = [
+  PRODUCT_UI_SKIP_SELECTOR,
+  PRODUCT_UI_SHARE_SELECTOR,
+  `${PRODUCT_UI_JUMP_SELECTOR} > .pd-jump-label`,
+  `${PRODUCT_UI_JUMP_SELECTOR} > a`,
+  'body.page-product-detail .pd-price-note',
+  `${PRODUCT_UI_KEY_SPECS_SELECTOR} .pd-key-spec > dt`,
+  `${PRODUCT_UI_KEY_SPECS_SELECTOR} .pd-key-spec:not([data-spec-key="protection"]) > dd`,
+].join(',');
 const cacheRoot = process.env.I18N_CACHE_ROOT
   ? path.resolve(process.env.I18N_CACHE_ROOT)
   : path.join(i18nRoot, 'cache');
@@ -274,8 +298,8 @@ function assertContactRfqManualContract() {
 assertContactRfqManualContract();
 
 function assertProductDetailUiManualContract() {
-  if (productDetailUiContract.schemaVersion !== 1) {
-    throw new Error('Product-detail UI manual contract schemaVersion must be 1.');
+  if (productDetailUiContract.schemaVersion !== 4) {
+    throw new Error('Product-detail UI manual contract schemaVersion must be 4.');
   }
   if (productDetailUiContract.review?.method !== 'AI-assisted target-market line-by-line localization review') {
     throw new Error('Product-detail UI manual contract review method is missing or unsupported.');
@@ -287,32 +311,84 @@ function assertProductDetailUiManualContract() {
   if (!sameKeys(Object.keys(productDetailUiContract.locales || {}), expectedLanguageCodes)) {
     throw new Error('Product-detail UI manual copies must exactly cover the source and active target languages.');
   }
-  const expectedKeys = ['productImagesLabel', 'productInformationLabel', 'skipLink'];
+  const scalarKeys = [
+    'jumpToLabel',
+    'keyProductParametersLabel',
+    'leadTimeValue',
+    'onThisPageLabel',
+    'productImagesLabel',
+    'productInformationLabel',
+    'shareMenuLabel',
+    'skipLink',
+  ];
+  const nestedKeys = ['jumpLinks', 'keySpecLabels', 'keySpecPropertyNames', 'keySpecValueOverrides'];
+  const expectedKeys = [...scalarKeys, ...nestedKeys];
+  const jumpKeys = ['compat', 'downloads', 'faq', 'install', 'specs'];
+  const keySpecKeys = [
+    'body', 'channels', 'leadTime', 'media', 'mount', 'performance', 'ports', 'protection', 'seal',
+  ];
   for (const languageCode of expectedLanguageCodes) {
     const copy = productDetailUiContract.locales[languageCode];
     if (!copy || typeof copy !== 'object' || Array.isArray(copy)
       || !sameKeys(Object.keys(copy), expectedKeys)) {
       throw new Error(`${languageCode}: product-detail UI copy keys do not match the approved contract.`);
     }
-    for (const key of expectedKeys) {
+    for (const key of scalarKeys) {
       if (typeof copy[key] !== 'string' || !copy[key].trim()) {
         throw new Error(`${languageCode}: product-detail UI ${key} must be a non-empty string.`);
+      }
+    }
+    if (!sameKeys(Object.keys(copy.jumpLinks || {}), jumpKeys)
+      || !sameKeys(Object.keys(copy.keySpecLabels || {}), keySpecKeys)
+      || !sameKeys(Object.keys(copy.keySpecPropertyNames || {}), ['media', 'mount'])
+      || !sameKeys(Object.keys(copy.keySpecValueOverrides || {}), ['BP-2P-50-0001'])
+      || !sameKeys(Object.keys(copy.keySpecValueOverrides?.['BP-2P-50-0001'] || {}), ['media'])) {
+      throw new Error(`${languageCode}: product-detail UI nested copy keys do not match the approved contract.`);
+    }
+    for (const value of [
+      ...Object.values(copy.jumpLinks),
+      ...Object.values(copy.keySpecLabels),
+      ...Object.values(copy.keySpecPropertyNames),
+      copy.keySpecValueOverrides['BP-2P-50-0001'].media,
+    ]) {
+      if (typeof value !== 'string' || !value.trim()) {
+        throw new Error(`${languageCode}: product-detail UI nested copy values must be non-empty strings.`);
       }
     }
   }
   if (productDetailPageNames.length !== 16) {
     throw new Error(`Expected 16 translation-managed product-detail pages; found ${productDetailPageNames.length}.`);
   }
+  const expectedModels = productDetailPageNames.map((pageName) => path.basename(pageName, '.html'));
+  if (!sameKeys(Object.keys(productDetailUiContract.modelKeySpecKeys || {}), expectedModels)) {
+    throw new Error('Product-detail UI model key-spec map must exactly cover the 16 source models.');
+  }
+  for (const model of expectedModels) {
+    const keys = productDetailUiContract.modelKeySpecKeys[model];
+    if (!Array.isArray(keys) || keys.length !== 6 || new Set(keys).size !== 6
+      || keys.some((key) => !keySpecKeys.includes(key))) {
+      throw new Error(`${model}: product-detail UI key-spec map must contain six unique approved keys.`);
+    }
+  }
+}
+
+function expectedProductKeySpecKeys(languageCode, model) {
+  const configured = productDetailUiContract.modelKeySpecKeys[model];
+  const contract = drawingBackedUiContract(languageCode, model);
+  if (!contract) return configured;
+  return configured.map((key) => contract.keyCategoryOverrides[key] || key);
 }
 
 function applyProductDetailUiCopy($, languageCode, pageName) {
   if (!productDetailPagePattern.test(pageName)) return;
   const copy = productDetailUiContract.locales[languageCode];
   if (!copy) throw new Error(`${languageCode}/${pageName}: product-detail UI copy is missing.`);
+  const model = path.basename(pageName, '.html');
   const scopes = [
     [PRODUCT_UI_SKIP_SELECTOR, 'skip link', (node) => node.text(copy.skipLink)],
     [PRODUCT_UI_IMAGES_SELECTOR, 'product images region', (node) => node.attr('aria-label', copy.productImagesLabel)],
     [PRODUCT_UI_INFO_SELECTOR, 'product information region', (node) => node.attr('aria-label', copy.productInformationLabel)],
+    [PRODUCT_UI_SHARE_SELECTOR, 'share menu trigger', (node) => node.text(copy.shareMenuLabel)],
   ];
   for (const [selector, label, apply] of scopes) {
     const nodes = $(selector);
@@ -320,6 +396,226 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
       throw new Error(`${languageCode}/${pageName}: expected one ${label}; found ${nodes.length}.`);
     }
     apply(nodes.first());
+  }
+
+  const jump = $(PRODUCT_UI_JUMP_SELECTOR);
+  if (jump.length !== 1) {
+    throw new Error(`${languageCode}/${pageName}: expected one first-view jump navigation; found ${jump.length}.`);
+  }
+  jump.attr('aria-label', copy.onThisPageLabel);
+  const jumpLabel = jump.children('.pd-jump-label');
+  if (jumpLabel.length !== 1) {
+    throw new Error(`${languageCode}/${pageName}: expected one first-view jump label; found ${jumpLabel.length}.`);
+  }
+  jumpLabel.text(copy.jumpToLabel);
+  const jumpTargets = {
+    '#panel-specs': 'specs',
+    '#panel-compat': 'compat',
+    '#panel-install': 'install',
+    '#panel-downloads': 'downloads',
+    '#faq': 'faq',
+  };
+  const jumpLinks = jump.children('a');
+  if (jumpLinks.length !== Object.keys(jumpTargets).length) {
+    throw new Error(`${languageCode}/${pageName}: expected five first-view jump links; found ${jumpLinks.length}.`);
+  }
+  jumpLinks.each((_, element) => {
+    const node = $(element);
+    const key = jumpTargets[node.attr('href')];
+    if (!key) throw new Error(`${languageCode}/${pageName}: unexpected first-view jump target ${node.attr('href')}.`);
+    node.text(copy.jumpLinks[key]);
+  });
+
+  const shareMenu = $(PRODUCT_UI_SHARE_MENU_SELECTOR);
+  if (shareMenu.length !== 1) {
+    throw new Error(`${languageCode}/${pageName}: expected one first-view share menu; found ${shareMenu.length}.`);
+  }
+  shareMenu.removeAttr('open');
+  shareMenu.find('a.pd-share-option').removeAttr('aria-label');
+
+  const keySpecs = $(PRODUCT_UI_KEY_SPECS_SELECTOR);
+  if (keySpecs.length !== 1) {
+    throw new Error(`${languageCode}/${pageName}: expected one key-parameter list; found ${keySpecs.length}.`);
+  }
+  keySpecs.attr('aria-label', copy.keyProductParametersLabel);
+  const expectedSpecKeys = expectedProductKeySpecKeys(languageCode, model);
+  const specItems = keySpecs.children('.pd-key-spec');
+  if (specItems.length !== 6) {
+    throw new Error(`${languageCode}/${pageName}: expected six key parameters; found ${specItems.length}.`);
+  }
+  specItems.each((index, element) => {
+    const item = $(element);
+    const sourceKey = item.attr('data-spec-key');
+    const configuredKey = productDetailUiContract.modelKeySpecKeys[model][index];
+    const key = expectedSpecKeys[index];
+    if (sourceKey !== configuredKey && sourceKey !== key) {
+      throw new Error(`${languageCode}/${pageName}: key parameter ${index + 1} must be ${key}; found ${sourceKey}.`);
+    }
+    if (sourceKey !== key) item.attr('data-spec-key', key);
+    const term = item.children('dt');
+    const description = item.children('dd');
+    if (term.length !== 1 || description.length !== 1) {
+      throw new Error(`${languageCode}/${pageName}: key parameter ${key} must contain one dt and one dd.`);
+    }
+    term.text(copy.keySpecLabels[key]);
+    if (key === 'leadTime') description.text(copy.leadTimeValue);
+    if (key === 'media') {
+      const override = copy.keySpecValueOverrides?.[model]?.media;
+      if (override) description.text(override);
+    }
+  });
+}
+
+function applyDrawingBackedUiContract($, languageCode, pageName) {
+  if (!productDetailPagePattern.test(pageName)) return;
+  const model = path.basename(pageName, '.html');
+  const contract = drawingBackedUiContract(languageCode, model);
+  if (!contract) return;
+  const label = `${languageCode}/${pageName}`;
+
+  const priceNotes = $('body.page-product-detail .pd-price-note');
+  if (priceNotes.length !== 1) {
+    throw new Error(`${label}: expected one drawing-backed price note; found ${priceNotes.length}.`);
+  }
+  priceNotes.first().text(contract.priceNote);
+
+  const keySpecs = $(PRODUCT_UI_KEY_SPECS_SELECTOR);
+  if (keySpecs.length !== 1) {
+    throw new Error(`${label}: expected one drawing-backed key-parameter list; found ${keySpecs.length}.`);
+  }
+  const keyItems = keySpecs.children('.pd-key-spec');
+  if (keyItems.length !== 6) {
+    throw new Error(`${label}: expected six drawing-backed key parameters; found ${keyItems.length}.`);
+  }
+  const finalKeys = [];
+  keyItems.each((_, element) => {
+    const item = $(element);
+    const currentKey = item.attr('data-spec-key');
+    const key = contract.keyCategoryOverrides[currentKey] || currentKey;
+    if (!key) throw new Error(`${label}: key parameter is missing data-spec-key.`);
+    if (key !== currentKey) {
+      item.attr('data-spec-key', key);
+      const localizedLabel = contract.keyCategoryLabels[key];
+      if (!localizedLabel) throw new Error(`${label}: key category ${key} has no localized label.`);
+      item.children('dt').text(localizedLabel);
+    }
+    finalKeys.push(key);
+    if (Object.hasOwn(contract.keyValues, key)) item.children('dd').text(contract.keyValues[key]);
+  });
+  if (new Set(finalKeys).size !== finalKeys.length) {
+    throw new Error(`${label}: drawing-backed key categories are not unique.`);
+  }
+
+  const requestActions = $('.pd-info > .pd-actions > a[href*="contact.html?request="]');
+  if (requestActions.length !== 2 || !contract.productName) {
+    throw new Error(`${label}: drawing-backed request actions or localized product name are incomplete.`);
+  }
+  requestActions.each((_, element) => {
+    const action = $(element);
+    const href = action.attr('href') || '';
+    const [beforeHash, hash = ''] = href.split('#', 2);
+    const [pathname, query = ''] = beforeHash.split('?', 2);
+    const parameters = new URLSearchParams(query);
+    parameters.set('product', contract.productName);
+    const fragment = hash ? `#${hash}` : '';
+    action.attr('href', `${pathname}?${parameters.toString().replace(/\+/g, '%20')}${fragment}`);
+  });
+
+  const localizedProductUrl = pageUrl(languageCode, pageName);
+  const shareTitle = `${contract.productName} | ${canonicalBrandName}`;
+  const localizedShareHrefs = {
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(localizedProductUrl)}`,
+    x: `https://twitter.com/intent/tweet?${new URLSearchParams({ url: localizedProductUrl, text: shareTitle })}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(localizedProductUrl)}`,
+    whatsapp: `https://api.whatsapp.com/send?${new URLSearchParams({ text: `${shareTitle} - ${localizedProductUrl}` })}`,
+  };
+  for (const [channel, href] of Object.entries(localizedShareHrefs)) {
+    const links = $(`${PRODUCT_UI_SHARE_OPTIONS_SELECTOR} > a[data-share-channel="${channel}"]`);
+    if (links.length !== 1) throw new Error(`${label}: expected one ${channel} share action; found ${links.length}.`);
+    links.attr('href', href);
+  }
+
+  const specificationPanel = $('#panel-specs');
+  if (specificationPanel.length !== 1) {
+    throw new Error(`${label}: expected one specifications panel; found ${specificationPanel.length}.`);
+  }
+  const seenSpecificationFields = new Set();
+  specificationPanel.find('tr').each((_, element) => {
+    const row = $(element);
+    const heading = row.children('th');
+    const value = row.children('td');
+    if (heading.length !== 1 || value.length !== 1) return;
+    const field = drawingBackedCanonicalField(heading.text());
+    if (!field) return;
+    if (Object.hasOwn(contract.specificationLabels, field)) heading.text(contract.specificationLabels[field]);
+    if (!Object.hasOwn(contract.fields, field)) return;
+    if (seenSpecificationFields.has(field)) {
+      throw new Error(`${label}: duplicate drawing-backed specification field ${field}.`);
+    }
+    seenSpecificationFields.add(field);
+    value.text(contract.fields[field]);
+  });
+  const requiredSpecificationFields = contract.requiredJsonFields.length
+    ? ['pressure', 'speed', 'media', 'body', 'seal', 'mount', 'temperature', 'weight']
+    : [];
+  for (const field of requiredSpecificationFields) {
+    if (!seenSpecificationFields.has(field)) {
+      throw new Error(`${label}: specifications panel lacks drawing-backed field ${field}.`);
+    }
+  }
+
+  let productCount = 0;
+  $('script[type="application/ld+json"]').each((_, element) => {
+    const data = JSON.parse($(element).html());
+    const visit = (value) => {
+      if (Array.isArray(value)) {
+        value.forEach(visit);
+        return;
+      }
+      if (!value || typeof value !== 'object') return;
+      const types = schemaTypes(value);
+      if (types.has('Product')) {
+        productCount += 1;
+        value.description = contract.structuredDescription;
+        if (contract.productName) value.name = contract.productName;
+        if (!Array.isArray(value.additionalProperty)) {
+          throw new Error(`${label}: Product JSON-LD has no additionalProperty array.`);
+        }
+        const warranties = value.additionalProperty.filter(
+          (property) => drawingBackedCanonicalField(property?.name) === 'warranty',
+        );
+        if (warranties.length !== 1) {
+          throw new Error(`${label}: expected one Product JSON-LD warranty property; found ${warranties.length}.`);
+        }
+        const properties = [{ '@type': 'PropertyValue', name: 'SKU', value: model }];
+        if (contract.hybridInterfacePropertyName) {
+          properties.push({
+            '@type': 'PropertyValue',
+            name: contract.hybridInterfacePropertyName,
+            value: contract.keyValues.channels,
+          });
+        }
+        for (const field of contract.requiredJsonFields) {
+          const propertyName = contract.jsonPropertyNames[field];
+          if (!propertyName || !Object.hasOwn(contract.fields, field)) {
+            throw new Error(`${label}: Product JSON-LD insertion contract is incomplete for ${field}.`);
+          }
+          properties.push({
+            '@type': 'PropertyValue',
+            name: propertyName,
+            value: contract.fields[field],
+          });
+        }
+        properties.push(JSON.parse(JSON.stringify(warranties[0])));
+        value.additionalProperty = properties;
+      }
+      for (const child of Object.values(value)) visit(child);
+    };
+    visit(data);
+    $(element).text(JSON.stringify(data));
+  });
+  if (productCount !== 1) {
+    throw new Error(`${label}: expected one drawing-backed Product JSON-LD node; found ${productCount}.`);
   }
 }
 
@@ -349,6 +645,24 @@ function shouldTranslate(value) {
   return text.length > 0 && /[A-Za-z]/.test(text) && !/^[-+]?\d[\d\s.,%°/:-]*$/.test(text);
 }
 
+function isDrawingBackedSpecificationValue($, element) {
+  const node = $(element);
+  if (!node.closest('body.page-product-detail').length) return false;
+  const cell = node.is('td') ? node : node.closest('td');
+  if (!cell.length || !cell.closest('#panel-specs').length) return false;
+  const label = cell.closest('tr').children('th').first().text();
+  const field = drawingBackedCanonicalField(label);
+  return Boolean(field && field !== 'warranty');
+}
+
+function isDrawingBackedSpecificationLabel($, element) {
+  const node = $(element);
+  if (!node.closest('body.page-product-detail').length) return false;
+  const cell = node.is('th') ? node : node.closest('th');
+  if (!cell.length || !cell.closest('#panel-specs').length) return false;
+  return ['ports', 'bore'].includes(drawingBackedCanonicalField(cell.text()));
+}
+
 function collectRecords($) {
   const records = [];
   const coveredTextNodes = new WeakSet();
@@ -362,7 +676,19 @@ function collectRecords($) {
 
   const addHtmlElement = (element) => {
     if ($(element).closest(excludedSelector).length) return;
-    if ($(element).is(PRODUCT_UI_SKIP_SELECTOR)) {
+    if ($(element).closest(PRODUCT_UI_SHARE_OPTIONS_SELECTOR).length) {
+      markCovered(element);
+      return;
+    }
+    if ($(element).is(PRODUCT_UI_MANUAL_TEXT_SELECTOR)) {
+      markCovered(element);
+      return;
+    }
+    if (isDrawingBackedSpecificationValue($, element)) {
+      markCovered(element);
+      return;
+    }
+    if (isDrawingBackedSpecificationLabel($, element)) {
       markCovered(element);
       return;
     }
@@ -376,7 +702,10 @@ function collectRecords($) {
     if (coveredTextNodes.has(node)) return;
     const parent = $(node).parent();
     if (parent.closest(excludedSelector).length) return;
-    if (parent.is(PRODUCT_UI_SKIP_SELECTOR)) return;
+    if (parent.closest(PRODUCT_UI_SHARE_OPTIONS_SELECTOR).length) return;
+    if (parent.is(PRODUCT_UI_MANUAL_TEXT_SELECTOR)) return;
+    if (isDrawingBackedSpecificationValue($, parent)) return;
+    if (isDrawingBackedSpecificationLabel($, parent)) return;
     const original = node.data || '';
     const trimmed = original.trim();
     if (!shouldTranslate(trimmed)) return;
@@ -402,7 +731,10 @@ function collectRecords($) {
     $(`[${attribute}]`).each((_, element) => {
       if ($(element).closest(excludedSelector).length) return;
       if (attribute === 'aria-label'
-        && ($(element).is(PRODUCT_UI_IMAGES_SELECTOR) || $(element).is(PRODUCT_UI_INFO_SELECTOR))) return;
+        && ($(element).is(PRODUCT_UI_IMAGES_SELECTOR)
+          || $(element).is(PRODUCT_UI_INFO_SELECTOR)
+          || $(element).is(PRODUCT_UI_JUMP_SELECTOR)
+          || $(element).is(PRODUCT_UI_KEY_SPECS_SELECTOR))) return;
       const source = ($(element).attr(attribute) || '').trim();
       if (shouldTranslate(source)) records.push({ type: 'attribute', element, attribute, source });
     });
@@ -422,13 +754,55 @@ function collectRecords($) {
   return records;
 }
 
+function isDrawingBackedDirectContentRecord($, record) {
+  const node = record.element
+    ? $(record.element)
+    : record.node
+      ? $(record.node).parent()
+      : null;
+  if (!node?.length) return false;
+  if (node.is('title')) return true;
+  if (record.type === 'attribute' && translatableMetaSelectors.some((selector) => node.is(selector))) return true;
+  if (!node.closest('body.page-product-detail').length) return false;
+
+  // Tab labels remain translation-catalog managed even though the tabs live in
+  // the same section as the drawing-backed panels.
+  if (node.closest('.pd-tabs').length) return false;
+  if (node.closest(DRAWING_BACKED_DIRECT_CONTENT_SELECTOR).length) return true;
+
+  if (node.is('body.page-product-detail .pd-info > h1')) return true;
+  if (record.type === 'attribute'
+    && record.attribute === 'alt'
+    && node.is('body.page-product-detail #main-img')) return true;
+  return record.type === 'text' && node.is('body.page-product-detail .breadcrumb');
+}
+
+function drawingBackedTranslationRecords(page) {
+  const model = path.basename(page.pageName, '.html');
+  if (!drawingBackedUiContract(config.sourceLanguage.code, model)) return page.records;
+  const records = page.records.filter((record) => !isDrawingBackedDirectContentRecord(page.$, record));
+  if (!records.length || !records.some((record) => {
+    const node = record.element
+      ? page.$(record.element)
+      : record.node
+        ? page.$(record.node).parent()
+        : null;
+    return node?.closest('body.page-product-detail .pd-info, body.page-product-detail .pd-tabs').length;
+  })) {
+    throw new Error(`${page.pageName}: drawing-backed product UI verification removed the non-controlled translation scope.`);
+  }
+  return records;
+}
+
 async function loadPages(pageNames = translationManagedPages) {
   const pages = [];
   for (const pageName of pageNames) {
     const filePath = path.join(sourceRoot, pageName);
     const html = await fs.readFile(filePath, 'utf8');
     const $ = load(html, { decodeEntities: false });
-    pages.push({ pageName, html, $, records: collectRecords($) });
+    const page = { pageName, html, $, records: collectRecords($) };
+    page.records = drawingBackedTranslationRecords(page);
+    pages.push(page);
   }
   return pages;
 }
@@ -580,7 +954,8 @@ function normalizeJapaneseOutput(html) {
     ['3-in-3-out', '3流路'],
     ['4-in-4-out', '4流路'],
     ['8-in-8-out', '8流路'],
-    ['1-in-6-out', '1入力6出力'],
+    ['1-in-8-out', '1入力8出力'],
+    ['1-in-6-out', '1入力8出力'],
     ['2-in-3-out', '2入力3出力'],
     ['2-in-4-out', '2入力4出力'],
     ['4-in-4out', '4流路'],
@@ -748,7 +1123,8 @@ function normalizeGermanOutput(html) {
     ['4-in-4-out', '4-Kanal'],
     ['4-in-4out', '4-Kanal'],
     ['8-in-8-out', '8-Kanal'],
-    ['1-in-6-out', '1-zu-6'],
+    ['1-in-8-out', '1-zu-8'],
+    ['1-in-6-out', '1-zu-8'],
     ['2-in-3-out', '2-zu-3'],
     ['2-in-4-out', '2-zu-4'],
     ['images/optimized/2-Kanal-Rotary-joint.webp', 'images/optimized/2-in-2-out-Rotary-joint.webp'],
@@ -879,7 +1255,8 @@ function normalizeRussianOutput(html) {
     ['4-in-4-out', '4 канала'],
     ['4-in-4out', '4 канала'],
     ['8-in-8-out', '8 каналов'],
-    ['1-in-6-out', '1 вход / 6 выходов'],
+    ['1-in-8-out', '1 вход / 8 выходов'],
+    ['1-in-6-out', '1 вход / 8 выходов'],
     ['2-in-3-out', '2 входа / 3 выхода'],
     ['2-in-4-out', '2 входа / 4 выхода'],
     ['images/optimized/2 канала-Rotary-joint.webp', 'images/optimized/2-in-2-out-Rotary-joint.webp'],
@@ -1232,6 +1609,78 @@ function applySeoMetadata($, languageCode, pageName) {
   $('meta[name="keywords"]').remove();
 }
 
+function applyDrawingBackedProductMetadata($, languageCode, pageName) {
+  if (!productDetailPagePattern.test(pageName)) return;
+  const model = path.basename(pageName, '.html');
+  const metadata = drawingBackedProductMetadata(languageCode, model);
+  if (!metadata) return;
+  const pageLabel = `${languageCode}/${pageName}`;
+
+  const title = $('title');
+  const heading = $('h1');
+  const breadcrumb = $('.breadcrumb');
+  const mainProductImage = $('body.page-product-detail #main-img');
+  if (title.length !== 1 || heading.length !== 1 || breadcrumb.length !== 1 || mainProductImage.length !== 1) {
+    throw new Error(`${pageLabel}: drawing-backed metadata requires one title, H1, breadcrumb and main product image.`);
+  }
+  title.text(metadata.title);
+  heading.text(metadata.h1);
+  mainProductImage.attr('alt', metadata.imageAlt);
+
+  const setExistingMeta = (selector, content, surface) => {
+    const elements = $(selector);
+    if (elements.length !== 1) {
+      throw new Error(`${pageLabel}: drawing-backed metadata requires one ${surface}; found ${elements.length}.`);
+    }
+    elements.attr('content', content);
+  };
+  setExistingMeta('meta[name="description"]', metadata.description, 'meta description');
+  setExistingMeta('meta[property="og:title"]', metadata.openGraphTitle, 'Open Graph title');
+  setExistingMeta('meta[property="og:description"]', metadata.openGraphDescription, 'Open Graph description');
+  setExistingMeta('meta[property="og:image:alt"]', metadata.openGraphImageAlt, 'Open Graph image alt');
+  setExistingMeta('meta[name="twitter:title"]', metadata.twitterTitle, 'Twitter title');
+  setExistingMeta('meta[name="twitter:description"]', metadata.twitterDescription, 'Twitter description');
+  setExistingMeta('meta[name="twitter:image:alt"]', metadata.twitterImageAlt, 'Twitter image alt');
+
+  const breadcrumbLinks = breadcrumb.children('a');
+  if (breadcrumbLinks.length !== 2) {
+    throw new Error(`${pageLabel}: drawing-backed breadcrumb requires two ancestor links; found ${breadcrumbLinks.length}.`);
+  }
+  const ancestorLinks = breadcrumbLinks.toArray().map((element) => $(element).clone());
+  breadcrumb.empty();
+  breadcrumb.append(ancestorLinks[0], ' / ', ancestorLinks[1], ` / ${metadata.breadcrumb}`);
+
+  let structuredBreadcrumbCount = 0;
+  $('script[type="application/ld+json"]').each((_, element) => {
+    const data = JSON.parse($(element).html());
+    const visit = (value) => {
+      if (Array.isArray(value)) {
+        value.forEach(visit);
+        return;
+      }
+      if (!value || typeof value !== 'object') return;
+      if (schemaTypes(value).has('BreadcrumbList')) {
+        structuredBreadcrumbCount += 1;
+        const items = value.itemListElement;
+        if (!Array.isArray(items) || !items.length) {
+          throw new Error(`${pageLabel}: drawing-backed BreadcrumbList has no items.`);
+        }
+        const terminal = [...items].sort((left, right) => Number(right.position || 0) - Number(left.position || 0))[0];
+        if (!terminal || typeof terminal !== 'object') {
+          throw new Error(`${pageLabel}: drawing-backed BreadcrumbList has no terminal item.`);
+        }
+        terminal.name = metadata.breadcrumb;
+      }
+      for (const child of Object.values(value)) visit(child);
+    };
+    visit(data);
+    $(element).text(JSON.stringify(data));
+  });
+  if (structuredBreadcrumbCount !== 1) {
+    throw new Error(`${pageLabel}: expected one drawing-backed BreadcrumbList; found ${structuredBreadcrumbCount}.`);
+  }
+}
+
 const schemaLocaleByLanguage = {
   de: {
     founderJobTitle: 'Gründer und Ingenieur',
@@ -1275,9 +1724,9 @@ const structuredPropertyNames = {
 };
 
 const structuredWarrantyTerms = {
-  de: { name: 'Garantiebedingungen', value: 'Im Angebot/Auftrag bestätigt' },
-  ja: { name: '保証条件', value: '見積書・注文書で確認' },
-  ru: { name: 'Условия гарантии', value: 'Указаны в коммерческом предложении/заказе' },
+  de: { name: 'Garantiezeitraum', value: '1 Jahr' },
+  ja: { name: '保証期間', value: '1年' },
+  ru: { name: 'Гарантийный срок', value: '1 год' },
 };
 
 const structuredApplicationValues = {
@@ -1291,7 +1740,7 @@ const structuredApplicationValues = {
     'BP-2P-16-0001.html': 'CNC-Rundschalttische, Schweißpositionierer, Verpackungsdrehtische, pneumatische Spann- und Prüfvorrichtungen',
     'BP-2P-30-0001.html': 'Verpackungsdrehtische, Schweißstationen, pneumatische Spannvorrichtungen, Sprühsysteme und Automatisierungsdrehtische',
     'BP-2P-50-0001.html': 'Stahlwerke, Gießereien, staubige Verpackungslinien, Schweißpositionierer und Rundschalttische in rauer Umgebung',
-    'BP-2P-95-0001.html': 'Pneumatische Spannvorrichtungen, Drehvorrichtungen sowie Mehrfachverteilung von Luft, Kühlmittel und leichten Flüssigkeiten',
+    'BP-2P-95-0005.html': 'Pneumatische Spannvorrichtungen, Drehvorrichtungen sowie Mehrfachverteilung von Luft, Kühlmittel und leichten Flüssigkeiten',
     'BP-3P-0004.html': 'Dreistationen-Spannvorrichtungen, Rundschalttische, Verpackungs-, Schweiß-, Abfüll- und Prüfanlagen',
     'BP-3P-0006.html': 'Mittelgroße Dreikanal-Spannvorrichtungen, Rundschalttische, Verpackungsmaschinen, Schweißtische und Prüfanlagen',
     'BP-3P-0007.html': 'Kompakte Dreikanal-Vorrichtungen, kleine Rundschalttische, Verpackungsköpfe, Schweißpositionierer und Roboter-EOAT',
@@ -1309,7 +1758,7 @@ const structuredApplicationValues = {
     'BP-2P-16-0001.html': 'CNC割出テーブル、溶接ポジショナー、包装用回転テーブル、空圧クランプ治具、回転検査装置',
     'BP-2P-30-0001.html': '包装用回転テーブル、溶接設備、空圧クランプ治具、回転スプレー装置、自動化用回転テーブル',
     'BP-2P-50-0001.html': '製鉄所、鋳造設備、粉じんの多い包装ライン、溶接ポジショナー、大型空圧割出テーブル',
-    'BP-2P-95-0001.html': '空圧クランプ、回転治具、複数箇所へのエア分配、クーラントおよび低粘度流体の分配',
+    'BP-2P-95-0005.html': '空圧クランプ、回転治具、複数箇所へのエア分配、クーラントおよび低粘度流体の分配',
     'BP-3P-0004.html': '3ステーション空圧クランプ、3流路割出テーブル、包装・溶接・充填・検査設備',
     'BP-3P-0006.html': '中型3流路クランプ治具、割出テーブル、包装機、溶接テーブル、充填・検査設備',
     'BP-3P-0007.html': '小型3流路空圧治具、コンパクトな割出テーブル、包装ヘッド、溶接ポジショナー、ロボットEOAT',
@@ -1327,7 +1776,7 @@ const structuredApplicationValues = {
     'BP-2P-16-0001.html': 'Индексные столы ЧПУ, сварочные позиционеры, упаковочные поворотные столы, пневматические зажимные и контрольные приспособления',
     'BP-2P-30-0001.html': 'Упаковочные поворотные столы, сварочные станции, пневматические зажимы, распылительные установки и автоматизированные столы',
     'BP-2P-50-0001.html': 'Металлургические и литейные производства, запылённые упаковочные линии, сварочные позиционеры и индексные столы',
-    'BP-2P-95-0001.html': 'Пневматический зажим, поворотные приспособления и распределение воздуха, СОЖ и маловязких жидкостей',
+    'BP-2P-95-0005.html': 'Пневматический зажим, поворотные приспособления и распределение воздуха, СОЖ и маловязких жидкостей',
     'BP-3P-0004.html': 'Трёхпозиционные пневмозажимы, индексные столы, упаковочные, сварочные, разливочные и контрольные установки',
     'BP-3P-0006.html': 'Средние трёхканальные зажимные приспособления, индексные столы, упаковочные машины, сварочные столы и контрольные установки',
     'BP-3P-0007.html': 'Компактные трёхканальные приспособления, малые индексные столы, упаковочные головки, сварочные позиционеры и оснастка роботов',
@@ -1399,7 +1848,7 @@ function localizePassageValue(value, languageCode) {
       const details = detail
         .replace(/single passage/gi, 'einkanalig').replace(/dual passage/gi, 'zweikanalig')
         .replace(/triple passage/gi, 'dreikanalig').replace(/quad passage/gi, 'vierkanalig')
-        .replace(/single inlet, six outlets/gi, 'ein Eingang, sechs Ausgänge')
+        .replace(/single inlet, (?:six|eight) outlets/gi, 'ein Eingang, acht Ausgänge')
         .replace(/dual inlet, triple outlet/gi, 'zwei Eingänge, drei Ausgänge')
         .replace(/(\d+)mm bore/gi, '$1 mm Durchgang').replace(/8 passages/gi, 'acht Kanäle');
       return details ? `${base} (${details})` : base;
@@ -1409,7 +1858,7 @@ function localizePassageValue(value, languageCode) {
       const details = detail
         .replace(/single passage/gi, '1流路').replace(/dual passage/gi, '2流路')
         .replace(/triple passage/gi, '3流路').replace(/quad passage/gi, '4流路')
-        .replace(/single inlet, six outlets/gi, '1入力6出力').replace(/dual inlet, triple outlet/gi, '2入力3出力')
+        .replace(/single inlet, (?:six|eight) outlets/gi, '1入力8出力').replace(/dual inlet, triple outlet/gi, '2入力3出力')
         .replace(/(\d+)mm bore/gi, '中空穴径$1 mm').replace(/8 passages/gi, '8流路');
       return details ? `${base}（${details}）` : base;
     }
@@ -1419,7 +1868,7 @@ function localizePassageValue(value, languageCode) {
     const details = detail
       .replace(/single passage/gi, 'одноканальное исполнение').replace(/dual passage/gi, 'двухканальное исполнение')
       .replace(/triple passage/gi, 'трёхканальное исполнение').replace(/quad passage/gi, 'четырёхканальное исполнение')
-      .replace(/single inlet, six outlets/gi, 'один вход, шесть выходов').replace(/dual inlet, triple outlet/gi, 'два входа, три выхода')
+      .replace(/single inlet, (?:six|eight) outlets/gi, 'один вход, восемь выходов').replace(/dual inlet, triple outlet/gi, 'два входа, три выхода')
       .replace(/(\d+)mm bore/gi, 'проходное отверстие $1 мм').replace(/8 passages/gi, 'восемь каналов');
     return details ? `${base} (${details})` : base;
   });
@@ -1571,7 +2020,7 @@ function localizeProductProperty(property, languageCode, pageName) {
   if (!property || typeof property !== 'object') return;
   const nameMap = structuredPropertyNames[languageCode] || {};
   const warranty = structuredWarrantyTerms[languageCode];
-  if (property.name === 'Warranty terms' && warranty) {
+  if (property.name === 'Warranty period' && warranty) {
     property.name = warranty.name;
     property.value = warranty.value;
     return;
@@ -1928,7 +2377,39 @@ function injectLanguageSwitcher($, currentLanguage, pageName) {
   else $('.header-inner').first().append(switcher);
 }
 
-function applyTranslations(page, language, catalog, cache) {
+function applyDrawingBackedDirectContent($, direct$, languageCode, pageName) {
+  const model = path.basename(pageName, '.html');
+  if (!drawingBackedUiContract(languageCode, model)) return;
+  if (!direct$) throw new Error(`${languageCode}/${pageName}: drawing-backed localized content source is missing.`);
+
+  const generatedSections = $(DRAWING_BACKED_DIRECT_CONTENT_SELECTOR);
+  const directSections = direct$(DRAWING_BACKED_DIRECT_CONTENT_SELECTOR);
+  if (!generatedSections.length || generatedSections.length !== directSections.length) {
+    throw new Error(
+      `${languageCode}/${pageName}: drawing-backed section count differs between generated and directly synchronized content.`,
+    );
+  }
+  if (generatedSections.filter((_, element) => $(element).find('.pd-tabs').length).length !== 1
+    || directSections.filter((_, element) => direct$(element).find('.pd-tabs').length).length !== 1) {
+    throw new Error(`${languageCode}/${pageName}: expected one translation-managed tab strip inside drawing-backed content.`);
+  }
+
+  generatedSections.each((index, element) => {
+    const generatedSection = $(element);
+    const directSection = directSections.eq(index).clone();
+    const generatedTabs = generatedSection.find('.pd-tabs');
+    const directTabs = directSection.find('.pd-tabs');
+    if (generatedTabs.length || directTabs.length) {
+      if (generatedTabs.length !== 1 || directTabs.length !== 1) {
+        throw new Error(`${languageCode}/${pageName}: drawing-backed tab-strip structure differs.`);
+      }
+      directTabs.replaceWith(generatedTabs.clone());
+    }
+    generatedSection.replaceWith(directSection);
+  });
+}
+
+function applyTranslations(page, language, catalog, cache, drawingBackedDirectDocument = null) {
   const { $, records, pageName } = page;
   const idBySource = new Map(catalog.entries.map((entry) => [entry.source, entry.id]));
   const overrides = overridesByLanguage.get(language.code) || {};
@@ -2018,9 +2499,12 @@ function applyTranslations(page, language, catalog, cache) {
   if (language.code === 'de') localized = normalizeGermanOutput(localized);
   if (language.code === 'ru') localized = normalizeRussianOutput(localized);
   const finalized = load(localized, { decodeEntities: false });
+  applyDrawingBackedDirectContent(finalized, drawingBackedDirectDocument, language.code, pageName);
   applyProductDetailUiCopy(finalized, language.code, pageName);
   applySeoMetadata(finalized, language.code, pageName);
   updateJsonLd(finalized, language.code, pageName, true);
+  applyDrawingBackedUiContract(finalized, language.code, pageName);
+  applyDrawingBackedProductMetadata(finalized, language.code, pageName);
   return patchDiscoveryRobotsMeta(
     finalized.html().replace(/[ \t]+$/gm, ''),
     discoveryExcludedPages.has(pageName),
@@ -2100,26 +2584,7 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
 
 async function renderLocalizedSearchIndex(language, outputDirectory) {
   const searchIndex = JSON.parse(await fs.readFile(path.join(sourceRoot, 'search-index.json'), 'utf8'));
-  const conservativeSearchKeywords = {
-    de: [
-      'BP-2P-50-0001', '2 Kanäle', 'Standardmedium Luft', 'PTFE-Dichtung mit O-Ring',
-      'Schutzhaube und Labyrinth',
-      'Stator 4 × M5 Gewindetiefe 10 mm', 'Rotor 6 × M5 Gewindetiefe 8 mm',
-      'Gewicht der gelieferten Konfiguration bestätigen',
-    ],
-    ja: [
-      'BP-2P-50-0001', '2流路', '標準使用流体 空気', 'PTFEシール Oリング',
-      '保護カバー ラビリンス',
-      '固定側 4 × M5 ねじ深さ10 mm', '回転側 6 × M5 ねじ深さ8 mm',
-      '納入仕様の質量を確認',
-    ],
-    ru: [
-      'BP-2P-50-0001', '2 канала', 'стандартная среда воздух', 'уплотнение ПТФЭ с O-кольцом',
-      'защитный кожух и лабиринт',
-      'статор 4 × M5 глубина резьбы 10 мм', 'ротор 6 × M5 глубина резьбы 8 мм',
-      'уточнить массу поставляемой конфигурации',
-    ],
-  };
+  assertDrawingBackedProductRecordCoverage(searchIndex, 'source search-index.json');
   const manufacturingQualityKeywords = {
     de: ['Statorbearbeitung', '4-Achs-Dreh-Fräs-Bearbeitung', 'Aluminium 6061', 'Aluminium 7075', 'Farbeloxieren', 'Fertigungsablauf', 'harteloxierter Rotor', 'farbeloxiertes Statorgehäuse', 'Schichtdicke', 'O-Ring-Abdichtung', '51,7 µm'],
     ja: ['ステータ加工', '4軸複合旋盤加工', '6061アルミ合金', '7075アルミ合金', 'カラーアルマイト', '製造工程', '硬質アルマイト処理ロータ', 'カラーアルマイト処理ステータハウジング', 'アルマイト皮膜厚さ', 'Oリングシール', '51.7 μm'],
@@ -2132,17 +2597,27 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
   };
   const applicationCaseKeywords = {
     de: {
-      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0005', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
       'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'sensorüberwachtes pneumatisches Spannfutter', 'pneumatisches Spannfutter', 'Sensorsignalübertragung'],
     },
     ja: {
-      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0005', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
       'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', '外部センサ信号伝送', 'エアチャック', '空圧回路', '電気信号伝送'],
     },
     ru: {
-      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0001', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0005', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
       'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'пневматический патрон с контролем по датчикам', 'пневматический патрон', 'передача сигналов датчиков'],
     },
+  };
+  const dustyEnvironmentBoundaryKeyword = {
+    de: 'BP-2P-95-0005 Zweikanalmodell; Zeichnung enthält keine Angabe zum Staubschutz',
+    ja: 'BP-2P-95-0005 2流路モデル、図面に防じん仕様の記載なし',
+    ru: 'BP-2P-95-0005 двухканальная модель; на чертеже защита от пыли не указана',
+  };
+  const clearanceSealArticleKeywords = {
+    de: ['berührungslose Radialspaltdichtung Drehdurchführung', 'einseitiger Radialspalt 0,003 mm', 'Funktionsprinzip Hochgeschwindigkeits-Drehdurchführung'],
+    ja: ['非接触すきまシール ロータリジョイント', '片側ラジアルすきま 0.003 mm', '高速回転 ロータリジョイント 作動原理'],
+    ru: ['бесконтактное щелевое уплотнение ротационного соединения', 'односторонний радиальный зазор 0,003 мм', 'принцип работы высокоскоростного ротационного соединения'],
   };
   const localizedItems = [];
   for (const item of searchIndex) {
@@ -2156,6 +2631,8 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
     const content = $('body').clone();
     content.find('script,style,header,nav,footer,.cookie-banner,.i18n-switcher').remove();
     content.find('a.skip-link[data-search-exclude][href="#main-content"]').remove();
+    content.find('.pd-share-menu[data-search-exclude], .pd-share-footer[data-search-exclude]').remove();
+    const drawingKeywords = drawingBackedProductKeywords(language.code, item.id);
     localizedItems.push({
       ...item,
       title: $('title').text().trim() || item.title,
@@ -2163,13 +2640,19 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
       h1: $('h1').first().text().replace(/\s+/g, ' ').trim() || item.h1,
       h2s: $('h2').map((_, element) => $(element).text().replace(/\s+/g, ' ').trim()).get().filter(Boolean),
       body: content.text().replace(/\s+/g, ' ').trim(),
-      ...(item.url === 'BP-2P-50-0001.html'
-        ? { keywords: conservativeSearchKeywords[language.code] }
+      ...(drawingKeywords
+        ? { keywords: drawingKeywords }
         : item.url === 'manufacturing-quality.html'
           ? { keywords: manufacturingQualityKeywords[language.code] }
         : item.url === 'production-inspection-testing.html'
           ? { keywords: productionInspectionKeywords[language.code] }
-        : applicationCaseKeywords[language.code]?.[item.url]
+        : item.url === 'blog-non-contact-clearance-seal-rotary-union.html'
+          ? { keywords: clearanceSealArticleKeywords[language.code] }
+        : item.url === 'application-steel-dusty-environments.html'
+          ? { keywords: (item.keywords || []).map((keyword) => keyword.includes('BP-2P-95-0005')
+            ? dustyEnvironmentBoundaryKeyword[language.code]
+            : keyword) }
+          : applicationCaseKeywords[language.code]?.[item.url]
           ? { keywords: applicationCaseKeywords[language.code][item.url] }
         : {}),
     });
@@ -2197,11 +2680,6 @@ const llmsLabels = {
   },
 };
 
-const conservativeLlmsDescription = {
-  de: 'Zweikanal-Drehdurchführung BP-2P-50-0001 für Luft mit Schutzhaube und Labyrinth für staubige Umgebungen. Keine zertifizierte IP-Schutzart angegeben.',
-  ja: '空気用2流路ロータリージョイントBP-2P-50-0001。粉じん環境向けの保護カバー・ラビリンス構造です。認証済みIP保護等級の表示はありません。',
-  ru: 'Двухканальное соединение BP-2P-50-0001 для воздуха с защитным кожухом и лабиринтом для запылённых условий. Сертифицированная степень защиты IP не заявляется.',
-};
 const cncSawFixtureLlmsDescription = {
   de: 'Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.',
   ja: 'お客様から公開許可を得た実生産事例を含む選定ガイドです。低速のCNC丸鋸盤用特注クランプ治具にBP-2P-130-0001を組み込み、独立した2つの圧縮空気流路でクランプ／アンクランプを行います。',
@@ -2224,12 +2702,16 @@ function renderLocalizedLlms(language) {
     if (llmsExcludedPages.has(pageName)) continue;
     const entry = seo[pageName];
     if (!entry) throw new Error(`${language.code}/${pageName}: cannot add missing SEO entry to llms.txt.`);
-    const description = pageName === 'BP-2P-50-0001.html'
-      ? conservativeLlmsDescription[language.code]
-      : pageName === 'application-cnc-pneumatic-clamping.html'
+    const model = productDetailPagePattern.test(pageName) ? path.basename(pageName, '.html') : null;
+    const drawingLabel = model ? drawingBackedProductLinkLabel(language.code, model) : null;
+    const drawingSummary = model ? drawingBackedProductSummary(language.code, model) : null;
+    if (model && (!drawingLabel || !drawingSummary)) {
+      throw new Error(`${language.code}/${pageName}: drawing-backed llms copy is missing.`);
+    }
+    const description = drawingSummary || (pageName === 'application-cnc-pneumatic-clamping.html'
         ? cncSawFixtureLlmsDescription[language.code]
-        : entry.description;
-    grouped.get(llmsGroup(pageName)).push(`- [${entry.title}](${pageUrl(language.code, pageName)}): ${description}`);
+        : entry.description);
+    grouped.get(llmsGroup(pageName)).push(`- [${drawingLabel || entry.title}](${pageUrl(language.code, pageName)}): ${description}`);
   }
   const sections = [...grouped.entries()].map(([group, lines]) => `## ${labels.sections[group]}\n\n${lines.join('\n')}`).join('\n\n');
   return `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [Multilingual sitemap](${config.siteUrl}/sitemap-i18n.xml)\n- [English AI index](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
@@ -2252,7 +2734,14 @@ async function buildLocalizedPages(catalog) {
       const html = await fs.readFile(path.join(sourceRoot, sourcePage.pageName), 'utf8');
       const $ = load(html, { decodeEntities: false });
       const page = { pageName: sourcePage.pageName, $, records: collectRecords($) };
-      const localized = applyTranslations(page, language, catalog, cache);
+      page.records = drawingBackedTranslationRecords(page);
+      const directDocument = productDetailPagePattern.test(page.pageName)
+        ? load(
+          await fs.readFile(path.join(sourceRoot, language.code, page.pageName), 'utf8'),
+          { decodeEntities: false },
+        )
+        : null;
+      const localized = applyTranslations(page, language, catalog, cache, directDocument);
       await fs.writeFile(path.join(outputDirectory, page.pageName), localized, 'utf8');
     }
     await writeLocalizedSearchIndex(language, outputDirectory);
@@ -2476,6 +2965,7 @@ async function verifyContactGeneration(catalog) {
 function inspectProductDetailUi($, languageCode, pageName, side) {
   const label = `${languageCode}/${pageName} ${side}`;
   const copy = productDetailUiContract.locales[languageCode];
+  const model = path.basename(pageName, '.html');
   const uniqueNode = (selector, scope) => {
     const nodes = $(selector);
     if (nodes.length !== 1) {
@@ -2489,6 +2979,52 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
   const skip = uniqueNode(PRODUCT_UI_SKIP_SELECTOR, 'skip link');
   const imagesRegion = uniqueNode(PRODUCT_UI_IMAGES_SELECTOR, 'product images region');
   const informationRegion = uniqueNode(PRODUCT_UI_INFO_SELECTOR, 'product information region');
+  const jump = uniqueNode(PRODUCT_UI_JUMP_SELECTOR, 'first-view jump navigation');
+  const keySpecs = uniqueNode(PRODUCT_UI_KEY_SPECS_SELECTOR, 'key-parameter list');
+  const shareMenu = uniqueNode(PRODUCT_UI_SHARE_MENU_SELECTOR, 'first-view share menu');
+  const shareTrigger = uniqueNode(PRODUCT_UI_SHARE_SELECTOR, 'share menu trigger');
+  const shareOptions = $(PRODUCT_UI_SHARE_OPTIONS_SELECTOR).children('a.pd-share-option');
+  const shareChannels = shareOptions.map((_, element) => $(element).attr('data-share-channel') || '').get();
+  if (shareChannels.join(',') !== 'linkedin,x,facebook,whatsapp') {
+    throw new Error(`${label}: compact share menu must contain LinkedIn, X, Facebook, and WhatsApp in order.`);
+  }
+  if (shareMenu.attr('open') !== undefined
+    || shareOptions.filter('[aria-label]').length
+    || shareOptions.filter('[target="_blank"][rel="noopener noreferrer"][translate="no"].notranslate').length !== 4) {
+    throw new Error(`${label}: compact share menu must be closed and use four safe visible-label share links.`);
+  }
+  const jumpLinks = jump.children('a');
+  const jumpHrefs = jumpLinks.map((_, element) => $(element).attr('href') || '').get();
+  const expectedJumpHrefs = ['#panel-specs', '#panel-compat', '#panel-install', '#panel-downloads', '#faq'];
+  if (jumpHrefs.join(',') !== expectedJumpHrefs.join(',')
+    || jump.children('.pd-jump-label').length !== 1
+    || jump.children('.pd-separator').length !== 4) {
+    throw new Error(`${label}: first-view jump navigation must contain the five approved targets in order.`);
+  }
+  const actions = informationRegion.children('.pd-actions').children('a.btn');
+  const utilityLinks = informationRegion.children('.pd-utility-links').children('a.pd-utility-link');
+  if (actions.length !== 2
+    || !actions.eq(0).hasClass('btn-primary')
+    || !actions.eq(1).hasClass('btn-secondary')
+    || utilityLinks.length !== 2
+    || informationRegion.children('.pd-utility-links').children('.pd-separator').length !== 2) {
+    throw new Error(`${label}: first-view tools must contain two ranked CTAs and two utility links.`);
+  }
+  const specItems = keySpecs.children('.pd-key-spec');
+  const specKeys = specItems.map((_, element) => $(element).attr('data-spec-key') || '').get();
+  const expectedSpecKeys = expectedProductKeySpecKeys(languageCode, model);
+  if (specItems.length !== 6 || specKeys.join(',') !== expectedSpecKeys.join(',')) {
+    throw new Error(`${label}: six key parameters do not match the approved model-specific order.`);
+  }
+  if (specItems.filter((_, element) => (
+    $(element).children('dt').length !== 1 || $(element).children('dd').length !== 1
+  )).length) {
+    throw new Error(`${label}: each key parameter must contain one dt and one dd.`);
+  }
+  if ($('.pd-highlights,.pd-hl,.pd-share-footer,.social-share-wrap,.share-btn,[class*="pd-pilot-"]').length
+    || $('body').hasClass('page-product-detail-pilot')) {
+    throw new Error(`${label}: retired first-view or pilot controls remain.`);
+  }
   const main = uniqueNode('main#main-content[tabindex="-1"]', 'main content');
   const tabs = main.find('.pd-tabs > a.pd-tab');
   const panels = main.find('.pd-panel');
@@ -2502,14 +3038,55 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
       + `found ${tabs.length}/${panels.length}/${details.length}/${summaries.length}/${thumbnails.length}.`,
     );
   }
+  const controlledKeySpecLabels = {};
+  specItems.each((index, element) => {
+    controlledKeySpecLabels[specKeys[index]] = $(element).children('dt').text();
+  });
   const controlled = {
     skipLink: skip.text(),
     productImagesLabel: imagesRegion.attr('aria-label') || '',
     productInformationLabel: informationRegion.attr('aria-label') || '',
+    onThisPageLabel: jump.attr('aria-label') || '',
+    jumpToLabel: jump.children('.pd-jump-label').text(),
+    jumpLinks: Object.fromEntries([
+      ['specs', jumpLinks.eq(0).text()],
+      ['compat', jumpLinks.eq(1).text()],
+      ['install', jumpLinks.eq(2).text()],
+      ['downloads', jumpLinks.eq(3).text()],
+      ['faq', jumpLinks.eq(4).text()],
+    ]),
+    shareMenuLabel: shareTrigger.text(),
+    keyProductParametersLabel: keySpecs.attr('aria-label') || '',
+    keySpecLabels: controlledKeySpecLabels,
+    leadTimeValue: specItems.filter('[data-spec-key="leadTime"]').children('dd').text(),
   };
-  for (const [key, expected] of Object.entries(copy)) {
-    if (controlled[key] !== expected) {
-      throw new Error(`${label}: ${key} does not match the approved manual copy.`);
+  for (const key of [
+    'skipLink',
+    'productImagesLabel',
+    'productInformationLabel',
+    'onThisPageLabel',
+    'jumpToLabel',
+    'shareMenuLabel',
+    'keyProductParametersLabel',
+    'leadTimeValue',
+  ]) {
+    if (controlled[key] !== copy[key]) throw new Error(`${label}: ${key} does not match the approved manual copy.`);
+  }
+  if (JSON.stringify(controlled.jumpLinks) !== JSON.stringify(copy.jumpLinks)) {
+    throw new Error(`${label}: jumpLinks do not match the approved manual copy.`);
+  }
+  for (const key of specKeys) {
+    if (controlled.keySpecLabels[key] !== copy.keySpecLabels[key]) {
+      throw new Error(`${label}: key-spec label ${key} does not match the approved manual copy.`);
+    }
+  }
+  const mediaItem = specItems.filter('[data-spec-key="media"]');
+  if (mediaItem.length) {
+    const override = drawingBackedUiContract(languageCode, model)?.keyValues.media
+      || copy.keySpecValueOverrides?.[model]?.media;
+    const actualMedia = compactText(mediaItem.children('dd').text());
+    if (!actualMedia || (override && actualMedia !== override)) {
+      throw new Error(`${label}: media key-spec value does not match the approved source.`);
     }
   }
   const textWithoutIcons = (collection) => collection.map((_, element) => {
@@ -2519,6 +3096,13 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
   }).get();
   return {
     controlled,
+    actionTexts: textWithoutIcons(actions),
+    actionHrefs: actions.map((_, element) => $(element).attr('href') || '').get(),
+    utilityTexts: textWithoutIcons(utilityLinks),
+    utilityHrefs: utilityLinks.map((_, element) => $(element).attr('href') || '').get(),
+    jumpHrefs,
+    shareHrefs: shareOptions.map((_, element) => $(element).attr('href') || '').get(),
+    keySpecValues: specItems.map((_, element) => compactText($(element).children('dd').text())).get(),
     tabTexts: textWithoutIcons(tabs),
     summaryTexts: textWithoutIcons(summaries),
     counts: {
@@ -2527,6 +3111,12 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
       details: details.length,
       summaries: summaries.length,
       thumbnails: thumbnails.length,
+      jumpLinks: jumpLinks.length,
+      actions: actions.length,
+      utilityLinks: utilityLinks.length,
+      keySpecs: specItems.length,
+      shareMenus: shareMenu.length,
+      shareOptions: shareOptions.length,
     },
   };
 }
@@ -2535,7 +3125,19 @@ async function verifyProductUiGeneration(catalog) {
   const sourcePages = await loadPages(productDetailPageNames);
   const caches = await loadTranslationCaches();
   assertCompleteTranslationCoverage(sourcePages, catalog, caches);
-  const sourceCounts = { tabs: 0, panels: 0, details: 0, summaries: 0, thumbnails: 0 };
+  const sourceCounts = {
+    tabs: 0,
+    panels: 0,
+    details: 0,
+    summaries: 0,
+    thumbnails: 0,
+    jumpLinks: 0,
+    actions: 0,
+    utilityLinks: 0,
+    keySpecs: 0,
+    shareMenus: 0,
+    shareOptions: 0,
+  };
   for (const sourcePage of sourcePages) {
     const inspection = inspectProductDetailUi(
       sourcePage.$,
@@ -2546,7 +3148,7 @@ async function verifyProductUiGeneration(catalog) {
     for (const key of Object.keys(sourceCounts)) sourceCounts[key] += inspection.counts[key];
   }
 
-  const generatedCounts = { tabs: 0, panels: 0, details: 0, summaries: 0, thumbnails: 0 };
+  const generatedCounts = Object.fromEntries(Object.keys(sourceCounts).map((key) => [key, 0]));
   let generatedPageCount = 0;
   let controlledComparisonCount = 0;
   for (const language of activeLanguages) {
@@ -2554,16 +3156,18 @@ async function verifyProductUiGeneration(catalog) {
       const html = await fs.readFile(path.join(sourceRoot, pageName), 'utf8');
       const $ = load(html, { decodeEntities: false });
       const page = { pageName, $, records: collectRecords($) };
-      const localized = applyTranslations(page, language, catalog, caches.get(language.code));
+      page.records = drawingBackedTranslationRecords(page);
+      const currentHtml = await fs.readFile(path.join(sourceRoot, language.code, pageName), 'utf8');
+      const current$ = load(currentHtml, { decodeEntities: false });
+      const localized = applyTranslations(page, language, catalog, caches.get(language.code), current$);
       const generatedInspection = inspectProductDetailUi(
         load(localized, { decodeEntities: false }),
         language.code,
         pageName,
         'generated',
       );
-      const currentHtml = await fs.readFile(path.join(sourceRoot, language.code, pageName), 'utf8');
       const currentInspection = inspectProductDetailUi(
-        load(currentHtml, { decodeEntities: false }),
+        current$,
         language.code,
         pageName,
         'current',
@@ -2574,8 +3178,21 @@ async function verifyProductUiGeneration(catalog) {
       if (JSON.stringify(generatedInspection.tabTexts) !== JSON.stringify(currentInspection.tabTexts)) {
         throw new Error(`${language.code}/${pageName}: generated and current tab labels differ.`);
       }
-      if (JSON.stringify(generatedInspection.summaryTexts) !== JSON.stringify(currentInspection.summaryTexts)) {
-        throw new Error(`${language.code}/${pageName}: generated and current FAQ summary labels differ.`);
+      // FAQ copy is synchronized directly from the drawing-backed content
+      // contract. This gate still validates its five-item structure, while the
+      // dedicated drawing-content check owns exact localized FAQ wording.
+      for (const key of [
+        'actionTexts',
+        'actionHrefs',
+        'utilityTexts',
+        'utilityHrefs',
+        'jumpHrefs',
+        'shareHrefs',
+        'keySpecValues',
+      ]) {
+        if (JSON.stringify(generatedInspection[key]) !== JSON.stringify(currentInspection[key])) {
+          throw new Error(`${language.code}/${pageName}: generated and current ${key} differ (${JSON.stringify(generatedInspection[key])} !== ${JSON.stringify(currentInspection[key])}).`);
+        }
       }
       for (const key of Object.keys(generatedCounts)) generatedCounts[key] += generatedInspection.counts[key];
       generatedPageCount += 1;
@@ -2604,6 +3221,8 @@ async function refreshLocalizedMetadata() {
       const $ = load(html, { decodeEntities: false });
       applySeoMetadata($, language.code, pageName);
       updateJsonLd($, language.code, pageName, true);
+      applyDrawingBackedUiContract($, language.code, pageName);
+      applyDrawingBackedProductMetadata($, language.code, pageName);
       const refreshed = patchDiscoveryRobotsMeta(
         $.html().replace(/[ \t]+$/gm, ''),
         discoveryExcludedPages.has(pageName),
@@ -2642,6 +3261,13 @@ function inspectLocalizedMetadata($, languageCode, pageName, phase) {
     }
     return nodes.first().attr('content') || '';
   };
+  const uniqueAttribute = (selector, attribute, label) => {
+    const nodes = $(selector);
+    if (nodes.length !== 1) {
+      throw new Error(`${languageCode}/${pageName} [${phase}/${label}]: expected one node, found ${nodes.length}.`);
+    }
+    return nodes.first().attr(attribute) || '';
+  };
   const jsonLd = $('script[type="application/ld+json"]').map((index, element) => {
     try {
       return canonicalJson(JSON.parse($(element).html() || ''));
@@ -2653,6 +3279,12 @@ function inspectLocalizedMetadata($, languageCode, pageName, phase) {
   if (robotsNodes.length > 1) {
     throw new Error(`${languageCode}/${pageName} [${phase}/robots]: expected at most one node, found ${robotsNodes.length}.`);
   }
+  const productImageMetadata = productDetailPagePattern.test(pageName) ? {
+    mainImageAlt: uniqueAttribute('body.page-product-detail #main-img', 'alt', 'main-image-alt'),
+    ogImageAlt: uniqueContent('meta[property="og:image:alt"]', 'og-image-alt'),
+    twitterImageAlt: uniqueContent('meta[name="twitter:image:alt"]', 'twitter-image-alt'),
+    breadcrumb: uniqueText('.breadcrumb', 'breadcrumb'),
+  } : {};
   return {
     title: uniqueText('title', 'title'),
     description: uniqueContent('meta[name="description"]', 'description'),
@@ -2662,6 +3294,7 @@ function inspectLocalizedMetadata($, languageCode, pageName, phase) {
     ogDescription: uniqueContent('meta[property="og:description"]', 'og-description'),
     twitterTitle: uniqueContent('meta[name="twitter:title"]', 'twitter-title'),
     twitterDescription: uniqueContent('meta[name="twitter:description"]', 'twitter-description'),
+    ...productImageMetadata,
     keywordCount: $('meta[name="keywords"]').length,
     robots: robotsNodes.first().attr('content') || '',
     robotsManagedBy: robotsNodes.first().attr('data-discovery-exclusion') || '',
@@ -2687,6 +3320,8 @@ async function verifyLocalizedMetadata() {
       const expected$ = load(html, { decodeEntities: false });
       applySeoMetadata(expected$, language.code, pageName);
       updateJsonLd(expected$, language.code, pageName, true);
+      applyDrawingBackedUiContract(expected$, language.code, pageName);
+      applyDrawingBackedProductMetadata(expected$, language.code, pageName);
       const expectedHtml = patchDiscoveryRobotsMeta(
         expected$.html(),
         discoveryExcludedPages.has(pageName),

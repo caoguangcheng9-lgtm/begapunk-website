@@ -15,6 +15,9 @@ RedirectMatch 410 ^/A-Dynamic-Model-of-the-Low-Speed-Rotary-Joint\.html$
 RedirectMatch 410 ^/Pneumatic-Fittings-c[0-9]+/.*$
 RedirectMatch 410 ^/Pneumatic-rotary-joint-c[0-9]+/.*$
 RedirectMatch 410 ^/HYDRAULIC-ROTARY-JOINT-C[0-9]+/.*$
+# This verified legacy product moved to BP-3P-0004. Match the historical
+# upper/lower-case variants and preserve authority with a server-side 301.
+RedirectMatch 301 "(?i)^/3-in-3-out-Pneumatic-rotary-joint-p6776400\.html$" "https://www.begapunk.com/BP-3P-0004.html"
 RedirectMatch 410 ^/3-in-3-out-Pneumatic-rotary-joint-p[0-9]+\.html$
 
 # ========================================

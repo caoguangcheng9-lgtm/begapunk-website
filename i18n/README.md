@@ -1,115 +1,78 @@
-# Begapunk Multilingual Site
+# Begapunk Multilingual Site Operations
 
-This directory contains the translation, editorial review, SEO, and generation sources for the Begapunk static website.
+状态：多语言操作手册，不是验收规则
+当前发布标准：../docs/standards/BEGAPUNK_WEBSITE_STANDARD.md
 
-## Scope
+本目录保存德文、日文、俄文的翻译、人工覆盖、SEO、审校状态和静态页面生成来源。活动语言和页面范围始终以 config.json 的实时内容为准，不在本文件中维护固定页面数量。
 
-- Active languages: German, Japanese, and Russian (`activeLanguageCodes` in `config.json`).
-- Pages: all 55 localized routes listed in `config.json` (48 translation-managed pages and 7 manually localized pages).
-- Output: real static HTML files under `/de/`, `/ja/`, and `/ru/`.
-- Production deployment is intentionally separate from translation generation.
+## 1. 凭据
 
-## Credentials
+翻译工具只从进程环境读取 GOOGLE_CLOUD_TRANSLATION_API_KEY。
 
-The translation builder reads the Google Cloud Translation Basic API key only from the process environment:
+不得把 API key 写入仓库、JSON、命令参数、报告或发布包。翻译缓存只能保存源文本和译文。
 
-```text
-GOOGLE_CLOUD_TRANSLATION_API_KEY
-```
+## 2. 常用命令
 
-Never add an API key to this repository, a JSON file, a command-line argument, a report, or a deployment package.
+提取英文字符串，不调用外部翻译服务：
 
-## Commands
+    npm run i18n:extract
 
-Extract the unique English strings without calling an external service:
+调用 Google Cloud Translation Basic 生成翻译草稿：
 
-```text
-npm run i18n:extract
-```
+    npm run i18n:translate
 
-Translate the extracted catalog through Google Cloud Translation Basic:
+在仓库外生成完整本地化页面：
 
-```text
-npm run i18n:translate
-```
+    npm run i18n:build
 
-Build the localized HTML pages after all translations are present:
+刷新 SEO、搜索索引、AI 索引和 JSON-LD：
 
-```text
-npm run i18n:build
-```
+    npm run i18n:refresh-metadata
 
-Refresh curated SEO, the localized search indexes, AI indexes, and JSON-LD without rebuilding translated body copy:
+只读验证当前本地化输出：
 
-```text
-npm run i18n:refresh-metadata
-```
+    npm run i18n:verify
 
-Use the refresh command after editing `i18n/seo/*.json` or the structured-data localization rules. It is safe when current English copy has changed but the translation catalog has not yet been re-extracted and reviewed.
+产品详情 UI 合同验证：
 
-Production deployment uses this refresh-and-verify path so that a release cannot silently replace human-reviewed localized body copy. Run `i18n:build` explicitly only after the English catalog and all active-language translations have been updated and reviewed.
+    npm run product-ui:verify
 
-### Contact RFQ generation contract
+FAQ 专用同步与验证：
 
-The Contact body, `script#contact-rfq-copy` localization data, and executable RFQ behavior script are controlled by the Contact generation contract. `node scripts/build-localized-site.mjs --mode verify-contact` regenerates those owned regions in memory and compares them with the current German, Japanese, and Russian Contact pages without writing files. Header and Footer markup are managed by the separate navigation synchronization system and are outside the RFQ gate.
+    npm run faq:i18n:sync
+    npm run faq:i18n:verify
 
-An external diagnostic build on 2026-08-16 found pre-existing non-idempotent whole-page drift in 47 translation-managed pages across each of the three target languages (141 non-Contact HTML files). Until that broader builder and navigation ownership debt receives separate governance, do not use the generic `i18n:build` command to overwrite the current localized pages. This whole-page technical debt does not indicate an English fallback in the Contact RFQ dynamic copy; the narrower Contact-owned-region gate verifies that copy independently.
+## 3. 写入安全边界
 
-The generic write modes now refuse an output root inside the source repository, including canonical path aliases and links. `i18n:build`, `i18n:refresh-metadata`, and `i18n:integrate` require an explicit repository-external `I18N_OUTPUT_ROOT`. Production preparation uses `i18n:metadata:verify`, which renders and compares the 144 managed localized pages, three localized Search Index files, and three localized `llms.txt` files in memory without writing. A failed comparison blocks the release; it is never repaired automatically during deployment preparation.
+- i18n:build、i18n:refresh-metadata 和 i18n:integrate 的写入模式必须使用仓库外的 I18N_OUTPUT_ROOT。
+- 不得把通用生成输出直接写回 E:\begapunk-site-v2。
+- deploy:prepare 使用只读生成比较，不应在发布准备期间自动覆盖已审校页面。
+- 英文目录或翻译来源变化后，先在仓库外生成和比较，再决定是否同步受影响页面。
+- 任何批量写回都必须作为单独授权阶段，并保留当前用户修改。
 
-### Product-detail UI localization and progressive-enhancement contract
+## 4. 稳定生成合同
 
-The 16 product models across English, German, Japanese, and Russian (64 pages) share `css/product-detail.css`, `js/product-detail.js`, and the localized UI labels in `i18n/manual/product-detail-ui.json`. The page-family contract is synchronized and verified by `scripts/sync-product-detail-ui.mjs`; its source-text transformations preserve each page's original line endings and do not reserialize whole documents.
+### Contact/RFQ
 
-The source HTML is deliberately fail-open: the four tabs are ordinary fragment links to four initially visible panels, the five FAQ items are open native `details` elements, and the three thumbnail links open the full images. The deferred shared script enhances a feature only after validating its complete expected structure; missing or invalid JavaScript must leave the source controls and content usable. `main#main-content` and the localized skip link belong to the product-detail contract. Header, Footer, and the floating inquiry control remain outside `main` and are managed by the separate navigation and shared-shell systems.
+Contact 正文、本地化动态文案和 RFQ 行为由 Contact 生成合同管理。验证模式应在内存中重建受控区域并与当前页面比较，不写文件。Header/Footer 由导航同步系统单独管理。
 
-The search generator excludes only `a.skip-link[data-search-exclude][href="#main-content"]`; `data-search-exclude` is not a general-purpose way to suppress page content. The localized builder's primary selector includes `summary` solely so existing FAQ-question translation IDs remain valid. UI-B1 did not run the generic `i18n:build` command or modify localization Catalog, Cache, Editorial, SEO, Overrides, or Config data.
+### 产品详情
 
-The generic localized builder also reads `i18n/manual/product-detail-ui.json`. For product-detail pages only, it excludes the direct skip-link text and the two region `aria-label` values from generic translation, then reapplies the reviewed manual copy after language-specific normalization. It does not exclude the Gallery, Product Information, Tab, Panel, or FAQ content. `--mode verify-product-ui-generation` renders all 16 product sources for the three target languages in memory, verifies 48 generated pages and 144 controlled values against the current localized pages, and performs no file write. This closes the UI-B1 generation gap without adding duplicate Catalog or Cache entries.
+产品详情页共享 css/product-detail.css、js/product-detail.js 和 manual/product-detail-ui.json。源 HTML 必须保持渐进增强：JavaScript 失败时，技术内容、FAQ、图片和询盘路径仍可使用。
 
-```text
-npm run product-ui:verify
-```
+产品详情同步器只修改其拥有的区域，不应重新序列化整页，也不应覆盖产品事实、Header/Footer 或无关本地化数据。
 
-As of 2026-08-16, the UI-B1 changes are local only and have not been committed, pushed, or deployed.
+### FAQ
 
-Verify the generated localized pages:
+FAQ 使用 manual/faq-*.json 维护德文、日文和俄文受控文案。英文事实变化后，必须同步可见内容、FAQPage JSON-LD、SEO、搜索索引、AI 索引和 RFQ 来源路径。通用翻译构建不能替代 FAQ 专用合同。
 
-```text
-npm run i18n:verify
-```
+## 5. 审校与发布
 
-The 27-question FAQ is intentionally excluded from the generic translation catalog. Its approved German, Japanese, and Russian copy is maintained in `manual/faq-*.json` and synchronized with a dedicated, fail-closed contract:
+- 机器翻译是草稿。
+- 新增或改变含义的本地化内容，需要记录 AI 辅助目标市场逐行审校。
+- AI 审校可以满足发布要求；独立母语或人工编辑审核是可选增强项。
+- 不得把 AI 审校描述为母语、人工或专业翻译认证。
+- 关键参数、产品范围和询盘含义冲突属于 P1；不影响含义的语言润色属于 P2。
+- 详细的事实、客户表达、P0/P1 门槛和 P2/P3 优化规则只以主标准为准，本文件不重复制定。
 
-```text
-npm run faq:i18n:sync
-npm run faq:i18n:verify
-```
-
-The FAQ command keeps the visible questions, FAQPage JSON-LD, curated SEO, localized search indexes, localized AI indexes, and contextual RFQ source paths synchronized. English FAQ fact changes must be reviewed line by line in all three target-market files before the localized sync is accepted; the generic translation build must not overwrite this page.
-
-The builder never writes the API key to disk. Translation caches contain only source and translated text.
-
-## AI-Assisted Target-Market Localization Review
-
-Machine translation is draft content only. Complete this review after every new or changed localized page before marking the page editorially reviewed or preparing a release.
-
-1. Review the complete rendered page, including the title, meta description, H1-H6 headings, body text, tables, FAQ, buttons, calls to action, image alt text, Open Graph/Twitter fields, and visible JSON-LD text.
-2. Use representative manufacturer, industry, and peer pages from the target country to check industrial terminology, sentence structure, business tone, buyer vocabulary, and likely search intent. Also check how local buyers phrase the relevant product and application searches.
-3. Record the page, language, reference URLs and access dates, terminology decisions, search-intent decisions, review method and date, reviewer role, and unresolved issues under `audit/localization/`.
-4. Use peer pages only as language and search-pattern references. Never copy their wording or treat their specifications, certifications, performance claims, customer evidence, or commercial promises as Begapunk facts.
-5. Confirm that localized claims still match the approved English fact source, drawings, and evidence records. Do not let localization broaden media compatibility, performance, certification, delivery, warranty, or application claims.
-6. Keep independent native-speaker confirmation separate and explicit. AI-assisted review is required, but it does not qualify as native-speaker sign-off.
-
-## Publishing Gate
-
-Localized pages must not be deployed until:
-
-1. Machine-translated drafts have completed the recorded AI-assisted target-market localization review above.
-2. Technical terms, product codes, units, pressures, speeds, media, claims, and application boundaries are reviewed against approved Begapunk sources.
-3. Every page has a self-referencing canonical and reciprocal `hreflang` links.
-4. Local links, images, downloads, analytics, and the inquiry form pass verification.
-5. The translated content is reviewed for local usefulness, natural reading and search intent, not merely page-count expansion.
-6. The route also passes the four-language visual, responsive, availability, and performance requirements in `../docs/WEBSITE_EXPERIENCE_STANDARD.md`; language-specific layout forks are not allowed.
-
-The strict 2026-08-17 Editorial reconciliation, including the required page-level target-market fields and 36 current-candidate source/screenshot hashes, is recorded in `../audit/localization/2026-08-17-editorial-evidence-reconciliation.md`. It records AI-assisted review only and must not be described as independent native-speaker sign-off.
+审校证据放在 ../audit/localization/。日期化报告只证明当时检查过什么，不自动授权当前发布。

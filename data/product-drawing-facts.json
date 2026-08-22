@@ -1,0 +1,1553 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": {
+    "description": "Drawing-backed facts for the 16 published product models. The drawing table and unambiguous drawing annotations are the only fact sources represented here.",
+    "verifiedStatus": "verified-drawing",
+    "quarantineStatus": "identity-pending",
+    "annotationConflictStatus": "annotation-conflict",
+    "identityPendingModels": [
+      "BP-2P-30-0001"
+    ],
+    "identityPendingRule": "Facts from an identity-pending drawing are recorded for audit only and must not be asserted for the website model. Public download links must remain replaced by a request=verified-drawing contact route.",
+    "portRule": "Only unambiguous printed port annotations are recorded. Raw anomalous annotations are preserved without normalization.",
+    "mountingRule": "Mounting features are recorded only when the count, thread or diameter, and any stated depth are legible. A missing depth is not inferred.",
+    "dimensionRule": "Envelope and bore values are language-neutral millimetre values copied from explicit dimensions. Identity-pending dimensions remain drawing-audit data and are not website facts.",
+    "sealRule": "Every reviewed drawing states PTFE and O-ring.",
+    "mediaRule": "BP-1P-0003 states Air, Oil & Water. Every other reviewed drawing states Air.",
+    "globalNonInferable": [
+      "certification or regulatory compliance",
+      "continuous-duty rating or duty cycle",
+      "leakage rate",
+      "service life",
+      "media compatibility beyond the drawing table",
+      "electrical ratings unless explicitly present in the drawing table",
+      "marketing suitability claims"
+    ]
+  },
+  "products": {
+    "BP-1P-0003": {
+      "websiteModel": "BP-1P-0003",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-1P-0003.pdf",
+        "filename": "BP-1P-0003.pdf",
+        "sha256": "4fc323f175a2cdb54807013073400117744969816012f7fe73fd006035372766",
+        "titleBlockModel": "BP-1P-0003",
+        "documentControlNumber": "QC-2025-0822-001",
+        "date": "2025-08-22",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air",
+          "oil",
+          "water"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 500,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Steel 45#",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 270,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "hex-body",
+          "maximumWidthMm": 34,
+          "overallLengthMm": 66.7
+        },
+        "mounting": {
+          "status": "not-separately-specified",
+          "features": []
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 1,
+              "thread": "G3/8",
+              "role": "media-inlet",
+              "raw": "G3/8 Media Inlet"
+            },
+            {
+              "count": 1,
+              "thread": "M10x1.5",
+              "role": "media-outlet",
+              "raw": "M10*1.5 Media Outlet"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "G1/4 or G1/8 process ports",
+        "coolant compatibility",
+        "hydraulic-oil compatibility beyond the drawing term Oil"
+      ],
+      "prohibitedWebClaims": [
+        {
+          "id": "legacy-port-g1-4",
+          "match": [
+            "G1/4"
+          ]
+        },
+        {
+          "id": "legacy-port-g1-8",
+          "match": [
+            "G1/8"
+          ]
+        },
+        {
+          "id": "unsupported-coolant",
+          "match": [
+            "coolant",
+            "Kühlmittel",
+            "クーラント",
+            "СОЖ"
+          ]
+        }
+      ]
+    },
+    "BP-1P-0006": {
+      "websiteModel": "BP-1P-0006",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-1P-0006.pdf",
+        "filename": "BP-1P-0006.pdf",
+        "sha256": "e8ceda6edec4331a8aa1996a8cd0ce961662db218abd890de90dd3584a3659fe",
+        "titleBlockModel": "BP-1P-0006",
+        "documentControlNumber": "QC-2025-0810-001",
+        "date": "2025-08-10",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 300,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 265,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 39,
+          "overallLengthMm": 50
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 4,
+              "thread": "M4",
+              "raw": "4-M4 EQS"
+            },
+            {
+              "side": "face-b",
+              "count": 4,
+              "thread": "M4",
+              "raw": "4-M4 EQS"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 1,
+              "thread": "G1/8",
+              "role": "inlet",
+              "raw": "G1/8 IN"
+            },
+            {
+              "count": 8,
+              "thread": "G1/8",
+              "role": "outlet",
+              "raw": "8-G1/8 OUT"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "mounting-thread depth because no depth is printed",
+        "channel cross-connection behavior"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-0001": {
+      "websiteModel": "BP-2P-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-0001.pdf",
+        "filename": "BP-2P-0001.pdf",
+        "sha256": "67e5d88891ec42aaa6f65c82c3169cd5a89c947166d0939ffb2107b0a90d00c4",
+        "titleBlockModel": "BP-2P-0001",
+        "documentControlNumber": "QC-2025-0512-003",
+        "date": "2025-05-12",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 390,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 49,
+          "overallLengthMm": 69
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "stator",
+              "count": 4,
+              "thread": "M5",
+              "depthMm": 8,
+              "raw": "4-M5 depth 8 EQS Anti-rotation Mounting Thread"
+            },
+            {
+              "side": "rotor",
+              "count": 4,
+              "thread": "M5",
+              "depthMm": 8,
+              "raw": "4-M5 depth 8 EQS Rotor Mounting Thread"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "media-inlet",
+              "raw": "2-G1/8 Media Inlet"
+            },
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "media-outlet",
+              "raw": "2-G1/8 Media Outlet"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "mounting-hole thread where the annotation is not fully legible",
+        "continuous rotation duty"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-0002": {
+      "websiteModel": "BP-2P-0002",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-0002.pdf",
+        "filename": "BP-2P-0002.pdf",
+        "sha256": "435609ab35b15013dfba8e196a6b3bf8b6389f3536c7ba2a2659862cbe670c6e",
+        "titleBlockModel": "BP-2P-0002",
+        "documentControlNumber": "QC-2020-0121-001",
+        "date": "2020-01-21",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 300,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 220,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 65,
+          "overallLengthMm": 61.2
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 4,
+              "thread": "M5",
+              "depthMm": 12,
+              "raw": "4-M5 depth 12"
+            },
+            {
+              "side": "face-b",
+              "count": 4,
+              "diameterMm": 6,
+              "feature": "through-hole",
+              "raw": "4-dia6 through"
+            },
+            {
+              "side": "body",
+              "count": 2,
+              "thread": "M8",
+              "depthMm": 12,
+              "feature": "anti-rotation",
+              "raw": "2-M8 depth 12"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "depthMm": 8,
+              "role": "side-group",
+              "raw": "2-G1/8 depth 8"
+            },
+            {
+              "count": 3,
+              "thread": "G1/8",
+              "depthMm": 8,
+              "role": "end-face-group",
+              "raw": "3-G1/8 depth 8"
+            },
+            {
+              "count": 1,
+              "thread": "G1/4",
+              "depthMm": 8,
+              "role": "opposite-face",
+              "raw": "G1/4 depth 8"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "inlet versus outlet assignment for the printed G1/8 and G1/4 groups",
+        "channel cross-connection behavior"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-08-0001": {
+      "websiteModel": "BP-2P-08-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-08-0001.pdf",
+        "filename": "BP-2P-08-0001.pdf",
+        "sha256": "10f745c415cbf1f0cd249b3c34c6df1f38777c5fb3caba906fc7a3b19f63557f",
+        "titleBlockModel": "BP-2P-08-0001",
+        "documentControlNumber": "QC-2025-0512-003",
+        "date": "2025-05-12",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 390,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 65,
+          "overallLengthMm": 66
+        },
+        "throughBore": {
+          "status": "verified",
+          "diameterMm": 8
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "stator",
+              "count": 4,
+              "thread": "M4",
+              "depthMm": 10,
+              "raw": "4-M4 depth 10"
+            },
+            {
+              "side": "rotor",
+              "count": 4,
+              "thread": "M4",
+              "depthMm": 10,
+              "raw": "4-M4 depth 10"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "inlet",
+              "raw": "2-G1/8 IN"
+            },
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "outlet",
+              "raw": "2-G1/8 OUT"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "channel cross-connection behavior"
+      ],
+      "prohibitedWebClaims": [
+        {
+          "id": "legacy-mount-m5",
+          "match": [
+            "M5"
+          ]
+        }
+      ]
+    },
+    "BP-2P-130-0001": {
+      "websiteModel": "BP-2P-130-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-130-0001.pdf",
+        "filename": "BP-2P-130-0001.pdf",
+        "sha256": "a46c1ae391dc2d56d98400f4dfe165e88160f4478f9ca9a9c0523efd0c6c4609",
+        "titleBlockModel": "BP-2P-130-0001",
+        "documentControlNumber": "QC-2024-0310-001",
+        "date": "2024-03-10",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 5,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 80,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 8655,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 230,
+          "overallLengthMm": 131
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 6,
+              "thread": "M10",
+              "depthMm": 13,
+              "raw": "6-M10 depth 13"
+            },
+            {
+              "side": "face-b",
+              "count": 6,
+              "thread": "M10",
+              "depthMm": 13,
+              "raw": "6-M10 depth 13"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified-threads-only",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "side-a",
+              "raw": "2-G1/8"
+            },
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "side-b",
+              "raw": "2-G1/8"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "inlet versus outlet assignment for the two G1/8 groups",
+        "mounting thread where the annotation is not fully legible",
+        "media other than air"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-16-0001": {
+      "websiteModel": "BP-2P-16-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-16-0001.pdf",
+        "filename": "BP-2P-16-0001.pdf",
+        "sha256": "bd46e9e23cb32891ed8c4fa89f8cca998e3fc8e85d3e98d135106a214727a931",
+        "titleBlockModel": "BP-2P-16-0001",
+        "documentControlNumber": "QC-2026-0221-001",
+        "date": "2026-02-21",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 410,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 59,
+          "overallLengthMm": 69
+        },
+        "throughBore": {
+          "status": "verified",
+          "diameterMm": 16
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "stator",
+              "count": 4,
+              "thread": "M5",
+              "raw": "Stator Mount: 4 x M5"
+            },
+            {
+              "side": "rotor",
+              "count": 4,
+              "thread": "M5",
+              "raw": "Rotor Mount: 4 x M5"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "media-inlet",
+              "raw": "2-G1/8 Media Inlet"
+            },
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "media-outlet",
+              "raw": "2-G1/8 Media Outlet"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "channel cross-connection behavior",
+        "continuous rotation duty"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-30-0001": {
+      "websiteModel": "BP-2P-30-0001",
+      "status": "identity-pending",
+      "drawing": {
+        "path": "downloads/BP-2P-30-0001.pdf",
+        "filename": "BP-2P-30-0001.pdf",
+        "sha256": "4a61b012cfc8428be3916ccf2a272d093ae0ba157443cdfb10e09fb83d4b6bbd",
+        "titleBlockModel": "BP-3P-30-0001",
+        "documentControlNumber": "QC-2022-0822-003",
+        "date": "2022-08-22",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 150,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 390,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "status": "drawing-audit-only",
+          "shape": "cylindrical",
+          "maximumDiameterMm": 76,
+          "overallLengthMm": 69.97
+        },
+        "throughBore": {
+          "status": "drawing-audit-only",
+          "diameterMm": 30
+        },
+        "mounting": {
+          "status": "drawing-audit-only",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 4,
+              "thread": "M5",
+              "raw": "4-M5"
+            },
+            {
+              "side": "face-b",
+              "count": 4,
+              "thread": "M5",
+              "raw": "4-M5"
+            }
+          ]
+        },
+        "ports": {
+          "status": "drawing-only-not-applicable",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "inlet",
+              "raw": "2-G1/8 IN"
+            },
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "outlet",
+              "raw": "2-G1/8 OUT"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "whether any drawing fact applies to website model BP-2P-30-0001",
+        "whether the filename or title-block model is authoritative",
+        "whether the drawing is safe for public download under this SKU"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-50-0001": {
+      "websiteModel": "BP-2P-50-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-50-0001.pdf",
+        "filename": "BP-2P-50-0001.pdf",
+        "sha256": "652375676687345701f7b497d661fb4f6dedb9ddcb31a6d18df1f99ec5cf915c",
+        "titleBlockModel": "BP-2P-50-0001",
+        "documentControlNumber": "QC-2023-0806-001",
+        "date": "2023-08-06",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 100,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 2300,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 119,
+          "overallLengthMm": 105
+        },
+        "throughBore": {
+          "status": "verified",
+          "diameterMm": 50
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "stator",
+              "count": 4,
+              "thread": "M5",
+              "depthMm": 10,
+              "raw": "4-M5 depth 10"
+            },
+            {
+              "side": "rotor",
+              "count": 6,
+              "thread": "M5",
+              "depthMm": 8,
+              "raw": "6-M5 depth 8"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "inlet",
+              "raw": "2-G1/8 IN"
+            },
+            {
+              "count": 2,
+              "thread": "G1/8",
+              "role": "outlet",
+              "raw": "2-G1/8 OUT"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "continuous rotation duty"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-2P-95-0005": {
+      "websiteModel": "BP-2P-95-0005",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-2P-95-0005.pdf",
+        "filename": "BP-2P-95-0005.pdf",
+        "sha256": "a6451acfcbe27f9122246fb7e04b885ef5276307d8255b3101a54b342c2a1e9a",
+        "titleBlockModel": "BP-2P-95-0005",
+        "documentControlNumber": "QC-2025-0512-003",
+        "date": "2025-05-12",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 4260,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "status": "verified",
+          "shape": "cylindrical",
+          "maximumDiameterMm": 162,
+          "overallLengthMm": 86
+        },
+        "throughBore": {
+          "status": "drawing-audit-only",
+          "diameterMm": 95,
+          "basis": "title-block model designation BP-2P-95-0005"
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 6,
+              "thread": "M5",
+              "depthMm": 12,
+              "raw": "6-M5 depth 12 EQS"
+            },
+            {
+              "side": "face-a",
+              "count": 8,
+              "thread": "M8",
+              "depthMm": 12,
+              "raw": "8-M8 depth 12 EQS"
+            },
+            {
+              "side": "face-b",
+              "count": 8,
+              "thread": "M6",
+              "depthMm": 15,
+              "raw": "8-M6 depth 15 EQS"
+            },
+            {
+              "side": "face-b",
+              "count": 4,
+              "diameterMm": 4,
+              "feature": "through-hole",
+              "raw": "4-diameter 4 through holes EQS"
+            },
+            {
+              "side": "body",
+              "count": 2,
+              "thread": "M10",
+              "feature": "anti-rotation",
+              "raw": "2-M10 anti-rotation"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 1,
+              "thread": "G1/8",
+              "depthMm": 8,
+              "role": "release-port",
+              "raw": "G1/8 depth 8 release port"
+            },
+            {
+              "count": 1,
+              "thread": "G1/8",
+              "depthMm": 8,
+              "role": "clamp-port",
+              "raw": "G1/8 depth 8 clamp port"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "continuous rotation duty",
+        "which drawing face is the rotor or stator side",
+        "through-bore diameter from the model designation alone",
+        "torque, leakage rate, service life, or certification"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-3P-0004": {
+      "websiteModel": "BP-3P-0004",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-3P-0004.pdf",
+        "filename": "BP-3P-0004.pdf",
+        "sha256": "ef4afa50b13e9b85bbbb222db6efba3b37b4c38251569fa63f279c66c24dcb0c",
+        "titleBlockModel": "BP-3P-0004",
+        "documentControlNumber": "QC-2025-0922-001",
+        "date": "2025-09-22",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 490,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 55,
+          "overallLengthMm": 82
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "stator",
+              "count": 4,
+              "thread": "M6",
+              "raw": "Mounting Thread (Stator): 4 x M6"
+            },
+            {
+              "side": "rotor",
+              "count": 4,
+              "thread": "M6",
+              "raw": "Mounting Thread (Rotor): 4 x M6"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 3,
+              "thread": "G1/8",
+              "role": "media-inlet",
+              "raw": "3-G1/8 Media Inlet"
+            },
+            {
+              "count": 3,
+              "thread": "G1/8",
+              "role": "media-outlet",
+              "raw": "3-G1/8 Media Outlet"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "channel cross-connection behavior",
+        "continuous rotation duty"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-3P-0006": {
+      "websiteModel": "BP-3P-0006",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-3P-0006.pdf",
+        "filename": "BP-3P-0006.pdf",
+        "sha256": "7b644baae4d6e2bc119c7d598ab026ab50dad700a184f8610850efd1bcdac143",
+        "titleBlockModel": "BP-3P-0006",
+        "documentControlNumber": "QC-2021-0112-001",
+        "date": "2021-01-12",
+        "pageCount": 2
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 360,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 64,
+          "overallLengthMm": 78
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 4,
+              "thread": "M6",
+              "raw": "4-M6"
+            },
+            {
+              "side": "face-b",
+              "count": 3,
+              "thread": "M6",
+              "raw": "3-M6"
+            },
+            {
+              "side": "face-b",
+              "count": 3,
+              "diameterMm": 6,
+              "feature": "hole",
+              "raw": "3-dia6"
+            }
+          ]
+        },
+        "ports": {
+          "status": "anomaly-unresolved",
+          "annotations": [
+            {
+              "count": 3,
+              "thread": "G4/1",
+              "role": "outlet",
+              "raw": "3-G4/1 OUT"
+            },
+            {
+              "count": 3,
+              "thread": "G4/1",
+              "role": "inlet",
+              "raw": "3-G4/1 IN"
+            }
+          ],
+          "resolutionRule": "Preserve G4/1 exactly as printed. Do not normalize or publish it as G1/4 without drawing-owner confirmation."
+        }
+      },
+      "nonInferable": [
+        "whether G4/1 is a drafting error",
+        "G1/4 port size",
+        "any corrected port size before drawing-owner confirmation"
+      ],
+      "prohibitedWebClaims": [
+        {
+          "id": "unapproved-g1-4-normalization",
+          "match": [
+            "G1/4"
+          ]
+        }
+      ]
+    },
+    "BP-3P-0007": {
+      "websiteModel": "BP-3P-0007",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-3P-0007.pdf",
+        "filename": "BP-3P-0007.pdf",
+        "sha256": "74e5396aed493d0640cb018295ea2e794a48052d0629f074cac377512573aac4",
+        "titleBlockModel": "BP-3P-0007",
+        "documentControlNumber": "QC-2024-0903-001",
+        "date": "2024-09-03",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 390,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 78.9,
+          "overallLengthMm": 63.9
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 3,
+              "thread": "M5",
+              "raw": "3 x M5"
+            },
+            {
+              "side": "face-b",
+              "count": 3,
+              "diameterMm": 6,
+              "feature": "hole",
+              "raw": "3 x dia6"
+            },
+            {
+              "side": "body",
+              "count": 1,
+              "thread": "M5",
+              "feature": "anti-rotation-set-screw",
+              "raw": "M5 Tap, Fit Set Screw Flush"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 3,
+              "thread": "G1/8",
+              "role": "inlet",
+              "raw": "3-G1/8 IN"
+            },
+            {
+              "count": 3,
+              "thread": "G1/8",
+              "role": "outlet",
+              "raw": "3-G1/8 OUT"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "media other than air",
+        "channel cross-connection behavior",
+        "continuous rotation duty"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-3P-S06-0001": {
+      "websiteModel": "BP-3P-S06-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-3P-S06-0001.pdf",
+        "filename": "BP-3P-S06-0001.pdf",
+        "sha256": "d7e281fca08cf3d61f02752087705cabd66435ca6a2475e9ea386e33c49179c1",
+        "titleBlockModel": "BP-3P-S06-0001",
+        "documentControlNumber": "QC-2026-0508-001",
+        "date": "2026-05-08",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 410,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 53.95,
+          "overallLengthMm": 99.8
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 2,
+              "thread": "M5",
+              "depthMm": 10,
+              "raw": "2-M5 depth 10"
+            },
+            {
+              "side": "face-b",
+              "count": 3,
+              "thread": "M5",
+              "depthMm": 8,
+              "raw": "3-M5 depth 8 EQS"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified-outlets-only",
+          "annotations": [
+            {
+              "count": 3,
+              "diameterMm": 4,
+              "role": "air-outlet",
+              "raw": "3-dia4 air outlet"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "air inlet connection because it is not unambiguously labeled",
+        "electrical voltage or current rating",
+        "contact material",
+        "dielectric strength",
+        "insulation resistance",
+        "graphite or PEEK seal material",
+        "electrical circuit count beyond the visible lead arrangement"
+      ],
+      "prohibitedWebClaims": [
+        {
+          "id": "unsupported-seal-material",
+          "match": [
+            "Graphite",
+            "PEEK",
+            "Graphit",
+            "グラファイト",
+            "石墨",
+            "графит"
+          ]
+        },
+        {
+          "id": "unsupported-electrical-rating",
+          "match": [
+            "24 V",
+            "24V",
+            "250 V",
+            "250V",
+            "2 A",
+            "2A",
+            "500 V",
+            "500V",
+            "dielectric strength",
+            "insulation resistance",
+            "Durchschlagsfestigkeit",
+            "Isolationswiderstand",
+            "耐電圧",
+            "絶縁抵抗",
+            "электрическая прочность",
+            "сопротивление изоляции"
+          ]
+        },
+        {
+          "id": "unsupported-contact-material",
+          "match": [
+            "gold-plated",
+            "gold plated",
+            "vergoldet",
+            "金メッキ",
+            "позолоч"
+          ]
+        }
+      ]
+    },
+    "BP-4P-30-0001": {
+      "websiteModel": "BP-4P-30-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-4P-30-0001.pdf",
+        "filename": "BP-4P-30-0001.pdf",
+        "sha256": "f1958b99eb77cbc063cced2c1dc262ea12a4b41f17cff000bfbf5c6b0f86be1e",
+        "titleBlockModel": "BP-4P-30-0001",
+        "documentControlNumber": "QC-2020-0402-001",
+        "date": "2020-04-02",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 943,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 99,
+          "overallLengthMm": 138
+        },
+        "throughBore": {
+          "status": "verified",
+          "diameterMm": 30
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "face-a",
+              "count": 4,
+              "thread": "M5",
+              "depthMm": 12,
+              "raw": "4-M5 depth 12 EQS"
+            },
+            {
+              "side": "face-b",
+              "count": 6,
+              "thread": "M6",
+              "raw": "6-M6"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified-threads-only",
+          "annotations": [
+            {
+              "count": 4,
+              "thread": "G1/8",
+              "role": "face-a",
+              "raw": "4-G1/8"
+            },
+            {
+              "count": 4,
+              "thread": "G1/8",
+              "role": "face-b",
+              "raw": "4-G1/8"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "inlet versus outlet assignment for the two G1/8 groups",
+        "media other than air",
+        "channel cross-connection behavior"
+      ],
+      "prohibitedWebClaims": []
+    },
+    "BP-8P-0001": {
+      "websiteModel": "BP-8P-0001",
+      "status": "verified-drawing",
+      "drawing": {
+        "path": "downloads/BP-8P-0001.pdf",
+        "filename": "BP-8P-0001.pdf",
+        "sha256": "02920ec729dabc9262bc7a9fd2fbbe2de44adca5c301ede2aee4ed2a4317ef9c",
+        "titleBlockModel": "BP-8P-0001",
+        "documentControlNumber": "QC-2026-0512-001",
+        "date": "2026-03-12",
+        "pageCount": 1
+      },
+      "drawingFacts": {
+        "media": [
+          "air"
+        ],
+        "maximumPressure": {
+          "value": 1,
+          "unit": "MPa"
+        },
+        "maximumSpeed": {
+          "value": 200,
+          "unit": "RPM"
+        },
+        "bodyMaterial": "Aluminum Alloy 6061",
+        "temperatureRange": {
+          "minimum": -20,
+          "maximum": 80,
+          "unit": "degC"
+        },
+        "weight": {
+          "value": 850,
+          "unit": "g"
+        },
+        "sealMaterials": [
+          "PTFE",
+          "O-ring"
+        ],
+        "envelope": {
+          "shape": "cylindrical",
+          "maximumDiameterMm": 54,
+          "overallLengthMm": 152.8
+        },
+        "mounting": {
+          "status": "verified",
+          "features": [
+            {
+              "side": "stator",
+              "count": 4,
+              "thread": "M5",
+              "raw": "Stator Mount: 4 x M5"
+            },
+            {
+              "side": "rotor",
+              "count": 4,
+              "thread": "M5",
+              "raw": "Rotor Mount: 4 x M5"
+            }
+          ]
+        },
+        "ports": {
+          "status": "verified",
+          "annotations": [
+            {
+              "count": 8,
+              "thread": "G1/8",
+              "role": "media-inlet",
+              "raw": "8-G1/8 Media Inlet"
+            },
+            {
+              "count": 8,
+              "thread": "G1/8",
+              "role": "media-outlet",
+              "raw": "8-G1/8 Media Outlet"
+            }
+          ]
+        }
+      },
+      "nonInferable": [
+        "whether the printed date 2026-03-12 or document-control month 05 is the intended release month",
+        "media other than air",
+        "channel cross-connection behavior"
+      ],
+      "prohibitedWebClaims": []
+    }
+  }
+}

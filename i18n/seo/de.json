@@ -35,9 +35,9 @@
     "h1": "BP-1P-0003 Einkanal-Drehdurchführung"
   },
   "BP-1P-0006.html": {
-    "title": "BP-1P-0006 Drehverteiler 1 auf 6 | Begapunk",
-    "description": "Drehverteiler BP-1P-0006 mit einem Eingang, sechs Ausgängen, G1/8-Anschluss und 4-mm-Durchlass. Bis 1 MPa und 300 min⁻¹.",
-    "h1": "BP-1P-0006 Drehverteiler mit 1 Eingang und 6 Ausgängen"
+    "title": "BP-1P-0006 Drehverteiler 1 auf 8 | Begapunk",
+    "description": "Drehverteiler BP-1P-0006 mit einem Eingang, acht Ausgängen, G1/8-Anschluss und 4-mm-Durchlass. Bis 1 MPa und 300 min⁻¹.",
+    "h1": "BP-1P-0006 Drehverteiler mit 1 Eingang und 8 Ausgängen"
   },
   "BP-2P-0001.html": {
     "title": "BP-2P-0001 Zweikanal-Drehdurchführung | Begapunk",
@@ -74,10 +74,10 @@
     "description": "Zweikanal-Drehdurchführung BP-2P-50-0001 für Luft mit Schutzhaube und Labyrinth für staubige Umgebungen.",
     "h1": "BP-2P-50-0001 Zweikanal-Drehdurchführung für staubige Umgebungen"
   },
-  "BP-2P-95-0001.html": {
-    "title": "BP-2P-95-0001 Drehverteiler 2 auf 4 | Begapunk",
-    "description": "Drehverteiler BP-2P-95-0001 mit zwei Eingängen, vier Ausgängen, bis 1 MPa und 200 min⁻¹ für rotierende Spann- und Verteilaufgaben.",
-    "h1": "BP-2P-95-0001 Drehverteiler mit 2 Eingängen und 4 Ausgängen"
+  "BP-2P-95-0005.html": {
+    "title": "BP-2P-95-0005 Drehverteiler 2 auf 4 | Begapunk",
+    "description": "Drehverteiler BP-2P-95-0005 mit zwei Eingängen, vier Ausgängen, bis 1 MPa und 200 min⁻¹ für rotierende Spann- und Verteilaufgaben.",
+    "h1": "BP-2P-95-0005 Drehverteiler mit 2 Eingängen und 4 Ausgängen"
   },
   "BP-3P-0004.html": {
     "title": "BP-3P-0004 Dreikanal-Drehdurchführung | Begapunk",
@@ -181,8 +181,13 @@
   },
   "blog.html": {
     "title": "Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk",
-    "description": "Praxisnahe Leitfäden zu Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen.",
+    "description": "Praxisnahe Leitfäden zu Funktionsprinzip, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen.",
     "h1": "Auswahl, Montage und Dichtungen von Drehdurchführungen"
+  },
+  "blog-non-contact-clearance-seal-rotary-union.html": {
+    "title": "Berührungslose Spaltdichtung in Drehdurchführungen | Begapunk",
+    "description": "So überträgt eine Drehdurchführung mit berührungsloser Spaltdichtung ein Medium in den schnell drehenden Rotor – mit einseitigem Radialspalt von 0,003 mm.",
+    "h1": "Wie eine Drehdurchführung mit berührungsloser Radialspaltdichtung bei hoher Drehzahl arbeitet"
   },
   "blog-rotary-joint-installation-mistakes.html": {
     "title": "Drehdurchführung montieren: 7 häufige Fehler",
@@ -225,9 +230,9 @@
     "h1": "Anwendungsfälle und Auslegungsbeispiele für Drehdurchführungen"
   },
   "case-bp-2p-95-pneumatic-chuck-integration.html": {
-    "title": "BP-2P-95-0001 im pneumatischen Spannfutter | Begapunk",
-    "description": "Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0001. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.",
-    "h1": "BP-2P-95-0001 – Einbaubeispiel in einem pneumatischen Spannfutter"
+    "title": "BP-2P-95-0005 im pneumatischen Spannfutter | Begapunk",
+    "description": "Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0005. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.",
+    "h1": "BP-2P-95-0005 – Einbaubeispiel in einem pneumatischen Spannfutter"
   },
   "case-bp-3p-s06-sensor-monitored-chuck.html": {
     "title": "BP-3P-S06-0001 im sensorüberwachten Spannfutter | Begapunk",

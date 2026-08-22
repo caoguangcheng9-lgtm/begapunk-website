@@ -57,6 +57,18 @@ if (localMarketReview.machineTranslationDraftOnly !== true) policyFail('machine 
 if (localMarketReview.aiAssistedTargetMarketReviewRequired !== true) {
   policyFail('AI-assisted target-market review must be required.');
 }
+if (localMarketReview.aiLineByLineReviewSufficientForRelease !== true) {
+  policyFail('recorded AI-assisted line-by-line review must be sufficient for release.');
+}
+if (localMarketReview.independentNativeSpeakerRequiredForRelease !== false) {
+  policyFail('independent native-speaker sign-off must remain optional, not a release requirement.');
+}
+if (localMarketReview.humanEditorialSignOffRequiredForRelease !== false) {
+  policyFail('human editorial sign-off must remain optional, not a release requirement.');
+}
+if (localMarketReview.reviewClaimMustRemainAiAssisted !== true) {
+  policyFail('AI-only review must remain labelled as AI-assisted.');
+}
 if (localMarketReview.targetMarketPeerReferenceRequired !== true) {
   policyFail('target-market peer references must be required.');
 }
@@ -274,5 +286,5 @@ if (exceptionFailures.length) {
   exceptionFailures.forEach((message, index) => console.error(`${index + 1}. ${message}`));
   process.exitCode = 1;
 } else {
-  console.warn(`WARNING: owner-approved exception ${approval.approvalId} permits this exact release until ${approval.expiresAt}. Independent native-language review remains outstanding.`);
+  console.warn(`WARNING: owner-approved exception ${approval.approvalId} permits this exact release until ${approval.expiresAt}. No native-speaker or human editorial sign-off is claimed or required; the recorded AI-assisted review boundary remains in force.`);
 }

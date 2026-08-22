@@ -76,7 +76,7 @@
     "BP-2P-16-0001.html",
     "BP-2P-30-0001.html",
     "BP-2P-50-0001.html",
-    "BP-2P-95-0001.html",
+    "BP-2P-95-0005.html",
     "BP-3P-0004.html",
     "BP-3P-0006.html",
     "BP-3P-0007.html",
@@ -98,6 +98,7 @@
     "application-welding-positioners.html",
     "installation.html",
     "blog.html",
+    "blog-non-contact-clearance-seal-rotary-union.html",
     "blog-rotary-joint-installation-mistakes.html",
     "blog-rotary-joint-leaking.html",
     "blog-rotary-joint-materials.html",
@@ -131,7 +132,7 @@
     "BP-2P-16-0001.html",
     "BP-2P-30-0001.html",
     "BP-2P-50-0001.html",
-    "BP-2P-95-0001.html",
+    "BP-2P-95-0005.html",
     "BP-3P-0004.html",
     "BP-3P-0006.html",
     "BP-3P-0007.html",
@@ -173,6 +174,7 @@
     "case-bp-2p-95-pneumatic-chuck-integration.html",
     "case-bp-3p-s06-sensor-monitored-chuck.html",
     "case-studies.html",
+    "blog-non-contact-clearance-seal-rotary-union.html",
     "blog-rotary-union-seal-types.html"
   ],
   "translatedAttributes": [

@@ -64,7 +64,6 @@ if (includeProduction) {
 const excludedPdfNames = [
   'BP-2P-0001_draft.pdf',
   'BP-2P-30-0001.pdf',
-  'BP-2P-95-0001.pdf',
 ];
 
 async function rejectExcludedDownloads(directory) {
@@ -204,6 +203,39 @@ function isAffirmativeIp65Context(source, match) {
 function isExplicitModelLimitNegation(source, match) {
   const context = getSemanticStatementContext(source, match.index || 0, match[0].length);
   return explicitModelLimitNegationPatterns.some((pattern) => pattern.test(context));
+}
+
+const zeroLeakageBoundaryPatterns = [
+  /\b(?:non-contact|this|it)\b[^.!?。！？]{0,45}\bdoes\s+not\s+mean\b[^.!?。！？]{0,35}\b(?:zero[-\s]?leakage|leak[-\s]?free)\b/i,
+  /\bshould\s+not\s+be\s+described\b[^.!?。！？]{0,110}\b(?:zero[-\s]?leakage|leak[-\s]?free)\b/i,
+  /\b(?:may|can)\s+be\s+(?:inappropriate|unsuitable)\b[^.!?。！？]{0,140}\brequires?\s+near[-\s]*zero\s+leakage\b/i,
+  /\bbedeutet\s+nicht\b[^.!?。！？]{0,45}\bleckagefrei\b/i,
+  /\bdarf\b[^.!?。！？]{0,70}\bnicht\s+als\b[^.!?。！？]{0,90}\bleckagefrei\b[^.!?。！？]{0,45}\bbeschrieben\b/i,
+  /\b(?:kann|könnte)\s+ungeeignet\s+sein\b[^.!?。！？]{0,170}\bnahezu\s+keine\s+Leckage\s+zulässig\s+ist\b/i,
+  /漏れゼロ[^。！？]{0,35}意味しません/,
+  /漏れゼロ[^。！？]{0,55}表現できません/,
+  /не\s+означает[^.!?。！？]{0,55}без\s+утеч\p{L}*/iu,
+  /может\s+не\s+подойти[^.!?。！？]{0,170}требуется\s+практически\s+нулев\p{L}*\s+утеч\p{L}*/iu,
+  /нулев\p{L}*\s+утеч\p{L}*[^.!?。！？]{0,90}не\s+гарантир\p{L}*/iu,
+];
+
+const zeroLeakageQuestionAnswerPatterns = [
+  /\bdoes\b[^?]{0,120}\b(?:zero[-\s]?leakage|leak[-\s]?free)\?[^.!?。！？]{0,180}\bNo\b/i,
+  /\bist\b[^?]{0,120}\bleckagefrei\?[^.!?。！？]{0,180}\bNein\b/i,
+  /漏れゼロですか[？?][^。！？]{0,180}いいえ/,
+  /обеспечивает[^?]{0,120}нулев\p{L}*\s+утеч\p{L}*\?[^.!?。！？]{0,180}Нет/iu,
+];
+
+function isAllowedZeroLeakageContext(source, match) {
+  const index = match.index || 0;
+  const context = getSemanticStatementContext(source, index, match[0].length);
+  if (zeroLeakageBoundaryPatterns.some((pattern) => pattern.test(context))) return true;
+
+  const nearby = source
+    .slice(Math.max(0, index - 180), Math.min(source.length, index + match[0].length + 280))
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ');
+  return zeroLeakageQuestionAnswerPatterns.some((pattern) => pattern.test(nearby));
 }
 
 const qualifiedCadPatterns = [
@@ -351,12 +383,12 @@ const banned = [
   { name: 'unsupported ISO lead-auditor claim', pattern: /Lead Auditor|Leitender Auditor|主任監査員|鉛の監査人|ведущий аудитор/gi, allowDisclaimer: true },
   { name: 'unsupported 100-percent pressure-test claim', pattern: /(?:100\s*%[^.!?。！？\n]{0,60}(?:pressure|leak(?:age)?)[^.!?。！？\n]{0,30}(?:test(?:ed|ing)?|inspection)|(?:pressure|leak(?:age)?)[^.!?。！？\n]{0,30}(?:test(?:ed|ing)?|inspection)[^.!?。！？\n]{0,30}100\s*%|全数[^。！？\n]{0,30}(?:圧力試験|漏れ検査|检漏|泄漏测试|气密性检测|压力测试)|100\s*%[^。！？\n]{0,30}(?:圧力試験|漏れ検査|检漏|泄漏测试|气密性检测|压力测试)|100\s*%[^.!?。！？\n]{0,50}(?:Druckprüfung|Dichtheitsprüfung|испытани[^.!?。！？\n]{0,20}давлени|провер[^.!?。！？\n]{0,20}герметич))/gi, allowDisclaimer: true },
   { name: 'unsupported 1.5x pressure-test claim', pattern: /(?:1[.,]5\s*(?:×|x|&times;|fach(?:en)?|-fach(?:en)?|倍|[-‑–—]?кратн\w*)[^.!?。！？\n]{0,60}(?:rated|working|operating|Nenn|Betriebs|定格|使用|рабоч\w*)?\s*(?:pressure|Druck|圧力|давлени\w*)|(?:pressure|Druck|圧力|давлени\w*)[^.!?。！？\n]{0,60}1[.,]5\s*(?:×|x|&times;|fach(?:en)?|-fach(?:en)?|倍|[-‑–—]?кратн\w*))/gi, allowDisclaimer: true },
-  { name: 'unsupported zero-leakage promise', pattern: /\b(?:zero[-\s]?leakage(?![-\s]+requirements?\b)|leak[-\s]?free|guaranteed\s+(?:no|zero)\s+leakage|(?:guarantees?|ensures?|provides?|achieves?|maintains?|with|offers?)[^.!?。！？\n]{0,30}no\s+leakage|no\s+leakage[^.!?。！？\n]{0,30}(?:between|under|at|during|across|for))\b|(?:null|keine)\s+Leckage|leckagefrei|漏れ(?:ゼロ|なし)|無漏洩|(?:нулев\w*\s+утеч\w*|без\s+утеч\w*)/gi, allowDisclaimer: true },
+  { name: 'unsupported zero-leakage promise', pattern: /\b(?:zero[-\s]?leakage(?![-\s]+requirements?\b)|leak[-\s]?free|guaranteed\s+(?:no|zero)\s+leakage|(?:guarantees?|ensures?|provides?|achieves?|maintains?|with|offers?)[^.!?。！？\n]{0,30}no\s+leakage|no\s+leakage[^.!?。！？\n]{0,30}(?:between|under|at|during|across|for))\b|(?:null|keine)\s+Leckage|leckagefrei|漏れ(?:ゼロ|なし)|無漏洩|(?:нулев\p{L}*\s+утеч\p{L}*|без\s+утеч\p{L}*)/giu, allowDisclaimer: true, semantic: 'zero-leakage' },
   { name: 'unsupported fixed 7-day shipping claim', pattern: /(?:(?:ships?|shipping|dispatch(?:ed)?|delivery|lead[\s-]?time|turnaround)[^.!?。！？\n]{0,55}(?:within|in|of|:)?\s*7(?:\s*[-‐‑‒–—~～]\s*14)?\s*[-‐‑‒–—]?\s*(?:business\s*)?days?|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*[-‐‑‒–—]?\s*(?:business\s*)?days?[^.!?。！？\n]{0,55}(?:ship|deliver|dispatch|lead[\s-]?time|turnaround)|(?:Lieferung|Versand|Lieferzeit)[^.!?。！？\n]{0,55}7(?:\s*[-‐‑‒–—~～]\s*14)?\s*Tage?|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*Tage?[^.!?。！？\n]{0,55}(?:Lieferung|Versand|Lieferzeit)|(?:出荷|納期|配送)[^。！？\n]{0,40}7(?:\s*[-‐‑‒–—~～]\s*14)?\s*日|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*日[^。！？\n]{0,40}(?:出荷|納期|配送)|(?:доставк\w*|отправк\w*|срок\s+поставки)[^.!?。！？\n]{0,55}7(?:\s*[-‐‑‒–—~～]\s*14)?\s*дн\w*|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*дн\w*[^.!?。！？\n]{0,55}(?:доставк\w*|отправк\w*|срок\s+поставки))/gi, allowDisclaimer: true },
   { name: 'unsupported 24-hour response promise', pattern: /(?:(?:respond|reply|response|quote|quotation|feedback|support|review|check|contact)[^.!?。！？\n]{0,70}(?:within\s+)?24\s*[-‐‑‒–—]?\s*(?:hours?|hrs?|h\b)|(?:within\s+)?24\s*[-‐‑‒–—]?\s*(?:hours?|hrs?|h\b)[^.!?。！？\n]{0,70}(?:respond|reply|response|quote|quotation|feedback|support|review|check|contact)|(?:Antwort|Angebot|Rückmeldung|Prüfung)[^.!?。！？\n]{0,60}24\s*[-‐‑‒–—]?\s*Stunden|24\s*[-‐‑‒–—]?\s*Stunden[^.!?。！？\n]{0,60}(?:Antwort|Angebot|Rückmeldung|Prüfung)|(?:返信|回答|見積|対応|確認)[^。！？\n]{0,45}24\s*時間|24\s*時間[^。！？\n]{0,45}(?:返信|回答|見積|対応|確認)|(?:ответ|предложени\w*|провер\w*|свяж\w*)[^.!?。！？\n]{0,65}24\s*час\w*|24\s*час\w*[^.!?。！？\n]{0,65}(?:ответ|предложени\w*|провер\w*|свяж\w*))/gi, allowDisclaimer: true },
   { name: 'unsupported exact factory metric', pattern: /(?:(?:factory|facility|plant|workshop|assembly\s+hall|Fabrik|Werk|Werkstatt|Montagehalle|工場|組立棟|завод|цех)[^.!?。！？\n]{0,100}(?:\d{1,3}(?:,\d{3})+|\d{3,})\s*(?:square\s+meters?|m\s*(?:2|²)|sqm|㎡|平方米)|(?:\d{1,3}(?:,\d{3})+|\d{3,})\s*(?:square\s+meters?|m\s*(?:2|²)|sqm|㎡|平方米)[^.!?。！？\n]{0,100}(?:factory|facility|plant|workshop|assembly\s+hall|Fabrik|Werk|Werkstatt|Montagehalle|工場|組立棟|завод|цех)|\b\d+\s*(?:CNC\s+machines?|seal\s+testing\s+stations?|production\s+lines?|assembly\s+lines?|CNC[-\s]?Maschinen|Prüfstationen|CNC設備|試験ステーション|станк\w*\s+с\s+ЧПУ|испытательн\w*\s+стенд\w*)\b)/gi, allowDisclaimer: true },
   { name: 'production presented as application experience', pattern: /informed by cumulative production of (?:more than )?200,000 rotary joints/gi, publicOnly: true, allowDisclaimer: true },
-  { name: 'excluded public PDF reference', pattern: /\b(?:BP-2P-0001_draft|BP-2P-30-0001|BP-2P-95-0001)\.pdf\b/gi },
+  { name: 'excluded public PDF reference', pattern: /\b(?:BP-2P-0001_draft|BP-2P-30-0001)\.pdf\b/gi },
   { name: 'broken double punctuation', pattern: /\.\s+\.|(?<!\.)\.\.(?![./])/g, publicOnly: true, excludedExtensions: ['.dxf'] },
   { name: 'broken production counter', pattern: /200K\+\+/g },
   { name: 'corrupted diameter in search index', pattern: /\?(?:230|64|78\.9)\b|3-\?6\b/g, publicOnly: true, pathPattern: /(?:^|\/)search-index\.json$/ },
@@ -707,6 +739,9 @@ function matchIsBlocked(rule, source, match, relativePath = '') {
   if (rule.semantic === 'fixed-derating') {
     return !isOrderConfirmedDeratingContext(source, match);
   }
+  if (rule.semantic === 'zero-leakage' && isAllowedZeroLeakageContext(source, match)) {
+    return false;
+  }
   if (rule.name === 'unsupported 100-percent pressure-test claim'
     && isApprovedProductionInspectionClaim(relativePath, source, match)) {
     return false;
@@ -738,8 +773,8 @@ function hasBlockedMatch(rule, source, relativePath = '') {
 
 const blockedSamples = [
   'ISO 17799 Class 0 leakage performance.',
-  'BP-2P-95-0001 is rated to 10 MPa.',
-  'BP-2P-95-0001 рассчитан на 12 МПа.',
+  'BP-2P-95-0005 is rated to 10 MPa.',
+  'BP-2P-95-0005 рассчитан на 12 МПа.',
   'BP-2P-0002 maximum pressure is 1.5 MPa.',
   'BP-2P-16-0001 maximum speed is 500 RPM.',
   'BP-2P-16-0001 Nenndrehzahl 500 U/min.',
@@ -773,7 +808,6 @@ const blockedSamples = [
   'New 1,200m2 assembly hall added.',
   'Download BP-2P-0001_draft.pdf.',
   'Download BP-2P-30-0001.pdf.',
-  'Download BP-2P-95-0001.pdf.',
   'Max 5 MPa,?230 mm outer diameter.',
   '?64 × 78 mm',
   '?78.9 × 63.9 mm',
@@ -781,7 +815,8 @@ const blockedSamples = [
   '"areaServed":["Germany"]',
 ];
 const allowedSamples = [
-  'BP-2P-95-0001 maximum pressure is 1 MPa and maximum speed is 200 RPM.',
+  'Download BP-2P-95-0005.pdf.',
+  'BP-2P-95-0005 maximum pressure is 1 MPa and maximum speed is 200 RPM.',
   'BP-2P-0002 maximum pressure is 1 MPa.',
   'BP-2P-16-0001 maximum speed is 200 RPM.',
   'No certified IP65 rating is claimed.',
@@ -855,20 +890,46 @@ verifyRuleSamples('unsupported affirmative IP65 claim', {
   ],
 });
 
-verifyRuleSamples('BP-2P-95 pressure above approved 1 MPa rating', {
+verifyRuleSamples('unsupported zero-leakage promise', {
   blocked: [
-    'BP-2P-95-0001 is rated to 10 MPa.',
-    'BP-2P-95-0001: 12 MPa requires confirmation.',
-    'BP-2P-95-0001 ist für 10 MPa ausgelegt.',
-    'BP-2P-95-0001は12 MPa定格です。',
-    'BP-2P-95-0001 рассчитан на 12 МПа.',
+    'Does this seal provide zero leakage? Yes, it does.',
+    'This non-contact seal is leak-free at high speed.',
+    'Diese Spaltdichtung ist leckagefrei.',
+    'このシールは漏れゼロです。',
+    'Это уплотнение обеспечивает нулевую утечку.',
   ],
   allowed: [
-    'BP-2P-95-0001 maximum pressure is 1 MPa.',
-    'BP-2P-95-0001 is not rated to 10 MPa.',
-    'BP-2P-95-0001 ist nicht für 10 MPa freigegeben.',
-    'BP-2P-95-0001は12 MPa定格ではありません。',
-    'BP-2P-95-0001 не рассчитан на 12 МПа.',
+    'Does a non-contact clearance seal provide zero leakage? No. It limits leakage but is not hermetic.',
+    '“Non-contact” does not mean “zero leakage.”',
+    'A clearance seal should not be described as zero-leakage without application-specific test evidence.',
+    'This architecture may be inappropriate when the application requires near-zero leakage.',
+    'Ist eine berührungslose Spaltdichtung leckagefrei? Nein. Sie begrenzt den Leckagestrom.',
+    '„Berührungslos“ bedeutet nicht „leckagefrei“.',
+    'Ohne anwendungsspezifischen Prüfnachweis darf sie nicht als hermetisch oder leckagefrei beschrieben werden.',
+    'Dieses Prinzip kann ungeeignet sein, wenn nahezu keine Leckage zulässig ist.',
+    '非接触すきまシールは漏れゼロですか？ いいえ。',
+    '「非接触」は「漏れゼロ」を意味しません。',
+    '用途別の試験根拠がない限り、気密または漏れゼロとは表現できません。',
+    '«Бесконтактное» не означает «без утечек».',
+    'Такая схема может не подойти, если требуется практически нулевая утечка.',
+    'Абсолютная нулевая утечка или отсутствие перетока не гарантируются универсально.',
+  ],
+});
+
+verifyRuleSamples('BP-2P-95 pressure above approved 1 MPa rating', {
+  blocked: [
+    'BP-2P-95-0005 is rated to 10 MPa.',
+    'BP-2P-95-0005: 12 MPa requires confirmation.',
+    'BP-2P-95-0005 ist für 10 MPa ausgelegt.',
+    'BP-2P-95-0005は12 MPa定格です。',
+    'BP-2P-95-0005 рассчитан на 12 МПа.',
+  ],
+  allowed: [
+    'BP-2P-95-0005 maximum pressure is 1 MPa.',
+    'BP-2P-95-0005 is not rated to 10 MPa.',
+    'BP-2P-95-0005 ist nicht für 10 MPa freigegeben.',
+    'BP-2P-95-0005は12 MPa定格ではありません。',
+    'BP-2P-95-0005 не рассчитан на 12 МПа.',
   ],
 });
 

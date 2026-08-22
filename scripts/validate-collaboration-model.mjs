@@ -6,7 +6,7 @@ const root = process.cwd();
 
 const requirements = new Map([
   [
-    "docs/AIDA_CODEX_HUMAN_RELAY.md",
+    "docs/standards/AIDA_WORKFLOW.md",
     [
       "Aida-Codex 人工中继协作运行模型",
       "source:aida",

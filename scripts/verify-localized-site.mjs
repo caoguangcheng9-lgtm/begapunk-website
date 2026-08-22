@@ -3,6 +3,7 @@ import path from 'node:path';
 import { load } from 'cheerio';
 import sharp from 'sharp';
 import { DISCOVERY_ROBOTS_MARKER, discoveryExcludedPageSet } from './discovery-exclusions.mjs';
+import { drawingBackedProductMetadata } from './lib/drawing-backed-product-facts.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
@@ -41,7 +42,7 @@ try {
 }
 const translationManagedPages = config.translationManagedPages || config.pages;
 const manualLocalizedPages = config.manualLocalizedPages || [];
-const expectedOwnershipCounts = { total: 55, managed: 48, manual: 7 };
+const expectedOwnershipCounts = { total: 56, managed: 48, manual: 8 };
 const configuredPageSet = new Set(config.pages);
 const translationPageSet = new Set(translationManagedPages);
 const manualPageSet = new Set(manualLocalizedPages);
@@ -215,6 +216,7 @@ const navigationExpected = {
 const footerStructureSignatures = new Set();
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
 const footerStyleVersion = '20260817-cls1';
+const homepageStyleVersion = '20260819-home-clean1';
 const footerSocial = [
   ['https://www.linkedin.com/in/guangcheng-cao/', 'LinkedIn'],
   ['https://www.youtube.com/@BEGAPUNKRotaryJointsTV', 'YouTube'],
@@ -386,6 +388,12 @@ function compactText(value) {
 }
 
 function visibleFaqEntries($) {
+  const disclosureEntries = $('.ta-faq details').map((_, item) => ({
+    question: compactText($(item).find('summary').first().text()),
+    answer: compactText($(item).find('p').first().text()),
+  })).get().filter((item) => item.question && item.answer);
+  if (disclosureEntries.length) return disclosureEntries;
+
   const cardEntries = $('.faq-item, .app-faq-item').map((_, item) => ({
     question: compactText($(item).find('.faq-question, h3').first().clone().find('svg, i, .faq-icon, .faq-toggle, .arrow').remove().end().text()),
     answer: compactText($(item).find('.faq-answer, p').first().text()),
@@ -448,9 +456,22 @@ for (const language of verifiedLanguages) {
     verifyGeneratedText(html, `${language.code}/${pageName}`);
     const $ = load(html, { decodeEntities: false });
     if (language.code !== config.sourceLanguage.code) {
-      const seo = seoByLanguage.get(language.code)?.[pageName];
-      if (!seo) {
-        failures.push(`${language.code}/${pageName}: curated SEO entry is missing.`);
+      const model = /^BP-[A-Za-z0-9-]+\.html$/.test(pageName)
+        ? path.basename(pageName, '.html')
+        : null;
+      const drawingMetadata = model ? drawingBackedProductMetadata(language.code, model) : null;
+      const curatedSeo = seoByLanguage.get(language.code)?.[pageName];
+      const expectedMetadata = drawingMetadata || (curatedSeo ? {
+        title: curatedSeo.title,
+        description: curatedSeo.description,
+        h1: curatedSeo.h1,
+        openGraphTitle: curatedSeo.title,
+        openGraphDescription: curatedSeo.description,
+        twitterTitle: curatedSeo.title,
+        twitterDescription: curatedSeo.description,
+      } : null);
+      if (!expectedMetadata) {
+        failures.push(`${language.code}/${pageName}: expected SEO metadata source is missing.`);
       } else {
         const actual = {
           title: compactText($('title').first().text()),
@@ -462,10 +483,18 @@ for (const language of verifiedLanguages) {
           twitterDescription: compactText($('meta[name="twitter:description"]').first().attr('content')),
         };
         for (const field of ['title', 'description', 'h1']) {
-          if (actual[field] !== seo[field]) failures.push(`${language.code}/${pageName}: ${field} does not match curated SEO data.`);
+          if (actual[field] !== expectedMetadata[field]) {
+            failures.push(`${language.code}/${pageName}: ${field} does not match its governed metadata source.`);
+          }
         }
-        if (actual.ogTitle !== seo.title || actual.twitterTitle !== seo.title) failures.push(`${language.code}/${pageName}: social title is not localized.`);
-        if (actual.ogDescription !== seo.description || actual.twitterDescription !== seo.description) failures.push(`${language.code}/${pageName}: social description is not localized.`);
+        if (actual.ogTitle !== expectedMetadata.openGraphTitle
+          || actual.twitterTitle !== expectedMetadata.twitterTitle) {
+          failures.push(`${language.code}/${pageName}: social title does not match its governed metadata source.`);
+        }
+        if (actual.ogDescription !== expectedMetadata.openGraphDescription
+          || actual.twitterDescription !== expectedMetadata.twitterDescription) {
+          failures.push(`${language.code}/${pageName}: social description does not match its governed metadata source.`);
+        }
         if ($('meta[name="keywords"]').length) failures.push(`${language.code}/${pageName}: inherited meta keywords should be removed.`);
       }
     }
@@ -654,7 +683,8 @@ for (const language of verifiedLanguages) {
     if (/undefined|Begapunk Precision\s+Ротационное соединение\s+Manufacturer/iu.test(footerRoot.text())) failures.push(`${language.code}/${pageName}: invalid generated or mixed-language Footer text detected.`);
     const footerStructure = footerRoot.find('*').map((_, element) => `${element.tagName}.${($(element).attr('class') || '').trim()}`).get().join('|');
     footerStructureSignatures.add(footerStructure);
-    const expectedStyleHref = language.code === config.sourceLanguage.code ? `css/style.css?v=${footerStyleVersion}` : `../css/style.css?v=${footerStyleVersion}`;
+    const pageStyleVersion = pageName === 'index.html' ? homepageStyleVersion : footerStyleVersion;
+    const expectedStyleHref = language.code === config.sourceLanguage.code ? `css/style.css?v=${pageStyleVersion}` : `../css/style.css?v=${pageStyleVersion}`;
     if ($(`link[rel="stylesheet"][href="${expectedStyleHref}"]`).length !== 1) failures.push(`${language.code}/${pageName}: canonical Footer stylesheet cache version is missing.`);
     if (pageName === 'index.html') {
       const qualityLinks = $('.portal-cert-actions > a').map((_, element) => [[$(element).attr('href'), compactText($(element).text())]]).get();
@@ -715,7 +745,10 @@ for (const language of verifiedLanguages) {
               }
               const current = node.itemListElement[node.itemListElement.length - 1];
               const visibleBreadcrumbName = compactText($('.breadcrumb-bar span').last().text());
-              const breadcrumbName = visibleBreadcrumbName || (pageName === 'manufacturing-quality.html'
+              const drawingBreadcrumb = /^BP-[A-Za-z0-9-]+\.html$/.test(pageName)
+                ? drawingBackedProductMetadata(language.code, path.basename(pageName, '.html'))?.breadcrumb
+                : null;
+              const breadcrumbName = drawingBreadcrumb || visibleBreadcrumbName || (pageName === 'manufacturing-quality.html'
                 ? navCopy.top[2]
                 : pageName === 'production-inspection-testing.html'
                   ? navCopy.menus[2][0][1]
@@ -765,13 +798,14 @@ for (const language of verifiedLanguages) {
           failures.push(`${language.code}/blog.html: Blog JSON-LD name does not match the localized H1.`);
         }
         const expectedPostPages = [
+          'blog-non-contact-clearance-seal-rotary-union.html',
           'blog-rotary-joint-selection.html',
           'blog-rotary-joint-installation-mistakes.html',
           'blog-rotary-union-seal-types.html',
         ];
         const posts = Array.isArray(blog.blogPost) ? blog.blogPost : [];
         if (posts.length !== expectedPostPages.length) {
-          failures.push(`${language.code}/blog.html: Blog JSON-LD must list the three published engineering guides.`);
+          failures.push(`${language.code}/blog.html: Blog JSON-LD must list the four published engineering guides.`);
         } else {
           for (let index = 0; index < expectedPostPages.length; index += 1) {
             const postPage = expectedPostPages[index];
@@ -1501,16 +1535,16 @@ const detailPhotoNotes = {
   ru: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
 };
 const bp2p95CaseCenterSummaryCopy = {
-  en: 'Two customer-authorized workshop photographs document the BP-2P-95-0001 mounting area, the surrounding chuck assembly and visible pneumatic hose routing. Open the detail page for the installation layout and project review inputs.',
-  de: 'Zwei mit Genehmigung des Kunden veröffentlichte Werkstattaufnahmen dokumentieren den Einbaubereich der BP-2P-95-0001, die umgebende Spannfuttereinheit und die sichtbare Schlauchführung. Die Detailseite zeigt die Einbauanordnung und die Angaben für die projektbezogene Prüfung.',
-  ja: 'お客様の許可を得た2点の工場内組立写真で、BP-2P-95-0001の取付部、チャック周辺の構成、空圧ホースの配管状態を紹介しています。詳細ページでは、組込みレイアウトと案件確認に必要な情報をご覧いただけます。',
-  ru: 'Две цеховые фотографии, опубликованные с разрешения заказчика, документируют зону установки BP-2P-95-0001, окружающий узел патрона и видимую прокладку пневматических шлангов. На отдельной странице приведены компоновка установки и исходные данные для проектной проверки.',
+  en: 'Two customer-authorized workshop photographs document the BP-2P-95-0005 mounting area, the surrounding chuck assembly and visible pneumatic hose routing. Open the detail page for the installation layout and project review inputs.',
+  de: 'Zwei mit Genehmigung des Kunden veröffentlichte Werkstattaufnahmen dokumentieren den Einbaubereich der BP-2P-95-0005, die umgebende Spannfuttereinheit und die sichtbare Schlauchführung. Die Detailseite zeigt die Einbauanordnung und die Angaben für die projektbezogene Prüfung.',
+  ja: 'お客様の許可を得た2点の工場内組立写真で、BP-2P-95-0005の取付部、チャック周辺の構成、空圧ホースの配管状態を紹介しています。詳細ページでは、組込みレイアウトと案件確認に必要な情報をご覧いただけます。',
+  ru: 'Две цеховые фотографии, опубликованные с разрешения заказчика, документируют зону установки BP-2P-95-0005, окружающий узел патрона и видимую прокладку пневматических шлангов. На отдельной странице приведены компоновка установки и исходные данные для проектной проверки.',
 };
 const bp2p95Descriptions = {
-  en: 'The project owner confirmed the model as BP-2P-95-0001. Customer-authorized workshop photographs show the visible chuck assembly and air routing, not model identity.',
-  de: 'Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0001. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.',
-  ja: '案件責任者が型式をBP-2P-95-0001と確認しました。公開許可済みの工場写真は、目視可能なチャック組立状態と空圧配管を示しますが、型式自体を証明するものではありません。',
-  ru: 'Владелец проекта подтвердил модель BP-2P-95-0001. Опубликованные с разрешения заказчика цеховые фотографии показывают видимую компоновку патрона и пневмолинии, но не подтверждают модель.',
+  en: 'The project owner confirmed the model as BP-2P-95-0005. Customer-authorized workshop photographs show the visible chuck assembly and air routing, not model identity.',
+  de: 'Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0005. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.',
+  ja: '案件責任者が型式をBP-2P-95-0005と確認しました。公開許可済みの工場写真は、目視可能なチャック組立状態と空圧配管を示しますが、型式自体を証明するものではありません。',
+  ru: 'Владелец проекта подтвердил модель BP-2P-95-0005. Опубликованные с разрешения заказчика цеховые фотографии показывают видимую компоновку патрона и пневмолинии, но не подтверждают модель.',
 };
 const bp2p95ModelIdentityBoundaries = {
   en: 'Project-owner confirmation; the photographs alone do not establish the internal model identity.',
@@ -1520,19 +1554,19 @@ const bp2p95ModelIdentityBoundaries = {
 };
 const applicationCaseSearchKeywords = {
   en: {
-    [applicationCasePage]: ['BP-2P-95-0001', 'pneumatic chuck', 'compressed air', 'rotary union integration'],
+    [applicationCasePage]: ['BP-2P-95-0005', 'pneumatic chuck', 'compressed air', 'rotary union integration'],
     [smartChuckCasePage]: ['BP-3P-S06-0001', 'sensor-monitored pneumatic chuck', 'pneumatic chuck', 'sensor signal transfer'],
   },
   de: {
-    [applicationCasePage]: ['BP-2P-95-0001', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+    [applicationCasePage]: ['BP-2P-95-0005', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
     [smartChuckCasePage]: ['BP-3P-S06-0001', 'sensorüberwachtes pneumatisches Spannfutter', 'pneumatisches Spannfutter', 'Sensorsignalübertragung'],
   },
   ja: {
-    [applicationCasePage]: ['BP-2P-95-0001', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
+    [applicationCasePage]: ['BP-2P-95-0005', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
     [smartChuckCasePage]: ['BP-3P-S06-0001', '外部センサ信号伝送', 'エアチャック', '空圧回路', '電気信号伝送'],
   },
   ru: {
-    [applicationCasePage]: ['BP-2P-95-0001', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
+    [applicationCasePage]: ['BP-2P-95-0005', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
     [smartChuckCasePage]: ['BP-3P-S06-0001', 'пневматический патрон с контролем по датчикам', 'пневматический патрон', 'передача сигналов датчиков'],
   },
 };
@@ -1551,22 +1585,22 @@ const caseCenterHeroCopy = {
 const caseCenterDetailFaqCopy = {
   en: {
     question: 'Where can I review the detailed installation cases?',
-    answer: 'Open the BP-2P-95-0001 pneumatic chuck case or the BP-3P-S06-0001 sensor-monitored chuck case from their case cards. The laser rear-chuck evidence is summarized on this page.',
+    answer: 'Open the BP-2P-95-0005 pneumatic chuck case or the BP-3P-S06-0001 sensor-monitored chuck case from their case cards. The laser rear-chuck evidence is summarized on this page.',
     laserAnswer: 'Yes. BP-3P-0004 and BP-2P-08-0001 are confirmed for pneumatic rear-chuck applications on laser tube cutting machines. Provide the chuck drawing and operating conditions to confirm the ordered model and interface.',
   },
   de: {
     question: 'Wo finde ich die ausführlichen Einbaufälle?',
-    answer: 'Öffnen Sie über die Fallkarten den Einbaufall BP-2P-95-0001 im pneumatischen Spannfutter oder den Fall BP-3P-S06-0001 im sensorüberwachten Spannfutter. Der Nachweis für das hintere Laser-Spannfutter ist auf dieser Seite zusammengefasst.',
+    answer: 'Öffnen Sie über die Fallkarten den Einbaufall BP-2P-95-0005 im pneumatischen Spannfutter oder den Fall BP-3P-S06-0001 im sensorüberwachten Spannfutter. Der Nachweis für das hintere Laser-Spannfutter ist auf dieser Seite zusammengefasst.',
     laserAnswer: 'Ja. BP-3P-0004 und BP-2P-08-0001 sind für pneumatische Anwendungen am hinteren Spannfutter von Laser-Rohrschneidmaschinen bestätigt. Senden Sie Spannfutterzeichnung und Betriebsbedingungen, um Bestellausführung und Schnittstelle zu bestätigen.',
   },
   ja: {
     question: '詳細な組込み事例はどこで確認できますか？',
-    answer: '各事例カードから、BP-2P-95-0001の空圧チャック組込み事例またはBP-3P-S06-0001のセンサ監視対応チャック組込み事例を開けます。レーザー後方チャックの資料はこのページにまとめています。',
+    answer: '各事例カードから、BP-2P-95-0005の空圧チャック組込み事例またはBP-3P-S06-0001のセンサ監視対応チャック組込み事例を開けます。レーザー後方チャックの資料はこのページにまとめています。',
     laserAnswer: 'はい。BP-3P-0004およびBP-2P-08-0001は、レーザー管切断機の後方チャック空圧用途で採用実績があります。発注型式と取付インターフェースの確認には、チャック図面と使用条件をご提示ください。',
   },
   ru: {
     question: 'Где посмотреть подробные примеры установки?',
-    answer: 'Откройте с карточек подробный пример BP-2P-95-0001 в пневматическом патроне или BP-3P-S06-0001 в патроне с контролем по датчикам. Материалы по заднему патрону лазерного станка приведены на этой странице.',
+    answer: 'Откройте с карточек подробный пример BP-2P-95-0005 в пневматическом патроне или BP-3P-S06-0001 в патроне с контролем по датчикам. Материалы по заднему патрону лазерного станка приведены на этой странице.',
     laserAnswer: 'Да. BP-3P-0004 и BP-2P-08-0001 подтверждены для пневматических систем заднего патрона станков лазерной резки труб. Для подтверждения заказной модели и интерфейса направьте чертёж патрона и условия эксплуатации.',
   },
 };
@@ -1994,7 +2028,7 @@ for (const language of verifiedLanguages) {
   const languageRoot = language.code === config.sourceLanguage.code ? localizedRoot : path.join(localizedRoot, language.code);
   try {
     const caseCenter = await fs.readFile(path.join(languageRoot, 'case-studies.html'), 'utf8');
-    const product = await fs.readFile(path.join(languageRoot, 'BP-2P-95-0001.html'), 'utf8');
+    const product = await fs.readFile(path.join(languageRoot, 'BP-2P-95-0005.html'), 'utf8');
     const detail = await fs.readFile(path.join(languageRoot, applicationCasePage), 'utf8');
     const smartProduct = await fs.readFile(path.join(languageRoot, 'BP-3P-S06-0001.html'), 'utf8');
     const smartDetail = await fs.readFile(path.join(languageRoot, smartChuckCasePage), 'utf8');
@@ -2013,8 +2047,8 @@ for (const language of verifiedLanguages) {
     const bottleProductSource = await fs.readFile(path.join(languageRoot, bottleCappingProductPageName), 'utf8');
     const bottleAlternativeProductSource = await fs.readFile(path.join(languageRoot, bottleCappingAlternativeProductPageName), 'utf8');
     if (!caseCenter.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/case-studies.html: application case link is missing.`);
-    if (!product.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/BP-2P-95-0001.html: application case link is missing.`);
-    if (!detail.includes('href="BP-2P-95-0001.html"')) failures.push(`${language.code}/${applicationCasePage}: product backlink is missing.`);
+    if (!product.includes(`href="${applicationCasePage}"`)) failures.push(`${language.code}/BP-2P-95-0005.html: application case link is missing.`);
+    if (!detail.includes('href="BP-2P-95-0005.html"')) failures.push(`${language.code}/${applicationCasePage}: product backlink is missing.`);
     if (!caseCenter.includes(`href="${smartChuckCasePage}"`)) failures.push(`${language.code}/case-studies.html: sensor-monitored chuck case link is missing.`);
     if (!smartProduct.includes(`href="${smartChuckCasePage}"`)) failures.push(`${language.code}/BP-3P-S06-0001.html: sensor-monitored chuck case link is missing.`);
     if (!smartDetail.includes('href="BP-3P-S06-0001.html"') || !smartDetail.includes('href="case-studies.html"')) {
@@ -2267,7 +2301,7 @@ for (const language of verifiedLanguages) {
     const verifiedApplicationHrefs = verifiedApplicationCards.map((_, element) => $center(element).attr('data-href')).get();
     const selectionExampleCards = $center('.selection-example-products .product-card');
     const selectionExampleHrefs = selectionExampleCards.map((_, element) => $center(element).attr('data-href')).get();
-    if (verifiedApplicationCards.length !== 4 || verifiedApplicationHrefs.join('|') !== 'BP-2P-95-0001.html|BP-3P-0004.html|BP-2P-08-0001.html|BP-3P-S06-0001.html') {
+    if (verifiedApplicationCards.length !== 4 || verifiedApplicationHrefs.join('|') !== 'BP-2P-95-0005.html|BP-3P-0004.html|BP-2P-08-0001.html|BP-3P-S06-0001.html') {
       failures.push(`${language.code}/case-studies.html: verified-application products must contain BP-2P-95, BP-3P-0004, BP-2P-08-0001 and BP-3P-S06-0001 in that order.`);
     }
     const laserApplicationCardCopy = ['BP-3P-0004.html', 'BP-2P-08-0001.html']
@@ -2436,7 +2470,7 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/search-index.json: case-center claim verification failed (${error.message}).`);
     }
     if ($product('.app-related-products .app-related-product').first().attr('href') !== applicationCasePage) {
-      failures.push(`${language.code}/BP-2P-95-0001.html: the application case is not the first related resource.`);
+      failures.push(`${language.code}/BP-2P-95-0005.html: the application case is not the first related resource.`);
     }
     if ($smartProduct('.app-related-products .app-related-product').first().attr('href') !== smartChuckCasePage) {
       failures.push(`${language.code}/BP-3P-S06-0001.html: the sensor-monitored chuck case is not the first related resource.`);
@@ -2481,7 +2515,7 @@ for (const language of verifiedLanguages) {
     caseImages.each((_, element) => {
       if ($detail(element).attr('loading') !== 'lazy') failures.push(`${language.code}/${applicationCasePage}: every case photograph must be lazy-loaded.`);
     });
-    if (caseImages.map((_, element) => $detail(element).attr('alt') || '').get().some((alt) => /BP-2P-95-0001/i.test(alt))) {
+    if (caseImages.map((_, element) => $detail(element).attr('alt') || '').get().some((alt) => /BP-2P-95-0005/i.test(alt))) {
       failures.push(`${language.code}/${applicationCasePage}: photograph alt text must describe visible content without asserting model identity.`);
     }
     if (!/bp-2p-95-pneumatic-connection-detail/i.test($detail('.case-row').first().find('.case-image img').attr('src') || '')) {

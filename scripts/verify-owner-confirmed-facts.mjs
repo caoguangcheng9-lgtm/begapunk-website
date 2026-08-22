@@ -9,79 +9,51 @@ const failures = [];
 const locales = {
   en: {
     prefix: '',
-    warrantyName: 'Warranty terms',
-    warrantyValue: 'Confirmed in quotation/order',
+    warrantyName: 'Warranty period',
+    warrantyValue: '1 year',
+    termsWarranty: 'The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.',
     ratingBoundary: 'each finished unit follows the documented production inspection process',
     caseEvidence: 'Photo note: These customer-authorized workshop photographs document the installation state shown. Operating parameters and acceptance requirements are confirmed for the order and approved drawing.',
     authorization: /published with the customer(?:'s|’s) authorization/i,
     installation: /documents? the installation/i,
     life: /service life/i,
     performance: /product performance/i,
-    heroStats: [
-      ['2022', 'Company Established'],
-      ['2D/3D', 'CAD Support'],
-      ['16', 'Standard Models'],
-      ['12', 'Application Guides'],
-      ['Per Order', 'Warranty Terms'],
-      ['By Order', 'Lead Time'],
-    ],
   },
   de: {
     prefix: 'de',
-    warrantyName: 'Garantiebedingungen',
-    warrantyValue: 'Im Angebot/Auftrag bestätigt',
+    warrantyName: 'Garantiezeitraum',
+    warrantyValue: '1 Jahr',
+    termsWarranty: 'Der Garantiezeitraum für alle Begapunk-Produkte beträgt ein Jahr. Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen richten sich nach dem formellen Angebot, dem angenommenen Auftrag und etwaigen schriftlichen Garantieunterlagen für den jeweiligen Auftrag.',
     ratingBoundary: 'jede fertige Einheit durchläuft den dokumentierten Produktionsprüfprozess',
     caseEvidence: 'Fotohinweis: Diese mit Genehmigung des Kunden veröffentlichten Werkstattfotos dokumentieren den dargestellten Einbauzustand. Betriebsparameter und Abnahmeanforderungen werden für den Auftrag und in der freigegebenen Zeichnung bestätigt.',
     authorization: /(?:mit (?:Genehmigung|Zustimmung|Autorisierung) des Kunden|vom Kunden[^.!?]{0,50}(?:genehmigt|autorisiert))/i,
     installation: /dokumentiert[^.!?]{0,50}(?:Installation|Einbau)|(?:Installation|Einbau)[^.!?]{0,50}dokumentiert/i,
     life: /(?:Lebensdauer|Nutzungsdauer)/i,
     performance: /(?:Produktleistung|Leistungsmerkmale|Gesamtleistung)/i,
-    heroStats: [
-      ['2022', 'Unternehmen gegründet'],
-      ['2D/3D', 'CAD-Unterstützung'],
-      ['16', 'Standardmodelle'],
-      ['12', 'Anwendungsleitfäden'],
-      ['Je Auftrag', 'Garantiebedingungen'],
-      ['Je Auftrag', 'Lieferzeit'],
-    ],
   },
   ja: {
     prefix: 'ja',
-    warrantyName: '保証条件',
-    warrantyValue: '見積書・注文書で確認',
+    warrantyName: '保証期間',
+    warrantyValue: '1年',
+    termsWarranty: 'Begapunkの全製品の保証期間は1年間です。保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書、および当該注文に関する書面の保証文書に従います。',
     ratingBoundary: '完成品はすべて、公開された生産検査工程に従って検査します',
     caseEvidence: '写真に関する注記：これらのお客様の許可を得た工場写真は、掲載した組込み状態を記録しています。運転条件および受入基準は、注文書と承認図面で確認します。',
     authorization: /顧客[^。]{0,50}(?:許可|承認)/,
     installation: /(?:設置|取付)[^。]{0,50}(?:記録|示し)|(?:記録|示し)[^。]{0,50}(?:設置|取付)/,
     life: /寿命/,
     performance: /性能/,
-    heroStats: [
-      ['2022', '会社設立'],
-      ['2D/3D', 'CADデータ対応'],
-      ['16', '標準機種'],
-      ['12', '用途別ガイド'],
-      ['注文ごと', '保証条件'],
-      ['注文ごと', '納期'],
-    ],
   },
   ru: {
     prefix: 'ru',
-    warrantyName: 'Условия гарантии',
-    warrantyValue: 'Указаны в коммерческом предложении/заказе',
+    warrantyName: 'Гарантийный срок',
+    warrantyValue: '1 год',
+    termsWarranty: 'Гарантийный срок на всю продукцию Begapunk составляет один год. Дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются официальным коммерческим предложением, принятым заказом и письменным гарантийным документом для соответствующего заказа.',
     ratingBoundary: 'каждое готовое изделие проходит предусмотренный производственный контроль',
     caseEvidence: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
     authorization: /(?:разрешен|согласован|авторизац)[^.!?]{0,60}заказчик|заказчик[^.!?]{0,60}(?:разрешен|согласован|авторизац)/i,
     installation: /(?:документирует|подтверждает|показывает)[^.!?]{0,60}установ|установ[^.!?]{0,60}(?:документирует|подтверждает|показывает)/i,
     life: /срок[^.!?]{0,20}служб/i,
     performance: /(?:характеристик|производительност)/i,
-    heroStats: [
-      ['2022', 'Основание компании'],
-      ['2D/3D', 'Поддержка CAD'],
-      ['16', 'Стандартные модели'],
-      ['12', 'Руководства по применению'],
-      ['По заказу', 'Условия гарантии'],
-      ['По заказу', 'Срок поставки'],
-    ],
   },
 };
 
@@ -255,7 +227,6 @@ for (const absolute of claimFiles) {
 const commercialPages = ['terms.html', 'faq.html', ...productPages];
 const commercialForbidden = [
   { label: 'fixed quotation-validity period', pattern: /\bquotation[^.!?]{0,80}\bvalid\s+for\s+30\s+days\b|Angebot[^.!?]{0,80}30\s*Tage[^.!?]{0,30}gültig|見積[^。]{0,80}30日[^。]{0,30}有効|предложени[^.!?]{0,80}действительн[^.!?]{0,30}30\s*дн/i },
-  { label: 'fixed 12-month warranty', pattern: /\b12[-\s]?months?\b|\b12\s*Monate\b|12(?:か|ヶ|ケ)?月|\b12\s*месяц(?:ев|а)?\b/i },
   { label: 'fixed three-week production lead time', pattern: /\b3\s*weeks?\b|\b3\s*Wochen\b|3週間|\b3\s*недел/i },
   { label: 'fixed 5-10 day shipping time', pattern: /\b5\s*[-–—]\s*10\s*(?:business\s*)?days?\b|\b5\s*[-–—]\s*10\s*(?:Werk)?tage\b|5\s*[-–—]\s*10営業日|\b5\s*[-–—]\s*10\s*(?:рабочих\s*)?дн/i },
   { label: 'fixed deposit/balance split', pattern: /\b60\s*%[^.!?]{0,80}\bdeposit\b|\b40\s*%[^.!?]{0,80}\bbalance\b|\b60\s*%[^.!?]{0,80}(?:Anzahlung|депозит)|60\s*%[^。]{0,80}(?:前金|着手金)/i },
@@ -272,6 +243,16 @@ for (const [language, locale] of Object.entries(locales)) {
     const source = await read(relativePath);
     for (const { label, pattern } of commercialForbidden) {
       if (pattern.test(source)) fail(`${relativePath}: contains ${label}.`);
+    }
+  }
+
+  const termsPath = relativeFile(locale, 'terms.html');
+  const termsSource = await read(termsPath);
+  if (termsSource) {
+    const $ = load(termsSource, { decodeEntities: false });
+    const matchingWarrantyTerms = $('li').filter((_, item) => compact($(item).text()) === locale.termsWarranty);
+    if (matchingWarrantyTerms.length !== 1) {
+      fail(`${termsPath}: expected one exact one-year warranty policy statement, found ${matchingWarrantyTerms.length}.`);
     }
   }
 
@@ -304,7 +285,7 @@ for (const [language, locale] of Object.entries(locales)) {
 
     const pageText = visiblePageText($);
     const hasExplicitSeparation = containsText(pageText, locale.ratingBoundary);
-    const hasApprovedBp2p95Boundary = pageName === 'BP-2P-95-0001.html'
+    const hasApprovedBp2p95Boundary = pageName === 'BP-2P-95-0005.html'
       && bp2p95DrawingBoundary[language].test(pageText)
       && containsText(pageText, bp2p95InspectionBoundary[language]);
     if (!hasExplicitSeparation && !hasApprovedBp2p95Boundary) {
@@ -331,16 +312,6 @@ for (const [language, locale] of Object.entries(locales)) {
     if (!source) continue;
     const $ = load(source, { decodeEntities: false });
     checkOrganizationFacts($, relativePath, locale);
-    if (pageName === 'index.html') {
-      const actualStats = [];
-      $('.hero-stats .stat-item').each((_, item) => actualStats.push([
-        compact($(item).find('.stat-number').text()),
-        compact($(item).find('.stat-label').text()),
-      ]));
-      if (JSON.stringify(actualStats) !== JSON.stringify(locale.heroStats)) {
-        fail(`${relativePath}: hero proof points must be exactly ${JSON.stringify(locale.heroStats)}, found ${JSON.stringify(actualStats)}.`);
-      }
-    }
     if (pageName === 'about.html') {
       const text = visiblePageText($);
       if (!/\b2022\b/.test(text)) fail(`${relativePath}: visible company history must state establishment in 2022.`);

@@ -41,7 +41,6 @@ const publicDirectories = [
 const excludedReleaseFiles = new Set([
   'downloads/BP-2P-0001_draft.pdf',
   'downloads/BP-2P-30-0001.pdf',
-  'downloads/BP-2P-95-0001.pdf',
 ].map((fileName) => fileName.toLowerCase()));
 
 function toReleasePath(fileName) {

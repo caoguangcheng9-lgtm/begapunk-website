@@ -281,19 +281,6 @@ a:hover { color: var(--primary-dark); }
     margin-bottom:20px; letter-spacing:-0.02em;
 }
 .hero h1 .highlight { color:var(--primary); }
-.hero-sub {
-    font-size:1.1875rem; color:rgba(255,255,255,0.75);
-    margin-bottom:32px; max-width:520px;
-}
-.hero-stats {
-    display:flex; gap:40px; margin-bottom:36px;
-}
-.hero-stats .stat-number {
-    font-size:2.50rem; font-weight:700; color:var(--primary);
-}
-.hero-stats .stat-label {
-    font-size:0.85rem; color:rgba(255,255,255,0.6);
-}
 .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
 .btn {
     display:inline-flex; align-items:center; gap:8px;
@@ -405,38 +392,9 @@ a:hover { color: var(--primary-dark); }
 .hero-deublin .hero-def {
     color: rgba(255,255,255,0.72) !important;
     max-width: 560px;
-}
-.hero-deublin .hero-sub {
-    font-size: 1.0625rem;
-    color: rgba(255,255,255,0.82);
-    max-width: 590px;
-    margin-bottom: 26px;
+    margin-bottom: 28px;
+    font-size: 1.02rem;
     line-height: 1.6;
-}
-
-.hero-deublin .hero-stats {
-    display: flex;
-    gap: 32px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-}
-
-.hero-deublin .hero-stats .stat-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.hero-deublin .hero-stats .stat-number {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #60a5fa;
-    line-height: 1.2;
-}
-
-.hero-deublin .hero-stats .stat-label {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 2px;
 }
 
 .hero-deublin .hero-btns {
@@ -458,8 +416,6 @@ a:hover { color: var(--primary-dark); }
 
 .hero-engineering-panel {
     width: 100%;
-    display: grid;
-    gap: 18px;
 }
 
 .hero-product-stage {
@@ -535,46 +491,95 @@ a:hover { color: var(--primary-dark); }
 .tag-passages { top: 7%; left: 8%; }
 .tag-media { top: 24%; right: 4%; }
 .tag-mounting { bottom: 23%; left: 1%; }
-.tag-step { bottom: 4%; right: 14%; }
 
-.hero-application-strip {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    max-width: calc(100% - 150px);
+/* ===== HOMEPAGE APPLICATION PATHS ===== */
+.home-application-paths {
+    padding: 34px 0 40px;
+    border-top: 1px solid rgba(147,197,253,0.14);
+    background: #0d1728;
+    color: #fff;
 }
 
-.hero-application-strip a {
-    min-height: 74px;
+.home-application-paths h2 {
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.home-application-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.home-application-card {
+    min-width: 0;
+    min-height: 112px;
+    display: grid;
+    grid-template-columns: 50px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid rgba(147,197,253,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.055);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.home-application-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(96,165,250,0.66);
+    background: rgba(30,110,184,0.2);
+    color: #fff;
+}
+
+.home-application-card:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+.home-application-icon {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(37,99,235,0.2);
+    color: #60a5fa;
+}
+
+.home-application-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.home-application-copy {
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    padding: 14px 14px;
-    border: 1px solid rgba(255,255,255,0.13);
-    border-radius: 6px;
-    background: rgba(255,255,255,0.07);
+    gap: 5px;
+}
+
+.home-application-copy strong {
     color: #fff;
+    font-size: 0.94rem;
+    line-height: 1.28;
 }
 
-.hero-application-strip a:hover {
-    transform: translateY(-2px);
-    border-color: rgba(96,165,250,0.62);
-    background: rgba(30,110,184,0.28);
-    color: #fff;
-}
-
-.hero-application-strip span {
-    font-size: 0.82rem;
-    font-weight: 800;
-    line-height: 1.22;
-}
-
-.hero-application-strip strong {
-    color: rgba(255,255,255,0.62);
-    font-size: 0.72rem;
-    font-weight: 500;
-    line-height: 1.3;
+.home-application-copy small {
+    color: rgba(255,255,255,0.66);
+    font-size: 0.76rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
 }
 
 /* ===== TRUST BAR ===== */
@@ -866,62 +871,6 @@ a:hover { color: var(--primary-dark); }
     clip:rect(0, 0, 0, 0);
     white-space:nowrap;
     border:0;
-}
-.portal-search {
-    background:#f7f9fc;
-    border-bottom:1px solid var(--border);
-    padding:18px 0;
-}
-.portal-search-grid {
-    display:grid;
-    grid-template-columns:auto auto minmax(280px, 1fr) auto;
-    gap:10px;
-    align-items:center;
-    background:#0b65b9;
-    padding:12px;
-    border-radius:4px;
-}
-.portal-search-tab,
-.portal-part-link {
-    min-height:44px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0 18px;
-    color:#fff;
-    background:rgba(255,255,255,0.14);
-    border:1px solid rgba(255,255,255,0.18);
-    border-radius:3px;
-    font-size:0.86rem;
-    font-weight:700;
-}
-.portal-search-tab.active {
-    background:#fff;
-    color:#0b65b9;
-}
-.portal-search-form {
-    display:grid;
-    grid-template-columns:minmax(0, 1fr) 104px;
-    gap:0;
-    min-width:0;
-}
-.portal-search-form input {
-    width:100%;
-    min-height:44px;
-    border:0;
-    padding:0 14px;
-    font-size:0.92rem;
-    border-radius:3px 0 0 3px;
-}
-.portal-search-form button {
-    min-height:44px;
-    border:0;
-    background:#111827;
-    color:#fff;
-    font-weight:800;
-    font-size:0.88rem;
-    cursor:pointer;
-    border-radius:0 3px 3px 0;
 }
 .portal-section {
     padding:32px 0;
@@ -1418,12 +1367,10 @@ html[data-bp-consent-ui="closing"] .floating-cta {
     .hero-deublin-text { flex: 1 1 auto; width: 100%; padding: 16px 0 0; }
     .hero-deublin-visual { flex: 1 1 auto; width: 100%; }
     .hero-deublin h1 { font-size:2.1rem; max-width: 760px; }
-    .hero-deublin .hero-def,
-    .hero-deublin .hero-sub { max-width: 760px; }
+    .hero-deublin .hero-def { max-width: 760px; }
     .hero-product-stage { min-height: 270px; }
-    .hero-application-strip {
+    .home-application-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 100%;
     }
     .industries-grid { grid-template-columns:repeat(2,1fr); }
     .products-grid { grid-template-columns:repeat(3,1fr); }
@@ -1467,19 +1414,8 @@ html[data-bp-consent-ui="closing"] .floating-cta {
         padding: 7px 12px;
         margin-bottom: 16px;
     }
-    .hero-deublin .hero-def,
-    .hero-deublin .hero-sub {
+    .hero-deublin .hero-def {
         font-size: 0.95rem !important;
-    }
-    .hero-deublin .hero-stats {
-        gap: 18px;
-        margin-bottom: 24px;
-    }
-    .hero-deublin .hero-stats .stat-number {
-        font-size: 1.45rem;
-    }
-    .hero-deublin .hero-stats .stat-label {
-        font-size: 0.74rem;
     }
     .hero-deublin .hero-btns { justify-content: flex-start; }
     .hero-product-stage {
@@ -1493,15 +1429,8 @@ html[data-bp-consent-ui="closing"] .floating-cta {
     .tag-passages { top: 2%; left: 4%; }
     .tag-media { top: 18%; right: 2%; }
     .tag-mounting { bottom: 18%; left: 0; }
-    .tag-step { bottom: 0; right: 4%; }
-    .hero-application-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 100%;
-    }
-    .hero-application-strip a {
-        min-height: 68px;
-        padding: 12px;
-    }
+    .home-application-paths { padding: 30px 0 34px; }
+    .home-application-card { min-height: 100px; }
     .industries-grid { grid-template-columns:1fr; }
     .products-grid { grid-template-columns:repeat(2,1fr); }
     .testimonials-grid { grid-template-columns:1fr; }
@@ -3920,26 +3849,6 @@ line-height: 1.65;
         overflow-wrap: break-word;
     }
 
-    .hero-deublin .hero-sub {
-        display: none;
-    }
-
-    .hero-deublin .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-        margin-bottom: 16px;
-    }
-
-    .hero-deublin .hero-stats .stat-number {
-        font-size: 1.38rem;
-    }
-
-    .hero-deublin .hero-stats .stat-label {
-        font-size: 0.72rem;
-        line-height: 1.25;
-    }
-
     .hero-deublin .hero-btns {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -3952,38 +3861,6 @@ line-height: 1.65;
         padding: 10px 8px;
         font-size: 0.82rem;
         justify-content: center;
-    }
-
-    .portal-search {
-        padding:12px 0;
-    }
-
-    .portal-search-grid {
-        grid-template-columns:1fr;
-        padding:10px;
-        gap:8px;
-    }
-
-    .portal-search-tab,
-    .portal-part-link {
-        min-height:42px;
-        font-size:0.84rem;
-    }
-
-    .portal-search-form {
-        grid-template-columns:1fr;
-        gap:8px;
-    }
-
-    .portal-search-form input,
-    .portal-search-form button {
-        min-height:42px;
-        font-size:0.86rem;
-    }
-
-    .portal-search-form input,
-    .portal-search-form button {
-        border-radius:3px;
     }
 
     .portal-section {
@@ -4109,10 +3986,14 @@ line-height: 1.65;
     .tag-passages { top: 4%; left: 4%; }
     .tag-media { top: 11%; right: 4%; }
     .tag-mounting { bottom: 11%; left: 4%; }
-    .tag-step { bottom: 4%; right: 4%; }
 
-    .hero-application-strip {
-        display: none;
+    .home-application-paths h2 {
+        font-size: 1.32rem;
+        margin-bottom: 16px;
+    }
+
+    .home-application-card {
+        padding: 16px;
     }
 
     .industries-grid,
@@ -4444,7 +4325,6 @@ line-height: 1.65;
     }
 
     .hero-deublin .hero-def,
-    .hero-deublin .hero-sub,
     .products-hero p,
     .contact-hero p,
     .blog-hero p,
@@ -4452,27 +4332,6 @@ line-height: 1.65;
     .app-hero p,
     .faq-hero p {
         max-width: 34ch;
-    }
-
-    .hero-deublin .hero-stats {
-        gap: 8px;
-    }
-
-    html[lang="de"] .hero-deublin .hero-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .hero-deublin .hero-stats .stat-number {
-        font-size: 1.3rem;
-    }
-
-    .hero-deublin .hero-stats .stat-item {
-        min-width: 0;
-    }
-
-    .hero-deublin .hero-stats .stat-label {
-        overflow-wrap: anywhere;
-        hyphens: auto;
     }
 
     .hero-product-stage {
@@ -4483,13 +4342,32 @@ line-height: 1.65;
         font-size: 0.62rem;
     }
 
-    .tag-media,
-    .tag-step {
+    .tag-media {
         display: none;
     }
 
-    .hero-application-strip {
+    .home-application-grid {
         grid-template-columns: 1fr;
+    }
+
+    .home-application-paths {
+        padding: 26px 0 30px;
+    }
+
+    .home-application-paths h2 {
+        text-align: left;
+    }
+
+    .home-application-card {
+        min-height: 92px;
+        grid-template-columns: 46px minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .home-application-icon {
+        width: 46px;
+        height: 46px;
     }
 
     .products-hero h1,

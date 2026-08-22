@@ -2026,7 +2026,7 @@ function regressionCaseSection(conflictDocument) {
     `| \`BP-4P-30-0001\` | \`passages\` | 4 passages retained; Ø30 mm bore excluded from passage count; ${caseStatus("BP-4P-30-0001", "passages")} |`,
     `| \`BP-4P-30-0001\` | \`maximum_speed\` | Current sources show 200 RPM; historical 80 RPM does not create an active conflict; ${caseStatus("BP-4P-30-0001", "maximum_speed")} |`,
     `| \`BP-1P-0003\` | \`operating_temperature\` | Current sources show -20°C to +80°C; historical +120°C does not create an active conflict; ${caseStatus("BP-1P-0003", "operating_temperature")} |`,
-    `| \`BP-2P-95-0001\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies \`BP-2P-95-0005\`; it is recorded as \`source-identity-mismatch\` and excluded before any test-pressure interpretation. |`,
+    `| \`BP-2P-95-0005\` | \`test_pressure\` | Current public page does not directly state 12 MPa. The PDF at the matching filename internally identifies \`BP-2P-95-0005\`; it is recorded as \`source-identity-mismatch\` and excluded before any test-pressure interpretation. |`,
     `| \`BP-2P-50-0001\` | mounting semantics | Both current descriptions resolve to stator \`4xm5\` and rotor \`6xm5\`; thread depth does not create a threaded mounting style or active conflict. |`,
     `| \`BP-2P-0002\` | \`port_thread\` | \`G1/4 and G1/8 ports\` resolves to \`g1/4\\|g1/8\`; the \`g1/8\` subset is retained as \`coverage-difference\`, not an active conflict. |`,
     "",

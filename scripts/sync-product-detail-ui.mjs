@@ -10,34 +10,89 @@ const MODE = process.argv[2] || '';
 const EXPECTED_MODEL_COUNT = 16;
 const EXPECTED_PAGE_COUNT = 64;
 const EXPECTED_STYLE_HASH = '7D81DA13137D9D1435ABCABF962E8E46C20DB03F6B52F8BA45F2E71E9EAAF9FB';
-const EXPECTED_SHARED_CSS_HASH = '1742E09D412EA898C37A0F438CBFEEDEFBC6DBB02DE5537613108F9BF314B785';
+const EXPECTED_SHARED_CSS_HASH = '573B56D887CFE9E88CCFD8B8CF251DF1D9E35B777205BE1E34E735B01DF3A43C';
 const EXPECTED_SHARED_JS_HASH = '1478FE8C38A0383C2364F959C068D2D7D16A99B27FFA47ECBCD57F2D50A0CEB6';
-const RESOURCE_VERSION = '20260816-product-detail1';
+const PRODUCT_STYLE_VERSION = '20260819-product-first-view1';
+const PRODUCT_SCRIPT_VERSION = '20260816-product-detail1';
 const LOCALE_PREFIXES = ['', 'de', 'ja', 'ru'];
 const PANEL_NAMES = ['specs', 'compat', 'install', 'downloads'];
+const JUMP_LINKS = Object.freeze([
+  Object.freeze({ key: 'specs', href: '#panel-specs' }),
+  Object.freeze({ key: 'compat', href: '#panel-compat' }),
+  Object.freeze({ key: 'install', href: '#panel-install' }),
+  Object.freeze({ key: 'downloads', href: '#panel-downloads' }),
+  Object.freeze({ key: 'faq', href: '#faq' }),
+]);
+const KEY_SPEC_LABEL_KEYS = Object.freeze([
+  'performance', 'body', 'seal', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels',
+]);
+const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
+  'BP-1P-0003': Object.freeze(['performance', 'body', 'seal', 'ports', 'media', 'leadTime']),
+  'BP-1P-0006': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
+  'BP-2P-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-2P-0002': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
+  'BP-2P-08-0001': Object.freeze(['performance', 'body', 'seal', 'ports', 'media', 'leadTime']),
+  'BP-2P-130-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-2P-16-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-2P-30-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-2P-50-0001': Object.freeze(['performance', 'protection', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-2P-95-0005': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-3P-0004': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-3P-0006': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
+  'BP-3P-0007': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
+  'BP-3P-S06-0001': Object.freeze(['channels', 'performance', 'body', 'seal', 'mount', 'leadTime']),
+  'BP-4P-30-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-8P-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+});
 const MANUAL_COPY_PATH = path.join(ROOT, 'i18n', 'manual', 'product-detail-ui.json');
 const EXPECTED_UI_COPY = Object.freeze({
   en: Object.freeze({
     skipLink: 'Skip to main content',
     productInformationLabel: 'Product information',
     productImagesLabel: 'Product images',
+    onThisPageLabel: 'On this page',
+    jumpToLabel: 'Jump to:',
+    shareMenuLabel: 'Share',
+    keyProductParametersLabel: 'Key product parameters',
+    leadTimeValue: 'Confirmed in quotation/order',
   }),
   de: Object.freeze({
     skipLink: 'Zum Hauptinhalt springen',
     productInformationLabel: 'Produktinformationen',
     productImagesLabel: 'Produktbilder',
+    onThisPageLabel: 'Auf dieser Seite',
+    jumpToLabel: 'Direkt zu:',
+    shareMenuLabel: 'Teilen',
+    keyProductParametersLabel: 'Wichtige Produktparameter',
+    leadTimeValue: 'Im Angebot/Auftrag bestätigt',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
     productInformationLabel: '製品情報',
     productImagesLabel: '製品画像',
+    onThisPageLabel: 'このページ内',
+    jumpToLabel: '移動先：',
+    shareMenuLabel: 'シェア',
+    keyProductParametersLabel: '主要製品仕様',
+    leadTimeValue: '見積書・注文書で確認',
   }),
   ru: Object.freeze({
     skipLink: 'Перейти к основному содержанию',
     productInformationLabel: 'Информация о продукте',
     productImagesLabel: 'Изображения продукта',
+    onThisPageLabel: 'На этой странице',
+    jumpToLabel: 'Перейти к:',
+    shareMenuLabel: 'Поделиться',
+    keyProductParametersLabel: 'Основные параметры изделия',
+    leadTimeValue: 'Подтверждается в коммерческом предложении/заказе',
   }),
 });
+const SHARE_CHANNELS = Object.freeze([
+  Object.freeze({ key: 'linkedin', legacyClass: 'share-linkedin', label: 'LinkedIn' }),
+  Object.freeze({ key: 'x', legacyClass: 'share-twitter', label: 'X' }),
+  Object.freeze({ key: 'facebook', legacyClass: 'share-facebook', label: 'Facebook' }),
+  Object.freeze({ key: 'whatsapp', legacyClass: 'share-whatsapp', label: 'WhatsApp' }),
+]);
 
 const legacyFunctionBlocks = [
   `// Tab Switch
@@ -84,6 +139,110 @@ function escapeAttribute(value) {
   return escapeText(value).replaceAll('"', '&quot;');
 }
 
+function normalizedShareHref(value) {
+  return String(value || '').replaceAll('&amp;', '&').replaceAll('&#x26;', '&');
+}
+
+function localizedProductUrl(relativePath) {
+  return `https://www.begapunk.com/${relativePath.replaceAll('\\', '/')}`;
+}
+
+function localizedShareHref(channel, href, relativePath) {
+  const parsed = new URL(href);
+  const productUrl = localizedProductUrl(relativePath);
+  if (channel === 'linkedin') parsed.searchParams.set('url', productUrl);
+  else if (channel === 'x') parsed.searchParams.set('url', productUrl);
+  else if (channel === 'facebook') parsed.searchParams.set('u', productUrl);
+  else if (channel === 'whatsapp') {
+    const existing = String(parsed.searchParams.get('text') || '')
+      .replace(/https:\/\/www\.begapunk\.com\/[^\s]+\.html/giu, '')
+      .replace(/\s+-\s*$/u, '')
+      .trim();
+    parsed.searchParams.set('text', existing ? `${existing} - ${productUrl}` : productUrl);
+  } else throw new Error(`${relativePath}: unsupported share channel ${channel}.`);
+  return parsed.toString();
+}
+
+function modelForFile(relativePath) {
+  return path.basename(relativePath, '.html');
+}
+
+function keySpecKeysForModel(contract, model, relativePath) {
+  const keys = contract.modelKeySpecKeys?.[model];
+  if (!Array.isArray(keys) || keys.length !== 6) {
+    throw new Error(`${relativePath}: approved six-item key-spec category contract is missing.`);
+  }
+  return keys;
+}
+
+function shareOptionsFromDocument($, relativePath) {
+  const canonical = $('a.pd-share-option');
+  if (canonical.length) {
+    if (canonical.length !== SHARE_CHANNELS.length) {
+      throw new Error(`${relativePath}: expected ${SHARE_CHANNELS.length} canonical share links; found ${canonical.length}.`);
+    }
+    return SHARE_CHANNELS.map((channel, index) => {
+      const anchor = canonical.eq(index);
+      if (anchor.attr('data-share-channel') !== channel.key) {
+        throw new Error(`${relativePath}: canonical ${channel.label} share link is out of order.`);
+      }
+      const href = localizedShareHref(channel.key, normalizedShareHref(anchor.attr('href')), relativePath);
+      if (!href) throw new Error(`${relativePath}: canonical ${channel.label} share href is empty.`);
+      return { ...channel, href };
+    });
+  }
+
+  return SHARE_CHANNELS.map((channel) => {
+    const anchor = $(`a.${channel.legacyClass}`);
+    if (anchor.length !== 1) {
+      throw new Error(`${relativePath}: expected one legacy ${channel.label} share link; found ${anchor.length}.`);
+    }
+    const href = localizedShareHref(channel.key, normalizedShareHref(anchor.attr('href')), relativePath);
+    if (!href) throw new Error(`${relativePath}: legacy ${channel.label} share href is empty.`);
+    return { ...channel, href };
+  });
+}
+
+function compactShareMenuMarkup(options, copy, eol) {
+  return [
+    '   <details class="pd-share-menu" data-search-exclude>',
+    `    <summary class="pd-share-trigger">${escapeText(copy.shareMenuLabel)}</summary>`,
+    '    <div class="pd-share-options">',
+    ...options.map((option) => (
+      `     <a class="pd-share-option notranslate" data-share-channel="${option.key}" href="${escapeAttribute(option.href)}" target="_blank" rel="noopener noreferrer" translate="no">${option.label}</a>`
+    )),
+    '    </div>',
+    '   </details>',
+  ].join(eol);
+}
+
+function jumpNavMarkup(copy, eol) {
+  const links = [];
+  JUMP_LINKS.forEach((item, index) => {
+    if (index) links.push('   <span class="pd-separator" aria-hidden="true">·</span>');
+    links.push(`   <a href="${item.href}">${escapeText(copy.jumpLinks[item.key])}</a>`);
+  });
+  return [
+    `  <nav class="pd-jump-nav" aria-label="${escapeAttribute(copy.onThisPageLabel)}">`,
+    `   <span class="pd-jump-label">${escapeText(copy.jumpToLabel)}</span>`,
+    ...links,
+    '  </nav>',
+  ].join(eol);
+}
+
+function keySpecsMarkup(keys, values, copy, eol) {
+  if (keys.length !== 6 || values.length !== 6) {
+    throw new Error(`Key-spec markup requires six keys and six values; found ${keys.length}/${values.length}.`);
+  }
+  return [
+    `  <dl class="pd-key-specs" aria-label="${escapeAttribute(copy.keyProductParametersLabel)}">`,
+    ...keys.map((key, index) => (
+      `   <div class="pd-key-spec" data-spec-key="${key}"><dt>${escapeText(copy.keySpecLabels[key])}</dt><dd>${escapeText(values[index])}</dd></div>`
+    )),
+    '  </dl>',
+  ].join(eol);
+}
+
 function replaceLiteralOnce(source, search, replacement, label) {
   const count = countOccurrences(source, search);
   if (count !== 1) throw new Error(`${label}: expected one literal match; found ${count}.`);
@@ -115,7 +274,7 @@ function resourcePrefix(relativePath) {
 }
 
 function validateManualCopy(contract) {
-  if (contract?.schemaVersion !== 1) throw new Error('Product-detail UI schemaVersion must be 1.');
+  if (contract?.schemaVersion !== 4) throw new Error('Product-detail UI schemaVersion must be 4.');
   if (contract?.review?.method !== 'AI-assisted target-market line-by-line localization review') {
     throw new Error('Product-detail UI review method is missing or unsupported.');
   }
@@ -126,19 +285,86 @@ function validateManualCopy(contract) {
   if (localeKeys.join(',') !== ['de', 'en', 'ja', 'ru'].join(',')) {
     throw new Error('Product-detail UI locales must be exactly EN, DE, JA, and RU.');
   }
-  const expectedKeys = ['productImagesLabel', 'productInformationLabel', 'skipLink'];
+
+  const expectedModels = Object.keys(EXPECTED_MODEL_KEY_SPEC_KEYS).sort();
+  const actualModels = Object.keys(contract.modelKeySpecKeys || {}).sort();
+  if (actualModels.join(',') !== expectedModels.join(',')) {
+    throw new Error('Product-detail UI modelKeySpecKeys must exactly cover the 16 approved models.');
+  }
+  for (const model of expectedModels) {
+    const actual = contract.modelKeySpecKeys[model];
+    const expected = EXPECTED_MODEL_KEY_SPEC_KEYS[model];
+    if (!Array.isArray(actual) || actual.length !== 6 || actual.join(',') !== expected.join(',')) {
+      throw new Error(`${model}: key-spec category order does not match the approved model contract.`);
+    }
+  }
+
+  const expectedKeys = [
+    'jumpLinks',
+    'jumpToLabel',
+    'keyProductParametersLabel',
+    'keySpecLabels',
+    'keySpecPropertyNames',
+    'keySpecValueOverrides',
+    'leadTimeValue',
+    'onThisPageLabel',
+    'productImagesLabel',
+    'productInformationLabel',
+    'shareMenuLabel',
+    'skipLink',
+  ].sort();
+  const scalarKeys = Object.keys(EXPECTED_UI_COPY.en);
   for (const locale of localeKeys) {
     const copy = contract.locales[locale];
     if (Object.keys(copy || {}).sort().join(',') !== expectedKeys.join(',')) {
       throw new Error(`${locale}: product-detail UI keys do not match the contract.`);
     }
-    for (const key of expectedKeys) {
+    for (const key of scalarKeys) {
       if (typeof copy[key] !== 'string' || !copy[key].trim()) {
         throw new Error(`${locale}.${key} must be a non-empty string.`);
       }
       if (copy[key] !== EXPECTED_UI_COPY[locale][key]) {
         throw new Error(`${locale}.${key} does not match the approved localization.`);
       }
+    }
+
+    const jumpKeys = Object.keys(copy.jumpLinks || {}).sort();
+    const expectedJumpKeys = JUMP_LINKS.map((item) => item.key).sort();
+    if (jumpKeys.join(',') !== expectedJumpKeys.join(',')) {
+      throw new Error(`${locale}.jumpLinks must exactly cover the five approved jump targets.`);
+    }
+    for (const key of jumpKeys) {
+      if (typeof copy.jumpLinks[key] !== 'string' || !copy.jumpLinks[key].trim()) {
+        throw new Error(`${locale}.jumpLinks.${key} must be a non-empty string.`);
+      }
+    }
+
+    const labelKeys = Object.keys(copy.keySpecLabels || {}).sort();
+    if (labelKeys.join(',') !== [...KEY_SPEC_LABEL_KEYS].sort().join(',')) {
+      throw new Error(`${locale}.keySpecLabels must exactly cover the nine approved categories.`);
+    }
+    for (const key of labelKeys) {
+      if (typeof copy.keySpecLabels[key] !== 'string' || !copy.keySpecLabels[key].trim()) {
+        throw new Error(`${locale}.keySpecLabels.${key} must be a non-empty string.`);
+      }
+    }
+
+    const propertyKeys = Object.keys(copy.keySpecPropertyNames || {}).sort();
+    if (propertyKeys.join(',') !== ['media', 'mount'].join(',')) {
+      throw new Error(`${locale}.keySpecPropertyNames must exactly cover media and mount.`);
+    }
+    for (const key of propertyKeys) {
+      if (typeof copy.keySpecPropertyNames[key] !== 'string' || !copy.keySpecPropertyNames[key].trim()) {
+        throw new Error(`${locale}.keySpecPropertyNames.${key} must be a non-empty string.`);
+      }
+    }
+
+    const overrides = copy.keySpecValueOverrides || {};
+    if (Object.keys(overrides).join(',') !== 'BP-2P-50-0001'
+      || Object.keys(overrides['BP-2P-50-0001'] || {}).join(',') !== 'media'
+      || typeof overrides['BP-2P-50-0001'].media !== 'string'
+      || !overrides['BP-2P-50-0001'].media.trim()) {
+      throw new Error(`${locale}.keySpecValueOverrides must contain only the approved BP-2P-50-0001 media value.`);
     }
   }
 }
@@ -311,7 +537,7 @@ function assertLegacyStructure(source, relativePath) {
   }
 }
 
-function validateFinalStructure(source, relativePath, copy) {
+function validateFinalStructure(source, relativePath, copy, contract) {
   const $ = load(source, { decodeEntities: false });
   const prefix = resourcePrefix(relativePath);
   const tabs = $('.pd-tabs > a.pd-tab');
@@ -335,6 +561,150 @@ function validateFinalStructure(source, relativePath, copy) {
   const informationRegions = $('.pd-info[role="region"]');
   if (galleries.length !== 1 || galleries.attr('aria-label') !== copy.productImagesLabel) errors.push('image region label');
   if (informationRegions.length !== 1 || informationRegions.attr('aria-label') !== copy.productInformationLabel) errors.push('information region label');
+  const detailGrid = $('.pd-grid');
+  if (detailGrid.length !== 1
+    || detailGrid.children('.pd-gallery').first().get(0) !== galleries.get(0)
+    || detailGrid.children('.pd-info').first().get(0) !== informationRegions.get(0)) {
+    errors.push('image/information source order');
+  }
+  const legacyQuickLinks = informationRegions.children('div[style]').filter((_, element) => (
+    String($(element).attr('style') || '').includes('display:flex')
+    && $(element).find('a[href^="#panel-"]').length > 0
+  ));
+  if (legacyQuickLinks.length !== 0) errors.push('retired shortcut links');
+
+  const jumpNav = informationRegions.children('nav.pd-jump-nav');
+  const jumpLabel = jumpNav.children('.pd-jump-label');
+  const jumpAnchors = jumpNav.children('a');
+  const jumpSeparators = jumpNav.children('.pd-separator[aria-hidden="true"]');
+  if (jumpNav.length !== 1
+    || jumpNav.attr('aria-label') !== copy.onThisPageLabel
+    || jumpLabel.length !== 1
+    || jumpLabel.text().trim() !== copy.jumpToLabel
+    || jumpAnchors.length !== JUMP_LINKS.length
+    || jumpSeparators.length !== JUMP_LINKS.length - 1) {
+    errors.push('first-view jump navigation');
+  } else {
+    JUMP_LINKS.forEach((item, index) => {
+      if (jumpAnchors.eq(index).attr('href') !== item.href
+        || jumpAnchors.eq(index).text().trim() !== copy.jumpLinks[item.key]) {
+        errors.push(`jump link ${item.key}`);
+      }
+    });
+  }
+
+  const primaryActions = informationRegions.children('.pd-actions');
+  const primaryActionLinks = primaryActions.children('a');
+  if (primaryActions.length !== 1 || primaryActionLinks.length !== 2
+    || !String(primaryActionLinks.eq(0).attr('href') || '').includes('request=quote')
+    || !primaryActionLinks.eq(0).hasClass('btn-primary')
+    || !String(primaryActionLinks.eq(1).attr('href') || '').includes('request=3d-step')
+    || !primaryActionLinks.eq(1).hasClass('btn-secondary')) {
+    errors.push('primary action hierarchy');
+  }
+  const utilityRegion = informationRegions.children('.pd-utility-links');
+  const utilityLinks = utilityRegion.children('a.pd-utility-link');
+  const utilitySeparators = utilityRegion.children('.pd-separator[aria-hidden="true"]');
+  const supportingHref = utilityLinks.eq(0).attr('href') || '';
+  const supportingActionIsPdf = /\.pdf(?:$|[?#])/i.test(supportingHref)
+    && utilityLinks.eq(0).attr('download') !== undefined;
+  const supportingActionIsVerifiedDrawing = supportingHref.includes('request=verified-drawing');
+  if (utilityRegion.length !== 1
+    || utilityRegion.children().length !== 5
+    || utilityLinks.length !== 2
+    || utilitySeparators.length !== 2
+    || (!supportingActionIsPdf && !supportingActionIsVerifiedDrawing)
+    || utilityLinks.eq(1).attr('href') !== 'product-comparison.html') {
+    errors.push('utility action hierarchy');
+  }
+
+  const model = modelForFile(relativePath);
+  const expectedSpecKeys = keySpecKeysForModel(contract, model, relativePath);
+  const keySpecs = informationRegions.children('dl.pd-key-specs');
+  const keySpecItems = keySpecs.children('div.pd-key-spec');
+  if (keySpecs.length !== 1
+    || keySpecs.attr('aria-label') !== copy.keyProductParametersLabel
+    || keySpecItems.length !== 6) {
+    errors.push('six key product parameters');
+  } else {
+    keySpecItems.each((index, element) => {
+      const item = $(element);
+      const key = expectedSpecKeys[index];
+      if (item.attr('data-spec-key') !== key
+        || item.children('dt').length !== 1
+        || item.children('dt').text().trim() !== copy.keySpecLabels[key]
+        || item.children('dd').length !== 1
+        || !item.children('dd').text().trim()) {
+        errors.push(`key product parameter ${index + 1}`);
+      }
+    });
+  }
+  if ($('.pd-highlights,.pd-hl').length !== 0) errors.push('retired first-view highlights');
+  if ($('.social-share-wrap,.social-share,.share-btn,.pd-share-link').length !== 0) {
+    errors.push('retired social-share controls');
+  }
+  if ($('.pd-share-footer').length !== 0) errors.push('retired footer share controls');
+  const shareMenu = utilityRegion.children('details.pd-share-menu[data-search-exclude]');
+  const shareTrigger = shareMenu.children('summary.pd-share-trigger');
+  const shareOptions = shareMenu.children('.pd-share-options').children('a.pd-share-option');
+  if (shareMenu.length !== 1 || shareMenu.attr('open') !== undefined
+    || shareTrigger.length !== 1 || shareTrigger.text().trim() !== copy.shareMenuLabel
+    || shareOptions.length !== SHARE_CHANNELS.length) {
+    errors.push('first-view share menu structure');
+  } else {
+    const expectedProductUrl = localizedProductUrl(relativePath);
+    SHARE_CHANNELS.forEach((channel, index) => {
+      const option = shareOptions.eq(index);
+      const href = normalizedShareHref(option.attr('href'));
+      const relTokens = String(option.attr('rel') || '').split(/\s+/);
+      let parsed;
+      try {
+        parsed = new URL(href);
+      } catch {
+        errors.push(`share ${channel.key} URL`);
+        return;
+      }
+      if (option.attr('data-share-channel') !== channel.key
+        || option.text().trim() !== channel.label
+        || option.attr('target') !== '_blank'
+        || !relTokens.includes('noopener')
+        || !relTokens.includes('noreferrer')
+        || option.attr('translate') !== 'no'
+        || !option.hasClass('notranslate')
+        || option.attr('aria-label') !== undefined) {
+        errors.push(`share ${channel.key} attributes`);
+      }
+      if (channel.key === 'linkedin'
+        && (parsed.hostname !== 'www.linkedin.com'
+          || parsed.pathname !== '/sharing/share-offsite/'
+          || parsed.searchParams.get('url') !== expectedProductUrl)) {
+        errors.push('share linkedin destination');
+      }
+      if (channel.key === 'x'
+        && (parsed.hostname !== 'twitter.com'
+          || parsed.pathname !== '/intent/tweet'
+          || parsed.searchParams.get('url') !== expectedProductUrl
+          || !parsed.searchParams.get('text'))) {
+        errors.push('share x destination');
+      }
+      if (channel.key === 'facebook'
+        && (parsed.hostname !== 'www.facebook.com'
+          || parsed.pathname !== '/sharer/sharer.php'
+          || parsed.searchParams.get('u') !== expectedProductUrl)) {
+        errors.push('share facebook destination');
+      }
+      if (channel.key === 'whatsapp'
+        && (parsed.hostname !== 'api.whatsapp.com'
+          || parsed.pathname !== '/send'
+          || !String(parsed.searchParams.get('text') || '').includes(expectedProductUrl))) {
+        errors.push('share whatsapp destination');
+      }
+    });
+  }
+  if ($('[class*="pd-pilot-"],body.page-product-detail-pilot').length !== 0
+    || $('link[href*="product-detail-first-view-pilot.css"]').length !== 0) {
+    errors.push('retired pilot markers');
+  }
   if ($('#main-img').length !== 1) errors.push('main image');
   if ($('.pd-tabs').length !== 1 || $('.pd-tab').length !== 4 || tabs.length !== 4 || panels.length !== 4) {
     errors.push('tab/panel count');
@@ -375,8 +745,8 @@ function validateFinalStructure(source, relativePath, copy) {
   }
   if ($('[onclick*="switchTab"],[onclick*="toggleFAQ"],[onclick*="switchImage"]').length) errors.push('legacy onclick');
   if ($('style').length !== 0) errors.push('inline style block');
-  if ($(`link[href="${prefix}css/product-detail.css?v=${RESOURCE_VERSION}"]`).length !== 1) errors.push('product CSS resource');
-  const productScripts = $(`script[src="${prefix}js/product-detail.js?v=${RESOURCE_VERSION}"][defer]`);
+  if ($(`link[href="${prefix}css/product-detail.css?v=${PRODUCT_STYLE_VERSION}"]`).length !== 1) errors.push('product CSS resource');
+  const productScripts = $(`script[src="${prefix}js/product-detail.js?v=${PRODUCT_SCRIPT_VERSION}"][defer]`);
   if (productScripts.length !== 1) errors.push('product JS resource');
   if (!$('body').children().first().is('a.skip-link[data-search-exclude][href="#main-content"]')) {
     errors.push('skip-link order');
@@ -396,7 +766,7 @@ function transformLegacyPage(source, relativePath, contract) {
   let next = source;
 
   const globalCss = `<link rel="stylesheet" href="${prefix}css/style.css?v=20260817-cls1">`;
-  const productCss = `<link rel="stylesheet" href="${prefix}css/product-detail.css?v=${RESOURCE_VERSION}">`;
+  const productCss = `<link rel="stylesheet" href="${prefix}css/product-detail.css?v=${PRODUCT_STYLE_VERSION}">`;
   next = replaceLiteralOnce(next, globalCss, `${globalCss}${eol} ${productCss}`, `${relativePath} CSS resource`);
   next = replaceLiteralOnce(next, styleBlocks[0], '', `${relativePath} inline CSS removal`);
 
@@ -477,17 +847,244 @@ function transformLegacyPage(source, relativePath, contract) {
   }
 
   const navScript = `<script defer="" src="${prefix}js/site-navigation.js?v=20260808-nav1"></script>`;
-  const productScript = `<script defer src="${prefix}js/product-detail.js?v=${RESOURCE_VERSION}"></script>`;
+  const productScript = `<script defer src="${prefix}js/product-detail.js?v=${PRODUCT_SCRIPT_VERSION}"></script>`;
   next = replaceLiteralOnce(next, navScript, `${productScript}${eol}${navScript}`, `${relativePath} JS resource`);
 
-  validateFinalStructure(next, relativePath, copy);
   assertFrozenSnapshot(protectedBefore, frozenSnapshot(next), relativePath);
   return next;
 }
 
+function firstViewProtectedSnapshot(source) {
+  const $ = load(source, { decodeEntities: false });
+  $('link[rel="stylesheet"][href*="css/product-detail.css?v="]').attr('href', '__PRODUCT_DETAIL_CSS__');
+  $('link[rel="stylesheet"][href*="product-detail-first-view-pilot.css"]').remove();
+  $('body').removeClass('page-product-detail-pilot');
+  const information = $('.pd-info');
+  information.children('div[style]').filter((_, element) => (
+    String($(element).attr('style') || '').includes('display:flex')
+    && $(element).find('a[href^="#panel-"]').length > 0
+  )).remove();
+  information.children(
+    '.pd-actions,.pd-utility-links,.social-share-wrap,.pd-highlights,.pd-key-specs,nav.pd-jump-nav,nav.pd-pilot-jump',
+  ).remove();
+  $('.pd-share-footer').remove();
+  $('.pd-technical-note').removeClass('pd-technical-note');
+  return normalizedEol($.html()).replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
+}
+
+function anchorHref(anchor) {
+  return anchor.match(/\bhref="([^"]+)"/)?.[1] || '';
+}
+
+function asUtilityLink(anchor, relativePath) {
+  if (countOccurrences(anchor, 'class="pd-utility-link"') === 1) return anchor;
+  if (countOccurrences(anchor, 'class="btn btn-secondary"') === 1) {
+    return anchor.replace('class="btn btn-secondary"', 'class="pd-utility-link"');
+  }
+  throw new Error(`${relativePath}: supporting action is not an approved secondary button or utility link.`);
+}
+
+function withoutDecorativeActionEmoji(anchor) {
+  return anchor.replace(/>(\s*)(?:🔧|📄)\s*/u, '>$1');
+}
+
+function actionSetsFromDocument($, relativePath) {
+  const information = $('.pd-info');
+  const actionRegion = information.children('.pd-actions');
+  if (actionRegion.length !== 1) {
+    throw new Error(`${relativePath}: expected one product action block; found ${actionRegion.length}.`);
+  }
+  const actionAnchors = actionRegion.children('a').toArray().map((element) => $.html(element));
+  let primary;
+  let utility;
+  if (actionAnchors.length === 4) {
+    primary = actionAnchors.slice(0, 2);
+    utility = actionAnchors.slice(2);
+  } else if (actionAnchors.length === 2) {
+    const utilityRegion = information.children('.pd-utility-links');
+    const utilityAnchors = utilityRegion.children('a.pd-utility-link').toArray().map((element) => $.html(element));
+    if (utilityRegion.length !== 1 || utilityAnchors.length !== 2) {
+      throw new Error(`${relativePath}: expected two supporting utility links; found ${utilityAnchors.length}.`);
+    }
+    primary = actionAnchors;
+    utility = utilityAnchors;
+  } else {
+    throw new Error(`${relativePath}: expected two or four product actions; found ${actionAnchors.length}.`);
+  }
+
+  primary = primary.map(withoutDecorativeActionEmoji);
+  utility = utility.map((anchor) => asUtilityLink(withoutDecorativeActionEmoji(anchor), relativePath));
+  if (!anchorHref(primary[0]).includes('request=quote')
+    || !anchorHref(primary[1]).includes('request=3d-step')
+    || (!/\.pdf(?:$|[?#])/i.test(anchorHref(utility[0]))
+      && !anchorHref(utility[0]).includes('request=verified-drawing'))
+    || anchorHref(utility[1]) !== 'product-comparison.html') {
+    throw new Error(`${relativePath}: product actions do not match quote / STEP / PDF-or-drawing / comparison order.`);
+  }
+  return { primary, utility };
+}
+
+function visibleKeySpecText($, element) {
+  const clone = $(element).clone();
+  clone.find('.icon').remove();
+  return clone.text().replace(/^\s*✓\s*/u, '').replace(/\s+/g, ' ').trim();
+}
+
+function visibleProductPropertyValue($, propertyName, relativePath) {
+  const matches = $('#panel-specs tr').filter((_, element) => (
+    $(element).children('th').length === 1
+    && $(element).children('th').text().replace(/\s+/g, ' ').trim() === propertyName
+  ));
+  if (matches.length !== 1 || matches.children('td').length !== 1) {
+    throw new Error(`${relativePath}: expected one visible product property ${JSON.stringify(propertyName)}; found ${matches.length}.`);
+  }
+  const value = matches.children('td').text().replace(/\s+/g, ' ').trim();
+  if (!value) throw new Error(`${relativePath}: visible product property ${JSON.stringify(propertyName)} is empty.`);
+  return value;
+}
+
+function supplementalKeySpecValue($, model, key, copy, relativePath) {
+  const override = copy.keySpecValueOverrides?.[model]?.[key];
+  if (typeof override === 'string' && override.trim()) return override.trim();
+  const propertyName = copy.keySpecPropertyNames?.[key];
+  if (!propertyName) {
+    throw new Error(`${relativePath}: no approved source property is configured for supplemental key spec ${key}.`);
+  }
+  return visibleProductPropertyValue($, propertyName, relativePath);
+}
+
+function keySpecValuesFromDocument($, relativePath, contract, copy) {
+  const model = modelForFile(relativePath);
+  const keys = keySpecKeysForModel(contract, model, relativePath);
+  const finalItems = $('.pd-info > .pd-key-specs > .pd-key-spec');
+  if (finalItems.length) {
+    if (finalItems.length !== 6) {
+      throw new Error(`${relativePath}: expected six existing semantic key specs; found ${finalItems.length}.`);
+    }
+    const values = finalItems.map((_, element) => $(element).children('dd').text().replace(/\s+/g, ' ').trim()).get();
+    if (values.some((value) => !value)) throw new Error(`${relativePath}: an existing semantic key-spec value is empty.`);
+    values[5] = copy.leadTimeValue;
+    return values;
+  }
+
+  const highlights = $('.pd-info > .pd-highlights > .pd-hl');
+  if (![4, 6].includes(highlights.length)) {
+    throw new Error(`${relativePath}: expected four candidate or six original highlights; found ${highlights.length}.`);
+  }
+  const values = highlights.map((_, element) => visibleKeySpecText($, element)).get();
+  if (values.some((value) => !value)) throw new Error(`${relativePath}: a legacy key-spec value is empty.`);
+  if (values.length === 6) return [...values.slice(0, 5), copy.leadTimeValue];
+
+  const supplementalKey = keys[4];
+  return [
+    ...values,
+    supplementalKeySpecValue($, model, supplementalKey, copy, relativePath),
+    copy.leadTimeValue,
+  ];
+}
+
+function replaceGovernedFirstView(source, markup, relativePath, eol) {
+  const priceStart = source.indexOf('<p class="pd-price-note">');
+  const priceEndTag = priceStart < 0 ? -1 : source.indexOf('</p>', priceStart);
+  if (priceStart < 0 || priceEndTag < 0) throw new Error(`${relativePath}: first-view price-note boundary is missing.`);
+  const contentStart = priceEndTag + '</p>'.length;
+  const informationEndPattern = /\r?\n[ \t]*<\/div>\r?\n(?:[ \t]*<\/div>)?[ \t]*<\/section>/;
+  const informationEnd = source.slice(contentStart).search(informationEndPattern);
+  if (informationEnd < 0) throw new Error(`${relativePath}: product-information closing boundary is missing.`);
+  return source.slice(0, contentStart)
+    + eol
+    + markup
+    + source.slice(contentStart + informationEnd);
+}
+
+function transformFirstView(source, relativePath, contract) {
+  const protectedBefore = firstViewProtectedSnapshot(source);
+  const locale = localeForFile(relativePath);
+  const copy = contract.locales[locale];
+  const model = modelForFile(relativePath);
+  const keys = keySpecKeysForModel(contract, model, relativePath);
+  const eol = source.includes('\r\n') ? '\r\n' : '\n';
+  const $ = load(source, { decodeEntities: false });
+  const actions = actionSetsFromDocument($, relativePath);
+  const shareOptions = shareOptionsFromDocument($, relativePath);
+  const keySpecValues = keySpecValuesFromDocument($, relativePath, contract, copy);
+  let next = source;
+
+  next = replaceRegexExact(
+    next,
+    /(<link rel="stylesheet" href="(?:\.\.\/)?css\/product-detail\.css)\?v=[^"]+(">)/g,
+    (_, start, end) => `${start}?v=${PRODUCT_STYLE_VERSION}${end}`,
+    1,
+    `${relativePath} product CSS cache key`,
+  );
+
+  const pilotStyleCount = (next.match(/^[ \t]*<link rel="stylesheet" href="(?:\.\.\/)?css\/product-detail-first-view-pilot\.css\?v=[^"]+">\r?\n?/gm) || []).length;
+  if (pilotStyleCount > 1) throw new Error(`${relativePath}: multiple pilot stylesheet links were found.`);
+  if (pilotStyleCount) {
+    next = replaceRegexExact(
+      next,
+      /^[ \t]*<link rel="stylesheet" href="(?:\.\.\/)?css\/product-detail-first-view-pilot\.css\?v=[^"]+">\r?\n?/gm,
+      '',
+      1,
+      `${relativePath} retired pilot stylesheet`,
+    );
+  }
+  const pilotBodyClassCount = countOccurrences(next, ' page-product-detail-pilot');
+  if (pilotBodyClassCount > 1) throw new Error(`${relativePath}: duplicate pilot body classes were found.`);
+  if (pilotBodyClassCount) next = next.replace(' page-product-detail-pilot', '');
+
+  const governedMarkup = [
+    jumpNavMarkup(copy, eol),
+    '  <div class="pd-actions">',
+    `   ${actions.primary[0]}`,
+    `   ${actions.primary[1]}`,
+    '  </div>',
+    '  <div class="pd-utility-links">',
+    `   ${actions.utility[0]}`,
+    '   <span class="pd-separator" aria-hidden="true">·</span>',
+    `   ${actions.utility[1]}`,
+    '   <span class="pd-separator" aria-hidden="true">·</span>',
+    compactShareMenuMarkup(shareOptions, copy, eol),
+    '  </div>',
+    keySpecsMarkup(keys, keySpecValues, copy, eol),
+  ].join(eol);
+  next = replaceGovernedFirstView(next, governedMarkup, relativePath, eol);
+
+  const footerSharePattern = /^[ \t]*<div class="pd-share-footer"(?: data-search-exclude)?>[\s\S]*?<\/details>\r?\n[ \t]*<\/div>\r?\n?/gm;
+  const footerShareCount = (next.match(footerSharePattern) || []).length;
+  if (footerShareCount > 1) throw new Error(`${relativePath}: multiple footer share controls were found.`);
+  if (footerShareCount) {
+    next = replaceRegexExact(next, footerSharePattern, '', 1, `${relativePath} retired footer share control`);
+  }
+
+  validateFinalStructure(next, relativePath, copy, contract);
+  const protectedAfter = firstViewProtectedSnapshot(next);
+  if (protectedAfter !== protectedBefore) {
+    let differenceIndex = 0;
+    const sharedLength = Math.min(protectedBefore.length, protectedAfter.length);
+    while (differenceIndex < sharedLength && protectedBefore[differenceIndex] === protectedAfter[differenceIndex]) {
+      differenceIndex += 1;
+    }
+    throw new Error(
+      `${relativePath}: content outside the governed first-view regions changed at normalized index ${differenceIndex}; `
+      + `before=${JSON.stringify(protectedBefore.slice(differenceIndex, differenceIndex + 120))}; `
+      + `after=${JSON.stringify(protectedAfter.slice(differenceIndex, differenceIndex + 120))}.`,
+    );
+  }
+  return next;
+}
+
+function normalizeFirstViewWhitespace(source) {
+  return source.replace(
+    /(<p class="pd-price-note">[\s\S]*?<\/p>\r?\n)(?:[ \t]*\r?\n)+([ \t]*<nav class="pd-jump-nav")/g,
+    '$1$2',
+  );
+}
+
 async function discoverPages() {
-  const rootNames = (await fs.readdir(ROOT))
-    .filter((name) => /^BP-[A-Za-z0-9-]+\.html$/.test(name))
+  const facts = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'product-drawing-facts.json'), 'utf8'));
+  const rootNames = Object.keys(facts.products || {})
+    .map((model) => `${model}.html`)
     .sort((left, right) => left.localeCompare(right));
   if (rootNames.length !== EXPECTED_MODEL_COUNT) {
     throw new Error(`Expected ${EXPECTED_MODEL_COUNT} root product pages; found ${rootNames.length}.`);
@@ -547,9 +1144,13 @@ async function main() {
       || source.includes('product-detail.css?v=')
       || source.includes('product-detail.js?v=')
       || source.includes('class="skip-link"');
-    const next = hasFinalMarker
-      ? (validateFinalStructure(source, relativePath, copy), source)
-      : transformLegacyPage(source, relativePath, contract);
+    let next = hasFinalMarker ? source : transformLegacyPage(source, relativePath, contract);
+    // Rebuild the governed first-view block on every run so approved copy changes
+    // migrate existing canonical pages as well as legacy pages. The transform
+    // freezes every byte outside the governed block and is idempotent.
+    next = transformFirstView(next, relativePath, contract);
+    next = normalizeFirstViewWhitespace(next);
+    validateFinalStructure(next, relativePath, copy, contract);
     if (next !== source) pending.push({ relativePath, absolutePath, next });
   }
 

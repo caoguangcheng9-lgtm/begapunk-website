@@ -27,7 +27,7 @@ const pages = {
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 MPa</td><td>200 RPM</td><td>Two independent passages; confirm medium, temperature and duty</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 MPa</td><td>80 RPM</td><td>High-pressure, low-speed model; use only within its published limits</td></tr>
-<tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 MPa</td><td>200 RPM</td><td>2-inlet/4-outlet distribution; use the published 1 MPa limit</td></tr>
+<tr><td><a href="BP-2P-95-0005.html">BP-2P-95-0005</a></td><td>1 MPa</td><td>200 RPM</td><td>2-inlet/4-outlet distribution; use the published 1 MPa limit</td></tr>
 <tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 RPM</td><td>Protective shroud and labyrinth for dusty environments</td></tr>
 </tbody>
 </table>
@@ -77,7 +77,7 @@ const pages = {
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>Zwei unabh&auml;ngige Kan&auml;le; Medium, Temperatur und Lastprofil best&auml;tigen</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 MPa</td><td>80 min<sup>-1</sup></td><td>Hochdruck-/Niederdrehzahlmodell; nur innerhalb der ver&ouml;ffentlichten Grenzen einsetzen</td></tr>
-<tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>Verteilung 2 Eing&auml;nge/4 Ausg&auml;nge; die ver&ouml;ffentlichte Grenze von 1 MPa einhalten</td></tr>
+<tr><td><a href="BP-2P-95-0005.html">BP-2P-95-0005</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>Verteilung 2 Eing&auml;nge/4 Ausg&auml;nge; die ver&ouml;ffentlichte Grenze von 1 MPa einhalten</td></tr>
 <tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 min<sup>-1</sup></td><td>Schutzhaube und Labyrinth für staubige Umgebungen</td></tr>
 </tbody>
 </table>
@@ -127,7 +127,7 @@ const pages = {
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>2回路独立。流体、温度、デューティを確認</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 MPa</td><td>80 min<sup>-1</sup></td><td>高圧・低速型。公開仕様範囲内で使用</td></tr>
-<tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>2入力・4出力の分配構造。公開仕様の1 MPa上限を適用</td></tr>
+<tr><td><a href="BP-2P-95-0005.html">BP-2P-95-0005</a></td><td>1 MPa</td><td>200 min<sup>-1</sup></td><td>2入力・4出力の分配構造。公開仕様の1 MPa上限を適用</td></tr>
 <tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 MPa</td><td>100 min<sup>-1</sup></td><td>粉じん環境向けの保護カバーとラビリンス構造</td></tr>
 </tbody>
 </table>
@@ -177,7 +177,7 @@ const pages = {
 <tbody>
 <tr><td><a href="BP-2P-0001.html">BP-2P-0001</a></td><td>1 МПа</td><td>200 об/мин</td><td>Два независимых канала; подтвердить среду, температуру и режим работы</td></tr>
 <tr><td><a href="BP-2P-130-0001.html">BP-2P-130-0001</a></td><td>5 МПа</td><td>80 об/мин</td><td>Модель для высокого давления и низкой скорости; использовать только в опубликованных пределах</td></tr>
-<tr><td><a href="BP-2P-95-0001.html">BP-2P-95-0001</a></td><td>1 МПа</td><td>200 об/мин</td><td>Распределение 2 входа/4 выхода; применять опубликованный предел 1 МПа</td></tr>
+<tr><td><a href="BP-2P-95-0005.html">BP-2P-95-0005</a></td><td>1 МПа</td><td>200 об/мин</td><td>Распределение 2 входа/4 выхода; применять опубликованный предел 1 МПа</td></tr>
 <tr><td><a href="BP-2P-50-0001.html">BP-2P-50-0001</a></td><td>1 МПа</td><td>100 об/мин</td><td>Защитный кожух и лабиринт для запылённых условий</td></tr>
 </tbody>
 </table>

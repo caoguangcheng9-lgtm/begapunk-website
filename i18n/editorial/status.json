@@ -1,6 +1,6 @@
 {
-  "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must be reviewed for local industrial terminology, grammar and natural business usage. Machine translation and automated pattern scans alone do not qualify a page as reviewed. Every new or changed localized page additionally requires a recorded AI-assisted target-market review using representative local manufacturer, industry or peer pages as terminology, reading-pattern and search-intent references. Peer wording must not be copied, peer facts must not become Begapunk facts, and AI review must not be represented as independent native-speaker confirmation.",
-  "updatedAt": "2026-08-17",
+  "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
+  "updatedAt": "2026-08-20",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -10,6 +10,10 @@
     ],
     "machineTranslationDraftOnly": true,
     "aiAssistedTargetMarketReviewRequired": true,
+    "aiLineByLineReviewSufficientForRelease": true,
+    "independentNativeSpeakerRequiredForRelease": false,
+    "humanEditorialSignOffRequiredForRelease": false,
+    "reviewClaimMustRemainAiAssisted": true,
     "targetMarketPeerReferenceRequired": true,
     "targetMarketSearchPatternReviewRequired": true,
     "referenceUse": "terminology-and-search-intent-only",
@@ -33,16 +37,16 @@
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
     "de": {
-      "reviewed": 55,
-      "total": 55
+      "reviewed": 56,
+      "total": 56
     },
     "ja": {
-      "reviewed": 55,
-      "total": 55
+      "reviewed": 56,
+      "total": 56
     },
     "ru": {
-      "reviewed": 55,
-      "total": 55
+      "reviewed": 56,
+      "total": 56
     }
   },
   "languages": {
@@ -68,6 +72,7 @@
         "application-vacuum-packaging-machines.html",
         "application-welding-positioners.html",
         "blog.html",
+        "blog-non-contact-clearance-seal-rotary-union.html",
         "BP-1P-0003.html",
         "BP-1P-0006.html",
         "BP-2P-0001.html",
@@ -77,7 +82,7 @@
         "BP-2P-16-0001.html",
         "BP-2P-30-0001.html",
         "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
+        "BP-2P-95-0005.html",
         "BP-3P-0004.html",
         "BP-3P-0006.html",
         "BP-3P-0007.html",
@@ -130,6 +135,7 @@
         "application-vacuum-packaging-machines.html",
         "application-welding-positioners.html",
         "blog.html",
+        "blog-non-contact-clearance-seal-rotary-union.html",
         "BP-1P-0003.html",
         "BP-1P-0006.html",
         "BP-2P-0001.html",
@@ -139,7 +145,7 @@
         "BP-2P-16-0001.html",
         "BP-2P-30-0001.html",
         "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
+        "BP-2P-95-0005.html",
         "BP-3P-0004.html",
         "BP-3P-0006.html",
         "BP-3P-0007.html",
@@ -192,6 +198,7 @@
         "application-vacuum-packaging-machines.html",
         "application-welding-positioners.html",
         "blog.html",
+        "blog-non-contact-clearance-seal-rotary-union.html",
         "BP-1P-0003.html",
         "BP-1P-0006.html",
         "BP-2P-0001.html",
@@ -201,7 +208,7 @@
         "BP-2P-16-0001.html",
         "BP-2P-30-0001.html",
         "BP-2P-50-0001.html",
-        "BP-2P-95-0001.html",
+        "BP-2P-95-0005.html",
         "BP-3P-0004.html",
         "BP-3P-0006.html",
         "BP-3P-0007.html",
@@ -234,11 +241,11 @@
     }
   },
   "renderQa": {
-    "completedAt": "2026-08-17T02:55:54.3078892+09:00",
-    "browser": "Google Chrome (prior 294 checks) + Codex in-app Browser (current 36 checks)",
-    "pagesPerLanguage": 55,
+    "completedAt": "2026-08-20T14:42:45.7735607+09:00",
+    "browser": "Google Chrome (294 prior checks) + Codex in-app Browser (42 checks, including 6 current article checks)",
+    "pagesPerLanguage": 56,
     "viewportsPerPage": 2,
-    "checkedViewports": 330,
+    "checkedViewports": 336,
     "criteria": [
       "one visible H1",
       "correct html lang",

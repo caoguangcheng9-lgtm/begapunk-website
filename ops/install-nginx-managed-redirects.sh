@@ -14,7 +14,7 @@ fi
 [[ -f "$SOURCE_CONF" ]] || { echo "Redirect source file is missing." >&2; exit 3; }
 [[ -f "$NGINX_CONF" ]] || { echo "Nginx site configuration is missing." >&2; exit 4; }
 
-server_blocks="$(grep -Ec '^[[:space:]]*server[[:space:]]*\{' "$NGINX_CONF" || true)"
+server_blocks="$(grep -Ec '^[[:space:]]*server([[:space:]]*\{)?[[:space:]]*$' "$NGINX_CONF" || true)"
 if [[ "$server_blocks" -ne 1 ]]; then
   echo "Expected exactly one server block in $NGINX_CONF; found $server_blocks." >&2
   exit 5
@@ -50,6 +50,18 @@ if ! grep -Fq "include $MANAGED_CONF;" "$NGINX_CONF"; then
       inserted=1
       next
     }
+    !inserted && /^[[:space:]]*server[[:space:]]*$/ {
+      print
+      awaiting_server_brace=1
+      next
+    }
+    awaiting_server_brace && /^[[:space:]]*\{/ {
+      print
+      print include_line
+      inserted=1
+      awaiting_server_brace=0
+      next
+    }
     { print }
     END { if (!inserted) exit 1 }
   ' "$NGINX_CONF" > "$temp_conf"
@@ -65,10 +77,17 @@ fi
 
 nginx -s reload
 
-status="$(curl --silent --show-error --output /dev/null --max-time 20 \
-  --resolve www.begapunk.com:443:127.0.0.1 \
-  --write-out '%{http_code}|%{redirect_url}' \
-  'https://www.begapunk.com/3-in-3-out-Pneumatic-rotary-joint-P6776400.html')"
+status=""
+for attempt in {1..10}; do
+  status="$(curl --noproxy '*' --silent --show-error --output /dev/null --max-time 20 \
+    --resolve www.begapunk.com:443:127.0.0.1 \
+    --write-out '%{http_code}|%{redirect_url}' \
+    'https://www.begapunk.com/3-in-3-out-Pneumatic-rotary-joint-P6776400.html' || true)"
+  if [[ "$status" == "301|https://www.begapunk.com/BP-3P-0004.html" ]]; then
+    break
+  fi
+  sleep 1
+done
 
 if [[ "$status" != "301|https://www.begapunk.com/BP-3P-0004.html" ]]; then
   restore

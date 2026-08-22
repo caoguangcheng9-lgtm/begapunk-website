@@ -106,6 +106,7 @@ const footerCopy = {
 
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
 const styleVersion = '20260817-cls1';
+const homepageStyleVersion = '20260819-home-clean1';
 const socialLinks = [
   ['linkedin', 'LinkedIn', 'https://www.linkedin.com/in/guangcheng-cao/'],
   ['youtube', 'YouTube', 'https://www.youtube.com/@BEGAPUNKRotaryJointsTV'],
@@ -187,9 +188,10 @@ for (const language of languages) {
   for (const page of config.pages) {
     const file = language === 'en' ? path.join(root, page) : path.join(root, language, page);
     const original = await fs.readFile(file, 'utf8');
+    const pageStyleVersion = page === 'index.html' ? homepageStyleVersion : styleVersion;
     const html = removeLegacyMobileListeners(original).replace(
       /(href=["'](?:\.\.\/)?css\/style\.css\?v=)[^"']+/g,
-      `$1${styleVersion}`,
+      `$1${pageStyleVersion}`,
     );
     const $ = load(html, { decodeEntities: false, sourceCodeLocationInfo: true });
     const nav = $('#mainNav').get(0);

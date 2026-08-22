@@ -28,7 +28,7 @@ TITLES = {
     "BP-2P-16-0001.pdf": "BP-2P-16-0001 Through-Bore Rotary Union Engineering Drawing",
     "BP-2P-30-0001.pdf": "BP-2P-30-0001 Through-Bore Rotary Union Engineering Drawing",
     "BP-2P-50-0001.pdf": "BP-2P-50-0001 Rotary Union Engineering Drawing",
-    "BP-2P-95-0001.pdf": "BP-2P-95-0001 High-Pressure Rotary Union Engineering Drawing",
+    "BP-2P-95-0005.pdf": "BP-2P-95-0005 2-Passage Pneumatic Rotary Union Engineering Drawing",
     "BP-3P-0004.pdf": "BP-3P-0004 Pneumatic Rotary Union Engineering Drawing",
     "BP-3P-0006.pdf": "BP-3P-0006 Pneumatic Rotary Union Engineering Drawing",
     "BP-3P-0007.pdf": "BP-3P-0007 Pneumatic Rotary Union Engineering Drawing",

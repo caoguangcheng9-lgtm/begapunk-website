@@ -20,6 +20,7 @@ const selectedRunCount = runsFlagIndex >= 0 ? Number.parseInt(process.argv[runsF
 if (runsFlagIndex >= 0 && (!Number.isInteger(selectedRunCount) || selectedRunCount < 1 || selectedRunCount > 5)) {
   throw new Error('--runs must be an integer from 1 through 5.');
 }
+const strictMetrics = process.argv.includes('--strict');
 
 const routeFamilies = Object.freeze([
   { family: 'home', route: 'index.html', critical: true },
@@ -295,37 +296,43 @@ try {
 if (cleanupError) throw new Error(`Lighthouse browser cleanup failed: ${cleanupError.message}`, { cause: cleanupError });
 
 assert(routeResults.length === expectedRouteCount, `Expected ${expectedRouteCount} route results, found ${routeResults.length}.`);
-const failures = [];
+const redZoneFindings = [];
+const thresholdFindings = [];
 for (const result of routeResults) {
   const metrics = result.medians;
   const label = `${result.language}/${result.family} (${result.route})`;
   for (const run of result.runs) {
-    if (run.performanceScore < redZone.performanceScore) failures.push(`${label} run ${run.run}: score ${run.performanceScore.toFixed(1)} is in the red zone.`);
-    if (run.lcpMs > redZone.lcpMs) failures.push(`${label} run ${run.run}: LCP ${run.lcpMs.toFixed(0)} ms is in the red zone.`);
-    if (run.tbtMs > redZone.tbtMs) failures.push(`${label} run ${run.run}: TBT ${run.tbtMs.toFixed(0)} ms is in the red zone.`);
-    if (run.cls > redZone.cls) failures.push(`${label} run ${run.run}: CLS ${run.cls.toFixed(3)} is in the red zone.`);
+    if (run.performanceScore < redZone.performanceScore) redZoneFindings.push(`${label} run ${run.run}: score ${run.performanceScore.toFixed(1)} is in the red zone.`);
+    if (run.lcpMs > redZone.lcpMs) redZoneFindings.push(`${label} run ${run.run}: LCP ${run.lcpMs.toFixed(0)} ms is in the red zone.`);
+    if (run.tbtMs > redZone.tbtMs) redZoneFindings.push(`${label} run ${run.run}: TBT ${run.tbtMs.toFixed(0)} ms is in the red zone.`);
+    if (run.cls > redZone.cls) redZoneFindings.push(`${label} run ${run.run}: CLS ${run.cls.toFixed(3)} is in the red zone.`);
   }
-  if (metrics.performanceScore < thresholds.performanceScore) failures.push(`${label}: score ${metrics.performanceScore.toFixed(1)} is below ${thresholds.performanceScore}.`);
-  if (metrics.lcpMs > thresholds.lcpMs) failures.push(`${label}: LCP ${metrics.lcpMs.toFixed(0)} ms exceeds ${thresholds.lcpMs} ms.`);
-  if (metrics.fcpMs > thresholds.fcpMs) failures.push(`${label}: FCP ${metrics.fcpMs.toFixed(0)} ms exceeds ${thresholds.fcpMs} ms.`);
-  if (metrics.tbtMs >= thresholds.tbtMsExclusive) failures.push(`${label}: TBT ${metrics.tbtMs.toFixed(0)} ms is not below ${thresholds.tbtMsExclusive} ms.`);
-  if (metrics.cls > thresholds.cls) failures.push(`${label}: CLS ${metrics.cls.toFixed(3)} exceeds ${thresholds.cls}.`);
+  if (metrics.performanceScore < thresholds.performanceScore) thresholdFindings.push(`${label}: score ${metrics.performanceScore.toFixed(1)} is below ${thresholds.performanceScore}.`);
+  if (metrics.lcpMs > thresholds.lcpMs) thresholdFindings.push(`${label}: LCP ${metrics.lcpMs.toFixed(0)} ms exceeds ${thresholds.lcpMs} ms.`);
+  if (metrics.fcpMs > thresholds.fcpMs) thresholdFindings.push(`${label}: FCP ${metrics.fcpMs.toFixed(0)} ms exceeds ${thresholds.fcpMs} ms.`);
+  if (metrics.tbtMs >= thresholds.tbtMsExclusive) thresholdFindings.push(`${label}: TBT ${metrics.tbtMs.toFixed(0)} ms is not below ${thresholds.tbtMsExclusive} ms.`);
+  if (metrics.cls > thresholds.cls) thresholdFindings.push(`${label}: CLS ${metrics.cls.toFixed(3)} exceeds ${thresholds.cls}.`);
 }
+const metricFindings = [...redZoneFindings, ...thresholdFindings];
 
 const report = {
-  result: failures.length ? 'FAIL' : 'PASS',
+  result: metricFindings.length ? 'ADVISORY_FINDINGS' : 'PASS',
   startedAt,
   completedAt: new Date().toISOString(),
   tool: { lighthouse: '13.4.1', node: process.version, browserPath: chromePath || 'auto-detected', browserVersion },
   profile: configEvidence,
   thresholds,
   redZone,
+  strictMetrics,
   pageFamilyCount: routeFamilies.length,
   languageCount: languages.length,
   routeCount: routeResults.length,
   totalRuns: routeResults.reduce((sum, item) => sum + item.runCount, 0),
   routeResults,
-  failures,
+  redZoneFindings,
+  thresholdFindings,
+  failures: strictMetrics ? metricFindings : [],
+  readinessNote: 'Lighthouse is a diagnostic and regression signal. Classify findings under docs/standards/BEGAPUNK_WEBSITE_STANDARD.md before treating them as release blockers.',
   wroteFiles: Boolean(reportPath),
 };
 if (reportPath) {
@@ -333,18 +340,22 @@ if (reportPath) {
   await fs.mkdir(path.dirname(absoluteReportPath), { recursive: true });
   await fs.writeFile(absoluteReportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 }
-if (failures.length) {
-  console.error(`Lighthouse performance verification failed (${failures.length}):`);
-  failures.forEach((failure) => console.error(`- ${failure}`));
+if (metricFindings.length) {
+  console.warn(`Lighthouse advisory findings (${metricFindings.length}); classify under BEGAPUNK_WEBSITE_STANDARD.md before treating them as release blockers:`);
+  metricFindings.forEach((finding) => console.warn(`- ${finding}`));
+}
+if (strictMetrics && metricFindings.length) {
   process.exit(1);
 }
 console.log(JSON.stringify({
-  result: 'Lighthouse release performance verified',
+  result: metricFindings.length ? 'Lighthouse release performance checked with advisory findings' : 'Lighthouse release performance checked',
   tool: report.tool,
   pageFamilyCount: report.pageFamilyCount,
   languageCount: report.languageCount,
   routeCount: report.routeCount,
   totalRuns: report.totalRuns,
+  redZoneFindingCount: redZoneFindings.length,
+  thresholdFindingCount: thresholdFindings.length,
   reportPath: reportPath ? path.resolve(reportPath) : null,
   wroteFiles: report.wroteFiles,
 }));

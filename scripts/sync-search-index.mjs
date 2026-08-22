@@ -3,6 +3,10 @@ import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
 import { discoveryExcludedPageSet, filterDiscoverySearchRecords } from './discovery-exclusions.mjs';
+import {
+  assertDrawingBackedProductRecordCoverage,
+  drawingBackedProductKeywords,
+} from './lib/drawing-backed-product-facts.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
@@ -14,48 +18,84 @@ const locales = [
 ];
 const failures = [];
 let changedFiles = 0;
-const conservativeIpKeywordByLocale = {
-  en: 'no certified IP rating claimed',
-  de: 'keine zertifizierte IP-Schutzart angegeben',
-  ja: '認証済みIP保護等級の表示なし',
-  ru: 'сертифицированная степень защиты IP не заявляется',
+const retiredProductRoutes = new Map([
+  ['BP-2P-95-0001.html', { id: 'BP-2P-95-0005', url: 'BP-2P-95-0005.html' }],
+]);
+const pneumaticChuckCaseRoute = 'case-bp-2p-95-pneumatic-chuck-integration.html';
+const pneumaticChuckCaseKeywords = {
+  en: ['BP-2P-95-0005', 'pneumatic chuck', 'compressed air', 'rotary union integration'],
+  de: ['BP-2P-95-0005', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+  ja: ['BP-2P-95-0005', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
+  ru: ['BP-2P-95-0005', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
+};
+const dustyEnvironmentBoundaryKeyword = {
+  en: 'BP-2P-95-0005 2-passage model; drawing does not specify dust protection',
+  de: 'BP-2P-95-0005 Zweikanalmodell; Zeichnung enthält keine Angabe zum Staubschutz',
+  ja: 'BP-2P-95-0005 2流路モデル、図面に防じん仕様の記載なし',
+  ru: 'BP-2P-95-0005 двухканальная модель; на чертеже защита от пыли не указана',
 };
 
 function compact(value = '') {
   return value.replace(/\s+/g, ' ').trim();
 }
 
-function normalizedKeywords(localeCode, record) {
-  if (record.id !== 'BP-2P-50-0001' || !Array.isArray(record.keywords)) return record.keywords;
-  const excluded = compact(conservativeIpKeywordByLocale[localeCode]).toLocaleLowerCase();
-  return record.keywords.filter((keyword) => compact(keyword).toLocaleLowerCase() !== excluded);
+function retireLegacyProductReferences(localeCode, record) {
+  const keywords = (record.keywords || []).map((keyword) => {
+    if (keyword === 'BP-2P-95-0001') return 'BP-2P-95-0005';
+    if (keyword.includes('BP-2P-95-0001')) return dustyEnvironmentBoundaryKeyword[localeCode];
+    return keyword;
+  });
+  const tags = (record.tags || []).map((tag) => tag.replaceAll('BP-2P-95-0001', 'BP-2P-95-0005'));
+  return {
+    ...record,
+    ...(record.keywords ? { keywords } : {}),
+    ...(record.tags ? { tags } : {}),
+  };
 }
 
 async function synchronizedRecord(locale, record) {
+  const legacySafeRecord = retireLegacyProductReferences(locale.code, record);
   const filePath = path.join(locale.directory, record.url);
   const html = await fs.readFile(filePath, 'utf8');
   const $ = load(html, { decodeEntities: false });
   const content = $('body').clone();
   content.find('script,style,header,nav,footer,.cookie-banner,.i18n-switcher').remove();
   content.find('a.skip-link[data-search-exclude][href="#main-content"]').remove();
+  content.find('.pd-share-menu[data-search-exclude], .pd-share-footer[data-search-exclude]').remove();
+  const drawingKeywords = drawingBackedProductKeywords(locale.code, legacySafeRecord.id);
+  const caseKeywords = record.url === pneumaticChuckCaseRoute
+    ? pneumaticChuckCaseKeywords[locale.code]
+    : null;
+  const synchronizedTags = record.url === pneumaticChuckCaseRoute
+    ? (record.tags || []).map((tag) => tag === 'BP-2P-95-0001' ? 'BP-2P-95-0005' : tag)
+    : legacySafeRecord.tags;
   return {
-    ...record,
-    title: compact($('title').first().text()) || record.title,
-    description: compact($('meta[name="description"]').attr('content')) || record.description,
-    h1: compact($('h1').first().text()) || record.h1,
+    ...legacySafeRecord,
+    title: compact($('title').first().text()) || legacySafeRecord.title,
+    description: compact($('meta[name="description"]').attr('content')) || legacySafeRecord.description,
+    h1: compact($('h1').first().text()) || legacySafeRecord.h1,
     h2s: $('h2').map((_, element) => compact($(element).text())).get().filter(Boolean),
     body: compact(content.text()),
-    ...(record.id === 'BP-2P-50-0001' ? { keywords: normalizedKeywords(locale.code, record) } : {}),
+    ...(drawingKeywords ? { keywords: drawingKeywords } : caseKeywords ? { keywords: caseKeywords } : legacySafeRecord.keywords ? { keywords: legacySafeRecord.keywords } : {}),
+    ...(synchronizedTags ? { tags: synchronizedTags } : {}),
   };
 }
 
 for (const locale of locales) {
   const indexPath = path.join(locale.directory, 'search-index.json');
   const current = JSON.parse(await fs.readFile(indexPath, 'utf8'));
+  const migrated = current.map((record) => {
+    const replacement = retiredProductRoutes.get(record.url);
+    return replacement ? { ...record, ...replacement } : record;
+  });
+  const visibleRecords = filterDiscoverySearchRecords(migrated, discoveryExcludedPages);
+  assertDrawingBackedProductRecordCoverage(visibleRecords, `${locale.code}/search-index.json`);
   const synchronized = [];
-  for (const record of filterDiscoverySearchRecords(current, discoveryExcludedPages)) {
+  for (const record of visibleRecords) {
     if (!config.pages.includes(record.url)) {
-      synchronized.push(record);
+      const drawingKeywords = drawingBackedProductKeywords(locale.code, record.id);
+      const legacySafeRecord = retireLegacyProductReferences(locale.code, record);
+      synchronized.push(drawingKeywords ? { ...legacySafeRecord, keywords: drawingKeywords } : legacySafeRecord);
       continue;
     }
     synchronized.push(await synchronizedRecord(locale, record));

@@ -2,11 +2,19 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
+import {
+  drawingBackedProductMetadata,
+  drawingBackedProductModels,
+  drawingBackedUiContract,
+} from './lib/drawing-backed-product-facts.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 const checkOnly = process.argv.includes('--check');
 const productPages = config.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
+const productLocales = ['en', ...(config.activeLanguageCodes || [])];
+const drawingBackedModelSet = new Set(drawingBackedProductModels);
+const deepContractPath = path.join(root, 'scripts', 'sync-drawing-backed-product-content.mjs');
 
 const copy = {
   installRisks: 'Overtightening, rigid piping, skipped run-in checks, and unsuitable filtration are common installation risks that can contribute to premature wear or leakage.',
@@ -104,6 +112,117 @@ function compact(value = '') {
   return value.replace(/\s+/g, ' ').trim();
 }
 
+async function loadDeepRelatedActionCopy() {
+  const source = await fs.readFile(deepContractPath, 'utf8');
+  const copyStart = source.indexOf('const COPY = {');
+  const copyEnd = source.indexOf('\nconst ENGINEERING_PENDING_MODELS', copyStart);
+  if (copyStart < 0 || copyEnd < 0) {
+    throw new Error('Unable to locate the drawing-backed deep COPY contract.');
+  }
+
+  const copyBlock = source.slice(copyStart, copyEnd);
+  const markers = productLocales.map((locale) => {
+    const match = new RegExp(`^(?:  ${locale}: \\{|COPY\\.${locale} = \\{)`, 'm').exec(copyBlock);
+    if (!match) throw new Error(`Drawing-backed deep COPY is missing locale ${locale}.`);
+    return { locale, index: match.index };
+  });
+  if (markers.some((marker, index) => index > 0 && marker.index <= markers[index - 1].index)) {
+    throw new Error('Drawing-backed deep COPY locale order does not match the active product locale contract.');
+  }
+
+  const actions = {};
+  markers.forEach((marker, index) => {
+    const end = markers[index + 1]?.index ?? copyBlock.length;
+    const localeBlock = copyBlock.slice(marker.index, end);
+    const match = /^\s*viewModel:\s*'([^'\\\r\n]*)',\s*compareModels:\s*'([^'\\\r\n]*)',\s*requestReview:\s*'([^'\\\r\n]*)',?\s*$/m.exec(localeBlock);
+    if (!match) {
+      throw new Error(`Unable to read related-product action labels from drawing-backed deep COPY for ${marker.locale}.`);
+    }
+    actions[marker.locale] = Object.freeze({
+      viewModel: match[1],
+      compareModels: match[2],
+      requestReview: match[3],
+    });
+  });
+  return Object.freeze(actions);
+}
+
+function assertLegacyRelatedPricing($, pageName) {
+  $('.related-card .price').each((_, element) => {
+    if (compact($(element).text()) !== 'Request Quote') {
+      throw new Error(`${pageName}: non-product related-card pricing must use Request Quote.`);
+    }
+  });
+}
+
+function assertRelatedCardAction($, card, expected, label) {
+  const action = $(card).children('.price');
+  if (action.length !== 1) throw new Error(`${label}: expected exactly one direct .price action label.`);
+  if (compact(action.text()) !== expected) {
+    throw new Error(`${label}: expected action label "${expected}", found "${compact(action.text())}".`);
+  }
+}
+
+function assertDrawingBackedRelatedProducts($, model, locale, pageName, actions) {
+  const grids = $('main .related-grid');
+  if (grids.length !== 1) throw new Error(`${pageName}: expected exactly one related-products grid.`);
+  const cards = grids.first().children('a.related-card');
+  if (cards.length !== 5 || $('.related-card').length !== 5) {
+    throw new Error(`${pageName}: drawing-backed related products must contain exactly five linked cards.`);
+  }
+
+  const seenModels = new Set();
+  cards.slice(0, 3).each((index, card) => {
+    const href = compact($(card).attr('href'));
+    const match = /^(BP-[\w-]+)\.html$/.exec(href);
+    if (!match) throw new Error(`${pageName}: related model card ${index + 1} has an invalid model link.`);
+    const relatedModel = match[1];
+    if (!drawingBackedModelSet.has(relatedModel)) {
+      throw new Error(`${pageName}: related model card ${index + 1} links outside the drawing-backed model set.`);
+    }
+    if (relatedModel === model || seenModels.has(relatedModel)) {
+      throw new Error(`${pageName}: related model cards must be distinct and must not link to the current model.`);
+    }
+    seenModels.add(relatedModel);
+
+    const ui = drawingBackedUiContract(locale, relatedModel);
+    if (ui.status !== 'verified-drawing') {
+      throw new Error(`${pageName}: related model ${relatedModel} is not backed by a verified drawing.`);
+    }
+    const metadata = drawingBackedProductMetadata(locale, relatedModel);
+    const headings = $(card).children('h3');
+    if (headings.length !== 1 || compact(headings.text()) !== metadata.linkLabel) {
+      throw new Error(`${pageName}: related model ${relatedModel} label drifted from shared metadata.`);
+    }
+    assertRelatedCardAction($, card, actions.viewModel, `${pageName}: related model ${relatedModel}`);
+  });
+
+  const comparison = cards.eq(3);
+  if (comparison.attr('href') !== 'product-comparison.html') {
+    throw new Error(`${pageName}: comparison card must link exactly to product-comparison.html.`);
+  }
+  if (comparison.children('h3').length !== 1 || compact(comparison.children('h3').text()) !== actions.compareModels) {
+    throw new Error(`${pageName}: comparison card heading must match the localized deep COPY action.`);
+  }
+  assertRelatedCardAction($, comparison, actions.compareModels, `${pageName}: comparison card`);
+
+  const metadata = drawingBackedProductMetadata(locale, model);
+  if (!metadata) throw new Error(`${pageName}: shared product metadata is missing.`);
+  const review = cards.eq(4);
+  const expectedReviewHref = `contact.html?request=application-review&model=${encodeURIComponent(model)}&product=${encodeURIComponent(metadata.linkLabel)}&source=${model}.html#quoteForm`;
+  if (review.attr('href') !== expectedReviewHref) {
+    throw new Error(`${pageName}: engineering-review link is missing or has an incomplete request/model/product/source/#quoteForm contract.`);
+  }
+  assertRelatedCardAction($, review, actions.requestReview, `${pageName}: engineering-review card`);
+}
+
+function assertRelatedProducts($, { model, locale, pageName, actions } = {}) {
+  if (!model) return assertLegacyRelatedPricing($, pageName);
+  return assertDrawingBackedRelatedProducts($, model, locale, pageName, actions);
+}
+
+const deepRelatedActions = await loadDeepRelatedActionCopy();
+
 function walkJson(value, visitor) {
   if (Array.isArray(value)) {
     value.forEach((item) => walkJson(item, visitor));
@@ -121,12 +240,6 @@ function assertProductTrustContent($, pageName) {
   if ($('#siteFooter').length !== 1) {
     throw new Error(`${pageName}: expected exactly one #siteFooter.`);
   }
-
-  $('.related-card .price').each((_, element) => {
-    if (compact($(element).text()) !== 'Request Quote') {
-      throw new Error(`${pageName}: related-product pricing must use Request Quote.`);
-    }
-  });
 
   $('script[type="application/ld+json"]').each((_, element) => {
     const raw = $(element).html();
@@ -214,16 +327,27 @@ function replaceProductContent($, pageName) {
 const snapshots = new Map();
 const pendingUpdates = [];
 
-for (const pageName of productPages) {
-  const filePath = path.join(root, pageName);
-  const before = await fs.readFile(filePath, 'utf8');
-  snapshots.set(filePath, before);
-  const current = load(before, { decodeEntities: false });
-  try {
-    assertProductTrustContent(current, pageName);
-  } catch (error) {
-    if (checkOnly) throw error;
-    pendingUpdates.push(`${pageName}: ${error.message}`);
+for (const locale of productLocales) {
+  const actions = deepRelatedActions[locale];
+  if (!actions) throw new Error(`Missing drawing-backed related-product actions for ${locale}.`);
+  for (const pageName of productPages) {
+    const model = path.basename(pageName, '.html');
+    if (!drawingBackedModelSet.has(model)) throw new Error(`${pageName}: product is absent from the shared drawing-backed model contract.`);
+    const relativePath = locale === 'en' ? pageName : path.join(locale, pageName);
+    if (relativePath.toLowerCase().includes('catalog-project')) throw new Error(`Protected path rejected: ${relativePath}`);
+    const filePath = path.resolve(root, relativePath);
+    if (!filePath.startsWith(`${root}${path.sep}`)) throw new Error(`Product page escaped repository root: ${relativePath}`);
+    const label = relativePath.split(path.sep).join('/');
+    const before = await fs.readFile(filePath, 'utf8');
+    snapshots.set(filePath, before);
+    const current = load(before, { decodeEntities: false });
+    try {
+      assertRelatedProducts(current, { model, locale, pageName: label, actions });
+      if (locale === 'en') assertProductTrustContent(current, label);
+    } catch (error) {
+      if (checkOnly) throw error;
+      pendingUpdates.push(`${label}: ${error.message}`);
+    }
   }
 }
 
@@ -256,4 +380,4 @@ if (pendingUpdates.length) {
   ].join('\n'));
 }
 
-console.log(`Product trust content is synchronized across ${productPages.length} English source pages and three localization override files; no files changed.`);
+console.log(`Product trust content is synchronized across ${productPages.length * productLocales.length} drawing-backed product pages and three localization override files; no files changed.`);
