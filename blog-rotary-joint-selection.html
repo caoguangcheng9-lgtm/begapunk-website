@@ -137,6 +137,7 @@
   </div>
  </div>
 </header>
+<main id="main-content">
 
 <div class="container">
   <div class="breadcrumb">
@@ -172,7 +173,7 @@
 <article class="blog-content">
 <p>A rotary joint is one of those components that either runs silently for years or stops an entire production line when it fails. The difference usually comes down to five parameters that engineers overlook during specification.</p>
 <p>Specification mismatches are an avoidable source of application problems. Operating above a model's published limits, or selecting a seal and material combination without reviewing the medium and duty, can lead to leakage or damage. Confirm the current product page and approved drawing before ordering.</p>
-<p>This guide walks through the five parameters you need to check before placing an order. Get these right, and your rotary joint will outlast the machine it is mounted on.</p>
+<p>This guide walks through the five parameters to check before placing an order. They help exclude unsuitable models and provide enough operating data for a useful quotation.</p>
 <h2>1. Passage Count: Match Your Pneumatic Circuit, Not Your Wish List</h2>
 <h3>Single-Passage, Two-Passage, and Multi-Passage Differences</h3>
 <p>A <strong>1-in-1-out</strong> rotary joint carries one medium through one rotating passage. A <strong>2-in-2-out</strong> design carries two independent media streams through the same body — oxygen and coolant, for example, or compressed air and vacuum. Our <strong>3-in-3-out</strong> and <strong>4-in-4-out</strong> unions extend this logic to more complex rotary tables and indexing equipment.</p>
@@ -191,128 +192,62 @@
 <li>Single channel: BP-1P-0003 — threaded mount, compact, rated 1.0 MPa</li>
 <li>Dual channel: BP-2P-0001 — flange mount, 1.0 MPa, 6061 aluminum alloy body</li>
 </ul>
-<h2>2. Operating Pressure: The "Max 1.0 MPa" Spec Is Misleading</h2>
-<h3>Rated Pressure vs. Test Pressure</h3>
-<p>When a product page or approved drawing lists "Maximum pressure: 1.0 MPa," treat that value as the model's operating limit unless the approved engineering document explicitly states otherwise. Do not use a production inspection pressure or any assumed test margin to raise the operating rating.</p>
-<p>Operating limits and production inspection conditions are separate. The current standard production leak check is performed after assembly at 1.0 MPa, with approximately 1 second of pressurization and 4 seconds of hold per passage. Any additional project-specific inspection must be agreed before order.</p>
-<p><strong>Design rule:</strong> For continuous operation, confirm the allowable combined pressure and speed for the selected model against the current product page, approved drawing, medium, temperature, duty cycle, and installation conditions.</p>
-<p><strong>Common mistake:</strong> Buying a 1.0 MPa joint for an application that runs at 0.9 MPa continuously. Three months later, the seal leaks. The joint did not fail — it was overspecified.</p>
-<h3>Pressure Selection by Application</h3>
+<h2>2. Operating Pressure: Use the Published Model Limit</h2>
+<h3>Maximum Pressure Is an Upper Limit, Not a Duty Recommendation</h3>
+<p>When a product page lists a maximum pressure, use it as the upper operating limit for that model and its stated medium. It does not by itself define continuous-duty suitability or permit operation with another medium.</p>
+<p>Inspection conditions are separate from operating limits and cannot be used to increase a model's published pressure rating.</p>
+<p><strong>Selection rule:</strong> Provide normal pressure, peak pressure, rotational speed, temperature, medium, duty cycle, and installation conditions. The selected model must satisfy these conditions together.</p>
+<p><strong>Common mistake:</strong> Comparing only pressure ratings while ignoring medium, speed, temperature, pressure peaks, and duty cycle.</p>
+<h3>Published Limits for Referenced Models</h3>
 <table>
 <thead><tr>
-<th>Application</th>
-<th>Typical Pressure</th>
-<th>Recommended Begapunk Series</th>
+<th>Model</th>
+<th>Suitable Medium</th>
+<th>Maximum Pressure</th>
+<th>Maximum Speed</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>Standard pneumatic clamping</td>
-<td>0.3–0.6 MPa</td>
-<td>BP-1P-0003 / BP-2P-0001</td>
-</tr>
-<tr>
-<td>High-pressure coolant delivery</td>
-<td>0.5–2.0 MPa</td>
-<td>BP-2P-130-0001 (5.0 MPa rated)</td>
-</tr>
-<tr>
-<td>BP-2P-95-0005 reference</td>
-<td>Maximum 1.0 MPa</td>
-<td>Maximum 200 RPM; confirm medium compatibility before selection</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Begapunk product reference:</strong></p>
-<ul>
-<li>BP-2P-0001: maximum 1.0 MPa and 200 RPM</li>
-<li>BP-2P-0002: maximum 1.0 MPa</li>
-<li>BP-2P-16-0001: maximum 200 RPM</li>
-<li>BP-2P-95-0005: maximum 1.0 MPa and 200 RPM</li>
-</ul>
-<h2>3. RPM: Why High Speed Needs Different Seals</h2>
-<h3>The Direct Relationship Between Speed and Seal Material</h3>
-<p>Rotary joint seals are consumable. Their wear rate is proportional to surface speed (RPM × seal diameter). The faster the joint spins, the faster the seal material erodes.</p>
-<p>Begapunk seal material selection by speed:</p>
-<table>
-<thead><tr>
-<th>Speed Range</th>
-<th>Recommended Seal</th>
-<th>Max Continuous RPM</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>&lt; 200 RPM</td>
-<td>FKM (fluoroelastomer / Viton)</td>
+<td>BP-2P-95-0005</td>
+<td>Air</td>
+<td>1.0 MPa</td>
 <td>200 RPM</td>
 </tr>
 <tr>
-<td>200–500 RPM</td>
-<td>Glyd Ring (PTFE composite)</td>
-<td>500 RPM</td>
-</tr>
-<tr>
-<td>500–2,000 RPM</td>
-<td>PTFE skeleton oil seal</td>
-<td>2,000 RPM</td>
-</tr>
-<tr>
-<td>> 2,000 RPM</td>
-<td>Custom ceramic or balanced design</td>
-<td>Custom</td>
+<td>BP-2P-130-0001</td>
+<td>Air</td>
+<td>5.0 MPa</td>
+<td>80 RPM</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Common mistake:</strong> Selecting an FKM-sealed joint for a high-speed indexing table without reviewing pressure, speed, temperature, duty cycle, lubrication, and seal suitability. Confirm the combined operating conditions against the selected model and approved specification.</p>
-<p>At Begapunk, all high-speed models (BP-2P-95 and above) ship with <strong>PTFE skeleton oil seals as standard</strong>. We do not offer FKM on any joint rated above 200 RPM.</p>
-<h3>How to Confirm Your Actual RPM</h3>
-<p>Do not use the spindle's maximum RPM. Use the <strong>RPM at the joint's mounting location</strong>:</p>
+<p>Both entries above are standard air models. Water, coolant, and hydraulic-oil applications require a separately configured solution.</p>
+<h2>3. Rotational Speed: Check the Selected Model's Limit</h2>
+<h3>Speed, Pressure, Seal Diameter, and Duty Work Together</h3>
+<p>Seal wear and heat depend on the combined operating conditions. A seal material name alone does not establish the allowable RPM of a complete rotary joint.</p>
+<p><strong>Model limits:</strong> BP-2P-95-0005 is limited to 200 RPM, while BP-2P-130-0001 is limited to 80 RPM. A requirement above either limit excludes that standard model, even when the pressure requirement is lower.</p>
+<h3>How to Describe the Actual Motion</h3>
+<p>Use the motion at the rotary joint's mounting location, not only the machine spindle's maximum speed:</p>
 <ul>
-<li>A 1-second indexing cycle = 60 RPM</li>
-<li>A 0.5-second cycle = 120 RPM</li>
-<li>A continuous rotating shaft at 300 RPM = 300 RPM</li>
+<li>For continuous rotation, provide the normal and maximum RPM.</li>
+<li>For indexing, provide the rotation angle, movement time, cycles per minute, and dwell time.</li>
+<li>For oscillation, provide the angle, frequency, and expected operating hours.</li>
 </ul>
-<p>Most pneumatic rotary applications run well below 200 RPM. Do not overspend on a high-speed seal if your machine never breaks 100 RPM.</p>
-<h2>4. Media Compatibility: "Air" Is Not Just Air</h2>
-<h3>Compressed Air Has Variations</h3>
-<p>Not all compressed air is the same, and the differences matter:</p>
-<table>
-<thead><tr>
-<th>Air Type</th>
-<th>Effect on Materials</th>
-<th>Recommended Construction</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Dry, filtered air</td>
-<td>Neutral</td>
-<td>Standard AL6061 + FKM/Glyd Ring</td>
-</tr>
-<tr>
-<td>Oil-fog lubricated air</td>
-<td>FKM swells, Glyd Ring resists</td>
-<td>Glyd Ring or PTFE skeleton seal mandatory</td>
-</tr>
-<tr>
-<td>Moist / unfiltered air</td>
-<td>AL6061 corrodes internally</td>
-<td>304/316 SS body required</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Critical point:</strong> Moisture and contaminants in compressed air can promote <strong>internal bore corrosion</strong> in susceptible materials. The rate depends on air treatment, condensate exposure, alloy, surface treatment and operating conditions. Review filtration, drying and material selection for the actual environment.</p>
-<h3>Water and Coolant</h3>
-<p>Water, water-soluble coolant, and hydraulic oil require different material sets than dry air:</p>
+<p><strong>Common mistake:</strong> Converting cycle time directly into RPM without the rotation angle and movement profile, or selecting BP-2P-95-0005 for a requirement above 200 RPM.</p>
+<h2>4. Media Compatibility: Specify the Actual Fluid</h2>
+<h3>Compressed Air Conditions Matter</h3>
+<p>For compressed-air service, state whether the air is dry, lubricated, or exposed to condensate, and provide the filtration level, temperature, and any cleaning chemicals. These conditions affect the suitable seal and wetted-material configuration.</p>
+<h3>Water, Coolant, and Hydraulic Oil Need a Configured Solution</h3>
+<p>Begapunk can evaluate custom rotary joints for water, water-based coolant, and hydraulic oil by selecting suitable seals and wetted materials. Compatibility depends on the exact fluid and operating conditions, so a standard pneumatic model cannot be reassigned by changing the medium name alone.</p>
+<p>BP-2P-95-0005 and BP-2P-130-0001 are standard air models. Their published pressure and speed limits do not automatically apply to a custom water, coolant, or hydraulic-oil configuration.</p>
+<p>For a useful selection and quotation, provide:</p>
 <ul>
-<li><strong>Water / coolant</strong> → 304 SS body + Glyd Ring or EPDM seal</li>
-<li><strong>Hydraulic oil (ISO VG 32)</strong> → 316 SS body + FKM or PTFE skeleton seal</li>
-<li><strong>Regulated or food-contact service</strong> → document the complete wetted-material list, seal compound, cleaning chemistry, temperature, and applicable requirements before selection</li>
+<li>Exact fluid name, concentration, viscosity, and additives</li>
+<li>Normal and peak pressure, temperature, speed, and duty cycle</li>
+<li>Required passage count, flow, filtration, and allowable leakage</li>
+<li>Cleaning chemicals, environmental exposure, and any compliance requirements</li>
 </ul>
-<p><strong>Common mistake:</strong> Selecting a pneumatic rotary joint for coolant without reviewing the wetted materials, seal compound, concentration, temperature, filtration, and cleaning chemistry. Confirm the complete fluid-contact configuration before selection.</p>
-<p><strong>Begapunk product reference:</strong></p>
-<ul>
-<li>Water/oil compatible (SS body): BP-2P-130-0001</li>
-<li>Food-contact applications: request a documented review of wetted materials, seal compound, cleaning chemistry, temperature, and applicable requirements</li>
-</ul>
+<p><strong>Selection rule:</strong> Treat the resulting water, coolant, or hydraulic rotary joint as a project-specific configuration with its own confirmed limits.</p>
 <h2>5. Installation Space and Connection Type</h2>
 <h3>Threaded vs. Flange Mount</h3>
 <table>
@@ -363,50 +298,33 @@
 </tbody>
 </table>
 <p><strong>Common mistake:</strong> Buying a compact joint with a 3 mm bore to save space, then trying to run a 40 mm bore pneumatic cylinder through it. The cylinder extends slowly or stalls under load.</p>
-<h2>Quick Reference: Begapunk Model Selection Table</h2>
+<h2>Quick Reference: What to Send for Model Selection</h2>
 <table>
 <thead><tr>
-<th>Application</th>
-<th>Medium</th>
-<th>Pressure</th>
-<th>RPM</th>
-<th>Recommended Model</th>
+<th>Application Need</th>
+<th>Information to Provide</th>
+<th>Selection Outcome</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>General pneumatic clamping</td>
-<td>Dry air</td>
-<td>0.1–0.6 MPa</td>
-<td>&lt; 200 RPM</td>
-<td>BP-1P-0003 / BP-2P-0001</td>
+<td>Pneumatic rotary joint</td>
+<td>Passage count, air condition, pressure, motion, flow, ports, and installation space</td>
+<td>Shortlist standard air models whose published limits cover the complete duty</td>
 </tr>
 <tr>
-<td>High-pressure coolant system</td>
-<td>Water / emulsion</td>
-<td>0.5–2.0 MPa</td>
-<td>&lt; 200 RPM</td>
-<td>BP-2P-130-0001</td>
+<td>Water or coolant rotary joint</td>
+<td>Fluid name, concentration, additives, temperature, pressure, speed, flow, and filtration</td>
+<td>Review a custom seal and wetted-material configuration</td>
 </tr>
 <tr>
-<td>High-speed rotary indexing</td>
-<td>Air</td>
-<td>0.1–0.8 MPa</td>
-<td>200–500 RPM</td>
-<td>BP-2P-95-0005</td>
+<td>Hydraulic rotary joint</td>
+<td>Oil name and grade, viscosity, additives, temperature, normal and peak pressure, speed, and leakage requirement</td>
+<td>Review a custom hydraulic seal and material configuration</td>
 </tr>
 <tr>
-<td>Food / pharmaceutical (custom)</td>
-<td>Water / steam</td>
-<td>0.1–1.0 MPa</td>
-<td>&lt; 200 RPM</td>
-<td>Project-specific configuration — engineering review</td>
-</tr>
-<tr>
-<td>Dust-heavy environment</td>
-<td>Air / water</td>
-<td>0.1–1.0 MPa</td>
-<td>&lt; 200 RPM</td>
-<td>BP-2P-50-0001 (protective shroud and labyrinth for dusty environments)</td>
+<td>High-speed or indexing motion</td>
+<td>Actual RPM or angle, movement time, cycle rate, dwell, pressure, medium, and expected operating hours</td>
+<td>Exclude models below the required speed and verify the combined duty</td>
 </tr>
 </tbody>
 </table>
@@ -417,7 +335,7 @@
 <p>Send us your operating conditions — pressure, RPM, media type, and passage count — for engineering review. Response time depends on the application complexity and the information provided.</p>
 <p>Request a Free Quote →</p>
 <p>Or email us directly: sales@begapunk.com</p>
-<p><strong>Technical Note:</strong> All pressure ratings and RPM specifications referenced in this article are based on Begapunk BP-series standard pneumatic rotary joints. Actual performance depends on operating conditions and maintenance practices. For applications outside standard ratings, consult factory engineering before specification.</p>
+<p><strong>Technical Note:</strong> Published limits in this article belong to the named standard models and their stated medium. Custom media or operating conditions require a separately confirmed configuration before selection.</p>
 </article>
 
 <!-- ===== RELATED ARTICLES ===== -->
@@ -447,6 +365,7 @@
   </div>
 </section>
 
+</main>
 <footer class="footer" id="siteFooter">
  <div class="container">
   <div class="footer-brand footer-brand-band">

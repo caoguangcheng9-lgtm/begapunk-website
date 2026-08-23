@@ -63,7 +63,6 @@ if (includeProduction) {
 
 const excludedPdfNames = [
   'BP-2P-0001_draft.pdf',
-  'BP-2P-30-0001.pdf',
 ];
 
 async function rejectExcludedDownloads(directory) {
@@ -388,7 +387,7 @@ const banned = [
   { name: 'unsupported 24-hour response promise', pattern: /(?:(?:respond|reply|response|quote|quotation|feedback|support|review|check|contact)[^.!?。！？\n]{0,70}(?:within\s+)?24\s*[-‐‑‒–—]?\s*(?:hours?|hrs?|h\b)|(?:within\s+)?24\s*[-‐‑‒–—]?\s*(?:hours?|hrs?|h\b)[^.!?。！？\n]{0,70}(?:respond|reply|response|quote|quotation|feedback|support|review|check|contact)|(?:Antwort|Angebot|Rückmeldung|Prüfung)[^.!?。！？\n]{0,60}24\s*[-‐‑‒–—]?\s*Stunden|24\s*[-‐‑‒–—]?\s*Stunden[^.!?。！？\n]{0,60}(?:Antwort|Angebot|Rückmeldung|Prüfung)|(?:返信|回答|見積|対応|確認)[^。！？\n]{0,45}24\s*時間|24\s*時間[^。！？\n]{0,45}(?:返信|回答|見積|対応|確認)|(?:ответ|предложени\w*|провер\w*|свяж\w*)[^.!?。！？\n]{0,65}24\s*час\w*|24\s*час\w*[^.!?。！？\n]{0,65}(?:ответ|предложени\w*|провер\w*|свяж\w*))/gi, allowDisclaimer: true },
   { name: 'unsupported exact factory metric', pattern: /(?:(?:factory|facility|plant|workshop|assembly\s+hall|Fabrik|Werk|Werkstatt|Montagehalle|工場|組立棟|завод|цех)[^.!?。！？\n]{0,100}(?:\d{1,3}(?:,\d{3})+|\d{3,})\s*(?:square\s+meters?|m\s*(?:2|²)|sqm|㎡|平方米)|(?:\d{1,3}(?:,\d{3})+|\d{3,})\s*(?:square\s+meters?|m\s*(?:2|²)|sqm|㎡|平方米)[^.!?。！？\n]{0,100}(?:factory|facility|plant|workshop|assembly\s+hall|Fabrik|Werk|Werkstatt|Montagehalle|工場|組立棟|завод|цех)|\b\d+\s*(?:CNC\s+machines?|seal\s+testing\s+stations?|production\s+lines?|assembly\s+lines?|CNC[-\s]?Maschinen|Prüfstationen|CNC設備|試験ステーション|станк\w*\s+с\s+ЧПУ|испытательн\w*\s+стенд\w*)\b)/gi, allowDisclaimer: true },
   { name: 'production presented as application experience', pattern: /informed by cumulative production of (?:more than )?200,000 rotary joints/gi, publicOnly: true, allowDisclaimer: true },
-  { name: 'excluded public PDF reference', pattern: /\b(?:BP-2P-0001_draft|BP-2P-30-0001)\.pdf\b/gi },
+  { name: 'excluded public PDF reference', pattern: /\bBP-2P-0001_draft\.pdf\b/gi },
   { name: 'broken double punctuation', pattern: /\.\s+\.|(?<!\.)\.\.(?![./])/g, publicOnly: true, excludedExtensions: ['.dxf'] },
   { name: 'broken production counter', pattern: /200K\+\+/g },
   { name: 'corrupted diameter in search index', pattern: /\?(?:230|64|78\.9)\b|3-\?6\b/g, publicOnly: true, pathPattern: /(?:^|\/)search-index\.json$/ },
@@ -807,7 +806,6 @@ const blockedSamples = [
   'The factory has 6 seal testing stations.',
   'New 1,200m2 assembly hall added.',
   'Download BP-2P-0001_draft.pdf.',
-  'Download BP-2P-30-0001.pdf.',
   'Max 5 MPa,?230 mm outer diameter.',
   '?64 × 78 mm',
   '?78.9 × 63.9 mm',
@@ -815,6 +813,7 @@ const blockedSamples = [
   '"areaServed":["Germany"]',
 ];
 const allowedSamples = [
+  'Download BP-2P-30-0001.pdf.',
   'Download BP-2P-95-0005.pdf.',
   'BP-2P-95-0005 maximum pressure is 1 MPa and maximum speed is 200 RPM.',
   'BP-2P-0002 maximum pressure is 1 MPa.',

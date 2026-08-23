@@ -37,6 +37,10 @@ for (const directory of sourceDirectories) {
     const source = await readFile(path.join(absoluteDirectory, fileName), 'utf8');
     const $ = load(source);
 
+    const main = $('main');
+    if (main.length !== 1) failures.push(`${relative}: expected exactly one main landmark (found ${main.length})`);
+    if ($('h1').length !== 1) failures.push(`${relative}: expected exactly one h1 (found ${$('h1').length})`);
+
     $('a[target="_blank"]').each((_, element) => {
       const tokens = new Set(String($(element).attr('rel') || '').toLowerCase().split(/\s+/).filter(Boolean));
       if (!tokens.has('noopener') || !tokens.has('noreferrer')) {
@@ -103,4 +107,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('Source quality validation passed: consent, privacy, schema, favicon, external-link, and local dependency checks are clean.');
+console.log('Source quality validation passed: landmarks, consent, privacy, schema, favicon, external-link, and local dependency checks are clean.');

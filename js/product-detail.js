@@ -109,7 +109,7 @@
       && item.querySelectorAll(':scope > .faq-answer').length === 1
     ));
     if (!valid) return;
-    items.forEach((item) => item.removeAttribute('open'));
+    items.forEach((item, index) => item.toggleAttribute('open', index === 0));
   }
 
   function initializeThumbnails() {

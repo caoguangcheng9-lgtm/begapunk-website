@@ -10,10 +10,10 @@ const MODE = process.argv[2] || '';
 const EXPECTED_MODEL_COUNT = 16;
 const EXPECTED_PAGE_COUNT = 64;
 const EXPECTED_STYLE_HASH = '7D81DA13137D9D1435ABCABF962E8E46C20DB03F6B52F8BA45F2E71E9EAAF9FB';
-const EXPECTED_SHARED_CSS_HASH = '573B56D887CFE9E88CCFD8B8CF251DF1D9E35B777205BE1E34E735B01DF3A43C';
-const EXPECTED_SHARED_JS_HASH = '1478FE8C38A0383C2364F959C068D2D7D16A99B27FFA47ECBCD57F2D50A0CEB6';
-const PRODUCT_STYLE_VERSION = '20260819-product-first-view1';
-const PRODUCT_SCRIPT_VERSION = '20260816-product-detail1';
+const EXPECTED_SHARED_CSS_HASH = 'C5B396B9A68BD0D44FA4D718E7CA4E628FA88384D9FAD00EFEAA20ACECFC0018';
+const EXPECTED_SHARED_JS_HASH = 'C3881432F1C303A918E38752AC66A23973896E90C45F616F7EA0F5C464ABEA59';
+const PRODUCT_STYLE_VERSION = '20260822-product-faq2';
+const PRODUCT_SCRIPT_VERSION = '20260822-product-faq1';
 const LOCALE_PREFIXES = ['', 'de', 'ja', 'ru'];
 const PANEL_NAMES = ['specs', 'compat', 'install', 'downloads'];
 const JUMP_LINKS = Object.freeze([
@@ -857,6 +857,7 @@ function transformLegacyPage(source, relativePath, contract) {
 function firstViewProtectedSnapshot(source) {
   const $ = load(source, { decodeEntities: false });
   $('link[rel="stylesheet"][href*="css/product-detail.css?v="]').attr('href', '__PRODUCT_DETAIL_CSS__');
+  $('script[src*="js/product-detail.js?v="]').attr('src', '__PRODUCT_DETAIL_JS__');
   $('link[rel="stylesheet"][href*="product-detail-first-view-pilot.css"]').remove();
   $('body').removeClass('page-product-detail-pilot');
   const information = $('.pd-info');
@@ -1016,6 +1017,13 @@ function transformFirstView(source, relativePath, contract) {
     (_, start, end) => `${start}?v=${PRODUCT_STYLE_VERSION}${end}`,
     1,
     `${relativePath} product CSS cache key`,
+  );
+  next = replaceRegexExact(
+    next,
+    /(<script defer(?:="")? src="(?:\.\.\/)?js\/product-detail\.js)\?v=[^"]+("><\/script>)/g,
+    (_, start, end) => `${start}?v=${PRODUCT_SCRIPT_VERSION}${end}`,
+    1,
+    `${relativePath} product JS cache key`,
   );
 
   const pilotStyleCount = (next.match(/^[ \t]*<link rel="stylesheet" href="(?:\.\.\/)?css\/product-detail-first-view-pilot\.css\?v=[^"]+">\r?\n?/gm) || []).length;

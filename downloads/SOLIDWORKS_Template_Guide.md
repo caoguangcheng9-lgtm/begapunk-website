@@ -241,10 +241,10 @@
 
 ## 🔗 相关文件
 
-- 网站根目录：`E:\begapunk-site-v2\`
-- DXF 模板：`E:\begapunk-site-v2\downloads\Begapunk_A4_Horizontal_Template.dxf`
-- 示例 PDF：`E:\begapunk-site-v2\downloads\BP-200-0001.pdf`（2进2出产品）
+- 网站主页：<https://www.begapunk.com/>
+- DXF 模板（内部资料，不公开发布）：`E:\begapunk-site-v2\downloads\Begapunk_A4_Horizontal_Template.dxf`
+- 示例 PDF（内部资料，不公开发布）：`E:\begapunk-site-v2\downloads\BP-200-0001.pdf`（2进2出产品）
 
 ---
 
-**如有问题随时发我截图，我帮你调！**
+**如需模板使用支持，请联系 sales@begapunk.com。**

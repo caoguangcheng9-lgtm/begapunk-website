@@ -31,7 +31,7 @@ const changedStylesheets = new Map([
   ['application-case.css', '20260814-hero1'],
   ['manufacturing-quality.css', '20260814-hero1'],
   ['production-inspection-testing.css', '20260814-hero1'],
-  ['contact-rfq.css', '20260814-hero1'],
+  ['contact-rfq.css', '20260822-anchor1'],
 ]);
 
 function escapeRegExp(value) {

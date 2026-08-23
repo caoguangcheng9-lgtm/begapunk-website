@@ -1,6 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import {
+  DETAILED_SOFT_ISOLATION_ROUTES,
+  SOFT_ISOLATION_TOPIC_CONTENT,
+} from './lib/soft-isolation-topic-content.mjs';
 
 const root = process.cwd();
 const checkOnly = process.argv.includes('--check');
@@ -23,7 +27,7 @@ const locales = {
     metaDescription: 'Plan rotary-joint selection with Begapunk product data, an engineering input checklist, application cases, quality information, and application review.',
     eyebrow: 'Application planning',
     status: 'Use the checklist and current resources below to prepare an accurate rotary-joint selection.',
-    withdrawn: 'A reliable recommendation starts with the actual medium, pressure, speed, passage count, mounting space, environment, and duty cycle. Match these inputs to the current product page and approved drawing.',
+    withdrawn: 'A reliable recommendation starts with the actual medium, pressure, speed, passage count, mounting space, environment, and duty cycle. Match these inputs to the current product page and model-specific drawing.',
     reviewHeading: 'Information to prepare',
     reviewItems: [
       'Operating medium, pressure, speed, temperature, and duty cycle',
@@ -58,9 +62,9 @@ const locales = {
         ['Disclosure', 'Customer identity and machine brand are not disclosed'],
       ],
       boundaryHeading: 'Evidence boundary',
-      boundary: "The photograph and Begapunk's confirmed application record establish the application, product model, and clamp/release function. They do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output. Confirm these conditions from the machine design and approved product data.",
+      boundary: "The photograph and Begapunk's application record establish the application, product model, and clamp/release function. They do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output. Check those conditions against the machine design and current BP-2P-16-0001 drawing.",
       alternativeHeading: 'Additional model for this application type',
-      alternative: 'BP-2P-08-0001 can also be used for this pneumatic three-jaw bottle-cap-gripper application. The product identified in the photograph is BP-2P-16-0001, not BP-2P-08-0001. Confirm the passage count, mounting interface, pressure, speed, dimensions, and approved drawing before selection.',
+      alternative: 'BP-2P-08-0001 can also be used for this pneumatic three-jaw bottle-cap-gripper application. The product identified in the photograph is BP-2P-16-0001, not BP-2P-08-0001. Check the required passage count, mounting interface, pressure, speed, and dimensions against the current BP-2P-08-0001 drawing before selection.',
       alternativeCta: 'View BP-2P-08-0001 →',
       productCta: 'View BP-2P-16-0001',
       contactCta: 'Discuss a similar capping application',
@@ -71,7 +75,7 @@ const locales = {
     metaDescription: 'Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.',
     eyebrow: 'Anwendungsplanung',
     status: 'Mit der folgenden Checkliste und den aktuellen Unterlagen können Sie eine belastbare Vorauswahl der Drehdurchführung vorbereiten.',
-    withdrawn: 'Eine zuverlässige Empfehlung beginnt mit Betriebsmedium, Druck, Drehzahl, Kanalzahl, Einbauraum, Umgebung und Betriebszyklus. Gleichen Sie diese Angaben mit der aktuellen Produktseite und der freigegebenen Zeichnung ab.',
+    withdrawn: 'Eine zuverlässige Empfehlung beginnt mit Betriebsmedium, Druck, Drehzahl, Kanalzahl, Einbauraum, Umgebung und Betriebszyklus. Gleichen Sie diese Angaben mit der aktuellen Produktseite und der modellspezifischen Zeichnung ab.',
     reviewHeading: 'Erforderliche Angaben',
     reviewItems: [
       'Betriebsmedium, Druck, Drehzahl, Temperatur und Betriebszyklus',
@@ -106,9 +110,9 @@ const locales = {
         ['Offenlegung', 'Identität des Kunden und Maschinenfabrikat werden nicht genannt'],
       ],
       boundaryHeading: 'Nachweisgrenze',
-      boundary: 'Das Foto und die von Begapunk bestätigten Anwendungsdaten belegen die Anwendung, das Produktmodell sowie das Schließen und Öffnen des Greifers. Sie enthalten weder Angaben zur Anschlussbelegung noch zu Betriebsdruck, Drehzahl, Betriebszyklus, Lebensdauer, Leckagewerten oder Produktionsleistung. Diese Bedingungen sind anhand der Maschinenkonstruktion und der freigegebenen Produktdaten zu bestätigen.',
+      boundary: 'Das Foto und die Anwendungsdaten von Begapunk belegen die Anwendung, das Produktmodell sowie das Schließen und Öffnen des Greifers. Sie enthalten weder Angaben zur Anschlussbelegung noch zu Betriebsdruck, Drehzahl, Betriebszyklus, Lebensdauer, Leckagewerten oder Produktionsleistung. Diese Bedingungen anhand der Maschinenkonstruktion und der aktuellen Zeichnung für BP-2P-16-0001 prüfen.',
       alternativeHeading: 'Weiteres Modell für diesen Anwendungstyp',
-      alternative: 'BP-2P-08-0001 kann ebenfalls für diese Anwendung mit einem pneumatischen 3-Finger-Zentrischgreifer eingesetzt werden. Auf dem Foto ist BP-2P-16-0001 identifiziert, nicht BP-2P-08-0001. Vor der Auswahl sind Kanalzahl, Einbauschnittstelle, Druck, Drehzahl, Abmessungen und freigegebene Zeichnung zu prüfen.',
+      alternative: 'BP-2P-08-0001 kann ebenfalls für diese Anwendung mit einem pneumatischen 3-Finger-Zentrischgreifer eingesetzt werden. Auf dem Foto ist BP-2P-16-0001 identifiziert, nicht BP-2P-08-0001. Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen vor der Auswahl mit der aktuellen Zeichnung für BP-2P-08-0001 abgleichen.',
       alternativeCta: 'BP-2P-08-0001 ansehen →',
       productCta: 'BP-2P-16-0001 ansehen',
       contactCta: 'Ähnliche Verschließanwendung besprechen',
@@ -119,7 +123,7 @@ const locales = {
     metaDescription: 'Begapunkの最新製品データ、技術入力チェックリスト、導入事例、品質情報を使って、ロータリージョイントの選定を計画できます。',
     eyebrow: '用途選定の準備',
     status: '以下のチェックリストと最新資料を使って、ロータリージョイントの選定条件を整理できます。',
-    withdrawn: '適切な型式選定には、使用流体、圧力、回転数、流路数、取付スペース、周囲環境、運転サイクルが必要です。最新の製品ページと承認図面に照らして確認します。',
+    withdrawn: '適切な型式選定には、使用流体、圧力、回転数、流路数、取付スペース、周囲環境、運転サイクルが必要です。最新の製品ページと型式専用図面に照らして確認します。',
     reviewHeading: 'ご用意いただく情報',
     reviewItems: [
       '使用流体、圧力、回転数、温度、運転サイクル',
@@ -154,9 +158,9 @@ const locales = {
         ['公開範囲', 'お客様名および装置メーカー名は非公開'],
       ],
       boundaryHeading: '確認できる範囲',
-      boundary: '写真とBegapunkの用途確認記録により、用途、製品型式、把持・開放機能を確認しています。ポート番号、使用圧力、回転数、運転サイクル、寿命、漏れ性能、生産能力を示すものではありません。これらは装置設計と承認済み製品データに基づいて確認してください。',
+      boundary: '写真とBegapunkの用途記録により、用途、製品型式、把持・開放機能を確認しています。ポート番号、使用圧力、回転数、運転サイクル、寿命、漏れ性能、生産能力を示すものではありません。これらは装置設計と最新のBP-2P-16-0001図面に照らして確認してください。',
       alternativeHeading: '同用途で選定可能な別型式',
-      alternative: 'BP-2P-08-0001も、3爪エアチャックを使用する同用途で選定できます。ただし、写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001を写した写真ではありません。選定時は流路数、取付インターフェース、圧力、回転数、寸法、承認図面を確認してください。',
+      alternative: 'BP-2P-08-0001も、3爪エアチャックを使用する同用途で選定できます。ただし、写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001を写した写真ではありません。選定時は流路数、取付インターフェース、圧力、回転数、寸法を最新のBP-2P-08-0001図面と照合してください。',
       alternativeCta: 'BP-2P-08-0001を見る →',
       productCta: 'BP-2P-16-0001を見る',
       contactCta: '同様のキャッピング用途を相談',
@@ -167,7 +171,7 @@ const locales = {
     metaDescription: 'Планируйте подбор вращающегося соединения по актуальным данным Begapunk, перечню исходных данных, примерам применения и информации о качестве.',
     eyebrow: 'Планирование применения',
     status: 'Используйте приведённый ниже перечень и актуальные материалы для точного подбора вращающегося соединения.',
-    withdrawn: 'Надёжная рекомендация требует данных о рабочей среде, давлении, скорости, числе каналов, монтажном объёме, окружающей среде и рабочем цикле. Сопоставьте эти данные с актуальной страницей изделия и утверждённым чертежом.',
+    withdrawn: 'Надёжная рекомендация требует данных о рабочей среде, давлении, скорости, числе каналов, монтажном объёме, окружающей среде и рабочем цикле. Сопоставьте эти данные с актуальной страницей изделия и чертежом конкретной модели.',
     reviewHeading: 'Исходные данные',
     reviewItems: [
       'Рабочая среда, давление, скорость, температура и рабочий цикл',
@@ -202,9 +206,9 @@ const locales = {
         ['Раскрытие данных', 'Название заказчика и марка машины не раскрываются'],
       ],
       boundaryHeading: 'Границы подтверждения',
-      boundary: 'Фотография и подтверждённые Begapunk сведения подтверждают область применения, модель изделия и функцию зажима/разжима. Они не подтверждают нумерацию портов, рабочее давление, частоту вращения, режим работы, ресурс, показатели утечки или производительность. Эти условия следует подтвердить по конструкции машины и утверждённым данным изделия.',
+      boundary: 'Фотография и сведения Begapunk подтверждают область применения, модель изделия и функцию зажима/разжима. Они не определяют нумерацию портов, рабочее давление, частоту вращения, режим работы, ресурс, показатели утечки или производительность. Проверьте эти условия по конструкции машины и актуальному чертежу BP-2P-16-0001.',
       alternativeHeading: 'Дополнительная модель для этого применения',
-      alternative: 'BP-2P-08-0001 также может применяться в такой установке с трёхкулачковым пневматическим захватом. На фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Перед выбором необходимо проверить число каналов, монтажный интерфейс, давление, частоту вращения, размеры и утверждённый чертёж.',
+      alternative: 'BP-2P-08-0001 также может применяться в такой установке с трёхкулачковым пневматическим захватом. На фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Перед выбором сопоставьте число каналов, монтажный интерфейс, давление, частоту вращения и размеры с актуальным чертежом BP-2P-08-0001.',
       alternativeCta: 'Посмотреть BP-2P-08-0001 →',
       productCta: 'Посмотреть BP-2P-16-0001',
       contactCta: 'Обсудить аналогичную укупорочную установку',
@@ -217,6 +221,8 @@ const retiredBottleCappingOverrideSources = [
   'BP-2P-16-0001 supplying clamp and release air to a pneumatic three-jaw bottle-cap gripper on a customer production capping machine',
   'Customer production bottle-capping machine',
   'Two independent compressed-air passages supply clamp and release air to the gripper',
+  "The photograph and Begapunk's confirmed application record establish the application, product model, and clamp/release function. They do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output. Confirm these conditions from the machine design and approved product data.",
+  'BP-2P-08-0001 can also be used for this pneumatic three-jaw bottle-cap-gripper application. The product identified in the photograph is BP-2P-16-0001, not BP-2P-08-0001. Confirm the passage count, mounting interface, pressure, speed, dimensions, and approved drawing before selection.',
 ];
 
 const htmlEscape = (value) => String(value)
@@ -275,7 +281,34 @@ ${facts}
    </section>`;
 }
 
-function buildBody(strings, preservedH1, route) {
+function buildTopicGuide(topic, route) {
+  if (!topic) return '';
+  const sections = topic.sections.map((section, sectionIndex) => {
+    const paragraphs = (section.paragraphs || [])
+      .map((paragraph) => `     <p style="margin:0 0 14px;line-height:1.8;color:var(--text);">${htmlEscape(paragraph)}</p>`)
+      .join('\n');
+    const points = (section.points || []).map(([title, description]) => `      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);">
+       <strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">${htmlEscape(title)}</strong>
+       <span>${htmlEscape(description)}</span>
+      </li>`).join('\n');
+    const list = points
+      ? `     <${section.ordered ? 'ol' : 'ul'} style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0 0;padding:${section.ordered ? '0 0 0 1.35rem' : '0'};${section.ordered ? '' : 'list-style:none;'}">
+${points}
+     </${section.ordered ? 'ol' : 'ul'}>`
+      : '';
+    return `    <section class="soft-topic-section" aria-labelledby="soft-topic-${sectionIndex + 1}" style="margin:0 0 36px;">
+     <h2 id="soft-topic-${sectionIndex + 1}" style="margin-bottom:14px;">${htmlEscape(section.heading)}</h2>
+${paragraphs}
+${list}
+    </section>`;
+  }).join('\n');
+  return `   <div class="soft-topic-guide" data-topic-route="${htmlEscape(route)}">
+${sections}
+   </div>`;
+}
+
+function buildBody(strings, preservedH1, route, localeCode) {
+  const topic = SOFT_ISOLATION_TOPIC_CONTENT[localeCode]?.[route];
   const reviewItems = strings.reviewItems
     .map((item) => `      <li>${htmlEscape(item)}</li>`)
     .join('\n');
@@ -285,7 +318,14 @@ function buildBody(strings, preservedH1, route) {
   const verifiedCase = route === 'application-bottle-filling-capping.html'
     ? `\n${buildBottleCappingCase(strings)}\n`
     : '';
+  const topicGuide = topic ? `${buildTopicGuide(topic, route)}\n` : '';
   const heroClass = route.startsWith('blog-') ? 'blog-hero' : 'app-hero';
+  const contactHref = topic
+    ? `contact.html?request=application-review&amp;source=${encodeURIComponent(route)}#quoteForm`
+    : 'contact.html';
+  const closingNote = topic
+    ? ''
+    : `   <p style="margin:24px 0 0;color:var(--text-light);font-size:0.9rem;line-height:1.7;">${htmlEscape(strings.closingNote)}</p>`;
 
   return `<!-- SOFT-ISOLATION-CONTENT:START -->
 <main id="main-content" class="soft-isolation-page">
@@ -293,15 +333,15 @@ function buildBody(strings, preservedH1, route) {
   <div class="container" style="max-width:980px;">
    <span class="section-label">${htmlEscape(strings.eyebrow)}</span>
    ${preservedH1}
-   <p>${htmlEscape(strings.status)}</p>
+   <p>${htmlEscape(topic?.heroText || strings.status)}</p>
   </div>
  </section>
  <section class="section soft-isolation-content">
   <div class="container" style="max-width:980px;">
    <div style="padding:22px 24px;border-left:4px solid var(--primary);background:var(--bg-alt);border-radius:8px;margin-bottom:30px;">
-    <p style="margin:0;line-height:1.8;color:var(--text);">${htmlEscape(strings.withdrawn)}</p>
+    <p style="margin:0;line-height:1.8;color:var(--text);">${htmlEscape(topic?.opening || strings.withdrawn)}</p>
    </div>
-${verifiedCase}   <h2 style="margin-bottom:12px;">${htmlEscape(strings.reviewHeading)}</h2>
+${verifiedCase}${topicGuide}   <h2 style="margin-bottom:12px;">${htmlEscape(strings.reviewHeading)}</h2>
    <ul style="margin:0 0 34px;padding-left:22px;line-height:1.9;color:var(--text);">
 ${reviewItems}
    </ul>
@@ -311,12 +351,12 @@ ${resources}
    </nav>
    <div class="app-detail-cta" style="align-items:center;">
     <div>
-     <h2>${htmlEscape(strings.helpHeading)}</h2>
-     <p>${htmlEscape(strings.helpText)}</p>
+     <h2>${htmlEscape(topic?.inquiryHeading || strings.helpHeading)}</h2>
+     <p>${htmlEscape(topic?.inquiryText || strings.helpText)}</p>
     </div>
-    <a href="contact.html" class="btn btn-primary">${htmlEscape(strings.contactCta)}</a>
+    <a href="${contactHref}" class="btn btn-primary">${htmlEscape(strings.contactCta)}</a>
    </div>
-   <p style="margin:24px 0 0;color:var(--text-light);font-size:0.9rem;line-height:1.7;">${htmlEscape(strings.closingNote)}</p>
+${closingNote}
   </div>
  </section>
 </main>
@@ -366,7 +406,7 @@ function ensureBottleCappingStyles(prefix, strings, route) {
   return cleanedPrefix.replace(/<\/head>/i, `<link rel="stylesheet" href="${href}">\n</head>`);
 }
 
-function isolatePage(html, strings, relativePath, route) {
+function isolatePage(html, strings, relativePath, route, localeCode) {
   const title = html.match(/<title>[\s\S]*?<\/title>/i)?.[0];
   const canonical = html.match(/<link\s+rel=["']canonical["'][^>]*>/i)?.[0];
   if (!title || !canonical) throw new Error(`${relativePath}: title or canonical is missing.`);
@@ -386,11 +426,12 @@ function isolatePage(html, strings, relativePath, route) {
 
   let prefix = html.slice(0, headerStart);
   prefix = prefix.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi, '');
-  prefix = updateDescriptionMeta(prefix, strings.metaDescription);
+  const topic = SOFT_ISOLATION_TOPIC_CONTENT[localeCode]?.[route];
+  prefix = updateDescriptionMeta(prefix, topic?.metaDescription || strings.metaDescription);
   prefix = ensureNoindex(prefix);
   prefix = ensureBottleCappingStyles(prefix, strings, route);
 
-  const next = `${prefix}${originalHeader}\n\n${buildBody(strings, preservedH1, route)}\n\n${originalFooter}`;
+  const next = `${prefix}${originalHeader}\n\n${buildBody(strings, preservedH1, route, localeCode)}\n\n${originalFooter}`;
   if (!next.includes(title)) throw new Error(`${relativePath}: title changed unexpectedly.`);
   if (!next.includes(canonical)) throw new Error(`${relativePath}: canonical changed unexpectedly.`);
   const nextHeaderStart = next.indexOf('<header class="header">');
@@ -403,6 +444,14 @@ function isolatePage(html, strings, relativePath, route) {
   }
   if ((next.match(/SOFT-ISOLATION-CONTENT:START/g) || []).length !== 1) {
     throw new Error(`${relativePath}: soft-isolation marker is not unique.`);
+  }
+  if (topic) {
+    if ((next.match(/class="soft-topic-section"/g) || []).length !== 3) {
+      throw new Error(`${relativePath}: expected three route-specific topic sections.`);
+    }
+    if (!next.includes(`data-topic-route="${route}"`)) {
+      throw new Error(`${relativePath}: route-specific topic marker is missing.`);
+    }
   }
   return next;
 }
@@ -437,7 +486,55 @@ function overridePairs(source, localized) {
     const [localizedTerm, localizedDescription] = localized.bottleCappingCase.facts[index];
     pairs.push([term, localizedTerm], [description, localizedDescription]);
   });
+  for (const route of DETAILED_SOFT_ISOLATION_ROUTES) {
+    const sourceTopic = SOFT_ISOLATION_TOPIC_CONTENT.en[route];
+    const localizedTopic = SOFT_ISOLATION_TOPIC_CONTENT[localized.directory || 'en'][route];
+    pairs.push(
+      [sourceTopic.metaDescription, localizedTopic.metaDescription],
+      [sourceTopic.heroText, localizedTopic.heroText],
+      [sourceTopic.opening, localizedTopic.opening],
+      [sourceTopic.inquiryHeading, localizedTopic.inquiryHeading],
+      [sourceTopic.inquiryText, localizedTopic.inquiryText],
+    );
+    sourceTopic.sections.forEach((section, sectionIndex) => {
+      const localizedSection = localizedTopic.sections[sectionIndex];
+      pairs.push([section.heading, localizedSection.heading]);
+      (section.paragraphs || []).forEach((paragraph, paragraphIndex) => {
+        pairs.push([paragraph, localizedSection.paragraphs[paragraphIndex]]);
+      });
+      (section.points || []).forEach(([title, description], pointIndex) => {
+        const [localizedTitle, localizedDescription] = localizedSection.points[pointIndex];
+        pairs.push(
+          [title, localizedTitle],
+          [description, localizedDescription],
+          [
+            `<strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">${htmlEscape(title)}</strong>\n       <span>${htmlEscape(description)}</span>`,
+            `<strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">${htmlEscape(localizedTitle)}</strong>\n       <span>${htmlEscape(localizedDescription)}</span>`,
+          ],
+        );
+      });
+    });
+  }
   return pairs;
+}
+
+for (const localeCode of Object.keys(locales)) {
+  const topics = SOFT_ISOLATION_TOPIC_CONTENT[localeCode];
+  if (!topics) throw new Error(`${localeCode}: route-specific topic content is missing.`);
+  const topicRoutes = Object.keys(topics).sort();
+  const expectedRoutes = [...DETAILED_SOFT_ISOLATION_ROUTES].sort();
+  if (JSON.stringify(topicRoutes) !== JSON.stringify(expectedRoutes)) {
+    throw new Error(`${localeCode}: route-specific topic inventory does not match the eight controlled routes.`);
+  }
+  if (new Set(Object.values(topics).map((topic) => topic.opening)).size !== expectedRoutes.length) {
+    throw new Error(`${localeCode}: route-specific openings must be unique.`);
+  }
+  for (const [route, topic] of Object.entries(topics)) {
+    if (topic.sections.length !== 3
+      || topic.sections.some((section) => !section.heading || !(section.paragraphs?.length || section.points?.length))) {
+      throw new Error(`${localeCode}/${route}: incomplete route-specific topic structure.`);
+    }
+  }
 }
 
 const pending = [];
@@ -448,7 +545,7 @@ for (const [localeCode, strings] of Object.entries(locales)) {
     const relativePath = strings.directory ? path.join(strings.directory, route) : route;
     const filePath = path.join(root, relativePath);
     const current = fs.readFileSync(filePath, 'utf8');
-    const desired = isolatePage(current, strings, relativePath, route);
+    const desired = isolatePage(current, strings, relativePath, route, localeCode);
     if (desired !== current) {
       pending.push(relativePath);
       plannedWrites.set(filePath, desired);
@@ -479,7 +576,7 @@ for (const localeCode of ['de', 'ja', 'ru']) {
   const seo = JSON.parse(seoText);
   for (const route of routes) {
     if (!seo[route]?.title || !seo[route]?.h1) throw new Error(`${localeCode}/${route}: curated SEO title or H1 is missing.`);
-    seo[route].description = strings.metaDescription;
+    seo[route].description = SOFT_ISOLATION_TOPIC_CONTENT[localeCode]?.[route]?.metaDescription || strings.metaDescription;
   }
   const desiredSeo = serializeJson(seo, seoText);
   if (desiredSeo !== seoText) {

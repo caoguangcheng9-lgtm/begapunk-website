@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { loadPublicDownloadAllowlist } from './lib/public-downloads.mjs';
 
 const [, , baseRef, headRef = 'HEAD', outputFile] = process.argv;
 if (!baseRef || !outputFile) {
@@ -11,6 +12,9 @@ if (!baseRef || !outputFile) {
 const siteOrigin = 'https://www.begapunk.com';
 const repoRoot = process.cwd();
 const urls = new Set();
+const approvedDownloadPaths = new Set(
+  (await loadPublicDownloadAllowlist(repoRoot)).map((fileName) => `downloads/${fileName}`),
+);
 
 async function addPublicPath(relativePath) {
   const normalized = relativePath.replaceAll('\\', '/').replace(/^\.\//, '');
@@ -39,7 +43,7 @@ async function addPublicPath(relativePath) {
     return;
   }
   if (/^downloads\/[^/]+\.pdf$/i.test(normalized)) {
-    urls.add(`${siteOrigin}/${normalized}`);
+    if (approvedDownloadPaths.has(normalized)) urls.add(`${siteOrigin}/${normalized}`);
   }
 }
 
@@ -52,8 +56,24 @@ async function addAllSitemapUrls() {
   }
 }
 
+async function addRetiredUrls() {
+  const retired = await readFile(path.join(repoRoot, 'ops', 'indexnow-retired-urls.txt'), 'utf8');
+  for (const value of retired.split(/\r?\n/).map((item) => item.trim()).filter(Boolean)) {
+    const url = new URL(value);
+    const retiredPath = decodeURIComponent(url.pathname.replace(/^\//, ''));
+    if (url.protocol !== 'https:'
+      || url.hostname !== 'www.begapunk.com'
+      || !retiredPath.startsWith('downloads/')
+      || approvedDownloadPaths.has(retiredPath)) {
+      throw new Error(`Invalid retired IndexNow URL: ${value}`);
+    }
+    urls.add(url.href);
+  }
+}
+
 if (baseRef === '--all') {
   await addAllSitemapUrls();
+  await addRetiredUrls();
 } else {
   const diff = execFileSync('git', ['diff', '--name-status', '--find-renames', baseRef, headRef], {
     cwd: repoRoot,
@@ -77,9 +97,14 @@ if (baseRef === '--all') {
       if (url.protocol !== 'https:' || url.hostname !== 'www.begapunk.com') {
         throw new Error(`Invalid extra IndexNow URL: ${value}`);
       }
+      const publicPath = decodeURIComponent(url.pathname.replace(/^\//, ''));
+      if (publicPath.startsWith('downloads/') && !approvedDownloadPaths.has(publicPath)) {
+        throw new Error(`Refusing non-public download in IndexNow URL list: ${value}`);
+      }
       urls.add(url.href);
     }
   }
+  if (diff.includes('ops/indexnow-retired-urls.txt')) await addRetiredUrls();
 }
 
 const sorted = [...urls].sort((left, right) => left.localeCompare(right, 'en'));

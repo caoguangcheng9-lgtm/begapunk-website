@@ -18,7 +18,10 @@ const LOCALES = Object.freeze({
 const EXPECTED_MODEL_COUNT = 16;
 const EXPECTED_PAGE_COUNT = EXPECTED_MODEL_COUNT * Object.keys(LOCALES).length;
 const PORT_CATEGORY_MODELS = new Set(['BP-1P-0003', 'BP-2P-08-0001']);
-const IDENTITY_PENDING_MODELS = new Set(['BP-2P-30-0001']);
+const IDENTITY_PENDING_MODELS = new Set();
+// Owner-confirmed capability. The public page must still distinguish the
+// drawing-listed pneumatic configuration from the custom hydraulic variant.
+const OWNER_CONFIRMED_CUSTOM_HYDRAULIC_MODELS = new Set(['BP-2P-130-0001']);
 const PORT_ANOMALY_MODEL = 'BP-3P-0006';
 
 const args = process.argv.slice(2);
@@ -106,7 +109,7 @@ function validateFactContract(contract) {
   }
   const pendingFromPolicy = new Set(contract.sourcePolicy.identityPendingModels || []);
   if (!setEquals(pendingFromPolicy, IDENTITY_PENDING_MODELS)) {
-    throw new Error('Identity-pending policy must contain only BP-2P-30-0001.');
+    throw new Error('Identity-pending policy does not match the approved pending-model set.');
   }
   for (const [model, product] of entries) {
     if (product.websiteModel !== model || !product.drawing || !product.drawingFacts) {
@@ -631,12 +634,18 @@ function collectResidualDrawingRisks(source, targets, locale, model, product) {
     const needle = risk.term.toLocaleLowerCase();
     if (!needle) continue;
     const indexes = [];
-    let cursor = 0;
-    while (cursor < haystack.length) {
-      const index = haystack.indexOf(needle, cursor);
-      if (index < 0) break;
-      indexes.push(index);
-      cursor = index + Math.max(needle.length, 1);
+    const useUnicodeWordBoundaries = locale !== 'ja' && /^\p{L}[\s\S]*\p{L}$/u.test(needle);
+    if (useUnicodeWordBoundaries) {
+      const pattern = new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegExp(risk.term)}(?![\\p{L}\\p{N}])`, 'giu');
+      for (const match of searchable.matchAll(pattern)) indexes.push(match.index);
+    } else {
+      let cursor = 0;
+      while (cursor < haystack.length) {
+        const index = haystack.indexOf(needle, cursor);
+        if (index < 0) break;
+        indexes.push(index);
+        cursor = index + Math.max(needle.length, 1);
+      }
     }
     if (!indexes.length) continue;
     const lines = [...new Set(indexes.map((index) => lineNumberAt(lineStarts, index)))];
@@ -666,7 +675,13 @@ function residualRiskTerms(locale, model, product) {
   }
 
   if (product.drawingFacts.media.length === 1 && product.drawingFacts.media[0] === 'air') {
-    add('media:beyond-drawing', localizedPhrase(locale, {
+    const customHydraulic = OWNER_CONFIRMED_CUSTOM_HYDRAULIC_MODELS.has(model);
+    add('media:beyond-drawing', localizedPhrase(locale, customHydraulic ? {
+      en: ['water', 'coolant'],
+      de: ['Wasser', 'Kühlmittel', 'Kühler'],
+      ja: ['水', 'クーラント'],
+      ru: ['вода', 'водораствор', 'охладител'],
+    } : {
       en: ['water', 'coolant', 'hydraulic oil'],
       de: ['Wasser', 'Kühlmittel', 'Kühler', 'Hydrauliköl'],
       ja: ['水', 'クーラント', '油圧オイル'],
@@ -821,10 +836,10 @@ function formatWeight(locale, weight) {
 function formatPorts(locale, model, ports) {
   if (ports.status === 'anomaly-unresolved') {
     return localizedPhrase(locale, {
-      en: 'Port thread pending engineering confirmation',
-      de: 'Anschlussgewinde bis zur technischen Bestätigung offen',
-      ja: 'ポートねじは担当設計部門の確認待ちです',
-      ru: 'Резьба портов должна быть подтверждена ответственной конструкторской службой',
+      en: 'Port thread is not listed; request the current model-specific drawing before selecting fittings',
+      de: 'Anschlussgewinde ist nicht angegeben; aktuelle modellspezifische Zeichnung vor Auswahl der Verschraubungen anfordern',
+      ja: 'ポートねじは記載されていません。継手選定前に最新の型式専用図面をご依頼ください',
+      ru: 'Резьба портов не указана; запросите актуальный чертёж конкретной модели до выбора фитингов',
     });
   }
   if (!Array.isArray(ports.annotations) || !ports.annotations.length) {

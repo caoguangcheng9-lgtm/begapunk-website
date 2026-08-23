@@ -5,9 +5,7 @@
     "verifiedStatus": "verified-drawing",
     "quarantineStatus": "identity-pending",
     "annotationConflictStatus": "annotation-conflict",
-    "identityPendingModels": [
-      "BP-2P-30-0001"
-    ],
+    "identityPendingModels": [],
     "identityPendingRule": "Facts from an identity-pending drawing are recorded for audit only and must not be asserted for the website model. Public download links must remain replaced by a request=verified-drawing contact route.",
     "portRule": "Only unambiguous printed port annotations are recorded. Raw anomalous annotations are preserved without normalization.",
     "mountingRule": "Mounting features are recorded only when the count, thread or diameter, and any stated depth are legible. A missing depth is not inferred.",
@@ -31,7 +29,7 @@
       "drawing": {
         "path": "downloads/BP-1P-0003.pdf",
         "filename": "BP-1P-0003.pdf",
-        "sha256": "4fc323f175a2cdb54807013073400117744969816012f7fe73fd006035372766",
+        "sha256": "395958a9617c47c63d305ec7f2259552adad4c4f06a7e97374cd544255123923",
         "titleBlockModel": "BP-1P-0003",
         "documentControlNumber": "QC-2025-0822-001",
         "date": "2025-08-22",
@@ -127,7 +125,7 @@
       "drawing": {
         "path": "downloads/BP-1P-0006.pdf",
         "filename": "BP-1P-0006.pdf",
-        "sha256": "e8ceda6edec4331a8aa1996a8cd0ce961662db218abd890de90dd3584a3659fe",
+        "sha256": "418b6329a9461debf048f84018195ca8eaf7e573d000466ae66ff9d48d78ac8b",
         "titleBlockModel": "BP-1P-0006",
         "documentControlNumber": "QC-2025-0810-001",
         "date": "2025-08-10",
@@ -212,7 +210,7 @@
       "drawing": {
         "path": "downloads/BP-2P-0001.pdf",
         "filename": "BP-2P-0001.pdf",
-        "sha256": "67e5d88891ec42aaa6f65c82c3169cd5a89c947166d0939ffb2107b0a90d00c4",
+        "sha256": "27e245d9e83d0bcc5feaafb6912c09c8006310dc4bd05b4a413f50de192dd375",
         "titleBlockModel": "BP-2P-0001",
         "documentControlNumber": "QC-2025-0512-003",
         "date": "2025-05-12",
@@ -299,7 +297,7 @@
       "drawing": {
         "path": "downloads/BP-2P-0002.pdf",
         "filename": "BP-2P-0002.pdf",
-        "sha256": "435609ab35b15013dfba8e196a6b3bf8b6389f3536c7ba2a2659862cbe670c6e",
+        "sha256": "3a261435bc7c6887471ae1d7d5ac93dae60ef47de97124637c59f57a9b68a2d8",
         "titleBlockModel": "BP-2P-0002",
         "documentControlNumber": "QC-2020-0121-001",
         "date": "2020-01-21",
@@ -403,7 +401,7 @@
       "drawing": {
         "path": "downloads/BP-2P-08-0001.pdf",
         "filename": "BP-2P-08-0001.pdf",
-        "sha256": "10f745c415cbf1f0cd249b3c34c6df1f38777c5fb3caba906fc7a3b19f63557f",
+        "sha256": "ec81c870ab4d517f6cf9ab3538a982fa2b969960cb37185743624ddba7f37bee",
         "titleBlockModel": "BP-2P-08-0001",
         "documentControlNumber": "QC-2025-0512-003",
         "date": "2025-05-12",
@@ -500,7 +498,7 @@
       "drawing": {
         "path": "downloads/BP-2P-130-0001.pdf",
         "filename": "BP-2P-130-0001.pdf",
-        "sha256": "a46c1ae391dc2d56d98400f4dfe165e88160f4478f9ca9a9c0523efd0c6c4609",
+        "sha256": "37725bdb3234736c95193a160550d645dc5b593196bbaf20ae4faae13253b6f9",
         "titleBlockModel": "BP-2P-130-0001",
         "documentControlNumber": "QC-2024-0310-001",
         "date": "2024-03-10",
@@ -587,7 +585,7 @@
       "drawing": {
         "path": "downloads/BP-2P-16-0001.pdf",
         "filename": "BP-2P-16-0001.pdf",
-        "sha256": "bd46e9e23cb32891ed8c4fa89f8cca998e3fc8e85d3e98d135106a214727a931",
+        "sha256": "a8edf1841757a76f3bc076a6e7632e06f035a5adf3fddbc04137f993166d392a",
         "titleBlockModel": "BP-2P-16-0001",
         "documentControlNumber": "QC-2026-0221-001",
         "date": "2026-02-21",
@@ -672,14 +670,14 @@
     },
     "BP-2P-30-0001": {
       "websiteModel": "BP-2P-30-0001",
-      "status": "identity-pending",
+      "status": "verified-drawing",
       "drawing": {
         "path": "downloads/BP-2P-30-0001.pdf",
         "filename": "BP-2P-30-0001.pdf",
-        "sha256": "4a61b012cfc8428be3916ccf2a272d093ae0ba157443cdfb10e09fb83d4b6bbd",
-        "titleBlockModel": "BP-3P-30-0001",
-        "documentControlNumber": "QC-2022-0822-003",
-        "date": "2022-08-22",
+        "sha256": "bd82164a13d7da016f529170caa5439f8831260d9d5ac3dc3f3d255dbe7ea9bd",
+        "titleBlockModel": "BP-2P-30-0001",
+        "documentControlNumber": "QC-2025-0512-003",
+        "date": "2025-05-12",
         "pageCount": 1
       },
       "drawingFacts": {
@@ -701,7 +699,7 @@
           "unit": "degC"
         },
         "weight": {
-          "value": 390,
+          "value": 1230,
           "unit": "g"
         },
         "sealMaterials": [
@@ -709,17 +707,16 @@
           "O-ring"
         ],
         "envelope": {
-          "status": "drawing-audit-only",
           "shape": "cylindrical",
           "maximumDiameterMm": 76,
-          "overallLengthMm": 69.97
+          "overallLengthMm": 70
         },
         "throughBore": {
-          "status": "drawing-audit-only",
+          "status": "verified",
           "diameterMm": 30
         },
         "mounting": {
-          "status": "drawing-audit-only",
+          "status": "verified",
           "features": [
             {
               "side": "face-a",
@@ -736,7 +733,7 @@
           ]
         },
         "ports": {
-          "status": "drawing-only-not-applicable",
+          "status": "verified",
           "annotations": [
             {
               "count": 2,
@@ -754,9 +751,11 @@
         }
       },
       "nonInferable": [
-        "whether any drawing fact applies to website model BP-2P-30-0001",
-        "whether the filename or title-block model is authoritative",
-        "whether the drawing is safe for public download under this SKU"
+        "media other than air",
+        "which mounting face is the rotor or stator side",
+        "mounting-thread depth because no depth is printed",
+        "channel cross-connection behavior",
+        "continuous rotation duty"
       ],
       "prohibitedWebClaims": []
     },
@@ -766,7 +765,7 @@
       "drawing": {
         "path": "downloads/BP-2P-50-0001.pdf",
         "filename": "BP-2P-50-0001.pdf",
-        "sha256": "652375676687345701f7b497d661fb4f6dedb9ddcb31a6d18df1f99ec5cf915c",
+        "sha256": "1a6ba6a57dadfc0df37de8d1a8e61cf441ec891d33a2b861b0a47a6430116056",
         "titleBlockModel": "BP-2P-50-0001",
         "documentControlNumber": "QC-2023-0806-001",
         "date": "2023-08-06",
@@ -856,7 +855,7 @@
       "drawing": {
         "path": "downloads/BP-2P-95-0005.pdf",
         "filename": "BP-2P-95-0005.pdf",
-        "sha256": "a6451acfcbe27f9122246fb7e04b885ef5276307d8255b3101a54b342c2a1e9a",
+        "sha256": "d4eacb9a9f7c3c274bbbf29ea8ea34914708f595cc07ae37093bb41ac2b95873",
         "titleBlockModel": "BP-2P-95-0005",
         "documentControlNumber": "QC-2025-0512-003",
         "date": "2025-05-12",
@@ -974,7 +973,7 @@
       "drawing": {
         "path": "downloads/BP-3P-0004.pdf",
         "filename": "BP-3P-0004.pdf",
-        "sha256": "ef4afa50b13e9b85bbbb222db6efba3b37b4c38251569fa63f279c66c24dcb0c",
+        "sha256": "4d567f6e544d94c4534a3d7933730f092a08685f35bac4168f0e3246737879a8",
         "titleBlockModel": "BP-3P-0004",
         "documentControlNumber": "QC-2025-0922-001",
         "date": "2025-09-22",
@@ -1059,7 +1058,7 @@
       "drawing": {
         "path": "downloads/BP-3P-0006.pdf",
         "filename": "BP-3P-0006.pdf",
-        "sha256": "7b644baae4d6e2bc119c7d598ab026ab50dad700a184f8610850efd1bcdac143",
+        "sha256": "2ada2093698eb3143ca1b4fb680e15d77efc5cc8847722e1f1714bab44b0a44c",
         "titleBlockModel": "BP-3P-0006",
         "documentControlNumber": "QC-2021-0112-001",
         "date": "2021-01-12",
@@ -1159,7 +1158,7 @@
       "drawing": {
         "path": "downloads/BP-3P-0007.pdf",
         "filename": "BP-3P-0007.pdf",
-        "sha256": "74e5396aed493d0640cb018295ea2e794a48052d0629f074cac377512573aac4",
+        "sha256": "6eaeb6844460222dc3b911e0f1d67f2b450c5f3a017b2dc4bdb0dc65824d07da",
         "titleBlockModel": "BP-3P-0007",
         "documentControlNumber": "QC-2024-0903-001",
         "date": "2024-09-03",
@@ -1252,7 +1251,7 @@
       "drawing": {
         "path": "downloads/BP-3P-S06-0001.pdf",
         "filename": "BP-3P-S06-0001.pdf",
-        "sha256": "d7e281fca08cf3d61f02752087705cabd66435ca6a2475e9ea386e33c49179c1",
+        "sha256": "9d28c3e885a8bf628ac11a471c507540cba560693186d3e1aaec6d3c1a04535b",
         "titleBlockModel": "BP-3P-S06-0001",
         "documentControlNumber": "QC-2026-0508-001",
         "date": "2026-05-08",
@@ -1380,7 +1379,7 @@
       "drawing": {
         "path": "downloads/BP-4P-30-0001.pdf",
         "filename": "BP-4P-30-0001.pdf",
-        "sha256": "f1958b99eb77cbc063cced2c1dc262ea12a4b41f17cff000bfbf5c6b0f86be1e",
+        "sha256": "0c2e48afbcb3893bd54f1e8bc74f40cff7e45c70795ce19d97193204e1f93c26",
         "titleBlockModel": "BP-4P-30-0001",
         "documentControlNumber": "QC-2020-0402-001",
         "date": "2020-04-02",
@@ -1470,7 +1469,7 @@
       "drawing": {
         "path": "downloads/BP-8P-0001.pdf",
         "filename": "BP-8P-0001.pdf",
-        "sha256": "02920ec729dabc9262bc7a9fd2fbbe2de44adca5c301ede2aee4ed2a4317ef9c",
+        "sha256": "345c7af613f3510abb96512cb43861cf957e5f0bd6756e3303c4701df90705f9",
         "titleBlockModel": "BP-8P-0001",
         "documentControlNumber": "QC-2026-0512-001",
         "date": "2026-03-12",

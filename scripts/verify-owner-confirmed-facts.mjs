@@ -12,7 +12,10 @@ const locales = {
     warrantyName: 'Warranty period',
     warrantyValue: '1 year',
     termsWarranty: 'The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.',
-    ratingBoundary: 'each finished unit follows the documented production inspection process',
+    selectionBoundaries: [
+      'Maximum pressure and speed are selection limits; combined continuous operation depends on the medium, temperature, mounting, and duty cycle.',
+      'Send the application requirements and request the current model-specific file before selecting or ordering this model.',
+    ],
     caseEvidence: 'Photo note: These customer-authorized workshop photographs document the installation state shown. Operating parameters and acceptance requirements are confirmed for the order and approved drawing.',
     authorization: /published with the customer(?:'s|’s) authorization/i,
     installation: /documents? the installation/i,
@@ -24,7 +27,10 @@ const locales = {
     warrantyName: 'Garantiezeitraum',
     warrantyValue: '1 Jahr',
     termsWarranty: 'Der Garantiezeitraum für alle Begapunk-Produkte beträgt ein Jahr. Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen richten sich nach dem formellen Angebot, dem angenommenen Auftrag und etwaigen schriftlichen Garantieunterlagen für den jeweiligen Auftrag.',
-    ratingBoundary: 'jede fertige Einheit durchläuft den dokumentierten Produktionsprüfprozess',
+    selectionBoundaries: [
+      'Maximaldruck und Maximaldrehzahl sind Auswahlgrenzen; der kombinierte Dauerbetrieb hängt von Medium, Temperatur, Montage und Lastprofil ab.',
+      'Anwendungsanforderungen senden und vor Auswahl oder Bestellung die aktuelle modellspezifische Datei anfordern.',
+    ],
     caseEvidence: 'Fotohinweis: Diese mit Genehmigung des Kunden veröffentlichten Werkstattfotos dokumentieren den dargestellten Einbauzustand. Betriebsparameter und Abnahmeanforderungen werden für den Auftrag und in der freigegebenen Zeichnung bestätigt.',
     authorization: /(?:mit (?:Genehmigung|Zustimmung|Autorisierung) des Kunden|vom Kunden[^.!?]{0,50}(?:genehmigt|autorisiert))/i,
     installation: /dokumentiert[^.!?]{0,50}(?:Installation|Einbau)|(?:Installation|Einbau)[^.!?]{0,50}dokumentiert/i,
@@ -36,7 +42,10 @@ const locales = {
     warrantyName: '保証期間',
     warrantyValue: '1年',
     termsWarranty: 'Begapunkの全製品の保証期間は1年間です。保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書、および当該注文に関する書面の保証文書に従います。',
-    ratingBoundary: '完成品はすべて、公開された生産検査工程に従って検査します',
+    selectionBoundaries: [
+      '最高圧力と最高回転数は選定上限です。組合せ連続運転は、流体、温度、取付け、デューティによって異なります。',
+      '用途条件をお知らせのうえ、選定・発注前に現在の型式専用ファイルをご依頼ください。',
+    ],
     caseEvidence: '写真に関する注記：これらのお客様の許可を得た工場写真は、掲載した組込み状態を記録しています。運転条件および受入基準は、注文書と承認図面で確認します。',
     authorization: /顧客[^。]{0,50}(?:許可|承認)/,
     installation: /(?:設置|取付)[^。]{0,50}(?:記録|示し)|(?:記録|示し)[^。]{0,50}(?:設置|取付)/,
@@ -48,7 +57,10 @@ const locales = {
     warrantyName: 'Гарантийный срок',
     warrantyValue: '1 год',
     termsWarranty: 'Гарантийный срок на всю продукцию Begapunk составляет один год. Дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются официальным коммерческим предложением, принятым заказом и письменным гарантийным документом для соответствующего заказа.',
-    ratingBoundary: 'каждое готовое изделие проходит предусмотренный производственный контроль',
+    selectionBoundaries: [
+      'Максимальные давление и скорость являются пределами выбора; совместная непрерывная работа зависит от среды, температуры, монтажа и рабочего цикла.',
+      'Сообщите условия применения и запросите актуальный файл конкретной модели до выбора или заказа.',
+    ],
     caseEvidence: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
     authorization: /(?:разрешен|согласован|авторизац)[^.!?]{0,60}заказчик|заказчик[^.!?]{0,60}(?:разрешен|согласован|авторизац)/i,
     installation: /(?:документирует|подтверждает|показывает)[^.!?]{0,60}установ|установ[^.!?]{0,60}(?:документирует|подтверждает|показывает)/i,
@@ -73,20 +85,6 @@ const casePages = [
   'case-bp-2p-95-pneumatic-chuck-integration.html',
   'case-bp-3p-s06-sensor-monitored-chuck.html',
 ];
-
-const bp2p95DrawingBoundary = {
-  en: /formal\s+engineering\s+drawing|approved\s+drawing/i,
-  de: /(?:formale|formelle|freigegebene|genehmigte)[^.!?]{0,40}(?:technische\s+)?Zeichnung/i,
-  ja: /(?:正式な技術図面|承認図面)/,
-  ru: /(?:официальн|утвержденн)[^.!?]{0,40}черт[её]ж/i,
-};
-
-const bp2p95InspectionBoundary = {
-  en: 'Inspection requirements and available records are confirmed for each model and order.',
-  de: 'Prüfanforderungen und verfügbare Prüfunterlagen werden für jedes Modell und jeden Auftrag bestätigt.',
-  ja: '検査内容および提供可能な記録は、型式・注文ごとに確認します。',
-  ru: 'Требования к контролю и доступные записи подтверждаются для каждой модели и заказа.',
-};
 
 function fail(message) {
   failures.push(message);
@@ -284,12 +282,9 @@ for (const [language, locale] of Object.entries(locales)) {
     }
 
     const pageText = visiblePageText($);
-    const hasExplicitSeparation = containsText(pageText, locale.ratingBoundary);
-    const hasApprovedBp2p95Boundary = pageName === 'BP-2P-95-0005.html'
-      && bp2p95DrawingBoundary[language].test(pageText)
-      && containsText(pageText, bp2p95InspectionBoundary[language]);
-    if (!hasExplicitSeparation && !hasApprovedBp2p95Boundary) {
-      fail(`${relativePath}: missing the approved production-inspection versus operating-rating validation boundary.`);
+    const hasSelectionBoundary = locale.selectionBoundaries.some((boundary) => containsText(pageText, boundary));
+    if (!hasSelectionBoundary) {
+      fail(`${relativePath}: missing the customer-facing operating-limit or model-file selection boundary.`);
     }
   }
 

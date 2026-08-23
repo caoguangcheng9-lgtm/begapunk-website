@@ -64,6 +64,60 @@ const drawingBackedPolicyByLocale = {
     nonAirQualification: /\b(?:письменн\w+ подтвержден\w+|не предусмотр\w+|не заявля\w+|вне стандарт\w+|до начала эксплуатации|до подачи|требуется.*подтвержден\w+)\b/iu,
   },
 };
+const secondarySurfacePolicyByLocale = {
+  en: {
+    bp16Passages: '2 passages, 16 mm bore',
+    bp3Mount: 'Face mounting',
+    bp3Weight: '0.36 kg',
+    bp3ComparisonStale: ['3 passages, 6 mm orifice', 'G1/4 threaded'],
+    bp3CatalogStale: ['3-Passage (G1/4)', '6mm Orifice', 'G1/4 Thread'],
+    s06Leads: '6 electrical leads',
+    s06Circuits: '6 electrical circuits',
+    bp4Seal: 'PTFE + O-Ring',
+    bp4MaterialStale: ['ceramic'],
+    bp4DirectionStale: '4-in-4-out',
+    bp30RequestStale: 'Request model-specific file',
+  },
+  de: {
+    bp16Passages: '2 Kanäle, 16 mm Durchgangsbohrung',
+    bp3Mount: 'Stirnseitenmontage',
+    bp3Weight: '0,36 kg',
+    bp3ComparisonStale: ['3 Kanäle, 6 mm Durchlass', 'G1/4-Gewinde'],
+    bp3CatalogStale: ['3-Kanal (G1/4)', '6 mm Durchlass', 'G1/4 Gewinde'],
+    s06Leads: '6 elektrische Anschlussleitungen',
+    s06Circuits: '6 elektrische Stromkreise',
+    bp4Seal: 'PTFE + O-Ring',
+    bp4MaterialStale: ['Keramik', 'ceramic'],
+    bp4DirectionStale: '4 Einlässe / 4 Auslässe',
+    bp30RequestStale: 'Modellspezifische Datei anfordern',
+  },
+  ja: {
+    bp16Passages: '2流路・中空径16 mm',
+    bp3Mount: '端面取付',
+    bp3Weight: '0.36 kg',
+    bp3ComparisonStale: ['3流路・オリフィス径6 mm', 'G1/4ねじ'],
+    bp3CatalogStale: ['3流路(G1/4)', 'オリフィス径6 mm', 'G1/4 ねじ'],
+    s06Leads: '電気リード線6本',
+    s06Circuits: '電気6回路',
+    bp4Seal: 'PTFE＋Oリング',
+    bp4MaterialStale: ['セラミック', 'ceramic'],
+    bp4DirectionStale: '4入口／4出口',
+    bp30RequestStale: '型式専用ファイルを依頼',
+  },
+  ru: {
+    bp16Passages: '2 канала, проходное отверстие 16 мм',
+    bp3Mount: 'Торцевое крепление',
+    bp3Weight: '0,36 кг',
+    bp3ComparisonStale: ['3 канала, отверстие 6 мм', 'резьба G1/4'],
+    bp3CatalogStale: ['3 канала (G1/4)', 'Проход 6 мм', 'G1/4 резьба'],
+    s06Leads: '6 электрических выводов',
+    s06Circuits: '6 электрических цепей',
+    bp4Seal: 'ПТФЭ + O-кольцо',
+    bp4MaterialStale: ['керамика', 'ceramic'],
+    bp4DirectionStale: '4 входа / 4 выхода',
+    bp30RequestStale: 'Запросить файл модели',
+  },
+};
 const drawingBackedForbiddenPatterns = [
   { label: 'IP65 claim', pattern: /\bIP65\b/i },
   { label: 'FKM claim', pattern: /\bFKM\b/i },
@@ -494,6 +548,98 @@ async function validateSearchIndex(locale, models) {
   }
 }
 
+function validateTextFragments(relative, label, source, required = [], forbidden = []) {
+  const normalizedSource = source.replace(/\s+/g, ' ').trim().toLocaleLowerCase();
+  for (const fragment of required) {
+    if (!normalizedSource.includes(fragment.toLocaleLowerCase())) {
+      failures.push(`${relative}: ${label} is missing ${fragment}`);
+    }
+  }
+  for (const fragment of forbidden) {
+    if (normalizedSource.includes(fragment.toLocaleLowerCase())) {
+      failures.push(`${relative}: ${label} still contains stale claim ${fragment}`);
+    }
+  }
+}
+
+function modelBlock($, selector, model) {
+  return $(selector).filter((_, element) => $(element).text().includes(model)).first();
+}
+
+async function validateSecondaryProductSurfaces(locale) {
+  const policy = secondarySurfacePolicyByLocale[locale.code];
+  const catalogRelative = publicPath(locale, 'products-p2.html');
+  const catalog = await readHtml(locale, 'products-p2.html');
+  if (catalog) {
+    const bp3Card = catalog(`.product-card-large[data-href="BP-3P-0006.html"]`);
+    validateTextFragments(catalogRelative, 'BP-3P-0006 card', bp3Card.text(),
+      [policy.bp3Mount, policy.bp3Weight], policy.bp3CatalogStale);
+
+    const s06Card = catalog(`.product-card-large[data-href="BP-3P-S06-0001.html"]`);
+    validateTextFragments(catalogRelative, 'BP-3P-S06-0001 card', s06Card.text(),
+      [policy.s06Leads], [policy.s06Circuits]);
+
+    const bp4Card = catalog(`.product-card-large[data-href="BP-4P-30-0001.html"]`);
+    validateTextFragments(catalogRelative, 'BP-4P-30-0001 card', bp4Card.text(),
+      [policy.bp4Seal], [...policy.bp4MaterialStale, policy.bp4DirectionStale]);
+
+    const bp30Card = catalog(`.product-card-large[data-href="BP-2P-30-0001.html"]`);
+    const expectedPdfHref = locale.directory
+      ? '../downloads/BP-2P-30-0001.pdf'
+      : 'downloads/BP-2P-30-0001.pdf';
+    const pdfLinks = bp30Card.find(`a.btn-primary[href="${expectedPdfHref}"][target="_blank"][rel="noopener noreferrer"]`);
+    if (pdfLinks.length !== 1) {
+      failures.push(`${catalogRelative}: BP-2P-30-0001 card must link directly to its public PDF`);
+    }
+    validateTextFragments(catalogRelative, 'BP-2P-30-0001 card', bp30Card.text(), [], [policy.bp30RequestStale]);
+  }
+
+  const comparisonRelative = publicPath(locale, 'product-comparison.html');
+  const comparison = await readHtml(locale, 'product-comparison.html');
+  if (comparison) {
+    const bp16Row = modelBlock(comparison, 'tr', 'BP-2P-16-0001');
+    validateTextFragments(comparisonRelative, 'BP-2P-16-0001 row', bp16Row.text(), [policy.bp16Passages]);
+
+    const bp3Row = modelBlock(comparison, 'tr', 'BP-3P-0006');
+    validateTextFragments(comparisonRelative, 'BP-3P-0006 row', bp3Row.text(),
+      [policy.bp3Mount], policy.bp3ComparisonStale);
+
+    const s06Row = modelBlock(comparison, 'tr', 'BP-3P-S06-0001');
+    validateTextFragments(comparisonRelative, 'BP-3P-S06-0001 row', s06Row.text(),
+      [policy.s06Leads], [policy.s06Circuits]);
+
+    const bp4Row = modelBlock(comparison, 'tr', 'BP-4P-30-0001');
+    validateTextFragments(comparisonRelative, 'BP-4P-30-0001 row', bp4Row.text(),
+      ['AL6061'], [...policy.bp4MaterialStale, policy.bp4DirectionStale]);
+  }
+
+  const homeRelative = publicPath(locale, 'index.html');
+  const home = await readHtml(locale, 'index.html');
+  if (home) {
+    const s06Card = home(`.portal-product-card[href="BP-3P-S06-0001.html"]`);
+    validateTextFragments(homeRelative, 'BP-3P-S06-0001 home card', s06Card.text(),
+      [policy.s06Leads], [policy.s06Circuits]);
+  }
+
+  const searchRelative = publicPath(locale, 'search-index.json');
+  let searchIndex;
+  try {
+    searchIndex = JSON.parse(await readFile(path.join(repoRoot, searchRelative), 'utf8'));
+  } catch (error) {
+    failures.push(`${searchRelative}: unable to parse secondary-surface records (${error.message})`);
+    return;
+  }
+  const searchRecordText = (url) => JSON.stringify(searchIndex.find((entry) => entry?.url === url) || {});
+  validateTextFragments(searchRelative, 'products-p2.html record', searchRecordText('products-p2.html'),
+    [policy.bp3Mount, policy.s06Leads, policy.bp4Seal],
+    [...policy.bp3CatalogStale, policy.s06Circuits, ...policy.bp4MaterialStale, policy.bp4DirectionStale, policy.bp30RequestStale]);
+  validateTextFragments(searchRelative, 'product-comparison.html record', searchRecordText('product-comparison.html'),
+    [policy.bp16Passages, policy.bp3Mount, policy.s06Leads],
+    [...policy.bp3ComparisonStale, policy.s06Circuits, ...policy.bp4MaterialStale, policy.bp4DirectionStale]);
+  validateTextFragments(searchRelative, 'index.html record', searchRecordText('index.html'),
+    [policy.s06Leads], [policy.s06Circuits]);
+}
+
 async function validateDrawingBackedPublicPolicy(locale) {
   const expected = drawingBackedPolicyByLocale[locale.code];
   const contract = drawingBackedUiContract(locale.code, drawingBackedModel);
@@ -637,6 +783,7 @@ for (const locale of locales) {
   }
   await validateCatalog(locale, models);
   await validateSearchIndex(locale, models);
+  await validateSecondaryProductSurfaces(locale);
   await validateDrawingBackedPublicPolicy(locale);
 }
 

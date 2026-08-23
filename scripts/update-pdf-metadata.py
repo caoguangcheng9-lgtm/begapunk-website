@@ -82,20 +82,27 @@ def validate_inventory() -> list[Path]:
     return pdfs
 
 
-def check_pdf(pdf_path: Path) -> None:
+def metadata_mismatches(pdf_path: Path) -> dict[str, tuple[object, str]]:
     reader = PdfReader(str(pdf_path))
     metadata = reader.metadata or {}
     expected = expected_metadata(pdf_path.name)
-    mismatches = {
+    return {
         key: (metadata.get(key), value)
         for key, value in expected.items()
         if metadata.get(key) != value
     }
+
+
+def check_pdf(pdf_path: Path) -> None:
+    mismatches = metadata_mismatches(pdf_path)
     if mismatches:
         raise RuntimeError(f"Metadata check failed for {pdf_path.name}: {mismatches}")
 
 
-def rewrite_pdf(pdf_path: Path) -> None:
+def rewrite_pdf(pdf_path: Path) -> bool:
+    if not metadata_mismatches(pdf_path):
+        return False
+
     source_reader = PdfReader(str(pdf_path))
     source_fingerprint = page_fingerprint(source_reader)
 
@@ -116,6 +123,7 @@ def rewrite_pdf(pdf_path: Path) -> None:
 
     os.replace(output_path, pdf_path)
     check_pdf(pdf_path)
+    return True
 
 
 def main() -> None:
@@ -125,15 +133,17 @@ def main() -> None:
 
     pdfs = validate_inventory()
     if args.write:
+        updated = 0
         for pdf_path in pdfs:
-            rewrite_pdf(pdf_path)
+            updated += int(rewrite_pdf(pdf_path))
         try:
             TEMP_DIR.rmdir()
             TEMP_DIR.parent.rmdir()
             TEMP_DIR.parent.parent.rmdir()
         except OSError:
             pass
-        print(f"Updated and verified metadata for {len(pdfs)} PDFs.")
+        unchanged = len(pdfs) - updated
+        print(f"Updated metadata for {updated} PDFs; {unchanged} already matched. Verified all {len(pdfs)} PDFs.")
     else:
         for pdf_path in pdfs:
             check_pdf(pdf_path)

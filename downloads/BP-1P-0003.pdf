@@ -2,37 +2,29 @@
 %âãÏÓ
 1 0 obj
 <<
-/Producer (Begapunk)
-/Title (BP\0551P\0550003 Technical Drawing)
-/Author (Ningbo Begapunk Pneumatic Components Co\056\054 Ltd\056)
-/Creator (Begapunk)
+/Type /Catalog
+/Pages 2 0 R
 >>
 endobj
 2 0 obj
 <<
 /Type /Pages
 /Count 1
-/Kids [ 4 0 R ]
+/Kids [ 3 0 R ]
 >>
 endobj
 3 0 obj
 <<
-/Type /Catalog
-/Pages 2 0 R
->>
-endobj
-4 0 obj
-<<
-/Contents 5 0 R
+/Contents 4 0 R
 /CropBox [ 0.0 0.0 841.89 595.276 ]
 /MediaBox [ 0.0 0.0 841.89 595.276 ]
 /Resources <<
 /Font <<
-/C2_0 6 0 R
-/C2_1 13 0 R
-/C2_2 20 0 R
-/F1 27 0 R
-/F2 28 0 R
+/C2_0 5 0 R
+/C2_1 12 0 R
+/C2_2 19 0 R
+/F1 26 0 R
+/F2 27 0 R
 >>
 /ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
 >>
@@ -42,7 +34,7 @@ endobj
 /Parent 2 0 R
 >>
 endobj
-5 0 obj
+4 0 obj
 <<
 /Length 104828
 >>
@@ -5257,45 +5249,45 @@ Q
 
 endstream
 endobj
-6 0 obj
+5 0 obj
 <<
 /BaseFont /ZDTPPV+HYSWLongFangSong
-/DescendantFonts 7 0 R
+/DescendantFonts 6 0 R
 /Encoding /Identity-H
 /Subtype /Type0
-/ToUnicode 12 0 R
+/ToUnicode 11 0 R
 /Type /Font
 >>
 endobj
-7 0 obj
+6 0 obj
 [ <<
 /BaseFont /ZDTPPV+HYSWLongFangSong
-/CIDSystemInfo 8 0 R
+/CIDSystemInfo 7 0 R
 /CIDToGIDMap /Identity
 /DW 1000
-/FontDescriptor 9 0 R
+/FontDescriptor 8 0 R
 /Subtype /CIDFontType2
 /Type /Font
 /W [ 3 [ 350 ] 13 [ 350 ] 16 [ 493 350 440 ] 19 24 351 25 28 350 29 [ 351 ] 36 37 350 38 [ 351 350 ] 42 [ 350 ] 44 [ 111 ] 48 [ 373 ] 50 [ 333 ] 53 [ 350 ] 68 [ 293 ] 71 [ 278 267 ] 74 [ 315 ] 76 [ 191 ] 79 [ 191 ] 81 [ 273 ] 87 [ 260 292 ] ]
 >> ]
 endobj
-8 0 obj
+7 0 obj
 <<
 /Ordering (Identity)
 /Registry (Adobe)
 /Supplement 0
 >>
 endobj
-9 0 obj
+8 0 obj
 <<
 /Ascent 800
-/CIDSet 10 0 R
+/CIDSet 9 0 R
 /CapHeight 688
 /Descent -219
 /Flags 6
 /FontBBox [ -22 -219 700 800 ]
 /FontFamily (\376\377lIN\352\225\177N\377\133\213OS)
-/FontFile2 11 0 R
+/FontFile2 10 0 R
 /FontName /ZDTPPV+HYSWLongFangSong
 /FontStretch /Normal
 /FontWeight 400
@@ -5305,7 +5297,7 @@ endobj
 /XHeight 558
 >>
 endobj
-10 0 obj
+9 0 obj
 <<
 /Filter /FlateDecode
 /Length 23
@@ -5314,7 +5306,7 @@ stream
 xÚšÀòÿ¿ÆÎ•  "SŞ
 endstream
 endobj
-11 0 obj
+10 0 obj
 <<
 /Filter /FlateDecode
 /Length1 76419
@@ -5369,7 +5361,7 @@ x¡ÉöÄè°zÑ&Û¯àÛ'£‹²ŠÏZã«ªÉ«±u&Ûª.RÖ¨:ÉW2ÆVckôkĞÃË˜Ã³“¶ØZ…ÉCş„äïöÊ¹„lqY
 0 ‰E@
 endstream
 endobj
-12 0 obj
+11 0 obj
 <<
 /Filter /FlateDecode
 /Length 380
@@ -5383,45 +5375,45 @@ xÚ\’ÍŠƒ0…÷>E–í¢¨1ÆDèØ)¸˜¦3`“kGcˆváÛOšS:0…äŞsîO\7‡Æô3‹ßİ¨N4³®7ÚÑ4^"v¦Ko¢”
 ÕJT+ '¡' '¡çSªå˜ƒÄrä,3GÎ"Ã¿Où¶~[ÙcÇÔÕ9¿^a¥Ã^İ6ª7ôØz;Zæ£n_ô+À ²ÈÉ=
 endstream
 endobj
-13 0 obj
+12 0 obj
 <<
 /BaseFont /ZUCJPQ+SimSun
-/DescendantFonts 14 0 R
+/DescendantFonts 13 0 R
 /Encoding /Identity-H
 /Subtype /Type0
-/ToUnicode 19 0 R
+/ToUnicode 18 0 R
 /Type /Font
 >>
 endobj
-14 0 obj
+13 0 obj
 [ <<
 /BaseFont /ZUCJPQ+SimSun
-/CIDSystemInfo 15 0 R
+/CIDSystemInfo 14 0 R
 /CIDToGIDMap /Identity
 /DW 1000
-/FontDescriptor 16 0 R
+/FontDescriptor 15 0 R
 /Subtype /CIDFontType2
 /Type /Font
 /W [ 3 [ 500 ] 6 [ 500 ] 8 9 500 11 12 500 15 17 500 19 27 500 29 [ 500 ] 36 42 500 44 56 500 58 [ 500 ] 68 76 500 78 93 500 97 [ 500 ] ]
 >> ]
 endobj
-15 0 obj
+14 0 obj
 <<
 /Ordering (Identity)
 /Registry (Adobe)
 /Supplement 0
 >>
 endobj
-16 0 obj
+15 0 obj
 <<
 /Ascent 859
-/CIDSet 17 0 R
+/CIDSet 16 0 R
 /CapHeight 684
 /Descent -141
 /Flags 6
 /FontBBox [ -8 -141 1000 859 ]
 /FontFamily (\376\377\133\213OS)
-/FontFile2 18 0 R
+/FontFile2 17 0 R
 /FontName /ZUCJPQ+SimSun
 /FontStretch /Normal
 /FontWeight 400
@@ -5431,7 +5423,7 @@ endobj
 /XHeight 453
 >>
 endobj
-17 0 obj
+16 0 obj
 <<
 /Filter /FlateDecode
 /Length 24
@@ -5440,7 +5432,7 @@ stream
 xÚštóşş÷ÿğÿşÿÇ À @è	%
 endstream
 endobj
-18 0 obj
+17 0 obj
 <<
 /Filter /FlateDecode
 /Length1 244150
@@ -5572,7 +5564,7 @@ hB»‘±HºùÃJ8ÏJË£U³ô>wô¨ß9xWHÈ|z—.Ù0Ùdİcz)d7
 ´0@ŸâA;Úä;ÑÉ-:-şöıSÌQè5‡§+ú7`>ï0r‹dcQ««qÍÔãÉâv‘FcÕ¯»{½„t?2Ju-õø+m	WÛÿûQ~%ŞÿZšÓ®ÆÏ¾Ui¿ŸYºjuV×’Çµxî[\ÇûvR•G’¦·Šš‹ü¹¦>¬^UoªÇÔKê9õ¤úõöèÚÿÏª/«gÔGÕóíïßk÷¿¤¾¨>ÙRâO¨¨ï«7ÔÔ]õqõ±vÿÚ³Ş×>ûNİJ¾TËvÿñßâ ıO;\ùoJ]ı/®½Ğâ÷ş»R³ªÅg;-ÚkÌTÊ½Øâ+®*U~­Å_(Õ<•ğ3Ë[J­şR›RÛo)uÖ^wñq¥®ÿi‡íõ7ŸPj÷O”ºı]¥î|Y©Ç~®ÔãG©÷ıs¥üJ½ÿß+õtûO·u~æÿtxî?†ŞTêC[©X©üM¥>zG©µuù•¨Ô¯¶åâ¿öx‹«Ôo¼®Ô½öŞ¿ùªR/ş¥^jëóÉO+õ©¶Ÿn¯ùÌÛJ}®-ã·Úß_ü7J}©-ë•Õ¯>ğ@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ şŸƒVêGÿCÿõ¼Úÿ]Qú úY»ñŸËÿ¥º¿Jı‹ıYñïC-ºíGTÙşê¶¯¶Û÷Òö¬İ~9mêiõF{¦¾jÛ_ßR¿Ÿ¶µºPÿ3m_Q•¥íGÔ…^¥í«íö³i{Ön6mêuıµı¶¹·ÿ|¿İÄí+‹?¹ıÒôÓ·ßúöw~|ûÏşö?óàs·?õ½o~ıÇoÿğo}½=øìí{îù§Ûÿ/<ÿ¿ğÆı—>ÿ¥Wî¾öÖ÷_ûÉø_~û«ßøæ÷¿úöïÜşá·˜¢Ÿ¾ıâ7ßúî[?ø¶úu[½¤~¨~¤~ªŞVo©o«ï¨·ûŞPŸU¿­¾¨>£¨Ïµ¿?¥¾§¾©¾Ş{»=ûí™_OW>Û~¿ k?Ï·mØmïqØ~¡-í~{îçÕ—Ô+ê®z­½úûíÿŸ´å¼Ú–úívë{ê«mÉüyïåÈ—Û¿ª¾ÑŞáû±ôßikôÃöİ>ÜÓíŸãÅöè[ê»-~ĞÖöÿ³rï]¾ù¡‹İW>to÷Æ‡.w^¸Ü½şü;»¿öü½İ_}îrwÿ¹»»/ğr÷Ú3·w¯>{o÷Ê³—»/=}¹ûí§ïî¾ø»»—?p¹û­÷_î¾ğT³ûüSwwŸ{êr÷Ù'ïí>óäåîÓO\î>õ¾Ëİ'g÷R‹»Øıæcïìîµø;÷v¿~çr÷kí÷_yôr÷‰Û—»_İ]î~åÖåîã77»İ¼»ûèÍËİGnŞÛ}øÆåîÙgŞÙ=s÷İÓwoïŞw~¹{Ü\?ó1sqşæö×£›Ëİíp¶ys·-w·¶—»›í›rwıú¹úÊÙÙF}åb¿µİo­Ï?¾ùøõZ_®õòåÅı{Ÿ_6÷šåËáşµ—¯Ş®>¨ß©îû—İıâåÙ}İ¨ûÕ÷`ö@=°/›û¼|å¾ypåÁí+_ºòÎ•w¯ü×+×¹wïšşWúÔ—ï~á_—¯~á]ó¥¯¼«öîû^Ûÿ¿÷ÊïÎ~ö®ºÿÆW^ÿ…Ö?ğşğÕÍ¿ğî½öúŸ>¢ÚÍ¿¸rå¥W^ÿÅÕG~şàwÛz÷î]•>wÓvş¯÷Çúnşìwî¿tûİ!ıÅëtŞ8Ú<üº{÷ìÿ ù·Å
 endstream
 endobj
-19 0 obj
+18 0 obj
 <<
 /Filter /FlateDecode
 /Length 523
@@ -5586,45 +5578,45 @@ jIÈòÂoß‰I¡†’îwÏgkòÍ~»ïÚÉäßÇ¾>ÄÉœÚ®ãµ¿u4Çxn»¬´¦iëéAóÿúRY>Ü¯S¼ì»SŸ-&ÿ‘.^§
 0 4[#5
 endstream
 endobj
-20 0 obj
+19 0 obj
 <<
 /BaseFont /VFTRLL+SimHei
-/DescendantFonts 21 0 R
+/DescendantFonts 20 0 R
 /Encoding /Identity-H
 /Subtype /Type0
-/ToUnicode 26 0 R
+/ToUnicode 25 0 R
 /Type /Font
 >>
 endobj
-21 0 obj
+20 0 obj
 [ <<
 /BaseFont /VFTRLL+SimHei
-/CIDSystemInfo 22 0 R
+/CIDSystemInfo 21 0 R
 /CIDToGIDMap /Identity
 /DW 1000
-/FontDescriptor 23 0 R
+/FontDescriptor 22 0 R
 /Subtype /CIDFontType2
 /Type /Font
 /W [ 36 37 500 40 [ 500 ] 42 [ 500 ] 46 [ 500 ] 49 [ 500 ] 51 [ 500 ] 56 [ 500 ] ]
 >> ]
 endobj
-22 0 obj
+21 0 obj
 <<
 /Ordering (Identity)
 /Registry (Adobe)
 /Supplement 0
 >>
 endobj
-23 0 obj
+22 0 obj
 <<
 /Ascent 859
-/CIDSet 24 0 R
+/CIDSet 23 0 R
 /CapHeight 688
 /Descent -156
 /Flags 4
 /FontBBox [ -12 -156 996 859 ]
 /FontFamily (\376\377\236\321OS)
-/FontFile2 25 0 R
+/FontFile2 24 0 R
 /FontName /VFTRLL+SimHei
 /FontStretch /Normal
 /FontWeight 400
@@ -5634,7 +5626,7 @@ endobj
 /XHeight 457
 >>
 endobj
-24 0 obj
+23 0 obj
 <<
 /Filter /FlateDecode
 /Length 18
@@ -5643,7 +5635,7 @@ stream
 xÚj```àYĞ ` >ÿ
 endstream
 endobj
-25 0 obj
+24 0 obj
 <<
 /Filter /FlateDecode
 /Length1 175514
@@ -5767,7 +5759,7 @@ qC“DÑrŒŸôf«)cµÜv&kÃXË]!!ˆ5œ=ls3n–¨?J£v‚Ö/H*zÒEßŸœ7–dà}IWœĞã˜"ÂÍNX9¬qñl
 *T¨P¡ÂB8jšÏÿÜÑ6¯mæ?Õ<İ¼ÊŸ¼ØüJşLógè~Ó\nÒ4Íîp~âÏÎıÓ£+Ê_ı©æ1œù»ç—š¾ù-œ_ö÷ÿ1Î¯øóÿŒó“æüèçmó©£æóîŠ?ÿ£Ÿù¾w}äC/¼ğä‡ôsïùä^|á?x«y{óÉæG›?æáÇšOûë7Ÿi>Oçó÷n5ïl>ëS|¢ùbóİÿQşãşşóşê©æÕşìµÍüq·yMólóŒ?îÒİ·ù÷>ë_òo|ÚçùEzë%Ÿ×{x©ù’ÿÿ#Í÷5ïj>Ò|¨yÁO6öi?×¼‡Jô!ÿÿÓÍOø<^ô©/N÷ûyòŸã‹şëŸôwæÜÿ¸/Ùç›Oı´Æóşùíïñ•ûr| ùæİ>×ï¾ W™gVª·MG£oëÇÆ£¾yÜÿøµGÎ×ùñ#‡ëŞ_Ÿ…ûı]ïÑ·^ş™?ßÜøÖ³ïûĞ|ë7>öí£“w~Æÿ»ıo]™Ï®ÌgÇtöÎögóå%¾¼4_^//Í——çË†Ÿ6óåÑ|ÙÌ—G·ßqôdøûß <kÍm
 endstream
 endobj
-26 0 obj
+25 0 obj
 <<
 /Filter /FlateDecode
 /Length 266
@@ -5780,7 +5772,7 @@ xÚ\‘ÏjÃ0Æï~
 0 nS‚˜
 endstream
 endobj
-27 0 obj
+26 0 obj
 <<
 /BaseFont /Helvetica
 /Encoding /WinAnsiEncoding
@@ -5789,7 +5781,7 @@ endobj
 /Type /Font
 >>
 endobj
-28 0 obj
+27 0 obj
 <<
 /BaseFont /Courier
 /Encoding /WinAnsiEncoding
@@ -5798,43 +5790,53 @@ endobj
 /Type /Font
 >>
 endobj
+28 0 obj
+<<
+/Producer (Begapunk PDF Metadata Pipeline)
+/Title (BP\0551P\0550003 Pneumatic Rotary Union Engineering Drawing)
+/Author (Ningbo Begapunk Pneumatic Components Co\056\054 Ltd\056)
+/Creator (Begapunk Engineering)
+/Subject (Engineering drawing and technical dimensions for Begapunk BP\0551P\0550003)
+/Keywords (Begapunk\054 BP\0551P\0550003\054 pneumatic rotary union\054 rotary joint\054 engineering drawing\054 dimensions)
+>>
+endobj
 xref
 0 29
 0000000000 65535 f 
 0000000015 00000 n 
-0000000187 00000 n 
-0000000246 00000 n 
-0000000295 00000 n 
-0000000590 00000 n 
-0000105472 00000 n 
-0000105619 00000 n 
-0000106032 00000 n 
-0000106106 00000 n 
-0000106426 00000 n 
-0000106521 00000 n 
-0000124502 00000 n 
-0000124955 00000 n 
-0000125094 00000 n 
-0000125395 00000 n 
-0000125470 00000 n 
-0000125761 00000 n 
-0000125857 00000 n 
-0000161965 00000 n 
-0000162561 00000 n 
-0000162700 00000 n 
-0000162946 00000 n 
-0000163021 00000 n 
-0000163312 00000 n 
-0000163402 00000 n 
-0000181568 00000 n 
-0000181907 00000 n 
-0000182015 00000 n 
+0000000064 00000 n 
+0000000123 00000 n 
+0000000418 00000 n 
+0000105300 00000 n 
+0000105447 00000 n 
+0000105860 00000 n 
+0000105934 00000 n 
+0000106253 00000 n 
+0000106347 00000 n 
+0000124328 00000 n 
+0000124781 00000 n 
+0000124920 00000 n 
+0000125221 00000 n 
+0000125296 00000 n 
+0000125587 00000 n 
+0000125683 00000 n 
+0000161791 00000 n 
+0000162387 00000 n 
+0000162526 00000 n 
+0000162772 00000 n 
+0000162847 00000 n 
+0000163138 00000 n 
+0000163228 00000 n 
+0000181394 00000 n 
+0000181733 00000 n 
+0000181841 00000 n 
+0000181947 00000 n 
 trailer
 <<
 /Size 29
-/Root 3 0 R
-/Info 1 0 R
+/Root 1 0 R
+/Info 28 0 R
 >>
 startxref
-182121
+182390
 %%EOF

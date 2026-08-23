@@ -144,8 +144,8 @@ function assertBoundaryCopy(spec, expectedByModel) {
   }
 
   const technicalClaim = /\b(?:MPa|RPM)\b|min⁻¹|U\/min|МПа|об\/мин|Ø|G1\//iu;
-  for (const model of ['BP-2P-30-0001']) {
-    if (technicalClaim.test(get(model))) {
+  for (const model of drawingBackedProductModels) {
+    if (manifest.products[model]?.status === manifest.sourcePolicy?.quarantineStatus && technicalClaim.test(get(model))) {
       throw new Error(`${spec.locale}/${model}: quarantined drawing identity cannot publish engineering facts.`);
     }
   }
@@ -220,9 +220,11 @@ function assertManifestContract() {
   if (manifest.products['BP-3P-0006']?.drawingFacts?.ports?.status !== 'anomaly-unresolved') {
     throw new Error('BP-3P-0006 port specification must remain unresolved.');
   }
-  for (const model of ['BP-2P-30-0001']) {
-    if (manifest.products[model]?.status !== manifest.sourcePolicy?.quarantineStatus) {
-      throw new Error(`${model}: drawing identity must remain quarantined.`);
+  const pendingModels = new Set(manifest.sourcePolicy?.identityPendingModels || []);
+  for (const model of drawingBackedProductModels) {
+    const isPending = manifest.products[model]?.status === manifest.sourcePolicy?.quarantineStatus;
+    if (isPending !== pendingModels.has(model)) {
+      throw new Error(`${model}: drawing identity status does not match the manifest policy.`);
     }
   }
 }

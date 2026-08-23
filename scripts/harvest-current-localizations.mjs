@@ -9,6 +9,12 @@ const i18nDir = path.join(rootDir, 'i18n');
 const config = JSON.parse(fs.readFileSync(path.join(i18nDir, 'config.json'), 'utf8'));
 const catalog = JSON.parse(fs.readFileSync(path.join(i18nDir, 'source-catalog.json'), 'utf8'));
 const writeChanges = process.argv.includes('--write');
+const pageArgument = process.argv.find((argument) => argument.startsWith('--page='));
+const requestedPage = pageArgument?.slice('--page='.length);
+if (requestedPage && !config.translationManagedPages.includes(requestedPage)) {
+  throw new Error(`Unknown translation-managed page: ${requestedPage}`);
+}
+const pageNames = requestedPage ? [requestedPage] : config.translationManagedPages;
 const activeLanguages = config.languages.filter((language) => config.activeLanguageCodes.includes(language.code));
 const excludedSelector = config.excludedSelectors.join(',');
 const metaSelectors = [
@@ -132,7 +138,7 @@ for (const language of activeLanguages) {
   const harvested = new Map();
   let languageAdded = 0;
 
-  for (const pageName of config.translationManagedPages) {
+  for (const pageName of pageNames) {
     const english$ = load(fs.readFileSync(path.join(rootDir, pageName), 'utf8'), { decodeEntities: false });
     const localized$ = load(fs.readFileSync(path.join(rootDir, language.code, pageName), 'utf8'), { decodeEntities: false });
     const candidates = new Map();

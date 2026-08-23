@@ -51,7 +51,7 @@
   },
   "BP-2P-08-0001.html": {
     "title": "BP-2P-08-0001 kompakte Zweikanal-Drehdurchführung",
-    "description": "BP-2P-08-0001 ist eine kompakte Zweikanal-Drehdurchführung für Druckluft. Der Einsatz am hinteren Spannfutter von Laser-Rohrschneidmaschinen ist bestätigt; die Auslegung erfolgt anhand der Spannfutterzeichnung.",
+    "description": "BP-2P-08-0001 ist eine kompakte Zweikanal-Drehdurchführung für Druckluft und wird am hinteren Spannfutter von Laser-Rohrschneidmaschinen eingesetzt. Die Ausführung anhand der Anforderungen und Zeichnung des Spannfutters auswählen.",
     "h1": "BP-2P-08-0001 kompakte Zweikanal-Drehdurchführung"
   },
   "BP-2P-130-0001.html": {
@@ -81,7 +81,7 @@
   },
   "BP-3P-0004.html": {
     "title": "BP-3P-0004 Dreikanal-Drehdurchführung | Begapunk",
-    "description": "BP-3P-0004 ist eine pneumatische Dreikanal-Drehdurchführung. Der Einsatz am hinteren Spannfutter von Laser-Rohrschneidmaschinen ist bestätigt; die Auslegung erfolgt anhand der Spannfutterzeichnung.",
+    "description": "BP-3P-0004 ist eine pneumatische Dreikanal-Drehdurchführung für Druckluft und wird am hinteren Spannfutter von Laser-Rohrschneidmaschinen eingesetzt. Die Ausführung anhand der Anforderungen und Zeichnung des Spannfutters auswählen.",
     "h1": "BP-3P-0004 Dreikanal-Drehdurchführung"
   },
   "BP-3P-0006.html": {
@@ -116,7 +116,7 @@
   },
   "application-automation-rotary-tables.html": {
     "title": "Drehdurchführungen für Rund- und Drehtische | Begapunk",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse-, Positionier-, Abblas-, Kanal-, Drehzahl-, Zentralbohrungs- und Einbaudaten.",
     "h1": "Drehdurchführungen für automatisierte Rund- und Drehtische"
   },
   "application-bottle-filling-capping.html": {
@@ -141,17 +141,17 @@
   },
   "application-packaging-machinery.html": {
     "title": "Drehdurchführungen für Verpackungsmaschinen | Begapunk",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Planen Sie eine pneumatische Drehdurchführung für Takt-, Füll-, Verschließ- und Siegelmaschinen anhand von Kanälen, Durchfluss, Drehzahl, Einbau und Reinigungsbedingungen.",
     "h1": "Drehdurchführungen für Verpackungsmaschinen"
   },
   "application-pneumatic-tools-hose-anti-twist.html": {
     "title": "Drehgelenke für Druckluftwerkzeuge und Schläuche",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Wählen Sie einen Luftdrehanschluss für Pneumatikwerkzeuge und Verdrehschutz anhand von Durchfluss, Druckabfall, Bewegung, Gewinde, Schlauchlast und Sicherheitsanforderungen.",
     "h1": "Drehgelenke für Druckluftwerkzeuge und Schlauchentlastung"
   },
   "application-robot-end-of-arm-tooling.html": {
     "title": "Drehdurchführungen für Roboter-Endeffektoren",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Planen Sie eine pneumatische Drehdurchführung für Roboter-Endeffektoren anhand von Greifern, Vakuum, Abblasung, Handgelenkbewegung, Nutzlast, Schlauchführung und Schnittstellen.",
     "h1": "Drehdurchführungen für Roboter-Endeffektoren"
   },
   "application-steel-dusty-environments.html": {
@@ -196,12 +196,12 @@
   },
   "blog-rotary-joint-leaking.html": {
     "title": "Drehdurchführung undicht? Systematische Fehlersuche",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Diagnostizieren Sie eine undichte Drehdurchführung durch Leckortung, Trennung von Verschraubungs- und Dichtfehlern sowie Prüfung von Ausrichtung, Betrieb und einzelnen Kanälen.",
     "h1": "Undichte Drehdurchführung systematisch prüfen"
   },
   "blog-rotary-joint-materials.html": {
     "title": "Werkstoffe für Drehdurchführungen richtig auswählen",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Vergleichen Sie Aluminium, Edelstahl und Messing für Drehdurchführungen anhand von Masse, Korrosion, Medienverträglichkeit, Festigkeit, Fertigung und Lebenszyklus.",
     "h1": "Aluminium, Edelstahl oder Messing für Drehdurchführungen?"
   },
   "blog-rotary-joint-selection.html": {
@@ -216,12 +216,12 @@
   },
   "blog-seal-replacement.html": {
     "title": "Dichtung einer Drehdurchführung wechseln | Anleitung",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Dichtungen einer Drehdurchführung sicher ersetzen: Fehler bestätigen, richtigen Dichtsatz verwenden, Bauteile prüfen, sauber montieren und jeden Kanal erneut in Betrieb nehmen.",
     "h1": "Dichtung einer Drehdurchführung fachgerecht wechseln"
   },
   "blog-threaded-vs-flange.html": {
     "title": "Gewinde oder Flansch bei Drehdurchführungen?",
-    "description": "Planen Sie die Auswahl einer Drehdurchführung mit aktuellen Begapunk-Produktdaten, einer Checkliste, Anwendungsfällen, Qualitätsinformationen und technischer Prüfung.",
+    "description": "Vergleichen Sie Gewinde- und Flansch-Drehdurchführungen anhand von Bauraum, Ausrichtung, Verdrehsicherung, Rohrlast, Montagezugang und Wartung.",
     "h1": "Gewinde- und Flanschmontage bei Drehdurchführungen vergleichen"
   },
   "case-studies.html": {

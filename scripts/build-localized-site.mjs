@@ -2165,43 +2165,43 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
   const bottleCappingCreativeWork = {
     de: {
       name: 'BP-2P-16-0001 in einer Kunden-Produktionsmaschine zum Verschließen von Flaschen',
-      description: 'Ein vom Kunden freigegebener Produktionsnachweis bestätigt zwei getrennte Druckluftkanäle, über die ein pneumatischer 3-Finger-Zentrischgreifer Druckluft zum Schließen und Öffnen erhält. Der Greifer hält und dreht den Flaschenverschluss. Die Identität des Kunden wird nicht genannt; Anschlussbelegung, Betriebsbedingungen und Maschinenschnittstelle bleiben anlagenspezifisch.',
+      description: 'BP-2P-16-0001 führt einem pneumatischen 3-Finger-Zentrischgreifer in einer Produktionsmaschine des Kunden über zwei getrennte Druckluftkanäle Druckluft zum Schließen und Öffnen zu. Der Greifer hält und dreht den Flaschenverschluss beim Verschließen. Die Identität des Kunden bleibt anonym. Erforderliche Anschlussfunktionen, Betriebsdruck, Drehzahl und Maschinenschnittstelle mit den Maschinenanforderungen und der aktuellen Zeichnung für BP-2P-16-0001 abgleichen.',
     },
     ja: {
       name: 'お客様のボトルキャッピング生産設備に組み込まれたBP-2P-16-0001',
-      description: 'お客様から公開許可を得た生産実績として、独立した2流路を介して、ボトルキャップを把持・回転させる3爪エアチャックに把持・開放用圧縮空気を供給することを確認しています。お客様名は非公開で、ポート機能、使用条件、装置取合いは実機ごとの確認が必要です。',
+      description: 'BP-2P-16-0001は、お客様の量産用キャッピング機で、独立した2流路を介して3爪エアチャックの把持・開放用圧縮空気を供給しています。エアチャックはキャッピング時にボトルキャップを把持して回転させます。お客様名は非公開です。必要なポート機能、使用圧力、回転数、装置取合いを、装置要件と最新のBP-2P-16-0001図面に照らして確認してください。',
     },
     ru: {
       name: 'BP-2P-16-0001 на производственной укупорочной машине заказчика',
-      description: 'Разрешённая заказчиком к публикации производственная фотография подтверждает подачу сжатого воздуха по двум независимым каналам для зажима и разжима трёхкулачкового пневматического захвата, который удерживает и вращает крышку. Название заказчика не раскрывается; назначение портов, рабочие условия и интерфейс машины зависят от конкретной установки.',
+      description: 'BP-2P-16-0001 по двум независимым каналам подаёт сжатый воздух для зажима и разжима трёхкулачкового пневматического захвата на производственной укупорочной машине заказчика. Захват удерживает и вращает крышку при укупорке. Название заказчика не раскрывается. Сопоставьте требуемые функции портов, рабочее давление, частоту вращения и интерфейс машины с требованиями оборудования и актуальным чертежом BP-2P-16-0001.',
     },
   };
   const bottleCappingAlternativeCreativeWork = {
     de: {
       name: 'Eignung der BP-2P-08-0001 für einen pneumatischen 3-Finger-Zentrischgreifer für Flaschenverschlüsse',
-      description: 'Der Projektinhaber bestätigt, dass BP-2P-08-0001 für diese Zweikanal-Druckluftanwendung beim Verschließen von Flaschen ausgewählt werden kann. Das vom Kunden freigegebene Produktionsfoto zeigt BP-2P-16-0001 und nicht BP-2P-08-0001. Kanalzahl, Einbauschnittstelle, Druck, Drehzahl, Abmessungen und freigegebene Zeichnung sind anwendungsspezifisch zu bestätigen.',
+      description: 'BP-2P-08-0001 kann für diese Zweikanal-Druckluftanwendung beim Verschließen von Flaschen ausgewählt werden. Das mit Zustimmung des Kunden veröffentlichte Produktionsfoto zeigt BP-2P-16-0001 und nicht BP-2P-08-0001. Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen mit der aktuellen Zeichnung für BP-2P-08-0001 abgleichen.',
     },
     ja: {
       name: 'ボトルキャップ用3爪エアチャックに対するBP-2P-08-0001の適用範囲',
-      description: 'Begapunkは、BP-2P-08-0001をこの2流路の圧縮空気式キャッピング用途で選定できることを確認しています。ただし、お客様から公開許可を得た生産設備の写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001ではありません。流路数、取付インターフェース、圧力、回転数、寸法、承認図面は用途ごとに確認が必要です。',
+      description: 'BP-2P-08-0001は、この2流路の圧縮空気式キャッピング用途で選定できます。ただし、お客様から公開許可を得た生産設備の写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001ではありません。流路数、取付インターフェース、圧力、回転数、寸法を最新のBP-2P-08-0001図面と照合してください。',
     },
     ru: {
       name: 'Применимость BP-2P-08-0001 для трёхкулачкового пневматического захвата крышек',
-      description: 'Begapunk подтверждает, что BP-2P-08-0001 можно выбрать для укупорочной установки с двумя независимыми каналами подачи сжатого воздуха. На разрешённой заказчиком производственной фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Число каналов, монтажный интерфейс, давление, частоту вращения, размеры и утверждённый чертёж необходимо подтвердить для конкретного применения.',
+      description: 'BP-2P-08-0001 можно выбрать для укупорочной установки с двумя независимыми каналами подачи сжатого воздуха. На производственной фотографии, опубликованной с разрешения заказчика, идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Сопоставьте число каналов, монтажный интерфейс, давление, частоту вращения и размеры с актуальным чертежом BP-2P-08-0001.',
     },
   };
   const cncSawFixtureCreativeWork = {
     de: {
       name: 'BP-2P-130-0001 in einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine',
-      description: 'Ein vom Kunden freigegebener Produktionsnachweis bestätigt BP-2P-130-0001 an der Rückseite einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine. Zwei getrennte Druckluftkanäle übernehmen das Spannen und Lösen. Für vergleichbare Anwendungen sind Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle anhand der Vorrichtungszeichnung und freigegebener Produktdaten technisch abzustimmen.',
+      description: 'BP-2P-130-0001 ist an der Rückseite einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine eingebaut. Zwei getrennte Druckluftkanäle übernehmen das Spannen und Lösen. Für vergleichbare Anwendungen Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle mit den Vorrichtungsanforderungen und der aktuellen Zeichnung für BP-2P-130-0001 abgleichen.',
     },
     ja: {
       name: 'CNC丸鋸盤用特注クランプ治具に組み込まれたBP-2P-130-0001',
-      description: 'お客様から公開許可を得た生産設備の映像により、CNC丸鋸盤用特注クランプ治具の後端に組み込まれたBP-2P-130-0001を確認しています。独立した2つの圧縮空気流路でクランプ／アンクランプを行います。同様の設備では、治具図面と承認済み製品データに基づき、ポート配置、圧力、回転数、運転サイクル、取合いを確認します。',
+      description: 'BP-2P-130-0001は、CNC丸鋸盤用特注クランプ治具の後端に組み込まれています。独立した2つの圧縮空気流路でクランプ／アンクランプを行います。同様の設備では、必要なポート配置、圧力、回転数、運転サイクル、取合いを治具要件と最新のBP-2P-130-0001図面に照らして確認してください。',
     },
     ru: {
       name: 'BP-2P-130-0001 в нестандартном зажимном приспособлении круглопильного станка с ЧПУ',
-      description: 'Разрешённое заказчиком производственное подтверждение показывает BP-2P-130-0001 в задней части нестандартного зажимного приспособления круглопильного станка с ЧПУ. Два независимых канала сжатого воздуха используются для зажима и разжима. Для аналогичного оборудования назначение портов, давление, частота вращения, режим работы и монтажное сопряжение согласуются по чертежу приспособления и утверждённым данным изделия.',
+      description: 'BP-2P-130-0001 установлена в задней части нестандартного зажимного приспособления круглопильного станка с ЧПУ. Два независимых канала сжатого воздуха используются для зажима и разжима. Для аналогичного оборудования сопоставьте требуемое назначение портов, давление, частоту вращения, режим работы и монтажное сопряжение с требованиями оснастки и актуальным чертежом BP-2P-130-0001.',
     },
   };
   $('script[type="application/ld+json"]').each((_, element) => {

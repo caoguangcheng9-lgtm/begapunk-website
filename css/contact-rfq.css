@@ -13,6 +13,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.contact-rfq-page #quoteForm {
+  scroll-margin-top: 88px;
+}
+
 .bp-rfq-shell {
   width: min(1380px, 100%);
   margin: 0 auto;

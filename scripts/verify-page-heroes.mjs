@@ -86,7 +86,7 @@ const changedStylesheets = new Map([
   ['application-case.css', '20260814-hero1'],
   ['manufacturing-quality.css', '20260814-hero1'],
   ['production-inspection-testing.css', '20260814-hero1'],
-  ['contact-rfq.css', '20260814-hero1'],
+  ['contact-rfq.css', '20260822-anchor1'],
 ]);
 
 function contractFor(route) {
@@ -269,7 +269,7 @@ const stylesheetContracts = [
   ['css/application-case.css', /padding:\s*var\(--page-hero-padding\)/],
   ['css/manufacturing-quality.css', /background:\s*var\(--page-hero-background\)/, /font-size:\s*var\(--page-hero-title-size\)/],
   ['css/production-inspection-testing.css', /background:\s*var\(--page-hero-background\)/, /font-size:\s*var\(--page-hero-title-size\)/],
-  ['css/contact-rfq.css', /background:\s*var\(--page-hero-background\)/, /font-size:\s*var\(--page-hero-title-size\)/],
+  ['css/contact-rfq.css', /background:\s*var\(--page-hero-background\)/, /font-size:\s*var\(--page-hero-title-size\)/, /\.contact-rfq-page #quoteForm\s*\{[^}]*scroll-margin-top:\s*88px;/s],
 ];
 
 for (const [relativePath, ...patterns] of stylesheetContracts) {

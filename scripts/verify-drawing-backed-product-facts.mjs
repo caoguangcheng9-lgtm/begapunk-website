@@ -71,18 +71,18 @@ const labelPatterns = {
 };
 
 const pendingDrawingPatterns = {
-  en: /project confirmation|required.*model-specific file|current model-specific file/iu,
-  de: /Projektbestätigung|aktuelle modellspezifische Datei|modellspezifische Datei/iu,
-  ja: /案件.*確認|型式専用ファイル/iu,
-  ru: /проектн.*подтвержден|актуальн.*файл.*модел|файл.*конкретн.*модел/iu
+  en: /application review|required.*model-specific file|current model-specific file/iu,
+  de: /Anwendungsprüfung|aktuelle modellspezifische Datei|modellspezifische Datei/iu,
+  ja: /用途確認|型式専用ファイル/iu,
+  ru: /проверка применения|актуальн.*файл.*модел|файл.*конкретн.*модел/iu
 };
 
-const pendingPortPattern = /pending|unresolved|clarif|confirm(?:ation|ed)? required|to be confirmed|project confirmation|aussteh|ungeklärt|klär|bestätig|projektbezogen|zeichnungsverantwort|freigegeben\w*(?:\s+\w+){0,3}\s+zeichnung|待確認|確認待ち|要確認|確認中|未確定|案件|уточн|не подтвержд|требует подтвержд|ожидает подтвержд|должн\p{L}*\s+быть\s+подтвержд|подтверд|проектн|провер/iu;
+const pendingPortPattern = /pending|unresolved|clarif|confirm(?:ation|ed)? required|to be confirmed|not listed|application review|aussteh|offen|nicht angegeben|ungeklärt|klär|bestätig|Anwendungsprüfung|待確認|確認待ち|要確認|確認中|未確定|記載されていません|用途確認|уточн|не указан|не определен|не подтвержд|требует подтвержд|ожидает подтвержд|должн\p{L}*\s+быть\s+подтвержд|подтверд|провер/iu;
 const pendingOutletCountPatterns = {
-  en: /outlet count.*(?:pending|confirm|approved drawing)|approved.*drawing.*outlet/iu,
-  de: /ausgangs(?:an)?zahl.*(?:aussteh|klär|bestätig)|freigegeben\w*(?:\s+\w+){0,3}\s+zeichnung.*ausgang/iu,
-  ja: /出口数.*(?:確認待ち|要確認|確認中|承認図面)|承認図面.*出口数/iu,
-  ru: /количеств.*выход.*(?:уточн|подтвержд|провер)|согласованн.*черт[её]ж.*выход/iu
+  en: /outlet count.*(?:pending|confirm|not listed|current.*drawing)/iu,
+  de: /ausgangs(?:an)?zahl.*(?:aussteh|offen|nicht angegeben|klär|bestätig|zeichnung)/iu,
+  ja: /出口数.*(?:確認待ち|要確認|確認中|未確定|記載されていません|型式専用図面)/iu,
+  ru: /количеств.*выход.*(?:уточн|подтвержд|провер|не указан|черт[её]ж)/iu
 };
 const warrantyLabels = {
   en: "Warranty period",
@@ -660,7 +660,7 @@ function checkIdentityPendingPage(context, $, record, locale, product) {
     addFailure(
       "identity-pending-disclaimer",
       context,
-      "Downloads panel must say that project confirmation or the current model-specific file is required before design release or ordering."
+      "Downloads panel must direct the customer to request the current model-specific file before selection or ordering."
     );
   }
 
@@ -812,7 +812,7 @@ function assertManifestContract(manifest) {
     addFailure("manifest-model-count", "manifest", `Expected 16 models; found ${productEntries.length}.`);
   }
 
-  const expectedPending = new Set(["BP-2P-30-0001"]);
+  const expectedPending = new Set();
   const actualPending = new Set(
     productEntries
       .filter(([, record]) => record.status === "identity-pending")
@@ -822,7 +822,7 @@ function assertManifestContract(manifest) {
     expectedPending.size !== actualPending.size
     || [...expectedPending].some((model) => !actualPending.has(model))
   ) {
-    addFailure("manifest-quarantine", "manifest", "Exactly BP-2P-30-0001 must be identity-pending.");
+    addFailure("manifest-quarantine", "manifest", "Identity-pending model set does not match the approved manifest contract.");
   }
 
   for (const [model, record] of productEntries) {

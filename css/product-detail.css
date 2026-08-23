@@ -96,6 +96,10 @@
   display: none;
 }
 
+.page-product-detail #faq {
+  scroll-margin-top: 80px;
+}
+
 .page-product-detail details.faq-item {
   overflow: visible;
 }
@@ -115,9 +119,12 @@
   transition: none;
 }
 
-.page-product-detail details.faq-item[open] .faq-question .icon,
-.page-product-detail details.faq-item[open] .faq-question .arrow {
-  transform: rotate(180deg);
+.page-product-detail summary.faq-question .icon::before {
+  content: '+';
+}
+
+.page-product-detail details.faq-item[open] summary.faq-question .icon::before {
+  content: '-';
 }
 
 .page-product-detail .thumb-link {

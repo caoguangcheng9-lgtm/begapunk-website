@@ -1641,10 +1641,10 @@ const laserSameCategoryBoundary = {
   ru: /(?:одной категории применения[\s\S]{0,320}не представлены как два (?:вида|ракурса) (?:одной и той же машины|одного и того же оборудования)|не представлены как два (?:вида|ракурса) (?:одной и той же машины|одного и того же оборудования)[\s\S]{0,320}одной категории применения)/iu,
 };
 const productPhotoModelBoundary = {
-  en: /has not been individually identified as this model/i,
-  de: /nicht einzeln als dieses Modell identifiziert/iu,
-  ja: /本型式に個別特定したものではありません/u,
-  ru: /модель изделия[^.]{0,120}отдельно не идентифицирована/iu,
+  en: /case photographs document the application type but do not identify the installed product as BP-(?:2P-08|3P)-000[14]/i,
+  de: /Fallfotos zeigen den Anwendungstyp[^.]{0,160}identifizieren das eingebaute Produkt jedoch nicht als BP-(?:2P-08|3P)-000[14]/iu,
+  ja: /事例写真は用途の種類を示していますが、搭載製品をBP-(?:2P-08|3P)-000[14]と特定するものではありません/u,
+  ru: /Фотографии показывают тип применения[^.]{0,160}не идентифицируют установленное изделие как BP-(?:2P-08|3P)-000[14]/iu,
 };
 const permittedLaserCaseSafetyBoundary = {
   en: /The confirmed scope for the two standard models is the rear chuck's compressed-air circuits; process or assist-gas transfer is not included\./i,
@@ -1821,7 +1821,7 @@ const bottleCappingVerification = {
       /удерживает и вращает крышку/iu,
       /название заказчика (?:не раскрывается|и марка машины не раскрываются)/iu,
     ],
-    boundary: /не подтверждают нумерацию портов, рабочее давление, частоту вращения, режим работы, ресурс, показатели утечки или производительность/iu,
+    boundary: /не (?:подтверждают|определяют) нумерацию портов, рабочее давление, частоту вращения, режим работы, ресурс, показатели утечки или производительность/iu,
   },
 };
 const bottleCappingAmbiguousFlowTerms = {

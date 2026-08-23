@@ -14,8 +14,8 @@ if (manifest.schemaVersion !== 1 || verifiedStatus !== 'verified-drawing' || qua
 
 export const drawingBackedProductModels = Object.freeze(Object.keys(products).sort());
 
-if (drawingBackedProductModels.length !== 16 || identityPendingModels.size !== 1) {
-  throw new Error('Drawing-backed product-fact manifest must contain 16 products and one identity-pending model.');
+if (drawingBackedProductModels.length !== 16) {
+  throw new Error('Drawing-backed product-fact manifest must contain 16 products.');
 }
 
 for (const model of drawingBackedProductModels) {
@@ -32,8 +32,8 @@ const copy = {
   en: {
     productType: 'pneumatic rotary joint',
     pneumaticElectricType: 'pneumatic-electric rotary union',
-    electricalLeadsBoundary: '6 electrical leads shown; circuit allocation and ratings per approved specification',
-    verifiedDrawingRequired: 'project confirmation required',
+    electricalLeadsBoundary: '6 electrical leads shown; circuit allocation and ratings per selected specification',
+    verifiedDrawingRequired: 'application review required',
     pressure: (value) => `maximum pressure ${value} MPa`,
     speed: (value) => `maximum speed ${value} RPM`,
     temperature: (minimum, maximum) => `temperature range ${minimum} to +${maximum} °C`,
@@ -42,8 +42,8 @@ const copy = {
     steel45Body: 'Grade 45 carbon steel body',
     seal: 'PTFE seal with O-ring',
     media: (values) => `media: ${values.join(', ')}`,
-    portCountPending: 'Outlet count pending engineering confirmation; request the approved drawing before ordering',
-    portPending: 'port specification pending approved corrected drawing',
+    portCountPending: 'outlet count is not listed',
+    portPending: 'port thread is not listed',
     portDepth: (value) => `, depth ${value} mm`,
     mountingDepth: (value) => `, thread depth ${value} mm`,
     throughHole: 'through holes',
@@ -53,15 +53,15 @@ const copy = {
     diameterEnvelope: (diameter, length) => `dimensions: maximum diameter Ø${diameter} mm × overall length ${length} mm`,
     widthEnvelope: (width, length) => `dimensions: maximum width ${width} mm × overall length ${length} mm`,
     throughBore: (diameter) => `through bore Ø${diameter} mm`,
-    verifiedPorts: 'verified port annotations',
+    verifiedPorts: 'port annotations',
     portFunctionPending: 'port functional assignment is not confirmed',
     airInletUnclear: 'air inlet not unambiguously identified',
   },
   de: {
     productType: 'pneumatische Drehdurchführung',
     pneumaticElectricType: 'pneumatisch-elektrische Drehdurchführung',
-    electricalLeadsBoundary: '6 elektrische Leitungen dargestellt; Kreiszuordnung und Nennwerte gemäß freigegebener Spezifikation',
-    verifiedDrawingRequired: 'Projektbestätigung erforderlich',
+    electricalLeadsBoundary: '6 elektrische Leitungen dargestellt; Kreiszuordnung und Nennwerte gemäß gewählter Spezifikation',
+    verifiedDrawingRequired: 'Anwendungsprüfung erforderlich',
     pressure: (value) => `maximaler Druck ${value} MPa`,
     speed: (value) => `maximale Drehzahl ${value} U/min`,
     temperature: (minimum, maximum) => `Temperaturbereich ${minimum} bis +${maximum} °C`,
@@ -70,8 +70,8 @@ const copy = {
     steel45Body: 'Gehäuse aus Stahl 45',
     seal: 'PTFE-Dichtung mit O-Ring',
     media: (values) => `${values.length === 1 ? 'Medium' : 'Medien'}: ${values.join(', ')}`,
-    portCountPending: 'Ausgangsanzahl bis zur technischen Bestätigung offen; vor Bestellung projektbezogen prüfen',
-    portPending: 'Anschlussspezifikation vor Auswahl projektbezogen prüfen',
+    portCountPending: 'Ausgangsanzahl ist nicht angegeben',
+    portPending: 'Anschlussgewinde ist nicht angegeben',
     portDepth: (value) => `, Tiefe ${value} mm`,
     mountingDepth: (value) => `, Gewindetiefe ${value} mm`,
     throughHole: 'Durchgangsbohrungen',
@@ -88,8 +88,8 @@ const copy = {
   ja: {
     productType: '空圧ロータリージョイント',
     pneumaticElectricType: '空圧・電気複合ロータリージョイント',
-    electricalLeadsBoundary: '電気リード6本。回路割当・定格は承認済み仕様書で確認',
-    verifiedDrawingRequired: '案件確認が必要',
+    electricalLeadsBoundary: '電気リード6本。回路割当と定格は選定仕様による',
+    verifiedDrawingRequired: '用途確認が必要',
     pressure: (value) => `最高使用圧力 ${value} MPa`,
     speed: (value) => `最高回転数 ${value} min⁻¹`,
     temperature: (minimum, maximum) => `温度範囲 ${minimum}～+${maximum} °C`,
@@ -98,8 +98,8 @@ const copy = {
     steel45Body: '45鋼ボディ',
     seal: 'PTFEシールとOリング',
     media: (values) => `使用流体 ${values.join('・')}`,
-    portCountPending: '出口数は担当設計部門の確認待ちです。注文前に案件ごとに確認してください',
-    portPending: 'ポート仕様は選定前に案件ごとの確認が必要です',
+    portCountPending: '出口数は記載されていません',
+    portPending: 'ポートねじは記載されていません',
     portDepth: (value) => `、深さ${value} mm`,
     mountingDepth: (value) => `、ねじ深さ${value} mm`,
     throughHole: '通し穴',
@@ -116,8 +116,8 @@ const copy = {
   ru: {
     productType: 'пневматическое ротационное соединение',
     pneumaticElectricType: 'пневмоэлектрическое ротационное соединение',
-    electricalLeadsBoundary: 'показано 6 электрических выводов; распределение цепей и номиналы — по согласованной спецификации',
-    verifiedDrawingRequired: 'требуется проектное подтверждение',
+    electricalLeadsBoundary: 'показано 6 электрических выводов; распределение цепей и номиналы по выбранной спецификации',
+    verifiedDrawingRequired: 'требуется проверка применения',
     pressure: (value) => `максимальное давление ${value} МПа`,
     speed: (value) => `максимальная частота вращения ${value} об/мин`,
     temperature: (minimum, maximum) => `температурный диапазон ${minimum}…+${maximum} °C`,
@@ -126,8 +126,8 @@ const copy = {
     steel45Body: 'корпус из стали 45',
     seal: 'уплотнение из ПТФЭ с уплотнительным кольцом',
     media: (values) => `${values.length === 1 ? 'рабочая среда' : 'рабочие среды'}: ${values.join(', ')}`,
-    portCountPending: 'Количество выходов должно быть подтверждено ответственной конструкторской службой; проверьте проект до заказа',
-    portPending: 'Спецификацию портов нужно подтвердить для проекта перед выбором',
+    portCountPending: 'Количество выходов не указано',
+    portPending: 'Резьба портов не указана',
     portDepth: (value) => `, глубина ${value} мм`,
     mountingDepth: (value) => `, глубина резьбы ${value} мм`,
     throughHole: 'сквозные отверстия',
@@ -137,7 +137,7 @@ const copy = {
     diameterEnvelope: (diameter, length) => `габариты: максимальный диаметр Ø${diameter} мм × общая длина ${length} мм`,
     widthEnvelope: (width, length) => `габариты: максимальная ширина ${width} мм × общая длина ${length} мм`,
     throughBore: (diameter) => `сквозное отверстие Ø${diameter} мм`,
-    verifiedPorts: 'проверенные обозначения портов',
+    verifiedPorts: 'обозначения портов',
     portFunctionPending: 'Функциональное назначение портов не подтверждено',
     airInletUnclear: 'вход воздуха однозначно не обозначен',
   },
@@ -601,10 +601,10 @@ function uiFormatPorts(locale, model, ports) {
   if (ports.status === 'annotation-conflict') return uiPendingOutletCount(locale);
   if (ports.status === 'anomaly-unresolved') {
     return uiPhrase(locale, {
-      en: 'Port thread pending engineering confirmation',
-      de: 'Anschlussgewinde bis zur technischen Bestätigung offen',
-      ja: 'ポートねじは担当設計部門の確認待ちです',
-      ru: 'Резьба портов должна быть подтверждена ответственной конструкторской службой',
+      en: 'Port thread is not listed',
+      de: 'Anschlussgewinde ist nicht angegeben',
+      ja: 'ポートねじは記載されていません',
+      ru: 'Резьба портов не указана',
     });
   }
   if (!Array.isArray(ports.annotations) || !ports.annotations.length) {
@@ -826,25 +826,57 @@ function appendUiClause(locale, sentence, clause) {
 
 function uiVerifiedPriceNote(locale, model, pressure, speed, media) {
   return uiPhrase(locale, {
-    en: `${model}: ${pressure} pressure, ${speed} speed; suitable media: ${lowercaseInitial(media)}. Confirm continuous-duty limits for the selected configuration and operating conditions.`,
-    de: `${model}: ${pressure} Maximaldruck, ${speed} Maximaldrehzahl; geeignete Medien: ${lowercaseInitial(media)}. Dauerbetriebswerte für die gewählte Ausführung und Betriebsbedingungen bestätigen.`,
-    ja: `${model}：圧力${pressure}、回転数${speed}、適用流体：${media}。選定仕様と運転条件に対する連続運転許容値を確認してください。`,
-    ru: `${model}: максимальное давление ${pressure}, максимальная частота ${speed}; подходящая среда: ${lowercaseInitial(media)}. Допустимые значения для непрерывной работы подтвердите для выбранного исполнения и условий эксплуатации.`,
+    en: `${model}: ${pressure} · ${speed}; suitable media: ${lowercaseInitial(media)}.`,
+    de: `${model}: ${pressure} · ${speed}; geeignete Medien: ${lowercaseInitial(media)}.`,
+    ja: `${model}：${pressure}・${speed}、適用流体：${media}。`,
+    ru: `${model}: ${pressure} · ${speed}; подходящая среда: ${lowercaseInitial(media)}.`,
   });
 }
 
 function uiIdentityPendingContract(locale, model) {
   const pending = uiPhrase(locale, {
-    en: 'Project confirmation required before selection',
-    de: 'Projektbestätigung vor Auswahl erforderlich',
-    ja: '選定前に案件確認が必要',
-    ru: 'Перед выбором требуется проектное подтверждение',
+    en: 'Application review required before selection',
+    de: 'Anwendungsprüfung vor Auswahl erforderlich',
+    ja: '選定前に用途確認が必要',
+    ru: 'Перед выбором требуется проверка применения',
   });
+  const keyValues = {
+    performance: uiPhrase(locale, {
+      en: 'Send required working pressure and RPM',
+      de: 'Betriebsdruck und Drehzahl angeben',
+      ja: '使用圧力と回転数をお知らせください',
+      ru: 'Укажите рабочее давление и частоту вращения',
+    }),
+    body: uiPhrase(locale, {
+      en: 'State corrosion and environment requirements',
+      de: 'Korrosions- und Umgebungsanforderungen angeben',
+      ja: '耐食性と使用環境の要件をお知らせください',
+      ru: 'Укажите требования к коррозионной стойкости и условиям эксплуатации',
+    }),
+    seal: uiPhrase(locale, {
+      en: 'Send operating temperature and duty cycle',
+      de: 'Betriebstemperatur und Betriebszyklus angeben',
+      ja: '使用温度と運転サイクルをお知らせください',
+      ru: 'Укажите рабочую температуру и режим работы',
+    }),
+    media: uiPhrase(locale, {
+      en: 'Specify the operating medium',
+      de: 'Betriebsmedium angeben',
+      ja: '使用流体をお知らせください',
+      ru: 'Укажите рабочую среду',
+    }),
+    mount: uiPhrase(locale, {
+      en: 'Send interface dimensions or a machine drawing',
+      de: 'Einbaumaße oder Maschinenzeichnung senden',
+      ja: '取付寸法または機械図面をお送りください',
+      ru: 'Пришлите присоединительные размеры или чертёж машины',
+    }),
+  };
   const priceNote = uiPhrase(locale, {
-    en: `${model} requires project confirmation before technical selection. Request the current model-specific file before design release or ordering.`,
-    de: `${model} erfordert eine projektbezogene Bestätigung vor der technischen Auswahl. Die aktuelle modellspezifische Datei vor Konstruktionsfreigabe oder Bestellung anfordern.`,
-    ja: `${model}は技術選定前に案件ごとの確認が必要です。設計リリースまたは注文前に、現在の型式専用ファイルを依頼してください。`,
-    ru: `${model} требует проектного подтверждения перед техническим выбором. Перед выпуском конструкции или заказом запросите актуальный файл для этой модели.`,
+    en: `${model} requires application review before selection. Send the medium, pressure, speed, mounting, and quantity, and request the current model-specific file before ordering.`,
+    de: `${model} erfordert vor der Auswahl eine Anwendungsprüfung. Medium, Druck, Drehzahl, Montage und Menge senden und vor der Bestellung die aktuelle modellspezifische Datei anfordern.`,
+    ja: `${model}は選定前に用途確認が必要です。流体、圧力、回転数、取付け、数量をお知らせのうえ、発注前に現在の型式専用ファイルをご依頼ください。`,
+    ru: `${model} требует проверки применения перед выбором. Сообщите среду, давление, скорость, монтаж и количество и запросите актуальный файл этой модели до заказа.`,
   });
   return {
     status: quarantineStatus,
@@ -860,7 +892,7 @@ function uiIdentityPendingContract(locale, model) {
       'temperature', 'weight', 'dimensions', 'bore', 'outerDiameter', 'electricalCircuits', 'voltage',
       'electricalContact', 'signalType', 'insulationResistance', 'dielectricStrength',
     ].map((field) => [field, pending])),
-    keyValues: { performance: pending, body: pending, seal: pending, media: pending, mount: pending, ports: pending },
+    keyValues: { ...keyValues, ports: pending },
     keyCategoryOverrides: {},
     keyCategoryLabels: { ports: uiPhrase(locale, { en: 'Ports', de: 'Anschlüsse', ja: 'ポート', ru: 'Порты' }) },
     productName: metadataHeading(locale, model, products[model]),
@@ -887,16 +919,16 @@ export function drawingBackedUiContract(locale, model) {
   const mount = uiFormatMounting(locale, model, facts.mounting);
   const bore = facts.throughBore?.status === 'verified' ? uiFormatBore(locale, facts.throughBore) : null;
   const electrical = uiPhrase(locale, {
-    en: 'Not stated; use the approved electrical specification',
-    de: 'Nicht angegeben; maßgeblich ist die freigegebene elektrische Spezifikation',
-    ja: '記載なし。承認済み電気仕様書で確認',
-    ru: 'Не указано; см. согласованную электрическую спецификацию',
+    en: 'Not listed; defined by the selected specification',
+    de: 'Nicht angegeben; gemäß gewählter Spezifikation',
+    ja: '記載なし。選定仕様による',
+    ru: 'Не указано; по выбранной спецификации',
   });
   const channels = uiPhrase(locale, {
-    en: '3 pneumatic passages · 6 electrical leads; circuit allocation/ratings per approved specification',
-    de: '3 Pneumatikkanäle · 6 elektrische Leitungen; Kreiszuordnung/Nennwerte gemäß freigegebener Spezifikation',
-    ja: '空圧3流路・電気リード6本。回路割当／定格は承認済み仕様書で確認',
-    ru: '3 пневматических канала · 6 электрических выводов; распределение цепей/номиналы — по согласованной спецификации',
+    en: '3 pneumatic passages · 6 electrical leads; circuit allocation and ratings per selected specification',
+    de: '3 Pneumatikkanäle · 6 elektrische Leitungen; Kreiszuordnung und Nennwerte gemäß gewählter Spezifikation',
+    ja: '空圧3流路・電気リード6本。回路割当と定格は選定仕様による',
+    ru: '3 пневматических канала · 6 электрических выводов; распределение цепей и номиналы по выбранной спецификации',
   });
   const s06PneumaticPassages = uiPhrase(locale, {
     en: '3 pneumatic passages; inlet connection not unambiguously labeled',
@@ -907,18 +939,18 @@ export function drawingBackedUiContract(locale, model) {
   let priceNote = uiVerifiedPriceNote(locale, model, pressure, speed, media);
   if (model === 'BP-3P-S06-0001') {
     priceNote += `${locale === 'ja' ? '' : ' '}${uiPhrase(locale, {
-      en: 'Electrical data: approved specification governs.',
-      de: 'Elektrik: Die freigegebene Spezifikation ist maßgeblich.',
-      ja: '電気仕様は承認済み仕様書を優先します。',
-      ru: 'Электрические данные — по согласованной спецификации.',
+      en: 'Confirm circuit allocation and electrical ratings for the selected configuration.',
+      de: 'Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen.',
+      ja: '選定仕様の回路割当と電気定格を確認してください。',
+      ru: 'Подтвердите распределение цепей и электрические номиналы для выбранного исполнения.',
     })}`;
   }
   if (model === 'BP-3P-0006') {
     priceNote = appendUiClause(locale, priceNote, uiPhrase(locale, {
-      en: 'port thread remains unpublished pending confirmation of the anomalous annotation',
-      de: 'das Anschlussgewinde bleibt bis zur Klärung der abweichenden Angabe unveröffentlicht',
-      ja: '図面のねじ表記に不整合があるため、訂正版の承認図面で確認できるまでポートねじを確定値として公開しません',
-      ru: 'резьба портов не публикуется до подтверждения аномального обозначения',
+      en: 'port thread is not listed; request the current model-specific drawing before selecting fittings',
+      de: 'das Anschlussgewinde ist nicht angegeben; vor der Auswahl von Verschraubungen die aktuelle modellspezifische Zeichnung anfordern',
+      ja: 'ポートねじは記載されていません。継手選定前に最新の型式専用図面をご依頼ください',
+      ru: 'резьба портов не указана; запросите актуальный чертёж конкретной модели до выбора фитингов',
     }));
   }
   const fields = {
@@ -1059,10 +1091,10 @@ export function drawingBackedProductSummary(locale, model) {
   if (!product) return null;
   const localized = localeCopy(locale);
   if (product.status === quarantineStatus) {
-    if (locale === 'en') return `${model} is a ${localized.productType}; project confirmation is required before technical selection.`;
-    if (locale === 'de') return `${model} ist eine ${localized.productType}; vor der technischen Auswahl ist eine Projektbestätigung erforderlich.`;
-    if (locale === 'ja') return `${model}は${localized.productType}です。技術選定前に案件ごとの確認が必要です。`;
-    return `${model} — ${localized.productType}; перед техническим выбором требуется проектное подтверждение.`;
+    if (locale === 'en') return `${model} is a ${localized.productType}; application review is required before selection.`;
+    if (locale === 'de') return `${model} ist eine ${localized.productType}; vor der Auswahl ist eine Anwendungsprüfung erforderlich.`;
+    if (locale === 'ja') return `${model}は${localized.productType}です。選定前に用途確認が必要です。`;
+    return `${model} — ${localized.productType}; перед выбором требуется проверка применения.`;
   }
   const parts = verifiedParts(locale, model, product);
   const portText = parts.ports.length ? parts.ports.join(locale === 'ja' ? '・' : '; ') : '';
@@ -1147,9 +1179,9 @@ function verifiedMetadataDescription(locale, model, product, heading) {
 
   if (model === 'BP-3P-0006') {
     return uiPhrase(locale, {
-      en: `${heading}. ${pressure} MPa, ${speed} RPM; suitable medium: ${media}. Port thread requires project confirmation before fittings or machining.`,
-      de: `${heading}. ${pressure} MPa, ${speed} min⁻¹; geeignetes Medium: ${media}. Anschlussgewinde vor Auswahl von Verschraubungen oder Bearbeitung projektbezogen bestätigen.`,
-      ja: `${heading}。${pressure} MPa、${speed} min⁻¹。適用流体：${media}。ポートねじは継手選定や加工前に案件ごとの確認が必要です。`,
+      en: `${heading}. ${pressure} MPa, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before selecting fittings or machining.`,
+      de: `${heading}. ${pressure} MPa, ${speed} min⁻¹; geeignetes Medium: ${media}. Anschlussgewinde vor Auswahl von Verschraubungen oder Bearbeitung bestätigen.`,
+      ja: `${heading}。${pressure} MPa、${speed} min⁻¹。適用流体：${media}。ポートねじは継手選定や加工前に確認してください。`,
       ru: `${heading}. ${pressure} МПа, ${speed} об/мин; подходящая среда: ${media}. Резьбу портов подтвердить до выбора фитингов или обработки.`,
     });
   }
@@ -1162,19 +1194,19 @@ function verifiedMetadataDescription(locale, model, product, heading) {
     });
   }
   return uiPhrase(locale, {
-    en: `${heading}. ${pressure} MPa, ${speed} RPM; suitable media: ${media}. Confirm continuous-duty values for the selected configuration.`,
-    de: `${heading}. ${pressure} MPa, ${speed} min⁻¹, geeignete Medien: ${media}. Dauerbetrieb für die gewählte Ausführung bestätigen.`,
-    ja: `${heading}。${pressure} MPa、${speed} min⁻¹。適用流体：${media}。連続運転値は選定仕様で確認。`,
-    ru: `${heading}. ${pressure} МПа, ${speed} об/мин, подходящая среда: ${media}. Непрерывный режим подтвердить для выбранного исполнения.`,
+    en: `${heading}. ${pressure} MPa · ${speed} RPM; suitable media: ${media}.`,
+    de: `${heading}. ${pressure} MPa · ${speed} min⁻¹; geeignete Medien: ${media}.`,
+    ja: `${heading}。${pressure} MPa・${speed} min⁻¹、適用流体：${media}。`,
+    ru: `${heading}. ${pressure} МПа · ${speed} об/мин; подходящая среда: ${media}.`,
   });
 }
 
 function pendingIdentityMetadataDescription(locale, model, heading) {
   return uiPhrase(locale, {
-    en: `${heading}. Project confirmation is required before selection or ordering; send medium, pressure, speed, mounting, and quantity for review.`,
-    de: `${heading}. Vor technischer Auswahl oder Bestellung ist eine Projektbestätigung erforderlich; Medium, Druck, Drehzahl, Montage und Menge zur Prüfung senden.`,
-    ja: `${heading}。技術選定または発注前に案件ごとの確認が必要です。流体、圧力、回転数、取付け、数量をお知らせください。`,
-    ru: `${heading}. Перед техническим выбором или заказом требуется проектное подтверждение; укажите среду, давление, скорость, монтаж и количество для проверки.`,
+    en: `${heading}. Application review is required before selection or ordering; send the medium, pressure, speed, mounting, and quantity.`,
+    de: `${heading}. Vor Auswahl oder Bestellung ist eine Anwendungsprüfung erforderlich; Medium, Druck, Drehzahl, Montage und Menge senden.`,
+    ja: `${heading}。選定・発注前に用途確認が必要です。流体、圧力、回転数、取付け、数量をお知らせください。`,
+    ru: `${heading}. Перед выбором или заказом требуется проверка применения; укажите среду, давление, скорость, монтаж и количество.`,
   });
 }
 
@@ -1220,10 +1252,10 @@ export function assertDrawingBackedProductRecordCoverage(records, context = 'sea
 }
 
 const metadataLengthRanges = {
-  en: { titleMax: 70, descriptionMin: 140, descriptionMax: 170 },
-  de: { titleMax: 80, descriptionMin: 140, descriptionMax: 200 },
-  ja: { titleMax: 50, descriptionMin: 60, descriptionMax: 100 },
-  ru: { titleMax: 85, descriptionMin: 155, descriptionMax: 205 },
+  en: { titleMax: 70, descriptionMin: 75, descriptionMax: 170 },
+  de: { titleMax: 80, descriptionMin: 85, descriptionMax: 200 },
+  ja: { titleMax: 50, descriptionMin: 45, descriptionMax: 100 },
+  ru: { titleMax: 85, descriptionMin: 100, descriptionMax: 205 },
 };
 
 for (const locale of Object.keys(copy)) {
@@ -1248,15 +1280,15 @@ for (const locale of Object.keys(copy)) {
     if (metadata.title.length > metadataLengths.titleMax
       || metadata.description.length < metadataLengths.descriptionMin
       || metadata.description.length > metadataLengths.descriptionMax) {
-      throw new Error(`${locale}/${model}: drawing-backed metadata length is outside the localized search range.`);
+      throw new Error(`${locale}/${model}: drawing-backed metadata length ${metadata.description.length} is outside ${metadataLengths.descriptionMin}-${metadataLengths.descriptionMax}.`);
     }
     if (identityPendingModels.has(model) && keywords.length !== 3) {
       throw new Error(`${locale}/${model}: identity-pending keywords must contain exactly model, product type, and drawing boundary.`);
     }
     if (identityPendingModels.has(model)) {
       const boundary = uiPhrase(locale, {
-        en: 'Project confirmation', de: 'Projektbestätigung',
-        ja: '案件ごとの確認', ru: 'проектное подтверждение',
+        en: 'Application review', de: 'Anwendungsprüfung',
+        ja: '用途確認', ru: 'проверка применения',
       });
       if (!metadata.description.includes(boundary)) {
         throw new Error(`${locale}/${model}: identity-pending metadata omits the drawing-verification boundary.`);
