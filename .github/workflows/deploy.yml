@@ -86,6 +86,16 @@ jobs:
           node-version: 24
           cache: npm
 
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: .github/requirements-deploy.txt
+
+      - name: Install PDF validation dependency
+        run: python -m pip install --require-hashes -r .github/requirements-deploy.txt
+
       - name: Confirm release commit belongs to main
         run: |
           if [[ "$(git rev-parse --is-shallow-repository)" == "true" ]]; then
