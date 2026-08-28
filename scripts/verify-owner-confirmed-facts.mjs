@@ -11,61 +11,133 @@ const locales = {
     prefix: '',
     warrantyName: 'Warranty period',
     warrantyValue: '1 year',
-    termsWarranty: 'The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.',
-    selectionBoundaries: [
-      'Maximum pressure and speed are selection limits; combined continuous operation depends on the medium, temperature, mounting, and duty cycle.',
-      'Send the application requirements and request the current model-specific file before selecting or ordering this model.',
+    privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.',
+    termsIdentity: 'These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.',
+    termsArbitration: "These Terms are governed by the laws of the People's Republic of China. Any dispute arising from or in connection with these Terms shall first be resolved through good-faith negotiation. If negotiation fails, the dispute shall be submitted to Ningbo Arbitration Commission for arbitration in accordance with its arbitration rules in effect at the time of submission.",
+    aboutRoleTitles: ['GuangCheng Cao', 'Production & Quality', 'International Sales'],
+    aboutRoleDescriptions: ['Founder & Engineer', 'Machining, assembly, and passage-by-passage inspection', 'Inquiry, drawing, quotation, and order coordination'],
+    termsPolicies: [
+      'The minimum order quantity is one unit for both catalog and custom products.',
+      'Catalog models typically take about 20 calendar days to produce. Custom products are completed within 30 calendar days. Production time starts when payment is received and does not include international shipping.',
+      "Begapunk's standard warranty period is one year from the shipment date for all products, subject to the approved specification and written order terms.",
+      'If Begapunk confirms a covered product or manufacturing defect for which it is responsible, the standard remedy is a replacement at no charge. Begapunk covers the return and replacement-shipment costs agreed in writing for that claim. Other issues are handled according to the inspection findings and the written agreement between the parties.',
     ],
-    caseEvidence: 'Photo note: These customer-authorized workshop photographs document the installation state shown. Operating parameters and acceptance requirements are confirmed for the order and approved drawing.',
-    authorization: /published with the customer(?:'s|’s) authorization/i,
-    installation: /documents? the installation/i,
-    life: /service life/i,
-    performance: /product performance/i,
+    selectionBoundaries: [
+      'Send the medium, temperature, mounting, duty cycle, and required pressure and speed for an operating-point review.',
+      'Send the application requirements and request the current model-specific file before selecting or ordering this model.',
+      'For continuous duty, send the medium, temperature, mounting, and duty cycle so we can confirm the operating point.',
+    ],
+    caseFacts: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': [
+        'BP-2P-95-0005',
+        'Compressed air',
+        'Stationary-to-rotating compressed-air connection at the chuck',
+      ],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': [
+        'Clamping, unclamping and blow-off in this installation',
+        'Transfer path for external sensor signals across the rotating interface',
+        'The external sensors and machine controller perform the actual detection; the rotary union does not detect a workpiece or determine clamp status by itself.',
+      ],
+    },
   },
   de: {
     prefix: 'de',
     warrantyName: 'Garantiezeitraum',
     warrantyValue: '1 Jahr',
-    termsWarranty: 'Der Garantiezeitraum für alle Begapunk-Produkte beträgt ein Jahr. Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen richten sich nach dem formellen Angebot, dem angenommenen Auftrag und etwaigen schriftlichen Garantieunterlagen für den jeweiligen Auftrag.',
-    selectionBoundaries: [
-      'Maximaldruck und Maximaldrehzahl sind Auswahlgrenzen; der kombinierte Dauerbetrieb hängt von Medium, Temperatur, Montage und Lastprofil ab.',
-      'Anwendungsanforderungen senden und vor Auswahl oder Bestellung die aktuelle modellspezifische Datei anfordern.',
+    privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“) respektiert Ihre Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Daten erheben, verwenden, weitergeben und schützen, wenn Sie unsere Website besuchen oder eine Anfrage senden.',
+    termsIdentity: 'Diese Allgemeinen Geschäftsbedingungen („Bedingungen“) regeln die Nutzung der Begapunk-Website und den Kauf von Drehdurchführungen bei Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“). Mit dem Zugriff auf unsere Website oder der Erteilung einer Bestellung stimmen Sie diesen Bedingungen zu.',
+    termsArbitration: 'Diese Bedingungen unterliegen dem Recht der Volksrepublik China. Jede Streitigkeit aus oder im Zusammenhang mit diesen Bedingungen soll zunächst durch Verhandlungen nach Treu und Glauben beigelegt werden. Scheitern die Verhandlungen, wird die Streitigkeit der Ningbo Arbitration Commission zur Schiedsentscheidung nach deren zum Zeitpunkt der Einreichung geltender Schiedsordnung vorgelegt.',
+    aboutRoleTitles: ['GuangCheng Cao', 'Fertigung & Qualität', 'Internationaler Vertrieb'],
+    aboutRoleDescriptions: ['Gründer & Ingenieur', 'Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals', 'Koordination von Anfragen, Zeichnungen, Angeboten und Aufträgen'],
+    termsPolicies: [
+      'Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen 1 Stück.',
+      'Die Fertigungszeit für Katalogmodelle beträgt typischerweise etwa 20 Kalendertage. Sonderanfertigungen werden innerhalb von 30 Kalendertagen fertiggestellt. Die Fertigungszeit beginnt mit dem Zahlungseingang und umfasst nicht den internationalen Transport.',
+      'Die reguläre Garantiezeit für alle Begapunk-Produkte beträgt ein Jahr ab Versanddatum und gilt im Rahmen der freigegebenen Spezifikation und der schriftlichen Auftragsbedingungen.',
+      'Bestätigt Begapunk einen von der Garantie gedeckten Produkt- oder Fertigungsfehler, für den Begapunk verantwortlich ist, erfolgt als reguläre Abhilfe ein kostenloser Ersatz. Begapunk übernimmt die für diesen Fall schriftlich vereinbarten Kosten der Rücksendung und Ersatzlieferung. Andere Fälle werden anhand der Prüfergebnisse und der schriftlichen Vereinbarung zwischen den Parteien behandelt.',
     ],
-    caseEvidence: 'Fotohinweis: Diese mit Genehmigung des Kunden veröffentlichten Werkstattfotos dokumentieren den dargestellten Einbauzustand. Betriebsparameter und Abnahmeanforderungen werden für den Auftrag und in der freigegebenen Zeichnung bestätigt.',
-    authorization: /(?:mit (?:Genehmigung|Zustimmung|Autorisierung) des Kunden|vom Kunden[^.!?]{0,50}(?:genehmigt|autorisiert))/i,
-    installation: /dokumentiert[^.!?]{0,50}(?:Installation|Einbau)|(?:Installation|Einbau)[^.!?]{0,50}dokumentiert/i,
-    life: /(?:Lebensdauer|Nutzungsdauer)/i,
-    performance: /(?:Produktleistung|Leistungsmerkmale|Gesamtleistung)/i,
+    selectionBoundaries: [
+      'Senden Sie Medium, Temperatur, Montage, Lastprofil sowie den erforderlichen Druck und die Drehzahl für eine Prüfung des Betriebspunkts.',
+      'Anwendungsanforderungen senden und vor Auswahl oder Bestellung die aktuelle modellspezifische Datei anfordern.',
+      'Für Dauerbetrieb nennen Sie bitte Medium, Temperatur, Montage und Lastprofil, damit wir den Betriebspunkt prüfen können.',
+    ],
+    caseFacts: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': [
+        'BP-2P-95-0005',
+        'Druckluft',
+        'Druckluftübertragung von der stationären auf die rotierende Seite des Spannfutters',
+      ],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': [
+        'Spannen, Lösen und Ausblasen in diesem Einbau',
+        'Übertragungsweg für externe Sensorsignale über die rotierende Schnittstelle',
+        'Die eigentliche Erkennung erfolgt durch externe Sensoren und die Maschinensteuerung; die Drehdurchführung selbst erkennt weder ein Werkstück noch den Spannzustand.',
+      ],
+    },
   },
   ja: {
     prefix: 'ja',
     warrantyName: '保証期間',
     warrantyValue: '1年',
-    termsWarranty: 'Begapunkの全製品の保証期間は1年間です。保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書、および当該注文に関する書面の保証文書に従います。',
-    selectionBoundaries: [
-      '最高圧力と最高回転数は選定上限です。組合せ連続運転は、流体、温度、取付け、デューティによって異なります。',
-      '用途条件をお知らせのうえ、選定・発注前に現在の型式専用ファイルをご依頼ください。',
+    privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）は、お客様のプライバシーを尊重します。本プライバシーポリシーは、当社ウェブサイトの利用またはお問い合わせ時に、情報をどのように取得、利用、提供、保護するかを説明するものです。',
+    termsIdentity: '本利用規約・取引条件（以下「本規約」）は、Begapunkウェブサイトの利用およびNingbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）からのロータリージョイント製品の購入に適用されます。本ウェブサイトへのアクセスまたは注文をもって、本規約に同意したものとみなします。',
+    termsArbitration: '本規約は中華人民共和国の法律に準拠します。本規約に起因し、または関連する紛争は、まず誠実な協議により解決を図るものとします。協議で解決できない場合、当該紛争をNingbo Arbitration Commission（寧波仲裁委員会）に付託し、申立時に有効な同委員会の仲裁規則に従って仲裁により解決します。',
+    aboutRoleTitles: ['GuangCheng Cao', '製造・品質管理', '海外営業'],
+    aboutRoleDescriptions: ['創業者・エンジニア', '加工・組立・各流路の検査を調整', 'お問い合わせ・図面・見積・注文を調整'],
+    termsPolicies: [
+      'カタログ品、特注品ともに最小注文数量は1個です。',
+      'カタログ品の製作期間は通常約20暦日です。特注品は30暦日以内に製作を完了します。製作期間は入金確認後から起算し、国際輸送期間は含みません。',
+      'Begapunk全製品の標準保証期間は出荷日から1年間とし、承認済み仕様および書面による注文条件に従います。',
+      'Begapunkが自社の責任による保証対象の製品不良または製造不良であると確認した場合、標準対応として無償で交換します。Begapunkは、当該申請について書面で合意した返送費用および交換品の発送費用を負担します。その他の場合は、検査結果および両当事者間の書面による合意に基づいて対応します。',
     ],
-    caseEvidence: '写真に関する注記：これらのお客様の許可を得た工場写真は、掲載した組込み状態を記録しています。運転条件および受入基準は、注文書と承認図面で確認します。',
-    authorization: /顧客[^。]{0,50}(?:許可|承認)/,
-    installation: /(?:設置|取付)[^。]{0,50}(?:記録|示し)|(?:記録|示し)[^。]{0,50}(?:設置|取付)/,
-    life: /寿命/,
-    performance: /性能/,
+    selectionBoundaries: [
+      '運転点の確認には、流体、温度、取付け、デューティ、必要圧力、回転数をお知らせください。',
+      '用途条件をお知らせのうえ、選定・発注前に現在の型式専用ファイルをご依頼ください。',
+      '連続運転の場合は、流体、温度、取付け、デューティをお知らせください。実際の運転点を確認します。',
+    ],
+    caseFacts: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': [
+        'BP-2P-95-0005',
+        '空気（圧縮空気）',
+        'チャック部での固定側から回転側への圧縮空気の供給',
+      ],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': [
+        'この組込みではクランプ、アンクランプ、除塵用エアブロー',
+        '回転部をまたぐ外部センサ信号の伝送経路',
+        '検出を行うのは外部センサと機械制御装置であり、ロータリージョイント自体がワーク有無やクランプ状態を判定するものではありません。',
+      ],
+    },
   },
   ru: {
     prefix: 'ru',
     warrantyName: 'Гарантийный срок',
     warrantyValue: '1 год',
-    termsWarranty: 'Гарантийный срок на всю продукцию Begapunk составляет один год. Дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются официальным коммерческим предложением, принятым заказом и письменным гарантийным документом для соответствующего заказа.',
-    selectionBoundaries: [
-      'Максимальные давление и скорость являются пределами выбора; совместная непрерывная работа зависит от среды, температуры, монтажа и рабочего цикла.',
-      'Сообщите условия применения и запросите актуальный файл конкретной модели до выбора или заказа.',
+    privacyIdentity: 'Компания Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы») уважает вашу конфиденциальность. Настоящая Политика объясняет, как мы собираем, используем, передаём и защищаем данные при посещении сайта или отправке запроса.',
+    termsIdentity: 'Настоящие условия поставки и использования («Условия») регулируют использование сайта Begapunk и приобретение ротационных соединений у компании Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы»). Используя сайт или размещая заказ, вы соглашаетесь с настоящими Условиями.',
+    termsArbitration: 'Настоящие Условия регулируются законодательством Китайской Народной Республики. Любой спор, возникающий из настоящих Условий или в связи с ними, стороны сначала стремятся урегулировать путём добросовестных переговоров. Если договориться не удаётся, спор передаётся в Ningbo Arbitration Commission (Арбитражную комиссию Нинбо) для разрешения в соответствии с её арбитражным регламентом, действующим на момент подачи заявления.',
+    aboutRoleTitles: ['GuangCheng Cao', 'Производство и качество', 'Международные продажи'],
+    aboutRoleDescriptions: ['Основатель и инженер', 'Координация обработки, сборки и проверки каждого канала', 'Координация запросов, чертежей, предложений и заказов'],
+    termsPolicies: [
+      'Минимальный заказ составляет 1 шт. как для каталожных моделей, так и для заказных изделий.',
+      'Срок изготовления каталожных моделей обычно составляет около 20 календарных дней. Заказные изделия изготавливаются в течение 30 календарных дней. Срок изготовления исчисляется с момента получения оплаты и не включает международную перевозку.',
+      'Стандартный гарантийный срок на всю продукцию Begapunk составляет один год с даты отгрузки и действует в рамках согласованной спецификации и письменных условий заказа.',
+      'Если Begapunk подтверждает покрываемый гарантией дефект изделия или производства, за который несет ответственность, стандартной мерой является бесплатная замена. Begapunk оплачивает согласованные в письменной форме расходы на возврат и отправку замены по данной претензии. В остальных случаях решение принимается на основании результатов проверки и письменного соглашения сторон.',
     ],
-    caseEvidence: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
-    authorization: /(?:разрешен|согласован|авторизац)[^.!?]{0,60}заказчик|заказчик[^.!?]{0,60}(?:разрешен|согласован|авторизац)/i,
-    installation: /(?:документирует|подтверждает|показывает)[^.!?]{0,60}установ|установ[^.!?]{0,60}(?:документирует|подтверждает|показывает)/i,
-    life: /срок[^.!?]{0,20}служб/i,
-    performance: /(?:характеристик|производительност)/i,
+    selectionBoundaries: [
+      'Для проверки рабочей точки укажите среду, температуру, монтаж, рабочий цикл, требуемые давление и частоту вращения.',
+      'Сообщите условия применения и запросите актуальный файл конкретной модели до выбора или заказа.',
+      'Для непрерывной работы укажите среду, температуру, монтаж и рабочий цикл, чтобы мы проверили рабочую точку.',
+    ],
+    caseFacts: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': [
+        'BP-2P-95-0005',
+        'Сжатый воздух',
+        'Подача сжатого воздуха от неподвижной к вращающейся стороне патрона',
+      ],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': [
+        'Зажим, разжим и обдув в этой установке',
+        'Передача сигналов внешних датчиков через вращающийся интерфейс',
+        'Наличие заготовки и состояние зажима определяются внешними датчиками и системой управления станка; само вращающееся соединение этих функций не выполняет.',
+      ],
+    },
   },
 };
 
@@ -85,6 +157,7 @@ const casePages = [
   'case-bp-2p-95-pneumatic-chuck-integration.html',
   'case-bp-3p-s06-sensor-monitored-chuck.html',
 ];
+const retiredCaseAuditCopy = /Photo note:|project owner confirmed|photographs? (?:alone )?(?:do not|does not)|Fotohinweis:|Projektverantwortlich|Fotos? (?:allein )?(?:nicht|keine)|写真に関する注記|案件責任者|写真だけでは|Примечание к фотографиям|Владелец проекта|по самим фотографиям/iu;
 
 function fail(message) {
   failures.push(message);
@@ -248,9 +321,30 @@ for (const [language, locale] of Object.entries(locales)) {
   const termsSource = await read(termsPath);
   if (termsSource) {
     const $ = load(termsSource, { decodeEntities: false });
-    const matchingWarrantyTerms = $('li').filter((_, item) => compact($(item).text()) === locale.termsWarranty);
-    if (matchingWarrantyTerms.length !== 1) {
-      fail(`${termsPath}: expected one exact one-year warranty policy statement, found ${matchingWarrantyTerms.length}.`);
+    for (const policy of locale.termsPolicies) {
+      const matchingTerms = $('li').filter((_, item) => compact($(item).text()) === policy);
+      if (matchingTerms.length !== 1) {
+        fail(`${termsPath}: expected one exact commercial-policy statement, found ${matchingTerms.length}: ${policy}`);
+      }
+    }
+    for (const [label, statement] of [
+      ['legal identity', locale.termsIdentity],
+      ['arbitration clause', locale.termsArbitration],
+    ]) {
+      const matchingParagraphs = $('p').filter((_, item) => compact($(item).text()) === statement);
+      if (matchingParagraphs.length !== 1) {
+        fail(`${termsPath}: expected one exact ${label}, found ${matchingParagraphs.length}.`);
+      }
+    }
+  }
+
+  const privacyPath = relativeFile(locale, 'privacy.html');
+  const privacySource = await read(privacyPath);
+  if (privacySource) {
+    const $ = load(privacySource, { decodeEntities: false });
+    const matchingPrivacyIdentity = $('p').filter((_, item) => compact($(item).text()) === locale.privacyIdentity);
+    if (matchingPrivacyIdentity.length !== 1) {
+      fail(`${privacyPath}: expected one exact legal identity statement, found ${matchingPrivacyIdentity.length}.`);
     }
   }
 
@@ -293,10 +387,17 @@ for (const [language, locale] of Object.entries(locales)) {
     const caseSource = await read(localizedCase);
     if (caseSource) {
       const $ = load(caseSource, { decodeEntities: false });
-      const notes = $('.tech-note');
-      const exactNotes = notes.filter((_, element) => compact($(element).text()) === compact(locale.caseEvidence));
-      if (notes.length !== 1 || exactNotes.length !== 1) {
-        fail(`${localizedCase}: expected exactly one concise customer-authorized photo note, found ${notes.length} note(s) and ${exactNotes.length} exact match(es).`);
+      const pageText = visiblePageText($);
+      if ($('.tech-note').length || retiredCaseAuditCopy.test(pageText)) {
+        fail(`${localizedCase}: customer-facing case copy still contains an internal photo-audit note.`);
+      }
+      if ($('.case-summary-table tbody tr').length !== 4) {
+        fail(`${localizedCase}: expected four buyer-facing application summary rows.`);
+      }
+      for (const requiredFact of locale.caseFacts[casePage] || []) {
+        if (!containsText(pageText, requiredFact)) {
+          fail(`${localizedCase}: required confirmed application fact is missing: ${requiredFact}`);
+        }
       }
     }
   }
@@ -311,6 +412,26 @@ for (const [language, locale] of Object.entries(locales)) {
       const text = visiblePageText($);
       if (!/\b2022\b/.test(text)) fail(`${relativePath}: visible company history must state establishment in 2022.`);
       if (/\b2006\b|2006年/.test(text)) fail(`${relativePath}: visible company copy must not publish the retired founder-history claim.`);
+      if (/Li Wei|Sarah Zhang|Fluent in EN\/DE\/ES/.test(text)) {
+        fail(`${relativePath}: unsupported legacy personnel or language-proficiency claims remain visible.`);
+      }
+      const teamCards = $('.team-card');
+      const teamInitials = teamCards.find('.team-avatar').map((_, element) => compact($(element).text())).get();
+      const teamTitles = teamCards.find('h3').map((_, element) => compact($(element).text())).get();
+      const teamDescriptions = teamCards.find('p').map((_, element) => compact($(element).text())).get();
+      if (teamCards.length !== 3 || teamInitials.join('|') !== 'GC|PQ|IS') {
+        fail(`${relativePath}: About project-support cards must use the confirmed GC/PQ/IS structure.`);
+      }
+      if (teamTitles.join('|') !== locale.aboutRoleTitles.join('|')) {
+        fail(`${relativePath}: About project-support titles do not match the approved factual roles.`);
+      }
+      if (teamDescriptions.join('|') !== locale.aboutRoleDescriptions.join('|')) {
+        fail(`${relativePath}: About project-support descriptions do not match the approved factual scope.`);
+      }
+      const personNames = $('.team-person-name').map((_, element) => compact($(element).text())).get();
+      if (personNames.join('|') !== 'GuangCheng Cao') {
+        fail(`${relativePath}: only the confirmed founder name may appear as a preserved team person name.`);
+      }
       const businesses = parseJsonLd($, relativePath).filter((node) => node['@type'] === 'LocalBusiness'
         && node['@id'] === 'https://www.begapunk.com/#localbusiness');
       if (businesses.length !== 1) fail(`${relativePath}: expected exactly one canonical LocalBusiness, found ${businesses.length}.`);
@@ -338,5 +459,5 @@ if (failures.length) {
   failures.forEach((message, index) => console.error(`${index + 1}. ${message}`));
   process.exitCode = 1;
 } else {
-  console.log(`Owner-confirmed facts verified: ${productPages.length} products × ${Object.keys(locales).length} languages, 2022 company history, commercial boundaries, case-photo authorization, and LocalBusiness facts.`);
+  console.log(`Owner-confirmed facts verified: ${productPages.length} products × ${Object.keys(locales).length} languages, 2022 company history, commercial boundaries, buyer-facing case facts, and LocalBusiness facts.`);
 }

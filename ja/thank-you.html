@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お問い合わせを受け付けました | Begapunk</title>
-  <meta name="description" content="ロータリージョイントに関するお問い合わせを受け付けました。追加の図面や使用条件がある場合はお送りください。">
+  <meta name="description" content="お問い合わせを受け付けました。技術担当者が内容を確認し、通常1営業日以内に返信します。回答に必要な情報が不足している場合だけ、該当箇所を確認します。">
   <meta name="robots" content="noindex, nofollow">
 
 
@@ -22,7 +22,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="お問い合わせを受け付けました | Begapunk">
-  <meta property="og:description" content="ロータリージョイントに関するお問い合わせを受け付けました。追加の図面や使用条件がある場合はお送りください。">
+  <meta property="og:description" content="お問い合わせを受け付けました。技術担当者が内容を確認し、通常1営業日以内に返信します。回答に必要な情報が不足している場合だけ、該当箇所を確認します。">
   <meta property="og:url" content="https://www.begapunk.com/ja/thank-you.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
@@ -30,7 +30,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="お問い合わせを受け付けました | Begapunk">
-  <meta name="twitter:description" content="ロータリージョイントに関するお問い合わせを受け付けました。追加の図面や使用条件がある場合はお送りください。">
+  <meta name="twitter:description" content="お問い合わせを受け付けました。技術担当者が内容を確認し、通常1営業日以内に返信します。回答に必要な情報が不足している場合だけ、該当箇所を確認します。">
   <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
   <style>
@@ -123,15 +123,35 @@
       background: #128c7e !important;
     }
     .trust-badges {
-      margin-top: 48px;
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 800px;
+      margin: 44px auto 0;
     }
     .trust-badges span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
       font-size: 0.85rem;
       color: var(--text-light);
+      line-height: 1.45;
+    }
+    .trust-badges span::before {
+      content: "\2713";
+      flex: 0 0 auto;
+      margin-right: 8px;
+      color: #0f8b7d;
+      font-weight: 700;
+    }
+    @media (max-width: 700px) {
+      .thank-you-section { padding: 56px 0; }
+      .trust-badges { grid-template-columns: 1fr; }
     }
   </style>
     <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
@@ -180,7 +200,7 @@
      </div>
     </div>
     <a href="about.html" class="nav-about">会社情報</a>
-    <a href="contact.html" class="nav-cta">見積もり・技術相談</a>
+    <a href="contact.html" class="nav-cta">見積もりを依頼</a>
    </nav>
 
    <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ja">言語</label><select id="language-ja" aria-label="言語" onchange="if(this.value)window.location.href=this.value"><option value="../thank-you.html">English</option><option value="../de/thank-you.html">Deutsch</option><option value="thank-you.html" selected="">日本語</option><option value="../ru/thank-you.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニュー" aria-controls="mainNav" aria-expanded="false">
@@ -196,7 +216,7 @@
   <div class="container">
     <div class="thank-you-icon">✅</div>
     <h1>お問い合わせありがとうございます</h1>
-    <p class="subtitle">技術チームがお問い合わせを受け付けました。内容を確認のうえ、できるだけ早くご連絡します。お待ちの間に、次の情報もご覧いただけます。</p>
+    <p class="subtitle">当社の技術担当者が内容を確認し、通常1営業日以内にご返信します。追加情報が必要な場合も、必要な点だけを具体的にお伺いします。お待ちの間に、次の情報もご覧いただけます。</p>
     <h2 class="next-steps-title">今後の流れ</h2>
 
     <div class="next-steps">
@@ -217,16 +237,15 @@
       <div class="next-step-card">
         <div class="icon notranslate" translate="no">💬</div>
         <h3>WhatsAppで問い合わせる</h3>
-        <p>追加情報がある場合は、WhatsAppから技術チームへお送りいただけます。</p>
+        <p>写真や図面を追加したい場合は、WhatsAppでお送りください。同じ担当チームが対応します。</p>
         <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn">WhatsAppで問い合わせる</a>
       </div>
     </div>
 
     <div class="trust-badges">
-      <span>✅ 要求仕様に基づく資料提供</span>
-      <span>✅ お問い合わせ内容を確認</span>
-      <span>✅ 用途審査後のCADサポート</span>
-      <span>✅ 技術サポート</span>
+      <span>通常1営業日以内に返信</span>
+      <span>回答に必要な不足情報だけを確認</span>
+      <span>お問い合わせ内容や図面をマーケティングや一般公開には使用しません</span>
     </div>
   </div>
 </section>
@@ -241,7 +260,6 @@
     <p class="footer-positioning">中国・寧波の産業用ロータリージョイントメーカーです。産業オートメーションのOEM・装置メーカーを支援します。</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
    </div>
-   <a class="footer-quote" href="contact.html#quoteForm">見積もり・技術相談</a>
   </div>
   <div class="footer-contact-band">
    <address class="footer-contact">

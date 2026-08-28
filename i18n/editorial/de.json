@@ -48,7 +48,7 @@
   },
   "index.html": {
     "b7c3e11d66780f56": "Pneumatische Drehdurchführungen für den Maschinenbau",
-    "f8e3bcf95f065143": "Pneumatische Drehdurchführungen | Standard &amp; kundenspezifisch",
+    "f8e3bcf95f065143": "Pneumatische Drehdurchführungen | Standard & kundenspezifisch",
     "5291c2317381a072": "Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden; Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.",
     "297ad8531d8726ec": "Nach Anwendung auswählen",
     "6d584ef3a0817174": "1-8 Kanäle",
@@ -201,9 +201,14 @@
     "759f4c0213571add": "Nächste Schritte",
     "1b0c39e5a9ef82a7": "Drehdurchführungen mit Spezifikationen, Zeichnungen und Anwendungshinweisen vergleichen.",
     "9d3f93584b2d8fc5": "Vielen Dank | Anfrage bei Begapunk gesendet",
-    "c2417460c6b4b034": "Vielen Dank! Ihre Anfrage wurde gesendet.",
+    "ee985f1106193cec": "Vielen Dank für Ihre Anfrage",
     "0e2b2fe2dcb7bca6": "Produkte ansehen →",
-    "2aafd7cd79068463": "✅ Projektspezifische Dokumentation"
+    "2aafd7cd79068463": "✅ Projektspezifische Dokumentation",
+    "02c24f0581a3e650": "Ihre Anfrage ist bei uns eingegangen. Unsere Ingenieure antworten normalerweise innerhalb eines Arbeitstags und fragen nur nach Angaben, die für die Antwort noch fehlen.",
+    "9b24cacc08a58dfe": "Möchten Sie noch ein Foto oder eine Zeichnung ergänzen? Senden Sie die Datei per WhatsApp – dasselbe Team antwortet Ihnen.",
+    "e6b63ead6414b286": "Antwort in der Regel innerhalb eines Arbeitstags",
+    "8338ff2f2aa15267": "Wir fragen nur nach Angaben, die für die Antwort noch fehlen",
+    "2dee3ce3a278fbf2": "Anfragen und Zeichnungen werden nicht für Marketing oder öffentliche Darstellung verwendet"
   },
   "about.html": {
     "72eb7aa4e7459e35": "/ Über Begapunk",
@@ -2104,7 +2109,16 @@
     "6f6ed9904a60b0e4": "Welcher Druck ist für die Dichtheitsprüfung nach der Montage zu verwenden?",
     "a2598bc51d57490a": "Warum ist eine neue Drehdurchführung sofort undicht?",
     "3d50c69068564140": "Warum das problematisch ist",
-    "fb43fe071c732937": "Ohne dokumentierten Ausgangszustand lässt sich später nicht unterscheiden, ob Leckage oder Verschleiß auf Auslegung, Montage oder normalen Betrieb zurückzuführen ist."
+    "fb43fe071c732937": "Ohne dokumentierten Ausgangszustand lässt sich später nicht unterscheiden, ob Leckage oder Verschleiß auf Auslegung, Montage oder normalen Betrieb zurückzuführen ist.",
+    "80c959e86fc634a8": "Weiterführende Artikel",
+    "17ccfa5b681e3e7b": "Instandhaltung",
+    "c0433acefcbcdb42": "Drehdurchführung undicht? Ein praktischer Diagnoseablauf",
+    "3d6380e711441566": "Systematische Fehlersuche: Prüfen Sie vor dem Dichtungswechsel Druck, Drehzahl, Dichtungswerkstoff und Druckluftqualität.",
+    "e6a22f6759f7b963": "Dichtungswechsel an Drehdurchführungen: Schritt-für-Schritt-Anleitung",
+    "6dc47bf5c1cbd042": "Zeitpunkt und Vorgehen beim Austausch von Dichtungen aus PTFE und Kohlenstoff – mit Hinweisen zu Anzugsdrehmomenten, Einbaurichtung und Leckage-Fehlersuche.",
+    "59303edb6e87fe7b": "Weiterlesen →",
+    "89cca8124a5e9159": "Gewinde- oder Flanschmontage bei Drehdurchführungen",
+    "2a39eb57722efa0d": "Montagefehler können vorzeitige Leckagen begünstigen. Prüfen Sie Anzugsdrehmoment, Verdrehsicherung, Ausrichtung, flexible Anschlüsse, Filtration und das freigegebene Prüfverfahren."
   },
   "blog-seal-replacement.html": {
     "0358200db48b00db": "› Dichtungswechsel an Drehdurchführungen: Schritt-für-Schritt-Anleitung für die Instandhaltung",
@@ -3226,7 +3240,26 @@
   },
   "blog-rotary-joint-selection.html": {
     "5e2c614c23f02239": "Modell",
-    "aa42ff595bdb92d6": "Druckluft"
+    "aa42ff595bdb92d6": "Druckluft",
+    "bed75a78328fe0e8": "Eine passend ausgelegte Drehdurchführung arbeitet im Maschinenbetrieb meist unauffällig. Ist sie dagegen ungeeignet spezifiziert, kann ein Ausfall die gesamte Produktionslinie stillsetzen. Entscheidend sind meist fünf technische Parameter, die bei der Auslegung leicht übersehen werden.",
+    "287d51a476ecd434": "Dieser Leitfaden erläutert die fünf Parameter, die vor einer Bestellung zu prüfen sind. Sie helfen, ungeeignete Modelle auszuschließen und die für ein belastbares Angebot erforderlichen Betriebsdaten zusammenzustellen. Auch eine sorgfältige Auswahl ist jedoch keine Zusage für eine feste Lebensdauer oder dafür, dass die Drehdurchführung die Maschine überdauert.",
+    "9cc64819b17c8bbc": "Entscheidend ist: Jeder Kanal ist mechanisch von den anderen getrennt. Eine Zweikanal-Drehdurchführung ist kein einzelner Kanal mit zwei Abzweigen. Sie besitzt zwei separate interne Strömungswege, die in einem gemeinsamen Gehäuse durch Dichtelemente voneinander getrennt sind. Maßgeblich ist die Zahl der unabhängigen Kreise, die durch die rotierende Schnittstelle geführt werden müssen.",
+    "146b9fd53fa556b4": "Ein doppeltwirkender Pneumatikgreifer benötigt in der Regel <strong>2 Kanäle</strong> (Spannen + Lösen), sofern sein Steuerventil nicht auf der rotierenden Seite montiert ist.",
+    "cc64504646c1308f": "Zählen Sie bei Greifern, Vakuumejektoren sowie Vakuumlöse- und Abblasfunktionen jeden unabhängigen Versorgungs-, Vakuum-, Löse- und Abblaskreis, der durch die rotierende Schnittstelle geführt werden muss. Die erforderliche Kanalzahl hängt davon ab, wo die Steuerventile und der Vakuumerzeuger montiert sind.",
+    "5df46e4e8fce1d79": "Eine rotierende Vorrichtung benötigt nur dann <strong>3 Kanäle</strong>, wenn Spann-, Löse- und Abblaskreis jeweils unabhängig durch die rotierende Schnittstelle geführt werden.",
+    "80c959e86fc634a8": "Weiterführende Artikel",
+    "17ccfa5b681e3e7b": "Instandhaltung",
+    "e6a22f6759f7b963": "Dichtungswechsel an Drehdurchführungen: Schritt-für-Schritt-Anleitung",
+    "6dc47bf5c1cbd042": "Zeitpunkt und Vorgehen beim Austausch von Dichtungen aus PTFE und Kohlenstoff – mit Hinweisen zu Anzugsdrehmomenten, Einbaurichtung und Leckage-Fehlersuche.",
+    "59303edb6e87fe7b": "Weiterlesen →",
+    "89cca8124a5e9159": "Gewinde- oder Flanschmontage bei Drehdurchführungen",
+    "2a39eb57722efa0d": "Montagefehler können vorzeitige Leckagen begünstigen. Prüfen Sie Anzugsdrehmoment, Verdrehsicherung, Ausrichtung, flexible Anschlüsse, Filtration und das freigegebene Prüfverfahren.",
+    "e0230bf14a0e7259": "Auswahlleitfaden",
+    "49630cfb5499fcdf": "Gehäusewerkstoffe für Drehdurchführungen",
+    "d46d452594ac7065": "AL6061, Edelstahl 304 und 316 sowie Messing: Stimmen Sie den Werkstoff auf die Einsatzumgebung ab, um Nutzungsdauer und Gesamtbetriebskosten bestmöglich aufeinander abzustimmen."
+  },
+  "application-steel-dusty-environments.html": {
+    "d3731af583d41db8": "<strong>Zielgruppe:</strong> Ingenieure in Stahlwerken, Instandhaltungsverantwortliche in der Schwerindustrie und Anlagenkonstrukteure, die Pneumatikkomponenten für staubige und abrasive Umgebungen auslegen."
   },
   "manufacturing-quality.html": {
     "Stator manufacturing process": "Fertigungsablauf des Statorgehäuses",

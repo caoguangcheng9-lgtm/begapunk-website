@@ -1,32 +1,33 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "review": {
     "method": "AI-assisted target-market line-by-line localization review",
     "independentNativeSpeakerReview": false,
     "reviewedAt": "2026-08-19"
   },
   "modelKeySpecKeys": {
-    "BP-1P-0003": ["performance", "body", "seal", "ports", "media", "leadTime"],
-    "BP-1P-0006": ["performance", "ports", "body", "seal", "media", "leadTime"],
-    "BP-2P-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-2P-0002": ["performance", "ports", "body", "seal", "media", "leadTime"],
-    "BP-2P-08-0001": ["performance", "body", "seal", "ports", "media", "leadTime"],
-    "BP-2P-130-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-2P-16-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-2P-30-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-2P-50-0001": ["performance", "protection", "seal", "mount", "media", "leadTime"],
-    "BP-2P-95-0005": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-3P-0004": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-3P-0006": ["performance", "ports", "body", "seal", "media", "leadTime"],
-    "BP-3P-0007": ["performance", "ports", "body", "seal", "media", "leadTime"],
+    "BP-1P-0003": ["performance", "body", "passages", "ports", "media", "leadTime"],
+    "BP-1P-0006": ["performance", "ports", "body", "passages", "media", "leadTime"],
+    "BP-2P-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-2P-0002": ["performance", "ports", "body", "passages", "media", "leadTime"],
+    "BP-2P-08-0001": ["performance", "body", "passages", "ports", "media", "leadTime"],
+    "BP-2P-130-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-2P-16-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-2P-30-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-2P-50-0001": ["performance", "protection", "passages", "mount", "media", "leadTime"],
+    "BP-2P-95-0005": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-3P-0004": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-3P-0006": ["performance", "ports", "body", "passages", "media", "leadTime"],
+    "BP-3P-0007": ["performance", "ports", "body", "passages", "media", "leadTime"],
     "BP-3P-S06-0001": ["channels", "performance", "body", "seal", "mount", "leadTime"],
-    "BP-4P-30-0001": ["performance", "body", "seal", "mount", "media", "leadTime"],
-    "BP-8P-0001": ["performance", "body", "seal", "mount", "media", "leadTime"]
+    "BP-4P-30-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
+    "BP-8P-0001": ["performance", "body", "passages", "mount", "media", "leadTime"]
   },
   "locales": {
     "en": {
       "skipLink": "Skip to main content",
       "productInformationLabel": "Product information",
+      "modelLabel": "Model",
       "productImagesLabel": "Product images",
       "onThisPageLabel": "On this page",
       "jumpToLabel": "Jump to:",
@@ -39,16 +40,19 @@
       },
       "shareMenuLabel": "Share",
       "keyProductParametersLabel": "Key product parameters",
+      "primaryActionLabel": "Get a Quote",
+      "secondaryActionLabel": "Request STEP File",
       "keySpecLabels": {
         "performance": "Pressure / speed",
         "body": "Body",
         "seal": "Seal",
+        "passages": "Passages / MOQ",
         "mount": "Mount",
         "media": "Suitable media",
-        "leadTime": "Lead time",
+        "leadTime": "Production lead time",
         "ports": "Ports",
         "protection": "Protection",
-        "channels": "Channels"
+        "channels": "Channels / MOQ"
       },
       "keySpecPropertyNames": {
         "media": "Suitable Media",
@@ -59,11 +63,12 @@
           "media": "Standard medium: air"
         }
       },
-      "leadTimeValue": "Confirmed in quotation/order"
+      "leadTimeValue": "Catalog: about 20 calendar days · Custom: within 30 calendar days"
     },
     "de": {
       "skipLink": "Zum Hauptinhalt springen",
       "productInformationLabel": "Produktinformationen",
+      "modelLabel": "Modell",
       "productImagesLabel": "Produktbilder",
       "onThisPageLabel": "Auf dieser Seite",
       "jumpToLabel": "Direkt zu:",
@@ -76,16 +81,19 @@
       },
       "shareMenuLabel": "Teilen",
       "keyProductParametersLabel": "Wichtige Produktparameter",
+      "primaryActionLabel": "Angebot anfordern",
+      "secondaryActionLabel": "STEP-Datei anfordern",
       "keySpecLabels": {
         "performance": "Druck / Drehzahl",
         "body": "Gehäuse",
         "seal": "Dichtung",
+        "passages": "Kanäle / MOQ",
         "mount": "Montage",
         "media": "Geeignete Medien",
-        "leadTime": "Lieferzeit",
+        "leadTime": "Fertigungszeit",
         "ports": "Anschlüsse",
         "protection": "Schutz",
-        "channels": "Kanäle"
+        "channels": "Kanäle / MOQ"
       },
       "keySpecPropertyNames": {
         "media": "Geeignete Medien",
@@ -96,11 +104,12 @@
           "media": "Standardmedium: Luft"
         }
       },
-      "leadTimeValue": "Im Angebot/Auftrag bestätigt"
+      "leadTimeValue": "Katalogmodelle: ca. 20 Kalendertage · Sonderanfertigungen: innerhalb von 30 Kalendertagen"
     },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
       "productInformationLabel": "製品情報",
+      "modelLabel": "型式",
       "productImagesLabel": "製品画像",
       "onThisPageLabel": "このページ内",
       "jumpToLabel": "移動先：",
@@ -113,16 +122,19 @@
       },
       "shareMenuLabel": "シェア",
       "keyProductParametersLabel": "主要製品仕様",
+      "primaryActionLabel": "見積もりを依頼",
+      "secondaryActionLabel": "STEPデータを依頼",
       "keySpecLabels": {
         "performance": "圧力／回転数",
         "body": "ボディ",
         "seal": "シール",
+        "passages": "流路／MOQ",
         "mount": "取付",
         "media": "適用流体",
-        "leadTime": "納期",
+        "leadTime": "製作期間",
         "ports": "ポート",
         "protection": "保護構造",
-        "channels": "流路／回路"
+        "channels": "流路／回路／MOQ"
       },
       "keySpecPropertyNames": {
         "media": "適用流体",
@@ -133,11 +145,12 @@
           "media": "標準流体：空気"
         }
       },
-      "leadTimeValue": "見積書・注文書で確認"
+      "leadTimeValue": "標準品：約20暦日 · 特注品：30暦日以内"
     },
     "ru": {
       "skipLink": "Перейти к основному содержанию",
       "productInformationLabel": "Информация о продукте",
+      "modelLabel": "Модель",
       "productImagesLabel": "Изображения продукта",
       "onThisPageLabel": "На этой странице",
       "jumpToLabel": "Перейти к:",
@@ -150,16 +163,19 @@
       },
       "shareMenuLabel": "Поделиться",
       "keyProductParametersLabel": "Основные параметры изделия",
+      "primaryActionLabel": "Запросить предложение",
+      "secondaryActionLabel": "Запросить файл STEP",
       "keySpecLabels": {
         "performance": "Давление / частота вращения",
         "body": "Корпус",
         "seal": "Уплотнение",
+        "passages": "Каналы / MOQ",
         "mount": "Монтаж",
         "media": "Подходящая среда",
-        "leadTime": "Срок поставки",
+        "leadTime": "Срок изготовления",
         "ports": "Порты",
         "protection": "Защита",
-        "channels": "Каналы"
+        "channels": "Каналы / MOQ"
       },
       "keySpecPropertyNames": {
         "media": "Подходящая среда",
@@ -170,7 +186,7 @@
           "media": "Стандартная среда: воздух"
         }
       },
-      "leadTimeValue": "Подтверждается в коммерческом предложении/заказе"
+      "leadTimeValue": "Стандартные модели: около 20 календарных дней · Индивидуальные: до 30 календарных дней"
     }
   }
 }

@@ -19,7 +19,7 @@
 - [BP-2P-16-0001 — 2流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-2P-16-0001.html): BP-2P-16-0001は2流路、入口2・出口2の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 200 min⁻¹、温度範囲 -20～+80 °C、質量 410 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：流体入口：2 × G1/8・流体出口：2 × G1/8。
 - [BP-2P-30-0001 — 2流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-2P-30-0001.html): BP-2P-30-0001は2流路、入口2・出口2の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 150 min⁻¹、温度範囲 -20～+80 °C、質量 1230 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：入口：2 × G1/8・出口：2 × G1/8。
 - [BP-2P-50-0001 — 2流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-2P-50-0001.html): BP-2P-50-0001は2流路、入口2・出口2の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 100 min⁻¹、温度範囲 -20～+80 °C、質量 2300 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：入口：2 × G1/8・出口：2 × G1/8。
-- [BP-2P-95-0005 — 2流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-2P-95-0005.html): BP-2P-95-0005は2流路の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 200 min⁻¹、温度範囲 -20～+80 °C、質量 4260 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：解除ポート：1 × G1/8、深さ8 mm・クランプポート：1 × G1/8、深さ8 mm。
+- [BP-2P-95-0005 — 2流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-2P-95-0005.html): BP-2P-95-0005は2流路、入口2・出口4の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 200 min⁻¹、温度範囲 -20～+80 °C、質量 4260 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：解除ポート：1 × G1/8、深さ8 mm・クランプポート：1 × G1/8、深さ8 mm・解除出口：2 × Ø4 mm・クランプ出口：2 × Ø4 mm。
 - [BP-3P-0004 — 3流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-3P-0004.html): BP-3P-0004は3流路、入口3・出口3の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 200 min⁻¹、温度範囲 -20～+80 °C、質量 490 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：流体入口：3 × G1/8・流体出口：3 × G1/8。
 - [BP-3P-0006 — 3流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-3P-0006.html): BP-3P-0006は3流路、入口3・出口3の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 200 min⁻¹、温度範囲 -20～+80 °C、質量 360 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポートねじは記載されていません。
 - [BP-3P-0007 — 3流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-3P-0007.html): BP-3P-0007は3流路、入口3・出口3の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 200 min⁻¹、温度範囲 -20～+80 °C、質量 390 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：入口：3 × G1/8・出口：3 × G1/8。
@@ -32,18 +32,18 @@
 - [ロータリージョイント用途別ガイド | Begapunk](https://www.begapunk.com/ja/applications.html): レーザー管切断機の後方チャックへ圧縮空気を伝達する実機事例を含む、空圧用ロータリジョイントの用途ガイドです。
 - [CNC空圧クランプ用ロータリージョイント](https://www.begapunk.com/ja/application-cnc-pneumatic-clamping.html): お客様から公開許可を得た実生産事例を含む選定ガイドです。低速のCNC丸鋸盤用特注クランプ治具にBP-2P-130-0001を組み込み、独立した2つの圧縮空気流路でクランプ／アンクランプを行います。
 - [電子・電池検査治具用ロータリージョイント](https://www.begapunk.com/ja/application-electronics-battery-test-fixtures.html): 回転検査装置、空圧グリッパ、真空吸着、電池試験治具向けの空圧用・空圧電気複合ロータリージョイント選定ガイド。
-- [レーザー管切断機の後方チャック用空圧ロータリジョイント | Begapunk](https://www.begapunk.com/ja/application-laser-tube-cutting.html): レーザー管切断機の後方チャックに圧縮空気を供給するロータリジョイントを、空圧回路数、使用圧力、回転数、取付スペース、接続寸法、配管方向から選定します。
+- [レーザー管切断機の後方チャック用空圧ロータリジョイント | Begapunk](https://www.begapunk.com/ja/application-laser-tube-cutting.html): レーザー管切断機の後方チャック向けに、独立2流路・3流路の空圧ロータリジョイントを比較できます。型式、写真、図面のいずれかがあれば選定を始められます。
 - [製鉄・粉じん環境用防じんロータリージョイント](https://www.begapunk.com/ja/application-steel-dusty-environments.html): 製鉄設備、鋳造設備、粉体包装などの粉じん・摩耗環境で使用する空圧用ロータリージョイントの保護と選定を解説します。
 - [印刷・繊維・加工機用ロータリージョイント](https://www.begapunk.com/ja/application-textile-printing-converting.html): 印刷機、繊維ワインダ、コンバーティング設備向けに、流体、圧力、回転数、流路数、貫通穴からロータリージョイントを選定します。
 - [真空包装機用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/application-vacuum-packaging-machines.html): ロータリー式真空包装機、袋詰め機、真空シールヘッド、回転包装ステーション向けの空圧・真空ロータリージョイント。
 - [溶接ポジショナ用ロータリージョイント](https://www.begapunk.com/ja/application-welding-positioners.html): 溶接ポジショナ、回転溶接台、ロボット溶接治具で回転中に空圧クランプを使用するためのロータリージョイント選定ガイド。
 - [ロータリジョイントの用途事例・選定例 | Begapunk](https://www.begapunk.com/ja/case-studies.html): 写真で確認できる3件の組込み事例と2件の技術選定例を紹介します。BP-3P-S06-0001のセンサ監視対応空圧チャック事例を含みます。
-- [BP-2P-95-0005 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): 案件責任者が型式をBP-2P-95-0005と確認しました。公開許可済みの工場写真は、目視可能なチャック組立状態と空圧配管を示しますが、型式自体を証明するものではありません。
+- [BP-2P-95-0005 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0005は、固定側から回転するエアチャックへ圧縮空気を供給します。写真では取付位置と空圧ホースの配管を確認できます。
 - [BP-3P-S06-0001 外部センサ信号伝送対応エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-3p-s06-sensor-monitored-chuck.html): BP-3P-S06-0001をエアチャックに組み込み、独立した3系統の空圧流路を介して圧縮空気を供給するとともに、外部センサ信号を固定側から回転側へ伝送した実例です。
 
 ## 技術記事
 
-- [ロータリージョイント技術ガイド | Begapunk](https://www.begapunk.com/ja/blog.html): 空圧用ロータリージョイントの作動原理、選定、取付、シール方式の比較、用途確認、出荷前の漏れ検査に関する実務的な技術ガイドです。
+- [ロータリージョイント技術ガイド | Begapunk](https://www.begapunk.com/ja/blog.html): 空圧用ロータリージョイントの作動原理、選定、取付、シール方式、実機への組込み事例、出荷前検査工程を紹介する実務ガイドです。
 - [非接触すきまシール式ロータリジョイントの原理 | Begapunk](https://www.begapunk.com/ja/blog-non-contact-clearance-seal-rotary-union.html): 非接触すきまシール式ロータリジョイントで、固定側から高速回転するロータへ流体を供給する仕組みと、片側ラジアルすきま0.003 mmの意味を解説します。
 - [ロータリージョイント取付時の7つの注意点](https://www.begapunk.com/ja/blog-rotary-joint-installation-mistakes.html): 早期故障につながる取付ミスを防ぐため、芯合わせ、配管荷重、ろ過、ねじシール、ならし運転、漏れ確認を解説します。
 - [空圧用ロータリージョイントの選定5項目](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 流路数、使用圧力、回転数、流体適合性、取付方式の5項目から、設備に合う空圧用ロータリージョイントを選定します。
@@ -57,6 +57,6 @@
 - [空圧用ロータリージョイントの全数・流路別漏れ検査 | Begapunk](https://www.begapunk.com/ja/production-inspection-testing.html): Begapunkでは、最終組立後の空圧用ロータリージョイントを全数対象とし、梱包・入庫前に各流路を圧縮空気で個別に検査します。
 - [ロータリージョイント取付手順 | Begapunk](https://www.begapunk.com/ja/installation.html): ロータリージョイントの取付手順。芯ずれ防止、配管接続、回り止め、ろ過、試運転、保守の要点を確認できます。
 - [ロータリージョイントFAQ：選定・設計・検査 | Begapunk](https://www.begapunk.com/ja/faq.html): ロータリージョイント／ロータリーユニオンの技術FAQ。対応媒体、流路数、圧力、回転数、特注設計、取付、検査、保証、見積依頼について27項目で解説します。
-- [ロータリージョイント見積・技術相談 | Begapunk](https://www.begapunk.com/ja/contact.html): 使用流体、圧力、回転数、流路数、取付寸法、図面をお送りください。ロータリージョイントの仕様確認と見積をご依頼いただけます。
+- [ロータリージョイント見積・技術相談 | Begapunk](https://www.begapunk.com/ja/contact.html): 型式、写真、図面、または分かる範囲の使用条件だけで、ロータリージョイントのお見積りをご相談いただけます。通常1営業日以内にご返信します。
 - [プライバシーポリシー | Begapunk](https://www.begapunk.com/ja/privacy.html): Begapunkウェブサイトにおける個人情報の取得、利用、保管、安全管理、お問い合わせ窓口について説明します。
 - [利用規約・取引条件 | Begapunk](https://www.begapunk.com/ja/terms.html): Begapunkの見積、注文、納入、保証、返品、責任範囲に関する利用規約および取引条件をご確認ください。

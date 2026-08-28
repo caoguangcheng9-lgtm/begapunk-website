@@ -7,6 +7,7 @@
     "build:minify": "node scripts/build-minified-site.mjs",
     "build:minify:verify": "node scripts/verify-minified-site.mjs",
     "i18n:extract": "node scripts/build-localized-site.mjs --mode extract",
+    "i18n:catalog:verify": "node scripts/verify-source-catalog-current.mjs",
     "i18n:translate": "node scripts/build-localized-site.mjs --mode translate",
     "i18n:build": "node scripts/build-localized-site.mjs --mode build",
     "i18n:refresh-metadata": "node scripts/build-localized-site.mjs --mode refresh-metadata",
@@ -18,6 +19,7 @@
     "soft-isolation:verify": "node scripts/sync-soft-isolation-content.mjs --check",
     "clearance-article:verify": "node scripts/verify-clearance-seal-article.mjs",
     "selection-article:verify": "node scripts/verify-rotary-joint-selection-article.mjs",
+    "copy:regressions:verify": "node scripts/verify-copy-regressions.mjs",
     "product-trust:sync": "node scripts/sync-product-trust-content.mjs",
     "product-trust:verify": "node scripts/sync-product-trust-content.mjs --check",
     "product-ui:sync": "node scripts/sync-product-detail-ui.mjs --write",
@@ -34,6 +36,7 @@
     "cnc-saw-case:sync": "node scripts/sync-cnc-saw-fixture-case.mjs",
     "cnc-saw-case:verify": "node scripts/sync-cnc-saw-fixture-case.mjs --check",
     "editorial:release:verify": "node scripts/verify-editorial-release-status.mjs",
+    "editorial:snapshot:refresh": "node scripts/refresh-reviewed-localized-artifacts.mjs",
     "unsafe-orphans:prune": "node scripts/prune-unsafe-orphan-overrides.mjs",
     "unsafe-orphans:verify": "node scripts/prune-unsafe-orphan-overrides.mjs --check",
     "search:sync": "node scripts/sync-search-index.mjs",
@@ -63,7 +66,7 @@
     "quality": "npm run quality:pr",
     "quality:source": "node scripts/validate-source-quality.mjs",
     "collab:validate": "node scripts/validate-collaboration-model.mjs",
-    "quality:pr": "npm run collab:validate && npm run product-trust:verify && npm run faq-trust:verify && npm run faq:i18n:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run clearance-article:verify && npm run selection-article:verify && npm run heroes:verify && npm run main-landmarks:verify && npm run inquiry:verify && npm run discovery:verify && npm run cnc-saw-case:verify && npm run search:verify && npm run drawing-products:verify && npm run i18n:verify && npm run owner-facts:verify && npm run product-ui:verify && npm run products:validate && npm run pdf:metadata:check && npm run downloads:verify && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run release:experience:verify && npm run claims:verify && npm run deploy:validate",
+    "quality:pr": "npm run collab:validate && npm run product-trust:verify && npm run faq-trust:verify && npm run faq:i18n:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run clearance-article:verify && npm run selection-article:verify && npm run copy:regressions:verify && npm run heroes:verify && npm run main-landmarks:verify && npm run inquiry:verify && npm run discovery:verify && npm run cnc-saw-case:verify && npm run search:verify && npm run drawing-products:verify && npm run i18n:catalog:verify && npm run i18n:verify && npm run editorial:release:verify && npm run owner-facts:verify && npm run product-ui:verify && npm run products:validate && npm run pdf:metadata:check && npm run downloads:verify && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run release:experience:verify && npm run claims:verify && npm run deploy:validate",
     "deploy:build": "node scripts/build-production-release.mjs",
     "claims:verify": "node scripts/verify-public-claims.mjs",
     "release:experience:verify": "node scripts/verify-release-experience.mjs dist/production",
@@ -72,7 +75,7 @@
     "lighthouse:verify:strict": "node scripts/verify-lighthouse-performance.mjs dist/production --strict",
     "lighthouse:release:verify": "npm run lighthouse:browser:install && npm run lighthouse:verify",
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production",
-    "deploy:prepare": "npm run i18n:metadata:verify && npm run product-trust:verify && npm run faq-trust:verify && npm run faq:i18n:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run clearance-article:verify && npm run selection-article:verify && npm run heroes:verify && npm run main-landmarks:verify && npm run inquiry:verify && npm run discovery:verify && npm run cnc-saw-case:verify && npm run search:verify && npm run drawing-products:verify && npm run i18n:verify && npm run owner-facts:verify && npm run editorial:release:verify && npm run product-ui:verify && npm run products:validate && npm run pdf:metadata:check && npm run downloads:verify && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run release:experience:verify && npm run claims:verify && npm run deploy:validate"
+    "deploy:prepare": "npm run i18n:metadata:verify && npm run product-trust:verify && npm run faq-trust:verify && npm run faq:i18n:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run clearance-article:verify && npm run selection-article:verify && npm run copy:regressions:verify && npm run heroes:verify && npm run main-landmarks:verify && npm run inquiry:verify && npm run discovery:verify && npm run cnc-saw-case:verify && npm run search:verify && npm run drawing-products:verify && npm run i18n:catalog:verify && npm run i18n:verify && npm run owner-facts:verify && npm run editorial:release:verify && npm run product-ui:verify && npm run products:validate && npm run pdf:metadata:check && npm run downloads:verify && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run release:experience:verify && npm run claims:verify && npm run deploy:validate"
   },
   "devDependencies": {
     "@puppeteer/browsers": "3.2.0",

@@ -674,7 +674,7 @@
       "drawing": {
         "path": "downloads/BP-2P-30-0001.pdf",
         "filename": "BP-2P-30-0001.pdf",
-        "sha256": "bd82164a13d7da016f529170caa5439f8831260d9d5ac3dc3f3d255dbe7ea9bd",
+        "sha256": "9eba915398de872f0a438ff44fa9226109eee9a4724106ef6b26faed70a7959b",
         "titleBlockModel": "BP-2P-30-0001",
         "documentControlNumber": "QC-2025-0512-003",
         "date": "2025-05-12",
@@ -855,7 +855,7 @@
       "drawing": {
         "path": "downloads/BP-2P-95-0005.pdf",
         "filename": "BP-2P-95-0005.pdf",
-        "sha256": "d4eacb9a9f7c3c274bbbf29ea8ea34914708f595cc07ae37093bb41ac2b95873",
+        "sha256": "39e2aac7b7897429e14f9fb57dad8d7ad5b76ea95c7e9b9706835e70cf413531",
         "titleBlockModel": "BP-2P-95-0005",
         "documentControlNumber": "QC-2025-0512-003",
         "date": "2025-05-12",
@@ -923,13 +923,6 @@
               "raw": "8-M6 depth 15 EQS"
             },
             {
-              "side": "face-b",
-              "count": 4,
-              "diameterMm": 4,
-              "feature": "through-hole",
-              "raw": "4-diameter 4 through holes EQS"
-            },
-            {
               "side": "body",
               "count": 2,
               "thread": "M10",
@@ -945,6 +938,7 @@
               "count": 1,
               "thread": "G1/8",
               "depthMm": 8,
+              "direction": "inlet",
               "role": "release-port",
               "raw": "G1/8 depth 8 release port"
             },
@@ -952,8 +946,23 @@
               "count": 1,
               "thread": "G1/8",
               "depthMm": 8,
+              "direction": "inlet",
               "role": "clamp-port",
               "raw": "G1/8 depth 8 clamp port"
+            },
+            {
+              "count": 2,
+              "diameterMm": 4,
+              "direction": "outlet",
+              "role": "release-outlet",
+              "raw": "2 of 4-diameter 4 air outlets for release"
+            },
+            {
+              "count": 2,
+              "diameterMm": 4,
+              "direction": "outlet",
+              "role": "clamp-outlet",
+              "raw": "2 of 4-diameter 4 air outlets for clamp"
             }
           ]
         }

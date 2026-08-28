@@ -5,8 +5,16 @@ import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import {
+  drawingBackedProductMetadata,
+  drawingBackedProductModels,
+} from './lib/drawing-backed-product-facts.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE_CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'i18n', 'config.json'), 'utf8'));
+const PRODUCT_PAGE_NAMES = SITE_CONFIG.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
+const PRODUCT_LOCALES = ['en', ...(SITE_CONFIG.activeLanguageCodes || [])];
+const DRAWING_BACKED_PRODUCT_MODELS = new Set(drawingBackedProductModels);
 const CONTACT_PAGES = [
   {
     file: 'contact.html', language: 'en', basePath: '/contact.html', sending: 'Sending...',
@@ -14,7 +22,8 @@ const CONTACT_PAGES = [
     quantityPlaceholder: 'e.g. 1 prototype, 10 units, or 100 units/year',
     uploadLabel: 'Drawing or Photo (Optional)',
     uploadAction: 'Choose a file',
-    quoteTemplate: 'Please review the operating conditions and advise what information is needed to prepare a quotation and assess availability.',
+    quoteTemplate: 'I need a quote for this model or application.',
+    stepModelTemplate: 'Please send the current STEP file for BP-2P-0001.',
   },
   {
     file: 'de/contact.html', language: 'de', basePath: '/de/contact.html', sending: 'Anfrage wird gesendet…',
@@ -22,7 +31,8 @@ const CONTACT_PAGES = [
     quantityPlaceholder: 'z. B. 1 Muster, 10 Stück oder 100 Stück/Jahr',
     uploadLabel: 'Zeichnung oder Foto (optional)',
     uploadAction: 'Datei auswählen',
-    quoteTemplate: 'Bitte prüfen Sie die Betriebsbedingungen und teilen Sie mit, welche weiteren Angaben für die Angebotserstellung und Verfügbarkeitsprüfung benötigt werden.',
+    quoteTemplate: 'Ich benötige ein Angebot für dieses Modell oder diese Anwendung.',
+    stepModelTemplate: 'Bitte senden Sie mir die aktuelle STEP-Datei für BP-2P-0001.',
   },
   {
     file: 'ja/contact.html', language: 'ja', basePath: '/ja/contact.html', sending: '送信中…',
@@ -30,7 +40,8 @@ const CONTACT_PAGES = [
     quantityPlaceholder: '例：試作1個、10個、年間100個',
     uploadLabel: '図面または写真（任意）',
     uploadAction: 'ファイルを選択',
-    quoteTemplate: '使用条件をご確認のうえ、お見積もりと供給可否の確認に必要な追加情報をご案内ください。',
+    quoteTemplate: 'この型式または用途の見積もりを希望します。',
+    stepModelTemplate: 'BP-2P-0001 の最新STEPデータを送ってください。',
   },
   {
     file: 'ru/contact.html', language: 'ru', basePath: '/ru/contact.html', sending: 'Отправка запроса…',
@@ -38,7 +49,8 @@ const CONTACT_PAGES = [
     quantityPlaceholder: 'Например: 1 образец, 10 шт. или 100 шт./год',
     uploadLabel: 'Чертёж или фото (необязательно)',
     uploadAction: 'Выбрать файл',
-    quoteTemplate: 'Просим проверить условия эксплуатации и сообщить, какие дополнительные данные нужны для подготовки предложения и оценки возможности поставки.',
+    quoteTemplate: 'Мне нужно предложение для этой модели или области применения.',
+    stepModelTemplate: 'Пожалуйста, отправьте актуальный STEP-файл для BP-2P-0001.',
   },
 ];
 const THANK_YOU_PAGES = [
@@ -48,7 +60,8 @@ const THANK_YOU_PAGES = [
   { file: 'ru/thank-you.html', language: 'ru' },
 ];
 const REQUIRED_HIDDEN_FIELDS = ['inquiry_type', 'source_model', 'source_product', 'source_page', 'source_url'];
-const REQUIRED_NATIVE_FIELDS = ['fullname', 'email', 'company', 'country', 'product', 'requirements'];
+const REQUIRED_NATIVE_FIELDS = ['email', 'requirements'];
+const OPTIONAL_NATIVE_FIELDS = ['fullname', 'company', 'country', 'product'];
 const REQUEST_CODE_MAP = {
   quote: 'quote',
   '3d-step': '3d_step',
@@ -76,13 +89,12 @@ const STABLE_CODES = new Set([
   'general_inquiry',
 ]);
 const RFQ_NESTED_KEYS = Object.freeze({
-  requestLabels: [...STABLE_CODES],
   requestTemplates: [...STABLE_CODES],
-  contextLabels: ['request', 'model', 'product', 'application', 'source'],
+  modelRequestTemplates: ['3d_step'],
   requiredFields: [...REQUIRED_NATIVE_FIELDS],
 });
 const RFQ_SCALAR_KEYS = Object.freeze([
-  'contextSeparator', 'required', 'invalidEmail', 'emailSuggestion', 'invalidFileType',
+  'required', 'invalidEmail', 'emailSuggestion', 'invalidFileType',
   'fileTooLarge', 'noFile', 'sending', 'success', 'serviceUnavailable', 'invalidResponse',
   'networkFailure', 'stepButton',
 ]);
@@ -227,7 +239,9 @@ class FakeElement {
 
   scrollIntoView() {}
 
-  reset() {}
+  reset() {
+    this.audit.push({ target: this.id, sink: 'reset', value: true });
+  }
 }
 
 function initialFieldValue($, id) {
@@ -249,11 +263,12 @@ function runPageScript(page, search, initialValues = {}, runtime = {}) {
     events: [],
     fetchCalls: [],
     formDataForms: [],
+    redirects: [],
   };
   const ids = [
     'mobileToggle', 'mainNav', 'quoteForm', 'formMessage', 'submitBtn', 'inquiry_type',
     'source_model', 'source_product', 'source_page', 'source_url', 'product', 'application', 'quantity',
-    'requirements', 'fullname', 'email', 'company', 'country', 'drawing', 'drawing-name', 'contact-rfq-copy',
+    'requirements', 'fullname', 'email', 'company', 'country', 'drawing', 'drawing-name', 'thankYouRedirect', 'contact-rfq-copy',
   ];
   for (const id of ids) {
     const element = page.$(`#${id}`).first();
@@ -292,11 +307,19 @@ function runPageScript(page, search, initialValues = {}, runtime = {}) {
       return true;
     },
   };
-  const window = {
-    location: {
-      search,
-      origin: 'https://www.begapunk.com',
+  const pageUrl = new URL(page.file.replaceAll('\\', '/'), 'https://www.begapunk.com/');
+  const location = {
+    search,
+    origin: pageUrl.origin,
+    href: pageUrl.href,
+    assign(value) {
+      const target = String(value);
+      submission.redirects.push(target);
+      this.href = target;
     },
+  };
+  const window = {
+    location,
     scrollY: 0,
     addEventListener() {},
   };
@@ -306,6 +329,7 @@ function runPageScript(page, search, initialValues = {}, runtime = {}) {
       if (runtime.networkFailure) {
         throw new Error('Synthetic network failure.');
       }
+      if (runtime.responseGate) await runtime.responseGate;
       return {
         async json() {
           if (runtime.invalidJson) {
@@ -458,6 +482,12 @@ for (const page of pages) {
     page.$('input[type="hidden"][name="source_language"]').attr('value') === page.language,
     `${page.file}: source_language must be ${page.language}.`,
   );
+  const thankYouRedirect = page.$('input#thankYouRedirect[type="hidden"][name="redirect"]');
+  check(thankYouRedirect.length === 1, `${page.file}: the same-site thank-you redirect field is missing or duplicated.`);
+  check(
+    thankYouRedirect.attr('value') === new URL('thank-you.html', new URL(page.file.replaceAll('\\', '/'), 'https://www.begapunk.com/')).href,
+    `${page.file}: thank-you redirect must point to the matching language directory.`,
+  );
   for (const fieldName of REQUIRED_HIDDEN_FIELDS) {
     const field = page.$(`input[type="hidden"][name="${fieldName}"]`);
     check(field.length === 1, `${page.file}: hidden field ${fieldName} is missing or duplicated.`);
@@ -483,8 +513,10 @@ for (const page of pages) {
   const quantityIndex = namedControls.indexOf(quantity.get(0));
   const drawingIndex = namedControls.indexOf(form.find('[name="drawing"]').get(0));
   check(
-    applicationIndex >= 0 && applicationIndex < quantityIndex && quantityIndex < drawingIndex,
-    `${page.file}: quantity must appear between application and drawing.`,
+    applicationIndex >= 0 && applicationIndex < quantityIndex && drawingIndex >= 0
+      && form.find('.bp-rfq-optional-fields [name="application"]').length === 1
+      && form.find('.bp-rfq-optional-fields [name="quantity"]').length === 1,
+    `${page.file}: application and quantity must remain adjacent optional project fields.`,
   );
   check(page.$('.bp-rfq-form-head > .bp-rfq-form-kicker').length === 1, `${page.file}: RFQ form kicker must remain present.`);
   check(page.$('.bp-rfq-form-head > h2#rfq-form-title').length === 1, `${page.file}: RFQ form title must remain present.`);
@@ -505,6 +537,11 @@ for (const page of pages) {
     const field = form.find(`[name="${fieldName}"]`);
     check(field.length === 1 && field.attr('required') !== undefined, `${page.file}: ${fieldName} must retain its native required constraint.`);
   }
+  for (const fieldName of OPTIONAL_NATIVE_FIELDS) {
+    const field = form.find(`[name="${fieldName}"]`);
+    check(field.length === 1, `${page.file}: optional field ${fieldName} is missing.`);
+    check(field.attr('required') === undefined, `${page.file}: ${fieldName} must remain optional (no native required).`);
+  }
   check(String(form.find('input[name="email"]').attr('type') || '').toLowerCase() === 'email', `${page.file}: email must retain its native email constraint.`);
   check(!REQUIRED_NATIVE_FIELDS.includes('quantity'), `${page.file}: quantity must not enter the native required-field set.`);
   check(page.rfqBlocks.length === 1, `${page.file}: expected exactly one Contact RFQ application/json data block.`);
@@ -514,7 +551,7 @@ for (const page of pages) {
       sameKeys(Object.keys(page.copy), [...Object.keys(RFQ_NESTED_KEYS), ...RFQ_SCALAR_KEYS]),
       `${page.file}: Contact RFQ top-level keys differ from the approved contract.`,
     );
-    check(stringLeafCount(page.copy) === 38, `${page.file}: Contact RFQ data must contain exactly 38 string leaves.`);
+    check(stringLeafCount(page.copy) === 22, `${page.file}: Contact RFQ data must contain exactly 22 string leaves.`);
     for (const [group, expectedKeys] of Object.entries(RFQ_NESTED_KEYS)) {
       check(
         page.copy[group] && typeof page.copy[group] === 'object' && !Array.isArray(page.copy[group]),
@@ -524,6 +561,10 @@ for (const page of pages) {
         check(sameKeys(Object.keys(page.copy[group]), expectedKeys), `${page.file}: ${group} keys differ from the approved contract.`);
         for (const key of expectedKeys) {
           check(typeof page.copy[group][key] === 'string' && page.copy[group][key] !== '', `${page.file}: ${group}.${key} must be non-empty.`);
+          check(
+            sameKeys(placeholdersIn(page.copy[group][key]), group === 'modelRequestTemplates' ? ['model'] : []),
+            `${page.file}: ${group}.${key} placeholders differ from the approved contract.`,
+          );
         }
       }
     }
@@ -534,8 +575,6 @@ for (const page of pages) {
         `${page.file}: ${key} placeholders differ from the approved contract.`,
       );
     }
-    const expectedSeparator = page.language === 'ja' ? '：' : ': ';
-    check(page.copy.contextSeparator === expectedSeparator, `${page.file}: contextSeparator is incorrect.`);
     if (page.language !== 'en') {
       check(
         sameObject(page.copy, manualRfqContract.copies?.[page.language]),
@@ -574,8 +613,8 @@ for (const page of pages) {
     check(!Object.hasOwn(baseline.contract.copy.requiredFields, 'quantity'), `${page.file}: quantity must not enter RFQ_COPY.requiredFields.`);
     check(!page.script.includes("readTextParameter('quantity'"), `${page.file}: quantity must not be prefilled from the URL.`);
     check(
-      [...Object.keys(baseline.contract.copy.requestLabels)].sort().join('|') === [...STABLE_CODES].sort().join('|'),
-      `${page.file}: visible request labels do not cover all stable machine codes.`,
+      Object.keys(baseline.contract.copy.modelRequestTemplates).join('|') === '3d_step',
+      `${page.file}: model-specific request templates must cover only STEP requests.`,
     );
 
     for (const [requestValue, expectedCode] of Object.entries(REQUEST_CODE_MAP)) {
@@ -583,6 +622,12 @@ for (const page of pages) {
       check(result.fields.inquiry_type.value === expectedCode, `${page.file}: request=${requestValue} must map to ${expectedCode}.`);
       check(result.fields.requirements.value.trim() !== '', `${page.file}: request=${requestValue} must prefill requirements.`);
     }
+    const stepRequest = runPageScript(
+      page,
+      '?request=3d-step&model=BP-2P-0001&product=BP-2P-0001%202-Passage%20Pneumatic%20Rotary%20Union&source=BP-2P-0001.html',
+    );
+    check(stepRequest.fields.requirements.value === page.stepModelTemplate, `${page.file}: STEP request must be one natural model-specific sentence.`);
+    check(!stepRequest.fields.requirements.value.includes('Source'), `${page.file}: STEP request must not expose source tracking.`);
     const legacy = runPageScript(page, '?inquiry_type=technical-consultation');
     check(legacy.fields.inquiry_type.value === 'technical_consultation', `${page.file}: legacy technical-consultation mapping failed.`);
     check(legacy.fields.requirements.value.trim() !== '', `${page.file}: valid legacy inquiry_type must prefill requirements.`);
@@ -608,7 +653,7 @@ for (const page of pages) {
     check(localizedProductOnly.fields.inquiry_type.value === 'general_inquiry', `${page.file}: product-only visit must remain general_inquiry.`);
     check(localizedProductOnly.fields.source_product.value === 'BP-2P-130-0001', `${page.file}: product-only visit must retain source_product.`);
     check(localizedProductOnly.fields.product.value === 'BP-2P-130-0001', `${page.file}: product-only visit must prefill the visible product field.`);
-    check(localizedProductOnly.fields.requirements.value.includes('BP-2P-130-0001'), `${page.file}: product-only visit must prefill requirements.`);
+    check(localizedProductOnly.fields.requirements.value === page.copy.requestTemplates.general_inquiry, `${page.file}: product-only visit must use only the natural request template.`);
     for (const inheritedKey of ['toString', 'constructor', '__proto__']) {
       const inherited = runPageScript(page, `?request=${encodeURIComponent(inheritedKey)}`);
       check(inherited.fields.inquiry_type.value === 'general_inquiry', `${page.file}: inherited request key ${inheritedKey} must fall back to general_inquiry.`);
@@ -702,6 +747,46 @@ for (const page of pages) {
       !ajaxSuccess.fields.formMessage.textContent.includes(ajaxSuccess.contract.copy.networkFailure),
       `${page.file}: analytics-event failure must not turn a sent inquiry into a network error.`,
     );
+    check(ajaxSuccess.submission.redirects.length === 1, `${page.file}: AJAX success must perform one full-page redirect.`);
+    check(
+      ajaxSuccess.submission.redirects[0] === page.$('#thankYouRedirect').attr('value'),
+      `${page.file}: AJAX success must redirect to the matching thank-you page.`,
+    );
+    check(
+      !ajaxSuccess.audit.some((write) => write.target === 'quoteForm' && write.sink === 'reset'),
+      `${page.file}: AJAX success must not clear the form before the confirmation page opens.`,
+    );
+
+    const unsafeRedirect = await runSubmitFixture(
+      page,
+      { response: { success: true, message: '' } },
+      { thankYouRedirect: 'https://example.invalid/thank-you.html' },
+    );
+    const expectedFallback = new URL('thank-you.html', new URL(page.file.replaceAll('\\', '/'), 'https://www.begapunk.com/')).href;
+    check(
+      unsafeRedirect.submission.redirects.length === 1 && unsafeRedirect.submission.redirects[0] === expectedFallback,
+      `${page.file}: an external redirect value must fall back to the same-language thank-you page.`,
+    );
+
+    let releaseResponse;
+    const responseGate = new Promise((resolve) => { releaseResponse = resolve; });
+    const concurrent = runPageScript(page, '', {
+      fullname: 'Contract Test',
+      email: 'contract-test@example.com',
+      company: 'Contract Test Company',
+      country: 'Germany',
+      product: 'BP-2P-130-0001',
+      requirements: 'Synthetic validation only. Do not submit.',
+    }, { response: { success: true, message: '' }, responseGate });
+    const firstEvent = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } };
+    const secondEvent = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } };
+    const firstSubmission = concurrent.submitHandler.call(concurrent.fields.quoteForm, firstEvent);
+    await Promise.resolve();
+    await concurrent.submitHandler.call(concurrent.fields.quoteForm, secondEvent);
+    check(secondEvent.defaultPrevented, `${page.file}: a concurrent second submit must be intercepted.`);
+    check(concurrent.submission.fetchCalls.length === 1, `${page.file}: a concurrent second submit must not send another request.`);
+    releaseResponse();
+    await firstSubmission;
 
     const quantityValue = '1 prototype & 100 units/year';
     const quantityAjax = await runSubmitFixture(
@@ -732,6 +817,7 @@ for (const page of pages) {
       businessFailure.fields.formMessage.textContent.includes(businessFailure.contract.copy.serviceUnavailable),
       `${page.file}: AJAX business-failure fallback is not localized.`,
     );
+    check(businessFailure.submission.redirects.length === 0, `${page.file}: a business failure must not open the thank-you page.`);
 
     const invalidJson = await runSubmitFixture(page, { invalidJson: true });
     check(invalidJson.event.defaultPrevented, `${page.file}: invalid JSON response must not trigger a duplicate native POST.`);
@@ -739,6 +825,7 @@ for (const page of pages) {
       invalidJson.fields.formMessage.textContent.includes(invalidJson.contract.copy.invalidResponse),
       `${page.file}: invalid-response feedback is not localized.`,
     );
+    check(invalidJson.submission.redirects.length === 0, `${page.file}: invalid JSON must not open the thank-you page.`);
 
     const networkFailure = await runSubmitFixture(page, { networkFailure: true });
     check(networkFailure.event.defaultPrevented, `${page.file}: network failure after AJAX interception must not trigger native POST.`);
@@ -746,6 +833,7 @@ for (const page of pages) {
       networkFailure.fields.formMessage.textContent.includes(networkFailure.contract.copy.networkFailure),
       `${page.file}: network-failure feedback is not localized.`,
     );
+    check(networkFailure.submission.redirects.length === 0, `${page.file}: a network failure must not open the thank-you page.`);
   }
 }
 
@@ -755,6 +843,29 @@ for (const page of pages.slice(1)) {
     page.script.replace(/\r\n?/g, '\n').trim() === normalizedEnglishBehavior,
     `${page.file}: RFQ behavior code must remain structurally identical to the English source.`,
   );
+}
+
+check(PRODUCT_PAGE_NAMES.length === 16, `Product inquiry contract must cover exactly 16 product pages; found ${PRODUCT_PAGE_NAMES.length}.`);
+for (const locale of PRODUCT_LOCALES) {
+  for (const pageName of PRODUCT_PAGE_NAMES) {
+    const model = path.basename(pageName, '.html');
+    const relativePath = locale === 'en' ? pageName : path.join(locale, pageName);
+    check(DRAWING_BACKED_PRODUCT_MODELS.has(model), `${relativePath}: model is absent from the drawing-backed product contract.`);
+    const metadata = drawingBackedProductMetadata(locale, model);
+    check(Boolean(metadata), `${relativePath}: localized product metadata is missing.`);
+    if (!metadata) continue;
+
+    const $ = load(read(relativePath));
+    const reviewLinks = $('main a[href*="request=application-review"]');
+    const expectedHref = `contact.html?request=application-review&model=${encodeURIComponent(model)}&product=${encodeURIComponent(metadata.linkLabel)}&source=${model}.html#quoteForm`;
+    check(reviewLinks.length === 3, `${relativePath}: expected exactly three application-review entry links; found ${reviewLinks.length}.`);
+    reviewLinks.each((index, element) => {
+      check(
+        $(element).attr('href') === expectedHref,
+        `${relativePath}: application-review entry ${index + 1} must include the complete request/model/product/source/#quoteForm contract.`,
+      );
+    });
+  }
 }
 
 const contactGeneration = spawnSync(
@@ -870,24 +981,23 @@ const productOnly = runPageScript(english, '?product=BP-2P-130-0001');
 check(productOnly.fields.inquiry_type.value === 'general_inquiry', 'product-only: classification must remain general_inquiry.');
 check(productOnly.fields.source_product.value === 'BP-2P-130-0001', 'product-only: source_product was ignored.');
 check(productOnly.fields.product.value === 'BP-2P-130-0001', 'product-only: product select was not prefilled.');
-check(productOnly.fields.requirements.value.includes('BP-2P-130-0001'), 'product-only: requirements were not prefilled.');
+check(productOnly.fields.requirements.value === english.copy.requestTemplates.general_inquiry, 'product-only: requirements must contain only the natural request template.');
 
 const applicationOnly = runPageScript(german, '?request=application-review&application=cnc-pneumatic-clamping');
 check(applicationOnly.fields.inquiry_type.value === 'application_review', 'application fixture: classification failed.');
 check(applicationOnly.fields.application.value === 'cnc-pneumatic-clamping', 'application fixture: visible application field was not prefilled.');
-check(applicationOnly.fields.requirements.value.includes('cnc-pneumatic-clamping'), 'application fixture: requirements omitted the application.');
-check(applicationOnly.fields.requirements.value.includes('Anwendungsprüfung'), 'application fixture: German request label was not used.');
+check(applicationOnly.fields.requirements.value === german.copy.requestTemplates.application_review, 'application fixture: requirements must contain only the natural request template.');
 
 const sealReview = runPageScript(japanese, '?request=seal-review&model=BP-2P-08-0001');
 check(sealReview.fields.inquiry_type.value === 'seal_review', 'seal review fixture: classification failed.');
 check(sealReview.fields.source_model.value === 'BP-2P-08-0001', 'seal review fixture: source_model was not prefilled.');
 check(sealReview.fields.product.value === 'BP-2P-08-0001', 'seal review fixture: product select was not prefilled from model.');
-check(sealReview.fields.requirements.value.includes('シール選定確認'), 'seal review fixture: Japanese request label was not used.');
+check(sealReview.fields.requirements.value === japanese.copy.requestTemplates.seal_review, 'seal review fixture: requirements must contain only the natural request template.');
 
 const technicalConsultation = runPageScript(russian, '?inquiry_type=technical-consultation&application=production-leak-testing');
 check(technicalConsultation.fields.inquiry_type.value === 'technical_consultation', 'technical consultation fixture: classification failed.');
 check(technicalConsultation.fields.application.value === 'production-leak-testing', 'technical consultation fixture: application was ignored.');
-check(technicalConsultation.fields.requirements.value.includes('Техническая консультация'), 'technical consultation fixture: Russian request label was not used.');
+check(technicalConsultation.fields.requirements.value === russian.copy.requestTemplates.technical_consultation, 'technical consultation fixture: requirements must contain only the natural request template.');
 
 const sourceFixture = runPageScript(english, '?request=quote&model=BP-1P-0003&product=BP-1P-0003&source=BP-1P-0003.html');
 check(sourceFixture.fields.source_page.value === 'BP-1P-0003.html', 'valid source path was not retained.');
@@ -897,6 +1007,7 @@ if (sourceFixture.fields.source_url.value !== '') {
   check(sourceUrl.origin === 'https://www.begapunk.com', 'valid source URL was not kept on the site origin.');
   check(sourceUrl.pathname === '/BP-1P-0003.html', 'valid source URL has the wrong path.');
 }
+check(sourceFixture.fields.requirements.value === english.copy.requestTemplates.quote, 'source tracking must not be copied into the customer message.');
 for (const maliciousSource of ['https://evil.example/x.html', '//evil.example/x.html', 'javascript:alert(1)', '../secret.html', '..\\secret.html']) {
   const result = runPageScript(english, `?source=${encodeURIComponent(maliciousSource)}`);
   check(result.fields.source_page.value === '', `unsafe source was accepted: ${maliciousSource}`);
@@ -951,23 +1062,35 @@ check(
   'send_inquiry.php: quantity must be read after product and before application.',
 );
 const quantityRow = "'Estimated Quantity' => $quantity";
-const productRowPosition = php.indexOf("'Product Interest' => $product");
+const productRowPosition = php.indexOf("'Product / Reference' => $productReference");
 const quantityRowPosition = php.indexOf(quantityRow);
 const applicationRowPosition = php.indexOf("'Application' => $application");
 check(quantityRowPosition >= 0, 'send_inquiry.php: quantity email row is missing.');
 check(
   productRowPosition >= 0 && productRowPosition < quantityRowPosition && quantityRowPosition < applicationRowPosition,
-  'send_inquiry.php: quantity email row must follow Product Interest and precede Application.',
+  'send_inquiry.php: quantity email row must follow Product / Reference and precede Application.',
 );
-const requiredConditionStart = php.indexOf("if ($name === ''");
+const requiredConditionStart = php.indexOf("if ($email === ''");
 const invalidContactStart = php.indexOf('if (!filter_var($email', requiredConditionStart);
 const requiredCondition = php.slice(requiredConditionStart, invalidContactStart);
 check(requiredConditionStart >= 0 && invalidContactStart > requiredConditionStart, 'send_inquiry.php: required-field condition could not be located.');
+check(requiredCondition.includes('$email') && requiredCondition.includes('$requirements'), 'send_inquiry.php: email and requirements must remain required.');
+check(!requiredCondition.includes('$name'), 'send_inquiry.php: fullname must not be required.');
+check(!requiredCondition.includes('$company'), 'send_inquiry.php: company must not be required.');
+check(!requiredCondition.includes('$country'), 'send_inquiry.php: country must not be required.');
+check(!requiredCondition.includes('$product'), 'send_inquiry.php: product must not be required.');
 check(!requiredCondition.includes('$quantity'), 'send_inquiry.php: quantity must not become required.');
 check((php.match(/\$quantity\b/g) || []).length === 2, 'send_inquiry.php: quantity must be limited to input normalization and the email row.');
+check(php.includes("$requesterLabel = $name !== '' ? $name : $email;"), 'send_inquiry.php: blank fullname must fall back to the validated email address in mail headers.');
 const rowsStart = php.indexOf('$rows = [');
 const htmlBodyStart = php.indexOf('$htmlBody =', rowsStart);
 const rowsRendering = php.slice(rowsStart, htmlBodyStart);
+check(php.includes("'Request Type' => $inquiryLabel"), 'send_inquiry.php: friendly request type row is missing.');
+check(!rowsRendering.includes("'Source Model'"), 'send_inquiry.php: Source Model must not duplicate Product / Reference.');
+check(!rowsRendering.includes("'Source Product'"), 'send_inquiry.php: Source Product must not duplicate Product / Reference.');
+check(!rowsRendering.includes("'Source Page'"), 'send_inquiry.php: Source Page must not duplicate Source URL.');
+check(php.includes('<strong>Customer Message:</strong>'), 'send_inquiry.php: customer message label is missing.');
+check(!php.includes('<strong>Technical Requirements:</strong>'), 'send_inquiry.php: legacy technical requirements label remains.');
 check(rowsRendering.includes("if ($value !== '')"), 'send_inquiry.php: empty optional email rows must remain omitted.');
 check(rowsRendering.includes('escape_html($value)'), 'send_inquiry.php: email row values must retain HTML escaping.');
 check(wantsJsonBody.includes('HTTP_ACCEPT') && wantsJsonBody.includes('application/json'), 'send_inquiry.php: JSON mode must be negotiated through Accept.');

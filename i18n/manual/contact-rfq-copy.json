@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "review": {
-    "reviewedAt": "2026-08-16",
+    "reviewedAt": "2026-08-28",
     "method": "AI-assisted target-market line-by-line localization review",
     "reviewerRole": "Codex AI-assisted localization reviewer",
     "independentNativeSpeakerReview": false,
@@ -11,45 +11,27 @@
       "ja",
       "ru"
     ],
-    "scope": "Dynamic Contact RFQ prompts, validation, attachment feedback, and submission-state copy only.",
-    "priorReview": "audit/localization/2026-08-14-rfq-contact-localization-review.md"
+    "scope": "Dynamic Contact RFQ prompts, validation, attachment feedback, and warm submission-state copy in German, Japanese, and Russian.",
+    "priorReview": "audit/localization/2026-08-28-contact-rfq-warmth-review.md"
   },
   "copies": {
     "de": {
-      "requestLabels": {
-        "quote": "Angebotsanfrage",
-        "3d_step": "Anfrage nach einer 3D-STEP-Datei",
-        "application_review": "Anwendungsprüfung",
-        "seal_review": "Prüfung der Dichtungsauswahl",
-        "verified_drawing": "Anfrage zur Zeichnungsprüfung",
-        "technical_consultation": "Technische Beratung",
-        "general_inquiry": "Allgemeine Anfrage"
-      },
       "requestTemplates": {
-        "quote": "Bitte prüfen Sie die Betriebsbedingungen und teilen Sie mit, welche weiteren Angaben für die Angebotserstellung und Verfügbarkeitsprüfung benötigt werden.",
-        "3d_step": "Bitte beschreiben Sie die vorgesehene Anwendung und Einbauschnittstelle, damit geprüft werden kann, ob eine aktuelle STEP-Datei verfügbar ist.",
-        "application_review": "Bitte geben Sie Medium, Druck, Drehzahl, Temperatur, Kanalzahl, verfügbaren Einbauraum und Betriebszyklus für die technische Prüfung an.",
-        "seal_review": "Bitte geben Sie Medium und chemische Zusammensetzung, Temperatur, Druck, Drehzahl, Verschmutzungs- bzw. Filtrationsbedingungen und Betriebszyklus an.",
-        "verified_drawing": "Bitte geben Sie Modell sowie Auftrags- oder Projektreferenz an und kennzeichnen Sie die zu prüfende Schnittstelle bzw. Abmessungen.",
-        "technical_consultation": "Bitte beschreiben Sie die technische Frage und ergänzen Sie gegebenenfalls Betriebsdaten, Modell, Zeichnung oder Foto.",
-        "general_inquiry": "Bitte beschreiben Sie Ihr Anliegen und ergänzen Sie relevante Angaben zu Modell, Anwendung und Betriebsbedingungen sowie gegebenenfalls eine Zeichnung oder ein Foto."
+        "quote": "Ich benötige ein Angebot für dieses Modell oder diese Anwendung.",
+        "3d_step": "Bitte senden Sie mir die aktuelle STEP-Datei für dieses Modell.",
+        "application_review": "Bitte helfen Sie mir, eine passende Drehdurchführung für diese Anwendung auszuwählen.",
+        "seal_review": "Bitte prüfen Sie die Dichtungsverträglichkeit für diese Betriebsbedingungen.",
+        "verified_drawing": "Bitte prüfen Sie die markierte Schnittstelle oder die markierten Maße für dieses Modell.",
+        "technical_consultation": "Ich habe eine technische Frage zu diesem Modell oder dieser Anwendung.",
+        "general_inquiry": "Bitte prüfen Sie die folgenden Angaben und teilen Sie mir den nächsten Schritt mit."
       },
-      "contextLabels": {
-        "request": "Anfrageart",
-        "model": "Modell",
-        "product": "Produkt",
-        "application": "Anwendung / Maschine",
-        "source": "Referenzseite"
+      "modelRequestTemplates": {
+        "3d_step": "Bitte senden Sie mir die aktuelle STEP-Datei für {model}."
       },
       "requiredFields": {
-        "fullname": "Vor- und Nachname",
         "email": "E-Mail",
-        "company": "Unternehmen",
-        "country": "Land",
-        "product": "Anliegen",
-        "requirements": "Technische Anforderungen"
+        "requirements": "Was benötigen Sie?"
       },
-      "contextSeparator": ": ",
       "required": "Bitte füllen Sie das Feld „{field}“ aus.",
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@firma.de.",
       "emailSuggestion": "Meinten Sie {domain}? Bitte prüfen Sie die E-Mail-Adresse.",
@@ -57,47 +39,29 @@
       "fileTooLarge": "Die Datei ist zu groß ({size} MB). Maximal zulässig sind 10 MB.",
       "noFile": "Keine Datei ausgewählt",
       "sending": "Anfrage wird gesendet…",
-      "success": "Ihre Anfrage wurde gesendet. Unser Technikteam prüft die übermittelten Angaben.",
+      "success": "Vielen Dank. Wir haben Ihre Anfrage erhalten. Unsere Ingenieure prüfen sie und antworten in der Regel innerhalb eines Arbeitstags. Sollte noch etwas fehlen, fragen wir nur gezielt nach der benötigten Angabe.",
       "serviceUnavailable": "Der Anfragedienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut oder schreiben Sie an sales@begapunk.com.",
       "invalidResponse": "Wir konnten nicht bestätigen, ob Ihre Anfrage gesendet wurde. Bitte wenden Sie sich an sales@begapunk.com, bevor Sie sie erneut senden.",
       "networkFailure": "Ein Netzwerkfehler ist aufgetreten. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut oder schreiben Sie an sales@begapunk.com.",
       "stepButton": "3D-STEP-Datei anfragen →"
     },
     "ja": {
-      "requestLabels": {
-        "quote": "見積依頼",
-        "3d_step": "3D STEPデータ依頼",
-        "application_review": "用途・仕様確認",
-        "seal_review": "シール選定確認",
-        "verified_drawing": "図面確認依頼",
-        "technical_consultation": "技術相談",
-        "general_inquiry": "その他のお問い合わせ"
-      },
       "requestTemplates": {
-        "quote": "使用条件をご確認のうえ、お見積もりと供給可否の確認に必要な追加情報をご案内ください。",
-        "3d_step": "STEPデータの有無を確認するため、使用用途と取付インターフェースをご記入ください。",
-        "application_review": "使用流体、圧力、回転速度、温度、流路数、取付スペース、運転条件をご記入ください。",
-        "seal_review": "使用流体と成分、温度、圧力、回転速度、異物・ろ過条件、運転条件をご記入ください。",
-        "verified_drawing": "型式、注文番号または案件番号をご記入のうえ、確認が必要なインターフェースまたは寸法を明記してください。",
-        "technical_consultation": "技術的なご質問と関連する使用条件・型式をご記入のうえ、必要に応じて図面または写真を添付してください。",
-        "general_inquiry": "ご相談内容と関連する型式・用途・使用条件をご記入のうえ、必要に応じて図面または写真を添付してください。"
+        "quote": "この型式または用途の見積もりを希望します。",
+        "3d_step": "この型式の最新STEPデータを送ってください。",
+        "application_review": "この用途に合うロータリージョイントの選定をお願いします。",
+        "seal_review": "この使用条件に対するシール適合性を確認してください。",
+        "verified_drawing": "この型式の指定した取合いまたは寸法を確認してください。",
+        "technical_consultation": "この型式または用途について技術的な質問があります。",
+        "general_inquiry": "以下の内容を確認し、次の手順をご案内ください。"
       },
-      "contextLabels": {
-        "request": "お問い合わせ種別",
-        "model": "製品型式",
-        "product": "製品",
-        "application": "用途・機械",
-        "source": "参照ページ"
+      "modelRequestTemplates": {
+        "3d_step": "{model} の最新STEPデータを送ってください。"
       },
       "requiredFields": {
-        "fullname": "お名前",
         "email": "メールアドレス",
-        "company": "会社名",
-        "country": "国・地域",
-        "product": "ご相談内容",
-        "requirements": "技術条件"
+        "requirements": "ご要望"
       },
-      "contextSeparator": "：",
       "required": "「{field}」を入力してください。",
       "invalidEmail": "有効なメールアドレスを入力してください（例：name@company.com）。",
       "emailSuggestion": "「{domain}」ではありませんか？メールアドレスをご確認ください。",
@@ -105,47 +69,29 @@
       "fileTooLarge": "ファイルサイズが上限を超えています（{size} MB）。最大10 MBです。",
       "noFile": "ファイルが選択されていません",
       "sending": "送信中…",
-      "success": "お問い合わせを送信しました。技術担当がご入力内容を確認します。",
+      "success": "ありがとうございます。お問い合わせを受け付けました。当社の技術担当者が内容を確認し、通常1営業日以内にご返信します。追加情報が必要な場合も、必要な点だけを具体的にお伺いします。",
       "serviceUnavailable": "現在、お問い合わせサービスをご利用いただけません。時間をおいてからもう一度お試しいただくか、sales@begapunk.com までメールでご連絡ください。",
       "invalidResponse": "お問い合わせが送信されたか確認できませんでした。再送信する前に、sales@begapunk.com までご連絡ください。",
       "networkFailure": "ネットワークエラーが発生しました。接続をご確認のうえ再度お試しいただくか、sales@begapunk.com までメールでご連絡ください。",
       "stepButton": "3D STEPデータを依頼 →"
     },
     "ru": {
-      "requestLabels": {
-        "quote": "Запрос коммерческого предложения",
-        "3d_step": "Запрос 3D-файла STEP",
-        "application_review": "Проверка применения и условий эксплуатации",
-        "seal_review": "Проверка выбора уплотнения",
-        "verified_drawing": "Запрос на проверку чертежа",
-        "technical_consultation": "Техническая консультация",
-        "general_inquiry": "Общий запрос"
-      },
       "requestTemplates": {
-        "quote": "Просим проверить условия эксплуатации и сообщить, какие дополнительные данные нужны для подготовки предложения и оценки возможности поставки.",
-        "3d_step": "Опишите предполагаемое применение и монтажный интерфейс, чтобы мы могли проверить наличие актуального STEP-файла.",
-        "application_review": "Укажите рабочую среду, давление, частоту вращения, температуру, число каналов, доступное монтажное пространство и режим работы.",
-        "seal_review": "Укажите рабочую среду и её химический состав, температуру, давление, частоту вращения, условия загрязнения или фильтрации и режим работы.",
-        "verified_drawing": "Укажите модель, номер заказа или проекта, а также интерфейс или размеры, которые необходимо проверить.",
-        "technical_consultation": "Опишите технический вопрос, укажите относящиеся к нему условия эксплуатации и модель; при необходимости приложите чертёж или фотографию.",
-        "general_inquiry": "Опишите, что вам требуется, и укажите модель, область применения и условия эксплуатации; при необходимости приложите чертёж или фотографию."
+        "quote": "Мне нужно предложение для этой модели или области применения.",
+        "3d_step": "Пожалуйста, отправьте актуальный STEP-файл для этой модели.",
+        "application_review": "Помогите подобрать подходящее вращающееся соединение для этого применения.",
+        "seal_review": "Проверьте совместимость уплотнений с этими условиями эксплуатации.",
+        "verified_drawing": "Проверьте отмеченный интерфейс или размеры для этой модели.",
+        "technical_consultation": "У меня есть технический вопрос по этой модели или области применения.",
+        "general_inquiry": "Проверьте информацию ниже и сообщите следующий шаг."
       },
-      "contextLabels": {
-        "request": "Тип запроса",
-        "model": "Модель изделия",
-        "product": "Изделие",
-        "application": "Применение / оборудование",
-        "source": "Исходная страница"
+      "modelRequestTemplates": {
+        "3d_step": "Пожалуйста, отправьте актуальный STEP-файл для {model}."
       },
       "requiredFields": {
-        "fullname": "ФИО",
         "email": "Электронная почта",
-        "company": "Компания",
-        "country": "Страна",
-        "product": "Тип запроса",
-        "requirements": "Технические требования"
+        "requirements": "Что вам требуется?"
       },
-      "contextSeparator": ": ",
       "required": "Заполните поле «{field}».",
       "invalidEmail": "Введите корректный адрес электронной почты, например name@company.com.",
       "emailSuggestion": "Возможно, вы имели в виду {domain}? Проверьте адрес электронной почты.",
@@ -153,7 +99,7 @@
       "fileTooLarge": "Файл слишком большой ({size} МБ). Максимальный размер — 10 МБ.",
       "noFile": "Файл не выбран",
       "sending": "Отправка запроса…",
-      "success": "Запрос отправлен. Наши технические специалисты рассмотрят предоставленные данные.",
+      "success": "Спасибо. Мы получили ваш запрос. Наши инженеры рассмотрят его и обычно ответят в течение одного рабочего дня. Если потребуется дополнительная информация, мы уточним только конкретно необходимые данные.",
       "serviceUnavailable": "Сервис обработки запросов временно недоступен. Повторите попытку позже или напишите на sales@begapunk.com.",
       "invalidResponse": "Не удалось подтвердить, был ли запрос отправлен. Перед повторной отправкой свяжитесь с нами по адресу sales@begapunk.com.",
       "networkFailure": "Произошла ошибка сети. Проверьте подключение и повторите попытку или напишите на sales@begapunk.com.",

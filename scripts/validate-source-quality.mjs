@@ -77,6 +77,49 @@ if (/https?:\/\/[^'"\s]*fuse/i.test(searchScript)) failures.push('js/search.js: 
 if (!/vendor\/fuse\.min\.js/.test(searchScript)) failures.push('js/search.js: local Fuse.js asset is not configured');
 await access(path.join(repoRoot, 'js', 'vendor', 'fuse.min.js')).catch(() => failures.push('js/vendor/fuse.min.js: local Fuse.js asset is missing'));
 
+if (!/document\.documentElement\.lang/.test(searchScript)) {
+  failures.push('js/search.js: dynamic search copy must follow the page language');
+}
+const searchUiContracts = [
+  {
+    language: 'en',
+    page: 'search.html',
+    script: 'js/search.js?v=20260827-i18n1',
+    required: ['Product', 'Application', 'Blog', 'Page', 'Enter a search term above', '% match', 'Search is temporarily unavailable.'],
+  },
+  {
+    language: 'de',
+    page: 'de/search.html',
+    script: '../js/search.js?v=20260827-i18n1',
+    required: ['Produkt', 'Anwendung', 'Fachbeitrag', 'Seite', 'Geben Sie oben einen Suchbegriff ein.', 'Übereinstimmung', 'Die Suche ist vorübergehend nicht verfügbar.'],
+  },
+  {
+    language: 'ja',
+    page: 'ja/search.html',
+    script: '../js/search.js?v=20260827-i18n1',
+    required: ['製品', '用途', '技術記事', 'ページ', '上の入力欄に検索キーワードを入力してください。', '一致度', '現在、検索を利用できません。'],
+  },
+  {
+    language: 'ru',
+    page: 'ru/search.html',
+    script: '../js/search.js?v=20260827-i18n1',
+    required: ['Изделие', 'Применение', 'Статья', 'Страница', 'Введите запрос в поле выше.', 'Совпадение:', 'Поиск временно недоступен.'],
+  },
+];
+for (const contract of searchUiContracts) {
+  for (const text of contract.required) {
+    if (!searchScript.includes(text)) failures.push(`js/search.js: missing ${contract.language} dynamic search copy (${text})`);
+  }
+  const pageSource = await readFile(path.join(repoRoot, ...contract.page.split('/')), 'utf8');
+  const $search = load(pageSource);
+  if ($search('html').attr('lang') !== contract.language) {
+    failures.push(`${contract.page}: html lang must be ${contract.language} for dynamic search localization`);
+  }
+  if ($search(`script[src="${contract.script}"]`).length !== 1) {
+    failures.push(`${contract.page}: expected one cache-busted shared search script (${contract.script})`);
+  }
+}
+
 const privacyPolicies = [
   { file: 'privacy.html', rateWindow: '15-minute', uploadLimit: '10 MB', staleClaims: ['14 months', '26 months'] },
   { file: 'de/privacy.html', rateWindow: '15-minütig', uploadLimit: '10 MB', staleClaims: ['14 Monate', '26 Monate'] },

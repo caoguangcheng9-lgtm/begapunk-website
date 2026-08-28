@@ -96,6 +96,12 @@
   display: none;
 }
 
+@media (min-width: 769px) {
+  .page-product-detail #panel-compat .compat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .page-product-detail #faq {
   scroll-margin-top: 80px;
 }

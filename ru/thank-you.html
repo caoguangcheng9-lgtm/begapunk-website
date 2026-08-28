@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Запрос получен | Begapunk</title>
-  <meta name="description" content="Ваш запрос на ротационное соединение получен. При необходимости отправьте дополнительные чертежи или рабочие параметры.">
+  <meta name="description" content="Мы получили ваш запрос. Наши инженеры обычно отвечают в течение одного рабочего дня и уточняют только те данные, которые действительно нужны для ответа.">
   <meta name="robots" content="noindex, nofollow">
 
 
@@ -22,7 +22,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Запрос получен | Begapunk">
-  <meta property="og:description" content="Ваш запрос на ротационное соединение получен. При необходимости отправьте дополнительные чертежи или рабочие параметры.">
+  <meta property="og:description" content="Мы получили ваш запрос. Наши инженеры обычно отвечают в течение одного рабочего дня и уточняют только те данные, которые действительно нужны для ответа.">
   <meta property="og:url" content="https://www.begapunk.com/ru/thank-you.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
@@ -30,7 +30,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Запрос получен | Begapunk">
-  <meta name="twitter:description" content="Ваш запрос на ротационное соединение получен. При необходимости отправьте дополнительные чертежи или рабочие параметры.">
+  <meta name="twitter:description" content="Мы получили ваш запрос. Наши инженеры обычно отвечают в течение одного рабочего дня и уточняют только те данные, которые действительно нужны для ответа.">
   <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
   <style>
@@ -123,15 +123,35 @@
       background: #128c7e !important;
     }
     .trust-badges {
-      margin-top: 48px;
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 800px;
+      margin: 44px auto 0;
     }
     .trust-badges span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
       font-size: 0.85rem;
       color: var(--text-light);
+      line-height: 1.45;
+    }
+    .trust-badges span::before {
+      content: "\2713";
+      flex: 0 0 auto;
+      margin-right: 8px;
+      color: #0f8b7d;
+      font-weight: 700;
+    }
+    @media (max-width: 700px) {
+      .thank-you-section { padding: 56px 0; }
+      .trust-badges { grid-template-columns: 1fr; }
     }
   </style>
     <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
@@ -196,7 +216,7 @@
   <div class="container">
     <div class="thank-you-icon">✅</div>
     <h1>Спасибо за ваш запрос</h1>
-    <p class="subtitle">Наша техническая команда получила ваш запрос и рассмотрит его в ближайшее время. Пока вы ожидаете ответ, можно:</p>
+    <p class="subtitle">Наши инженеры рассмотрят ваш запрос и обычно ответят в течение одного рабочего дня. Если потребуется дополнительная информация, мы уточним только конкретно необходимые данные. Пока вы ожидаете ответ, можно:</p>
     <h2 class="next-steps-title">Что дальше</h2>
 
     <div class="next-steps">
@@ -217,16 +237,15 @@
       <div class="next-step-card">
         <div class="icon notranslate" translate="no">💬</div>
         <h3>Написать в WhatsApp</h3>
-        <p>Хотите дополнить запрос? Напишите нашей технической команде в WhatsApp.</p>
+        <p>Хотите добавить фотографию или чертёж? Отправьте файл в WhatsApp &mdash; вам ответит та же команда.</p>
         <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn">Написать в WhatsApp</a>
       </div>
     </div>
 
     <div class="trust-badges">
-      <span>✅ Документация по требованиям проекта</span>
-      <span>✅ Рассмотрение вашего запроса</span>
-      <span>✅ Поддержка CAD после анализа применения</span>
-      <span>✅ Техническая поддержка</span>
+      <span>Обычно отвечаем в течение одного рабочего дня</span>
+      <span>Уточняем только недостающие данные, необходимые для ответа</span>
+      <span>Не используем запросы и чертежи для маркетинга или открытой публикации</span>
     </div>
   </div>
 </section>
@@ -241,7 +260,6 @@
     <p class="footer-positioning">Begapunk — производитель прецизионных вращающихся соединений в Нинбо, Китай. Мы работаем с производителями промышленного оборудования и систем автоматизации.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
    </div>
-   <a class="footer-quote" href="contact.html#quoteForm">Отправить технический запрос</a>
   </div>
   <div class="footer-contact-band">
    <address class="footer-contact">

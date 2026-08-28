@@ -7,6 +7,11 @@ const root = path.resolve(import.meta.dirname, '..');
 const filePath = path.join(root, 'faq.html');
 const checkOnly = process.argv.includes('--check');
 
+const expectedQuestionIds = [
+  ...Array.from({ length: 17 }, (_, index) => `faq-${String(index + 1).padStart(2, '0')}`),
+  ...Array.from({ length: 10 }, (_, index) => `faq-${String(index + 19).padStart(2, '0')}`),
+];
+
 const expectedQuestions = [
   'What is an industrial fluid rotary joint?',
   'Do rotary joint, rotary union, and swivel joint mean the same thing?',
@@ -14,7 +19,7 @@ const expectedQuestions = [
   'What is the difference between a fluid rotary joint and an electrical slip ring?',
   'What types of industrial equipment use rotary joints?',
   'What information is needed to select a rotary joint or request a quotation?',
-  'Can Begapunk design for simultaneous maximum pressure, speed, and temperature?',
+  'Can the pressure, speed, and temperature on a product page be used at the same time?',
   'How many passages does my rotary joint need?',
   'Can different passages in a multi-passage rotary joint carry different media?',
   'What media have Begapunk rotary joints been used with?',
@@ -25,7 +30,6 @@ const expectedQuestions = [
   'What are the key requirements when installing a rotary joint?',
   'Can a rotary joint carry radial or axial loads?',
   'Which part of a rotary joint rotates, and can it rotate in both directions or oscillate?',
-  'What air preparation does a compressed-air rotary joint require?',
   'What warning signs require an immediate shutdown and rotary joint inspection?',
   'What affects rotary joint service life?',
   'How does Begapunk test every fully assembled rotary joint?',
@@ -35,6 +39,7 @@ const expectedQuestions = [
   'Can a rotary joint be repaired, and how is warranty responsibility assessed?',
   'What is the minimum order quantity, and what are the typical production lead times?',
   'How do I request an engineering review for a rotary joint application?',
+  'Do you use customer drawings or inquiry details for marketing?',
 ];
 
 const expectedSections = [
@@ -53,8 +58,8 @@ const expectedRelatedLinks = new Map([
   [expectedQuestions[12], ['contact.html#inquiry-process', "Review Begapunk's inquiry and drawing-approval process."]],
   [expectedQuestions[13], ['contact.html?request=3d-step&source=faq.html#quoteForm', 'Request a 2D drawing or STEP model.']],
   [expectedQuestions[14], ['blog-rotary-joint-installation-mistakes.html#checklist', 'Use the rotary joint installation checklist.']],
-  [expectedQuestions[21], ['production-inspection-testing.html#verified-test-parameters', 'Review the confirmed production leak-test parameters.']],
-  [expectedQuestions[26], ['contact.html?request=application-review&source=faq.html#quoteForm', 'Request an engineering review for your rotary joint application.']],
+  [expectedQuestions[20], ['production-inspection-testing.html#verified-test-parameters', 'Review the confirmed production leak-test parameters.']],
+  [expectedQuestions[25], ['contact.html?request=application-review&source=faq.html#quoteForm', 'Request an engineering review for your rotary joint application.']],
 ]);
 
 const trustRequirements = new Map([
@@ -62,45 +67,45 @@ const trustRequirements = new Map([
     required: ['are often used interchangeably', 'varies by region, industry, and customer', 'The name alone is not a selection criterion'],
   }],
   [expectedQuestions[6], {
-    required: ['must not be assumed to be available simultaneously', 'simultaneous design conditions', 'product drawing approved by both parties'],
+    required: ['listed separately', 'Do not assume they apply at the same time', 'review them together and quote a suitable configuration'],
   }],
   [expectedQuestions[9], {
     required: ['compressed air', 'additive-containing water-soluble coolants', 'hydraulic oil', 'does not mean that every model is compatible with every listed medium'],
     forbidden: [/\bsteam\b/i, /\boxygen\b/i, /\bcorrosive\b/i],
   }],
   [expectedQuestions[10], {
-    required: ['does not rely on the transferred medium for continuous lubrication', 'particulate filter', 'water separator', 'oil-mist lubricator', 'select a suitable alternative configuration'],
+    required: ['lubricated compressed air', 'complete three-piece air-preparation unit', 'particulate filter', 'water separator', 'oil-mist lubricator', 'wear-resistant, oil-free seal option'],
   }],
   [expectedQuestions[13], {
-    required: ['After the application review', '2D outline drawing and STEP model for virtual assembly at no additional charge for the project under review', 'do not disclose internal construction, manufacturing tolerances, or other production know-how'],
+    required: ['model number, photo, or partial interface drawing is enough to start', 'Every catalog model is available with a 2D drawing and 3D STEP model', 'before the order', 'do not disclose the internal sealing structure or manufacturing details'],
   }],
   [expectedQuestions[15], {
     required: ['incidental loads from correctly routed and independently supported hoses and cables', 'must not carry additional radial or axial machine loads'],
   }],
   [expectedQuestions[16], {
-    required: ['either the shaft or the housing may rotate', 'approved angle, reversal frequency, duty cycle, and speed', 'not designed to accommodate axial reciprocating motion'],
+    required: ['either the shaft or the housing may rotate', 'angle, reversal frequency, duty cycle, and speed confirmed for that configuration', 'not designed to accommodate axial reciprocating motion'],
   }],
-  [expectedQuestions[17], {
-    required: ['standard compressed-air configurations approved for oil-mist lubrication', 'particulate filter', 'water separator', 'oil-mist lubricator', 'Oil-free or ESD-sensitive applications require a separately reviewed configuration'],
+  [expectedQuestions[19], {
+    required: ['Every fully assembled rotary joint', 'tested passage by passage', 'includes a rotation function', 'PASS/NG', 'binding', 'abnormal noise'],
   }],
   [expectedQuestions[20], {
-    required: ['Every fully assembled rotary joint', 'passage-by-passage leak testing', 'rotated while', 'PASS or NG'],
+    required: ['1.0 MPa', 'approximately one second', 'approximately four seconds', 'rotates the product', 'instrument displays PASS', 'does not establish service life'],
   }],
   [expectedQuestions[21], {
-    required: ['1.0 MPa', 'approximately one second', 'approximately four seconds', 'does not validate service life', 'maximum speed', 'compatibility with every medium'],
-  }],
-  [expectedQuestions[22], {
     required: ['all other passages remain open and unpressurized', 'does not detect cross-port leakage above the defined detection threshold under the specified test conditions'],
     forbidden: [/\bzero (?:cross[- ]passage|inter[- ]passage) leakage\b/i, /guarantee(?:s|d)? zero leakage/i],
   }],
+  [expectedQuestions[22], {
+    required: ['individual traceability number', 'request the corresponding record', 'before ordering'],
+  }],
   [expectedQuestions[23], {
-    required: ['individual traceability number', 'retained for two years', 'agreed before the order', 'exclude confidential internal production information'],
+    required: ['one year from the shipment date', 'If Begapunk confirms a covered manufacturing defect', 'replacement at no charge', 'costs handled as agreed in writing'],
   }],
   [expectedQuestions[24], {
-    required: ['one year from the shipment date', 'If Begapunk confirms a covered product or manufacturing defect', 'replacement at no charge', 'costs agreed in writing for that claim'],
+    required: ['minimum order quantity is one unit for both catalog and custom products', 'about 20 calendar days', 'within 30 calendar days', 'starts when payment is received', 'does not include international shipping'],
   }],
-  [expectedQuestions[25], {
-    required: ['minimum order quantity is one unit', 'approximately 20 days', 'approximately 30 days', 'formal quotation or accepted order governs the final lead time'],
+  [expectedQuestions[26], {
+    required: ['We do not use your inquiries or drawings for marketing or public display'],
   }],
 ]);
 
@@ -181,17 +186,17 @@ function assertVisibleContract(source) {
   }
 
   items.each((index, item) => {
-    const number = String(index + 1).padStart(2, '0');
+    const questionId = expectedQuestionIds[index];
     const button = $(item).find('h3.faq-heading > button.faq-question').first();
     const panel = $(item).find('.faq-panel').first();
-    if ($(item).attr('id') !== `faq-${number}`
-        || button.attr('id') !== `faq-${number}-question`
-        || button.attr('aria-controls') !== `faq-${number}-panel`
+    if ($(item).attr('id') !== questionId
+        || button.attr('id') !== `${questionId}-question`
+        || button.attr('aria-controls') !== `${questionId}-panel`
         || button.attr('aria-expanded') !== 'true'
         || button.attr('disabled') === undefined
-        || panel.attr('id') !== `faq-${number}-panel`
-        || panel.attr('aria-labelledby') !== `faq-${number}-question`) {
-      throw new Error(`faq.html: accessible source contract is incomplete for FAQ ${number}.`);
+        || panel.attr('id') !== `${questionId}-panel`
+        || panel.attr('aria-labelledby') !== `${questionId}-question`) {
+      throw new Error(`faq.html: accessible source contract is incomplete for ${questionId}.`);
     }
   });
 

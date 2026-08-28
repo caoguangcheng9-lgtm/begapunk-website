@@ -21,6 +21,8 @@ let changedFiles = 0;
 const retiredProductRoutes = new Map([
   ['BP-2P-95-0001.html', { id: 'BP-2P-95-0005', url: 'BP-2P-95-0005.html' }],
 ]);
+const requiredPageRecords = [];
+const retiredPageRoutes = new Set(['replacement.html']);
 const pneumaticChuckCaseRoute = 'case-bp-2p-95-pneumatic-chuck-integration.html';
 const pneumaticChuckCaseKeywords = {
   en: ['BP-2P-95-0005', 'pneumatic chuck', 'compressed air', 'rotary union integration'],
@@ -88,7 +90,13 @@ for (const locale of locales) {
     const replacement = retiredProductRoutes.get(record.url);
     return replacement ? { ...record, ...replacement } : record;
   });
-  const visibleRecords = filterDiscoverySearchRecords(migrated, discoveryExcludedPages);
+  for (const requiredRecord of requiredPageRecords) {
+    if (!migrated.some((record) => record.url === requiredRecord.url)) migrated.push(requiredRecord);
+  }
+  const visibleRecords = filterDiscoverySearchRecords(
+    migrated.filter((record) => !retiredPageRoutes.has(record.url)),
+    discoveryExcludedPages,
+  );
   assertDrawingBackedProductRecordCoverage(visibleRecords, `${locale.code}/search-index.json`);
   const synchronized = [];
   for (const record of visibleRecords) {

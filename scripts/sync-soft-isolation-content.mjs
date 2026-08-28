@@ -37,7 +37,7 @@ const locales = {
     resourcesHeading: 'Current selection resources',
     resources: [
       ['products.html', 'Product Catalog', 'Review current model pages and published specifications.'],
-      ['case-studies.html', 'Case Studies', 'See documented installations and practical integration details.'],
+      ['case-studies.html', 'Case Studies', 'See real machine installations and practical integration details.'],
       ['manufacturing-quality.html', 'Manufacturing & Quality', 'See how components are manufactured and inspected.'],
       ['production-inspection-testing.html', '100% Leak Testing', 'See the current passage-by-passage production inspection process.'],
       ['contact.html', 'Contact', 'Send your actual medium, pressure, speed, passage count, mounting, and duty-cycle requirements for an application-specific review.'],
@@ -47,24 +47,24 @@ const locales = {
     contactCta: 'Contact Engineering',
     closingNote: 'Use these inputs to compare current models and request an application-specific engineering review.',
     bottleCappingCase: {
-      label: 'Verified production application',
+      label: 'Customer production application',
       heading: 'BP-2P-16-0001 in a bottle-capping head',
       intro: "This customer-authorized photograph shows BP-2P-16-0001 installed in a customer's production capping machine. Two independent passages carry compressed air for clamping and releasing a pneumatic three-jaw gripper. The gripper holds the bottle cap and rotates it during the capping operation.",
       imageAlt: "BP-2P-16-0001 routing compressed air through two passages to clamp and release a pneumatic three-jaw bottle-cap gripper in a customer's production capping machine",
       imageCaption: 'Customer-authorized production photograph; customer identity and machine brand are not disclosed.',
       productLinkLabel: 'View BP-2P-16-0001 product details',
-      factsHeading: 'Verified application facts',
+      factsHeading: 'Application details',
       facts: [
         ['Equipment', "Customer's production bottle-capping machine"],
         ['Rotary union', 'BP-2P-16-0001', 'BP-2P-16-0001.html'],
         ['Pneumatic function', 'Two independent passages carry compressed air for gripper clamping and release'],
-        ['Confirmed operation', 'The pneumatic three-jaw gripper holds and rotates the bottle cap during capping'],
-        ['Disclosure', 'Customer identity and machine brand are not disclosed'],
+        ['Operation', 'The pneumatic three-jaw gripper holds and rotates the bottle cap during capping'],
+        ['Customer privacy', 'Customer identity and machine brand are not disclosed'],
       ],
-      boundaryHeading: 'Evidence boundary',
-      boundary: "The photograph and Begapunk's application record establish the application, product model, and clamp/release function. They do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output. Check those conditions against the machine design and current BP-2P-16-0001 drawing.",
-      alternativeHeading: 'Additional model for this application type',
-      alternative: 'BP-2P-08-0001 can also be used for this pneumatic three-jaw bottle-cap-gripper application. The product identified in the photograph is BP-2P-16-0001, not BP-2P-08-0001. Check the required passage count, mounting interface, pressure, speed, and dimensions against the current BP-2P-08-0001 drawing before selection.',
+      boundaryHeading: 'For a similar capping machine',
+      boundary: 'A model number, photo, or drawing is enough to start. If available, include the pressure, speed, mounting dimensions, and operating cycle so we can check the closest configuration.',
+      alternativeHeading: 'Another option for this application',
+      alternative: 'BP-2P-08-0001 is another option for a pneumatic three-jaw bottle-cap gripper. The installation shown uses BP-2P-16-0001. We will compare the passage count, mounting interface, pressure, speed, and dimensions before recommending either model.',
       alternativeCta: 'View BP-2P-08-0001 →',
       productCta: 'View BP-2P-16-0001',
       contactCta: 'Discuss a similar capping application',
@@ -85,7 +85,7 @@ const locales = {
     resourcesHeading: 'Aktuelle Auswahlunterlagen',
     resources: [
       ['products.html', 'Produktkatalog', 'Aktuelle Modellseiten und veröffentlichte Spezifikationen ansehen.'],
-      ['case-studies.html', 'Anwendungsfälle', 'Dokumentierte Einbauten und praktische Integrationsdetails ansehen.'],
+      ['case-studies.html', 'Anwendungsfälle', 'Einbaubeispiele aus realen Maschinen und praktische Integrationsdetails ansehen.'],
       ['manufacturing-quality.html', 'Fertigung & Qualität', 'Fertigung und Prüfung der Komponenten ansehen.'],
       ['production-inspection-testing.html', '100%-Dichtheitsprüfung', 'Den aktuellen kanalweisen Produktionsprüfprozess ansehen.'],
       ['contact.html', 'Kontakt', 'Senden Sie Medium, Druck, Drehzahl, Kanalzahl, Einbauart und Lastprofil für eine anwendungsspezifische Prüfung.'],
@@ -95,24 +95,24 @@ const locales = {
     contactCta: 'Technische Prüfung anfragen',
     closingNote: 'Nutzen Sie diese Angaben, um aktuelle Modelle zu vergleichen und eine anwendungsspezifische technische Prüfung anzufragen.',
     bottleCappingCase: {
-      label: 'Bestätigte Produktionsanwendung',
+      label: 'Kundenanwendung in der Produktion',
       heading: 'BP-2P-16-0001 in einem Verschließkopf',
       intro: 'Dieses vom Kunden zur Veröffentlichung freigegebene Foto zeigt BP-2P-16-0001 in einer Produktionsmaschine des Kunden. Zwei getrennte Druckluftkanäle führen einem pneumatischen 3-Finger-Zentrischgreifer Druckluft zum Schließen und Öffnen zu. Der Greifer hält den Flaschenverschluss und dreht ihn während des Verschließvorgangs.',
       imageAlt: 'BP-2P-16-0001 zur Druckluftversorgung eines pneumatischen 3-Finger-Zentrischgreifers beim Schließen und Öffnen in einer Produktionsmaschine des Kunden',
       imageCaption: 'Vom Kunden zur Veröffentlichung freigegebenes Produktionsfoto; Identität des Kunden und Maschinenfabrikat werden nicht genannt.',
       productLinkLabel: 'Produktdetails zu BP-2P-16-0001 ansehen',
-      factsHeading: 'Bestätigte Anwendungsdaten',
+      factsHeading: 'Details zur Anwendung',
       facts: [
         ['Anlage', 'Kunden-Produktionsmaschine zum Verschließen von Flaschen'],
         ['Drehdurchführung', 'BP-2P-16-0001', 'BP-2P-16-0001.html'],
         ['Pneumatikfunktion', 'Zwei getrennte Druckluftkanäle führen dem Greifer Druckluft zum Schließen und Öffnen zu'],
-        ['Bestätigte Funktion', 'Der pneumatische 3-Finger-Zentrischgreifer hält und dreht den Flaschenverschluss beim Verschließen'],
-        ['Offenlegung', 'Identität des Kunden und Maschinenfabrikat werden nicht genannt'],
+        ['Funktion', 'Der pneumatische 3-Finger-Zentrischgreifer hält und dreht den Flaschenverschluss beim Verschließen'],
+        ['Kundenschutz', 'Identität des Kunden und Maschinenfabrikat werden nicht genannt'],
       ],
-      boundaryHeading: 'Nachweisgrenze',
-      boundary: 'Das Foto und die Anwendungsdaten von Begapunk belegen die Anwendung, das Produktmodell sowie das Schließen und Öffnen des Greifers. Sie enthalten weder Angaben zur Anschlussbelegung noch zu Betriebsdruck, Drehzahl, Betriebszyklus, Lebensdauer, Leckagewerten oder Produktionsleistung. Diese Bedingungen anhand der Maschinenkonstruktion und der aktuellen Zeichnung für BP-2P-16-0001 prüfen.',
-      alternativeHeading: 'Weiteres Modell für diesen Anwendungstyp',
-      alternative: 'BP-2P-08-0001 kann ebenfalls für diese Anwendung mit einem pneumatischen 3-Finger-Zentrischgreifer eingesetzt werden. Auf dem Foto ist BP-2P-16-0001 identifiziert, nicht BP-2P-08-0001. Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen vor der Auswahl mit der aktuellen Zeichnung für BP-2P-08-0001 abgleichen.',
+      boundaryHeading: 'Für eine ähnliche Verschließmaschine',
+      boundary: 'Für den Einstieg genügt eine Modellnummer, ein Foto oder eine Zeichnung. Falls vorhanden, senden Sie außerdem Druck, Drehzahl, Einbaumaße und Betriebszyklus; wir prüfen dann die nächstliegende Ausführung.',
+      alternativeHeading: 'Eine weitere Option für diese Anwendung',
+      alternative: 'BP-2P-08-0001 ist eine weitere Option für einen pneumatischen 3-Finger-Zentrischgreifer. Im gezeigten Einbau wird BP-2P-16-0001 verwendet. Vor unserer Empfehlung vergleichen wir Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen.',
       alternativeCta: 'BP-2P-08-0001 ansehen →',
       productCta: 'BP-2P-16-0001 ansehen',
       contactCta: 'Ähnliche Verschließanwendung besprechen',
@@ -133,7 +133,7 @@ const locales = {
     resourcesHeading: '現在の選定資料',
     resources: [
       ['products.html', '製品カタログ', '現在公開中の型式ページと仕様をご確認ください。'],
-      ['case-studies.html', '導入事例', '実際の設置とインテグレーションの要点をご確認ください。'],
+      ['case-studies.html', '導入事例', '実機での設置例とインテグレーションの要点をご確認ください。'],
       ['manufacturing-quality.html', '製造・品質', '部品の製造工程と検査方法をご確認ください。'],
       ['production-inspection-testing.html', '全数漏れ検査', '現在実施している流路別の量産検査工程をご確認ください。'],
       ['contact.html', 'お問い合わせ', '媒体、圧力、回転数、流路数、取付方法、運転条件をお送りください。用途ごとに確認します。'],
@@ -143,24 +143,24 @@ const locales = {
     contactCta: '技術確認を依頼',
     closingNote: 'これらの情報を使って現行型式を比較し、用途別の技術確認をご依頼ください。',
     bottleCappingCase: {
-      label: '確認済みの量産用途',
+      label: 'お客様の生産設備での使用例',
       heading: 'キャッピングヘッドに組み込まれたBP-2P-16-0001',
       intro: 'お客様から公開許可を得た写真は、実際の生産設備に組み込まれたBP-2P-16-0001を示しています。独立した2流路を介して圧縮空気を供給し、3爪エアチャックの把持・開放動作を制御します。エアチャックはキャッピング時にボトルキャップを把持して回転させます。',
       imageAlt: '実際の生産用キャッピング機で、3爪エアチャックの把持・開放用に2流路の圧縮空気を供給するBP-2P-16-0001',
       imageCaption: 'お客様の許可を得た生産設備の写真です。お客様名および装置メーカー名は非公開です。',
       productLinkLabel: 'BP-2P-16-0001の製品詳細を見る',
-      factsHeading: '確認済みの用途情報',
+      factsHeading: '用途の詳細',
       facts: [
         ['設備', 'お客様のボトルキャッピング生産設備'],
         ['ロータリジョイント', 'BP-2P-16-0001', 'BP-2P-16-0001.html'],
         ['空圧機能', '独立した2流路を介して、3爪エアチャックの把持・開放動作用に圧縮空気を供給'],
-        ['確認済みの動作', '3爪エアチャックでボトルキャップを把持し、キャッピング時に回転'],
-        ['公開範囲', 'お客様名および装置メーカー名は非公開'],
+        ['動作', '3爪エアチャックでボトルキャップを把持し、キャッピング時に回転'],
+        ['お客様情報', 'お客様名および装置メーカー名は非公開'],
       ],
-      boundaryHeading: '確認できる範囲',
-      boundary: '写真とBegapunkの用途記録により、用途、製品型式、把持・開放機能を確認しています。ポート番号、使用圧力、回転数、運転サイクル、寿命、漏れ性能、生産能力を示すものではありません。これらは装置設計と最新のBP-2P-16-0001図面に照らして確認してください。',
-      alternativeHeading: '同用途で選定可能な別型式',
-      alternative: 'BP-2P-08-0001も、3爪エアチャックを使用する同用途で選定できます。ただし、写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001を写した写真ではありません。選定時は流路数、取付インターフェース、圧力、回転数、寸法を最新のBP-2P-08-0001図面と照合してください。',
+      boundaryHeading: '同様のキャッピング設備をご検討の場合',
+      boundary: '型式、写真、図面のいずれかがあれば確認を始められます。分かる範囲で圧力、回転数、取付寸法、運転サイクルもお知らせいただければ、近い仕様をご提案します。',
+      alternativeHeading: 'この用途の別候補',
+      alternative: 'BP-2P-08-0001も、3爪エアチャック用の候補です。写真の設備ではBP-2P-16-0001を使用しています。流路数、取付インターフェース、圧力、回転数、寸法を比較したうえで、適切な型式をご提案します。',
       alternativeCta: 'BP-2P-08-0001を見る →',
       productCta: 'BP-2P-16-0001を見る',
       contactCta: '同様のキャッピング用途を相談',
@@ -181,7 +181,7 @@ const locales = {
     resourcesHeading: 'Актуальные материалы для выбора',
     resources: [
       ['products.html', 'Каталог продукции', 'См. актуальные страницы моделей и опубликованные характеристики.'],
-      ['case-studies.html', 'Примеры применения', 'См. документированные установки и практические данные по интеграции.'],
+      ['case-studies.html', 'Примеры применения', 'Посмотрите примеры установки на реальном оборудовании и практические детали интеграции.'],
       ['manufacturing-quality.html', 'Производство и качество', 'См. процессы изготовления и контроля компонентов.'],
       ['production-inspection-testing.html', '100%-ный контроль герметичности', 'См. действующий поканальный процесс производственного контроля.'],
       ['contact.html', 'Контакты', 'Отправьте данные о среде, давлении, скорости, числе каналов, монтаже и рабочем цикле для проверки конкретного применения.'],
@@ -191,24 +191,24 @@ const locales = {
     contactCta: 'Запросить инженерный анализ',
     closingNote: 'Используйте эти данные для сравнения актуальных моделей и запроса инженерного анализа конкретного применения.',
     bottleCappingCase: {
-      label: 'Подтверждённое применение на производстве',
+      label: 'Применение на оборудовании заказчика',
       heading: 'BP-2P-16-0001 в укупорочной головке',
       intro: 'На опубликованной с разрешения заказчика фотографии показано ротационное соединение BP-2P-16-0001, установленное на его производственной машине. По двум независимым каналам подаётся сжатый воздух для зажима и разжима трёхкулачкового пневматического захвата. Захват удерживает крышку и вращает её при укупорке.',
       imageAlt: 'Ротационное соединение BP-2P-16-0001 подаёт сжатый воздух для зажима и разжима трёхкулачкового пневматического захвата в производственной укупорочной машине',
       imageCaption: 'Производственная фотография опубликована с разрешения заказчика; название заказчика и марка машины не раскрываются.',
       productLinkLabel: 'Посмотреть характеристики BP-2P-16-0001',
-      factsHeading: 'Подтверждённые сведения о применении',
+      factsHeading: 'Данные по применению',
       facts: [
         ['Оборудование', 'Производственная машина заказчика для укупорки бутылок'],
         ['Ротационное соединение', 'BP-2P-16-0001', 'BP-2P-16-0001.html'],
         ['Пневматическая функция', 'Два независимых канала подачи сжатого воздуха для зажима и разжима захвата'],
-        ['Подтверждённая операция', 'Трёхкулачковый пневматический захват удерживает и вращает крышку при укупорке'],
-        ['Раскрытие данных', 'Название заказчика и марка машины не раскрываются'],
+        ['Операция', 'Трёхкулачковый пневматический захват удерживает и вращает крышку при укупорке'],
+        ['Данные заказчика', 'Название заказчика и марка машины не раскрываются'],
       ],
-      boundaryHeading: 'Границы подтверждения',
-      boundary: 'Фотография и сведения Begapunk подтверждают область применения, модель изделия и функцию зажима/разжима. Они не определяют нумерацию портов, рабочее давление, частоту вращения, режим работы, ресурс, показатели утечки или производительность. Проверьте эти условия по конструкции машины и актуальному чертежу BP-2P-16-0001.',
-      alternativeHeading: 'Дополнительная модель для этого применения',
-      alternative: 'BP-2P-08-0001 также может применяться в такой установке с трёхкулачковым пневматическим захватом. На фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Перед выбором сопоставьте число каналов, монтажный интерфейс, давление, частоту вращения и размеры с актуальным чертежом BP-2P-08-0001.',
+      boundaryHeading: 'Для аналогичной укупорочной машины',
+      boundary: 'Для начала достаточно номера модели, фотографии или чертежа. Если известны давление, частота вращения, монтажные размеры и рабочий цикл, добавьте их — мы подберём наиболее близкое исполнение.',
+      alternativeHeading: 'Ещё один вариант для этого применения',
+      alternative: 'BP-2P-08-0001 — ещё один вариант для трёхкулачкового пневматического захвата. В показанной установке используется BP-2P-16-0001. Перед рекомендацией мы сравним число каналов, монтажный интерфейс, давление, частоту вращения и размеры.',
       alternativeCta: 'Посмотреть BP-2P-08-0001 →',
       productCta: 'Посмотреть BP-2P-16-0001',
       contactCta: 'Обсудить аналогичную укупорочную установку',
@@ -539,6 +539,7 @@ for (const localeCode of Object.keys(locales)) {
 
 const pending = [];
 const plannedWrites = new Map();
+const pendingDetails = new Map();
 
 for (const [localeCode, strings] of Object.entries(locales)) {
   for (const route of routes) {
@@ -558,17 +559,31 @@ for (const localeCode of ['de', 'ja', 'ru']) {
   const overridesPath = path.join(root, 'i18n', 'overrides', `${localeCode}.json`);
   const overridesText = fs.readFileSync(overridesPath, 'utf8');
   const overrides = JSON.parse(overridesText);
+  const retiredSourcesPresent = retiredBottleCappingOverrideSources.filter((source) => Object.hasOwn(overrides, source));
+  const retiredMarkupSourcesPresent = [];
   for (const retiredSource of retiredBottleCappingOverrideSources) delete overrides[retiredSource];
   for (const [, label, description] of locales.en.resources) {
     const legacyUnescapedKey = `<strong style="color:var(--dark-soft);">${label}</strong>\n       <span style="color:var(--text-light);font-size:0.92rem;line-height:1.6;">${description}</span>`;
     const escapedKey = `<strong style="color:var(--dark-soft);">${htmlEscape(label)}</strong>\n       <span style="color:var(--text-light);font-size:0.92rem;line-height:1.6;">${htmlEscape(description)}</span>`;
-    if (legacyUnescapedKey !== escapedKey) delete overrides[legacyUnescapedKey];
+    if (legacyUnescapedKey !== escapedKey && Object.hasOwn(overrides, legacyUnescapedKey)) {
+      retiredMarkupSourcesPresent.push(legacyUnescapedKey);
+      delete overrides[legacyUnescapedKey];
+    }
   }
-  for (const [source, translation] of overridePairs(locales.en, strings)) overrides[source] = translation;
+  const expectedOverridePairs = overridePairs(locales.en, strings);
+  const unsynchronizedSources = expectedOverridePairs
+    .filter(([source, translation]) => overrides[source] !== translation)
+    .map(([source]) => source);
+  for (const [source, translation] of expectedOverridePairs) overrides[source] = translation;
   const desiredOverrides = serializeJson(overrides, overridesText);
   if (desiredOverrides !== overridesText) {
     pending.push(path.relative(root, overridesPath));
     plannedWrites.set(overridesPath, desiredOverrides);
+    pendingDetails.set(path.relative(root, overridesPath), [
+      ...unsynchronizedSources.map((source) => `missing: ${source}`),
+      ...retiredSourcesPresent.map((source) => `retired: ${source}`),
+      ...retiredMarkupSourcesPresent.map((source) => `retired markup: ${source}`),
+    ]);
   }
 
   const seoPath = path.join(root, 'i18n', 'seo', `${localeCode}.json`);
@@ -588,7 +603,10 @@ for (const localeCode of ['de', 'ja', 'ru']) {
 if (checkOnly) {
   if (pending.length) {
     console.error(`Soft-isolation sync check failed: ${pending.length} file(s) need synchronization.`);
-    for (const file of pending) console.error(`- ${file}`);
+    for (const file of pending) {
+      console.error(`- ${file}`);
+      for (const detail of pendingDetails.get(file) ?? []) console.error(`    ${detail}`);
+    }
     process.exitCode = 1;
   } else {
     console.log('Soft-isolation sync check passed: 9 routes × 4 languages, overrides, and localized SEO descriptions are synchronized.');

@@ -1,6 +1,6 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
-  "updatedAt": "2026-08-20",
+  "updatedAt": "2026-08-28",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -33,6 +33,19 @@
       "reviewedByRole",
       "unresolvedIssues"
     ]
+  },
+  "reviewedArtifactSnapshot": {
+    "schemaVersion": 2,
+    "algorithm": "sha256-bytes-v1",
+    "manifest": "audit/localization/current-localized-artifacts.json",
+    "capturedAt": "2026-08-28T06:51:05.841Z",
+    "pagesPerLanguage": 56,
+    "languages": [
+      "de",
+      "ja",
+      "ru"
+    ],
+    "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof"
   },
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",

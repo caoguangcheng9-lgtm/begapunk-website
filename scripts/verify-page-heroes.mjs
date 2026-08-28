@@ -13,7 +13,7 @@ const languages = [
 const homeContracts = {
   en: {
     badge: 'Pneumatic Rotary Unions | Standard & Custom',
-    description: 'Standard and custom pneumatic rotary joints for CNC, packaging, filling, laser cutting, and automation equipment. STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.',
+    description: 'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. 2D drawings and 3D STEP models are available for every catalog model.',
     sectionTitle: 'Find by Application',
     comparisonLabel: 'Model Comparison',
     tags: ['1-8 passages', 'Air / hydraulic oil', 'Threaded / flange'],
@@ -26,7 +26,7 @@ const homeContracts = {
   },
   de: {
     badge: 'Pneumatische Drehdurchführungen | Standard & kundenspezifisch',
-    description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden; Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.',
+    description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für OEM-Maschinen, abgestimmt auf die tatsächlichen Betriebsbedingungen. Mindestbestellmenge: 1 Stück. Fertigungszeit: Katalogmodelle typischerweise etwa 20 Kalendertage; Sonderanfertigungen höchstens 30 Kalendertage. Für jedes Katalogmodell stehen eine 2D-Zeichnung und ein 3D-STEP-Modell bereit.',
     sectionTitle: 'Nach Anwendung auswählen',
     comparisonLabel: 'Modellvergleich',
     tags: ['1-8 Kanäle', 'Luft / Hydrauliköl', 'Gewinde / Flansch'],
@@ -39,7 +39,7 @@ const homeContracts = {
   },
   ja: {
     badge: '空圧ロータリージョイント｜標準品・特注品',
-    description: '工作機械、包装機、充填機、レーザー加工機、自動化設備向けに、標準品および特注の空圧ロータリージョイントを提供します。STEP/IGESデータは、型式および用途の確認後、対象となる案件に提供できる場合があり、ファイル形式と提供時期は案件ごとに確定します。',
+    description: 'OEM装置向けの標準・特注空圧ロータリージョイントを、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
     sectionTitle: '用途から探す',
     comparisonLabel: '機種選定表',
     tags: ['1～8流路', 'エア・作動油', 'ねじ取付・フランジ取付'],
@@ -51,15 +51,15 @@ const homeContracts = {
     ],
   },
   ru: {
-    badge: 'Пневматические соединения | Стандартные и на заказ',
-    description: 'Стандартные и индивидуальные пневматические ротационные соединения для станков с ЧПУ, упаковочных и разливочных машин, лазерных станков и систем автоматизации. Файлы STEP/IGES могут быть предоставлены для проектов после проверки модели и условий применения; формат и срок предоставления согласовываются для каждого проекта.',
+    badge: 'Пневматические вращающиеся соединения | Серийные и заказные',
+    description: 'Предлагаем стандартные и заказные пневматические вращающиеся соединения для OEM-оборудования и подбираем исполнение с учётом реальных условий эксплуатации. Минимальный заказ — 1 шт. Каталожные модели обычно изготавливаем примерно за 20 календарных дней, заказные исполнения — не более чем за 30 календарных дней. Для каждой каталожной модели предоставляем 2D-чертёж и 3D-модель STEP.',
     sectionTitle: 'Выбор по применению',
     comparisonLabel: 'Сравнение моделей',
     tags: ['1-8 проходов', 'Воздух / гидравлическое масло', 'Резьба / фланец'],
     applications: [
       ['application-laser-tube-cutting.html', 'Лазерная резка труб', 'Подача сжатого воздуха к заднему патрону'],
-      ['application-packaging-machinery.html', 'Упаковочные машины', 'Ротационные запайщики и оправки'],
-      ['application-bottle-filling-capping.html', 'Разливочные машины', 'Подача воздуха на вращающиеся карусели'],
+      ['application-packaging-machinery.html', 'Упаковочные линии', 'Поворотные запаечные узлы и оправки'],
+      ['application-bottle-filling-capping.html', 'Оборудование для розлива', 'Подача сжатого воздуха на вращающиеся карусели'],
       ['application-automation-rotary-tables.html', 'Поворотные столы', 'Пневматическая оснастка и зажимные контуры'],
     ],
   },
@@ -86,7 +86,7 @@ const changedStylesheets = new Map([
   ['application-case.css', '20260814-hero1'],
   ['manufacturing-quality.css', '20260814-hero1'],
   ['production-inspection-testing.css', '20260814-hero1'],
-  ['contact-rfq.css', '20260822-anchor1'],
+  ['contact-rfq.css', '20260828-response11'],
 ]);
 
 function contractFor(route) {

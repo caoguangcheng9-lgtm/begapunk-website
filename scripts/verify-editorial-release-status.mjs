@@ -95,6 +95,101 @@ if (!sameSet(
   policyFail('requiredRecordFields do not match the target-market review evidence contract.');
 }
 
+const reviewedArtifactSnapshot = status.reviewedArtifactSnapshot ?? {};
+if (reviewedArtifactSnapshot.schemaVersion !== 2) {
+  policyFail('reviewedArtifactSnapshot.schemaVersion must be 2.');
+}
+if (reviewedArtifactSnapshot.algorithm !== 'sha256-bytes-v1') {
+  policyFail('reviewedArtifactSnapshot.algorithm is unsupported.');
+}
+if (reviewedArtifactSnapshot.manifest !== 'audit/localization/current-localized-artifacts.json') {
+  policyFail('reviewedArtifactSnapshot.manifest must point to the governed per-page artifact manifest.');
+}
+if (reviewedArtifactSnapshot.pagesPerLanguage !== pages.length) {
+  policyFail(`reviewedArtifactSnapshot.pagesPerLanguage must be ${pages.length}.`);
+}
+if (!sameSet(reviewedArtifactSnapshot.languages ?? [], languages)) {
+  policyFail('reviewedArtifactSnapshot.languages must exactly match the active localized languages.');
+}
+if (reviewedArtifactSnapshot.qualityBoundary !== 'integrity-only-not-native-speaker-or-semantic-proof') {
+  policyFail('reviewedArtifactSnapshot must preserve the integrity-only quality boundary.');
+}
+if (!Number.isFinite(Date.parse(reviewedArtifactSnapshot.capturedAt ?? ''))) {
+  policyFail('reviewedArtifactSnapshot.capturedAt must be a valid ISO-8601 timestamp.');
+}
+
+let artifactManifest;
+if (reviewedArtifactSnapshot.manifest === 'audit/localization/current-localized-artifacts.json') {
+  try {
+    artifactManifest = JSON.parse(await fs.readFile(
+      path.join(root, ...reviewedArtifactSnapshot.manifest.split('/')),
+      'utf8',
+    ));
+  } catch (error) {
+    policyFail(`reviewed localized artifact manifest cannot be read (${error.message}).`);
+  }
+}
+
+if (artifactManifest) {
+  if (artifactManifest.schemaVersion !== 1) policyFail('artifact manifest schemaVersion must be 1.');
+  if (artifactManifest.algorithm !== reviewedArtifactSnapshot.algorithm) {
+    policyFail('artifact manifest algorithm must match reviewedArtifactSnapshot.algorithm.');
+  }
+  if (artifactManifest.capturedAt !== reviewedArtifactSnapshot.capturedAt) {
+    policyFail('artifact manifest capturedAt must match reviewedArtifactSnapshot.capturedAt.');
+  }
+  if (artifactManifest.statusUpdatedAt !== status.updatedAt) {
+    policyFail('artifact manifest statusUpdatedAt must match editorial status updatedAt.');
+  }
+  if (artifactManifest.qualityBoundary !== reviewedArtifactSnapshot.qualityBoundary) {
+    policyFail('artifact manifest qualityBoundary must match reviewedArtifactSnapshot.qualityBoundary.');
+  }
+
+  const artifacts = Array.isArray(artifactManifest.artifacts) ? artifactManifest.artifacts : [];
+  const expectedArtifactPaths = languages.flatMap((language) =>
+    pages.map((page) => `${language}/${page}`)
+  );
+  const expectedArtifactSet = new Set(expectedArtifactPaths);
+  const artifactPaths = artifacts.map((artifact) => artifact?.path);
+  const duplicateArtifactPaths = artifactPaths.filter((artifactPath, index) => artifactPaths.indexOf(artifactPath) !== index);
+  const missingArtifactPaths = expectedArtifactPaths.filter((artifactPath) => !artifactPaths.includes(artifactPath));
+  const extraArtifactPaths = artifactPaths.filter((artifactPath) => !expectedArtifactSet.has(artifactPath));
+
+  if (duplicateArtifactPaths.length) {
+    policyFail(`artifact manifest contains duplicate paths: ${[...new Set(duplicateArtifactPaths)].join(', ')}.`);
+  }
+  if (missingArtifactPaths.length) {
+    policyFail(`artifact manifest is missing reviewed pages: ${missingArtifactPaths.join(', ')}.`);
+  }
+  if (extraArtifactPaths.length) {
+    policyFail(`artifact manifest contains unknown pages: ${extraArtifactPaths.join(', ')}.`);
+  }
+
+  for (const artifact of artifacts) {
+    const relativePath = artifact?.path;
+    if (typeof relativePath !== 'string'
+      || path.isAbsolute(relativePath)
+      || relativePath.includes('..')
+      || relativePath.includes('\\')
+      || !expectedArtifactSet.has(relativePath)) {
+      policyFail(`artifact manifest path is unsafe or outside the localized review scope: ${JSON.stringify(relativePath)}.`);
+      continue;
+    }
+    if (!/^[a-f0-9]{64}$/.test(artifact.sha256 ?? '')) {
+      policyFail(`artifact manifest has an invalid SHA-256: ${relativePath}.`);
+      continue;
+    }
+    try {
+      const actual = sha256(await fs.readFile(path.join(root, ...relativePath.split('/'))));
+      if (actual !== artifact.sha256) {
+        policyFail(`${relativePath}: localized page bytes changed after the recorded per-page artifact snapshot.`);
+      }
+    } catch (error) {
+      policyFail(`${relativePath}: localized artifact cannot be verified (${error.message}).`);
+    }
+  }
+}
+
 failures.push(...policyFailures.map((message) => `local-market review policy: ${message}`));
 
 for (const language of languages) {

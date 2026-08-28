@@ -681,7 +681,7 @@ const dustyEnvironmentRows = [
     source: 'Air service in dusty environments; protective shroud and labyrinth',
     de: 'Luftbetrieb in staubigen Umgebungen; Schutzhaube und Labyrinth',
     ja: '粉じん環境での空気用途；保護カバーおよびラビリンス',
-    ru: 'Воздушная среда в запылённых условиях; защитный кожух и лабиринт',
+    ru: 'Воздушная среда в запылённых условиях; защитный кожух и лабиринтная защита',
   },
   {
     legacySource: 'Protective shroud and labyrinth options for dusty environments; no certified IP rating is currently claimed.',
@@ -709,7 +709,7 @@ const dustyEnvironmentRows = [
     source: 'Rotary Union Questions for Dusty Environments',
     de: 'Fragen zu Drehdurchführungen für staubige Umgebungen',
     ja: '粉じん環境向けロータリージョイントのよくある質問',
-    ru: 'Вопросы о вращающихся соединениях для запылённых условий',
+    ru: 'Вопросы о ротационных соединениях для запылённых условий',
   },
   {
     legacySource: 'Why do dusty environments damage rotary unions?',
@@ -730,7 +730,7 @@ const dustyEnvironmentRows = [
     source: 'Can Begapunk help replace an old rotary union with no drawing?',
     de: 'Kann Begapunk beim Ersatz einer alten Drehdurchführung ohne Zeichnung helfen?',
     ja: '図面のない古いロータリージョイントの置換にも対応できますか？',
-    ru: 'Может ли Begapunk помочь заменить старое вращающееся соединение без чертежа?',
+    ru: 'Может ли Begapunk помочь заменить старое ротационное соединение без чертежа?',
   },
   {
     legacySource: 'Provide dust type, temperature range, vibration level, pressure, RPM, mounting style, and whether the joint is exposed to powder, scale, chips, or splash.',
@@ -870,22 +870,22 @@ const residualToneRows = [
 
 const dustyApplicationRows = [
   { legacySource: 'Air Rotary Union for Steel and Dusty Environments', source: 'Rotary Unions for Steel and Dusty Environments', de: 'Drehdurchführungen für Stahlindustrie und staubige Umgebungen', ja: '鉄鋼・粉じん環境向けロータリージョイント', ru: 'Вращающиеся соединения для металлургии и запылённых условий' },
-  { legacySource: 'Steel equipment, powder handling, dusty packaging lines, and harsh industrial machines need protected pneumatic rotary joints that resist abrasive contamination, vibration, and early leakage.', source: 'Steel equipment, powder handling, dusty packaging lines, and other harsh industrial machines benefit from protected pneumatic rotary joints that limit direct particle exposure and support stable hose routing.', de: 'Stahlanlagen, Pulverhandhabung, staubige Verpackungslinien und andere raue Industriemaschinen profitieren von geschützten pneumatischen Drehdurchführungen, die die direkte Partikelbelastung begrenzen und eine stabile Schlauchführung unterstützen.', ja: '鉄鋼設備、粉体搬送、粉じんのある包装ラインなどの厳しい産業機械では、粒子の直接侵入を抑え、安定したホース配管を支える保護型空圧ロータリージョイントが有効です。', ru: 'Для металлургического оборудования, работы с порошками, запылённых упаковочных линий и других тяжёлых промышленных машин полезны защищённые пневматические вращающиеся соединения, которые ограничивают прямое воздействие частиц и обеспечивают стабильную прокладку шлангов.' },
+  { legacySource: 'Steel equipment, powder handling, dusty packaging lines, and harsh industrial machines need protected pneumatic rotary joints that resist abrasive contamination, vibration, and early leakage.', source: 'Steel equipment, powder handling, dusty packaging lines, and other harsh industrial machines benefit from protected pneumatic rotary joints that limit direct particle exposure and support stable hose routing.', de: 'Stahlanlagen, Pulverhandhabung, staubige Verpackungslinien und andere raue Industriemaschinen profitieren von geschützten pneumatischen Drehdurchführungen, die die direkte Partikelbelastung begrenzen und eine stabile Schlauchführung unterstützen.', ja: '鉄鋼設備、粉体搬送、粉じんのある包装ラインなどの厳しい産業機械では、粒子の直接侵入を抑え、安定したホース配管を支える保護型空圧ロータリージョイントが有効です。', ru: 'В металлургическом оборудовании, системах работы с порошками, запылённых упаковочных линиях и других тяжёлых промышленных машинах применяют защищённые пневматические ротационные соединения. Они уменьшают прямое воздействие частиц и позволяют надёжно проложить шланги.' },
   { legacySource: 'Protect the seal from dust, vibration, and abrasive particles', source: 'Reduce particle exposure around seals and bearings', de: 'Partikelbelastung an Dichtungen und Lagern verringern', ja: 'シール・軸受周辺への粒子侵入を低減', ru: 'Снижение воздействия частиц на уплотнения и подшипники' },
   { legacySource: 'In steel plants and dusty production areas, rotary joints fail early when dust enters the seal or bearing area. The operating environment matters as much as pressure and RPM.', source: 'In steel plants and dusty production areas, particles reaching the seal or bearing area can accelerate wear. The operating environment matters as much as pressure and RPM.', de: 'In Stahlwerken und staubigen Produktionsbereichen können Partikel, die Dichtungs- oder Lagerbereiche erreichen, den Verschleiß beschleunigen. Die Betriebsumgebung ist ebenso wichtig wie Druck und Drehzahl.', ja: '製鉄所や粉じんの多い生産区域では、シール部や軸受部に到達した粒子が摩耗を早めることがあります。使用環境は圧力や回転数と同じく重要です。', ru: 'В металлургических и запылённых производственных зонах частицы, попадающие в область уплотнения или подшипника, могут ускорить износ. Рабочая среда так же важна, как давление и частота вращения.' },
-  { legacySource: 'For harsh applications, selection should include dust protection, body material, seal type, hose support, installation angle, and maintenance access. A standard open design may work on a clean bench but fail quickly near powder, scale, chips, or smelting dust.', source: 'For harsh applications, selection should include protective features, body material, seal type, hose support, installation angle, and maintenance access. Equipment near powder, scale, chips, or smelting dust may need additional shielding compared with a clean installation.', de: 'Bei rauen Anwendungen sind Schutzmerkmale, Gehäusewerkstoff, Dichtungsart, Schlauchabstützung, Einbaulage und Wartungszugang gemeinsam zu berücksichtigen. Anlagen in der Nähe von Pulver, Zunder, Spänen oder Schmelzstaub können gegenüber einer sauberen Installation zusätzliche Abschirmung benötigen.', ja: '厳しい用途では、保護構造、本体材質、シール形式、ホース支持、取付角度、保守アクセスを含めて選定します。粉体、スケール、切粉、溶解粉じんの近くでは、清浄な設置環境より追加の遮へいが必要になる場合があります。', ru: 'Для тяжёлых условий при выборе следует учитывать защитные элементы, материал корпуса, тип уплотнения, опору шлангов, монтажное положение и доступ для обслуживания. Оборудованию рядом с порошком, окалиной, стружкой или металлургической пылью может потребоваться дополнительное экранирование по сравнению с чистой установкой.' },
-  { legacySource: 'Dust-proof air rotary union for steel and dusty environments', source: 'Protected air rotary union for steel and dusty environments', de: 'Geschützte Luftdrehdurchführung für Stahlindustrie und staubige Umgebungen', ja: '鉄鋼・粉じん環境向け保護型エアロータリージョイント', ru: 'Защищённое воздушное вращающееся соединение для металлургии и запылённых условий' },
+  { legacySource: 'For harsh applications, selection should include dust protection, body material, seal type, hose support, installation angle, and maintenance access. A standard open design may work on a clean bench but fail quickly near powder, scale, chips, or smelting dust.', source: 'For harsh applications, selection should include protective features, body material, seal type, hose support, installation angle, and maintenance access. Equipment near powder, scale, chips, or smelting dust may need additional shielding compared with a clean installation.', de: 'Bei rauen Anwendungen sind Schutzmerkmale, Gehäusewerkstoff, Dichtungsart, Schlauchabstützung, Einbaulage und Wartungszugang gemeinsam zu berücksichtigen. Anlagen in der Nähe von Pulver, Zunder, Spänen oder Schmelzstaub können gegenüber einer sauberen Installation zusätzliche Abschirmung benötigen.', ja: '厳しい用途では、保護構造、本体材質、シール形式、ホース支持、取付角度、保守アクセスを含めて選定します。粉体、スケール、切粉、溶解粉じんの近くでは、清浄な設置環境より追加の遮へいが必要になる場合があります。', ru: 'При подборе для тяжёлых условий учитывают защитные элементы, материал корпуса, тип уплотнения, опору шлангов, монтажное положение и доступ для обслуживания. Для оборудования рядом с порошком, окалиной, стружкой или металлургической пылью может потребоваться дополнительное экранирование по сравнению с установкой в чистой зоне.' },
+  { legacySource: 'Dust-proof air rotary union for steel and dusty environments', source: 'Protected air rotary union for steel and dusty environments', de: 'Geschützte Luftdrehdurchführung für Stahlindustrie und staubige Umgebungen', ja: '鉄鋼・粉じん環境向け保護型エアロータリージョイント', ru: 'Защищённое пневматическое ротационное соединение для металлургии и запылённых условий' },
   { legacySource: 'Typical Dust-Protected Rotary Union Specs', source: 'Selection Inputs for Dusty Environments', de: 'Auswahldaten für staubige Umgebungen', ja: '粉じん環境向け選定入力', ru: 'Исходные данные для выбора в запылённой среде' },
   { legacySource: '<strong>Pressure:</strong> 0.4–1.0 MPa (actuation) — heavy-duty rated for shock loads', source: '<strong>Pressure and speed:</strong> select within the current limits of the chosen model and approved drawing', de: '<strong>Druck und Drehzahl:</strong> innerhalb der aktuellen Grenzwerte des gewählten Modells und der freigegebenen Zeichnung auswählen', ja: '<strong>圧力・回転数：</strong> 選定型式と承認図面の最新限界内で選定', ru: '<strong>Давление и частота вращения:</strong> выбирайте в пределах актуальных значений выбранной модели и согласованного чертежа' },
-  { legacySource: '<strong>Passages:</strong> 2–4 (clamp + blow-off + coolant + sensor)', source: '<strong>Passages:</strong> match the required clamp, release, blow-off, or other pneumatic functions', de: '<strong>Kanäle:</strong> auf die benötigten Spann-, Löse-, Abblas- oder sonstigen Pneumatikfunktionen abstimmen', ja: '<strong>流路：</strong> 必要なクランプ、アンクランプ、エアブローなどの空圧機能に合わせる', ru: '<strong>Каналы:</strong> согласуйте с требуемыми функциями зажима, разжима, обдува и другими пневматическими функциями' },
-  { legacySource: '<strong>Mounting:</strong> flange with dust shield and anti-rotation bracket', source: '<strong>Mounting:</strong> provide stable anti-rotation support and keep external hose loads away from the rotating interface', de: '<strong>Befestigung:</strong> stabile Verdrehsicherung vorsehen und äußere Schlauchlasten von der rotierenden Schnittstelle fernhalten', ja: '<strong>取付：</strong> 安定した回り止め支持を設け、外部ホース荷重を回転部へ伝えない', ru: '<strong>Монтаж:</strong> обеспечьте стабильную фиксацию от проворачивания и не передавайте внешнюю нагрузку от шлангов на вращающийся интерфейс' },
-  { legacySource: '<strong>Bore:</strong> 8–16 mm for large actuators; 6–10 mm for standard cylinders', source: '<strong>Flow:</strong> size the bore and ports for the actuator demand and acceptable pressure drop', de: '<strong>Durchfluss:</strong> Bohrung und Anschlüsse nach Aktuatorbedarf und zulässigem Druckverlust dimensionieren', ja: '<strong>流量：</strong> アクチュエータの必要量と許容圧力損失に合わせて流路径とポートを設定', ru: '<strong>Расход:</strong> подберите проходное отверстие и порты по потребности привода и допустимому падению давления' },
-  { legacySource: '<strong>Protection:</strong> protective-shroud or labyrinth design for dusty environments; do not assume a certified IP rating without model-specific confirmation', source: '<strong>Protection:</strong> match the shroud, labyrinth, shielding, and cleaning method to the actual contamination', de: '<strong>Schutz:</strong> Schutzhaube, Labyrinth, Abschirmung und Reinigungsmethode auf die tatsächliche Verunreinigung abstimmen', ja: '<strong>保護：</strong> 保護カバー、ラビリンス、遮へい、清掃方法を実際の汚染条件に合わせる', ru: '<strong>Защита:</strong> подберите кожух, лабиринт, экранирование и способ очистки по фактическому загрязнению' },
-  { legacySource: '<strong>Material:</strong> Grade 45 carbon steel or 304 SS — abrasion and spatter resistant', source: '<strong>Materials:</strong> review body, seal, and exposed hardware materials for dust, chips, spatter, temperature, and cleaning conditions', de: '<strong>Werkstoffe:</strong> Gehäuse-, Dichtungs- und freiliegende Beschlagwerkstoffe im Hinblick auf Staub, Späne, Spritzer, Temperatur und Reinigung prüfen', ja: '<strong>材質：</strong> 粉じん、切粉、スパッタ、温度、清掃条件に対して本体、シール、露出金具の材質を確認', ru: '<strong>Материалы:</strong> проверьте материалы корпуса, уплотнения и открытых деталей с учётом пыли, стружки, брызг, температуры и очистки' },
+  { legacySource: '<strong>Passages:</strong> 2–4 (clamp + blow-off + coolant + sensor)', source: '<strong>Passages:</strong> match the required clamp, release, blow-off, or other pneumatic functions', de: '<strong>Kanäle:</strong> auf die benötigten Spann-, Löse-, Abblas- oder sonstigen Pneumatikfunktionen abstimmen', ja: '<strong>流路：</strong> 必要なクランプ、アンクランプ、エアブローなどの空圧機能に合わせる', ru: '<strong>Число каналов:</strong> определите по требуемым функциям зажима, разжима, обдува и другим пневматическим контурам' },
+  { legacySource: '<strong>Mounting:</strong> flange with dust shield and anti-rotation bracket', source: '<strong>Mounting:</strong> provide stable anti-rotation support and keep external hose loads away from the rotating interface', de: '<strong>Befestigung:</strong> stabile Verdrehsicherung vorsehen und äußere Schlauchlasten von der rotierenden Schnittstelle fernhalten', ja: '<strong>取付：</strong> 安定した回り止め支持を設け、外部ホース荷重を回転部へ伝えない', ru: '<strong>Монтаж:</strong> обеспечьте надёжную фиксацию от проворачивания и исключите передачу внешней нагрузки от шлангов на вращающийся интерфейс' },
+  { legacySource: '<strong>Bore:</strong> 8–16 mm for large actuators; 6–10 mm for standard cylinders', source: '<strong>Flow:</strong> size the bore and ports for the actuator demand and acceptable pressure drop', de: '<strong>Durchfluss:</strong> Bohrung und Anschlüsse nach Aktuatorbedarf und zulässigem Druckverlust dimensionieren', ja: '<strong>流量：</strong> アクチュエータの必要量と許容圧力損失に合わせて流路径とポートを設定', ru: '<strong>Расход:</strong> подберите диаметр каналов и размеры портов по потребности привода и допустимому падению давления' },
+  { legacySource: '<strong>Protection:</strong> protective-shroud or labyrinth design for dusty environments; do not assume a certified IP rating without model-specific confirmation', source: '<strong>Protection:</strong> match the shroud, labyrinth, shielding, and cleaning method to the actual contamination', de: '<strong>Schutz:</strong> Schutzhaube, Labyrinth, Abschirmung und Reinigungsmethode auf die tatsächliche Verunreinigung abstimmen', ja: '<strong>保護：</strong> 保護カバー、ラビリンス、遮へい、清掃方法を実際の汚染条件に合わせる', ru: '<strong>Защита:</strong> подберите кожух, лабиринт, экранирование и способ очистки с учётом фактического загрязнения' },
+  { legacySource: '<strong>Material:</strong> Grade 45 carbon steel or 304 SS — abrasion and spatter resistant', source: '<strong>Materials:</strong> review body, seal, and exposed hardware materials for dust, chips, spatter, temperature, and cleaning conditions', de: '<strong>Werkstoffe:</strong> Gehäuse-, Dichtungs- und freiliegende Beschlagwerkstoffe im Hinblick auf Staub, Späne, Spritzer, Temperatur und Reinigung prüfen', ja: '<strong>材質：</strong> 粉じん、切粉、スパッタ、温度、清掃条件に対して本体、シール、露出金具の材質を確認', ru: '<strong>Материалы:</strong> проверьте материалы корпуса, уплотнений и открытых элементов с учётом пыли, стружки, брызг, температуры и способа очистки' },
   { legacySource: '2-passage model with a protective-shroud and labyrinth design for dusty packaging and powder handling; no certified IP rating is currently claimed.', source: '2-passage model with a protective-shroud and labyrinth design for dusty packaging and powder handling.', de: 'Zweikanalmodell mit Schutzhaube und Labyrinth für staubige Verpackungslinien und Pulverhandhabung.', ja: '粉じんのある包装ラインや粉体搬送向けに保護カバーとラビリンス構造を備えた2流路モデルです。', ru: 'Двухканальная модель с защитным кожухом и лабиринтом для запылённых упаковочных линий и работы с порошками.' },
   { legacySource: 'Send the machine photos, old part dimensions, dust type, pressure, RPM, and mounting details. Begapunk can review whether a dust-proof or custom protected design is needed.', source: 'Send the machine photos, old part dimensions, dust type, pressure, RPM, and mounting details. Begapunk can review the protective features and mounting approach for the application.', de: 'Senden Sie Maschinenfotos, Maße des Altteils, Staubart, Druck, Drehzahl und Befestigungsdaten. Begapunk prüft Schutzmerkmale und Montagekonzept für die Anwendung.', ja: '装置写真、旧部品寸法、粉じんの種類、圧力、回転数、取付詳細をお送りください。Begapunkが用途に適した保護構造と取付方法を確認します。', ru: 'Отправьте фотографии машины, размеры старой детали, тип пыли, давление, частоту вращения и монтажные данные. Begapunk рассмотрит защитные элементы и способ монтажа для данного применения.' },
   { legacySource: 'Is dust-proof the same as waterproof?', source: 'How does particle protection differ from liquid protection?', de: 'Wie unterscheidet sich Partikelschutz vom Schutz gegen Flüssigkeiten?', ja: '粒子保護と液体保護はどのように異なりますか？', ru: 'Чем защита от частиц отличается от защиты от жидкости?' },
-  { legacySource: 'No. Dust-proof design focuses on preventing particles from entering sensitive areas. Water exposure, washdown, or coolant splash should be reviewed separately.', source: 'A protective shroud or labyrinth helps limit direct particle exposure. Water, washdown, and coolant exposure require a separate review of the complete installation and selected configuration.', de: 'Eine Schutzhaube oder ein Labyrinth hilft, die direkte Partikelbelastung zu begrenzen. Wassereinwirkung, Reinigung und Kühlmittelkontakt erfordern eine separate Prüfung der vollständigen Installation und der gewählten Ausführung.', ja: '保護カバーまたはラビリンスは粒子の直接侵入を抑えるのに役立ちます。水への暴露、洗浄、クーラントへの暴露は、設置全体と選定仕様を別途確認する必要があります。', ru: 'Защитный кожух или лабиринт помогает ограничить прямое воздействие частиц. Воздействие воды, мойку и контакт с охлаждающей жидкостью необходимо отдельно оценить для всей установки и выбранного исполнения.' },
+  { legacySource: 'No. Dust-proof design focuses on preventing particles from entering sensitive areas. Water exposure, washdown, or coolant splash should be reviewed separately.', source: 'A protective shroud or labyrinth helps limit direct particle exposure. Water, washdown, and coolant exposure require a separate review of the complete installation and selected configuration.', de: 'Eine Schutzhaube oder ein Labyrinth hilft, die direkte Partikelbelastung zu begrenzen. Wassereinwirkung, Reinigung und Kühlmittelkontakt erfordern eine separate Prüfung der vollständigen Installation und der gewählten Ausführung.', ja: '保護カバーまたはラビリンスは粒子の直接侵入を抑えるのに役立ちます。水への暴露、洗浄、クーラントへの暴露は、設置全体と選定仕様を別途確認する必要があります。', ru: 'Защитный кожух или лабиринт помогает ограничить прямое воздействие частиц. Воздействие воды, мойка и контакт с охлаждающей жидкостью требуют отдельной оценки всей установки и выбранного исполнения.' },
 ];
 
 const remainingToneRows = [
@@ -1629,10 +1629,69 @@ const drawingTruthRows = [
   },
 ];
 
-const allPositiveToneRows = [...toneRows, ...productHighlightRows, ...guideToneRows, ...runInToneRows, ...tighteningToneRows, ...leadTimeToneRows, ...dustyEnvironmentRows, ...residualToneRows, ...dustyApplicationRows, ...remainingToneRows, ...p0FreezeRows, ...p1SelectionRows, ...p1LocalizedFaqRows, ...fixedDeratingRows, ...drawingTruthRows];
+const applicationInquiryCopyRows = [
+  {
+    legacySource: 'A machine name alone is not enough. These inputs allow Begapunk to compare a standard model or define a custom configuration.',
+    source: 'A machine type, model number, photo, or drawing is enough to start. Share any of the details below that you know, and we can narrow the choice to a catalog model or custom option.',
+    de: 'Zum Einstieg genügt bereits eine Angabe: Maschinentyp, Modellnummer, Foto oder Zeichnung. Senden Sie einfach die unten aufgeführten Informationen, die Ihnen bereits vorliegen. Damit können wir ein passendes Katalogmodell oder eine Sonderausführung eingrenzen.',
+    ja: '装置名、型式、写真、図面のいずれかがあれば選定を始められます。下記のうち分かる情報だけお送りください。カタログ型式または特注仕様の候補を絞り込みます。',
+    ru: 'Для начала достаточно указать тип оборудования или прислать номер модели, фотографию либо чертёж. Сообщите любые известные вам данные из списка ниже — мы сузим выбор до подходящей каталожной модели или заказного исполнения.',
+  },
+  {
+    legacySource: 'A machine type, model number, photo, or drawing is enough to start. Share any of the details below that you know, and we can narrow the choice to a catalog model or custom option.',
+    source: 'You can start with a machine type, model number, photo, or drawing. Share any of the details below that you know, and we can narrow the choice to a catalog model or custom option.',
+    de: 'Zum Einstieg genügt bereits eine Angabe: Maschinentyp, Modellnummer, Foto oder Zeichnung. Senden Sie einfach die unten aufgeführten Informationen, die Ihnen bereits vorliegen. Damit können wir ein passendes Katalogmodell oder eine Sonderausführung eingrenzen.',
+    ja: '装置名、型式、写真、図面のいずれかがあれば選定を始められます。下記のうち分かる情報だけお送りください。カタログ型式または特注仕様の候補を絞り込みます。',
+    ru: 'Для начала достаточно указать тип оборудования или прислать номер модели, фотографию либо чертёж. Сообщите любые известные вам данные из списка ниже — мы сузим выбор до подходящей каталожной модели или заказного исполнения.',
+  },
+  {
+    legacySource: 'Send the machine layout, media, pressure, passage count, RPM, port size, and mounting space. We will reply with a suitable standard or custom pneumatic rotary joint direction.',
+    source: 'Send whatever you already have—a machine layout, photo, drawing, or the operating details you know. We will recommend a suitable catalog model or custom option and tell you if anything else is needed.',
+    de: 'Senden Sie einfach, was Ihnen bereits vorliegt – Maschinenlayout, Foto, Zeichnung oder bekannte Betriebsdaten. Wir empfehlen ein passendes Katalogmodell oder eine Sonderausführung und teilen Ihnen mit, falls noch Angaben fehlen.',
+    ja: '装置レイアウト、写真、図面、分かっている使用条件など、今お持ちの情報をお送りください。適切なカタログ型式または特注仕様をご提案し、追加で必要な情報があればお知らせします。',
+    ru: 'Отправьте то, что у вас уже есть: компоновку оборудования, фотографию, чертёж или известные условия эксплуатации. Мы предложим подходящую каталожную модель либо заказное исполнение и сообщим, если понадобятся дополнительные данные.',
+  },
+  {
+    legacySource: 'Send your fixture drawing, air circuit, pressure, RPM, and mounting space. We will reply with a standard model or custom interface direction.',
+    source: 'Send whatever you already have—a fixture drawing, photo, air-circuit sketch, or the operating details you know. We will recommend a suitable catalog model or custom interface and tell you if anything else is needed.',
+    de: 'Senden Sie einfach, was Ihnen bereits vorliegt – Vorrichtungszeichnung, Foto, Pneumatikplan oder bekannte Betriebsdaten. Wir empfehlen ein passendes Katalogmodell oder eine kundenspezifische Schnittstelle und teilen Ihnen mit, falls noch Angaben fehlen.',
+    ja: '治具図面、写真、空気回路図、分かっている使用条件など、今お持ちの情報をお送りください。適切なカタログ型式または特注インターフェースをご提案し、追加で必要な情報があればお知らせします。',
+    ru: 'Отправьте то, что у вас уже есть: чертёж приспособления, фотографию, пневматическую схему или известные условия эксплуатации. Мы предложим подходящую каталожную модель либо исполнение с заказным интерфейсом и сообщим, если понадобятся дополнительные данные.',
+  },
+  {
+    legacySource: 'Begapunk Direction',
+    source: 'Possible Model or Configuration',
+    de: 'Modell oder Ausführung',
+    ja: '候補型式・仕様',
+    ru: 'Возможная модель или исполнение',
+  },
+  {
+    legacySource: 'Your rotary joint inquiry has been submitted successfully. Our engineering team will review your inquiry. Download catalog or chat with us on WhatsApp.',
+    source: 'We have received your rotary joint inquiry. Our team will review the details and reply with a quotation, estimated lead time, and CAD availability.',
+    de: 'Wir haben Ihre Anfrage zu einer Drehdurchführung erhalten. Unser Team prüft die Angaben und antwortet mit Angebot, voraussichtlicher Fertigungszeit und CAD-Verfügbarkeit.',
+    ja: 'ロータリージョイントに関するお問い合わせを受け付けました。内容を確認し、見積り、予定製作期間、CADデータの提供可否をご連絡します。',
+    ru: 'Мы получили ваш запрос на ротационное соединение. Наша команда проверит данные и ответит с предложением, ориентировочным сроком изготовления и информацией о доступности CAD.',
+  },
+  {
+    legacySource: 'Inquiry Submitted | Begapunk',
+    source: 'Inquiry Received | Begapunk',
+    de: 'Anfrage eingegangen | Begapunk',
+    ja: 'お問い合わせを受け付けました | Begapunk',
+    ru: 'Запрос получен | Begapunk',
+  },
+  {
+    source: 'Email: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br>\n\n    Address: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
+    de: 'E-Mail: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> Anschrift: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
+    ja: 'メール：<a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> 住所：88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
+    ru: 'Электронная почта: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> Адрес: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
+  },
+];
+
+const allPositiveToneRows = [...toneRows, ...productHighlightRows, ...guideToneRows, ...runInToneRows, ...tighteningToneRows, ...leadTimeToneRows, ...dustyEnvironmentRows, ...residualToneRows, ...dustyApplicationRows, ...remainingToneRows, ...p0FreezeRows, ...p1SelectionRows, ...p1LocalizedFaqRows, ...fixedDeratingRows, ...drawingTruthRows, ...applicationInquiryCopyRows];
 const legacyToneSources = new Set(allPositiveToneRows.map((row) => row.legacySource).filter(Boolean));
 legacyToneSources.add('<strong>Reduces leak points by 70%:</strong> One BP-1P-0006 replaces 6 external T-fittings (each with 2 potential leak points), consolidating 12 connections into 1 rotating component');
 legacyToneSources.add('STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.');
+legacyToneSources.add('Thank you for your inquiry. Our team will review your inquiry.');
 const positiveToneRows = allPositiveToneRows.filter((row) => !legacyToneSources.has(row.source));
 rows.push(...positiveToneRows, ...resolverRows);
 
@@ -1663,7 +1722,10 @@ for (const language of ['de', 'ja', 'ru']) {
   for (const legacySource of legacySources) delete current[legacySource];
   const missing = rows.filter((row) => current[row.source] !== row[language]);
   if (checkOnly) {
-    if (missing.length || hasLegacy) throw new Error(`${language}: ${missing.length} approved AI-trust translation(s) are not synchronized; legacy entries present: ${hasLegacy}.`);
+    if (missing.length || hasLegacy) {
+      const missingSources = missing.map((row) => `\n- ${row.source}`).join('');
+      throw new Error(`${language}: ${missing.length} approved AI-trust translation(s) are not synchronized; legacy entries present: ${hasLegacy}.${missingSources}`);
+    }
     continue;
   }
   if (!missing.length && !hasLegacy) continue;

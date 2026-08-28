@@ -10,7 +10,8 @@ import {
   drawingBackedProductKeywords,
   drawingBackedProductLinkLabel,
   drawingBackedProductMetadata,
-  drawingBackedProductSummary
+  drawingBackedProductSummary,
+  drawingBackedUiContract
 } from "./lib/drawing-backed-product-facts.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -568,7 +569,7 @@ function checkProhibitedClaims(context, surface, value, record) {
   }
 }
 
-function checkFirstView(context, $, record) {
+function checkFirstView(context, $, record, locale, model) {
   const keySpecs = new Map();
   $(".pd-key-spec").each((_, element) => {
     const key = $(element).attr("data-spec-key");
@@ -579,6 +580,9 @@ function checkFirstView(context, $, record) {
 
   if ($(".pd-key-specs").length !== 1) {
     addFailure("first-view-structure", context, `Expected one .pd-key-specs block; found ${$(".pd-key-specs").length}.`);
+  }
+  if ($(".pd-price-note").length !== 0) {
+    addFailure("first-view-structure", context, "Retired .pd-price-note remains in the first view.");
   }
 
   const performance = keySpecs.get("performance");
@@ -599,8 +603,23 @@ function checkFirstView(context, $, record) {
   }
 
   const seal = keySpecs.get("seal");
-  if (!seal || !matchesSeal(seal)) {
-    addFailure("first-view-mismatch", context, `Seal must state PTFE + O-ring with no unsupported compound; found "${seal ?? "missing"}".`);
+  const localized = drawingBackedUiContract(locale, model);
+  if (model === "BP-3P-S06-0001") {
+    if (!seal || !matchesSeal(seal)) {
+      addFailure("first-view-mismatch", context, `Hybrid-model seal must state PTFE + O-ring with no unsupported compound; found "${seal ?? "missing"}".`);
+    }
+    const channels = keySpecs.get("channels");
+    if (!channels || channels !== localized?.keyValues?.channels) {
+      addFailure("first-view-mismatch", context, `Hybrid channels/MOQ must match the localized contract; found "${channels ?? "missing"}".`);
+    }
+  } else {
+    const passages = keySpecs.get("passages");
+    if (!passages || passages !== localized?.keyValues?.passages || /\bindependent\b/iu.test(passages)) {
+      addFailure("first-view-mismatch", context, `Passages/MOQ must match the topology-safe localized contract; found "${passages ?? "missing"}".`);
+    }
+    if (seal) {
+      addFailure("first-view-structure", context, "Ordinary-model seal must remain in the specification table, not the first-view cards.");
+    }
   }
 
   const media = keySpecs.get("media");
@@ -989,7 +1008,7 @@ if (manifest) {
         continue;
       }
 
-      checkFirstView(context, $, record);
+      checkFirstView(context, $, record, locale.code, model);
       const specPairs = collectSpecPairs($);
       if (specPairs.length === 0) {
         addFailure("spec-structure", context, "No specification table rows found in #panel-specs.");

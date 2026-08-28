@@ -134,14 +134,14 @@ async function loadDeepRelatedActionCopy() {
   markers.forEach((marker, index) => {
     const end = markers[index + 1]?.index ?? copyBlock.length;
     const localeBlock = copyBlock.slice(marker.index, end);
-    const match = /^\s*viewModel:\s*'([^'\\\r\n]*)',\s*compareModels:\s*'([^'\\\r\n]*)',\s*requestReview:\s*'([^'\\\r\n]*)',?\s*$/m.exec(localeBlock);
-    if (!match) {
+    const viewModelMatch = /^\s*viewModel:\s*'([^'\\\r\n]*)'/m.exec(localeBlock);
+    const requestReviewMatch = /\brequestReview:\s*'([^'\\\r\n]*)'/m.exec(localeBlock);
+    if (!viewModelMatch || !requestReviewMatch) {
       throw new Error(`Unable to read related-product action labels from drawing-backed deep COPY for ${marker.locale}.`);
     }
     actions[marker.locale] = Object.freeze({
-      viewModel: match[1],
-      compareModels: match[2],
-      requestReview: match[3],
+      viewModel: viewModelMatch[1],
+      requestReview: requestReviewMatch[1],
     });
   });
   return Object.freeze(actions);
@@ -163,12 +163,29 @@ function assertRelatedCardAction($, card, expected, label) {
   }
 }
 
+function expectedApplicationReviewHref(model, metadata) {
+  return `contact.html?request=application-review&model=${encodeURIComponent(model)}&product=${encodeURIComponent(metadata.linkLabel)}&source=${model}.html#quoteForm`;
+}
+
+function assertApplicationReviewEntrances($, model, pageName, metadata) {
+  const expectedHref = expectedApplicationReviewHref(model, metadata);
+  const reviewLinks = $('main a[href*="request=application-review"]');
+  if (reviewLinks.length !== 3) {
+    throw new Error(`${pageName}: expected exactly three application-review entry links; found ${reviewLinks.length}.`);
+  }
+  reviewLinks.each((index, element) => {
+    if ($(element).attr('href') !== expectedHref) {
+      throw new Error(`${pageName}: application-review entry ${index + 1} is missing the complete request/model/product/source/#quoteForm contract.`);
+    }
+  });
+}
+
 function assertDrawingBackedRelatedProducts($, model, locale, pageName, actions) {
   const grids = $('main .related-grid');
   if (grids.length !== 1) throw new Error(`${pageName}: expected exactly one related-products grid.`);
   const cards = grids.first().children('a.related-card');
-  if (cards.length !== 5 || $('.related-card').length !== 5) {
-    throw new Error(`${pageName}: drawing-backed related products must contain exactly five linked cards.`);
+  if (cards.length !== 4 || $('.related-card').length !== 4) {
+    throw new Error(`${pageName}: drawing-backed related products must contain exactly three model cards and one selection-help card.`);
   }
 
   const seenModels = new Set();
@@ -197,23 +214,15 @@ function assertDrawingBackedRelatedProducts($, model, locale, pageName, actions)
     assertRelatedCardAction($, card, actions.viewModel, `${pageName}: related model ${relatedModel}`);
   });
 
-  const comparison = cards.eq(3);
-  if (comparison.attr('href') !== 'product-comparison.html') {
-    throw new Error(`${pageName}: comparison card must link exactly to product-comparison.html.`);
-  }
-  if (comparison.children('h3').length !== 1 || compact(comparison.children('h3').text()) !== actions.compareModels) {
-    throw new Error(`${pageName}: comparison card heading must match the localized deep COPY action.`);
-  }
-  assertRelatedCardAction($, comparison, actions.compareModels, `${pageName}: comparison card`);
-
   const metadata = drawingBackedProductMetadata(locale, model);
   if (!metadata) throw new Error(`${pageName}: shared product metadata is missing.`);
-  const review = cards.eq(4);
-  const expectedReviewHref = `contact.html?request=application-review&model=${encodeURIComponent(model)}&product=${encodeURIComponent(metadata.linkLabel)}&source=${model}.html#quoteForm`;
+  const review = cards.eq(3);
+  const expectedReviewHref = expectedApplicationReviewHref(model, metadata);
   if (review.attr('href') !== expectedReviewHref) {
-    throw new Error(`${pageName}: engineering-review link is missing or has an incomplete request/model/product/source/#quoteForm contract.`);
+    throw new Error(`${pageName}: selection-help link is missing or has an incomplete request/model/product/source/#quoteForm contract.`);
   }
-  assertRelatedCardAction($, review, actions.requestReview, `${pageName}: engineering-review card`);
+  assertRelatedCardAction($, review, actions.requestReview, `${pageName}: selection-help card`);
+  assertApplicationReviewEntrances($, model, pageName, metadata);
 }
 
 function assertRelatedProducts($, { model, locale, pageName, actions } = {}) {

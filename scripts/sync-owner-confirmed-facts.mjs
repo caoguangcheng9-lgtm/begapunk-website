@@ -64,6 +64,11 @@ const retiredAboutSources = [
   `Founder &amp; Chief Engineer<br>Working in precision machining since 2006`,
   `Meet Begapunk, a Ningbo-based manufacturer of pneumatic rotary unions established in 2022, led by a founder working in precision machining since 2006.`,
   `Ningbo-based rotary joint manufacturer established in 2022, led by a founder working in precision machining since 2006.`,
+  `Leadership`,
+  `Meet the Team`,
+  `Founder &amp; Chief Engineer`,
+  `Production Manager`,
+  `International Sales<br>Fluent in EN/DE/ES`,
   `Begapunk is a specialized rotary joint (rotary union) manufacturer based in Ningbo, Zhejiang Province, China. We design and produce single-passage and multi-passage rotary unions for industrial automation, CNC machining, laser cutting, plastic extrusion, wind energy, and other rotating machinery applications.`,
   `Unlike general-purpose hydraulic component suppliers, we focus exclusively on rotary joints. This specialization allows us to offer deeper engineering support, faster custom prototyping, and more competitive pricing than multi-product competitors like Deublin or Kadant for equivalent specifications.`,
   `Our Ningbo facility combines CNC machining, assembly, inspection, and engineering support. Inspection scope, test pressure, and acceptance criteria are confirmed for each model and order.`,
@@ -72,6 +77,7 @@ const retiredAboutSources = [
 const retiredHomepageSources = [
   `Rotary Joint Manufacturing | Established 2022 | Standard & Custom Designs`,
   `Standard and custom pneumatic rotary joints for CNC, packaging, filling, laser cutting, and automation equipment.`,
+  `Company established in 2022`,
 ];
 
 const retiredBottleCappingSources = [
@@ -84,17 +90,26 @@ const retiredBottleCappingSources = [
   `BP-2P-16-0001 supplies clamp and release air through two independent compressed-air passages to a pneumatic three-jaw gripper on a customer production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Port numbering, operating pressure, rotational speed, and machine interface remain machine-specific and must be confirmed against the machine design and approved product data. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the verified production application →</a>`,
 ];
 
-const retiredWarrantySources = [
+const retiredCommercialPolicySources = [
   `Warranty terms`,
   `Warranty duration, start date, coverage, exclusions, evidence requirements, and remedies are established only by the formal quotation, accepted order, and any written warranty document supplied for that order.`,
+  `Production lead time, estimated dispatch date, shipping method, carrier, and transit estimate are confirmed for the specific quotation and accepted order. Unless expressly guaranteed in writing, dates are estimates rather than fixed delivery commitments.`,
+  `Custom-product lead time depends on drawing approval, material availability, inspection scope, quantity, destination, and other order requirements; it is confirmed in writing for each order.`,
+  `Customs, weather, carrier disruption, force majeure, or other events outside the parties' reasonable control may affect estimated dates; any resulting handling follows the accepted order and applicable law.`,
+  `The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.`,
+  `Repair, replacement, credit, refund, or another remedy is not automatic. The approved remedy, timing, return requirement, and shipping responsibility are confirmed in writing for the specific claim.`,
+  `<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> July 31, 2026`,
+  `Begapunk Precision Rotary Joint Manufacturer ("we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.`,
+  `These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Begapunk Precision Rotary Joint Manufacturer ("we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.`,
+  `These Terms are governed by the laws of the People's Republic of China. Any disputes shall be resolved through good-faith negotiation. If negotiation fails, disputes shall be submitted to the Ningbo International Arbitration Court.`,
 ];
 
 const rows = [
   {
-    source: `Company established in 2022`,
-    de: `Unternehmen 2022 gegründet`,
-    ja: `2022年に会社設立`,
-    ru: `Компания основана в 2022 году`,
+    source: `Ningbo factory · established in 2022`,
+    de: `Werk in Ningbo · gegründet 2022`,
+    ja: `寧波工場 · 2022年設立`,
+    ru: `Завод в Нинбо · основан в 2022 году`,
   },
   {
     source: `Ningbo-based manufacturer of standard and custom rotary joints for industrial automation, established in 2022.`,
@@ -115,10 +130,70 @@ const rows = [
     ru: `Компания Ningbo Begapunk Pneumatic Components Co., Ltd. была основана для разработки и производства пневматических вращающихся соединений для промышленного оборудования.`,
   },
   {
-    source: `Founder &amp; Chief Engineer`,
-    de: `Gründer &amp; leitender Ingenieur`,
-    ja: `創業者・技術責任者`,
-    ru: `Основатель и главный инженер`,
+    source: `Project Support`,
+    de: `Projektunterstützung`,
+    ja: `案件対応`,
+    ru: `Поддержка проектов`,
+  },
+  {
+    source: `Engineering, Production &amp; Sales`,
+    de: `Technik, Fertigung &amp; Vertrieb`,
+    ja: `技術・製造・営業`,
+    ru: `Инженерная поддержка, производство и продажи`,
+  },
+  {
+    source: `Founder &amp; Engineer`,
+    de: `Gründer &amp; Ingenieur`,
+    ja: `創業者・エンジニア`,
+    ru: `Основатель и инженер`,
+  },
+  {
+    source: `Production &amp; Quality`,
+    de: `Fertigung &amp; Qualität`,
+    ja: `製造・品質管理`,
+    ru: `Производство и качество`,
+  },
+  {
+    source: `Machining, assembly, and passage-by-passage inspection`,
+    de: `Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals`,
+    ja: `加工・組立・各流路の検査を調整`,
+    ru: `Координация обработки, сборки и проверки каждого канала`,
+  },
+  {
+    source: `International Sales`,
+    de: `Internationaler Vertrieb`,
+    ja: `海外営業`,
+    ru: `Международные продажи`,
+  },
+  {
+    source: `Inquiry, drawing, quotation, and order coordination`,
+    de: `Koordination von Anfragen, Zeichnungen, Angeboten und Aufträgen`,
+    ja: `お問い合わせ・図面・見積・注文を調整`,
+    ru: `Координация запросов, чертежей, предложений и заказов`,
+  },
+  {
+    source: `Aluminum, carbon-steel, and stainless-steel components are machined to the approved drawing.`,
+    de: `Bauteile aus Aluminium, Kohlenstoffstahl und Edelstahl werden nach der freigegebenen Zeichnung bearbeitet.`,
+    ja: `アルミニウム、炭素鋼、ステンレス鋼の部品を承認図面に基づいて加工します。`,
+    ru: `Компоненты из алюминия, углеродистой и нержавеющей стали обрабатываются по согласованному чертежу.`,
+  },
+  {
+    source: `Each finished unit is leak-tested passage by passage. If your project requires a specific test record, tell us before ordering.`,
+    de: `Jede fertige Einheit wird Kanal für Kanal auf Dichtheit geprüft. Wenn Sie ein bestimmtes Prüfprotokoll benötigen, teilen Sie uns dies bitte vor der Bestellung mit.`,
+    ja: `完成品は流路ごとに漏れ検査を行います。特定の検査記録が必要な場合は、ご注文前にお知らせください。`,
+    ru: `Каждое готовое изделие проверяется на герметичность по каждому каналу. Если вам нужен конкретный протокол испытаний, сообщите об этом до заказа.`,
+  },
+  {
+    source: `Products are packed for shipment with the agreed documents. We provide 2D drawings and STEP/IGES models for the selected configuration.`,
+    de: `Die Produkte werden mit den vereinbarten Unterlagen versandfertig verpackt. Für die ausgewählte Ausführung stellen wir 2D-Zeichnungen und STEP-/IGES-Modelle bereit.`,
+    ja: `製品は、合意した書類とともに出荷用に梱包します。選定仕様の2D図面とSTEP／IGESモデルを提供します。`,
+    ru: `Изделия упаковываются для отправки с согласованными документами. Для выбранного исполнения мы предоставляем 2D-чертежи и модели STEP/IGES.`,
+  },
+  {
+    source: `See our manufacturing and inspection process.`,
+    de: `Mehr über unsere Fertigung und Prüfung erfahren.`,
+    ja: `製造・検査工程を見る。`,
+    ru: `Подробнее о производстве и контроле.`,
   },
   {
     source: `Meet Begapunk, a Ningbo-based manufacturer of standard and custom pneumatic rotary joints for industrial automation and rotating machinery.`,
@@ -145,10 +220,10 @@ const rows = [
     ru: `До начала производства наша команда согласует с изготовителями оборудования количество каналов, давление, частоту вращения, монтажное пространство, материалы и требования к присоединению. Это позволяет подобрать стандартную модель или специальное исполнение с учётом фактической компоновки машины и условий эксплуатации.`,
   },
   {
-    source: `At our Ningbo facility, aluminum and steel components are CNC-machined, assembled, and inspected. After final assembly, every finished rotary joint is leak-tested passage by passage before packing and storage. Project drawings, inspection requirements, and documentation are confirmed during quotation and order review.`,
-    de: `In unserem Werk in Ningbo werden Bauteile aus Aluminium und Stahl CNC-bearbeitet, montiert und geprüft. Nach der Endmontage wird bei jeder fertigen Drehdurchführung jeder einzelne Kanal auf Dichtheit geprüft, bevor das Produkt verpackt und eingelagert wird. Projektzeichnungen, Prüfvorgaben und Dokumentationsumfang werden im Angebots- und Auftragsprozess abgestimmt.`,
-    ja: `寧波の生産拠点では、アルミニウムおよび鋼製部品のCNC加工、組立、検査を行っています。最終組立後、完成したロータリージョイントはすべて、梱包・保管前に各流路ごとの漏れ検査を実施します。案件図面、検査要件、提供資料は、見積・注文確認の段階で確定します。`,
-    ru: `На нашем производстве в Нинбо детали из алюминия и стали обрабатываются на станках с ЧПУ, собираются и проходят контроль. После окончательной сборки каждый канал готового вращающегося соединения проверяется на герметичность перед упаковкой и хранением. Проектные чертежи, требования к контролю и состав документации согласуются при подготовке коммерческого предложения и подтверждении заказа.`,
+    source: `Components are machined to the approved drawing, assembled, and inspected in Ningbo. Each finished rotary joint is leak-tested passage by passage before packing. Any project-specific test or document requirements are agreed before production.`,
+    de: `In Ningbo bearbeiten wir Bauteile nach der freigegebenen Zeichnung, montieren sie und prüfen die fertigen Einheiten. Jede fertige Drehdurchführung wird vor dem Verpacken Kanal für Kanal auf Dichtheit geprüft. Projektspezifische Prüf- oder Dokumentationsanforderungen stimmen wir vor Fertigungsbeginn ab.`,
+    ja: `寧波で、承認図面に基づく部品加工、組立、検査を行っています。完成したロータリージョイントは、梱包前に各流路ごとに漏れ検査を実施します。案件固有の試験や提出資料が必要な場合は、製造前に内容を確認します。`,
+    ru: `В Нинбо мы изготавливаем детали по согласованным чертежам, собираем и проверяем готовые узлы. Перед упаковкой каждое готовое вращающееся соединение проверяется на герметичность по каждому каналу. Специальные требования к испытаниям или документам согласуются до начала производства.`,
   },
   {
     source: `Warranty period`,
@@ -187,17 +262,41 @@ const rows = [
     ru: `Применимость: трёхкулачковый пневматический захват для крышек`,
   },
   {
-    source: `BP-2P-08-0001 can also be selected for this application type. The customer-authorized photograph identifies BP-2P-16-0001, not BP-2P-08-0001. Check the required passage count, mounting interface, pressure, speed, and dimensions against the current BP-2P-08-0001 drawing before selection. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Review the production application and model boundary →</a>`,
-    de: `BP-2P-08-0001 kann ebenfalls für diesen Anwendungstyp ausgewählt werden. Das vom Kunden freigegebene Foto zeigt BP-2P-16-0001 und nicht BP-2P-08-0001. Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen vor der Auswahl mit der aktuellen Zeichnung für BP-2P-08-0001 abgleichen. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Produktionsanwendung und Modellgrenze ansehen →</a>`,
-    ja: `BP-2P-08-0001もこの用途で選定できます。ただし、お客様から公開許可を得た写真で確認されている製品はBP-2P-16-0001であり、BP-2P-08-0001ではありません。選定時は流路数、取付インターフェース、圧力、回転数、寸法を最新のBP-2P-08-0001図面と照合してください。<a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">量産用途と型式の境界を確認 →</a>`,
-    ru: `BP-2P-08-0001 также можно выбрать для такого применения. На разрешённой заказчиком фотографии идентифицирована BP-2P-16-0001, а не BP-2P-08-0001. Перед выбором сопоставьте число каналов, монтажный интерфейс, давление, частоту вращения и размеры с актуальным чертежом BP-2P-08-0001. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">См. производственное применение и границу идентификации модели →</a>`,
+    source: `BP-2P-08-0001 is another two-passage option for pneumatic three-jaw bottle-cap grippers. Compare its mounting dimensions and operating limits with BP-2P-16-0001 before selection. The linked production example uses BP-2P-16-0001. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Compare the application and models →</a>`,
+    de: `BP-2P-08-0001 ist eine weitere Zweikanal-Option für pneumatische 3-Finger-Zentrischgreifer von Flaschenverschlüssen. Vergleichen Sie vor der Auswahl Einbaumaße und Betriebsgrenzen mit BP-2P-16-0001. Im verlinkten Produktionsbeispiel wird BP-2P-16-0001 eingesetzt. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Anwendung und Modelle vergleichen →</a>`,
+    ja: `BP-2P-08-0001は、ボトルキャップ用3爪エアチャックに対応する別の2流路仕様です。選定前に、取付寸法と使用限界をBP-2P-16-0001と比較してください。リンク先の量産事例ではBP-2P-16-0001を使用しています。<a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">用途と型式を比較 →</a>`,
+    ru: `BP-2P-08-0001 — ещё один двухканальный вариант для трёхкулачковых пневматических захватов крышек. Перед выбором сравните его монтажные размеры и рабочие пределы с BP-2P-16-0001. В связанном производственном примере используется BP-2P-16-0001. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Сравнить применение и модели →</a>`,
   },
   ...technicalNoteRows,
   {
     source: `Specification mismatches are an avoidable source of application problems. Operating above a model's published limits, or selecting a seal and material combination without reviewing the medium and duty, can lead to leakage or damage. Confirm the current product page and approved drawing before ordering.`,
-    de: `Nicht übereinstimmende Spezifikationen sind eine vermeidbare Ursache für Anwendungsprobleme. Der Betrieb oberhalb der veröffentlichten Grenzwerte eines Modells oder die Auswahl einer Dichtungs- und Werkstoffkombination ohne Prüfung von Medium und Einsatzbedingungen kann zu Leckage oder Schäden führen. Prüfen Sie vor der Bestellung die aktuelle Produktseite und die freigegebene Zeichnung.`,
+    de: `Abweichungen zwischen Anwendung und Spezifikation sind eine vermeidbare Ursache für Probleme. Werden die veröffentlichten Grenzwerte eines Modells überschritten oder Dichtungs- und Werkstoffkombinationen gewählt, ohne Medium und Einsatzbedingungen zu prüfen, können Leckagen oder Schäden entstehen. Prüfen Sie deshalb vor der Bestellung die aktuelle Produktseite und die freigegebene Zeichnung.`,
     ja: `仕様の不一致は、回避できる用途トラブルの原因です。各型式の公開限界を超えて使用したり、使用流体や運転条件を確認せずにシールと材質の組合せを選定したりすると、漏れや損傷につながるおそれがあります。ご注文前に、最新の製品ページと承認図面をご確認ください。`,
     ru: `Несоответствие спецификации — предотвратимая причина проблем при эксплуатации. Работа за пределами опубликованных характеристик модели или выбор сочетания уплотнения и материала без учета рабочей среды и режима эксплуатации может привести к утечке или повреждению. Перед заказом проверьте актуальную страницу изделия и согласованный чертеж.`,
+  },
+  {
+    source: `<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> August 28, 2026`,
+    de: `<strong>Gültig ab:</strong> 11. Juni 2026<br>\n\n    <strong>Zuletzt aktualisiert:</strong> 28. August 2026`,
+    ja: `<strong>施行日：</strong>2026年6月11日<br>\n\n    <strong>最終更新日：</strong>2026年8月28日`,
+    ru: `<strong>Дата вступления в силу:</strong> 11 июня 2026 г.<br>\n\n    <strong>Последнее обновление:</strong> 28 августа 2026 г.`,
+  },
+  {
+    source: `Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.`,
+    de: `Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“) respektiert Ihre Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Daten erheben, verwenden, weitergeben und schützen, wenn Sie unsere Website besuchen oder eine Anfrage senden.`,
+    ja: `Ningbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）は、お客様のプライバシーを尊重します。本プライバシーポリシーは、当社ウェブサイトの利用またはお問い合わせ時に、情報をどのように取得、利用、提供、保護するかを説明するものです。`,
+    ru: `Компания Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы») уважает вашу конфиденциальность. Настоящая Политика объясняет, как мы собираем, используем, передаём и защищаем данные при посещении сайта или отправке запроса.`,
+  },
+  {
+    source: `These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.`,
+    de: `Diese Allgemeinen Geschäftsbedingungen („Bedingungen“) regeln die Nutzung der Begapunk-Website und den Kauf von Drehdurchführungen bei Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“). Mit dem Zugriff auf unsere Website oder der Erteilung einer Bestellung stimmen Sie diesen Bedingungen zu.`,
+    ja: `本利用規約・取引条件（以下「本規約」）は、Begapunkウェブサイトの利用およびNingbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）からのロータリージョイント製品の購入に適用されます。本ウェブサイトへのアクセスまたは注文をもって、本規約に同意したものとみなします。`,
+    ru: `Настоящие условия поставки и использования («Условия») регулируют использование сайта Begapunk и приобретение ротационных соединений у компании Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы»). Используя сайт или размещая заказ, вы соглашаетесь с настоящими Условиями.`,
+  },
+  {
+    source: `These Terms are governed by the laws of the People's Republic of China. Any dispute arising from or in connection with these Terms shall first be resolved through good-faith negotiation. If negotiation fails, the dispute shall be submitted to Ningbo Arbitration Commission for arbitration in accordance with its arbitration rules in effect at the time of submission.`,
+    de: `Diese Bedingungen unterliegen dem Recht der Volksrepublik China. Jede Streitigkeit aus oder im Zusammenhang mit diesen Bedingungen soll zunächst durch Verhandlungen nach Treu und Glauben beigelegt werden. Scheitern die Verhandlungen, wird die Streitigkeit der Ningbo Arbitration Commission zur Schiedsentscheidung nach deren zum Zeitpunkt der Einreichung geltender Schiedsordnung vorgelegt.`,
+    ja: `本規約は中華人民共和国の法律に準拠します。本規約に起因し、または関連する紛争は、まず誠実な協議により解決を図るものとします。協議で解決できない場合、当該紛争をNingbo Arbitration Commission（寧波仲裁委員会）に付託し、申立時に有効な同委員会の仲裁規則に従って仲裁により解決します。`,
+    ru: `Настоящие Условия регулируются законодательством Китайской Народной Республики. Любой спор, возникающий из настоящих Условий или в связи с ними, стороны сначала стремятся урегулировать путём добросовестных переговоров. Если договориться не удаётся, спор передаётся в Ningbo Arbitration Commission (Арбитражную комиссию Нинбо) для разрешения в соответствии с её арбитражным регламентом, действующим на момент подачи заявления.`,
   },
   {
     source: `Any prices shown on the website are indicative only. The formal quotation and accepted order govern the final price, currency, quantity, specification, and commercial conditions.`,
@@ -236,16 +335,22 @@ const rows = [
     ru: `Доступные способы оплаты и возможные комиссии подтверждаются для конкретного коммерческого предложения и заказа.`,
   },
   {
-    source: `Production lead time, estimated dispatch date, shipping method, carrier, and transit estimate are confirmed for the specific quotation and accepted order. Unless expressly guaranteed in writing, dates are estimates rather than fixed delivery commitments.`,
-    de: `Produktionszeit, voraussichtlicher Versandtermin, Versandart, Frachtführer und voraussichtliche Laufzeit werden für das jeweilige Angebot und den angenommenen Auftrag bestätigt. Sofern nicht ausdrücklich schriftlich verbindlich zugesagt, sind Termine Schätzwerte und keine festen Lieferzusagen.`,
-    ja: `生産リードタイム、出荷予定日、輸送方法、運送業者および輸送所要日数の見込みは、個別の見積書および受諾済み注文書で確認されます。書面で明示的に保証されない限り、日程は目安であり、確定した納期ではありません。`,
-    ru: `Срок производства, расчетная дата отгрузки, способ перевозки, перевозчик и расчетный срок доставки подтверждаются для конкретного коммерческого предложения и принятого заказа. Если иное прямо не гарантировано в письменной форме, даты являются ориентировочными и не представляют собой твердых обязательств по поставке.`,
+    source: `The minimum order quantity is one unit for both catalog and custom products.`,
+    de: `Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen 1 Stück.`,
+    ja: `カタログ品、特注品ともに最小注文数量は1個です。`,
+    ru: `Минимальный заказ составляет 1 шт. как для каталожных моделей, так и для заказных изделий.`,
   },
   {
-    source: `Custom-product lead time depends on drawing approval, material availability, inspection scope, quantity, destination, and other order requirements; it is confirmed in writing for each order.`,
-    de: `Die Lieferzeit für Sonderprodukte hängt von Zeichnungsfreigabe, Materialverfügbarkeit, Prüfumfang, Menge, Bestimmungsort und weiteren Auftragsanforderungen ab und wird für jeden Auftrag schriftlich bestätigt.`,
-    ja: `特注品のリードタイムは、図面承認、材料の調達状況、検査範囲、数量、仕向地およびその他の注文要件によって異なり、注文ごとに書面で確定します。`,
-    ru: `Срок изготовления специального изделия зависит от согласования чертежа, наличия материалов, объема контроля, количества, пункта назначения и других требований заказа и подтверждается в письменной форме для каждого заказа.`,
+    source: `Catalog models typically take about 20 calendar days to produce. Custom products are completed within 30 calendar days. Production time starts when payment is received and does not include international shipping.`,
+    de: `Die Fertigungszeit für Katalogmodelle beträgt typischerweise etwa 20 Kalendertage. Sonderanfertigungen werden innerhalb von 30 Kalendertagen fertiggestellt. Die Fertigungszeit beginnt mit dem Zahlungseingang und umfasst nicht den internationalen Transport.`,
+    ja: `カタログ品の製作期間は通常約20暦日です。特注品は30暦日以内に製作を完了します。製作期間は入金確認後から起算し、国際輸送期間は含みません。`,
+    ru: `Срок изготовления каталожных моделей обычно составляет около 20 календарных дней. Заказные изделия изготавливаются в течение 30 календарных дней. Срок изготовления исчисляется с момента получения оплаты и не включает международную перевозку.`,
+  },
+  {
+    source: `The estimated dispatch date, shipping method, carrier, and transit estimate are confirmed in the formal quotation and accepted order.`,
+    de: `Der voraussichtliche Versandtermin, die Versandart, der Frachtführer und die voraussichtliche Transportzeit werden im formellen Angebot und angenommenen Auftrag bestätigt.`,
+    ja: `出荷予定日、輸送方法、運送業者および輸送所要日数の見込みは、正式な見積書および受諾済み注文書で確認します。`,
+    ru: `Расчетная дата отгрузки, способ перевозки, перевозчик и расчетный срок доставки подтверждаются в официальном коммерческом предложении и принятом заказе.`,
   },
   {
     source: `EXW, FOB, CIF, DDP, or another Incoterm may be considered when expressly stated in the formal quotation and accepted order. Mention of an Incoterm on this page does not promise its availability for every order.`,
@@ -260,16 +365,16 @@ const rows = [
     ru: `Ответственность за перевозку, страхование, экспортное или импортное таможенное оформление, пошлины, налоги, переход рисков и поставку определяется исключительно согласованным условием Incoterms и письменными условиями заказа. Begapunk не принимает на себя импортное оформление, пошлины или налоги, если такая ответственность прямо не принята в письменной форме.`,
   },
   {
-    source: `Customs, weather, carrier disruption, force majeure, or other events outside the parties' reasonable control may affect estimated dates; any resulting handling follows the accepted order and applicable law.`,
-    de: `Zollabwicklung, Wetter, Störungen beim Frachtführer, höhere Gewalt oder andere Ereignisse außerhalb der zumutbaren Kontrolle der Parteien können voraussichtliche Termine beeinflussen; die weitere Behandlung richtet sich nach dem angenommenen Auftrag und dem anwendbaren Recht.`,
-    ja: `通関、天候、運送業者の混乱、不可抗力その他当事者の合理的な支配を超える事象により予定日が影響を受ける場合があります。その際の対応は、受諾済み注文書および適用法令に従います。`,
-    ru: `Таможенные процедуры, погодные условия, сбои в работе перевозчика, обстоятельства непреодолимой силы и другие события вне разумного контроля сторон могут повлиять на расчетные сроки; последующие действия определяются принятым заказом и применимым законодательством.`,
+    source: `Customs clearance, weather, carrier disruption, or other events outside the parties' reasonable control may affect dispatch or international transit after production is completed; any resulting handling follows the accepted order and applicable law.`,
+    de: `Zollabwicklung, Wetter, Störungen beim Frachtführer oder andere Ereignisse außerhalb der zumutbaren Kontrolle der Parteien können den Versand oder den internationalen Transport nach Fertigstellung der Produktion beeinflussen; die weitere Behandlung richtet sich nach dem angenommenen Auftrag und dem anwendbaren Recht.`,
+    ja: `通関、天候、運送業者の混乱その他当事者の合理的な支配を超える事象により、製作完了後の出荷または国際輸送に影響が生じる場合があります。その際の対応は、受諾済み注文書および適用法令に従います。`,
+    ru: `Таможенные процедуры, погодные условия, сбои в работе перевозчика и другие события вне разумного контроля сторон могут повлиять на отгрузку или международную перевозку после завершения производства; последующие действия определяются принятым заказом и применимым законодательством.`,
   },
   {
-    source: `The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.`,
-    de: `Der Garantiezeitraum für alle Begapunk-Produkte beträgt ein Jahr. Garantiebeginn, Deckungsumfang, Ausschlüsse, Nachweisanforderungen und Abhilfemaßnahmen richten sich nach dem formellen Angebot, dem angenommenen Auftrag und etwaigen schriftlichen Garantieunterlagen für den jeweiligen Auftrag.`,
-    ja: `Begapunkの全製品の保証期間は1年間です。保証開始日、保証範囲、免責事項、必要な証拠および救済措置は、正式な見積書、受諾済み注文書、および当該注文に関する書面の保証文書に従います。`,
-    ru: `Гарантийный срок на всю продукцию Begapunk составляет один год. Дата начала гарантии, объем покрытия, исключения, требования к подтверждающим материалам и способы урегулирования определяются официальным коммерческим предложением, принятым заказом и письменным гарантийным документом для соответствующего заказа.`,
+    source: `Begapunk's standard warranty period is one year from the shipment date for all products, subject to the approved specification and written order terms.`,
+    de: `Die reguläre Garantiezeit für alle Begapunk-Produkte beträgt ein Jahr ab Versanddatum und gilt im Rahmen der freigegebenen Spezifikation und der schriftlichen Auftragsbedingungen.`,
+    ja: `Begapunk全製品の標準保証期間は出荷日から1年間とし、承認済み仕様および書面による注文条件に従います。`,
+    ru: `Стандартный гарантийный срок на всю продукцию Begapunk составляет один год с даты отгрузки и действует в рамках согласованной спецификации и письменных условий заказа.`,
   },
   {
     source: `A reported issue is subject to review against the approved specification, documented operating conditions, installation, maintenance, and inspection information.`,
@@ -284,10 +389,10 @@ const rows = [
     ru: `До принятия решения о том, подпадает ли претензия под гарантию, Begapunk может запросить фотографии, эксплуатационные записи, результаты контроля или возврат изделия.`,
   },
   {
-    source: `Repair, replacement, credit, refund, or another remedy is not automatic. The approved remedy, timing, return requirement, and shipping responsibility are confirmed in writing for the specific claim.`,
-    de: `Reparatur, Ersatz, Gutschrift, Rückerstattung oder eine andere Abhilfemaßnahme erfolgt nicht automatisch. Die genehmigte Maßnahme, deren Zeitpunkt, eine etwaige Rücksendepflicht und die Versandverantwortung werden für den jeweiligen Anspruch schriftlich bestätigt.`,
-    ja: `修理、交換、相殺、返金その他の救済措置が自動的に適用されるものではありません。承認された措置、その実施時期、返送の要否および輸送責任は、個別の申請ごとに書面で確認されます。`,
-    ru: `Ремонт, замена, зачет, возврат денежных средств или иной способ урегулирования не предоставляются автоматически. Одобренный способ урегулирования, сроки, необходимость возврата и ответственность за перевозку подтверждаются в письменной форме для конкретной претензии.`,
+    source: `If Begapunk confirms a covered product or manufacturing defect for which it is responsible, the standard remedy is a replacement at no charge. Begapunk covers the return and replacement-shipment costs agreed in writing for that claim. Other issues are handled according to the inspection findings and the written agreement between the parties.`,
+    de: `Bestätigt Begapunk einen von der Garantie gedeckten Produkt- oder Fertigungsfehler, für den Begapunk verantwortlich ist, erfolgt als reguläre Abhilfe ein kostenloser Ersatz. Begapunk übernimmt die für diesen Fall schriftlich vereinbarten Kosten der Rücksendung und Ersatzlieferung. Andere Fälle werden anhand der Prüfergebnisse und der schriftlichen Vereinbarung zwischen den Parteien behandelt.`,
+    ja: `Begapunkが自社の責任による保証対象の製品不良または製造不良であると確認した場合、標準対応として無償で交換します。Begapunkは、当該申請について書面で合意した返送費用および交換品の発送費用を負担します。その他の場合は、検査結果および両当事者間の書面による合意に基づいて対応します。`,
+    ru: `Если Begapunk подтверждает покрываемый гарантией дефект изделия или производства, за который несет ответственность, стандартной мерой является бесплатная замена. Begapunk оплачивает согласованные в письменной форме расходы на возврат и отправку замены по данной претензии. В остальных случаях решение принимается на основании результатов проверки и письменного соглашения сторон.`,
   },
   {
     source: `No automatic return period or full-refund right is promised by this page. Any return or refund requires prior written authorization and follows the formal quotation, accepted order, and applicable law.`,
@@ -327,7 +432,7 @@ const directManagedProductSources = new Set([
   `Production Application: Pneumatic Three-Jaw Bottle-Cap Gripper`,
   `BP-2P-16-0001 routes compressed air through two independent passages for clamping and releasing a pneumatic three-jaw gripper on a customer's production capping machine. The gripper holds and rotates the bottle cap during capping. The customer remains anonymous. Check the required port functions, operating pressure, rotational speed, and machine interface against the machine requirements and current BP-2P-16-0001 drawing. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">View the production application →</a>`,
   `Application Fit: Pneumatic Three-Jaw Bottle-Cap Gripper`,
-  `BP-2P-08-0001 can also be selected for this application type. The customer-authorized photograph identifies BP-2P-16-0001, not BP-2P-08-0001. Check the required passage count, mounting interface, pressure, speed, and dimensions against the current BP-2P-08-0001 drawing before selection. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Review the production application and model boundary →</a>`,
+  `BP-2P-08-0001 is another two-passage option for pneumatic three-jaw bottle-cap grippers. Compare its mounting dimensions and operating limits with BP-2P-16-0001 before selection. The linked production example uses BP-2P-16-0001. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Compare the application and models →</a>`,
   ...technicalNoteRows.map((row) => row.source),
 ]);
 if (directManagedProductSources.size !== 12
@@ -361,7 +466,7 @@ for (const language of ['de', 'ja', 'ru']) {
     ...retiredHomepageSources,
     ...retiredAboutSources,
     ...retiredBottleCappingSources,
-    ...retiredWarrantySources,
+    ...retiredCommercialPolicySources,
   ];
   const retiredPresent = retiredSources.filter((source) => Object.hasOwn(current, source));
   const directManagedPresent = [...directManagedProductSources]
@@ -369,8 +474,9 @@ for (const language of ['de', 'ja', 'ru']) {
   const missing = catalogManagedRows.filter((row) => current[row.source] !== row[language]);
   if (checkOnly) {
     if (missing.length || retiredPresent.length || directManagedPresent.length) {
+      const missingSources = missing.map((row) => `\n    missing: ${row.source}`).join('');
       checkFailures.push(
-        `${language}: missing catalog-managed=${missing.length}; retired legacy=${retiredPresent.length}; direct-managed orphan=${directManagedPresent.length}.`,
+        `${language}: missing catalog-managed=${missing.length}; retired legacy=${retiredPresent.length}; direct-managed orphan=${directManagedPresent.length}.${missingSources}`,
       );
     }
     continue;

@@ -136,7 +136,9 @@
   },
   "application-laser-tube-cutting.html": {
     "title": "Pneumatische Drehdurchführungen für hintere Spannfutter | Begapunk",
-    "description": "Auswahl pneumatischer Drehdurchführungen für Druckluftkreise am hinteren Spannfutter von Laser-Rohrschneidmaschinen anhand der Anzahl der Pneumatikkreise, des Betriebsdrucks, der Drehzahl, des Bauraums, der Anschlüsse und der Schlauchausrichtung.",
+    "description": "Zwei- und Dreikanal-Drehdurchführungen für Druckluft am hinteren Spannfutter vergleichen. Für den Einstieg genügt ein Modell, Foto oder eine Zeichnung; Betriebsdaten können Sie ergänzen, soweit bekannt.",
+    "ogDescription": "Zwei- und Dreikanal-Drehdurchführungen für Druckluft am hinteren Spannfutter vergleichen. Für den Einstieg genügt ein Modell, Foto oder eine Zeichnung; Betriebsdaten können Sie ergänzen, soweit bekannt.",
+    "twitterDescription": "Zwei- und Dreikanal-Drehdurchführungen für Druckluft am hinteren Spannfutter vergleichen. Für den Einstieg genügt ein Modell, Foto oder eine Zeichnung; Betriebsdaten können Sie ergänzen, soweit bekannt.",
     "h1": "Pneumatische Drehdurchführungen für hintere Spannfutter von Laser-Rohrschneidmaschinen"
   },
   "application-packaging-machinery.html": {
@@ -181,7 +183,9 @@
   },
   "blog.html": {
     "title": "Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk",
-    "description": "Praxisnahe Leitfäden zu Funktionsprinzip, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen.",
+    "description": "Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.",
+    "ogDescription": "Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.",
+    "twitterDescription": "Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.",
     "h1": "Auswahl, Montage und Dichtungen von Drehdurchführungen"
   },
   "blog-non-contact-clearance-seal-rotary-union.html": {
@@ -231,7 +235,7 @@
   },
   "case-bp-2p-95-pneumatic-chuck-integration.html": {
     "title": "BP-2P-95-0005 im pneumatischen Spannfutter | Begapunk",
-    "description": "Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0005. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.",
+    "description": "BP-2P-95-0005 führt Druckluft von der feststehenden Seite zum rotierenden pneumatischen Spannfutter. Fotos zeigen Einbauposition und Schlauchführung.",
     "h1": "BP-2P-95-0005 – Einbaubeispiel in einem pneumatischen Spannfutter"
   },
   "case-bp-3p-s06-sensor-monitored-chuck.html": {
@@ -246,7 +250,7 @@
   },
   "contact.html": {
     "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
-    "description": "Drehdurchführung anfragen: Medium, Druck, Drehzahl, Kanalzahl, Anschluss, Einbauraum und Zeichnung für eine technische Prüfung übermitteln.",
+    "description": "Für die Anfrage einer Drehdurchführung genügen Modellbezeichnung, Foto, Zeichnung oder bekannte Betriebsdaten. In der Regel antworten wir innerhalb eines Arbeitstags.",
     "h1": "Drehdurchführung anfragen"
   },
   "search.html": {
@@ -266,7 +270,7 @@
   },
   "thank-you.html": {
     "title": "Anfrage eingegangen | Begapunk",
-    "description": "Ihre technische Anfrage wurde übermittelt. Ergänzende Zeichnungen oder Betriebsdaten können Sie direkt an Begapunk senden.",
+    "description": "Ihre Anfrage ist bei uns eingegangen. Unsere Ingenieure antworten normalerweise innerhalb eines Arbeitstags und fragen nur nach Angaben, die für die Antwort noch fehlen.",
     "h1": "Vielen Dank für Ihre Anfrage"
   },
   "404.html": {

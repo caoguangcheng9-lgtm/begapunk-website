@@ -662,7 +662,13 @@ async function validateDrawingBackedPublicPolicy(locale) {
       failures.push(`${detailRelative}: visible product data is missing drawing-backed ${field} value (${contract.fields[field]})`);
     }
   }
-  for (const field of ['performance', 'seal', 'mount', 'media']) {
+  if ($('.pd-price-note').length) {
+    failures.push(`${detailRelative}: retired first-view price note remains`);
+  }
+  if ($('.pd-key-spec[data-spec-key="seal"]').length) {
+    failures.push(`${detailRelative}: ordinary-model first view must not repeat the seal specification`);
+  }
+  for (const field of ['performance', 'passages', 'mount', 'media']) {
     const actual = $(`.pd-key-spec[data-spec-key="${field}"] dd`).first().text().replace(/\s+/g, ' ').trim();
     if (actual !== contract.keyValues[field]) {
       failures.push(`${detailRelative}: key specification ${field} does not match the drawing-backed localized contract`);

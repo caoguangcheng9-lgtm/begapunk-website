@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You! | Begapunk Rotary Joint Inquiry Submitted</title>
-  <meta name="description" content="Your rotary joint inquiry has been submitted successfully. Our engineering team will review your inquiry. Download catalog or chat with us on WhatsApp.">
+  <title>Inquiry Received | Begapunk</title>
+  <meta name="description" content="We have received your inquiry. Our engineers normally reply within one business day and ask only for details needed to answer your request.">
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="alternate" hreflang="en" href="https://www.begapunk.com/thank-you.html">
@@ -13,21 +13,21 @@
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/thank-you.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/thank-you.html">
 <link rel="canonical" href="https://www.begapunk.com/thank-you.html">
-  <link rel="stylesheet" href="css/style.css?v=20260817-cls1">
+  <link rel="stylesheet" href="css/style.css?v=20260825-nav-compact1">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Inquiry Submitted | Begapunk">
-  <meta property="og:description" content="Thank you for your inquiry. Our team will review your inquiry.">
+  <meta property="og:title" content="Inquiry Received | Begapunk">
+  <meta property="og:description" content="We have received your inquiry. Our engineers normally reply within one business day and ask only for details needed to answer your request.">
   <meta property="og:url" content="https://www.begapunk.com/thank-you.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Inquiry Submitted | Begapunk">
-  <meta name="twitter:description" content="Thank you for your inquiry. Our team will review your inquiry.">
+  <meta name="twitter:title" content="Inquiry Received | Begapunk">
+  <meta name="twitter:description" content="We have received your inquiry. Our engineers normally reply within one business day and ask only for details needed to answer your request.">
   <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
   <style>
@@ -120,15 +120,35 @@
       background: #128c7e !important;
     }
     .trust-badges {
-      margin-top: 48px;
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 800px;
+      margin: 44px auto 0;
     }
     .trust-badges span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
       font-size: 0.85rem;
       color: var(--text-light);
+      line-height: 1.45;
+    }
+    .trust-badges span::before {
+      content: "\2713";
+      flex: 0 0 auto;
+      margin-right: 8px;
+      color: #0f8b7d;
+      font-weight: 700;
+    }
+    @media (max-width: 700px) {
+      .thank-you-section { padding: 56px 0; }
+      .trust-badges { grid-template-columns: 1fr; }
     }
   </style>
     <script defer src="js/analytics.js?v=20260727-render-qa"></script>
@@ -148,7 +168,6 @@
      <a href="products.html" class="nav-dropdown-toggle">Products <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
       <a href="product-comparison.html">Model Comparison</a>
-      <a href="contact.html">Custom RFQ</a>
      </div>
     </div>
     <div class="nav-dropdown">
@@ -157,25 +176,10 @@
       <a href="case-studies.html">Case Studies</a>
       <a href="application-laser-tube-cutting.html">Laser Tube Cutting</a>
       <a href="application-packaging-machinery.html">Packaging Machinery</a>
-      <a href="application-bottle-filling-capping.html">Bottle Filling &amp; Capping</a>
       <a href="application-cnc-pneumatic-clamping.html">CNC Pneumatic Clamping</a>
      </div>
     </div>
-    <div class="nav-dropdown">
-     <a href="manufacturing-quality.html" class="nav-dropdown-toggle">Quality <span class="chevron"></span></a>
-     <div class="nav-dropdown-menu">
-      <a href="production-inspection-testing.html">100% Leak Testing</a>
-     </div>
-    </div>
-    <div class="nav-dropdown">
-     <a href="blog.html" class="nav-dropdown-toggle">Knowledge Center <span class="chevron"></span></a>
-     <div class="nav-dropdown-menu">
-      <a href="blog-rotary-joint-selection.html">Selection Guide</a>
-      <a href="blog-rotary-union-seal-types.html">Sealing Technology</a>
-      <a href="installation.html">Installation Guide</a>
-      <a href="faq.html">FAQ</a>
-     </div>
-    </div>
+    <a href="manufacturing-quality.html" class="nav-quality">Quality</a>
     <a href="about.html" class="nav-about">About</a>
     <a href="contact.html" class="nav-cta">Get a Quote</a>
    </nav>
@@ -192,10 +196,10 @@
 <section class="thank-you-section">
   <div class="container">
     <div class="thank-you-icon">&#9989;</div>
-    <h1>Thank You! Your Inquiry Is Submitted</h1>
+    <h1>Thank You! We&rsquo;ve Received Your Inquiry</h1>
     <p class="subtitle">
-      Our engineering team has received your request and will review it as soon as possible.
-      While you wait, here are a few things you can do right now:
+      Our engineers will review your request, and we normally reply within one business day.
+      If we need anything else, we will ask only for the specific detail required. While you wait, you can:
     </p>
     <h2 class="next-steps-title">Next Steps</h2>
 
@@ -217,16 +221,15 @@
       <div class="next-step-card">
         <div class="icon">&#128172;</div>
         <h3>Chat on WhatsApp</h3>
-        <p>Have additional application details? Send them directly to our technical team.</p>
+        <p>Want to add a photo or drawing? Send it on WhatsApp&mdash;the same team will reply.</p>
         <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn">Chat on WhatsApp</a>
       </div>
     </div>
 
     <div class="trust-badges">
-      <span>Model-specific inspection</span>
-      <span>&#9989; Inquiry Reviewed by Our Team</span>
-      <span>&#9989; CAD Support After Application Review</span>
-      <span>&#9989; Technical Support</span>
+      <span>Normally reply within one business day</span>
+      <span>We ask only for details needed to reply</span>
+      <span>Inquiries and drawings are not used for marketing or public display</span>
     </div>
   </div>
 </section>
@@ -241,7 +244,6 @@
     <p class="footer-positioning">Precision rotary joint manufacturer based in Ningbo, China. Supporting industrial automation OEMs and machine builders.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
    </div>
-   <a class="footer-quote" href="contact.html#quoteForm">Request an Engineering Quote</a>
   </div>
   <div class="footer-contact-band">
    <address class="footer-contact">
@@ -259,39 +261,15 @@
     </ul>
    </nav>
   </div>
-  <nav class="footer-navigation" aria-label="Footer navigation">
+  <nav class="footer-navigation footer-navigation--compact" aria-label="Footer navigation">
    <section class="footer-column">
-     <h2 class="footer-title">Products & Selection</h2>
+     <h2 class="footer-title">Technical Resources</h2>
      <ul class="footer-links">
-      <li><a href="products.html">Product Catalog</a></li>
-      <li><a href="product-comparison.html">Model Comparison</a></li>
-     </ul>
-    </section>
-    <section class="footer-column">
-     <h2 class="footer-title">Applications & Cases</h2>
-     <ul class="footer-links">
-      <li><a href="case-studies.html">Real Application Cases</a></li>
-      <li><a href="application-laser-tube-cutting.html">Laser Tube Cutting</a></li>
-      <li><a href="application-packaging-machinery.html">Packaging Machinery</a></li>
-      <li><a href="application-bottle-filling-capping.html">Bottle Filling & Capping</a></li>
-      <li><a href="applications.html">All Applications</a></li>
-     </ul>
-    </section>
-    <section class="footer-column">
-     <h2 class="footer-title">Quality & Factory</h2>
-     <ul class="footer-links">
-      <li><a href="manufacturing-quality.html">Manufacturing & Quality</a></li>
-      <li><a href="production-inspection-testing.html">100% Leak Testing</a></li>
-      <li><a href="about.html">Company & Factory</a></li>
-     </ul>
-    </section>
-    <section class="footer-column">
-     <h2 class="footer-title">Technical Support</h2>
-     <ul class="footer-links">
+      <li><a href="blog.html">Technical Blog</a></li>
       <li><a href="blog-rotary-joint-selection.html">Selection Guide</a></li>
+      <li><a href="blog-rotary-union-seal-types.html">Sealing Technology</a></li>
       <li><a href="installation.html">Installation Guide</a></li>
       <li><a href="faq.html">FAQ</a></li>
-      <li><a href="contact.html">Contact</a></li>
      </ul>
     </section>
   </nav>

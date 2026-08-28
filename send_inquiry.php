@@ -48,7 +48,7 @@ function localized_message(string $language, string $key): string
 {
     $messages = [
         'en' => [
-            'sent' => 'Your inquiry was sent successfully. Our engineering team will review the information provided.',
+            'sent' => 'Thank you. We have received your request. Our engineers will review it and normally reply within one business day. If anything else is needed, we will ask only for the specific detail required.',
             'invalid_method' => 'This submission method is not supported.',
             'origin_not_allowed' => 'The inquiry cannot be accepted from this page.',
             'rate_limited' => 'Too many requests have been sent. Please try again later.',
@@ -70,7 +70,7 @@ function localized_message(string $language, string $key): string
             'email_sales' => 'Email sales@begapunk.com',
         ],
         'de' => [
-            'sent' => 'Ihre Anfrage wurde gesendet. Unser Technikteam prüft die übermittelten Angaben.',
+            'sent' => 'Vielen Dank. Wir haben Ihre Anfrage erhalten. Unsere Ingenieure prüfen sie und antworten in der Regel innerhalb eines Arbeitstags. Sollte noch etwas fehlen, fragen wir nur gezielt nach der benötigten Angabe.',
             'invalid_method' => 'Diese Übermittlungsmethode wird nicht unterstützt.',
             'origin_not_allowed' => 'Die Anfrage kann von dieser Seite nicht angenommen werden.',
             'rate_limited' => 'Es wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut.',
@@ -92,7 +92,7 @@ function localized_message(string $language, string $key): string
             'email_sales' => 'E-Mail an sales@begapunk.com',
         ],
         'ja' => [
-            'sent' => 'お問い合わせを送信しました。技術担当がご入力内容を確認します。',
+            'sent' => 'ありがとうございます。お問い合わせを受け付けました。当社の技術担当者が内容を確認し、通常1営業日以内にご返信します。追加情報が必要な場合も、必要な点だけを具体的にお伺いします。',
             'invalid_method' => 'この送信方法には対応していません。',
             'origin_not_allowed' => 'このページからのお問い合わせは受け付けられません。',
             'rate_limited' => '短時間に多くの送信が行われました。時間をおいてからもう一度お試しください。',
@@ -114,7 +114,7 @@ function localized_message(string $language, string $key): string
             'email_sales' => 'sales@begapunk.com にメールする',
         ],
         'ru' => [
-            'sent' => 'Запрос отправлен. Наши технические специалисты рассмотрят предоставленные данные.',
+            'sent' => 'Спасибо. Мы получили ваш запрос. Наши инженеры рассмотрят его и обычно ответят в течение одного рабочего дня. Если потребуется дополнительная информация, мы уточним только конкретно необходимые данные.',
             'invalid_method' => 'Этот способ отправки не поддерживается.',
             'origin_not_allowed' => 'Запрос с этой страницы не может быть принят.',
             'rate_limited' => 'Отправлено слишком много запросов. Повторите попытку позже.',
@@ -472,8 +472,21 @@ $sourcePage = normalize_source_page(post_value('source_page', 300, $context));
 post_value('source_url', 500, $context);
 $sourceUrl = $sourcePage === '' ? '' : 'https://www.begapunk.com/' . $sourcePage;
 $sourceLanguage = normalize_source_language(post_value('source_language', 20, $context));
+$inquiryLabels = [
+    'quote' => 'Quotation request',
+    '3d_step' => 'STEP file request',
+    'application_review' => 'Product selection help',
+    'seal_review' => 'Seal compatibility check',
+    'verified_drawing' => 'Drawing check',
+    'technical_consultation' => 'Technical question',
+    'general_inquiry' => 'General request',
+];
+$inquiryLabel = $inquiryLabels[$inquiryType] ?? $inquiryLabels['general_inquiry'];
+$productReference = $sourceModel !== ''
+    ? $sourceModel
+    : ($sourceProduct !== '' ? $sourceProduct : $product);
 
-if ($name === '' || $email === '' || $company === '' || $country === '' || $product === '' || $requirements === '') {
+if ($email === '' || $requirements === '') {
     respond($context, 422, false, 'required_fields');
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email . $name)) {
@@ -489,13 +502,10 @@ $rows = [
     'Email' => $email,
     'Company' => $company,
     'Country' => $country,
-    'Product Interest' => $product,
+    'Product / Reference' => $productReference,
     'Estimated Quantity' => $quantity,
     'Application' => $application,
-    'Inquiry Type' => $inquiryType,
-    'Source Model' => $sourceModel,
-    'Source Product' => $sourceProduct,
-    'Source Page' => $sourcePage,
+    'Request Type' => $inquiryLabel,
     'Source URL' => $sourceUrl,
     'Source Language' => $sourceLanguage,
 ];
@@ -510,7 +520,7 @@ foreach ($rows as $label => $value) {
 $htmlBody = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>'
     . '<h2>New Quote Request from Begapunk Website</h2><table border="0" cellpadding="8" cellspacing="0">'
     . $tableRows
-    . '<tr><td><strong>Technical Requirements:</strong></td><td><pre style="white-space:pre-wrap;font-family:inherit;">'
+    . '<tr><td><strong>Customer Message:</strong></td><td><pre style="white-space:pre-wrap;font-family:inherit;">'
     . escape_html($requirements)
     . '</pre></td></tr></table></body></html>';
 
@@ -532,9 +542,10 @@ try {
     $mail->CharSet = 'UTF-8';
     $mail->setFrom((string) $username, 'Begapunk Website');
     $mail->addAddress((string) $toEmail, 'Begapunk Sales');
-    $mail->addReplyTo($email, $name);
+    $requesterLabel = $name !== '' ? $name : $email;
+    $mail->addReplyTo($email, $requesterLabel);
     $mail->isHTML(true);
-    $mail->Subject = '[Begapunk] New Quote Request from ' . $name;
+    $mail->Subject = '[Begapunk] New Quote Request from ' . $requesterLabel;
     $mail->Body = $htmlBody;
     $mail->AltBody = trim(html_entity_decode(strip_tags(str_replace(['</tr>', '</td>'], ["\n", ': '], $htmlBody)), ENT_QUOTES, 'UTF-8'));
 

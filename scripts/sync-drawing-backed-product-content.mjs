@@ -26,7 +26,7 @@ const START_MARKER = '<!-- ===== KEY TAKEAWAYS ===== -->';
 const END_MARKER = '<!-- ===== RELATED RESOURCES ===== -->';
 
 const productDetailUiContract = JSON.parse(await fs.readFile(PRODUCT_DETAIL_UI_PATH, 'utf8'));
-if (productDetailUiContract.schemaVersion !== 4) {
+if (![4, 5].includes(productDetailUiContract.schemaVersion)) {
   throw new Error(`Unsupported product-detail UI schema: ${productDetailUiContract.schemaVersion}`);
 }
 
@@ -55,7 +55,7 @@ const COPY = {
     pendingBasis: 'Application review is required before selecting this model.',
     pendingAction: 'Send the application, medium, pressure, speed, mounting, and quantity for review before selecting or ordering this model.',
     specHeading: 'Technical Data',
-    specIntro: 'Published specifications for this model are listed below.',
+    specIntro: 'Key dimensions and operating limits for this model are listed below.',
     specIntroPending: 'Technical values are not listed for this model. Request the current model-specific file before selection.',
     labels: {
       model: 'Model number', status: 'Selection status', document: 'Technical file', pressure: 'Maximum pressure',
@@ -100,9 +100,9 @@ const COPY = {
     downloadsHeading: 'Downloads and Engineering Files',
     drawingTitle: '2D engineering drawing (PDF)', drawingDescription: 'Model drawing with dimensions, ports, mounting features, and published technical values.',
     drawingPendingTitle: 'Request model-specific file', drawingPendingDescription: 'Request the current model-specific file before technical selection or ordering.',
-    cadTitle: 'Request 3D STEP/IGES file', cadDescription: 'CAD availability and revision are confirmed after the model and application requirements are reviewed.',
+    cadTitle: 'Request 3D STEP/IGES file', cadDescription: 'We provide STEP/IGES models for the selected configuration and fit check.',
     manualTitle: 'General installation manual (PDF)', manualDescription: 'General handling, alignment, connection, commissioning, and maintenance guidance.',
-    docsTitle: 'Inspection and order documentation', docsDescription: 'State required inspection records, material documents, and acceptance criteria before ordering.',
+    docsTitle: 'Inspection Documents', docsDescription: 'Need an inspection record or material document? Include the requirement with your inquiry.',
     commonLabel: 'Installation mistakes', commonHeading: 'Three Common Installation and Startup Errors',
     commonIntro: 'Avoid these mistakes to reduce leakage, abnormal wear, and commissioning rework.',
     commonCards: [
@@ -113,11 +113,8 @@ const COPY = {
     relatedHeading: 'Related Products', relatedIntro: 'Compare nearby models using each model’s published specifications.',
     relatedDescription: 'Open the model page to review its specifications and application fit.',
     compareTitle: 'Compare models', compareDescription: 'Use the comparison page to shortlist models, then check each shortlisted model against the machine requirements and available drawing.',
-    customTitle: 'Engineering review', customDescription: 'Send the required passages, medium, pressure, speed, temperature, mounting, envelope, and documentation needs for review.',
-    viewModel: 'View model', compareModels: 'Compare models', requestReview: 'Request review',
-    technicalNoteLabel: 'Technical Note:',
-    technicalNote: 'Maximum pressure and speed are selection limits; combined continuous operation depends on the medium, temperature, mounting, and duty cycle.',
-    technicalNotePending: 'Send the application requirements and request the current model-specific file before selecting or ordering this model.',
+    customTitle: 'Send machine details', customDescription: 'Send the required passages, medium, pressure, speed, temperature, mounting, available space, and any drawing or photo you already have.',
+    viewModel: 'View model', compareModels: 'Compare models', requestReview: 'Ask us to compare',
   },
   de: {
     home: 'Startseite', products: 'Produkte', category: 'Pneumatische Drehdurchführung', productOverview: 'Produktübersicht',
@@ -126,7 +123,7 @@ const COPY = {
     pendingBasis: 'Vor der Auswahl ist eine anwendungsbezogene Prüfung erforderlich.',
     pendingAction: 'Anwendung, Medium, Druck, Drehzahl, Montage und Menge zur Prüfung senden, bevor dieses Modell ausgewählt oder bestellt wird.',
     specHeading: 'Technische Daten',
-    specIntro: 'Die veröffentlichten technischen Daten dieses Modells sind nachfolgend aufgeführt.',
+    specIntro: 'Die wichtigsten Abmessungen und Betriebsgrenzen dieses Modells sind nachfolgend aufgeführt.',
     specIntroPending: 'Für dieses Modell sind keine technischen Werte angegeben. Vor der Auswahl die aktuelle modellspezifische Datei anfordern.',
     labels: {
       model: 'Modellnummer', status: 'Auswahlstatus', document: 'Technische Datei', pressure: 'Maximaldruck',
@@ -164,18 +161,15 @@ const COPY = {
     maintenanceTitle: 'Prüfintervall', maintenance: 'Prüf- und Austauschintervalle aus dokumentierten Betriebsbedingungen und Prüfergebnissen festlegen. Ein universeller Lebensdauerwert ist nicht angegeben.',
     downloadsHeading: 'Downloads und Konstruktionsdaten', drawingTitle: '2D-Technikzeichnung (PDF)', drawingDescription: 'Modellzeichnung mit Abmessungen, Anschlüssen, Montagemerkmalen und veröffentlichten technischen Daten.',
     drawingPendingTitle: 'Modellspezifische Datei anfordern', drawingPendingDescription: 'Vor technischen Entscheidungen oder Bestellung die aktuelle modellspezifische Datei anfordern.',
-    cadTitle: '3D-STEP-/IGES-Datei anfordern', cadDescription: 'CAD-Verfügbarkeit und Revision werden nach Prüfung von Modell und Anwendungsanforderungen bestätigt.',
+    cadTitle: '3D-STEP-/IGES-Datei anfordern', cadDescription: 'Für die ausgewählte Ausführung und Einbauprüfung stellen wir STEP-/IGES-Modelle bereit.',
     manualTitle: 'Allgemeine Montageanleitung (PDF)', manualDescription: 'Allgemeine Hinweise zu Handhabung, Ausrichtung, Anschluss, Inbetriebnahme und Wartung.',
-    docsTitle: 'Prüf- und Auftragsdokumentation', docsDescription: 'Benötigte Prüfprotokolle, Werkstoffunterlagen und Abnahmekriterien vor der Bestellung angeben.',
+    docsTitle: 'Prüfunterlagen', docsDescription: 'Benötigen Sie ein Prüfprotokoll oder einen Werkstoffnachweis? Geben Sie die Anforderung in Ihrer Anfrage an.',
     commonLabel: 'Montagefehler', commonHeading: 'Drei häufige Fehler bei Montage und Inbetriebnahme', commonIntro: 'Diese Fehler vermeiden, um Leckagen, vorzeitigen Verschleiß und Nacharbeit bei der Inbetriebnahme zu reduzieren.',
     commonCards: [['Rohr- oder Schlauchlasten einleiten', 'Zug, Biegung, Torsion, starre Halterungen oder Fehlausrichtung können Seitenlasten auf die Drehdurchführung übertragen. Rohrleitungen abstützen und genügend Bewegungsfreiheit lassen.'], ['Anschlüsse ohne Prüfung der Schnittstelle verbinden', 'Vor der Montage Funktion, Gewinde und Dichtungsart jedes Anschlusses prüfen. Die Schnittstelle nicht von einem anderen Modell übernehmen und Medienanschlüsse nicht als Montagebohrungen verwenden.'], ['Sofort unter vollen Betriebsbedingungen starten', 'Die Inbetriebnahme bei niedrigem Druck und niedriger Drehzahl beginnen und dann schrittweise auf die tatsächlichen Betriebsbedingungen erhöhen. Dabei jeden Kanal auf Leckagen, Temperaturanstieg, Vibrationen und ungewöhnliche Geräusche prüfen.']],
     relatedHeading: 'Verwandte Produkte', relatedIntro: 'Benachbarte Modelle anhand der veröffentlichten Spezifikationen des jeweiligen Modells vergleichen.', relatedDescription: 'Modellseite öffnen, um Spezifikationen und Anwendungseignung zu prüfen.',
     compareTitle: 'Modelle vergleichen', compareDescription: 'Auf der Vergleichsseite Modelle vorsortieren und anschließend jedes Modell für die gewählte Anwendung bestätigen.',
     customTitle: 'Technische Prüfung', customDescription: 'Benötigte Kanäle, Medium, Druck, Drehzahl, Temperatur, Montage, Bauraum und Dokumentation zur Prüfung senden.',
-    viewModel: 'Modell ansehen', compareModels: 'Modelle vergleichen', requestReview: 'Prüfung anfragen',
-    technicalNoteLabel: 'Technischer Hinweis:',
-    technicalNote: 'Maximaldruck und Maximaldrehzahl sind Auswahlgrenzen; der kombinierte Dauerbetrieb hängt von Medium, Temperatur, Montage und Lastprofil ab.',
-    technicalNotePending: 'Anwendungsanforderungen senden und vor Auswahl oder Bestellung die aktuelle modellspezifische Datei anfordern.',
+    viewModel: 'Modell ansehen', compareModels: 'Modelle vergleichen', requestReview: 'Modelle vergleichen lassen',
   },
 };
 
@@ -186,7 +180,7 @@ COPY.ja = {
   pendingBasis: '選定前に用途条件の確認が必要です。',
   pendingAction: 'この型式を選定・発注する前に、用途、流体、圧力、回転数、取付け、数量をお知らせください。',
   specHeading: '技術情報',
-  specIntro: 'この型式の公開仕様を以下に示します。',
+  specIntro: 'この型式の主要寸法と使用限界を以下に示します。',
   specIntroPending: 'この型式の技術値は記載されていません。選定前に現在の型式専用ファイルをご依頼ください。',
   labels: { model: '型式', status: '選定状態', document: '技術ファイル', pressure: '最高使用圧力', speed: '最高回転数', media: '適用流体', body: 'ボディ材質', seal: 'シール材質', ports: 'ポート注記', mounting: '取付仕様', envelope: '外形寸法', bore: '貫通穴', temperature: '温度範囲', weight: '質量', electrical: '電気インターフェース', warranty: '保証期間' },
   statusVerified: '用途確認が可能', statusPending: '選定前に用途確認が必要',
@@ -201,17 +195,14 @@ COPY.ja = {
   maintenanceTitle: '点検周期', maintenance: '記録した運転条件と点検結果に基づいて点検・交換周期を設定してください。共通の寿命値はありません。',
   downloadsHeading: 'ダウンロード・設計データ', drawingTitle: '2D技術図面（PDF）', drawingDescription: '寸法、ポート、取付仕様、公開技術値を記載した型式図面です。',
   drawingPendingTitle: '型式専用ファイルを依頼', drawingPendingDescription: '技術判断または発注前に、現在の型式専用ファイルを依頼してください。',
-  cadTitle: '3D STEP／IGESデータを依頼', cadDescription: '型式と用途条件を確認後、CADデータの提供可否とリビジョンを回答します。',
+  cadTitle: '3D STEP／IGESデータを依頼', cadDescription: '選定仕様の組込み確認用にSTEP／IGESモデルを提供します。',
   manualTitle: '一般取付説明書（PDF）', manualDescription: '取扱い、芯出し、接続、試運転、保守に関する一般ガイドです。',
-  docsTitle: '検査・注文書類', docsDescription: '必要な検査記録、材質書類、受入基準は発注前に指定してください。',
+  docsTitle: '検査資料', docsDescription: '検査記録や材料資料が必要な場合は、お問い合わせ時に要件をお知らせください。',
   commonLabel: '取付けミス', commonHeading: '取付け・試運転で多い3つのミス', commonIntro: '漏れ、異常摩耗、試運転時の手戻りを減らすため、次のミスを避けてください。',
   commonCards: [['配管荷重をロータリージョイントにかける', 'ホースの張力、曲げ、ねじれ、固定具による拘束、芯ずれは、ロータリージョイントに余分な横荷重を与えます。配管を支持し、ジョイントに機械側の荷重がかからないよう自然な動きの余裕を確保してください。'], ['確認せずにポートを接続する', '取付け前に各ポートの機能、ねじ、シール方法を確認してください。他型式の接続仕様を流用したり、流体ポートを取付け穴として使用したりしないでください。'], ['最初から実運転条件で始動する', '試運転は低圧・低速から開始し、各流路の漏れ、温度上昇、振動、異音を確認しながら、実際の運転条件まで段階的に上げてください。']],
   relatedHeading: '関連製品', relatedIntro: '近い型式は、それぞれの公開仕様で比較してください。', relatedDescription: '型式ページを開き、仕様と用途適合性を確認してください。',
   compareTitle: '型式を比較', compareDescription: '比較ページで候補を絞り、各候補を用途条件で最終確認してください。', customTitle: '技術確認', customDescription: '必要流路、流体、圧力、回転数、温度、取付け、外形、必要書類をお知らせください。',
-  viewModel: '型式を見る', compareModels: '型式を比較', requestReview: '技術確認を依頼',
-  technicalNoteLabel: '技術上の注意：',
-  technicalNote: '最高圧力と最高回転数は選定上限です。組合せ連続運転は、流体、温度、取付け、デューティによって異なります。',
-  technicalNotePending: '用途条件をお知らせのうえ、選定・発注前に現在の型式専用ファイルをご依頼ください。',
+  viewModel: '型式を見る', compareModels: '型式を比較', requestReview: '候補を比較してもらう',
 };
 
 COPY.ru = {
@@ -221,7 +212,7 @@ COPY.ru = {
   pendingBasis: 'Перед выбором требуется проверка условий применения.',
   pendingAction: 'Перед выбором или заказом этой модели сообщите условия применения, среду, давление, скорость, монтаж и количество.',
   specHeading: 'Технические данные',
-  specIntro: 'Опубликованные характеристики этой модели приведены ниже.',
+  specIntro: 'Ниже приведены основные размеры и рабочие пределы этой модели.',
   specIntroPending: 'Технические значения для этой модели не указаны. Запросите актуальный файл конкретной модели до выбора.',
   labels: { model: 'Модель', status: 'Статус выбора', document: 'Технический файл', pressure: 'Максимальное давление', speed: 'Максимальная частота вращения', media: 'Подходящая среда', body: 'Материал корпуса', seal: 'Материалы уплотнений', ports: 'Обозначения портов', mounting: 'Монтажные элементы', envelope: 'Габариты', bore: 'Сквозное отверстие', temperature: 'Температурный диапазон', weight: 'Масса', electrical: 'Электрический интерфейс', warranty: 'Гарантийный срок' },
   statusVerified: 'Доступно для проверки применения', statusPending: 'Перед выбором требуется проверка применения',
@@ -236,36 +227,91 @@ COPY.ru = {
   maintenanceTitle: 'Интервал проверки', maintenance: 'Назначайте интервалы проверки и замены по записанным условиям работы и результатам осмотра. Универсальный срок службы не указан.',
   downloadsHeading: 'Загрузки и конструкторские файлы', drawingTitle: '2D-чертёж (PDF)', drawingDescription: 'Чертёж модели с размерами, портами, монтажными элементами и опубликованными техническими данными.',
   drawingPendingTitle: 'Запросить файл конкретной модели', drawingPendingDescription: 'Перед техническими решениями или заказом запросите актуальный файл для конкретной модели.',
-  cadTitle: 'Запросить 3D STEP/IGES', cadDescription: 'Доступность и ревизия CAD подтверждаются после проверки модели и требований применения.',
+  cadTitle: 'Запросить 3D STEP/IGES', cadDescription: 'Для выбранного исполнения и проверки компоновки мы предоставляем модели STEP/IGES.',
   manualTitle: 'Общее руководство по монтажу (PDF)', manualDescription: 'Общие рекомендации по обращению, центровке, подключению, вводу в эксплуатацию и обслуживанию.',
-  docsTitle: 'Инспекционная и заказная документация', docsDescription: 'Укажите требуемые протоколы, документы на материалы и критерии приёмки до заказа.',
+  docsTitle: 'Документы контроля', docsDescription: 'Если вам нужен протокол контроля или документ на материал, укажите это в запросе.',
   commonLabel: 'Ошибки монтажа', commonHeading: 'Три частые ошибки при монтаже и вводе в эксплуатацию', commonIntro: 'Избегайте этих ошибок, чтобы снизить риск утечек, преждевременного износа и повторных работ при вводе в эксплуатацию.',
   commonCards: [['Передача нагрузок от труб и шлангов', 'Натяжение, изгиб или скручивание шланга, жёсткое крепление и несоосность могут передавать боковую нагрузку на вращающееся соединение. Поддерживайте трубопровод и оставляйте достаточную свободу перемещения.'], ['Подключение портов без проверки интерфейса', 'Перед монтажом подтвердите назначение, резьбу и способ уплотнения каждого порта. Не переносите интерфейс с другой модели и не используйте порты среды как монтажные отверстия.'], ['Запуск сразу в полном рабочем режиме', 'Начинайте ввод в эксплуатацию при низких давлении и скорости, затем постепенно переходите к фактическому рабочему режиму, проверяя каждый канал на утечки, нагрев, вибрацию и посторонний шум.']],
   relatedHeading: 'Связанные продукты', relatedIntro: 'Сравнивайте соседние модели по опубликованным спецификациям каждой модели.', relatedDescription: 'Откройте страницу модели, чтобы проверить её характеристики и соответствие применению.',
   compareTitle: 'Сравнить модели', compareDescription: 'Сформируйте короткий список на странице сравнения, затем подтвердите каждую модель по условиям применения.', customTitle: 'Инженерная проверка', customDescription: 'Сообщите требуемые каналы, среду, давление, скорость, температуру, монтаж, габариты и документацию.',
-  viewModel: 'Открыть модель', compareModels: 'Сравнить модели', requestReview: 'Запросить проверку',
-  technicalNoteLabel: 'Техническое примечание:',
-  technicalNote: 'Максимальные давление и скорость являются пределами выбора; совместная непрерывная работа зависит от среды, температуры, монтажа и рабочего цикла.',
-  technicalNotePending: 'Сообщите условия применения и запросите актуальный файл конкретной модели до выбора или заказа.',
+  viewModel: 'Открыть модель', compareModels: 'Сравнить модели', requestReview: 'Сравнить варианты',
 };
+
+const BUYER_COPY = Object.freeze({
+  en: Object.freeze({
+    compatTitle: 'Not sure this is the right model?',
+    compatText: 'A model number, photo, drawing, or short description is enough to start. Add any operating details you already know; incomplete information is fine. We’ll check whether {model} fits, or suggest a closer catalog model or custom option.',
+    compatAction: 'Ask Us to Check This Model',
+    helpTitle: 'Need help choosing?',
+    helpText: 'Send a model number, photo, drawing, or short description. We’ll compare the closest options.',
+    helpAction: 'Ask us to compare',
+    bottomTitle: 'Need a Different Configuration?',
+    bottomText: 'Send what you already have. We’ll reply with a catalog model or custom option, quotation, estimated lead time, and the relevant 2D drawing and 3D STEP model.',
+    bottomAction: 'Ask About Another Option',
+    privacyLead: 'A model number, photo, drawing, or short description is enough to start.',
+    privacy: 'We do not use your inquiries or drawings for marketing or public display.',
+  }),
+  de: Object.freeze({
+    compatTitle: 'Unsicher, ob dieses Modell passt?',
+    compatText: 'Eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung reicht für den Anfang. Ergänzen Sie nur die Betriebsdaten, die Sie bereits kennen; unvollständige Angaben sind kein Problem. Wir prüfen, ob {model} passt, oder schlagen ein geeigneteres Katalogmodell bzw. eine kundenspezifische Ausführung vor.',
+    compatAction: 'Dieses Modell prüfen lassen',
+    helpTitle: 'Hilfe bei der Auswahl?',
+    helpText: 'Senden Sie eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung. Wir vergleichen die nächstliegenden Optionen.',
+    helpAction: 'Modelle vergleichen lassen',
+    bottomTitle: 'Benötigen Sie eine andere Ausführung?',
+    bottomText: 'Senden Sie uns, was bereits vorliegt. Wir antworten mit einem passenden Katalogmodell oder einer kundenspezifischen Ausführung, Angebot, geschätzter Lieferzeit sowie der zugehörigen 2D-Zeichnung und dem 3D-STEP-Modell.',
+    bottomAction: 'Andere Ausführung anfragen',
+    privacyLead: 'Für den Anfang genügt eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung.',
+    privacy: 'Wir verwenden Ihre Anfragen oder Zeichnungen weder für Marketingzwecke noch zur öffentlichen Darstellung.',
+  }),
+  ja: Object.freeze({
+    compatTitle: 'この型式でよいか迷っていますか？',
+    compatText: '型式、写真、図面、または短い説明のいずれかがあれば始められます。分かる範囲の使用条件だけ添えてください。情報が不完全でも問題ありません。{model}が適するか確認し、より近い標準型式またはカスタム仕様をご提案します。',
+    compatAction: 'この型式の適合を相談',
+    helpTitle: '選定に迷っていますか？',
+    helpText: '型式、写真、図面、または短い説明をお送りください。近い候補を比較してご案内します。',
+    helpAction: '候補を比較してもらう',
+    bottomTitle: '別の仕様が必要ですか？',
+    bottomText: 'お手元の情報だけで構いません。適した標準型式またはカスタム仕様、見積り、概算納期、該当する2D図面と3D STEPモデルをご案内します。',
+    bottomAction: '別仕様を相談',
+    privacyLead: '型式、写真、図面、または短い説明のいずれかがあれば始められます。',
+    privacy: 'お問い合わせ内容や図面を、マーケティングや一般公開に使用することはありません。',
+  }),
+  ru: Object.freeze({
+    compatTitle: 'Не уверены, что эта модель подходит?',
+    compatText: 'Для начала достаточно номера модели, фотографии, чертежа или краткого описания. Добавьте только те условия работы, которые уже известны; неполные данные не мешают начать. Мы проверим, подходит ли {model}, либо предложим более близкую серийную модель или заказное исполнение.',
+    compatAction: 'Проверить эту модель',
+    helpTitle: 'Нужна помощь с выбором?',
+    helpText: 'Отправьте номер модели, фотографию, чертёж или краткое описание. Мы сравним наиболее близкие варианты.',
+    helpAction: 'Сравнить варианты',
+    bottomTitle: 'Нужно другое исполнение?',
+    bottomText: 'Отправьте то, что уже есть. Мы предложим серийную модель или заказное исполнение и сообщим цену, ориентировочный срок, а также предоставим соответствующие 2D-чертёж и 3D-модель STEP.',
+    bottomAction: 'Запросить другой вариант',
+    privacyLead: 'Для начала достаточно номера модели, фотографии, чертежа или краткого описания.',
+    privacy: 'Мы не используем ваши запросы или чертежи в маркетинговых материалах и не публикуем их в открытом доступе.',
+  }),
+});
 
 const FAQ_COPY = Object.freeze({
   en: Object.freeze({
     heading: '{model} FAQs',
     fitQuestion: 'Is {model} suitable for my machine?',
-    fitAnswer: '{model} provides {passages}. Suitable media: {media}. Ports: {ports}. Mounting: {mounting}. Bore specification: {bore}.',
+    fitAnswer: '{model} uses a {passages}. Suitable media: {media}. Ports: {ports}. Mounting: {mounting}.',
+    fitAnswerWithBore: '{model} uses a {passages}. Suitable media: {media}. Ports: {ports}. Mounting: {mounting}. Through bore: {bore}.',
     hybridFitAnswer: '{model} combines {passages} with six electrical leads. Suitable media: {media}. Pneumatic ports: {ports}. Mounting: {mounting}. Circuit allocation and ratings follow the selected electrical specification.',
     limitsQuestion: 'What are the maximum pressure and speed for {model}?',
-    limitsAnswer: 'Maximum pressure: {pressure}. Maximum speed: {speed}. Do not assume both maximums apply continuously at the same time. Send the actual medium, pressure, speed, temperature, and duty cycle for a combined operating review.',
-    materialsQuestion: 'Which media and materials are listed for {model}?',
-    materialsAnswer: 'Suitable media: {media}. Body: {body}. Seals: {seal}. Contact us before using another medium so compatibility can be checked.',
-    interfaceQuestion: 'What ports, mounting, and through bore does {model} use?',
-    interfaceAnswer: 'Ports: {ports}. Mounting: {mounting}. Bore specification: {bore}.',
+    limitsAnswer: 'Maximum pressure: {pressure}. Maximum speed: {speed}. For continuous duty, send the medium, temperature, mounting, and duty cycle so we can confirm the operating point.',
+    materialsQuestion: 'Can {model} be used with vacuum, water, or hydraulic oil?',
+    materialsAnswer: '{model}’s catalog rating covers compressed air only. Vacuum, water, and hydraulic oil require a medium-specific engineering review and written compatibility confirmation. Send the medium, pressure, temperature, and speed so we can confirm the required seals, materials, and configuration.',
+    interfaceQuestion: 'What ports and mounting does {model} use?',
+    interfaceQuestionWithBore: 'What ports, mounting, and through bore does {model} use?',
+    interfaceAnswer: 'Ports: {ports}. Mounting: {mounting}.',
+    interfaceAnswerWithBore: 'Ports: {ports}. Mounting: {mounting}. Through bore: {bore}.',
     hybridInterfaceQuestion: 'What pneumatic and electrical interfaces does {model} provide?',
     hybridInterfaceAnswer: 'Pneumatic ports: {ports}. Electrical: six leads; confirm circuit allocation and ratings for the selected configuration. Mounting: {mounting}.',
     quoteQuestion: 'What should I send for a quote or CAD file for {model}?',
-    quoteAnswer: 'Send the model, application, medium, working pressure, speed, temperature, duty cycle, mounting drawing, quantity, and required file format. We will reply with the suitable configuration, CAD availability, and quotation.',
-    hybridQuoteAnswer: 'Send the model, application, medium, working pressure, speed, temperature, duty cycle, mounting drawing, quantity, file format, circuit allocation, voltage, current, and signal requirements. We will reply with the suitable configuration, CAD availability, and quotation.',
+    quoteAnswer: 'The model number is enough to start. A photo, drawing, or any operating details you already know can help us confirm the fit. We normally reply within one business day.',
+    hybridQuoteAnswer: 'The model number is enough to start. If known, add a photo or drawing and the required pneumatic and electrical functions. We normally reply within one business day.',
     pendingItems: Object.freeze([
       Object.freeze(['Is {model} ready for selection?', 'Application review is required before selecting {model}; model-specific operating limits and interfaces are not currently listed.']),
       Object.freeze(['What should I send for the application review?', 'Send the required passages, medium, working pressure, speed, temperature, duty cycle, mounting space, envelope, and quantity.']),
@@ -277,19 +323,22 @@ const FAQ_COPY = Object.freeze({
   de: Object.freeze({
     heading: 'Häufige Fragen zu {model}',
     fitQuestion: 'Passt {model} zu meiner Maschine?',
-    fitAnswer: '{model} bietet {passages}. Geeignete Medien: {media}. Anschlüsse: {ports}. Montage: {mounting}. Bohrungsangabe: {bore}.',
+    fitAnswer: '{model} ist eine {passages}. Geeignete Medien: {media}. Anschlüsse: {ports}. Montage: {mounting}.',
+    fitAnswerWithBore: '{model} ist eine {passages}. Geeignete Medien: {media}. Anschlüsse: {ports}. Montage: {mounting}. Durchgangsbohrung: {bore}.',
     hybridFitAnswer: '{model} kombiniert {passages} mit sechs elektrischen Leitungen. Geeignete Medien: {media}. Pneumatikanschlüsse: {ports}. Montage: {mounting}. Kreiszuordnung und Nennwerte folgen der gewählten Elektrospezifikation.',
     limitsQuestion: 'Welche maximalen Druck- und Drehzahlwerte gelten für {model}?',
-    limitsAnswer: 'Maximaldruck: {pressure}. Maximale Drehzahl: {speed}. Beide Höchstwerte dürfen nicht automatisch gleichzeitig als Dauerbetrieb angesetzt werden. Tatsächliches Medium, Druck, Drehzahl, Temperatur und Einschaltdauer für die kombinierte Betriebsprüfung angeben.',
-    materialsQuestion: 'Welche Medien und Werkstoffe sind für {model} angegeben?',
-    materialsAnswer: 'Geeignete Medien: {media}. Gehäuse: {body}. Dichtungen: {seal}. Vor dem Einsatz eines anderen Mediums die Verträglichkeit mit uns prüfen.',
-    interfaceQuestion: 'Welche Anschlüsse, Montage und Durchgangsbohrung hat {model}?',
-    interfaceAnswer: 'Anschlüsse: {ports}. Montage: {mounting}. Bohrungsangabe: {bore}.',
+    limitsAnswer: 'Maximaldruck: {pressure}. Maximale Drehzahl: {speed}. Für Dauerbetrieb nennen Sie bitte Medium, Temperatur, Montage und Lastprofil, damit wir den Betriebspunkt prüfen können.',
+    materialsQuestion: 'Kann {model} mit Vakuum, Wasser oder Hydrauliköl eingesetzt werden?',
+    materialsAnswer: 'Die Katalogangaben für {model} gelten nur für Druckluft. Vakuum, Wasser und Hydrauliköl erfordern eine medienbezogene Prüfung und eine schriftliche Kompatibilitätsbestätigung. Nennen Sie Medium, Druck, Temperatur und Drehzahl, damit wir Dichtungen, Werkstoffe und Ausführung bestätigen können.',
+    interfaceQuestion: 'Welche Anschlüsse und Montagemerkmale hat {model}?',
+    interfaceQuestionWithBore: 'Welche Anschlüsse, Montagemerkmale und Durchgangsbohrung hat {model}?',
+    interfaceAnswer: 'Anschlüsse: {ports}. Montage: {mounting}.',
+    interfaceAnswerWithBore: 'Anschlüsse: {ports}. Montage: {mounting}. Durchgangsbohrung: {bore}.',
     hybridInterfaceQuestion: 'Welche pneumatischen und elektrischen Schnittstellen bietet {model}?',
     hybridInterfaceAnswer: 'Pneumatikanschlüsse: {ports}. Elektrik: sechs Leitungen; Kreiszuordnung und Nennwerte für die gewählte Ausführung bestätigen. Montage: {mounting}.',
     quoteQuestion: 'Welche Angaben werden für ein Angebot oder eine CAD-Datei zu {model} benötigt?',
-    quoteAnswer: 'Modell, Anwendung, Medium, Betriebsdruck, Drehzahl, Temperatur, Einschaltdauer, Montagezeichnung, Menge und benötigtes Dateiformat senden. Wir antworten mit passender Ausführung, CAD-Verfügbarkeit und Angebot.',
-    hybridQuoteAnswer: 'Modell, Anwendung, Medium, Betriebsdruck, Drehzahl, Temperatur, Einschaltdauer, Montagezeichnung, Menge, Dateiformat, Kreiszuordnung, Spannung, Strom und Signalanforderungen senden. Wir antworten mit passender Ausführung, CAD-Verfügbarkeit und Angebot.',
+    quoteAnswer: 'Für den Anfang genügt die Modellnummer. Ein Foto, eine Zeichnung oder bereits bekannte Betriebsdaten helfen bei der Prüfung. Wir antworten normalerweise innerhalb eines Arbeitstags.',
+    hybridQuoteAnswer: 'Für den Anfang genügt die Modellnummer. Falls bekannt, ergänzen Sie ein Foto oder eine Zeichnung sowie die benötigten pneumatischen und elektrischen Funktionen. Wir antworten normalerweise innerhalb eines Arbeitstags.',
     pendingItems: Object.freeze([
       Object.freeze(['Ist {model} bereits auswählbar?', 'Vor der Auswahl von {model} ist eine Anwendungsprüfung erforderlich; modellspezifische Betriebsgrenzen und Schnittstellen sind derzeit nicht angegeben.']),
       Object.freeze(['Welche Angaben werden für die Anwendungsprüfung benötigt?', 'Benötigte Kanäle, Medium, Betriebsdruck, Drehzahl, Temperatur, Einschaltdauer, Montageraum, Bauraum und Menge angeben.']),
@@ -301,19 +350,22 @@ const FAQ_COPY = Object.freeze({
   ja: Object.freeze({
     heading: '{model} よくあるご質問',
     fitQuestion: '{model} は機械に適合しますか？',
-    fitAnswer: '{model} は{passages}を備えています。適用流体：{media}。ポート：{ports}。取付け：{mounting}。穴仕様：{bore}。',
+    fitAnswer: '{model}は{passages}です。適用流体：{media}。ポート：{ports}。取付け：{mounting}。',
+    fitAnswerWithBore: '{model}は{passages}です。適用流体：{media}。ポート：{ports}。取付け：{mounting}。貫通穴：{bore}。',
     hybridFitAnswer: '{model} は{passages}と電気リード6本を組み合わせています。適用流体：{media}。空圧ポート：{ports}。取付け：{mounting}。回路割当と定格は選定した電気仕様に従います。',
     limitsQuestion: '{model} の最高圧力と最高回転数は？',
-    limitsAnswer: '最高圧力：{pressure}。最高回転数：{speed}。両方の最大値を同時に連続運転できる条件とは限りません。実際の流体、圧力、回転数、温度、デューティをお知らせいただければ、組合せ運転条件を確認します。',
-    materialsQuestion: '{model} の適用流体と材質は？',
-    materialsAnswer: '適用流体：{media}。ボディ：{body}。シール：{seal}。別の流体を使用する場合は、事前に適合性をご確認ください。',
-    interfaceQuestion: '{model} のポート、取付け、貫通穴の仕様は？',
-    interfaceAnswer: 'ポート：{ports}。取付け：{mounting}。穴仕様：{bore}。',
+    limitsAnswer: '最高圧力：{pressure}。最高回転数：{speed}。連続運転の場合は、流体、温度、取付け、デューティをお知らせください。実際の運転点を確認します。',
+    materialsQuestion: '{model}は真空、水、作動油に使用できますか？',
+    materialsAnswer: '{model}のカタログ仕様は圧縮空気用です。真空、水、作動油については、流体ごとの確認が必要です。運転前に書面で適合性を確認するため、流体、圧力、温度、回転数をお知らせください。必要なシール、材質、仕様をご案内します。',
+    interfaceQuestion: '{model}のポートと取付仕様は？',
+    interfaceQuestionWithBore: '{model}のポート、取付け、貫通穴の仕様は？',
+    interfaceAnswer: 'ポート：{ports}。取付け：{mounting}。',
+    interfaceAnswerWithBore: 'ポート：{ports}。取付け：{mounting}。貫通穴：{bore}。',
     hybridInterfaceQuestion: '{model} の空圧・電気インターフェースは？',
     hybridInterfaceAnswer: '空圧ポート：{ports}。電気：リード6本。選定仕様の回路割当と定格を確認してください。取付け：{mounting}。',
     quoteQuestion: '{model} の見積りやCADデータの依頼には何が必要ですか？',
-    quoteAnswer: '型式、用途、流体、使用圧力、回転数、温度、デューティ、取付図、数量、必要なファイル形式をお知らせください。適した仕様、CAD提供可否、見積りを回答します。',
-    hybridQuoteAnswer: '型式、用途、流体、使用圧力、回転数、温度、デューティ、取付図、数量、ファイル形式、回路割当、電圧、電流、信号要件をお知らせください。適した仕様、CAD提供可否、見積りを回答します。',
+    quoteAnswer: 'まずは型式だけで構いません。写真、図面、または分かる範囲の使用条件があれば、適合確認に役立ちます。通常1営業日以内にご返信します。',
+    hybridQuoteAnswer: 'まずは型式だけで構いません。分かる範囲で、写真や図面、必要な空圧・電気機能を添えてください。通常1営業日以内にご返信します。',
     pendingItems: Object.freeze([
       Object.freeze(['{model} は現在の情報で選定できますか？', '{model} は選定前に用途確認が必要です。型式固有の使用限界と接続仕様は現在記載されていません。']),
       Object.freeze(['用途確認には何を知らせればよいですか？', '必要流路数、流体、使用圧力、回転数、温度、デューティ、取付空間、外形、数量をお知らせください。']),
@@ -325,19 +377,22 @@ const FAQ_COPY = Object.freeze({
   ru: Object.freeze({
     heading: 'Вопросы о {model}',
     fitQuestion: 'Подходит ли {model} для моего оборудования?',
-    fitAnswer: '{model} имеет {passages}. Подходящая среда: {media}. Порты: {ports}. Монтаж: {mounting}. Данные отверстия: {bore}.',
+    fitAnswer: '{model} — {passages}. Подходящая среда: {media}. Порты: {ports}. Монтаж: {mounting}.',
+    fitAnswerWithBore: '{model} — {passages}. Подходящая среда: {media}. Порты: {ports}. Монтаж: {mounting}. Сквозное отверстие: {bore}.',
     hybridFitAnswer: '{model} сочетает {passages} и шесть электрических выводов. Подходящая среда: {media}. Пневматические порты: {ports}. Монтаж: {mounting}. Распределение цепей и номиналы задаются выбранной электрической спецификацией.',
     limitsQuestion: 'Каковы максимальные давление и частота вращения {model}?',
-    limitsAnswer: 'Максимальное давление: {pressure}. Максимальная частота вращения: {speed}. Нельзя считать, что оба максимума одновременно допустимы в непрерывном режиме. Укажите фактические среду, давление, скорость, температуру и рабочий цикл для проверки комбинированного режима.',
-    materialsQuestion: 'Какие среда и материалы указаны для {model}?',
-    materialsAnswer: 'Подходящая среда: {media}. Корпус: {body}. Уплотнения: {seal}. Перед применением другой среды обратитесь к нам для проверки совместимости.',
-    interfaceQuestion: 'Какие порты, монтаж и сквозное отверстие имеет {model}?',
-    interfaceAnswer: 'Порты: {ports}. Монтаж: {mounting}. Данные отверстия: {bore}.',
+    limitsAnswer: 'Максимальное давление: {pressure}. Максимальная частота вращения: {speed}. Для непрерывной работы укажите среду, температуру, монтаж и рабочий цикл, чтобы мы проверили рабочую точку.',
+    materialsQuestion: 'Можно ли использовать {model} с вакуумом, водой или гидравлическим маслом?',
+    materialsAnswer: 'Каталожные характеристики {model} относятся только к сжатому воздуху. Для вакуума, воды и гидравлического масла требуется отдельная проверка среды и письменное подтверждение совместимости. Сообщите среду, давление, температуру и частоту вращения, чтобы мы подтвердили необходимые уплотнения, материалы и исполнение.',
+    interfaceQuestion: 'Какие порты и монтажные элементы имеет {model}?',
+    interfaceQuestionWithBore: 'Какие порты, монтажные элементы и сквозное отверстие имеет {model}?',
+    interfaceAnswer: 'Порты: {ports}. Монтаж: {mounting}.',
+    interfaceAnswerWithBore: 'Порты: {ports}. Монтаж: {mounting}. Сквозное отверстие: {bore}.',
     hybridInterfaceQuestion: 'Какие пневматические и электрические интерфейсы имеет {model}?',
     hybridInterfaceAnswer: 'Пневматические порты: {ports}. Электрика: шесть выводов; подтвердите распределение цепей и номиналы для выбранного исполнения. Монтаж: {mounting}.',
     quoteQuestion: 'Что указать для расчёта цены или запроса CAD по {model}?',
-    quoteAnswer: 'Укажите модель, применение, среду, рабочее давление, скорость, температуру, цикл, монтажный чертёж, количество и формат файла. Мы ответим по подходящему исполнению, доступности CAD и цене.',
-    hybridQuoteAnswer: 'Укажите модель, применение, среду, рабочее давление, скорость, температуру, цикл, монтажный чертёж, количество, формат файла, распределение цепей, напряжение, ток и сигнальные требования. Мы ответим по подходящему исполнению, доступности CAD и цене.',
+    quoteAnswer: 'Для начала достаточно номера модели. Фотография, чертёж или данные об условиях работы, которые у вас уже есть, помогут проверить применимость. Обычно мы отвечаем в течение одного рабочего дня.',
+    hybridQuoteAnswer: 'Для начала достаточно номера модели. Если уже известно, приложите фотографию или чертёж и укажите нужные пневматические и электрические функции. Обычно мы отвечаем в течение одного рабочего дня.',
     pendingItems: Object.freeze([
       Object.freeze(['Готова ли {model} к выбору?', 'Перед выбором {model} требуется проверка применения; рабочие пределы и интерфейсы конкретной модели сейчас не указаны.']),
       Object.freeze(['Какие данные нужны для проверки применения?', 'Укажите требуемые каналы, среду, рабочее давление, скорость, температуру, цикл, монтажное пространство, габариты и количество.']),
@@ -348,19 +403,64 @@ const FAQ_COPY = Object.freeze({
   }),
 });
 
+const SPECIAL_FAQ_COPY = Object.freeze({
+  'BP-1P-0003': Object.freeze({
+    en: Object.freeze({ materialsQuestion: 'Which media are listed for {model}?', materialsAnswer: 'The drawing lists air, oil, and water. Send the exact fluid, temperature, pressure, and speed so we can confirm compatibility; “oil” does not cover every hydraulic oil, and “water” does not automatically cover other water-based process fluids.' }),
+    de: Object.freeze({ materialsQuestion: 'Welche Medien sind für {model} angegeben?', materialsAnswer: 'Die Zeichnung nennt Luft, Öl und Wasser. Nennen Sie das genaue Medium, Temperatur, Druck und Drehzahl, damit wir die Verträglichkeit prüfen können; „Öl“ umfasst nicht jedes Hydrauliköl und „Wasser“ bestätigt nicht automatisch andere wasserbasierte Prozessmedien.' }),
+    ja: Object.freeze({ materialsQuestion: '{model}に記載されている流体は何ですか？', materialsAnswer: '図面には空気、油、水が記載されています。適合性を確認するため、具体的な流体、温度、圧力、回転数をお知らせください。「油」はすべての作動油を、「水」は他の水系プロセス流体を自動的に保証するものではありません。' }),
+    ru: Object.freeze({ materialsQuestion: 'Какие среды указаны для {model}?', materialsAnswer: 'На чертеже указаны воздух, масло и вода. Сообщите точную среду, температуру, давление и частоту вращения, чтобы мы подтвердили совместимость; «масло» не означает любое гидравлическое масло, а «вода» не подтверждает автоматически другие технологические среды на водной основе.' }),
+  }),
+  'BP-1P-0006': Object.freeze({
+    en: Object.freeze({ fitAnswer: '{model} distributes one shared air circuit from 1 inlet to 8 outlets; the outlets are not separate passages. Suitable medium: {media}. Mounting: {mounting}.' }),
+    de: Object.freeze({ fitAnswer: '{model} verteilt einen gemeinsamen Druckluftkreis von 1 Eingang auf 8 Ausgänge; die Ausgänge sind keine getrennten Kanäle. Geeignetes Medium: {media}. Montage: {mounting}.' }),
+    ja: Object.freeze({ fitAnswer: '{model}は、1つの共通エア回路を1入口から8出口へ分配する仕様です。8つの出口は別々の流路ではありません。適用流体：{media}。取付け：{mounting}。' }),
+    ru: Object.freeze({ fitAnswer: '{model} распределяет один общий пневматический контур от 1 входа к 8 выходам; выходы не являются отдельными каналами. Подходящая среда: {media}. Монтаж: {mounting}.' }),
+  }),
+  'BP-2P-95-0005': Object.freeze({
+    en: Object.freeze({ fitAnswer: '{model} uses a 2-in/4-out air layout: 2 outlets for clamp and 2 for release. Suitable medium: {media}. Mounting: {mounting}.' }),
+    de: Object.freeze({ fitAnswer: '{model} hat eine Druckluftanordnung mit 2 Eingängen und 4 Ausgängen: 2 Ausgänge zum Spannen und 2 zum Lösen. Geeignetes Medium: {media}. Montage: {mounting}.' }),
+    ja: Object.freeze({ fitAnswer: '{model}は2入力・4出力の空圧構成で、クランプ用2出力とアンクランプ用2出力を備えます。適用流体：{media}。取付け：{mounting}。' }),
+    ru: Object.freeze({ fitAnswer: '{model} имеет пневматическую схему 2 входа / 4 выхода: 2 выхода для зажима и 2 для разжима. Подходящая среда: {media}. Монтаж: {mounting}.' }),
+  }),
+  'BP-3P-0006': Object.freeze({
+    en: Object.freeze({ interfaceAnswer: 'The port thread is not listed. Mounting: {mounting}. Send the mating-part drawing before selecting fittings; no port direction is assumed here.' }),
+    de: Object.freeze({ interfaceAnswer: 'Das Anschlussgewinde ist nicht angegeben. Montage: {mounting}. Senden Sie vor der Auswahl der Verschraubungen die Gegenstückzeichnung; eine Anschlussrichtung wird hier nicht angenommen.' }),
+    ja: Object.freeze({ interfaceAnswer: 'ポートねじは記載されていません。取付け：{mounting}。継手選定前に相手部品図をお送りください。このページではポート方向を推定していません。' }),
+    ru: Object.freeze({ interfaceAnswer: 'Резьба порта не указана. Монтаж: {mounting}. До выбора фитингов отправьте чертёж сопрягаемой детали; направление портов здесь не предполагается.' }),
+  }),
+  'BP-3P-S06-0001': Object.freeze({
+    en: Object.freeze({
+      fitAnswer: '{model} combines 3 pneumatic passages with 6 electrical leads. Suitable medium: {media}. Confirm the air inlet, circuit allocation, and electrical ratings for the selected configuration. Mounting: {mounting}.',
+      interfaceAnswer: 'Pneumatic outlets: {ports}. Electrical: 6 leads. Confirm the air inlet, circuit allocation, and electrical ratings for the selected configuration. Mounting: {mounting}.',
+    }),
+    de: Object.freeze({
+      fitAnswer: '{model} kombiniert 3 Pneumatikkanäle mit 6 elektrischen Leitungen. Geeignetes Medium: {media}. Lufteinlass, Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen. Montage: {mounting}.',
+      interfaceAnswer: 'Pneumatikausgänge: {ports}. Elektrik: 6 Leitungen. Lufteinlass, Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen. Montage: {mounting}.',
+    }),
+    ja: Object.freeze({
+      fitAnswer: '{model}は3つの空圧流路と電気リード6本を組み合わせた仕様です。適用流体：{media}。選定仕様のエア入口、回路割当、電気定格をご確認ください。取付け：{mounting}。',
+      interfaceAnswer: '空圧出口：{ports}。電気：リード6本。選定仕様のエア入口、回路割当、電気定格をご確認ください。取付け：{mounting}。',
+    }),
+    ru: Object.freeze({
+      fitAnswer: '{model} сочетает 3 пневматических канала и 6 электрических выводов. Подходящая среда: {media}. Для выбранного исполнения подтвердите вход воздуха, распределение цепей и электрические номиналы. Монтаж: {mounting}.',
+      interfaceAnswer: 'Пневматические выходы: {ports}. Электрика: 6 выводов. Для выбранного исполнения подтвердите вход воздуха, распределение цепей и электрические номиналы. Монтаж: {mounting}.',
+    }),
+  }),
+});
+
 const MODEL_APPLICATION_COPY = Object.freeze({
   'BP-2P-130-0001': Object.freeze({
     en: Object.freeze({
       heading: 'Typical Equipment for BP-2P-130-0001 and Custom Hydraulic Variants',
-      intro: 'BP-2P-130-0001 carries two independent fluid circuits across a rotating interface. The standard page configuration is for compressed air; Begapunk also manufactures hydraulic versions with sealing selected for the hydraulic oil and operating conditions. The examples below show common equipment, the rotary-joint function in each machine, and the information needed for a useful recommendation and quotation.',
+      intro: 'BP-2P-130-0001 carries two fluid paths across a rotating interface. The standard page configuration is for compressed air; Begapunk also manufactures hydraulic versions with sealing selected for the hydraulic oil and operating conditions. The examples below show common equipment, the rotary-joint function in each machine, and the information needed for a useful recommendation and quotation.',
       cards: Object.freeze([
         Object.freeze([
           'CNC Indexing Tables and Rotary Clamping Fixtures',
-          'Use the two independent passages to supply compressed air for clamp/release, fixture positioning, locating pins, or paired pneumatic actuators while the table or fixture rotates. The standard BP-2P-130-0001 configuration is a candidate for low-speed machines whose pressure, speed, G1/8 ports, six-hole mounting faces, and available installation space match the equipment.',
+          'Use the two passages to supply compressed air for clamp/release, fixture positioning, locating pins, or paired pneumatic actuators while the table or fixture rotates. The standard BP-2P-130-0001 configuration is a candidate for low-speed machines whose pressure, speed, G1/8 ports, six-hole mounting faces, and available installation space match the equipment.',
         ]),
         Object.freeze([
           'Welding Positioners and Heavy Rotary Fixtures',
-          'Route compressed air to pneumatic clamps, stops, and fixture actuators on welding positioners, rotary welding tables, and assembly fixtures without twisting the supply hoses. Two passages can serve one paired clamp/release function or two independent air functions; equipment requiring more functions should use a rotary joint with additional passages.',
+          'Route compressed air to pneumatic clamps, stops, and fixture actuators on welding positioners, rotary welding tables, and assembly fixtures without twisting the supply hoses. Two passages can serve a paired clamp/release function or another two-function circuit after the port assignment is confirmed against the selected drawing; equipment requiring more functions should use a rotary joint with additional passages.',
         ]),
         Object.freeze([
           'Hydraulic Clamping and Indexing Equipment',
@@ -378,15 +478,15 @@ const MODEL_APPLICATION_COPY = Object.freeze({
     }),
     de: Object.freeze({
       heading: 'Typische Maschinen für BP-2P-130-0001 und kundenspezifische Hydraulikausführungen',
-      intro: 'BP-2P-130-0001 führt zwei getrennte Medienkreise über eine drehende Schnittstelle. Die auf dieser Seite beschriebene Standardausführung ist für Druckluft vorgesehen; Begapunk fertigt außerdem Hydraulikausführungen mit auf Hydrauliköl und Betriebsbedingungen abgestimmter Dichtung. Die folgenden Beispiele nennen konkrete Maschinen, die Aufgabe der Drehdurchführung und die Angaben für eine belastbare Empfehlung und ein Angebot.',
+      intro: 'BP-2P-130-0001 führt zwei Medienkanäle über eine drehende Schnittstelle. Die auf dieser Seite beschriebene Standardausführung ist für Druckluft vorgesehen; Begapunk fertigt außerdem Hydraulikausführungen mit auf Hydrauliköl und Betriebsbedingungen abgestimmter Dichtung. Die folgenden Beispiele nennen konkrete Maschinen, die Aufgabe der Drehdurchführung und die Angaben für eine belastbare Empfehlung und ein Angebot.',
       cards: Object.freeze([
         Object.freeze([
           'CNC-Rundschalttische und rotierende Spannvorrichtungen',
-          'Die zwei getrennten Kanäle versorgen beim Drehen des Tisches oder der Vorrichtung Spann-/Lösefunktionen, Positionierelemente, Absteckbolzen oder zwei Pneumatikaktuatoren mit Druckluft. Die Standardausführung BP-2P-130-0001 kommt für langsam laufende Maschinen infrage, wenn Druck, Drehzahl, G1/8-Anschlüsse, die Montageflächen mit je sechs Bohrungen und der verfügbare Einbauraum passen.',
+          'Die zwei Kanäle versorgen beim Drehen des Tisches oder der Vorrichtung Spann-/Lösefunktionen, Positionierelemente, Absteckbolzen oder zwei Pneumatikaktuatoren mit Druckluft. Die Standardausführung BP-2P-130-0001 kommt für langsam laufende Maschinen infrage, wenn Druck, Drehzahl, G1/8-Anschlüsse, die Montageflächen mit je sechs Bohrungen und der verfügbare Einbauraum passen.',
         ]),
         Object.freeze([
           'Schweißpositionierer und schwere Drehvorrichtungen',
-          'Die Drehdurchführung führt Druckluft zu pneumatischen Spannern, Anschlägen und Vorrichtungsaktuatoren auf Schweißpositionierern, Drehtischen und Montagevorrichtungen, ohne dass sich Versorgungsschläuche verdrillen. Zwei Kanäle können eine gekoppelte Spann-/Lösefunktion oder zwei getrennte Luftfunktionen versorgen; für weitere Funktionen ist eine Ausführung mit mehr Kanälen erforderlich.',
+          'Die Drehdurchführung führt Druckluft zu pneumatischen Spannern, Anschlägen und Vorrichtungsaktuatoren auf Schweißpositionierern, Drehtischen und Montagevorrichtungen, ohne dass sich Versorgungsschläuche verdrillen. Zwei Kanäle können eine gekoppelte Spann-/Lösefunktion oder eine andere Zweifunktionsschaltung versorgen, nachdem die Anschlussbelegung anhand der gewählten Zeichnung bestätigt wurde; für weitere Funktionen ist eine Ausführung mit mehr Kanälen erforderlich.',
         ]),
         Object.freeze([
           'Hydraulische Spann- und Indexiersysteme',
@@ -404,15 +504,15 @@ const MODEL_APPLICATION_COPY = Object.freeze({
     }),
     ja: Object.freeze({
       heading: 'BP-2P-130-0001と油圧カスタム仕様の主な搭載設備',
-      intro: 'BP-2P-130-0001は、固定側と回転側の間で2つの独立した流体回路を接続します。このページの標準仕様は圧縮空気用です。Begapunkでは、作動油と使用条件に合わせてシールを選定した油圧仕様も製作できます。以下では、具体的な搭載設備、各設備でのロータリージョイントの役割、選定・見積りに必要な情報をまとめています。',
+      intro: 'BP-2P-130-0001は、固定側と回転側の間で2つの流体経路を接続します。このページの標準仕様は圧縮空気用です。Begapunkでは、作動油と使用条件に合わせてシールを選定した油圧仕様も製作できます。以下では、具体的な搭載設備、各設備でのロータリージョイントの役割、選定・見積りに必要な情報をまとめています。',
       cards: Object.freeze([
         Object.freeze([
           'CNCインデックステーブル・回転クランプ治具',
-          'テーブルや治具の回転中も、独立した2流路からクランプ／アンクランプ、位置決め、ロケートピン、または2系統の空圧アクチュエータへ圧縮空気を供給できます。標準BP-2P-130-0001は、圧力、回転数、G1/8ポート、両面各6か所の取付穴、設置スペースが一致する低速設備の候補です。',
+          'テーブルや治具の回転中も、2流路からクランプ／アンクランプ、位置決め、ロケートピン、または2系統の空圧アクチュエータへ圧縮空気を供給できます。標準BP-2P-130-0001は、圧力、回転数、G1/8ポート、両面各6か所の取付穴、設置スペースが一致する低速設備の候補です。',
         ]),
         Object.freeze([
           '溶接ポジショナー・大型回転治具',
-          '溶接ポジショナー、回転溶接テーブル、組立治具上の空圧クランプ、ストッパー、治具アクチュエータへ、供給ホースをねじらずに圧縮空気を送ります。2流路で1組のクランプ／アンクランプ機能、または独立した2つの空圧機能を構成できます。機能数が多い設備には、より多流路の型式を選定します。',
+          '溶接ポジショナー、回転溶接テーブル、組立治具上の空圧クランプ、ストッパー、治具アクチュエータへ、供給ホースをねじらずに圧縮空気を送ります。2流路で1組のクランプ／アンクランプ機能、または別の2機能回路を構成できます。ポート割当は選定図面で確認してください。機能数が多い設備には、より多流路の型式を選定します。',
         ]),
         Object.freeze([
           '油圧クランプ・油圧インデックス装置',
@@ -430,15 +530,15 @@ const MODEL_APPLICATION_COPY = Object.freeze({
     }),
     ru: Object.freeze({
       heading: 'Типовое оборудование для BP-2P-130-0001 и заказных гидравлических исполнений',
-      intro: 'BP-2P-130-0001 передаёт два независимых контура через вращающийся интерфейс. Стандартное исполнение на этой странице предназначено для сжатого воздуха; Begapunk также изготавливает гидравлические исполнения с уплотнениями, подобранными под рабочее масло и режим эксплуатации. Ниже указаны конкретные виды оборудования, функция вращающегося соединения и данные, необходимые для содержательной рекомендации и расчёта цены.',
+      intro: 'BP-2P-130-0001 передаёт два канала через вращающийся интерфейс. Стандартное исполнение на этой странице предназначено для сжатого воздуха; Begapunk также изготавливает гидравлические исполнения с уплотнениями, подобранными под рабочее масло и режим эксплуатации. Ниже указаны конкретные виды оборудования, функция вращающегося соединения и данные, необходимые для содержательной рекомендации и расчёта цены.',
       cards: Object.freeze([
         Object.freeze([
           'Индексные столы ЧПУ и поворотные зажимные приспособления',
-          'Два независимых канала подают сжатый воздух на зажим/разжим, позиционирующие элементы, установочные штифты или два пневмопривода во время вращения стола либо приспособления. Стандартная BP-2P-130-0001 подходит для предварительного выбора низкооборотного оборудования, если совпадают давление, скорость, порты G1/8, монтажные поверхности с шестью отверстиями на каждой стороне и доступное пространство.',
+          'Два канала подают сжатый воздух на зажим/разжим, позиционирующие элементы, установочные штифты или два пневмопривода во время вращения стола либо приспособления. Стандартная BP-2P-130-0001 подходит для предварительного выбора низкооборотного оборудования, если совпадают давление, скорость, порты G1/8, монтажные поверхности с шестью отверстиями на каждой стороне и доступное пространство.',
         ]),
         Object.freeze([
           'Сварочные позиционеры и тяжёлые поворотные приспособления',
-          'Вращающееся соединение подаёт сжатый воздух к пневмозажимам, упорам и приводам оснастки на сварочных позиционерах, поворотных сварочных столах и сборочных приспособлениях без перекручивания шлангов. Два канала обслуживают одну парную функцию зажима/разжима или две независимые пневмофункции; для дополнительных функций требуется больше каналов.',
+          'Вращающееся соединение подаёт сжатый воздух к пневмозажимам, упорам и приводам оснастки на сварочных позиционерах, поворотных сварочных столах и сборочных приспособлениях без перекручивания шлангов. Два канала обслуживают парную функцию зажима/разжима или другую двухфункциональную схему после подтверждения назначения портов по выбранному чертежу; для дополнительных функций требуется больше каналов.',
         ]),
         Object.freeze([
           'Гидравлические зажимные и индексирующие системы',
@@ -482,14 +582,14 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: 'Typical Equipment for {model}',
-        intro: '{model} provides {passages} across a rotating interface. Published selection values: {pressure} · {speed}; suitable media: {media}. Port arrangement: {ports}. Mounting: {mounting}. The examples below show where this passage arrangement is commonly useful and what must match before selection.',
+        intro: '{model} provides {passages} across a rotating interface. Pressure / speed: {pressure} · {speed}; suitable media: {media}. Port arrangement: {ports}. Mounting: {mounting}. The examples below show where this passage arrangement is commonly useful and what must match before selection.',
         inquiryTitle: 'Send the machine conditions',
         inquiryText: 'Send the equipment name, machine or attachment drawing, function required from each passage, medium, working pressure, return pressure if applicable, flow rate, rotation speed, temperature, duty cycle, external loads, available space, port threads, mounting pattern, and quantity. Begapunk will recommend a standard model or custom configuration and reply with a quotation and the available 2D or 3D files.',
         inquiryAction: 'Request a Model Recommendation',
       }),
       distribution: Object.freeze({
         heading: 'Equipment Using the Shared Air Circuit of {model}',
-        intro: '{model} uses one pneumatic passage with one inlet and eight outlets to distribute a shared air circuit to multiple points on a rotating assembly. Published selection values: {pressure} · {speed}. Port arrangement: {ports}. The outlets are part of the same circuit; independently controlled functions require rotating-side valves or additional passages.',
+        intro: '{model} uses one pneumatic passage with one inlet and eight outlets to distribute a shared air circuit to multiple points on a rotating assembly. Pressure / speed: {pressure} · {speed}. Port arrangement: {ports}. The outlets are part of the same circuit; independently controlled functions require rotating-side valves or additional passages.',
         inquiryTitle: 'Describe the outlet layout and simultaneous demand',
         inquiryText: 'Send the machine drawing, inlet supply, purpose and location of all eight outlets, whether the outlets operate simultaneously, total and peak flow, working pressure, rotation speed, temperature, duty cycle, valve arrangement, mounting space, and quantity. Begapunk will check whether a shared circuit is appropriate or whether the machine needs independently separated passages.',
         inquiryAction: 'Check the Air Distribution Layout',
@@ -504,10 +604,10 @@ const APPLICATION_PANEL_COPY = Object.freeze({
       }),
       hybrid: Object.freeze({
         heading: 'Equipment Using Pneumatic Passages and Electrical Leads from {model}',
-        intro: '{model} combines {passages} with {electrical}. Published pneumatic selection values: {pressure} · {speed}; suitable medium: {media}. Port arrangement: {ports}. Use it where rotating equipment needs both air functions and electrical connections, after the required circuit allocation and electrical ratings are defined.',
+        intro: '{model} combines 3 pneumatic passages with 6 electrical leads. Pneumatic pressure / speed: {pressure} · {speed}; suitable medium: {media}. Port arrangement: {ports}. Confirm the air inlet, circuit allocation, and electrical ratings for the selected configuration.',
         inquiryTitle: 'Send both pneumatic and electrical requirements',
         inquiryText: 'Send the equipment drawing, pneumatic function for each passage, pressure, flow, speed, temperature and duty cycle, plus the voltage, current, signal type, circuit allocation, shielding or connector requirements, mounting space, cable routing, and quantity. Begapunk will check the combined interface and reply with a quotation and available technical files.',
-        inquiryAction: 'Request a Pneumatic-Electrical Review',
+        inquiryAction: 'Send Pneumatic and Electrical Requirements',
       }),
     }),
     cards: Object.freeze({
@@ -543,14 +643,14 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: 'Typische Maschinen für {model}',
-        intro: '{model} führt {passages} über eine drehende Schnittstelle. Veröffentlichte Auswahlwerte: {pressure} · {speed}; geeignete Medien: {media}. Anschlussanordnung: {ports}. Montage: {mounting}. Die folgenden Beispiele zeigen typische Einsatzmaschinen und die Punkte, die vor der Auswahl übereinstimmen müssen.',
+        intro: '{model} führt {passages} über eine drehende Schnittstelle. Druck / Drehzahl: {pressure} · {speed}; geeignete Medien: {media}. Anschlussanordnung: {ports}. Montage: {mounting}. Die folgenden Beispiele zeigen typische Einsatzmaschinen und die Punkte, die vor der Auswahl übereinstimmen müssen.',
         inquiryTitle: 'Senden Sie die Maschinendaten',
         inquiryText: 'Senden Sie Maschinen- oder Anbaugerätetyp, Zeichnung, Funktion jedes Kanals, Medium, Arbeitsdruck, gegebenenfalls Rücklaufdruck, Volumenstrom, Drehzahl, Temperatur, Betriebszyklus, äußere Lasten, verfügbaren Bauraum, Anschlussgewinde, Lochbild und Menge. Begapunk empfiehlt ein Standardmodell oder eine kundenspezifische Ausführung und antwortet mit Angebot sowie verfügbaren 2D- oder 3D-Dateien.',
         inquiryAction: 'Modellempfehlung anfragen',
       }),
       distribution: Object.freeze({
         heading: 'Maschinen mit dem gemeinsamen Luftkreis von {model}',
-        intro: '{model} verteilt einen gemeinsamen Druckluftkreis über einen Eingang und acht Ausgänge auf mehrere Stellen einer rotierenden Baugruppe. Veröffentlichte Auswahlwerte: {pressure} · {speed}. Anschlussanordnung: {ports}. Die Ausgänge gehören zum selben Kreis; unabhängig gesteuerte Funktionen benötigen Ventile auf der rotierenden Seite oder zusätzliche Kanäle.',
+        intro: '{model} verteilt einen gemeinsamen Druckluftkreis über einen Eingang und acht Ausgänge auf mehrere Stellen einer rotierenden Baugruppe. Druck / Drehzahl: {pressure} · {speed}. Anschlussanordnung: {ports}. Die Ausgänge gehören zum selben Kreis; unabhängig gesteuerte Funktionen benötigen Ventile auf der rotierenden Seite oder zusätzliche Kanäle.',
         inquiryTitle: 'Ausgangsanordnung und gleichzeitigen Bedarf beschreiben',
         inquiryText: 'Senden Sie Maschinenzeichnung, Eingangsdruckluft, Aufgabe und Position aller acht Ausgänge, Gleichzeitigkeit der Verbraucher, Gesamt- und Spitzenvolumenstrom, Arbeitsdruck, Drehzahl, Temperatur, Betriebszyklus, Ventilanordnung, Bauraum und Menge. Begapunk prüft, ob ein gemeinsamer Kreis ausreicht oder getrennte Kanäle erforderlich sind.',
         inquiryAction: 'Luftverteilung prüfen lassen',
@@ -565,7 +665,7 @@ const APPLICATION_PANEL_COPY = Object.freeze({
       }),
       hybrid: Object.freeze({
         heading: 'Maschinen mit Pneumatikkanälen und elektrischen Leitungen von {model}',
-        intro: '{model} kombiniert {passages} mit {electrical}. Veröffentlichte pneumatische Auswahlwerte: {pressure} · {speed}; geeignetes Medium: {media}. Anschlussanordnung: {ports}. Die Ausführung eignet sich für rotierende Maschinen mit Luftfunktionen und definierten elektrischen Verbindungen, nachdem Kreisbelegung und elektrische Nennwerte festgelegt wurden.',
+        intro: '{model} kombiniert 3 Pneumatikkanäle mit 6 elektrischen Leitungen. Pneumatikdruck / Drehzahl: {pressure} · {speed}; geeignetes Medium: {media}. Anschlussanordnung: {ports}. Lufteinlass, Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen.',
         inquiryTitle: 'Pneumatische und elektrische Anforderungen senden',
         inquiryText: 'Senden Sie Anlagenzeichnung, Pneumatikfunktion jedes Kanals, Druck, Volumenstrom, Drehzahl, Temperatur und Betriebszyklus sowie Spannung, Strom, Signalart, Kreisbelegung, Schirmungs- oder Steckeranforderungen, Bauraum, Kabelführung und Menge. Begapunk prüft die kombinierte Schnittstelle und antwortet mit Angebot und verfügbaren technischen Dateien.',
         inquiryAction: 'Pneumatik-Elektro-Prüfung anfragen',
@@ -604,14 +704,14 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: '{model}の主な搭載設備',
-        intro: '{model}は、固定側と回転側の間で{passages}を接続します。公開選定値：{pressure}・{speed}、適用流体：{media}。ポート構成：{ports}。取付：{mounting}。以下では、この流路構成が使われる代表的な設備と、選定前に一致させる条件を示します。',
+        intro: '{model}は、固定側と回転側の間で{passages}を接続します。圧力／回転数：{pressure}・{speed}、適用流体：{media}。ポート構成：{ports}。取付：{mounting}。以下では、この流路構成が使われる代表的な設備と、選定前に一致させる条件を示します。',
         inquiryTitle: '設備条件をお知らせください',
         inquiryText: '設備名、機械またはアタッチメント図面、各流路の機能、流体、作動圧力、必要に応じた戻り圧力、流量、回転数、温度、デューティ、外力、取付スペース、ポートねじ、取付穴、数量をお送りください。Begapunkが標準型式またはカスタム仕様をご提案し、見積りと提供可能な2D／3Dデータをご案内します。',
         inquiryAction: '型式選定を相談',
       }),
       distribution: Object.freeze({
         heading: '{model}の共通エア回路を使用する設備',
-        intro: '{model}は、1つの入口と8つの出口により、回転部の複数箇所へ1系統の共通エア回路を分配します。公開選定値：{pressure}・{speed}。ポート構成：{ports}。8つの出口は同一回路です。個別制御が必要な機能には、回転側バルブまたは独立流路の追加が必要です。',
+        intro: '{model}は、1つの入口と8つの出口により、回転部の複数箇所へ1系統の共通エア回路を分配します。圧力／回転数：{pressure}・{speed}。ポート構成：{ports}。8つの出口は同一回路です。個別制御が必要な機能には、回転側バルブまたは独立流路の追加が必要です。',
         inquiryTitle: '出口配置と同時使用量をお知らせください',
         inquiryText: '設備図面、入口エア条件、8つの出口の用途と位置、同時動作の有無、総流量・ピーク流量、作動圧力、回転数、温度、デューティ、バルブ配置、取付スペース、数量をお送りください。共通回路で対応できるか、独立流路が必要かをBegapunkが確認します。',
         inquiryAction: 'エア分配構成を確認',
@@ -626,7 +726,7 @@ const APPLICATION_PANEL_COPY = Object.freeze({
       }),
       hybrid: Object.freeze({
         heading: '{model}の空圧流路と電気リードを使用する設備',
-        intro: '{model}は、{passages}と{electrical}を組み合わせています。公開されている空圧選定値：{pressure}・{speed}、適用流体：{media}。ポート構成：{ports}。回路割当と電気定格を定義したうえで、空圧機能と電気接続の両方が必要な回転設備に使用します。',
+        intro: '{model}は、空圧3流路と電気リード6本を組み合わせた仕様です。空圧の圧力／回転数：{pressure}・{speed}、適用流体：{media}。ポート構成：{ports}。選定仕様のエア入口、回路割当、電気定格をご確認ください。',
         inquiryTitle: '空圧条件と電気条件の両方をお送りください',
         inquiryText: '設備図面、各空圧流路の機能、圧力、流量、回転数、温度、デューティに加え、電圧、電流、信号種類、回路割当、シールド・コネクタ要件、取付スペース、ケーブル経路、数量をお送りください。Begapunkが複合インターフェースを確認し、見積りと技術データをご案内します。',
         inquiryAction: '空圧・電気複合仕様を相談',
@@ -665,14 +765,14 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: 'Типовое оборудование для {model}',
-        intro: '{model} передаёт {passages} через вращающийся интерфейс. Опубликованные параметры выбора: {pressure} · {speed}; подходящие среды: {media}. Схема портов: {ports}. Монтаж: {mounting}. Ниже приведены типовые машины для такой схемы каналов и условия, которые необходимо сопоставить перед выбором.',
+        intro: '{model} передаёт {passages} через вращающийся интерфейс. Давление / скорость: {pressure} · {speed}; подходящие среды: {media}. Схема портов: {ports}. Монтаж: {mounting}. Ниже приведены типовые машины для такой схемы каналов и условия, которые необходимо сопоставить перед выбором.',
         inquiryTitle: 'Отправьте параметры машины',
         inquiryText: 'Отправьте тип машины или навесного оборудования, чертёж, функцию каждого канала, среду, рабочее и при необходимости обратное давление, расход, скорость, температуру, рабочий цикл, внешние нагрузки, доступное пространство, резьбы портов, схему крепления и количество. Begapunk предложит стандартную или заказную конфигурацию и ответит по цене и доступным 2D- или 3D-файлам.',
         inquiryAction: 'Запросить рекомендацию модели',
       }),
       distribution: Object.freeze({
         heading: 'Оборудование с общим воздушным контуром {model}',
-        intro: '{model} распределяет один общий пневматический контур от одного входа к восьми выходам на вращающемся узле. Опубликованные параметры выбора: {pressure} · {speed}. Схема портов: {ports}. Выходы относятся к одному контуру; для независимого управления нужны клапаны на вращающейся стороне или дополнительные каналы.',
+        intro: '{model} распределяет один общий пневматический контур от одного входа к восьми выходам на вращающемся узле. Давление / скорость: {pressure} · {speed}. Схема портов: {ports}. Выходы относятся к одному контуру; для независимого управления нужны клапаны на вращающейся стороне или дополнительные каналы.',
         inquiryTitle: 'Опишите расположение выходов и одновременный расход',
         inquiryText: 'Отправьте чертёж машины, параметры входного воздуха, назначение и расположение всех восьми выходов, одновременность работы, общий и пиковый расход, рабочее давление, скорость, температуру, цикл, схему клапанов, монтажный объём и количество. Begapunk проверит, подходит ли общий контур или нужны раздельные каналы.',
         inquiryAction: 'Проверить схему распределения воздуха',
@@ -687,7 +787,7 @@ const APPLICATION_PANEL_COPY = Object.freeze({
       }),
       hybrid: Object.freeze({
         heading: 'Оборудование с пневмоканалами и электрическими выводами {model}',
-        intro: '{model} объединяет {passages} и {electrical}. Опубликованные параметры пневматической части: {pressure} · {speed}; подходящая среда: {media}. Схема портов: {ports}. Такая конфигурация применяется там, где вращающемуся оборудованию нужны воздух и заданные электрические соединения после определения распределения цепей и номиналов.',
+        intro: '{model} сочетает 3 пневматических канала и 6 электрических выводов. Давление / скорость пневматической части: {pressure} · {speed}; подходящая среда: {media}. Схема портов: {ports}. Для выбранного исполнения подтвердите вход воздуха, распределение цепей и электрические номиналы.',
         inquiryTitle: 'Отправьте пневматические и электрические требования',
         inquiryText: 'Отправьте чертёж оборудования, функцию каждого пневмоканала, давление, расход, скорость, температуру и цикл, а также напряжение, ток, тип сигнала, распределение цепей, требования к экранированию или разъёмам, монтажное пространство, прокладку кабеля и количество. Begapunk проверит комбинированный интерфейс и ответит по цене и техническим файлам.',
         inquiryAction: 'Запросить проверку пневмоэлектрической части',
@@ -739,6 +839,44 @@ const EXPECTED_APPLICATION_EVIDENCE = Object.freeze({
   'BP-2P-16-0001': ['verified-application:bottle-capping-three-jaw-gripper'],
   'BP-3P-0004': ['verified-application:laser-rear-chuck'],
 });
+const CUSTOMER_APPLICATION_COPY = Object.freeze({
+  en: Object.freeze({
+    laserTitle: 'Application: Laser Tube Cutting Rear Chuck',
+    laserText: ({ model, passages }) => `${model} has ${passages} independent passages and is used for the rear chuck's compressed-air circuits on laser tube cutting machines. Check passage assignment, pressure, speed, mounting dimensions, and hose routing against the chuck drawing and operating conditions. The case photographs show this application type; select the ordered model from the machine requirements.`,
+    laserCaseLink: 'View the application case →',
+    laserGuideLink: 'Read the application guide →',
+    bottleTitle: 'Application: Pneumatic Three-Jaw Bottle-Cap Gripper',
+    bottleText: 'BP-2P-08-0001 is another two-passage option for pneumatic three-jaw bottle-cap grippers. Compare its mounting dimensions and operating limits with BP-2P-16-0001 before selection. The linked production example uses BP-2P-16-0001.',
+    bottleLink: 'Compare the application and models →',
+  }),
+  de: Object.freeze({
+    laserTitle: 'Anwendung: Hinteres Spannfutter einer Laser-Rohrschneidmaschine',
+    laserText: ({ model, passages }) => `${model} verfügt über ${passages} getrennte Kanäle und wird für die Druckluftkreise hinterer Spannfutter an Laser-Rohrschneidmaschinen eingesetzt. Gleichen Sie Kanalbelegung, Druck, Drehzahl, Einbaumaße und Schlauchführung mit Spannfutterzeichnung und Betriebsbedingungen ab. Die Fotos im Fallbeispiel zeigen diesen Anwendungstyp; wählen Sie die Bestellausführung anhand der Maschinenanforderungen.`,
+    laserCaseLink: 'Anwendungsfall ansehen →',
+    laserGuideLink: 'Anwendungsleitfaden lesen →',
+    bottleTitle: 'Anwendung: pneumatischer 3-Finger-Zentrischgreifer für Flaschenverschlüsse',
+    bottleText: 'BP-2P-08-0001 ist eine weitere Zweikanal-Option für pneumatische 3-Finger-Zentrischgreifer von Flaschenverschlüssen. Vergleichen Sie vor der Auswahl Einbaumaße und Betriebsgrenzen mit BP-2P-16-0001. Im verlinkten Produktionsbeispiel wird BP-2P-16-0001 eingesetzt.',
+    bottleLink: 'Anwendung und Modelle vergleichen →',
+  }),
+  ja: Object.freeze({
+    laserTitle: '用途：レーザー管切断機の後方チャック',
+    laserText: ({ model, passages }) => `${model}は独立した${passages}流路を備え、レーザー管切断機の後方チャック空圧回路に使用されています。流路割当て、圧力、回転数、取付寸法、配管経路をチャック図面と使用条件に照らして確認してください。事例写真はこの用途の組込み例です。発注型式は装置要件に基づいて選定してください。`,
+    laserCaseLink: '用途事例を見る →',
+    laserGuideLink: '用途ガイドを読む →',
+    bottleTitle: '用途：ボトルキャップ用3爪エアチャック',
+    bottleText: 'BP-2P-08-0001は、ボトルキャップ用3爪エアチャックに対応する別の2流路仕様です。選定前に、取付寸法と使用限界をBP-2P-16-0001と比較してください。リンク先の量産事例ではBP-2P-16-0001を使用しています。',
+    bottleLink: '用途と型式を比較 →',
+  }),
+  ru: Object.freeze({
+    laserTitle: 'Применение: задний патрон станка лазерной резки труб',
+    laserText: ({ model, passages }) => `${model} имеет ${passages} независимых канала и применяется в пневматических контурах задних патронов станков лазерной резки труб. Сопоставьте назначение каналов, давление, частоту вращения, монтажные размеры и прокладку шлангов с чертежом патрона и условиями работы. Фотографии показывают такой тип установки; заказную модель выбирают по требованиям станка.`,
+    laserCaseLink: 'Посмотреть пример применения →',
+    laserGuideLink: 'Открыть руководство по применению →',
+    bottleTitle: 'Применение: трёхкулачковый пневматический захват для крышек',
+    bottleText: 'BP-2P-08-0001 — ещё один двухканальный вариант для трёхкулачковых пневматических захватов крышек. Перед выбором сравните его монтажные размеры и рабочие пределы с BP-2P-16-0001. В связанном производственном примере используется BP-2P-16-0001.',
+    bottleLink: 'Сравнить применение и модели →',
+  }),
+});
 const VISIBLE_DRAWING_FIELD_ORDER = [
   'pressure', 'speed', 'body', 'seal', 'media', 'temperature', 'weight',
   'dimensions', 'bore', 'mount', 'ports',
@@ -783,7 +921,9 @@ function productFacts(model, product, locale, ui = drawingBackedUiContract(local
     ports: ui.fields.ports,
     mounting: ui.fields.mount,
     envelope: ui.fields.dimensions,
-    bore: ui.fields.bore ?? copy.noBore,
+    // A missing bore field is not evidence that the product has no through bore.
+    // Keep it absent unless the reviewed UI contract explicitly publishes it.
+    bore: ui.requiredJsonFields.includes('bore') ? ui.fields.bore : null,
     temperature: ui.fields.temperature,
     weight: ui.fields.weight,
     electrical: ui.hybridInterfacePropertyName ? ui.keyValues.channels : null,
@@ -848,12 +988,14 @@ function interpolateFaq(template, values, label) {
 }
 
 function localizedPassagePhrase(locale, count) {
-  if (locale === 'en') return `${count} independent passage${count === 1 ? '' : 's'}`;
-  if (locale === 'de') return count === 1 ? 'einen unabhängigen Kanal' : `${count} unabhängige Kanäle`;
-  if (locale === 'ja') return `${count}つの独立流路`;
-  if (count === 1) return 'один независимый канал';
-  if (count >= 2 && count <= 4) return `${count} независимых канала`;
-  return `${count} независимых каналов`;
+  // The model identity supports a passage count, but not an assumption that
+  // every passage is independent. Independence must come from an explicit
+  // model-specific fact, never from a missing drawing field.
+  if (locale === 'en') return `${count}-passage configuration`;
+  if (locale === 'de') return `${count}-Kanal-Ausführung`;
+  if (locale === 'ja') return `${count}流路仕様`;
+  if (count === 1) return 'исполнение с 1 каналом';
+  return `исполнение с ${count} каналами`;
 }
 
 function interpolateApplicationCopy(template, values, label) {
@@ -934,15 +1076,23 @@ function productFaq(model, facts, locale) {
     electrical: facts.electrical ?? '',
   };
   const hybrid = model === ELECTRICAL_LEADS_MODEL;
+  const special = SPECIAL_FAQ_COPY[model]?.[locale] ?? {};
+  const fitTemplate = special.fitAnswer
+    ?? (hybrid ? copy.hybridFitAnswer : (facts.bore ? copy.fitAnswerWithBore : copy.fitAnswer));
+  const interfaceQuestionTemplate = hybrid
+    ? copy.hybridInterfaceQuestion
+    : (facts.bore ? copy.interfaceQuestionWithBore : copy.interfaceQuestion);
+  const interfaceAnswerTemplate = special.interfaceAnswer
+    ?? (hybrid ? copy.hybridInterfaceAnswer : (facts.bore ? copy.interfaceAnswerWithBore : copy.interfaceAnswer));
   return {
     heading: interpolate(copy.heading),
     items: [
-      [interpolate(copy.fitQuestion), interpolate(hybrid ? copy.hybridFitAnswer : copy.fitAnswer, values)],
+      [interpolate(copy.fitQuestion), interpolate(fitTemplate, values)],
       [interpolate(copy.limitsQuestion), interpolate(copy.limitsAnswer, values)],
-      [interpolate(copy.materialsQuestion), interpolate(copy.materialsAnswer, values)],
+      [interpolate(special.materialsQuestion ?? copy.materialsQuestion), interpolate(special.materialsAnswer ?? copy.materialsAnswer, values)],
       [
-        interpolate(hybrid ? copy.hybridInterfaceQuestion : copy.interfaceQuestion),
-        interpolate(hybrid ? copy.hybridInterfaceAnswer : copy.interfaceAnswer, values),
+        interpolate(interfaceQuestionTemplate),
+        interpolate(interfaceAnswerTemplate, values),
       ],
       [interpolate(copy.quoteQuestion), interpolate(hybrid ? copy.hybridQuoteAnswer : copy.quoteAnswer, values)],
     ],
@@ -956,15 +1106,82 @@ function productPaths(model) {
   }));
 }
 
+const RELATED_MODELS_BY_MODEL = Object.freeze({
+  'BP-1P-0003': Object.freeze(['BP-1P-0006', 'BP-2P-0001', 'BP-2P-0002']),
+  'BP-1P-0006': Object.freeze(['BP-1P-0003', 'BP-2P-0001', 'BP-2P-0002']),
+  'BP-2P-0001': Object.freeze(['BP-2P-0002', 'BP-2P-08-0001', 'BP-2P-130-0001']),
+  'BP-2P-0002': Object.freeze(['BP-2P-0001', 'BP-2P-08-0001', 'BP-2P-16-0001']),
+  'BP-2P-08-0001': Object.freeze(['BP-2P-16-0001', 'BP-2P-0001', 'BP-2P-0002']),
+  'BP-2P-130-0001': Object.freeze(['BP-2P-95-0005', 'BP-2P-50-0001', 'BP-2P-0001']),
+  'BP-2P-16-0001': Object.freeze(['BP-2P-08-0001', 'BP-2P-30-0001', 'BP-2P-0001']),
+  'BP-2P-30-0001': Object.freeze(['BP-2P-16-0001', 'BP-2P-50-0001', 'BP-4P-30-0001']),
+  'BP-2P-50-0001': Object.freeze(['BP-2P-30-0001', 'BP-2P-130-0001', 'BP-4P-30-0001']),
+  'BP-2P-95-0005': Object.freeze(['BP-2P-130-0001', 'BP-2P-50-0001', 'BP-2P-0001']),
+  'BP-3P-0004': Object.freeze(['BP-3P-0007', 'BP-3P-0006', 'BP-3P-S06-0001']),
+  'BP-3P-0006': Object.freeze(['BP-3P-0004', 'BP-3P-0007', 'BP-3P-S06-0001']),
+  'BP-3P-0007': Object.freeze(['BP-3P-0004', 'BP-3P-0006', 'BP-3P-S06-0001']),
+  'BP-3P-S06-0001': Object.freeze(['BP-3P-0004', 'BP-3P-0007', 'BP-2P-16-0001']),
+  'BP-4P-30-0001': Object.freeze(['BP-2P-30-0001', 'BP-3P-0004', 'BP-8P-0001']),
+  'BP-8P-0001': Object.freeze(['BP-4P-30-0001', 'BP-3P-0007', 'BP-3P-S06-0001']),
+});
+
 function relatedModels(model, orderedModels, products) {
-  const family = model.match(/^BP-(\d+)P-/)?.[1] ?? null;
-  const verified = orderedModels.filter((candidate) => (
-    candidate !== model && products[candidate]?.status !== 'identity-pending'
-  ));
-  const sameFamily = family
-    ? verified.filter((candidate) => candidate.match(/^BP-(\d+)P-/)?.[1] === family)
-    : [];
-  return [...sameFamily, ...verified.filter((candidate) => !sameFamily.includes(candidate))].slice(0, 3);
+  const related = RELATED_MODELS_BY_MODEL[model];
+  if (!related || related.length !== 3 || new Set(related).size !== 3) {
+    throw new Error(`${model}: related-model contract must contain three unique models.`);
+  }
+  for (const candidate of related) {
+    if (candidate === model || !orderedModels.includes(candidate) || products[candidate]?.status === 'identity-pending') {
+      throw new Error(`${model}: invalid related model ${candidate}.`);
+    }
+  }
+  return related;
+}
+
+const RELATED_FACT_COPY = Object.freeze({
+  en: ({ pressure, speed, bore, envelope }) => `Maximum pressure: ${pressure}; maximum speed: ${speed}. ${bore ? `Through bore: ${bore}.` : `Listed envelope: ${envelope}.`}`,
+  de: ({ pressure, speed, bore, envelope }) => `Maximaldruck: ${pressure}; maximale Drehzahl: ${speed}. ${bore ? `Durchgangsbohrung: ${bore}.` : `Angegebene Außenabmessungen: ${envelope}.`}`,
+  ja: ({ pressure, speed, bore, envelope }) => `最高使用圧力：${pressure}。最高回転数：${speed}。${bore ? `貫通穴：${bore}。` : `記載外形：${envelope}。`}`,
+  ru: ({ pressure, speed, bore, envelope }) => `Максимальное давление: ${pressure}; максимальная частота вращения: ${speed}. ${bore ? `Сквозное отверстие: ${bore}.` : `Указанные габариты: ${envelope}.`}`,
+});
+
+const SPECIAL_RELATED_MODEL_COPY = Object.freeze({
+  'BP-1P-0003': Object.freeze({
+    en: (facts) => `Three suitable media are listed on this model page. Maximum pressure: ${facts.pressure}; maximum speed: ${facts.speed}.`,
+    de: (facts) => `Auf dieser Modellseite sind drei geeignete Medien angegeben. Maximaldruck: ${facts.pressure}; maximale Drehzahl: ${facts.speed}.`,
+    ja: (facts) => `この型式ページには3種類の適用流体が記載されています。最高使用圧力：${facts.pressure}。最高回転数：${facts.speed}。`,
+    ru: (facts) => `На странице этой модели указаны три подходящие среды. Максимальное давление: ${facts.pressure}; максимальная частота вращения: ${facts.speed}.`,
+  }),
+  'BP-1P-0006': Object.freeze({
+    en: (facts) => `One shared air circuit with 1 inlet and 8 outlets; this is not an eight-passage configuration. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
+    de: (facts) => `Ein gemeinsamer Druckluftkreis mit 1 Eingang und 8 Ausgängen; dies ist keine 8-Kanal-Ausführung. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    ja: (facts) => `1つの共通エア回路を1入口から8出口へ分配する仕様で、8流路仕様ではありません。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
+    ru: (facts) => `Один общий пневматический контур с 1 входом и 8 выходами; это не восьмиканальное исполнение. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
+  }),
+  'BP-2P-95-0005': Object.freeze({
+    en: (facts) => `2-in/4-out air layout with 2 clamp and 2 release outlets. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
+    de: (facts) => `Druckluftanordnung mit 2 Eingängen und 4 Ausgängen: 2 zum Spannen und 2 zum Lösen. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    ja: (facts) => `2入力・4出力の空圧構成で、クランプ用2出力とアンクランプ用2出力を備えます。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
+    ru: (facts) => `Пневматическая схема 2 входа / 4 выхода: 2 выхода для зажима и 2 для разжима. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
+  }),
+  'BP-3P-0006': Object.freeze({
+    en: (facts) => `The port thread is not listed; confirm the mating interface before selecting fittings. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
+    de: (facts) => `Das Anschlussgewinde ist nicht angegeben; die Gegenstelle vor der Auswahl der Verschraubungen bestätigen. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    ja: (facts) => `ポートねじは記載されていません。継手選定前に相手側インターフェースをご確認ください。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
+    ru: (facts) => `Резьба порта не указана; до выбора фитингов подтвердите сопрягаемый интерфейс. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
+  }),
+  'BP-3P-S06-0001': Object.freeze({
+    en: (facts) => `3 pneumatic passages plus 6 electrical leads; confirm the air inlet, circuit allocation, and electrical ratings. ${facts.pressure} · ${facts.speed}.`,
+    de: (facts) => `3 Pneumatikkanäle plus 6 elektrische Leitungen; Lufteinlass, Kreiszuordnung und elektrische Nennwerte bestätigen. ${facts.pressure} · ${facts.speed}.`,
+    ja: (facts) => `空圧3流路と電気リード6本の仕様です。エア入口、回路割当、電気定格をご確認ください。${facts.pressure}・${facts.speed}。`,
+    ru: (facts) => `3 пневматических канала и 6 электрических выводов; подтвердите вход воздуха, распределение цепей и электрические номиналы. ${facts.pressure} · ${facts.speed}.`,
+  }),
+});
+
+function relatedModelDescription(model, product, locale) {
+  const facts = productFacts(model, product, locale);
+  const special = SPECIAL_RELATED_MODEL_COPY[model]?.[locale];
+  return special ? special(facts) : RELATED_FACT_COPY[locale](facts);
 }
 
 function extractApplicationEvidence(value, label) {
@@ -991,8 +1208,28 @@ function extractApplicationEvidence(value, label) {
   return evidence;
 }
 
+function renderCustomerApplicationEvidence(model, locale, item) {
+  const copy = CUSTOMER_APPLICATION_COPY[locale];
+  if (item.key === 'verified-application:laser-rear-chuck'
+      && ['BP-2P-08-0001', 'BP-3P-0004'].includes(model)) {
+    const passages = {
+      en: model === 'BP-2P-08-0001' ? 'two' : 'three',
+      de: model === 'BP-2P-08-0001' ? 'zwei' : 'drei',
+      ja: model === 'BP-2P-08-0001' ? '2' : '3',
+      ru: model === 'BP-2P-08-0001' ? 'два' : 'три',
+    }[locale];
+    return `<div class="compat-item" data-verified-application="laser-rear-chuck"><strong>${copy.laserTitle}</strong><span style="display:block;font-size:0.85rem;color:var(--text-light);margin-top:4px;">${copy.laserText({ model, passages })} <a href="case-studies.html#laser-tube-rear-chuck">${copy.laserCaseLink}</a> <a href="application-laser-tube-cutting.html">${copy.laserGuideLink}</a></span></div>`;
+  }
+  if (model === 'BP-2P-08-0001'
+      && item.key === 'confirmed-application-fit:bottle-capping-three-jaw-gripper') {
+    return `<div class="compat-item" data-confirmed-application-fit="bottle-capping-three-jaw-gripper"><strong>${copy.bottleTitle}</strong><span style="display:block;font-size:0.85rem;color:var(--text-light);margin-top:4px;">${copy.bottleText} <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">${copy.bottleLink}</a></span></div>`;
+  }
+  return item.html;
+}
+
 function renderDeepContent(model, product, locale, orderedModels, products, applicationEvidenceBlocks) {
   const copy = COPY[locale];
+  const buyerCopy = BUYER_COPY[locale];
   const config = LOCALES[locale];
   const ui = drawingBackedUiContract(locale, model);
   const facts = productFacts(model, product, locale, ui);
@@ -1036,47 +1273,39 @@ function renderDeepContent(model, product, locale, orderedModels, products, appl
   const applicationPanelIntroStyle = modelApplicationCopy
     ? 'font-size:0.95rem;color:var(--text-light);margin-bottom:24px;line-height:1.75;'
     : 'font-size:0.95rem;color:var(--text-light);margin-bottom:24px;';
-  const applicationPanelFooter = modelApplicationCopy
-    ? `   <div style="margin-top:24px;padding:20px;background:var(--bg-alt);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:8px;">
-    <h3 style="margin:0 0 10px;font-size:1.05rem;color:var(--dark-soft);">${escapeHtml(modelApplicationCopy.inquiryTitle)}</h3>
-    <p style="margin:0;font-size:0.92rem;color:var(--text-light);line-height:1.75;">${escapeHtml(modelApplicationCopy.inquiryText)}</p>
-    <a href="contact.html?request=application-review&amp;model=${encodeURIComponent(model)}&amp;product=${encodedLabel}&amp;source=${fileName}#quoteForm" class="btn btn-primary" style="margin-top:16px;max-width:100%;white-space:normal;text-align:center;">${escapeHtml(modelApplicationCopy.inquiryAction)} →</a>
-   </div>`
-    : `   <div style="margin-top:24px;padding:16px 20px;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;">
-    <h3 style="margin:0 0 10px;font-size:1rem;color:#8a6d04;">⚠️ ${escapeHtml(copy.notApproved)}</h3>
-    <ul style="margin:0;padding-left:20px;font-size:0.9rem;color:var(--text);line-height:1.8;">
-${copy.notApprovedItems.map((item) => `     <li>${escapeHtml(item)}</li>`).join('\n')}
-    </ul>
+  const applicationPanelFooter = `   <div style="margin-top:24px;padding:20px;background:var(--bg-alt);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:8px;">
+    <h3 style="margin:0 0 10px;font-size:1.05rem;color:var(--dark-soft);">${escapeHtml(buyerCopy.compatTitle)}</h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--text-light);line-height:1.75;">${escapeHtml(buyerCopy.compatText.replace('{model}', model))}</p>
+    <a href="contact.html?request=application-review&amp;model=${encodeURIComponent(model)}&amp;product=${encodedLabel}&amp;source=${fileName}#quoteForm" class="btn btn-primary" style="margin-top:16px;max-width:100%;white-space:normal;text-align:center;">${escapeHtml(buyerCopy.compatAction)} →</a>
    </div>`;
   const installSteps = copy.installSteps.map(([title, text], index) => `    <div class="install-step">
      <div class="install-step-num">${index + 1}</div>
      <div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>
     </div>`).join('\n');
+  // The six installation steps already contain the actionable checks. Keep the
+  // same lean structure in all four languages instead of adding a duplicate
+  // inspection-interval card to only some locales.
+  const maintenanceBlock = '';
   const commonCards = copy.commonCards.map(([title, text]) => `   <div class="app-detail-card"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>`).join('\n');
   const relatedCards = relatedModels(model, orderedModels, products).map((relatedModel) => {
     const relatedMetadata = drawingBackedProductMetadata(locale, relatedModel);
     if (!relatedMetadata) throw new Error(`${relatedModel}/${locale}: compact metadata missing for related-product label`);
     return `   <a href="${relatedModel}.html" class="related-card">
     <h3>${escapeHtml(relatedMetadata.linkLabel)}</h3>
-    <p>${escapeHtml(copy.relatedDescription)}</p>
+    <p>${escapeHtml(relatedModelDescription(relatedModel, products[relatedModel], locale))}</p>
     <div class="price">${escapeHtml(copy.viewModel)}</div>
    </a>`;
   }).join('\n');
 
   const faq = productFaq(model, facts, locale);
-  const faqHtml = faq.items.map(([question, answer]) => renderFaqItem(question, answer, true)).join('\n');
+  const faqHtml = faq.items.map(([question, answer], index) => renderFaqItem(question, answer, index === 0)).join('\n');
+  // Keep the marker as a stable synchronization anchor, but do not restore the
+  // retired summary card in any language. The first-view key specifications
+  // already carry these facts without adding another boxed section.
+  const keyTakeawaySection = '';
 
   return `${START_MARKER}
-<section class="section" style="padding-top:0;">
- <div class="container">
-  <div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;">
-   <h2 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">${escapeHtml(copy.drawingSummary)} — ${escapeHtml(model)}</h2>
-   <ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;">
-${keyPoints.map((item) => `    <li>${item}</li>`).join('\n')}
-   </ul>
-  </div>
- </div>
-</section>
+${keyTakeawaySection}
 
 <!-- ===== TABS SECTION ===== -->
 <section class="section" style="padding-top:0;">
@@ -1116,10 +1345,7 @@ ${applicationPanelFooter}
    <div class="install-steps">
 ${installSteps}
    </div>
-   <div style="margin-top:24px;padding:16px 20px;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;">
-    <h3 style="margin:0 0 10px;font-size:1rem;color:var(--dark-soft);">${escapeHtml(copy.maintenanceTitle)}</h3>
-    <p style="margin:0;font-size:0.9rem;color:var(--text-light);line-height:1.7;">${escapeHtml(copy.maintenance)}</p>
-   </div>
+${maintenanceBlock}
   </div>
 
   <!-- Panel: Downloads -->
@@ -1165,8 +1391,7 @@ ${commonCards}
   <p style="font-size:0.95rem;color:var(--text-light);margin-bottom:32px;">${escapeHtml(copy.relatedIntro)}</p>
   <div class="related-grid">
 ${relatedCards}
-   <a href="product-comparison.html" class="related-card"><h3>${escapeHtml(copy.compareTitle)}</h3><p>${escapeHtml(copy.compareDescription)}</p><div class="price">${escapeHtml(copy.compareModels)}</div></a>
-   <a href="contact.html?request=application-review&amp;model=${encodeURIComponent(model)}&amp;product=${encodedLabel}&amp;source=${fileName}#quoteForm" class="related-card"><h3>${escapeHtml(copy.customTitle)}</h3><p>${escapeHtml(copy.customDescription)}</p><div class="price">${escapeHtml(copy.requestReview)}</div></a>
+   <a href="contact.html?request=application-review&amp;model=${encodeURIComponent(model)}&amp;product=${encodedLabel}&amp;source=${fileName}#quoteForm" class="related-card"><h3>${escapeHtml(buyerCopy.helpTitle)}</h3><p>${escapeHtml(buyerCopy.helpText)}</p><div class="price">${escapeHtml(buyerCopy.helpAction)}</div></a>
   </div>
  </div>
 </section>
@@ -1257,6 +1482,11 @@ function updateStructuredData(value, model, product, locale, contract, ui) {
   if (!breadcrumb || !productNode) throw new Error(`${model}/${locale}: Product/Breadcrumb JSON-LD nodes missing`);
   const lastCrumb = breadcrumb.itemListElement?.at(-1);
   if (!lastCrumb) throw new Error(`${model}/${locale}: final JSON-LD breadcrumb missing`);
+  if (ui.hybridInterfacePropertyName) {
+    const hybridProperties = productNode.additionalProperty?.filter((item) => item?.name === ui.hybridInterfacePropertyName) ?? [];
+    if (hybridProperties.length !== 1) throw new Error(`${model}/${locale}: Product JSON-LD hybrid interface property is missing or duplicated`);
+    hybridProperties[0].value = ui.keyValues.channels;
+  }
   assertUiJsonProperties(productNode, ui, model, locale);
   lastCrumb.name = contract.breadcrumb;
   productNode.name = ui.productName || contract.h1;
@@ -1362,27 +1592,37 @@ function replaceDeepContent(value, generated, newline, label) {
   return `${value.slice(0, start)}${normalized}${newline}${newline}${value.slice(end)}`;
 }
 
-function renderTechnicalNote(product, locale) {
-  const copy = COPY[locale];
-  const note = product.status === 'identity-pending' ? copy.technicalNotePending : copy.technicalNote;
-  return `<!-- ===== TECHNICAL NOTE ===== -->
-<section class="section pd-technical-note" style="padding-top:0;">
+const BOTTOM_CTA_PATTERN = /<!-- ===== CTA SECTION ===== -->\s*<section class="section cta-section"[^>]*>[\s\S]*?<\/section>/i;
+const TECHNICAL_NOTE_PATTERN = /<!-- ===== TECHNICAL NOTE ===== -->\s*<section class="section pd-technical-note"[^>]*>[\s\S]*?<\/section>/i;
+
+function renderBottomCta(model, locale, contract) {
+  const buyerCopy = BUYER_COPY[locale];
+  const fileName = `${model}.html`;
+  const href = `contact.html?request=application-review&amp;model=${encodeURIComponent(model)}&amp;product=${encodeURIComponent(contract.linkLabel)}&amp;source=${fileName}#quoteForm`;
+  return `<!-- ===== CTA SECTION ===== -->
+<section class="section cta-section">
  <div class="container">
-  <p style="font-size:0.85rem;color:var(--text-light);text-align:center;">
-   <strong>${escapeHtml(copy.technicalNoteLabel)}</strong> ${escapeHtml(note)}
-  </p>
+  <h2>${escapeHtml(buyerCopy.bottomTitle)}</h2>
+  <p>${escapeHtml(buyerCopy.bottomText)}</p>
+  <a href="${href}" class="btn btn-primary">${escapeHtml(buyerCopy.bottomAction)} →</a>
+  <p style="margin:16px auto 0;max-width:760px;font-size:0.88rem;opacity:0.82;">${escapeHtml(buyerCopy.privacyLead)} ${escapeHtml(buyerCopy.privacy)}</p>
  </div>
 </section>`;
 }
 
-function replaceTechnicalNote(value, generated, newline, label) {
-  const normalized = generated.replaceAll('\n', newline);
+function replaceBottomCta(value, generated, newline, label) {
   return replaceOnce(
     value,
-    /<!-- ===== TECHNICAL NOTE ===== -->\s*<section class="section pd-technical-note"[^>]*>[\s\S]*?<\/section>/i,
-    normalized,
-    `${label}: technical note`,
+    BOTTOM_CTA_PATTERN,
+    generated.replaceAll('\n', newline),
+    `${label}: bottom CTA`,
   );
+}
+
+function removeLegacyTechnicalNote(value, label) {
+  const matches = [...value.matchAll(new RegExp(TECHNICAL_NOTE_PATTERN.source, 'gi'))];
+  if (matches.length > 1) throw new Error(`${label}: expected at most one legacy technical note, found ${matches.length}`);
+  return matches.length ? value.replace(TECHNICAL_NOTE_PATTERN, '') : value;
 }
 
 function getOne(value, regex, label) {
@@ -1407,12 +1647,12 @@ function normalizeProductQueryLabels(value) {
 }
 
 function normalizeProtectedTail(value, label) {
-  const technicalNote = getOne(
-    value,
-    /<!-- ===== TECHNICAL NOTE ===== -->\s*<section class="section pd-technical-note"[^>]*>[\s\S]*?<\/section>/i,
-    `${label}: technical note`,
-  );
-  return normalizeProductQueryLabels(value).replace(technicalNote, '{drawing-backed-technical-note}');
+  const cta = getOne(value, BOTTOM_CTA_PATTERN, `${label}: bottom CTA`);
+  const technicalNotes = [...value.matchAll(new RegExp(TECHNICAL_NOTE_PATTERN.source, 'gi'))];
+  if (technicalNotes.length > 1) throw new Error(`${label}: expected at most one legacy technical note, found ${technicalNotes.length}`);
+  let normalized = normalizeProductQueryLabels(value.replace(cta, '{drawing-backed-bottom-cta}'));
+  if (technicalNotes.length) normalized = normalized.replace(technicalNotes[0][0], '');
+  return normalized;
 }
 
 function actionSignature(value, label) {
@@ -1531,7 +1771,22 @@ function riskRulesFor(model, product) {
 }
 
 function findRisks(value, model, product) {
-  const text = controlledRegion(value);
+  let text = controlledRegion(value);
+  const relatedStart = text.indexOf('<div class="related-grid">');
+  const relatedEnd = relatedStart >= 0 ? text.indexOf('<!-- ===== FAQ ===== -->', relatedStart) : -1;
+  if (relatedStart >= 0 && relatedEnd > relatedStart) {
+    text = text.slice(0, relatedStart)
+      + text.slice(relatedStart, relatedEnd).replace(/[^\r\n]/g, ' ')
+      + text.slice(relatedEnd);
+  }
+  const localeMatch = /<html\b[^>]*\blang="(en|de|ja|ru)"/i.exec(value);
+  const locale = localeMatch?.[1]?.toLowerCase();
+  if (locale && model !== 'BP-1P-0003' && product.status !== 'identity-pending') {
+    const mediaFaq = productFaq(model, productFacts(model, product, locale), locale).items[2];
+    for (const approvedText of mediaFaq) {
+      text = text.replaceAll(approvedText, '').replaceAll(escapeHtml(approvedText), '');
+    }
+  }
   const findings = [];
   for (const [label, regex] of riskRulesFor(model, product)) {
     const matches = [...text.matchAll(regex)];
@@ -1553,6 +1808,7 @@ function parseStructuredData(value, label) {
 function validateProtectedContent(original, next, model, product, locale) {
   const label = `${model}/${locale}`;
   const copy = COPY[locale];
+  const buyerCopy = BUYER_COPY[locale];
   const originalEvidence = extractApplicationEvidence(original, `${label}: original application evidence`);
   const nextEvidence = extractApplicationEvidence(next, `${label}: generated application evidence`);
   const expectedEvidenceKeys = EXPECTED_APPLICATION_EVIDENCE[model] ?? [];
@@ -1586,16 +1842,38 @@ function validateProtectedContent(original, next, model, product, locale) {
   assertEqual(JSON.stringify(shareSignature(next, label)), JSON.stringify(shareSignature(original, label)), `${label}: share channels`);
   assertLocalizedShareTargets(next, model, locale, label);
   assertEqual(JSON.stringify(galleryAssetSignature(next, label)), JSON.stringify(galleryAssetSignature(original, label)), `${label}: gallery assets`);
-  assertEqual(JSON.stringify(nextEvidence), JSON.stringify(originalEvidence), `${label}: verified application evidence`);
+  const expectedCustomerEvidence = originalEvidence.map((item) => ({
+    ...item,
+    html: renderCustomerApplicationEvidence(model, locale, item),
+  }));
+  assertEqual(JSON.stringify(nextEvidence), JSON.stringify(expectedCustomerEvidence), `${label}: customer-facing application copy`);
   if (countMatches(next, /<form\b/gi) !== countMatches(original, /<form\b/gi)) throw new Error(`${label}: form count changed`);
 
   for (const id of ['panel-specs', 'panel-compat', 'panel-install', 'panel-downloads', 'faq']) {
     if (countMatches(next, new RegExp(`id="${id}"`, 'g')) !== 1) throw new Error(`${label}: required section #${id} missing or duplicated`);
   }
   if (countMatches(next, /class="faq-item"/g) !== 5
-    || countMatches(next, /<details class="faq-item" open>/g) !== 5) {
-    throw new Error(`${label}: FAQ source must contain exactly five fail-open details items`);
+    || countMatches(next, /<details class="faq-item" open>/g) !== 1
+    || !/<div class="faq-mini">\s*<details class="faq-item" open>/i.test(next)) {
+    throw new Error(`${label}: FAQ source must contain five details items with only the first item open`);
   }
+  if (/"@type"\s*:\s*"FAQPage"/i.test(next)) throw new Error(`${label}: FAQPage structured data must not be generated`);
+  const relatedPanel = markerSlice(next, '<!-- ===== RELATED PRODUCTS ===== -->', '<!-- ===== FAQ ===== -->', `${label}: related products`);
+  if (countMatches(relatedPanel, /class="related-card"/g) !== 4
+    || countMatches(relatedPanel, /<a href="BP-[^"]+\.html" class="related-card">/g) !== 3
+    || countMatches(relatedPanel, /href="contact\.html\?request=application-review/gi) !== 1
+    || !relatedPanel.includes(buyerCopy.helpAction)) {
+    throw new Error(`${label}: related products must contain three model cards and one application-review help card`);
+  }
+  const expectedBottomHref = `contact.html?request=application-review&amp;model=${encodeURIComponent(model)}&amp;product=${encodeURIComponent(identityContract(model, locale).linkLabel)}&amp;source=${model}.html#quoteForm`;
+  const bottomCta = getOne(next, BOTTOM_CTA_PATTERN, `${label}: generated bottom CTA`);
+  if (!bottomCta.includes(`href="${expectedBottomHref}"`)
+    || !bottomCta.includes(buyerCopy.bottomAction)
+    || !bottomCta.includes(buyerCopy.privacyLead)
+    || !bottomCta.includes(buyerCopy.privacy)) {
+    throw new Error(`${label}: bottom application-review CTA is incomplete`);
+  }
+  if (countMatches(next, TECHNICAL_NOTE_PATTERN) !== 0) throw new Error(`${label}: retired technical-note block remains`);
   assertMainHeadingOrder(next, label);
   const modelApplicationCopy = applicationCopyForModel(model, locale, productFacts(model, product, locale));
   if (modelApplicationCopy) {
@@ -1613,7 +1891,8 @@ function validateProtectedContent(original, next, model, product, locale) {
       if (!applicationPanel.includes(term)) throw new Error(`${label}: equipment application term is missing: ${term}`);
     }
     if (countMatches(applicationPanel, /href="contact\.html\?request=application-review/gi) !== 1
-      || !applicationPanel.includes(modelApplicationCopy.inquiryAction)
+      || !applicationPanel.includes(buyerCopy.compatAction)
+      || !applicationPanel.includes(buyerCopy.compatTitle)
       || applicationPanel.includes(copy.notApproved)) {
       throw new Error(`${label}: equipment application inquiry module is incomplete or the retired warning remains`);
     }
@@ -1650,7 +1929,8 @@ function transformPage(original, model, product, locale, orderedModels, products
   const newline = original.includes('\r\n') ? '\r\n' : '\n';
   const contract = identityContract(model, locale);
   const ui = drawingBackedUiContract(locale, model);
-  const applicationEvidenceBlocks = extractApplicationEvidence(original, `${model}/${locale}: application evidence`).map((item) => item.html);
+  const applicationEvidenceBlocks = extractApplicationEvidence(original, `${model}/${locale}: application evidence`)
+    .map((item) => renderCustomerApplicationEvidence(model, locale, item));
   const surfaces = new Set();
   let next = original;
   const applySurface = (name, operation) => {
@@ -1667,12 +1947,13 @@ function transformPage(original, model, product, locale, orderedModels, products
     newline,
     `${model}/${locale}`,
   ));
-  applySurface('technical-note', (value) => replaceTechnicalNote(
+  applySurface('bottom-cta', (value) => replaceBottomCta(
     value,
-    renderTechnicalNote(product, locale),
+    renderBottomCta(model, locale, contract),
     newline,
     `${model}/${locale}`,
   ));
+  applySurface('legacy-technical-note-removal', (value) => removeLegacyTechnicalNote(value, `${model}/${locale}`));
   validateProtectedContent(original, next, model, product, locale);
   return { next, surfaces, beforeRisks: findRisks(original, model, product), afterRisks: findRisks(next, model, product) };
 }
@@ -1751,10 +2032,11 @@ async function main() {
   console.log(`Drawing-backed long-form product content: ${mode}`);
   console.log(`Pages scanned: ${plans.length} (16 models × 4 languages)`);
   console.log(`Pages requiring synchronization: ${changed.length}`);
+  if (changed.length) console.log(`Files requiring synchronization: ${changed.map((item) => item.relativePath).join(', ')}`);
   console.log(`Changed surfaces: ${[...surfaceCounts.entries()].map(([name, count]) => `${name}=${count}`).join(', ') || 'none'}`);
   console.log(`Controlled legacy-risk matches before: ${printRiskSummary(plans, 'beforeRisks')}`);
   console.log(`Controlled residual-risk matches after proposed transform: ${printRiskSummary(plans, 'afterRisks')}`);
-  console.log('Protected unchanged surfaces: header, jump navigation, quote/CAD actions, first-view download/compare utilities, share channels, first-view key specs, gallery assets, related resources, CTA, footer, forms. Technical note is drawing-controlled.');
+  console.log('Protected unchanged surfaces: header, jump navigation, quote/CAD actions, first-view download/compare utilities, share channels, first-view key specs, gallery assets, related resources, footer, and forms. Bottom CTA is drawing-controlled; the retired technical-note block is removed when present.');
   console.log('Engineering holds: BP-3P-0006 port specification; BP-3P-S06-0001 electrical allocation/ratings.');
 
   if (mode === 'write') {

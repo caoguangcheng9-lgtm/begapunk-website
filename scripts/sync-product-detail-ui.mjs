@@ -4,15 +4,16 @@ import process from 'node:process';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import { drawingBackedUiContract } from './lib/drawing-backed-product-facts.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MODE = process.argv[2] || '';
 const EXPECTED_MODEL_COUNT = 16;
 const EXPECTED_PAGE_COUNT = 64;
 const EXPECTED_STYLE_HASH = '7D81DA13137D9D1435ABCABF962E8E46C20DB03F6B52F8BA45F2E71E9EAAF9FB';
-const EXPECTED_SHARED_CSS_HASH = 'C5B396B9A68BD0D44FA4D718E7CA4E628FA88384D9FAD00EFEAA20ACECFC0018';
+const EXPECTED_SHARED_CSS_HASH = 'AE6C0B5B1635D80BE23A1705F50AB53A354CD02BCA705194DE3E8BEAEF26F818';
 const EXPECTED_SHARED_JS_HASH = 'C3881432F1C303A918E38752AC66A23973896E90C45F616F7EA0F5C464ABEA59';
-const PRODUCT_STYLE_VERSION = '20260822-product-faq2';
+const PRODUCT_STYLE_VERSION = '20260828-product-compat2';
 const PRODUCT_SCRIPT_VERSION = '20260822-product-faq1';
 const LOCALE_PREFIXES = ['', 'de', 'ja', 'ru'];
 const PANEL_NAMES = ['specs', 'compat', 'install', 'downloads'];
@@ -24,67 +25,79 @@ const JUMP_LINKS = Object.freeze([
   Object.freeze({ key: 'faq', href: '#faq' }),
 ]);
 const KEY_SPEC_LABEL_KEYS = Object.freeze([
-  'performance', 'body', 'seal', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels',
+  'performance', 'body', 'seal', 'passages', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels',
 ]);
 const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
-  'BP-1P-0003': Object.freeze(['performance', 'body', 'seal', 'ports', 'media', 'leadTime']),
-  'BP-1P-0006': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
-  'BP-2P-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-2P-0002': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
-  'BP-2P-08-0001': Object.freeze(['performance', 'body', 'seal', 'ports', 'media', 'leadTime']),
-  'BP-2P-130-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-2P-16-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-2P-30-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-2P-50-0001': Object.freeze(['performance', 'protection', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-2P-95-0005': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-3P-0004': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-3P-0006': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
-  'BP-3P-0007': Object.freeze(['performance', 'ports', 'body', 'seal', 'media', 'leadTime']),
+  'BP-1P-0003': Object.freeze(['performance', 'body', 'passages', 'ports', 'media', 'leadTime']),
+  'BP-1P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
+  'BP-2P-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-0002': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
+  'BP-2P-08-0001': Object.freeze(['performance', 'body', 'passages', 'ports', 'media', 'leadTime']),
+  'BP-2P-130-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-16-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-50-0001': Object.freeze(['performance', 'protection', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-95-0005': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-3P-0004': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-3P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
+  'BP-3P-0007': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
   'BP-3P-S06-0001': Object.freeze(['channels', 'performance', 'body', 'seal', 'mount', 'leadTime']),
-  'BP-4P-30-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
-  'BP-8P-0001': Object.freeze(['performance', 'body', 'seal', 'mount', 'media', 'leadTime']),
+  'BP-4P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-8P-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
 });
 const MANUAL_COPY_PATH = path.join(ROOT, 'i18n', 'manual', 'product-detail-ui.json');
 const EXPECTED_UI_COPY = Object.freeze({
   en: Object.freeze({
     skipLink: 'Skip to main content',
     productInformationLabel: 'Product information',
+    modelLabel: 'Model',
     productImagesLabel: 'Product images',
     onThisPageLabel: 'On this page',
     jumpToLabel: 'Jump to:',
     shareMenuLabel: 'Share',
     keyProductParametersLabel: 'Key product parameters',
-    leadTimeValue: 'Confirmed in quotation/order',
+    primaryActionLabel: 'Get a Quote',
+    secondaryActionLabel: 'Request STEP File',
+    leadTimeValue: 'Catalog: about 20 calendar days · Custom: within 30 calendar days',
   }),
   de: Object.freeze({
     skipLink: 'Zum Hauptinhalt springen',
     productInformationLabel: 'Produktinformationen',
+    modelLabel: 'Modell',
     productImagesLabel: 'Produktbilder',
     onThisPageLabel: 'Auf dieser Seite',
     jumpToLabel: 'Direkt zu:',
     shareMenuLabel: 'Teilen',
     keyProductParametersLabel: 'Wichtige Produktparameter',
-    leadTimeValue: 'Im Angebot/Auftrag bestätigt',
+    primaryActionLabel: 'Angebot anfordern',
+    secondaryActionLabel: 'STEP-Datei anfordern',
+    leadTimeValue: 'Katalogmodelle: ca. 20 Kalendertage · Sonderanfertigungen: innerhalb von 30 Kalendertagen',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
     productInformationLabel: '製品情報',
+    modelLabel: '型式',
     productImagesLabel: '製品画像',
     onThisPageLabel: 'このページ内',
     jumpToLabel: '移動先：',
     shareMenuLabel: 'シェア',
     keyProductParametersLabel: '主要製品仕様',
-    leadTimeValue: '見積書・注文書で確認',
+    primaryActionLabel: '見積もりを依頼',
+    secondaryActionLabel: 'STEPデータを依頼',
+    leadTimeValue: '標準品：約20暦日 · 特注品：30暦日以内',
   }),
   ru: Object.freeze({
     skipLink: 'Перейти к основному содержанию',
     productInformationLabel: 'Информация о продукте',
+    modelLabel: 'Модель',
     productImagesLabel: 'Изображения продукта',
     onThisPageLabel: 'На этой странице',
     jumpToLabel: 'Перейти к:',
     shareMenuLabel: 'Поделиться',
     keyProductParametersLabel: 'Основные параметры изделия',
-    leadTimeValue: 'Подтверждается в коммерческом предложении/заказе',
+    primaryActionLabel: 'Запросить предложение',
+    secondaryActionLabel: 'Запросить файл STEP',
+    leadTimeValue: 'Стандартные модели: около 20 календарных дней · Индивидуальные: до 30 календарных дней',
   }),
 });
 const SHARE_CHANNELS = Object.freeze([
@@ -274,7 +287,7 @@ function resourcePrefix(relativePath) {
 }
 
 function validateManualCopy(contract) {
-  if (contract?.schemaVersion !== 4) throw new Error('Product-detail UI schemaVersion must be 4.');
+  if (contract?.schemaVersion !== 5) throw new Error('Product-detail UI schemaVersion must be 5.');
   if (contract?.review?.method !== 'AI-assisted target-market line-by-line localization review') {
     throw new Error('Product-detail UI review method is missing or unsupported.');
   }
@@ -307,9 +320,12 @@ function validateManualCopy(contract) {
     'keySpecPropertyNames',
     'keySpecValueOverrides',
     'leadTimeValue',
+    'modelLabel',
     'onThisPageLabel',
+    'primaryActionLabel',
     'productImagesLabel',
     'productInformationLabel',
+    'secondaryActionLabel',
     'shareMenuLabel',
     'skipLink',
   ].sort();
@@ -341,7 +357,7 @@ function validateManualCopy(contract) {
 
     const labelKeys = Object.keys(copy.keySpecLabels || {}).sort();
     if (labelKeys.join(',') !== [...KEY_SPEC_LABEL_KEYS].sort().join(',')) {
-      throw new Error(`${locale}.keySpecLabels must exactly cover the nine approved categories.`);
+      throw new Error(`${locale}.keySpecLabels must exactly cover the ten approved categories.`);
     }
     for (const key of labelKeys) {
       if (typeof copy.keySpecLabels[key] !== 'string' || !copy.keySpecLabels[key].trim()) {
@@ -598,8 +614,10 @@ function validateFinalStructure(source, relativePath, copy, contract) {
   if (primaryActions.length !== 1 || primaryActionLinks.length !== 2
     || !String(primaryActionLinks.eq(0).attr('href') || '').includes('request=quote')
     || !primaryActionLinks.eq(0).hasClass('btn-primary')
+    || primaryActionLinks.eq(0).text().trim() !== copy.primaryActionLabel
     || !String(primaryActionLinks.eq(1).attr('href') || '').includes('request=3d-step')
-    || !primaryActionLinks.eq(1).hasClass('btn-secondary')) {
+    || !primaryActionLinks.eq(1).hasClass('btn-secondary')
+    || primaryActionLinks.eq(1).text().trim() !== copy.secondaryActionLabel) {
     errors.push('primary action hierarchy');
   }
   const utilityRegion = informationRegions.children('.pd-utility-links');
@@ -610,16 +628,17 @@ function validateFinalStructure(source, relativePath, copy, contract) {
     && utilityLinks.eq(0).attr('download') !== undefined;
   const supportingActionIsVerifiedDrawing = supportingHref.includes('request=verified-drawing');
   if (utilityRegion.length !== 1
-    || utilityRegion.children().length !== 5
-    || utilityLinks.length !== 2
-    || utilitySeparators.length !== 2
+    || utilityRegion.children().length !== 3
+    || utilityLinks.length !== 1
+    || utilitySeparators.length !== 1
     || (!supportingActionIsPdf && !supportingActionIsVerifiedDrawing)
-    || utilityLinks.eq(1).attr('href') !== 'product-comparison.html') {
+    || utilityRegion.find('a[href="product-comparison.html"]').length !== 0) {
     errors.push('utility action hierarchy');
   }
 
   const model = modelForFile(relativePath);
   const expectedSpecKeys = keySpecKeysForModel(contract, model, relativePath);
+  const drawingContract = drawingBackedUiContract(localeForFile(relativePath), model);
   const keySpecs = informationRegions.children('dl.pd-key-specs');
   const keySpecItems = keySpecs.children('div.pd-key-spec');
   if (keySpecs.length !== 1
@@ -637,9 +656,16 @@ function validateFinalStructure(source, relativePath, copy, contract) {
         || !item.children('dd').text().trim()) {
         errors.push(`key product parameter ${index + 1}`);
       }
+      const expectedValue = key === 'leadTime'
+        ? copy.leadTimeValue
+        : drawingContract?.keyValues?.[key];
+      if (expectedValue && item.children('dd').text().trim() !== expectedValue) {
+        errors.push(`key product parameter ${key} value`);
+      }
     });
   }
   if ($('.pd-highlights,.pd-hl').length !== 0) errors.push('retired first-view highlights');
+  if ($('.pd-price-note').length !== 0) errors.push('retired first-view price note');
   if ($('.social-share-wrap,.social-share,.share-btn,.pd-share-link').length !== 0) {
     errors.push('retired social-share controls');
   }
@@ -721,10 +747,11 @@ function validateFinalStructure(source, relativePath, copy, contract) {
   });
   if (faqs.length !== 5 || summaries.length !== 5 || $('.faq-item').length !== 5
     || $('.faq-question').length !== 5 || $('div.faq-item').length !== 0) errors.push('FAQ count');
-  faqs.each((_, element) => {
+  faqs.each((index, element) => {
     const item = $(element);
     const summary = item.children('summary.faq-question');
-    if (item.attr('open') === undefined || item.children('.faq-answer').length !== 1
+    const shouldBeOpen = index === 0;
+    if ((item.attr('open') !== undefined) !== shouldBeOpen || item.children('.faq-answer').length !== 1
       || summary.length !== 1 || summary.attr('onclick') !== undefined
       || summary.attr('aria-expanded') !== undefined) errors.push('FAQ source state');
   });
@@ -815,13 +842,16 @@ function transformLegacyPage(source, relativePath, contract) {
     `${relativePath} source panel state`,
   );
 
+  let faqIndex = 0;
   next = replaceRegexExact(
     next,
     /<div class="faq-item">([\s\S]*?)<button class="faq-question" onclick="toggleFAQ\(this\)">([\s\S]*?)<\/button>([\s\S]*?)<div class="faq-answer">([\s\S]*?)<\/div>(\s*)<\/div>/g,
-    (_, beforeQuestion, question, beforeAnswer, answer, trailing) => (
-      `<details class="faq-item" open>${beforeQuestion}<summary class="faq-question">${question}</summary>`
-      + `${beforeAnswer}<div class="faq-answer">${answer}</div>${trailing}</details>`
-    ),
+    (_, beforeQuestion, question, beforeAnswer, answer, trailing) => {
+      const open = faqIndex === 0 ? ' open' : '';
+      faqIndex += 1;
+      return `<details class="faq-item"${open}>${beforeQuestion}<summary class="faq-question">${question}</summary>`
+        + `${beforeAnswer}<div class="faq-answer">${answer}</div>${trailing}</details>`;
+    },
     5,
     `${relativePath} FAQs`,
   );
@@ -866,8 +896,13 @@ function firstViewProtectedSnapshot(source) {
     && $(element).find('a[href^="#panel-"]').length > 0
   )).remove();
   information.children(
-    '.pd-actions,.pd-utility-links,.social-share-wrap,.pd-highlights,.pd-key-specs,nav.pd-jump-nav,nav.pd-pilot-jump',
+    '.pd-price-note,.pd-actions,.pd-utility-links,.social-share-wrap,.pd-highlights,.pd-key-specs,nav.pd-jump-nav,nav.pd-pilot-jump',
   ).remove();
+  information.children('.pd-sku').text('__MODEL_LABEL__');
+  $('style').filter((_, element) => (
+    /#panel-compat\s+\.compat-grid/u.test($(element).text())
+    && /grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/u.test($(element).text())
+  )).remove();
   $('.pd-share-footer').remove();
   $('.pd-technical-note').removeClass('pd-technical-note');
   return normalizedEol($.html()).replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
@@ -889,6 +924,10 @@ function withoutDecorativeActionEmoji(anchor) {
   return anchor.replace(/>(\s*)(?:🔧|📄)\s*/u, '>$1');
 }
 
+function withActionLabel(anchor, label) {
+  return anchor.replace(/>[^<>]*<\/a>$/u, `>${escapeText(label)}</a>`);
+}
+
 function actionSetsFromDocument($, relativePath) {
   const information = $('.pd-info');
   const actionRegion = information.children('.pd-actions');
@@ -900,15 +939,22 @@ function actionSetsFromDocument($, relativePath) {
   let utility;
   if (actionAnchors.length === 4) {
     primary = actionAnchors.slice(0, 2);
-    utility = actionAnchors.slice(2);
+    const legacyUtilities = actionAnchors.slice(2);
+    if (anchorHref(legacyUtilities[1]) !== 'product-comparison.html') {
+      throw new Error(`${relativePath}: legacy supporting actions do not end with product comparison.`);
+    }
+    utility = legacyUtilities.slice(0, 1);
   } else if (actionAnchors.length === 2) {
     const utilityRegion = information.children('.pd-utility-links');
     const utilityAnchors = utilityRegion.children('a.pd-utility-link').toArray().map((element) => $.html(element));
-    if (utilityRegion.length !== 1 || utilityAnchors.length !== 2) {
-      throw new Error(`${relativePath}: expected two supporting utility links; found ${utilityAnchors.length}.`);
+    if (utilityRegion.length !== 1 || ![1, 2].includes(utilityAnchors.length)) {
+      throw new Error(`${relativePath}: expected one drawing utility, optionally followed by legacy comparison; found ${utilityAnchors.length}.`);
+    }
+    if (utilityAnchors.length === 2 && anchorHref(utilityAnchors[1]) !== 'product-comparison.html') {
+      throw new Error(`${relativePath}: the second legacy utility must be product comparison.`);
     }
     primary = actionAnchors;
-    utility = utilityAnchors;
+    utility = utilityAnchors.slice(0, 1);
   } else {
     throw new Error(`${relativePath}: expected two or four product actions; found ${actionAnchors.length}.`);
   }
@@ -918,9 +964,8 @@ function actionSetsFromDocument($, relativePath) {
   if (!anchorHref(primary[0]).includes('request=quote')
     || !anchorHref(primary[1]).includes('request=3d-step')
     || (!/\.pdf(?:$|[?#])/i.test(anchorHref(utility[0]))
-      && !anchorHref(utility[0]).includes('request=verified-drawing'))
-    || anchorHref(utility[1]) !== 'product-comparison.html') {
-    throw new Error(`${relativePath}: product actions do not match quote / STEP / PDF-or-drawing / comparison order.`);
+      && !anchorHref(utility[0]).includes('request=verified-drawing'))) {
+    throw new Error(`${relativePath}: product actions do not match quote / STEP / PDF-or-drawing order.`);
   }
   return { primary, utility };
 }
@@ -956,39 +1001,47 @@ function supplementalKeySpecValue($, model, key, copy, relativePath) {
 
 function keySpecValuesFromDocument($, relativePath, contract, copy) {
   const model = modelForFile(relativePath);
+  const locale = localeForFile(relativePath);
   const keys = keySpecKeysForModel(contract, model, relativePath);
+  const drawingContract = drawingBackedUiContract(locale, model);
+  if (!drawingContract) throw new Error(`${relativePath}: drawing-backed first-view contract is missing.`);
   const finalItems = $('.pd-info > .pd-key-specs > .pd-key-spec');
+  const existingValues = new Map();
   if (finalItems.length) {
     if (finalItems.length !== 6) {
       throw new Error(`${relativePath}: expected six existing semantic key specs; found ${finalItems.length}.`);
     }
-    const values = finalItems.map((_, element) => $(element).children('dd').text().replace(/\s+/g, ' ').trim()).get();
-    if (values.some((value) => !value)) throw new Error(`${relativePath}: an existing semantic key-spec value is empty.`);
-    values[5] = copy.leadTimeValue;
-    return values;
+    finalItems.each((_, element) => {
+      const item = $(element);
+      const key = item.attr('data-spec-key');
+      const value = item.children('dd').text().replace(/\s+/g, ' ').trim();
+      if (!key || !value) throw new Error(`${relativePath}: an existing semantic key-spec key or value is empty.`);
+      existingValues.set(key, value);
+    });
   }
 
   const highlights = $('.pd-info > .pd-highlights > .pd-hl');
-  if (![4, 6].includes(highlights.length)) {
+  if (!finalItems.length && ![4, 6].includes(highlights.length)) {
     throw new Error(`${relativePath}: expected four candidate or six original highlights; found ${highlights.length}.`);
   }
-  const values = highlights.map((_, element) => visibleKeySpecText($, element)).get();
-  if (values.some((value) => !value)) throw new Error(`${relativePath}: a legacy key-spec value is empty.`);
-  if (values.length === 6) return [...values.slice(0, 5), copy.leadTimeValue];
+  const legacyValues = highlights.map((_, element) => visibleKeySpecText($, element)).get();
+  if (legacyValues.some((value) => !value)) throw new Error(`${relativePath}: a legacy key-spec value is empty.`);
 
-  const supplementalKey = keys[4];
-  return [
-    ...values,
-    supplementalKeySpecValue($, model, supplementalKey, copy, relativePath),
-    copy.leadTimeValue,
-  ];
+  return keys.map((key, index) => {
+    if (key === 'leadTime') return copy.leadTimeValue;
+    if (Object.hasOwn(drawingContract.keyValues, key)) return drawingContract.keyValues[key];
+    if (existingValues.has(key)) return existingValues.get(key);
+    if (legacyValues[index]) return legacyValues[index];
+    return supplementalKeySpecValue($, model, key, copy, relativePath);
+  });
 }
 
 function replaceGovernedFirstView(source, markup, relativePath, eol) {
-  const priceStart = source.indexOf('<p class="pd-price-note">');
-  const priceEndTag = priceStart < 0 ? -1 : source.indexOf('</p>', priceStart);
-  if (priceStart < 0 || priceEndTag < 0) throw new Error(`${relativePath}: first-view price-note boundary is missing.`);
-  const contentStart = priceEndTag + '</p>'.length;
+  const modelMatches = [...source.matchAll(/<div\b[^>]*class=(['"])[^'"]*\bpd-sku\b[^'"]*\1[^>]*>[\s\S]*?<\/div>/gi)];
+  if (modelMatches.length !== 1) {
+    throw new Error(`${relativePath}: expected one first-view model boundary; found ${modelMatches.length}.`);
+  }
+  const contentStart = modelMatches[0].index + modelMatches[0][0].length;
   const informationEndPattern = /\r?\n[ \t]*<\/div>\r?\n(?:[ \t]*<\/div>)?[ \t]*<\/section>/;
   const informationEnd = source.slice(contentStart).search(informationEndPattern);
   if (informationEnd < 0) throw new Error(`${relativePath}: product-information closing boundary is missing.`);
@@ -996,6 +1049,13 @@ function replaceGovernedFirstView(source, markup, relativePath, eol) {
     + eol
     + markup
     + source.slice(contentStart + informationEnd);
+}
+
+function removeRetiredCompatGridInlineStyle(source, relativePath) {
+  const pattern = /^[ \t]*<style>\s*@media\s*\(min-width:\s*769px\)\s*\{\s*#panel-compat\s+\.compat-grid\s*\{\s*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);\s*\}\s*\}\s*<\/style>\r?\n?/gmi;
+  const matches = source.match(pattern) || [];
+  if (matches.length > 1) throw new Error(`${relativePath}: duplicate retired compatibility-grid inline styles.`);
+  return matches.length ? source.replace(pattern, '') : source;
 }
 
 function transformFirstView(source, relativePath, contract) {
@@ -1009,7 +1069,15 @@ function transformFirstView(source, relativePath, contract) {
   const actions = actionSetsFromDocument($, relativePath);
   const shareOptions = shareOptionsFromDocument($, relativePath);
   const keySpecValues = keySpecValuesFromDocument($, relativePath, contract, copy);
-  let next = source;
+  let next = removeRetiredCompatGridInlineStyle(source, relativePath);
+
+  next = replaceRegexExact(
+    next,
+    /(<div\b[^>]*class=(['"])[^'"]*\bpd-sku\b[^'"]*\2[^>]*>)[\s\S]*?(<\/div>)/gi,
+    (_, start, _quote, end) => `${start}${escapeText(copy.modelLabel)}: ${escapeText(model)}${end}`,
+    1,
+    `${relativePath} product model label`,
+  );
 
   next = replaceRegexExact(
     next,
@@ -1044,13 +1112,11 @@ function transformFirstView(source, relativePath, contract) {
   const governedMarkup = [
     jumpNavMarkup(copy, eol),
     '  <div class="pd-actions">',
-    `   ${actions.primary[0]}`,
-    `   ${actions.primary[1]}`,
+    `   ${withActionLabel(actions.primary[0], copy.primaryActionLabel)}`,
+    `   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`,
     '  </div>',
     '  <div class="pd-utility-links">',
     `   ${actions.utility[0]}`,
-    '   <span class="pd-separator" aria-hidden="true">·</span>',
-    `   ${actions.utility[1]}`,
     '   <span class="pd-separator" aria-hidden="true">·</span>',
     compactShareMenuMarkup(shareOptions, copy, eol),
     '  </div>',
@@ -1084,8 +1150,8 @@ function transformFirstView(source, relativePath, contract) {
 
 function normalizeFirstViewWhitespace(source) {
   return source.replace(
-    /(<p class="pd-price-note">[\s\S]*?<\/p>\r?\n)(?:[ \t]*\r?\n)+([ \t]*<nav class="pd-jump-nav")/g,
-    '$1$2',
+    /(<div\b[^>]*class=(['"])[^'"]*\bpd-sku\b[^'"]*\2[^>]*>[\s\S]*?<\/div>\r?\n)(?:[ \t]*\r?\n)+([ \t]*<nav class="pd-jump-nav")/g,
+    '$1$3',
   );
 }
 

@@ -139,11 +139,16 @@ const suspiciousLocalizedPhrases = {
   ja: /据え付け品|電子工学|密集した|回転式移動|空気電気|気圧電気|チャネルカウント|工具細工|真空のコップ|洗剤材料|見直しる|送って下さい|物質的な条件|製造業装置/,
   ru: /Пользователь RFQ|[Пп]ользовательский дизайн|[Мм]ногопропуск|[Мм]ногопроход|роторн(?:ая|ые|ых|ой) таблиц|кажд(?:ый|ую) оснастка|несколько оснастка|весь ротационное|один ротационное|соединение должен|радиальный клиренс|счет станции|счетчик сигналов/,
 };
-const expectedTeamInitials = ['GC', 'LW', 'SZ'];
-const expectedTeamNames = ['GuangCheng Cao', 'Li Wei', 'Sarah Zhang'];
+const expectedTeamInitials = ['GC', 'PQ', 'IS'];
+const expectedTeamTitles = {
+  en: ['GuangCheng Cao', 'Production & Quality', 'International Sales'],
+  de: ['GuangCheng Cao', 'Fertigung & Qualität', 'Internationaler Vertrieb'],
+  ja: ['GuangCheng Cao', '製造・品質管理', '海外営業'],
+  ru: ['GuangCheng Cao', 'Производство и качество', 'Международные продажи'],
+};
 const expectedFounderJobTitle = {
   de: 'Gründer und Ingenieur',
-  ja: '創業者・技術責任者',
+  ja: '創業者・エンジニア',
   ru: 'Основатель и инженер',
 };
 const expectedOrganizationSlogan = {
@@ -161,22 +166,48 @@ const languageSwitcherLabels = {
   pl: 'Język',
   ru: 'Язык',
 };
+const localizedBlogSharePages = new Set([
+  'blog-rotary-joint-installation-mistakes.html',
+  'blog-rotary-joint-selection.html',
+  'blog-rotary-union-seal-types.html',
+]);
+const localizedBlogShareLabels = Object.freeze({
+  de: Object.freeze({
+    group: 'Teilen:',
+    linkedin: 'Auf LinkedIn teilen',
+    x: 'Auf X teilen',
+    facebook: 'Auf Facebook teilen',
+    whatsapp: 'Über WhatsApp teilen',
+  }),
+  ja: Object.freeze({
+    group: 'シェア：',
+    linkedin: 'LinkedInでシェア',
+    x: 'Xでシェア',
+    facebook: 'Facebookでシェア',
+    whatsapp: 'WhatsAppでシェア',
+  }),
+  ru: Object.freeze({
+    group: 'Поделиться:',
+    linkedin: 'Поделиться в LinkedIn',
+    x: 'Поделиться в X',
+    facebook: 'Поделиться в Facebook',
+    whatsapp: 'Поделиться в WhatsApp',
+  }),
+});
 const homepageQualityLinks = {
   en: ['View Manufacturing & Quality', 'See 100% Leak Testing'],
   de: ['Fertigung & Qualität ansehen', '100%-Dichtheitsprüfung ansehen'],
-  ja: ['製造・品質管理を見る', '全数漏れ検査を見る'],
-  ru: ['Производство и качество', 'Смотреть 100%-ный контроль герметичности'],
+  ja: ['製造・品質管理を見る', '流路別漏れ検査を見る'],
+  ru: ['Производство и качество', 'Как проверяется каждое готовое изделие'],
 };
 const navigationExpected = {
   en: {
-    top: ['Products', 'Applications', 'Quality', 'Knowledge Center'], home: 'Home', about: 'About', quote: 'Get a Quote',
+    top: ['Products', 'Applications'], home: 'Home', quality: 'Quality', about: 'About', quote: 'Get a Quote',
     menus: [
-      [['product-comparison.html', 'Model Comparison'], ['contact.html', 'Custom RFQ']],
-      [['case-studies.html', 'Case Studies'], ['application-laser-tube-cutting.html', 'Laser Tube Cutting'], ['application-packaging-machinery.html', 'Packaging Machinery'], ['application-bottle-filling-capping.html', 'Bottle Filling & Capping'], ['application-cnc-pneumatic-clamping.html', 'CNC Pneumatic Clamping']],
-      [['production-inspection-testing.html', '100% Leak Testing']],
-      [['blog-rotary-joint-selection.html', 'Selection Guide'], ['blog-rotary-union-seal-types.html', 'Sealing Technology'], ['installation.html', 'Installation Guide'], ['faq.html', 'FAQ']],
+      [['product-comparison.html', 'Model Comparison']],
+      [['case-studies.html', 'Case Studies'], ['application-laser-tube-cutting.html', 'Laser Tube Cutting'], ['application-packaging-machinery.html', 'Packaging Machinery'], ['application-cnc-pneumatic-clamping.html', 'CNC Pneumatic Clamping']],
     ],
-    footerTitles: ['Products', 'Applications', 'Knowledge Center', 'Company'],
+    footerTitles: ['Technical Resources'],
     company: [['about.html', 'About / Factory'], ['manufacturing-quality.html', 'Manufacturing & Quality'], ['production-inspection-testing.html', '100% Leak Testing'], ['contact.html', 'Contact']],
   },
   de: {
@@ -191,7 +222,7 @@ const navigationExpected = {
     company: [['about.html', 'Unternehmen / Werk'], ['manufacturing-quality.html', 'Fertigung & Qualität'], ['production-inspection-testing.html', '100%-Dichtheitsprüfung'], ['contact.html', 'Kontakt']],
   },
   ja: {
-    top: ['製品情報', '用途別情報', '品質管理', '技術情報'], home: 'ホーム', about: '会社情報', quote: '見積もり・技術相談',
+    top: ['製品情報', '用途別情報', '品質管理', '技術情報'], home: 'ホーム', about: '会社情報', quote: '見積もりを依頼',
     menus: [
       [['product-comparison.html', '機種選定表'], ['contact.html', '特注品・見積依頼']],
       [['case-studies.html', '選定事例'], ['application-laser-tube-cutting.html', 'レーザー管切断機'], ['application-packaging-machinery.html', '包装機械'], ['application-bottle-filling-capping.html', 'ボトル充填・キャッピング機'], ['application-cnc-pneumatic-clamping.html', 'CNC空圧クランプ']],
@@ -213,10 +244,12 @@ const navigationExpected = {
     company: [['about.html', 'О компании / Производство'], ['manufacturing-quality.html', 'Производство и качество'], ['production-inspection-testing.html', '100%-ный контроль герметичности'], ['contact.html', 'Контакты']],
   },
 };
-const footerStructureSignatures = new Set();
+const footerStructureSignatures = new Map();
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
 const footerStyleVersion = '20260817-cls1';
 const homepageStyleVersion = '20260819-home-clean1';
+const englishFooterStyleVersion = '20260825-nav-compact1';
+const englishHomepageStyleVersion = '20260825-home-nav-compact1';
 const footerSocial = [
   ['https://www.linkedin.com/in/guangcheng-cao/', 'LinkedIn'],
   ['https://www.youtube.com/@BEGAPUNKRotaryJointsTV', 'YouTube'],
@@ -240,14 +273,11 @@ const obsoleteHomepageSocialProfiles = [
 const footerExpected = {
   en: {
     positioning: 'Precision rotary joint manufacturer based in Ningbo, China. Supporting industrial automation OEMs and machine builders.',
-    address: 'Ningbo, Zhejiang, China', quote: 'Request an Engineering Quote', socialTitle: 'Follow Begapunk',
+    address: 'Ningbo, Zhejiang, China', quote: 'Get a Quote', socialTitle: 'Follow Begapunk',
     navigationLabel: 'Footer navigation', legalLabel: 'Legal information',
-    titles: ['Products & Selection', 'Applications & Cases', 'Quality & Factory', 'Technical Support'],
+    titles: ['Technical Resources'],
     links: [
-      [['products.html', 'Product Catalog'], ['product-comparison.html', 'Model Comparison']],
-      [['case-studies.html', 'Real Application Cases'], ['application-laser-tube-cutting.html', 'Laser Tube Cutting'], ['application-packaging-machinery.html', 'Packaging Machinery'], ['application-bottle-filling-capping.html', 'Bottle Filling & Capping'], ['applications.html', 'All Applications']],
-      [['manufacturing-quality.html', 'Manufacturing & Quality'], ['production-inspection-testing.html', '100% Leak Testing'], ['about.html', 'Company & Factory']],
-      [['blog-rotary-joint-selection.html', 'Selection Guide'], ['installation.html', 'Installation Guide'], ['faq.html', 'FAQ'], ['contact.html', 'Contact']],
+      [['blog.html', 'Technical Blog'], ['blog-rotary-joint-selection.html', 'Selection Guide'], ['blog-rotary-union-seal-types.html', 'Sealing Technology'], ['installation.html', 'Installation Guide'], ['faq.html', 'FAQ']],
     ],
     privacy: 'Privacy', terms: 'Terms',
     copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.',
@@ -255,7 +285,7 @@ const footerExpected = {
   },
   de: {
     positioning: 'Hersteller von Präzisionsdrehdurchführungen mit Sitz in Ningbo, China. Unterstützung für OEMs und Maschinenbauer in der Industrieautomation.',
-    address: 'Ningbo, Zhejiang, China', quote: 'Technische Anfrage senden', socialTitle: 'Begapunk folgen',
+    address: 'Ningbo, Zhejiang, China', quote: 'Angebot anfordern', socialTitle: 'Begapunk folgen',
     navigationLabel: 'Fußzeilennavigation', legalLabel: 'Rechtliche Informationen',
     titles: ['Produkte & Auswahl', 'Anwendungen & Praxisbeispiele', 'Qualität & Werk', 'Technischer Support'],
     links: [
@@ -270,7 +300,7 @@ const footerExpected = {
   },
   ja: {
     positioning: '中国・寧波の産業用ロータリージョイントメーカーです。産業オートメーションのOEM・装置メーカーを支援します。',
-    address: '中国 浙江省 寧波市', quote: '見積もり・技術相談', socialTitle: 'Begapunk公式SNS',
+    address: '中国 浙江省 寧波市', quote: '見積もりを依頼', socialTitle: 'Begapunk公式SNS',
     navigationLabel: 'フッターナビゲーション', legalLabel: '法的情報',
     titles: ['製品・選定', '用途・実機組込み事例', '品質・工場', '技術サポート'],
     links: [
@@ -285,7 +315,7 @@ const footerExpected = {
   },
   ru: {
     positioning: 'Begapunk — производитель прецизионных вращающихся соединений в Нинбо, Китай. Мы работаем с производителями промышленного оборудования и систем автоматизации.',
-    address: 'Нинбо, Чжэцзян, Китай', quote: 'Отправить технический запрос', socialTitle: 'Begapunk в социальных сетях',
+    address: 'Нинбо, Чжэцзян, Китай', quote: 'Запросить предложение', socialTitle: 'Begapunk в социальных сетях',
     navigationLabel: 'Навигация в нижней части страницы', legalLabel: 'Правовая информация',
     titles: ['Продукция и подбор', 'Применение и примеры', 'Качество и производство', 'Техническая поддержка'],
     links: [
@@ -383,6 +413,39 @@ function pageUrl(languageCode, pageName) {
   return `${config.siteUrl}/${languageCode}/${suffix}`;
 }
 
+function expectedLocalizedBlogShare(languageCode, pageName) {
+  const labels = localizedBlogShareLabels[languageCode];
+  const title = seoByLanguage.get(languageCode)?.[pageName]?.title;
+  if (!labels || !title) return null;
+  const localizedUrl = pageUrl(languageCode, pageName);
+  const shareTitle = /\|\s*Begapunk\s*$/iu.test(title) ? title : `${title} | Begapunk`;
+  return {
+    group: labels.group,
+    buttons: {
+      linkedin: {
+        selector: 'a.share-linkedin',
+        href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(localizedUrl)}`,
+        ariaLabel: labels.linkedin,
+      },
+      x: {
+        selector: 'a.share-twitter',
+        href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(localizedUrl)}&text=${encodeURIComponent(shareTitle)}`,
+        ariaLabel: labels.x,
+      },
+      facebook: {
+        selector: 'a.share-facebook',
+        href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(localizedUrl)}`,
+        ariaLabel: labels.facebook,
+      },
+      whatsapp: {
+        selector: 'a.share-whatsapp',
+        href: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareTitle} - ${localizedUrl}`)}`,
+        ariaLabel: labels.whatsapp,
+      },
+    },
+  };
+}
+
 function compactText(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
@@ -441,6 +504,7 @@ function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
 }
 
 const verifiedLanguages = [config.sourceLanguage, ...activeLanguages];
+let verifiedLocalizedBlogShareBlocks = 0;
 for (const language of verifiedLanguages) {
   for (const pageName of config.pages) {
     const filePath = language.code === config.sourceLanguage.code
@@ -466,9 +530,9 @@ for (const language of verifiedLanguages) {
         description: curatedSeo.description,
         h1: curatedSeo.h1,
         openGraphTitle: curatedSeo.title,
-        openGraphDescription: curatedSeo.description,
+        openGraphDescription: curatedSeo.ogDescription ?? curatedSeo.description,
         twitterTitle: curatedSeo.title,
-        twitterDescription: curatedSeo.description,
+        twitterDescription: curatedSeo.twitterDescription ?? curatedSeo.description,
       } : null);
       if (!expectedMetadata) {
         failures.push(`${language.code}/${pageName}: expected SEO metadata source is missing.`);
@@ -498,6 +562,26 @@ for (const language of verifiedLanguages) {
         if ($('meta[name="keywords"]').length) failures.push(`${language.code}/${pageName}: inherited meta keywords should be removed.`);
       }
     }
+    if (language.code !== config.sourceLanguage.code && localizedBlogSharePages.has(pageName)) {
+      const expectedShare = expectedLocalizedBlogShare(language.code, pageName);
+      const share = $('.social-share-wrap .social-share');
+      if (!expectedShare || share.length !== 1) {
+        failures.push(`${language.code}/${pageName}: governed localized blog share block is missing.`);
+      } else {
+        if (compactText(share.children('.social-share-label').text()) !== expectedShare.group) {
+          failures.push(`${language.code}/${pageName}: blog share group label is not localized.`);
+        }
+        for (const [channel, expectedButton] of Object.entries(expectedShare.buttons)) {
+          const button = share.children(expectedButton.selector);
+          if (button.length !== 1
+              || button.attr('href') !== expectedButton.href
+              || button.attr('aria-label') !== expectedButton.ariaLabel) {
+            failures.push(`${language.code}/${pageName}: ${channel} share URL, title, or accessible label is not localized.`);
+          }
+        }
+      }
+      verifiedLocalizedBlogShareBlocks += 1;
+    }
     if (language.code === 'ru') {
       const visibleBody = $('body').clone();
       visibleBody.find('script,style,noscript,.notranslate,[translate="no"]').remove();
@@ -515,9 +599,11 @@ for (const language of verifiedLanguages) {
     }
     if (pageName === 'about.html') {
       const teamInitials = $('.team-avatar').map((_, element) => $(element).text().trim()).get();
-      const teamNames = $('.team-card h3').map((_, element) => $(element).text().trim()).get();
+      const teamTitles = $('.team-card h3').map((_, element) => $(element).text().trim()).get();
       if (teamInitials.join('|') !== expectedTeamInitials.join('|')) failures.push(`${language.code}/${pageName}: team initials were changed by localization.`);
-      if (teamNames.join('|') !== expectedTeamNames.join('|')) failures.push(`${language.code}/${pageName}: team names were changed by localization.`);
+      if (teamTitles.join('|') !== expectedTeamTitles[language.code].join('|')) failures.push(`${language.code}/${pageName}: project-support titles were changed by localization.`);
+      const preservedPersonNames = $('.team-person-name').map((_, element) => $(element).text().trim()).get();
+      if (preservedPersonNames.join('|') !== 'GuangCheng Cao') failures.push(`${language.code}/${pageName}: only the confirmed founder name may be preserved from localization.`);
     }
     if (pageName === 'faq.html') {
       const categoryIcons = $('.faq-category .icon').map((_, element) => $(element).text().trim()).get();
@@ -573,8 +659,11 @@ for (const language of verifiedLanguages) {
       const about = nav.children('a.nav-about');
       const quote = nav.children('a.nav-cta');
       if (mobileHome.length !== 1 || compactText(mobileHome.text()) !== navCopy.home || mobileHome.attr('href') !== 'index.html') failures.push(`${language.code}/${pageName}: localized mobile Home link is missing or incorrect.`);
-      if (dropdowns.length !== 4) failures.push(`${language.code}/${pageName}: expected Products, Applications, Quality, and Knowledge Center dropdowns.`);
-      const parentUrls = ['products.html', 'applications.html', 'manufacturing-quality.html', 'blog.html'];
+      const compactEnglishNavigation = language.code === 'en';
+      const parentUrls = compactEnglishNavigation
+        ? ['products.html', 'applications.html']
+        : ['products.html', 'applications.html', 'manufacturing-quality.html', 'blog.html'];
+      if (dropdowns.length !== parentUrls.length) failures.push(`${language.code}/${pageName}: primary navigation dropdown count is incorrect.`);
       dropdowns.each((index, element) => {
         const toggle = $(element).children('.nav-dropdown-toggle').first();
         const toggleText = compactText(toggle.clone().find('.chevron').remove().end().text());
@@ -590,16 +679,24 @@ for (const language of verifiedLanguages) {
       if (about.length !== 1 || compactText(about.text()) !== navCopy.about || about.attr('href') !== 'about.html') failures.push(`${language.code}/${pageName}: About must be one localized direct link.`);
       if (quote.length !== 1 || compactText(quote.text()) !== navCopy.quote || quote.attr('href') !== 'contact.html') failures.push(`${language.code}/${pageName}: quote link is missing or incorrect.`);
       if (nav.find('.nav-dropdown-menu a[href="case-studies.html"]').length !== 1 || nav.find('.nav-dropdown').eq(1).find('a[href="case-studies.html"]').length !== 1) failures.push(`${language.code}/${pageName}: Case Studies must appear only under Applications.`);
-      if (nav.find('.nav-dropdown-menu a[href="production-inspection-testing.html"]').length !== 1 || nav.find('.nav-dropdown').eq(2).find('a[href="production-inspection-testing.html"]').length !== 1) failures.push(`${language.code}/${pageName}: 100% Leak Testing must appear only under Quality.`);
-      const activeTop = nav.children('.nav-dropdown').children('.nav-dropdown-toggle.active').length + nav.children('a.nav-about.active').length + nav.children('a.nav-home-mobile.active').length;
+      const qualityDirect = nav.children('a.nav-quality');
+      if (compactEnglishNavigation) {
+        if (qualityDirect.length !== 1 || qualityDirect.attr('href') !== 'manufacturing-quality.html' || compactText(qualityDirect.text()) !== navCopy.quality) failures.push(`${language.code}/${pageName}: Quality must be one direct Header link.`);
+        if (nav.find('a[href="production-inspection-testing.html"]').length) failures.push(`${language.code}/${pageName}: detailed leak-testing evidence must not compete in the compact Header.`);
+      } else if (qualityDirect.length || nav.find('.nav-dropdown-menu a[href="production-inspection-testing.html"]').length !== 1 || nav.find('.nav-dropdown').eq(2).find('a[href="production-inspection-testing.html"]').length !== 1) {
+        failures.push(`${language.code}/${pageName}: 100% Leak Testing must appear only under Quality.`);
+      }
+      const activeTop = nav.children('.nav-dropdown').children('.nav-dropdown-toggle.active').length + qualityDirect.filter('.active').length + nav.children('a.nav-about.active').length + nav.children('a.nav-home-mobile.active').length;
       if (activeTop > 1) failures.push(`${language.code}/${pageName}: more than one primary navigation item is active.`);
-      const expectedActive = expectedNavigationCategory(pageName);
+      const expectedCategory = expectedNavigationCategory(pageName);
+      const expectedActive = compactEnglishNavigation && expectedCategory === 'knowledge' ? '' : expectedCategory;
       const actualActive = nav.children('a.nav-home-mobile.active').length ? 'home'
         : nav.children('.nav-dropdown').eq(0).children('.nav-dropdown-toggle.active').length ? 'products'
           : nav.children('.nav-dropdown').eq(1).children('.nav-dropdown-toggle.active').length ? 'applications'
-            : nav.children('.nav-dropdown').eq(2).children('.nav-dropdown-toggle.active').length ? 'quality'
-              : nav.children('.nav-dropdown').eq(3).children('.nav-dropdown-toggle.active').length ? 'knowledge'
-                : nav.children('a.nav-about.active').length ? 'about' : '';
+            : qualityDirect.filter('.active').length ? 'quality'
+              : nav.children('.nav-dropdown').eq(2).children('.nav-dropdown-toggle.active').length ? 'quality'
+                : nav.children('.nav-dropdown').eq(3).children('.nav-dropdown-toggle.active').length ? 'knowledge'
+                  : nav.children('a.nav-about.active').length ? 'about' : '';
       if (actualActive !== expectedActive) failures.push(`${language.code}/${pageName}: active navigation category should be ${expectedActive || 'none'}, found ${actualActive || 'none'}.`);
       const matchingLeaf = nav.find(`a[href="${pageName}"]`).filter((_, element) => !$(element).hasClass('nav-home-mobile') && !$(element).hasClass('nav-about') && !$(element).hasClass('nav-cta')).first();
       const expectedCurrent = pageName === 'index.html' ? mobileHome
@@ -646,8 +743,12 @@ for (const language of verifiedLanguages) {
       const contact = footerRoot.find(`.footer-contact > a[href="${href}"]`);
       if (contact.length !== 1 || compactText(contact.text()) !== text) failures.push(`${language.code}/${pageName}: Footer contact ${href} is missing or incorrect.`);
     }
-    const quoteLink = footerRoot.find('.footer-quote[href="contact.html#quoteForm"]');
-    if (quoteLink.length !== 1 || compactText(quoteLink.text()) !== footerCopy.quote) failures.push(`${language.code}/${pageName}: localized engineering quote CTA is incorrect.`);
+    const quoteLink = footerRoot.find('.footer-quote');
+    if (pageName === 'thank-you.html') {
+      if (quoteLink.length) failures.push(`${language.code}/${pageName}: the post-submission Footer must not invite a duplicate inquiry.`);
+    } else if (quoteLink.length !== 1 || quoteLink.attr('href') !== 'contact.html#quoteForm' || compactText(quoteLink.text()) !== footerCopy.quote) {
+      failures.push(`${language.code}/${pageName}: localized engineering quote CTA is incorrect.`);
+    }
     const socialNavigation = footerRoot.find('nav.footer-social');
     if (socialNavigation.length !== 1 || socialNavigation.attr('aria-label') !== footerCopy.socialTitle) failures.push(`${language.code}/${pageName}: localized social navigation label is incorrect.`);
     if (footerRoot.find('.footer-social-title').length) failures.push(`${language.code}/${pageName}: visible social heading must not consume Footer layout space.`);
@@ -663,7 +764,7 @@ for (const language of verifiedLanguages) {
     const footerNavigation = footerRoot.find('nav.footer-navigation');
     if (footerNavigation.length !== 1 || footerNavigation.attr('aria-label') !== footerCopy.navigationLabel) failures.push(`${language.code}/${pageName}: localized Footer navigation landmark is incorrect.`);
     const footerColumns = footerNavigation.children('.footer-column');
-    if (footerColumns.length !== 4) failures.push(`${language.code}/${pageName}: Footer must contain four approved navigation groups.`);
+    if (footerColumns.length !== footerCopy.links.length) failures.push(`${language.code}/${pageName}: Footer navigation group count is incorrect.`);
     const footerTitles = footerColumns.find('.footer-title').map((_, element) => compactText($(element).text())).get();
     if (JSON.stringify(footerTitles) !== JSON.stringify(footerCopy.titles)) failures.push(`${language.code}/${pageName}: Footer group labels or order are inconsistent.`);
     footerColumns.each((index, column) => {
@@ -681,9 +782,14 @@ for (const language of verifiedLanguages) {
     if (new Set(internalFooterHrefs).size !== internalFooterHrefs.length) failures.push(`${language.code}/${pageName}: duplicate internal Footer href detected.`);
     if (footerRoot.find('[style]').length) failures.push(`${language.code}/${pageName}: inline Footer color/style attribute detected.`);
     if (/undefined|Begapunk Precision\s+Ротационное соединение\s+Manufacturer/iu.test(footerRoot.text())) failures.push(`${language.code}/${pageName}: invalid generated or mixed-language Footer text detected.`);
-    const footerStructure = footerRoot.find('*').map((_, element) => `${element.tagName}.${($(element).attr('class') || '').trim()}`).get().join('|');
-    footerStructureSignatures.add(footerStructure);
-    const pageStyleVersion = pageName === 'index.html' ? homepageStyleVersion : footerStyleVersion;
+    const footerStructureRoot = footerRoot.clone();
+    footerStructureRoot.find('.footer-quote').remove();
+    const footerStructure = footerStructureRoot.find('*').map((_, element) => `${element.tagName}.${($(element).attr('class') || '').trim()}`).get().join('|');
+    if (!footerStructureSignatures.has(language.code)) footerStructureSignatures.set(language.code, footerStructure);
+    else if (footerStructureSignatures.get(language.code) !== footerStructure) failures.push(`${language.code}/${pageName}: Footer structure differs from other pages in the same language.`);
+    const pageStyleVersion = language.code === 'en'
+      ? (pageName === 'index.html' ? englishHomepageStyleVersion : englishFooterStyleVersion)
+      : (pageName === 'index.html' ? homepageStyleVersion : footerStyleVersion);
     const expectedStyleHref = language.code === config.sourceLanguage.code ? `css/style.css?v=${pageStyleVersion}` : `../css/style.css?v=${pageStyleVersion}`;
     if ($(`link[rel="stylesheet"][href="${expectedStyleHref}"]`).length !== 1) failures.push(`${language.code}/${pageName}: canonical Footer stylesheet cache version is missing.`);
     if (pageName === 'index.html') {
@@ -942,7 +1048,10 @@ for (const language of verifiedLanguages) {
   }
 }
 
-if (footerStructureSignatures.size !== 1) failures.push(`Footer structure differs across the ${verifiedLanguages.length * config.pages.length} canonical pages.`);
+if (footerStructureSignatures.size !== verifiedLanguages.length) failures.push('One or more languages are missing a canonical Footer structure.');
+if (verifiedLocalizedBlogShareBlocks !== localizedBlogSharePages.size * activeLanguages.length) {
+  failures.push(`Localized blog sharing coverage: expected ${localizedBlogSharePages.size * activeLanguages.length} governed blocks, checked ${verifiedLocalizedBlogShareBlocks}.`);
+}
 
 try {
   const globalCss = await fs.readFile(path.join(sourceRoot, 'css', 'style.css'), 'utf8');
@@ -1302,13 +1411,18 @@ for (const language of verifiedLanguages) {
     try {
       const source = await fs.readFile(path.join(languageRoot, configuredPage), 'utf8');
       const $page = load(source, { decodeEntities: false });
-      const qualityMenu = $page('.nav-dropdown').eq(2);
-      if (qualityMenu.children(`.nav-dropdown-toggle[href="${manufacturingQualityPage}"]`).length !== 1
-          || qualityMenu.find(`.nav-dropdown-menu a[href="${manufacturingQualityPage}"]`).length !== 0) {
-        failures.push(`${language.code}/${configuredPage}: Quality parent must be the sole Header link to manufacturing-quality.`);
-      }
-      if ($page(`.footer-links a[href="${manufacturingQualityPage}"]`).length !== 1) {
-        failures.push(`${language.code}/${configuredPage}: Company footer must contain exactly one manufacturing-quality link.`);
+      if (language.code === 'en') {
+        if ($page(`#mainNav > a.nav-quality[href="${manufacturingQualityPage}"]`).length !== 1 || $page(`#mainNav .nav-dropdown a[href="${manufacturingQualityPage}"]`).length) {
+          failures.push(`${language.code}/${configuredPage}: Quality must be the sole direct Header link to manufacturing-quality.`);
+        }
+        if ($page(`.footer-links a[href="${manufacturingQualityPage}"]`).length) failures.push(`${language.code}/${configuredPage}: compact English Footer must not repeat manufacturing-quality.`);
+      } else {
+        const qualityMenu = $page('.nav-dropdown').eq(2);
+        if (qualityMenu.children(`.nav-dropdown-toggle[href="${manufacturingQualityPage}"]`).length !== 1
+            || qualityMenu.find(`.nav-dropdown-menu a[href="${manufacturingQualityPage}"]`).length !== 0) {
+          failures.push(`${language.code}/${configuredPage}: Quality parent must be the sole Header link to manufacturing-quality.`);
+        }
+        if ($page(`.footer-links a[href="${manufacturingQualityPage}"]`).length !== 1) failures.push(`${language.code}/${configuredPage}: Company footer must contain exactly one manufacturing-quality link.`);
       }
       if (configuredPage === 'about.html' && $page(`.mq-about-entry a[href="${manufacturingQualityPage}"]`).length !== 1) {
         failures.push(`${language.code}/about.html: manufacturing-process section entry is missing.`);
@@ -1333,10 +1447,10 @@ const productionInspectionBoundaryHeadings = {
   ru: 'Действующий производственный процесс',
 };
 const productionInspectionRequiredTerms = {
-  en: [/100% of finished units/i, /Every passage tested individually/i, /1\.0 MPa/i, /Approximately 1 second/i, /4 seconds/i, /Unpressurized and open/i, /yellow quarantine container/i, /(?:fully|completely) retest|complete passage-by-passage test/i, /Every passage must pass before packing and storage/i],
-  de: [/100 % der Fertigteile/i, /Jeder Kanal wird einzeln geprüft/i, /1,0 MPa/i, /Etwa 1 Sekunde/i, /4 Sekunden/i, /Drucklos und offen/i, /gelben Sperrbehälter/i, /vollständig erneut prüfen/i, /Alle Kanäle müssen vor Verpackung und Einlagerung bestanden sein/i],
-  ja: [/完成品の100％（全数）/, /すべての流路を個別に検査/, /1\.0 MPa/, /約1秒/, /4秒/, /無加圧で大気開放/, /黄色の不適合品隔離容器/, /全流路(?:を)?再検査/, /すべての流路が合格した後に梱包・入庫/],
-  ru: [/100\s% готовых изделий/i, /Каждый канал проверяется отдельно/i, /1,0 МПа/i, /Около 1 секунды/i, /4 секунды/i, /Без давления[^.]{0,30}открыт/i, /жёлт(?:ый|ого|ую) (?:контейнер|карантинн)/i, /полн(?:ый|ую) повторн(?:ый|ого) контрол/i, /неремонтопригодное изделие списывают в брак/i, /либо списание в брак/i, /Все каналы должны пройти контроль до упаковки и передачи на склад/i],
+  en: [/100% of finished units/i, /Every passage tested individually/i, /1\.0 MPa/i, /Approximately 1 second/i, /4 seconds/i, /Unpressurized and open/i, /yellow quarantine container/i, /(?:fully|completely) retest|complete passage-by-passage test/i, /packing and storage[^.!?]{0,100}PASS[^.!?]{0,60}every passage/i],
+  de: [/100 % der Fertigteile/i, /Jeder Kanal wird einzeln geprüft/i, /1,0 MPa/i, /Etwa 1 Sekunde/i, /4 Sekunden/i, /Drucklos und offen/i, /gelben Sperrbehälter/i, /vollständig erneut prüfen/i, /Verpackung und Einlagerung[^.!?]{0,120}jeden Kanal[^.!?]{0,40}PASS/i],
+  ja: [/完成品の100％（全数）/, /すべての流路を個別に検査/, /1\.0 MPa/, /約1秒/, /4秒/, /無加圧で大気開放/, /黄色の不適合品隔離容器/, /全流路(?:を)?再検査/, /すべての流路[^。]{0,60}PASS[^。]{0,60}梱包・入庫/],
+  ru: [/100\s% готовых изделий/i, /Каждый канал проверяется отдельно/i, /1,0 МПа/i, /Около 1 секунды/i, /4 секунды/i, /Без давления[^.]{0,30}открыт/i, /жёлт(?:ый|ого|ую) (?:контейнер|карантинн)/i, /полн(?:ый|ую) повторн(?:ый|ого) контрол/i, /неремонтопригодное изделие списывают в брак/i, /либо списание в брак/i, /Упаковка[^.]{0,100}только[^.]{0,100}PASS[^.]{0,60}каждого канала/i],
 };
 const productionInspectionForbiddenClaims = {
   en: [/zero leakage/i, /detects? (?:any|every) (?:minute|small) leak/i, /\b\d+(?:\.\d+)?\s*(?:mL\/min|Pa\/s)\b/i, /annual(?:ly)? calibrat/i, /calibration certificate/i, /QR code traceability/i, /CRM traceability/i, /100% first-pass/i],
@@ -1403,7 +1517,7 @@ for (const language of verifiedLanguages) {
     if ($page('main a[href^="BP-"]').length || /\bBP-[A-Z0-9-]+\b/.test(mainText)) {
       failures.push(`${language.code}/${productionInspectionPage}: the manufacturing procedure must remain model-neutral.`);
     }
-    if ($page('.pit-fact').length !== 4 || $page('.pit-step').length !== 5 || $page('.pit-table tbody tr').length !== 8) {
+    if ($page('.pit-fact').length !== 4 || $page('.pit-step').length !== 5 || $page('.pit-table tbody tr').length !== 9) {
       failures.push(`${language.code}/${productionInspectionPage}: workflow or verified-parameter coverage is incomplete.`);
     }
     const figures = $page('.pit-figure');
@@ -1436,7 +1550,7 @@ for (const language of verifiedLanguages) {
     }
     if (language.code !== config.sourceLanguage.code) {
       const labels = $page('.pit-table td[data-label]').map((_, element) => $page(element).attr('data-label')).get();
-      if (labels.length !== 8 || labels.some((label) => label !== productionInspectionTableLabels[language.code])) {
+      if (labels.length !== 9 || labels.some((label) => label !== productionInspectionTableLabels[language.code])) {
         failures.push(`${language.code}/${productionInspectionPage}: mobile table labels are missing, English, or inconsistent.`);
       }
     }
@@ -1528,29 +1642,23 @@ const caseBreadcrumbCopy = {
   ja: { home: 'ホーム', applications: '用途別情報', cases: '選定事例' },
   ru: { home: 'Главная', applications: 'Применение', cases: 'Примеры применения' },
 };
-const detailPhotoNotes = {
-  en: 'Photo note: These customer-authorized workshop photographs document the installation state shown. Operating parameters and acceptance requirements are confirmed for the order and approved drawing.',
-  de: 'Fotohinweis: Diese mit Genehmigung des Kunden veröffentlichten Werkstattfotos dokumentieren den dargestellten Einbauzustand. Betriebsparameter und Abnahmeanforderungen werden für den Auftrag und in der freigegebenen Zeichnung bestätigt.',
-  ja: '写真に関する注記：これらのお客様の許可を得た工場写真は、掲載した組込み状態を記録しています。運転条件および受入基準は、注文書と承認図面で確認します。',
-  ru: 'Примечание к фотографиям: Эти цеховые фотографии, опубликованные с разрешения заказчика, фиксируют показанное состояние установки. Рабочие параметры и критерии приёмки подтверждаются в заказе и согласованном чертеже.',
-};
 const bp2p95CaseCenterSummaryCopy = {
-  en: 'Two customer-authorized workshop photographs document the BP-2P-95-0005 mounting area, the surrounding chuck assembly and visible pneumatic hose routing. Open the detail page for the installation layout and project review inputs.',
-  de: 'Zwei mit Genehmigung des Kunden veröffentlichte Werkstattaufnahmen dokumentieren den Einbaubereich der BP-2P-95-0005, die umgebende Spannfuttereinheit und die sichtbare Schlauchführung. Die Detailseite zeigt die Einbauanordnung und die Angaben für die projektbezogene Prüfung.',
-  ja: 'お客様の許可を得た2点の工場内組立写真で、BP-2P-95-0005の取付部、チャック周辺の構成、空圧ホースの配管状態を紹介しています。詳細ページでは、組込みレイアウトと案件確認に必要な情報をご覧いただけます。',
-  ru: 'Две цеховые фотографии, опубликованные с разрешения заказчика, документируют зону установки BP-2P-95-0005, окружающий узел патрона и видимую прокладку пневматических шлангов. На отдельной странице приведены компоновка установки и исходные данные для проектной проверки.',
+  en: 'BP-2P-95-0005 supplies compressed air from the stationary side to the rotating chuck in this installation. The detail page shows the mounting position and pneumatic hose routing.',
+  de: 'BP-2P-95-0005 führt in diesem Einbau Druckluft von der feststehenden Seite zum rotierenden Spannfutter. Die Detailseite zeigt Einbauposition und Schlauchführung.',
+  ja: 'この組込みでは、BP-2P-95-0005が固定側から回転チャックへ圧縮空気を供給します。詳細ページで取付位置と空圧ホースの配管を確認できます。',
+  ru: 'В этой установке BP-2P-95-0005 передаёт сжатый воздух с неподвижной стороны на вращающийся патрон. На отдельной странице показаны монтажное положение и прокладка пневматических шлангов.',
 };
 const bp2p95Descriptions = {
-  en: 'The project owner confirmed the model as BP-2P-95-0005. Customer-authorized workshop photographs show the visible chuck assembly and air routing, not model identity.',
-  de: 'Der Projektverantwortliche bestätigte die Modellbezeichnung BP-2P-95-0005. Mit Genehmigung des Kunden veröffentlichte Werkstattfotos zeigen die sichtbare Spannfutterbaugruppe und Druckluftführung; die genaue Modellzuordnung lässt sich jedoch nicht allein aus den Fotos ableiten.',
-  ja: '案件責任者が型式をBP-2P-95-0005と確認しました。公開許可済みの工場写真は、目視可能なチャック組立状態と空圧配管を示しますが、型式自体を証明するものではありません。',
-  ru: 'Владелец проекта подтвердил модель BP-2P-95-0005. Опубликованные с разрешения заказчика цеховые фотографии показывают видимую компоновку патрона и пневмолинии, но не подтверждают модель.',
+  en: 'BP-2P-95-0005 supplies compressed air from the stationary side to the rotating chuck in this customer installation.',
+  de: 'BP-2P-95-0005 führt Druckluft von der feststehenden Seite zum rotierenden pneumatischen Spannfutter. Fotos zeigen Einbauposition und Schlauchführung.',
+  ja: 'BP-2P-95-0005は、固定側から回転するエアチャックへ圧縮空気を供給します。写真では取付位置と空圧ホースの配管を確認できます。',
+  ru: 'BP-2P-95-0005 передаёт сжатый воздух от неподвижной стороны к вращающемуся пневматическому патрону. На фотографиях показаны место установки и прокладка шлангов.',
 };
-const bp2p95ModelIdentityBoundaries = {
-  en: 'Project-owner confirmation; the photographs alone do not establish the internal model identity.',
-  de: 'Bestätigung durch den Projektverantwortlichen; die genaue Modellzuordnung lässt sich nicht allein aus den Fotos ableiten.',
-  ja: '案件責任者による確認。写真だけでは、写っている製品の正確な型式を特定できません。',
-  ru: 'Модель подтверждена владельцем проекта; по самим фотографиям нельзя установить точное обозначение модели.',
+const bp2p95IntegrationFacts = {
+  en: 'Stationary-to-rotating compressed-air connection at the chuck',
+  de: 'Druckluftübertragung von der stationären auf die rotierende Seite des Spannfutters',
+  ja: 'チャック部での固定側から回転側への圧縮空気の供給',
+  ru: 'Подача сжатого воздуха от неподвижной к вращающейся стороне патрона',
 };
 const applicationCaseSearchKeywords = {
   en: {
@@ -1571,44 +1679,44 @@ const applicationCaseSearchKeywords = {
   },
 };
 const caseCenterGuideCopy = {
-  en: 'The three entries above are real applications supported by workshop photographs; the two entries below are engineering selection examples, not customer performance results. Final selection requires the actual machine drawing and operating conditions.',
-  de: 'Die drei oben aufgeführten Einträge sind reale Anwendungen, die durch Werkstattfotos belegt sind; die beiden folgenden Einträge sind technische Auswahlbeispiele und keine Leistungsnachweise aus Kundenanlagen. Für die endgültige Auswahl sind die tatsächliche Maschinenzeichnung und die Betriebsbedingungen erforderlich.',
-  ja: '上の3項目は工場内写真に基づく実際の用途事例で、以下の2項目は顧客装置の性能実績ではなく技術選定例です。最終的な機種選定には、実際の装置図面と使用条件の確認が必要です。',
-  ru: 'Три записи выше — реальные примеры, подтверждённые цеховыми фотографиями; две записи ниже — инженерные примеры подбора, а не результаты работы оборудования заказчика. Для окончательного выбора необходимы чертёж машины и фактические условия эксплуатации.',
+  en: 'The three entries above show installed applications. The two entries below are selection examples, not customer performance results. Choose the final model from the machine drawing and actual operating conditions.',
+  de: 'Die drei Einträge oben zeigen installierte Anwendungen. Die beiden folgenden sind Auswahlbeispiele und keine Leistungsberichte aus Kundenanlagen. Wählen Sie das endgültige Modell anhand der Maschinenzeichnung und der tatsächlichen Betriebsbedingungen.',
+  ja: '上の3項目は実機への組込み用途です。以下の2項目は選定例であり、顧客装置の性能結果ではありません。最終型式は装置図面と実際の使用条件に基づいて選定します。',
+  ru: 'Три записи выше показывают установленные применения. Две записи ниже — примеры подбора, а не результаты работы оборудования заказчика. Окончательную модель выбирают по чертежу машины и фактическим условиям эксплуатации.',
 };
 const caseCenterHeroCopy = {
-  en: 'Review documented rotary-union installations and the engineering inputs needed for model and fit discussions.',
-  de: 'Dokumentierte Einbauten von Drehdurchführungen und die technischen Angaben für Modell- und Einbauprüfungen im Überblick.',
-  ja: 'ロータリジョイントの組込み事例と、機種・取付検討に必要な技術条件を紹介します。',
-  ru: 'Документированные примеры установки ротационных соединений и исходные данные для подбора модели и проверки монтажа.',
+  en: 'See installed rotary-union applications and the information needed to select a model and check the fit.',
+  de: 'Sehen Sie Einbauanwendungen von Drehdurchführungen und die Angaben für Modellauswahl und Einbauprüfung.',
+  ja: 'ロータリジョイントの組込み用途と、型式選定・取付確認に必要な情報を紹介します。',
+  ru: 'Примеры установки ротационных соединений и данные для выбора модели и проверки монтажа.',
 };
 const caseCenterDetailFaqCopy = {
   en: {
     question: 'Where can I review the detailed installation cases?',
-    answer: 'Open the BP-2P-95-0005 pneumatic chuck case or the BP-3P-S06-0001 sensor-monitored chuck case from their case cards. The laser rear-chuck evidence is summarized on this page.',
-    laserAnswer: 'Yes. BP-3P-0004 and BP-2P-08-0001 are confirmed for pneumatic rear-chuck applications on laser tube cutting machines. Provide the chuck drawing and operating conditions to confirm the ordered model and interface.',
+    answer: 'Open the BP-2P-95-0005 pneumatic chuck case or the BP-3P-S06-0001 sensor-monitored chuck case from their case cards. The laser rear-chuck application is shown on this page.',
+    laserAnswer: 'Yes. BP-3P-0004 and BP-2P-08-0001 are used for pneumatic rear-chuck applications on laser tube cutting machines. A chuck model, photo, or drawing is enough to start; we will ask only for any remaining detail needed to confirm the model and interface.',
   },
   de: {
     question: 'Wo finde ich die ausführlichen Einbaufälle?',
-    answer: 'Öffnen Sie über die Fallkarten den Einbaufall BP-2P-95-0005 im pneumatischen Spannfutter oder den Fall BP-3P-S06-0001 im sensorüberwachten Spannfutter. Der Nachweis für das hintere Laser-Spannfutter ist auf dieser Seite zusammengefasst.',
-    laserAnswer: 'Ja. BP-3P-0004 und BP-2P-08-0001 sind für pneumatische Anwendungen am hinteren Spannfutter von Laser-Rohrschneidmaschinen bestätigt. Senden Sie Spannfutterzeichnung und Betriebsbedingungen, um Bestellausführung und Schnittstelle zu bestätigen.',
+    answer: 'Öffnen Sie über die Fallkarten den Einbaufall BP-2P-95-0005 im pneumatischen Spannfutter oder den Fall BP-3P-S06-0001 im sensorüberwachten Spannfutter. Die Anwendung am hinteren Laser-Spannfutter wird auf dieser Seite gezeigt.',
+    laserAnswer: 'Ja. BP-3P-0004 und BP-2P-08-0001 werden für pneumatische Anwendungen am hinteren Spannfutter von Laser-Rohrschneidmaschinen eingesetzt. Für den Einstieg genügt ein Spannfuttermodell, ein Foto oder eine Zeichnung; wir fragen nur nach den noch benötigten Angaben zu Modell und Schnittstelle.',
   },
   ja: {
     question: '詳細な組込み事例はどこで確認できますか？',
-    answer: '各事例カードから、BP-2P-95-0005の空圧チャック組込み事例またはBP-3P-S06-0001のセンサ監視対応チャック組込み事例を開けます。レーザー後方チャックの資料はこのページにまとめています。',
-    laserAnswer: 'はい。BP-3P-0004およびBP-2P-08-0001は、レーザー管切断機の後方チャック空圧用途で採用実績があります。発注型式と取付インターフェースの確認には、チャック図面と使用条件をご提示ください。',
+    answer: '各事例カードから、BP-2P-95-0005の空圧チャック組込み事例またはBP-3P-S06-0001のセンサ監視対応チャック組込み事例を開けます。レーザー後方チャック用途はこのページで紹介しています。',
+    laserAnswer: 'はい。BP-3P-0004およびBP-2P-08-0001は、レーザー管切断機の後方チャック空圧用途で採用実績があります。型式、写真、図面のいずれかがあれば始められます。型式と取付インターフェースの確認に必要な情報だけを追加でお尋ねします。',
   },
   ru: {
     question: 'Где посмотреть подробные примеры установки?',
-    answer: 'Откройте с карточек подробный пример BP-2P-95-0005 в пневматическом патроне или BP-3P-S06-0001 в патроне с контролем по датчикам. Материалы по заднему патрону лазерного станка приведены на этой странице.',
-    laserAnswer: 'Да. BP-3P-0004 и BP-2P-08-0001 подтверждены для пневматических систем заднего патрона станков лазерной резки труб. Для подтверждения заказной модели и интерфейса направьте чертёж патрона и условия эксплуатации.',
+    answer: 'Откройте с карточек подробный пример BP-2P-95-0005 в пневматическом патроне или BP-3P-S06-0001 в патроне с контролем по датчикам. Применение на заднем патроне лазерного станка показано на этой странице.',
+    laserAnswer: 'BP-3P-0004 и BP-2P-08-0001 применяются в пневматических системах заднего патрона станков лазерной резки труб. Для начала достаточно модели патрона, фотографии или чертежа; мы уточним только данные, необходимые для выбора модели и интерфейса.',
   },
 };
 const laserApplicationProductMetaCopy = {
-  en: 'Confirmed for pneumatic laser tube cutting rear-chuck applications.',
-  de: 'Für pneumatische Anwendungen am hinteren Spannfutter einer Laser-Rohrschneidmaschine bestätigt.',
-  ja: 'レーザー管切断機の後方チャック空圧回路で採用実績があります。',
-  ru: 'Применение в пневмосистеме заднего патрона лазерного станка подтверждено.',
+  en: 'Used for compressed-air circuits in laser tube cutting rear chucks.',
+  de: 'Für Druckluftkreise hinterer Spannfutter an Laser-Rohrschneidmaschinen.',
+  ja: 'レーザー管切断機の後方チャック空圧回路用です。',
+  ru: 'Для контуров сжатого воздуха задних патронов станков лазерной резки труб.',
 };
 const detailEngineeringInputs = {
   en: { drawing: /chuck drawing/i, conditions: /operating conditions/i, interface: /mechanical interface/i },
@@ -1628,29 +1736,23 @@ const laserCaseForbiddenClaims = {
   ja: /酸素|窒素|冷却液|クーラント|プロセスガス|アシストガス|\d+(?:\.\d+)?\s*(?:MPa|bar|min⁻¹|回転\/分)/u,
   ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ|\b\d+(?:[,.]\d+)?\s*(?:МПа|бар|об\/мин)\b/iu,
 };
-const laserPhotoModelBoundary = {
-  en: 'The product shown in each photograph has not been individually identified as either model.',
-  de: 'Eine eindeutige Zuordnung der beiden Fotos zu jeweils einem dieser Modelle liegt nicht vor.',
-  ja: 'ただし、各写真に写る製品をいずれかの型式に個別特定したものではありません。',
-  ru: 'При этом соответствие каждого изделия на фотографиях конкретной модели отдельно не установлено.',
+const laserCaseSelectionCopy = {
+  en: /photographs show two installations in this application category[\s\S]{0,700}choose the ordered model from the chuck drawing and operating conditions/i,
+  de: /Fotos zeigen zwei Einbauten dieser Anwendungskategorie[\s\S]{0,700}wählen Sie die Bestellausführung anhand von Spannfutterzeichnung und Betriebsbedingungen/iu,
+  ja: /この用途区分の2つの組込み例[\s\S]{0,700}発注型式はチャック図面と使用条件から選定してください/u,
+  ru: /два примера установки в данной категории применения[\s\S]{0,700}модель для заказа выбирают по чертежу патрона и условиям эксплуатации/iu,
 };
-const laserSameCategoryBoundary = {
-  en: /same application category[^.]{0,180}not presented as two views of the same machine/i,
-  de: /selben Anwendungskategorie[^.]{0,180}nicht als zwei Ansichten derselben Maschine/iu,
-  ja: /同じ用途区分[^。]{0,180}同一装置[^。]{0,100}別角度[^。]{0,100}位置付けていません/u,
-  ru: /(?:одной категории применения[\s\S]{0,320}не представлены как два (?:вида|ракурса) (?:одной и той же машины|одного и того же оборудования)|не представлены как два (?:вида|ракурса) (?:одной и той же машины|одного и того же оборудования)[\s\S]{0,320}одной категории применения)/iu,
-};
-const productPhotoModelBoundary = {
-  en: /case photographs document the application type but do not identify the installed product as BP-(?:2P-08|3P)-000[14]/i,
-  de: /Fallfotos zeigen den Anwendungstyp[^.]{0,160}identifizieren das eingebaute Produkt jedoch nicht als BP-(?:2P-08|3P)-000[14]/iu,
-  ja: /事例写真は用途の種類を示していますが、搭載製品をBP-(?:2P-08|3P)-000[14]と特定するものではありません/u,
-  ru: /Фотографии показывают тип применения[^.]{0,160}не идентифицируют установленное изделие как BP-(?:2P-08|3P)-000[14]/iu,
+const productApplicationSelectionCopy = {
+  en: /select the ordered model from the machine requirements/i,
+  de: /wählen Sie die Bestellausführung anhand der Maschinenanforderungen/iu,
+  ja: /発注型式は装置要件に基づいて選定してください/u,
+  ru: /заказную модель выбирают по требованиям станка/iu,
 };
 const permittedLaserCaseSafetyBoundary = {
-  en: /The confirmed scope for the two standard models is the rear chuck's compressed-air circuits; process or assist-gas transfer is not included\./i,
-  de: /$^/,
-  ja: /$^/,
-  ru: /$^/,
+  en: /For this application, BP-3P-0004 and BP-2P-08-0001 transfer only the rear chuck's compressed-air circuits\. Process or assist-gas transfer requires a separate engineering solution\./i,
+  de: /In dieser Anwendung übertragen BP-3P-0004 und BP-2P-08-0001 ausschließlich die Druckluftkreise des hinteren Spannfutters\. Prozess- oder Hilfsgase erfordern eine separate technische Lösung\./iu,
+  ja: /この用途でBP-3P-0004とBP-2P-08-0001が伝送するのは、後方チャックの圧縮空気回路のみです。プロセスガスやアシストガスには、別の技術仕様が必要です。/u,
+  ru: /В этом применении BP-3P-0004 и BP-2P-08-0001 передают только сжатый воздух для контуров заднего патрона\. Для технологических или вспомогательных газов требуется отдельное инженерное решение\./iu,
 };
 const productApplicationForbiddenClaims = {
   en: /\boxygen\b|\bnitrogen\b|\bcoolant\b|(?:process|assist)[- ]gas|(?:clamp|unclamp|purge)\s+(?:port|passage|channel)|(?:port|passage|channel)[^.]{0,40}(?:clamp|unclamp|purge)/i,
@@ -1665,10 +1767,10 @@ const laserApplicationMediaClaims = {
   ru: /кислород|азот|охлаждающ|СОЖ|технологическ(?:ий|ого) газ|вспомогательн(?:ый|ого) газ/iu,
 };
 const permittedSeparateMediaEngineering = {
-  en: /separate engineering solution[^.]{0,180}(?:materials|cleaning|testing|approval)/i,
-  de: /separate technische Lösung[^.]{0,180}(?:Werkstoff|Reinigung|Prüfung|Freigabe)/iu,
-  ja: /独立したエンジニアリング仕様[^。]{0,180}(?:材質|洗浄|試験|承認)/u,
-  ru: /отдельное инженерное решение[^.]{0,180}(?:материал|очистк|испытан|согласован)/iu,
+  en: /separate solution[\s\S]{0,260}(?:materials|cleanliness|testing)/i,
+  de: /separate Lösung[\s\S]{0,260}(?:Werkstoffe|Sauberkeit|Prüf(?:ung|anforderungen))/iu,
+  ja: /別(?:仕様|の技術仕様)[\s\S]{0,260}(?:材質|清浄度|試験内容)/u,
+  ru: /отдельное решение[\s\S]{0,260}(?:материал|чистот|испытан)/iu,
 };
 const laserApplicationNumericClaims = /(?:\b\d+(?:[.,]\d+)?\s*(?:MPa|МПа|bar|бар|RPM|rpm|об\/мин|min⁻¹|L\/min|л\/мин)\b|30\s*%|ISO\s*4414|(?:orifice|bore|孔径|オリフィス|диаметр прохода)[^.;。]{0,40}\d+\s*mm)/iu;
 const staleLaserApplicationModels = /BP-2P-0001|BP-3P-0006|BP-2P-130-0001/i;
@@ -1722,16 +1824,16 @@ const sitewideLaserUnsupportedPerformance = {
   ru: /срок службы|уровень утеч|подтверждённ(?:ое|ая) (?:давление|частота вращения)|для всех лазер/iu,
 };
 const sitewideSeparateGasEngineering = {
-  en: /separate engineering project[^.]{0,180}(?:materials|cleaning|testing|approval)/i,
-  de: /separates Engineering-Projekt[^.]{0,180}(?:Werkstoff|Reinigung|Prüfung|Freigabe)/iu,
-  ja: /個別のエンジニアリング案件[^。]{0,180}(?:材質|洗浄|試験|承認)/u,
-  ru: /отдельный инженерный проект[^.]{0,180}(?:материал|очистк|испытан|согласован)/iu,
+  en: /separate solution[\s\S]{0,260}(?:materials|cleanliness|testing)/i,
+  de: /separate Lösung[\s\S]{0,260}(?:Werkstoffe|Sauberkeit|Prüfanforderungen)/iu,
+  ja: /別仕様[\s\S]{0,260}(?:材質|清浄度|試験内容)/u,
+  ru: /отдельное решение[\s\S]{0,260}(?:материал|чистот|испытан)/iu,
 };
 const laserApplicationPhotoModelNote = {
-  en: /photograph[\s\S]{0,320}has not been individually identified as either model/i,
-  de: /Werkstattfotos[\s\S]{0,320}keinem der beiden Modelle einzeln zugeordnet/iu,
-  ja: /現場写真[\s\S]{0,320}個別対応付けしたものではありません/u,
-  ru: /фотограф[\s\S]{0,320}не сопоставлены[\s\S]{0,180}модел/iu,
+  en: /workshop photographs[\s\S]{0,260}exact model in each image has not been identified/i,
+  de: /Werkstattfotos[\s\S]{0,260}genaue Modell auf den einzelnen Bildern wurde nicht bestimmt/iu,
+  ja: /現場写真[\s\S]{0,260}写真に写っている製品の正確な型式は特定されていません/u,
+  ru: /Цеховые фотографии[\s\S]{0,260}точная модель на каждом снимке не определена/iu,
 };
 const applicationsRepeatedIpCaveat = {
   en: /no certified IP rating is currently claimed/giu,
@@ -1745,11 +1847,11 @@ const applicationsDefensiveFoodClaim = {
   ja: /FDA|うたうものではありません|裏付け資料がない限り/u,
   ru: /\bFDA\b|без документации[^.]{0,120}(?:соответств|пищев)|соответств[^.]{0,120}не заявляется/iu,
 };
-const applicationsPositiveConfigurationReview = {
-  en: /selected configuration[^.]{0,180}(?:documentation|food-contact|regulatory)|configuration review/i,
-  de: /gewählte Ausführung[^.]{0,180}(?:Nachweise|Lebensmittelkontakt|regulatorisch)|Konfigurationsprüfung/iu,
-  ja: /選定仕様[^。]{0,180}(?:必要資料|食品接触|規制)|仕様審査/u,
-  ru: /выбранн(?:ой|ого) (?:конфигурации|исполнения)[^.]{0,180}(?:документац|пищев|регулятор)|проверке исполнения/iu,
+const applicationsBuyerStartCopy = {
+  en: /start with a machine type, model number, photo, or drawing[\s\S]{0,360}catalog model or custom option/i,
+  de: /Zum Einstieg genügt bereits eine Angabe[\s\S]{0,220}(?:Maschinentyp|Modellnummer|Foto|Zeichnung)[\s\S]{0,360}(?:Katalogmodell|Sonderausführung)/iu,
+  ja: /装置名、型式、写真、図面のいずれかがあれば選定を始められます。[\s\S]{0,360}(?:カタログ型式|特注仕様)/u,
+  ru: /Для начала достаточно указать тип оборудования[\s\S]{0,260}(?:номер модели|фотографию|чертёж)[\s\S]{0,420}(?:каталожной модели|заказного исполнения)/iu,
 };
 const sitewideSearchLegacyClaims = {
   en: /Air, oxygen assist, clamp control|Assist gas, clamping, and coolant|Oxygen \+ Nitrogen \+ Coolant|Assist gas, cooling support|oxygen, nitrogen, and compressed air/i,
@@ -1765,7 +1867,7 @@ const bottleCappingImageBase = 'bp-2p-16-bottle-capping-three-jaw-gripper';
 const bottleCappingVerification = {
   en: {
     heading: 'BP-2P-16-0001 in a bottle-capping head',
-    boundaryTitle: 'Evidence boundary',
+    buyerPromptTitle: 'For a similar capping machine',
     productLinkLabel: 'View BP-2P-16-0001 product details',
     alt: "BP-2P-16-0001 routing compressed air through two passages to clamp and release a pneumatic three-jaw bottle-cap gripper in a customer's production capping machine",
     required: [
@@ -1776,11 +1878,11 @@ const bottleCappingVerification = {
       /holds? and rotates? the bottle cap/i,
       /customer (?:identity(?: and machine brand)? (?:is|are) not disclosed|remains anonymous)/i,
     ],
-    boundary: /do not establish port numbering, operating pressure, rotational speed, duty cycle, service life, leakage performance, or production output/i,
+    buyerPrompt: /model number, photo, or drawing is enough to start[\s\S]{0,360}(?:pressure|speed|mounting dimensions|operating cycle)[\s\S]{0,280}closest configuration/i,
   },
   de: {
     heading: 'BP-2P-16-0001 in einem Verschließkopf',
-    boundaryTitle: 'Nachweisgrenze',
+    buyerPromptTitle: 'Für eine ähnliche Verschließmaschine',
     productLinkLabel: 'Produktdetails zu BP-2P-16-0001 ansehen',
     alt: 'BP-2P-16-0001 zur Druckluftversorgung eines pneumatischen 3-Finger-Zentrischgreifers beim Schließen und Öffnen in einer Produktionsmaschine des Kunden',
     required: [
@@ -1791,11 +1893,11 @@ const bottleCappingVerification = {
       /(?:hält den Flaschenverschluss und dreht ihn|den Flaschenverschluss hält und dreht|hält und dreht den Flaschenverschluss)/iu,
       /Identität des Kunden(?: und Maschinenfabrikat)? (?:bleibt anonym|wird nicht genannt|werden nicht genannt)/iu,
     ],
-    boundary: /weder Angaben zur Anschlussbelegung noch zu Betriebsdruck, Drehzahl, Betriebszyklus, Lebensdauer, Leckagewerten oder Produktionsleistung/iu,
+    buyerPrompt: /Modellnummer, ein Foto oder eine Zeichnung[\s\S]{0,360}(?:Druck|Drehzahl|Einbaumaße|Betriebszyklus)[\s\S]{0,280}nächstliegende Ausführung/iu,
   },
   ja: {
     heading: 'キャッピングヘッドに組み込まれたBP-2P-16-0001',
-    boundaryTitle: '確認できる範囲',
+    buyerPromptTitle: '同様のキャッピング設備をご検討の場合',
     productLinkLabel: 'BP-2P-16-0001の製品詳細を見る',
     alt: '実際の生産用キャッピング機で、3爪エアチャックの把持・開放用に2流路の圧縮空気を供給するBP-2P-16-0001',
     required: [
@@ -1806,11 +1908,11 @@ const bottleCappingVerification = {
       /ボトルキャップを(?:把持して回転|把持・回転)/u,
       /お客様名(?:および装置メーカー名)?は非公開/u,
     ],
-    boundary: /ポート番号、使用圧力、回転数、運転サイクル、寿命、漏れ性能、生産能力を示すものではありません/u,
+    buyerPrompt: /型式、写真、図面のいずれかがあれば確認を始められます。[\s\S]{0,360}(?:圧力|回転数|取付寸法|運転サイクル)[\s\S]{0,280}近い仕様/u,
   },
   ru: {
     heading: 'BP-2P-16-0001 в укупорочной головке',
-    boundaryTitle: 'Границы подтверждения',
+    buyerPromptTitle: 'Для аналогичной укупорочной машины',
     productLinkLabel: 'Посмотреть характеристики BP-2P-16-0001',
     alt: 'Ротационное соединение BP-2P-16-0001 подаёт сжатый воздух для зажима и разжима трёхкулачкового пневматического захвата в производственной укупорочной машине',
     required: [
@@ -1821,7 +1923,7 @@ const bottleCappingVerification = {
       /удерживает и вращает крышку/iu,
       /название заказчика (?:не раскрывается|и марка машины не раскрываются)/iu,
     ],
-    boundary: /не (?:подтверждают|определяют) нумерацию портов, рабочее давление, частоту вращения, режим работы, ресурс, показатели утечки или производительность/iu,
+    buyerPrompt: /номера модели, фотографии или чертежа[\s\S]{0,360}(?:давление|частота вращения|монтажные размеры|рабочий цикл)[\s\S]{0,280}наиболее близкое исполнение/iu,
   },
 };
 const bottleCappingAmbiguousFlowTerms = {
@@ -1832,10 +1934,16 @@ const bottleCappingAmbiguousFlowTerms = {
 };
 const bottleCappingUnsupportedClaims = /(?:\b\d+(?:[.,]\d+)?\s*(?:MPa|МПа|bar|бар|RPM|rpm|об\/мин|cycles?\/min|циклов\/мин)\b|(?:guaranteed|validated|verified|bestätigt|гарантирован|подтверждённ)[^.;。]{0,80}(?:service life|lifetime|Lebensdauer|ресурс|leak(?:age)? rate|Leckagerate|утеч|output|capacity|Produktionsleistung|производительност)|(?:customer|Kunde|お客様|заказчик)\s*(?:name|Name|名|название)\s*[:：]\s*(?!not disclosed|nicht genannt|非公開|не раскрывается))/iu;
 const bottleCappingAlternativeBoundary = {
-  en: /BP-2P-08-0001[^.]{0,180}(?:also be used|also be selected|can be selected)[^.]*\.[^.]{0,220}(?:identifies BP-2P-16-0001, not BP-2P-08-0001|product identified in the photograph is BP-2P-16-0001)/i,
-  de: /BP-2P-08-0001[^.]{0,180}(?:eingesetzt|ausgewählt) werden[^.]*\.[^.]{0,220}(?:zeigt BP-2P-16-0001 und nicht BP-2P-08-0001|auf dem Foto ist BP-2P-16-0001 identifiziert)/iu,
-  ja: /BP-2P-08-0001[^。]{0,180}(?:選定できます|選定可能|選定できる)[^。]*。[\s\S]{0,300}(?:写真で確認されている製品はBP-2P-16-0001|BP-2P-08-0001ではありません)/u,
-  ru: /BP-2P-08-0001[^.]{0,180}(?:может применяться|можно выбрать)[^.]*\.[^.]{0,220}(?:идентифицирована BP-2P-16-0001, а не BP-2P-08-0001|на фотографии идентифицирована BP-2P-16-0001)/iu,
+  en: /BP-2P-08-0001[\s\S]{0,220}another two-passage option[\s\S]{0,500}linked production example uses BP-2P-16-0001/i,
+  de: /BP-2P-08-0001[\s\S]{0,220}weitere Zweikanal-Option[\s\S]{0,500}verlinkten Produktionsbeispiel wird BP-2P-16-0001 eingesetzt/iu,
+  ja: /BP-2P-08-0001[\s\S]{0,220}別の2流路仕様[\s\S]{0,500}リンク先の量産事例ではBP-2P-16-0001を使用しています/u,
+  ru: /BP-2P-08-0001[\s\S]{0,220}ещё один двухканальный вариант[\s\S]{0,500}связанном производственном примере используется BP-2P-16-0001/iu,
+};
+const bottleCappingAlternativeApplicationBoundary = {
+  en: /BP-2P-08-0001[\s\S]{0,180}another option[\s\S]{0,260}installation shown uses BP-2P-16-0001[\s\S]{0,320}compare the passage count, mounting interface, pressure, speed, and dimensions/i,
+  de: /BP-2P-08-0001[\s\S]{0,180}weitere Option[\s\S]{0,260}gezeigten Einbau wird BP-2P-16-0001 verwendet[\s\S]{0,320}Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen/iu,
+  ja: /BP-2P-08-0001[\s\S]{0,180}候補です。[\s\S]{0,260}写真の設備ではBP-2P-16-0001を使用しています。[\s\S]{0,320}流路数、取付インターフェース、圧力、回転数、寸法/u,
+  ru: /BP-2P-08-0001[\s\S]{0,180}ещё один вариант[\s\S]{0,260}показанной установке используется BP-2P-16-0001[\s\S]{0,320}число каналов, монтажный интерфейс, давление, частоту вращения и размеры/iu,
 };
 
 const cncSawApplicationPageName = 'application-cnc-pneumatic-clamping.html';
@@ -1844,10 +1952,10 @@ const cncSawImageBase = 'bp-2p-130-custom-cnc-circular-saw-fixture-rear-view';
 const cncSawVerification = {
   en: {
     heading: 'BP-2P-130-0001 in a Custom CNC Circular-Saw Fixture',
-    boundaryTitle: 'Engineering confirmation',
+    buyerPromptTitle: 'For a similar fixture',
     introVisualAlt: 'BP-2P-130-0001 air rotary union for a CNC pneumatic clamping fixture',
-    introVisualLabel: 'Verified installed model',
-    introVisualText: 'BP-2P-130-0001 in the documented low-speed circular-saw fixture application.',
+    introVisualLabel: 'Installed product',
+    introVisualText: "BP-2P-130-0001 used in a customer's low-speed circular-saw fixture.",
     introSupply: 'When a CNC fixture rotates, its compressed-air lines must not twist or pull on the actuator. A pneumatic rotary union provides sealed rotating passages for compressed air between the stationary air-supply side and the rotating fixture.',
     faqQuestion: 'Can a rotary union hold clamping pressure during machining?',
     blowOff: 'Blow-off',
@@ -1863,14 +1971,14 @@ const cncSawVerification = {
       /rear or tail of the fixture/i,
       /front jaws are outside the frame/i,
     ],
-    boundary: /send us the clamping-fixture drawing and operating conditions; we will check the port arrangement, pressure, rotational speed, duty cycle and mounting interface before recommending the configuration/i,
+    buyerPrompt: /fixture model, photo, or drawing is enough to start[\s\S]{0,260}BP-2P-130-0001[\s\S]{0,220}two independent passages for clamp and release[\s\S]{0,320}(?:pressure|speed|mounting interface)[\s\S]{0,220}suitable configuration/i,
   },
   de: {
     heading: 'BP-2P-130-0001 in einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine',
-    boundaryTitle: 'Technische Abstimmung',
+    buyerPromptTitle: 'Für eine ähnliche Vorrichtung',
     introVisualAlt: 'Drehdurchführung BP-2P-130-0001 für eine pneumatische CNC-Spannvorrichtung',
-    introVisualLabel: 'Bestätigtes Einbaumodell',
-    introVisualText: 'BP-2P-130-0001 in der dokumentierten Anwendung an einer langsam laufenden Kreissägemaschine.',
+    introVisualLabel: 'Eingebautes Produkt',
+    introVisualText: 'BP-2P-130-0001 in einer langsam laufenden Kreissägenvorrichtung eines Kunden.',
     introSupply: 'Wenn sich eine CNC-Spannvorrichtung dreht, dürfen sich die Druckluftleitungen weder verdrehen noch am Aktuator ziehen. Eine pneumatische Drehdurchführung stellt abgedichtete rotierende Druckluftkanäle zwischen der stationären Druckluftversorgung und der rotierenden Vorrichtung bereit.',
     faqQuestion: 'Kann eine Drehdurchführung den Spanndruck während der Bearbeitung halten?',
     blowOff: 'Abblasen',
@@ -1886,14 +1994,14 @@ const cncSawVerification = {
       /Rückseite der Spannvorrichtung/iu,
       /vorderen Spannbacken liegen außerhalb des Bildes/iu,
     ],
-    boundary: /Vorrichtungszeichnung und Betriebsdaten; wir prüfen Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle vor der Auslegung/iu,
+    buyerPrompt: /Vorrichtungsmodell, ein Foto oder eine Zeichnung[\s\S]{0,260}BP-2P-130-0001[\s\S]{0,220}zwei getrennten Kanälen zum Spannen und Lösen[\s\S]{0,320}(?:Druck|Drehzahl|Einbauschnittstelle)[\s\S]{0,220}passende Ausführung/iu,
   },
   ja: {
     heading: 'CNC丸鋸盤の特注クランプ治具に組み込まれたBP-2P-130-0001',
-    boundaryTitle: '選定時の確認事項',
+    buyerPromptTitle: '同様の治具をご検討の場合',
     introVisualAlt: 'CNC空圧クランプ治具向けBP-2P-130-0001ロータリジョイント',
-    introVisualLabel: '確認済みの搭載型式',
-    introVisualText: '低速の丸鋸盤用治具で確認されたBP-2P-130-0001です。',
+    introVisualLabel: '搭載製品',
+    introVisualText: 'お客様の低速丸鋸盤用治具に搭載されたBP-2P-130-0001です。',
     introSupply: 'CNC治具の回転時には、圧縮空気配管がねじれたり、アクチュエータを引っ張ったりしない構造が必要です。空圧用ロータリジョイントは、固定側の圧縮空気供給部と回転治具の間に、密閉された回転流路を設けます。',
     faqQuestion: '加工中もクランプ圧を保持できますか？',
     blowOff: 'エアブロー',
@@ -1909,14 +2017,14 @@ const cncSawVerification = {
       /治具後端/u,
       /前側の爪部は画面外/u,
     ],
-    boundary: /治具図面と使用条件をご提示ください。ポート配置、圧力、回転数、運転サイクル、取合いを確認したうえで仕様をご提案します/u,
+    buyerPrompt: /治具の型式、写真、図面のいずれかがあれば確認を始められます。[\s\S]{0,260}BP-2P-130-0001の独立2流路をクランプ／アンクランプに使用しています。[\s\S]{0,320}(?:圧力|回転数|取合い)[\s\S]{0,220}適切な仕様/u,
   },
   ru: {
     heading: 'BP-2P-130-0001 в нестандартном зажимном приспособлении круглопильного станка с ЧПУ',
-    boundaryTitle: 'Инженерное согласование',
+    buyerPromptTitle: 'Для аналогичного приспособления',
     introVisualAlt: 'Ротационное соединение BP-2P-130-0001 для пневматического зажимного приспособления с ЧПУ',
-    introVisualLabel: 'Подтверждённая модель',
-    introVisualText: 'BP-2P-130-0001 в подтверждённом применении на низкооборотном круглопильном станке.',
+    introVisualLabel: 'Установленное изделие',
+    introVisualText: 'BP-2P-130-0001 в низкооборотном приспособлении круглопильного станка заказчика.',
     introSupply: 'При вращении приспособления ЧПУ линии сжатого воздуха не должны перекручиваться или тянуть привод. Пневматическое ротационное соединение образует герметичные вращающиеся каналы для подачи сжатого воздуха между неподвижной питающей магистралью и вращающимся приспособлением.',
     faqQuestion: 'Может ли ротационное соединение удерживать давление зажима во время обработки?',
     blowOff: 'Обдув',
@@ -1932,7 +2040,7 @@ const cncSawVerification = {
       /задняя часть приспособления/iu,
       /передние зажимные кулачки находятся вне кадра/iu,
     ],
-    boundary: /направьте чертёж приспособления и рабочие условия; мы проверим назначение портов, давление, частоту вращения, режим работы и монтажное сопряжение перед выбором исполнения/iu,
+    buyerPrompt: /модели приспособления, фотографии или чертежа[\s\S]{0,260}BP-2P-130-0001[\s\S]{0,220}двумя независимыми каналами для зажима и разжима[\s\S]{0,320}(?:давление|частота вращения|монтажный интерфейс)[\s\S]{0,220}подходящее исполнение/iu,
   },
 };
 const cncSawUnsupportedClaims = /(?:\b\d+(?:[.,]\d+)?\s*(?:MPa|МПа|bar|бар|RPM|rpm|об\/мин|min⁻¹|cycles?\/min|циклов\/мин)\b|(?:guaranteed|validated|bestätigt|гарантирован)[^.;。]{0,80}(?:service life|Lebensdauer|ресурс|leak(?:age)?|Leckage|утеч|output|Maschinenleistung|производительност))/iu;
@@ -2068,7 +2176,7 @@ for (const language of verifiedLanguages) {
     if ($detail('meta[name="description"]').attr('content') !== expectedBp2p95Description
         || $detail('meta[property="og:description"]').attr('content') !== expectedBp2p95Description
         || $detail('meta[name="twitter:description"]').attr('content') !== expectedBp2p95Description) {
-      failures.push(`${language.code}/${applicationCasePage}: model provenance is missing or inconsistent across description metadata.`);
+      failures.push(`${language.code}/${applicationCasePage}: customer-facing installation description is missing or inconsistent across metadata.`);
     }
     const detailArticles = [];
     $detail('script[type="application/ld+json"]').each((_, element) => {
@@ -2083,7 +2191,7 @@ for (const language of verifiedLanguages) {
     if (detailArticles.length !== 1
         || detailArticles[0].inLanguage !== language.code
         || detailArticles[0].description !== expectedBp2p95Description) {
-      failures.push(`${language.code}/${applicationCasePage}: TechArticle language or model-provenance description is missing or stale.`);
+      failures.push(`${language.code}/${applicationCasePage}: TechArticle language or installation description is missing or stale.`);
     }
     const breadcrumbCopy = caseBreadcrumbCopy[language.code];
     const casePages = [
@@ -2167,8 +2275,8 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/applications.html: the product-level uncertified-IP caveat must not be repeated on the applications overview; found ${repeatedIpCaveatCount}.`);
     }
     if (applicationsDefensiveFoodClaim[language.code]?.test(applicationsVisibleText)
-        || !applicationsPositiveConfigurationReview[language.code]?.test(applicationsVisibleText)) {
-      failures.push(`${language.code}/applications.html: food or regulated-use copy must use a positive configuration-review statement without defensive FDA wording.`);
+        || !applicationsBuyerStartCopy[language.code]?.test(applicationsVisibleText)) {
+      failures.push(`${language.code}/applications.html: buyer-facing start guidance is missing or defensive FDA wording remains.`);
     }
 
     const collectionPages = [];
@@ -2274,16 +2382,14 @@ for (const language of verifiedLanguages) {
       if (/\bBP-[A-Z0-9-]+\b/i.test(imageContext)) {
         failures.push(`${language.code}/case-studies.html: photograph captions must remain model-neutral.`);
       }
-      const photoModelBoundary = laserPhotoModelBoundary[language.code];
-      const photoModelBoundaryCount = photoModelBoundary ? laserText.split(photoModelBoundary).length - 1 : 0;
       if (!laserText.includes('BP-3P-0004')
           || !laserText.includes('BP-2P-08-0001')
-          || photoModelBoundaryCount !== 1
-          || $laserCase.find('.case-spec-table tbody tr').length !== 5) {
-        failures.push(`${language.code}/case-studies.html: confirmed application models or the single photograph-identification boundary is missing or duplicated.`);
+          || !laserCaseSelectionCopy[language.code]?.test(laserText)
+          || $laserCase.find('.case-spec-table tbody tr').length !== 3) {
+        failures.push(`${language.code}/case-studies.html: application models, buyer-facing selection guidance, or three-row application summary is missing.`);
       }
-      if (!laserSameCategoryBoundary[language.code]?.test(laserText)) {
-        failures.push(`${language.code}/case-studies.html: the same-category and not-the-same-machine evidence boundary is missing.`);
+      if (!permittedLaserCaseSafetyBoundary[language.code]?.test(laserText)) {
+        failures.push(`${language.code}/case-studies.html: the compressed-air-only scope and separate process-gas engineering boundary is missing.`);
       }
       const laserClaimText = laserText.replace(permittedLaserCaseSafetyBoundary[language.code], '');
       if (laserCaseForbiddenClaims[language.code]?.test(laserClaimText) || staleLaserApplicationModels.test(laserClaimText)) {
@@ -2307,7 +2413,7 @@ for (const language of verifiedLanguages) {
     const laserApplicationCardCopy = ['BP-3P-0004.html', 'BP-2P-08-0001.html']
       .map((href) => compactText($center(`.verified-application-products .product-card[data-href="${href}"] .product-meta`).text()));
     if (laserApplicationCardCopy.some((copy) => copy !== laserApplicationProductMetaCopy[language.code])) {
-      failures.push(`${language.code}/case-studies.html: laser application product cards must retain the concise confirmed-application copy without repeated photograph-to-model disclaimers.`);
+      failures.push(`${language.code}/case-studies.html: laser application product cards must retain the concise compressed-air application copy.`);
     }
     if (selectionExampleCards.length !== 2 || selectionExampleHrefs.join('|') !== 'BP-2P-130-0001.html|BP-2P-30-0001.html') {
       failures.push(`${language.code}/case-studies.html: selection-example products must contain BP-2P-130-0001 and BP-2P-30-0001.`);
@@ -2323,7 +2429,7 @@ for (const language of verifiedLanguages) {
     if (compactText($center(`#faq-question-${language.code}-1`).text()) !== expectedDetailFaq?.question
         || compactText($center(`#faq-answer-${language.code}-1`).text()) !== expectedDetailFaq?.answer
         || compactText($center(`#faq-answer-${language.code}-2`).text()) !== expectedDetailFaq?.laserAnswer) {
-      failures.push(`${language.code}/case-studies.html: the case-center FAQs must link to detail cases and keep the laser answer free of repeated photograph-to-model copy.`);
+      failures.push(`${language.code}/case-studies.html: the case-center FAQs must link to the detail cases and retain the approved selection answer.`);
     }
     const faqIds = new Set();
     $center('.faq-question').each((_, element) => {
@@ -2401,8 +2507,8 @@ for (const language of verifiedLanguages) {
       const detailRecord = searchIndex.find((entry) => entry.url === applicationCasePage);
       if (!detailRecord
           || detailRecord.description !== expectedBp2p95Description
-          || !compactText(detailRecord.body).includes(bp2p95ModelIdentityBoundaries[language.code])) {
-        failures.push(`${language.code}/search-index.json: BP-2P-95 model provenance is missing or not synchronized.`);
+          || !compactText(detailRecord.body).includes(bp2p95IntegrationFacts[language.code])) {
+        failures.push(`${language.code}/search-index.json: BP-2P-95 installation fact is missing or not synchronized.`);
       }
       for (const [pageName, record] of [[applicationCasePage, detailRecord], [smartChuckCasePage, smartRecord]]) {
         const expectedKeywords = applicationCaseSearchKeywords[language.code]?.[pageName];
@@ -2475,23 +2581,27 @@ for (const language of verifiedLanguages) {
     if ($smartProduct('.app-related-products .app-related-product').first().attr('href') !== smartChuckCasePage) {
       failures.push(`${language.code}/BP-3P-S06-0001.html: the sensor-monitored chuck case is not the first related resource.`);
     }
-    for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.tech-note', '.cta-section']) {
+    for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.cta-section']) {
       if (!$detail(selector).length) failures.push(`${language.code}/${applicationCasePage}: required standard component ${selector} is missing.`);
     }
-    if ($detail('.nav-dropdown').length !== 4) failures.push(`${language.code}/${applicationCasePage}: expected four standard navigation dropdowns.`);
-    if ($detail('.footer-brand-band').length !== 1 || $detail('.footer-contact-band').length !== 1 || $detail('.footer-navigation > .footer-column').length !== 4) {
+    const expectedNavigationDropdowns = language.code === 'en' ? 2 : 4;
+    const expectedFooterColumns = language.code === 'en' ? 1 : 4;
+    if ($detail('.nav-dropdown').length !== expectedNavigationDropdowns) failures.push(`${language.code}/${applicationCasePage}: standard navigation dropdown count is incorrect.`);
+    if ($detail('.footer-brand-band').length !== 1 || $detail('.footer-contact-band').length !== 1 || $detail('.footer-navigation > .footer-column').length !== expectedFooterColumns) {
       failures.push(`${language.code}/${applicationCasePage}: standard three-layer Footer is missing.`);
     }
     if ($detail('.floating-cta .floating-btn.quote').length !== 1 || $detail('.floating-cta .floating-btn.whatsapp').length !== 1) {
       failures.push(`${language.code}/${applicationCasePage}: standard floating quote/WhatsApp actions are missing.`);
     }
-    for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.tech-note', '.cta-section']) {
+    for (const selector of ['.cs-hero', '.case-row', '.case-image', '.case-text', '.case-spec-table', '.cta-section']) {
       if (!$smartDetail(selector).length) failures.push(`${language.code}/${smartChuckCasePage}: required standard component ${selector} is missing.`);
     }
     for (const [pageName, $casePage] of [[applicationCasePage, $detail], [smartChuckCasePage, $smartDetail]]) {
-      const photoNotes = $casePage('.tech-note');
-      if (photoNotes.length !== 1 || compactText(photoNotes.text()) !== detailPhotoNotes[language.code]) {
-        failures.push(`${language.code}/${pageName}: expected exactly one concise customer-authorized photo note.`);
+      if ($casePage('.tech-note').length) {
+        failures.push(`${language.code}/${pageName}: internal photo-audit note remains on the buyer-facing case page.`);
+      }
+      if ($casePage('.case-summary-table tbody tr').length !== 4) {
+        failures.push(`${language.code}/${pageName}: expected four buyer-facing application summary rows.`);
       }
       const engineeringSectionText = compactText($casePage('[aria-labelledby="engineering-checks-title"]').text());
       const requiredInputs = detailEngineeringInputs[language.code];
@@ -2501,8 +2611,8 @@ for (const language of verifiedLanguages) {
         failures.push(`${language.code}/${pageName}: drawing, operating-condition, or interface confirmation is missing from the engineering checks.`);
       }
     }
-    if ($smartDetail('.nav-dropdown').length !== 4) failures.push(`${language.code}/${smartChuckCasePage}: expected four standard navigation dropdowns.`);
-    if ($smartDetail('.footer-brand-band').length !== 1 || $smartDetail('.footer-contact-band').length !== 1 || $smartDetail('.footer-navigation > .footer-column').length !== 4) {
+    if ($smartDetail('.nav-dropdown').length !== expectedNavigationDropdowns) failures.push(`${language.code}/${smartChuckCasePage}: standard navigation dropdown count is incorrect.`);
+    if ($smartDetail('.footer-brand-band').length !== 1 || $smartDetail('.footer-contact-band').length !== 1 || $smartDetail('.footer-navigation > .footer-column').length !== expectedFooterColumns) {
       failures.push(`${language.code}/${smartChuckCasePage}: standard three-layer Footer is missing.`);
     }
     if ($smartDetail('.floating-cta .floating-btn.quote').length !== 1 || $smartDetail('.floating-cta .floating-btn.whatsapp').length !== 1) {
@@ -2522,8 +2632,8 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/${applicationCasePage}: connection detail is not the primary evidence image.`);
     }
     const visibleDetail = compactText($detail('main').text());
-    if (!visibleDetail.includes(bp2p95ModelIdentityBoundaries[language.code])) {
-      failures.push(`${language.code}/${applicationCasePage}: project-owner model confirmation and photograph identity boundary are missing.`);
+    if (!visibleDetail.includes(bp2p95IntegrationFacts[language.code])) {
+      failures.push(`${language.code}/${applicationCasePage}: stationary-to-rotating compressed-air integration fact is missing.`);
     }
     if (unsupportedApplicationCaseClaims[language.code]?.test(visibleDetail)) {
       failures.push(`${language.code}/${applicationCasePage}: unsupported commissioning or independent-circuit claim detected.`);
@@ -2598,8 +2708,8 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/${bottleCappingPageName}: verified BP-2P-16-0001 production application is missing or duplicated.`);
     } else {
       if (compactText(bottleModule.find('h2').first().text()) !== bottleCopy.heading
-          || compactText(bottleModule.find('.bottle-capping-boundary strong').first().text()) !== bottleCopy.boundaryTitle) {
-        failures.push(`${language.code}/${bottleCappingPageName}: approved localized heading or evidence-boundary title is not synchronized.`);
+          || compactText(bottleModule.find('.bottle-capping-boundary strong').first().text()) !== bottleCopy.buyerPromptTitle) {
+        failures.push(`${language.code}/${bottleCappingPageName}: localized application heading or similar-machine prompt is not synchronized.`);
       }
       const bottleImage = bottleModule.find(`img[src="${bottleImagePrefix}images/applications/bottle-filling-capping/${bottleCappingImageBase}.jpg"]`);
       const bottleWebp = bottleModule.find(`source[srcset="${bottleImagePrefix}images/applications/bottle-filling-capping/${bottleCappingImageBase}.webp"]`);
@@ -2621,8 +2731,8 @@ for (const language of verifiedLanguages) {
           failures.push(`${language.code}/${bottleCappingPageName}: an owner-confirmed bottle-capping fact is missing (${requiredPattern}).`);
         }
       }
-      if (!bottleCopy.boundary.test(bottleModuleText)) {
-        failures.push(`${language.code}/${bottleCappingPageName}: machine-specific evidence boundary is incomplete.`);
+      if (!bottleCopy.buyerPrompt.test(bottleModuleText)) {
+        failures.push(`${language.code}/${bottleCappingPageName}: buyer-facing start guidance for a similar capping machine is incomplete.`);
       }
       if (bottleCappingAmbiguousFlowTerms[language.code]?.test(bottleModuleText)) {
         failures.push(`${language.code}/${bottleCappingPageName}: ambiguous circuit terminology remains in the localized bottle-capping module.`);
@@ -2644,8 +2754,8 @@ for (const language of verifiedLanguages) {
       const bottleAlternative = bottleModule.find('.bottle-capping-alternative');
       if (bottleAlternative.length !== 1
           || bottleAlternative.find(`a[href="${bottleCappingAlternativeProductPageName}"]`).length !== 1
-          || !bottleCappingAlternativeBoundary[language.code]?.test(compactText(bottleAlternative.text()))) {
-        failures.push(`${language.code}/${bottleCappingPageName}: BP-2P-08-0001 alternative-model fit or photograph-identification boundary is missing.`);
+          || !bottleCappingAlternativeApplicationBoundary[language.code]?.test(compactText(bottleAlternative.text()))) {
+        failures.push(`${language.code}/${bottleCappingPageName}: buyer-facing BP-2P-08-0001 alternative comparison is missing.`);
       }
     }
     const bottleRobots = compactText($bottleCappingApplication('meta[name="robots"]').attr('content')).toLowerCase().replace(/\s+/g, '');
@@ -2718,7 +2828,7 @@ for (const language of verifiedLanguages) {
         || bottleAlternativeEntry.find(`a[href="${bottleCappingPageName}#verified-bp-2p-16-capping"]`).length !== 1
         || !bottleCappingAlternativeBoundary[language.code]?.test(bottleAlternativeEntryText)
         || bottleCappingAmbiguousFlowTerms[language.code]?.test(bottleAlternativeEntryText)) {
-      failures.push(`${language.code}/${bottleCappingAlternativeProductPageName}: confirmed application-fit entry or photograph-identification boundary is missing.`);
+      failures.push(`${language.code}/${bottleCappingAlternativeProductPageName}: application-fit entry or BP-2P-16-0001 comparison boundary is missing.`);
     }
     const bottleAlternativeCreativeWorks = [];
     $bottleAlternativeProduct('script[type="application/ld+json"]').each((_, element) => {
@@ -2743,7 +2853,7 @@ for (const language of verifiedLanguages) {
         || bottleAlternativeCreativeWork?.inLanguage !== language.code
         || bottleCappingAmbiguousFlowTerms[language.code]?.test(bottleAlternativeStructuredText)
         || !bottleCappingAlternativeBoundary[language.code]?.test(bottleAlternativeStructuredText)) {
-      failures.push(`${language.code}/${bottleCappingAlternativeProductPageName}: localized CreativeWork application-fit node is missing, stale, or improperly tied to the photograph.`);
+      failures.push(`${language.code}/${bottleCappingAlternativeProductPageName}: localized CreativeWork application-fit node or model-comparison boundary is missing or stale.`);
     }
     try {
       const bottleSearchIndex = JSON.parse(await fs.readFile(path.join(languageRoot, 'search-index.json'), 'utf8'));
@@ -2761,7 +2871,7 @@ for (const language of verifiedLanguages) {
       const bottleAlternativeRecords = bottleSearchIndex.filter((entry) => entry.url === bottleCappingAlternativeProductPageName);
       if (bottleAlternativeRecords.length !== 1
           || !bottleCappingAlternativeBoundary[language.code]?.test(compactText(JSON.stringify(bottleAlternativeRecords[0])))) {
-        failures.push(`${language.code}/search-index.json: BP-2P-08-0001 record does not preserve the application-fit and photograph-identification boundary.`);
+        failures.push(`${language.code}/search-index.json: BP-2P-08-0001 record does not preserve the application-fit and BP-2P-16-0001 comparison boundary.`);
       }
     } catch (error) {
       failures.push(`${language.code}/search-index.json: bottle-capping application verification failed (${error.message}).`);
@@ -2777,8 +2887,8 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/${cncSawApplicationPageName}: verified BP-2P-130-0001 customer application is missing or duplicated.`);
     } else {
       if (compactText(cncModule.find('h2').first().text()) !== cncCopy.heading
-          || compactText(cncModule.find('.cnc-saw-boundary strong').first().text()) !== cncCopy.boundaryTitle) {
-        failures.push(`${language.code}/${cncSawApplicationPageName}: approved localized heading or engineering-confirmation title is not synchronized.`);
+          || compactText(cncModule.find('.cnc-saw-boundary strong').first().text()) !== cncCopy.buyerPromptTitle) {
+        failures.push(`${language.code}/${cncSawApplicationPageName}: localized application heading or similar-fixture prompt is not synchronized.`);
       }
       const cncImage = cncModule.find(`img[src="${cncImagePrefix}images/applications/cnc-pneumatic-clamping/${cncSawImageBase}.jpg"]`);
       const cncWebp = cncModule.find(`source[srcset="${cncImagePrefix}images/applications/cnc-pneumatic-clamping/${cncSawImageBase}.webp"]`);
@@ -2804,7 +2914,7 @@ for (const language of verifiedLanguages) {
           || compactText(cncIntroVisual.find('strong').text()) !== cncCopy.introVisualLabel
           || compactText(cncIntroVisual.find('span').text()) !== cncCopy.introVisualText
           || !compactText(cncIntro.text()).includes(cncCopy.introSupply)) {
-        failures.push(`${language.code}/${cncSawApplicationPageName}: verified BP-2P-130-0001 intro visual, localized alt, or supporting copy is not synchronized.`);
+        failures.push(`${language.code}/${cncSawApplicationPageName}: BP-2P-130-0001 installed-product visual, localized alt, or supporting copy is not synchronized.`);
       }
       const cncFaqQuestions = $cncSawApplication('.app-faq-item h3').toArray().map((element) => compactText($cncSawApplication(element).text()));
       const cncPassageItems = $cncSawApplication('.app-detail-card ul li').toArray().map((element) => compactText($cncSawApplication(element).text()));
@@ -2816,8 +2926,8 @@ for (const language of verifiedLanguages) {
           failures.push(`${language.code}/${cncSawApplicationPageName}: an owner-confirmed CNC saw-fixture fact is missing (${requiredPattern}).`);
         }
       }
-      if (!cncCopy.boundary.test(cncModuleText)) {
-        failures.push(`${language.code}/${cncSawApplicationPageName}: machine-specific evidence boundary is incomplete.`);
+      if (!cncCopy.buyerPrompt.test(cncModuleText)) {
+        failures.push(`${language.code}/${cncSawApplicationPageName}: buyer-facing start guidance for a similar fixture is incomplete.`);
       }
       const positiveCncClaims = cncModule.clone();
       positiveCncClaims.find('.cnc-saw-boundary').remove();
@@ -2954,8 +3064,8 @@ for (const language of verifiedLanguages) {
       if (productApplicationForbiddenClaims[language.code]?.test(applicationEntryText)) {
         failures.push(`${language.code}/${pageName}: verified application entry contains an unsupported medium or port-function claim.`);
       }
-      if (!productPhotoModelBoundary[language.code]?.test(applicationEntryText)) {
-        failures.push(`${language.code}/${pageName}: photograph-to-model identification boundary is missing from the verified application entry.`);
+      if (!productApplicationSelectionCopy[language.code]?.test(applicationEntryText)) {
+        failures.push(`${language.code}/${pageName}: buyer-facing model-selection guidance is missing from the application entry.`);
       }
       const structuredText = $verifiedProduct('script[type="application/ld+json"]').text();
       const expectedStructuredDate = pageName === 'BP-2P-08-0001.html' ? '2026-08-13' : '2026-08-07';
@@ -2996,6 +3106,7 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log(`Localized site verification passed for ${verifiedLanguages.length * config.pages.length} pages.`);
+  console.log(`Localized blog sharing passed for ${verifiedLocalizedBlogShareBlocks} DE/JA/RU share blocks, including target-language URLs, titles, and accessible labels.`);
   console.log(`Discovery quarantine passed for ${discoveryExcludedPages.size} routes and ${verifiedDiscoveryNoindexPages} localized noindex,follow pages, with zero entries in search, AI indexes, and sitemap sources.`);
   console.log(`Application-case coverage passed for BP-2P-95 and BP-3P-S06 across ${verifiedLanguages.length} languages, including detail pages, case-center links, product-page links, search indexes, canonical/hreflang sets, JSON-LD language values, and both sitemap sources.`);
   console.log(`Bottle-capping production evidence passed across ${verifiedLanguages.length} languages, including the anonymous customer application, BP-2P-16-0001 photographed-model evidence, BP-2P-08-0001 alternative fit, two-passage three-jaw-gripper facts, stripped image metadata, Product and CreativeWork nodes, and product search records.`);

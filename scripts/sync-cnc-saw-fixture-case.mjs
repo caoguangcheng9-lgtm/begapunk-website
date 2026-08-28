@@ -21,10 +21,10 @@ const copy = {
   en: {
     prefix: '',
     language: 'en',
-    label: 'Verified Customer Production Application',
+    label: 'Customer Production Application',
     heading: 'BP-2P-130-0001 in a Custom CNC Circular-Saw Fixture',
     intro: 'This customer-authorized video frame shows BP-2P-130-0001 installed at the rear of a custom CNC machining fixture on a circular-blade saw machine. The customer uses two independent compressed-air passages for fixture clamp and release.',
-    detailsHeading: 'Verified application facts',
+    detailsHeading: 'Application details',
     facts: [
       ['Equipment', 'Customer\'s custom CNC machining fixture on a circular-blade saw machine'],
       ['Installed rotary union', '<a class="cnc-saw-model-link" href="BP-2P-130-0001.html">BP-2P-130-0001</a>'],
@@ -36,11 +36,11 @@ const copy = {
     alt: 'Rear view of a custom CNC circular-saw fixture with BP-2P-130-0001 installed',
     imageAria: 'View the BP-2P-130-0001 product page from the authorized CNC fixture photograph',
     caption: 'Customer-authorized production-video frame showing the rear of the custom fixture; the customer and machine brand are not disclosed.',
-    boundaryTitle: 'Engineering confirmation',
-    boundary: 'This customer application confirms BP-2P-130-0001 with two independent compressed-air passages for fixture clamp and release. For a similar fixture, send us the clamping-fixture drawing and operating conditions; we will check the port arrangement, pressure, rotational speed, duty cycle and mounting interface before recommending the configuration.',
+    boundaryTitle: 'For a similar fixture',
+    boundary: 'A fixture model, photo, or drawing is enough to start. BP-2P-130-0001 is used here with two independent passages for clamp and release. If available, include the pressure, speed, and mounting interface so we can check a suitable configuration.',
     introVisualAlt: 'BP-2P-130-0001 air rotary union for a CNC pneumatic clamping fixture',
-    introVisualLabel: 'Verified installed model',
-    introVisualText: 'BP-2P-130-0001 in the documented low-speed circular-saw fixture application.',
+    introVisualLabel: 'Installed product',
+    introVisualText: "BP-2P-130-0001 used in a customer's low-speed circular-saw fixture.",
     introSupplyLegacy: 'When a CNC fixture rotates, the air line cannot be allowed to twist or pull on the actuator. A pneumatic rotary joint provides a sealed rotating path between the stationary supply and the moving fixture.',
     introSupply: 'When a CNC fixture rotates, its compressed-air lines must not twist or pull on the actuator. A pneumatic rotary union provides sealed rotating passages for compressed air between the stationary air-supply side and the rotating fixture.',
     faqQuestion: 'Can a rotary union hold clamping pressure during machining?',
@@ -57,10 +57,10 @@ const copy = {
   de: {
     prefix: 'de/',
     language: 'de',
-    label: 'Bestätigter Einsatz in einer Kunden-Produktionsanlage',
+    label: 'Kundenanwendung in der Produktion',
     heading: 'BP-2P-130-0001 in einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine',
     intro: 'Dieses vom Kunden zur Veröffentlichung freigegebene Videostandbild zeigt BP-2P-130-0001 an der Rückseite einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine. Der Kunde nutzt zwei getrennte Druckluftkanäle zum Spannen und Lösen der Vorrichtung.',
-    detailsHeading: 'Bestätigte Anwendungsdaten',
+    detailsHeading: 'Details zur Anwendung',
     facts: [
       ['Anlage', 'Kundenspezifische CNC-Spannvorrichtung an einer Kreissägemaschine'],
       ['Eingebaute Drehdurchführung', '<a class="cnc-saw-model-link" href="BP-2P-130-0001.html">BP-2P-130-0001</a>'],
@@ -72,11 +72,11 @@ const copy = {
     alt: 'Rückansicht einer kundenspezifischen CNC-Spannvorrichtung an einer Kreissägemaschine mit eingebauter BP-2P-130-0001',
     imageAria: 'Produktseite der BP-2P-130-0001 über das freigegebene Foto der CNC-Spannvorrichtung öffnen',
     caption: 'Vom Kunden freigegebenes Standbild aus einem Produktionsvideo mit der Rückseite der kundenspezifischen Vorrichtung; Kunde und Maschinenmarke werden nicht genannt.',
-    boundaryTitle: 'Technische Abstimmung',
-    boundary: 'Für diese Kundenanwendung ist der Einsatz der BP-2P-130-0001 mit zwei getrennten Druckluftkanälen zum Spannen und Lösen der Vorrichtung bestätigt. Senden Sie uns für eine ähnliche Vorrichtung die Vorrichtungszeichnung und Betriebsdaten; wir prüfen Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle vor der Auslegung.',
+    boundaryTitle: 'Für eine ähnliche Vorrichtung',
+    boundary: 'Für den Einstieg genügt ein Vorrichtungsmodell, ein Foto oder eine Zeichnung. Hier wird BP-2P-130-0001 mit zwei getrennten Kanälen zum Spannen und Lösen eingesetzt. Falls vorhanden, senden Sie außerdem Druck, Drehzahl und Einbauschnittstelle; wir prüfen eine passende Ausführung.',
     introVisualAlt: 'Drehdurchführung BP-2P-130-0001 für eine pneumatische CNC-Spannvorrichtung',
-    introVisualLabel: 'Bestätigtes Einbaumodell',
-    introVisualText: 'BP-2P-130-0001 in der dokumentierten Anwendung an einer langsam laufenden Kreissägemaschine.',
+    introVisualLabel: 'Eingebautes Produkt',
+    introVisualText: 'BP-2P-130-0001 in einer langsam laufenden Kreissägenvorrichtung eines Kunden.',
     introSupplyLegacy: 'Beim Drehen einer CNC-Spannvorrichtung darf die Luftleitung weder verdreht werden noch am Aktuator ziehen. Eine pneumatische Drehdurchführung stellt einen abgedichteten rotierenden Übergang zwischen der stationären Versorgung und der bewegten Vorrichtung her.',
     introSupply: 'Wenn sich eine CNC-Spannvorrichtung dreht, dürfen sich die Druckluftleitungen weder verdrehen noch am Aktuator ziehen. Eine pneumatische Drehdurchführung stellt abgedichtete rotierende Druckluftkanäle zwischen der stationären Druckluftversorgung und der rotierenden Vorrichtung bereit.',
     faqQuestion: 'Kann eine Drehdurchführung den Spanndruck während der Bearbeitung halten?',
@@ -93,10 +93,10 @@ const copy = {
   ja: {
     prefix: 'ja/',
     language: 'ja',
-    label: 'お客様の実生産設備で確認された用途',
+    label: 'お客様の生産設備での使用例',
     heading: 'CNC丸鋸盤の特注クランプ治具に組み込まれたBP-2P-130-0001',
     intro: 'お客様から公開許可を得た動画の一場面です。CNC丸鋸盤の特注クランプ治具後端にBP-2P-130-0001が組み込まれ、独立した2つの圧縮空気流路で治具のクランプ／アンクランプを行います。',
-    detailsHeading: '確認済みの用途情報',
+    detailsHeading: '用途の詳細',
     facts: [
       ['設備', 'お客様のCNC丸鋸盤に搭載された特注クランプ治具'],
       ['搭載ロータリジョイント', '<a class="cnc-saw-model-link" href="BP-2P-130-0001.html">BP-2P-130-0001</a>'],
@@ -108,11 +108,11 @@ const copy = {
     alt: 'BP-2P-130-0001を組み込んだCNC丸鋸盤用特注クランプ治具の後端',
     imageAria: '公開許可を得たCNC治具の写真からBP-2P-130-0001製品ページを開く',
     caption: 'お客様から公開許可を得た生産設備動画の一場面。特注治具の後端を示し、お客様名および機械メーカー名は非公開です。',
-    boundaryTitle: '選定時の確認事項',
-    boundary: 'このお客様設備では、BP-2P-130-0001を使用し、独立した2つの圧縮空気流路で治具のクランプ／アンクランプを行っていることを確認しています。同様の治具をご検討の場合は、治具図面と使用条件をご提示ください。ポート配置、圧力、回転数、運転サイクル、取合いを確認したうえで仕様をご提案します。',
+    boundaryTitle: '同様の治具をご検討の場合',
+    boundary: '治具の型式、写真、図面のいずれかがあれば確認を始められます。この設備ではBP-2P-130-0001の独立2流路をクランプ／アンクランプに使用しています。分かる範囲で圧力、回転数、取合いもお知らせいただければ、適切な仕様をご提案します。',
     introVisualAlt: 'CNC空圧クランプ治具向けBP-2P-130-0001ロータリジョイント',
-    introVisualLabel: '確認済みの搭載型式',
-    introVisualText: '低速の丸鋸盤用治具で確認されたBP-2P-130-0001です。',
+    introVisualLabel: '搭載製品',
+    introVisualText: 'お客様の低速丸鋸盤用治具に搭載されたBP-2P-130-0001です。',
     introSupplyLegacy: 'CNC治具が回転するとき、エア配管がねじれたりアクチュエータを引っ張ったりしない構造が必要です。空圧ロータリージョイントは、固定側の供給源と回転する治具の間に密閉された回転流路を設けます。',
     introSupply: 'CNC治具の回転時には、圧縮空気配管がねじれたり、アクチュエータを引っ張ったりしない構造が必要です。空圧用ロータリジョイントは、固定側の圧縮空気供給部と回転治具の間に、密閉された回転流路を設けます。',
     faqQuestion: '加工中もクランプ圧を保持できますか？',
@@ -129,10 +129,10 @@ const copy = {
   ru: {
     prefix: 'ru/',
     language: 'ru',
-    label: 'Подтверждённое применение на производственном оборудовании заказчика',
+    label: 'Применение на оборудовании заказчика',
     heading: 'BP-2P-130-0001 в нестандартном зажимном приспособлении круглопильного станка с ЧПУ',
     intro: 'Кадр из видео, разрешённого заказчиком к публикации, показывает BP-2P-130-0001 в задней части нестандартного зажимного приспособления круглопильного станка с ЧПУ. Два независимых канала сжатого воздуха используются для зажима и разжима приспособления.',
-    detailsHeading: 'Подтверждённые сведения о применении',
+    detailsHeading: 'Данные по применению',
     facts: [
       ['Оборудование', 'Нестандартное зажимное приспособление на круглопильном станке с ЧПУ заказчика'],
       ['Установленное ротационное соединение', '<a class="cnc-saw-model-link" href="BP-2P-130-0001.html">BP-2P-130-0001</a>'],
@@ -144,11 +144,11 @@ const copy = {
     alt: 'Задняя часть нестандартного зажимного приспособления круглопильного станка с установленной BP-2P-130-0001',
     imageAria: 'Открыть страницу BP-2P-130-0001 по разрешённому снимку зажимного приспособления ЧПУ',
     caption: 'Разрешённый заказчиком кадр из видео производственного оборудования, показывающий заднюю часть нестандартного приспособления; заказчик и марка станка не раскрываются.',
-    boundaryTitle: 'Инженерное согласование',
-    boundary: 'В этой установке заказчика подтверждено применение BP-2P-130-0001 с двумя независимыми каналами сжатого воздуха для зажима и разжима приспособления. Для подбора аналогичного решения направьте чертёж приспособления и рабочие условия; мы проверим назначение портов, давление, частоту вращения, режим работы и монтажное сопряжение перед выбором исполнения.',
+    boundaryTitle: 'Для аналогичного приспособления',
+    boundary: 'Для начала достаточно модели приспособления, фотографии или чертежа. Здесь BP-2P-130-0001 используется с двумя независимыми каналами для зажима и разжима. Если известны давление, частота вращения и монтажный интерфейс, добавьте их — мы проверим подходящее исполнение.',
     introVisualAlt: 'Ротационное соединение BP-2P-130-0001 для пневматического зажимного приспособления с ЧПУ',
-    introVisualLabel: 'Подтверждённая модель',
-    introVisualText: 'BP-2P-130-0001 в подтверждённом применении на низкооборотном круглопильном станке.',
+    introVisualLabel: 'Установленное изделие',
+    introVisualText: 'BP-2P-130-0001 в низкооборотном приспособлении круглопильного станка заказчика.',
     introSupplyLegacy: 'При вращении приспособления ЧПУ воздушная линия не должна перекручиваться или тянуть привод. Пневматическое вращающееся соединение создаёт герметичный вращающийся переход между неподвижной подачей и подвижным приспособлением.',
     introSupply: 'При вращении приспособления ЧПУ линии сжатого воздуха не должны перекручиваться или тянуть привод. Пневматическое ротационное соединение образует герметичные вращающиеся каналы для подачи сжатого воздуха между неподвижной питающей магистралью и вращающимся приспособлением.',
     faqQuestion: 'Может ли ротационное соединение удерживать давление зажима во время обработки?',
@@ -445,14 +445,23 @@ async function syncOverrides(languageCode) {
     `${source.productEntry} <a href="${applicationPage}#${moduleAnchor}">${source.productEntryLink}</a>`,
     `${locale.productEntry} <a href="${applicationPage}#${moduleAnchor}">${locale.productEntryLink}</a>`,
   ]);
-  for (const staleSource of [
+  const staleSources = [
     'Typical requirement',
     'Flange-mount or through-bore air rotary union for CNC fixture integration.',
     'Verified Customer Application: Custom CNC Circular-Saw Fixture',
     'BP-2P-130-0001 is installed at the rear of a customer production fixture on a circular-blade saw machine. Two independent compressed-air passages perform fixture clamp and release. The equipment operates at low speed; exact speed, pressure, port assignment and interface must be confirmed from the fixture drawing and approved product data.',
     'View authorized application evidence →',
     'BP-2P-130-0001 is installed at the rear of a customer production fixture on a circular-blade saw machine. Two independent compressed-air passages perform fixture clamp and release. The equipment operates at low speed; exact speed, pressure, port assignment and interface must be confirmed from the fixture drawing and approved product data. <a href="application-cnc-pneumatic-clamping.html#verified-bp-2p-130-cnc-saw-fixture">View authorized application evidence →</a>',
-  ]) delete data[staleSource];
+  ];
+  if (checkOnly) {
+    for (const [sourceText, targetText] of pairs) {
+      if (data[sourceText] !== targetText) console.error(`[cnc override drift] ${languageCode}: ${sourceText}`);
+    }
+    for (const staleSource of staleSources) {
+      if (Object.hasOwn(data, staleSource)) console.error(`[cnc retired override] ${languageCode}: ${staleSource}`);
+    }
+  }
+  for (const staleSource of staleSources) delete data[staleSource];
   for (const [sourceText, targetText] of pairs) data[sourceText] = targetText;
   await planWrite(path.join('i18n', 'overrides', `${languageCode}.json`), `${JSON.stringify(data, null, 2)}\n`);
 }

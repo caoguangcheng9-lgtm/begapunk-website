@@ -4,6 +4,13 @@
   background: #f6f8fb;
 }
 
+/* The contact page already exposes WhatsApp in the hero and quick-contact
+   panel. Hiding the global mobile bar keeps it from covering the first form
+   field when the form is intentionally placed first on small screens. */
+.contact-rfq-page .floating-cta {
+  display: none;
+}
+
 .contact-rfq-page,
 .contact-rfq-page * {
   box-sizing: border-box;
@@ -13,6 +20,7 @@ html {
   scroll-behavior: smooth;
 }
 
+.contact-rfq-page #rfq-form,
 .contact-rfq-page #quoteForm {
   scroll-margin-top: 88px;
 }
@@ -86,6 +94,14 @@ html {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 26px;
+}
+
+.bp-rfq-channel-note {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: #c7d5e6;
+  font-size: 0.84rem;
+  line-height: 1.55;
 }
 
 .bp-rfq-anchor {
@@ -212,9 +228,10 @@ html {
 }
 
 .bp-rfq-main {
+  width: min(1200px, 100%);
   display: grid;
-  grid-template-columns: minmax(0, 1.38fr) minmax(380px, 0.82fr);
-  gap: 30px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
+  gap: 28px;
   align-items: start;
   padding-block: 48px 64px;
 }
@@ -375,16 +392,240 @@ html {
   color: #163b45;
 }
 
+.bp-rfq-response {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid #d7e0e9;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.bp-rfq-response-primary {
+  position: relative;
+  max-width: none;
+  padding: 0 0 26px 21px;
+  border-bottom: 1px solid #cfdbe6;
+}
+
+.bp-rfq-response-primary::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 28px;
+  left: 0;
+  width: 3px;
+  border-radius: 4px;
+  background: #168a84;
+}
+
+.bp-rfq-response-primary h2 {
+  max-width: none;
+  margin: 7px 0 14px;
+  color: #13243d;
+  font-size: clamp(1.7rem, 2.2vw, 2.1rem);
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.bp-rfq-response-summary {
+  max-width: none;
+  margin: 0;
+  color: #4e5e72;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.bp-rfq-response-entry {
+  position: relative;
+  max-width: none;
+  margin: 13px 0 0;
+  padding-left: 16px;
+  color: #667486;
+  font-size: 0.89rem;
+  line-height: 1.55;
+}
+
+.bp-rfq-response-entry::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  left: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #168a84;
+}
+
+.bp-rfq-response-service {
+  position: relative;
+  margin: 17px 0 0;
+  padding: 12px 14px 12px 38px;
+  border-radius: 6px;
+  background: #eef8f7;
+  color: #234b55;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.bp-rfq-response-service::before {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  color: #168a84;
+  content: "\2713";
+  font-weight: 800;
+}
+
+.bp-rfq-response-support {
+  max-width: none;
+  margin-top: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.bp-rfq-response-label {
+  margin: 0 0 7px;
+  color: #14756f;
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.bp-rfq-response-support h3 {
+  margin: 0;
+  color: #18314f;
+  font-size: 1.28rem;
+  line-height: 1.35;
+}
+
+.bp-rfq-response-support > p:not(.bp-rfq-response-label) {
+  margin: 10px 0 0;
+  color: #526277;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.bp-rfq-condition-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bp-rfq-condition-list li {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 7px 11px 7px 25px;
+  border: 0;
+  border-radius: 999px;
+  background: #edf6f5;
+  color: #29465a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.bp-rfq-condition-list li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #168a84;
+  transform: translateY(-50%);
+}
+
+.bp-rfq-response-visual {
+  margin-top: auto;
+  padding: 44px 10px 8px;
+}
+
+.bp-rfq-response-flow {
+  display: flex;
+  align-items: center;
+  width: min(100%, 390px);
+  margin: 0 auto;
+}
+
+.bp-rfq-flow-icon {
+  display: grid;
+  flex: 0 0 70px;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  border: 1px solid #cbdde9;
+  border-radius: 50%;
+  background: #f3f8fb;
+  color: #176fb0;
+  box-shadow: 0 10px 25px rgba(20, 43, 76, 0.08);
+}
+
+.bp-rfq-flow-icon svg {
+  width: 38px;
+  height: 38px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bp-rfq-flow-icon-match {
+  border-color: #173b61;
+  background: #173b61;
+  color: #fff;
+}
+
+.bp-rfq-flow-icon-result {
+  border-color: #bcdcd9;
+  background: #eef7f6;
+  color: #168a84;
+}
+
+.bp-rfq-flow-connector {
+  position: relative;
+  flex: 1 1 auto;
+  height: 1px;
+  margin: 0 10px;
+  background: linear-gradient(90deg, #b9cfdf, #168a84);
+}
+
+.bp-rfq-flow-connector::after {
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid #168a84;
+  border-right: 1px solid #168a84;
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
 .bp-rfq-form-column {
   position: sticky;
   top: 88px;
-  align-self: start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
 }
 
 .bp-rfq-form-card {
+  flex: 1 1 auto;
   overflow: hidden;
   border: 1px solid #cbd7e4;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #fff;
   box-shadow: 0 12px 34px rgba(15, 33, 58, 0.1);
 }
@@ -508,6 +749,34 @@ html {
   overflow-wrap: anywhere;
 }
 
+.bp-rfq-optional {
+  margin: 4px 0 18px;
+  border: 1px solid #d6e0ea;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.bp-rfq-optional summary {
+  padding: 13px 14px;
+  color: #27415f;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bp-rfq-optional-fields {
+  padding: 4px 14px 0;
+  border-top: 1px solid #e1e8f0;
+}
+
+.bp-rfq-upload-optional {
+  margin-bottom: 12px;
+}
+
+.bp-rfq-upload-optional-fields {
+  padding-top: 14px;
+}
+
 .bp-rfq-quote-help {
   margin: 2px 0 16px;
   padding: 12px 14px;
@@ -546,6 +815,27 @@ html {
   font-size: 0.76rem;
   line-height: 1.55;
   text-align: left;
+}
+
+.bp-rfq-privacy-reassurance {
+  position: relative;
+  margin: 18px 0 0;
+  padding: 12px 14px 12px 38px;
+  border-left: 3px solid #168a84;
+  border-radius: 0 6px 6px 0;
+  background: #f3f8f8;
+  color: #40586a;
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+.bp-rfq-privacy-reassurance::before {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  color: #168a84;
+  content: "\2713";
+  font-weight: 800;
 }
 
 .contact-rfq-page .bp-rfq-form-card .form-success,
@@ -671,6 +961,10 @@ html {
     padding-block: 36px 48px;
   }
 
+  .bp-rfq-form-column {
+    order: -1;
+  }
+
   .bp-rfq-section-heading {
     margin-bottom: 22px;
   }
@@ -717,6 +1011,37 @@ html {
 
   .bp-rfq-process-note {
     margin-left: 55px;
+  }
+
+  .bp-rfq-response {
+    padding: 20px 18px;
+  }
+
+  .bp-rfq-response-summary {
+    font-size: 0.94rem;
+  }
+
+  .bp-rfq-response-support {
+    margin-top: 20px;
+  }
+
+  .bp-rfq-response-visual {
+    padding-top: 30px;
+  }
+
+  .bp-rfq-flow-icon {
+    flex-basis: 58px;
+    width: 58px;
+    height: 58px;
+  }
+
+  .bp-rfq-flow-icon svg {
+    width: 31px;
+    height: 31px;
+  }
+
+  .bp-rfq-flow-connector {
+    margin-inline: 7px;
   }
 
   .bp-rfq-form-head,
@@ -779,6 +1104,14 @@ html {
   .bp-rfq-process-note {
     margin-left: 49px;
     padding: 14px;
+  }
+
+  .bp-rfq-response-primary {
+    padding-left: 18px;
+  }
+
+  .bp-rfq-response-primary h2 {
+    font-size: 1.65rem;
   }
 
   .bp-rfq-form-head,

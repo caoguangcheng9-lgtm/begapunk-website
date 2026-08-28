@@ -17,6 +17,58 @@
         RESULTS_PER_PAGE: 20
     };
 
+    const languageCode = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+    const UI_COPY = {
+        en: {
+            categories: { product: 'Product', application: 'Application', blog: 'Blog', core: 'Page' },
+            resultCount: function (count, query) {
+                return count + ' result' + (count !== 1 ? 's' : '') + ' for "' + query + '"';
+            },
+            enterSearchTerm: 'Enter a search term above',
+            matchScore: function (percent) { return percent + '% match'; },
+            loading: 'Loading search index...',
+            browseProducts: function (count) { return 'Browse all ' + count + ' products — or search above'; },
+            errorHtml: 'Search is temporarily unavailable. Please <a href="products.html">browse the catalog</a> directly.'
+        },
+        de: {
+            categories: { product: 'Produkt', application: 'Anwendung', blog: 'Fachbeitrag', core: 'Seite' },
+            resultCount: function (count, query) {
+                return count + ' Ergebnis' + (count !== 1 ? 'se' : '') + ' für „' + query + '“';
+            },
+            enterSearchTerm: 'Geben Sie oben einen Suchbegriff ein.',
+            matchScore: function (percent) { return percent + ' % Übereinstimmung'; },
+            loading: 'Suchindex wird geladen …',
+            browseProducts: function (count) { return 'Alle ' + count + ' Produkte im Überblick – oder oben suchen.'; },
+            errorHtml: 'Die Suche ist vorübergehend nicht verfügbar. Öffnen Sie bitte direkt den <a href="products.html">Produktkatalog</a>.'
+        },
+        ja: {
+            categories: { product: '製品', application: '用途', blog: '技術記事', core: 'ページ' },
+            resultCount: function (count, query) { return '「' + query + '」の検索結果：' + count + '件'; },
+            enterSearchTerm: '上の入力欄に検索キーワードを入力してください。',
+            matchScore: function (percent) { return '一致度 ' + percent + '%'; },
+            loading: '検索データを読み込んでいます…',
+            browseProducts: function (count) { return '製品を' + count + '件表示しています。上の入力欄から検索できます。'; },
+            errorHtml: '現在、検索を利用できません。<a href="products.html">製品一覧</a>をご覧ください。'
+        },
+        ru: {
+            categories: { product: 'Изделие', application: 'Применение', blog: 'Статья', core: 'Страница' },
+            resultCount: function (count, query) {
+                const mod10 = count % 10;
+                const mod100 = count % 100;
+                const noun = mod10 === 1 && mod100 !== 11
+                    ? 'результат'
+                    : (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? 'результата' : 'результатов');
+                return count + ' ' + noun + ' по запросу «' + query + '»';
+            },
+            enterSearchTerm: 'Введите запрос в поле выше.',
+            matchScore: function (percent) { return 'Совпадение: ' + percent + ' %'; },
+            loading: 'Загрузка поискового индекса…',
+            browseProducts: function (count) { return 'Показаны все изделия: ' + count + '. Для поиска используйте поле выше.'; },
+            errorHtml: 'Поиск временно недоступен. Перейдите в <a href="products.html">каталог продукции</a>.'
+        }
+    };
+    const uiCopy = UI_COPY[languageCode] || UI_COPY.en;
+
     let fuse = null;
     let indexData = [];
     let currentQuery = '';
@@ -77,13 +129,7 @@
     }
 
     function getCategoryLabel(cat) {
-        const map = {
-            product: 'Product',
-            application: 'Application',
-            blog: 'Blog',
-            core: 'Page'
-        };
-        return map[cat] || cat;
+        return uiCopy.categories[cat] || cat;
     }
 
     function getCategoryIcon(cat) {
@@ -138,9 +184,9 @@
         // Update count
         if (countEl) {
             if (currentQuery) {
-                countEl.textContent = filtered.length + ' result' + (filtered.length !== 1 ? 's' : '') + ' for "' + currentQuery + '"';
+                countEl.textContent = uiCopy.resultCount(filtered.length, currentQuery);
             } else {
-                countEl.textContent = 'Enter a search term above';
+                countEl.textContent = uiCopy.enterSearchTerm;
             }
         }
 
@@ -161,7 +207,7 @@
             return '<article class="search-result-card" data-relevance="' + relevance + '">\n' +
                 '  <div class="search-result-meta">\n' +
                 '    <span class="search-result-badge">' + getCategoryIcon(item.category) + ' ' + getCategoryLabel(item.category) + '</span>\n' +
-                '    <span class="search-result-score">' + Math.round((1 - score) * 100) + '% match</span>\n' +
+                '    <span class="search-result-score">' + uiCopy.matchScore(Math.round((1 - score) * 100)) + '</span>\n' +
                 '  </div>\n' +
                 '  <h3 class="search-result-title"><a href="' + escapeHtml(item.url) + '">' + highlightText(item.title, currentQuery) + '</a></h3>\n' +
                 '  <p class="search-result-desc">' + highlightText(item.description, currentQuery) + '</p>\n' +
@@ -237,7 +283,7 @@
 
         // Show loading
         const container = document.getElementById('search-results');
-        if (container) container.innerHTML = '<p class="search-loading">Loading search index...</p>';
+        if (container) container.innerHTML = '<p class="search-loading">' + uiCopy.loading + '</p>';
 
         // Load Fuse.js + index in parallel
         Promise.all([
@@ -258,13 +304,13 @@
                     .map(function (d) { return { item: d, score: 0 }; });
                 renderResults(allProducts);
                 if (document.getElementById('search-count')) {
-                    document.getElementById('search-count').textContent = 'Browse all ' + allProducts.length + ' products — or search above';
+                    document.getElementById('search-count').textContent = uiCopy.browseProducts(allProducts.length);
                 }
             }
         }).catch(function (err) {
             console.error('[SiteSearch] Failed to initialize:', err);
             if (container) {
-                container.innerHTML = '<p class="search-error">Search is temporarily unavailable. Please <a href="products.html">browse the catalog</a> directly.</p>';
+                container.innerHTML = '<p class="search-error">' + uiCopy.errorHtml + '</p>';
             }
         });
     }

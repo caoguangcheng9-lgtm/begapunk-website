@@ -44,7 +44,7 @@
     {
       "id": "faq-01",
       "question": "Was ist eine industrielle Drehdurchführung?",
-      "answer": "Eine industrielle Drehdurchführung ist eine mechanische Komponente, die Gas oder Flüssigkeit zwischen feststehenden und rotierenden Bauteilen überträgt. Je nach Ausführung ermöglicht sie eine kontinuierliche Rotation, eine Rotation in beide Richtungen oder eine begrenzte Schwenkbewegung. Dabei bleiben die Medienkanäle durchgängig, und Leckagen werden innerhalb der freigegebenen Betriebsbedingungen kontrolliert. Eine Drehdurchführung kann einen oder mehrere voneinander unabhängige Kanäle besitzen. Medium, Druck, Drehzahl, Anschlussausführung und Einbausituation müssen für das ausgewählte Modell und die jeweilige Anwendung geprüft werden."
+      "answer": "Eine industrielle Drehdurchführung überträgt Gas oder Flüssigkeit von einem feststehenden zu einem rotierenden Maschinenteil. Je nach Bauart eignet sie sich für kontinuierliche Drehung, beide Drehrichtungen oder eine begrenzte Schwenkbewegung. Dabei bleiben die Medienkanäle durchgängig, und die Dichtungen begrenzen Leckagen innerhalb der vorgesehenen Betriebsbedingungen. Ein- und Mehrkanalausführungen sind möglich. Für die Auswahl zählen vor allem Medium, Druck, Drehzahl, Anschlüsse und Einbausituation."
     },
     {
       "id": "faq-02",
@@ -54,12 +54,12 @@
     {
       "id": "faq-03",
       "question": "Wie überträgt eine Drehdurchführung ein Medium während der Rotation?",
-      "answer": "Bei einer typischen Installation tritt das Medium über einen Anschluss auf der feststehenden Seite ein, strömt durch einen unabhängigen internen Kanal und tritt über einen Anschluss auf der mit der Maschine rotierenden Seite wieder aus. Dichtungen begrenzen die äußere Leckage an der Schnittstelle zwischen feststehenden und rotierenden Bauteilen sowie die Leckage zwischen den Kanälen. Die interne Stützstruktur hält die rotierenden Bauteile der Drehdurchführung ausgerichtet, ist jedoch nicht zur Aufnahme zusätzlicher Maschinenlasten ausgelegt. Abhängig von der Maschinenanordnung und der freigegebenen Produktausführung kann entweder die Welle oder das Gehäuse rotieren."
+      "answer": "Das Medium tritt auf der feststehenden Seite ein, strömt durch einen eigenen internen Kanal und verlässt die Drehdurchführung auf der rotierenden Seite. Dichtungen begrenzen sowohl die Leckage nach außen als auch den Übertritt zwischen den Kanälen. Die innere Stützkonstruktion hält die rotierenden Bauteile ausgerichtet, ist aber nicht dafür ausgelegt, zusätzliche Maschinenlasten aufzunehmen. Je nach Einbausituation kann die Welle oder das Gehäuse rotieren."
     },
     {
       "id": "faq-04",
       "question": "Was ist der Unterschied zwischen einer Drehdurchführung für Fluide und einem elektrischen Schleifring?",
-      "answer": "Eine Drehdurchführung für Fluide überträgt Gas oder Flüssigkeit zwischen feststehenden und rotierenden Bauteilen. Ein elektrischer Schleifring überträgt dagegen elektrische Leistung oder Signale. Beide Komponenten erfüllen unterschiedliche Aufgaben und besitzen unterschiedliche interne Strukturen. Wenn eine Maschine sowohl Fluide als auch elektrische Leistung oder Signale übertragen muss, können beide Funktionen in einer gemeinsamen Baugruppe integriert werden. Die fluidtechnischen Anforderungen – Medium, Druck und Kanalanordnung – sowie die elektrischen Anforderungen – Spannung, Strom und Signalart – müssen getrennt geprüft und in der freigegebenen Zeichnung sowie gegebenenfalls in der freigegebenen elektrischen Spezifikation dokumentiert werden."
+      "answer": "Eine fluidische Drehdurchführung überträgt Gas oder Flüssigkeit, ein elektrischer Schleifring dagegen elektrische Leistung oder Signale. Benötigt eine Maschine beides, lassen sich beide Funktionen in einer Baugruppe kombinieren. Medien- und elektrische Anforderungen werden dennoch getrennt ausgelegt: Medium, Druck und Kanalanordnung auf der einen, Spannung, Strom und Signalart auf der anderen Seite. Diese Daten werden in der von beiden Seiten bestätigten Produktzeichnung und gegebenenfalls in der elektrischen Spezifikation festgehalten."
     },
     {
       "id": "faq-05",
@@ -69,12 +69,12 @@
     {
       "id": "faq-06",
       "question": "Welche Angaben werden zur Auswahl einer Drehdurchführung oder für ein Angebot benötigt?",
-      "answer": "Für eine erste Auswahlprüfung oder Angebotsanfrage werden das zu übertragende Medium, die Anzahl der Kanäle, der maximale Betriebsdruck und die maximale Drehzahl benötigt. Im Rahmen der technischen Prüfung kann Begapunk außerdem dabei helfen, Betriebstemperatur, verfügbaren Einbauraum, Anschlussausführung, Montageanforderungen und weitere Anwendungsdetails zu klären."
+      "answer": "Für den Einstieg genügt eine Modellnummer, ein Foto oder eine Zeichnung. Falls bekannt, nennen Sie Medium, Kanalzahl, maximalen Druck und Drehzahl. Die übrigen Angaben klären wir gemeinsam, bevor wir ein Standardmodell oder eine Sonderausführung empfehlen."
     },
     {
       "id": "faq-07",
-      "question": "Kann Begapunk gleichzeitig für maximalen Druck, maximale Drehzahl und maximale Temperatur auslegen?",
-      "answer": "Ja. Bei Maximalwerten, die auf bestehenden Produktseiten einzeln angegeben sind, darf jedoch nicht davon ausgegangen werden, dass sie gleichzeitig zulässig sind. Wenn die Anwendung unter kombinierten Spitzenbedingungen betrieben werden muss, sind bei der technischen Anwendungsprüfung das Medium, der maximale Druck, die maximale Drehzahl, die maximale Medientemperatur und die maximale Umgebungstemperatur anzugeben. Begapunk behandelt diese Werte dann als gleichzeitig auftretende Auslegungsbedingungen. Maßgeblich für die zulässigen Betriebsgrenzen des Projekts ist die von beiden Parteien freigegebene Produktzeichnung."
+      "question": "Können die auf der Produktseite angegebenen Werte für Druck, Drehzahl und Temperatur gleichzeitig genutzt werden?",
+      "answer": "Nicht automatisch. Die auf der Produktseite angegebenen Höchstwerte sind Einzelgrenzen und dürfen nicht ohne Prüfung gleichzeitig genutzt werden. Wenn Sie hohe Werte gleichzeitig benötigen, senden Sie uns das Medium, den benötigten Druck und die Drehzahl sowie die maximale Medien- und Umgebungstemperatur. Wir prüfen diese Werte zusammen und erstellen ein Angebot für eine passende, technisch machbare Ausführung."
     },
     {
       "id": "faq-08",
@@ -93,8 +93,8 @@
     },
     {
       "id": "faq-11",
-      "question": "Kann eine Drehdurchführung trocken laufen, und wann ist Schmierung erforderlich?",
-      "answer": "Trockenlauf ist nur unter Betriebsbedingungen zulässig, die von Begapunk geprüft und freigegeben wurden. Trockenlauf bedeutet hier, dass die Drehdurchführung für die kontinuierliche Schmierung nicht auf das übertragene Medium angewiesen ist; bei der Montage wird das Produkt mit Schmierfett vorgeschmiert. Eine geeignete Schmierung kann die Lebensdauer der Dichtungen und der Drehdurchführung deutlich verlängern. Bei Standardausführungen für Druckluft, die für Ölnebelschmierung freigegeben sind, sollte die Druckluftversorgung eine dreistufige Aufbereitung aus Partikelfilter, Wasserabscheider und Druckluftöler beziehungsweise Nebelöler umfassen. Ölhaltige Medien können während des Betriebs ebenfalls zur Schmierung beitragen. Ist Ölnebel in der Anwendung nicht zulässig, muss dies bei der technischen Prüfung angegeben werden, damit Begapunk eine geeignete alternative Ausführung auswählen kann."
+      "question": "Kann ein Standardmodell mit trockener oder ölfreier Druckluft betrieben werden?",
+      "answer": "Standardmodelle für Druckluft benötigen eine vollständige dreiteilige Druckluftaufbereitung aus Partikelfilter, Wasserabscheider und Druckluftöler und werden mit ölhaltiger Druckluft versorgt. Benötigt Ihre Maschine ölfreie Druckluft, teilen Sie uns dies vor der Auswahl mit. Für diesen Einsatz steht eine bewährte verschleißfeste Dichtungsausführung für ölfreien Betrieb zur Verfügung."
     },
     {
       "id": "faq-12",
@@ -104,17 +104,17 @@
     {
       "id": "faq-13",
       "question": "Wie läuft die Auslegung und Freigabe einer kundenspezifischen Drehdurchführung bei Begapunk ab?",
-      "answer": "Der Kunde übermittelt zunächst Medium, Kanalzahl, maximalen Druck, maximale Drehzahl, Temperatur, Anschlussausführung, verfügbaren Einbauraum, Stückzahl und weitere Projektanforderungen. Anschließend führt Begapunk die technische Prüfung durch, erstellt eine Produktzeichnung und legt sie dem Kunden zur Freigabe vor. Die Produktion beginnt erst, nachdem beide Parteien die technischen Anforderungen schriftlich bestätigt und Vertrag sowie Produktzeichnung – je nach Vereinbarung durch Unterschrift oder Firmenstempel – formell freigegeben haben. Jede technische Änderung nach der Zeichnungsfreigabe muss erneut von beiden Parteien geprüft und freigegeben werden."
+      "answer": "Für den Einstieg genügt eine Modellnummer, ein Foto oder eine Zeichnung. Wir prüfen die Betriebsbedingungen, schlagen ein Standardmodell oder eine Sonderausführung vor und senden Zeichnung und Angebot. Die Fertigung beginnt, sobald die endgültige Ausführung abgestimmt und die Zahlung eingegangen ist. Bei einer technischen Änderung aktualisieren wir die Zeichnung, bevor die Fertigung fortgesetzt wird."
     },
     {
       "id": "faq-14",
       "question": "Kann ich auch ohne vollständige Maschinenzeichnung ein Angebot und CAD-Dateien erhalten?",
-      "answer": "Ja. Für die erste Prüfung ist keine vollständige Maschinenzeichnung erforderlich. Geben Sie Medium, Kanalzahl, maximalen Druck, maximale Drehzahl, Anschlussausführung und verfügbaren Einbauraum an. Nach der technischen Anwendungsprüfung kann Begapunk ein Angebot erstellen und für das geprüfte Projekt ohne gesonderte Berechnung eine 2D-Umrisszeichnung sowie ein STEP-Modell für die virtuelle Montage bereitstellen. Verfügbarkeit, Format und Bereitstellungszeitpunkt der Dateien werden projektbezogen bestätigt. Die Dateien zeigen Außenabmessungen, Montageschnittstellen und Einbauinformationen, legen jedoch keine interne Konstruktion, Fertigungstoleranzen oder sonstiges Fertigungs-Know-how offen."
+      "answer": "Ja. Für den Einstieg genügen eine Modellnummer, ein Foto oder eine Teilzeichnung der Schnittstelle. Für jedes Katalogmodell stehen eine 2D-Zeichnung und ein 3D-STEP-Modell bereit. Bei einem kundenspezifischen Produkt erstellt Begapunk die 2D-Zeichnung und das STEP-Modell vor der Bestellung, damit beide Seiten Abmessungen, Anschlüsse, Montageschnittstelle und Einbauraum bestätigen können. Kundendateien zeigen keine interne Dichtungsstruktur oder Fertigungsdetails."
     },
     {
       "id": "faq-15",
       "question": "Welche Anforderungen sind bei der Montage einer Drehdurchführung besonders wichtig?",
-      "answer": "Montieren Sie die Drehdurchführung entsprechend der freigegebenen Zeichnung und richten Sie sie zur Rotationsachse der Maschine aus. Zwischen dem feststehenden Bauteil und der externen Rohrleitung ist ein geeigneter flexibler Schlauch zu verwenden. Das rotierende Bauteil wird entsprechend der Zeichnung mit der Maschine verbunden. Die Montage muss verhindern, dass Fehlausrichtung, Vibrationen oder äußere Lasten auf die Drehdurchführung übertragen werden. Die Verdrehsicherung beziehungsweise Drehmomentstütze darf ausschließlich das vorgesehene feststehende Bauteil am Mitdrehen hindern. Das vorgegebene Bewegungsspiel beziehungsweise Spaltmaß muss erhalten bleiben; die Drehdurchführung darf weder starr eingespannt werden noch Maschinenlasten aufnehmen."
+      "answer": "Montieren Sie die Drehdurchführung nach der von beiden Seiten bestätigten Zeichnung und richten Sie sie sauber zur Rotationsachse aus. Verbinden Sie die feststehende Seite über einen geeigneten flexiblen Schlauch mit der externen Leitung; die rotierende Seite wird wie dargestellt an die Maschine angeschlossen. Fehlausrichtung, Vibrationen und externe Lasten dürfen nicht auf die Drehdurchführung wirken. Die Verdrehsicherung beziehungsweise Drehmomentstütze verhindert nur das Mitdrehen der feststehenden Seite. Sie muss das in der Zeichnung angegebene Spiel erhalten und darf die Drehdurchführung weder starr einspannen noch mit Maschinenlasten beaufschlagen."
     },
     {
       "id": "faq-16",
@@ -124,12 +124,7 @@
     {
       "id": "faq-17",
       "question": "Welcher Teil einer Drehdurchführung rotiert, und sind beide Drehrichtungen oder Schwenkbewegungen möglich?",
-      "answer": "Abhängig von der Maschinenanordnung und der freigegebenen Produktausführung kann entweder die Welle oder das Gehäuse rotieren. Die Drehdurchführung kann in beide Richtungen drehen und innerhalb des freigegebenen Schwenkwinkels, der Umkehrfrequenz, des Betriebszyklus und der Geschwindigkeit eine begrenzte oszillierende Schwenkbewegung ausführen. Innerhalb dieser Grenzen ist beim Richtungswechsel keine zusätzliche Stillstandszeit erforderlich. Eine Drehdurchführung ist nicht für axiale Hubbewegungen ausgelegt."
-    },
-    {
-      "id": "faq-18",
-      "question": "Welche Druckluftaufbereitung benötigt eine Drehdurchführung für Druckluft?",
-      "answer": "Bei Standardausführungen für Druckluft, die für Ölnebelschmierung freigegeben sind, sollte eine dreistufige Druckluftaufbereitung eingesetzt werden. Druckluft kann feste Verunreinigungen und flüssiges Wasser enthalten und gewährleistet allein keine zuverlässige kontinuierliche Schmierung. Der Partikelfilter reduziert feste Verunreinigungen, der Wasserabscheider entfernt flüssiges Wasser, und der Druckluftöler dosiert Pneumatiköl in den Luftstrom, sodass es als Ölnebel die Drehdurchführung erreicht. Der Einsatz aller drei Stufen trägt dazu bei, Verunreinigungen, Korrosion und Trockenreibung zu verringern, und kann die Lebensdauer von Dichtungen und Drehdurchführung verlängern. Ölfreie oder ESD-empfindliche Anwendungen benötigen eine gesondert geprüfte Ausführung."
+      "answer": "Je nach Einbausituation kann die Welle oder das Gehäuse rotieren. Beide Drehrichtungen und begrenzte Schwenkbewegungen sind möglich, sofern Winkel, Umkehrhäufigkeit, Betriebszyklus und Drehzahl für die gewählte Ausführung bestätigt sind. Innerhalb dieser Grenzen ist beim Richtungswechsel keine zusätzliche Pause erforderlich. Für axiale Hubbewegungen ist eine Drehdurchführung nicht vorgesehen."
     },
     {
       "id": "faq-19",
@@ -144,12 +139,12 @@
     {
       "id": "faq-21",
       "question": "Wie prüft Begapunk jede vollständig montierte Drehdurchführung?",
-      "answer": "Jede vollständig montierte Drehdurchführung wird vor der Freigabe für Verpackung und Einlagerung Kanal für Kanal auf Dichtheit geprüft. Die Drehdurchführung wird an eine automatisierte Prüfanlage angeschlossen und während der vorgegebenen Druckbeaufschlagungs-, Druckhalte- und Bewertungssequenz gedreht. Die Anlage gibt als Ergebnis PASS oder NG aus; NG bedeutet, dass die Prüfung nicht bestanden wurde. Nur Einheiten mit PASS-Ergebnis werden für Verpackung und Einlagerung freigegeben. Bei Sonderprojekten können zusätzliche Prüfungen unter Bedingungen durchgeführt werden, die von beiden Parteien vereinbart wurden."
+      "answer": "Jede vollständig montierte Drehdurchführung wird vor dem Verpacken Kanal für Kanal geprüft. Die automatisierte Prüfanlage besitzt eine integrierte Drehfunktion und führt Druckaufbau, Druckhaltezeit sowie die PASS/NG-Bewertung aus. Während der Drehung werden außerdem gleichmäßiger Lauf, Klemmen und ungewöhnliche Geräusche geprüft. Nur Einheiten, bei denen jeder Kanal PASS erreicht, werden freigegeben. Eine nicht bestandene Einheit wird gesperrt, wenn möglich repariert und vollständig erneut geprüft oder andernfalls verschrottet."
     },
     {
       "id": "faq-22",
       "question": "Was weist die standardmäßige Dichtheitsprüfung bei 1,0 MPa nach – und was nicht?",
-      "answer": "Die standardmäßige Produktions-Dichtheitsprüfung wird mit Druckluft bei 1,0 MPa durchgeführt. Jeder Kanal wird etwa eine Sekunde lang mit Druck beaufschlagt und anschließend bei rotierendem Produkt etwa vier Sekunden unter Druck gehalten. Die Prüfanlage gibt als Ergebnis PASS oder NG aus. Die Prüfung bewertet das Dichtverhalten unter den festgelegten Prüfbedingungen und erkennt äußere Leckage sowie Leckage zwischen den Kanälen. Sie weist jedoch weder die Lebensdauer noch die maximale Drehzahl, die Verträglichkeit mit jedem Medium oder einen projektspezifischen Hochdruckbetrieb nach. Anwendungen außerhalb des Standardprüfumfangs benötigen gesondert vereinbarte Prüfbedingungen, die sich nach den tatsächlichen Betriebsanforderungen richten."
+      "answer": "Die standardmäßige Produktions-Dichtheitsprüfung erfolgt mit Druckluft bei 1,0 MPa. Jeder Kanal wird etwa eine Sekunde mit Druck beaufschlagt und anschließend rund vier Sekunden gehalten, während die Anlage das Produkt dreht. Alle anderen Kanäle bleiben offen und drucklos, sodass äußere Leckage und Leckage zwischen den Kanälen erkannt werden. Die Einheit besteht nur, wenn das Prüfgerät PASS anzeigt. Diese Produktionsprüfung belegt weder die Lebensdauer noch die Eignung für ein anderes Medium, einen anderen Druck, eine andere Drehzahl oder andere Betriebsbedingungen."
     },
     {
       "id": "faq-23",
@@ -159,22 +154,27 @@
     {
       "id": "faq-24",
       "question": "Können Kunden Prüf- und Rückverfolgbarkeitsunterlagen für eine einzelne Einheit erhalten?",
-      "answer": "Ja. Jede Drehdurchführung erhält eine individuelle Rückverfolgbarkeitsnummer, die per Lasermarkierung oder Etikett angebracht wird und mit den zugehörigen Produktions- und Prüfaufzeichnungen verknüpft ist. Die internen Aufzeichnungen enthalten Prüfergebnis, Produktionscharge, Angaben zu ausführendem Mitarbeiter und Prozess, Identifikationsnummern wichtiger Werkstoffe sowie Modellangaben zugehöriger Komponenten und werden zwei Jahre lang aufbewahrt. Kunden können anhand der individuellen Rückverfolgbarkeitsnummer den zugehörigen Prüfbericht anfordern. Muss ein Bericht der Lieferung beiliegen oder ein projektspezifisches Format beziehungsweise Abnahmekriterium erfüllen, ist diese Anforderung vor der Bestellung zu vereinbaren. Kundendokumente enthalten keine vertraulichen internen Fertigungsinformationen."
+      "answer": "Ja. Jede Drehdurchführung hat eine individuelle Rückverfolgbarkeitsnummer, die mit ihrem Prüfbericht verknüpft ist. Senden Sie uns diese Nummer, um den zugehörigen Bericht anzufordern. Soll der Bericht der Lieferung beiliegen oder ein besonderes Format beziehungsweise Abnahmekriterium erfüllen, teilen Sie uns das bitte vor der Bestellung mit."
     },
     {
       "id": "faq-25",
       "question": "Kann eine Drehdurchführung repariert werden, und wie wird ein Garantiefall beurteilt?",
-      "answer": "Ob eine Drehdurchführung repariert werden kann, hängt vom Modell und vom Schadensumfang ab; bei schweren Schäden kann eine Reparatur ausgeschlossen sein. Die derzeitige Standardgarantie von Begapunk beträgt ein Jahr ab Versanddatum, vorbehaltlich des schriftlichen Angebots, des bestätigten Auftrags und der schriftlichen Garantiebedingungen. Bei einem Problem senden Sie Begapunk per E-Mail Produktmodell, Rückverfolgbarkeitsnummer, Medium, Druck, Drehzahl, Fehlerbild sowie relevante Fotos oder Videos. Die Ingenieurteams beider Parteien analysieren anschließend die Ursache. Bestätigt Begapunk einen abgedeckten Produkt- oder Fertigungsfehler, für den Begapunk verantwortlich ist, besteht die Standardabhilfe in einem Ersatz ohne Berechnung. Begapunk trägt die für diesen Fall schriftlich vereinbarten Kosten der Rücksendung und Ersatzlieferung. In anderen Fällen empfiehlt Begapunk auf Grundlage des Prüfergebnisses eine Reparatur oder einen Ersatz."
+      "answer": "Einige Drehdurchführungen können repariert werden; bei schweren Schäden kann ein Austausch erforderlich sein. Die Standardgarantie beträgt ein Jahr ab Versanddatum und richtet sich nach Angebot, angenommenem Auftrag und schriftlichen Garantiebedingungen. Senden Sie bei einem Problem Modell, Rückverfolgbarkeitsnummer, kurze Betriebsdaten, Fehlerbild sowie passende Fotos oder Videos. Bestätigt Begapunk einen abgedeckten Fertigungsfehler, erfolgt der Ersatz standardmäßig kostenlos; Rücksendung und Ersatzversand werden wie schriftlich vereinbart abgewickelt. Andernfalls empfehlen wir nach der Prüfung eine Reparatur oder einen Austausch."
     },
     {
       "id": "faq-26",
       "question": "Wie hoch ist die Mindestbestellmenge, und welche Fertigungszeiten sind üblich?",
-      "answer": "Die Mindestbestellmenge beträgt eine Einheit. Als allgemeiner Richtwert liegt die Fertigungszeit bei Standardprodukten bei etwa 20 Tagen und bei kundenspezifischen Produkten bei etwa 30 Tagen. Die tatsächliche Fertigungszeit hängt von Modell, Bestellmenge, Werkstoffen, Anpassungsumfang und aktueller Produktionsauslastung ab. Die Fertigungszeit beginnt, nachdem die technischen Angaben vollständig vorliegen, die Produktzeichnung freigegeben wurde und die im schriftlichen Angebot oder bestätigten Auftrag genannten Bedingungen für die Auftragsfreigabe erfüllt sind. Die internationale Transportzeit ist nicht enthalten. Maßgeblich für die endgültige Fertigungszeit ist das schriftliche Angebot beziehungsweise der bestätigte Auftrag."
+      "answer": "Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen eine Einheit. Katalogmodelle benötigen typischerweise etwa 20 Kalendertage. Kundenspezifische Produkte werden innerhalb von 30 Kalendertagen fertiggestellt. Die Fertigungszeit beginnt mit Zahlungseingang und enthält nicht die internationale Transportzeit."
     },
     {
       "id": "faq-27",
       "question": "Wie fordere ich eine technische Anwendungsprüfung für eine Drehdurchführung an?",
-      "answer": "Senden Sie eine Anfrage zur technischen Anwendungsprüfung über das Begapunk-Formular oder per E-Mail an sales@begapunk.com. Für die erste Anfrage genügen die Maschinenanwendung und die grundlegenden Betriebsbedingungen. Es ist kein Problem, wenn einzelne Angaben noch nicht vorliegen. Ein Begapunk-Ingenieur hilft dabei, die noch offenen technischen Anforderungen zu klären, und erstellt je nach Bedarf einen Lösungsvorschlag, eine Zeichnung und ein Angebot."
+      "answer": "Für den Einstieg genügt eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung. Es ist kein Problem, wenn noch nicht alle Angaben vorliegen. Senden Sie die vorhandenen Informationen über das Begapunk-Formular oder an sales@begapunk.com. Ein Begapunk-Ingenieur hilft, die offenen Punkte zu klären und schlägt ein passendes Katalogmodell oder eine Sonderausführung vor."
+    },
+    {
+      "id": "faq-28",
+      "question": "Verwendet Begapunk Kundenanfragen oder Zeichnungen für Marketingzwecke?",
+      "answer": "Nein. Wir verwenden Ihre Anfragen oder Zeichnungen weder für Marketingzwecke noch zur öffentlichen Darstellung."
     }
   ],
   "relatedLinks": [
@@ -215,14 +215,14 @@
     },
     {
       "faqId": "faq-27",
-      "text": "Technische Anwendungsprüfung für Ihre Drehdurchführung anfragen.",
+      "text": "Mit Modellnummer, Foto, Zeichnung oder Kurzbeschreibung starten.",
       "href": "contact.html?request=application-review&source=de/faq.html#quoteForm"
     }
   ],
   "cta": {
-    "heading": "Benötigen Sie eine anwendungsspezifische Antwort?",
-    "body": "Senden Sie uns die grundlegenden Betriebsbedingungen. Ein Begapunk-Ingenieur unterstützt Sie bei der vollständigen technischen Prüfung.",
-    "button": "Technische Anwendungsprüfung anfragen →"
+    "heading": "Brauchen Sie eine konkrete Antwort für Ihre Maschine?",
+    "body": "Für den Einstieg genügt eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung. Unvollständige Angaben sind kein Problem. Wir verwenden Ihre Anfragen oder Zeichnungen weder für Marketingzwecke noch zur öffentlichen Darstellung.",
+    "button": "Anfrage senden →"
   },
   "review": {
     "method": "AI-assisted target-market line-by-line localization review",

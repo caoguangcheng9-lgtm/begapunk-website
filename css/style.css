@@ -1222,6 +1222,14 @@ a:hover { color: var(--primary-dark); }
     gap:28px;
     margin:28px 0 30px;
 }
+.footer-navigation.footer-navigation--compact {
+    grid-template-columns:minmax(0, 1fr);
+}
+.footer-navigation--compact .footer-links {
+    display:grid;
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+    gap:12px 28px;
+}
 .footer-title {
     margin:0 0 14px;
     color:#fff;
@@ -4692,6 +4700,10 @@ line-height: 1.65;
         margin:24px 0 26px;
     }
 
+    .footer-navigation--compact .footer-links {
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
     .footer-links a {
         padding:8px 0;
     }
@@ -4716,6 +4728,9 @@ line-height: 1.65;
 }
 
 @media (max-width: 430px) {
+    .footer-navigation--compact .footer-links {
+        grid-template-columns:1fr;
+    }
     .footer-navigation {
         grid-template-columns:1fr;
         gap:24px;

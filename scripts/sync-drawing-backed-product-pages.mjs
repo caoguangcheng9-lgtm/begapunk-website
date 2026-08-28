@@ -169,7 +169,6 @@ function buildPageTargets(source, relativePath, locale, model, product, localize
     desired: JSON.stringify(desiredProduct),
   }];
 
-  targets.push(locatePriceNoteTarget(source, relativePath, localized.priceNote));
   const keySpec = locateKeySpecTargets(source, relativePath, locale, model, localized);
   targets.push(...keySpec.targets);
   const specTable = locateSpecificationTargets(source, relativePath, locale, model, product, localized);
@@ -277,24 +276,6 @@ function jsonObjectSpans(text) {
   return spans.sort((a, b) => (a.end - a.start) - (b.end - b.start));
 }
 
-function locatePriceNoteTarget(source, relativePath, desiredText) {
-  const matches = [...source.matchAll(/<p\b[^>]*class=(['"])[^'"]*\bpd-price-note\b[^'"]*\1[^>]*>([\s\S]*?)<\/p>/gi)];
-  if (matches.length !== 1) {
-    throw new Error(`${relativePath}: expected exactly one pd-price-note; found ${matches.length}.`);
-  }
-  const match = matches[0];
-  const inner = match[2];
-  const start = match.index + match[0].indexOf(inner);
-  return {
-    label: 'price-note',
-    surface: 'pd-price-note',
-    start,
-    end: start + inner.length,
-    current: inner,
-    desired: escapeHtmlText(desiredText),
-  };
-}
-
 function locateKeySpecTargets(source, relativePath, locale, model, localized) {
   const opening = findSingleOpeningTagByClass(source, 'dl', 'pd-key-specs', relativePath);
   const closingStart = source.indexOf('</dl>', opening.end);
@@ -378,11 +359,14 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
   if (new Set(finalKeys).size !== 6) {
     throw new Error(`${relativePath}: final pd-key-spec categories are not unique.`);
   }
-  for (const required of ['performance', 'seal', 'leadTime']) {
+  const requiredKeys = model === 'BP-3P-S06-0001'
+    ? ['channels', 'performance', 'seal', 'leadTime']
+    : ['performance', 'passages', 'leadTime'];
+  for (const required of requiredKeys) {
     if (!finalKeys.includes(required)) throw new Error(`${relativePath}: missing key category ${required}.`);
   }
-  if (model === 'BP-3P-S06-0001' && !finalKeys.includes('channels')) {
-    throw new Error(`${relativePath}: hybrid model must retain the channels category.`);
+  if (model !== 'BP-3P-S06-0001' && finalKeys.includes('seal')) {
+    throw new Error(`${relativePath}: ordinary-model first view must move seal to the specifications table.`);
   }
   if (portCategoryOverride && !finalKeys.includes('ports')) {
     throw new Error(`${relativePath}: port-semantic category was not created.`);
@@ -505,14 +489,17 @@ function locateSpecificationTargets(source, relativePath, locale, model, product
 }
 
 function freezeProtectedSurface(source, contract, relativePath, locale, model, product) {
+  if (/\bpd-price-note\b/i.test(source)) {
+    throw new Error(`${relativePath}: retired pd-price-note remains in the first view.`);
+  }
   const jumpNavigation = exactMatch(source, /<nav\b[^>]*class=(['"])[^'"]*\bpd-jump-nav\b[^'"]*\1[^>]*>[\s\S]*?<\/nav>/i, `${relativePath}: jump navigation`);
   const actions = exactMatch(source, /<div\b[^>]*class=(['"])[^'"]*\bpd-actions\b[^'"]*\1[^>]*>[\s\S]*?<\/div>/i, `${relativePath}: CTA actions`);
-  const utility = exactMatch(source, /<div\b[^>]*class=(['"])[^'"]*\bpd-utility-links\b[^'"]*\1[^>]*>[\s\S]*?(?=<dl\b[^>]*class=(['"])[^'"]*\bpd-key-specs\b)/i, `${relativePath}: download/compare/share utility`);
+  const utility = exactMatch(source, /<div\b[^>]*class=(['"])[^'"]*\bpd-utility-links\b[^'"]*\1[^>]*>[\s\S]*?(?=<dl\b[^>]*class=(['"])[^'"]*\bpd-key-specs\b)/i, `${relativePath}: download/share utility`);
   for (const required of ['request=quote', 'request=3d-step']) {
     if (!actions.includes(required)) throw new Error(`${relativePath}: CTA actions lack ${required}.`);
   }
-  if (!utility.includes('product-comparison.html')) {
-    throw new Error(`${relativePath}: compare-models link is missing.`);
+  if (utility.includes('product-comparison.html')) {
+    throw new Error(`${relativePath}: retired first-view compare-models link remains.`);
   }
   for (const channel of ['linkedin', 'x', 'facebook', 'whatsapp']) {
     if (!utility.includes(`data-share-channel="${channel}"`)) {
@@ -625,7 +612,14 @@ function collectResidualDrawingRisks(source, targets, locale, model, product) {
   // This report exists to find stale product claims in the customer-facing body.
   // Mask the head, scripts and footer so SVG path data (for example `M5.4` or
   // `2A`) cannot be mistaken for a mounting thread or electrical rating.
-  const searchable = mainOnlySearchSurface(blankTargets(source, targets));
+  let searchable = mainOnlySearchSurface(blankTargets(source, targets));
+  const faqStart = searchable.indexOf('<!-- ===== FAQ ===== -->');
+  const faqEnd = faqStart >= 0 ? searchable.indexOf('<!-- ===== RELATED RESOURCES ===== -->', faqStart) : -1;
+  if (faqStart >= 0 && faqEnd > faqStart) {
+    searchable = searchable.slice(0, faqStart)
+      + searchable.slice(faqStart, faqEnd).replace(/[^\r\n]/g, ' ')
+      + searchable.slice(faqEnd);
+  }
   const risks = residualRiskTerms(locale, model, product);
   const lineStarts = buildLineStarts(searchable);
   const findings = [];
@@ -745,9 +739,8 @@ function printReport(plans, selectedMode) {
   console.log('Estimated first-view copy after synchronization (current desktop text width):');
   for (const locale of Object.keys(LOCALES)) {
     const localePlans = plans.filter((plan) => plan.locale === locale);
-    const maxPrice = Math.max(...localePlans.map((plan) => plan.firstViewEstimate.priceNoteLines));
     const maxKey = Math.max(...localePlans.map((plan) => plan.firstViewEstimate.longestKeyValueLines));
-    console.log(`- ${locale}: pd-price-note up to ~${maxPrice} line(s); longest key value up to ~${maxKey} line(s)`);
+    console.log(`- ${locale}: longest key value up to ~${maxKey} line(s)`);
   }
   if (selectedMode === 'check' && changed.length) {
     console.log('Check failed as expected while target ranges differ. Re-run with --write only after explicit approval.');
@@ -1299,29 +1292,12 @@ function lowercaseInitial(value) {
   return `${value[0].toLocaleLowerCase()}${value.slice(1)}`;
 }
 
-function appendClauseToLastSentence(locale, sentence, clause) {
-  const terminal = locale === 'ja' ? '。' : '.';
-  const trimmed = sentence.trimEnd();
-  const withoutTerminal = trimmed.endsWith(terminal) ? trimmed.slice(0, -terminal.length) : trimmed;
-  return `${withoutTerminal}; ${clause}${terminal}`;
-}
-
-function assertSentenceLimit(text, locale, maximum, model) {
-  const pattern = locale === 'ja' ? /。/g : /[.!?](?:\s|$)/g;
-  const count = (text.match(pattern) || []).length;
-  if (count > maximum) {
-    throw new Error(`${model}/${locale}: price note exceeds ${maximum} sentences (${count}).`);
-  }
-}
-
 function estimateFirstViewLines(locale, localized, finalKeys) {
-  const priceCapacity = locale === 'ja' ? 64 : locale === 'de' || locale === 'ru' ? 78 : 86;
   const keyCapacity = locale === 'ja' ? 32 : locale === 'de' || locale === 'ru' ? 30 : 34;
   const keyValues = finalKeys
     .filter((key) => Object.hasOwn(localized.keyValues, key))
     .map((key) => localized.keyValues[key]);
   return {
-    priceNoteLines: Math.max(1, Math.ceil(displayUnits(localized.priceNote) / priceCapacity)),
     longestKeyValueLines: Math.max(1, ...keyValues.map((value) => Math.ceil(displayUnits(value) / keyCapacity))),
   };
 }

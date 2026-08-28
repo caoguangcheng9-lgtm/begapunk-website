@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anfrage eingegangen | Begapunk</title>
-  <meta name="description" content="Ihre technische Anfrage wurde übermittelt. Ergänzende Zeichnungen oder Betriebsdaten können Sie direkt an Begapunk senden.">
+  <meta name="description" content="Ihre Anfrage ist bei uns eingegangen. Unsere Ingenieure antworten normalerweise innerhalb eines Arbeitstags und fragen nur nach Angaben, die für die Antwort noch fehlen.">
   <meta name="robots" content="noindex, nofollow">
 
 
@@ -22,7 +22,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Anfrage eingegangen | Begapunk">
-  <meta property="og:description" content="Ihre technische Anfrage wurde übermittelt. Ergänzende Zeichnungen oder Betriebsdaten können Sie direkt an Begapunk senden.">
+  <meta property="og:description" content="Ihre Anfrage ist bei uns eingegangen. Unsere Ingenieure antworten normalerweise innerhalb eines Arbeitstags und fragen nur nach Angaben, die für die Antwort noch fehlen.">
   <meta property="og:url" content="https://www.begapunk.com/de/thank-you.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
@@ -30,7 +30,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Anfrage eingegangen | Begapunk">
-  <meta name="twitter:description" content="Ihre technische Anfrage wurde übermittelt. Ergänzende Zeichnungen oder Betriebsdaten können Sie direkt an Begapunk senden.">
+  <meta name="twitter:description" content="Ihre Anfrage ist bei uns eingegangen. Unsere Ingenieure antworten normalerweise innerhalb eines Arbeitstags und fragen nur nach Angaben, die für die Antwort noch fehlen.">
   <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
 
   <style>
@@ -123,15 +123,35 @@
       background: #128c7e !important;
     }
     .trust-badges {
-      margin-top: 48px;
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 800px;
+      margin: 44px auto 0;
     }
     .trust-badges span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
       font-size: 0.85rem;
       color: var(--text-light);
+      line-height: 1.45;
+    }
+    .trust-badges span::before {
+      content: "\2713";
+      flex: 0 0 auto;
+      margin-right: 8px;
+      color: #0f8b7d;
+      font-weight: 700;
+    }
+    @media (max-width: 700px) {
+      .thank-you-section { padding: 56px 0; }
+      .trust-badges { grid-template-columns: 1fr; }
     }
   </style>
     <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
@@ -196,7 +216,7 @@
   <div class="container">
     <div class="thank-you-icon">✅</div>
     <h1>Vielen Dank für Ihre Anfrage</h1>
-    <p class="subtitle">Unser Technikteam hat Ihre Anfrage erhalten und prüft sie so schnell wie möglich. In der Zwischenzeit können Sie:</p>
+    <p class="subtitle">Unsere Ingenieure prüfen Ihre Anfrage und antworten in der Regel innerhalb eines Arbeitstags. Sollte noch etwas fehlen, fragen wir nur gezielt nach der benötigten Angabe. In der Zwischenzeit können Sie:</p>
     <h2 class="next-steps-title">Nächste Schritte</h2>
 
     <div class="next-steps">
@@ -217,16 +237,15 @@
       <div class="next-step-card">
         <div class="icon notranslate" translate="no">💬</div>
         <h3>Über WhatsApp schreiben</h3>
-        <p>Möchten Sie weitere Angaben ergänzen? Senden Sie unserem Technikteam eine Nachricht über WhatsApp.</p>
+        <p>Möchten Sie noch ein Foto oder eine Zeichnung ergänzen? Senden Sie die Datei per WhatsApp &ndash; dasselbe Team antwortet Ihnen.</p>
         <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn">Über WhatsApp schreiben</a>
       </div>
     </div>
 
     <div class="trust-badges">
-      <span>✅ Projektspezifische Dokumentation</span>
-      <span>✅ Prüfung Ihrer Anfrage</span>
-      <span>✅ CAD-Unterstützung nach Anwendungsprüfung</span>
-      <span>✅ Technische Unterstützung</span>
+      <span>Antwort in der Regel innerhalb eines Arbeitstags</span>
+      <span>Wir fragen nur nach Angaben, die für die Antwort noch fehlen</span>
+      <span>Anfragen und Zeichnungen werden nicht für Marketing oder öffentliche Darstellung verwendet</span>
     </div>
   </div>
 </section>
@@ -241,7 +260,6 @@
     <p class="footer-positioning">Hersteller von Präzisionsdrehdurchführungen mit Sitz in Ningbo, China. Unterstützung für OEMs und Maschinenbauer in der Industrieautomation.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
    </div>
-   <a class="footer-quote" href="contact.html#quoteForm">Technische Anfrage senden</a>
   </div>
   <div class="footer-contact-band">
    <address class="footer-contact">

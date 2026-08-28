@@ -8,7 +8,10 @@ const i18nRoot = path.join(sourceRoot, 'i18n');
 const checkOnly = process.argv.includes('--check');
 const config = JSON.parse(await fs.readFile(path.join(i18nRoot, 'config.json'), 'utf8'));
 const languageCodes = ['de', 'ja', 'ru'];
-const questionIds = Array.from({ length: 27 }, (_, index) => `faq-${String(index + 1).padStart(2, '0')}`);
+const questionIds = [
+  ...Array.from({ length: 17 }, (_, index) => `faq-${String(index + 1).padStart(2, '0')}`),
+  ...Array.from({ length: 10 }, (_, index) => `faq-${String(index + 19).padStart(2, '0')}`),
+];
 const sectionIds = [
   'faq-basics',
   'faq-selection',
@@ -103,34 +106,37 @@ function validateLocalization(data, languageCode) {
   const answers = new Map(data.questions.map((item) => [item.id, item.answer]));
   const factPatterns = {
     de: {
-      'faq-07': [/gleichzeitig|simultan/i, /Produktzeichnung/i],
+      'faq-07': [/gleichzeitig|simultan/i, /Angebot/i],
       'faq-10': [/Druckluft/i, /Wasser/i, /Kühlschmierstoff|Kühlmittel/i, /Hydrauliköl/i],
-      'faq-11': [/Partikelfilter/i, /Wasserabscheider/i, /(?:Druckluftöler|Nebelöler)/i, /alternative Ausführung/i],
+      'faq-11': [/Partikelfilter/i, /Wasserabscheider/i, /(?:Druckluftöler|Nebelöler)/i, /verschleißfeste Dichtungsausführung/i],
       'faq-22': [/1,0 MPa/i, /eine Sekunde/i, /vier Sekunden/i, /nicht|weder/i],
       'faq-23': [/offen/i, /drucklos/i, /Nachweisgrenze|Erkennungsschwelle/i],
-      'faq-24': [/zwei Jahre/i, /vor der Bestellung/i],
+      'faq-24': [/individuelle Rückverfolgbarkeitsnummer/i, /Prüfbericht/i, /vor der Bestellung/i],
       'faq-25': [/ein Jahr ab Versanddatum/i, /Angebot/i, /Auftrag/i, /schriftlich/i],
-      'faq-26': [/eine Einheit/i, /20 Tagen/i, /30 Tagen/i],
+      'faq-26': [/eine Einheit/i, /20 Kalendertage/i, /30 Kalendertage/i],
+      'faq-28': [/nicht.*Marketing|weder.*Marketing/i, /nicht.*(?:veröffentlicht|öffentlichen|Darstellung)|noch.*(?:veröffentlicht|öffentlichen|Darstellung)/i],
     },
     ja: {
-      'faq-07': [/同時/, /承認(?:済み|した).*図面/],
+      'faq-07': [/同時/, /見積/],
       'faq-10': [/圧縮空気/, /水/, /水溶性.*クーラント/, /作動油/],
-      'faq-11': [/エアフィルタ/, /ウォータセパレータ/, /ルブリケータ/, /代替仕様/],
+      'faq-11': [/エアフィルタ/, /ウォータセパレータ/, /ルブリケータ/, /耐摩耗.*シール仕様/],
       'faq-22': [/1\.0 MPa/, /約1秒/, /約4秒/, /ものではありません/],
       'faq-23': [/大気開放/, /無加圧/, /検出しきい値/],
-      'faq-24': [/2年間/, /注文前/],
-      'faq-25': [/出荷日から1年間/, /見積書/, /注文書/, /書面/],
-      'faq-26': [/1個/, /約20日/, /約30日/],
+      'faq-24': [/個体別トレーサビリティ番号/, /検査記録/, /注文前/],
+      'faq-25': [/出荷日から1年間/, /見積書/, /受注内容|注文書/, /書面/],
+      'faq-26': [/1個/, /約20暦日/, /30暦日以内/],
+      'faq-28': [/マーケティング/, /一般公開|公開/],
     },
     ru: {
-      'faq-07': [/одновременн/i, /чертеж/i],
+      'faq-07': [/одновременн/i, /предложен|рассчита|разработ/i],
       'faq-10': [/сжат/i, /вод/i, /водорастворим/i, /гидравлическ/i],
-      'faq-11': [/фильтр.*частиц/i, /влагоотделител/i, /маслораспылител/i, /альтернатив/i],
+      'faq-11': [/фильтр.*частиц/i, /влагоотделител/i, /маслораспылител/i, /износостойк.*уплотнен/i],
       'faq-22': [/1,0 МПа/i, /одн.*секунд/i, /четыр.*секунд/i, /не подтвержд/i],
       'faq-23': [/открыт/i, /без давления/i, /порог.*обнаруж/i],
-      'faq-24': [/два года/i, /до.*заказ/i],
+      'faq-24': [/индивидуальн.*номер прослеживаемости/i, /протокол.*контрол/i, /до заказа/i],
       'faq-25': [/один год.*дат.*отгруз/i, /предложен/i, /заказ/i, /письмен/i],
-      'faq-26': [/одно изделие/i, /20 дней/i, /30 дней/i],
+      'faq-26': [/одно изделие/i, /20 календарных дней/i, /30 календарных дней/i],
+      'faq-28': [/не используем.*маркетинг/i, /не публикуем.*открыт/i],
     },
   };
   for (const [faqId, patterns] of Object.entries(factPatterns[languageCode])) {

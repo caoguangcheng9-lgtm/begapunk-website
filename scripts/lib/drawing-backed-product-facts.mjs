@@ -167,6 +167,8 @@ const portRoleTerms = {
     'air-outlet': 'air outlet',
     'release-port': 'release port',
     'clamp-port': 'clamp port',
+    'release-outlet': 'release outlet',
+    'clamp-outlet': 'clamp outlet',
   },
   de: {
     inlet: 'Einlass',
@@ -184,6 +186,8 @@ const portRoleTerms = {
     'air-outlet': 'Luftausgang',
     'release-port': 'Löseanschluss',
     'clamp-port': 'Klemmanschluss',
+    'release-outlet': 'Löseausgang',
+    'clamp-outlet': 'Klemmausgang',
   },
   ja: {
     inlet: '入口',
@@ -201,6 +205,8 @@ const portRoleTerms = {
     'air-outlet': '空気出口',
     'release-port': '解除ポート',
     'clamp-port': 'クランプポート',
+    'release-outlet': '解除出口',
+    'clamp-outlet': 'クランプ出口',
   },
   ru: {
     inlet: 'вход',
@@ -218,6 +224,8 @@ const portRoleTerms = {
     'air-outlet': 'выход воздуха',
     'release-port': 'порт разжима',
     'clamp-port': 'порт зажима',
+    'release-outlet': 'выход разжима',
+    'clamp-outlet': 'выход зажима',
   },
 };
 
@@ -266,14 +274,24 @@ function passageCountForModel(model) {
   return Number(match[1]);
 }
 
+function uiPassagesMoq(locale, model) {
+  const passages = passageCountForModel(model);
+  return uiPhrase(locale, {
+    en: `${passages} ${passages === 1 ? 'passage' : 'passages'} · 1 piece`,
+    de: `${passages} ${passages === 1 ? 'Kanal' : 'Kanäle'} · 1 Stück`,
+    ja: `${passages}流路 · 1個`,
+    ru: `${russianCount(passages, 'канал', 'канала', 'каналов')} · 1 шт.`,
+  });
+}
+
 function inletOutletCounts(facts) {
   const annotations = facts.ports?.annotations || [];
-  const total = (roles) => annotations
-    .filter((annotation) => roles.has(annotation.role))
+  const total = (direction, roles) => annotations
+    .filter((annotation) => annotation.direction === direction || (!annotation.direction && roles.has(annotation.role)))
     .reduce((sum, annotation) => sum + annotation.count, 0);
   return {
-    inlets: total(new Set(['inlet', 'media-inlet'])),
-    outlets: total(new Set(['outlet', 'media-outlet'])),
+    inlets: total('inlet', new Set(['inlet', 'media-inlet'])),
+    outlets: total('outlet', new Set(['outlet', 'media-outlet'])),
   };
 }
 
@@ -611,10 +629,10 @@ function uiFormatPorts(locale, model, ports) {
     throw new Error(`${model}: verified port contract has no annotations.`);
   }
   const roles = {
-    en: { 'media-inlet': 'media inlet', inlet: 'inlet', 'media-outlet': 'media outlet', outlet: 'outlet', 'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B', 'side-group': 'side port group', 'end-face-group': 'end-face port group', 'opposite-face': 'opposite-face port', 'air-port-group': 'air-port group', 'air-outlet': 'air outlet', 'release-port': 'release port', 'clamp-port': 'clamp port' },
-    de: { 'media-inlet': 'Medieneingang', inlet: 'Eingang', 'media-outlet': 'Medienausgang', outlet: 'Ausgang', 'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', 'side-group': 'seitliche Anschlussgruppe', 'end-face-group': 'stirnseitige Anschlussgruppe', 'opposite-face': 'Anschluss auf der Gegenseite', 'air-port-group': 'Luftanschlussgruppe', 'air-outlet': 'Luftausgang', 'release-port': 'Löseanschluss', 'clamp-port': 'Klemmanschluss' },
-    ja: { 'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口', 'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面', 'side-group': '側面ポート群', 'end-face-group': '端面ポート群', 'opposite-face': '反対側ポート', 'air-port-group': '空気ポート群', 'air-outlet': '空気出口', 'release-port': '解除ポート', 'clamp-port': 'クランプポート' },
-    ru: { 'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход', 'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B', 'side-group': 'группа боковых портов', 'end-face-group': 'группа торцевых портов', 'opposite-face': 'порт на противоположном торце', 'air-port-group': 'группа воздушных портов', 'air-outlet': 'выход воздуха', 'release-port': 'порт разжима', 'clamp-port': 'порт зажима' },
+    en: { 'media-inlet': 'media inlet', inlet: 'inlet', 'media-outlet': 'media outlet', outlet: 'outlet', 'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B', 'side-group': 'side port group', 'end-face-group': 'end-face port group', 'opposite-face': 'opposite-face port', 'air-port-group': 'air-port group', 'air-outlet': 'air outlet', 'release-port': 'release inlet', 'clamp-port': 'clamp inlet', 'release-outlet': 'release outlet', 'clamp-outlet': 'clamp outlet' },
+    de: { 'media-inlet': 'Medieneingang', inlet: 'Eingang', 'media-outlet': 'Medienausgang', outlet: 'Ausgang', 'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', 'side-group': 'seitliche Anschlussgruppe', 'end-face-group': 'stirnseitige Anschlussgruppe', 'opposite-face': 'Anschluss auf der Gegenseite', 'air-port-group': 'Luftanschlussgruppe', 'air-outlet': 'Luftausgang', 'release-port': 'Löseeingang', 'clamp-port': 'Klemmeingang', 'release-outlet': 'Löseausgang', 'clamp-outlet': 'Klemmausgang' },
+    ja: { 'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口', 'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面', 'side-group': '側面ポート群', 'end-face-group': '端面ポート群', 'opposite-face': '反対側ポート', 'air-port-group': '空気ポート群', 'air-outlet': '空気出口', 'release-port': '解除入口', 'clamp-port': 'クランプ入口', 'release-outlet': '解除出口', 'clamp-outlet': 'クランプ出口' },
+    ru: { 'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход', 'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B', 'side-group': 'группа боковых портов', 'end-face-group': 'группа торцевых портов', 'opposite-face': 'порт на противоположном торце', 'air-port-group': 'группа воздушных портов', 'air-outlet': 'выход воздуха', 'release-port': 'вход разжима', 'clamp-port': 'вход зажима', 'release-outlet': 'выход разжима', 'clamp-outlet': 'выход зажима' },
   }[locale];
   const parts = ports.annotations.map((annotation) => {
     const role = roles[annotation.role];
@@ -651,10 +669,10 @@ function uiFormatPortsKey(locale, model, ports) {
     return uiFormatPorts(locale, model, ports);
   }
   const compactRoles = {
-    en: { 'media-inlet': 'media in', inlet: 'in', 'media-outlet': 'media out', outlet: 'out', 'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B', 'side-group': 'side', 'end-face-group': 'end face', 'opposite-face': 'opposite face', 'air-port-group': 'air', 'air-outlet': 'air out', 'release-port': 'release', 'clamp-port': 'clamp' },
-    de: { 'media-inlet': 'Medieneingang', inlet: 'ein', 'media-outlet': 'Medienausgang', outlet: 'aus', 'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', 'side-group': 'seitlich', 'end-face-group': 'stirnseitig', 'opposite-face': 'Gegenseite', 'air-port-group': 'Luft', 'air-outlet': 'Luft aus', 'release-port': 'Lösen', 'clamp-port': 'Klemmen' },
-    ja: { 'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口', 'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面', 'side-group': '側面', 'end-face-group': '端面', 'opposite-face': '反対面', 'air-port-group': '空気', 'air-outlet': '空気出口', 'release-port': '解除', 'clamp-port': 'クランプ' },
-    ru: { 'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход', 'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B', 'side-group': 'сбоку', 'end-face-group': 'на торце', 'opposite-face': 'противоположный торец', 'air-port-group': 'воздух', 'air-outlet': 'выход воздуха', 'release-port': 'разжим', 'clamp-port': 'зажим' },
+    en: { 'media-inlet': 'media in', inlet: 'in', 'media-outlet': 'media out', outlet: 'out', 'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B', 'side-group': 'side', 'end-face-group': 'end face', 'opposite-face': 'opposite face', 'air-port-group': 'air', 'air-outlet': 'air out', 'release-port': 'release in', 'clamp-port': 'clamp in', 'release-outlet': 'release out', 'clamp-outlet': 'clamp out' },
+    de: { 'media-inlet': 'Medieneingang', inlet: 'ein', 'media-outlet': 'Medienausgang', outlet: 'aus', 'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', 'side-group': 'seitlich', 'end-face-group': 'stirnseitig', 'opposite-face': 'Gegenseite', 'air-port-group': 'Luft', 'air-outlet': 'Luft aus', 'release-port': 'Lösen ein', 'clamp-port': 'Klemmen ein', 'release-outlet': 'Lösen aus', 'clamp-outlet': 'Klemmen aus' },
+    ja: { 'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口', 'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面', 'side-group': '側面', 'end-face-group': '端面', 'opposite-face': '反対面', 'air-port-group': '空気', 'air-outlet': '空気出口', 'release-port': '解除入口', 'clamp-port': 'クランプ入口', 'release-outlet': '解除出口', 'clamp-outlet': 'クランプ出口' },
+    ru: { 'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход', 'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B', 'side-group': 'сбоку', 'end-face-group': 'на торце', 'opposite-face': 'противоположный торец', 'air-port-group': 'воздух', 'air-outlet': 'выход воздуха', 'release-port': 'разжим вход', 'clamp-port': 'зажим вход', 'release-outlet': 'разжим выход', 'clamp-outlet': 'зажим выход' },
   }[locale];
   const parts = ports.annotations.map((annotation) => {
     const size = annotation.thread
@@ -826,8 +844,8 @@ function appendUiClause(locale, sentence, clause) {
 
 function uiVerifiedPriceNote(locale, model, pressure, speed, media) {
   return uiPhrase(locale, {
-    en: `${model}: ${pressure} · ${speed}; suitable media: ${lowercaseInitial(media)}.`,
-    de: `${model}: ${pressure} · ${speed}; geeignete Medien: ${lowercaseInitial(media)}.`,
+    en: `${model}: ${pressure} · ${speed}; suitable media: ${lowercaseInitial(media)}. MOQ 1 pc.`,
+    de: `${model}: ${pressure} · ${speed}; geeignete Medien: ${media}.`,
     ja: `${model}：${pressure}・${speed}、適用流体：${media}。`,
     ru: `${model}: ${pressure} · ${speed}; подходящая среда: ${lowercaseInitial(media)}.`,
   });
@@ -892,7 +910,7 @@ function uiIdentityPendingContract(locale, model) {
       'temperature', 'weight', 'dimensions', 'bore', 'outerDiameter', 'electricalCircuits', 'voltage',
       'electricalContact', 'signalType', 'insulationResistance', 'dielectricStrength',
     ].map((field) => [field, pending])),
-    keyValues: { ...keyValues, ports: pending },
+    keyValues: { ...keyValues, passages: uiPassagesMoq(locale, model), ports: pending },
     keyCategoryOverrides: {},
     keyCategoryLabels: { ports: uiPhrase(locale, { en: 'Ports', de: 'Anschlüsse', ja: 'ポート', ru: 'Порты' }) },
     productName: metadataHeading(locale, model, products[model]),
@@ -925,10 +943,10 @@ export function drawingBackedUiContract(locale, model) {
     ru: 'Не указано; по выбранной спецификации',
   });
   const channels = uiPhrase(locale, {
-    en: '3 pneumatic passages · 6 electrical leads; circuit allocation and ratings per selected specification',
-    de: '3 Pneumatikkanäle · 6 elektrische Leitungen; Kreiszuordnung und Nennwerte gemäß gewählter Spezifikation',
-    ja: '空圧3流路・電気リード6本。回路割当と定格は選定仕様による',
-    ru: '3 пневматических канала · 6 электрических выводов; распределение цепей и номиналы по выбранной спецификации',
+    en: '3 pneumatic passages · 6 electrical leads · 1 piece; circuit allocation and ratings per selected specification',
+    de: '3 Pneumatikkanäle · 6 elektrische Leitungen · 1 Stück; Kreiszuordnung und Nennwerte gemäß gewählter Spezifikation',
+    ja: '空圧3流路・電気リード6本・1個。回路割当と定格は選定仕様による',
+    ru: '3 пневматических канала · 6 электрических выводов · 1 шт.; распределение цепей и номиналы по выбранной спецификации',
   });
   const s06PneumaticPassages = uiPhrase(locale, {
     en: '3 pneumatic passages; inlet connection not unambiguously labeled',
@@ -998,7 +1016,7 @@ export function drawingBackedUiContract(locale, model) {
     },
     fields,
     keyValues: {
-      performance: uiPerformance(locale, pressure, speed), body, seal, media,
+      performance: uiPerformance(locale, pressure, speed), body, seal, passages: uiPassagesMoq(locale, model), media,
       mount: uiFormatMountingKey(locale, model, facts.mounting),
       ports: uiFormatPortsKey(locale, model, facts.ports),
       ...(model === 'BP-3P-S06-0001' ? { channels } : {}),
@@ -1269,6 +1287,10 @@ for (const locale of Object.keys(copy)) {
       || !uiContract.structuredDescription || !uiContract.fields || !uiContract.keyValues) {
       throw new Error(`${locale}/${model}: drawing-backed text or UI generation is incomplete.`);
     }
+    if (uiContract.keyValues.passages !== uiPassagesMoq(locale, model)
+      || /\bindependent\b/iu.test(uiContract.keyValues.passages)) {
+      throw new Error(`${locale}/${model}: first-view passages/MOQ value is missing or overstates passage topology.`);
+    }
     if (!metadata || metadata.title !== `${metadata.h1} | Begapunk`
       || metadata.breadcrumb !== metadata.h1 || metadata.imageAlt !== metadata.h1
       || metadata.linkLabel !== metadata.h1 || metadata.openGraphDescription !== metadata.description
@@ -1319,6 +1341,7 @@ for (const locale of Object.keys(copy)) {
     }
     if (model === 'BP-3P-S06-0001') {
       const s06Ports = verifiedParts(locale, model, products[model]).ports;
+      const moqMarker = { en: '1 piece', de: '1 Stück', ja: '1個', ru: '1 шт.' }[locale];
       const metadataBoundaries = {
         en: ['six electrical leads', 'ratings per specification'],
         de: ['sechs elektrische Leitungen', 'gemäß Spezifikation'],
@@ -1328,6 +1351,7 @@ for (const locale of Object.keys(copy)) {
       if (!summary.includes(localeCopy(locale).electricalLeadsBoundary)
         || linkLabel.includes(localeCopy(locale).electricalLeadsBoundary)
         || uiContract.keyValues.channels.includes('6 circuits')
+        || !uiContract.keyValues.channels.includes(moqMarker)
         || metadataBoundaries.some((boundary) => !metadata.description.includes(boundary))
         || !s06Ports.some((value) => keywords.slice(0, 6).includes(value))) {
         throw new Error(`${locale}/${model}: hybrid electrical evidence boundary is inconsistent.`);
