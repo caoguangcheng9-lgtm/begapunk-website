@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-08-30T02:29:52.500Z",
+  "capturedAt": "2026-08-30T02:34:08.099Z",
   "statusUpdatedAt": "2026-08-30",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
   "reviewRecord": "audit/localization/2026-08-30-hydraulic-and-published-pages-review.md",
@@ -24,11 +24,11 @@
     },
     {
       "path": "de/products.html",
-      "sha256": "e121d6eb822f1dc27644c4c452f42d6a92d4b09a0f95fc8a6ac4b752d21ee6ab"
+      "sha256": "b346d01c7b5448b47ab1a17883809229da2ce95a915fee95bb62d8d18493d2ae"
     },
     {
       "path": "de/products-p2.html",
-      "sha256": "44347e5dae765e8b3fe42a321a9e9d82bf8fc33760ad9613eecf366ef1aa89f2"
+      "sha256": "392338f7c32680ef52e90db151060b7d18f90cc1a54cbb3b61724a1ff7d04fcb"
     },
     {
       "path": "de/product-comparison.html",
@@ -252,11 +252,11 @@
     },
     {
       "path": "ja/products.html",
-      "sha256": "719c6ddeddcea7ba0267d469844852a34bcc7894f2a97508e9b3410c318b404f"
+      "sha256": "12e037153e4563ebc537e03866ac84ff67adb16e9cc8f3e0045d6a7d47810990"
     },
     {
       "path": "ja/products-p2.html",
-      "sha256": "f4223b2dc9fa31c3c486df2ceea8668ff00427e090532a74037c8de6f9f744f2"
+      "sha256": "5be5e5b11cda928b4c073629ff5127c6b9eecc1711ecda21fb352a9966f65616"
     },
     {
       "path": "ja/product-comparison.html",
@@ -480,11 +480,11 @@
     },
     {
       "path": "ru/products.html",
-      "sha256": "72047f71d620b8cdfbf166fbc522f4572bdb39c7cbec867feeba3e56ea3288cc"
+      "sha256": "c17c907abbe3a4435bf6f3f70e9610d3eb2a599ab33a6729ea656c1e590de3ef"
     },
     {
       "path": "ru/products-p2.html",
-      "sha256": "74e5b08acdecd69de91f728e1cf5645dad4d1627374bbd0eb7c43b336bb4f26b"
+      "sha256": "e70ef6491aea471c3b183d8a78f418c6a5bd23b82b0f5bdc70f3daf596894b91"
     },
     {
       "path": "ru/product-comparison.html",
