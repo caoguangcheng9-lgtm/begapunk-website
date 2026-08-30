@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-08-30T02:27:33.244Z",
+  "capturedAt": "2026-08-30T02:29:52.500Z",
   "statusUpdatedAt": "2026-08-30",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
   "reviewRecord": "audit/localization/2026-08-30-hydraulic-and-published-pages-review.md",
@@ -52,7 +52,7 @@
     },
     {
       "path": "de/BP-2P-08-0001.html",
-      "sha256": "79d720c0a8262d4179a7ee484ddee34caca086d6e543618a0f46badd30c2d458"
+      "sha256": "e62b47de4d83a41f3aabc95ddd06306d06c9e117aff2e61776f1406c355d87ab"
     },
     {
       "path": "de/BP-2P-130-0001.html",
@@ -76,7 +76,7 @@
     },
     {
       "path": "de/BP-3P-0004.html",
-      "sha256": "4ef12a414cbe777f1f013eff67ff3ebe51d0be1bce13584330ade37c2cd577d2"
+      "sha256": "0593ebab367b81963cb1f26eb2655b79806af5acc3751000801bb8a94bc808cd"
     },
     {
       "path": "de/BP-3P-0006.html",
@@ -280,7 +280,7 @@
     },
     {
       "path": "ja/BP-2P-08-0001.html",
-      "sha256": "e14b02c2e8ffffa3904745bc43005ebb251c45b995bd455364d4ccdb5fcff2df"
+      "sha256": "76a9c1e8cebf4c0cda292a1de3b484597b374b1521c153dab22ba9a53177dd2a"
     },
     {
       "path": "ja/BP-2P-130-0001.html",
@@ -304,7 +304,7 @@
     },
     {
       "path": "ja/BP-3P-0004.html",
-      "sha256": "23e9618ffb4ae927aff738aeabeaac800ebfd2574b2fbc88f95626e05ab9c676"
+      "sha256": "61ed67c7feec077ea2f257245096d450eb582c20c12959a9188358a76eae26b9"
     },
     {
       "path": "ja/BP-3P-0006.html",
@@ -508,7 +508,7 @@
     },
     {
       "path": "ru/BP-2P-08-0001.html",
-      "sha256": "111d82f80ba536863d39c506a484f307f1e162ea4380a22ef2867faa89f42732"
+      "sha256": "83bbd442480a4a700de55b15ad6c1d049790c0709d477a546abf8999beb59eb8"
     },
     {
       "path": "ru/BP-2P-130-0001.html",
@@ -532,7 +532,7 @@
     },
     {
       "path": "ru/BP-3P-0004.html",
-      "sha256": "9e481810669424e90b264b575d36b433d75fd389427169140c230afb9faaf047"
+      "sha256": "8a08e60d2697d034b65b12d866adb2f600a119cf091ded86c7a137253863aa7d"
     },
     {
       "path": "ru/BP-3P-0006.html",
