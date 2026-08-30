@@ -537,7 +537,13 @@ function uiPhrase(locale, values) {
 
 function uiFormatPressure(locale, pressure) {
   const unit = locale === 'ru' ? 'МПа' : pressure.unit;
-  return `${localizedNumber(locale, pressure.value)} ${unit}`;
+  const mpa = `${localizedNumber(locale, pressure.value)} ${unit}`;
+  const bar = localizedNumber(locale, pressure.value * 10);
+  const psi = localizedNumber(locale, Math.round(pressure.value * 145));
+  if (locale === 'de') return `${mpa} (${bar} bar / ca. ${psi} psi)`;
+  if (locale === 'ja') return `${mpa}（${bar} bar ≈ ${psi} psi）`;
+  if (locale === 'ru') return `${mpa} (${bar} бар ≈ ${psi} psi)`;
+  return `${mpa} (${bar} bar ≈ ${psi} psi)`;
 }
 
 function uiFormatSpeed(locale, speed) {
@@ -1189,7 +1195,7 @@ function metadataMedia(locale, media) {
 
 function verifiedMetadataDescription(locale, model, product, heading) {
   const facts = product.drawingFacts;
-  const pressure = localizedNumber(locale, facts.maximumPressure.value);
+  const pressure = uiFormatPressure(locale, facts.maximumPressure);
   const speed = localizedNumber(locale, facts.maximumSpeed.value);
   const media = metadataMedia(locale, facts.media);
   const germanMediaLabel = facts.media.length === 1 ? 'Medium' : 'Medien';
@@ -1197,25 +1203,25 @@ function verifiedMetadataDescription(locale, model, product, heading) {
 
   if (model === 'BP-3P-0006') {
     return uiPhrase(locale, {
-      en: `${heading}. ${pressure} MPa, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before selecting fittings or machining.`,
-      de: `${heading}. ${pressure} MPa, ${speed} min⁻¹; geeignetes Medium: ${media}. Anschlussgewinde vor Auswahl von Verschraubungen oder Bearbeitung bestätigen.`,
-      ja: `${heading}。${pressure} MPa、${speed} min⁻¹。適用流体：${media}。ポートねじは継手選定や加工前に確認してください。`,
-      ru: `${heading}. ${pressure} МПа, ${speed} об/мин; подходящая среда: ${media}. Резьбу портов подтвердить до выбора фитингов или обработки.`,
+      en: `${heading}. ${pressure}, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before selecting fittings or machining.`,
+      de: `${heading}. ${pressure}, ${speed} min⁻¹; geeignetes Medium: ${media}. Anschlussgewinde vor Auswahl von Verschraubungen oder Bearbeitung bestätigen.`,
+      ja: `${heading}。${pressure}、${speed} min⁻¹。適用流体：${media}。ポートねじは継手選定や加工前に確認してください。`,
+      ru: `${heading}. ${pressure}, ${speed} об/мин; подходящая среда: ${media}. Резьбу портов подтвердить до выбора фитингов или обработки.`,
     });
   }
   if (model === 'BP-3P-S06-0001') {
     return uiPhrase(locale, {
-      en: `${model} pneumatic-electric rotary union. ${pressure} MPa, ${speed} RPM; medium: ${media}; six electrical leads, with circuit allocation and ratings per specification.`,
-      de: `${heading}. ${pressure} MPa, ${speed} min⁻¹; Medium ${media}; sechs elektrische Leitungen, Kreiszuordnung und Nennwerte gemäß Spezifikation.`,
-      ja: `${heading}。${pressure} MPa、${speed} min⁻¹。流体は${media}、電気リード6本。回路割当・定格は仕様書で確認。`,
-      ru: `${heading}. ${pressure} МПа, ${speed} об/мин; среда ${media}; шесть электровыводов, распределение цепей и номиналы по спецификации.`,
+      en: `${model} pneumatic-electric rotary union. ${pressure}, ${speed} RPM; medium: ${media}; six electrical leads, with circuit allocation and ratings per specification.`,
+      de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium ${media}; sechs elektrische Leitungen, Kreiszuordnung und Nennwerte gemäß Spezifikation.`,
+      ja: `${heading}。${pressure}、${speed} min⁻¹。流体は${media}、電気リード6本。回路割当・定格は仕様書で確認。`,
+      ru: `${heading}. ${pressure}, ${speed} об/мин; среда ${media}; шесть электровыводов, распределение цепей и номиналы по спецификации.`,
     });
   }
   return uiPhrase(locale, {
-    en: `${heading}. ${pressure} MPa · ${speed} RPM; suitable media: ${media}.`,
-    de: `${heading}. ${pressure} MPa · ${speed} min⁻¹; geeignete Medien: ${media}.`,
-    ja: `${heading}。${pressure} MPa・${speed} min⁻¹、適用流体：${media}。`,
-    ru: `${heading}. ${pressure} МПа · ${speed} об/мин; подходящая среда: ${media}.`,
+    en: `${heading}. ${pressure} · ${speed} RPM; suitable media: ${media}.`,
+    de: `${heading}. ${pressure} · ${speed} min⁻¹; geeignete Medien: ${media}.`,
+    ja: `${heading}。${pressure}・${speed} min⁻¹、適用流体：${media}。`,
+    ru: `${heading}. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
   });
 }
 
@@ -1270,9 +1276,9 @@ export function assertDrawingBackedProductRecordCoverage(records, context = 'sea
 }
 
 const metadataLengthRanges = {
-  en: { titleMax: 70, descriptionMin: 75, descriptionMax: 170 },
+  en: { titleMax: 70, descriptionMin: 75, descriptionMax: 190 },
   de: { titleMax: 80, descriptionMin: 85, descriptionMax: 200 },
-  ja: { titleMax: 50, descriptionMin: 45, descriptionMax: 100 },
+  ja: { titleMax: 50, descriptionMin: 45, descriptionMax: 120 },
   ru: { titleMax: 85, descriptionMin: 100, descriptionMax: 205 },
 };
 
