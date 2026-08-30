@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "approvalId": "owner-ai-review-20260809-02",
+  "approvalId": "owner-ai-review-20260830-01",
   "decision": "release-with-known-editorial-debt",
   "approvedByRole": "site-owner",
-  "approvedAt": "2026-08-09T18:28:54.5694721+09:00",
-  "expiresAt": "2026-08-10T18:28:54.5694721+09:00",
+  "approvedAt": "2026-08-30T11:27:32.904654+09:00",
+  "expiresAt": "2026-08-31T11:17:32.904654+09:00",
   "reviewMethod": "AI-assisted manual line-by-line review",
   "independentNativeSpeakerConfirmed": false,
-  "approvalBasis": "The site owner explicitly instructed production deployment after being informed that independent native-language sign-off and part of the historical render-QA count remain outstanding.",
+  "approvalBasis": "The site owner explicitly instructed production deployment on 2026-08-30 after local GEO/SEO, hydraulic-door, and published-application work, while independent native-language sign-off and part of the historical render-QA count remain outstanding.",
   "expectedStatus": {
-    "reviewedPerLanguage": 51,
-    "totalPerLanguage": 55,
+    "reviewedPerLanguage": 53,
+    "totalPerLanguage": 57,
     "remainingPerLanguage": 4,
-    "renderQaPagesPerLanguage": 49,
-    "renderQaCheckedViewports": 294,
-    "renderQaRequiredViewports": 330
+    "renderQaPagesPerLanguage": 56,
+    "renderQaCheckedViewports": 336,
+    "renderQaRequiredViewports": 336
   },
   "pages": [
     "case-bp-2p-95-pneumatic-chuck-integration.html",
@@ -23,18 +23,54 @@
     "production-inspection-testing.html"
   ],
   "artifacts": [
-    { "path": "de/case-bp-2p-95-pneumatic-chuck-integration.html", "sha256": "072558164c20deb722a2f014832312555ae91420cf5acad7fc706a7de52037bd" },
-    { "path": "de/case-bp-3p-s06-sensor-monitored-chuck.html", "sha256": "3ea1daacc0de62348c576870b116ff8cd2a1c11467b056d4bd2d090955e2a93c" },
-    { "path": "de/manufacturing-quality.html", "sha256": "8fc5edac8c15365a21cf15a17fc3ff70ba6e899331c6f2e3d6ad2bae6b702838" },
-    { "path": "de/production-inspection-testing.html", "sha256": "73c13edd79909544e90e86de2d306469ddb25313e513e2d34c12f8ecf6bf8fd1" },
-    { "path": "ja/case-bp-2p-95-pneumatic-chuck-integration.html", "sha256": "eed1a91366cb60da95bcbc942e574d955ed039fbb55e4b29eecd38b940e05798" },
-    { "path": "ja/case-bp-3p-s06-sensor-monitored-chuck.html", "sha256": "b1bcdd35a77352b3a824c7b74e1074c11506a5d3eda0a411d2eb34dc2a2dfb61" },
-    { "path": "ja/manufacturing-quality.html", "sha256": "1a8e17b4184ee7dbcf3795ec78b7ee02f499147c5564938d7fccab130b30c01c" },
-    { "path": "ja/production-inspection-testing.html", "sha256": "793587db3df6c77c83fb754d8f3a46b7baf0d4b69c80fc8dcb5a3fb6defb7b8e" },
-    { "path": "ru/case-bp-2p-95-pneumatic-chuck-integration.html", "sha256": "9917a9dedd4d2b0e54756029c33ee2c6c9af8fbc9aecd7108a4c96701b1a79a1" },
-    { "path": "ru/case-bp-3p-s06-sensor-monitored-chuck.html", "sha256": "4679397117d533dc8ef140a284c615e9811a49de2382dcfe09ac249d9c97bea5" },
-    { "path": "ru/manufacturing-quality.html", "sha256": "95b48fcd06f1a29f9592b7ea0eaec459938679539769c6080d59ac91b6c9b340" },
-    { "path": "ru/production-inspection-testing.html", "sha256": "f55f73bd602af924fcbd90ceae29df57feded0da53052a5b8dff560bf9df4842" }
+    {
+      "path": "de/case-bp-2p-95-pneumatic-chuck-integration.html",
+      "sha256": "6f375cadb0b75a86674c6bfef9e144137e0c0ce776d7de9379a287667d49508a"
+    },
+    {
+      "path": "de/case-bp-3p-s06-sensor-monitored-chuck.html",
+      "sha256": "82ec3a70f336190ebe6dde79557f82c0b089cf934e5ed1fe4822a9ea393b4055"
+    },
+    {
+      "path": "de/manufacturing-quality.html",
+      "sha256": "d6254bc37ea68cf92bbeedfc84bb483346a815f51b43e3fa69e9bacf9a270096"
+    },
+    {
+      "path": "de/production-inspection-testing.html",
+      "sha256": "eee3c740b3d4b50a4ae7f3be002d1ed324f9e211c5d64c09b12b5c0a6914d53c"
+    },
+    {
+      "path": "ja/case-bp-2p-95-pneumatic-chuck-integration.html",
+      "sha256": "3683ccae2aee18f608d4120a5d9fbf96e7748cc81db4fd403839864f9b5fdb61"
+    },
+    {
+      "path": "ja/case-bp-3p-s06-sensor-monitored-chuck.html",
+      "sha256": "dc3b03fdb9dfcdc898f73eb74dd01e98add66b16ad28acbd04eebdaeadd4de4b"
+    },
+    {
+      "path": "ja/manufacturing-quality.html",
+      "sha256": "d24c6a0a2f1916e8077783cd6b4f3635d15ae6111347f2130eab86e56a1390d4"
+    },
+    {
+      "path": "ja/production-inspection-testing.html",
+      "sha256": "ed1b67ccaa9f6765333dc36a2183285c200495010c5400baa64687aebc09af42"
+    },
+    {
+      "path": "ru/case-bp-2p-95-pneumatic-chuck-integration.html",
+      "sha256": "f6161d349da0162102415bfae1a7bf08de8b741f7b87d5c030782bf5c81816fc"
+    },
+    {
+      "path": "ru/case-bp-3p-s06-sensor-monitored-chuck.html",
+      "sha256": "b5b03705cd8806947cc422b76ed8f65ace6befecdb01e6cfd8117013d1b623fa"
+    },
+    {
+      "path": "ru/manufacturing-quality.html",
+      "sha256": "f1022e3237016644ad5f215784be6ad3545f2720f59e036b432414b93a74d63b"
+    },
+    {
+      "path": "ru/production-inspection-testing.html",
+      "sha256": "e0908e51b7187a30cbf288fa002d30556a059de85639512af26a0b3f517fac54"
+    }
   ],
   "acknowledgements": [
     "No independent native-speaker sign-off is claimed.",

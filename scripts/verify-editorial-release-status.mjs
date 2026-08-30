@@ -289,9 +289,9 @@ if (approval) {
   if (expected.reviewedPerLanguage !== pages.length - allowedEditorialDebtPages.length
     || expected.totalPerLanguage !== pages.length
     || expected.remainingPerLanguage !== allowedEditorialDebtPages.length
-    || expected.renderQaPagesPerLanguage !== 49
-    || expected.renderQaCheckedViewports !== 294
-    || expected.renderQaRequiredViewports !== 330) {
+    || expected.renderQaPagesPerLanguage !== 56
+    || expected.renderQaCheckedViewports !== 336
+    || expected.renderQaRequiredViewports !== 336) {
     exceptionFail('release approval expectedStatus does not exactly describe the current known debt.');
   }
 
@@ -327,10 +327,10 @@ if (approval) {
     }
   }
 
-  if (renderQa.pagesPerLanguage !== 49
+  if (renderQa.pagesPerLanguage !== 56
     || renderQa.viewportsPerPage !== 2
-    || renderQa.checkedViewports !== 294) {
-    exceptionFail('render QA status must remain the recorded 49 pages per language and 294 viewport checks.');
+    || renderQa.checkedViewports !== 336) {
+    exceptionFail('render QA status must remain the recorded 56 pages per language and 336 viewport checks.');
   }
 
   const expectedArtifactPaths = languages.flatMap((language) =>
