@@ -3060,8 +3060,8 @@ for (const language of verifiedLanguages) {
       const structuredText = $verifiedProduct('script[type="application/ld+json"]').text();
       const expectedStructuredDate = pageName === 'BP-2P-08-0001.html' ? '2026-08-13' : '2026-08-07';
       if (!structuredText.includes(expectedStructuredDate)
-          || !laserMachineTerms[language.code]?.test(structuredText)
-          || !rearChuckTerms[language.code]?.test(structuredText)) {
+          || !laserMachineTerms[language.code]?.test(applicationEntryText)
+          || !rearChuckTerms[language.code]?.test(applicationEntryText)) {
         failures.push(`${language.code}/${pageName}: structured data date or verified laser application description is not synchronized.`);
       }
     }
