@@ -16,7 +16,7 @@ const homeContracts = {
     description: 'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. 2D drawings and 3D STEP models are available for every catalog model.',
     sectionTitle: 'Find by Application',
     comparisonLabel: 'Model Comparison',
-    tags: ['1-8 passages', 'Air / hydraulic oil', 'Threaded / flange'],
+    tags: ["1-8 passages", "Compressed air (catalog)", "Threaded / flange"],
     applications: [
       ['application-laser-tube-cutting.html', 'Laser tube rear chuck', 'Compressed-air transfer; verify circuits and interfaces'],
       ['application-packaging-machinery.html', 'Packaging Lines', 'Rotary sealers and mandrels'],
@@ -29,7 +29,7 @@ const homeContracts = {
     description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für OEM-Maschinen, abgestimmt auf die tatsächlichen Betriebsbedingungen. Mindestbestellmenge: 1 Stück. Fertigungszeit: Katalogmodelle typischerweise etwa 20 Kalendertage; Sonderanfertigungen höchstens 30 Kalendertage. Für jedes Katalogmodell stehen eine 2D-Zeichnung und ein 3D-STEP-Modell bereit.',
     sectionTitle: 'Nach Anwendung auswählen',
     comparisonLabel: 'Modellvergleich',
-    tags: ['1-8 Kanäle', 'Luft / Hydrauliköl', 'Gewinde / Flansch'],
+    tags: ["1–8 Wege", "Druckluft (Katalog)", "Gewinde / Flansch"],
     applications: [
       ['application-laser-tube-cutting.html', 'Laserrohrschneiden', 'Druckluftübertragung zum hinteren Spannfutter'],
       ['application-packaging-machinery.html', 'Verpackungsmaschinen', 'Rotierende Siegelköpfe und Dorne'],
@@ -42,7 +42,7 @@ const homeContracts = {
     description: 'OEM装置向けの標準・特注空圧ロータリージョイントを、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
     sectionTitle: '用途から探す',
     comparisonLabel: '機種選定表',
-    tags: ['1～8流路', 'エア・作動油', 'ねじ取付・フランジ取付'],
+    tags: ["1～8流路", "圧縮空気（カタログ）", "ねじ取付・フランジ取付"],
     applications: [
       ['application-laser-tube-cutting.html', 'レーザー管切断機', '後側チャックへの圧縮空気供給'],
       ['application-packaging-machinery.html', '包装機械', '回転シール部・マンドレルへの流体供給'],
@@ -52,10 +52,10 @@ const homeContracts = {
   },
   ru: {
     badge: 'Пневматические вращающиеся соединения | Серийные и заказные',
-    description: 'Предлагаем стандартные и заказные пневматические вращающиеся соединения для OEM-оборудования и подбираем исполнение с учётом реальных условий эксплуатации. Минимальный заказ — 1 шт. Каталожные модели обычно изготавливаем примерно за 20 календарных дней, заказные исполнения — не более чем за 30 календарных дней. Для каждой каталожной модели предоставляем 2D-чертёж и 3D-модель STEP.',
+    description: "Предлагаем стандартные и заказные пневматические ротационные соединения для OEM-оборудования и подбираем исполнение с учётом реальных условий эксплуатации. Минимальный заказ — 1 шт. Каталожные модели обычно изготавливаем примерно за 20 календарных дней, заказные исполнения — не более чем за 30 календарных дней. Для каждой каталожной модели предоставляем 2D-чертёж и 3D-модель STEP.",
     sectionTitle: 'Выбор по применению',
     comparisonLabel: 'Сравнение моделей',
-    tags: ['1-8 проходов', 'Воздух / гидравлическое масло', 'Резьба / фланец'],
+    tags: ["1-8 проходов", "Сжатый воздух (каталог)", "Резьба / фланец"],
     applications: [
       ['application-laser-tube-cutting.html', 'Лазерная резка труб', 'Подача сжатого воздуха к заднему патрону'],
       ['application-packaging-machinery.html', 'Упаковочные линии', 'Поворотные запаечные узлы и оправки'],
@@ -69,17 +69,7 @@ function compact(value = '') {
   return String(value).replace(/\s+/g, ' ').trim();
 }
 
-const softIsolationRoutes = new Set([
-  'application-packaging-machinery.html',
-  'application-bottle-filling-capping.html',
-  'blog-rotary-joint-leaking.html',
-  'application-automation-rotary-tables.html',
-  'application-pneumatic-tools-hose-anti-twist.html',
-  'blog-seal-replacement.html',
-  'blog-threaded-vs-flange.html',
-  'application-robot-end-of-arm-tooling.html',
-  'blog-rotary-joint-materials.html',
-]);
+const softIsolationRoutes = new Set([]);
 
 const changedStylesheets = new Map([
   ['case-studies.css', '20260817-case-bundle1'],
@@ -102,6 +92,7 @@ function contractFor(route) {
   if (route === 'products.html' || route === 'products-p2.html' || route === 'product-comparison.html') {
     return { family: 'standard-dark', selector: '.products-hero' };
   }
+  if (route === 'custom-hydraulic-rotary-unions.html') return { family: 'standard-dark', selector: '.app-hero' };
   if (route === 'applications.html' || route.startsWith('application-')) return { family: 'standard-dark', selector: '.app-hero' };
   if (route === 'blog.html' || route.startsWith('blog-')) return { family: 'standard-dark', selector: '.blog-hero' };
   if (route === 'installation.html') return { family: 'standard-dark', selector: '.install-hero' };
@@ -259,8 +250,8 @@ for (const language of languages) {
 if (checkedPages !== config.pages.length * languages.length) {
   failures.push(`Expected ${config.pages.length * languages.length} localized pages, checked ${checkedPages}.`);
 }
-if (softIsolationRoutes.size * languages.length !== 36) {
-  failures.push('Soft-isolation contract must cover exactly 36 localized pages.');
+if (softIsolationRoutes.size !== 0) {
+  failures.push('Soft-isolation hero contract must stay empty after the nine routes were published.');
 }
 
 const stylesheetContracts = [
