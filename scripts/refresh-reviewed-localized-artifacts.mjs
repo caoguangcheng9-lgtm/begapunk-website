@@ -40,7 +40,22 @@ if (JSON.stringify([...status.reviewedArtifactSnapshot.languages].sort()) !== JS
   throw new Error('Editorial status languages do not match i18n/config.json.');
 }
 
-const sha256 = (buffer) => createHash('sha256').update(buffer).digest('hex');
+function normalizeLf(buffer) {
+  const src = Buffer.from(buffer);
+  const out = Buffer.allocUnsafe(src.length);
+  let j = 0;
+  for (let i = 0; i < src.length; i += 1) {
+    if (src[i] === 0x0d) {
+      if (i + 1 < src.length && src[i + 1] === 0x0a) continue;
+      out[j++] = 0x0a;
+      continue;
+    }
+    out[j++] = src[i];
+  }
+  return out.subarray(0, j);
+}
+
+const sha256 = (buffer) => createHash('sha256').update(normalizeLf(buffer)).digest('hex');
 const artifacts = [];
 for (const language of languages) {
   for (const page of pages) {

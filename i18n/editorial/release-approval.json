@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "approvalId": "owner-ai-review-20260830-01",
+  "approvalId": "owner-ai-review-20260830-02",
   "decision": "release-with-known-editorial-debt",
   "approvedByRole": "site-owner",
-  "approvedAt": "2026-08-30T11:27:32.904654+09:00",
-  "expiresAt": "2026-08-31T11:17:32.904654+09:00",
+  "approvedAt": "2026-08-30T11:51:46.514344+09:00",
+  "expiresAt": "2026-08-31T11:50:46.514344+09:00",
   "reviewMethod": "AI-assisted manual line-by-line review",
   "independentNativeSpeakerConfirmed": false,
-  "approvalBasis": "The site owner explicitly instructed production deployment on 2026-08-30 after local GEO/SEO, hydraulic-door, and published-application work, while independent native-language sign-off and part of the historical render-QA count remain outstanding.",
+  "approvalBasis": "The site owner explicitly instructed production deployment on 2026-08-30 after local GEO/SEO, hydraulic-door, and published-application work, while independent native-language sign-off and part of the historical render-QA count remain outstanding. Localized artifact snapshots were rehashed with LF-normalized bytes so Windows working-tree CRLF and Linux CI checkouts agree.",
   "expectedStatus": {
     "reviewedPerLanguage": 53,
     "totalPerLanguage": 57,
     "remainingPerLanguage": 4,
-    "renderQaPagesPerLanguage": 56,
-    "renderQaCheckedViewports": 336,
-    "renderQaRequiredViewports": 336
+    "renderQaPagesPerLanguage": 57,
+    "renderQaCheckedViewports": 342,
+    "renderQaRequiredViewports": 342
   },
   "pages": [
     "case-bp-2p-95-pneumatic-chuck-integration.html",

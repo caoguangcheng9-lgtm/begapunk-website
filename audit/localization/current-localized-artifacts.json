@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-08-30T02:34:08.099Z",
+  "capturedAt": "2026-08-30T02:51:23.698Z",
   "statusUpdatedAt": "2026-08-30",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
   "reviewRecord": "audit/localization/2026-08-30-hydraulic-and-published-pages-review.md",
   "artifacts": [
     {
       "path": "de/index.html",
-      "sha256": "9a1115abffeb808edbdc760ecd8c02e4758b019109e33bfa54393ac1fbfe2fd7"
+      "sha256": "7244792e5bceb199624d0bf6dd77b98d9fe652402ec0b45d4bcb298e58a8a89d"
     },
     {
       "path": "de/about.html",
-      "sha256": "709f6ac6c418a37b3223bf37084ce207b42e9591be9a35de5fbf7285d10438c6"
+      "sha256": "9d6c1778a3620965f9298a697c0596f242457ae7945694b6c12938048b1d2ef8"
     },
     {
       "path": "de/manufacturing-quality.html",
@@ -36,19 +36,19 @@
     },
     {
       "path": "de/BP-1P-0003.html",
-      "sha256": "8d9589c5533c8c0f309736a6c143ba90d75c19cbad7965f24ae5f4dffb02d8a2"
+      "sha256": "aac4eb7ecf5ef277059b7f6a958640ac86ec8e01ac81fc01dabd4d4e5443f05e"
     },
     {
       "path": "de/BP-1P-0006.html",
-      "sha256": "c8ac2f8d8867bcc0991e5dc6e0cea697d2cb11b3bef2942f758dc0f30b5304fd"
+      "sha256": "8d3236d4352be023dec6e980d8cae993cc55c53a566074ba23ce83732e0f8a80"
     },
     {
       "path": "de/BP-2P-0001.html",
-      "sha256": "42494779db7daf78cbe4b3acfbea72d0dee8c3543ad81a913575fa0ac706b0a0"
+      "sha256": "071701000d15e36d285ce90d3d17224f226348f3e9b5caafb689f6c91ca90e6a"
     },
     {
       "path": "de/BP-2P-0002.html",
-      "sha256": "d9a15415e7fe4d7c862ab2630e8a9820ac54838fa17aa3a415227c2a5947df6b"
+      "sha256": "51f47740f8c716565bf5d383ac810ffec8995f0dad86f1e8cf2267b76cf27c31"
     },
     {
       "path": "de/BP-2P-08-0001.html",
@@ -56,23 +56,23 @@
     },
     {
       "path": "de/BP-2P-130-0001.html",
-      "sha256": "5949195bc947c2717494b82623c77a8f271ae2a7b2588a3fb7236943693dbaf0"
+      "sha256": "7631f76af5c3f21e6502bc466f178acf6c0bf9166094a36535eee229581145dc"
     },
     {
       "path": "de/BP-2P-16-0001.html",
-      "sha256": "1a1e763a8d5e6af1007231e0f0b50b409e0e953fa7bb1b7c2b0100136cf03545"
+      "sha256": "1be5c32943600b81d0672b61b6261b97c631e1a9b9a9b77bb0f8d069ca5c823a"
     },
     {
       "path": "de/BP-2P-30-0001.html",
-      "sha256": "63b1463c7126f6967fc9f9259e0a6b160b00d359ae8d23ff834fe2685ea6f79e"
+      "sha256": "7c39f8ec40dab04618a8114f705b1977010fe97863fc830ec24bb50f9fe1182c"
     },
     {
       "path": "de/BP-2P-50-0001.html",
-      "sha256": "c0d7f49fcdec8c52e91806d1edaadd2334947a1f037211e0e502c3600c98e431"
+      "sha256": "0820ce237c17538f1a27e19ff6b92c0b8386f9a7786c120a0a1ae0e0de397e9d"
     },
     {
       "path": "de/BP-2P-95-0005.html",
-      "sha256": "9087fad9178d89f1c9865f15e2bbda8f7341ab4c9ab5039c99a6c47b59029331"
+      "sha256": "42a91b787b6aa8c0e7233913e7b0b5dda28af11b779629c63785da0a516048b0"
     },
     {
       "path": "de/BP-3P-0004.html",
@@ -80,23 +80,23 @@
     },
     {
       "path": "de/BP-3P-0006.html",
-      "sha256": "1827bfd31e8b33cb543979a68a285f28bd5aa06357f5e8fd3d54018e19e01081"
+      "sha256": "34954f79c00174290b4de181a7d00b764de499481ff1c21a211f7c130ee3c346"
     },
     {
       "path": "de/BP-3P-0007.html",
-      "sha256": "66f61e3c02ca4e93c4e0a5071551d494784e4cd12e8d109c5894596d15833a19"
+      "sha256": "aa6167a429f1e81b2ad33e45d6e9fe2d5d7130e4c8eec0977cfe85f2eb3c0d62"
     },
     {
       "path": "de/BP-3P-S06-0001.html",
-      "sha256": "b88b3bd433bda29c5368c4daea1db0c36398278ee53fa9399d38f0b4431352ed"
+      "sha256": "8978b3c317dab06de05b49c9a61389e37a3ad1082378e355441033ac547dd41c"
     },
     {
       "path": "de/BP-4P-30-0001.html",
-      "sha256": "2914720a503617bb3f35d67e23757f7bf9a2a086fd7077a4f7f8b34b75504c94"
+      "sha256": "7b95e699973867734dcee8350db6439bee9557835ead6dffda40acd399d76f70"
     },
     {
       "path": "de/BP-8P-0001.html",
-      "sha256": "25514edc97a9b2e471a200d29517245739bd96a3b61dc390fea26c0324dead77"
+      "sha256": "47c1e3ac468d1d375bb85c14cdb603533009415bc73e8baf5dcd5daf97bea599"
     },
     {
       "path": "de/applications.html",
@@ -212,7 +212,7 @@
     },
     {
       "path": "de/contact.html",
-      "sha256": "74c900900aef1fc9a75be2319232cce41ae2834266c4737733232ec28004d6cc"
+      "sha256": "06f8f36fae1c1a5238d55b4ce2fbf1115a241f2e31ffeff657de4cb7cae181e1"
     },
     {
       "path": "de/search.html",
@@ -236,11 +236,11 @@
     },
     {
       "path": "ja/index.html",
-      "sha256": "6e3954aed9d4a2249aa03cfc10d4ad8917325bae7668b397d890948b7ab8dd45"
+      "sha256": "cb15b71cbfeffc06cb312e295f9a3c507912486b68c5db977e9fd8249f05588e"
     },
     {
       "path": "ja/about.html",
-      "sha256": "e0436993e9b662cba48cb3f6e2bd65073ec1317c34de9ae3ab21190769077389"
+      "sha256": "b810d788e503eb63fb2e6816a03e2ce209466db90bfa4de4bfa275095f5fa9f2"
     },
     {
       "path": "ja/manufacturing-quality.html",
@@ -264,19 +264,19 @@
     },
     {
       "path": "ja/BP-1P-0003.html",
-      "sha256": "3d2c22ad2b0098fb099fbc97e49332994909010a1b181c1be210c5bc57be9900"
+      "sha256": "82c47891a7691b3af4c9cc138070a56d4b5ebefb08da716cd1fe12e0691c017c"
     },
     {
       "path": "ja/BP-1P-0006.html",
-      "sha256": "4ca78d7263b76360200e1f79ad5e2c1feb68848eaa60cc43de71e26b8105eb15"
+      "sha256": "bef68bbe41627b52b359f121f6f6bc8ee225c05738087a073dc0537a240564d8"
     },
     {
       "path": "ja/BP-2P-0001.html",
-      "sha256": "d5491573cda481a597960cdbe933b4a70d724e7566126568794e9a8b35be0b29"
+      "sha256": "e612d7764ed8bcdd8fd6c2e585b6aed8b60bbd31f4961628ea3775a7bcaf7bc8"
     },
     {
       "path": "ja/BP-2P-0002.html",
-      "sha256": "f11a68654ed2605bdae4e02115d4d364a963f189f75d4f25532d82a8aa38f09e"
+      "sha256": "e64b85b02e425cf1e5bf984509ab787cbd4ac2345632033245162d3ef4ce4f69"
     },
     {
       "path": "ja/BP-2P-08-0001.html",
@@ -284,23 +284,23 @@
     },
     {
       "path": "ja/BP-2P-130-0001.html",
-      "sha256": "de67e8f2a25c88ad34319571d442b4f6a3ded0bd93e8f0cb8a4fcf16cbdecb92"
+      "sha256": "4d4afab2c1f49aad653ed156bdf54f1ea41051de1ad384a398222ad9bc9ea7c3"
     },
     {
       "path": "ja/BP-2P-16-0001.html",
-      "sha256": "c485dfc3f0e8bbf8a2bd155037c820041f521abafbd3674098ed027411172947"
+      "sha256": "1b03375f3ce95c68361650ef9a96cec39db8f1b2ddbf8a72a2e18edabcc05219"
     },
     {
       "path": "ja/BP-2P-30-0001.html",
-      "sha256": "79d7fc62081b15e2794f09ab89130321e2c664a5e51f5774381720905066b711"
+      "sha256": "dc35cdf1c8c5c1a8b6920d8a8c912b4c8b86411fb9090610320264c24c468ee3"
     },
     {
       "path": "ja/BP-2P-50-0001.html",
-      "sha256": "896b3ee26d52971206c83d12b870d5ec25ba5b8e9159e4ee17138d0f89724e21"
+      "sha256": "1e7cdfd8d6d50977a4e8cc1704d5e7c664e8235d269821b06907a3b258005086"
     },
     {
       "path": "ja/BP-2P-95-0005.html",
-      "sha256": "3617c0db4c1cd70d2283b1d67fb7cdc22df6814a6cdb6f7fd51a4c7e88f01a96"
+      "sha256": "b69d55ecec14d1fa197c1215aca3661124854a8d8f8d60485ee6e7743543a8a9"
     },
     {
       "path": "ja/BP-3P-0004.html",
@@ -308,23 +308,23 @@
     },
     {
       "path": "ja/BP-3P-0006.html",
-      "sha256": "f1c4f6d0896f3b5b6a3a110be6fedc3e8aab3af7be1b57d45bedc007b891ec2b"
+      "sha256": "ec8b8bb174eac6a7b423afd34f63b5c360c73a7d25954bd9961365cf6486bdde"
     },
     {
       "path": "ja/BP-3P-0007.html",
-      "sha256": "0dd493f8685654f1c9acc2da721cfca6120aef2fcdba32da7b6710e1508f1fd3"
+      "sha256": "a330a04eb041f353e8bedf207178a17d06c238f432ef464be299154de4b37929"
     },
     {
       "path": "ja/BP-3P-S06-0001.html",
-      "sha256": "29fd1e82df0c7b075db65bdd558dd5754209e1960a310ddd5390dd7809d116a2"
+      "sha256": "5940ae2022dd43fe8e9db52fb45d7a44b081c41b272041cbd0b12cb7ca0413b3"
     },
     {
       "path": "ja/BP-4P-30-0001.html",
-      "sha256": "706d400229e78f8dd0c1109d561468cfe4aeeae0fa4ac9b997f63476989275d1"
+      "sha256": "e19050cdb63b1fb389a5d9954343e48824862bcb1db7a36cf3b7e5ab4cf3bc9b"
     },
     {
       "path": "ja/BP-8P-0001.html",
-      "sha256": "d35e0bacf203ff73db20acb6b826d4bda58e499162169e32e67b1fcf696fb005"
+      "sha256": "3a8bbe1a43e2e64496e95478e4c54488b8b0d07eaaa8be6600a1f0b256e84f55"
     },
     {
       "path": "ja/applications.html",
@@ -440,7 +440,7 @@
     },
     {
       "path": "ja/contact.html",
-      "sha256": "6a1412046edde6e66f5fb11b87078fadd1f633bc41a7dad7f6541d032f738449"
+      "sha256": "46babb60ca9b0947ea8b6fac31573e5e7244d09ef464b27c149af4eee03b974b"
     },
     {
       "path": "ja/search.html",
@@ -468,7 +468,7 @@
     },
     {
       "path": "ru/about.html",
-      "sha256": "f97c29882f6c38bcf2681b5283fd61ae5dd0ff35241bd4d1ca306d7c505f10af"
+      "sha256": "3676e5553caaec50aa48a0dcee1671188ed345dce963b11a6c5c5944cd815cbd"
     },
     {
       "path": "ru/manufacturing-quality.html",
@@ -492,19 +492,19 @@
     },
     {
       "path": "ru/BP-1P-0003.html",
-      "sha256": "9e52a473efe04cda58524ffd2609be94c9a181b273b207bd735e9f651d8917d6"
+      "sha256": "f73cd9062ceabb78bb9c6b598a478e0e19482771eae62f44185b0092bd2b1d20"
     },
     {
       "path": "ru/BP-1P-0006.html",
-      "sha256": "1487ee9ca0dd5c6cb812893a4b132ad5ef2f642f5e91b3e1f17a5d0120dc6331"
+      "sha256": "07b12efd2d67fcf24b8616870a5a9ff3e87c2139b7d9eccb4815f4bb19bf8ca5"
     },
     {
       "path": "ru/BP-2P-0001.html",
-      "sha256": "d3d3ce32080f4db611429e684df0a32f955e34e6b6064063fc3b8886d95de8d7"
+      "sha256": "0f62d9b76ec920c29f67c5ff628c72bf087aa9128c801010008313b173fa8b5a"
     },
     {
       "path": "ru/BP-2P-0002.html",
-      "sha256": "0630fc27564fb6a6dddd78f4a51911867a350cec4b00dd6537ca0f40079255a4"
+      "sha256": "7275c60ffff967daf5d82c2b1207307f9cc07da2483cedb1d42e63c605ccc8ff"
     },
     {
       "path": "ru/BP-2P-08-0001.html",
@@ -512,23 +512,23 @@
     },
     {
       "path": "ru/BP-2P-130-0001.html",
-      "sha256": "958c00777bf65fcaac02f07582a4cd4f2f05d039cbb7b5967fdd890786081a5f"
+      "sha256": "f2b9ce31981eafd9f6627d38b5934e02871fa5c426c7c644bcc9dc97dcb66f3b"
     },
     {
       "path": "ru/BP-2P-16-0001.html",
-      "sha256": "9b9b71a6c0eec672909b6d2cc65a988f25dc52eaaf49225ef3040bdd1ca13a19"
+      "sha256": "9bbac1878581b5f72bd6948d973da6ba346f4c169d218e386e68b2d0d4ed1336"
     },
     {
       "path": "ru/BP-2P-30-0001.html",
-      "sha256": "8a69c7a59915fd49a85d920c8baa1c6d783a6e9d6ad3e053d5034ff0e1ca75c0"
+      "sha256": "3255aea754503d3b529ee5dd124d69eb2344231d623d4e60ecf51dfb7ca855d1"
     },
     {
       "path": "ru/BP-2P-50-0001.html",
-      "sha256": "4c379e88088fe49474be0937e92f8668a87db4c835b95083826fcd3680442945"
+      "sha256": "d026e83e42a7eea4afd323942e893e0643d568fccc03adb2e5a9cf08f72208a3"
     },
     {
       "path": "ru/BP-2P-95-0005.html",
-      "sha256": "dca9476014d37996328da83a02167733564525f254b72cd212344eba7cea700a"
+      "sha256": "b8de6995fa758896794d84134fa2b662c9b15f4cf162b25738e8c9c54ebf7a1c"
     },
     {
       "path": "ru/BP-3P-0004.html",
@@ -536,23 +536,23 @@
     },
     {
       "path": "ru/BP-3P-0006.html",
-      "sha256": "3771c7aad5d2d31381119d0ebf3e7370baa950ebbd5c6384ca3e5f9028811ebe"
+      "sha256": "59d6c13db48dd5c9bca26c4b4859ae58f6decf33da681aefac1a7b95a52c3770"
     },
     {
       "path": "ru/BP-3P-0007.html",
-      "sha256": "da7f1e4957899e4c46b8f7f44d282c1a240bb8ecb9038edef8e2201199f7f0f1"
+      "sha256": "542adb5f559d4c66262c7de65ef48273716c18d746f8ba1ce85859ed1d8aa509"
     },
     {
       "path": "ru/BP-3P-S06-0001.html",
-      "sha256": "78b9c948ac4cf61991b3f107969a6408cf9959a6de11d5130db2bef2c83e63bf"
+      "sha256": "c870d36bd1a33ab2562e25e720b7e749c1bcbf357c9c067e34f292b3138123c4"
     },
     {
       "path": "ru/BP-4P-30-0001.html",
-      "sha256": "87cbbb3e5f97ab059ddce526b8da8f3092e286c0c21ee6773dbf57ec0545c770"
+      "sha256": "531c8cb82f2df66f4d1239e1e82a48257169b54664650f0c3d912bd3fc88bb17"
     },
     {
       "path": "ru/BP-8P-0001.html",
-      "sha256": "7f3d558ac1d23c51af85b22ee886ecb37b93b79d8b9254ec9022cb2aea1adaf1"
+      "sha256": "6a5bbc8312c49386e7b044f59d6df3c8fcb86381281e1a7cb8e587fdef438d56"
     },
     {
       "path": "ru/applications.html",
@@ -668,7 +668,7 @@
     },
     {
       "path": "ru/contact.html",
-      "sha256": "a9410ecce31687f0c0851c3d840759873d814a1dd9bd4775845e36de768c024b"
+      "sha256": "e9dbea624abd8d04696950c3b396ae9a1b8f47484fb2b7a17cc05787d86feb14"
     },
     {
       "path": "ru/search.html",

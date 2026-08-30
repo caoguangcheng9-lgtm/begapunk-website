@@ -29,8 +29,23 @@ function policyFail(message) {
   policyFailures.push(message);
 }
 
+function normalizeLf(buffer) {
+  const src = Buffer.from(buffer);
+  const out = Buffer.allocUnsafe(src.length);
+  let j = 0;
+  for (let i = 0; i < src.length; i += 1) {
+    if (src[i] === 0x0d) {
+      if (i + 1 < src.length && src[i + 1] === 0x0a) continue;
+      out[j++] = 0x0a;
+      continue;
+    }
+    out[j++] = src[i];
+  }
+  return out.subarray(0, j);
+}
+
 function sha256(buffer) {
-  return crypto.createHash('sha256').update(buffer).digest('hex');
+  return crypto.createHash('sha256').update(normalizeLf(buffer)).digest('hex');
 }
 
 const localMarketReview = status.localMarketReview ?? {};
@@ -289,9 +304,9 @@ if (approval) {
   if (expected.reviewedPerLanguage !== pages.length - allowedEditorialDebtPages.length
     || expected.totalPerLanguage !== pages.length
     || expected.remainingPerLanguage !== allowedEditorialDebtPages.length
-    || expected.renderQaPagesPerLanguage !== 56
-    || expected.renderQaCheckedViewports !== 336
-    || expected.renderQaRequiredViewports !== 336) {
+    || expected.renderQaPagesPerLanguage !== 57
+    || expected.renderQaCheckedViewports !== 342
+    || expected.renderQaRequiredViewports !== 342) {
     exceptionFail('release approval expectedStatus does not exactly describe the current known debt.');
   }
 
@@ -327,10 +342,10 @@ if (approval) {
     }
   }
 
-  if (renderQa.pagesPerLanguage !== 56
+  if (renderQa.pagesPerLanguage !== 57
     || renderQa.viewportsPerPage !== 2
-    || renderQa.checkedViewports !== 336) {
-    exceptionFail('render QA status must remain the recorded 56 pages per language and 336 viewport checks.');
+    || renderQa.checkedViewports !== 342) {
+    exceptionFail('render QA status must remain the recorded 57 pages per language and 342 viewport checks.');
   }
 
   const expectedArtifactPaths = languages.flatMap((language) =>

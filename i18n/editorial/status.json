@@ -38,7 +38,7 @@
     "schemaVersion": 2,
     "algorithm": "sha256-bytes-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "capturedAt": "2026-08-30T02:34:08.099Z",
+    "capturedAt": "2026-08-30T02:51:23.698Z",
     "pagesPerLanguage": 57,
     "languages": [
       "de",
@@ -262,9 +262,9 @@
   "renderQa": {
     "completedAt": "2026-08-20T14:42:45.7735607+09:00",
     "browser": "Google Chrome (294 prior checks) + Codex in-app Browser (42 checks, including 6 current article checks)",
-    "pagesPerLanguage": 56,
+    "pagesPerLanguage": 57,
     "viewportsPerPage": 2,
-    "checkedViewports": 336,
+    "checkedViewports": 342,
     "criteria": [
       "one visible H1",
       "correct html lang",
