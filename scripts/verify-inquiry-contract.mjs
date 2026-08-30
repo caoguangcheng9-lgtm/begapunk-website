@@ -78,6 +78,7 @@ const INQUIRY_TYPE_CODE_MAP = {
   'technical_consultation': 'technical_consultation',
   'technical-consultation': 'technical_consultation',
   'general_inquiry': 'general_inquiry',
+  hydraulic: 'hydraulic',
 };
 const STABLE_CODES = new Set([
   'quote',
@@ -87,6 +88,7 @@ const STABLE_CODES = new Set([
   'verified_drawing',
   'technical_consultation',
   'general_inquiry',
+  'hydraulic',
 ]);
 const RFQ_NESTED_KEYS = Object.freeze({
   requestTemplates: [...STABLE_CODES],
@@ -551,7 +553,7 @@ for (const page of pages) {
       sameKeys(Object.keys(page.copy), [...Object.keys(RFQ_NESTED_KEYS), ...RFQ_SCALAR_KEYS]),
       `${page.file}: Contact RFQ top-level keys differ from the approved contract.`,
     );
-    check(stringLeafCount(page.copy) === 22, `${page.file}: Contact RFQ data must contain exactly 22 string leaves.`);
+    check(stringLeafCount(page.copy) === 23, `${page.file}: Contact RFQ data must contain exactly 23 string leaves.`);
     for (const [group, expectedKeys] of Object.entries(RFQ_NESTED_KEYS)) {
       check(
         page.copy[group] && typeof page.copy[group] === 'object' && !Array.isArray(page.copy[group]),

@@ -1249,5 +1249,8 @@
   "See rotary joints installed in CNC fixtures, bottle-capping machines, and laser tube cutting rear chucks.": "CNC治具、キャッピング機、レーザー管切断機の後方チャックにロータリージョイントを組み込んだ例をご覧いただけます。",
   "Use these links to narrow the model, see rotary joints installed in real equipment, or understand how finished units are tested.": "以下のページで候補型式を絞り込み、実機への組込み例や完成品の検査工程を確認できます。",
   "View installations →": "組込み例を見る →",
-  "View the testing process →": "検査工程を見る →"
+  "View the testing process →": "検査工程を見る →",
+  "Hydraulic / other media — oil, water, or coolant": "液圧・その他流体（作動油・水・クーラント）",
+  "Hydraulic oil, water, or coolant? Choose Hydraulic / other media and tell us the medium and pressure. Catalog models are pneumatic.": "作動油・水・クーラントの場合は「液圧・その他流体」を選び、流体と圧力を書いてください。カタログ機種は空圧です。",
+  "Please review a custom hydraulic, oil, water, or coolant rotary union. Medium and pressure:": "特注の液圧・作動油・水・クーラント用ロータリージョイントを検討してください。流体と圧力："
 }

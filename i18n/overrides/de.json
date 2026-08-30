@@ -1199,5 +1199,8 @@
   "See rotary joints installed in CNC fixtures, bottle-capping machines, and laser tube cutting rear chucks.": "Sehen Sie Drehdurchführungen in CNC-Spannvorrichtungen, Flaschenverschließmaschinen und hinteren Spannfuttern von Laser-Rohrschneidmaschinen.",
   "Use these links to narrow the model, see rotary joints installed in real equipment, or understand how finished units are tested.": "Über die folgenden Links können Sie Modelle eingrenzen, Drehdurchführungen in realen Maschinen ansehen und den Prüfablauf für fertige Einheiten kennenlernen.",
   "View installations →": "Einbauten ansehen →",
-  "View the testing process →": "Prüfablauf ansehen →"
+  "View the testing process →": "Prüfablauf ansehen →",
+  "Hydraulic / other media — oil, water, or coolant": "Hydraulik / anderes Medium — Öl, Wasser oder Kühlmittel",
+  "Hydraulic oil, water, or coolant? Choose Hydraulic / other media and tell us the medium and pressure. Catalog models are pneumatic.": "Hydrauliköl, Wasser oder Kühlmittel? Wählen Sie „Hydraulik / anderes Medium“ und nennen Sie Medium und Druck. Katalogmodelle sind pneumatisch.",
+  "Please review a custom hydraulic, oil, water, or coolant rotary union. Medium and pressure:": "Bitte prüfen Sie eine hydraulische Drehdurchführung für Öl, Wasser oder Kühlmittel. Medium und Druck:"
 }

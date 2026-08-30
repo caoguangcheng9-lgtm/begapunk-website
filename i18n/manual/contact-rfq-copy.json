@@ -23,7 +23,8 @@
         "seal_review": "Bitte prüfen Sie die Dichtungsverträglichkeit für diese Betriebsbedingungen.",
         "verified_drawing": "Bitte prüfen Sie die markierte Schnittstelle oder die markierten Maße für dieses Modell.",
         "technical_consultation": "Ich habe eine technische Frage zu diesem Modell oder dieser Anwendung.",
-        "general_inquiry": "Bitte prüfen Sie die folgenden Angaben und teilen Sie mir den nächsten Schritt mit."
+        "general_inquiry": "Bitte prüfen Sie die folgenden Angaben und teilen Sie mir den nächsten Schritt mit.",
+        "hydraulic": "Bitte prüfen Sie eine hydraulische Drehdurchführung für Öl, Wasser oder Kühlmittel. Medium und Druck:"
       },
       "modelRequestTemplates": {
         "3d_step": "Bitte senden Sie mir die aktuelle STEP-Datei für {model}."
@@ -53,7 +54,8 @@
         "seal_review": "この使用条件に対するシール適合性を確認してください。",
         "verified_drawing": "この型式の指定した取合いまたは寸法を確認してください。",
         "technical_consultation": "この型式または用途について技術的な質問があります。",
-        "general_inquiry": "以下の内容を確認し、次の手順をご案内ください。"
+        "general_inquiry": "以下の内容を確認し、次の手順をご案内ください。",
+        "hydraulic": "特注の液圧・作動油・水・クーラント用ロータリージョイントを検討してください。流体と圧力："
       },
       "modelRequestTemplates": {
         "3d_step": "{model} の最新STEPデータを送ってください。"
@@ -83,7 +85,8 @@
         "seal_review": "Проверьте совместимость уплотнений с этими условиями эксплуатации.",
         "verified_drawing": "Проверьте отмеченный интерфейс или размеры для этой модели.",
         "technical_consultation": "У меня есть технический вопрос по этой модели или области применения.",
-        "general_inquiry": "Проверьте информацию ниже и сообщите следующий шаг."
+        "general_inquiry": "Проверьте информацию ниже и сообщите следующий шаг.",
+        "hydraulic": "Проверьте индивидуальное гидравлическое соединение для масла, воды или СОЖ. Среда и давление:"
       },
       "modelRequestTemplates": {
         "3d_step": "Пожалуйста, отправьте актуальный STEP-файл для {model}."

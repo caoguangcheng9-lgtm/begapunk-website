@@ -187,7 +187,7 @@ const translatableMetaSelectors = [
   'meta[name="twitter:description"]',
 ];
 const contactRfqNestedKeys = Object.freeze({
-  requestTemplates: ['quote', '3d_step', 'application_review', 'seal_review', 'verified_drawing', 'technical_consultation', 'general_inquiry'],
+  requestTemplates: ['quote', '3d_step', 'application_review', 'seal_review', 'verified_drawing', 'technical_consultation', 'general_inquiry', 'hydraulic'],
   modelRequestTemplates: ['3d_step'],
   requiredFields: ['email', 'requirements'],
 });
@@ -2985,8 +2985,8 @@ async function verifyContactGeneration(catalog) {
       try {
         jsonCopy = JSON.parse(rawJson);
         assertContactRfqCopy(jsonCopy, `${fileLabel} ${side}`);
-        if (stringLeafCount(jsonCopy) !== 22) {
-          mismatches.push(`${fileLabel} [${jsonScope}] ${side}: expected 22 non-empty string leaves.`);
+        if (stringLeafCount(jsonCopy) !== 23) {
+          mismatches.push(`${fileLabel} [${jsonScope}] ${side}: expected 23 non-empty string leaves.`);
         }
         if (rawJson.includes('<') || rawJson.includes('\u2028') || rawJson.includes('\u2029')) {
           mismatches.push(

@@ -1221,5 +1221,8 @@
   "See rotary joints installed in CNC fixtures, bottle-capping machines, and laser tube cutting rear chucks.": "Посмотрите, как ротационные соединения установлены в оснастке станка с ЧПУ, укупорочной машине и заднем патроне станка лазерной резки труб.",
   "Use these links to narrow the model, see rotary joints installed in real equipment, or understand how finished units are tested.": "По ссылкам ниже можно сузить выбор модели, увидеть ротационные соединения на реальном оборудовании и узнать, как испытываются готовые изделия.",
   "View installations →": "Посмотреть установки →",
-  "View the testing process →": "Посмотреть процесс испытаний →"
+  "View the testing process →": "Посмотреть процесс испытаний →",
+  "Hydraulic / other media — oil, water, or coolant": "Гидравлика / другая среда — масло, вода или СОЖ",
+  "Hydraulic oil, water, or coolant? Choose Hydraulic / other media and tell us the medium and pressure. Catalog models are pneumatic.": "Гидравлическое масло, вода или СОЖ? Выберите «Гидравлика / другая среда» и укажите среду и давление. Каталог — пневматический.",
+  "Please review a custom hydraulic, oil, water, or coolant rotary union. Medium and pressure:": "Проверьте индивидуальное гидравлическое соединение для масла, воды или СОЖ. Среда и давление:"
 }
