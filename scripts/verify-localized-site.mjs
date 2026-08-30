@@ -237,9 +237,9 @@ const navigationExpected = {
 const footerStructureSignatures = new Map();
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
 const footerStyleVersion = '20260817-cls1';
-const homepageStyleVersion = '20260819-home-clean1';
+const homepageStyleVersion = '20260829-hero-hyd1';
 const englishFooterStyleVersion = '20260825-nav-compact1';
-const englishHomepageStyleVersion = '20260825-home-nav-compact1';
+const englishHomepageStyleVersion = '20260829-hero-hyd1';
 const footerSocial = [
   ['https://www.linkedin.com/in/guangcheng-cao/', 'LinkedIn'],
   ['https://www.youtube.com/@BEGAPUNKRotaryJointsTV', 'YouTube'],
@@ -1931,9 +1931,9 @@ const bottleCappingAlternativeBoundary = {
 };
 const bottleCappingAlternativeApplicationBoundary = {
   en: /BP-2P-08-0001[\s\S]{0,180}another option[\s\S]{0,260}installation shown uses BP-2P-16-0001[\s\S]{0,320}compare the passage count, mounting interface, pressure, speed, and dimensions/i,
-  de: /BP-2P-08-0001[\s\S]{0,180}weitere Option[\s\S]{0,260}gezeigten Einbau wird BP-2P-16-0001 verwendet[\s\S]{0,320}Kanalzahl, Einbauschnittstelle, Druck, Drehzahl und Abmessungen/iu,
+  de: /BP-2P-08-0001[\s\S]{0,180}weitere Option[\s\S]{0,260}gezeigten Einbau wird BP-2P-16-0001 verwendet[\s\S]{0,320}Zahl der Wege, Einbauschnittstelle, Druck, Drehzahl und Abmessungen/iu,
   ja: /BP-2P-08-0001[\s\S]{0,180}候補です。[\s\S]{0,260}写真の設備ではBP-2P-16-0001を使用しています。[\s\S]{0,320}流路数、取付インターフェース、圧力、回転数、寸法/u,
-  ru: /BP-2P-08-0001[\s\S]{0,180}ещё один вариант[\s\S]{0,260}показанной установке используется BP-2P-16-0001[\s\S]{0,320}число каналов, монтажный интерфейс, давление, частоту вращения и размеры/iu,
+  ru: /BP-2P-08-0001[\s\S]{0,180}ещё один вариант[\s\S]{0,260}показанной установке используется BP-2P-16-0001[\s\S]{0,320}число проходов, монтажный интерфейс, давление, частоту вращения и размеры/iu,
 };
 
 const cncSawApplicationPageName = 'application-cnc-pneumatic-clamping.html';
@@ -2848,8 +2848,8 @@ for (const language of verifiedLanguages) {
     try {
       const bottleSearchIndex = JSON.parse(await fs.readFile(path.join(languageRoot, 'search-index.json'), 'utf8'));
       const bottleApplicationRecords = bottleSearchIndex.filter((entry) => entry.url === bottleCappingPageName);
-      if (bottleApplicationRecords.length !== 0) {
-        failures.push(`${language.code}/search-index.json: discovery-excluded bottle-capping application page must remain absent.`);
+      if (bottleApplicationRecords.length !== 1) {
+        failures.push(`${language.code}/search-index.json: published bottle-capping application page must remain in search.`);
       }
       const bottleProductRecords = bottleSearchIndex.filter((entry) => entry.url === bottleCappingProductPageName);
       const bottleProductRecordText = compactText(JSON.stringify(bottleProductRecords[0] || {}));

@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-08-28T06:07:38.868Z",
+  "generatedAt": "2026-08-30T02:14:26.631Z",
   "pages": [
     "index.html",
     "about.html",
@@ -689,6 +689,20 @@
       ]
     },
     {
+      "id": "8e778c5f9d587db3",
+      "source": "<a href=\"custom-hydraulic-rotary-unions.html\">Custom Hydraulic Rotary Unions</a>",
+      "pages": [
+        "applications.html"
+      ]
+    },
+    {
+      "id": "7b86860037700c2b",
+      "source": "<a href=\"custom-hydraulic-rotary-unions.html\">Need hydraulic oil, water, or coolant? Custom rotary joints</a>",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
       "id": "e01b86b50ee5b78f",
       "source": "<a href=\"faq.html\">FAQ: media, pressure, RPM, custom design, delivery, and warranty</a>",
       "pages": [
@@ -937,15 +951,15 @@
       ]
     },
     {
-      "id": "d71a8f75c2ddeb84",
-      "source": "<img src=\"images/optimized/products/BP-4P-30-0001/BP-4P-30-0001.webp\" alt=\"BP-4P-30-0001 4-passage pneumatic rotary union\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">June 2026</span>\n                <strong>BP-4P-30-0001</strong>\n                <small>4-channel flange mount rotary union with 30mm bore</small>",
+      "id": "6895297ecb13d874",
+      "source": "<img src=\"images/optimized/products/BP-4P-30-0001/BP-4P-30-0001.webp\" alt=\"BP-4P-30-0001 4-passage pneumatic rotary union\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">June 2026</span>\n                <strong>BP-4P-30-0001</strong>\n                <small>4-passage flange mount rotary union with 30mm bore</small>",
       "pages": [
         "index.html"
       ]
     },
     {
-      "id": "83beb112ad2882b2",
-      "source": "<img src=\"images/optimized/products/BP-8P-0001-1.webp\" alt=\"BP-8P-0001 8-passage pneumatic rotary union\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">May 2026</span>\n                <strong>BP-8P-0001</strong>\n                <small>8-passages for high-channel pneumatic transfer</small>",
+      "id": "75efa9e7ab849714",
+      "source": "<img src=\"images/optimized/products/BP-8P-0001-1.webp\" alt=\"BP-8P-0001 8-passage pneumatic rotary union\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">May 2026</span>\n                <strong>BP-8P-0001</strong>\n                <small>8-passages for high-passage pneumatic transfer</small>",
       "pages": [
         "index.html"
       ]
@@ -1154,81 +1168,6 @@
       ]
     },
     {
-      "id": "b00db1452ff0e7b6",
-      "source": "<strong style=\"color:var(--dark-soft);\">100% Leak Testing</strong>\n       <span style=\"color:var(--text-light);font-size:0.92rem;line-height:1.6;\">See the current passage-by-passage production inspection process.</span>",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
-      "id": "ecfa7df18d7a6db2",
-      "source": "<strong style=\"color:var(--dark-soft);\">Case Studies</strong>\n       <span style=\"color:var(--text-light);font-size:0.92rem;line-height:1.6;\">See real machine installations and practical integration details.</span>",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
-      "id": "f45d8b8569e3aa51",
-      "source": "<strong style=\"color:var(--dark-soft);\">Contact</strong>\n       <span style=\"color:var(--text-light);font-size:0.92rem;line-height:1.6;\">Send your actual medium, pressure, speed, passage count, mounting, and duty-cycle requirements for an application-specific review.</span>",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
-      "id": "036b7f9ce2daa5e9",
-      "source": "<strong style=\"color:var(--dark-soft);\">Manufacturing &amp; Quality</strong>\n       <span style=\"color:var(--text-light);font-size:0.92rem;line-height:1.6;\">See how components are manufactured and inspected.</span>",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
-      "id": "e1c1691751ffda24",
-      "source": "<strong style=\"color:var(--dark-soft);\">Product Catalog</strong>\n       <span style=\"color:var(--text-light);font-size:0.92rem;line-height:1.6;\">Review current model pages and published specifications.</span>",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
       "id": "d792015390617c07",
       "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">Air performance</strong>\n       <span>Provide supply pressure, peak flow, duty cycle, air quality, lubrication practice, and the minimum pressure required at the tool.</span>",
       "pages": [
@@ -1432,6 +1371,13 @@
       ]
     },
     {
+      "id": "c34c7f8974efae36",
+      "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">List each air circuit</strong>\n       <span>Include medium, pressure, flow, passage function, valve location, and simultaneous demand.</span>",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
       "id": "9bb971f7d23da075",
       "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">Loads and alignment</strong>\n       <span>Support hoses and manifolds independently so table runout, bending load, or anti-rotation hardware does not load the rotary union.</span>",
       "pages": [
@@ -1446,8 +1392,8 @@
       ]
     },
     {
-      "id": "bdc7d1426a9bf147",
-      "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">Mark the rotating circuits</strong>\n       <span>Label clamp, release, vacuum, blow-off, and any other functions on the pneumatic diagram.</span>",
+      "id": "4f78cacb1256f9e7",
+      "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">Mark the rotating circuits</strong>\n       <span>Label clamp, release, blow-off, and any other air functions on the pneumatic diagram.</span>",
       "pages": [
         "application-packaging-machinery.html"
       ]
@@ -1518,13 +1464,6 @@
     {
       "id": "8fe7a81897a0176e",
       "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">Provide the motion profile</strong>\n       <span>Include axis range, speed, acceleration, reversals, cycle time, and expected operating hours.</span>",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
-      ]
-    },
-    {
-      "id": "d33c9f815314f915",
-      "source": "<strong style=\"display:block;margin-bottom:5px;color:var(--dark-soft);\">Provide the service map</strong>\n       <span>List medium, pressure, flow, passage function, valve location, and simultaneous demand.</span>",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
@@ -2850,14 +2789,6 @@
       ]
     },
     {
-      "id": "7ada6b4424109315",
-      "source": "1-Channel",
-      "pages": [
-        "products-p2.html",
-        "products.html"
-      ]
-    },
-    {
       "id": "18624ab911e7e132",
       "source": "1-In 8-Out",
       "pages": [
@@ -2869,6 +2800,14 @@
       "source": "1-in-8-out, 4 mm orifice",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "9854d4257b06259e",
+      "source": "1-Passage",
+      "pages": [
+        "products-p2.html",
+        "products.html"
       ]
     },
     {
@@ -3020,17 +2959,17 @@
       ]
     },
     {
-      "id": "7c4fdd83eaafe13c",
-      "source": "2-Channel",
+      "id": "d7015bd3b49b6929",
+      "source": "2-in-2-out",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
     {
-      "id": "d7015bd3b49b6929",
-      "source": "2-in-2-out",
+      "id": "c0e4a4bbe641e901",
+      "source": "2-Passage",
       "pages": [
+        "products-p2.html",
         "products.html"
       ]
     },
@@ -3136,8 +3075,8 @@
       ]
     },
     {
-      "id": "52b63decd7bb079b",
-      "source": "3-Channel",
+      "id": "3168c25e5cd2945e",
+      "source": "3-Passage",
       "pages": [
         "products-p2.html",
         "products.html"
@@ -3221,8 +3160,8 @@
       ]
     },
     {
-      "id": "20feba66f32d38fb",
-      "source": "4-Channel+",
+      "id": "26bb427d96fdfd3e",
+      "source": "4-Passage+",
       "pages": [
         "products-p2.html",
         "products.html"
@@ -3413,6 +3352,13 @@
       ]
     },
     {
+      "id": "59058e3148ae3b79",
+      "source": "A capping-head model, photo, or drawing is enough to start. We will compare BP-2P-16-0001 and other 2-passage air catalog models against the interface.",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
       "id": "12b5c1939ba78d23",
       "source": "A chuck model, photo, or drawing is enough to start",
       "pages": [
@@ -3441,10 +3387,10 @@
       ]
     },
     {
-      "id": "3f741378d3a986d3",
-      "source": "A defensible material-selection sequence",
+      "id": "b3b4821e25553414",
+      "source": "A customer-authorized production photograph shows BP-2P-16-0001 feeding two independent air passages to a three-jaw bottle-cap gripper.",
       "pages": [
-        "blog-rotary-joint-materials.html"
+        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -3511,6 +3457,13 @@
       ]
     },
     {
+      "id": "485fc40ca74aa031",
+      "source": "A practical material-selection sequence",
+      "pages": [
+        "blog-rotary-joint-materials.html"
+      ]
+    },
+    {
       "id": "384a9a20bd3c1d02",
       "source": "A practical mounting decision process",
       "pages": [
@@ -3529,13 +3482,6 @@
       "source": "A protective shroud or labyrinth helps limit direct particle exposure. Water, washdown, and coolant exposure require a separate review of the complete installation and selected configuration.",
       "pages": [
         "application-steel-dusty-environments.html"
-      ]
-    },
-    {
-      "id": "083d15cec0e399a6",
-      "source": "A reliable recommendation starts with the actual medium, pressure, speed, passage count, mounting space, environment, and duty cycle. Match these inputs to the current product page and model-specific drawing.",
-      "pages": [
-        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -3606,13 +3552,6 @@
       "source": "A threaded connection can be compact and direct, but thread engagement, sealing method, installation torque, orientation, and removal access all matter. The surrounding structure must prevent hoses or fittings from imposing bending or torsional load on the union.",
       "pages": [
         "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
-      "id": "eec88937937455ed",
-      "source": "A useful EOAT selection package",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -3733,13 +3672,6 @@
       ]
     },
     {
-      "id": "8127b08354f14a88",
-      "source": "Air / hydraulic oil",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
       "id": "abab92561dc658a0",
       "source": "Air and vacuum rotary transfer for rotary packaging turrets, sealing heads, and pouch handling stations.",
       "pages": [
@@ -3811,36 +3743,8 @@
       ]
     },
     {
-      "id": "50b9de4bec43a865",
-      "source": "Air Rotary Union for Automation Rotary Tables: Selection Guide",
-      "pages": [
-        "application-automation-rotary-tables.html"
-      ]
-    },
-    {
-      "id": "79b084fea0747d44",
-      "source": "Air Rotary Union for Automation Rotary Tables: Selection Guide | Begapunk",
-      "pages": [
-        "application-automation-rotary-tables.html"
-      ]
-    },
-    {
       "id": "adf9b226634e96c1",
       "source": "Air Rotary Union for Bottle Filling and Capping Machines",
-      "pages": [
-        "application-bottle-filling-capping.html"
-      ]
-    },
-    {
-      "id": "d6f88bc464e96200",
-      "source": "Air Rotary Union for Bottle Filling and Capping Machines: Selection Guide",
-      "pages": [
-        "application-bottle-filling-capping.html"
-      ]
-    },
-    {
-      "id": "5bf027e2d9f9ed23",
-      "source": "Air Rotary Union for Bottle Filling and Capping Machines: Selection Guide | Begapunk",
       "pages": [
         "application-bottle-filling-capping.html"
       ]
@@ -3867,20 +3771,6 @@
       ]
     },
     {
-      "id": "5ba46fa9b878bd7b",
-      "source": "Air Rotary Union for Packaging Machinery: Selection Guide",
-      "pages": [
-        "application-packaging-machinery.html"
-      ]
-    },
-    {
-      "id": "aa2955c688fea298",
-      "source": "Air Rotary Union for Packaging Machinery: Selection Guide | Begapunk",
-      "pages": [
-        "application-packaging-machinery.html"
-      ]
-    },
-    {
       "id": "1bc39693eab16cc8",
       "source": "Air rotary union for robot end-of-arm tooling",
       "pages": [
@@ -3890,20 +3780,6 @@
     {
       "id": "a414bd372941c792",
       "source": "Air Rotary Union for Robot End-of-Arm Tooling",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
-      ]
-    },
-    {
-      "id": "f8254a13ff3cdcc9",
-      "source": "Air Rotary Union for Robot End-of-Arm Tooling: Selection Guide",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
-      ]
-    },
-    {
-      "id": "ffe4719bb9d0b72b",
-      "source": "Air Rotary Union for Robot End-of-Arm Tooling: Selection Guide | Begapunk",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
@@ -3958,8 +3834,22 @@
       ]
     },
     {
+      "id": "a3ca9b1881310e0f",
+      "source": "Air Swivel for Pneumatic Tools & Hoses | Begapunk",
+      "pages": [
+        "application-pneumatic-tools-hose-anti-twist.html"
+      ]
+    },
+    {
       "id": "c0798ab671207789",
       "source": "Air Swivel for Pneumatic Tools &amp; Hoses | Begapunk",
+      "pages": [
+        "application-pneumatic-tools-hose-anti-twist.html"
+      ]
+    },
+    {
+      "id": "824fca9602e39e48",
+      "source": "Air Swivel for Pneumatic Tools and Hose Anti-Twist",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
       ]
@@ -3969,27 +3859,6 @@
       "source": "Air swivel rotary joint for pneumatic tools",
       "pages": [
         "index.html"
-      ]
-    },
-    {
-      "id": "36e9a1f7fa2e9349",
-      "source": "Air Swivel Rotary Joint for Pneumatic Tools and Hose Anti-Twist",
-      "pages": [
-        "application-pneumatic-tools-hose-anti-twist.html"
-      ]
-    },
-    {
-      "id": "517fce5b1bce6cb4",
-      "source": "Air Swivel Rotary Joint for Pneumatic Tools: Selection Guide",
-      "pages": [
-        "application-pneumatic-tools-hose-anti-twist.html"
-      ]
-    },
-    {
-      "id": "c8ef1662e4f9c648",
-      "source": "Air Swivel Rotary Joint for Pneumatic Tools: Selection Guide | Begapunk",
-      "pages": [
-        "application-pneumatic-tools-hose-anti-twist.html"
       ]
     },
     {
@@ -4069,6 +3938,13 @@
     {
       "id": "bf3f1e6a3b7b18b7",
       "source": "Aluminum keeps mass low and is readily machined; surface treatment and the operating environment influence corrosion and wear behavior. Stainless steel is often selected for stronger corrosion resistance or demanding cleaning environments, with greater mass, machining cost, and possible galling considerations. Brass machines well and is used in many air and water components, but compatibility still depends on fluid chemistry, temperature, and connected metals.",
+      "pages": [
+        "blog-rotary-joint-materials.html"
+      ]
+    },
+    {
+      "id": "96ad6f050cb3988f",
+      "source": "Aluminum vs Stainless Steel vs Brass for Rotary Union Bodies",
       "pages": [
         "blog-rotary-joint-materials.html"
       ]
@@ -4749,20 +4625,6 @@
       ]
     },
     {
-      "id": "ad508ca302f42daf",
-      "source": "Begapunk Rotary Joints",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "5b59e7a40c9962d5",
-      "source": "Begapunk Rotary Joints | Custom Multi-Passage Rotary Unions",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
       "id": "5875f9c7fb560ad9",
       "source": "Begapunk terms of service. Product warranties, delivery terms, and conditions of sale for rotary joints and rotary unions.",
       "pages": [
@@ -5163,6 +5025,13 @@
       "source": "BP-2P-16-0001 is installed in a production capping machine. Two independent passages carry compressed air for clamping and releasing the pneumatic three-jaw gripper.",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "1a495f2833d5bfa5",
+      "source": "BP-2P-16-0001 on a production bottle-capping head: two independent air passages clamp and release a three-jaw cap gripper. Compare BP-2P-08-0001 as another pneumatic gripper option.",
+      "pages": [
+        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -5900,13 +5769,6 @@
       ]
     },
     {
-      "id": "7bfb143c44e06650",
-      "source": "Choose an air swivel for pneumatic tools and hose anti-twist service by checking flow, pressure drop, movement, thread, hose load, and safety requirements.",
-      "pages": [
-        "application-pneumatic-tools-hose-anti-twist.html"
-      ]
-    },
-    {
       "id": "bc737dcf6ea9936e",
       "source": "Choose by Equipment",
       "pages": [
@@ -5939,6 +5801,13 @@
       "source": "Choose the next engineering step",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "c10fdc50e6dd79fd",
+      "source": "Choose threaded vs flange rotary-union mounting from envelope, alignment, anti-rotation, and service access—not from the union’s appearance alone.",
+      "pages": [
+        "blog-threaded-vs-flange.html"
       ]
     },
     {
@@ -6273,8 +6142,8 @@
       ]
     },
     {
-      "id": "d788aeaecf7f42c7",
-      "source": "Compare aluminum, stainless-steel, and brass rotary-union bodies by mass, corrosion environment, medium compatibility, strength, manufacturing, and lifecycle needs.",
+      "id": "218576cd10d89c43",
+      "source": "Compare aluminum, stainless-steel, and brass rotary-union bodies by mass and environment, then confirm the selected model’s published body material. This is not a ranking of which metal lasts longer.",
       "pages": [
         "blog-rotary-joint-materials.html"
       ]
@@ -6291,6 +6160,34 @@
       "source": "Compare Begapunk pneumatic rotary unions online by passage count, pressure, speed and mounting.",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "c10a9c74b0202d6d",
+      "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> as a starting point for air circuits. Each catalog page publishes its own MPa, RPM, body material, and PTFE + O-ring seal data; send the machine layout before treating any catalog model as a drop-in.",
+      "pages": [
+        "application-packaging-machinery.html"
+      ]
+    },
+    {
+      "id": "0405d3b636defae6",
+      "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> as a starting point for gripper or blow-off air. Electrical or hydraulic services need their own interfaces and are not inferred from the air-passage count.",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "2dc9f69f9622cc31",
+      "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> as a starting point. Do not assume a table application matches a specific catalog model until the circuit, center bore, and cycle are checked against the drawing.",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
+      "id": "b276dbc1685df6d3",
+      "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> if a compact air swivel is required. An air swivel is not automatically a high-speed rotary union, a torque-reaction member, or a lifting point.",
+      "pages": [
+        "application-pneumatic-tools-hose-anti-twist.html"
       ]
     },
     {
@@ -6391,13 +6288,6 @@
       ]
     },
     {
-      "id": "ae788f628525df46",
-      "source": "Compare threaded and flange-mounted rotary unions by envelope, alignment, anti-rotation, piping load, installation access, and service requirements.",
-      "pages": [
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
       "id": "e9b4aa4ec97ad7ad",
       "source": "Compare three seal structures by pressure, speed, medium, friction, and acceptable leakage behavior before selecting a configuration.",
       "pages": [
@@ -6490,6 +6380,13 @@
       ]
     },
     {
+      "id": "2cc252f4f2887ca1",
+      "source": "Compressed air (catalog)",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
       "id": "f65b9a903c0519dc",
       "source": "Compressed Air Conditions Matter",
       "pages": [
@@ -6565,6 +6462,13 @@
       "source": "Confirm the exact model and revision, then locate the leak and compare the operating condition with the selected configuration. Check external fittings and installation alignment first. If the body, shaft, bearing, or sealing land is damaged, repair or replacement of the complete assembly may be more reliable than installing seals alone.",
       "pages": [
         "blog-seal-replacement.html"
+      ]
+    },
+    {
+      "id": "5d78ba46091b5f39",
+      "source": "Confirm the selected model’s published body material on its product page. This article does not rank which metal lasts longer in Begapunk testing; grade, coating, seals, and the exact medium can change the result.",
+      "pages": [
+        "blog-rotary-joint-materials.html"
       ]
     },
     {
@@ -6675,21 +6579,6 @@
       ]
     },
     {
-      "id": "bc95156b8c4a19c3",
-      "source": "Current selection resources",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
       "id": "f9cce0d17179d105",
       "source": "Current status: checking...",
       "pages": [
@@ -6723,6 +6612,13 @@
       "source": "Custom design — describe your requirements below",
       "pages": [
         "contact.html"
+      ]
+    },
+    {
+      "id": "01d64314c03de10e",
+      "source": "Custom engineering",
+      "pages": [
+        "applications.html"
       ]
     },
     {
@@ -6832,6 +6728,13 @@
       ]
     },
     {
+      "id": "3280d280b60b753a",
+      "source": "Decide whether to replace rotary-union seals or the complete union after inspecting shafts, sealing lands, and the leak location. Use the model-specific seal set.",
+      "pages": [
+        "blog-seal-replacement.html"
+      ]
+    },
+    {
       "id": "a9969e7ab4db85ea",
       "source": "Decline Analytics",
       "pages": [
@@ -6868,8 +6771,8 @@
       ]
     },
     {
-      "id": "7a4a2a0971483160",
-      "source": "Diagnose a leaking rotary union by locating the leak, separating fitting and seal faults, checking alignment and operating conditions, and testing each passage safely.",
+      "id": "244ec1ea70f1efc4",
+      "source": "Diagnose a leaking rotary union by locating the leak, separating fitting faults from rotating-seal faults, and checking alignment before replacing parts.",
       "pages": [
         "blog-rotary-joint-leaking.html"
       ]
@@ -6972,6 +6875,13 @@
       "source": "Drawing-defined face mounting",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "7d66098df1fbfbc9",
+      "source": "Drawings and data to send for EOAT review",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -7861,13 +7771,6 @@
       ]
     },
     {
-      "id": "851f9629580e1b1f",
-      "source": "Get an engineering review for your application",
-      "pages": [
-        "application-bottle-filling-capping.html"
-      ]
-    },
-    {
       "id": "7fab0e15fe56920c",
       "source": "Google Analytics 4 is loaded only after you choose \"Accept All\". Before that decision, analytics and advertising consent are set to denied. If you decline, the site does not load GA4 and removes GA cookies that it can access.",
       "pages": [
@@ -8139,6 +8042,27 @@
       ]
     },
     {
+      "id": "649e947afeb34d02",
+      "source": "Hydraulic / other media — oil, water, or coolant",
+      "pages": [
+        "contact.html"
+      ]
+    },
+    {
+      "id": "a3923d1775a77aee",
+      "source": "Hydraulic oil, water, or coolant rotary unions are custom engineering. Catalog models are pneumatic. Send medium and pressure to start a review.",
+      "pages": [
+        "applications.html"
+      ]
+    },
+    {
+      "id": "cdcd77b54ed42345",
+      "source": "Hydraulic oil, water, or coolant? Choose Hydraulic / other media and tell us the medium and pressure. Catalog models are pneumatic.",
+      "pages": [
+        "contact.html"
+      ]
+    },
+    {
       "id": "fc8ca0ae27c6c549",
       "source": "Hydraulic rotary joint",
       "pages": [
@@ -8272,21 +8196,6 @@
       ]
     },
     {
-      "id": "d00bbc3d18faa50e",
-      "source": "Information to prepare",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
       "id": "d0b99d0ddc0cf59a",
       "source": "Information to Provide",
       "pages": [
@@ -8326,6 +8235,13 @@
       "source": "Inspect sealing faces, threads, O-rings, and shipping plugs",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "069c1274e2fb35c6",
+      "source": "Inspect shafts, sealing lands, and bearings before ordering seals. Replace the complete union when hardware is scored, corroded, or the leak is not isolated to a seal. Use the seal set for the exact published model; do not substitute a visually similar ring.",
+      "pages": [
+        "blog-seal-replacement.html"
       ]
     },
     {
@@ -8616,6 +8532,13 @@
       ]
     },
     {
+      "id": "0ffd39b9256aced3",
+      "source": "Leaking Rotary Union? Diagnostic Flowchart for Factory Maintenance Teams",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "fe7d7e085953992c",
       "source": "Leaking Rotary Union? Diagnostic Guide | Begapunk",
       "pages": [
@@ -8705,8 +8628,15 @@
       ]
     },
     {
-      "id": "f07181cf2a1d6289",
-      "source": "List each gripper, vacuum zone, release circuit, purge line, and blow-off function. Identify which functions operate simultaneously and which must remain isolated. Do not combine circuits simply because they use the same supply pressure.",
+      "id": "2db1c83b4eb7b873",
+      "source": "List each gripper, release circuit, purge line, and blow-off function. Identify which functions operate simultaneously and which must remain isolated. Do not combine circuits simply because they use the same supply pressure.",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "ec47a2925abf6a5d",
+      "source": "List the air functions at the robot wrist",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
@@ -8811,13 +8741,6 @@
       "source": "Manufacturing Process",
       "pages": [
         "about.html"
-      ]
-    },
-    {
-      "id": "3124240264b675ed",
-      "source": "Map the services at the robot wrist",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -9325,21 +9248,6 @@
       ]
     },
     {
-      "id": "a588f9de325b82df",
-      "source": "Mounting space, connection interfaces, hose routing, and environment",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
       "id": "ba42103ad19f6ef8",
       "source": "Mounting space, interface, connections, and hose direction",
       "pages": [
@@ -9491,6 +9399,13 @@
       "source": "Next →",
       "pages": [
         "products-p2.html"
+      ]
+    },
+    {
+      "id": "4d1985a1c6a13002",
+      "source": "Next diagnostic step: pressurize one passage at a time, record whether leakage appears at rest or only during rotation, and inspect fittings and alignment before opening the union. A new seal will not correct a scored shaft or side load.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
       ]
     },
     {
@@ -9661,6 +9576,13 @@
       ]
     },
     {
+      "id": "38c5e3c6adc64576",
+      "source": "Not air catalog",
+      "pages": [
+        "applications.html"
+      ]
+    },
+    {
       "id": "8e888c83b5546cc5",
       "source": "Not sure — I need an engineer to recommend",
       "pages": [
@@ -9711,6 +9633,13 @@
       ]
     },
     {
+      "id": "940221babd00b71f",
+      "source": "Oil / water / coolant",
+      "pages": [
+        "applications.html"
+      ]
+    },
+    {
       "id": "68b2003e9d319dd0",
       "source": "Oil name and grade, viscosity, additives, temperature, normal and peak pressure, speed, and leakage requirement",
       "pages": [
@@ -9750,21 +9679,6 @@
       "source": "Operating details we may ask about",
       "pages": [
         "contact.html"
-      ]
-    },
-    {
-      "id": "146307a574925fff",
-      "source": "Operating medium, pressure, speed, temperature, and duty cycle",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
       ]
     },
     {
@@ -9913,8 +9827,8 @@
       ]
     },
     {
-      "id": "863b5b3b543ed5a2",
-      "source": "Packaging machines often place pneumatic cylinders, grippers, vacuum cups, or blow-off nozzles on a rotating carousel while the supply manifold remains fixed. A rotary union carries those services across the rotating interface. The correct configuration follows the machine circuit and mechanical layout; it does not follow the packaging-machine label alone.",
+      "id": "754a71381cfd5820",
+      "source": "Packaging machines often place pneumatic cylinders, grippers, or blow-off nozzles on a rotating carousel while the supply manifold remains fixed. A rotary union carries those services across the rotating interface. The correct configuration follows the machine circuit and mechanical layout; it does not follow the packaging-machine label alone.",
       "pages": [
         "application-packaging-machinery.html"
       ]
@@ -9976,21 +9890,6 @@
       ]
     },
     {
-      "id": "bee8d84078b9c915",
-      "source": "Passage count, port functions, and required flow",
-      "pages": [
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
       "id": "0381939b2fe58adc",
       "source": "Passage isolation and contamination control",
       "pages": [
@@ -10019,6 +9918,13 @@
       ]
     },
     {
+      "id": "25f5d95e43310c92",
+      "source": "Pick the threaded interface when envelope is tight and the structure can take installation torque without bending the union. Pick a flange when you need a defined bolt pattern, orientation, and repeatable removal. Neither mounting type corrects poor concentricity.",
+      "pages": [
+        "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
       "id": "969c8bcca56d5804",
       "source": "Pipe misalignment, thermal expansion, and machine vibration can place external radial or axial load on the joint. That load can disturb bearing alignment and create uneven seal contact.",
       "pages": [
@@ -10033,31 +9939,31 @@
       ]
     },
     {
-      "id": "8f5937ad88c5902a",
-      "source": "Plan an air rotary union for indexing, filling, capping, sealing, and other packaging machinery by matching circuits, flow, speed, mounting, and cleaning conditions.",
+      "id": "8e8bb3d1017a4e1e",
+      "source": "Plan an air rotary union for packaging carousels by mapping clamp and blow-off circuits, then compare current 2-passage pneumatic catalog models on the product list.",
       "pages": [
         "application-packaging-machinery.html"
       ]
     },
     {
-      "id": "b816bdd97a217a77",
-      "source": "Plan an air rotary union for robot end-of-arm tooling by mapping gripper, vacuum, blow-off, wrist motion, payload, hose routing, and interface requirements.",
+      "id": "345eeb579334c585",
+      "source": "Plan an air rotary union for robot end-of-arm tooling by mapping gripper and blow-off passages, wrist motion, and payload. Compare current 2-passage pneumatic catalog models.",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
-      "id": "a41ccd999d8723bb",
-      "source": "Plan compressed-air or vacuum transfer for rotating packaging stations without twisting hoses or mixing machine circuits.",
+      "id": "a29148c21aa5ca8b",
+      "source": "Plan an air swivel for pneumatic tools and hose anti-twist from real tool motion, flow, and thread data. Compare current 2-passage pneumatic catalog models; it is not a high-speed rotary union by default.",
       "pages": [
-        "application-packaging-machinery.html"
+        "application-pneumatic-tools-hose-anti-twist.html"
       ]
     },
     {
-      "id": "a53af4b5c24938c3",
-      "source": "Plan rotary-joint selection with Begapunk product data, an engineering input checklist, application cases, quality information, and application review.",
+      "id": "188689b1aff27d9b",
+      "source": "Plan compressed-air transfer for rotating packaging stations without twisting hoses or mixing machine circuits.",
       "pages": [
-        "application-bottle-filling-capping.html"
+        "application-packaging-machinery.html"
       ]
     },
     {
@@ -10988,13 +10894,6 @@
       ]
     },
     {
-      "id": "a7afe8c0690837a5",
-      "source": "Replace rotary-union seals safely by confirming the fault, using the correct seal set, inspecting hardware, controlling cleanliness, and recommissioning each passage.",
-      "pages": [
-        "blog-seal-replacement.html"
-      ]
-    },
-    {
       "id": "43ccc4961ef27ac2",
       "source": "Replacement — I have an old model or drawing to match",
       "pages": [
@@ -11157,6 +11056,13 @@
       ]
     },
     {
+      "id": "a7530a1c9043ee6b",
+      "source": "Review a similar capping-head rotary union",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
       "id": "cf6fef8676fd2f8e",
       "source": "Review an air-swivel application",
       "pages": [
@@ -11206,8 +11112,8 @@
       ]
     },
     {
-      "id": "859a7fafa082bc2c",
-      "source": "Robot end-of-arm tooling can combine grippers, vacuum circuits, blow-off, tool changers, and sensors in a small moving envelope. A rotary union can transfer pneumatic services through a rotating axis, but passage layout, wrist motion, payload, and the tool interface must be reviewed together.",
+      "id": "7e6124fd16ec802f",
+      "source": "Robot end-of-arm tooling can combine grippers, blow-off, tool changers, and sensors in a small moving envelope. A rotary union can transfer pneumatic services through a rotating axis, but passage layout, wrist motion, payload, and the tool interface must be reviewed together.",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
@@ -11252,20 +11158,6 @@
       "source": "Rotary Joint Body Materials",
       "pages": [
         "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
-      "id": "06b88e7a1d1d1384",
-      "source": "Rotary Joint Body Materials: Aluminum, Stainless Steel, or Brass —Which One Actually Lasts?",
-      "pages": [
-        "blog-rotary-joint-materials.html"
-      ]
-    },
-    {
-      "id": "d7e1b3210c19f763",
-      "source": "Rotary Joint Body Materials: Aluminum, Stainless Steel, or Brass —Which One Actually Lasts? | Begapunk",
-      "pages": [
-        "blog-rotary-joint-materials.html"
       ]
     },
     {
@@ -11325,20 +11217,6 @@
       ]
     },
     {
-      "id": "a3fac70d0f9918c4",
-      "source": "Rotary Joint Leaking? A Practical Diagnostic Flowchart | Begapunk",
-      "pages": [
-        "blog-rotary-joint-leaking.html"
-      ]
-    },
-    {
-      "id": "d357ac5038d81ed3",
-      "source": "Rotary Joint Leaking? A Practical Diagnostic Flowchart for Factory Maintenance Teams",
-      "pages": [
-        "blog-rotary-joint-leaking.html"
-      ]
-    },
-    {
       "id": "258ed3aa480b42a0",
       "source": "Rotary Joint RFQ | Begapunk",
       "pages": [
@@ -11351,20 +11229,6 @@
       "pages": [
         "blog-rotary-joint-installation-mistakes.html",
         "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
-      "id": "df910400417fa6dc",
-      "source": "Rotary Joint Seal Replacement: A Step-by-Step Guide for Maintenance Teams",
-      "pages": [
-        "blog-seal-replacement.html"
-      ]
-    },
-    {
-      "id": "b8f19a70f76f078b",
-      "source": "Rotary Joint Seal Replacement: A Step-by-Step Guide for Maintenance Teams | Begapunk",
-      "pages": [
-        "blog-seal-replacement.html"
       ]
     },
     {
@@ -11428,6 +11292,13 @@
       "source": "Rotary Union for CNC Pneumatic Clamping | Begapunk",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "710af5fd3ebc2299",
+      "source": "Rotary Union for Filling & Capping Machines | Begapunk",
+      "pages": [
+        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -11531,6 +11402,13 @@
     {
       "id": "ff7c6e398d48964b",
       "source": "Rotary Union Seal Replacement Guide | Begapunk",
+      "pages": [
+        "blog-seal-replacement.html"
+      ]
+    },
+    {
+      "id": "bca73b04d2d93d52",
+      "source": "Rotary Union Seal Replacement: A Step-by-Step Guide for Maintenance Teams",
       "pages": [
         "blog-seal-replacement.html"
       ]
@@ -11753,8 +11631,8 @@
       ]
     },
     {
-      "id": "0d3b314ccd2d4a54",
-      "source": "Select an air rotary union for automation rotary tables by defining clamp, release, locating, blow-off, passage, speed, center-bore, and mounting requirements.",
+      "id": "a00317ea5ab9ecc9",
+      "source": "Select an air rotary union for automation rotary tables by matching clamp, release, and blow-off circuits to the table cycle. Compare current 2-passage pneumatic catalog models.",
       "pages": [
         "application-automation-rotary-tables.html"
       ]
@@ -11892,10 +11770,17 @@
       ]
     },
     {
-      "id": "8978528c49b6f88d",
-      "source": "Send a section drawing of the shaft and housing, available envelope, fixed and rotating sides, speed, pressure, port direction, hose routing, expected service access, and annual quantity.",
+      "id": "21f5028058b0523c",
+      "source": "Send a section of the shaft, housing, fittings, and removal direction. We will compare the two mounting approaches against that layout.",
       "pages": [
         "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
+      "id": "f774f6652e2583c2",
+      "source": "Send a section view, the pneumatic diagram, and the real index/dwell cycle. We will compare 2-passage air catalog models to the interface.",
+      "pages": [
+        "application-automation-rotary-tables.html"
       ]
     },
     {
@@ -11962,6 +11847,13 @@
       ]
     },
     {
+      "id": "ab95c5fa9f246652",
+      "source": "Send the circuit diagram, mounting envelope, and operating pressure/speed. We will compare catalog 2-passage air models against the layout.",
+      "pages": [
+        "application-packaging-machinery.html"
+      ]
+    },
+    {
       "id": "b306c4e8d8ad46f0",
       "source": "Send the inquiry to our configured sales mailbox through authenticated SMTP",
       "pages": [
@@ -11976,13 +11868,6 @@
       ]
     },
     {
-      "id": "9498097413af7788",
-      "source": "Send the machine layout, pneumatic or vacuum diagram, passage functions, pressure, flow, speed, mounting space, cleaning conditions, and annual quantity. We can compare standard models and identify where a custom interface is justified.",
-      "pages": [
-        "application-packaging-machinery.html"
-      ]
-    },
-    {
       "id": "955651fc70cf8e00",
       "source": "Send the machine photos, old part dimensions, dust type, pressure, RPM, and mounting details. We will compare the protective features and mounting approach with available options.",
       "pages": [
@@ -11990,8 +11875,8 @@
       ]
     },
     {
-      "id": "c01faef6fab704f7",
-      "source": "Send the medium and concentration, additives, pressure, temperature, speed, cleaning method, external environment, connected materials, required documentation, and annual quantity.",
+      "id": "38d7e700e4682586",
+      "source": "Send the medium, cleaning chemicals, and the candidate model. We will check the published body material rather than a generic metal preference.",
       "pages": [
         "blog-rotary-joint-materials.html"
       ]
@@ -12004,8 +11889,15 @@
       ]
     },
     {
-      "id": "9e64da8181ae22fd",
-      "source": "Send the model, leak location, photos or video, medium, pressure, speed, temperature, duty cycle, installation drawing, operating hours, and what changed before the leak appeared.",
+      "id": "e17f18084ee38144",
+      "source": "Send the model, leak location, and photos of the shaft and sealing faces. We will help decide inspect-and-reseal versus replace the union.",
+      "pages": [
+        "blog-seal-replacement.html"
+      ]
+    },
+    {
+      "id": "d7295ba35114ba23",
+      "source": "Send the model, leak location, photos, medium, and whether leakage appears at rest or only during rotation.",
       "pages": [
         "blog-rotary-joint-leaking.html"
       ]
@@ -12018,13 +11910,6 @@
       ]
     },
     {
-      "id": "bdb24a7bdab697ce",
-      "source": "Send the operating conditions and drawing. We will compare current standard models and identify any custom interface or documentation requirement.",
-      "pages": [
-        "application-bottle-filling-capping.html"
-      ]
-    },
-    {
       "id": "3d91c17325953445",
       "source": "Send the pressure, speed, medium, passage count, mounting space, and any drawing or product photo you already have. We will reply with a suitable model or the information still needed to quote.",
       "pages": [
@@ -12032,29 +11917,15 @@
       ]
     },
     {
-      "id": "7c90695ca4bc7940",
-      "source": "Send the robot model, wrist and tool drawings, pneumatic circuit, passage functions, pressure, flow, motion profile, payload limits, other required services, and annual quantity.",
+      "id": "0736b6c6680ee593",
+      "source": "Send the wrist/tool drawing, passage functions, and motion profile. We will compare 2-passage air catalog models to the stack.",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
-      "id": "f16d8e34462f00ba",
-      "source": "Send the rotary-union model, serial or revision information if available, medium, pressure, speed, leak location, photos of the removed parts, and shaft or sealing-surface condition.",
-      "pages": [
-        "blog-seal-replacement.html"
-      ]
-    },
-    {
-      "id": "3f8b025d23fa2c79",
-      "source": "Send the table section drawing, pneumatic diagram, required center bore, passage functions, pressure, flow, index cycle or RPM, mounting envelope, and quantity for a model comparison.",
-      "pages": [
-        "application-automation-rotary-tables.html"
-      ]
-    },
-    {
-      "id": "42dd35db4ccc643b",
-      "source": "Send the tool model, air consumption, supply pressure, thread and hose sizes, movement pattern, photos of the connection, and annual quantity. We can review a standard swivel or a custom compact interface.",
+      "id": "104229e6a7c1fcf2",
+      "source": "Send tool air demand, both thread standards, rotation range, and hose routing. We will compare 2-passage air catalog models to the duty.",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
       ]
@@ -12402,8 +12273,8 @@
       ]
     },
     {
-      "id": "46ce8e38594781a4",
-      "source": "Start with the function at each rotating station. A circuit that must hold pressure, switch independently, or remain isolated from vacuum needs its own defined passage. Electrical signals, wash fluid, or other services may require separate interfaces or a custom combined design.",
+      "id": "845db2d7ed109171",
+      "source": "Start with the function at each rotating station. A circuit that must hold pressure, switch independently, or stay isolated from another function needs its own defined passage. Electrical signals, wash fluid, or other services may require separate interfaces or a custom combined design.",
       "pages": [
         "application-packaging-machinery.html"
       ]
@@ -12505,8 +12376,8 @@
       ]
     },
     {
-      "id": "b563ec9c00ee0c90",
-      "source": "Supply pneumatic grippers, vacuum cups, blow-off, and other end-of-arm functions through a rotating robot wrist without uncontrolled hose winding.",
+      "id": "9d9e4289fbb9384c",
+      "source": "Supply pneumatic grippers, blow-off, and other end-of-arm air functions through a rotating robot wrist without uncontrolled hose winding.",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
@@ -12831,6 +12702,13 @@
       ]
     },
     {
+      "id": "e1dd2b63bc5daead",
+      "source": "The production photograph uses BP-2P-16-0001 (air catalog, PTFE + O-ring, 1 MPa / 200 RPM on the model page). BP-2P-08-0001 is another 2-passage pneumatic gripper option already noted above; compare mounting and envelope before choosing.",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
       "id": "6f3cd2bd23f8adcf",
       "source": "The rotary union connects the stationary air supply to independently controlled functions in the rotating rear chuck. The passage count follows the number of air functions that must remain separate.",
       "pages": [
@@ -12973,15 +12851,8 @@
       ]
     },
     {
-      "id": "54a88528d442f833",
-      "source": "Threaded vs Flange Mounting for Rotary Joints: A Maintenance Team's Field Guide",
-      "pages": [
-        "blog-threaded-vs-flange.html"
-      ]
-    },
-    {
-      "id": "31cdcaf19204152d",
-      "source": "Threaded vs Flange Mounting for Rotary Joints: A Maintenance Team's Field Guide | Begapunk",
+      "id": "d72e913ae36ab10c",
+      "source": "Threaded vs Flange Mounting for Rotary Unions",
       "pages": [
         "blog-threaded-vs-flange.html"
       ]
@@ -13064,6 +12935,13 @@
       ]
     },
     {
+      "id": "b79bcb9c17dc1322",
+      "source": "Two compressed-air passages clamp and release the gripper while the capping head rotates. Published ratings stay on the model page: air, PTFE + O-ring, 1 MPa, 200 RPM.",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
       "id": "3984541c3c9e2e0a",
       "source": "Two independent compressed-air passages for fixture clamp and release",
       "pages": [
@@ -13113,8 +12991,8 @@
       ]
     },
     {
-      "id": "a2a42114cb6c695f",
-      "source": "Typical locations include indexing tables, filling and capping carousels, rotary sealing stations, label-handling mechanisms, and product-transfer turrets. Separate passages can serve clamp and release, vacuum and blow-off, or multiple independently controlled actuators.",
+      "id": "a278c28c94a2f7c7",
+      "source": "Typical locations include indexing tables, filling and capping carousels, rotary sealing stations, label-handling mechanisms, and product-transfer turrets. Separate passages can serve clamp and release, blow-off, or multiple independently controlled actuators.",
       "pages": [
         "application-packaging-machinery.html"
       ]
@@ -13231,13 +13109,6 @@
       ]
     },
     {
-      "id": "8af5e65d1bc84b89",
-      "source": "Use the checklist and current resources below to prepare an accurate rotary-joint selection.",
-      "pages": [
-        "application-bottle-filling-capping.html"
-      ]
-    },
-    {
       "id": "08bb50f2958ba3d4",
       "source": "Use the model-specific commissioning procedure. Where the machine design allows, verify free rotation and connections first, then increase pressure and speed in controlled steps while monitoring leakage, temperature, noise, and hose movement.",
       "pages": [
@@ -13270,13 +13141,6 @@
       "source": "Use the single sealing method specified for the actual thread and medium. Combining materials increases the chance of contamination and does not correct a mismatched thread.",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "529c5ddebf405851",
-      "source": "Use these inputs to compare current models and request an application-specific engineering review.",
-      "pages": [
-        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -13513,6 +13377,13 @@
     {
       "id": "7f2b8c6358884804",
       "source": "View the CNC pneumatic clamping fixture installation",
+      "pages": [
+        "applications.html"
+      ]
+    },
+    {
+      "id": "98c8b54448eb9b4e",
+      "source": "View the Custom Hydraulic Rotary Unions page",
       "pages": [
         "applications.html"
       ]
