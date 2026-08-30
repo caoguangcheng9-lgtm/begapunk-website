@@ -48,17 +48,7 @@
     "thank-you.html",
     "search.html"
   ],
-  "discoveryExcludedPages": [
-    "application-packaging-machinery.html",
-    "application-bottle-filling-capping.html",
-    "blog-rotary-joint-leaking.html",
-    "application-automation-rotary-tables.html",
-    "application-pneumatic-tools-hose-anti-twist.html",
-    "blog-seal-replacement.html",
-    "blog-threaded-vs-flange.html",
-    "application-robot-end-of-arm-tooling.html",
-    "blog-rotary-joint-materials.html"
-  ],
+  "discoveryExcludedPages": [],
   "pages": [
     "index.html",
     "about.html",
@@ -96,6 +86,7 @@
     "application-textile-printing-converting.html",
     "application-vacuum-packaging-machines.html",
     "application-welding-positioners.html",
+    "custom-hydraulic-rotary-unions.html",
     "installation.html",
     "blog.html",
     "blog-non-contact-clearance-seal-rotary-union.html",
@@ -175,7 +166,8 @@
     "case-bp-3p-s06-sensor-monitored-chuck.html",
     "case-studies.html",
     "blog-non-contact-clearance-seal-rotary-union.html",
-    "blog-rotary-union-seal-types.html"
+    "blog-rotary-union-seal-types.html",
+    "custom-hydraulic-rotary-unions.html"
   ],
   "translatedAttributes": [
     "alt",

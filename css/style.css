@@ -4917,3 +4917,21 @@ html[lang="ja"] .legal-hero h1 {
     }
 }
 
+
+
+/* Quiet hydraulic path inside the dark hero — not a separate white band */
+.hero-hydraulic-link {
+    margin: 14px 0 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+.hero-hydraulic-link a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.88;
+}
+.hero-hydraulic-link a:hover,
+.hero-hydraulic-link a:focus-visible {
+    opacity: 1;
+}

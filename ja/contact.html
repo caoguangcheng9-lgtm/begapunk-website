@@ -241,6 +241,7 @@
 
  <option value="standard-model">Begapunk標準品（型式をご記入ください）</option>
 
+ <option value="hydraulic">液圧・その他流体（作動油・水・クーラント）</option>
  <option value="custom">特注設計（ご要望を下記にご記入ください）</option>
 
  <option value="replacement">既存品の置き換え（型式または図面あり）</option>
@@ -248,6 +249,7 @@
  <option value="not-sure">選定相談（推奨型式を相談したい）</option>
 
  </select>
+ <p style="margin:8px 0 0;font-size:0.85rem;color:var(--text-light);">作動油・水・クーラントの場合は「液圧・その他流体」を選び、流体と圧力を書いてください。カタログ機種は空圧です。</p>
 
  </div>
 
@@ -477,7 +479,7 @@ window.addEventListener('scroll', () => {
 });
 
 const REQUEST_CODE_MAP = Object.freeze({"quote":"quote","3d-step":"3d_step","application-review":"application_review","seal-review":"seal_review","verified-drawing":"verified_drawing"});
-const INQUIRY_TYPE_CODE_MAP = Object.freeze({"quote":"quote","3d_step":"3d_step","application_review":"application_review","seal_review":"seal_review","verified_drawing":"verified_drawing","technical_consultation":"technical_consultation","technical-consultation":"technical_consultation","general_inquiry":"general_inquiry"});
+const INQUIRY_TYPE_CODE_MAP = Object.freeze({"quote":"quote","3d_step":"3d_step","application_review":"application_review","seal_review":"seal_review","verified_drawing":"verified_drawing","technical_consultation":"technical_consultation","technical-consultation":"technical_consultation","general_inquiry":"general_inquiry","hydraulic":"hydraulic"});
 const rfqCopyData = document.getElementById('contact-rfq-copy');
 if (!rfqCopyData) throw new Error('Contact RFQ copy data is missing.');
 const RFQ_COPY = Object.freeze(JSON.parse(rfqCopyData.textContent));

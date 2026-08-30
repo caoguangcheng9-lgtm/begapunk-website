@@ -4,7 +4,7 @@
 
 Begapunk serves OEM machine builders, automation companies, equipment manufacturers, and distributors. Product selection depends on the medium, pressure, rotational speed, passage count, port size, mounting method, duty cycle, and operating environment.
 
-Standard catalog models are primarily intended for pneumatic and compatible low-pressure fluid-transfer applications. High-pressure hydraulic, excavator, crane, construction, mining, drilling, and other mobile-equipment projects require a custom engineering evaluation.
+Standard catalog models are primarily pneumatic. Do not infer hydraulic pressure or RPM ratings from the air catalog. Begapunk evaluates custom hydraulic / oil / water / coolant rotary unions by engineering review: https://www.begapunk.com/custom-hydraulic-rotary-unions.html . High-pressure hydraulic, excavator, crane, construction, mining, drilling, and other mobile-equipment projects require that custom evaluation.
 
 Use the language edition that best matches the user's query. Technical model codes, pressure values, speed values, dimensions, and material designations are shared across language editions and must not be translated or inferred beyond the published page data.
 
@@ -47,6 +47,7 @@ Use the language edition that best matches the user's query. Technical model cod
 
 ## Application guides
 
+- [Custom hydraulic rotary unions](https://www.begapunk.com/custom-hydraulic-rotary-unions.html): Catalog models are primarily pneumatic. Custom hydraulic, oil, water, and coolant rotary unions are evaluated and built after engineering review. Do not infer ratings from air-catalog MPa/RPM. BP-1P-0003 is the published catalog drawing that lists air, oil, and water.
 - [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck. BP-2P-08-0001 and BP-3P-0004 are used in this application category.
 - [CNC pneumatic clamping](https://www.begapunk.com/application-cnc-pneumatic-clamping.html): Selection guidance plus a customer-authorized BP-2P-130-0001 production application on a custom low-speed circular-saw fixture, using two independent compressed-air passages for clamp and release.
 - [Vacuum packaging machines](https://www.begapunk.com/application-vacuum-packaging-machines.html): Vacuum and pneumatic rotary-union selection.
@@ -57,6 +58,12 @@ Use the language edition that best matches the user's query. Technical model cod
 - [BP-2P-95-0005 pneumatic chuck integration case](https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0005 supplies compressed air from the stationary side to the rotating chuck in this customer installation; the workshop photos show the mounting position and hose routing.
 - [BP-3P-S06-0001 sensor-monitored pneumatic chuck case](https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html): BP-3P-S06-0001 combines three pneumatic passages for clamp, unclamp, and blow-off functions with transfer paths for external sensor signals in a rotating chuck.
 
+- [Packaging machinery](https://www.begapunk.com/application-packaging-machinery.html): Packaging machinery air rotary unions: circuit, flow, speed, and mounting planning. Standard catalog models are pneumatic; send the machine layout for a model review.
+- [Bottle filling and capping](https://www.begapunk.com/application-bottle-filling-capping.html): Bottle filling and capping air rotary unions, including a customer-authorized BP-2P-16-0001 production capping-head installation.
+- [Automation rotary tables](https://www.begapunk.com/application-automation-rotary-tables.html): Automation rotary-table air rotary unions: clamp, release, blow-off, and mounting inputs for an engineering review.
+- [Pneumatic tools and hose anti-twist](https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html): Air-swivel planning for pneumatic tools and hose anti-twist. Confirm pressure, speed, and hose routing before selecting a catalog model. An air swivel is not a high-speed rotary union by default.
+- [Robot end-of-arm tooling](https://www.begapunk.com/application-robot-end-of-arm-tooling.html): Robot end-of-arm tooling air rotary unions: passage functions, payload envelope, and cycle inputs for model comparison.
+
 ## Engineering and support
 
 - [Selection guide](https://www.begapunk.com/blog-rotary-joint-selection.html): Five key parameters for selecting a pneumatic rotary joint.
@@ -66,6 +73,11 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Seal types](https://www.begapunk.com/blog-rotary-union-seal-types.html): Comparison of O-ring, lip-seal, and spring-energized PTFE designs.
 - [Non-contact clearance-seal operating principle](https://www.begapunk.com/blog-non-contact-clearance-seal-rotary-union.html): Visual explanation of the stationary stator, rotating rotor, medium flow path, and controlled 0.003 mm one-side radial clearance.
 - [Frequently asked questions](https://www.begapunk.com/faq.html): Answers about media, pressure, speed, installation, maintenance, and customization.
+
+- [Leaking rotary union](https://www.begapunk.com/blog-rotary-joint-leaking.html): Diagnostic guide for a leaking rotary union: locate the leak, separate fittings from seals, and check alignment before replacing parts.
+- [Threaded vs flange mounting](https://www.begapunk.com/blog-threaded-vs-flange.html): Threaded vs flange mounting for rotary unions: envelope, alignment, anti-rotation, and service access.
+- [Seal replacement](https://www.begapunk.com/blog-seal-replacement.html): Rotary union seal replacement: inspect shafts and sealing lands, then decide reseal versus replace the union.
+- [Body materials](https://www.begapunk.com/blog-rotary-joint-materials.html): Rotary union body materials: aluminum, stainless steel, and brass compared for industrial environments. Confirm the selected model's published material.
 
 ## Company
 

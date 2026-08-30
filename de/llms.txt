@@ -2,6 +2,8 @@
 
 > Technischer Seitenindex für pneumatische Drehdurchführungen von Begapunk. Die Auswahl erfolgt nach Medium, Betriebsdruck, Drehzahl, Kanalzahl, Anschluss und Einbausituation.
 
+Der Katalog ist überwiegend pneumatisch. Hydraulische Drehdurchführungen für Öl, Wasser und Kühlmittel sind Sonderauslegung: https://www.begapunk.com/de/custom-hydraulic-rotary-unions.html . Werte aus dem Luftkatalog nicht auf Hydraulik übertragen.
+
 - [Multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml)
 - [English AI index](https://www.begapunk.com/llms.txt)
 
@@ -29,6 +31,7 @@
 
 ## Anwendungen
 
+- [Hydraulische Drehdurchführungen nach Maß](https://www.begapunk.com/de/custom-hydraulic-rotary-unions.html): Katalog = vorwiegend Druckluft. Hydrauliköl, Wasser und Kühlmittel über technische Prüfung. Kenndaten nicht aus dem Luftkatalog ableiten.
 - [Drehdurchführungen nach Anwendung | Begapunk](https://www.begapunk.com/de/applications.html): Anwendungsübersicht für pneumatische Drehdurchführungen, einschließlich der Übertragung von Druckluft zum hinteren Spannfutter einer Laser-Rohrschneidmaschine.
 - [Drehdurchführungen für pneumatische CNC-Spanntechnik](https://www.begapunk.com/de/application-cnc-pneumatic-clamping.html): Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.
 - [Drehdurchführungen für Elektronik- und Batterieprüfung](https://www.begapunk.com/de/application-electronics-battery-test-fixtures.html): Pneumatische und kombinierte Drehdurchführungen für rotierende Prüfstationen, Greifer, Vakuumsauger und Batterie-Testvorrichtungen auswählen.
@@ -41,6 +44,12 @@
 - [BP-2P-95-0005 im pneumatischen Spannfutter | Begapunk](https://www.begapunk.com/de/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0005 führt Druckluft von der feststehenden Seite zum rotierenden pneumatischen Spannfutter. Fotos zeigen Einbauposition und Schlauchführung.
 - [BP-3P-S06-0001 im sensorüberwachten Spannfutter | Begapunk](https://www.begapunk.com/de/case-bp-3p-s06-sensor-monitored-chuck.html): Fotodokumentierter Anwendungsfall der BP-3P-S06-0001 zur Druckluftübertragung über drei getrennte Kanäle sowie zur Übertragung externer Sensorsignale in einem pneumatischen Spannfutter.
 
+- [Verpackungsmaschinen](https://www.begapunk.com/de/application-packaging-machinery.html): Drehdurchführungen für Verpackungsmaschinen: Schaltplan, Durchfluss, Drehzahl und Einbau klären. Katalogmodelle sind pneumatisch.
+- [Abfüllen und Verschließen](https://www.begapunk.com/de/application-bottle-filling-capping.html): Drehdurchführungen für Abfüll- und Verschließmaschinen, inkl. Kundenfoto von BP-2P-16-0001 im Verschließkopf.
+- [Rundschalttische](https://www.begapunk.com/de/application-automation-rotary-tables.html): Drehdurchführungen für Rundschalttische: Spann-, Löse- und Abblasfunktionen vor der Modellauswahl klären.
+- [Druckluftwerkzeuge und Schlauch-Verdrehschutz](https://www.begapunk.com/de/application-pneumatic-tools-hose-anti-twist.html): Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen. Druck, Drehzahl und Schlauchführung prüfen; nicht automatisch eine schnell laufende Drehdurchführung.
+- [Roboter-Endeffektoren](https://www.begapunk.com/de/application-robot-end-of-arm-tooling.html): Drehdurchführungen für Roboter-Endeffektoren: Funktion der Luftwege, Bauraum und Taktzeit für den Modellvergleich.
+
 ## Technische Beiträge
 
 - [Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk](https://www.begapunk.com/de/blog.html): Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.
@@ -48,6 +57,11 @@
 - [Drehdurchführung montieren: 7 häufige Fehler](https://www.begapunk.com/de/blog-rotary-joint-installation-mistakes.html): Sieben Montagefehler, die Drehdurchführungen vorzeitig schädigen können, mit Prüfhinweisen zu Ausrichtung, Rohrleitung, Filtration und Dichtheit.
 - [Pneumatische Drehdurchführung auswählen: 5 Kriterien](https://www.begapunk.com/de/blog-rotary-joint-selection.html): Kanalzahl, Betriebsdruck, Drehzahl, Medium und Anschlussart: fünf Kriterien für die Auswahl einer passenden pneumatischen Drehdurchführung.
 - [Dichtungen für Drehdurchführungen im Vergleich](https://www.begapunk.com/de/blog-rotary-union-seal-types.html): O-Ring, Lippendichtung und federunterstützte PTFE-Dichtung nach Druck, Drehzahl, Medium, Reibung und zulässiger Leckage vergleichen.
+
+- [Undichte Drehdurchführung](https://www.begapunk.com/de/blog-rotary-joint-leaking.html): Diagnose bei undichter Drehdurchführung: Leckort, Armaturen vs. Dichtung, Ausrichtung prüfen.
+- [Gewinde- vs. Flanschmontage](https://www.begapunk.com/de/blog-threaded-vs-flange.html): Gewinde- vs. Flanschmontage von Drehdurchführungen: Praxisleitfaden.
+- [Dichtungswechsel](https://www.begapunk.com/de/blog-seal-replacement.html): Dichtungswechsel an Drehdurchführungen: Prüfpunkte, Austausch und wann eine neue Einheit sinnvoller ist.
+- [Gehäusewerkstoffe](https://www.begapunk.com/de/blog-rotary-joint-materials.html): Gehäusewerkstoffe von Drehdurchführungen: Aluminium, Edelstahl und Messing. Maßgeblich ist das veröffentlichte Material des gewählten Modells.
 
 ## Unternehmen und Service
 

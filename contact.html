@@ -228,6 +228,7 @@
 
  <option value="standard-model">Standard Begapunk model — tell us the model number</option>
 
+ <option value="hydraulic">Hydraulic / other media — oil, water, or coolant</option>
  <option value="custom">Custom design — describe your requirements below</option>
 
  <option value="replacement">Replacement — I have an old model or drawing to match</option>
@@ -235,6 +236,7 @@
  <option value="not-sure">Not sure — I need an engineer to recommend</option>
 
  </select>
+ <p style="margin:8px 0 0;font-size:0.85rem;color:var(--text-light);">Hydraulic oil, water, or coolant? Choose Hydraulic / other media and tell us the medium and pressure. Catalog models are pneumatic.</p>
 
  </div>
 
@@ -445,7 +447,7 @@ window.addEventListener('scroll', () => {
 });
 
 const REQUEST_CODE_MAP = Object.freeze({"quote":"quote","3d-step":"3d_step","application-review":"application_review","seal-review":"seal_review","verified-drawing":"verified_drawing"});
-const INQUIRY_TYPE_CODE_MAP = Object.freeze({"quote":"quote","3d_step":"3d_step","application_review":"application_review","seal_review":"seal_review","verified_drawing":"verified_drawing","technical_consultation":"technical_consultation","technical-consultation":"technical_consultation","general_inquiry":"general_inquiry"});
+const INQUIRY_TYPE_CODE_MAP = Object.freeze({"quote":"quote","3d_step":"3d_step","application_review":"application_review","seal_review":"seal_review","verified_drawing":"verified_drawing","technical_consultation":"technical_consultation","technical-consultation":"technical_consultation","general_inquiry":"general_inquiry","hydraulic":"hydraulic"});
 const rfqCopyData = document.getElementById('contact-rfq-copy');
 if (!rfqCopyData) throw new Error('Contact RFQ copy data is missing.');
 const RFQ_COPY = Object.freeze(JSON.parse(rfqCopyData.textContent));

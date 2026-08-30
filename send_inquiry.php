@@ -413,6 +413,7 @@ function normalize_inquiry_type(string $value): string
         'technical_consultation' => 'technical_consultation',
         'technical-consultation' => 'technical_consultation',
         'general_inquiry' => 'general_inquiry',
+        'hydraulic' => 'hydraulic',
     ];
     return $map[$value] ?? 'general_inquiry';
 }
@@ -480,6 +481,7 @@ $inquiryLabels = [
     'verified_drawing' => 'Drawing check',
     'technical_consultation' => 'Technical question',
     'general_inquiry' => 'General request',
+    'hydraulic' => 'Hydraulic / other media',
 ];
 $inquiryLabel = $inquiryLabels[$inquiryType] ?? $inquiryLabels['general_inquiry'];
 $productReference = $sourceModel !== ''

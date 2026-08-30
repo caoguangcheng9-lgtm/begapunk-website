@@ -181,13 +181,13 @@
 
  <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">すべて</button>
 
- <button class="filter-btn" type="button" data-filter="1-channel" aria-pressed="false">1流路</button>
+ <button class="filter-btn" type="button" data-filter="1-passage" aria-pressed="false">1流路</button>
 
- <button class="filter-btn" type="button" data-filter="2-channel" aria-pressed="false">2流路</button>
+ <button class="filter-btn" type="button" data-filter="2-passage" aria-pressed="false">2流路</button>
 
- <button class="filter-btn" type="button" data-filter="3-channel" aria-pressed="false">3流路</button>
+ <button class="filter-btn" type="button" data-filter="3-passage" aria-pressed="false">3流路</button>
 
- <button class="filter-btn" type="button" data-filter="4-channel-plus" aria-pressed="false">4流路以上</button>
+ <button class="filter-btn" type="button" data-filter="4-passage-plus" aria-pressed="false">4流路以上</button>
 
  <button class="filter-btn" type="button" data-filter="custom" aria-pressed="false">カスタム</button>
 
@@ -210,7 +210,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-1P-0003.html" data-channel="1-channel">
+ <div class="product-card-large" data-href="BP-1P-0003.html" data-channel="1-passage">
 
  <div class="product-img">
 
@@ -257,7 +257,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-2P-0001.html" data-channel="2-channel">
+ <div class="product-card-large" data-href="BP-2P-0001.html" data-channel="2-passage">
 
  <div class="product-img">
 
@@ -304,7 +304,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-3P-0004.html" data-channel="3-channel">
+ <div class="product-card-large" data-href="BP-3P-0004.html" data-channel="3-passage">
 
  <div class="product-img">
 
@@ -351,7 +351,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-2P-16-0001.html" data-channel="2-channel">
+ <div class="product-card-large" data-href="BP-2P-16-0001.html" data-channel="2-passage">
 
  <div class="product-img">
 
@@ -400,7 +400,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-2P-130-0001.html" data-channel="2-channel">
+ <div class="product-card-large" data-href="BP-2P-130-0001.html" data-channel="2-passage">
 
  <div class="product-img">
 
@@ -449,7 +449,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-8P-0001.html" data-channel="4-channel+">
+ <div class="product-card-large" data-href="BP-8P-0001.html" data-channel="4-passage+">
 
  <div class="product-img">
 
@@ -496,7 +496,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-2P-95-0005.html" data-channel="2-channel">
+ <div class="product-card-large" data-href="BP-2P-95-0005.html" data-channel="2-passage">
 
  <div class="product-img">
 
@@ -547,7 +547,7 @@
 
  <!-- SECTION -->
 
- <div class="product-card-large" data-href="BP-2P-50-0001.html" data-channel="2-channel">
+ <div class="product-card-large" data-href="BP-2P-50-0001.html" data-channel="2-passage">
 
  <div class="product-img">
 
@@ -765,7 +765,7 @@ window.addEventListener('scroll', () => {
 
 
 
-// ===== FILTER BAR (data-channel based) =====
+// ===== FILTER BAR (data-passage based) =====
 
 const filterBtns = document.querySelectorAll('.filter-btn');
 
@@ -775,14 +775,14 @@ const pagination = document.querySelector('.pagination');
 
 const validFilters = new Set([
     'all',
-    '1-channel',
-    '2-channel',
-    '3-channel',
-    '4-channel-plus',
+    '1-passage',
+    '2-passage',
+    '3-passage',
+    '4-passage-plus',
     'custom'
 ]);
 
-const fourChannelPlus = new Set(['4-channel+', '6-channel', '8-channel']);
+const fourPassagePlus = new Set(['4-passage+', '6-passage', '8-passage']);
 
 
 
@@ -804,13 +804,13 @@ filterBtns.forEach(btn => {
 
         productCards.forEach(card => {
 
-            const channel = card.dataset.channel;
+            const passage = card.dataset.channel;
 
 
 
             const visible = filter === 'all'
-                || (filter === '4-channel-plus' && fourChannelPlus.has(channel))
-                || channel === filter;
+                || (filter === '4-passage-plus' && fourPassagePlus.has(passage))
+                || passage === filter;
 
             card.style.display = visible ? '' : 'none';
 

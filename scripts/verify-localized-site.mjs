@@ -18,31 +18,21 @@ for (const language of activeLanguages) {
   seoByLanguage.set(language.code, JSON.parse(await fs.readFile(seoPath, 'utf8')));
 }
 const failures = [];
-const expectedDiscoveryExcludedPages = [
-  'application-packaging-machinery.html',
-  'application-bottle-filling-capping.html',
-  'blog-rotary-joint-leaking.html',
-  'application-automation-rotary-tables.html',
-  'application-pneumatic-tools-hose-anti-twist.html',
-  'blog-seal-replacement.html',
-  'blog-threaded-vs-flange.html',
-  'application-robot-end-of-arm-tooling.html',
-  'blog-rotary-joint-materials.html',
-];
+const expectedDiscoveryExcludedPages = [];
 let discoveryExcludedPages = new Set();
 try {
   discoveryExcludedPages = discoveryExcludedPageSet(config);
   const expected = new Set(expectedDiscoveryExcludedPages);
   if (discoveryExcludedPages.size !== expected.size
       || [...expected].some((pageName) => !discoveryExcludedPages.has(pageName))) {
-    failures.push('i18n/config.json: discoveryExcludedPages must contain exactly the approved nine P1 quarantine routes.');
+    failures.push('i18n/config.json: discoveryExcludedPages must stay empty; the nine P1 routes are published.');
   }
 } catch (error) {
   failures.push(`i18n/config.json: invalid discovery exclusion contract (${error.message}).`);
 }
 const translationManagedPages = config.translationManagedPages || config.pages;
 const manualLocalizedPages = config.manualLocalizedPages || [];
-const expectedOwnershipCounts = { total: 56, managed: 48, manual: 8 };
+const expectedOwnershipCounts = { total: 57, managed: 48, manual: 9 };
 const configuredPageSet = new Set(config.pages);
 const translationPageSet = new Set(translationManagedPages);
 const manualPageSet = new Set(manualLocalizedPages);
@@ -2759,11 +2749,11 @@ for (const language of verifiedLanguages) {
       }
     }
     const bottleRobots = compactText($bottleCappingApplication('meta[name="robots"]').attr('content')).toLowerCase().replace(/\s+/g, '');
-    if (bottleRobots !== 'noindex,follow' || !discoveryExcludedPages.has(bottleCappingPageName)) {
-      failures.push(`${language.code}/${bottleCappingPageName}: the partially quarantined page must remain noindex,follow and discovery-excluded.`);
+    if (bottleRobots === 'noindex,follow' || discoveryExcludedPages.has(bottleCappingPageName)) {
+      failures.push(`${language.code}/${bottleCappingPageName}: released bottle-capping page must not remain noindex or discovery-excluded.`);
     }
-    if ($bottleCappingApplication('script[type="application/ld+json"]').length !== 0) {
-      failures.push(`${language.code}/${bottleCappingPageName}: soft-isolated application page must not publish page-level JSON-LD before full-page review.`);
+    if ($bottleCappingApplication('script[type="application/ld+json"]').length === 0) {
+      failures.push(`${language.code}/${bottleCappingPageName}: released application page must publish page-level JSON-LD.`);
     }
     const bottleCssHref = `${bottleImagePrefix}css/application-bottle-capping-case.css?v=20260813-production-case3`;
     if ($bottleCappingApplication(`link[rel="stylesheet"][href="${bottleCssHref}"]`).length !== 1
