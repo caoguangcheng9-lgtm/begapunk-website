@@ -9,17 +9,7 @@ import {
 const root = process.cwd();
 const checkOnly = process.argv.includes('--check');
 
-const routes = [
-  'application-packaging-machinery.html',
-  'application-bottle-filling-capping.html',
-  'blog-rotary-joint-leaking.html',
-  'application-automation-rotary-tables.html',
-  'application-pneumatic-tools-hose-anti-twist.html',
-  'blog-seal-replacement.html',
-  'blog-threaded-vs-flange.html',
-  'application-robot-end-of-arm-tooling.html',
-  'blog-rotary-joint-materials.html',
-];
+const routes = [];
 
 const locales = {
   en: {
@@ -609,7 +599,7 @@ if (checkOnly) {
     }
     process.exitCode = 1;
   } else {
-    console.log('Soft-isolation sync check passed: 9 routes × 4 languages, overrides, and localized SEO descriptions are synchronized.');
+    console.log('Soft-isolation sync check passed: isolation routes are empty; published application and blog pages are not rewritten.');
   }
 } else {
   for (const [filePath, content] of plannedWrites) fs.writeFileSync(filePath, content, 'utf8');
