@@ -2,8 +2,6 @@
 
 > Begapunkの空圧用ロータリージョイントに関する技術ページ索引です。使用流体、圧力、回転数、流路数・ポート数、接続、取付条件から選定してください。
 
-カタログ機種は主に空圧です。作動油・水・クーラントの特注ロータリージョイントは技術検討です: https://www.begapunk.com/ja/custom-hydraulic-rotary-unions.html 。空圧カタログの定格を液圧に推定しないでください。
-
 - [Multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml)
 - [English AI index](https://www.begapunk.com/llms.txt)
 
@@ -31,11 +29,15 @@
 
 ## 用途別ガイド
 
-- [特注液圧ロータリージョイント](https://www.begapunk.com/ja/custom-hydraulic-rotary-unions.html): カタログは主に空圧。作動油・水・クーラントは技術検討。空圧カタログのMPa/回転数から液圧定格を推定しないこと。
 - [ロータリージョイント用途別ガイド | Begapunk](https://www.begapunk.com/ja/applications.html): レーザー管切断機の後方チャックへ圧縮空気を伝達する実機事例を含む、空圧用ロータリジョイントの用途ガイドです。
+- [回転テーブル用ロータリージョイントの選定](https://www.begapunk.com/ja/application-automation-rotary-tables.html): クランプ・解除・ブローオフ回路とテーブルサイクルに合わせて、自動化用回転テーブルの空圧ロータリージョイントを選定します。現行2流路カタログ機種と比較してください。
+- [充填・キャッピング機用ロータリージョイント](https://www.begapunk.com/ja/application-bottle-filling-capping.html): 生産用キャッピングヘッドのBP-2P-16-0001：独立2流路で3爪キャップグリッパを開閉。別の空圧グリッパ候補としてBP-2P-08-0001も比較できます。
 - [CNC空圧クランプ用ロータリージョイント](https://www.begapunk.com/ja/application-cnc-pneumatic-clamping.html): お客様から公開許可を得た実生産事例を含む選定ガイドです。低速のCNC丸鋸盤用特注クランプ治具にBP-2P-130-0001を組み込み、独立した2つの圧縮空気流路でクランプ／アンクランプを行います。
 - [電子・電池検査治具用ロータリージョイント](https://www.begapunk.com/ja/application-electronics-battery-test-fixtures.html): 回転検査装置、空圧グリッパ、真空吸着、電池試験治具向けの空圧用・空圧電気複合ロータリージョイント選定ガイド。
 - [レーザー管切断機の後方チャック用空圧ロータリジョイント | Begapunk](https://www.begapunk.com/ja/application-laser-tube-cutting.html): レーザー管切断機の後方チャック向けに、独立2流路・3流路の空圧ロータリジョイントを比較できます。型式、写真、図面のいずれかがあれば選定を始められます。
+- [包装機械用ロータリージョイントの選定 | Begapunk](https://www.begapunk.com/ja/application-packaging-machinery.html): 包装カルーセルのクランプ・ブローオフ回路を整理したうえで、製品一覧の現行2流路空圧カタログ機種と比較します。
+- [空圧工具・ホース用エアスイベル](https://www.begapunk.com/ja/application-pneumatic-tools-hose-anti-twist.html): 実機の動き・流量・ねじ規格から、空圧工具・ホース回り止め用エアスイベルを計画します。現行2流路空圧カタログ機種と比較してください。高速ロータリージョイントとは限りません。
+- [ロボットハンド用ロータリージョイント](https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html): グリッパとブローオフの流路、手首動作、可搬質量からロボットEOAT用空圧ロータリージョイントを計画します。現行2流路カタログ機種と比較してください。
 - [製鉄・粉じん環境用防じんロータリージョイント](https://www.begapunk.com/ja/application-steel-dusty-environments.html): 製鉄設備、鋳造設備、粉体包装などの粉じん・摩耗環境で使用する空圧用ロータリージョイントの保護と選定を解説します。
 - [印刷・繊維・加工機用ロータリージョイント](https://www.begapunk.com/ja/application-textile-printing-converting.html): 印刷機、繊維ワインダ、コンバーティング設備向けに、流体、圧力、回転数、流路数、貫通穴からロータリージョイントを選定します。
 - [真空包装機用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/application-vacuum-packaging-machines.html): ロータリー式真空包装機、袋詰め機、真空シールヘッド、回転包装ステーション向けの空圧・真空ロータリージョイント。
@@ -44,24 +46,17 @@
 - [BP-2P-95-0005 エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0005は、固定側から回転するエアチャックへ圧縮空気を供給します。写真では取付位置と空圧ホースの配管を確認できます。
 - [BP-3P-S06-0001 外部センサ信号伝送対応エアチャック組込み事例 | Begapunk](https://www.begapunk.com/ja/case-bp-3p-s06-sensor-monitored-chuck.html): BP-3P-S06-0001をエアチャックに組み込み、独立した3系統の空圧流路を介して圧縮空気を供給するとともに、外部センサ信号を固定側から回転側へ伝送した実例です。
 
-- [包装機械](https://www.begapunk.com/ja/application-packaging-machinery.html): 包装機械向けエアロータリージョイント。回路・流量・回転数・取付を整理して型式を検討。カタログは空気圧仕様。
-- [充填・キャッピング](https://www.begapunk.com/ja/application-bottle-filling-capping.html): 充填・キャッピング向けエアロータリージョイント。BP-2P-16-0001の生産機取付写真あり。
-- [回転テーブル](https://www.begapunk.com/ja/application-automation-rotary-tables.html): 自動化用回転テーブル向けロータリージョイント。クランプ・解除・ブローオフ条件を確認して選定。
-- [空圧工具・ホース回り止め](https://www.begapunk.com/ja/application-pneumatic-tools-hose-anti-twist.html): 空圧工具・ホース回り止め用エアスイベル。圧力・回転・配管を確認してからカタログ型式を選ぶ。高速ロータリージョイントとは限りません。
-- [ロボットEOAT](https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html): ロボットEOAT向けエアロータリージョイント。流路機能・取付空間・サイクルを比較。
-
 ## 技術記事
 
 - [ロータリージョイント技術ガイド | Begapunk](https://www.begapunk.com/ja/blog.html): 空圧用ロータリージョイントの作動原理、選定、取付、シール方式、実機への組込み事例、出荷前検査工程を紹介する実務ガイドです。
 - [非接触すきまシール式ロータリジョイントの原理 | Begapunk](https://www.begapunk.com/ja/blog-non-contact-clearance-seal-rotary-union.html): 非接触すきまシール式ロータリジョイントで、固定側から高速回転するロータへ流体を供給する仕組みと、片側ラジアルすきま0.003 mmの意味を解説します。
 - [ロータリージョイント取付時の7つの注意点](https://www.begapunk.com/ja/blog-rotary-joint-installation-mistakes.html): 早期故障につながる取付ミスを防ぐため、芯合わせ、配管荷重、ろ過、ねじシール、ならし運転、漏れ確認を解説します。
+- [ロータリージョイントの漏れ原因と点検手順](https://www.begapunk.com/ja/blog-rotary-joint-leaking.html): ロータリージョイントの漏れは、漏れ位置の特定、継手不良と回転シール不良の切り分け、芯出し確認を部品交換の前に行います。
+- [ロータリージョイント本体材質の選び方](https://www.begapunk.com/ja/blog-rotary-joint-materials.html): アルミ・ステンレス・黄銅の本体を質量と環境で比較し、選定型式の公開本体材料を確認します。どの金属が長持ちするかの順位付けではありません。
 - [空圧用ロータリージョイントの選定5項目](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 流路数、使用圧力、回転数、流体適合性、取付方式の5項目から、設備に合う空圧用ロータリージョイントを選定します。
 - [ロータリージョイントのシール方式比較](https://www.begapunk.com/ja/blog-rotary-union-seal-types.html): Oリング、リップシール、ばね式PTFEシールを、圧力、回転数、流体、摩擦、許容漏れ量から比較します。
-
-- [ロータリージョイントの漏れ](https://www.begapunk.com/ja/blog-rotary-joint-leaking.html): ロータリージョイント漏れの切り分け：漏れ位置、継手とシール、芯出し。
-- [ねじ込みとフランジ](https://www.begapunk.com/ja/blog-threaded-vs-flange.html): ねじ込み vs フランジ取付の現場ガイド。
-- [シール交換](https://www.begapunk.com/ja/blog-seal-replacement.html): ロータリージョイントのシール交換。点検ポイントと、新品交換を検討すべき場合。
-- [本体材料](https://www.begapunk.com/ja/blog-rotary-joint-materials.html): ロータリージョイント本体材料：アルミ・ステンレス・黄銅。選定型式の公開材料を確認すること。
+- [ロータリージョイントのシール交換手順](https://www.begapunk.com/ja/blog-seal-replacement.html): 軸・シール面・漏れ位置を点検したうえで、シール交換かユニット交換かを判断します。公開型式の指定シールセットを使ってください。
+- [ロータリージョイントのねじ取付とフランジ取付](https://www.begapunk.com/ja/blog-threaded-vs-flange.html): ねじ込みとフランジ取付は、外形の見た目ではなく、取付空間・芯出し・回り止め・保全アクセスから選びます。
 
 ## 会社・サポート
 
@@ -69,6 +64,7 @@
 - [Begapunkについて | ロータリージョイントメーカー](https://www.begapunk.com/ja/about.html): Begapunkの会社概要、寧波の生産体制、品質検査、設計・加工工程、特注ロータリージョイントへの取り組みをご紹介します。
 - [製造・品質管理 | 硬質アルマイト | Begapunk](https://www.begapunk.com/ja/manufacturing-quality.html): 低速Oリングシール式ロータリージョイントの硬質アルマイト処理ロータ、カラーアルマイト処理ステータハウジング、皮膜厚さ測定を紹介します。
 - [空圧用ロータリージョイントの全数・流路別漏れ検査 | Begapunk](https://www.begapunk.com/ja/production-inspection-testing.html): Begapunkでは、最終組立後の空圧用ロータリージョイントを全数対象とし、梱包・入庫前に各流路を圧縮空気で個別に検査します。
+- [特注 液圧ロータリージョイント | Begapunk](https://www.begapunk.com/ja/custom-hydraulic-rotary-unions.html): Begapunkは作動油・水・クーラント用の特注ロータリージョイントを評価・製作します。カタログ機種は空圧です。流体と圧力をお送りください。
 - [ロータリージョイント取付手順 | Begapunk](https://www.begapunk.com/ja/installation.html): ロータリージョイントの取付手順。芯ずれ防止、配管接続、回り止め、ろ過、試運転、保守の要点を確認できます。
 - [ロータリージョイントFAQ：選定・設計・検査 | Begapunk](https://www.begapunk.com/ja/faq.html): ロータリージョイント／ロータリーユニオンの技術FAQ。対応媒体、流路数、圧力、回転数、特注設計、取付、検査、保証、見積依頼について27項目で解説します。
 - [ロータリージョイント見積・技術相談 | Begapunk](https://www.begapunk.com/ja/contact.html): 型式、写真、図面、または分かる範囲の使用条件だけで、ロータリージョイントのお見積りをご相談いただけます。通常1営業日以内にご返信します。

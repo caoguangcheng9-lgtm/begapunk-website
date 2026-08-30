@@ -2,15 +2,13 @@
 
 > Technischer Seitenindex für pneumatische Drehdurchführungen von Begapunk. Die Auswahl erfolgt nach Medium, Betriebsdruck, Drehzahl, Kanalzahl, Anschluss und Einbausituation.
 
-Der Katalog ist überwiegend pneumatisch. Hydraulische Drehdurchführungen für Öl, Wasser und Kühlmittel sind Sonderauslegung: https://www.begapunk.com/de/custom-hydraulic-rotary-unions.html . Werte aus dem Luftkatalog nicht auf Hydraulik übertragen.
-
 - [Multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml)
 - [English AI index](https://www.begapunk.com/llms.txt)
 
 ## Produkte
 
-- [Drehdurchführungen: Produktübersicht | Begapunk](https://www.begapunk.com/de/products.html): Drehdurchführungen nach Kanalzahl, Anschluss, Durchgangsbohrung und Einbausituation auswählen. Technische Daten und Zeichnungen direkt vergleichen.
-- [Drehdurchführungen: weitere Modelle | Begapunk](https://www.begapunk.com/de/products-p2.html): Weitere Ein- und Mehrkanal-Drehdurchführungen mit Gewinde- oder Flanschanschluss sowie Ausführungen mit Durchgangsbohrung.
+- [Drehdurchführungen: Produktübersicht | Begapunk](https://www.begapunk.com/de/products.html): Drehdurchführungen nach Anzahl der Wege, Anschluss, Durchgangsbohrung und Einbausituation auswählen. Technische Daten und Zeichnungen direkt vergleichen.
+- [Drehdurchführungen: weitere Modelle | Begapunk](https://www.begapunk.com/de/products-p2.html): Weitere Ein- und Mehrwege-Drehdurchführungen mit Gewinde- oder Flanschanschluss sowie Ausführungen mit Durchgangsbohrung.
 - [Pneumatische Drehdurchführungen vergleichen | Begapunk](https://www.begapunk.com/de/product-comparison.html): Begapunk Drehdurchführungen nach Kanalzahl, Betriebsdruck, Drehzahl, Anschlussart, Werkstoff und typischer Anwendung vergleichen.
 - [BP-1P-0003 — pneumatische Drehdurchführung mit 1 Kanal](https://www.begapunk.com/de/BP-1P-0003.html): BP-1P-0003 ist eine pneumatische Drehdurchführung mit 1 Kanal, 1 Eingang und 1 Ausgang. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 500 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 270 g, Gehäuse aus Stahl 45, PTFE-Dichtung mit O-Ring, Medien: Luft, Öl, Wasser; Anschlussangaben: Medieneinlass: 1 × G3/8; Medienauslass: 1 × M10×1,5.
 - [BP-1P-0006 — pneumatische Drehdurchführung mit 1 Kanal](https://www.begapunk.com/de/BP-1P-0006.html): BP-1P-0006 ist eine pneumatische Drehdurchführung mit 1 Kanal, 1 Eingang und 8 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 300 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 265 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Einlass: 1 × G1/8; Auslass: 8 × G1/8.
@@ -31,11 +29,15 @@ Der Katalog ist überwiegend pneumatisch. Hydraulische Drehdurchführungen für 
 
 ## Anwendungen
 
-- [Hydraulische Drehdurchführungen nach Maß](https://www.begapunk.com/de/custom-hydraulic-rotary-unions.html): Katalog = vorwiegend Druckluft. Hydrauliköl, Wasser und Kühlmittel über technische Prüfung. Kenndaten nicht aus dem Luftkatalog ableiten.
 - [Drehdurchführungen nach Anwendung | Begapunk](https://www.begapunk.com/de/applications.html): Anwendungsübersicht für pneumatische Drehdurchführungen, einschließlich der Übertragung von Druckluft zum hinteren Spannfutter einer Laser-Rohrschneidmaschine.
+- [Drehdurchführungen für Rund- und Drehtische | Begapunk](https://www.begapunk.com/de/application-automation-rotary-tables.html): Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle.
+- [Drehdurchführungen für Füll- und Verschließmaschinen](https://www.begapunk.com/de/application-bottle-filling-capping.html): BP-2P-16-0001 im Produktions-Verschließkopf: zwei unabhängige Luftwege spannen und lösen einen Dreibackengreifer. BP-2P-08-0001 ist eine weitere pneumatische Greiferoption.
 - [Drehdurchführungen für pneumatische CNC-Spanntechnik](https://www.begapunk.com/de/application-cnc-pneumatic-clamping.html): Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.
 - [Drehdurchführungen für Elektronik- und Batterieprüfung](https://www.begapunk.com/de/application-electronics-battery-test-fixtures.html): Pneumatische und kombinierte Drehdurchführungen für rotierende Prüfstationen, Greifer, Vakuumsauger und Batterie-Testvorrichtungen auswählen.
 - [Pneumatische Drehdurchführungen für hintere Spannfutter | Begapunk](https://www.begapunk.com/de/application-laser-tube-cutting.html): Zwei- und Dreikanal-Drehdurchführungen für Druckluft am hinteren Spannfutter vergleichen. Für den Einstieg genügt ein Modell, Foto oder eine Zeichnung; Betriebsdaten können Sie ergänzen, soweit bekannt.
+- [Drehdurchführungen für Verpackungsmaschinen | Begapunk](https://www.begapunk.com/de/application-packaging-machinery.html): Planen Sie eine pneumatische Drehdurchführung für Verpackungsrundläufer anhand der Spann- und Abblaskreise und vergleichen Sie aktuelle 2-Wege-Katalogmodelle in der Produktliste.
+- [Luftdrehanschluss für Druckluftwerkzeuge | Schlauch-Verdrehschutz](https://www.begapunk.com/de/application-pneumatic-tools-hose-anti-twist.html): Planen Sie einen Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen anhand realer Bewegung, Durchfluss und Gewinde. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle; das ist nicht automatisch eine schnell laufende Drehdurchführung.
+- [Drehdurchführungen für Roboter-Endeffektoren](https://www.begapunk.com/de/application-robot-end-of-arm-tooling.html): Planen Sie eine pneumatische Drehdurchführung für Roboter-Endeffektoren anhand von Greifer- und Abblaswegen, Handgelenkbewegung und Nutzlast. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle.
 - [Staubgeschützte Drehdurchführungen für Stahlindustrie](https://www.begapunk.com/de/application-steel-dusty-environments.html): Auswahl staubgeschützter pneumatischer Drehdurchführungen für Stahlwerke, Gießereien und abrasive Anlagenbereiche.
 - [Drehdurchführungen für Druck- und Veredelungsanlagen](https://www.begapunk.com/de/application-textile-printing-converting.html): Drehdurchführungen für Druckmaschinen, Textilwickler und Converting-Anlagen nach Medium, Druck, Drehzahl, Kanalzahl und Durchgangsbohrung auswählen.
 - [Drehdurchführungen für Vakuumverpackungsmaschinen](https://www.begapunk.com/de/application-vacuum-packaging-machines.html): Pneumatische und Vakuum-Drehdurchführungen für Rundläufer, Beutelfüller, Vakuum-Siegelköpfe und rotierende Verpackungsstationen.
@@ -44,31 +46,25 @@ Der Katalog ist überwiegend pneumatisch. Hydraulische Drehdurchführungen für 
 - [BP-2P-95-0005 im pneumatischen Spannfutter | Begapunk](https://www.begapunk.com/de/case-bp-2p-95-pneumatic-chuck-integration.html): BP-2P-95-0005 führt Druckluft von der feststehenden Seite zum rotierenden pneumatischen Spannfutter. Fotos zeigen Einbauposition und Schlauchführung.
 - [BP-3P-S06-0001 im sensorüberwachten Spannfutter | Begapunk](https://www.begapunk.com/de/case-bp-3p-s06-sensor-monitored-chuck.html): Fotodokumentierter Anwendungsfall der BP-3P-S06-0001 zur Druckluftübertragung über drei getrennte Kanäle sowie zur Übertragung externer Sensorsignale in einem pneumatischen Spannfutter.
 
-- [Verpackungsmaschinen](https://www.begapunk.com/de/application-packaging-machinery.html): Drehdurchführungen für Verpackungsmaschinen: Schaltplan, Durchfluss, Drehzahl und Einbau klären. Katalogmodelle sind pneumatisch.
-- [Abfüllen und Verschließen](https://www.begapunk.com/de/application-bottle-filling-capping.html): Drehdurchführungen für Abfüll- und Verschließmaschinen, inkl. Kundenfoto von BP-2P-16-0001 im Verschließkopf.
-- [Rundschalttische](https://www.begapunk.com/de/application-automation-rotary-tables.html): Drehdurchführungen für Rundschalttische: Spann-, Löse- und Abblasfunktionen vor der Modellauswahl klären.
-- [Druckluftwerkzeuge und Schlauch-Verdrehschutz](https://www.begapunk.com/de/application-pneumatic-tools-hose-anti-twist.html): Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen. Druck, Drehzahl und Schlauchführung prüfen; nicht automatisch eine schnell laufende Drehdurchführung.
-- [Roboter-Endeffektoren](https://www.begapunk.com/de/application-robot-end-of-arm-tooling.html): Drehdurchführungen für Roboter-Endeffektoren: Funktion der Luftwege, Bauraum und Taktzeit für den Modellvergleich.
-
 ## Technische Beiträge
 
 - [Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk](https://www.begapunk.com/de/blog.html): Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.
 - [Berührungslose Spaltdichtung in Drehdurchführungen | Begapunk](https://www.begapunk.com/de/blog-non-contact-clearance-seal-rotary-union.html): So überträgt eine Drehdurchführung mit berührungsloser Spaltdichtung ein Medium in den schnell drehenden Rotor – mit einseitigem Radialspalt von 0,003 mm.
 - [Drehdurchführung montieren: 7 häufige Fehler](https://www.begapunk.com/de/blog-rotary-joint-installation-mistakes.html): Sieben Montagefehler, die Drehdurchführungen vorzeitig schädigen können, mit Prüfhinweisen zu Ausrichtung, Rohrleitung, Filtration und Dichtheit.
+- [Drehdurchführung undicht? Systematische Fehlersuche](https://www.begapunk.com/de/blog-rotary-joint-leaking.html): Diagnose einer undichten Drehdurchführung: Leckort finden, Armaturenfehler von dynamischen Dichtungen trennen, Ausrichtung prüfen, bevor Teile gewechselt werden.
+- [Werkstoffe für Drehdurchführungen richtig auswählen](https://www.begapunk.com/de/blog-rotary-joint-materials.html): Vergleichen Sie Aluminium-, Edelstahl- und Messinggehäuse nach Masse und Umgebung und bestätigen Sie den veröffentlichten Gehäusewerkstoff des gewählten Modells. Keine Rangliste der Lebensdauer.
 - [Pneumatische Drehdurchführung auswählen: 5 Kriterien](https://www.begapunk.com/de/blog-rotary-joint-selection.html): Kanalzahl, Betriebsdruck, Drehzahl, Medium und Anschlussart: fünf Kriterien für die Auswahl einer passenden pneumatischen Drehdurchführung.
 - [Dichtungen für Drehdurchführungen im Vergleich](https://www.begapunk.com/de/blog-rotary-union-seal-types.html): O-Ring, Lippendichtung und federunterstützte PTFE-Dichtung nach Druck, Drehzahl, Medium, Reibung und zulässiger Leckage vergleichen.
-
-- [Undichte Drehdurchführung](https://www.begapunk.com/de/blog-rotary-joint-leaking.html): Diagnose bei undichter Drehdurchführung: Leckort, Armaturen vs. Dichtung, Ausrichtung prüfen.
-- [Gewinde- vs. Flanschmontage](https://www.begapunk.com/de/blog-threaded-vs-flange.html): Gewinde- vs. Flanschmontage von Drehdurchführungen: Praxisleitfaden.
-- [Dichtungswechsel](https://www.begapunk.com/de/blog-seal-replacement.html): Dichtungswechsel an Drehdurchführungen: Prüfpunkte, Austausch und wann eine neue Einheit sinnvoller ist.
-- [Gehäusewerkstoffe](https://www.begapunk.com/de/blog-rotary-joint-materials.html): Gehäusewerkstoffe von Drehdurchführungen: Aluminium, Edelstahl und Messing. Maßgeblich ist das veröffentlichte Material des gewählten Modells.
+- [Dichtung einer Drehdurchführung wechseln | Anleitung](https://www.begapunk.com/de/blog-seal-replacement.html): Entscheiden Sie nach Prüfung von Wellen, Dichtflächen und Leckort, ob Dichtungen oder die komplette Drehdurchführung zu tauschen sind. Verwenden Sie den modellspezifischen Dichtungssatz.
+- [Gewinde oder Flansch bei Drehdurchführungen?](https://www.begapunk.com/de/blog-threaded-vs-flange.html): Gewinde- oder Flanschmontage einer Drehdurchführung nach Bauraum, Ausrichtung, Verdrehschutz und Wartungszugang wählen – nicht nach dem äußeren Erscheinungsbild.
 
 ## Unternehmen und Service
 
-- [Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk](https://www.begapunk.com/de/): Pneumatische Ein- und Mehrkanal-Drehdurchführungen für Drehtische, Vorrichtungen und Automatisierung. Modelle vergleichen oder Sonderausführung anfragen.
+- [Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk](https://www.begapunk.com/de/): Pneumatische Ein- und Mehrwege-Drehdurchführungen für Drehtische, Vorrichtungen und Automatisierung. Modelle vergleichen oder Sonderausführung anfragen.
 - [Über Begapunk | Hersteller von Drehdurchführungen](https://www.begapunk.com/de/about.html): Erfahren Sie mehr über Begapunk, unsere Fertigung in Ningbo, Qualitätsprüfung und Entwicklung kundenspezifischer Drehdurchführungen.
 - [Fertigung & Qualität | Harteloxieren | Begapunk](https://www.begapunk.com/de/manufacturing-quality.html): Harteloxierte Rotoren, farbeloxierte Statorgehäuse und Schichtdickenprüfung für langsam laufende Drehdurchführungen mit O-Ring-Abdichtung.
 - [100%-Dichtheitsprüfung jedes einzelnen Kanals | Begapunk](https://www.begapunk.com/de/production-inspection-testing.html): Nach der Endmontage wird jede pneumatische Drehdurchführung kanalweise mit Druckluft bei 1,0 MPa geprüft, bevor sie verpackt und eingelagert werden darf.
+- [Hydraulische Drehdurchführungen nach Maß | Begapunk](https://www.begapunk.com/de/custom-hydraulic-rotary-unions.html): Begapunk prüft hydraulische Drehdurchführungen für Öl, Wasser und Kühlmittel. Katalogmodelle sind pneumatisch. Medium und Druck senden.
 - [Drehdurchführung montieren: Anleitung | Begapunk](https://www.begapunk.com/de/installation.html): Montageanleitung für Begapunk Drehdurchführungen: Ausrichtung, Leitungsanschluss, Verdrehschutz, Filtration, Inbetriebnahme und Wartung.
 - [Technische FAQ zu Drehdurchführungen | Begapunk](https://www.begapunk.com/de/faq.html): 27 technische Antworten zu Funktion, Auswahl, Medien, kundenspezifischer Auslegung, Montage, Dichtheitsprüfung, Rückverfolgbarkeit und Anwendungsprüfung von Drehdurchführungen.
 - [Drehdurchführung anfragen | Technische Prüfung Begapunk](https://www.begapunk.com/de/contact.html): Für die Anfrage einer Drehdurchführung genügen Modellbezeichnung, Foto, Zeichnung oder bekannte Betriebsdaten. In der Regel antworten wir innerhalb eines Arbeitstags.
