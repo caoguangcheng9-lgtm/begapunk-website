@@ -64,7 +64,7 @@
 - [Begapunkについて | ロータリージョイントメーカー](https://www.begapunk.com/ja/about.html): Begapunkの会社概要、寧波の生産体制、品質検査、設計・加工工程、特注ロータリージョイントへの取り組みをご紹介します。
 - [製造・品質管理 | 硬質アルマイト | Begapunk](https://www.begapunk.com/ja/manufacturing-quality.html): 低速Oリングシール式ロータリージョイントの硬質アルマイト処理ロータ、カラーアルマイト処理ステータハウジング、皮膜厚さ測定を紹介します。
 - [空圧用ロータリージョイントの全数・流路別漏れ検査 | Begapunk](https://www.begapunk.com/ja/production-inspection-testing.html): Begapunkでは、最終組立後の空圧用ロータリージョイントを全数対象とし、梱包・入庫前に各流路を圧縮空気で個別に検査します。
-- [特注 液圧ロータリージョイント | Begapunk](https://www.begapunk.com/ja/custom-hydraulic-rotary-unions.html): Begapunkは作動油・水・クーラント用の特注ロータリージョイントを評価・製作します。カタログ機種は空圧です。流体と圧力をお送りください。
+- [特注 液圧ロータリージョイント | 30 MPa | 油圧ショベル・2流路 | Begapunk](https://www.begapunk.com/ja/custom-hydraulic-rotary-unions.html): 油圧ショベル・抓木機・船用リール向けの特注液圧ロータリージョイント。標準2流路、最大12流路。最大30 MPa（300 bar / ≈ 4350 psi）まで評価・製作。MOQ 1個。空圧カタログの転用ではありません。
 - [ロータリージョイント取付手順 | Begapunk](https://www.begapunk.com/ja/installation.html): ロータリージョイントの取付手順。芯ずれ防止、配管接続、回り止め、ろ過、試運転、保守の要点を確認できます。
 - [ロータリージョイントFAQ：選定・設計・検査 | Begapunk](https://www.begapunk.com/ja/faq.html): ロータリージョイント／ロータリーユニオンの技術FAQ。対応媒体、流路数、圧力、回転数、特注設計、取付、検査、保証、見積依頼について27項目で解説します。
 - [ロータリージョイント見積・技術相談 | Begapunk](https://www.begapunk.com/ja/contact.html): 型式、写真、図面、または分かる範囲の使用条件だけで、ロータリージョイントのお見積りをご相談いただけます。通常1営業日以内にご返信します。
