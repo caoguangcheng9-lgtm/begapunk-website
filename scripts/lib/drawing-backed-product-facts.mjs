@@ -54,8 +54,8 @@ const copy = {
     widthEnvelope: (width, length) => `dimensions: maximum width ${width} mm × overall length ${length} mm`,
     throughBore: (diameter) => `through bore Ø${diameter} mm`,
     verifiedPorts: 'port annotations',
-    portFunctionPending: 'port functional assignment is not confirmed',
-    airInletUnclear: 'air inlet not unambiguously identified',
+    portFunctionPending: 'port functions are assigned in the confirmed drawing before production',
+    airInletUnclear: 'the air inlet is assigned in the confirmed drawing before production',
   },
   de: {
     productType: 'pneumatische Drehdurchführung',
@@ -82,8 +82,8 @@ const copy = {
     widthEnvelope: (width, length) => `Abmessungen: maximale Breite ${width} mm × Gesamtlänge ${length} mm`,
     throughBore: (diameter) => `Durchgangsbohrung Ø${diameter} mm`,
     verifiedPorts: 'Anschlussangaben',
-    portFunctionPending: 'Funktionszuordnung der Anschlüsse ist nicht bestätigt',
-    airInletUnclear: 'Lufteingang nicht eindeutig gekennzeichnet',
+    portFunctionPending: 'Anschlussfunktionen werden in der bestätigten Zeichnung vor der Fertigung zugeordnet',
+    airInletUnclear: 'der Lufteingang wird in der bestätigten Zeichnung vor der Fertigung zugeordnet',
   },
   ja: {
     productType: '空圧ロータリージョイント',
@@ -110,8 +110,8 @@ const copy = {
     widthEnvelope: (width, length) => `外形寸法 最大幅${width} mm × 全長${length} mm`,
     throughBore: (diameter) => `中空径 Ø${diameter} mm`,
     verifiedPorts: 'ポート表記',
-    portFunctionPending: 'ポートの機能割当は確認できません',
-    airInletUnclear: '空気入口は明確に特定できません',
+    portFunctionPending: 'ポート機能は確定図面で生産前に割り当てます',
+    airInletUnclear: '空気入口は確定図面で生産前に割り当てます',
   },
   ru: {
     productType: 'пневматическое ротационное соединение',
@@ -138,8 +138,8 @@ const copy = {
     widthEnvelope: (width, length) => `габариты: максимальная ширина ${width} мм × общая длина ${length} мм`,
     throughBore: (diameter) => `сквозное отверстие Ø${diameter} мм`,
     verifiedPorts: 'обозначения портов',
-    portFunctionPending: 'Функциональное назначение портов не подтверждено',
-    airInletUnclear: 'вход воздуха однозначно не обозначен',
+    portFunctionPending: 'функции портов назначаются в подтверждённом чертеже до производства',
+    airInletUnclear: 'вход воздуха назначается в подтверждённом чертеже до производства',
   },
 };
 
