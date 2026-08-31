@@ -1,6 +1,6 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
-  "updatedAt": "2026-08-30",
+  "updatedAt": "2026-08-31",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -38,7 +38,7 @@
     "schemaVersion": 2,
     "algorithm": "sha256-bytes-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "capturedAt": "2026-08-30T02:51:23.698Z",
+    "capturedAt": "2026-08-31T04:36:05.862Z",
     "pagesPerLanguage": 57,
     "languages": [
       "de",
@@ -50,15 +50,15 @@
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
     "de": {
-      "reviewed": 53,
+      "reviewed": 57,
       "total": 57
     },
     "ja": {
-      "reviewed": 53,
+      "reviewed": 57,
       "total": 57
     },
     "ru": {
-      "reviewed": 53,
+      "reviewed": 57,
       "total": 57
     }
   },
@@ -117,16 +117,15 @@
         "privacy.html",
         "terms.html",
         "thank-you.html",
-        "404.html"
-      ],
-      "copyReviewedAwaitingRender": [],
-      "inProgress": [
         "case-bp-2p-95-pneumatic-chuck-integration.html",
         "case-bp-3p-s06-sensor-monitored-chuck.html",
         "manufacturing-quality.html",
-        "production-inspection-testing.html"
+        "production-inspection-testing.html",
+        "404.html"
       ],
-      "remaining": 4
+      "copyReviewedAwaitingRender": [],
+      "inProgress": [],
+      "remaining": 0
     },
     "ru": {
       "reviewed": [
@@ -182,16 +181,15 @@
         "privacy.html",
         "terms.html",
         "thank-you.html",
-        "404.html"
-      ],
-      "copyReviewedAwaitingRender": [],
-      "inProgress": [
         "case-bp-2p-95-pneumatic-chuck-integration.html",
         "case-bp-3p-s06-sensor-monitored-chuck.html",
         "manufacturing-quality.html",
-        "production-inspection-testing.html"
+        "production-inspection-testing.html",
+        "404.html"
       ],
-      "remaining": 4
+      "copyReviewedAwaitingRender": [],
+      "inProgress": [],
+      "remaining": 0
     },
     "ja": {
       "reviewed": [
@@ -247,16 +245,15 @@
         "privacy.html",
         "terms.html",
         "thank-you.html",
-        "404.html"
-      ],
-      "copyReviewedAwaitingRender": [],
-      "inProgress": [
         "case-bp-2p-95-pneumatic-chuck-integration.html",
         "case-bp-3p-s06-sensor-monitored-chuck.html",
         "manufacturing-quality.html",
-        "production-inspection-testing.html"
+        "production-inspection-testing.html",
+        "404.html"
       ],
-      "remaining": 4
+      "copyReviewedAwaitingRender": [],
+      "inProgress": [],
+      "remaining": 0
     }
   },
   "renderQa": {

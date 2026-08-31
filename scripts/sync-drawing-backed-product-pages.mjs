@@ -31,10 +31,10 @@ if (args.length > 1 || (args[0] && !['--check', '--write'].includes(args[0]))) {
 const mode = args[0] === '--write' ? 'write' : 'check';
 
 const WARRANTY_EXPECTATIONS = Object.freeze({
-  en: Object.freeze({ label: 'Warranty period', value: '1 year' }),
-  de: Object.freeze({ label: 'Garantiezeitraum', value: '1 Jahr' }),
-  ja: Object.freeze({ label: '保証期間', value: '1年' }),
-  ru: Object.freeze({ label: 'Гарантийный срок', value: '1 год' }),
+  en: Object.freeze({ label: 'Warranty period', value: '1 year from shipment' }),
+  de: Object.freeze({ label: 'Garantiezeitraum', value: '1 Jahr ab Versand' }),
+  ja: Object.freeze({ label: '保証期間', value: '出荷日から1年' }),
+  ru: Object.freeze({ label: 'Гарантийный срок', value: '1 год с даты отгрузки' }),
 });
 
 const KEY_PORT_LABELS = Object.freeze({
@@ -829,10 +829,10 @@ function formatWeight(locale, weight) {
 function formatPorts(locale, model, ports) {
   if (ports.status === 'anomaly-unresolved') {
     return localizedPhrase(locale, {
-      en: 'Port thread is not listed; request the current model-specific drawing before selecting fittings',
-      de: 'Anschlussgewinde ist nicht angegeben; aktuelle modellspezifische Zeichnung vor Auswahl der Verschraubungen anfordern',
-      ja: 'ポートねじは記載されていません。継手選定前に最新の型式専用図面をご依頼ください',
-      ru: 'Резьба портов не указана; запросите актуальный чертёж конкретной модели до выбора фитингов',
+      en: 'Port thread is confirmed from the current model-specific drawing before fitting selection',
+      de: 'Das Anschlussgewinde wird vor der Auswahl von Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt',
+      ja: 'ポートねじは継手選定前に最新の型式専用図面で確認します',
+      ru: 'Резьба портов подтверждается по актуальному чертежу конкретной модели до выбора фитингов',
     });
   }
   if (!Array.isArray(ports.annotations) || !ports.annotations.length) {
@@ -887,18 +887,18 @@ function formatPorts(locale, model, ports) {
   let result = parts.join(' · ');
   if (ports.status === 'verified-threads-only') {
     result += localizedPhrase(locale, {
-      en: '; functional assignment is not inferred',
-      de: '; Funktionszuordnung wird nicht abgeleitet',
-      ja: '（機能割当は推定しません）',
-      ru: '; функциональное назначение не выводится',
+      en: '; port functions are assigned in the confirmed drawing before production',
+      de: '; Anschlussfunktionen werden in der bestätigten Zeichnung vor der Fertigung zugeordnet',
+      ja: '（ポート機能は確定図面で生産前に割り当てます）',
+      ru: '; функции портов назначаются в подтверждённом чертеже до производства',
     });
   }
   if (ports.status === 'verified-outlets-only') {
     result += localizedPhrase(locale, {
-      en: '; air inlet is not unambiguously identified',
-      de: '; der Lufteingang ist nicht eindeutig gekennzeichnet',
-      ja: '（空気入口は明確に特定できません）',
-      ru: '; вход воздуха однозначно не обозначен',
+      en: '; the air inlet is assigned in the confirmed drawing before production',
+      de: '; der Lufteingang wird in der bestätigten Zeichnung vor der Fertigung zugeordnet',
+      ja: '（空気入口は確定図面で生産前に割り当てます）',
+      ru: '; вход воздуха назначается в подтверждённом чертеже до производства',
     });
   }
   return result;
@@ -999,10 +999,10 @@ function formatMountingSide(locale, model, mounting, requestedSide) {
   const exact = mounting.features.filter((feature) => feature.side === requestedSide);
   if (exact.length) return exact.map((feature) => formatMountingFeature(locale, feature)).join(' · ');
   return localizedPhrase(locale, {
-    en: 'See the approved drawing; the reviewed source data do not confirm which face is the rotor or stator side',
-    de: 'Siehe freigegebene Zeichnung; die Zuordnung der Stirnseiten zu Rotor und Stator ist in den geprüften Quelldaten nicht bestätigt',
-    ja: '承認図面を参照してください。確認済み情報だけでは、各面とロータ／ステータの対応を確定できません',
-    ru: 'См. согласованный чертёж: по проверенным исходным данным соответствие торцов ротору и статору не подтверждено',
+    en: 'See the approved drawing; the rotor/stator assignment is confirmed in the approved drawing before production',
+    de: 'Siehe freigegebene Zeichnung; die Zuordnung der Stirnseiten zu Rotor und Stator wird in der freigegebenen Zeichnung vor der Fertigung bestätigt',
+    ja: '承認図面を参照してください。ロータ／ステータの対応は承認図面で生産前に確定します',
+    ru: 'См. согласованный чертёж: соответствие торцов ротору и статору подтверждается в согласованном чертеже до производства',
   });
 }
 

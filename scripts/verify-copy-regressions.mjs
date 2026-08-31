@@ -9,6 +9,38 @@ const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json
 
 const checks = [
   {
+    file: 'custom-hydraulic-rotary-unions.html',
+    required: [
+      'Custom Hydraulic Rotary Unions for Excavators, Grapples, and Marine Reels',
+      'Up to 30 MPa (300 bar /',
+      '2 passages typical',
+      'Up to 12 custom',
+      'Carbon-fiber Glyd ring',
+      'MOQ 1',
+      'About 30 days after payment',
+      'Ningbo facility',
+      'contact.html?inquiry_type=hydraulic&product=hydraulic&source=custom-hydraulic-rotary-unions.html#quoteForm',
+    ],
+    forbidden: [
+      'Custom Hydraulic Rotary Unions for OEM Machinery',
+      'every unit is 30 MPa',
+    ],
+  },
+  {
+    file: 'de/custom-hydraulic-rotary-unions.html',
+    required: ['Hydraulik-Drehdurchf', '2-Wege', '12 Wege', 'Glyd-Ring', '30 MPa'],
+    forbidden: ['Kanalzahl'],
+  },
+  {
+    file: 'ja/custom-hydraulic-rotary-unions.html',
+    required: ['\u6db2\u5727\u30ed\u30fc\u30bf\u30ea\u30fc\u30b8\u30e7\u30a4\u30f3\u30c8', '2\u6d41\u8def', '12\u6d41\u8def', '30 MPa'],
+  },
+  {
+    file: 'ru/custom-hydraulic-rotary-unions.html',
+    required: ['\u0433\u0438\u0434\u0440\u0430\u0432\u043b', '30 \u041c\u041f\u0430', 'Glyd', '2 \u043f\u0440\u043e\u0445\u043e\u0434'],
+  },
+
+  {
     file: 'blog-rotary-joint-selection.html',
     forbidden: [
       'oxygen and coolant, for example',

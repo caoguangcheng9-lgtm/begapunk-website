@@ -625,10 +625,10 @@ function uiFormatPorts(locale, model, ports) {
   if (ports.status === 'annotation-conflict') return uiPendingOutletCount(locale);
   if (ports.status === 'anomaly-unresolved') {
     return uiPhrase(locale, {
-      en: 'Port thread is not listed',
-      de: 'Anschlussgewinde ist nicht angegeben',
-      ja: 'ポートねじは記載されていません',
-      ru: 'Резьба портов не указана',
+      en: 'Port thread is confirmed from the current model-specific drawing before fitting selection',
+      de: 'Das Anschlussgewinde wird vor der Auswahl von Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt',
+      ja: 'ポートねじは継手選定前に最新の型式専用図面で確認します',
+      ru: 'Резьба портов подтверждается по актуальному чертежу конкретной модели до выбора фитингов',
     });
   }
   if (!Array.isArray(ports.annotations) || !ports.annotations.length) {
@@ -657,14 +657,14 @@ function uiFormatPorts(locale, model, ports) {
   let result = parts.join(' · ');
   if (ports.status === 'verified-threads-only') {
     result += uiPhrase(locale, {
-      en: '; functional assignment is not confirmed', de: '; Funktionszuordnung der Anschlüsse ist nicht bestätigt',
-      ja: '（ポートの機能割当は確認できません）', ru: '; функциональное назначение портов не подтверждено',
+      en: '; port functions are assigned in the confirmed drawing before production', de: '; Anschlussfunktionen werden in der bestätigten Zeichnung vor der Fertigung zugeordnet',
+      ja: '（ポート機能は確定図面で生産前に割り当てます）', ru: '; функции портов назначаются в подтверждённом чертеже до производства',
     });
   }
   if (ports.status === 'verified-outlets-only') {
     result += uiPhrase(locale, {
-      en: '; air inlet is not unambiguously identified', de: '; der Lufteingang ist nicht eindeutig gekennzeichnet',
-      ja: '（空気入口は明確に特定できません）', ru: '; вход воздуха однозначно не обозначен',
+      en: '; the air inlet is assigned in the confirmed drawing before production', de: '; der Lufteingang wird in der bestätigten Zeichnung vor der Fertigung zugeordnet',
+      ja: '（空気入口は確定図面で生産前に割り当てます）', ru: '; вход воздуха назначается в подтверждённом чертеже до производства',
     });
   }
   return result;
@@ -695,8 +695,8 @@ function uiFormatPortsKey(locale, model, ports) {
   let result = parts.join(' · ');
   if (ports.status === 'verified-threads-only') {
     result += uiPhrase(locale, {
-      en: '; function not confirmed', de: '; Funktion nicht bestätigt',
-      ja: '（機能割当は未確認）', ru: '; назначение не подтверждено',
+      en: '; port functions are assigned from the customer circuit layout before production', de: '; Anschlussfunktionen werden anhand des Kundenkreisplans vor der Fertigung zugeordnet',
+      ja: '（ポート機能はお客様の回路構成に基づき生産前に割り当てます）', ru: '; функции портов назначаются по схеме заказчика до производства',
     });
   }
   return result;
@@ -785,10 +785,10 @@ function uiFormatMountingSide(locale, model, mounting, side) {
   const exact = mounting.features.filter((feature) => feature.side === side);
   if (exact.length) return exact.map((feature) => uiFormatMountingFeature(locale, feature)).join(' · ');
   return uiPhrase(locale, {
-    en: 'See the approved drawing; the reviewed source data do not confirm which face is the rotor or stator side',
-    de: 'Siehe freigegebene Zeichnung; die Zuordnung der Stirnseiten zu Rotor und Stator ist in den geprüften Quelldaten nicht bestätigt',
-    ja: '承認図面を参照してください。確認済み情報だけでは、各面とロータ／ステータの対応を確定できません',
-    ru: 'См. согласованный чертёж: по проверенным исходным данным соответствие торцов ротору и статору не подтверждено',
+    en: 'See the approved drawing; the rotor/stator assignment is confirmed in the approved drawing before production',
+    de: 'Siehe freigegebene Zeichnung; die Zuordnung der Stirnseiten zu Rotor und Stator wird in der freigegebenen Zeichnung vor der Fertigung bestätigt',
+    ja: '承認図面を参照してください。ロータ／ステータの対応は承認図面で生産前に確定します',
+    ru: 'См. согласованный чертёж: соответствие торцов ротору и статору подтверждается в согласованном чертеже до производства',
   });
 }
 
@@ -955,10 +955,10 @@ export function drawingBackedUiContract(locale, model) {
     ru: '3 пневматических канала · 6 электрических выводов · 1 шт.; распределение цепей и номиналы по выбранной спецификации',
   });
   const s06PneumaticPassages = uiPhrase(locale, {
-    en: '3 pneumatic passages; inlet connection not unambiguously labeled',
-    de: '3 Pneumatikkanäle; Lufteingang nicht eindeutig gekennzeichnet',
-    ja: '空圧3流路。空気入口は明確に特定できません',
-    ru: '3 пневматических канала; вход воздуха однозначно не обозначен',
+    en: '3 pneumatic passages; the inlet is assigned in the confirmed drawing before production',
+    de: '3 Pneumatikkanäle; der Lufteingang wird in der bestätigten Zeichnung vor der Fertigung zugeordnet',
+    ja: '空圧3流路。空気入口は確定図面で生産前に割り当てます',
+    ru: '3 пневматических канала; вход воздуха назначается в подтверждённом чертеже до производства',
   });
   let priceNote = uiVerifiedPriceNote(locale, model, pressure, speed, media);
   if (model === 'BP-3P-S06-0001') {
@@ -971,10 +971,10 @@ export function drawingBackedUiContract(locale, model) {
   }
   if (model === 'BP-3P-0006') {
     priceNote = appendUiClause(locale, priceNote, uiPhrase(locale, {
-      en: 'port thread is not listed; request the current model-specific drawing before selecting fittings',
-      de: 'das Anschlussgewinde ist nicht angegeben; vor der Auswahl von Verschraubungen die aktuelle modellspezifische Zeichnung anfordern',
-      ja: 'ポートねじは記載されていません。継手選定前に最新の型式専用図面をご依頼ください',
-      ru: 'резьба портов не указана; запросите актуальный чертёж конкретной модели до выбора фитингов',
+      en: 'port thread is confirmed from the current model-specific drawing before fitting selection',
+      de: 'das Anschlussgewinde wird vor der Auswahl von Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt',
+      ja: 'ポートねじは継手選定前に最新の型式専用図面で確認します',
+      ru: 'резьба портов подтверждается по актуальному чертежу конкретной модели до выбора фитингов',
     }));
   }
   const fields = {
@@ -1176,6 +1176,14 @@ function metadataHeading(locale, model, product) {
       ru: `${model} ${passages}-канальное пневмоэлектрическое вращающееся соединение`,
     });
   }
+  if (model === 'BP-2P-95-0005') {
+    return uiPhrase(locale, {
+      en: `${model} 2-Passage 2-in / 4-out Pneumatic Rotary Union`,
+      de: `${model} 2-Kanal-Drehdurchführung 2/4 Ausgänge`,
+      ja: `${model} 2流路 2入力4出力 空圧ロータリージョイント`,
+      ru: `${model} 2-канальное вращающееся соединение 2/4 выхода`,
+    });
+  }
   return uiPhrase(locale, {
     en: `${model} ${passages}-Passage Pneumatic Rotary Union`,
     de: `${model} pneumatische ${passages}-Kanal-Drehdurchführung`,
@@ -1215,6 +1223,14 @@ function verifiedMetadataDescription(locale, model, product, heading) {
       de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium ${media}; sechs elektrische Leitungen, Kreiszuordnung und Nennwerte gemäß Spezifikation.`,
       ja: `${heading}。${pressure}、${speed} min⁻¹。流体は${media}、電気リード6本。回路割当・定格は仕様書で確認。`,
       ru: `${heading}. ${pressure}, ${speed} об/мин; среда ${media}; шесть электровыводов, распределение цепей и номиналы по спецификации.`,
+    });
+  }
+  if (model === 'BP-2P-95-0005') {
+    return uiPhrase(locale, {
+      en: `${heading}. 2-in / 4-out layout for clamp and release circuits. ${pressure} · ${speed} RPM; suitable media: ${media}.`,
+      de: `${heading}. 2 Ein- / 4 Ausgänge für Spannen und Lösen. ${pressure} · ${speed} min⁻¹; geeignete Medien: ${media}.`,
+      ja: `${heading}。クランプ／リリース用の2入力4出力構成。${pressure}・${speed} min⁻¹、適用流体：${media}。`,
+      ru: `${heading}. Конфигурация 2 входа / 4 выхода для зажима и разжима. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
     });
   }
   return uiPhrase(locale, {

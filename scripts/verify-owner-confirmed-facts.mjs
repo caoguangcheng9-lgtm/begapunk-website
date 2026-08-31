@@ -10,7 +10,7 @@ const locales = {
   en: {
     prefix: '',
     warrantyName: 'Warranty period',
-    warrantyValue: '1 year',
+    warrantyValue: '1 year from shipment',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.',
     termsIdentity: 'These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.',
     termsArbitration: "These Terms are governed by the laws of the People's Republic of China. Any dispute arising from or in connection with these Terms shall first be resolved through good-faith negotiation. If negotiation fails, the dispute shall be submitted to Ningbo Arbitration Commission for arbitration in accordance with its arbitration rules in effect at the time of submission.",
@@ -25,7 +25,7 @@ const locales = {
     selectionBoundaries: [
       'Send the medium, temperature, mounting, duty cycle, and required pressure and speed for an operating-point review.',
       'Send the application requirements and request the current model-specific file before selecting or ordering this model.',
-      'For continuous duty, send the medium, temperature, mounting, and duty cycle so we can confirm the operating point.',
+      'For continuous rotation, send your duty cycle. We will confirm the operating point before production.',
     ],
     caseFacts: {
       'case-bp-2p-95-pneumatic-chuck-integration.html': [
@@ -43,7 +43,7 @@ const locales = {
   de: {
     prefix: 'de',
     warrantyName: 'Garantiezeitraum',
-    warrantyValue: '1 Jahr',
+    warrantyValue: '1 Jahr ab Versand',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“) respektiert Ihre Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Daten erheben, verwenden, weitergeben und schützen, wenn Sie unsere Website besuchen oder eine Anfrage senden.',
     termsIdentity: 'Diese Allgemeinen Geschäftsbedingungen („Bedingungen“) regeln die Nutzung der Begapunk-Website und den Kauf von Drehdurchführungen bei Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“). Mit dem Zugriff auf unsere Website oder der Erteilung einer Bestellung stimmen Sie diesen Bedingungen zu.',
     termsArbitration: 'Diese Bedingungen unterliegen dem Recht der Volksrepublik China. Jede Streitigkeit aus oder im Zusammenhang mit diesen Bedingungen soll zunächst durch Verhandlungen nach Treu und Glauben beigelegt werden. Scheitern die Verhandlungen, wird die Streitigkeit der Ningbo Arbitration Commission zur Schiedsentscheidung nach deren zum Zeitpunkt der Einreichung geltender Schiedsordnung vorgelegt.',
@@ -58,7 +58,7 @@ const locales = {
     selectionBoundaries: [
       'Senden Sie Medium, Temperatur, Montage, Lastprofil sowie den erforderlichen Druck und die Drehzahl für eine Prüfung des Betriebspunkts.',
       'Anwendungsanforderungen senden und vor Auswahl oder Bestellung die aktuelle modellspezifische Datei anfordern.',
-      'Für Dauerbetrieb nennen Sie bitte Medium, Temperatur, Montage und Lastprofil, damit wir den Betriebspunkt prüfen können.',
+      'Für Dauerbetrieb nennen Sie bitte Ihr Lastprofil. Wir bestätigen den Betriebspunkt vor der Fertigung.',
     ],
     caseFacts: {
       'case-bp-2p-95-pneumatic-chuck-integration.html': [
@@ -76,7 +76,7 @@ const locales = {
   ja: {
     prefix: 'ja',
     warrantyName: '保証期間',
-    warrantyValue: '1年',
+    warrantyValue: '出荷日から1年',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）は、お客様のプライバシーを尊重します。本プライバシーポリシーは、当社ウェブサイトの利用またはお問い合わせ時に、情報をどのように取得、利用、提供、保護するかを説明するものです。',
     termsIdentity: '本利用規約・取引条件（以下「本規約」）は、Begapunkウェブサイトの利用およびNingbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）からのロータリージョイント製品の購入に適用されます。本ウェブサイトへのアクセスまたは注文をもって、本規約に同意したものとみなします。',
     termsArbitration: '本規約は中華人民共和国の法律に準拠します。本規約に起因し、または関連する紛争は、まず誠実な協議により解決を図るものとします。協議で解決できない場合、当該紛争をNingbo Arbitration Commission（寧波仲裁委員会）に付託し、申立時に有効な同委員会の仲裁規則に従って仲裁により解決します。',
@@ -91,7 +91,7 @@ const locales = {
     selectionBoundaries: [
       '運転点の確認には、流体、温度、取付け、デューティ、必要圧力、回転数をお知らせください。',
       '用途条件をお知らせのうえ、選定・発注前に現在の型式専用ファイルをご依頼ください。',
-      '連続運転の場合は、流体、温度、取付け、デューティをお知らせください。実際の運転点を確認します。',
+      '連続回転の場合はデューティをお知らせください。生産前に運転点を確認します。',
     ],
     caseFacts: {
       'case-bp-2p-95-pneumatic-chuck-integration.html': [
@@ -109,7 +109,7 @@ const locales = {
   ru: {
     prefix: 'ru',
     warrantyName: 'Гарантийный срок',
-    warrantyValue: '1 год',
+    warrantyValue: '1 год с даты отгрузки',
     privacyIdentity: 'Компания Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы») уважает вашу конфиденциальность. Настоящая Политика объясняет, как мы собираем, используем, передаём и защищаем данные при посещении сайта или отправке запроса.',
     termsIdentity: 'Настоящие условия поставки и использования («Условия») регулируют использование сайта Begapunk и приобретение ротационных соединений у компании Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы»). Используя сайт или размещая заказ, вы соглашаетесь с настоящими Условиями.',
     termsArbitration: 'Настоящие Условия регулируются законодательством Китайской Народной Республики. Любой спор, возникающий из настоящих Условий или в связи с ними, стороны сначала стремятся урегулировать путём добросовестных переговоров. Если договориться не удаётся, спор передаётся в Ningbo Arbitration Commission (Арбитражную комиссию Нинбо) для разрешения в соответствии с её арбитражным регламентом, действующим на момент подачи заявления.',
@@ -124,7 +124,7 @@ const locales = {
     selectionBoundaries: [
       'Для проверки рабочей точки укажите среду, температуру, монтаж, рабочий цикл, требуемые давление и частоту вращения.',
       'Сообщите условия применения и запросите актуальный файл конкретной модели до выбора или заказа.',
-      'Для непрерывной работы укажите среду, температуру, монтаж и рабочий цикл, чтобы мы проверили рабочую точку.',
+      'Для непрерывного вращения укажите рабочий цикл. Мы подтвердим рабочую точку до производства.',
     ],
     caseFacts: {
       'case-bp-2p-95-pneumatic-chuck-integration.html': [
@@ -448,6 +448,25 @@ for (const [language, locale] of Object.entries(locales)) {
     if (businesses.length !== 1) fail(`${contactPath}: expected exactly one canonical LocalBusiness, found ${businesses.length}.`);
     else checkLocalBusiness(businesses[0], contactPath, 'contact-page JSON-LD');
   }
+}
+
+const hydraulicPage = 'custom-hydraulic-rotary-unions.html';
+const hydraulicFacts = {
+  en: ['30 MPa', '300 bar', '4350 psi', '2 passages typical', 'Up to 12 custom', 'Carbon-fiber Glyd ring', 'MOQ 1', 'About 30 days after payment', 'Ningbo facility'],
+  de: ['30 MPa', '300 bar', '2-Wege', '12 Wege', 'Glyd-Ring', 'MOQ 1'],
+  ja: ['30 MPa', '2\u6d41\u8def', '12\u6d41\u8def', '\u30b0\u30e9\u30a4\u30c9\u30ea\u30f3\u30b0', 'MOQ 1'],
+  ru: ['30 \u041c\u041f\u0430', '300 \u0431\u0430\u0440', '2 \u043f\u0440\u043e\u0445\u043e\u0434', 'Glyd', 'MOQ 1'],
+};
+for (const [language, locale] of Object.entries(locales)) {
+  const relativePath = relativeFile(locale, hydraulicPage);
+  const source = await read(relativePath);
+  if (!source) continue;
+  const $ = load(source, { decodeEntities: false });
+  const pageText = visiblePageText($);
+  for (const fact of hydraulicFacts[language] || []) {
+    if (!containsText(pageText, fact)) fail(relativePath + ': missing owner-confirmed hydraulic fact: ' + fact);
+  }
+  if (/every unit is 30 MPa/i.test(pageText)) fail(relativePath + ': must not claim every unit is 30 MPa.');
 }
 
 if (productPages.length !== 16) {

@@ -4,7 +4,7 @@
 
 Begapunk serves OEM machine builders, automation companies, equipment manufacturers, and distributors. Product selection depends on the medium, pressure, rotational speed, passage count, port size, mounting method, duty cycle, and operating environment.
 
-Standard catalog models are primarily pneumatic. Do not infer hydraulic pressure or RPM ratings from the air catalog. Begapunk evaluates custom hydraulic / oil / water / coolant rotary unions by engineering review: https://www.begapunk.com/custom-hydraulic-rotary-unions.html . High-pressure hydraulic, excavator, crane, construction, mining, drilling, and other mobile-equipment projects require that custom evaluation.
+Standard catalog models are primarily pneumatic. Do not infer hydraulic pressure or RPM ratings from the air catalog. Begapunk manufactures custom hydraulic-oil rotary unions: typical 2-passage, custom up to 12, evaluate/manufacture up to 30 MPa (300 bar / approx 4350 psi) as a custom ceiling, not a stock catalog rating. Inquiry review starts from operating pressure and speed. https://www.begapunk.com/custom-hydraulic-rotary-unions.html
 
 Use the language edition that best matches the user's query. Technical model codes, pressure values, speed values, dimensions, and material designations are shared across language editions and must not be translated or inferred beyond the published page data.
 
@@ -47,7 +47,7 @@ Use the language edition that best matches the user's query. Technical model cod
 
 ## Application guides
 
-- [Custom hydraulic rotary unions](https://www.begapunk.com/custom-hydraulic-rotary-unions.html): Catalog models are primarily pneumatic. Custom hydraulic, oil, water, and coolant rotary unions are evaluated and built after engineering review. Do not infer ratings from air-catalog MPa/RPM. BP-1P-0003 is the published catalog drawing that lists air, oil, and water.
+- [Custom hydraulic rotary unions](https://www.begapunk.com/custom-hydraulic-rotary-unions.html): Custom hydraulic-oil rotary unions for excavators, log/timber grapples, and marine reel and coil-handling equipment. Typical 2-passage, custom up to 12. Evaluate/manufacture up to 30 MPa (300 bar / approx 4350 psi) as a custom ceiling, not a stock rating. Carbon-fiber Glyd ring (PTFE slide ring). MOQ 1; about 30 calendar days after payment (not the catalog pneumatic ~20-day item). Application photos/drawings of hydraulic jobs are being prepared. BP-1P-0003 is a different offer: drawing-listed air/oil/water at published 1 MPa / 500 RPM.
 - [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck. BP-2P-08-0001 and BP-3P-0004 are used in this application category.
 - [CNC pneumatic clamping](https://www.begapunk.com/application-cnc-pneumatic-clamping.html): Selection guidance plus a customer-authorized BP-2P-130-0001 production application on a custom low-speed circular-saw fixture, using two independent compressed-air passages for clamp and release.
 - [Vacuum packaging machines](https://www.begapunk.com/application-vacuum-packaging-machines.html): Vacuum and pneumatic rotary-union selection.

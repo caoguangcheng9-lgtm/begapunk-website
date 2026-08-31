@@ -13,28 +13,28 @@ const productWarrantyByLocale = Object.freeze({
     legacyName: 'Warranty terms',
     legacyValue: 'Confirmed in quotation/order',
     name: 'Warranty period',
-    value: '1 year',
+    value: '1 year from shipment',
   }),
   de: Object.freeze({
     prefix: 'de',
     legacyName: 'Garantiebedingungen',
     legacyValue: 'Im Angebot/Auftrag bestätigt',
     name: 'Garantiezeitraum',
-    value: '1 Jahr',
+    value: '1 Jahr ab Versand',
   }),
   ja: Object.freeze({
     prefix: 'ja',
     legacyName: '保証条件',
     legacyValue: '見積書・注文書で確認',
     name: '保証期間',
-    value: '1年',
+    value: '出荷日から1年',
   }),
   ru: Object.freeze({
     prefix: 'ru',
     legacyName: 'Условия гарантии',
     legacyValue: 'Указаны в коммерческом предложении/заказе',
     name: 'Гарантийный срок',
-    value: '1 год',
+    value: '1 год с даты отгрузки',
   }),
 });
 const bottleCappingProductPage = 'BP-2P-16-0001.html';

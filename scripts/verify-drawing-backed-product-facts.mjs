@@ -78,7 +78,7 @@ const pendingDrawingPatterns = {
   ru: /проверка применения|актуальн.*файл.*модел|файл.*конкретн.*модел/iu
 };
 
-const pendingPortPattern = /pending|unresolved|clarif|confirm(?:ation|ed)? required|to be confirmed|not listed|application review|aussteh|offen|nicht angegeben|ungeklärt|klär|bestätig|Anwendungsprüfung|待確認|確認待ち|要確認|確認中|未確定|記載されていません|用途確認|уточн|не указан|не определен|не подтвержд|требует подтвержд|ожидает подтвержд|должн\p{L}*\s+быть\s+подтвержд|подтверд|провер/iu;
+const pendingPortPattern = /pending|unresolved|clarif|confirm(?:ation|ed)? required|confirmed from the current model-specific drawing|to be confirmed|not listed|application review|aussteh|offen|nicht angegeben|ungeklärt|klär|bestätig|Anwendungsprüfung|確認します|待確認|確認待ち|要確認|確認中|未確定|記載されていません|用途確認|уточн|не указан|не определен|не подтвержд|требует подтвержд|ожидает подтвержд|должн\p{L}*\s+быть\s+подтвержд|подтвержда|подтверд|провер/iu;
 const pendingOutletCountPatterns = {
   en: /outlet count.*(?:pending|confirm|not listed|current.*drawing)/iu,
   de: /ausgangs(?:an)?zahl.*(?:aussteh|offen|nicht angegeben|klär|bestätig|zeichnung)/iu,

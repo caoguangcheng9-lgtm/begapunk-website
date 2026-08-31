@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-08-30T02:51:23.698Z",
-  "statusUpdatedAt": "2026-08-30",
+  "capturedAt": "2026-08-31T04:36:05.862Z",
+  "statusUpdatedAt": "2026-08-31",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
-  "reviewRecord": "audit/localization/2026-08-30-hydraulic-and-published-pages-review.md",
+  "reviewRecord": "audit/localization/2026-08-31-ai-assisted-marketing-and-legal-review.md",
   "artifacts": [
     {
       "path": "de/index.html",
@@ -36,67 +36,67 @@
     },
     {
       "path": "de/BP-1P-0003.html",
-      "sha256": "aac4eb7ecf5ef277059b7f6a958640ac86ec8e01ac81fc01dabd4d4e5443f05e"
+      "sha256": "dd570d0fe2826ba4b1abd1ec34fc843a3d327ff80a5e70d3cffab90c5dadf63c"
     },
     {
       "path": "de/BP-1P-0006.html",
-      "sha256": "8d3236d4352be023dec6e980d8cae993cc55c53a566074ba23ce83732e0f8a80"
+      "sha256": "96987b234c04c4547ee5aa8645eec201e4105baa4f3352fa108cac9a9714f99c"
     },
     {
       "path": "de/BP-2P-0001.html",
-      "sha256": "071701000d15e36d285ce90d3d17224f226348f3e9b5caafb689f6c91ca90e6a"
+      "sha256": "4ac211b3472a72dd28526ce6d183823e1b53f56bb2f83b5add8709df3ffbd20a"
     },
     {
       "path": "de/BP-2P-0002.html",
-      "sha256": "51f47740f8c716565bf5d383ac810ffec8995f0dad86f1e8cf2267b76cf27c31"
+      "sha256": "5b72252a2fed7b075c87374d398f233b9046bf427683df26a65b3187e738d269"
     },
     {
       "path": "de/BP-2P-08-0001.html",
-      "sha256": "e62b47de4d83a41f3aabc95ddd06306d06c9e117aff2e61776f1406c355d87ab"
+      "sha256": "9b2582812e3ea70c3f566f3931a5d04f2d380dc2a3e72c1e8bf5aa8dff0566ab"
     },
     {
       "path": "de/BP-2P-130-0001.html",
-      "sha256": "7631f76af5c3f21e6502bc466f178acf6c0bf9166094a36535eee229581145dc"
+      "sha256": "7f00b506a7108af5c033993452f384efcdedb080c4b17f387540b2e9517cd089"
     },
     {
       "path": "de/BP-2P-16-0001.html",
-      "sha256": "1be5c32943600b81d0672b61b6261b97c631e1a9b9a9b77bb0f8d069ca5c823a"
+      "sha256": "3aac914a887cbfd4c46ccacd22230a6b746ca729ac19eb56095237e51b2a183b"
     },
     {
       "path": "de/BP-2P-30-0001.html",
-      "sha256": "7c39f8ec40dab04618a8114f705b1977010fe97863fc830ec24bb50f9fe1182c"
+      "sha256": "0a6a1800e0509e4742ff0d858c81d4a3be21e3ff1f799c99f768738f8d260261"
     },
     {
       "path": "de/BP-2P-50-0001.html",
-      "sha256": "0820ce237c17538f1a27e19ff6b92c0b8386f9a7786c120a0a1ae0e0de397e9d"
+      "sha256": "b0815be9c5de8401d2f3cd2fa282d79c2cd90e6c047a0b24330249311605a25e"
     },
     {
       "path": "de/BP-2P-95-0005.html",
-      "sha256": "42a91b787b6aa8c0e7233913e7b0b5dda28af11b779629c63785da0a516048b0"
+      "sha256": "85822ed292f279656b9a101fe896ed2a86bbd5d9f92b4c4d75cd8efcc7daa4fe"
     },
     {
       "path": "de/BP-3P-0004.html",
-      "sha256": "0593ebab367b81963cb1f26eb2655b79806af5acc3751000801bb8a94bc808cd"
+      "sha256": "25baf70cf502b7502e681816999a0b983023e03c6e7d982e9d69bd546ab129c3"
     },
     {
       "path": "de/BP-3P-0006.html",
-      "sha256": "34954f79c00174290b4de181a7d00b764de499481ff1c21a211f7c130ee3c346"
+      "sha256": "4c6a184f32d0fa4d4fb39e794ed874a3c33b7dfa7a4c6768b88cb1f2f283243d"
     },
     {
       "path": "de/BP-3P-0007.html",
-      "sha256": "aa6167a429f1e81b2ad33e45d6e9fe2d5d7130e4c8eec0977cfe85f2eb3c0d62"
+      "sha256": "d8649bd450670062a2944ce84d1948672f0655431b9ee6cee24c446346bfbbcb"
     },
     {
       "path": "de/BP-3P-S06-0001.html",
-      "sha256": "8978b3c317dab06de05b49c9a61389e37a3ad1082378e355441033ac547dd41c"
+      "sha256": "431e1f71dfde337a978d590fb63b2c42bd7ac4a62a15fead1620f1a9797ccfce"
     },
     {
       "path": "de/BP-4P-30-0001.html",
-      "sha256": "7b95e699973867734dcee8350db6439bee9557835ead6dffda40acd399d76f70"
+      "sha256": "b87a88c3e368685c44482bc0e8a8311939ec25e5bf31b0cdee639c2cdfd783d5"
     },
     {
       "path": "de/BP-8P-0001.html",
-      "sha256": "47c1e3ac468d1d375bb85c14cdb603533009415bc73e8baf5dcd5daf97bea599"
+      "sha256": "fefe970c27230323199ea6330cdd878dadd37e07988eec60aa255eae54a7ab56"
     },
     {
       "path": "de/applications.html",
@@ -152,7 +152,7 @@
     },
     {
       "path": "de/custom-hydraulic-rotary-unions.html",
-      "sha256": "07d8dbbbfcffad1b6dd9eb420cc329548ae4fd479f395c134e8e676fe7566877"
+      "sha256": "3d80d3487cd35b2432ee2937e1df962b8a4828a1e332c2d7866ec7ece9990314"
     },
     {
       "path": "de/installation.html",
@@ -244,7 +244,7 @@
     },
     {
       "path": "ja/manufacturing-quality.html",
-      "sha256": "d24c6a0a2f1916e8077783cd6b4f3635d15ae6111347f2130eab86e56a1390d4"
+      "sha256": "4fce6b0cf5f495f49e21614e6615aa8374a0395a1394793c65b2a9201b53ebd9"
     },
     {
       "path": "ja/production-inspection-testing.html",
@@ -264,67 +264,67 @@
     },
     {
       "path": "ja/BP-1P-0003.html",
-      "sha256": "82c47891a7691b3af4c9cc138070a56d4b5ebefb08da716cd1fe12e0691c017c"
+      "sha256": "1e943e4cc2269559c98db1c161683568823faf2c2e9296f185d2b1aaa2f71dcf"
     },
     {
       "path": "ja/BP-1P-0006.html",
-      "sha256": "bef68bbe41627b52b359f121f6f6bc8ee225c05738087a073dc0537a240564d8"
+      "sha256": "d2bdaac09f82b4f1e7b0181ff5649da937b987316ff77ccffaae10fd4b8d0bbb"
     },
     {
       "path": "ja/BP-2P-0001.html",
-      "sha256": "e612d7764ed8bcdd8fd6c2e585b6aed8b60bbd31f4961628ea3775a7bcaf7bc8"
+      "sha256": "3468f7937e23fa168499543a058a58d3bc27264041ff5b9e351dbb952a0ad750"
     },
     {
       "path": "ja/BP-2P-0002.html",
-      "sha256": "e64b85b02e425cf1e5bf984509ab787cbd4ac2345632033245162d3ef4ce4f69"
+      "sha256": "b11b35c73f130ded38e04c08e1fa3148b6de89c1ebf7d2db3af477cc41ea2159"
     },
     {
       "path": "ja/BP-2P-08-0001.html",
-      "sha256": "76a9c1e8cebf4c0cda292a1de3b484597b374b1521c153dab22ba9a53177dd2a"
+      "sha256": "5be847f15aa16597d06e2a9f444b6ccf942ad4bf87218a5e93af38f5ef6a6138"
     },
     {
       "path": "ja/BP-2P-130-0001.html",
-      "sha256": "4d4afab2c1f49aad653ed156bdf54f1ea41051de1ad384a398222ad9bc9ea7c3"
+      "sha256": "4d0e71a551dc666fc66ca7b840cb0062289d5d7c4f3dd89f428e3de87ae475fd"
     },
     {
       "path": "ja/BP-2P-16-0001.html",
-      "sha256": "1b03375f3ce95c68361650ef9a96cec39db8f1b2ddbf8a72a2e18edabcc05219"
+      "sha256": "284d3001477ad41a77b13ac2e3f6f3f887f822cab7fb88a7ba28b0abdd7fee36"
     },
     {
       "path": "ja/BP-2P-30-0001.html",
-      "sha256": "dc35cdf1c8c5c1a8b6920d8a8c912b4c8b86411fb9090610320264c24c468ee3"
+      "sha256": "3d3548079d9c5f9e14effa7ed9f885f1243d6648b4faa5f173fe34eb9e8843b7"
     },
     {
       "path": "ja/BP-2P-50-0001.html",
-      "sha256": "1e7cdfd8d6d50977a4e8cc1704d5e7c664e8235d269821b06907a3b258005086"
+      "sha256": "befa88bcdcacd42a236fab67f148d6b576d09c1ac8d766a25075634ac4e45366"
     },
     {
       "path": "ja/BP-2P-95-0005.html",
-      "sha256": "b69d55ecec14d1fa197c1215aca3661124854a8d8f8d60485ee6e7743543a8a9"
+      "sha256": "3791f12d41f015f583d274a0420ac1e0efdef7723a0ac1db46ddf452e3697efc"
     },
     {
       "path": "ja/BP-3P-0004.html",
-      "sha256": "61ed67c7feec077ea2f257245096d450eb582c20c12959a9188358a76eae26b9"
+      "sha256": "ffb40f2d3bd9c3f42fd79d359c3d8d9a42355819295c5301d19aa2152731535a"
     },
     {
       "path": "ja/BP-3P-0006.html",
-      "sha256": "ec8b8bb174eac6a7b423afd34f63b5c360c73a7d25954bd9961365cf6486bdde"
+      "sha256": "83e9fbd133baf83b355c678fcf98d7e27549aaab8fe6751a887b6bd8d721ae5c"
     },
     {
       "path": "ja/BP-3P-0007.html",
-      "sha256": "a330a04eb041f353e8bedf207178a17d06c238f432ef464be299154de4b37929"
+      "sha256": "3a2dd3ff9a481620dbab057b770c833c1d81591da340d34a1892c11863cb87a2"
     },
     {
       "path": "ja/BP-3P-S06-0001.html",
-      "sha256": "5940ae2022dd43fe8e9db52fb45d7a44b081c41b272041cbd0b12cb7ca0413b3"
+      "sha256": "e7a47ceaadd117cb4c298f1dc19e42d9304e5b988ddaa7220aee8c2b4d028e90"
     },
     {
       "path": "ja/BP-4P-30-0001.html",
-      "sha256": "e19050cdb63b1fb389a5d9954343e48824862bcb1db7a36cf3b7e5ab4cf3bc9b"
+      "sha256": "bb44264b9bd2fc1af1dc484bce2f6e2b42f8655bb22ceaf1f7916507c534866e"
     },
     {
       "path": "ja/BP-8P-0001.html",
-      "sha256": "3a8bbe1a43e2e64496e95478e4c54488b8b0d07eaaa8be6600a1f0b256e84f55"
+      "sha256": "d1890039e6521ce8e9731758a9fc83d15c7076d1f483e80d0de190b73181362f"
     },
     {
       "path": "ja/applications.html",
@@ -340,7 +340,7 @@
     },
     {
       "path": "ja/application-cnc-pneumatic-clamping.html",
-      "sha256": "0c1a85138e4da71e4008a0274471652eb003b1f9ed0747854ecd38fa9e3beedf"
+      "sha256": "0db288823ea69998cc7339493de0aed053da381f4b14d352e7e3192285d27638"
     },
     {
       "path": "ja/application-electronics-battery-test-fixtures.html",
@@ -360,7 +360,7 @@
     },
     {
       "path": "ja/application-robot-end-of-arm-tooling.html",
-      "sha256": "e1b01a0f6e07e66c1dd33f821facd4d8efaa6f60eae3f568779c0dd65560721b"
+      "sha256": "89a250b6333e2273cb2d826acc738ed072ac4a600be26b2cb313501566cc6ef5"
     },
     {
       "path": "ja/application-steel-dusty-environments.html",
@@ -380,7 +380,7 @@
     },
     {
       "path": "ja/custom-hydraulic-rotary-unions.html",
-      "sha256": "93a6b0fbd33a5deeb1e07289c9554ab0756c0aa703464b43f42af67410c1d4a0"
+      "sha256": "ccf0b37c4f6977fd57882964660ee67f1abc8990e187a94f01544813dd632858"
     },
     {
       "path": "ja/installation.html",
@@ -448,11 +448,11 @@
     },
     {
       "path": "ja/privacy.html",
-      "sha256": "026108f0475075cea5477390a8884e42e64735a5113d9aa9d539645ac2858553"
+      "sha256": "1befaf63dd3567e14941de2f8a21885c28322f1aa934f612530da9092f270eea"
     },
     {
       "path": "ja/terms.html",
-      "sha256": "24565fd2fbfc50567c11b66c9cd75a77f15db108bd2cd8b8271a746824104b0d"
+      "sha256": "4109bcaf8ecdf3b9f457dd2a2dd59d09acca0e52e0954cb5cce9ec62d14b2d4a"
     },
     {
       "path": "ja/thank-you.html",
@@ -492,67 +492,67 @@
     },
     {
       "path": "ru/BP-1P-0003.html",
-      "sha256": "f73cd9062ceabb78bb9c6b598a478e0e19482771eae62f44185b0092bd2b1d20"
+      "sha256": "639280eab3601e83756e8500929fe6ff2bef25ef61d41160f9a46d90dc393cb6"
     },
     {
       "path": "ru/BP-1P-0006.html",
-      "sha256": "07b12efd2d67fcf24b8616870a5a9ff3e87c2139b7d9eccb4815f4bb19bf8ca5"
+      "sha256": "8178e7b52a47a471683c50734a5189bff5e6e80ead7398ea9d45d5199f5f1da6"
     },
     {
       "path": "ru/BP-2P-0001.html",
-      "sha256": "0f62d9b76ec920c29f67c5ff628c72bf087aa9128c801010008313b173fa8b5a"
+      "sha256": "2312e2955f151e9f1433404067425cd6a1d83827f1a4e0a071e17d427c254236"
     },
     {
       "path": "ru/BP-2P-0002.html",
-      "sha256": "7275c60ffff967daf5d82c2b1207307f9cc07da2483cedb1d42e63c605ccc8ff"
+      "sha256": "275eba0878500cb827cbe2b44088fb55ce1e9cc8e3bbe86b9eb6d0eeecfa613b"
     },
     {
       "path": "ru/BP-2P-08-0001.html",
-      "sha256": "83bbd442480a4a700de55b15ad6c1d049790c0709d477a546abf8999beb59eb8"
+      "sha256": "9945d0c412b7234cdb5cad7ab5f9d463684a988d65f5de32dce750b74921df1c"
     },
     {
       "path": "ru/BP-2P-130-0001.html",
-      "sha256": "f2b9ce31981eafd9f6627d38b5934e02871fa5c426c7c644bcc9dc97dcb66f3b"
+      "sha256": "d28da9600db9b26f7253c726d9bc58feee8008404a94ff026542b17bc1c8f016"
     },
     {
       "path": "ru/BP-2P-16-0001.html",
-      "sha256": "9bbac1878581b5f72bd6948d973da6ba346f4c169d218e386e68b2d0d4ed1336"
+      "sha256": "0c69298cc1fc7a8589ed78208616c76174b6d821f8869600b8f752ae790db13d"
     },
     {
       "path": "ru/BP-2P-30-0001.html",
-      "sha256": "3255aea754503d3b529ee5dd124d69eb2344231d623d4e60ecf51dfb7ca855d1"
+      "sha256": "c746c58cbfea3e1a3f01d793ac23a735fdd81ed349849f55716fc172ea5dc07b"
     },
     {
       "path": "ru/BP-2P-50-0001.html",
-      "sha256": "d026e83e42a7eea4afd323942e893e0643d568fccc03adb2e5a9cf08f72208a3"
+      "sha256": "9140f3920d0bb8a8b208323c29c85a2c16105c2a3e1953c747269f776834909d"
     },
     {
       "path": "ru/BP-2P-95-0005.html",
-      "sha256": "b8de6995fa758896794d84134fa2b662c9b15f4cf162b25738e8c9c54ebf7a1c"
+      "sha256": "7a8c1aa19098a27f33054b95393d6c541cb79be3de9e43d3a30c12eb7c51ec13"
     },
     {
       "path": "ru/BP-3P-0004.html",
-      "sha256": "8a08e60d2697d034b65b12d866adb2f600a119cf091ded86c7a137253863aa7d"
+      "sha256": "f5cf63f49d634e835425418a52b99808718429799ce11fb45754eb7b1b4f88a0"
     },
     {
       "path": "ru/BP-3P-0006.html",
-      "sha256": "59d6c13db48dd5c9bca26c4b4859ae58f6decf33da681aefac1a7b95a52c3770"
+      "sha256": "a84b1027cbd593cd21d339956b5b62e3107e19bc6d54dd21c6c0fd21195bf70a"
     },
     {
       "path": "ru/BP-3P-0007.html",
-      "sha256": "542adb5f559d4c66262c7de65ef48273716c18d746f8ba1ce85859ed1d8aa509"
+      "sha256": "ac3c548a7b782824fbea1134ca68e675c9986ef8e84991a43277f4e9616ea39a"
     },
     {
       "path": "ru/BP-3P-S06-0001.html",
-      "sha256": "c870d36bd1a33ab2562e25e720b7e749c1bcbf357c9c067e34f292b3138123c4"
+      "sha256": "32c948822d3aad719825eb261bd71b658b1bc33b253a5f03099b3529f6139130"
     },
     {
       "path": "ru/BP-4P-30-0001.html",
-      "sha256": "531c8cb82f2df66f4d1239e1e82a48257169b54664650f0c3d912bd3fc88bb17"
+      "sha256": "28783c9171346397f81570cd0ce7f754533284a5aa1808d01bd192b727ff206a"
     },
     {
       "path": "ru/BP-8P-0001.html",
-      "sha256": "6a5bbc8312c49386e7b044f59d6df3c8fcb86381281e1a7cb8e587fdef438d56"
+      "sha256": "e0bcd3d65f41b26d460ad98c2e88657bf254a1ba00f7d4e57be2bdc7e2143b05"
     },
     {
       "path": "ru/applications.html",
@@ -608,7 +608,7 @@
     },
     {
       "path": "ru/custom-hydraulic-rotary-unions.html",
-      "sha256": "c8246b195740447010e45963a5332caabae4b6ab07ec9ef07ad0b266a7b9606e"
+      "sha256": "e40b4b96574505db96b62f47e6493f72ab01c9114294b4e9f12db5473f109e2a"
     },
     {
       "path": "ru/installation.html",

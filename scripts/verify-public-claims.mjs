@@ -300,6 +300,9 @@ function isOrderConfirmedDeratingContext(source, match) {
 }
 
 const banned = [
+  { name: 'unsupported 30 MPa rating on catalog model page', pattern: /30\s*(?:MPa|МПа)|300\s*bar|4350\s*psi/gi, onlyPath: /(?:^|\/)BP-[\w-]+\.html$/i },
+  { name: 'Glyd seal claimed on pneumatic catalog model page', pattern: /Glyd|格莱|グライドリング/gi, onlyPath: /(?:^|\/)BP-[\w-]+\.html$/i },
+
   {
     name: 'unsupported 60/80/18/22 marketing statistic',
     pattern: /(?:(?:60|80|18|22)\s*%(?![0-9A-Fa-f]{2})[^.!?。！？\n]{0,90}(?:warranty\s+claims?|custom[^.!?。！？\n]{0,25}inquiries|failures?|leaks?|downtime|service\s+calls?|returns?|defects?|root\s+causes?|costs?|savings?|improvement|reduction|increase|seal\s+life|longer|lower|higher|more|less|Garantieanspr(?:uch|üche)|Anfragen|Ausfälle|Leckagen|Stillstand|保証請求|問い合わせ|故障|漏れ|гарантийн\w*\s+претензи\w*|запрос\w*|отказ\w*|утеч\w*|просто\w*)|(?:warranty\s+claims?|custom[^.!?。！？\n]{0,25}inquiries|failures?|leaks?|downtime|service\s+calls?|returns?|defects?|root\s+causes?|costs?|savings?|improvement|reduction|increase|seal\s+life|longer|lower|higher|more|less|Garantieanspr(?:uch|üche)|Anfragen|Ausfälle|Leckagen|Stillstand|保証請求|問い合わせ|故障|漏れ|гарантийн\w*\s+претензи\w*|запрос\w*|отказ\w*|утеч\w*|просто\w*)[^.!?。！？\n]{0,90}(?:60|80|18|22)\s*%(?![0-9A-Fa-f]{2}))/giu,
@@ -719,6 +722,10 @@ function isInlineScriptDotSegmentComparison(source, match, relativePath) {
 }
 
 function matchIsBlocked(rule, source, match, relativePath = '') {
+  const normalizedPath = String(relativePath || '').replace(/\\/g, '/');
+  if (rule.onlyPath && !rule.onlyPath.test(normalizedPath)) return false;
+  if (rule.exceptPath && rule.exceptPath.test(normalizedPath)) return false;
+
   if (rule.p1Boundary) {
     return !isP1BoundaryContext(source, match);
   }

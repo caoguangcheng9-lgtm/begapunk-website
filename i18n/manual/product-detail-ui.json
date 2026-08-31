@@ -63,7 +63,7 @@
           "media": "Standard medium: air"
         }
       },
-      "leadTimeValue": "Catalog: about 20 calendar days · Custom: within 30 calendar days"
+      "leadTimeValue": "Catalog: 20 calendar days after payment · Custom: within 30 calendar days after payment"
     },
     "de": {
       "skipLink": "Zum Hauptinhalt springen",
@@ -104,7 +104,7 @@
           "media": "Standardmedium: Luft"
         }
       },
-      "leadTimeValue": "Katalogmodelle: ca. 20 Kalendertage · Sonderanfertigungen: innerhalb von 30 Kalendertagen"
+      "leadTimeValue": "Katalogmodelle: 20 Kalendertage nach Zahlungseingang · Sonderanfertigungen: innerhalb von 30 Kalendertagen nach Zahlungseingang"
     },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
@@ -145,7 +145,7 @@
           "media": "標準流体：空気"
         }
       },
-      "leadTimeValue": "標準品：約20暦日 · 特注品：30暦日以内"
+      "leadTimeValue": "標準品：入金後20暦日 · 特注品：入金後30暦日以内"
     },
     "ru": {
       "skipLink": "Перейти к основному содержанию",
@@ -186,7 +186,7 @@
           "media": "Стандартная среда: воздух"
         }
       },
-      "leadTimeValue": "Стандартные модели: около 20 календарных дней · Индивидуальные: до 30 календарных дней"
+      "leadTimeValue": "Каталожные модели: 20 календарных дней после оплаты · Индивидуальные: в течение 30 календарных дней после оплаты"
     }
   }
 }

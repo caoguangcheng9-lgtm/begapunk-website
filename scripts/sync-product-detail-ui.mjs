@@ -58,7 +58,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Key product parameters',
     primaryActionLabel: 'Get a Quote',
     secondaryActionLabel: 'Request STEP File',
-    leadTimeValue: 'Catalog: about 20 calendar days · Custom: within 30 calendar days',
+    leadTimeValue: 'Catalog: 20 calendar days after payment · Custom: within 30 calendar days after payment',
   }),
   de: Object.freeze({
     skipLink: 'Zum Hauptinhalt springen',
@@ -71,7 +71,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Wichtige Produktparameter',
     primaryActionLabel: 'Angebot anfordern',
     secondaryActionLabel: 'STEP-Datei anfordern',
-    leadTimeValue: 'Katalogmodelle: ca. 20 Kalendertage · Sonderanfertigungen: innerhalb von 30 Kalendertagen',
+    leadTimeValue: 'Katalogmodelle: 20 Kalendertage nach Zahlungseingang · Sonderanfertigungen: innerhalb von 30 Kalendertagen nach Zahlungseingang',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
@@ -84,7 +84,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: '主要製品仕様',
     primaryActionLabel: '見積もりを依頼',
     secondaryActionLabel: 'STEPデータを依頼',
-    leadTimeValue: '標準品：約20暦日 · 特注品：30暦日以内',
+    leadTimeValue: '標準品：入金後20暦日 · 特注品：入金後30暦日以内',
   }),
   ru: Object.freeze({
     skipLink: 'Перейти к основному содержанию',
@@ -97,7 +97,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Основные параметры изделия',
     primaryActionLabel: 'Запросить предложение',
     secondaryActionLabel: 'Запросить файл STEP',
-    leadTimeValue: 'Стандартные модели: около 20 календарных дней · Индивидуальные: до 30 календарных дней',
+    leadTimeValue: 'Каталожные модели: 20 календарных дней после оплаты · Индивидуальные: в течение 30 календарных дней после оплаты',
   }),
 });
 const SHARE_CHANNELS = Object.freeze([
