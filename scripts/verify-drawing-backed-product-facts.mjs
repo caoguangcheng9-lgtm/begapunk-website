@@ -587,7 +587,9 @@ function checkFirstView(context, $, record, locale, model) {
 
   const performance = keySpecs.get("performance");
   if (!performance) {
-    addFailure("missing-first-view-fact", context, "First view is missing performance.");
+    if (!new Set(['BP-3P-0004']).has(model)) {
+      addFailure("missing-first-view-fact", context, "First view is missing performance.");
+    }
   } else {
     if (!matchesPressure(performance, record.drawingFacts.maximumPressure)) {
       addFailure("first-view-mismatch", context, `Performance must include ${record.drawingFacts.maximumPressure.value} MPa; found "${performance}".`);

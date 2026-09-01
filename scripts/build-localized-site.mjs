@@ -353,7 +353,7 @@ function assertProductDetailUiManualContract() {
   const expectedKeys = [...scalarKeys, ...nestedKeys];
   const jumpKeys = ['compat', 'downloads', 'faq', 'install', 'specs'];
   const keySpecKeys = [
-    'body', 'channels', 'leadTime', 'media', 'mount', 'passages', 'performance', 'ports', 'protection', 'seal',
+    'body', 'channels', 'delivery', 'leadTime', 'media', 'moq', 'mount', 'passages', 'performance', 'ports', 'price', 'protection', 'quality', 'seal', 'warranty',
   ];
   for (const languageCode of expectedLanguageCodes) {
     const copy = productDetailUiContract.locales[languageCode];
@@ -369,15 +369,17 @@ function assertProductDetailUiManualContract() {
     if (!sameKeys(Object.keys(copy.jumpLinks || {}), jumpKeys)
       || !sameKeys(Object.keys(copy.keySpecLabels || {}), keySpecKeys)
       || !sameKeys(Object.keys(copy.keySpecPropertyNames || {}), ['media', 'mount'])
-      || !sameKeys(Object.keys(copy.keySpecValueOverrides || {}), ['BP-2P-50-0001'])
-      || !sameKeys(Object.keys(copy.keySpecValueOverrides?.['BP-2P-50-0001'] || {}), ['media'])) {
+      || !Object.entries(copy.keySpecValueOverrides || {}).every(([model, kv]) => {
+        const allowed = model === 'BP-2P-50-0001' ? ['media'] : ['price', 'moq', 'warranty', 'delivery', 'passages', 'quality'];
+        return Object.keys(kv || {}).every((key) => allowed.includes(key));
+      })) {
       throw new Error(`${languageCode}: product-detail UI nested copy keys do not match the approved contract.`);
     }
     for (const value of [
       ...Object.values(copy.jumpLinks),
       ...Object.values(copy.keySpecLabels),
       ...Object.values(copy.keySpecPropertyNames),
-      copy.keySpecValueOverrides['BP-2P-50-0001'].media,
+      ...Object.values(copy.keySpecValueOverrides || {}).flatMap((kv) => Object.values(kv)),
     ]) {
       if (typeof value !== 'string' || !value.trim()) {
         throw new Error(`${languageCode}: product-detail UI nested copy values must be non-empty strings.`);
@@ -393,9 +395,9 @@ function assertProductDetailUiManualContract() {
   }
   for (const model of expectedModels) {
     const keys = productDetailUiContract.modelKeySpecKeys[model];
-    if (!Array.isArray(keys) || keys.length !== 6 || new Set(keys).size !== 6
+    if (!Array.isArray(keys) || keys.length < 6 || new Set(keys).size !== keys.length
       || keys.some((key) => !keySpecKeys.includes(key))) {
-      throw new Error(`${model}: product-detail UI key-spec map must contain six unique approved keys.`);
+      throw new Error(`${model}: product-detail UI key-spec map must contain at least six unique approved keys.`);
     }
   }
 }
@@ -469,8 +471,8 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
   keySpecs.attr('aria-label', copy.keyProductParametersLabel);
   const expectedSpecKeys = expectedProductKeySpecKeys(languageCode, model);
   const specItems = keySpecs.children('.pd-key-spec');
-  if (specItems.length !== 6) {
-    throw new Error(`${languageCode}/${pageName}: expected six key parameters; found ${specItems.length}.`);
+  if (specItems.length !== expectedSpecKeys.length) {
+    throw new Error(`${languageCode}/${pageName}: expected ${expectedSpecKeys.length} key parameters; found ${specItems.length}.`);
   }
   specItems.each((index, element) => {
     const item = $(element);
@@ -488,8 +490,9 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
     }
     term.text(copy.keySpecLabels[key]);
     if (key === 'leadTime') description.text(copy.leadTimeValue);
-    if (key === 'media') {
-      const override = copy.keySpecValueOverrides?.[model]?.media;
+    const overrideKeys = ['media', 'passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
+    if (overrideKeys.includes(key)) {
+      const override = copy.keySpecValueOverrides?.[model]?.[key];
       if (override) description.text(override);
     }
   });
@@ -519,8 +522,8 @@ function applyDrawingBackedUiContract($, languageCode, pageName) {
     throw new Error(`${label}: expected one drawing-backed key-parameter list; found ${keySpecs.length}.`);
   }
   const keyItems = keySpecs.children('.pd-key-spec');
-  if (keyItems.length !== 6) {
-    throw new Error(`${label}: expected six drawing-backed key parameters; found ${keyItems.length}.`);
+  if (keyItems.length !== productDetailUiContract.modelKeySpecKeys[model].length) {
+    throw new Error(`${label}: expected ${productDetailUiContract.modelKeySpecKeys[model].length} key parameters; found ${keyItems.length}.`);
   }
   const finalKeys = [];
   keyItems.each((_, element) => {
@@ -3162,8 +3165,8 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
   const specItems = keySpecs.children('.pd-key-spec');
   const specKeys = specItems.map((_, element) => $(element).attr('data-spec-key') || '').get();
   const expectedSpecKeys = expectedProductKeySpecKeys(languageCode, model);
-  if (specItems.length !== 6 || specKeys.join(',') !== expectedSpecKeys.join(',')) {
-    throw new Error(`${label}: six key parameters do not match the approved model-specific order.`);
+  if (specItems.length !== expectedSpecKeys.length || specKeys.join(',') !== expectedSpecKeys.join(',')) {
+    throw new Error(`${label}: key parameters do not match the approved model-specific order.`);
   }
   if (specItems.filter((_, element) => (
     $(element).children('dt').length !== 1 || $(element).children('dd').length !== 1

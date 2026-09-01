@@ -308,8 +308,8 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
       ddEnd: absolute + ddValueOffset + ddMatch[1].length,
     });
   }
-  if (items.length !== 6) {
-    throw new Error(`${relativePath}: expected exactly six pd-key-spec items; found ${items.length}.`);
+  if (items.length < 6) {
+    throw new Error(`${relativePath}: expected at least six pd-key-spec items; found ${items.length}.`);
   }
   if (new Set(items.map((item) => item.key)).size !== items.length) {
     throw new Error(`${relativePath}: duplicate pd-key-spec category.`);
@@ -356,12 +356,14 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
   if (portCategoryOverride && categoryOverrideCount !== 1) {
     throw new Error(`${relativePath}: expected one current mount/ports category for port-semantic migration.`);
   }
-  if (new Set(finalKeys).size !== 6) {
+  if (new Set(finalKeys).size < 6) {
     throw new Error(`${relativePath}: final pd-key-spec categories are not unique.`);
   }
   const requiredKeys = model === 'BP-3P-S06-0001'
     ? ['channels', 'performance', 'seal', 'leadTime']
-    : ['performance', 'passages', 'leadTime'];
+    : model === 'BP-3P-0004'
+      ? ['passages', 'leadTime']
+      : ['performance', 'passages', 'leadTime'];
   for (const required of requiredKeys) {
     if (!finalKeys.includes(required)) throw new Error(`${relativePath}: missing key category ${required}.`);
   }

@@ -6,22 +6,134 @@
     "reviewedAt": "2026-08-19"
   },
   "modelKeySpecKeys": {
-    "BP-1P-0003": ["performance", "body", "passages", "ports", "media", "leadTime"],
-    "BP-1P-0006": ["performance", "ports", "body", "passages", "media", "leadTime"],
-    "BP-2P-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-2P-0002": ["performance", "ports", "body", "passages", "media", "leadTime"],
-    "BP-2P-08-0001": ["performance", "body", "passages", "ports", "media", "leadTime"],
-    "BP-2P-130-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-2P-16-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-2P-30-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-2P-50-0001": ["performance", "protection", "passages", "mount", "media", "leadTime"],
-    "BP-2P-95-0005": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-3P-0004": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-3P-0006": ["performance", "ports", "body", "passages", "media", "leadTime"],
-    "BP-3P-0007": ["performance", "ports", "body", "passages", "media", "leadTime"],
-    "BP-3P-S06-0001": ["channels", "performance", "body", "seal", "mount", "leadTime"],
-    "BP-4P-30-0001": ["performance", "body", "passages", "mount", "media", "leadTime"],
-    "BP-8P-0001": ["performance", "body", "passages", "mount", "media", "leadTime"]
+    "BP-1P-0003": [
+      "performance",
+      "body",
+      "passages",
+      "ports",
+      "media",
+      "leadTime"
+    ],
+    "BP-1P-0006": [
+      "performance",
+      "ports",
+      "body",
+      "passages",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-0001": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-0002": [
+      "performance",
+      "ports",
+      "body",
+      "passages",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-08-0001": [
+      "performance",
+      "body",
+      "passages",
+      "ports",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-130-0001": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-16-0001": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-30-0001": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-50-0001": [
+      "performance",
+      "protection",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-2P-95-0005": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-3P-0004": [
+      "passages",
+      "price",
+      "leadTime",
+      "warranty",
+      "delivery",
+      "quality"
+    ],
+    "BP-3P-0006": [
+      "performance",
+      "ports",
+      "body",
+      "passages",
+      "media",
+      "leadTime"
+    ],
+    "BP-3P-0007": [
+      "performance",
+      "ports",
+      "body",
+      "passages",
+      "media",
+      "leadTime"
+    ],
+    "BP-3P-S06-0001": [
+      "channels",
+      "performance",
+      "body",
+      "seal",
+      "mount",
+      "leadTime"
+    ],
+    "BP-4P-30-0001": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ],
+    "BP-8P-0001": [
+      "performance",
+      "body",
+      "passages",
+      "mount",
+      "media",
+      "leadTime"
+    ]
   },
   "locales": {
     "en": {
@@ -52,7 +164,12 @@
         "leadTime": "Production lead time",
         "ports": "Ports",
         "protection": "Protection",
-        "channels": "Channels / MOQ"
+        "channels": "Channels / MOQ",
+        "price": "Bulk price",
+        "moq": "MOQ",
+        "warranty": "Warranty",
+        "delivery": "Delivery",
+        "quality": "Quality / testing"
       },
       "keySpecPropertyNames": {
         "media": "Suitable Media",
@@ -61,9 +178,15 @@
       "keySpecValueOverrides": {
         "BP-2P-50-0001": {
           "media": "Standard medium: air"
+        },
+        "BP-3P-0004": {
+          "price": "100 pcs: $57 · below 100: request quote",
+          "warranty": "1 year from shipment",
+          "delivery": "Worldwide shipping · FOB Ningbo",
+          "quality": "100% leak tested · inspection report"
         }
       },
-      "leadTimeValue": "Catalog: 20 calendar days after payment · Custom: within 30 calendar days after payment"
+      "leadTimeValue": "20–30 days"
     },
     "de": {
       "skipLink": "Zum Hauptinhalt springen",
@@ -93,7 +216,12 @@
         "leadTime": "Fertigungszeit",
         "ports": "Anschlüsse",
         "protection": "Schutz",
-        "channels": "Kanäle / MOQ"
+        "channels": "Kanäle / MOQ",
+        "price": "Mengenpreis",
+        "moq": "MOQ",
+        "warranty": "Garantie",
+        "delivery": "Lieferung",
+        "quality": "Qualität / Prüfung"
       },
       "keySpecPropertyNames": {
         "media": "Geeignete Medien",
@@ -102,9 +230,15 @@
       "keySpecValueOverrides": {
         "BP-2P-50-0001": {
           "media": "Standardmedium: Luft"
+        },
+        "BP-3P-0004": {
+          "price": "100 Stück: $57 · unter 100: Anfrage",
+          "warranty": "1 Jahr ab Versand",
+          "delivery": "Weltweiter Versand · FOB Ningbo",
+          "quality": "100 % Dichtheitsprüfung · Prüfbericht"
         }
       },
-      "leadTimeValue": "Katalogmodelle: 20 Kalendertage nach Zahlungseingang · Sonderanfertigungen: innerhalb von 30 Kalendertagen nach Zahlungseingang"
+      "leadTimeValue": "20–30 Tage"
     },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
@@ -134,7 +268,12 @@
         "leadTime": "製作期間",
         "ports": "ポート",
         "protection": "保護構造",
-        "channels": "流路／回路／MOQ"
+        "channels": "流路／回路／MOQ",
+        "price": "一括価格",
+        "moq": "MOQ",
+        "warranty": "保証",
+        "delivery": "納品",
+        "quality": "品質・検査"
       },
       "keySpecPropertyNames": {
         "media": "適用流体",
@@ -143,9 +282,15 @@
       "keySpecValueOverrides": {
         "BP-2P-50-0001": {
           "media": "標準流体：空気"
+        },
+        "BP-3P-0004": {
+          "price": "100個: $57 · 100個未満：見積もり",
+          "warranty": "出荷から1年間",
+          "delivery": "世界発送 · FOB寧波",
+          "quality": "全数漏れ検査 · 検査レポート"
         }
       },
-      "leadTimeValue": "標準品：入金後20暦日 · 特注品：入金後30暦日以内"
+      "leadTimeValue": "20〜30日"
     },
     "ru": {
       "skipLink": "Перейти к основному содержанию",
@@ -175,7 +320,12 @@
         "leadTime": "Срок изготовления",
         "ports": "Порты",
         "protection": "Защита",
-        "channels": "Каналы / MOQ"
+        "channels": "Каналы / MOQ",
+        "price": "Оптовая цена",
+        "moq": "MOQ",
+        "warranty": "Гарантия",
+        "delivery": "Поставка",
+        "quality": "Качество / контроль"
       },
       "keySpecPropertyNames": {
         "media": "Подходящая среда",
@@ -184,9 +334,15 @@
       "keySpecValueOverrides": {
         "BP-2P-50-0001": {
           "media": "Стандартная среда: воздух"
+        },
+        "BP-3P-0004": {
+          "price": "100 шт.: $57 · менее 100: по запросу",
+          "warranty": "1 год с отгрузки",
+          "delivery": "Доставка по всему миру · FOB Нинбо",
+          "quality": "100% проверка герметичности · протокол испытаний"
         }
       },
-      "leadTimeValue": "Каталожные модели: 20 календарных дней после оплаты · Индивидуальные: в течение 30 календарных дней после оплаты"
+      "leadTimeValue": "20–30 дней"
     }
   }
 }

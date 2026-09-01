@@ -25,7 +25,7 @@ const JUMP_LINKS = Object.freeze([
   Object.freeze({ key: 'faq', href: '#faq' }),
 ]);
 const KEY_SPEC_LABEL_KEYS = Object.freeze([
-  'performance', 'body', 'seal', 'passages', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels',
+  'performance', 'body', 'seal', 'passages', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels', 'price', 'moq', 'warranty', 'delivery', 'quality',
 ]);
 const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
   'BP-1P-0003': Object.freeze(['performance', 'body', 'passages', 'ports', 'media', 'leadTime']),
@@ -38,7 +38,7 @@ const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
   'BP-2P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-50-0001': Object.freeze(['performance', 'protection', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-95-0005': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
-  'BP-3P-0004': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-3P-0004': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-3P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
   'BP-3P-0007': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
   'BP-3P-S06-0001': Object.freeze(['channels', 'performance', 'body', 'seal', 'mount', 'leadTime']),
@@ -58,7 +58,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Key product parameters',
     primaryActionLabel: 'Get a Quote',
     secondaryActionLabel: 'Request STEP File',
-    leadTimeValue: 'Catalog: 20 calendar days after payment · Custom: within 30 calendar days after payment',
+    leadTimeValue: '20–30 days',
   }),
   de: Object.freeze({
     skipLink: 'Zum Hauptinhalt springen',
@@ -71,7 +71,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Wichtige Produktparameter',
     primaryActionLabel: 'Angebot anfordern',
     secondaryActionLabel: 'STEP-Datei anfordern',
-    leadTimeValue: 'Katalogmodelle: 20 Kalendertage nach Zahlungseingang · Sonderanfertigungen: innerhalb von 30 Kalendertagen nach Zahlungseingang',
+    leadTimeValue: '20–30 Tage',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
@@ -84,7 +84,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: '主要製品仕様',
     primaryActionLabel: '見積もりを依頼',
     secondaryActionLabel: 'STEPデータを依頼',
-    leadTimeValue: '標準品：入金後20暦日 · 特注品：入金後30暦日以内',
+    leadTimeValue: '20〜30日',
   }),
   ru: Object.freeze({
     skipLink: 'Перейти к основному содержанию',
@@ -97,7 +97,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Основные параметры изделия',
     primaryActionLabel: 'Запросить предложение',
     secondaryActionLabel: 'Запросить файл STEP',
-    leadTimeValue: 'Каталожные модели: 20 календарных дней после оплаты · Индивидуальные: в течение 30 календарных дней после оплаты',
+    leadTimeValue: '20–30 дней',
   }),
 });
 const SHARE_CHANNELS = Object.freeze([
@@ -182,8 +182,8 @@ function modelForFile(relativePath) {
 
 function keySpecKeysForModel(contract, model, relativePath) {
   const keys = contract.modelKeySpecKeys?.[model];
-  if (!Array.isArray(keys) || keys.length !== 6) {
-    throw new Error(`${relativePath}: approved six-item key-spec category contract is missing.`);
+  if (!Array.isArray(keys) || keys.length < 6) {
+    throw new Error(`${relativePath}: approved key-spec category contract is missing or too short.`);
   }
   return keys;
 }
@@ -244,8 +244,8 @@ function jumpNavMarkup(copy, eol) {
 }
 
 function keySpecsMarkup(keys, values, copy, eol) {
-  if (keys.length !== 6 || values.length !== 6) {
-    throw new Error(`Key-spec markup requires six keys and six values; found ${keys.length}/${values.length}.`);
+  if (keys.length !== values.length) {
+    throw new Error(`Key-spec markup requires matching keys and values; found ${keys.length}/${values.length}.`);
   }
   return [
     `  <dl class="pd-key-specs" aria-label="${escapeAttribute(copy.keyProductParametersLabel)}">`,
@@ -307,7 +307,7 @@ function validateManualCopy(contract) {
   for (const model of expectedModels) {
     const actual = contract.modelKeySpecKeys[model];
     const expected = EXPECTED_MODEL_KEY_SPEC_KEYS[model];
-    if (!Array.isArray(actual) || actual.length !== 6 || actual.join(',') !== expected.join(',')) {
+    if (!Array.isArray(actual) || actual.length !== expected.length || actual.join(',') !== expected.join(',')) {
       throw new Error(`${model}: key-spec category order does not match the approved model contract.`);
     }
   }
@@ -376,11 +376,15 @@ function validateManualCopy(contract) {
     }
 
     const overrides = copy.keySpecValueOverrides || {};
-    if (Object.keys(overrides).join(',') !== 'BP-2P-50-0001'
-      || Object.keys(overrides['BP-2P-50-0001'] || {}).join(',') !== 'media'
-      || typeof overrides['BP-2P-50-0001'].media !== 'string'
-      || !overrides['BP-2P-50-0001'].media.trim()) {
-      throw new Error(`${locale}.keySpecValueOverrides must contain only the approved BP-2P-50-0001 media value.`);
+    for (const model of Object.keys(overrides)) {
+      for (const key of Object.keys(overrides[model] || {})) {
+        const value = overrides[model][key];
+        const allowed = (model === 'BP-2P-50-0001' && key === 'media')
+          || ['price', 'moq', 'warranty', 'delivery', 'passages', 'quality'].includes(key);
+        if (!allowed || typeof value !== 'string' || !value.trim()) {
+          throw new Error(`${locale}.keySpecValueOverrides contains an unsupported or empty override (${model}.${key}).`);
+        }
+      }
     }
   }
 }
@@ -643,8 +647,8 @@ function validateFinalStructure(source, relativePath, copy, contract) {
   const keySpecItems = keySpecs.children('div.pd-key-spec');
   if (keySpecs.length !== 1
     || keySpecs.attr('aria-label') !== copy.keyProductParametersLabel
-    || keySpecItems.length !== 6) {
-    errors.push('six key product parameters');
+    || keySpecItems.length !== expectedSpecKeys.length) {
+    errors.push(`${expectedSpecKeys.length} key product parameters`);
   } else {
     keySpecItems.each((index, element) => {
       const item = $(element);
@@ -656,9 +660,10 @@ function validateFinalStructure(source, relativePath, copy, contract) {
         || !item.children('dd').text().trim()) {
         errors.push(`key product parameter ${index + 1}`);
       }
-      const expectedValue = key === 'leadTime'
-        ? copy.leadTimeValue
-        : drawingContract?.keyValues?.[key];
+      const overrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
+      const expectedValue = overrideKeys.includes(key) && copy.keySpecValueOverrides?.[model]?.[key]
+        ? copy.keySpecValueOverrides[model][key]
+        : (key === 'leadTime' ? copy.leadTimeValue : drawingContract?.keyValues?.[key]);
       if (expectedValue && item.children('dd').text().trim() !== expectedValue) {
         errors.push(`key product parameter ${key} value`);
       }
@@ -1008,8 +1013,8 @@ function keySpecValuesFromDocument($, relativePath, contract, copy) {
   const finalItems = $('.pd-info > .pd-key-specs > .pd-key-spec');
   const existingValues = new Map();
   if (finalItems.length) {
-    if (finalItems.length !== 6) {
-      throw new Error(`${relativePath}: expected six existing semantic key specs; found ${finalItems.length}.`);
+    if (finalItems.length !== keys.length) {
+      throw new Error(`${relativePath}: expected ${keys.length} existing semantic key specs; found ${finalItems.length}.`);
     }
     finalItems.each((_, element) => {
       const item = $(element);
@@ -1029,6 +1034,11 @@ function keySpecValuesFromDocument($, relativePath, contract, copy) {
 
   return keys.map((key, index) => {
     if (key === 'leadTime') return copy.leadTimeValue;
+    const commercialOverrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
+    const override = commercialOverrideKeys.includes(key)
+      ? copy.keySpecValueOverrides?.[model]?.[key]
+      : undefined;
+    if (override && override.trim()) return override.trim();
     if (Object.hasOwn(drawingContract.keyValues, key)) return drawingContract.keyValues[key];
     if (existingValues.has(key)) return existingValues.get(key);
     if (legacyValues[index]) return legacyValues[index];
