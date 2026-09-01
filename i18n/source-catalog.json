@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-01T06:31:50.109Z",
+  "generatedAt": "2026-09-01T10:02:34.386Z",
   "pages": [
     "index.html",
     "about.html",
@@ -2792,6 +2792,34 @@
       "pages": [
         "blog-rotary-joint-installation-mistakes.html",
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "7442a5950449e599",
+      "source": "$218/pc (Min. Order: 100 pcs)",
+      "pages": [
+        "BP-2P-95-0005.html"
+      ]
+    },
+    {
+      "id": "b9d5a57e96f6b16d",
+      "source": "$42/pc (Min. Order: 100 pcs)",
+      "pages": [
+        "BP-2P-08-0001.html"
+      ]
+    },
+    {
+      "id": "90669d99ab908e12",
+      "source": "$57/pc (Min. Order: 100 pcs)",
+      "pages": [
+        "BP-3P-0004.html"
+      ]
+    },
+    {
+      "id": "ebc0ce41b74ea999",
+      "source": "$60/pc (Min. Order: 100 pcs)",
+      "pages": [
+        "BP-3P-0007.html"
       ]
     },
     {
@@ -13112,6 +13140,16 @@
       "source": "Unclamp",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "b36c7756eb3fc267",
+      "source": "Under 100 pcs: request quote",
+      "pages": [
+        "BP-2P-08-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0007.html"
       ]
     },
     {

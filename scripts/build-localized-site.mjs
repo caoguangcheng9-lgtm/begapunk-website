@@ -493,7 +493,19 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
     const overrideKeys = ['media', 'passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
     if (overrideKeys.includes(key)) {
       const override = copy.keySpecValueOverrides?.[model]?.[key];
-      if (override) description.text(override);
+      if (override) {
+        const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const parts = String(override).split('\n');
+        const markup = parts.length <= 1
+          ? esc(override)
+          : parts.map((part, index) => {
+              const span = `<span style="display:block">${esc(part)}</span>`;
+              return index === parts.length - 1
+                ? span
+                : `${span}<span style="display:block;border-top:1px solid #e7e9ed;margin:7px 0;"></span> `;
+            }).join('');
+        description.html(markup);
+      }
     }
   });
 

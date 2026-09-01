@@ -1310,5 +1310,10 @@
   "<strong>Related models:</strong> <a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> · <a href=\"BP-2P-50-0001.html\">BP-2P-50-0001</a>": "<strong>Соответствующие модели:</strong> <a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> · <a href=\"BP-2P-50-0001.html\">BP-2P-50-0001</a>",
   "<strong>Related models:</strong> <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-16-0001.html\">BP-2P-16-0001</a>": "<strong>Соответствующие модели:</strong> <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-16-0001.html\">BP-2P-16-0001</a>",
   "<strong>Related models:</strong> <a href=\"BP-3P-S06-0001.html\">BP-3P-S06-0001</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>": "<strong>Соответствующие модели:</strong> <a href=\"BP-3P-S06-0001.html\">BP-3P-S06-0001</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>",
-  "<strong>Related models:</strong> <a href=\"product-comparison.html\">product comparison</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>": "<strong>Соответствующие модели:</strong> <a href=\"product-comparison.html\">сравнение моделей</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>"
+  "<strong>Related models:</strong> <a href=\"product-comparison.html\">product comparison</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>": "<strong>Соответствующие модели:</strong> <a href=\"product-comparison.html\">сравнение моделей</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>",
+  "$42/pc (Min. Order: 100 pcs)": "$42/шт. (мин. заказ: 100 шт.)",
+  "$57/pc (Min. Order: 100 pcs)": "$57/шт. (мин. заказ: 100 шт.)",
+  "$60/pc (Min. Order: 100 pcs)": "$60/шт. (мин. заказ: 100 шт.)",
+  "$218/pc (Min. Order: 100 pcs)": "$218/шт. (мин. заказ: 100 шт.)",
+  "Under 100 pcs: request quote": "Менее 100 шт.: по запросу"
 }

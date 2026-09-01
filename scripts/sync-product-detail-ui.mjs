@@ -32,15 +32,15 @@ const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
   'BP-1P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
   'BP-2P-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-0002': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
-  'BP-2P-08-0001': Object.freeze(['performance', 'body', 'passages', 'ports', 'media', 'leadTime']),
+  'BP-2P-08-0001': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-2P-130-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-16-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-50-0001': Object.freeze(['performance', 'protection', 'passages', 'mount', 'media', 'leadTime']),
-  'BP-2P-95-0005': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-95-0005': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-3P-0004': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-3P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
-  'BP-3P-0007': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
+  'BP-3P-0007': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-3P-S06-0001': Object.freeze(['channels', 'performance', 'body', 'seal', 'mount', 'leadTime']),
   'BP-4P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-8P-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
@@ -247,10 +247,20 @@ function keySpecsMarkup(keys, values, copy, eol) {
   if (keys.length !== values.length) {
     throw new Error(`Key-spec markup requires matching keys and values; found ${keys.length}/${values.length}.`);
   }
+  const valueMarkup = (value) => {
+    const parts = String(value).split('\n');
+    if (parts.length <= 1) return escapeText(parts[0]);
+    return parts.map((part, index) => {
+      const span = `<span style="display:block">${escapeText(part)}</span>`;
+      return index === parts.length - 1
+        ? span
+        : `${span}<span style="display:block;border-top:1px solid #e7e9ed;margin:7px 0;"></span> `;
+    }).join('');
+  };
   return [
     `  <dl class="pd-key-specs" aria-label="${escapeAttribute(copy.keyProductParametersLabel)}">`,
     ...keys.map((key, index) => (
-      `   <div class="pd-key-spec" data-spec-key="${key}"><dt>${escapeText(copy.keySpecLabels[key])}</dt><dd>${escapeText(values[index])}</dd></div>`
+      `   <div class="pd-key-spec" data-spec-key="${key}"><dt>${escapeText(copy.keySpecLabels[key])}</dt><dd>${valueMarkup(values[index])}</dd></div>`
     )),
     '  </dl>',
   ].join(eol);
@@ -664,7 +674,7 @@ function validateFinalStructure(source, relativePath, copy, contract) {
       const expectedValue = overrideKeys.includes(key) && copy.keySpecValueOverrides?.[model]?.[key]
         ? copy.keySpecValueOverrides[model][key]
         : (key === 'leadTime' ? copy.leadTimeValue : drawingContract?.keyValues?.[key]);
-      if (expectedValue && item.children('dd').text().trim() !== expectedValue) {
+      if (expectedValue && item.children('dd').text().replace(/\s+/g, ' ').trim() !== expectedValue.replace(/\s+/g, ' ').trim()) {
         errors.push(`key product parameter ${key} value`);
       }
     });

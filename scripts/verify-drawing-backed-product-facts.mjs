@@ -587,7 +587,7 @@ function checkFirstView(context, $, record, locale, model) {
 
   const performance = keySpecs.get("performance");
   if (!performance) {
-    if (!new Set(['BP-3P-0004']).has(model)) {
+    if (!new Set(['BP-3P-0004', 'BP-2P-08-0001', 'BP-2P-95-0005', 'BP-3P-0007']).has(model)) {
       addFailure("missing-first-view-fact", context, "First view is missing performance.");
     }
   } else {

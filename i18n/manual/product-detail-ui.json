@@ -39,12 +39,12 @@
       "leadTime"
     ],
     "BP-2P-08-0001": [
-      "performance",
-      "body",
       "passages",
-      "ports",
-      "media",
-      "leadTime"
+      "price",
+      "leadTime",
+      "warranty",
+      "delivery",
+      "quality"
     ],
     "BP-2P-130-0001": [
       "performance",
@@ -79,12 +79,12 @@
       "leadTime"
     ],
     "BP-2P-95-0005": [
-      "performance",
-      "body",
       "passages",
-      "mount",
-      "media",
-      "leadTime"
+      "price",
+      "leadTime",
+      "warranty",
+      "delivery",
+      "quality"
     ],
     "BP-3P-0004": [
       "passages",
@@ -103,12 +103,12 @@
       "leadTime"
     ],
     "BP-3P-0007": [
-      "performance",
-      "ports",
-      "body",
       "passages",
-      "media",
-      "leadTime"
+      "price",
+      "leadTime",
+      "warranty",
+      "delivery",
+      "quality"
     ],
     "BP-3P-S06-0001": [
       "channels",
@@ -180,7 +180,25 @@
           "media": "Standard medium: air"
         },
         "BP-3P-0004": {
-          "price": "$57/pc at 100 pcs · below 100: quote",
+          "price": "$57/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "warranty": "1 year from shipment",
+          "delivery": "Worldwide shipping · FOB Ningbo",
+          "quality": "Leak-tested · inspection report"
+        },
+        "BP-2P-08-0001": {
+          "price": "$42/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "warranty": "1 year from shipment",
+          "delivery": "Worldwide shipping · FOB Ningbo",
+          "quality": "Leak-tested · inspection report"
+        },
+        "BP-2P-95-0005": {
+          "price": "$218/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "warranty": "1 year from shipment",
+          "delivery": "Worldwide shipping · FOB Ningbo",
+          "quality": "Leak-tested · inspection report"
+        },
+        "BP-3P-0007": {
+          "price": "$60/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
           "warranty": "1 year from shipment",
           "delivery": "Worldwide shipping · FOB Ningbo",
           "quality": "Leak-tested · inspection report"
@@ -232,7 +250,25 @@
           "media": "Standardmedium: Luft"
         },
         "BP-3P-0004": {
-          "price": "57 $/St. bei 100 St. · unter 100: Anfrage",
+          "price": "57 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "warranty": "1 Jahr ab Versand",
+          "delivery": "Weltweiter Versand · FOB Ningbo",
+          "quality": "Dichtheitsprüfung · Prüfbericht"
+        },
+        "BP-2P-08-0001": {
+          "price": "42 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "warranty": "1 Jahr ab Versand",
+          "delivery": "Weltweiter Versand · FOB Ningbo",
+          "quality": "Dichtheitsprüfung · Prüfbericht"
+        },
+        "BP-2P-95-0005": {
+          "price": "218 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "warranty": "1 Jahr ab Versand",
+          "delivery": "Weltweiter Versand · FOB Ningbo",
+          "quality": "Dichtheitsprüfung · Prüfbericht"
+        },
+        "BP-3P-0007": {
+          "price": "60 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
           "warranty": "1 Jahr ab Versand",
           "delivery": "Weltweiter Versand · FOB Ningbo",
           "quality": "Dichtheitsprüfung · Prüfbericht"
@@ -284,7 +320,25 @@
           "media": "標準流体：空気"
         },
         "BP-3P-0004": {
-          "price": "$57/個（100個時）・100個未満：見積もり",
+          "price": "$57/個（最低注文：100個）\n100個未満：見積もり",
+          "warranty": "出荷から1年間",
+          "delivery": "世界発送 · FOB寧波",
+          "quality": "漏れ検査 · 検査レポート"
+        },
+        "BP-2P-08-0001": {
+          "price": "$42/個（最低注文：100個）\n100個未満：見積もり",
+          "warranty": "出荷から1年間",
+          "delivery": "世界発送 · FOB寧波",
+          "quality": "漏れ検査 · 検査レポート"
+        },
+        "BP-2P-95-0005": {
+          "price": "$218/個（最低注文：100個）\n100個未満：見積もり",
+          "warranty": "出荷から1年間",
+          "delivery": "世界発送 · FOB寧波",
+          "quality": "漏れ検査 · 検査レポート"
+        },
+        "BP-3P-0007": {
+          "price": "$60/個（最低注文：100個）\n100個未満：見積もり",
           "warranty": "出荷から1年間",
           "delivery": "世界発送 · FOB寧波",
           "quality": "漏れ検査 · 検査レポート"
@@ -336,7 +390,25 @@
           "media": "Стандартная среда: воздух"
         },
         "BP-3P-0004": {
-          "price": "$57/шт. при 100 шт. · менее 100: по запросу",
+          "price": "$57/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "warranty": "1 год с отгрузки",
+          "delivery": "Доставка по всему миру · FOB Нинбо",
+          "quality": "Проверка герметичности · протокол испытаний"
+        },
+        "BP-2P-08-0001": {
+          "price": "$42/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "warranty": "1 год с отгрузки",
+          "delivery": "Доставка по всему миру · FOB Нинбо",
+          "quality": "Проверка герметичности · протокол испытаний"
+        },
+        "BP-2P-95-0005": {
+          "price": "$218/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "warranty": "1 год с отгрузки",
+          "delivery": "Доставка по всему миру · FOB Нинбо",
+          "quality": "Проверка герметичности · протокол испытаний"
+        },
+        "BP-3P-0007": {
+          "price": "$60/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
           "warranty": "1 год с отгрузки",
           "delivery": "Доставка по всему миру · FOB Нинбо",
           "quality": "Проверка герметичности · протокол испытаний"

@@ -353,7 +353,8 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
       });
     }
   }
-  if (portCategoryOverride && categoryOverrideCount !== 1) {
+  const commercialGridModels = new Set(['BP-3P-0004', 'BP-2P-08-0001', 'BP-2P-95-0005', 'BP-3P-0007']);
+  if (portCategoryOverride && categoryOverrideCount !== 1 && !commercialGridModels.has(model)) {
     throw new Error(`${relativePath}: expected one current mount/ports category for port-semantic migration.`);
   }
   if (new Set(finalKeys).size < 6) {
@@ -361,7 +362,7 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
   }
   const requiredKeys = model === 'BP-3P-S06-0001'
     ? ['channels', 'performance', 'seal', 'leadTime']
-    : model === 'BP-3P-0004'
+    : new Set(['BP-3P-0004', 'BP-2P-08-0001', 'BP-2P-95-0005', 'BP-3P-0007']).has(model)
       ? ['passages', 'leadTime']
       : ['performance', 'passages', 'leadTime'];
   for (const required of requiredKeys) {
@@ -370,7 +371,7 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
   if (model !== 'BP-3P-S06-0001' && finalKeys.includes('seal')) {
     throw new Error(`${relativePath}: ordinary-model first view must move seal to the specifications table.`);
   }
-  if (portCategoryOverride && !finalKeys.includes('ports')) {
+  if (portCategoryOverride && !finalKeys.includes('ports') && !new Set(['BP-3P-0004', 'BP-2P-08-0001', 'BP-2P-95-0005', 'BP-3P-0007']).has(model)) {
     throw new Error(`${relativePath}: port-semantic category was not created.`);
   }
   return { items, finalKeys, targets };
@@ -592,7 +593,7 @@ function assertTargetContract(after, contract, relativePath, locale, model, prod
       throw new Error(`${relativePath}: unresolved port boundary is absent from first-view key specs.`);
     }
   }
-  if (PORT_CATEGORY_MODELS.has(model)) {
+  if (PORT_CATEGORY_MODELS.has(model) && !new Set(['BP-3P-0004', 'BP-2P-08-0001', 'BP-2P-95-0005', 'BP-3P-0007']).has(model)) {
     if (contract.keySpec.finalKeys.includes('mount') || !contract.keySpec.finalKeys.includes('ports')) {
       throw new Error(`${relativePath}: first-view category must use ports rather than mount.`);
     }

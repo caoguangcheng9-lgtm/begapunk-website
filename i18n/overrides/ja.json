@@ -1338,5 +1338,10 @@
   "<strong>Related models:</strong> <a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> · <a href=\"BP-2P-50-0001.html\">BP-2P-50-0001</a>": "<strong>関連モデル:</strong> <a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> · <a href=\"BP-2P-50-0001.html\">BP-2P-50-0001</a>",
   "<strong>Related models:</strong> <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-16-0001.html\">BP-2P-16-0001</a>": "<strong>関連モデル:</strong> <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-16-0001.html\">BP-2P-16-0001</a>",
   "<strong>Related models:</strong> <a href=\"BP-3P-S06-0001.html\">BP-3P-S06-0001</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>": "<strong>関連モデル:</strong> <a href=\"BP-3P-S06-0001.html\">BP-3P-S06-0001</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>",
-  "<strong>Related models:</strong> <a href=\"product-comparison.html\">product comparison</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>": "<strong>関連モデル:</strong> <a href=\"product-comparison.html\">製品比較</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>"
+  "<strong>Related models:</strong> <a href=\"product-comparison.html\">product comparison</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>": "<strong>関連モデル:</strong> <a href=\"product-comparison.html\">製品比較</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>",
+  "$42/pc (Min. Order: 100 pcs)": "$42/個（最低注文：100個）",
+  "$57/pc (Min. Order: 100 pcs)": "$57/個（最低注文：100個）",
+  "$60/pc (Min. Order: 100 pcs)": "$60/個（最低注文：100個）",
+  "$218/pc (Min. Order: 100 pcs)": "$218/個（最低注文：100個）",
+  "Under 100 pcs: request quote": "100個未満：見積もり"
 }
