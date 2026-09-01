@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-08-31T04:36:05.862Z",
-  "statusUpdatedAt": "2026-08-31",
+  "capturedAt": "2026-09-01T07:13:05.660Z",
+  "statusUpdatedAt": "2026-09-01",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
-  "reviewRecord": "audit/localization/2026-08-31-ai-assisted-marketing-and-legal-review.md",
+  "reviewRecord": "audit/localization/2026-09-01-localized-internal-links-review.md",
   "artifacts": [
     {
       "path": "de/index.html",
@@ -104,7 +104,7 @@
     },
     {
       "path": "de/application-automation-rotary-tables.html",
-      "sha256": "5524edb49627886085eb0ba1a2dfe36b4ddeef8c3b6be1b6adffbe688d5c41eb"
+      "sha256": "079bfe2ee1566704af7ecb3be4f89dc2ad75751a6054c40e173ff3835d837004"
     },
     {
       "path": "de/application-bottle-filling-capping.html",
@@ -124,15 +124,15 @@
     },
     {
       "path": "de/application-packaging-machinery.html",
-      "sha256": "bafd2423882dc101c107cad78ca9dbef2412e6295b1e0368ebcb267deb869608"
+      "sha256": "42784ae08258985ec1636499a444421e118da0097055c61d4aaa69a57f224351"
     },
     {
       "path": "de/application-pneumatic-tools-hose-anti-twist.html",
-      "sha256": "141a67058b9b46d9cf209c1adac61dab392cbd53e332f8051f531fb899ad6af0"
+      "sha256": "d8ec5dd8ee2faaad580266351b64ceddf4712648865b3c7a6212d1e5055e9424"
     },
     {
       "path": "de/application-robot-end-of-arm-tooling.html",
-      "sha256": "9963c02fbaee9fa25a1ef8228df3879422d3e99036b53229b5f4d771e136b031"
+      "sha256": "d0afdb69d367f2a4a309730a8f33faf50aa203b693b26405de2cb44f3c6923e5"
     },
     {
       "path": "de/application-steel-dusty-environments.html",
@@ -172,7 +172,7 @@
     },
     {
       "path": "de/blog-rotary-joint-leaking.html",
-      "sha256": "38b0b14f5bf2ba62056f6f3d3482782c00ef95d5f9d12a3f7c38a3eedcfd0132"
+      "sha256": "151a2e515f9d980e2e09dc845298359296c51fce4d2f14eeb9b46356fba019e5"
     },
     {
       "path": "de/blog-rotary-joint-materials.html",
@@ -180,7 +180,7 @@
     },
     {
       "path": "de/blog-rotary-joint-selection.html",
-      "sha256": "f65ee8952454416a86114e5b7fc2cab8098915109e85028f9820da2ad01ba103"
+      "sha256": "0695186839f4787947c746969d60b0b3dc146e26f0c7adc5916d1afd430b1f35"
     },
     {
       "path": "de/blog-rotary-union-seal-types.html",
@@ -332,7 +332,7 @@
     },
     {
       "path": "ja/application-automation-rotary-tables.html",
-      "sha256": "f23a858c1e81db7b337d51b22d71074a2a705534c3b40a267568b1eff9135693"
+      "sha256": "c7166dc39cc89078f1cfd95ee960adba5fc850bae413f71524d37cb24bcf5cac"
     },
     {
       "path": "ja/application-bottle-filling-capping.html",
@@ -352,15 +352,15 @@
     },
     {
       "path": "ja/application-packaging-machinery.html",
-      "sha256": "6f13feedbc1ae91788675b9784d62545fa5e407da33ac704d59ecf73c220abb8"
+      "sha256": "5951f4bc14100823ef895bc3c0a4e0a38d32d94fa2cd5117159c452c83c59735"
     },
     {
       "path": "ja/application-pneumatic-tools-hose-anti-twist.html",
-      "sha256": "7d4eae5bbb7102ef84aafe53f8ff1c0ca61e390588b680c4ede5b7f24d096728"
+      "sha256": "3a6089c362bc4c0ced85ca6016f23ccedd6d18629b6cecd704cd7b615acedbda"
     },
     {
       "path": "ja/application-robot-end-of-arm-tooling.html",
-      "sha256": "89a250b6333e2273cb2d826acc738ed072ac4a600be26b2cb313501566cc6ef5"
+      "sha256": "fdbd33b3d3a4a18f3d50e70df01ad787788371db1bad7a8d9f4b6ac5b682e442"
     },
     {
       "path": "ja/application-steel-dusty-environments.html",
@@ -400,7 +400,7 @@
     },
     {
       "path": "ja/blog-rotary-joint-leaking.html",
-      "sha256": "c526d4c401a3858ba6bb7e3af801dac2e9070a11309089883b22cb7adfff3e50"
+      "sha256": "2c9aa3d759cb4837c7cba7d04625c01a548d1ede9b8b3ad1e8b326d87ec43a98"
     },
     {
       "path": "ja/blog-rotary-joint-materials.html",
@@ -408,7 +408,7 @@
     },
     {
       "path": "ja/blog-rotary-joint-selection.html",
-      "sha256": "0931ed46767531c8a4e1ed2e8329fed878fe481d9a7b80e6c7631e005e6e0ea7"
+      "sha256": "580aa2c354dbd26839a6e3d0873d4f147d37a12b536ea4f67b1e3639aa2d6d1c"
     },
     {
       "path": "ja/blog-rotary-union-seal-types.html",
@@ -560,7 +560,7 @@
     },
     {
       "path": "ru/application-automation-rotary-tables.html",
-      "sha256": "fa35bdbe31352baca3b0adffca8675104e61d682c61f227e31debc8ddec40dc1"
+      "sha256": "bfa15e77e0578d34b5b5358dcc349eeee01863ee979e5113f391a500908b9759"
     },
     {
       "path": "ru/application-bottle-filling-capping.html",
@@ -580,15 +580,15 @@
     },
     {
       "path": "ru/application-packaging-machinery.html",
-      "sha256": "351a30cde0c0b21a8c602fbd9d48bb66e11a31906a07460437e9d8084a5ca4bf"
+      "sha256": "2537792d95961956786f4ccb873e5b8622d77e1406d7462215234143b2cd8ea0"
     },
     {
       "path": "ru/application-pneumatic-tools-hose-anti-twist.html",
-      "sha256": "b7bacc9a68d19a6550f795ff6df821c2f85789f3a1db95b9f0f3eef9a8fb5eca"
+      "sha256": "71761fa3dd84b779e481365c46bc0d7b69878c170cdb7abb9749fe7f276f6bbe"
     },
     {
       "path": "ru/application-robot-end-of-arm-tooling.html",
-      "sha256": "928beaf59be4a37c614bba86f42d60e0ee2e466db65208ff62eeb0506e88e1b2"
+      "sha256": "80cd366ed2b76ac81801a675641c3d9636e7b219145b581c5c11b78c8b411870"
     },
     {
       "path": "ru/application-steel-dusty-environments.html",
@@ -628,7 +628,7 @@
     },
     {
       "path": "ru/blog-rotary-joint-leaking.html",
-      "sha256": "3334111e86f3b61fc1a01b80d100de80dc1477a27dbb2a73d67fa722ab3012b8"
+      "sha256": "5bdf15efcb567a3255eeb0abe9e8541d44479b1e44df082ed3a6ac4322d5eefc"
     },
     {
       "path": "ru/blog-rotary-joint-materials.html",
@@ -636,7 +636,7 @@
     },
     {
       "path": "ru/blog-rotary-joint-selection.html",
-      "sha256": "f933acf3e09e93b26dc9f2c574d6994676439f80f1666a242072e65fd2c37385"
+      "sha256": "92a8cf8c96e317fb1b5296c627c6df5370f6dfa5364742b0e599414022a02b31"
     },
     {
       "path": "ru/blog-rotary-union-seal-types.html",
