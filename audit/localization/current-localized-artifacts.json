@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-09-01T09:00:06.001Z",
+  "capturedAt": "2026-09-01T09:21:32.175Z",
   "statusUpdatedAt": "2026-09-01",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
   "reviewRecord": "audit/localization/2026-09-01-product-detail-commercial-grid-review.md",
@@ -76,7 +76,7 @@
     },
     {
       "path": "de/BP-3P-0004.html",
-      "sha256": "8ac9390833dfb4efc0b831a1bec2c86b478a6268ebdc62143692c30d9ae6d35f"
+      "sha256": "63bb49f193a77511129a2c254a6ed08af7a75696d744652fdbac553bcf991cf7"
     },
     {
       "path": "de/BP-3P-0006.html",
@@ -304,7 +304,7 @@
     },
     {
       "path": "ja/BP-3P-0004.html",
-      "sha256": "df4fe9effef299b9f59dda44e2031daaf0785da9df38719e3c5f31220c1011c0"
+      "sha256": "344d5c4d92a9525ca6c6aa5767b367c908a2e22141e5a192c1cb33f0cf03eed6"
     },
     {
       "path": "ja/BP-3P-0006.html",
@@ -532,7 +532,7 @@
     },
     {
       "path": "ru/BP-3P-0004.html",
-      "sha256": "49c33a4db90844601b54324eff441870653c42a66cdea59b2462f1c6db42ed52"
+      "sha256": "e67295a47423947fd7298dc83a407ec57b4f0c068216768ed82f0cb6a77ea37a"
     },
     {
       "path": "ru/BP-3P-0006.html",
