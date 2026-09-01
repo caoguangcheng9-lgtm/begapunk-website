@@ -1315,5 +1315,22 @@
   "Plan an air rotary union for robot end-of-arm tooling by mapping gripper and blow-off passages, wrist motion, and payload. Compare current 2-passage pneumatic catalog models.": "グリッパとブローオフの流路、手首動作、可搬質量からロボットEOAT用空圧ロータリージョイントを計画します。現行2流路カタログ機種と比較してください。",
   "Plan an air swivel for pneumatic tools and hose anti-twist from real tool motion, flow, and thread data. Compare current 2-passage pneumatic catalog models; it is not a high-speed rotary union by default.": "実機の動き・流量・ねじ規格から、空圧工具・ホース回り止め用エアスイベルを計画します。現行2流路空圧カタログ機種と比較してください。高速ロータリージョイントとは限りません。",
   "Select an air rotary union for automation rotary tables by matching clamp, release, and blow-off circuits to the table cycle. Compare current 2-passage pneumatic catalog models.": "クランプ・解除・ブローオフ回路とテーブルサイクルに合わせて、自動化用回転テーブルの空圧ロータリージョイントを選定します。現行2流路カタログ機種と比較してください。",
-  "View the Custom Hydraulic Rotary Unions page": "特注液圧ロータリージョイントのページを見る"
+  "View the Custom Hydraulic Rotary Unions page": "特注液圧ロータリージョイントのページを見る",
+  "<span class=\"highlight\">Pneumatic Rotary Union</span> &amp; Rotary Joint Manufacturer for OEM Machinery": "<span class=\"highlight\">空圧用ロータリーユニオン</span> &amp; ロータリージョイント OEM機械メーカー",
+  "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk": "OEM機械向け空圧用ロータリーユニオン & ロータリージョイント | Begapunk",
+  "Pneumatic Rotary Unions &amp; Rotary Joints for OEM Machinery | Begapunk": "OEM機械向け空圧用ロータリーユニオン &amp; ロータリージョイント | Begapunk",
+  "Begapunk designs and manufactures single-passage, multi-passage, through-bore and custom pneumatic rotary unions and rotary joints for industrial automation equipment.": "Begapunkは産業用自動化装置向けに、単流路・多流路・中空・カスタムの空圧用ロータリーユニオンおよびロータリージョイントを設計・製造しています。",
+  "Pneumatic Rotary Union & Rotary Joint Catalog | Begapunk": "ロータリーユニオン & ロータリージョイント 製品一覧 | Begapunk",
+  "Pneumatic Rotary Union &amp; Rotary Joint Catalog | Begapunk": "ロータリーユニオン &amp; ロータリージョイント 製品一覧 | Begapunk",
+  "Pneumatic Rotary Union &amp; Rotary Joint Catalog": "ロータリーユニオン &amp; ロータリージョイント 製品一覧",
+  "Browse pneumatic rotary unions and rotary joints by passage count, mounting style, through-bore size, material, pressure and application. Compare models and request 2D or STEP files.": "流路数、取付方式、中空径、材質、圧力、用途からロータリーユニオンおよびロータリージョイントを選択。モデル比較や2D・STEPファイルの依頼が可能。",
+  "Compare Begapunk pneumatic rotary unions and rotary joints online by passage count, pressure, speed and mounting.": "流路数、圧力、回転数、取付方式からBegapunkの空圧用ロータリーユニオンおよびロータリージョイントをオンラインで比較。",
+  "Air Rotary Union & Rotary Joint Model Comparison | Begapunk": "空圧用ロータリーユニオン & ロータリージョイント比較表 | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Model Comparison | Begapunk": "空圧用ロータリーユニオン &amp; ロータリージョイント比較表 | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Model Comparison | Begapunk Selection Table": "空圧用ロータリーユニオン &amp; ロータリージョイント比較表 | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Model Comparison": "空圧用ロータリーユニオン &amp; ロータリージョイント比較",
+  "Air Rotary Union & Rotary Joint Applications | Begapunk": "ロータリーユニオン & ロータリージョイント 用途別ガイド | Begapunk",
+  "Pneumatic Rotary Union &amp; Rotary Joint Applications | Begapunk": "ロータリーユニオン &amp; ロータリージョイント 用途別ガイド | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Applications": "ロータリーユニオン &amp; ロータリージョイント 用途別ガイド",
+  "Explore pneumatic rotary union and rotary joint applications in rotary tables, packaging, laser cutting, CNC clamping, robotics, welding, printing and test equipment.": "ロータリーテーブル、包装、レーザー切断、CNCクランプ、ロボット、溶接、印刷、試験装置における空圧用ロータリーユニオンおよびロータリージョイントの用途。"
 }

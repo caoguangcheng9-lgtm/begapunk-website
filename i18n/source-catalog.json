@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-08-30T02:14:26.631Z",
+  "generatedAt": "2026-09-01T04:38:37.924Z",
   "pages": [
     "index.html",
     "about.html",
@@ -993,8 +993,8 @@
       ]
     },
     {
-      "id": "b7c3e11d66780f56",
-      "source": "<span class=\"highlight\">Pneumatic Rotary Union</span> Manufacturer for OEM Machinery",
+      "id": "bd5ae6bd84347e29",
+      "source": "<span class=\"highlight\">Pneumatic Rotary Union</span> &amp; Rotary Joint Manufacturer for OEM Machinery",
       "pages": [
         "index.html"
       ]
@@ -3722,17 +3722,38 @@
       ]
     },
     {
-      "id": "aa86cedf16364bf3",
-      "source": "Air Rotary Union Applications",
+      "id": "cbb0bd7c2d645d19",
+      "source": "Air Rotary Union & Rotary Joint Applications | Begapunk",
       "pages": [
         "applications.html"
       ]
     },
     {
-      "id": "f61b8b3de548179e",
-      "source": "Air Rotary Union Applications | Begapunk",
+      "id": "db22d8756bd2cd0f",
+      "source": "Air Rotary Union & Rotary Joint Model Comparison | Begapunk",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "db3c9867ed1d8825",
+      "source": "Air Rotary Union &amp; Rotary Joint Applications",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "97b6f434021090d8",
+      "source": "Air Rotary Union &amp; Rotary Joint Model Comparison",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "ea320c8d9c785354",
+      "source": "Air Rotary Union &amp; Rotary Joint Model Comparison | Begapunk Selection Table",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -3803,27 +3824,6 @@
       "source": "Air rotary union guide for welding positioners, rotary welding tables, robotic welding fixtures, and pipe welding rotators that need pneumatic clamping during rotation.",
       "pages": [
         "application-welding-positioners.html"
-      ]
-    },
-    {
-      "id": "c1550df8330c649d",
-      "source": "Air Rotary Union Model Comparison",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "373a800a94cdd55e",
-      "source": "Air Rotary Union Model Comparison | Begapunk",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "401669848fcaca44",
-      "source": "Air Rotary Union Model Comparison | Begapunk Selection Table",
-      "pages": [
-        "product-comparison.html"
       ]
     },
     {
@@ -4400,8 +4400,8 @@
       ]
     },
     {
-      "id": "d35da1c55a1df7cd",
-      "source": "Begapunk designs and manufactures single-passage, multi-passage, through-bore and custom pneumatic rotary unions for industrial automation equipment.",
+      "id": "3b2ed4d789a59c93",
+      "source": "Begapunk designs and manufactures single-passage, multi-passage, through-bore and custom pneumatic rotary unions and rotary joints for industrial automation equipment.",
       "pages": [
         "index.html"
       ]
@@ -5526,8 +5526,8 @@
       ]
     },
     {
-      "id": "b6443ba843655590",
-      "source": "Browse pneumatic rotary unions by passage count, mounting style, through-bore size, material, pressure and application. Compare models and request 2D or STEP files.",
+      "id": "07189fc56a1dcff4",
+      "source": "Browse pneumatic rotary unions and rotary joints by passage count, mounting style, through-bore size, material, pressure and application. Compare models and request 2D or STEP files.",
       "pages": [
         "products.html"
       ]
@@ -6156,8 +6156,8 @@
       ]
     },
     {
-      "id": "6e8b21013f61501d",
-      "source": "Compare Begapunk pneumatic rotary unions online by passage count, pressure, speed and mounting.",
+      "id": "6206b134b615078f",
+      "source": "Compare Begapunk pneumatic rotary unions and rotary joints online by passage count, pressure, speed and mounting.",
       "pages": [
         "products.html"
       ]
@@ -7160,8 +7160,8 @@
       ]
     },
     {
-      "id": "94c1769c4d147dd1",
-      "source": "Explore pneumatic rotary union applications in rotary tables, packaging, laser cutting, CNC clamping, robotics, welding, printing and test equipment.",
+      "id": "27e3590c694913f1",
+      "source": "Explore pneumatic rotary union and rotary joint applications in rotary tables, packaging, laser cutting, CNC clamping, robotics, welding, printing and test equipment.",
       "pages": [
         "applications.html"
       ]
@@ -10024,15 +10024,29 @@
       ]
     },
     {
-      "id": "094f34351b9fb525",
-      "source": "Pneumatic Rotary Union Applications | Begapunk",
+      "id": "dafdba1e80dcc824",
+      "source": "Pneumatic Rotary Union & Rotary Joint Catalog | Begapunk",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "2fdda19616c53dd5",
+      "source": "Pneumatic Rotary Union &amp; Rotary Joint Applications | Begapunk",
       "pages": [
         "applications.html"
       ]
     },
     {
-      "id": "4bf32d881e7b9732",
-      "source": "Pneumatic Rotary Union Catalog",
+      "id": "83e46c4902874985",
+      "source": "Pneumatic Rotary Union &amp; Rotary Joint Catalog",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "01d87c2df013e11d",
+      "source": "Pneumatic Rotary Union &amp; Rotary Joint Catalog | Begapunk",
       "pages": [
         "products.html"
       ]
@@ -10055,8 +10069,7 @@
       "id": "dbe27e29b1539001",
       "source": "Pneumatic Rotary Union Catalog | Begapunk",
       "pages": [
-        "products-p2.html",
-        "products.html"
+        "products-p2.html"
       ]
     },
     {
@@ -10137,6 +10150,20 @@
       ]
     },
     {
+      "id": "853f1b5c50f136b5",
+      "source": "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
+      "id": "468be50d5e4b3b75",
+      "source": "Pneumatic Rotary Unions &amp; Rotary Joints for OEM Machinery | Begapunk",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
       "id": "f8e3bcf95f065143",
       "source": "Pneumatic Rotary Unions | Standard & Custom",
       "pages": [
@@ -10155,13 +10182,6 @@
       "source": "Pneumatic Rotary Unions for Laser Tube Cutting Rear Chucks | Begapunk",
       "pages": [
         "application-laser-tube-cutting.html"
-      ]
-    },
-    {
-      "id": "ea47cd2409e8b2d1",
-      "source": "Pneumatic Rotary Unions for OEM Machinery | Begapunk",
-      "pages": [
-        "index.html"
       ]
     },
     {

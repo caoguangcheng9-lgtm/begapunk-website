@@ -1287,5 +1287,22 @@
   "Plan an air rotary union for robot end-of-arm tooling by mapping gripper and blow-off passages, wrist motion, and payload. Compare current 2-passage pneumatic catalog models.": "Спланируйте ротационное соединение для оснастки на кисти робота (EOAT) по проходам захвата и обдува, движению кисти и нагрузке. Сравните текущие 2-проходные пневматические модели каталога.",
   "Plan an air swivel for pneumatic tools and hose anti-twist from real tool motion, flow, and thread data. Compare current 2-passage pneumatic catalog models; it is not a high-speed rotary union by default.": "Спланируйте воздушный вертлюг для пневмоинструмента по реальному движению, расходу и резьбе. Сравните текущие 2-проходные модели; это не высокоскоростное соединение по умолчанию.",
   "Select an air rotary union for automation rotary tables by matching clamp, release, and blow-off circuits to the table cycle. Compare current 2-passage pneumatic catalog models.": "Подберите ротационное соединение для поворотного стола по контурам зажима, разжима и обдува. Сравните текущие 2-проходные пневматические модели каталога.",
-  "View the Custom Hydraulic Rotary Unions page": "Открыть страницу индивидуальных гидравлических соединений"
+  "View the Custom Hydraulic Rotary Unions page": "Открыть страницу индивидуальных гидравлических соединений",
+  "<span class=\"highlight\">Pneumatic Rotary Union</span> &amp; Rotary Joint Manufacturer for OEM Machinery": "<span class=\"highlight\">Пневматические ротационные соединения</span> &amp; вращающиеся соединения для OEM-оборудования",
+  "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk": "Пневматические ротационные и вращающиеся соединения для OEM-оборудования | Begapunk",
+  "Pneumatic Rotary Unions &amp; Rotary Joints for OEM Machinery | Begapunk": "Пневматические ротационные и вращающиеся соединения для OEM-оборудования | Begapunk",
+  "Begapunk designs and manufactures single-passage, multi-passage, through-bore and custom pneumatic rotary unions and rotary joints for industrial automation equipment.": "Begapunk проектирует и производит одно-, многоканальные, с проходным отверстием и индивидуальные пневматические ротационные и вращающиеся соединения для промышленного автоматизированного оборудования.",
+  "Pneumatic Rotary Union & Rotary Joint Catalog | Begapunk": "Каталог ротационных и вращающихся соединений | Begapunk",
+  "Pneumatic Rotary Union &amp; Rotary Joint Catalog | Begapunk": "Каталог ротационных и вращающихся соединений | Begapunk",
+  "Pneumatic Rotary Union &amp; Rotary Joint Catalog": "Каталог ротационных и вращающихся соединений",
+  "Browse pneumatic rotary unions and rotary joints by passage count, mounting style, through-bore size, material, pressure and application. Compare models and request 2D or STEP files.": "Выберите ротационные и вращающиеся соединения по числу каналов, типу крепления, диаметру проходного отверстия, материалу, давлению и применению. Сравните модели и запросите 2D- или STEP-файл.",
+  "Compare Begapunk pneumatic rotary unions and rotary joints online by passage count, pressure, speed and mounting.": "Сравните пневматические ротационные и вращающиеся соединения Begapunk онлайн по числу каналов, давлению, скорости и креплению.",
+  "Air Rotary Union & Rotary Joint Model Comparison | Begapunk": "Сравнение пневматических ротационных и вращающихся соединений | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Model Comparison | Begapunk": "Сравнение пневматических ротационных и вращающихся соединений | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Model Comparison | Begapunk Selection Table": "Сравнение пневматических ротационных и вращающихся соединений | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Model Comparison": "Сравнение пневматических ротационных и вращающихся соединений",
+  "Air Rotary Union & Rotary Joint Applications | Begapunk": "Применение ротационных и вращающихся соединений | Begapunk",
+  "Pneumatic Rotary Union &amp; Rotary Joint Applications | Begapunk": "Применение ротационных и вращающихся соединений | Begapunk",
+  "Air Rotary Union &amp; Rotary Joint Applications": "Применение ротационных и вращающихся соединений",
+  "Explore pneumatic rotary union and rotary joint applications in rotary tables, packaging, laser cutting, CNC clamping, robotics, welding, printing and test equipment.": "Применение пневматических ротационных и вращающихся соединений: поворотные столы, упаковка, лазерная резка, CNC-зажимы, робототехника, сварка, печать и испытательное оборудование."
 }
