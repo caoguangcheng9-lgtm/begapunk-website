@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-01T04:38:37.924Z",
+  "generatedAt": "2026-09-01T06:31:50.109Z",
   "pages": [
     "index.html",
     "about.html",
@@ -2341,6 +2341,48 @@
       "source": "<strong>Rear-Chuck Installation</strong><span>See workshop photographs of this compressed-air application.</span>",
       "pages": [
         "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "8c059ae270671f62",
+      "source": "<strong>Related models:</strong> <a href=\"BP-1P-0003.html\">BP-1P-0003</a> · <a href=\"BP-1P-0006.html\">BP-1P-0006</a>",
+      "pages": [
+        "application-pneumatic-tools-hose-anti-twist.html"
+      ]
+    },
+    {
+      "id": "c9e78088f1ee73bb",
+      "source": "<strong>Related models:</strong> <a href=\"BP-2P-16-0001.html\">BP-2P-16-0001</a> · <a href=\"BP-2P-08-0001.html\">BP-2P-08-0001</a>",
+      "pages": [
+        "application-packaging-machinery.html"
+      ]
+    },
+    {
+      "id": "cd80c5f31241c3c0",
+      "source": "<strong>Related models:</strong> <a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> · <a href=\"BP-2P-50-0001.html\">BP-2P-50-0001</a>",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
+      "id": "c21d136d14181276",
+      "source": "<strong>Related models:</strong> <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-16-0001.html\">BP-2P-16-0001</a>",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
+      "id": "197f9ad6899fe1e2",
+      "source": "<strong>Related models:</strong> <a href=\"BP-3P-S06-0001.html\">BP-3P-S06-0001</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "61e202d648629e3b",
+      "source": "<strong>Related models:</strong> <a href=\"product-comparison.html\">product comparison</a> · <a href=\"BP-3P-0004.html\">BP-3P-0004</a> · <a href=\"BP-2P-95-0005.html\">BP-2P-95-0005</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
