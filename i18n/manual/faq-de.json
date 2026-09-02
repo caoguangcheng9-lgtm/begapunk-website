@@ -109,7 +109,7 @@
     {
       "id": "faq-14",
       "question": "Kann ich auch ohne vollständige Maschinenzeichnung ein Angebot und CAD-Dateien erhalten?",
-      "answer": "Ja. Für den Einstieg genügen eine Modellnummer, ein Foto oder eine Teilzeichnung der Schnittstelle. Für jedes Katalogmodell stehen eine 2D-Zeichnung und ein 3D-STEP-Modell bereit. Bei einem kundenspezifischen Produkt erstellt Begapunk die 2D-Zeichnung und das STEP-Modell vor der Bestellung, damit beide Seiten Abmessungen, Anschlüsse, Montageschnittstelle und Einbauraum bestätigen können. Kundendateien zeigen keine interne Dichtungsstruktur oder Fertigungsdetails."
+      "answer": "Ja. Die Modellnummer reicht für ein Angebot. Katalog-STEP und PDF lädt man auf der Produktseite. Sonderausführungen weiter über die Anfrage. Kundendateien zeigen keine interne Dichtungsstruktur."
     },
     {
       "id": "faq-15",
@@ -200,8 +200,8 @@
     },
     {
       "faqId": "faq-14",
-      "text": "2D-Zeichnung oder STEP-Modell anfordern.",
-      "href": "contact.html?request=3d-step&source=de/faq.html#quoteForm"
+      "text": "Katalog-2D und STEP auf den Produktseiten herunterladen.",
+      "href": "products.html?source=de/faq.html"
     },
     {
       "faqId": "faq-15",

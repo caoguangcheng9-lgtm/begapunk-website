@@ -31,10 +31,10 @@ const rows = [
     ru: 'Объём гарантии и порядок рассмотрения рекламаций определяются согласованным коммерческим предложением, заказом и применимыми условиями. При обращении в Begapunk укажите данные заказа и сведения о проведённом контроле.',
   },
   {
-    source: 'Standard and custom pneumatic rotary joints for CNC, packaging, filling, laser cutting, and automation equipment. STEP/IGES files may be provided for qualified projects after model and application review; format and timing are confirmed per project.',
-    de: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden; Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.',
-    ja: '工作機械、包装機、充填機、レーザー加工機、自動化設備向けに、標準品および特注の空圧ロータリージョイントを提供します。STEP/IGESデータは、型式および用途の確認後、対象となる案件に提供できる場合があり、ファイル形式と提供時期は案件ごとに確定します。',
-    ru: 'Стандартные и индивидуальные пневматические ротационные соединения для станков с ЧПУ, упаковочных и разливочных машин, лазерных станков и систем автоматизации. Файлы STEP/IGES могут быть предоставлены для проектов после проверки модели и условий применения; формат и срок предоставления согласовываются для каждого проекта.',
+    source: 'Standard and custom pneumatic rotary joints for CNC, packaging, filling, laser cutting, and automation equipment. Catalog models include a downloadable STEP AP214 file for a fit check; custom CAD is quoted after inquiry.',
+    de: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. Katalogmodelle enthalten ein STEP-AP214 zum Download für die Einbauprüfung; CAD für Sonderausführungen folgt nach der Anfrage.',
+    ja: '工作機械、包装機、充填機、レーザー加工機、自動化設備向けに、標準品および特注の空圧ロータリージョイントを提供します。カタログ型式は組込み確認用STEP（AP214）を製品ページからダウンロードできます。特注CADはお問い合わせ後に見積します。',
+    ru: 'Стандартные и индивидуальные пневматические ротационные соединения для станков с ЧПУ, упаковочных и разливочных машин, лазерных станков и систем автоматизации. Каталожные модели включают скачиваемый файл STEP AP214 для проверки компоновки; заказной CAD согласовывается после запроса.',
   },
   {
     source: 'Material and seal suitability for regulated or food-contact service requires documented review of wetted materials, cleaning chemistry, temperature, and applicable requirements; no product-level FDA compliance is claimed without configuration-specific documentation.',
@@ -97,10 +97,10 @@ const rows = [
     ru: 'Требования к фильтрации зависят от модели и рабочей среды. Уточните требуемый класс или тонкость фильтрации для выбранного исполнения. Чистая подача рабочей среды способствует снижению абразивного износа.',
   },
   {
-    source: 'Begapunk aims to respond promptly to complete technical inquiries. Response time depends on the application complexity and the information provided. STEP/IGES availability and delivery timing are confirmed for the selected model, configuration, and project.',
-    de: 'Begapunk ist bestrebt, vollständige technische Anfragen zeitnah zu beantworten. Die Antwortzeit hängt von der Komplexität der Anwendung und den bereitgestellten Informationen ab. Verfügbarkeit und Bereitstellungszeitpunkt von STEP-/IGES-Dateien werden für das ausgewählte Modell, die Ausführung und das jeweilige Projekt bestätigt.',
-    ja: 'Begapunkでは、必要な情報が揃った技術お問い合わせに迅速に回答できるよう努めています。回答時間は、用途の複雑さとご提供いただいた情報により異なります。STEP/IGESデータの提供可否と提供時期は、選定型式、仕様および案件ごとに確定します。',
-    ru: 'Begapunk стремится оперативно отвечать на технические запросы, содержащие все необходимые данные. Срок ответа зависит от сложности применения и полноты предоставленной информации. Возможность и срок предоставления файлов STEP/IGES подтверждаются для выбранной модели, исполнения и конкретного проекта.',
+    source: 'Begapunk aims to respond promptly to complete technical inquiries. Response time depends on the application complexity and the information provided. Catalog STEP AP214 files download from the model page; custom CAD timing is confirmed after inquiry.',
+    de: 'Begapunk ist bestrebt, vollständige technische Anfragen zeitnah zu beantworten. Die Antwortzeit hängt von der Komplexität der Anwendung und den bereitgestellten Informationen ab. Katalog-STEP (AP214) lädt man auf der Modellseite; der Zeitpunkt für Sonder-CAD wird nach der Anfrage bestätigt.',
+    ja: 'Begapunkでは、必要な情報が揃った技術お問い合わせに迅速に回答できるよう努めています。回答時間は、用途の複雑さとご提供いただいた情報により異なります。カタログSTEP（AP214）は製品ページからダウンロードでき、特注CADの提供時期はお問い合わせ後に確定します。',
+    ru: 'Begapunk стремится оперативно отвечать на технические запросы, содержащие все необходимые данные. Срок ответа зависит от сложности применения и полноты предоставленной информации. Каталожный STEP AP214 скачивается на странице модели; срок заказного CAD подтверждается после запроса.',
   },
   {
     source: '<strong>Requirements above 1 MPa</strong> — this standard model is limited to 1 MPa; a separately verified configuration and engineering review are required',

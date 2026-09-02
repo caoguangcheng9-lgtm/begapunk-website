@@ -101,7 +101,7 @@ const COPY = {
     downloadsHeading: 'Downloads and Engineering Files',
     drawingTitle: '2D engineering drawing (PDF)', drawingDescription: 'Model drawing with dimensions, ports, mounting features, and published technical values.',
     drawingPendingTitle: 'Request model-specific file', drawingPendingDescription: 'Request the current model-specific file before technical selection or ordering.',
-    cadTitle: 'Request 3D STEP/IGES file', cadDescription: 'We provide STEP/IGES models for the selected configuration and fit check.',
+    cadTitle: 'Request custom 3D CAD', cadDescription: 'Custom or non-catalog CAD is prepared after inquiry. Catalog STEP AP214 downloads are on the model page.',
     cadDownloadTitle: 'Download 3D Model (.step)', cadDownloadDescription: '3D STEP model (AP214) for the selected configuration and fit check.',
     manualTitle: 'General installation manual (PDF)', manualDescription: 'General handling, alignment, connection, commissioning, and maintenance guidance.',
     docsTitle: 'Inspection Documents', docsDescription: 'Need an inspection record or material document? Include the requirement with your inquiry.',
@@ -163,7 +163,7 @@ const COPY = {
     maintenanceTitle: 'Prüfintervall', maintenance: 'Prüf- und Austauschintervalle aus dokumentierten Betriebsbedingungen und Prüfergebnissen festlegen. Ein universeller Lebensdauerwert ist nicht angegeben.',
     downloadsHeading: 'Downloads und Konstruktionsdaten', drawingTitle: '2D-Technikzeichnung (PDF)', drawingDescription: 'Modellzeichnung mit Abmessungen, Anschlüssen, Montagemerkmalen und veröffentlichten technischen Daten.',
     drawingPendingTitle: 'Modellspezifische Datei anfordern', drawingPendingDescription: 'Vor technischen Entscheidungen oder Bestellung die aktuelle modellspezifische Datei anfordern.',
-    cadTitle: '3D-STEP-/IGES-Datei anfordern', cadDescription: 'Für die ausgewählte Ausführung und Einbauprüfung stellen wir STEP-/IGES-Modelle bereit.',
+    cadTitle: '3D-CAD für Sonderausführung anfragen', cadDescription: 'CAD für Sonderausführungen folgt nach der Anfrage. Katalog-STEP (AP214) steht auf der Modellseite zum Download.',
     cadDownloadTitle: '3D-Modell (.step) herunterladen', cadDownloadDescription: '3D-STEP-Modell (AP214) für die ausgewählte Ausführung und Einbauprüfung.',
     manualTitle: 'Allgemeine Montageanleitung (PDF)', manualDescription: 'Allgemeine Hinweise zu Handhabung, Ausrichtung, Anschluss, Inbetriebnahme und Wartung.',
     docsTitle: 'Prüfunterlagen', docsDescription: 'Benötigen Sie ein Prüfprotokoll oder einen Werkstoffnachweis? Geben Sie die Anforderung in Ihrer Anfrage an.',
@@ -198,7 +198,7 @@ COPY.ja = {
   maintenanceTitle: '点検周期', maintenance: '記録した運転条件と点検結果に基づいて点検・交換周期を設定してください。共通の寿命値はありません。',
   downloadsHeading: 'ダウンロード・設計データ', drawingTitle: '2D技術図面（PDF）', drawingDescription: '寸法、ポート、取付仕様、公開技術値を記載した型式図面です。',
   drawingPendingTitle: '型式専用ファイルを依頼', drawingPendingDescription: '技術判断または発注前に、現在の型式専用ファイルを依頼してください。',
-  cadTitle: '3D STEP／IGESデータを依頼', cadDescription: '選定仕様の組込み確認用にSTEP／IGESモデルを提供します。',
+  cadTitle: '特注3D CADを依頼', cadDescription: '特注・非カタログのCADはお問い合わせ後にご用意します。カタログSTEP（AP214）は製品ページからダウンロードできます。',
   cadDownloadTitle: '3Dモデル（.step）をダウンロード', cadDownloadDescription: '選定仕様の組込み確認用の3D STEPモデル（AP214）です。',
   manualTitle: '一般取付説明書（PDF）', manualDescription: '取扱い、芯出し、接続、試運転、保守に関する一般ガイドです。',
   docsTitle: '検査資料', docsDescription: '検査記録や材料資料が必要な場合は、お問い合わせ時に要件をお知らせください。',
@@ -231,7 +231,7 @@ COPY.ru = {
   maintenanceTitle: 'Интервал проверки', maintenance: 'Назначайте интервалы проверки и замены по записанным условиям работы и результатам осмотра. Универсальный срок службы не указан.',
   downloadsHeading: 'Загрузки и конструкторские файлы', drawingTitle: '2D-чертёж (PDF)', drawingDescription: 'Чертёж модели с размерами, портами, монтажными элементами и опубликованными техническими данными.',
   drawingPendingTitle: 'Запросить файл конкретной модели', drawingPendingDescription: 'Перед техническими решениями или заказом запросите актуальный файл для конкретной модели.',
-  cadTitle: 'Запросить 3D STEP/IGES', cadDescription: 'Для выбранного исполнения и проверки компоновки мы предоставляем модели STEP/IGES.',
+  cadTitle: 'Запросить заказной 3D CAD', cadDescription: 'CAD для нестандартных исполнений готовится после запроса. Каталожный STEP AP214 скачивается на странице модели.',
   cadDownloadTitle: 'Скачать 3D-модель (.step)', cadDownloadDescription: '3D STEP-модель (AP214) для выбранного исполнения и проверки компоновки.',
   manualTitle: 'Общее руководство по монтажу (PDF)', manualDescription: 'Общие рекомендации по обращению, центровке, подключению, вводу в эксплуатацию и обслуживанию.',
   docsTitle: 'Документы контроля', docsDescription: 'Если вам нужен протокол контроля или документ на материал, укажите это в запросе.',
@@ -316,12 +316,14 @@ const FAQ_COPY = Object.freeze({
     hybridInterfaceAnswer: 'Pneumatic ports: {ports}. Electrical: six leads; confirm circuit allocation and ratings for the selected configuration. Mounting: {mounting}.',
     quoteQuestion: 'What should I send for a quote or CAD file for {model}?',
     quoteAnswer: 'The model number is enough to start. A photo, drawing, or any operating details you already know can help us confirm the fit. We normally reply within one business day.',
+    quoteQuestionStep: 'How do I get a quote for {model}?',
+    quoteAnswerStep: 'The model number is enough to start. A photo, drawing, or any operating details you already know can help us confirm the fit. The 3D STEP model for this model is available in the Downloads panel; send the operating conditions for a quotation. We normally reply within one business day.',
     hybridQuoteAnswer: 'The model number is enough to start. If known, add a photo or drawing and the required pneumatic and electrical functions. We normally reply within one business day.',
     pendingItems: Object.freeze([
       Object.freeze(['Is {model} ready for selection?', 'Application review is required before selecting {model}; model-specific operating limits and interfaces are not currently listed.']),
       Object.freeze(['What should I send for the application review?', 'Send the required passages, medium, working pressure, speed, temperature, duty cycle, mounting space, envelope, and quantity.']),
       Object.freeze(['Can I request the current 2D drawing for {model}?', 'Yes. Request the model-specific file and include the application requirements so the correct document can be supplied.']),
-      Object.freeze(['Can I request 3D CAD for {model}?', 'Yes. CAD availability and file format are checked after the application and required configuration are reviewed.']),
+      Object.freeze(['Can I download 3D CAD for {model}?', 'Yes. The catalog STEP AP214 file is on this page for a fit check. Custom CAD still goes through inquiry.']),
       Object.freeze(['Can Begapunk review a custom interface for {model}?', 'Yes. Send the mating-part drawing, port layout, envelope, operating conditions, and quantity for an interface review and quotation.']),
     ]),
   }),
@@ -343,6 +345,8 @@ const FAQ_COPY = Object.freeze({
     hybridInterfaceAnswer: 'Pneumatikanschlüsse: {ports}. Elektrik: sechs Leitungen; Kreiszuordnung und Nennwerte für die gewählte Ausführung bestätigen. Montage: {mounting}.',
     quoteQuestion: 'Welche Angaben werden für ein Angebot oder eine CAD-Datei zu {model} benötigt?',
     quoteAnswer: 'Für den Anfang genügt die Modellnummer. Ein Foto, eine Zeichnung oder bereits bekannte Betriebsdaten helfen bei der Prüfung. Wir antworten normalerweise innerhalb eines Arbeitstags.',
+    quoteQuestionStep: 'Wie erhalte ich ein Angebot für {model}?',
+    quoteAnswerStep: 'Für den Anfang genügt die Modellnummer. Ein Foto, eine Zeichnung oder bereits bekannte Betriebsdaten helfen bei der Prüfung. Das 3D-STEP-Modell dieses Typs finden Sie im Bereich Downloads; senden Sie uns die Betriebsdaten für ein Angebot. Wir antworten normalerweise innerhalb eines Arbeitstags.',
     hybridQuoteAnswer: 'Für den Anfang genügt die Modellnummer. Falls bekannt, ergänzen Sie ein Foto oder eine Zeichnung sowie die benötigten pneumatischen und elektrischen Funktionen. Wir antworten normalerweise innerhalb eines Arbeitstags.',
     pendingItems: Object.freeze([
       Object.freeze(['Ist {model} bereits auswählbar?', 'Vor der Auswahl von {model} ist eine Anwendungsprüfung erforderlich; modellspezifische Betriebsgrenzen und Schnittstellen sind derzeit nicht angegeben.']),
@@ -370,6 +374,8 @@ const FAQ_COPY = Object.freeze({
     hybridInterfaceAnswer: '空圧ポート：{ports}。電気：リード6本。選定仕様の回路割当と定格を確認してください。取付け：{mounting}。',
     quoteQuestion: '{model} の見積りやCADデータの依頼には何が必要ですか？',
     quoteAnswer: 'まずは型式だけで構いません。写真、図面、または分かる範囲の使用条件があれば、適合確認に役立ちます。通常1営業日以内にご返信します。',
+    quoteQuestionStep: '{model} の見積りを依頼するにはどうすればよいですか？',
+    quoteAnswerStep: 'まずは型式だけで構いません。写真、図面、または分かる範囲の使用条件があれば、適合確認に役立ちます。この型式の3D STEPモデルはダウンロード欄から取得できます。見積りには運転条件をお送りください。通常1営業日以内にご返信します。',
     hybridQuoteAnswer: 'まずは型式だけで構いません。分かる範囲で、写真や図面、必要な空圧・電気機能を添えてください。通常1営業日以内にご返信します。',
     pendingItems: Object.freeze([
       Object.freeze(['{model} は現在の情報で選定できますか？', '{model} は選定前に用途確認が必要です。型式固有の使用限界と接続仕様は現在記載されていません。']),
@@ -397,6 +403,8 @@ const FAQ_COPY = Object.freeze({
     hybridInterfaceAnswer: 'Пневматические порты: {ports}. Электрика: шесть выводов; подтвердите распределение цепей и номиналы для выбранного исполнения. Монтаж: {mounting}.',
     quoteQuestion: 'Что указать для расчёта цены или запроса CAD по {model}?',
     quoteAnswer: 'Для начала достаточно номера модели. Фотография, чертёж или данные об условиях работы, которые у вас уже есть, помогут проверить применимость. Обычно мы отвечаем в течение одного рабочего дня.',
+    quoteQuestionStep: 'Как получить предложение по {model}?',
+    quoteAnswerStep: 'Для начала достаточно номера модели. Фотография, чертёж или данные об условиях работы, которые у вас уже есть, помогут проверить применимость. 3D STEP-модель этого типа доступна в разделе «Файлы для скачивания»; для расчёта пришлите рабочие условия. Обычно мы отвечаем в течение одного рабочего дня.',
     hybridQuoteAnswer: 'Для начала достаточно номера модели. Если уже известно, приложите фотографию или чертёж и укажите нужные пневматические и электрические функции. Обычно мы отвечаем в течение одного рабочего дня.',
     pendingItems: Object.freeze([
       Object.freeze(['Готова ли {model} к выбору?', 'Перед выбором {model} требуется проверка применения; рабочие пределы и интерфейсы конкретной модели сейчас не указаны.']),
@@ -1057,6 +1065,7 @@ function applicationCopyForModel(model, locale, facts) {
 function productFaq(model, facts, locale) {
   const copy = FAQ_COPY[locale];
   if (!copy) throw new Error(`${model}/${locale}: FAQ copy is missing`);
+  const publicStep = drawingBackedPublicStep(locale, model);
   const label = `${model}/${locale}`;
   const interpolate = (template, values = {}) => interpolateFaq(template, { model, ...values }, label);
   if (facts.pending) {
@@ -1099,7 +1108,10 @@ function productFaq(model, facts, locale) {
         interpolate(interfaceQuestionTemplate),
         interpolate(interfaceAnswerTemplate, values),
       ],
-      [interpolate(copy.quoteQuestion), interpolate(hybrid ? copy.hybridQuoteAnswer : copy.quoteAnswer, values)],
+      [
+        interpolate(publicStep ? (copy.quoteQuestionStep ?? copy.quoteQuestion) : copy.quoteQuestion),
+        interpolate(publicStep ? (copy.quoteAnswerStep ?? (hybrid ? copy.hybridQuoteAnswer : copy.quoteAnswer)) : (hybrid ? copy.hybridQuoteAnswer : copy.quoteAnswer), values),
+      ],
     ],
   };
 }

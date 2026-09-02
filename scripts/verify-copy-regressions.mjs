@@ -654,10 +654,22 @@ for (const copy of applicationCopyByLocale) {
 
 const productPageNames = config.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
 const STEP_CAD_REQUIRED_PHRASES = {
-  en: 'We provide STEP/IGES models for the selected configuration and fit check.',
-  de: 'Für die ausgewählte Ausführung und Einbauprüfung stellen wir STEP-/IGES-Modelle bereit.',
-  ja: '選定仕様の組込み確認用にSTEP／IGESモデルを提供します。',
-  ru: 'Для выбранного исполнения и проверки компоновки мы предоставляем модели STEP/IGES.',
+  en: 'Download 3D Model (.step)',
+  de: '3D-Modell (.step) herunterladen',
+  ja: '3Dモデル（.step）をダウンロード',
+  ru: 'Скачать 3D-модель (.step)',
+};
+const STEP_CAD_REQUIRED_DESC = {
+  en: '3D STEP model (AP214) for the selected configuration and fit check.',
+  de: '3D-STEP-Modell (AP214) für die ausgewählte Ausführung und Einbauprüfung.',
+  ja: '選定仕様の組込み確認用の3D STEPモデル（AP214）です。',
+  ru: '3D STEP-модель (AP214) для выбранного исполнения и проверки компоновки.',
+};
+const STEP_CAD_REQUEST_FORBIDDEN = {
+  en: ['Request 3D STEP/IGES file', 'Request STEP File'],
+  de: ['3D-STEP-/IGES-Datei anfordern', 'STEP-Datei anfordern'],
+  ja: ['3D STEP／IGESデータを依頼', 'STEPデータを依頼'],
+  ru: ['Запросить 3D STEP/IGES', 'Запросить файл STEP'],
 };
 const commercialProductCopyByLocale = [
   {
@@ -672,7 +684,7 @@ const commercialProductCopyByLocale = [
     ],
     required: [
       'Key dimensions and operating limits for this model are listed below.',
-      'We provide STEP/IGES models for the selected configuration and fit check.',
+      '3D STEP model (AP214) for the selected configuration and fit check.',
       'Inspection Documents',
       'Need an inspection record or material document? Include the requirement with your inquiry.',
     ],
@@ -689,7 +701,7 @@ const commercialProductCopyByLocale = [
     ],
     required: [
       'Die wichtigsten Abmessungen und Betriebsgrenzen dieses Modells sind nachfolgend aufgeführt.',
-      'Für die ausgewählte Ausführung und Einbauprüfung stellen wir STEP-/IGES-Modelle bereit.',
+      '3D-STEP-Modell (AP214) für die ausgewählte Ausführung und Einbauprüfung.',
       'Prüfunterlagen',
       'Benötigen Sie ein Prüfprotokoll oder einen Werkstoffnachweis? Geben Sie die Anforderung in Ihrer Anfrage an.',
     ],
@@ -706,7 +718,7 @@ const commercialProductCopyByLocale = [
     ],
     required: [
       'この型式の主要寸法と使用限界を以下に示します。',
-      '選定仕様の組込み確認用にSTEP／IGESモデルを提供します。',
+      '選定仕様の組込み確認用の3D STEPモデル（AP214）です。',
       '検査資料',
       '検査記録や材料資料が必要な場合は、お問い合わせ時に要件をお知らせください。',
     ],
@@ -723,7 +735,7 @@ const commercialProductCopyByLocale = [
     ],
     required: [
       'Ниже приведены основные размеры и рабочие пределы этой модели.',
-      'Для выбранного исполнения и проверки компоновки мы предоставляем модели STEP/IGES.',
+      '3D STEP-модель (AP214) для выбранного исполнения и проверки компоновки.',
       'Документы контроля',
       'Если вам нужен протокол контроля или документ на материал, укажите это в запросе.',
     ],
@@ -735,11 +747,17 @@ for (const copy of commercialProductCopyByLocale) {
     const model = path.basename(pageName, '.html');
     const locale = copy.prefix === '' ? 'en' : copy.prefix.replace(/\//g, '');
     const hasPublicStep = drawingBackedPublicStep(locale, model);
-    const stepDescPhrase = STEP_CAD_REQUIRED_PHRASES[locale];
-    const required = hasPublicStep && stepDescPhrase
-      ? copy.required.filter((phrase) => phrase !== stepDescPhrase)
-      : copy.required;
-    checks.push({ file: `${copy.prefix}${pageName}`, forbidden: copy.forbidden, required });
+    const stepTitle = STEP_CAD_REQUIRED_PHRASES[locale];
+    const stepDesc = STEP_CAD_REQUIRED_DESC[locale];
+    const requestForbidden = STEP_CAD_REQUEST_FORBIDDEN[locale] ?? [];
+    let required = copy.required;
+    let forbidden = [...copy.forbidden, ...requestForbidden];
+    if (hasPublicStep) {
+      required = [...new Set([...copy.required, stepTitle, stepDesc])];
+    } else if (stepDesc) {
+      required = copy.required.filter((phrase) => phrase !== stepDesc);
+    }
+    checks.push({ file: `${copy.prefix}${pageName}`, forbidden, required });
   }
 }
 

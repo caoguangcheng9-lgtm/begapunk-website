@@ -184,10 +184,10 @@ const rows = [
     ru: `Каждое готовое изделие проверяется на герметичность по каждому каналу. Если вам нужен конкретный протокол испытаний, сообщите об этом до заказа.`,
   },
   {
-    source: `Products are packed for shipment with the agreed documents. We provide 2D drawings and STEP/IGES models for the selected configuration.`,
-    de: `Die Produkte werden mit den vereinbarten Unterlagen versandfertig verpackt. Für die ausgewählte Ausführung stellen wir 2D-Zeichnungen und STEP-/IGES-Modelle bereit.`,
-    ja: `製品は、合意した書類とともに出荷用に梱包します。選定仕様の2D図面とSTEP／IGESモデルを提供します。`,
-    ru: `Изделия упаковываются для отправки с согласованными документами. Для выбранного исполнения мы предоставляем 2D-чертежи и модели STEP/IGES.`,
+    source: `Products are packed for shipment with the agreed documents. Catalog model pages include a 2D drawing and a downloadable STEP AP214 file for a fit check.`,
+    de: `Die Produkte werden mit den vereinbarten Unterlagen versandfertig verpackt. Auf den Katalogseiten stehen eine 2D-Zeichnung und ein STEP-AP214 zum Download für die Einbauprüfung bereit.`,
+    ja: `製品は、合意した書類とともに出荷用に梱包します。カタログ製品ページから2D図面と組込み確認用STEP（AP214）をダウンロードできます。`,
+    ru: `Изделия упаковываются для отправки с согласованными документами. На страницах каталога доступны 2D-чертёж и файл STEP AP214 для проверки компоновки.`,
   },
   {
     source: `See our manufacturing and inspection process.`,

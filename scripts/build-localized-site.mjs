@@ -520,11 +520,12 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
     }
     stepLink.text(copy.stepDownloadLabel);
   }
-  if (actions.length !== (hasPublicStep ? 1 : 2)) {
-    throw new Error(`${languageCode}/${pageName}: expected ${hasPublicStep ? 1 : 2} product actions; found ${actions.length}.`);
+  if (actions.length !== 2) {
+    throw new Error(`${languageCode}/${pageName}: expected 2 product actions; found ${actions.length}.`);
   }
   actions.eq(0).text(copy.primaryActionLabel);
-  if (!hasPublicStep) actions.eq(1).text(copy.secondaryActionLabel);
+  if (hasPublicStep) actions.eq(1).text(copy.stepDownloadLabel);
+  else actions.eq(1).text(copy.secondaryActionLabel);
 }
 
 function applyDrawingBackedUiContract($, languageCode, pageName) {
@@ -3176,14 +3177,17 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
   const utilityRegion = informationRegion.children('.pd-utility-links');
   const utilityLinks = utilityRegion.children('a.pd-utility-link');
   const hasPublicStep = drawingBackedPublicStep(languageCode, model);
-  const toolsValid = actions.length === (hasPublicStep ? 1 : 2)
+  const toolsValid = actions.length === 2
     && actions.eq(0).hasClass('btn-primary')
-    && (hasPublicStep || actions.eq(1).hasClass('btn-secondary'))
+    && actions.eq(1).hasClass('btn-secondary')
     && utilityLinks.length === (hasPublicStep ? 2 : 1)
     && utilityRegion.children('.pd-separator').length === (hasPublicStep ? 2 : 1)
     && utilityRegion.find('a[href="product-comparison.html"]').length === 0;
   if (!toolsValid) {
-    throw new Error(`${label}: first-view tools must contain ${hasPublicStep ? 'one ranked CTA, a drawing and STEP utility' : 'two ranked CTAs, one drawing utility'}, and Share.`);
+    throw new Error(`${label}: first-view tools must contain two ranked CTAs, drawing utility${hasPublicStep ? ' and STEP utility' : ''}, and Share.`);
+  }
+  if (hasPublicStep && actions.eq(1).text().trim() !== copy.stepDownloadLabel) {
+    throw new Error(`${label}: public STEP secondary CTA must use stepDownloadLabel.`);
   }
   if (informationRegion.children('.pd-price-note').length !== 0) {
     throw new Error(`${label}: retired first-view price note remains.`);

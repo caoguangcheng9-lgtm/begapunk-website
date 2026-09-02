@@ -18,7 +18,7 @@
     "de": {
       "requestTemplates": {
         "quote": "Ich benötige ein Angebot für dieses Modell oder diese Anwendung.",
-        "3d_step": "Bitte senden Sie mir die aktuelle STEP-Datei für dieses Modell.",
+        "3d_step": "Katalog-STEP steht auf der Produktseite. Bitte senden Sie Anforderungen für Sonder-CAD oder andere Dateien.",
         "application_review": "Bitte helfen Sie mir, eine passende Drehdurchführung für diese Anwendung auszuwählen.",
         "seal_review": "Bitte prüfen Sie die Dichtungsverträglichkeit für diese Betriebsbedingungen.",
         "verified_drawing": "Bitte prüfen Sie die markierte Schnittstelle oder die markierten Maße für dieses Modell.",
@@ -27,7 +27,7 @@
         "hydraulic": "Bitte prüfen Sie eine hydraulische Drehdurchführung für Öl, Wasser oder Kühlmittel. Medium und Druck:"
       },
       "modelRequestTemplates": {
-        "3d_step": "Bitte senden Sie mir die aktuelle STEP-Datei für {model}."
+        "3d_step": "Katalog-STEP für {model} steht auf der Produktseite. Dieses Formular ist für Sonder-CAD oder andere Dateien."
       },
       "requiredFields": {
         "email": "E-Mail",
@@ -44,12 +44,12 @@
       "serviceUnavailable": "Der Anfragedienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut oder schreiben Sie an sales@begapunk.com.",
       "invalidResponse": "Wir konnten nicht bestätigen, ob Ihre Anfrage gesendet wurde. Bitte wenden Sie sich an sales@begapunk.com, bevor Sie sie erneut senden.",
       "networkFailure": "Ein Netzwerkfehler ist aufgetreten. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut oder schreiben Sie an sales@begapunk.com.",
-      "stepButton": "3D-STEP-Datei anfragen →"
+      "stepButton": "CAD-Anfrage senden →"
     },
     "ja": {
       "requestTemplates": {
         "quote": "この型式または用途の見積もりを希望します。",
-        "3d_step": "この型式の最新STEPデータを送ってください。",
+        "3d_step": "カタログSTEPは製品ページにあります。特注CADやその他のファイル要件をお知らせください。",
         "application_review": "この用途に合うロータリージョイントの選定をお願いします。",
         "seal_review": "この使用条件に対するシール適合性を確認してください。",
         "verified_drawing": "この型式の指定した取合いまたは寸法を確認してください。",
@@ -58,7 +58,7 @@
         "hydraulic": "特注の液圧・作動油・水・クーラント用ロータリージョイントを検討してください。流体と圧力："
       },
       "modelRequestTemplates": {
-        "3d_step": "{model} の最新STEPデータを送ってください。"
+        "3d_step": "{model} のカタログSTEPは製品ページにあります。特注CADや他形式はこのフォームでご依頼ください。"
       },
       "requiredFields": {
         "email": "メールアドレス",
@@ -75,12 +75,12 @@
       "serviceUnavailable": "現在、お問い合わせサービスをご利用いただけません。時間をおいてからもう一度お試しいただくか、sales@begapunk.com までメールでご連絡ください。",
       "invalidResponse": "お問い合わせが送信されたか確認できませんでした。再送信する前に、sales@begapunk.com までご連絡ください。",
       "networkFailure": "ネットワークエラーが発生しました。接続をご確認のうえ再度お試しいただくか、sales@begapunk.com までメールでご連絡ください。",
-      "stepButton": "3D STEPデータを依頼 →"
+      "stepButton": "CAD依頼を送信 →"
     },
     "ru": {
       "requestTemplates": {
         "quote": "Мне нужно предложение для этой модели или области применения.",
-        "3d_step": "Пожалуйста, отправьте актуальный STEP-файл для этой модели.",
+        "3d_step": "Каталожный STEP есть на странице модели. Укажите требования к заказному CAD или другим файлам.",
         "application_review": "Помогите подобрать подходящее вращающееся соединение для этого применения.",
         "seal_review": "Проверьте совместимость уплотнений с этими условиями эксплуатации.",
         "verified_drawing": "Проверьте отмеченный интерфейс или размеры для этой модели.",
@@ -89,7 +89,7 @@
         "hydraulic": "Проверьте индивидуальное гидравлическое соединение для масла, воды или СОЖ. Среда и давление:"
       },
       "modelRequestTemplates": {
-        "3d_step": "Пожалуйста, отправьте актуальный STEP-файл для {model}."
+        "3d_step": "Каталожный STEP для {model} есть на странице модели. Это форма для заказного CAD или других файлов."
       },
       "requiredFields": {
         "email": "Электронная почта",
@@ -106,7 +106,7 @@
       "serviceUnavailable": "Сервис обработки запросов временно недоступен. Повторите попытку позже или напишите на sales@begapunk.com.",
       "invalidResponse": "Не удалось подтвердить, был ли запрос отправлен. Перед повторной отправкой свяжитесь с нами по адресу sales@begapunk.com.",
       "networkFailure": "Произошла ошибка сети. Проверьте подключение и повторите попытку или напишите на sales@begapunk.com.",
-      "stepButton": "Запросить 3D-файл STEP →"
+      "stepButton": "Отправить запрос CAD →"
     }
   }
 }

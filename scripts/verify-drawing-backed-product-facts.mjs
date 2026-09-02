@@ -779,8 +779,8 @@ function checkLlmsRecord(context, llmsText, locale, record) {
 
 function checkBp1p0006PublicSurfaces(locale, searchText) {
   const expected = bp1p0006PublicSurfaceContract[locale.code];
-  const catalogContext = `${locale.code}:products-p2:BP-1P-0006`;
-  const catalogPath = path.join(repositoryRoot, locale.directory, "products-p2.html");
+  const catalogContext = `${locale.code}:products:BP-1P-0006`;
+  const catalogPath = path.join(repositoryRoot, locale.directory, "products.html");
   const catalogText = readUtf8(catalogPath, catalogContext);
   if (catalogText !== null) {
     const $ = cheerio.load(catalogText);

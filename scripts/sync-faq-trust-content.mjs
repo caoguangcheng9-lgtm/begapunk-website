@@ -56,7 +56,7 @@ const expectedRelatedLinks = new Map([
   [expectedQuestions[4], ['applications.html', 'Explore rotary joint applications by machine type.']],
   [expectedQuestions[7], ['product-comparison.html', 'Compare Begapunk models by passage count.']],
   [expectedQuestions[12], ['contact.html#inquiry-process', "Review Begapunk's inquiry and drawing-approval process."]],
-  [expectedQuestions[13], ['contact.html?request=3d-step&source=faq.html#quoteForm', 'Request a 2D drawing or STEP model.']],
+  [expectedQuestions[13], ['products.html', 'Download catalog 2D drawings and STEP models on the product pages.']],
   [expectedQuestions[14], ['blog-rotary-joint-installation-mistakes.html#checklist', 'Use the rotary joint installation checklist.']],
   [expectedQuestions[20], ['production-inspection-testing.html#verified-test-parameters', 'Review the confirmed production leak-test parameters.']],
   [expectedQuestions[25], ['contact.html?request=application-review&source=faq.html#quoteForm', 'Request an engineering review for your rotary joint application.']],
@@ -77,7 +77,7 @@ const trustRequirements = new Map([
     required: ['lubricated compressed air', 'complete three-piece air-preparation unit', 'particulate filter', 'water separator', 'oil-mist lubricator', 'wear-resistant, oil-free seal option'],
   }],
   [expectedQuestions[13], {
-    required: ['model number, photo, or partial interface drawing is enough to start', 'Every catalog model is available with a 2D drawing and 3D STEP model', 'before the order', 'do not disclose the internal sealing structure or manufacturing details'],
+    required: ['model number is enough to quote', 'Catalog STEP and PDF download on the product page', 'Custom work still via inquiry', 'do not disclose the internal sealing structure'],
   }],
   [expectedQuestions[15], {
     required: ['incidental loads from correctly routed and independently supported hoses and cables', 'must not carry additional radial or axial machine loads'],

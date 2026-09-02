@@ -19,7 +19,7 @@ const deepContractPath = path.join(root, 'scripts', 'sync-drawing-backed-product
 const copy = {
   installRisks: 'Overtightening, rigid piping, skipped run-in checks, and unsuitable filtration are common installation risks that can contribute to premature wear or leakage.',
   installIntro: 'Correct installation helps reduce premature seal and bearing wear. Verify mounting, alignment, connections, and the approved operating limits before commissioning.',
-  cad: 'STEP/IGES files may be provided for qualified projects after the application requirements and selected configuration are reviewed. Available formats and delivery timing are confirmed for each project.',
+  cad: 'Download the STEP (AP214, simplified) for a fit check on the catalog model page. Custom CAD is provided after inquiry.',
   custom: 'Custom passage count, connection, and mounting options can be reviewed against the application. CAD availability and lead time are confirmed for the selected model, quantity, customization, and destination.',
   scenario: 'These examples highlight common selection and installation risks. Confirm the approved configuration and mounting instructions before commissioning.',
   runIn: 'Commission the joint at controlled pressure and speed, then check for leakage, abnormal friction, heat, and vibration before full-load operation.',
@@ -43,7 +43,7 @@ const translations = {
   de: {
     [copy.installRisks]: 'Zu den typischen Montagerisiken zählen zu hohes Anzugsdrehmoment, starre Verrohrung, ausgelassene Einlaufkontrollen und ungeeignete Filtration; sie können vorzeitigen Verschleiß oder Leckage begünstigen.',
     [copy.installIntro]: 'Eine fachgerechte Montage hilft, vorzeitigen Verschleiß an Dichtungen und Lagern zu vermeiden. Prüfen Sie vor der Inbetriebnahme Befestigung, Ausrichtung, Anschlüsse und die freigegebenen Betriebsgrenzen.',
-    [copy.cad]: 'STEP-/IGES-Dateien können nach Prüfung der Anwendung und der ausgewählten Ausführung für qualifizierte Projekte bereitgestellt werden. Verfügbare Formate und Bereitstellungszeitpunkt werden projektbezogen bestätigt.',
+    [copy.cad]: 'Das STEP (AP214, vereinfacht) steht auf der Katalogseite zum Download für die Einbauprüfung. CAD für Sonderausführungen folgt nach der Anfrage.',
     [copy.custom]: 'Kanalzahl, Anschlüsse und Befestigung können anwendungsbezogen geprüft werden. CAD-Verfügbarkeit und Lieferzeit werden für Modell, Menge, Anpassungsumfang und Zielort bestätigt.',
     [copy.scenario]: 'Diese Beispiele zeigen typische Auswahl- und Montagerisiken. Prüfen Sie vor der Inbetriebnahme die freigegebene Ausführung und die Montagevorgaben.',
     [copy.runIn]: 'Nehmen Sie die Drehdurchführung mit kontrolliertem Druck und kontrollierter Drehzahl in Betrieb und prüfen Sie vor Volllast auf Leckage, ungewöhnliche Reibung, Erwärmung und Vibration.',
@@ -65,7 +65,7 @@ const translations = {
   ja: {
     [copy.installRisks]: '締付け過多、剛性配管、ならし運転時の確認不足、不適切なろ過は、早期摩耗や漏れにつながる代表的な取付リスクです。',
     [copy.installIntro]: '適切な取付けは、シールや軸受の早期摩耗を抑えるうえで重要です。運転開始前に、取付け、芯出し、接続、および承認された使用限界を確認してください。',
-    [copy.cad]: 'STEP／IGESデータは、用途条件と選定仕様を確認したうえで、対象案件に提供できる場合があります。対応形式と提供時期は案件ごとに確認します。',
+    [copy.cad]: 'カタログ型式のSTEP（AP214、簡易）は製品ページから組込み確認用にダウンロードできます。特注CADはお問い合わせ後にご提供します。',
     [copy.custom]: '流路数、接続、取付方法の特注可否は、用途条件に基づいて検討します。CADデータの提供可否と納期は、型式、数量、特注範囲、納入先を確認後に回答します。',
     [copy.scenario]: '以下は代表的な選定・取付上のリスクです。運転開始前に、承認仕様と取付指示をご確認ください。',
     [copy.runIn]: '低い圧力と回転数から運転を開始し、全負荷運転の前に、漏れ、異常摩擦、発熱、振動がないことを確認してください。',
@@ -87,7 +87,7 @@ const translations = {
   ru: {
     [copy.installRisks]: 'Чрезмерная затяжка, жёсткая подводка, пропуск проверки при обкатке и неподходящая фильтрация являются типичными монтажными рисками и могут привести к преждевременному износу или утечке.',
     [copy.installIntro]: 'Правильный монтаж помогает снизить риск преждевременного износа уплотнений и подшипников. Перед вводом в эксплуатацию проверьте крепление, соосность, соединения и утверждённые рабочие пределы.',
-    [copy.cad]: 'Файлы STEP/IGES могут предоставляться для согласованных проектов после проверки требований применения и выбранного исполнения. Форматы и срок предоставления подтверждаются для каждого проекта.',
+    [copy.cad]: 'STEP (AP214, упрощённый) каталожной модели скачивается на странице модели для проверки компоновки. Заказной CAD предоставляется после запроса.',
     [copy.custom]: 'Число каналов, присоединения и способ монтажа могут быть рассмотрены под конкретное применение. Доступность CAD и срок поставки подтверждаются с учётом модели, количества, объёма доработок и места назначения.',
     [copy.scenario]: 'Эти примеры показывают типичные риски выбора и монтажа. Перед вводом в эксплуатацию проверьте утверждённое исполнение и монтажные указания.',
     [copy.runIn]: 'Вводите соединение в работу при контролируемых давлении и частоте вращения, а перед полной нагрузкой проверьте отсутствие утечек, повышенного трения, нагрева и вибрации.',

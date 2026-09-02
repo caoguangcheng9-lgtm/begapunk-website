@@ -6,6 +6,8 @@ Begapunk serves OEM machine builders, automation companies, equipment manufactur
 
 Standard catalog models are primarily pneumatic. Do not infer hydraulic pressure or RPM ratings from the air catalog. Begapunk manufactures custom hydraulic-oil rotary unions: typical 2-passage, custom up to 12, evaluate/manufacture up to 30 MPa (300 bar / approx 4350 psi) as a custom ceiling, not a stock catalog rating. Inquiry review starts from operating pressure and speed. https://www.begapunk.com/custom-hydraulic-rotary-unions.html
 
+Catalog models include a downloadable STEP AP214 file for a fit check on each product page. Custom or non-catalog CAD is provided after inquiry.
+
 Use the language edition that best matches the user's query. Technical model codes, pressure values, speed values, dimensions, and material designations are shared across language editions and must not be translated or inferred beyond the published page data.
 
 - [English homepage](https://www.begapunk.com/): Default English edition.
@@ -21,7 +23,6 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [Homepage](https://www.begapunk.com/): Company overview and primary product categories.
 - [Product catalog](https://www.begapunk.com/products.html): Browse standard rotary-joint models and specifications.
-- [Product catalog page 2](https://www.begapunk.com/products-p2.html): Additional standard and specialized models.
 - [Product comparison](https://www.begapunk.com/product-comparison.html): Compare passages, mounting types, pressure limits, speed limits, and other selection data.
 - [Applications](https://www.begapunk.com/applications.html): Application-specific rotary-union selection guides.
 - [Contact and RFQ](https://www.begapunk.com/contact.html): Request a quotation or engineering selection support.
@@ -91,7 +92,6 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [Startseite](https://www.begapunk.com/de/): Unternehmensübersicht und zentrale Produktkategorien.
 - [Produktkatalog](https://www.begapunk.com/de/products.html): Standard-Drehdurchführungen und technische Daten durchsuchen.
-- [Produktkatalog Seite 2](https://www.begapunk.com/de/products-p2.html): Weitere Standardmodelle und Sonderausführungen.
 - [Produktvergleich](https://www.begapunk.com/de/product-comparison.html): Kanäle, Montagearten, Druck- und Drehzahlgrenzen vergleichen.
 - [Anwendungen](https://www.begapunk.com/de/applications.html): Auswahlhinweise für industrielle Einsatzbereiche.
 - [Auswahlleitfaden](https://www.begapunk.com/de/blog-rotary-joint-selection.html): Fünf wichtige Kriterien für die Auswahl einer pneumatischen Drehdurchführung.
@@ -108,7 +108,6 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [ホームページ](https://www.begapunk.com/ja/): 会社概要と主要な製品カテゴリー。
 - [製品カタログ](https://www.begapunk.com/ja/products.html): 標準ロータリージョイントと仕様を検索。
-- [製品カタログ 2ページ目](https://www.begapunk.com/ja/products-p2.html): その他の標準モデルと特殊モデル。
 - [製品比較](https://www.begapunk.com/ja/product-comparison.html): 流路数、取付方式、圧力、回転速度などを比較。
 - [用途別ガイド](https://www.begapunk.com/ja/applications.html): 産業用途別のロータリージョイント選定情報。
 - [選定ガイド](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 空気圧ロータリージョイント選定の5つの重要条件。
@@ -125,7 +124,6 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [Главная страница](https://www.begapunk.com/ru/): Обзор компании и основные категории продукции.
 - [Каталог продукции](https://www.begapunk.com/ru/products.html): Стандартные ротационные соединения и технические характеристики.
-- [Каталог продукции, страница 2](https://www.begapunk.com/ru/products-p2.html): Дополнительные стандартные и специальные модели.
 - [Сравнение продукции](https://www.begapunk.com/ru/product-comparison.html): Сравнение каналов, креплений, давления, скорости и других параметров.
 - [Применения](https://www.begapunk.com/ru/applications.html): Рекомендации по выбору для промышленных применений.
 - [Руководство по выбору](https://www.begapunk.com/ru/blog-rotary-joint-selection.html): Пять ключевых параметров выбора пневматического ротационного соединения.

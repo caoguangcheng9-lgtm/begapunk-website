@@ -89,7 +89,8 @@ function contractFor(route) {
   if (route === 'production-inspection-testing.html') return { family: 'quality-feature', selector: '.pit-hero' };
   if (route === 'contact.html') return { family: 'rfq-feature', selector: '.bp-rfq-hero' };
   if (route.startsWith('case-') || route === 'case-studies.html') return { family: 'case-feature', selector: '.cs-hero' };
-  if (route === 'products.html' || route === 'products-p2.html' || route === 'product-comparison.html') {
+  if (route === 'products-p2.html') return { family: 'outcome-utility', selector: 'main' };
+  if (route === 'products.html' || route === 'product-comparison.html') {
     return { family: 'standard-dark', selector: '.products-hero' };
   }
   if (route === 'custom-hydraulic-rotary-unions.html') return { family: 'standard-dark', selector: '.app-hero' };

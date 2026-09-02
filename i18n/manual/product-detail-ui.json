@@ -153,7 +153,7 @@
       "shareMenuLabel": "Share",
       "keyProductParametersLabel": "Key product parameters",
   "primaryActionLabel": "Get a Quote",
-  "secondaryActionLabel": "Request STEP File",
+  "secondaryActionLabel": "Download 3D Model (.step)",
   "stepDownloadLabel": "Download 3D Model (.step)",
   "keySpecLabels": {
         "performance": "Pressure / speed",

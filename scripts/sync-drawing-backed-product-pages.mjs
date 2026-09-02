@@ -220,6 +220,12 @@ function buildDesiredProduct(currentProduct, localized, locale, model, product) 
       name: '3D CAD model',
       value: 'STEP AP214 download available for fit check (simplified body)',
     });
+    desired.associatedMedia = {
+      '@type': 'MediaObject',
+      name: `${model} STEP AP214 (simplified, fit check)`,
+      contentUrl: `https://www.begapunk.com/downloads/${model}.step`,
+      encodingFormat: 'application/step',
+    };
   }
   assertWarrantyPropertyPreserved(currentProduct, desired, locale, `${model}/${locale}`);
   return desired;

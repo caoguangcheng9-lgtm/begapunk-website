@@ -30,8 +30,7 @@ const catalogFilterCodes = [
   'custom',
 ];
 const catalogFilterCounts = {
-  'products.html': [8, 1, 5, 1, 1, 0],
-  'products-p2.html': [8, 1, 3, 2, 1, 1],
+  'products.html': [16, 2, 8, 3, 2, 1],
 };
 const drawingBackedModel = 'BP-2P-50-0001';
 const drawingBackedPolicyByLocale = {
@@ -403,10 +402,6 @@ function runCatalogFilterScript(filterSource, relative, channels, expectedCounts
     if (pressedButtons.length !== 1 || pressedButtons[0] !== button) {
       failures.push(`${relative}: filter ${catalogFilterCodes[index]} must be the only aria-pressed=true button after click`);
     }
-    const expectedPagination = catalogFilterCodes[index] === 'all' ? '' : 'none';
-    if (pagination.style.display !== expectedPagination) {
-      failures.push(`${relative}: filter ${catalogFilterCodes[index]} sets pagination display to ${pagination.style.display || '(empty)'}; expected ${expectedPagination || '(empty)'}`);
-    }
   }
 
   const snapshot = JSON.stringify({
@@ -464,10 +459,7 @@ function validateCatalogFilter($, locale, catalogName) {
   });
 
   const pagination = $('.pagination');
-  if (pagination.length !== 1) failures.push(`${relative}: expected one pagination element, found ${pagination.length}`);
-  if (pagination.attr('hidden') !== undefined || /(?:^|;)\s*display\s*:\s*none\b/i.test(pagination.attr('style') || '')) {
-    failures.push(`${relative}: pagination must be visible before JavaScript runs`);
-  }
+  if (pagination.length !== 0) failures.push(`${relative}: catalog must not paginate; found ${pagination.length} pagination element(s)`);
 
   const filterScripts = $('script:not([src])').toArray()
     .map((script) => $(script).html() || '')
@@ -496,7 +488,7 @@ function validateCatalogFilter($, locale, catalogName) {
 
 async function validateCatalog(locale, models) {
   const references = [];
-  for (const catalogName of ['products.html', 'products-p2.html']) {
+  for (const catalogName of ['products.html']) {
     const $ = await readHtml(locale, catalogName);
     if (!$) continue;
     validateCatalogFilter($, locale, catalogName);
@@ -568,8 +560,8 @@ function modelBlock($, selector, model) {
 
 async function validateSecondaryProductSurfaces(locale) {
   const policy = secondarySurfacePolicyByLocale[locale.code];
-  const catalogRelative = publicPath(locale, 'products-p2.html');
-  const catalog = await readHtml(locale, 'products-p2.html');
+  const catalogRelative = publicPath(locale, 'products.html');
+  const catalog = await readHtml(locale, 'products.html');
   if (catalog) {
     const bp3Card = catalog(`.product-card-large[data-href="BP-3P-0006.html"]`);
     validateTextFragments(catalogRelative, 'BP-3P-0006 card', bp3Card.text(),
@@ -630,7 +622,7 @@ async function validateSecondaryProductSurfaces(locale) {
     return;
   }
   const searchRecordText = (url) => JSON.stringify(searchIndex.find((entry) => entry?.url === url) || {});
-  validateTextFragments(searchRelative, 'products-p2.html record', searchRecordText('products-p2.html'),
+  validateTextFragments(searchRelative, 'products.html record', searchRecordText('products.html'),
     [policy.bp3Mount, policy.s06Leads, policy.bp4Seal],
     [...policy.bp3CatalogStale, policy.s06Circuits, ...policy.bp4MaterialStale, policy.bp4DirectionStale, policy.bp30RequestStale]);
   validateTextFragments(searchRelative, 'product-comparison.html record', searchRecordText('product-comparison.html'),

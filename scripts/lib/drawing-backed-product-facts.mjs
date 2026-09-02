@@ -25,10 +25,10 @@ export function drawingBackedPublicStep(locale, model) {
 }
 
 const STEP_META_DOWNLOAD_HOOK = Object.freeze({
-  en: ' Download the simplified 3D STEP model (AP214) for a fit check.',
-  de: ' Das vereinfachte 3D-STEP-Modell (AP214) für die Einbauprüfung herunterladen.',
-  ja: ' 組込み確認用の簡易3D STEPモデル（AP214）をダウンロード。',
-  ru: ' Скачайте упрощённую 3D STEP-модель (AP214) для проверки компоновки.',
+  en: ' Download STEP AP214 for a fit check.',
+  de: ' STEP AP214 laden.',
+  ja: ' STEP（AP214）をダウンロード。',
+  ru: ' STEP AP214 скачать.',
 });
 
 if (drawingBackedProductModels.length !== 16) {
@@ -1226,38 +1226,42 @@ function verifiedMetadataDescription(locale, model, product, heading) {
   const germanMediaLabel = facts.media.length === 1 ? 'Medium' : 'Medien';
   const russianMediaLabel = facts.media.length === 1 ? 'среда' : 'среды';
 
+  let baseDescription;
   if (model === 'BP-3P-0006') {
-    return uiPhrase(locale, {
-      en: `${heading}. ${pressure}, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before selecting fittings or machining.`,
-      de: `${heading}. ${pressure}, ${speed} min⁻¹; geeignetes Medium: ${media}. Anschlussgewinde vor Auswahl von Verschraubungen oder Bearbeitung bestätigen.`,
-      ja: `${heading}。${pressure}、${speed} min⁻¹。適用流体：${media}。ポートねじは継手選定や加工前に確認してください。`,
-      ru: `${heading}. ${pressure}, ${speed} об/мин; подходящая среда: ${media}. Резьбу портов подтвердить до выбора фитингов или обработки.`,
+    baseDescription = uiPhrase(locale, {
+      en: `${heading}. ${pressure}, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before fittings.`,
+      de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium: ${media}. Anschlussgewinde vor Fittingwahl bestätigen.`,
+      ja: `${heading}。${pressure}、${speed} min⁻¹。適用流体：${media}。ポートねじは選定前に確認。`,
+      ru: `${heading}. ${pressure}, ${speed} об/мин; среда: ${media}. Резьбу портов подтвердить до фитингов.`,
+    });
+  } else if (model === 'BP-3P-S06-0001') {
+    baseDescription = uiPhrase(locale, {
+      en: `${model} pneumatic-electric rotary union. ${pressure}, ${speed} RPM; medium: ${media}; six electrical leads, ratings per specification.`,
+      de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium ${media}; sechs elektrische Leitungen, Nennwerte gemäß Spezifikation.`,
+      ja: `${heading}。${pressure}、${speed} min⁻¹。流体は${media}、電気リード6本。定格は仕様書。`,
+      ru: `${heading}. ${pressure}, ${speed} об/мин; среда ${media}; шесть электровыводов, номиналы по спецификации.`,
+    });
+  } else if (model === 'BP-2P-95-0005') {
+    baseDescription = uiPhrase(locale, {
+      en: `${heading}. 2-in/4-out clamp and release. ${pressure} · ${speed} RPM; media: ${media}.`,
+      de: `${heading}. 2 Ein-/4 Ausgänge für Spannen/Lösen. ${pressure} · ${speed} min⁻¹; Medien: ${media}.`,
+      ja: `${heading}。クランプ／リリース用2入力4出力。${pressure}・${speed} min⁻¹、流体：${media}。`,
+      ru: `${heading}. 2 входа / 4 выхода, зажим/разжим. ${pressure} · ${speed} об/мин; среда: ${media}.`,
+    });
+  } else {
+    baseDescription = uiPhrase(locale, {
+      en: `${heading}. ${pressure} · ${speed} RPM; suitable media: ${media}.`,
+      de: `${heading}. ${pressure} · ${speed} min⁻¹; geeignete Medien: ${media}.`,
+      ja: `${heading}。${pressure}・${speed} min⁻¹、適用流体：${media}。`,
+      ru: `${heading}. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
     });
   }
-  if (model === 'BP-3P-S06-0001') {
-    return uiPhrase(locale, {
-      en: `${model} pneumatic-electric rotary union. ${pressure}, ${speed} RPM; medium: ${media}; six electrical leads, with circuit allocation and ratings per specification.`,
-      de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium ${media}; sechs elektrische Leitungen, Kreiszuordnung und Nennwerte gemäß Spezifikation.`,
-      ja: `${heading}。${pressure}、${speed} min⁻¹。流体は${media}、電気リード6本。回路割当・定格は仕様書で確認。`,
-      ru: `${heading}. ${pressure}, ${speed} об/мин; среда ${media}; шесть электровыводов, распределение цепей и номиналы по спецификации.`,
-    });
-  }
-  if (model === 'BP-2P-95-0005') {
-    return uiPhrase(locale, {
-      en: `${heading}. 2-in / 4-out layout for clamp and release circuits. ${pressure} · ${speed} RPM; suitable media: ${media}.`,
-      de: `${heading}. 2 Ein- / 4 Ausgänge für Spannen und Lösen. ${pressure} · ${speed} min⁻¹; geeignete Medien: ${media}.`,
-      ja: `${heading}。クランプ／リリース用の2入力4出力構成。${pressure}・${speed} min⁻¹、適用流体：${media}。`,
-      ru: `${heading}. Конфигурация 2 входа / 4 выхода для зажима и разжима. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
-    });
-  }
-  const baseDescription = uiPhrase(locale, {
-    en: `${heading}. ${pressure} · ${speed} RPM; suitable media: ${media}.`,
-    de: `${heading}. ${pressure} · ${speed} min⁻¹; geeignete Medien: ${media}.`,
-    ja: `${heading}。${pressure}・${speed} min⁻¹、適用流体：${media}。`,
-    ru: `${heading}. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
-  });
   if (drawingBackedPublicStep(locale, model)) {
-    return `${baseDescription}${STEP_META_DOWNLOAD_HOOK[locale]}`;
+    const hook = STEP_META_DOWNLOAD_HOOK[locale];
+    const maxLength = metadataLengthRanges[locale]?.descriptionMax;
+    if (maxLength && baseDescription.length + hook.length <= maxLength) {
+      return `${baseDescription}${hook}`;
+    }
   }
   return baseDescription;
 }

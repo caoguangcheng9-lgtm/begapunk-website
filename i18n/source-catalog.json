@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-01T11:44:54.416Z",
+  "generatedAt": "2026-09-02T03:19:37.906Z",
   "pages": [
     "index.html",
     "about.html",
@@ -1945,8 +1945,8 @@
       ]
     },
     {
-      "id": "dbf75e4e691e316e",
-      "source": "<strong>Drawings &amp; CAD</strong><span>Download 2D drawings or request STEP files</span>",
+      "id": "ab5863b69b20fda7",
+      "source": "<strong>Drawings &amp; CAD</strong><span>Download 2D PDF and STEP on the product page</span>",
       "pages": [
         "index.html"
       ]
@@ -5596,8 +5596,8 @@
       ]
     },
     {
-      "id": "07189fc56a1dcff4",
-      "source": "Browse pneumatic rotary unions and rotary joints by passage count, mounting style, through-bore size, material, pressure and application. Compare models and request 2D or STEP files.",
+      "id": "adbcc7e8a8bc62c7",
+      "source": "Browse pneumatic rotary unions and rotary joints by passage count, mounting style, through-bore size, material, pressure and application. Compare models and download 2D PDF and STEP files.",
       "pages": [
         "products.html"
       ]
@@ -5776,10 +5776,24 @@
       ]
     },
     {
+      "id": "8b2ecc6bf8b8c216",
+      "source": "Catalog model pages include a simplified STEP AP214 file so you can verify envelope, ports, bolt pattern, and clearance before ordering.",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
       "id": "af4a613c38b904c5",
       "source": "Catalog models typically take about 20 calendar days to produce. Custom products are completed within 30 calendar days. Production time starts when payment is received and does not include international shipping.",
       "pages": [
         "terms.html"
+      ]
+    },
+    {
+      "id": "727bda9327068783",
+      "source": "Catalog STEP files are on each product page. Use this form for quotes, custom models, and other CAD.",
+      "pages": [
+        "contact.html"
       ]
     },
     {
@@ -6905,10 +6919,39 @@
       ]
     },
     {
+      "id": "493d0d03fac6837e",
+      "source": "Download 3D Model (.step)",
+      "pages": [
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html"
+      ]
+    },
+    {
       "id": "6183be0883d2a89c",
       "source": "Download PDF",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "65c888e3e9806594",
+      "source": "Download STEP for a Fit Check",
+      "pages": [
+        "index.html"
       ]
     },
     {
@@ -10635,8 +10678,8 @@
       ]
     },
     {
-      "id": "8b839314a3bd5bd7",
-      "source": "Products are packed for shipment with the agreed documents. We provide 2D drawings and STEP/IGES models for the selected configuration.",
+      "id": "8e1dce834158cf82",
+      "source": "Products are packed for shipment with the agreed documents. Catalog model pages include a 2D drawing and a downloadable STEP AP214 file for a fit check.",
       "pages": [
         "about.html"
       ]
@@ -11044,27 +11087,6 @@
       "source": "Request Model Selection &amp; Quote →",
       "pages": [
         "product-comparison.html"
-      ]
-    },
-    {
-      "id": "f859912602286ed0",
-      "source": "Request STEP File",
-      "pages": [
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html"
       ]
     },
     {
@@ -11992,8 +12014,8 @@
       ]
     },
     {
-      "id": "7d88ff0476bd6d68",
-      "source": "Send the model, machine application, operating conditions, or drawing you already have. We reply with a suitable catalog model or custom route, quotation, estimated lead time, and available CAD files.",
+      "id": "22becf1a680e85df",
+      "source": "Send the model, machine application, operating conditions, or drawing you already have. We reply with a suitable catalog model or custom route, quotation, estimated lead time, and catalog STEP/PDF downloads or custom CAD as needed.",
       "pages": [
         "about.html"
       ]
@@ -12270,8 +12292,8 @@
       ]
     },
     {
-      "id": "933a1201b206e36e",
-      "source": "Standard and custom models. MOQ: 1 unit. Production lead time is typically about 20 calendar days for catalog models and within 30 calendar days for custom products. Every catalog model is available with a 2D drawing and 3D STEP model.",
+      "id": "b8293ce43ec31df9",
+      "source": "Standard and custom models. MOQ: 1 unit. Production lead time is typically about 20 calendar days for catalog models and within 30 calendar days for custom products. Every catalog model page includes a 2D drawing and a downloadable STEP AP214 file.",
       "pages": [
         "products-p2.html",
         "products.html"
@@ -12285,8 +12307,8 @@
       ]
     },
     {
-      "id": "87e7702a5796d813",
-      "source": "Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. 2D drawings and 3D STEP models are available for every catalog model.",
+      "id": "b394d0af8b4dc4d9",
+      "source": "Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.",
       "pages": [
         "index.html"
       ]
@@ -12429,13 +12451,6 @@
       "source": "Step-by-step installation guide for Begapunk rotary joints. Mounting, connections, filtration, lubrication, and maintenance.",
       "pages": [
         "installation.html"
-      ]
-    },
-    {
-      "id": "05e48a6d60fa71c4",
-      "source": "STEP/IGES for the Selected Model",
-      "pages": [
-        "index.html"
       ]
     },
     {
@@ -13338,13 +13353,6 @@
       "source": "Verify product fit using uploaded technical drawings",
       "pages": [
         "privacy.html"
-      ]
-    },
-    {
-      "id": "b4bac4119a536040",
-      "source": "Verify the envelope, port positions, bolt pattern, and surrounding clearance in your machine assembly before placing an order.",
-      "pages": [
-        "index.html"
       ]
     },
     {

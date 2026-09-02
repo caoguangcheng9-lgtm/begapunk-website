@@ -57,7 +57,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     shareMenuLabel: 'Share',
     keyProductParametersLabel: 'Key product parameters',
     primaryActionLabel: 'Get a Quote',
-    secondaryActionLabel: 'Request STEP File',
+    secondaryActionLabel: 'Download 3D Model (.step)',
     stepDownloadLabel: 'Download 3D Model (.step)',
     leadTimeValue: '20–30 days',
   }),
@@ -636,7 +636,13 @@ function validateFinalStructure(source, relativePath, copy, contract) {
     && primaryActionLinks.eq(0).hasClass('btn-primary')
     && primaryActionLinks.eq(0).text().trim() === copy.primaryActionLabel;
   if (hasPublicStep) {
-    primaryValid = primaryValid && primaryActionLinks.length === 1;
+    const stepHref = String(primaryActionLinks.eq(1).attr('href') || '');
+    primaryValid = primaryValid
+      && primaryActionLinks.length === 2
+      && /\.step(?:[^a-z0-9]|$)/i.test(stepHref)
+      && primaryActionLinks.eq(1).attr('download') !== undefined
+      && primaryActionLinks.eq(1).hasClass('btn-secondary')
+      && primaryActionLinks.eq(1).text().trim() === copy.stepDownloadLabel;
   } else {
     primaryValid = primaryValid
       && primaryActionLinks.length === 2
@@ -982,13 +988,13 @@ function actionSetsFromDocument($, relativePath) {
   const actionAnchors = actionRegion.children('a').toArray().map((element) => $.html(element));
   let primary;
   let utility;
-  if (hasPublicStep && actionAnchors.length === 1) {
+  if (hasPublicStep && [1, 2].includes(actionAnchors.length)) {
     const utilityRegion = information.children('.pd-utility-links');
     const utilityAnchors = utilityRegion.children('a.pd-utility-link').toArray().map((element) => $.html(element));
-    if (utilityRegion.length !== 1 || utilityAnchors.length !== 2) {
-      throw new Error(`${relativePath}: expected two drawing utilities for the public STEP model.`);
+    if (utilityRegion.length !== 1 || ![1, 2].includes(utilityAnchors.length)) {
+      throw new Error(`${relativePath}: expected one or two drawing utilities for the public STEP model; found ${utilityAnchors.length}.`);
     }
-    primary = actionAnchors;
+    primary = actionAnchors.slice(0, 1);
     utility = utilityAnchors;
   } else if (actionAnchors.length === 4) {
     primary = actionAnchors.slice(0, 2);
@@ -1019,10 +1025,6 @@ function actionSetsFromDocument($, relativePath) {
     || (!/\.pdf(?:$|[?#])/i.test(anchorHref(utility[0]))
       && !anchorHref(utility[0]).includes('request=verified-drawing'))) {
     throw new Error(`${relativePath}: product actions do not match quote / STEP / PDF-or-drawing order.`);
-  }
-  if (hasPublicStep
-    && !/\.step(?:[^a-z0-9]|$)/i.test(anchorHref(utility[1]))) {
-    throw new Error(`${relativePath}: public STEP model must expose a STEP utility link.`);
   }
   return { primary, utility };
 }
@@ -1176,7 +1178,9 @@ function transformFirstView(source, relativePath, contract) {
     jumpNavMarkup(copy, eol),
     '  <div class="pd-actions">',
     `   ${withActionLabel(actions.primary[0], copy.primaryActionLabel)}`,
-    ...(hasPublicStep ? [] : [`   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`]),
+    ...(hasPublicStep
+      ? [`   <a href="${resourcePrefix(relativePath)}downloads/${model}.step" class="btn btn-secondary" download="">${copy.stepDownloadLabel}</a>`]
+      : [`   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`]),
     '  </div>',
     '  <div class="pd-utility-links">',
     `   ${actions.utility[0]}`,
