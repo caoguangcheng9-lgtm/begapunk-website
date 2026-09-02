@@ -59,7 +59,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     primaryActionLabel: 'Get a Quote',
     secondaryActionLabel: 'Download 3D Model (.step)',
     stepDownloadLabel: 'Download 3D Model (.step)',
-    leadTimeValue: '20–30 days',
+    leadTimeValue: 'About 20 calendar days after payment',
   }),
   de: Object.freeze({
     skipLink: 'Zum Hauptinhalt springen',
@@ -73,7 +73,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     primaryActionLabel: 'Angebot anfordern',
     secondaryActionLabel: 'STEP-Datei anfordern',
     stepDownloadLabel: '3D-Modell (.step) herunterladen',
-    leadTimeValue: '20–30 Tage',
+    leadTimeValue: 'Etwa 20 Kalendertage nach Zahlungseingang',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
@@ -87,7 +87,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     primaryActionLabel: '見積もりを依頼',
     secondaryActionLabel: 'STEPデータを依頼',
     stepDownloadLabel: '3Dモデル（.step）をダウンロード',
-    leadTimeValue: '20〜30日',
+    leadTimeValue: '入金後、約20暦日',
   }),
   ru: Object.freeze({
     skipLink: 'Перейти к основному содержанию',
@@ -101,7 +101,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     primaryActionLabel: 'Запросить предложение',
     secondaryActionLabel: 'Запросить файл STEP',
     stepDownloadLabel: 'Скачать 3D-модель (.step)',
-    leadTimeValue: '20–30 дней',
+    leadTimeValue: 'Около 20 календарных дней после оплаты',
   }),
 });
 const SHARE_CHANNELS = Object.freeze([
@@ -636,13 +636,8 @@ function validateFinalStructure(source, relativePath, copy, contract) {
     && primaryActionLinks.eq(0).hasClass('btn-primary')
     && primaryActionLinks.eq(0).text().trim() === copy.primaryActionLabel;
   if (hasPublicStep) {
-    const stepHref = String(primaryActionLinks.eq(1).attr('href') || '');
     primaryValid = primaryValid
-      && primaryActionLinks.length === 2
-      && /\.step(?:[^a-z0-9]|$)/i.test(stepHref)
-      && primaryActionLinks.eq(1).attr('download') !== undefined
-      && primaryActionLinks.eq(1).hasClass('btn-secondary')
-      && primaryActionLinks.eq(1).text().trim() === copy.stepDownloadLabel;
+      && primaryActionLinks.length === 1;
   } else {
     primaryValid = primaryValid
       && primaryActionLinks.length === 2
@@ -1178,9 +1173,9 @@ function transformFirstView(source, relativePath, contract) {
     jumpNavMarkup(copy, eol),
     '  <div class="pd-actions">',
     `   ${withActionLabel(actions.primary[0], copy.primaryActionLabel)}`,
-    ...(hasPublicStep
-      ? [`   <a href="${resourcePrefix(relativePath)}downloads/${model}.step" class="btn btn-secondary" download="">${copy.stepDownloadLabel}</a>`]
-      : [`   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`]),
+    ...(!hasPublicStep
+      ? [`   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`]
+      : []),
     '  </div>',
     '  <div class="pd-utility-links">',
     `   ${actions.utility[0]}`,

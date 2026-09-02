@@ -181,31 +181,31 @@
           "media": "Standard medium: air"
         },
         "BP-3P-0004": {
-          "price": "$57/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "price": "100+ pcs: $57/pc\n1–99 pcs: request quote",
           "warranty": "1 year from shipment",
           "delivery": "Worldwide shipping · FOB Ningbo",
           "quality": "Leak-tested · inspection report"
         },
         "BP-2P-08-0001": {
-          "price": "$42/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "price": "100+ pcs: $42/pc\n1–99 pcs: request quote",
           "warranty": "1 year from shipment",
           "delivery": "Worldwide shipping · FOB Ningbo",
           "quality": "Leak-tested · inspection report"
         },
         "BP-2P-95-0005": {
-          "price": "$218/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "price": "100+ pcs: $218/pc\n1–99 pcs: request quote",
           "warranty": "1 year from shipment",
           "delivery": "Worldwide shipping · FOB Ningbo",
           "quality": "Leak-tested · inspection report"
         },
         "BP-3P-0007": {
-          "price": "$60/pc (Min. Order: 100 pcs)\nUnder 100 pcs: request quote",
+          "price": "100+ pcs: $60/pc\n1–99 pcs: request quote",
           "warranty": "1 year from shipment",
           "delivery": "Worldwide shipping · FOB Ningbo",
           "quality": "Leak-tested · inspection report"
         }
       },
-      "leadTimeValue": "20–30 days"
+      "leadTimeValue": "About 20 calendar days after payment"
     },
     "de": {
       "skipLink": "Zum Hauptinhalt springen",
@@ -252,31 +252,31 @@
           "media": "Standardmedium: Luft"
         },
         "BP-3P-0004": {
-          "price": "57 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "price": "Ab 100 St.: 57 $/St.\n1–99 St.: Angebot anfragen",
           "warranty": "1 Jahr ab Versand",
           "delivery": "Weltweiter Versand · FOB Ningbo",
           "quality": "Dichtheitsprüfung · Prüfbericht"
         },
         "BP-2P-08-0001": {
-          "price": "42 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "price": "Ab 100 St.: 42 $/St.\n1–99 St.: Angebot anfragen",
           "warranty": "1 Jahr ab Versand",
           "delivery": "Weltweiter Versand · FOB Ningbo",
           "quality": "Dichtheitsprüfung · Prüfbericht"
         },
         "BP-2P-95-0005": {
-          "price": "218 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "price": "Ab 100 St.: 218 $/St.\n1–99 St.: Angebot anfragen",
           "warranty": "1 Jahr ab Versand",
           "delivery": "Weltweiter Versand · FOB Ningbo",
           "quality": "Dichtheitsprüfung · Prüfbericht"
         },
         "BP-3P-0007": {
-          "price": "60 $/St. (Mindestbestellung: 100 St.)\nUnter 100 St.: Anfrage",
+          "price": "Ab 100 St.: 60 $/St.\n1–99 St.: Angebot anfragen",
           "warranty": "1 Jahr ab Versand",
           "delivery": "Weltweiter Versand · FOB Ningbo",
           "quality": "Dichtheitsprüfung · Prüfbericht"
         }
       },
-      "leadTimeValue": "20–30 Tage"
+      "leadTimeValue": "Etwa 20 Kalendertage nach Zahlungseingang"
     },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
@@ -323,31 +323,31 @@
           "media": "標準流体：空気"
         },
         "BP-3P-0004": {
-          "price": "$57/個（最低注文：100個）\n100個未満：見積もり",
+          "price": "100個以上：$57/個\n1〜99個：見積もりを依頼",
           "warranty": "出荷から1年間",
           "delivery": "世界発送 · FOB寧波",
           "quality": "漏れ検査 · 検査レポート"
         },
         "BP-2P-08-0001": {
-          "price": "$42/個（最低注文：100個）\n100個未満：見積もり",
+          "price": "100個以上：$42/個\n1〜99個：見積もりを依頼",
           "warranty": "出荷から1年間",
           "delivery": "世界発送 · FOB寧波",
           "quality": "漏れ検査 · 検査レポート"
         },
         "BP-2P-95-0005": {
-          "price": "$218/個（最低注文：100個）\n100個未満：見積もり",
+          "price": "100個以上：$218/個\n1〜99個：見積もりを依頼",
           "warranty": "出荷から1年間",
           "delivery": "世界発送 · FOB寧波",
           "quality": "漏れ検査 · 検査レポート"
         },
         "BP-3P-0007": {
-          "price": "$60/個（最低注文：100個）\n100個未満：見積もり",
+          "price": "100個以上：$60/個\n1〜99個：見積もりを依頼",
           "warranty": "出荷から1年間",
           "delivery": "世界発送 · FOB寧波",
           "quality": "漏れ検査 · 検査レポート"
         }
       },
-      "leadTimeValue": "20〜30日"
+      "leadTimeValue": "入金後、約20暦日"
     },
     "ru": {
       "skipLink": "Перейти к основному содержанию",
@@ -394,31 +394,31 @@
           "media": "Стандартная среда: воздух"
         },
         "BP-3P-0004": {
-          "price": "$57/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "price": "От 100 шт.: $57/шт.\n1–99 шт.: запросить цену",
           "warranty": "1 год с отгрузки",
           "delivery": "Доставка по всему миру · FOB Нинбо",
           "quality": "Проверка герметичности · протокол испытаний"
         },
         "BP-2P-08-0001": {
-          "price": "$42/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "price": "От 100 шт.: $42/шт.\n1–99 шт.: запросить цену",
           "warranty": "1 год с отгрузки",
           "delivery": "Доставка по всему миру · FOB Нинбо",
           "quality": "Проверка герметичности · протокол испытаний"
         },
         "BP-2P-95-0005": {
-          "price": "$218/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "price": "От 100 шт.: $218/шт.\n1–99 шт.: запросить цену",
           "warranty": "1 год с отгрузки",
           "delivery": "Доставка по всему миру · FOB Нинбо",
           "quality": "Проверка герметичности · протокол испытаний"
         },
         "BP-3P-0007": {
-          "price": "$60/шт. (мин. заказ: 100 шт.)\nМенее 100 шт.: по запросу",
+          "price": "От 100 шт.: $60/шт.\n1–99 шт.: запросить цену",
           "warranty": "1 год с отгрузки",
           "delivery": "Доставка по всему миру · FOB Нинбо",
           "quality": "Проверка герметичности · протокол испытаний"
         }
       },
-      "leadTimeValue": "20–30 дней"
+      "leadTimeValue": "Около 20 календарных дней после оплаты"
     }
   }
 }

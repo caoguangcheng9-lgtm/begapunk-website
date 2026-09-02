@@ -18,27 +18,31 @@ const checks = [
       'Up to 12 custom',
       'Carbon-fiber Glyd ring',
       'MOQ 1',
-      'About 30 days after payment',
+      'Within 30 days after payment',
       'Ningbo facility',
       'contact.html?inquiry_type=hydraulic&product=hydraulic&source=custom-hydraulic-rotary-unions.html#quoteForm',
     ],
     forbidden: [
       'Custom Hydraulic Rotary Unions for OEM Machinery',
       'every unit is 30 MPa',
+      'About 30 days after payment',
+      'about 30 calendar days after payment',
     ],
   },
   {
     file: 'de/custom-hydraulic-rotary-unions.html',
-    required: ['Hydraulik-Drehdurchf', '2-Wege', '12 Wege', 'Glyd-Ring', '30 MPa'],
-    forbidden: ['Kanalzahl'],
+    required: ['Hydraulik-Drehdurchf', '2-Wege', '12 Wege', 'Glyd-Ring', '30 MPa', 'Innerhalb von 30 Tagen nach Zahlungseingang'],
+    forbidden: ['Kanalzahl', 'Etwa 30 Tage nach Zahlungseingang', 'etwa 30 Kalendertage nach Zahlungseingang'],
   },
   {
     file: 'ja/custom-hydraulic-rotary-unions.html',
-    required: ['\u6db2\u5727\u30ed\u30fc\u30bf\u30ea\u30fc\u30b8\u30e7\u30a4\u30f3\u30c8', '2\u6d41\u8def', '12\u6d41\u8def', '30 MPa'],
+    required: ['\u6db2\u5727\u30ed\u30fc\u30bf\u30ea\u30fc\u30b8\u30e7\u30a4\u30f3\u30c8', '2\u6d41\u8def', '12\u6d41\u8def', '30 MPa', '\u5165\u91d1\u5f8c 30\u65e5\u4ee5\u5185'],
+    forbidden: ['\u5165\u91d1\u5f8c \u7d0430\u65e5', '\u5165\u91d1\u5f8c\u7d0430\u66a6\u65e5'],
   },
   {
     file: 'ru/custom-hydraulic-rotary-unions.html',
-    required: ['\u0433\u0438\u0434\u0440\u0430\u0432\u043b', '30 \u041c\u041f\u0430', 'Glyd', '2 \u043f\u0440\u043e\u0445\u043e\u0434'],
+    required: ['\u0433\u0438\u0434\u0440\u0430\u0432\u043b', '30 \u041c\u041f\u0430', 'Glyd', '2 \u043f\u0440\u043e\u0445\u043e\u0434', '\u0412 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
+    forbidden: ['\u041e\u043a\u043e\u043b\u043e 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b', '\u043e\u043a\u043e\u043b\u043e 30 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u044b\u0445 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
   },
 
   {

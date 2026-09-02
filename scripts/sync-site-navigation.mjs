@@ -103,9 +103,9 @@ const footerCopy = {
 
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
 const styleVersion = '20260817-cls1';
-const homepageStyleVersion = '20260819-home-clean1';
+const homepageStyleVersion = '20260829-hero-hyd1';
 const englishStyleVersion = '20260825-nav-compact1';
-const englishHomepageStyleVersion = '20260825-home-nav-compact1';
+const englishHomepageStyleVersion = '20260829-hero-hyd1';
 const socialLinks = [
   ['linkedin', 'LinkedIn', 'https://www.linkedin.com/in/guangcheng-cao/'],
   ['youtube', 'YouTube', 'https://www.youtube.com/@BEGAPUNKRotaryJointsTV'],

@@ -452,10 +452,10 @@ for (const [language, locale] of Object.entries(locales)) {
 
 const hydraulicPage = 'custom-hydraulic-rotary-unions.html';
 const hydraulicFacts = {
-  en: ['30 MPa', '300 bar', '4350 psi', '2 passages typical', 'Up to 12 custom', 'Carbon-fiber Glyd ring', 'MOQ 1', 'About 30 days after payment', 'Ningbo facility'],
-  de: ['30 MPa', '300 bar', '2-Wege', '12 Wege', 'Glyd-Ring', 'MOQ 1'],
-  ja: ['30 MPa', '2\u6d41\u8def', '12\u6d41\u8def', '\u30b0\u30e9\u30a4\u30c9\u30ea\u30f3\u30b0', 'MOQ 1'],
-  ru: ['30 \u041c\u041f\u0430', '300 \u0431\u0430\u0440', '2 \u043f\u0440\u043e\u0445\u043e\u0434', 'Glyd', 'MOQ 1'],
+  en: ['30 MPa', '300 bar', '4350 psi', '2 passages typical', 'Up to 12 custom', 'Carbon-fiber Glyd ring', 'MOQ 1', 'Within 30 days after payment', 'Ningbo facility'],
+  de: ['30 MPa', '300 bar', '2-Wege', '12 Wege', 'Glyd-Ring', 'MOQ 1', 'Innerhalb von 30 Tagen nach Zahlungseingang'],
+  ja: ['30 MPa', '2\u6d41\u8def', '12\u6d41\u8def', '\u30b0\u30e9\u30a4\u30c9\u30ea\u30f3\u30b0', 'MOQ 1', '\u5165\u91d1\u5f8c 30\u65e5\u4ee5\u5185'],
+  ru: ['30 \u041c\u041f\u0430', '300 \u0431\u0430\u0440', '2 \u043f\u0440\u043e\u0445\u043e\u0434', 'Glyd', 'MOQ 1', '\u0412 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
 };
 for (const [language, locale] of Object.entries(locales)) {
   const relativePath = relativeFile(locale, hydraulicPage);

@@ -148,12 +148,12 @@
   },
   "application-pneumatic-tools-hose-anti-twist.html": {
     "title": "Luftdrehanschluss für Druckluftwerkzeuge | Schlauch-Verdrehschutz",
-    "description": "Planen Sie einen Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen anhand realer Bewegung, Durchfluss und Gewinde. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle; das ist nicht automatisch eine schnell laufende Drehdurchführung.",
+    "description": "Planen Sie einen Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen anhand realer Bewegung, Durchfluss und Gewinde. Vergleichen Sie aktuelle Einkanal-Katalogmodelle; das ist nicht automatisch eine schnell laufende Drehdurchführung.",
     "h1": "Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen"
   },
   "application-robot-end-of-arm-tooling.html": {
     "title": "Drehdurchführungen für Roboter-Endeffektoren",
-    "description": "Planen Sie eine pneumatische Drehdurchführung für Roboter-Endeffektoren anhand von Greifer- und Abblaswegen, Handgelenkbewegung und Nutzlast. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle.",
+    "description": "Planen Sie eine Drehdurchführung für Roboter-Endeffektoren anhand von Pneumatikwegen, optionalen Stromkreisen, Handgelenkbewegung und Nutzlast. Vergleichen Sie pneumatische und pneumatisch-elektrische Katalogoptionen.",
     "h1": "Drehdurchführungen für Roboter-Endeffektoren"
   },
   "application-steel-dusty-environments.html": {

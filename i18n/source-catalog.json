@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-02T04:54:41.127Z",
+  "generatedAt": "2026-09-02T10:27:49.009Z",
   "pages": [
     "index.html",
     "about.html",
@@ -2778,24 +2778,10 @@
       ]
     },
     {
-      "id": "7442a5950449e599",
-      "source": "$218/pc (Min. Order: 100 pcs)",
-      "pages": [
-        "BP-2P-95-0005.html"
-      ]
-    },
-    {
       "id": "5f4f67b618c4d031",
       "source": "$42/pc · 100+",
       "pages": [
         "products.html"
-      ]
-    },
-    {
-      "id": "b9d5a57e96f6b16d",
-      "source": "$42/pc (Min. Order: 100 pcs)",
-      "pages": [
-        "BP-2P-08-0001.html"
       ]
     },
     {
@@ -2806,24 +2792,10 @@
       ]
     },
     {
-      "id": "90669d99ab908e12",
-      "source": "$57/pc (Min. Order: 100 pcs)",
-      "pages": [
-        "BP-3P-0004.html"
-      ]
-    },
-    {
       "id": "17fbd193bfd88dc7",
       "source": "$60/pc · 100+",
       "pages": [
         "products.html"
-      ]
-    },
-    {
-      "id": "ebc0ce41b74ea999",
-      "source": "$60/pc (Min. Order: 100 pcs)",
-      "pages": [
-        "BP-3P-0007.html"
       ]
     },
     {
@@ -2884,6 +2856,16 @@
       ]
     },
     {
+      "id": "1ebeb4fc003ab704",
+      "source": "1–99 pcs: request quote",
+      "pages": [
+        "BP-2P-08-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0007.html"
+      ]
+    },
+    {
       "id": "6ffece5c2f3cd392",
       "source": "1. Independent air functions",
       "pages": [
@@ -2937,6 +2919,34 @@
       "source": "100 RPM",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "73d54b8b351fd914",
+      "source": "100+ pcs: $218/pc",
+      "pages": [
+        "BP-2P-95-0005.html"
+      ]
+    },
+    {
+      "id": "c02f8742a50420b8",
+      "source": "100+ pcs: $42/pc",
+      "pages": [
+        "BP-2P-08-0001.html"
+      ]
+    },
+    {
+      "id": "ceefd9ad256082cb",
+      "source": "100+ pcs: $57/pc",
+      "pages": [
+        "BP-3P-0004.html"
+      ]
+    },
+    {
+      "id": "dc0664c930542c95",
+      "source": "100+ pcs: $60/pc",
+      "pages": [
+        "BP-3P-0007.html"
       ]
     },
     {
@@ -6219,13 +6229,6 @@
       ]
     },
     {
-      "id": "0405d3b636defae6",
-      "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> as a starting point for gripper or blow-off air. Electrical or hydraulic services need their own interfaces and are not inferred from the air-passage count.",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
-      ]
-    },
-    {
       "id": "2dc9f69f9622cc31",
       "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> as a starting point. Do not assume a table application matches a specific catalog model until the circuit, center bore, and cycle are checked against the drawing.",
       "pages": [
@@ -6233,8 +6236,15 @@
       ]
     },
     {
-      "id": "b276dbc1685df6d3",
-      "source": "Compare current 2-passage pneumatic catalog models in the <a href=\"products.html\">product catalog</a> if a compact air swivel is required. An air swivel is not automatically a high-speed rotary union, a torque-reaction member, or a lifting point.",
+      "id": "8622f2974b4ee091",
+      "source": "Compare current pneumatic and pneumatic-electrical catalog options in the <a href=\"products.html\">product catalog</a> as starting points for gripper, blow-off, or sensor circuits. Hydraulic service requires a separate review; do not infer any interface from passage count alone.",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "e441d4b6de8acd25",
+      "source": "Compare current single-passage catalog models in the <a href=\"products.html\">product catalog</a> if a compact air swivel is required. An air swivel is not automatically a high-speed rotary union, a torque-reaction member, or a lifting point.",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
       ]
@@ -6878,28 +6888,6 @@
       "source": "Download 2D PDF",
       "pages": [
         "products.html"
-      ]
-    },
-    {
-      "id": "493d0d03fac6837e",
-      "source": "Download 3D Model (.step)",
-      "pages": [
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html"
       ]
     },
     {
@@ -9970,6 +9958,13 @@
       ]
     },
     {
+      "id": "b6638ea3b3437d77",
+      "source": "Plan a rotary union for robot end-of-arm tooling by mapping pneumatic passages, optional electrical circuits, wrist motion, and payload. Compare current pneumatic and pneumatic-electrical catalog options.",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
       "id": "8e8bb3d1017a4e1e",
       "source": "Plan an air rotary union for packaging carousels by mapping clamp and blow-off circuits, then compare current 2-passage pneumatic catalog models on the product list.",
       "pages": [
@@ -9977,15 +9972,8 @@
       ]
     },
     {
-      "id": "345eeb579334c585",
-      "source": "Plan an air rotary union for robot end-of-arm tooling by mapping gripper and blow-off passages, wrist motion, and payload. Compare current 2-passage pneumatic catalog models.",
-      "pages": [
-        "application-robot-end-of-arm-tooling.html"
-      ]
-    },
-    {
-      "id": "a29148c21aa5ca8b",
-      "source": "Plan an air swivel for pneumatic tools and hose anti-twist from real tool motion, flow, and thread data. Compare current 2-passage pneumatic catalog models; it is not a high-speed rotary union by default.",
+      "id": "ba33e049bcbd79ba",
+      "source": "Plan an air swivel for pneumatic tools and hose anti-twist from real tool motion, flow, and thread data. Compare current single-passage catalog models; it is not a high-speed rotary union by default.",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
       ]
@@ -11921,15 +11909,15 @@
       ]
     },
     {
-      "id": "0736b6c6680ee593",
-      "source": "Send the wrist/tool drawing, passage functions, and motion profile. We will compare 2-passage air catalog models to the stack.",
+      "id": "c12f09f33a383412",
+      "source": "Send the wrist/tool drawing, passage functions, and motion profile. We will compare pneumatic or pneumatic-electrical catalog options to the stack.",
       "pages": [
         "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
-      "id": "104229e6a7c1fcf2",
-      "source": "Send tool air demand, both thread standards, rotation range, and hose routing. We will compare 2-passage air catalog models to the duty.",
+      "id": "c76cce95aaad339f",
+      "source": "Send tool air demand, both thread standards, rotation range, and hose routing. We will compare suitable single-passage catalog models or a custom compact interface to the duty.",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
       ]
@@ -13044,16 +13032,6 @@
       "source": "Unclamp",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
-      "id": "b36c7756eb3fc267",
-      "source": "Under 100 pcs: request quote",
-      "pages": [
-        "BP-2P-08-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0004.html",
-        "BP-3P-0007.html"
       ]
     },
     {

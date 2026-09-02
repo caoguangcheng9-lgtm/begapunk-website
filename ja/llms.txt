@@ -35,8 +35,8 @@
 - [電子・電池検査治具用ロータリージョイント](https://www.begapunk.com/ja/application-electronics-battery-test-fixtures.html): 回転検査装置、空圧グリッパ、真空吸着、電池試験治具向けの空圧用・空圧電気複合ロータリージョイント選定ガイド。
 - [レーザー管切断機の後方チャック用空圧ロータリジョイント | Begapunk](https://www.begapunk.com/ja/application-laser-tube-cutting.html): レーザー管切断機の後方チャック向けに、独立2流路・3流路の空圧ロータリジョイントを比較できます。型式、写真、図面のいずれかがあれば選定を始められます。
 - [包装機械用ロータリージョイントの選定 | Begapunk](https://www.begapunk.com/ja/application-packaging-machinery.html): 包装カルーセルのクランプ・ブローオフ回路を整理したうえで、製品一覧の現行2流路空圧カタログ機種と比較します。
-- [空圧工具・ホース用エアスイベル](https://www.begapunk.com/ja/application-pneumatic-tools-hose-anti-twist.html): 実機の動き・流量・ねじ規格から、空圧工具・ホース回り止め用エアスイベルを計画します。現行2流路空圧カタログ機種と比較してください。高速ロータリージョイントとは限りません。
-- [ロボットハンド用ロータリージョイント](https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html): グリッパとブローオフの流路、手首動作、可搬質量からロボットEOAT用空圧ロータリージョイントを計画します。現行2流路カタログ機種と比較してください。
+- [空圧工具・ホース用エアスイベル](https://www.begapunk.com/ja/application-pneumatic-tools-hose-anti-twist.html): 実機の動き・流量・ねじ規格から、空圧工具・ホース回り止め用エアスイベルを計画します。現行1流路カタログ機種と比較してください。高速ロータリージョイントとは限りません。
+- [ロボットハンド用ロータリージョイント](https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html): 空圧流路、必要に応じた電気回路、手首動作、可搬質量からロボットEOAT用ロータリージョイントを検討します。現行の空圧および空圧・電気複合カタログ機種を比較できます。
 - [製鉄・粉じん環境用防じんロータリージョイント](https://www.begapunk.com/ja/application-steel-dusty-environments.html): 製鉄設備、鋳造設備、粉体包装などの粉じん・摩耗環境で使用する空圧用ロータリージョイントの保護と選定を解説します。
 - [印刷・繊維・加工機用ロータリージョイント](https://www.begapunk.com/ja/application-textile-printing-converting.html): 印刷機、繊維ワインダ、コンバーティング設備向けに、流体、圧力、回転数、流路数、貫通穴からロータリージョイントを選定します。
 - [真空包装機用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/application-vacuum-packaging-machines.html): ロータリー式真空包装機、袋詰め機、真空シールヘッド、回転包装ステーション向けの空圧・真空ロータリージョイント。

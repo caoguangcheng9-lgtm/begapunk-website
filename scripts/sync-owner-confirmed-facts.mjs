@@ -37,6 +37,40 @@ const productWarrantyByLocale = Object.freeze({
     value: '1 год с даты отгрузки',
   }),
 });
+const customHydraulicLeadTimeContracts = Object.freeze([
+  Object.freeze({
+    file: 'custom-hydraulic-rotary-unions.html',
+    replacements: Object.freeze([
+      Object.freeze({ legacy: 'Custom hydraulic is about 30 calendar days after payment.', current: 'Custom hydraulic is completed within 30 calendar days after payment.', count: 3 }),
+      Object.freeze({ legacy: 'About 30 days after payment', current: 'Within 30 days after payment', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1, about 30 days', current: 'MOQ 1, within 30 days', count: 1 }),
+    ]),
+  }),
+  Object.freeze({
+    file: 'de/custom-hydraulic-rotary-unions.html',
+    replacements: Object.freeze([
+      Object.freeze({ legacy: 'Hydraulik nach Maß braucht etwa 30 Kalendertage nach Zahlungseingang.', current: 'Hydraulik nach Maß wird innerhalb von 30 Kalendertagen nach Zahlungseingang fertiggestellt.', count: 3 }),
+      Object.freeze({ legacy: 'Etwa 30 Tage nach Zahlungseingang', current: 'Innerhalb von 30 Tagen nach Zahlungseingang', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1, etwa 30 Tage', current: 'MOQ 1, innerhalb von 30 Tagen', count: 1 }),
+    ]),
+  }),
+  Object.freeze({
+    file: 'ja/custom-hydraulic-rotary-unions.html',
+    replacements: Object.freeze([
+      Object.freeze({ legacy: '特注液圧は入金後約30暦日です。', current: '特注液圧は入金後30暦日以内に製作します。', count: 3 }),
+      Object.freeze({ legacy: '入金後 約30日', current: '入金後 30日以内', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1個、約30日', current: 'MOQ 1個、30日以内', count: 1 }),
+    ]),
+  }),
+  Object.freeze({
+    file: 'ru/custom-hydraulic-rotary-unions.html',
+    replacements: Object.freeze([
+      Object.freeze({ legacy: 'Заказная гидравлика — около 30 календарных дней после оплаты.', current: 'Заказная гидравлика изготавливается в течение 30 календарных дней после оплаты.', count: 3 }),
+      Object.freeze({ legacy: 'Около 30 дней после оплаты', current: 'В течение 30 дней после оплаты', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1, около 30 дней', current: 'MOQ 1, в течение 30 дней', count: 1 }),
+    ]),
+  }),
+]);
 const bottleCappingProductPage = 'BP-2P-16-0001.html';
 const legacyBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to supply two compressed-air circuits for clamp and release of a pneumatic three-jaw bottle-cap gripper.';
 const previousBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to supply clamp and release air through two independent compressed-air passages to a pneumatic three-jaw bottle-cap gripper.';
@@ -493,6 +527,77 @@ if (productPageNames.length !== 16) {
 }
 
 const exactCount = (source, value) => source.split(value).length - 1;
+
+function productNodes(value, result = []) {
+  if (Array.isArray(value)) {
+    for (const item of value) productNodes(item, result);
+    return result;
+  }
+  if (!value || typeof value !== 'object') return result;
+  const types = Array.isArray(value['@type']) ? value['@type'] : [value['@type']];
+  if (types.includes('Product')) result.push(value);
+  for (const item of Object.values(value)) productNodes(item, result);
+  return result;
+}
+
+function synchronizeStructuredWarranty(source, warranty, relativePath, validateOnly = false) {
+  let productCount = 0;
+  let warrantyCount = 0;
+  let currentCount = 0;
+  const warrantyNames = new Set([warranty.legacyName, warranty.name]);
+  const scriptPattern = /(<script\b[^>]*\btype=(['"])application\/ld\+json\2[^>]*>)([\s\S]*?)(<\/script>)/gi;
+  const result = source.replace(scriptPattern, (full, opening, quote, rawJson, closing) => {
+    let payload;
+    try {
+      payload = JSON.parse(rawJson);
+    } catch {
+      return full;
+    }
+    const products = productNodes(payload);
+    if (!products.length) return full;
+    productCount += products.length;
+    for (const product of products) {
+      if (!Array.isArray(product.additionalProperty)) {
+        throw new Error(`${relativePath}: Product additionalProperty is missing.`);
+      }
+      const matchingIndexes = product.additionalProperty
+        .map((property, index) => (warrantyNames.has(property?.name) ? index : -1))
+        .filter((index) => index >= 0);
+      warrantyCount += matchingIndexes.length;
+      currentCount += matchingIndexes.filter((index) => {
+        const property = product.additionalProperty[index];
+        return property.name === warranty.name && String(property.value) === warranty.value;
+      }).length;
+      if (validateOnly) continue;
+      if (matchingIndexes.length > 1) {
+        throw new Error(`${relativePath}: expected at most one structured warranty; found ${matchingIndexes.length}.`);
+      }
+      const currentProperty = matchingIndexes.length
+        ? product.additionalProperty[matchingIndexes[0]]
+        : null;
+      const desiredProperty = {
+        '@type': currentProperty?.['@type'] || 'PropertyValue',
+        name: warranty.name,
+        value: warranty.value,
+      };
+      if (matchingIndexes.length) product.additionalProperty[matchingIndexes[0]] = desiredProperty;
+      else product.additionalProperty.push(desiredProperty);
+    }
+    const leading = rawJson.match(/^\s*/)?.[0] || '';
+    const trailing = rawJson.match(/\s*$/)?.[0] || '';
+    return `${opening}${leading}${JSON.stringify(payload)}${trailing}${closing}`;
+  });
+  if (productCount !== 1) {
+    throw new Error(`${relativePath}: expected exactly one Product JSON-LD node; found ${productCount}.`);
+  }
+  if (validateOnly && (warrantyCount !== 1 || currentCount !== 1)) {
+    throw new Error(
+      `${relativePath}: expected one current structured warranty; found total/current ${warrantyCount}/${currentCount}.`,
+    );
+  }
+  return result;
+}
+
 for (const [language, warranty] of Object.entries(productWarrantyByLocale)) {
   for (const pageName of productPageNames) {
     const relativePath = warranty.prefix ? `${warranty.prefix}/${pageName}` : pageName;
@@ -500,34 +605,50 @@ for (const [language, warranty] of Object.entries(productWarrantyByLocale)) {
     const before = await fs.readFile(filePath, 'utf8');
     const legacyVisible = `<th>${warranty.legacyName}</th><td>${warranty.legacyValue}</td>`;
     const currentVisible = `<th>${warranty.name}</th><td>${warranty.value}</td>`;
-    const legacyStructured = `"name":"${warranty.legacyName}","value":"${warranty.legacyValue}"`;
-    const currentStructured = `"name":"${warranty.name}","value":"${warranty.value}"`;
     const visibleLegacyCount = exactCount(before, legacyVisible);
     const visibleCurrentCount = exactCount(before, currentVisible);
-    const structuredLegacyCount = exactCount(before, legacyStructured);
-    const structuredCurrentCount = exactCount(before, currentStructured);
-    if (visibleLegacyCount + visibleCurrentCount !== 1
-      || structuredLegacyCount + structuredCurrentCount !== 1) {
+    if (visibleLegacyCount + visibleCurrentCount !== 1) {
       throw new Error(
-        `${relativePath}: expected exactly one visible and one structured warranty pair; `
-        + `found visible legacy/current ${visibleLegacyCount}/${visibleCurrentCount} and `
-        + `structured legacy/current ${structuredLegacyCount}/${structuredCurrentCount}.`,
+        `${relativePath}: expected exactly one visible warranty pair; `
+        + `found legacy/current ${visibleLegacyCount}/${visibleCurrentCount}.`,
       );
     }
-    const synchronized = visibleCurrentCount === 1 && structuredCurrentCount === 1;
     if (checkOnly) {
-      if (!synchronized) throw new Error(`${relativePath}: one-year product warranty is not synchronized.`);
+      if (visibleCurrentCount !== 1) throw new Error(`${relativePath}: visible one-year product warranty is not synchronized.`);
+      synchronizeStructuredWarranty(before, warranty, relativePath, true);
       continue;
     }
-    if (synchronized) continue;
-    const after = before
-      .replace(legacyVisible, currentVisible)
-      .replace(legacyStructured, currentStructured);
-    if (after === before
-      || exactCount(after, currentVisible) !== 1
-      || exactCount(after, currentStructured) !== 1) {
+    const visibleSynchronized = before.replace(legacyVisible, currentVisible);
+    const after = synchronizeStructuredWarranty(visibleSynchronized, warranty, relativePath);
+    synchronizeStructuredWarranty(after, warranty, relativePath, true);
+    if (exactCount(after, currentVisible) !== 1) {
       throw new Error(`${relativePath}: failed to synchronize the one-year warranty atomically.`);
     }
+    if (after === before) continue;
+    await fs.writeFile(filePath, after, 'utf8');
+    changed += 1;
+  }
+}
+
+for (const contract of customHydraulicLeadTimeContracts) {
+  const filePath = path.join(root, ...contract.file.split('/'));
+  const before = await fs.readFile(filePath, 'utf8');
+  let after = before;
+  for (const replacement of contract.replacements) {
+    const legacyCount = exactCount(before, replacement.legacy);
+    const currentCount = exactCount(before, replacement.current);
+    if (legacyCount + currentCount !== replacement.count) {
+      throw new Error(
+        `${contract.file}: expected ${replacement.count} legacy/current custom-lead-time occurrence(s); `
+        + `found ${legacyCount}/${currentCount} for ${replacement.legacy}`,
+      );
+    }
+    if (checkOnly && legacyCount) {
+      throw new Error(`${contract.file}: custom hydraulic lead time is not synchronized to the within-30-day promise.`);
+    }
+    if (!checkOnly && legacyCount) after = after.replaceAll(replacement.legacy, replacement.current);
+  }
+  if (!checkOnly && after !== before) {
     await fs.writeFile(filePath, after, 'utf8');
     changed += 1;
   }
@@ -560,5 +681,5 @@ if (checkOnly && checkFailures.length) {
 }
 
 console.log(checkOnly
-  ? `Owner-confirmed translations, 64 one-year product warranties, and bottle-capping structured data are synchronized for ${catalogManagedRows.length} catalog-managed and ${directManagedProductSources.size} direct-managed source statements in three languages.`
+  ? `Owner-confirmed translations, 64 one-year product warranties, four custom-hydraulic lead-time pages, and bottle-capping structured data are synchronized for ${catalogManagedRows.length} catalog-managed and ${directManagedProductSources.size} direct-managed source statements in three languages.`
   : `Synchronized owner-confirmed translations and structured data in ${changed} file(s).`);

@@ -125,6 +125,7 @@ for (const pageName of manualLocalizedPages) {
 const suspiciousRepeatedTokenPattern = /(?:\bX\s+){5,}\bX\b/;
 const suspiciousRepeatedSymbolPattern = /(?:★\s*){5,}|(?:⚙\s*){3,}|(?:✉\s*){2,}|(?:\b\d+\s+[-–—]\s+){5,}/u;
 const suspiciousPlaceholderPattern = /__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__|\b(?:PH|TR)AAA[A-Z]\b|\b(?:Ф|ТР)ААА[А-ЯЁ]\b/u;
+const malformedLocalizedMarkupPattern = /\b0=""\s+class="<|class="(?:&lt;|<)(?:p|div)\b|app-detail-cta"\s+style="[^"]*;"&gt;/iu;
 const suspiciousRussianMachineTranslationPattern = /Корабли|Тяжел(?:ый|ая|ое) долг|Протоптан|Стальная сталь|Ротари|совместн(?:ый|ое) каталог|Следующая статья/iu;
 const suspiciousVisibleEnglishPattern = /\b(?:Threaded|Heavy Duty|Rotary Joint|Rotary Union|Ships in|Flange Mount|Download PDF|Details|Previous|Next)\b/i;
 const suspiciousLocalizedPhrases = {
@@ -497,6 +498,11 @@ function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
 }
 
 const verifiedLanguages = [config.sourceLanguage, ...activeLanguages];
+const sourceAppDetailCtaCounts = new Map();
+for (const pageName of translationManagedPages) {
+  const sourceHtml = await fs.readFile(path.join(sourceRoot, pageName), 'utf8');
+  sourceAppDetailCtaCounts.set(pageName, load(sourceHtml, { decodeEntities: false })('.app-detail-cta').length);
+}
 let verifiedLocalizedBlogShareBlocks = 0;
 for (const language of verifiedLanguages) {
   for (const pageName of config.pages) {
@@ -510,8 +516,18 @@ for (const language of verifiedLanguages) {
       failures.push(`${language.code}/${pageName}: file is missing.`);
       continue;
     }
+    if (malformedLocalizedMarkupPattern.test(html)) {
+      failures.push(`${language.code}/${pageName}: malformed localized markup is exposed in the buyer-facing page.`);
+    }
     verifyGeneratedText(html, `${language.code}/${pageName}`);
     const $ = load(html, { decodeEntities: false });
+    if (language.code !== config.sourceLanguage.code && translationPageSet.has(pageName)) {
+      const sourceCtaCount = sourceAppDetailCtaCounts.get(pageName) || 0;
+      const localizedCtaCount = $('.app-detail-cta').length;
+      if (localizedCtaCount !== sourceCtaCount) {
+        failures.push(`${language.code}/${pageName}: app-detail CTA structure differs from the English source (${localizedCtaCount} !== ${sourceCtaCount}).`);
+      }
+    }
     if (language.code !== config.sourceLanguage.code) {
       const model = /^BP-[A-Za-z0-9-]+\.html$/.test(pageName)
         ? path.basename(pageName, '.html')
