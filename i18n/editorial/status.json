@@ -38,8 +38,8 @@
     "schemaVersion": 2,
     "algorithm": "sha256-bytes-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "capturedAt": "2026-09-02T02:41:31.093Z",
-    "pagesPerLanguage": 57,
+    "capturedAt": "2026-09-02T05:08:54.153Z",
+    "pagesPerLanguage": 56,
     "languages": [
       "de",
       "ja",
@@ -50,16 +50,16 @@
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
     "de": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 56,
+      "total": 56
     },
     "ja": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 56,
+      "total": 56
     },
     "ru": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 56,
+      "total": 56
     }
   },
   "languages": {
@@ -68,7 +68,6 @@
         "index.html",
         "about.html",
         "products.html",
-        "products-p2.html",
         "product-comparison.html",
         "BP-1P-0003.html",
         "BP-1P-0006.html",
@@ -132,7 +131,6 @@
         "index.html",
         "about.html",
         "products.html",
-        "products-p2.html",
         "product-comparison.html",
         "BP-1P-0003.html",
         "BP-1P-0006.html",
@@ -196,7 +194,6 @@
         "index.html",
         "about.html",
         "products.html",
-        "products-p2.html",
         "product-comparison.html",
         "BP-1P-0003.html",
         "BP-1P-0006.html",
@@ -259,9 +256,9 @@
   "renderQa": {
     "completedAt": "2026-08-20T14:42:45.7735607+09:00",
     "browser": "Google Chrome (294 prior checks) + Codex in-app Browser (42 checks, including 6 current article checks)",
-    "pagesPerLanguage": 57,
+    "pagesPerLanguage": 56,
     "viewportsPerPage": 2,
-    "checkedViewports": 342,
+    "checkedViewports": 336,
     "criteria": [
       "one visible H1",
       "correct html lang",

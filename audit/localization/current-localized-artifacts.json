@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-09-02T02:41:31.093Z",
+  "capturedAt": "2026-09-02T05:08:54.153Z",
   "statusUpdatedAt": "2026-09-02",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
-  "reviewRecord": "audit/localization/2026-09-01-step-public-download-review.md",
+  "reviewRecord": "audit/localization/2026-09-02-one-page-catalog-review.md",
   "artifacts": [
     {
       "path": "de/index.html",
-      "sha256": "7244792e5bceb199624d0bf6dd77b98d9fe652402ec0b45d4bcb298e58a8a89d"
+      "sha256": "b26f455de5052eb2f2f8faee358064e5de1e00b0ead008665af5defa77b312a2"
     },
     {
       "path": "de/about.html",
-      "sha256": "9d6c1778a3620965f9298a697c0596f242457ae7945694b6c12938048b1d2ef8"
+      "sha256": "8fbbfac61381845aa094bf9b34de0b4dad6523209c8d64bc27d5f7ee68c3411f"
     },
     {
       "path": "de/manufacturing-quality.html",
@@ -24,87 +24,83 @@
     },
     {
       "path": "de/products.html",
-      "sha256": "b346d01c7b5448b47ab1a17883809229da2ce95a915fee95bb62d8d18493d2ae"
-    },
-    {
-      "path": "de/products-p2.html",
-      "sha256": "392338f7c32680ef52e90db151060b7d18f90cc1a54cbb3b61724a1ff7d04fcb"
+      "sha256": "15a5fd8f4cb178349edd6a21fe72a0e74b12c56c0b9dbbd676c407dbcf9b46d8"
     },
     {
       "path": "de/product-comparison.html",
-      "sha256": "a913f7d4a8c206f98fcbecd972945dd399125e52bd1c9d7a79206ad75214d91d"
+      "sha256": "2a1a0314ff7064685a7231b320e67d9ebf25537285bac470d1e7dacd7885a0da"
     },
     {
       "path": "de/BP-1P-0003.html",
-      "sha256": "83f4860706c9745368b596a813191329be5be429f2b64c0fb58fc24aa730aded"
+      "sha256": "dfbea0ea3e7b5c3109fb1f17c2e3fbd1ed95e58c59c446bc2a7a749472a0e28e"
     },
     {
       "path": "de/BP-1P-0006.html",
-      "sha256": "c726fea2cf1ba69a1039c42926c02cd1941bb4433192cf925c9edb2baaad5a7c"
+      "sha256": "15e5b979eb5e4a6268fc0aab341adfd074d5b6357944cdceca013a257158bc84"
     },
     {
       "path": "de/BP-2P-0001.html",
-      "sha256": "d7f6e571f0442179d14f47e4fa089771a1c5deab778cdf968600e603cfdb6fbe"
+      "sha256": "486c0ba58c1bbd7134ca4f97ee86e6df272b25e031bdd9114428794de6f121ef"
     },
     {
       "path": "de/BP-2P-0002.html",
-      "sha256": "3ec7fb0f1cef0a5a52221b46c574f297a201a7e1a59a675f95acc6c0d3fc3e04"
+      "sha256": "deaa261d3a55f65743145beb223366410506df78a4eb5639aef7c481fe865a5d"
     },
     {
       "path": "de/BP-2P-08-0001.html",
-      "sha256": "321b56dbc225fc3f7acd5becc71ecd676646f31679b861261e51e2e586798e36"
+      "sha256": "b3f7ea88c0a057a3c6d25e4158a09b02d1b1defb6f7c267da09c037b8b303221"
     },
     {
       "path": "de/BP-2P-130-0001.html",
-      "sha256": "7a1bb8679adcf1a03c3414e7f8e7a4cc24de2a5e1584eda0314c8e8b4893ae47"
+      "sha256": "8507fd0bfa3a2c5ec3ce1e69da9f8f270d06e2abfb0eb7279c6292b5e8be1d65"
     },
     {
       "path": "de/BP-2P-16-0001.html",
-      "sha256": "755999b64debede1894e619cab4952db1ee52581f737985ae890afdb0b1aa9f8"
+      "sha256": "73be12d45171dfd3c9403ffea1d0b699cedc54a85ad3b6f0752795fe93fd3fc1"
     },
     {
       "path": "de/BP-2P-30-0001.html",
-      "sha256": "ab00d14c69522e778d7c629b8241c0816f165ae7b50da9c0163c8dabaaa8824e"
+      "sha256": "ebc5ac85aebfe6212bb164263c993dc31018a7d37d191d30a21e0f0f04b15e9e"
     },
     {
       "path": "de/BP-2P-50-0001.html",
-      "sha256": "25397442d834e9fd223c41636b2893fb4f11ab4f21bc22da128c45c3dbfdf3b4"
+      "sha256": "68baf94925dbd6044960e6b58b305d9d5fc9e8876c1e330d29361dc8cec8ddd8"
     },
     {
       "path": "de/BP-2P-95-0005.html",
-      "sha256": "721908ea94f140f18ab874ed33285c1c72bfacd770d1f9912ecd1d00ddce0869"
+      "sha256": "7e262bd7c17754d3aba8b2d62a5f588c5d7ac12c9a3526ddcaf9d4e462d043cd"
     },
     {
       "path": "de/BP-3P-0004.html",
-      "sha256": "1b8775046a363a43d3a87b80a6f15648e64a36c999ce4b52e3b7eb70b9e124c8"
+      "sha256": "b399675447ccfafe061de508820523c6d696a2c12509f2c96c8167ddf748e215"
     },
     {
       "path": "de/BP-3P-0006.html",
-      "sha256": "7a921fb55df772501035b45400052c6c84abaabbdd98fb5d42ef09a289151a19"
+      "sha256": "0b0f846da20da25715fc3ed776d2a38f628f9997abe64d4c49d538dd5e4b1fde"
     },
     {
       "path": "de/BP-3P-0007.html",
-      "sha256": "89f857d10a2e730fe282321b9dfd72eb9ca665c31db88f3cd64cad57cb4da0b3"
+      "sha256": "973dff40202866e5e87db2478d527495d67042ec69446aaec75fb29eefb27d2f"
     },
     {
       "path": "de/BP-3P-S06-0001.html",
-      "sha256": "7d0c4c9135f12de00fe586f7e87e779a4b8c98d553e25e515fb992b4a5100c0a"
+      "sha256": "b307727b94bf5672057c8062b33e8476eb7cfe3b99df7cac224b800a4bdd0822"
     },
     {
       "path": "de/BP-4P-30-0001.html",
-      "sha256": "33d4838b23698ab6209beac002a32cd83225bae59e512c2bc7a75f4dce786315"
+      "sha256": "c037f20ee91902ddd15c5adcfac4b7f44f82891a0f8135afb72213cd8a82648f"
     },
     {
       "path": "de/BP-8P-0001.html",
-      "sha256": "60d4bb4002246f68ed4b584eefc3df885f0a6c8f36a3429f76cc0ab32ebd44f4"
+      "sha256": "8914b4443f3ce4228f2386bb769dcbc3baaf550e6eb80ff0c5ec0c7c56516554"
     },
     {
       "path": "de/applications.html",
-      "sha256": "2fd7e23bbb8370e419c459e224fe63ac7065e645e6ee8c88d5794b5bee27831f"
+      "sha256": "1d36124afcaf596af054116af15b4d446ddca5e133b7aa378c4fa028113581dc"
     },
     {
       "path": "de/application-automation-rotary-tables.html",
-      "sha256": "079bfe2ee1566704af7ecb3be4f89dc2ad75751a6054c40e173ff3835d837004"
+      "sha256": "6e5b7f83ec9f8d1493dcf5c2d91fdc55c7eae7200961f7670aa1a210072ff151"
     },
     {
       "path": "de/application-bottle-filling-capping.html",
@@ -112,43 +108,43 @@
     },
     {
       "path": "de/application-cnc-pneumatic-clamping.html",
-      "sha256": "b1b7a2cc50538a02b099fe7ce89557f4ce71ebcb404166cbe92a0cbeb30502f8"
+      "sha256": "2a51f6ae062c9bc0fec7c1f626fe1714cfb97504c1fc393dc4984571f9b1dece"
     },
     {
       "path": "de/application-electronics-battery-test-fixtures.html",
-      "sha256": "557489331592e038397a47d001ae30c6206aaf0ec754419be4defe46025c89e7"
+      "sha256": "866c91c1db332f4b4dcf9dc36d2fce195f35f1ae6010b691277c13dc80921d50"
     },
     {
       "path": "de/application-laser-tube-cutting.html",
-      "sha256": "5231220d00bbf517dfee88873a8d271df7dd2e13fd071135dd56925a2423a247"
+      "sha256": "b11ea3320d439fc52627f2d83b863757ce2216defb5cbd5b1546f23386b1beaf"
     },
     {
       "path": "de/application-packaging-machinery.html",
-      "sha256": "42784ae08258985ec1636499a444421e118da0097055c61d4aaa69a57f224351"
+      "sha256": "ed031192b5c4925904531040190037e0da0ae41cfd84354fadf6d55409be7bfa"
     },
     {
       "path": "de/application-pneumatic-tools-hose-anti-twist.html",
-      "sha256": "d8ec5dd8ee2faaad580266351b64ceddf4712648865b3c7a6212d1e5055e9424"
+      "sha256": "52771391443ef1ca9c1b8592b4b7e4d6376138b5986d25a61c9aeff95dc9d8e4"
     },
     {
       "path": "de/application-robot-end-of-arm-tooling.html",
-      "sha256": "d0afdb69d367f2a4a309730a8f33faf50aa203b693b26405de2cb44f3c6923e5"
+      "sha256": "3a832e4a15310f028c3331e31eae136d0f902d2d1d22b4c82234ccc154309a66"
     },
     {
       "path": "de/application-steel-dusty-environments.html",
-      "sha256": "b1c0626caa15b3e6f7ca9baf4fdd8feefc6fd1d8465fbe5b578dc5649ba2c946"
+      "sha256": "c839b9a6a62b2b383d1a70382683cfd60ecb1530cc7127ae11e83a48fa8280ae"
     },
     {
       "path": "de/application-textile-printing-converting.html",
-      "sha256": "61445b91d4850f1cf20849ce984fd72ae6b9369118ea9d99f6fb6b0cff2742b4"
+      "sha256": "b25b2701077de7eb15530d264fd3cd60e8f9a3e278b46c3267679701ac1ad309"
     },
     {
       "path": "de/application-vacuum-packaging-machines.html",
-      "sha256": "41eb4acbf23f558757fe35edcead3ed66050d35825042d34aed783da072db508"
+      "sha256": "1c8f9e4df1f3a2c80e13447453a998f3dc05ddfe31091ff3ced1dbf203b5add8"
     },
     {
       "path": "de/application-welding-positioners.html",
-      "sha256": "7adfd805520ef394d7d7f7a42eaea20b5ba8f97d7111e81c69356ac271c89c7b"
+      "sha256": "217cb5002fd8cecd0d32c0aca4be5a0aecbbcc2a193e3f6080848c1db34dff94"
     },
     {
       "path": "de/custom-hydraulic-rotary-unions.html",
@@ -156,11 +152,11 @@
     },
     {
       "path": "de/installation.html",
-      "sha256": "ea74493971a1d5de440c0ad39c6edb675f40528cd62485c5351f6c5550319648"
+      "sha256": "c66424a6995f00c7a6aef8f267be0318f4ef370eb295d0f423ad7054d9c0c588"
     },
     {
       "path": "de/blog.html",
-      "sha256": "f3fa041398bb0a9c6dd54e221bb6ee237b2afb19c9431f062f895d729575d78e"
+      "sha256": "49d1a87d8d92116d251dbac6b0988398f7f3ed70d88a61f92e7dba7892528475"
     },
     {
       "path": "de/blog-non-contact-clearance-seal-rotary-union.html",
@@ -168,11 +164,11 @@
     },
     {
       "path": "de/blog-rotary-joint-installation-mistakes.html",
-      "sha256": "014dae8d2a58b706eebf6a24be04333b1c1f39508453eedd1de73471e8357e12"
+      "sha256": "3b9b4264930341d1a7c1af00b65684ea67dd6c4e21cc84842d02b56616ca5023"
     },
     {
       "path": "de/blog-rotary-joint-leaking.html",
-      "sha256": "151a2e515f9d980e2e09dc845298359296c51fce4d2f14eeb9b46356fba019e5"
+      "sha256": "7782e675afbbee5bbfe0e0d4db42dcf0aa2279ff867d99cc2abc6d515f3ead42"
     },
     {
       "path": "de/blog-rotary-joint-materials.html",
@@ -180,7 +176,7 @@
     },
     {
       "path": "de/blog-rotary-joint-selection.html",
-      "sha256": "0695186839f4787947c746969d60b0b3dc146e26f0c7adc5916d1afd430b1f35"
+      "sha256": "95f1a8211e51879941aaf40f9a79836072c310f19f92f0eb95d5f080bebbad9a"
     },
     {
       "path": "de/blog-rotary-union-seal-types.html",
@@ -196,7 +192,7 @@
     },
     {
       "path": "de/case-studies.html",
-      "sha256": "3b29ecaa25477b2a460561b6450b56d82eb9a02009a0b81e767e790b93233c42"
+      "sha256": "6285ea68c297da5e13ae84d7b3b7b04b6bf8161116387fabe8f5ed9e3ade7bab"
     },
     {
       "path": "de/case-bp-2p-95-pneumatic-chuck-integration.html",
@@ -208,39 +204,39 @@
     },
     {
       "path": "de/faq.html",
-      "sha256": "cc2f24c36a140edbed64df36a7b98017805c0ad0cfa811c49f5a70b0daa9ee3d"
+      "sha256": "df399932ce878eea3460536b05fa8552d091ec3e2866b1539896ff1c2a3e3f17"
     },
     {
       "path": "de/contact.html",
-      "sha256": "06f8f36fae1c1a5238d55b4ce2fbf1115a241f2e31ffeff657de4cb7cae181e1"
+      "sha256": "202577d51f4c13aaafdbb21140436cc80073245644118ebd75a477d6b1a05897"
     },
     {
       "path": "de/search.html",
-      "sha256": "3a9055c8836ed158a50331b0f71081129a3a388cfc60a1406689eb51ed827351"
+      "sha256": "8b69c9a8d735b42aeef3013e69a46c4a6ec3ce656b273a350ea3480026138b9b"
     },
     {
       "path": "de/privacy.html",
-      "sha256": "58834cf8c1f5b7ae3862e1d49971f75b76f0f6e2b3b0c6d36d474f0b1672042a"
+      "sha256": "c7c689efdc3bcc43937745c1c85794f880d922baee383fd29f0129e32a97ba87"
     },
     {
       "path": "de/terms.html",
-      "sha256": "1283bcf657f97f3d4cdec76409192eca2a1061bb26bea2d2c80bda6eb08a17aa"
+      "sha256": "a4ca4ae739b4af4ca797d53bc82a842703e123c5f53ae747530ffd951fa55b2f"
     },
     {
       "path": "de/thank-you.html",
-      "sha256": "59acd2204dfea074ff7f3a7f2249384e616ee3f603e3413a09d8a7d15964c23f"
+      "sha256": "776baf38390d3f47bbe27fb7246793df8ce1a69b22b005cb6314f4ddc011a865"
     },
     {
       "path": "de/404.html",
-      "sha256": "87d5c12a126776ba373f19166a4e211054941c5397dd6b5268aa4150bf540891"
+      "sha256": "07da43ca0ad78d03686ed03ca966167d1307519eed4cd6f9795f6b4899650958"
     },
     {
       "path": "ja/index.html",
-      "sha256": "cb15b71cbfeffc06cb312e295f9a3c507912486b68c5db977e9fd8249f05588e"
+      "sha256": "abc0e8173e099e538e9599b8e899e98d6ebd8eb1405af58bc3b8ff586f63fd7e"
     },
     {
       "path": "ja/about.html",
-      "sha256": "b810d788e503eb63fb2e6816a03e2ce209466db90bfa4de4bfa275095f5fa9f2"
+      "sha256": "d3ac148517e606ee7f8ed8b41bab569c42ba157ebd06ba1370fea224dea57ec4"
     },
     {
       "path": "ja/manufacturing-quality.html",
@@ -252,87 +248,83 @@
     },
     {
       "path": "ja/products.html",
-      "sha256": "12e037153e4563ebc537e03866ac84ff67adb16e9cc8f3e0045d6a7d47810990"
-    },
-    {
-      "path": "ja/products-p2.html",
-      "sha256": "5be5e5b11cda928b4c073629ff5127c6b9eecc1711ecda21fb352a9966f65616"
+      "sha256": "2d3c2bdf48fc65575e22972be7eac06935d9266698a013ce7c8da91a8f4256e7"
     },
     {
       "path": "ja/product-comparison.html",
-      "sha256": "3584308caac2860b8ceb116499de18ea75583cdd70c3c35762bd860101677b0f"
+      "sha256": "abbbde7e4c913817a60249e0923d64c69cdb8dba37c22c4240795816736870fe"
     },
     {
       "path": "ja/BP-1P-0003.html",
-      "sha256": "b30dd923754bd2fdbb6fa247c27eca69209aa5118c926ed4b544d54107706b2a"
+      "sha256": "bb0e03686fe8380da01d9bdb638986385d57d3902b3efc162f08433daf0f382e"
     },
     {
       "path": "ja/BP-1P-0006.html",
-      "sha256": "ad4206ce4567963ae5584b9017e4f3ca47cc3c8b5e79efaa687208ff7c0f95ee"
+      "sha256": "fb82c7f653bd1c1c81c1151137db89423089a6fb5ab1c01ae01a51b1dd01bc44"
     },
     {
       "path": "ja/BP-2P-0001.html",
-      "sha256": "58631f9a0baa09b350d40bfe111588925812970fe43ac7296127d27dc677c674"
+      "sha256": "a7409a50e1ff850f238ac8ef02241b6210b83d70ea4a119313615690c1927355"
     },
     {
       "path": "ja/BP-2P-0002.html",
-      "sha256": "d8e5ead993bddcf6e52b06f827c4837c0332fa4ecbfb0dbb47ec8d6833774615"
+      "sha256": "39ad14072ff20963443ca8781f468350b09207392d8b10a00c2789e24ca09d6f"
     },
     {
       "path": "ja/BP-2P-08-0001.html",
-      "sha256": "1a379a79724f75428515bee266b5c66b492be35771a33d5ebbaae79b0cfa165a"
+      "sha256": "2ad090525a1da520d8235c43a628bd612cfe32e412afc23824a507cdd2eeab38"
     },
     {
       "path": "ja/BP-2P-130-0001.html",
-      "sha256": "534e4654d9c8574b4747184b5a6062b5babd92034cd5d356b10a9d8d1deacea8"
+      "sha256": "ea89c7a5fcbe012e97ee8e9ad1bccb74d08bc9c57ebbdc05c8ea338ef5d1f765"
     },
     {
       "path": "ja/BP-2P-16-0001.html",
-      "sha256": "397e364f7c3da02b9aa678870e711ee33610f13c59e20afda65e259508ff5bd6"
+      "sha256": "120cb3d125a514f6c155e642fb5504d9c99c466dcd45c19f57cc4424d414b237"
     },
     {
       "path": "ja/BP-2P-30-0001.html",
-      "sha256": "153e4af167052975c484e0d3d3452a0d49956d0b129e52a2058c09e3debbcf31"
+      "sha256": "64d3842e7baaf9c72d166ef7c6f23e4a867868388fb9b3d44c68d050deef32c4"
     },
     {
       "path": "ja/BP-2P-50-0001.html",
-      "sha256": "9058568611ddafb1f7144ce03c8cd000bcd562df80f0677e2d6c6934e02eb645"
+      "sha256": "160e6bd93cf82cb70d52ec6493e773a437839f9c9c6bf65c01a49da0394bfda4"
     },
     {
       "path": "ja/BP-2P-95-0005.html",
-      "sha256": "8c77798a273b6819c959d99f87085bfd319799b01ebbdb63a8313de5927af8bd"
+      "sha256": "ab09b4e7c2812f6582b848b97861fa039360b08327134a88de2fc41de7d0d895"
     },
     {
       "path": "ja/BP-3P-0004.html",
-      "sha256": "e306338fee28fb3487094e3da85d0ff7bc5ca20ba78849f0058f7c38da88beef"
+      "sha256": "4feacfc17dcbfd508930af224d7311fa9729c88312626aae0272cc790c1aa123"
     },
     {
       "path": "ja/BP-3P-0006.html",
-      "sha256": "993104bba5648e2b209065cf1a476865301545bed55d7618b3e800c83e1cc539"
+      "sha256": "9be5a9617cc7fa4282c85d03692bcb7350c465aaa14a85ed649031957554d54e"
     },
     {
       "path": "ja/BP-3P-0007.html",
-      "sha256": "da2374f12c97bf833dc01ae72698f1f0f63d610b9f91bc75a5ddd625e61aef9f"
+      "sha256": "a5de5d72f3b54307fbc88e3548c79c24dfd7fe74745bdc91be14e6958b9d4582"
     },
     {
       "path": "ja/BP-3P-S06-0001.html",
-      "sha256": "1896dd5262760ee25c61a48d1a1c62cc1e445b7c00d7305a66995c277c855378"
+      "sha256": "019e677fc36d97c25e91ca20e39499d9ab987e2342876ac8cef32fdc8e2fa325"
     },
     {
       "path": "ja/BP-4P-30-0001.html",
-      "sha256": "a6435641c0c77c4bfc9e9ebc6373d33d8339a337d62cd66bab052bdad3819d84"
+      "sha256": "75ece40d6952c6806452c3a8ddaa3c2eee0231479367aed313ea1cd70a273d59"
     },
     {
       "path": "ja/BP-8P-0001.html",
-      "sha256": "b4818ea64b6cc05ba43bbf9ec326b12b88e6d15249e7393efb8eae146a220702"
+      "sha256": "fdd3f0194c2db58f4962b664c21cb89ca9eeda38e99dabba81185d3a550e4946"
     },
     {
       "path": "ja/applications.html",
-      "sha256": "f140f05329a8386da1e78947473c05abe3326d50f0da606c26774c9661d6ff25"
+      "sha256": "019446fa1f0c1a649130973b8423951b62423ff905e1eeaa12894375ccd2d24b"
     },
     {
       "path": "ja/application-automation-rotary-tables.html",
-      "sha256": "c7166dc39cc89078f1cfd95ee960adba5fc850bae413f71524d37cb24bcf5cac"
+      "sha256": "1600fdf1343bd3b3c7840c5f11928270bff7e8c9118654a8346c86c1e476d7fe"
     },
     {
       "path": "ja/application-bottle-filling-capping.html",
@@ -340,43 +332,43 @@
     },
     {
       "path": "ja/application-cnc-pneumatic-clamping.html",
-      "sha256": "0db288823ea69998cc7339493de0aed053da381f4b14d352e7e3192285d27638"
+      "sha256": "a71a19b17c749f7ca908d64e0d182011cf119e16f196241d9ee03ce4a3e000fc"
     },
     {
       "path": "ja/application-electronics-battery-test-fixtures.html",
-      "sha256": "722c3bee7ef2ad9d43051c11be9bcd0d75b88c8e7a1fb907d9c0b815e8adb962"
+      "sha256": "bf65db2094dc92c80e61be4b34dcb57bcefd308c59feae160c7e19c0b77e6b04"
     },
     {
       "path": "ja/application-laser-tube-cutting.html",
-      "sha256": "23410d9f4d5618652899a56eb43cfe556c3f3f80188253c150cc3b87bb465710"
+      "sha256": "1f1207e1d230189e728a6d589e8a95e424ff1d7041651fc00ea0f271d908ec3f"
     },
     {
       "path": "ja/application-packaging-machinery.html",
-      "sha256": "5951f4bc14100823ef895bc3c0a4e0a38d32d94fa2cd5117159c452c83c59735"
+      "sha256": "240612b420cbbebe596265f48d9e749ccc906884b4d273d6cdfd678bae7341f0"
     },
     {
       "path": "ja/application-pneumatic-tools-hose-anti-twist.html",
-      "sha256": "3a6089c362bc4c0ced85ca6016f23ccedd6d18629b6cecd704cd7b615acedbda"
+      "sha256": "fa19a9793d6cc62ac17b0a1f2a736d372b980e4017524c35335b75946dfbc0e2"
     },
     {
       "path": "ja/application-robot-end-of-arm-tooling.html",
-      "sha256": "fdbd33b3d3a4a18f3d50e70df01ad787788371db1bad7a8d9f4b6ac5b682e442"
+      "sha256": "7ac421922caa5669f1149bb1ecf25b91c5f67c2bb8734786d4011088969d436e"
     },
     {
       "path": "ja/application-steel-dusty-environments.html",
-      "sha256": "498057bddb61867e67bd61003d9c9c9a75739b748d3a718218f656302bf0c223"
+      "sha256": "9c481767a146b07e02ee07e0a92c87695e16faf6d7e6a515224d7a65ddbbce88"
     },
     {
       "path": "ja/application-textile-printing-converting.html",
-      "sha256": "b766fb72c1f5b2fea021df9a2cf527fe57208a1af210647c151fdc8d23a142ac"
+      "sha256": "79533594a0aa7da0857437a2b5104f9a7890de1516bb2b77d8e718afee32c22e"
     },
     {
       "path": "ja/application-vacuum-packaging-machines.html",
-      "sha256": "c47d4fe5761ad8861ddfe21ff3676552d6a5b0f42f520994a29312f36d70be18"
+      "sha256": "e3580261cf6cf43772a0f8cde2a5a2c3fb244e6b3bb3f667065dad7dddc736c8"
     },
     {
       "path": "ja/application-welding-positioners.html",
-      "sha256": "e19120e7c90685e9aacfd16411914ef248d8f0d3478038c8275f463a4ed5b3b6"
+      "sha256": "a3e21264ab3194f306f77d491c7a0ada9d35605bcb40be582177cf119fad15a3"
     },
     {
       "path": "ja/custom-hydraulic-rotary-unions.html",
@@ -384,11 +376,11 @@
     },
     {
       "path": "ja/installation.html",
-      "sha256": "59a760838d2c7ae25b906283a810c6550752af684e355f19f5b74ec353af3cfd"
+      "sha256": "3fc41d579bbf200ef3d1c1270fe96c8dfd3f973679ac3c787943906dd0505685"
     },
     {
       "path": "ja/blog.html",
-      "sha256": "f44d8338859ab1d9fa35facbb422490c4a081b4e95de569b4f883dd4178c94f3"
+      "sha256": "92064ac9973e20fbe4a2fa1d07ae9ba22e1239695b0ac3d72eb677977d4a90ad"
     },
     {
       "path": "ja/blog-non-contact-clearance-seal-rotary-union.html",
@@ -396,11 +388,11 @@
     },
     {
       "path": "ja/blog-rotary-joint-installation-mistakes.html",
-      "sha256": "6b5dbdcb11fa8ad40ccaa9394b3514edc2d1ea12f78bdec6ffd75bd76d5c3ed7"
+      "sha256": "f9a732dd2c835a4b6fc7d2b99b7c7e0fb1db4a47e5e04412d4b9ff3b32a91f3a"
     },
     {
       "path": "ja/blog-rotary-joint-leaking.html",
-      "sha256": "2c9aa3d759cb4837c7cba7d04625c01a548d1ede9b8b3ad1e8b326d87ec43a98"
+      "sha256": "6b5a4c81c731a01975278dd262afda6486116cd2aff3cd3fcb6863875f07b9fa"
     },
     {
       "path": "ja/blog-rotary-joint-materials.html",
@@ -408,7 +400,7 @@
     },
     {
       "path": "ja/blog-rotary-joint-selection.html",
-      "sha256": "580aa2c354dbd26839a6e3d0873d4f147d37a12b536ea4f67b1e3639aa2d6d1c"
+      "sha256": "2723b02e8553a440bc0d4d29c4e9d12a76856231a9da325e04ce141980a7ccbb"
     },
     {
       "path": "ja/blog-rotary-union-seal-types.html",
@@ -424,7 +416,7 @@
     },
     {
       "path": "ja/case-studies.html",
-      "sha256": "b6d2f96474092e0bd9897c33263b09d06f8aa30406dabd063794ea538be69807"
+      "sha256": "0f1f6cfbe029aef49b33083ec7c4abcdf187a9488776c77c1d61875374057480"
     },
     {
       "path": "ja/case-bp-2p-95-pneumatic-chuck-integration.html",
@@ -436,39 +428,39 @@
     },
     {
       "path": "ja/faq.html",
-      "sha256": "55560ce509dfbcf10cd7220254b135c800d18fe3a79d775a27d063addfb25c39"
+      "sha256": "5ceba1ac6ffc6ce96a7e419780bda7ddbe35e9909a09fbb6a85075bdde1708fb"
     },
     {
       "path": "ja/contact.html",
-      "sha256": "46babb60ca9b0947ea8b6fac31573e5e7244d09ef464b27c149af4eee03b974b"
+      "sha256": "5575c07bce8d1a8cc44fc906159c21ea3ff38cc9bff7ae4981ac86d2b11e71a1"
     },
     {
       "path": "ja/search.html",
-      "sha256": "8629469eda245a378fd8cf4787594cb5806ebae15ed3defc90c24d52a294ce41"
+      "sha256": "b0394d43a3fd81f67997108fdafdc06e4e8e0b57510d3acb907075a079ae244f"
     },
     {
       "path": "ja/privacy.html",
-      "sha256": "1befaf63dd3567e14941de2f8a21885c28322f1aa934f612530da9092f270eea"
+      "sha256": "3802dca804d52ac61b93c130d4c0edec04aa37efdb0d4a0267c192522b9d3252"
     },
     {
       "path": "ja/terms.html",
-      "sha256": "4109bcaf8ecdf3b9f457dd2a2dd59d09acca0e52e0954cb5cce9ec62d14b2d4a"
+      "sha256": "edfb2f2822cf0839bd5b13ee761bd111d8f01e5d9616e920417c5b88c5f5a468"
     },
     {
       "path": "ja/thank-you.html",
-      "sha256": "3ef11e506463013bed386588cfdc738d9a079f15f54288c128f44c5e1ea53f15"
+      "sha256": "cbdc74d3701445059d746ceb1a12d9858ff5dd4faffaac7e0f11b7d1bd021bad"
     },
     {
       "path": "ja/404.html",
-      "sha256": "270fb0975603fa0d8c6340467c15b9f0c467b07e91311a3aad8b9c54abdc24d5"
+      "sha256": "48f6c5f14fa7a3b5a7aff660ae52254468e6812e605b8e1eb47bf6d1724e23f2"
     },
     {
       "path": "ru/index.html",
-      "sha256": "8d8f51e8ea5d6265fb65a12c1e2a5ff39ebf2e37a668fc47aa6bf232052046eb"
+      "sha256": "cccfa6b77dd898dc6868eb614971e05c84f9a9e7b2e757a2cf632de1b13e8cb8"
     },
     {
       "path": "ru/about.html",
-      "sha256": "3676e5553caaec50aa48a0dcee1671188ed345dce963b11a6c5c5944cd815cbd"
+      "sha256": "667454ae8ea86944faa43776718c44c5444083b6d54a17eec6268ae82d2ca6a7"
     },
     {
       "path": "ru/manufacturing-quality.html",
@@ -480,87 +472,83 @@
     },
     {
       "path": "ru/products.html",
-      "sha256": "c17c907abbe3a4435bf6f3f70e9610d3eb2a599ab33a6729ea656c1e590de3ef"
-    },
-    {
-      "path": "ru/products-p2.html",
-      "sha256": "e70ef6491aea471c3b183d8a78f418c6a5bd23b82b0f5bdc70f3daf596894b91"
+      "sha256": "0571d388f1ffbe557debc0d2d36be513d464fe2ee9af9e656b8f63c2d25544d9"
     },
     {
       "path": "ru/product-comparison.html",
-      "sha256": "16e83b10c1ea081c02d168af2b764e4ddb4b8758aae644f6a95623f4c5ec2f20"
+      "sha256": "1cfb7669b73769dfed3793b79569df0aba47c8807a2a924d8f728bc6164325f8"
     },
     {
       "path": "ru/BP-1P-0003.html",
-      "sha256": "480c294ea51c23ba7c81562fb90d3a99411788baaedee6e0f713917d61d6782d"
+      "sha256": "051bc77870a237f6370a4e5eb208dd47663c802c174e2d1ec435492bb7cc19a2"
     },
     {
       "path": "ru/BP-1P-0006.html",
-      "sha256": "a29f57ea090748d4fd836abb15699c4f6a37b2b499cf8ebf17a25e99c7598643"
+      "sha256": "770bdf58026b15fd37f3be484b800c0cc8f89b60e9db2c5b6ccbd35bd285e7cf"
     },
     {
       "path": "ru/BP-2P-0001.html",
-      "sha256": "f0c25bb7cb2e75193228010c69792e4785a0decb27bf78ac164a111abd14efa5"
+      "sha256": "3b6f65d5a6c9c248f264021553910b790b5b22d929399d23ef23581c6fb97639"
     },
     {
       "path": "ru/BP-2P-0002.html",
-      "sha256": "fc6cd6ece42532c83f57b9c5c36ebe4b5a1567b5c1b55f60bbc58f71acc18f93"
+      "sha256": "352fc062b7b15d6df850ef0eff391dbd45f74ec82e7efe38b9d38cc89cfe50f4"
     },
     {
       "path": "ru/BP-2P-08-0001.html",
-      "sha256": "16ad474a7a8778e993b300adcfe9c9d91068ca13669b3bd30b8b478a7ea2bcac"
+      "sha256": "15ecebab1b175432e1c24f00c6fcaf2a6bf7fc7cd008522bd6abb9f77eaf9ed5"
     },
     {
       "path": "ru/BP-2P-130-0001.html",
-      "sha256": "1f70bf6e1fd745765f16851fc4341214fd01c58472fcead287c5a79a90a88071"
+      "sha256": "9a7d77c901ffce1675e28421fe345739aeabadc0a89a0de90d3d42ce8d5ef185"
     },
     {
       "path": "ru/BP-2P-16-0001.html",
-      "sha256": "23bcf30e91c2b1ca579d64793b55f3949f7450a9a52deccb5028231175b64cf6"
+      "sha256": "fe6236abc86cb577529f1670dc943ace9e3b51bdaae8dfe9b8aef5123e34b0c1"
     },
     {
       "path": "ru/BP-2P-30-0001.html",
-      "sha256": "f79ede22c651fe65aecdfc80f8c4a9de2d32677772c06e028f7f447c9a37989d"
+      "sha256": "2c9a68a6a94b860cea97467d10e6753af9af2e292e657093a51b67d616c19e48"
     },
     {
       "path": "ru/BP-2P-50-0001.html",
-      "sha256": "34c5557e284fdb519f339d0ed2da25e9891361d463640b6e0044282332b6ae54"
+      "sha256": "5c48ed0eb62c486ce0fb082ea1d4ff3c162c4d052535afa59ea8cd9eda00649f"
     },
     {
       "path": "ru/BP-2P-95-0005.html",
-      "sha256": "1e4fa017e9c29eb09a2e31eb28cc65e1de3c9bb8c00a18b592c4f9385ee7b398"
+      "sha256": "5b05f5ddb500003256a649c676949ef662b6122da648259d1a282148bb6ee5f1"
     },
     {
       "path": "ru/BP-3P-0004.html",
-      "sha256": "b823a514abd9b54acdb15a3f8cf1fa329f1bfeba75e1558495c41ec30020c6ff"
+      "sha256": "912f0dc9475452e1dbade472645ef9d96926f53e577b1a41e0bf6a86b10cb649"
     },
     {
       "path": "ru/BP-3P-0006.html",
-      "sha256": "31b255e7ab1be80f9a78886d7c3caedd2d2c7725444e2b7bd3f3dcaa5d33426f"
+      "sha256": "85d22ebb4b1176f9fab71cdf2c418fa3d0e7327a6ea91ce469ee3b0b2138c4fe"
     },
     {
       "path": "ru/BP-3P-0007.html",
-      "sha256": "f39d90de87412012ca64afde600402ca97d05bf63856ab0b99d6d6748e7ee068"
+      "sha256": "1afc6424240222db20afe9ec4e54d980bb2035b9e51f41190fc4e52f69ac82cb"
     },
     {
       "path": "ru/BP-3P-S06-0001.html",
-      "sha256": "182672cf194336efdabccfb4e1d1e5b51097b0a77beb722755552077fccfb1ba"
+      "sha256": "fc385fb291710f848e29c2ab4130ac768d63bcf2634742a030434ca1ae974191"
     },
     {
       "path": "ru/BP-4P-30-0001.html",
-      "sha256": "2a32e54a36aa3e15648ce77f8afe7443d3ffc53cf78ee6aa0a8f6610646eb0ec"
+      "sha256": "e369db20ba5f1c799b947ce27a765f3c77d569bcf62ea77f9eaba9b39fe2ac22"
     },
     {
       "path": "ru/BP-8P-0001.html",
-      "sha256": "1c8aa59aeee994281557b7ec7b71fdd23e92fea2fc8d11e9f46679ca05b6f9ac"
+      "sha256": "af63775025b46a1e9ee907678feb2ba78e9347d8b4e25cd017595bbaf54f2db4"
     },
     {
       "path": "ru/applications.html",
-      "sha256": "4c67762540065196835a94f6765702907959bc1ac5392708c2a20f03eea2b2c5"
+      "sha256": "941ac1306fffd0e7315f84a7070389fd1b9e31344e531724dfca73d47e523899"
     },
     {
       "path": "ru/application-automation-rotary-tables.html",
-      "sha256": "bfa15e77e0578d34b5b5358dcc349eeee01863ee979e5113f391a500908b9759"
+      "sha256": "08e4210a4c02f8cdc36092b37f40367cffe06d51ac1737ec009b2c1c098b1f66"
     },
     {
       "path": "ru/application-bottle-filling-capping.html",
@@ -568,43 +556,43 @@
     },
     {
       "path": "ru/application-cnc-pneumatic-clamping.html",
-      "sha256": "f8e3cec66af02f8173befb7c13cbf6802fc4ea942f40d85bffb2ff967da4119f"
+      "sha256": "a43e6361497e45dfce77c2d4b61825bd82950c4c30e629b2b42b2916d596875f"
     },
     {
       "path": "ru/application-electronics-battery-test-fixtures.html",
-      "sha256": "fef2fb1b28372464859fe1e78b3a5244c0f57bd0a40eedfdd3140c6dfa10fae4"
+      "sha256": "071022d349ee739e226ca1811b58a9b6a3b0a71d927c1ca45b09d8afc6c999a0"
     },
     {
       "path": "ru/application-laser-tube-cutting.html",
-      "sha256": "2ae56d48cf3444f4a4a564c627f227bd3fcbc73c14f84b68e2e5fa2da53af0d7"
+      "sha256": "d35b62e4fd5f3249d47ce9770da28b7e740d8f04a4be8e501c9d905b0ca122c0"
     },
     {
       "path": "ru/application-packaging-machinery.html",
-      "sha256": "2537792d95961956786f4ccb873e5b8622d77e1406d7462215234143b2cd8ea0"
+      "sha256": "c3e516b2dba59a7c7b4cf7764400d134b27c608b9bdc1d5db2f08a7e745f5fea"
     },
     {
       "path": "ru/application-pneumatic-tools-hose-anti-twist.html",
-      "sha256": "71761fa3dd84b779e481365c46bc0d7b69878c170cdb7abb9749fe7f276f6bbe"
+      "sha256": "6cab274fbaf0bc9f27b2ca2e0c2d39dc5ea52a791c0831e8134aa0de2812d641"
     },
     {
       "path": "ru/application-robot-end-of-arm-tooling.html",
-      "sha256": "80cd366ed2b76ac81801a675641c3d9636e7b219145b581c5c11b78c8b411870"
+      "sha256": "c49feda94bb7650173f05907f1e36ce1bf9a5557df42d7436e4e863212fe527f"
     },
     {
       "path": "ru/application-steel-dusty-environments.html",
-      "sha256": "84a9e2ff677be7703f5e01614ad40e43a39b293150c01824d597a0c3bfd48466"
+      "sha256": "5f72d4e6aabc40826e4cdf075495889e466df7a6b4139670ef3a7af19fa614d6"
     },
     {
       "path": "ru/application-textile-printing-converting.html",
-      "sha256": "ed03eb5d80397e0fbdb1a2daede22c2d21f056762283afe8b50a0e5b387e3415"
+      "sha256": "14dea3bdd6ff5e4997a718a0d5f7e8f9373fd19d3643471d8ead294cd3df8dea"
     },
     {
       "path": "ru/application-vacuum-packaging-machines.html",
-      "sha256": "c42f77b1725118fb105815ad98b0644780eb2d0c0b5918b89e621fd465c397b4"
+      "sha256": "9df3c8daf4069b0b67e3a8868f4a65f03ace4240dc3cc3b3c5db547aaa5a9e85"
     },
     {
       "path": "ru/application-welding-positioners.html",
-      "sha256": "061e7636125a174f9e89bd72ee8a2edf6c9ad17187fd7745b4669b50023e1f4a"
+      "sha256": "8ca07eb9d8407227756e1924901e0cc17f89f5e17099708a32171e9153e99429"
     },
     {
       "path": "ru/custom-hydraulic-rotary-unions.html",
@@ -612,11 +600,11 @@
     },
     {
       "path": "ru/installation.html",
-      "sha256": "57e0397484de8233809df9122a1b3ee3a77a727aef56332228fe08ea6ba8cf99"
+      "sha256": "8bdd83adf7b22fbd3c37c6a420ee2d14bde71e69bb6d834aa34479d1905d23b0"
     },
     {
       "path": "ru/blog.html",
-      "sha256": "cb7354d22de731b7f277444ac366c227510839d4a997f086301aa9d792e95d2d"
+      "sha256": "229fe0556daa51a2a85a5d217f3879bb41b962db7a499c1cdd5e4251bf9d1b11"
     },
     {
       "path": "ru/blog-non-contact-clearance-seal-rotary-union.html",
@@ -624,11 +612,11 @@
     },
     {
       "path": "ru/blog-rotary-joint-installation-mistakes.html",
-      "sha256": "34c5f33a9c5726adf078bf44a9a9cd68ffbdea19f1583f269596146297f3c027"
+      "sha256": "db10134eee037b36c492699009a654ffbb0c5c8a82e14396d2447e61d26c8964"
     },
     {
       "path": "ru/blog-rotary-joint-leaking.html",
-      "sha256": "5bdf15efcb567a3255eeb0abe9e8541d44479b1e44df082ed3a6ac4322d5eefc"
+      "sha256": "2e1d9ef52d559e1ddbc25f607ced924c5dcd69dd2d05b7a7e7157a36827a0f2d"
     },
     {
       "path": "ru/blog-rotary-joint-materials.html",
@@ -636,7 +624,7 @@
     },
     {
       "path": "ru/blog-rotary-joint-selection.html",
-      "sha256": "92a8cf8c96e317fb1b5296c627c6df5370f6dfa5364742b0e599414022a02b31"
+      "sha256": "18de3af79405e3d2270a21f298536a3dbebe433b0b6e37759d2574fd96a7de05"
     },
     {
       "path": "ru/blog-rotary-union-seal-types.html",
@@ -652,7 +640,7 @@
     },
     {
       "path": "ru/case-studies.html",
-      "sha256": "fb7da38e60d413e1be2cd2b3075ba26e8bc661da1ad066974391db266b9b535a"
+      "sha256": "2e093336b2947332790af182c93e7ad806338f613bf01ccea6b9b86c84edf389"
     },
     {
       "path": "ru/case-bp-2p-95-pneumatic-chuck-integration.html",
@@ -664,31 +652,31 @@
     },
     {
       "path": "ru/faq.html",
-      "sha256": "c096f9aa6dc223affa56e9f5732f2596b3c75ff111d2cbd3fe6abb3118152290"
+      "sha256": "43bf90a7e00328e6694d9efccd863d58c36761c48e581fb9db2ce960594e5119"
     },
     {
       "path": "ru/contact.html",
-      "sha256": "e9dbea624abd8d04696950c3b396ae9a1b8f47484fb2b7a17cc05787d86feb14"
+      "sha256": "698d194ad862da55278dac9ec33d1dea32eb73f0a2b29dd287152b6cbca6eb95"
     },
     {
       "path": "ru/search.html",
-      "sha256": "da942d3903f7feb0cb11fbbe58661388af088bba7be1e0c4b982302024e752c9"
+      "sha256": "0a2f4b3c061811a483ad41d46c255fcfe3b7c81942a7af9951e48f5bcd49f9f2"
     },
     {
       "path": "ru/privacy.html",
-      "sha256": "147c8a665d15789f408bcaf51a82bffc47ae83cc179da5d34c9b559da32c243f"
+      "sha256": "9811df7ffd8bc5de1e1117b937ffd08751de731bdcd75d40691bbb845b3600f4"
     },
     {
       "path": "ru/terms.html",
-      "sha256": "5cc5eb1443770a566f1fb723c094ddb72596cb26750908a05df152e0fd66464f"
+      "sha256": "9d86dbebc8e4f5399c988b7fac9c98845ece4e862b89d3d9b704de3b25fa63c6"
     },
     {
       "path": "ru/thank-you.html",
-      "sha256": "b876e780e19c2632f2e38d98dda6d05dfa1c83b1e6c2f6ca1202efd41a459572"
+      "sha256": "7526784b145f40d0959d946fe11fa959e4b9c0a109aacf13872fbecb4adff533"
     },
     {
       "path": "ru/404.html",
-      "sha256": "901d6e834bcaa19cce3c7eac488228106d0e077a315088233a460f5960818451"
+      "sha256": "8139fa462fce76eb3938c0180bf1e047c1c9a1d1d8c7025eb1ec3601f1bbcff0"
     }
   ]
 }
