@@ -31,7 +31,7 @@ async function synchronize(relativePath, transform) {
   const filePath = path.join(root, relativePath);
   const before = await fs.readFile(filePath, 'utf8');
   const after = await transform(before);
-  if (before === after) return;
+  if (before.replace(/\r\n/g, '\n') === after.replace(/\r\n/g, '\n')) return;
   changed.push(relativePath.replaceAll('\\', '/'));
   if (!checkOnly) await fs.writeFile(filePath, after, 'utf8');
 }
