@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import { loadPublicDownloadAllowlist } from './public-downloads.mjs';
 
 const manifestPath = path.resolve(import.meta.dirname, '..', '..', 'data', 'product-drawing-facts.json');
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
@@ -8,11 +9,27 @@ const verifiedStatus = manifest.sourcePolicy?.verifiedStatus;
 const quarantineStatus = manifest.sourcePolicy?.quarantineStatus;
 const identityPendingModels = new Set(manifest.sourcePolicy?.identityPendingModels || []);
 
+const publicDownloadFiles = new Set(
+  (await loadPublicDownloadAllowlist(path.resolve(import.meta.dirname, '..', '..'))).map((name) => name.toLowerCase()),
+);
+
 if (manifest.schemaVersion !== 1 || verifiedStatus !== 'verified-drawing' || quarantineStatus !== 'identity-pending') {
   throw new Error('Drawing-backed product-fact manifest schema or status policy is unsupported.');
 }
 
 export const drawingBackedProductModels = Object.freeze(Object.keys(products).sort());
+
+export function drawingBackedPublicStep(locale, model) {
+  const fileName = `${model}.step`;
+  return publicDownloadFiles.has(fileName.toLowerCase());
+}
+
+const STEP_META_DOWNLOAD_HOOK = Object.freeze({
+  en: ' Download the simplified 3D STEP model (AP214) for a fit check.',
+  de: ' Das vereinfachte 3D-STEP-Modell (AP214) für die Einbauprüfung herunterladen.',
+  ja: ' 組込み確認用の簡易3D STEPモデル（AP214）をダウンロード。',
+  ru: ' Скачайте упрощённую 3D STEP-модель (AP214) для проверки компоновки.',
+});
 
 if (drawingBackedProductModels.length !== 16) {
   throw new Error('Drawing-backed product-fact manifest must contain 16 products.');
@@ -1233,12 +1250,16 @@ function verifiedMetadataDescription(locale, model, product, heading) {
       ru: `${heading}. Конфигурация 2 входа / 4 выхода для зажима и разжима. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
     });
   }
-  return uiPhrase(locale, {
+  const baseDescription = uiPhrase(locale, {
     en: `${heading}. ${pressure} · ${speed} RPM; suitable media: ${media}.`,
     de: `${heading}. ${pressure} · ${speed} min⁻¹; geeignete Medien: ${media}.`,
     ja: `${heading}。${pressure}・${speed} min⁻¹、適用流体：${media}。`,
     ru: `${heading}. ${pressure} · ${speed} об/мин; подходящая среда: ${media}.`,
   });
+  if (drawingBackedPublicStep(locale, model)) {
+    return `${baseDescription}${STEP_META_DOWNLOAD_HOOK[locale]}`;
+  }
+  return baseDescription;
 }
 
 function pendingIdentityMetadataDescription(locale, model, heading) {

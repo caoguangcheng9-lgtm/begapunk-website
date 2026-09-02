@@ -152,9 +152,10 @@
       },
       "shareMenuLabel": "Share",
       "keyProductParametersLabel": "Key product parameters",
-      "primaryActionLabel": "Get a Quote",
-      "secondaryActionLabel": "Request STEP File",
-      "keySpecLabels": {
+  "primaryActionLabel": "Get a Quote",
+  "secondaryActionLabel": "Request STEP File",
+  "stepDownloadLabel": "Download 3D Model (.step)",
+  "keySpecLabels": {
         "performance": "Pressure / speed",
         "body": "Body",
         "seal": "Seal",
@@ -222,9 +223,10 @@
       },
       "shareMenuLabel": "Teilen",
       "keyProductParametersLabel": "Wichtige Produktparameter",
-      "primaryActionLabel": "Angebot anfordern",
-      "secondaryActionLabel": "STEP-Datei anfordern",
-      "keySpecLabels": {
+  "primaryActionLabel": "Angebot anfordern",
+  "secondaryActionLabel": "STEP-Datei anfordern",
+  "stepDownloadLabel": "3D-Modell (.step) herunterladen",
+  "keySpecLabels": {
         "performance": "Druck / Drehzahl",
         "body": "Gehäuse",
         "seal": "Dichtung",
@@ -292,9 +294,10 @@
       },
       "shareMenuLabel": "シェア",
       "keyProductParametersLabel": "主要製品仕様",
-      "primaryActionLabel": "見積もりを依頼",
-      "secondaryActionLabel": "STEPデータを依頼",
-      "keySpecLabels": {
+  "primaryActionLabel": "見積もりを依頼",
+  "secondaryActionLabel": "STEPデータを依頼",
+  "stepDownloadLabel": "3Dモデル（.step）をダウンロード",
+  "keySpecLabels": {
         "performance": "圧力／回転数",
         "body": "ボディ",
         "seal": "シール",
@@ -362,9 +365,10 @@
       },
       "shareMenuLabel": "Поделиться",
       "keyProductParametersLabel": "Основные параметры изделия",
-      "primaryActionLabel": "Запросить предложение",
-      "secondaryActionLabel": "Запросить файл STEP",
-      "keySpecLabels": {
+  "primaryActionLabel": "Запросить предложение",
+  "secondaryActionLabel": "Запросить файл STEP",
+  "stepDownloadLabel": "Скачать 3D-модель (.step)",
+  "keySpecLabels": {
         "performance": "Давление / частота вращения",
         "body": "Корпус",
         "seal": "Уплотнение",

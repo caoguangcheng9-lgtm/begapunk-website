@@ -12,6 +12,7 @@ import {
   drawingBackedProductMetadata,
   drawingBackedProductSummary,
   drawingBackedUiContract,
+  drawingBackedPublicStep,
 } from './lib/drawing-backed-product-facts.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
@@ -348,6 +349,7 @@ function assertProductDetailUiManualContract() {
     'secondaryActionLabel',
     'shareMenuLabel',
     'skipLink',
+    'stepDownloadLabel',
   ];
   const nestedKeys = ['jumpLinks', 'keySpecLabels', 'keySpecPropertyNames', 'keySpecValueOverrides'];
   const expectedKeys = [...scalarKeys, ...nestedKeys];
@@ -510,11 +512,19 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
   });
 
   const actions = $('.pd-info > .pd-actions > a.btn');
-  if (actions.length !== 2) {
-    throw new Error(`${languageCode}/${pageName}: expected two product actions; found ${actions.length}.`);
+  const hasPublicStep = drawingBackedPublicStep(languageCode, model);
+  if (hasPublicStep) {
+    const stepLink = $('.pd-info > .pd-utility-links > a.pd-utility-link[href*=".step"]');
+    if (stepLink.length !== 1) {
+      throw new Error(`${languageCode}/${pageName}: expected one STEP download utility; found ${stepLink.length}.`);
+    }
+    stepLink.text(copy.stepDownloadLabel);
+  }
+  if (actions.length !== (hasPublicStep ? 1 : 2)) {
+    throw new Error(`${languageCode}/${pageName}: expected ${hasPublicStep ? 1 : 2} product actions; found ${actions.length}.`);
   }
   actions.eq(0).text(copy.primaryActionLabel);
-  actions.eq(1).text(copy.secondaryActionLabel);
+  if (!hasPublicStep) actions.eq(1).text(copy.secondaryActionLabel);
 }
 
 function applyDrawingBackedUiContract($, languageCode, pageName) {
@@ -557,7 +567,8 @@ function applyDrawingBackedUiContract($, languageCode, pageName) {
   }
 
   const requestActions = $('.pd-info > .pd-actions > a[href*="contact.html?request="]');
-  if (requestActions.length !== 2 || !contract.productName) {
+  const hasPublicStep = drawingBackedPublicStep(languageCode, model);
+  if (requestActions.length !== (hasPublicStep ? 1 : 2) || !contract.productName) {
     throw new Error(`${label}: drawing-backed request actions or localized product name are incomplete.`);
   }
   requestActions.each((_, element) => {
@@ -819,6 +830,7 @@ function isDrawingBackedDirectContentRecord($, record) {
   // the same section as the drawing-backed panels.
   if (node.closest('.pd-tabs').length) return false;
   if (node.closest(DRAWING_BACKED_DIRECT_CONTENT_SELECTOR).length) return true;
+  if (node.closest('body.page-product-detail .pd-info .pd-utility-links a[href*=".step"], body.page-product-detail #panel-downloads a[href*=".step"]').length) return true;
 
   if (node.is('body.page-product-detail .pd-info > h1')) return true;
   if (record.type === 'attribute'
@@ -3163,13 +3175,15 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
   const actions = informationRegion.children('.pd-actions').children('a.btn');
   const utilityRegion = informationRegion.children('.pd-utility-links');
   const utilityLinks = utilityRegion.children('a.pd-utility-link');
-  if (actions.length !== 2
-    || !actions.eq(0).hasClass('btn-primary')
-    || !actions.eq(1).hasClass('btn-secondary')
-    || utilityLinks.length !== 1
-    || utilityRegion.children('.pd-separator').length !== 1
-    || utilityRegion.find('a[href="product-comparison.html"]').length !== 0) {
-    throw new Error(`${label}: first-view tools must contain two ranked CTAs, one drawing utility, and Share.`);
+  const hasPublicStep = drawingBackedPublicStep(languageCode, model);
+  const toolsValid = actions.length === (hasPublicStep ? 1 : 2)
+    && actions.eq(0).hasClass('btn-primary')
+    && (hasPublicStep || actions.eq(1).hasClass('btn-secondary'))
+    && utilityLinks.length === (hasPublicStep ? 2 : 1)
+    && utilityRegion.children('.pd-separator').length === (hasPublicStep ? 2 : 1)
+    && utilityRegion.find('a[href="product-comparison.html"]').length === 0;
+  if (!toolsValid) {
+    throw new Error(`${label}: first-view tools must contain ${hasPublicStep ? 'one ranked CTA, a drawing and STEP utility' : 'two ranked CTAs, one drawing utility'}, and Share.`);
   }
   if (informationRegion.children('.pd-price-note').length !== 0) {
     throw new Error(`${label}: retired first-view price note remains.`);
@@ -3223,11 +3237,11 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
     keyProductParametersLabel: keySpecs.attr('aria-label') || '',
     modelLabel: $('.pd-info > .pd-sku').text().split(':')[0],
     primaryActionLabel: actions.eq(0).text(),
-    secondaryActionLabel: actions.eq(1).text(),
+    secondaryActionLabel: hasPublicStep ? '' : actions.eq(1).text(),
     keySpecLabels: controlledKeySpecLabels,
     leadTimeValue: specItems.filter('[data-spec-key="leadTime"]').children('dd').text(),
   };
-  for (const key of [
+  const controlledKeys = [
     'skipLink',
     'productImagesLabel',
     'productInformationLabel',
@@ -3237,9 +3251,10 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
     'keyProductParametersLabel',
     'modelLabel',
     'primaryActionLabel',
-    'secondaryActionLabel',
     'leadTimeValue',
-  ]) {
+  ];
+  if (!hasPublicStep) controlledKeys.push('secondaryActionLabel');
+  for (const key of controlledKeys) {
     if (controlled[key] !== copy[key]) throw new Error(`${label}: ${key} does not match the approved manual copy.`);
   }
   if (JSON.stringify(controlled.jumpLinks) !== JSON.stringify(copy.jumpLinks)) {

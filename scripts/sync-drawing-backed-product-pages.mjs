@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import {
   drawingBackedCanonicalField,
   drawingBackedUiContract,
+  drawingBackedPublicStep,
 } from './lib/drawing-backed-product-facts.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -213,6 +214,13 @@ function buildDesiredProduct(currentProduct, localized, locale, model, product) 
     });
   }
   desired.additionalProperty.push(JSON.parse(JSON.stringify(warrantyProperty)));
+  if (drawingBackedPublicStep(locale, model)) {
+    desired.additionalProperty.push({
+      '@type': 'PropertyValue',
+      name: '3D CAD model',
+      value: 'STEP AP214 download available for fit check (simplified body)',
+    });
+  }
   assertWarrantyPropertyPreserved(currentProduct, desired, locale, `${model}/${locale}`);
   return desired;
 }
@@ -498,8 +506,13 @@ function freezeProtectedSurface(source, contract, relativePath, locale, model, p
   const jumpNavigation = exactMatch(source, /<nav\b[^>]*class=(['"])[^'"]*\bpd-jump-nav\b[^'"]*\1[^>]*>[\s\S]*?<\/nav>/i, `${relativePath}: jump navigation`);
   const actions = exactMatch(source, /<div\b[^>]*class=(['"])[^'"]*\bpd-actions\b[^'"]*\1[^>]*>[\s\S]*?<\/div>/i, `${relativePath}: CTA actions`);
   const utility = exactMatch(source, /<div\b[^>]*class=(['"])[^'"]*\bpd-utility-links\b[^'"]*\1[^>]*>[\s\S]*?(?=<dl\b[^>]*class=(['"])[^'"]*\bpd-key-specs\b)/i, `${relativePath}: download/share utility`);
-  for (const required of ['request=quote', 'request=3d-step']) {
-    if (!actions.includes(required)) throw new Error(`${relativePath}: CTA actions lack ${required}.`);
+  const hasPublicStep = drawingBackedPublicStep(locale, model);
+  if (!actions.includes('request=quote')) throw new Error(`${relativePath}: CTA actions lack request=quote.`);
+  if (!hasPublicStep && !actions.includes('request=3d-step')) {
+    throw new Error(`${relativePath}: CTA actions lack request=3d-step.`);
+  }
+  if (hasPublicStep && !/\.step(?:[^a-z0-9]|$)/i.test(utility)) {
+    throw new Error(`${relativePath}: public STEP model must expose a STEP download in the utility links.`);
   }
   if (utility.includes('product-comparison.html')) {
     throw new Error(`${relativePath}: retired first-view compare-models link remains.`);

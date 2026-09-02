@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-09-01T10:12:34.114Z",
+  "capturedAt": "2026-09-01T12:09:30.031Z",
   "statusUpdatedAt": "2026-09-01",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
-  "reviewRecord": "audit/localization/2026-09-01-product-detail-commercial-grid-review.md",
+  "reviewRecord": "audit/localization/2026-09-01-step-public-download-review.md",
   "artifacts": [
     {
       "path": "de/index.html",
@@ -76,7 +76,7 @@
     },
     {
       "path": "de/BP-3P-0004.html",
-      "sha256": "ccc6709cd8e453ed4f20dff17d23c6aae6d4a9ec7cd1184fc38ebb5e18b3f89d"
+      "sha256": "0ba777d592cb2ed8b5b8eba9781c515ad2776a071f7acd2f90c30d365bcb94a0"
     },
     {
       "path": "de/BP-3P-0006.html",
@@ -304,7 +304,7 @@
     },
     {
       "path": "ja/BP-3P-0004.html",
-      "sha256": "db5a9b83d35f41ffe9142d9d8c091302908052b3e05287b450d248b7ce559cab"
+      "sha256": "1b7aad736d79183dc547348634c02eaa9e1501b808710ae0373a1ff895e129b9"
     },
     {
       "path": "ja/BP-3P-0006.html",
@@ -532,7 +532,7 @@
     },
     {
       "path": "ru/BP-3P-0004.html",
-      "sha256": "16891492e906d8fd611fe379022ed584885bc03f3c191957dd000fbe487b434b"
+      "sha256": "0d131f233e635fcb86c13a2bcb26eaf627f6e12bf26a3ddb7909fee43473ce32"
     },
     {
       "path": "ru/BP-3P-0006.html",

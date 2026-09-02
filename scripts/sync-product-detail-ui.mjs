@@ -4,7 +4,7 @@ import process from 'node:process';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
-import { drawingBackedUiContract } from './lib/drawing-backed-product-facts.mjs';
+import { drawingBackedUiContract, drawingBackedPublicStep } from './lib/drawing-backed-product-facts.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MODE = process.argv[2] || '';
@@ -58,6 +58,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Key product parameters',
     primaryActionLabel: 'Get a Quote',
     secondaryActionLabel: 'Request STEP File',
+    stepDownloadLabel: 'Download 3D Model (.step)',
     leadTimeValue: '20–30 days',
   }),
   de: Object.freeze({
@@ -71,6 +72,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Wichtige Produktparameter',
     primaryActionLabel: 'Angebot anfordern',
     secondaryActionLabel: 'STEP-Datei anfordern',
+    stepDownloadLabel: '3D-Modell (.step) herunterladen',
     leadTimeValue: '20–30 Tage',
   }),
   ja: Object.freeze({
@@ -84,6 +86,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: '主要製品仕様',
     primaryActionLabel: '見積もりを依頼',
     secondaryActionLabel: 'STEPデータを依頼',
+    stepDownloadLabel: '3Dモデル（.step）をダウンロード',
     leadTimeValue: '20〜30日',
   }),
   ru: Object.freeze({
@@ -97,6 +100,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Основные параметры изделия',
     primaryActionLabel: 'Запросить предложение',
     secondaryActionLabel: 'Запросить файл STEP',
+    stepDownloadLabel: 'Скачать 3D-модель (.step)',
     leadTimeValue: '20–30 дней',
   }),
 });
@@ -338,6 +342,7 @@ function validateManualCopy(contract) {
     'secondaryActionLabel',
     'shareMenuLabel',
     'skipLink',
+    'stepDownloadLabel',
   ].sort();
   const scalarKeys = Object.keys(EXPECTED_UI_COPY.en);
   for (const locale of localeKeys) {
@@ -625,13 +630,21 @@ function validateFinalStructure(source, relativePath, copy, contract) {
 
   const primaryActions = informationRegions.children('.pd-actions');
   const primaryActionLinks = primaryActions.children('a');
-  if (primaryActions.length !== 1 || primaryActionLinks.length !== 2
-    || !String(primaryActionLinks.eq(0).attr('href') || '').includes('request=quote')
-    || !primaryActionLinks.eq(0).hasClass('btn-primary')
-    || primaryActionLinks.eq(0).text().trim() !== copy.primaryActionLabel
-    || !String(primaryActionLinks.eq(1).attr('href') || '').includes('request=3d-step')
-    || !primaryActionLinks.eq(1).hasClass('btn-secondary')
-    || primaryActionLinks.eq(1).text().trim() !== copy.secondaryActionLabel) {
+  const hasPublicStep = drawingBackedPublicStep(localeForFile(relativePath), modelForFile(relativePath));
+  let primaryValid = primaryActions.length === 1
+    && String(primaryActionLinks.eq(0).attr('href') || '').includes('request=quote')
+    && primaryActionLinks.eq(0).hasClass('btn-primary')
+    && primaryActionLinks.eq(0).text().trim() === copy.primaryActionLabel;
+  if (hasPublicStep) {
+    primaryValid = primaryValid && primaryActionLinks.length === 1;
+  } else {
+    primaryValid = primaryValid
+      && primaryActionLinks.length === 2
+      && String(primaryActionLinks.eq(1).attr('href') || '').includes('request=3d-step')
+      && primaryActionLinks.eq(1).hasClass('btn-secondary')
+      && primaryActionLinks.eq(1).text().trim() === copy.secondaryActionLabel;
+  }
+  if (!primaryValid) {
     errors.push('primary action hierarchy');
   }
   const utilityRegion = informationRegions.children('.pd-utility-links');
@@ -641,12 +654,26 @@ function validateFinalStructure(source, relativePath, copy, contract) {
   const supportingActionIsPdf = /\.pdf(?:$|[?#])/i.test(supportingHref)
     && utilityLinks.eq(0).attr('download') !== undefined;
   const supportingActionIsVerifiedDrawing = supportingHref.includes('request=verified-drawing');
-  if (utilityRegion.length !== 1
-    || utilityRegion.children().length !== 3
-    || utilityLinks.length !== 1
-    || utilitySeparators.length !== 1
-    || (!supportingActionIsPdf && !supportingActionIsVerifiedDrawing)
-    || utilityRegion.find('a[href="product-comparison.html"]').length !== 0) {
+  let utilityValid = utilityRegion.length === 1
+    && (supportingActionIsPdf || supportingActionIsVerifiedDrawing)
+    && utilityRegion.find('a[href="product-comparison.html"]').length === 0;
+  if (hasPublicStep) {
+    const stepHref = utilityLinks.eq(1).attr('href') || '';
+    const stepActionIsStep = /\.step(?:[^a-z0-9]|$)/i.test(stepHref)
+      && utilityLinks.eq(1).attr('download') !== undefined
+      && utilityLinks.eq(1).text().trim() === copy.stepDownloadLabel;
+    utilityValid = utilityValid
+      && utilityRegion.children().length === 5
+      && utilityLinks.length === 2
+      && utilitySeparators.length === 2
+      && stepActionIsStep;
+  } else {
+    utilityValid = utilityValid
+      && utilityRegion.children().length === 3
+      && utilityLinks.length === 1
+      && utilitySeparators.length === 1;
+  }
+  if (!utilityValid) {
     errors.push('utility action hierarchy');
   }
 
@@ -944,6 +971,9 @@ function withActionLabel(anchor, label) {
 }
 
 function actionSetsFromDocument($, relativePath) {
+  const locale = localeForFile(relativePath);
+  const model = modelForFile(relativePath);
+  const hasPublicStep = drawingBackedPublicStep(locale, model);
   const information = $('.pd-info');
   const actionRegion = information.children('.pd-actions');
   if (actionRegion.length !== 1) {
@@ -952,7 +982,15 @@ function actionSetsFromDocument($, relativePath) {
   const actionAnchors = actionRegion.children('a').toArray().map((element) => $.html(element));
   let primary;
   let utility;
-  if (actionAnchors.length === 4) {
+  if (hasPublicStep && actionAnchors.length === 1) {
+    const utilityRegion = information.children('.pd-utility-links');
+    const utilityAnchors = utilityRegion.children('a.pd-utility-link').toArray().map((element) => $.html(element));
+    if (utilityRegion.length !== 1 || utilityAnchors.length !== 2) {
+      throw new Error(`${relativePath}: expected two drawing utilities for the public STEP model.`);
+    }
+    primary = actionAnchors;
+    utility = utilityAnchors;
+  } else if (actionAnchors.length === 4) {
     primary = actionAnchors.slice(0, 2);
     const legacyUtilities = actionAnchors.slice(2);
     if (anchorHref(legacyUtilities[1]) !== 'product-comparison.html') {
@@ -977,10 +1015,14 @@ function actionSetsFromDocument($, relativePath) {
   primary = primary.map(withoutDecorativeActionEmoji);
   utility = utility.map((anchor) => asUtilityLink(withoutDecorativeActionEmoji(anchor), relativePath));
   if (!anchorHref(primary[0]).includes('request=quote')
-    || !anchorHref(primary[1]).includes('request=3d-step')
+    || (!hasPublicStep && !anchorHref(primary[1]).includes('request=3d-step'))
     || (!/\.pdf(?:$|[?#])/i.test(anchorHref(utility[0]))
       && !anchorHref(utility[0]).includes('request=verified-drawing'))) {
     throw new Error(`${relativePath}: product actions do not match quote / STEP / PDF-or-drawing order.`);
+  }
+  if (hasPublicStep
+    && !/\.step(?:[^a-z0-9]|$)/i.test(anchorHref(utility[1]))) {
+    throw new Error(`${relativePath}: public STEP model must expose a STEP utility link.`);
   }
   return { primary, utility };
 }
@@ -1083,6 +1125,7 @@ function transformFirstView(source, relativePath, contract) {
   const locale = localeForFile(relativePath);
   const copy = contract.locales[locale];
   const model = modelForFile(relativePath);
+  const hasPublicStep = drawingBackedPublicStep(locale, model);
   const keys = keySpecKeysForModel(contract, model, relativePath);
   const eol = source.includes('\r\n') ? '\r\n' : '\n';
   const $ = load(source, { decodeEntities: false });
@@ -1133,11 +1176,15 @@ function transformFirstView(source, relativePath, contract) {
     jumpNavMarkup(copy, eol),
     '  <div class="pd-actions">',
     `   ${withActionLabel(actions.primary[0], copy.primaryActionLabel)}`,
-    `   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`,
+    ...(hasPublicStep ? [] : [`   ${withActionLabel(actions.primary[1], copy.secondaryActionLabel)}`]),
     '  </div>',
     '  <div class="pd-utility-links">',
     `   ${actions.utility[0]}`,
     '   <span class="pd-separator" aria-hidden="true">·</span>',
+    ...(hasPublicStep ? [
+      `   <a href="${resourcePrefix(relativePath)}downloads/${model}.step" class="pd-utility-link" download="">${copy.stepDownloadLabel}</a>`,
+      '   <span class="pd-separator" aria-hidden="true">·</span>',
+    ] : []),
     compactShareMenuMarkup(shareOptions, copy, eol),
     '  </div>',
     keySpecsMarkup(keys, keySpecValues, copy, eol),

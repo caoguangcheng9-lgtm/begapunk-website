@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
+import { drawingBackedPublicStep } from './lib/drawing-backed-product-facts.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const failures = [];
@@ -652,6 +653,12 @@ for (const copy of applicationCopyByLocale) {
 }
 
 const productPageNames = config.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
+const STEP_CAD_REQUIRED_PHRASES = {
+  en: 'We provide STEP/IGES models for the selected configuration and fit check.',
+  de: 'Für die ausgewählte Ausführung und Einbauprüfung stellen wir STEP-/IGES-Modelle bereit.',
+  ja: '選定仕様の組込み確認用にSTEP／IGESモデルを提供します。',
+  ru: 'Для выбранного исполнения и проверки компоновки мы предоставляем модели STEP/IGES.',
+};
 const commercialProductCopyByLocale = [
   {
     prefix: '',
@@ -725,7 +732,14 @@ const commercialProductCopyByLocale = [
 
 for (const copy of commercialProductCopyByLocale) {
   for (const pageName of productPageNames) {
-    checks.push({ file: `${copy.prefix}${pageName}`, forbidden: copy.forbidden, required: copy.required });
+    const model = path.basename(pageName, '.html');
+    const locale = copy.prefix === '' ? 'en' : copy.prefix.replace(/\//g, '');
+    const hasPublicStep = drawingBackedPublicStep(locale, model);
+    const stepDescPhrase = STEP_CAD_REQUIRED_PHRASES[locale];
+    const required = hasPublicStep && stepDescPhrase
+      ? copy.required.filter((phrase) => phrase !== stepDescPhrase)
+      : copy.required;
+    checks.push({ file: `${copy.prefix}${pageName}`, forbidden: copy.forbidden, required });
   }
 }
 

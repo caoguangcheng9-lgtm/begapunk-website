@@ -38,7 +38,7 @@
     "schemaVersion": 2,
     "algorithm": "sha256-bytes-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "capturedAt": "2026-09-01T10:12:34.114Z",
+    "capturedAt": "2026-09-01T12:09:30.031Z",
     "pagesPerLanguage": 57,
     "languages": [
       "de",

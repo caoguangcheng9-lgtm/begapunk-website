@@ -16,6 +16,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import {
   drawingBackedProductMetadata,
   drawingBackedUiContract,
+  drawingBackedPublicStep,
 } from './lib/drawing-backed-product-facts.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -101,6 +102,7 @@ const COPY = {
     drawingTitle: '2D engineering drawing (PDF)', drawingDescription: 'Model drawing with dimensions, ports, mounting features, and published technical values.',
     drawingPendingTitle: 'Request model-specific file', drawingPendingDescription: 'Request the current model-specific file before technical selection or ordering.',
     cadTitle: 'Request 3D STEP/IGES file', cadDescription: 'We provide STEP/IGES models for the selected configuration and fit check.',
+    cadDownloadTitle: 'Download 3D Model (.step)', cadDownloadDescription: '3D STEP model (AP214) for the selected configuration and fit check.',
     manualTitle: 'General installation manual (PDF)', manualDescription: 'General handling, alignment, connection, commissioning, and maintenance guidance.',
     docsTitle: 'Inspection Documents', docsDescription: 'Need an inspection record or material document? Include the requirement with your inquiry.',
     commonLabel: 'Installation mistakes', commonHeading: 'Three Common Installation and Startup Errors',
@@ -162,6 +164,7 @@ const COPY = {
     downloadsHeading: 'Downloads und Konstruktionsdaten', drawingTitle: '2D-Technikzeichnung (PDF)', drawingDescription: 'Modellzeichnung mit Abmessungen, Anschlüssen, Montagemerkmalen und veröffentlichten technischen Daten.',
     drawingPendingTitle: 'Modellspezifische Datei anfordern', drawingPendingDescription: 'Vor technischen Entscheidungen oder Bestellung die aktuelle modellspezifische Datei anfordern.',
     cadTitle: '3D-STEP-/IGES-Datei anfordern', cadDescription: 'Für die ausgewählte Ausführung und Einbauprüfung stellen wir STEP-/IGES-Modelle bereit.',
+    cadDownloadTitle: '3D-Modell (.step) herunterladen', cadDownloadDescription: '3D-STEP-Modell (AP214) für die ausgewählte Ausführung und Einbauprüfung.',
     manualTitle: 'Allgemeine Montageanleitung (PDF)', manualDescription: 'Allgemeine Hinweise zu Handhabung, Ausrichtung, Anschluss, Inbetriebnahme und Wartung.',
     docsTitle: 'Prüfunterlagen', docsDescription: 'Benötigen Sie ein Prüfprotokoll oder einen Werkstoffnachweis? Geben Sie die Anforderung in Ihrer Anfrage an.',
     commonLabel: 'Montagefehler', commonHeading: 'Drei häufige Fehler bei Montage und Inbetriebnahme', commonIntro: 'Diese Fehler vermeiden, um Leckagen, vorzeitigen Verschleiß und Nacharbeit bei der Inbetriebnahme zu reduzieren.',
@@ -196,6 +199,7 @@ COPY.ja = {
   downloadsHeading: 'ダウンロード・設計データ', drawingTitle: '2D技術図面（PDF）', drawingDescription: '寸法、ポート、取付仕様、公開技術値を記載した型式図面です。',
   drawingPendingTitle: '型式専用ファイルを依頼', drawingPendingDescription: '技術判断または発注前に、現在の型式専用ファイルを依頼してください。',
   cadTitle: '3D STEP／IGESデータを依頼', cadDescription: '選定仕様の組込み確認用にSTEP／IGESモデルを提供します。',
+  cadDownloadTitle: '3Dモデル（.step）をダウンロード', cadDownloadDescription: '選定仕様の組込み確認用の3D STEPモデル（AP214）です。',
   manualTitle: '一般取付説明書（PDF）', manualDescription: '取扱い、芯出し、接続、試運転、保守に関する一般ガイドです。',
   docsTitle: '検査資料', docsDescription: '検査記録や材料資料が必要な場合は、お問い合わせ時に要件をお知らせください。',
   commonLabel: '取付けミス', commonHeading: '取付け・試運転で多い3つのミス', commonIntro: '漏れ、異常摩耗、試運転時の手戻りを減らすため、次のミスを避けてください。',
@@ -228,6 +232,7 @@ COPY.ru = {
   downloadsHeading: 'Загрузки и конструкторские файлы', drawingTitle: '2D-чертёж (PDF)', drawingDescription: 'Чертёж модели с размерами, портами, монтажными элементами и опубликованными техническими данными.',
   drawingPendingTitle: 'Запросить файл конкретной модели', drawingPendingDescription: 'Перед техническими решениями или заказом запросите актуальный файл для конкретной модели.',
   cadTitle: 'Запросить 3D STEP/IGES', cadDescription: 'Для выбранного исполнения и проверки компоновки мы предоставляем модели STEP/IGES.',
+  cadDownloadTitle: 'Скачать 3D-модель (.step)', cadDownloadDescription: '3D STEP-модель (AP214) для выбранного исполнения и проверки компоновки.',
   manualTitle: 'Общее руководство по монтажу (PDF)', manualDescription: 'Общие рекомендации по обращению, центровке, подключению, вводу в эксплуатацию и обслуживанию.',
   docsTitle: 'Документы контроля', docsDescription: 'Если вам нужен протокол контроля или документ на материал, укажите это в запросе.',
   commonLabel: 'Ошибки монтажа', commonHeading: 'Три частые ошибки при монтаже и вводе в эксплуатацию', commonIntro: 'Избегайте этих ошибок, чтобы снизить риск утечек, преждевременного износа и повторных работ при вводе в эксплуатацию.',
@@ -1232,6 +1237,7 @@ function renderDeepContent(model, product, locale, orderedModels, products, appl
   const buyerCopy = BUYER_COPY[locale];
   const config = LOCALES[locale];
   const ui = drawingBackedUiContract(locale, model);
+  const publicStep = drawingBackedPublicStep(locale, model);
   const facts = productFacts(model, product, locale, ui);
   const contract = identityContract(model, locale);
   const rows = specRows(model, product, locale, ui);
@@ -1358,7 +1364,11 @@ ${maintenanceBlock}
     </div>
     <div class="download-item">
      <span class="dl-icon">📄</span>
-     <div><h3><a href="contact.html?request=3d-step&amp;model=${encodeURIComponent(model)}&amp;product=${encodedLabel}&amp;source=${fileName}">${escapeHtml(copy.cadTitle)}</a></h3><p>${escapeHtml(copy.cadDescription)}</p></div>
+     ${
+       publicStep
+         ? `<div><h3><a href="${config.prefix}downloads/${model}.step" download="">${escapeHtml(copy.cadDownloadTitle)}</a></h3><p>${escapeHtml(copy.cadDownloadDescription)}</p></div>`
+         : `<div><h3><a href="contact.html?request=3d-step&amp;model=${encodeURIComponent(model)}&amp;product=${encodedLabel}&amp;source=${fileName}">${escapeHtml(copy.cadTitle)}</a></h3><p>${escapeHtml(copy.cadDescription)}</p></div>`
+     }
     </div>
     <div class="download-item">
      <span class="dl-icon">📄</span>

@@ -4,6 +4,7 @@ import { load } from 'cheerio';
 import sharp from 'sharp';
 import { DISCOVERY_ROBOTS_MARKER, discoveryExcludedPageSet } from './discovery-exclusions.mjs';
 import { drawingBackedProductMetadata } from './lib/drawing-backed-product-facts.mjs';
+import { loadPublicDownloadAllowlist } from './lib/public-downloads.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
@@ -12,6 +13,8 @@ const activeLanguages = config.languages.filter((language) => activeLanguageCode
 const localizedRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : sourceRoot;
+const approvedDownloadUrls = (await loadPublicDownloadAllowlist(sourceRoot))
+  .map((fileName) => `${config.siteUrl}/downloads/${fileName}`);
 const seoByLanguage = new Map();
 for (const language of activeLanguages) {
   const seoPath = path.join(sourceRoot, 'i18n', 'seo', `${language.code}.json`);
@@ -1614,7 +1617,10 @@ try {
 try {
   const sitemapSource = await fs.readFile(path.join(localizedRoot, 'sitemap.xml'), 'utf8');
   const sitemapUrls = [...sitemapSource.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  const expectedSitemapUrls = discoverablePages.map((pageName) => pageUrl(config.sourceLanguage.code, pageName));
+  const expectedSitemapUrls = [
+    ...discoverablePages.map((pageName) => pageUrl(config.sourceLanguage.code, pageName)),
+    ...approvedDownloadUrls,
+  ];
   if (sitemapUrls.length !== expectedSitemapUrls.length) failures.push(`sitemap.xml: expected ${expectedSitemapUrls.length} URLs, found ${sitemapUrls.length}.`);
   expectedSitemapUrls.forEach((url) => {
     if (!sitemapUrls.includes(url)) failures.push(`sitemap.xml: missing ${url}.`);

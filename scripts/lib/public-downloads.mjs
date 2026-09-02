@@ -16,8 +16,9 @@ function validateDownloadName(value, label) {
     || path.posix.normalize(value) !== value) {
     throw new Error(`${label}: download names must be normalized files directly under downloads/ (${value}).`);
   }
-  if (path.posix.extname(value).toLowerCase() !== '.pdf') {
-    throw new Error(`${label}: only reviewed PDF files may be public downloads (${value}).`);
+  const extension = path.posix.extname(value).toLowerCase();
+  if (!['.pdf', '.step', '.stp'].includes(extension)) {
+    throw new Error(`${label}: only reviewed PDF or STEP files may be public downloads (${value}).`);
   }
   return value;
 }
