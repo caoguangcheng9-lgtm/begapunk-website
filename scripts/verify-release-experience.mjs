@@ -292,11 +292,13 @@ async function verifyHttpAvailability(pages) {
       if (!body.trim()) failures.push(`${target}: empty response body`);
       if (target === '/' || target.endsWith('.html')) {
         const $ = load(body, { decodeEntities: false });
-        if ($('title').length !== 1 || !String($('title').text()).trim()) failures.push(`${target}: missing title`);
-        if ($('h1').length !== 1 || !String($('h1').text()).trim()) failures.push(`${target}: missing primary h1`);
-        if (String($('body').text()).replace(/\s+/g, ' ').trim().length < 100) failures.push(`${target}: primary content is unexpectedly short`);
         const isApprovedLegacyRecovery = target.endsWith('/3-in-3-out-Pneumatic-rotary-joint-P6776400.html');
         const isApprovedModelForwardingPage = isApprovedForwardingPage($);
+        if ($('title').length !== 1 || !String($('title').text()).trim()) failures.push(`${target}: missing title`);
+        if ($('h1').length !== 1 || !String($('h1').text()).trim()) failures.push(`${target}: missing primary h1`);
+        if (!isApprovedLegacyRecovery && !isApprovedModelForwardingPage && String($('body').text()).replace(/\s+/g, ' ').trim().length < 100) {
+          failures.push(`${target}: primary content is unexpectedly short`);
+        }
         const hasRfqPath = $('a[href]').toArray().some((element) => /(?:^|\/)contact\.html(?:[?#]|$)/i.test(String($(element).attr('href') || '')));
         if (!isApprovedLegacyRecovery && !isApprovedModelForwardingPage && !hasRfqPath) failures.push(`${target}: missing Contact/RFQ path`);
       }
