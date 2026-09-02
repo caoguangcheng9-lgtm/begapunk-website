@@ -35,7 +35,7 @@ try {
 }
 const translationManagedPages = config.translationManagedPages || config.pages;
 const manualLocalizedPages = config.manualLocalizedPages || [];
-const expectedOwnershipCounts = { total: 57, managed: 48, manual: 9 };
+const expectedOwnershipCounts = { total: 56, managed: 47, manual: 9 };
 const configuredPageSet = new Set(config.pages);
 const translationPageSet = new Set(translationManagedPages);
 const manualPageSet = new Set(manualLocalizedPages);

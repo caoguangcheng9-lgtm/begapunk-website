@@ -1,11 +1,10 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-02T03:19:37.906Z",
+  "generatedAt": "2026-09-02T04:54:41.127Z",
   "pages": [
     "index.html",
     "about.html",
     "products.html",
-    "products-p2.html",
     "product-comparison.html",
     "BP-1P-0003.html",
     "BP-1P-0006.html",
@@ -183,25 +182,10 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
         "thank-you.html"
-      ]
-    },
-    {
-      "id": "435567b142898cc2",
-      "source": "← Previous",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
-      "id": "090e2e00e616172a",
-      "source": "← Previous: Pneumatic Rotary Union Catalog Page 1",
-      "pages": [
-        "products-p2.html"
       ]
     },
     {
@@ -377,7 +361,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -445,7 +428,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -506,7 +488,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -756,7 +737,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -817,7 +797,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -2628,7 +2607,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -2682,7 +2660,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -2736,7 +2713,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -2769,7 +2745,7 @@
       "id": "faa1e5b56b3fc962",
       "source": "📄 PDF",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -2795,10 +2771,24 @@
       ]
     },
     {
+      "id": "30b91cbbe87a1be1",
+      "source": "$218/pc · 100+",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "7442a5950449e599",
       "source": "$218/pc (Min. Order: 100 pcs)",
       "pages": [
         "BP-2P-95-0005.html"
+      ]
+    },
+    {
+      "id": "5f4f67b618c4d031",
+      "source": "$42/pc · 100+",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -2809,10 +2799,24 @@
       ]
     },
     {
+      "id": "e453b10ce060cb9a",
+      "source": "$57/pc · 100+",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "90669d99ab908e12",
       "source": "$57/pc (Min. Order: 100 pcs)",
       "pages": [
         "BP-3P-0004.html"
+      ]
+    },
+    {
+      "id": "17fbd193bfd88dc7",
+      "source": "$60/pc · 100+",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -2826,7 +2830,7 @@
       "id": "a4ad70d0fc68d906",
       "source": "0.36 kg",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -2862,7 +2866,7 @@
       "id": "18624ab911e7e132",
       "source": "1-In 8-Out",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -2876,7 +2880,6 @@
       "id": "9854d4257b06259e",
       "source": "1-Passage",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -2982,7 +2985,6 @@
       "id": "8fbe7010b5fbf507",
       "source": "2 Passages",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3039,7 +3041,6 @@
       "id": "c0e4a4bbe641e901",
       "source": "2-Passage",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3097,7 +3098,6 @@
       "id": "dae94ca12ad88e27",
       "source": "2D PDF",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3119,7 +3119,6 @@
       "id": "f94ed59922db5190",
       "source": "3 Passages",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3148,7 +3147,6 @@
       "id": "3168c25e5cd2945e",
       "source": "3-Passage",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3226,14 +3224,13 @@
       "id": "20cbdb276477481b",
       "source": "4 Passages",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "26bb427d96fdfd3e",
       "source": "4-Passage+",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3262,7 +3259,7 @@
       "id": "cdd61aaba74bf43a",
       "source": "4mm Orifice",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -3311,7 +3308,7 @@
       "id": "7ecb072dd41c9a06",
       "source": "6 Electrical Leads",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -3397,7 +3394,7 @@
       "id": "90b96d94ab5b8913",
       "source": "8mm Bore",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -3678,7 +3675,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -3957,7 +3953,6 @@
       "source": "AL6061",
       "pages": [
         "product-comparison.html",
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -3965,7 +3960,7 @@
       "id": "66b28bf7042a3a87",
       "source": "AL6061 · PTFE + O-Ring",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -3986,7 +3981,6 @@
       "id": "a52ace420f2175d0",
       "source": "All",
       "pages": [
-        "products-p2.html",
         "products.html",
         "search.html"
       ]
@@ -4228,7 +4222,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -4380,7 +4373,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -4434,7 +4426,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -4551,7 +4542,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -4605,7 +4595,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -4659,7 +4648,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -4811,14 +4799,14 @@
       "id": "ca2dcc39aebbd6ee",
       "source": "BP-1P-0006 · 1-Inlet/8-Outlet (G1/8)",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "f2ec63c0012de8a7",
       "source": "BP-1P-0006 1-in-8-out 4mm orifice G1/8 threaded rotary joint AL6061",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -4897,14 +4885,14 @@
       "id": "e5ab3d8f36118a91",
       "source": "BP-2P-0002 · 2-Inlet/3-Outlet (G1/8)",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "84a210aea7a78bed",
       "source": "BP-2P-0002 2-in-3-out 4mm orifice G1/8 threaded rotary joint AL6061",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -4932,14 +4920,14 @@
       "id": "f3f6759c503e19a5",
       "source": "BP-2P-08-0001 · Compact 2-Passage",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "2e19ef8657f1bba0",
       "source": "BP-2P-08-0001 2-passage pneumatic rotary union M5 threaded compact AL6061",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5143,14 +5131,14 @@
       "id": "e1810dbab10aca4d",
       "source": "BP-2P-30-0001 · 2-Passage Through-Bore (Ø30mm)",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "b7ae926e3bf25076",
       "source": "BP-2P-30-0001 2-in-2-out Ø30mm bore rotary joint flange mount AL6061",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5339,14 +5327,14 @@
       "id": "1d2a7afaf3757381",
       "source": "BP-3P-0006 · 3-Passage",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "cd3a62364bab85e1",
       "source": "BP-3P-0006 3-passage pneumatic rotary joint with face mounting and AL6061 body",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5374,14 +5362,14 @@
       "id": "1a457bbaba7d2af0",
       "source": "BP-3P-0007 · Compact 3-Passage (G1/8)",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "cf9b7a4ec4444e04",
       "source": "BP-3P-0007 3-in-3-out 4mm orifice G1/8 threaded rotary joint AL6061",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5409,7 +5397,7 @@
       "id": "63bf2254f0361f15",
       "source": "BP-3P-S06-0001 · 3 Passages + 6 Electrical Leads",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5423,7 +5411,7 @@
       "id": "6e78d76ad345b45e",
       "source": "BP-3P-S06-0001 pneumatic-electric rotary joint with 3 pneumatic passages and 6 electrical leads",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5458,7 +5446,7 @@
       "id": "816b00fc91b4f071",
       "source": "BP-4P-30-0001 · 4-Passage Through-Bore",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5472,7 +5460,7 @@
       "id": "b4beaa60ae781125",
       "source": "BP-4P-30-0001 4-passage pneumatic rotary union flange mount AL6061 30mm bore",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -5561,31 +5549,10 @@
       ]
     },
     {
-      "id": "5853c0884fa6baee",
-      "source": "Browse additional Begapunk pneumatic rotary unions, including multi-passage, through-bore, threaded, flange-mounted, and pneumatic-electric configurations.",
-      "pages": [
-        "products-p2.html"
-      ]
-    },
-    {
       "id": "3659e4bce0ba85c4",
       "source": "Browse application guides <span aria-hidden=\"true\">↓</span>",
       "pages": [
         "applications.html"
-      ]
-    },
-    {
-      "id": "fd5354ece943b079",
-      "source": "Browse Begapunk pneumatic rotary unions: single-passage, multi-passage, through-bore, and custom configurations for OEM equipment.",
-      "pages": [
-        "products-p2.html"
-      ]
-    },
-    {
-      "id": "328a79ceab4372e3",
-      "source": "Browse Begapunk pneumatic rotary unions: single-passage, multi-passage, through-bore, and custom configurations.",
-      "pages": [
-        "products-p2.html"
       ]
     },
     {
@@ -5768,7 +5735,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -6039,7 +6005,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -6297,7 +6262,6 @@
       "id": "ef76def4e5e09081",
       "source": "Compare Models →",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -6673,7 +6637,6 @@
       "id": "494ca78f7374e46f",
       "source": "Custom",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -6850,7 +6813,6 @@
       "id": "9f69a67b48048df8",
       "source": "Details →",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -7175,7 +7137,6 @@
       "id": "e9b0563e00b87d14",
       "source": "Engineering Selection",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -7304,7 +7265,7 @@
       "id": "c08ac7b2f9309053",
       "source": "Face Mounting",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -7360,7 +7321,6 @@
       "id": "e1146f006ab341fd",
       "source": "Filter:",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -7453,7 +7413,6 @@
       "id": "cd53c62e56d605a7",
       "source": "Flange Mount",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -7539,7 +7498,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -7607,7 +7565,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -7794,7 +7751,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -7805,7 +7761,7 @@
       "id": "c7c0a02063afdffe",
       "source": "G1/8 Thread",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -7869,7 +7825,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -8035,7 +7990,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -8610,7 +8564,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -8712,7 +8665,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -8807,7 +8759,7 @@
       "id": "2a51535e477128d3",
       "source": "M5 Threaded",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -8874,7 +8826,6 @@
       "id": "03b63abbd106fbd7",
       "source": "Max 1 MPa",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -8889,21 +8840,20 @@
       "id": "4442dfb38e54f22e",
       "source": "Max 150 RPM",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "f87db0498cd5dbc2",
       "source": "Max 200 rpm",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
       "id": "c3419746e5b35935",
       "source": "Max 200 RPM",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -8911,7 +8861,7 @@
       "id": "09117127a5582cc0",
       "source": "Max 300 RPM",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -9066,7 +9016,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -9199,7 +9148,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -9487,13 +9435,6 @@
       ]
     },
     {
-      "id": "d52fe5bb9f29ed5a",
-      "source": "Need to compare pressure, RPM, passages, and mounting?",
-      "pages": [
-        "products-p2.html"
-      ]
-    },
-    {
       "id": "3a386c13d283dc2e",
       "source": "Netherlands",
       "pages": [
@@ -9505,13 +9446,6 @@
       "source": "New Products",
       "pages": [
         "index.html"
-      ]
-    },
-    {
-      "id": "bcf0489a7b45328d",
-      "source": "Next →",
-      "pages": [
-        "products-p2.html"
       ]
     },
     {
@@ -9527,13 +9461,6 @@
       "pages": [
         "application-laser-tube-cutting.html",
         "thank-you.html"
-      ]
-    },
-    {
-      "id": "5aff238259917352",
-      "source": "Next: More Rotary Joint Models →",
-      "pages": [
-        "products.html"
       ]
     },
     {
@@ -9583,7 +9510,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -9728,7 +9654,7 @@
       "id": "2430a0e8fd44f832",
       "source": "Ø30mm Bore",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -9771,13 +9697,6 @@
       "source": "Only when the model documentation explicitly requires or permits it. Seal materials and process media react differently to lubricants, so a universal instruction is unsafe.",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "bda0339836efaa20",
-      "source": "Open the full air rotary union comparison table to choose a standard model before sending your RFQ.",
-      "pages": [
-        "products-p2.html"
       ]
     },
     {
@@ -9925,7 +9844,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -10165,27 +10083,6 @@
       ]
     },
     {
-      "id": "5a294724b8605661",
-      "source": "Pneumatic Rotary Union Catalog — Page 2",
-      "pages": [
-        "products-p2.html"
-      ]
-    },
-    {
-      "id": "da9840ca791eccec",
-      "source": "Pneumatic Rotary Union Catalog — Page 2 | Begapunk",
-      "pages": [
-        "products-p2.html"
-      ]
-    },
-    {
-      "id": "dbe27e29b1539001",
-      "source": "Pneumatic Rotary Union Catalog | Begapunk",
-      "pages": [
-        "products-p2.html"
-      ]
-    },
-    {
       "id": "75b2fae4947759d0",
       "source": "Pneumatic rotary union for a laser tube cutting machine rear chuck",
       "pages": [
@@ -10308,7 +10205,7 @@
       "id": "d2e61bfcd9450993",
       "source": "Pneumatic-Electric",
       "pages": [
-        "products-p2.html"
+        "products.html"
       ]
     },
     {
@@ -10419,7 +10316,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -10543,7 +10439,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -10670,7 +10565,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -10836,7 +10730,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -12295,7 +12188,6 @@
       "id": "b8293ce43ec31df9",
       "source": "Standard and custom models. MOQ: 1 unit. Production lead time is typically about 20 calendar days for catalog models and within 30 calendar days for custom products. Every catalog model page includes a 2D drawing and a downloadable STEP AP214 file.",
       "pages": [
-        "products-p2.html",
         "products.html"
       ]
     },
@@ -12554,7 +12446,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -12630,7 +12521,6 @@
         "installation.html",
         "privacy.html",
         "product-comparison.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html",
@@ -13842,7 +13732,6 @@
         "index.html",
         "installation.html",
         "privacy.html",
-        "products-p2.html",
         "products.html",
         "search.html",
         "terms.html"
