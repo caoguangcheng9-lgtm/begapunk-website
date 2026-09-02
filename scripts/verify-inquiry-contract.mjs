@@ -23,7 +23,7 @@ const CONTACT_PAGES = [
     uploadLabel: 'Drawing or Photo (Optional)',
     uploadAction: 'Choose a file',
     quoteTemplate: 'I need a quote for this model or application.',
-    stepModelTemplate: 'Please send the current STEP file for BP-2P-0001.',
+    stepModelTemplate: 'Catalog STEP for BP-2P-0001 is on the product page. Use this form for custom CAD or other files.',
   },
   {
     file: 'de/contact.html', language: 'de', basePath: '/de/contact.html', sending: 'Anfrage wird gesendet…',
@@ -32,7 +32,7 @@ const CONTACT_PAGES = [
     uploadLabel: 'Zeichnung oder Foto (optional)',
     uploadAction: 'Datei auswählen',
     quoteTemplate: 'Ich benötige ein Angebot für dieses Modell oder diese Anwendung.',
-    stepModelTemplate: 'Bitte senden Sie mir die aktuelle STEP-Datei für BP-2P-0001.',
+    stepModelTemplate: 'Katalog-STEP für BP-2P-0001 steht auf der Produktseite. Dieses Formular ist für Sonder-CAD oder andere Dateien.',
   },
   {
     file: 'ja/contact.html', language: 'ja', basePath: '/ja/contact.html', sending: '送信中…',
@@ -41,7 +41,7 @@ const CONTACT_PAGES = [
     uploadLabel: '図面または写真（任意）',
     uploadAction: 'ファイルを選択',
     quoteTemplate: 'この型式または用途の見積もりを希望します。',
-    stepModelTemplate: 'BP-2P-0001 の最新STEPデータを送ってください。',
+    stepModelTemplate: 'BP-2P-0001 のカタログSTEPは製品ページにあります。特注CADや他形式はこのフォームでご依頼ください。',
   },
   {
     file: 'ru/contact.html', language: 'ru', basePath: '/ru/contact.html', sending: 'Отправка запроса…',
@@ -50,7 +50,7 @@ const CONTACT_PAGES = [
     uploadLabel: 'Чертёж или фото (необязательно)',
     uploadAction: 'Выбрать файл',
     quoteTemplate: 'Мне нужно предложение для этой модели или области применения.',
-    stepModelTemplate: 'Пожалуйста, отправьте актуальный STEP-файл для BP-2P-0001.',
+    stepModelTemplate: 'Каталожный STEP для BP-2P-0001 есть на странице модели. Это форма для заказного CAD или других файлов.',
   },
 ];
 const THANK_YOU_PAGES = [
