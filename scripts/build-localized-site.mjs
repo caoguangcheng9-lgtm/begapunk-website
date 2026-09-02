@@ -1846,6 +1846,28 @@ function applyDrawingBackedProductMetadata($, languageCode, pageName) {
         }
         terminal.name = metadata.breadcrumb;
       }
+      if (schemaTypes(value).has('Product')) {
+        const ui = drawingBackedUiContract(languageCode, model);
+        if (ui?.structuredDescription) value.description = ui.structuredDescription;
+        if (ui?.productName) value.name = ui.productName;
+        if (drawingBackedPublicStep(languageCode, model)) {
+          if (!Array.isArray(value.additionalProperty)) value.additionalProperty = [];
+          const hasCad = value.additionalProperty.some((item) => item && item.name === '3D CAD model');
+          if (!hasCad) {
+            value.additionalProperty.push({
+              '@type': 'PropertyValue',
+              name: '3D CAD model',
+              value: 'STEP AP214 download available for fit check (simplified body)',
+            });
+          }
+          value.associatedMedia = {
+            '@type': 'MediaObject',
+            name: `${model} STEP AP214 (simplified, fit check)`,
+            contentUrl: `https://www.begapunk.com/downloads/${model}.step`,
+            encodingFormat: 'application/step',
+          };
+        }
+      }
       for (const child of Object.values(value)) visit(child);
     };
     visit(data);

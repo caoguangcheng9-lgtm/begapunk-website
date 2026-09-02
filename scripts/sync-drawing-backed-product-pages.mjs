@@ -193,33 +193,16 @@ function buildDesiredProduct(currentProduct, localized, locale, model, product) 
     throw new Error(`${model}/${locale}: Product JSON-LD has no additionalProperty array.`);
   }
 
-  const warrantyProperty = findWarrantyProperty(currentProduct, locale, `${model}/${locale}`);
-  desired.additionalProperty = [{
-    '@type': 'PropertyValue',
-    name: 'SKU',
-    value: model,
-  }];
-  if (localized.hybridInterfacePropertyName) {
-    desired.additionalProperty.push({
-      '@type': 'PropertyValue',
-      name: localized.hybridInterfacePropertyName,
-      value: localized.keyValues.channels,
-    });
-  }
-  for (const field of localized.requiredJsonFields) {
-    desired.additionalProperty.push({
-      '@type': 'PropertyValue',
-      name: localized.jsonPropertyNames[field],
-      value: localized.fields[field],
-    });
-  }
-  desired.additionalProperty.push(JSON.parse(JSON.stringify(warrantyProperty)));
+  findWarrantyProperty(currentProduct, locale, `${model}/${locale}`);
   if (drawingBackedPublicStep(locale, model)) {
-    desired.additionalProperty.push({
-      '@type': 'PropertyValue',
-      name: '3D CAD model',
-      value: 'STEP AP214 download available for fit check (simplified body)',
-    });
+    const hasCad = desired.additionalProperty.some((item) => item && item.name === '3D CAD model');
+    if (!hasCad) {
+      desired.additionalProperty.push({
+        '@type': 'PropertyValue',
+        name: '3D CAD model',
+        value: 'STEP AP214 download available for fit check (simplified body)',
+      });
+    }
     desired.associatedMedia = {
       '@type': 'MediaObject',
       name: `${model} STEP AP214 (simplified, fit check)`,
