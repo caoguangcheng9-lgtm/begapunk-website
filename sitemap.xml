@@ -388,6 +388,12 @@
 
   <!-- ===== PUBLIC ENGINEERING FILES (PDF + STEP) ===== -->
   <url>
+    <loc>https://www.begapunk.com/downloads/Begapunk-Rotary-Joint-Catalog-2026.pdf</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.begapunk.com/downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>yearly</changefreq>

@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-02T10:27:49.009Z",
+  "generatedAt": "2026-09-03T10:12:20.843Z",
   "pages": [
     "index.html",
     "about.html",
@@ -6886,6 +6886,13 @@
     {
       "id": "29b7e1a7616c66ff",
       "source": "Download 2D PDF",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "4b5a0bb95e23480d",
+      "source": "Download Full Catalog (PDF)",
       "pages": [
         "products.html"
       ]
