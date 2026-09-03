@@ -70,11 +70,12 @@
     "deploy:build": "node scripts/build-production-release.mjs",
     "claims:verify": "node scripts/verify-public-claims.mjs",
     "release:experience:verify": "node scripts/verify-release-experience.mjs dist/production",
+    "release:links:verify": "node scripts/verify-release-links-and-downloads.mjs dist/production",
     "lighthouse:browser:install": "node scripts/install-lighthouse-browser.mjs",
     "lighthouse:verify": "node scripts/verify-lighthouse-performance.mjs dist/production",
     "lighthouse:verify:strict": "node scripts/verify-lighthouse-performance.mjs dist/production --strict",
     "lighthouse:release:verify": "npm run lighthouse:browser:install && npm run lighthouse:verify",
-    "deploy:validate": "node scripts/validate-deployment.mjs dist/production",
+    "deploy:validate": "node scripts/validate-deployment.mjs dist/production && npm run release:links:verify",
     "deploy:prepare": "npm run i18n:metadata:verify && npm run product-trust:verify && npm run faq-trust:verify && npm run faq:i18n:verify && npm run ai-trust-overrides:verify && npm run owner-facts:translations:verify && npm run unsafe-orphans:verify && npm run soft-isolation:verify && npm run clearance-article:verify && npm run selection-article:verify && npm run copy:regressions:verify && npm run heroes:verify && npm run main-landmarks:verify && npm run inquiry:verify && npm run discovery:verify && npm run cnc-saw-case:verify && npm run search:verify && npm run drawing-products:verify && npm run i18n:catalog:verify && npm run i18n:verify && npm run owner-facts:verify && npm run editorial:release:verify && npm run product-ui:verify && npm run products:validate && npm run pdf:metadata:check && npm run downloads:verify && npm run images:verify && npm run social:verify && npm run quality:source && npm run deploy:build && npm run release:experience:verify && npm run claims:verify && npm run deploy:validate"
   },
   "devDependencies": {

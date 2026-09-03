@@ -62,8 +62,8 @@ if (checkOnly) {
   if (actual.replaceAll('\r\n', '\n') !== expected) {
     throw new Error(`${PUBLIC_DOWNLOADS_MANIFEST} is stale. Run npm run downloads:manifest.`);
   }
-  console.log(`Public-download allowlist verified: ${files.length} approved PDF files.`);
+  console.log(`Public-download allowlist verified: ${files.length} approved PDF/STEP files.`);
 } else {
   await fs.writeFile(manifestPath, expected, 'utf8');
-  console.log(`Wrote ${files.length} approved public downloads to ${manifestPath}`);
+  console.log(`Wrote ${files.length} approved PDF/STEP downloads to ${manifestPath}`);
 }

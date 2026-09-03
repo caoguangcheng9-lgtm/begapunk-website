@@ -145,5 +145,5 @@ for (const fileName of releaseFiles) {
 await writeFile(path.join(outputRoot, 'manifest.sha256'), `${manifestLines.join('\n')}\n`, 'utf8');
 
 console.log(`Production release built: ${releaseFiles.length} files in ${outputRoot}`);
-console.log(`Published ${publicDownloadFiles.length} approved PDF download(s); excluded ${nonPublicSourceDownloads.length} non-public source download file(s).`);
+console.log(`Published ${publicDownloadFiles.length} approved PDF/STEP download(s); excluded ${nonPublicSourceDownloads.length} non-public source download file(s).`);
 console.log(`Excluded ${excludedDuringBuild.size} backup path(s) from other public directories.`);
