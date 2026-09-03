@@ -123,8 +123,8 @@ const checks = [
   },
   {
     file: 'products.html',
-    forbidden: ['Begapunk-Rotary-Joint-Catalog-2026.pdf', 'about 30 days for custom'],
-    required: ['within 30 calendar days', '2 in / 4 out', '4 × Ø4 outlets (2 clamp · 2 release)'],
+    forbidden: ['about 30 days for custom'],
+    required: ['within 30 calendar days', '2 in / 4 out', '4 × Ø4 outlets (2 clamp · 2 release)', 'Begapunk-Rotary-Joint-Catalog-2026.pdf'],
   },
   {
     file: 'BP-2P-95-0005.html',
