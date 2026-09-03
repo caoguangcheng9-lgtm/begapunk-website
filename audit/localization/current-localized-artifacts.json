@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "algorithm": "sha256-bytes-v1",
-  "capturedAt": "2026-09-02T10:59:49.343Z",
-  "statusUpdatedAt": "2026-09-02",
+  "capturedAt": "2026-09-03T10:16:41.375Z",
+  "statusUpdatedAt": "2026-09-03",
   "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof",
-  "reviewRecord": "audit/localization/2026-09-02-sitewide-contradiction-repair-review.md",
+  "reviewRecord": "audit/localization/2026-09-03-product-catalog-download-review.md",
   "artifacts": [
     {
       "path": "de/index.html",
@@ -24,7 +24,7 @@
     },
     {
       "path": "de/products.html",
-      "sha256": "a49b379425df1226c91d56adcba70c65c370d0bb34df74652eddd5b955813789"
+      "sha256": "fc45794f4011f6ea46f1ad48f0e2bd151fa8f7122f936717874b961c77efe7c6"
     },
     {
       "path": "de/product-comparison.html",
@@ -248,7 +248,7 @@
     },
     {
       "path": "ja/products.html",
-      "sha256": "4b4295e1f1b6921a8907ca9134da21ac9add8761f498fad3a68bc30a60a086e4"
+      "sha256": "b349361b0953fc06294f478351dde86ac2efc33b60d00f3f59e73d43af0ebf61"
     },
     {
       "path": "ja/product-comparison.html",
@@ -472,7 +472,7 @@
     },
     {
       "path": "ru/products.html",
-      "sha256": "3a9ff99a02b3c908d8f260332e63bbf74c68167289571c92e6698dcec28c2153"
+      "sha256": "19078c6a920f2377671378184e97687db2292b7679aff7ff2264ac82941a2ee6"
     },
     {
       "path": "ru/product-comparison.html",
