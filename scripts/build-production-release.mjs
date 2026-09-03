@@ -78,6 +78,10 @@ for (const directoryName of publicDirectories) {
   });
 }
 
+if (excludedDuringBuild.size) {
+  throw new Error(`Backup files are forbidden in public source directories: ${[...excludedDuringBuild].sort().join(', ')}`);
+}
+
 const sourceDownloadsRoot = path.join(sourceRoot, 'downloads');
 const releaseDownloadsRoot = path.join(outputRoot, 'downloads');
 const publicDownloadFiles = await loadPublicDownloadAllowlist(sourceRoot);
@@ -98,6 +102,9 @@ const approvedSourceDownloads = new Set([...publicDownloadFiles, PUBLIC_DOWNLOAD
 const nonPublicSourceDownloads = sourceDownloadEntries
   .filter((entry) => entry.isFile() && !approvedSourceDownloads.has(entry.name))
   .map((entry) => entry.name);
+if (nonPublicSourceDownloads.length) {
+  throw new Error(`downloads/ contains files outside the approved public-download allowlist: ${nonPublicSourceDownloads.sort().join(', ')}`);
+}
 
 async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -145,5 +152,4 @@ for (const fileName of releaseFiles) {
 await writeFile(path.join(outputRoot, 'manifest.sha256'), `${manifestLines.join('\n')}\n`, 'utf8');
 
 console.log(`Production release built: ${releaseFiles.length} files in ${outputRoot}`);
-console.log(`Published ${publicDownloadFiles.length} approved PDF/STEP download(s); excluded ${nonPublicSourceDownloads.length} non-public source download file(s).`);
-console.log(`Excluded ${excludedDuringBuild.size} backup path(s) from other public directories.`);
+console.log(`Published ${publicDownloadFiles.length} approved PDF/STEP download(s); public source directories contain no private or backup files.`);

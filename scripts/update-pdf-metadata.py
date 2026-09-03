@@ -18,10 +18,7 @@ TITLES = {
     "Begapunk_Rotary_Joint_Installation_Manual.pdf": "Begapunk Pneumatic Rotary Union Installation Manual",
     "BP-1P-0003.pdf": "BP-1P-0003 Pneumatic Rotary Union Engineering Drawing",
     "BP-1P-0006.pdf": "BP-1P-0006 Pneumatic Rotary Union Engineering Drawing",
-    "BP-200-0001-view.pdf": "BP-200-0001 Rotary Union Assembly View Drawing",
-    "BP-200-0001.pdf": "BP-200-0001 Rotary Union Engineering Drawing",
     "BP-2P-0001.pdf": "BP-2P-0001 Pneumatic Rotary Union Engineering Drawing",
-    "BP-2P-0001_draft.pdf": "BP-2P-0001 Pneumatic Rotary Union Draft Drawing",
     "BP-2P-0002.pdf": "BP-2P-0002 Pneumatic Rotary Union Engineering Drawing",
     "BP-2P-08-0001.pdf": "BP-2P-08-0001 Through-Bore Rotary Union Engineering Drawing",
     "BP-2P-130-0001.pdf": "BP-2P-130-0001 High-Pressure Rotary Union Engineering Drawing",
@@ -35,7 +32,6 @@ TITLES = {
     "BP-3P-S06-0001.pdf": "BP-3P-S06-0001 Pneumatic-Electric Rotary Union Drawing",
     "BP-4P-30-0001.pdf": "BP-4P-30-0001 Through-Bore Rotary Union Engineering Drawing",
     "BP-8P-0001.pdf": "BP-8P-0001 Eight-Passage Rotary Union Engineering Drawing",
-    "SJ10-06.pdf": "SJ10-06 Rotary Union Engineering Drawing",
 }
 
 
