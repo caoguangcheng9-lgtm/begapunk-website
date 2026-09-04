@@ -5,9 +5,12 @@ import { load } from 'cheerio';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
+const outputRoot = process.env.I18N_OUTPUT_ROOT
+  ? path.resolve(process.env.I18N_OUTPUT_ROOT)
+  : sourceRoot;
 const checkOnly = process.argv.includes('--check');
 const config = JSON.parse(await fs.readFile(path.join(i18nRoot, 'config.json'), 'utf8'));
-const languageCodes = ['de', 'ja', 'ru'];
+const languageCodes = [...config.activeLanguageCodes];
 const questionIds = [
   ...Array.from({ length: 17 }, (_, index) => `faq-${String(index + 1).padStart(2, '0')}`),
   ...Array.from({ length: 10 }, (_, index) => `faq-${String(index + 19).padStart(2, '0')}`),
@@ -23,6 +26,7 @@ const sectionIds = [
 const relatedFaqIds = ['faq-04', 'faq-05', 'faq-08', 'faq-13', 'faq-14', 'faq-15', 'faq-22', 'faq-27'];
 const skipLinkText = {
   de: 'Zum Hauptinhalt springen',
+  fr: 'Aller au contenu principal',
   ja: '本文へスキップ',
   ru: 'Перейти к основному содержанию',
 };
@@ -116,6 +120,17 @@ function validateLocalization(data, languageCode) {
       'faq-26': [/eine Einheit/i, /20 Kalendertage/i, /30 Kalendertage/i],
       'faq-28': [/nicht.*Marketing|weder.*Marketing/i, /nicht.*(?:veröffentlicht|öffentlichen|Darstellung)|noch.*(?:veröffentlicht|öffentlichen|Darstellung)/i],
     },
+    fr: {
+      'faq-07': [/simultan|en même temps/i, /devis|proposition/i],
+      'faq-10': [/air comprimé/i, /eau/i, /(?:fluide|liquide|lubrifiant).*(?:hydrosoluble|soluble dans l'eau)/i, /huile hydraulique/i],
+      'faq-11': [/filtre.*particules/i, /séparateur d['’](?:eau|humidité)/i, /lubrificateur/i, /(?:joint|garniture).*(?:résistant|résistance).*(?:usure)/i],
+      'faq-22': [/1,0 MPa/i, /(?:environ|approximativement).*(?:1|une) seconde/i, /(?:environ|approximativement).*(?:4|quatre) secondes/i, /ne (?:confirme|constitue|représente|démontre) (?:ni|pas)/i],
+      'faq-23': [/ouvert/i, /sans pression|non pressurisé/i, /seuil.*détection/i],
+      'faq-24': [/(?:numéro|identifiant) (?:individuel de traçabilité|de traçabilité individuel)/i, /(?:rapport|relevé|procès-verbal).*(?:essai|contrôle|inspection)/i, /avant (?:la )?commande/i],
+      'faq-25': [/un an.*date d['’]expédition/i, /devis/i, /commande/i, /écrit/i],
+      'faq-26': [/une unité/i, /20 jours calendaires/i, /30 jours calendaires/i],
+      'faq-28': [/n(?:e|'|\u2019).*(?:utilisons|exploite).*(?:marketing|commercial)/i, /(?:nous ne les publions pas|n(?:e|'|\u2019).*rendons.*(?:public|publique))/i],
+    },
     ja: {
       'faq-07': [/同時/, /見積/],
       'faq-10': [/圧縮空気/, /水/, /水溶性.*クーラント/, /作動油/],
@@ -139,7 +154,9 @@ function validateLocalization(data, languageCode) {
       'faq-28': [/не используем.*маркетинг/i, /не публикуем.*открыт/i],
     },
   };
-  for (const [faqId, patterns] of Object.entries(factPatterns[languageCode])) {
+  const languageFactPatterns = factPatterns[languageCode];
+  assert(languageFactPatterns, `${languageCode}: fact-validation patterns are missing.`);
+  for (const [faqId, patterns] of Object.entries(languageFactPatterns)) {
     assertContains(answers.get(faqId), patterns, `${languageCode}/${faqId}`);
   }
 }
@@ -304,7 +321,7 @@ async function desiredMetadataFiles(languageCode, data, desiredHtml) {
   seo['faq.html'] = { title: data.meta.title, description: data.meta.description, h1: data.meta.h1 };
   changes.push({ path: seoPath, before: seoSource, after: serializeJson(seo, seoSource) });
 
-  const searchPath = path.join(sourceRoot, languageCode, 'search-index.json');
+  const searchPath = path.join(outputRoot, languageCode, 'search-index.json');
   const searchSource = await fs.readFile(searchPath, 'utf8');
   const search = JSON.parse(searchSource);
   const searchIndex = search.findIndex((item) => item.url === 'faq.html');
@@ -312,12 +329,12 @@ async function desiredMetadataFiles(languageCode, data, desiredHtml) {
   search[searchIndex] = buildSearchRecord(desiredHtml, search[searchIndex]);
   changes.push({ path: searchPath, before: searchSource, after: serializeJson(search, searchSource) });
 
-  const llmsPath = path.join(sourceRoot, languageCode, 'llms.txt');
+  const llmsPath = path.join(outputRoot, languageCode, 'llms.txt');
   const llmsSource = await fs.readFile(llmsPath, 'utf8');
   const faqUrl = `${config.siteUrl}/${languageCode}/faq.html`;
   const desiredLine = `- [${data.meta.title}](${faqUrl}): ${data.meta.description}`;
   let matches = 0;
-  const llmsNext = llmsSource.replace(/^.*\(https:\/\/www\.begapunk\.com\/(?:de|ja|ru)\/faq\.html\):.*$/gm, (line) => {
+  const llmsNext = llmsSource.replace(/^.*\(https:\/\/www\.begapunk\.com\/[^/\s]+\/faq\.html\):.*$/gm, (line) => {
     matches += 1;
     return line.includes(`/${languageCode}/faq.html`) ? desiredLine : line;
   });
@@ -375,7 +392,7 @@ for (const languageCode of languageCodes) {
   const dataPath = path.join(i18nRoot, 'manual', `faq-${languageCode}.json`);
   const data = JSON.parse(await fs.readFile(dataPath, 'utf8'));
   validateLocalization(data, languageCode);
-  const targetPath = path.join(sourceRoot, languageCode, 'faq.html');
+  const targetPath = path.join(outputRoot, languageCode, 'faq.html');
   const targetHtml = await fs.readFile(targetPath, 'utf8');
   const desiredHtml = buildLocalizedHtml({ sourceHtml, targetHtml, data, languageCode });
   planned.push({ path: targetPath, before: targetHtml, after: desiredHtml });
@@ -387,10 +404,10 @@ const drift = planned.filter((item) => item.before !== item.after);
 if (checkOnly) {
   if (drift.length) {
     console.error(`Localized FAQ verification failed: ${drift.length} file(s) require synchronization.`);
-    for (const item of drift) console.error(`- ${path.relative(sourceRoot, item.path)}`);
+    for (const item of drift) console.error(`- ${path.relative(outputRoot, item.path)}`);
     process.exitCode = 1;
   } else {
-    console.log('Localized FAQ verification passed: 27 questions x 3 target-market languages, 8 contextual links, and machine-readable records are synchronized.');
+    console.log(`Localized FAQ verification passed: 27 questions x ${languageCodes.length} target-market languages, 8 contextual links, and machine-readable records are synchronized.`);
   }
 } else {
   for (const item of drift) await fs.writeFile(item.path, item.after, 'utf8');

@@ -4,6 +4,8 @@ import process from 'node:process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const checkOnly = process.argv.includes('--check');
+const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const languageCodes = [config.sourceLanguage.code, ...config.activeLanguageCodes];
 const dateModified = '2026-08-14';
 const siteUrl = 'https://www.begapunk.com';
 const applicationPage = 'application-cnc-pneumatic-clamping.html';
@@ -16,6 +18,33 @@ const markerStart = '<!-- CNC-SAW-FIXTURE-CASE:START -->';
 const markerEnd = '<!-- CNC-SAW-FIXTURE-CASE:END -->';
 const productMarkerStart = '<!-- CNC-SAW-FIXTURE-PRODUCT:START -->';
 const productMarkerEnd = '<!-- CNC-SAW-FIXTURE-PRODUCT:END -->';
+const frenchSmartChuckSummaryPage = 'fr/case-studies.html';
+const frenchSmartChuckSummaryReplacements = Object.freeze([
+  Object.freeze({
+    current: 'serrage, desserrage et soufflage',
+    legacy: Object.freeze([
+      'serrage, débranchement et soufflage',
+      'serrage, déclampage et soufflage',
+      'serrage, desserrage et purge d\'air',
+    ]),
+  }),
+  Object.freeze({
+    current: 'Serrage, desserrage et soufflage dans cette configuration client',
+    legacy: Object.freeze([
+      'Clampage, déclampage et soufflage dans ce design client',
+      'Serrage, déclampage et soufflage dans cette configuration client',
+      'Serrage, desserrage et soufflage dans ce design client',
+    ]),
+  }),
+  Object.freeze({
+    current: 'La détection assurée par des capteurs externes et le système de commande reste indépendante du raccord tournant.',
+    legacy: Object.freeze([
+      'La détection reste la responsabilité des capteurs externes et du système de contrôle.',
+      'La détection reste assurée par les capteurs externes et le système de commande.',
+      'La détection est assurée par des capteurs externes et le système de commande.',
+    ]),
+  }),
+]);
 
 const copy = {
   en: {
@@ -89,6 +118,42 @@ const copy = {
     creativeName: 'BP-2P-130-0001 in einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine',
     creativeDescription: 'BP-2P-130-0001 ist an der Rückseite einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine eingebaut. Zwei getrennte Druckluftkanäle übernehmen das Spannen und Lösen. Für vergleichbare Anwendungen Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle mit den Vorrichtungsanforderungen und der aktuellen Zeichnung für BP-2P-130-0001 abgleichen.',
     llms: 'Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.',
+  },
+  fr: {
+    prefix: 'fr/',
+    language: 'fr',
+    label: 'Application en production chez un client',
+    heading: 'BP-2P-130-0001 dans un montage de serrage sur mesure pour scie circulaire CNC',
+    intro: 'Cette image extraite d\'une vidéo dont le client a autorisé la publication montre le BP-2P-130-0001 installé à l\'arrière d\'un montage d\'usinage CNC sur mesure pour scie circulaire. Le client utilise deux circuits d\'air comprimé indépendants pour serrer et desserrer le montage.',
+    detailsHeading: 'Détails de l\'application',
+    facts: [
+      ['Équipement', 'Montage d\'usinage CNC sur mesure du client installé sur une scie circulaire'],
+      ['Raccord tournant installé', '<a class="cnc-saw-model-link" href="BP-2P-130-0001.html">BP-2P-130-0001</a>'],
+      ['Fonction pneumatique', 'Deux circuits d\'air comprimé indépendants pour serrer et desserrer le montage'],
+      ['Contexte de fonctionnement', 'Équipement de production client à faible vitesse ; la vidéo ne permet pas d\'établir la vitesse de rotation exacte'],
+      ['Angle de prise de vue', 'Arrière du montage ; les mors avant se trouvent hors champ'],
+      ['Confidentialité', 'L\'identité du client et la marque de la machine ne sont pas divulguées'],
+    ],
+    alt: 'Vue arrière d\'un montage sur mesure pour scie circulaire CNC avec un BP-2P-130-0001 installé',
+    imageAria: 'Ouvrir la page produit du BP-2P-130-0001 depuis la photographie autorisée du montage CNC',
+    caption: 'Image d\'une vidéo de production autorisée par le client montrant l\'arrière du montage sur mesure ; le client et la marque de la machine ne sont pas divulgués.',
+    boundaryTitle: 'Pour un montage comparable',
+    boundary: 'Une référence de montage, une photo ou un plan suffit pour commencer. Ici, le BP-2P-130-0001 utilise deux circuits indépendants pour le serrage et le desserrage. Si vous les connaissez, indiquez aussi la pression, la vitesse et l\'interface de montage afin que nous puissions vérifier une configuration adaptée.',
+    introVisualAlt: 'Raccord tournant pneumatique BP-2P-130-0001 pour montage de serrage CNC',
+    introVisualLabel: 'Produit installé',
+    introVisualText: 'BP-2P-130-0001 utilisé dans le montage à faible vitesse d\'une scie circulaire chez un client.',
+    introSupplyLegacy: 'Lorsqu\'un montage CNC tourne, le flexible d\'air ne doit ni se vriller ni tirer sur l\'actionneur. Un raccord tournant pneumatique assure un passage rotatif étanche entre l\'alimentation fixe et le montage mobile.',
+    introSupply: 'Lorsqu\'un montage CNC tourne, ses conduites d\'air comprimé ne doivent ni se vriller ni tirer sur l\'actionneur. Un raccord tournant pneumatique assure des circuits rotatifs étanches pour l\'air comprimé entre l\'alimentation fixe et le montage tournant.',
+    faqQuestion: 'Un raccord tournant peut-il maintenir la pression de serrage pendant l\'usinage ?',
+    blowOff: 'Soufflage',
+    productButton: 'Voir le BP-2P-130-0001',
+    contactButton: 'Discuter d\'un montage comparable',
+    productEntryHeading: 'Application client : montage sur mesure pour scie circulaire CNC',
+    productEntry: 'Le BP-2P-130-0001 est installé à l’arrière d’un montage de production client sur une scie à lame circulaire. Deux passages indépendants d’air comprimé assurent le serrage et le desserrage du montage. L’équipement fonctionne à faible vitesse. Pour un montage similaire, vérifiez la vitesse et la pression requises, l’affectation des orifices et l’interface par rapport aux exigences du montage et au plan BP-2P-130-0001 en vigueur.',
+    productEntryLink: 'Voir l\'application client →',
+    creativeName: 'BP-2P-130-0001 dans un montage de serrage sur mesure pour scie circulaire CNC',
+    creativeDescription: 'Le BP-2P-130-0001 est installé à l\'arrière d\'un montage de serrage sur mesure pour scie circulaire CNC. Deux circuits d\'air comprimé indépendants assurent le serrage et le desserrage. Pour une application comparable, confrontez l\'affectation des orifices, la pression, la vitesse de rotation, le cycle de fonctionnement et l\'interface de montage requis aux exigences du montage et au plan actuel du BP-2P-130-0001.',
+    llms: 'Guide de sélection comprenant une application de production autorisée par le client : un BP-2P-130-0001 monté sur un dispositif de serrage sur mesure à faible vitesse pour scie circulaire CNC, avec deux circuits d\'air comprimé indépendants pour le serrage et le desserrage.',
   },
   ja: {
     prefix: 'ja/',
@@ -179,6 +244,13 @@ const productEvidenceFragments = Object.freeze({
     'läuft mit niedriger Drehzahl',
     'Drehzahl, Druck, Portzuordnung und Schnittstelle mit den Vorrichtungsanforderungen und der aktuellen Zeichnung für BP-2P-130-0001 abgleichen',
   ],
+  fr: [
+    'BP-2P-130-0001',
+    'Deux passages indépendants d’air comprimé',
+    'serrage et le desserrage du montage',
+    'fonctionne à faible vitesse',
+    'vitesse et la pression requises, l’affectation des orifices et l’interface par rapport aux exigences du montage et au plan BP-2P-130-0001 en vigueur',
+  ],
   ja: [
     'BP-2P-130-0001',
     '独立した2つの圧縮空気流路',
@@ -205,12 +277,13 @@ function applicationUrl(languageCode) {
   return `${siteUrl}/${languageCode === 'en' ? '' : `${languageCode}/`}${applicationPage}`;
 }
 
-function productUrl() {
-  return `${siteUrl}/${productPage}`;
+function productUrl(languageCode = 'en') {
+  return `${siteUrl}/${languageCode === 'en' ? '' : `${languageCode}/`}${productPage}`;
 }
 
 function creativeWork(languageCode) {
   const locale = copy[languageCode];
+  if (!locale) throw new Error(`Missing CNC saw-fixture copy for configured language: ${languageCode}`);
   const base = applicationUrl(languageCode);
   return {
     '@type': 'CreativeWork',
@@ -291,7 +364,7 @@ ${factsMarkup(locale)}
   </article>
  </div>
 </section>
-${markerEnd}`;
+${markerEnd}`.replaceAll('\u00a0', '&nbsp;');
 }
 
 function stripManagedBlock(html, start, end) {
@@ -307,6 +380,47 @@ async function planWrite(relativePath, next) {
   if (!checkOnly) await fs.writeFile(absolute, next, 'utf8');
 }
 
+async function missingGeneratedArtifacts(languageCode) {
+  if (languageCode === config.sourceLanguage.code) return [];
+  const locale = copy[languageCode];
+  const candidates = [
+    `${locale.prefix}${applicationPage}`,
+    `${locale.prefix}${productPage}`,
+    `${locale.prefix}llms.txt`,
+  ];
+  const missing = [];
+  for (const relativePath of candidates) {
+    try {
+      await fs.access(path.join(root, relativePath));
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+      missing.push(relativePath);
+    }
+  }
+  return missing;
+}
+
+async function syncFrenchSmartChuckSummary() {
+  if (!languageCodes.includes('fr')) return;
+  const absolute = path.join(root, frenchSmartChuckSummaryPage);
+  const current = await fs.readFile(absolute, 'utf8');
+  let next = current;
+  for (const replacement of frenchSmartChuckSummaryReplacements) {
+    for (const legacy of replacement.legacy) next = next.replaceAll(legacy, replacement.current);
+    if (!next.includes(replacement.current)) {
+      throw new Error(
+        `${frenchSmartChuckSummaryPage}: smart-chuck wording is missing the governed French text: ${replacement.current}`,
+      );
+    }
+  }
+  const forbidden = ['débranchement', 'Clampage', 'déclampage', 'système de contrôle'];
+  const remaining = forbidden.filter((term) => next.includes(term));
+  if (remaining.length) {
+    throw new Error(`${frenchSmartChuckSummaryPage}: retired smart-chuck terminology remains: ${remaining.join(', ')}`);
+  }
+  await planWrite(frenchSmartChuckSummaryPage, next);
+}
+
 async function syncApplicationPage(languageCode) {
   const locale = copy[languageCode];
   const relativePath = `${locale.prefix}${applicationPage}`;
@@ -315,7 +429,7 @@ async function syncApplicationPage(languageCode) {
   let html = stripManagedBlock(original, markerStart, markerEnd);
   html = html.replace(/\s*<link rel="stylesheet" href="(?:\.\.\/)?css\/application-cnc-clamping-case\.css[^>]*>/g, '');
   const cssHref = `${locale.prefix ? '../' : ''}css/application-cnc-clamping-case.css?v=20260814-customer-case2`;
-  html = html.replace('</head>', withNewlineStyle(html, `<link rel="stylesheet" href="${cssHref}">\n</head>`));
+  html = html.replace(/\s*<\/head>/, withNewlineStyle(html, `\n<link rel="stylesheet" href="${cssHref}">\n</head>`));
   const introSection = /<section class="section(?: cnc-saw-intro-section)?"><div class="container"><div class="app-detail-intro">[\s\S]*?<\/section>/;
   if (!introSection.test(html)) throw new Error(`${relativePath}: application-intro section not found.`);
   html = html.replace(introSection, (match) => {
@@ -490,19 +604,34 @@ async function syncSitemap(relativePath, urls) {
   await planWrite(relativePath, xml);
 }
 
-for (const languageCode of Object.keys(copy)) {
+const synchronizedLanguageCodes = [];
+for (const languageCode of languageCodes) {
+  await syncOverrides(languageCode);
+  const missingArtifacts = await missingGeneratedArtifacts(languageCode);
+  if (missingArtifacts.length) {
+    if (checkOnly) {
+      throw new Error(
+        `${languageCode}: generated CNC case artifacts are missing: ${missingArtifacts.join(', ')}. Run the localized build and integrate it before verification.`,
+      );
+    }
+    console.warn(`${languageCode}: deferred generated CNC case artifacts until localized build integration (${missingArtifacts.join(', ')}).`);
+    continue;
+  }
   await syncApplicationPage(languageCode);
   // The drawing-backed content synchronizer owns the product-page deep block.
   // This case synchronizer verifies the preserved evidence contract instead of
   // replacing that block with a stale whole-block snapshot.
   await verifyProductPage(languageCode);
-  await syncOverrides(languageCode);
   await syncLlms(languageCode);
+  synchronizedLanguageCodes.push(languageCode);
 }
 
-const publicUrls = Object.keys(copy).flatMap((languageCode) => [applicationUrl(languageCode), `${siteUrl}/${languageCode === 'en' ? '' : `${languageCode}/`}${productPage}`]);
+await syncFrenchSmartChuckSummary();
+
 await syncSitemap('sitemap.xml', [applicationUrl('en'), productUrl()]);
-await syncSitemap('sitemap-i18n.xml', publicUrls);
+// sitemap-i18n.xml lastmod values are content-hash governed by
+// scripts/sync-sitemap-i18n.mjs. A content synchronizer must not overwrite
+// that state with a feature-specific fixed date.
 
 if (checkOnly && changes.length) {
   console.error(`CNC saw-fixture case is not synchronized (${changes.length} file(s)): ${changes.join(', ')}`);

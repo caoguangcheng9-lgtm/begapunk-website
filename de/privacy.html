@@ -16,7 +16,7 @@
 
     <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
 
-    <meta property="og:site_name" content="Begapunk Precision Machinery">
+    <meta property="og:site_name" content="Begapunk">
 
     <meta property="og:locale" content="de_DE">
 
@@ -43,20 +43,22 @@
 
 
 
+
 <link rel="alternate" hreflang="en" href="https://www.begapunk.com/privacy.html">
 <link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://www.begapunk.com/fr/privacy.html">
 <link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/privacy.html">
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/privacy.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/privacy.html">
 <link rel="canonical" href="https://www.begapunk.com/de/privacy.html">
 
-    <link rel="stylesheet" href="../css/style.css?v=20260817-cls1">
+    <link rel="stylesheet" href="../css/style.css?v=20260904-nojs-flow1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
-    <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
+    <script defer="" src="../js/analytics.js?v=e061bf5d563c"></script>
 </head>
 
 <body>
@@ -66,11 +68,11 @@
 <header class="header">
  <div class="container">
   <div class="header-inner">
-   <a href="index.html" class="logo">
+   <a href="./" class="logo">
     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - Präzisionsdrehdurchführung Hersteller" style="height:48px;width:auto;" width="226" height="40">
    </a>
    <nav class="nav" id="mainNav">
-    <a href="index.html" class="nav-home-mobile">Startseite</a>
+    <a href="./" class="nav-home-mobile">Startseite</a>
     <div class="nav-dropdown">
      <a href="products.html" class="nav-dropdown-toggle">Produkte <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
@@ -107,7 +109,7 @@
     <a href="contact.html" class="nav-cta">Angebot anfordern</a>
    </nav>
 
-   <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-de">Sprache</label><select id="language-de" aria-label="Sprache" onchange="if(this.value)window.location.href=this.value"><option value="../privacy.html">English</option><option value="privacy.html" selected="">Deutsch</option><option value="../ja/privacy.html">日本語</option><option value="../ru/privacy.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Menü" aria-controls="mainNav" aria-expanded="false">
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-de">Sprache</label><select id="language-de" aria-label="Sprache" onchange="if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value"><option value="../privacy.html">English</option><option value="privacy.html" selected>Deutsch</option><option value="../fr/privacy.html">Français</option><option value="../ja/privacy.html">日本語</option><option value="../ru/privacy.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Menü" aria-controls="mainNav" aria-expanded="false">
     <span></span><span></span><span></span>
    </button>
   </div>
@@ -133,7 +135,7 @@
 
     <p><strong>Gültig ab:</strong> 11. Juni 2026<br>
 
-    <strong>Zuletzt aktualisiert:</strong> 28. August 2026</p>
+    <strong>Zuletzt aktualisiert:</strong> 4. September 2026</p>
 
 
 
@@ -148,6 +150,8 @@
     <ul>
 
         <li><strong>Anfrage- und Kontaktdaten:</strong> Name, E-Mail-Adresse, Unternehmen, Land, Produktinteresse, Anwendung, technische Anforderungen, Anfrageart und Angaben zur Quellseite, die Sie über das Anfrageformular übermitteln.</li>
+
+        <li><strong>Kampagnenzuordnung nach Einwilligung:</strong> Google-Klickkennungen (<code>gclid</code>, <code>gbraid</code> und <code>wbraid</code>), UTM-Kampagnenparameter, die erste Einstiegsseite und der ursprüngliche Referrer. Diese Werte werden erst nach Ihrer Zustimmung zur optionalen Messung erfasst, für die aktuelle Browsersitzung im Sitzungsspeicher gehalten und bei einer Anfrage an unser internes Vertriebs-Postfach übermittelt.</li>
 
         <li><strong>Technische Daten:</strong> IP-Adresse und Anfragemetadaten, die der Webserver für Auslieferung, Sicherheit und Protokollierung verarbeiten kann. Der Anfrage-Handler bildet aus der IP-Adresse einen Einweg-Hash und speichert aktuelle Zeitstempel von Versuchen im temporären Serverbereich für ein 15-minütiges Rate-Limit-Fenster.</li>
 
@@ -171,6 +175,8 @@
 
         <li>unsere Website und unser Produktangebot verbessern</li>
 
+        <li>nach Ihrer Zustimmung zur optionalen Messung die Werbewirkung messen und Anfragen Kampagnen zuordnen</li>
+
         <li>die Anfrage über authentifiziertes SMTP an unser konfiguriertes Vertriebs-Postfach senden</li>
 
         <li>Missbrauch verhindern und die Verfügbarkeit des Anfrage-Dienstes schützen</li>
@@ -189,7 +195,7 @@
 
     <h3>3.1 Erforderlicher lokaler Speicher (immer aktiv)</h3>
 
-    <p>Der Einwilligungsmanager verwendet den lokalen Browserspeicher statt eines erforderlichen Cookies, um Ihre Analyse-Auswahl zu speichern. Dieser Datensatz identifiziert Sie nicht unmittelbar und wird bei normalen Seitenaufrufen nicht an unseren Server gesendet.</p>
+    <p>Der Einwilligungsmanager verwendet den lokalen Browserspeicher statt eines erforderlichen Cookies, um Ihre Auswahl zur optionalen Messung zu speichern. Dieser Datensatz identifiziert Sie nicht unmittelbar und wird bei normalen Seitenaufrufen nicht an unseren Server gesendet.</p>
 
     <ul>
 
@@ -197,13 +203,15 @@
 
     </ul>
 
-    <h3>3.2 Analyse-Cookies (optional)</h3>
+    <h3>3.2 Analyse und Messung des Werbeerfolgs (optional)</h3>
 
-    <p>Google Analytics 4 wird erst geladen, nachdem Sie „Alle akzeptieren“ gewählt haben. Davor stehen Analyse- und Werbeeinwilligung auf „verweigert“. Bei Ablehnung lädt die Website GA4 nicht und entfernt erreichbare GA-Cookies.</p>
+    <p>Beim ersten Besuch wird Google Analytics 4 nur geladen, wenn Sie „Messung erlauben“ wählen. Standardmäßig setzt Consent Mode v2 <code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> und <code>ad_personalization</code> auf „verweigert“. Wenn Sie die Messung erlauben, werden die ersten drei Kategorien für Analyse und Werbewirkungsmessung freigegeben; <code>ad_personalization</code> bleibt verweigert. Wir verwenden diese Auswahl nicht für personalisierte Werbung. Lehnen Sie vor einer Einwilligung ab, wird GA4 nicht geladen. Widerrufen Sie nach dem Laden, setzt die Website diese Einwilligungswerte auf „verweigert“, beendet die weitere optionale Messung und entfernt erreichbare GA-Cookies sowie die Sitzungszuordnung; ein auf der aktuellen Seite bereits ausgeführtes Skript kann nicht entladen werden.</p>
 
     <ul>
 
-        <li><strong>Google Analytics 4</strong> — Nach Ihrer Einwilligung erfasst GA4 Seiten- und Sitzungsaktivität, Verweisquellen, Einwilligungsereignisse, Kontakt- und Download-Interaktionen, Formularversuche und bestätigte Anfragen. Bei einer bestätigten Anfrage können Anfrageart und gewünschtes Produkt übermittelt werden; Name, E-Mail-Adresse, Unternehmen, Land, Freitext und Anhänge sendet unser Code nicht an GA4. Google Signals und personalisierte Werbung sind deaktiviert. Die Speicherdauer richtet sich nach der aktuellen GA4-Property-Konfiguration. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Google</a></li>
+        <li><strong>Google Analytics 4</strong> — Nach Ihrer Einwilligung erfasst GA4 Seiten- und Sitzungsaktivität, Verweis- und Kampagneninformationen, Einwilligungsereignisse, Kontakt- und Download-Interaktionen, Formularversuche und bestätigte Anfragen. Bei einer bestätigten Anfrage können Anfrageart und gewünschtes Produkt übermittelt werden; Name, E-Mail-Adresse, Unternehmen, Land, Freitext, Anhänge oder rohe Klickkennungen sendet unser Code nicht als Ereignisparameter an GA4. Google Signals und personalisierte Werbung sind deaktiviert. Die Speicherdauer richtet sich nach der aktuellen GA4-Property-Konfiguration. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Google</a></li>
+
+        <li><strong>Sitzungszuordnung</strong> — Nach Ihrer Einwilligung speichert die Website die aufgeführten Klickkennungen, UTM-Werte, die erste Einstiegsseite und den ursprünglichen Referrer unter <code>begapunk_session_attribution_v1</code> im <code>sessionStorage</code>. Die Werte füllen verborgene Felder des Anfrageformulars und werden nur übermittelt, wenn Sie dieses Formular absenden. Beim Widerruf der Einwilligung wird der Sitzungseintrag entfernt und die Felder werden geleert.</li>
 
     </ul>
 
@@ -217,9 +225,9 @@
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
 
-            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Accept Analytics</button>
+            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Messung erlauben</button>
 
-            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Analyse ablehnen</button>
+            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Optionale Messung ablehnen</button>
 
             <button onclick="BegapunkConsent.reset()" style="padding:10px 18px;background:transparent;color:#666;border:none;border-radius:6px;cursor:pointer;text-decoration:underline;">Zurücksetzen und Banner erneut anzeigen</button>
 
@@ -239,7 +247,7 @@
 
         <li><strong>Hosting- und E-Mail-Dienstleister:</strong> Der PHP-Handler prüft die Anfrage und sendet sie mit PHPMailer über authentifiziertes SMTP an das konfigurierte Begapunk-Vertriebs-Postfach. Anfragefelder und Anhänge werden nicht in eine Website-Datenbank geschrieben.</li>
 
-        <li><strong>Analysedienst:</strong> Google Analytics erhält die oben beschriebenen Analysedaten ausschließlich nach Ihrer Einwilligung.</li>
+        <li><strong>Messdienst:</strong> Google Analytics erhält die oben beschriebenen Messdaten ausschließlich nach Ihrer Einwilligung. Personalisierte Werbung bleibt deaktiviert.</li>
 
         <li><strong>Versanddienstleister:</strong> DHL, FedEx oder regionale Frachtführer, soweit für den Versand erforderlich; übermittelt werden nur Versand- und Kontaktdaten</li>
 
@@ -264,6 +272,8 @@
         <li><strong>Bestelldaten:</strong> Aufbewahrung entsprechend den geltenden steuer-, handels-, gewährleistungs- und sonstigen gesetzlichen Pflichten.</li>
 
         <li><strong>Analysedaten:</strong> Aufbewahrung gemäß der aktuellen Google-Analytics-Property-Konfiguration.</li>
+
+        <li><strong>Sitzungszuordnung:</strong> Speicherung im Browser für die aktuelle Sitzung. Wenn Sie eine Anfrage absenden, verbleiben die bereinigten Zuordnungswerte zusammen mit dieser E-Mail entsprechend den gleichen betrieblichen und rechtlichen Aufbewahrungsgrundsätzen wie andere Anfragedaten.</li>
 
     </ul>
 
@@ -325,7 +335,7 @@
 <footer class="footer" id="siteFooter">
  <div class="container">
   <div class="footer-brand footer-brand-band">
-   <a class="footer-logo" href="index.html" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+   <a class="footer-logo" href="./" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
    <div class="footer-brand-copy">
     <p class="footer-positioning">Hersteller von Präzisionsdrehdurchführungen mit Sitz in Ningbo, China. Unterstützung für OEMs und Maschinenbauer in der Industrieautomation.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
@@ -436,10 +446,10 @@ window.addEventListener('scroll', () => {
         if (!el) return;
         const state = (window.BegapunkConsent && window.BegapunkConsent.state) || null;
         if (state === 'granted') {
-            el.textContent = 'Current status: Analytics accepted — Google Analytics 4 is active.';
+            el.textContent = 'Current status: Optional measurement allowed — analytics and advertising-effectiveness measurement are active; personalized advertising remains off.';
             el.style.color = '#2e7d32';
         } else if (state === 'denied') {
-            el.textContent = 'Current status: Analytics declined — only essential cookies are used.';
+            el.textContent = 'Current status: Optional measurement declined — only essential functions are active.';
             el.style.color = '#c62828';
         } else {
             el.textContent = 'Current status: No decision yet — choose your preference in the cookie banner.';
@@ -457,7 +467,7 @@ window.addEventListener('scroll', () => {
     document.addEventListener('begapunk:consent-change', updateStatus);
 })();
 </script>
-<script defer="" src="../js/site-navigation.js?v=20260808-nav1"></script>
+<script defer="" src="../js/site-navigation.js?v=20260904-language-context1"></script>
 
 
 

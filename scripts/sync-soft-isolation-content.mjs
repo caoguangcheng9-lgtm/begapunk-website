@@ -8,6 +8,9 @@ import {
 
 const root = process.cwd();
 const checkOnly = process.argv.includes('--check');
+const config = JSON.parse(fs.readFileSync(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const languageCodes = [config.sourceLanguage.code, ...config.activeLanguageCodes];
+const targetLanguageCodes = [...config.activeLanguageCodes];
 
 const routes = [];
 
@@ -106,6 +109,54 @@ const locales = {
       alternativeCta: 'BP-2P-08-0001 ansehen →',
       productCta: 'BP-2P-16-0001 ansehen',
       contactCta: 'Ähnliche Verschließanwendung besprechen',
+    },
+  },
+  fr: {
+    directory: 'fr',
+    metaDescription: 'Préparez la sélection d\'un raccord tournant avec les données produit Begapunk, une liste d\'informations techniques, des études de cas, les données qualité et une revue d\'application.',
+    eyebrow: 'Préparation de l\'application',
+    status: 'Utilisez la liste et les ressources actuelles ci-dessous pour préparer une sélection fiable du raccord tournant.',
+    withdrawn: 'Une recommandation fiable commence par le fluide réel, la pression, la vitesse, le nombre de circuits, l\'espace de montage, l\'environnement et le cycle de fonctionnement. Comparez ces données à la page produit actuelle et au plan propre au modèle.',
+    reviewHeading: 'Informations à préparer',
+    reviewItems: [
+      'Fluide de service, pression, vitesse, température et cycle de fonctionnement',
+      'Nombre de circuits, fonction des orifices et débit requis',
+      'Espace de montage, interfaces de raccordement, cheminement des flexibles et environnement',
+    ],
+    resourcesHeading: 'Ressources de sélection actuelles',
+    resources: [
+      ['products.html', 'Catalogue produits', 'Consultez les pages modèles actuelles et les caractéristiques publiées.'],
+      ['case-studies.html', 'Études de cas', 'Consultez des installations sur des machines réelles et les détails pratiques d\'intégration.'],
+      ['manufacturing-quality.html', 'Fabrication et qualité', 'Découvrez comment les composants sont fabriqués et contrôlés.'],
+      ['production-inspection-testing.html', 'Essai d\'étanchéité à 100 %', 'Consultez le processus actuel de contrôle en production, circuit par circuit.'],
+      ['contact.html', 'Contact', 'Envoyez le fluide, la pression, la vitesse, le nombre de circuits, le montage et le cycle de fonctionnement réels pour une revue propre à l\'application.'],
+    ],
+    helpHeading: 'Demandez une revue technique de votre application',
+    helpText: 'Envoyez les conditions de fonctionnement et le plan. Nous comparerons les modèles standard actuels et identifierons toute exigence d\'interface sur mesure ou de documentation.',
+    contactCta: 'Contacter l\'équipe technique',
+    closingNote: 'Utilisez ces informations pour comparer les modèles actuels et demander une revue technique propre à votre application.',
+    bottleCappingCase: {
+      label: 'Application en production chez un client',
+      heading: 'BP-2P-16-0001 dans une tête de bouchage',
+      intro: 'Cette photographie dont le client a autorisé la publication montre le BP-2P-16-0001 installé sur sa machine de bouchage en production. Deux circuits indépendants acheminent l\'air comprimé pour serrer et desserrer une pince pneumatique concentrique à trois mors. La pince maintient et fait tourner le bouchon pendant l\'opération de bouchage.',
+      imageAlt: 'BP-2P-16-0001 acheminant l\'air comprimé par deux circuits pour serrer et desserrer une pince pneumatique à trois mors sur une machine de bouchage en production chez un client',
+      imageCaption: 'Photographie de production publiée avec l\'autorisation du client ; l\'identité du client et la marque de la machine ne sont pas divulguées.',
+      productLinkLabel: 'Voir les détails du BP-2P-16-0001',
+      factsHeading: 'Détails de l\'application',
+      facts: [
+        ['Équipement', 'Machine de bouchage de bouteilles en production chez un client'],
+        ['Raccord tournant', 'BP-2P-16-0001', 'BP-2P-16-0001.html'],
+        ['Fonction pneumatique', 'Deux circuits indépendants acheminent l\'air comprimé pour serrer et desserrer la pince'],
+        ['Opération', 'La pince pneumatique à trois mors maintient et fait tourner le bouchon pendant le bouchage'],
+        ['Confidentialité du client', 'L\'identité du client et la marque de la machine ne sont pas divulguées'],
+      ],
+      boundaryHeading: 'Pour une machine de bouchage comparable',
+      boundary: 'Une référence, une photo ou un plan suffit pour commencer. Si vous les connaissez, indiquez aussi la pression, la vitesse, les cotes de montage et le cycle de fonctionnement afin que nous puissions vérifier la configuration la plus proche.',
+      alternativeHeading: 'Une autre option pour cette application',
+      alternative: 'Le BP-2P-08-0001 constitue une autre option pour une pince pneumatique à trois mors destinée aux bouchons. L\'installation illustrée utilise le BP-2P-16-0001. Avant toute recommandation, nous comparerons le nombre de circuits, l\'interface de montage, la pression, la vitesse et les dimensions.',
+      alternativeCta: 'Voir le BP-2P-08-0001 →',
+      productCta: 'Voir le BP-2P-16-0001',
+      contactCta: 'Discuter d\'une application de bouchage comparable',
     },
   },
   ja: {
@@ -476,9 +527,13 @@ function overridePairs(source, localized) {
     const [localizedTerm, localizedDescription] = localized.bottleCappingCase.facts[index];
     pairs.push([term, localizedTerm], [description, localizedDescription]);
   });
-  for (const route of DETAILED_SOFT_ISOLATION_ROUTES) {
+  const localizedTopics = SOFT_ISOLATION_TOPIC_CONTENT[localized.directory || 'en'];
+  // Detailed soft-isolation routes are retired (`routes` is empty). Their legacy
+  // override corpus is synchronized only where an explicit locale corpus exists;
+  // active locales without one continue to use their curated page translations.
+  for (const route of localizedTopics ? DETAILED_SOFT_ISOLATION_ROUTES : []) {
     const sourceTopic = SOFT_ISOLATION_TOPIC_CONTENT.en[route];
-    const localizedTopic = SOFT_ISOLATION_TOPIC_CONTENT[localized.directory || 'en'][route];
+    const localizedTopic = localizedTopics[route];
     pairs.push(
       [sourceTopic.metaDescription, localizedTopic.metaDescription],
       [sourceTopic.heroText, localizedTopic.heroText],
@@ -508,9 +563,13 @@ function overridePairs(source, localized) {
   return pairs;
 }
 
-for (const localeCode of Object.keys(locales)) {
+for (const localeCode of languageCodes) {
+  if (!locales[localeCode]) throw new Error(`${localeCode}: core soft-isolation copy is missing.`);
   const topics = SOFT_ISOLATION_TOPIC_CONTENT[localeCode];
-  if (!topics) throw new Error(`${localeCode}: route-specific topic content is missing.`);
+  if (!topics) {
+    if (routes.length) throw new Error(`${localeCode}: route-specific topic content is missing.`);
+    continue;
+  }
   const topicRoutes = Object.keys(topics).sort();
   const expectedRoutes = [...DETAILED_SOFT_ISOLATION_ROUTES].sort();
   if (JSON.stringify(topicRoutes) !== JSON.stringify(expectedRoutes)) {
@@ -531,7 +590,8 @@ const pending = [];
 const plannedWrites = new Map();
 const pendingDetails = new Map();
 
-for (const [localeCode, strings] of Object.entries(locales)) {
+for (const localeCode of languageCodes) {
+  const strings = locales[localeCode];
   for (const route of routes) {
     const relativePath = strings.directory ? path.join(strings.directory, route) : route;
     const filePath = path.join(root, relativePath);
@@ -544,8 +604,9 @@ for (const [localeCode, strings] of Object.entries(locales)) {
   }
 }
 
-for (const localeCode of ['de', 'ja', 'ru']) {
+for (const localeCode of targetLanguageCodes) {
   const strings = locales[localeCode];
+  if (!strings) throw new Error(`${localeCode}: core soft-isolation copy is missing.`);
   const overridesPath = path.join(root, 'i18n', 'overrides', `${localeCode}.json`);
   const overridesText = fs.readFileSync(overridesPath, 'utf8');
   const overrides = JSON.parse(overridesText);
@@ -581,7 +642,8 @@ for (const localeCode of ['de', 'ja', 'ru']) {
   const seo = JSON.parse(seoText);
   for (const route of routes) {
     if (!seo[route]?.title || !seo[route]?.h1) throw new Error(`${localeCode}/${route}: curated SEO title or H1 is missing.`);
-    seo[route].description = SOFT_ISOLATION_TOPIC_CONTENT[localeCode]?.[route]?.metaDescription || strings.metaDescription;
+    const topicDescription = SOFT_ISOLATION_TOPIC_CONTENT[localeCode]?.[route]?.metaDescription;
+    if (topicDescription) seo[route].description = topicDescription;
   }
   const desiredSeo = serializeJson(seo, seoText);
   if (desiredSeo !== seoText) {

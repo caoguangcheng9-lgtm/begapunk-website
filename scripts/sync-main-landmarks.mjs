@@ -3,7 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const sourceDirectories = ['', 'de', 'ja', 'ru'];
+const config = JSON.parse(await readFile(path.join(repoRoot, 'i18n', 'config.json'), 'utf8'));
+const sourceDirectories = ['', ...(config.activeLanguageCodes || [])];
 const mode = process.argv.includes('--write') ? 'write' : process.argv.includes('--check') ? 'check' : null;
 
 if (!mode) {

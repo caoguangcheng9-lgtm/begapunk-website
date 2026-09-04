@@ -14,6 +14,11 @@ import {
   drawingBackedUiContract,
   drawingBackedPublicStep,
 } from './lib/drawing-backed-product-facts.mjs';
+import {
+  parseSitemapLastmodState,
+  renderInternationalSitemaps,
+  SITEMAP_LASTMOD_STATE,
+} from './lib/sitemap-i18n.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
@@ -38,11 +43,13 @@ const languageSwitcherLabels = {
   en: 'Language',
   de: 'Sprache',
   es: 'Idioma',
+  fr: 'Langue',
   it: 'Lingua',
   ja: '言語',
   pl: 'Język',
   ru: 'Язык',
 };
+const languageChangeHandler = 'if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value';
 const localizedBlogSharePages = new Set([
   'blog-rotary-joint-installation-mistakes.html',
   'blog-rotary-joint-selection.html',
@@ -55,6 +62,13 @@ const localizedBlogShareLabels = Object.freeze({
     x: 'Auf X teilen',
     facebook: 'Auf Facebook teilen',
     whatsapp: 'Über WhatsApp teilen',
+  }),
+  fr: Object.freeze({
+    group: 'Partager :',
+    linkedin: 'Partager sur LinkedIn',
+    x: 'Partager sur X',
+    facebook: 'Partager sur Facebook',
+    whatsapp: 'Partager sur WhatsApp',
   }),
   ja: Object.freeze({
     group: 'シェア：',
@@ -69,6 +83,27 @@ const localizedBlogShareLabels = Object.freeze({
     x: 'Поделиться в X',
     facebook: 'Поделиться в Facebook',
     whatsapp: 'Поделиться в WhatsApp',
+  }),
+});
+const governedGeneratedCopy = Object.freeze({
+  fr: Object.freeze({
+    'index.html': Object.freeze({
+      'Pneumatic Rotary Unions | Standard & Custom': 'Raccords tournants pneumatiques | Standard et sur mesure',
+      'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.': 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de fabrication : environ 20 jours calendaires pour les modèles du catalogue ; dans les 30 jours calendaires pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
+      'Find by Application': 'Choisir par application',
+      'Model Comparison': 'Comparer les modèles',
+      '1-8 passages': '1 à 8 circuits',
+      'Compressed air (catalog)': 'Air comprimé (catalogue)',
+      'Threaded / flange': 'Filetage / bride',
+      'Laser tube rear chuck': 'Mandrin arrière pour découpe laser de tubes',
+      'Compressed-air transfer; verify circuits and interfaces': 'Transfert d’air comprimé ; vérifier les circuits et les interfaces',
+      'Packaging Lines': 'Lignes d’emballage',
+      'Rotary sealers and mandrels': 'Scelleuses rotatives et mandrins',
+      'Bottle Filling': 'Remplissage de bouteilles',
+      'Air distribution on rotary turrets': 'Distribution d’air sur tourelles rotatives',
+      'Rotary Tables': 'Tables rotatives',
+      'Pneumatic fixtures and tooling': 'Montages et outillages pneumatiques',
+    }),
   }),
 });
 const configuredPages = new Set(config.pages);
@@ -90,6 +125,44 @@ if (groupedPages.size !== configuredPages.size
 const glossary = JSON.parse(await fs.readFile(path.join(i18nRoot, 'glossary.json'), 'utf8'));
 const activeLanguageCodes = new Set(config.activeLanguageCodes || config.languages.map((language) => language.code));
 const activeLanguages = config.languages.filter((language) => activeLanguageCodes.has(language.code));
+const partialLanguagePages = new Map(
+  Object.entries(config.partialLanguagePages || {}).map(([languageCode, pages]) => [
+    languageCode,
+    new Set(pages),
+  ]),
+);
+const partialLanguages = config.languages.filter((language) => partialLanguagePages.has(language.code));
+const partialLanguageAssets = new Map(
+  Object.entries(config.partialLanguageAssets || {}).map(([languageCode, assets]) => [languageCode, assets]),
+);
+for (const [languageCode, pages] of partialLanguagePages) {
+  if (!config.languages.some((language) => language.code === languageCode)) {
+    throw new Error(`partialLanguagePages references unknown language: ${languageCode}`);
+  }
+  if (activeLanguageCodes.has(languageCode)) {
+    throw new Error(`partialLanguagePages must not duplicate an active full-site language: ${languageCode}`);
+  }
+  for (const pageName of pages) {
+    if (!configuredPages.has(pageName)) {
+      throw new Error(`partialLanguagePages.${languageCode} references unknown page: ${pageName}`);
+    }
+  }
+}
+for (const [languageCode, assets] of partialLanguageAssets) {
+  if (!partialLanguagePages.has(languageCode)) {
+    throw new Error(`partialLanguageAssets references a language without partial pages: ${languageCode}`);
+  }
+  if (!Array.isArray(assets)) throw new Error(`partialLanguageAssets.${languageCode} must be an array.`);
+  for (const asset of assets) {
+    if (typeof asset !== 'string'
+      || asset === ''
+      || path.isAbsolute(asset)
+      || asset.split(/[\\/]/).includes('..')
+      || asset.toLowerCase().endsWith('.html')) {
+      throw new Error(`partialLanguageAssets.${languageCode} contains an unsafe asset path: ${asset}`);
+    }
+  }
+}
 const mode = process.argv[process.argv.indexOf('--mode') + 1] || 'extract';
 const catalogPath = path.join(i18nRoot, 'source-catalog.json');
 const contactRfqCopyPath = path.join(i18nRoot, 'manual', 'contact-rfq-copy.json');
@@ -293,6 +366,23 @@ function applyContactRfqCopy($, languageCode, pageName) {
   contactRfqBlock($, `${languageCode}/${pageName}`).text(serializeContactRfqCopy(copy));
 }
 
+const frenchContactServiceBoundary = 'Cette page est en français. Les échanges techniques et commerciaux qui suivent sont actuellement traités en anglais ; vous pouvez néanmoins envoyer votre besoin en français pour examen.';
+
+function applyFrenchContactServiceBoundary($, languageCode, pageName) {
+  if (languageCode !== 'fr' || pageName !== 'contact.html') return;
+  $('.bp-rfq-service-language-boundary').remove();
+  const heroActions = $('.bp-rfq-hero-actions').first();
+  if (heroActions.length !== 1) {
+    throw new Error('fr/contact.html: hero action anchor is missing for the service-language boundary.');
+  }
+  heroActions.before(
+    $('<p></p>')
+      .addClass('bp-rfq-channel-note bp-rfq-service-language-boundary')
+      .attr('role', 'note')
+      .text(frenchContactServiceBoundary),
+  );
+}
+
 function assertContactRfqManualContract() {
   if (contactRfqContract.schemaVersion !== 1) {
     throw new Error('Contact RFQ manual contract schemaVersion must be 1.');
@@ -324,8 +414,8 @@ function assertContactRfqManualContract() {
 assertContactRfqManualContract();
 
 function assertProductDetailUiManualContract() {
-  if (productDetailUiContract.schemaVersion !== 5) {
-    throw new Error('Product-detail UI manual contract schemaVersion must be 5.');
+  if (productDetailUiContract.schemaVersion !== 6) {
+    throw new Error('Product-detail UI manual contract schemaVersion must be 6.');
   }
   if (productDetailUiContract.review?.method !== 'AI-assisted target-market line-by-line localization review') {
     throw new Error('Product-detail UI manual contract review method is missing or unsupported.');
@@ -349,6 +439,7 @@ function assertProductDetailUiManualContract() {
     'secondaryActionLabel',
     'shareMenuLabel',
     'skipLink',
+    'drawingDownloadLabel',
     'stepDownloadLabel',
   ];
   const nestedKeys = ['jumpLinks', 'keySpecLabels', 'keySpecPropertyNames', 'keySpecValueOverrides'];
@@ -372,8 +463,10 @@ function assertProductDetailUiManualContract() {
       || !sameKeys(Object.keys(copy.keySpecLabels || {}), keySpecKeys)
       || !sameKeys(Object.keys(copy.keySpecPropertyNames || {}), ['media', 'mount'])
       || !Object.entries(copy.keySpecValueOverrides || {}).every(([model, kv]) => {
-        const allowed = model === 'BP-2P-50-0001' ? ['media'] : ['price', 'moq', 'warranty', 'delivery', 'passages', 'quality'];
-        return Object.keys(kv || {}).every((key) => allowed.includes(key));
+        const configured = productDetailUiContract.modelKeySpecKeys?.[model];
+        if (!Array.isArray(configured) || !kv || typeof kv !== 'object' || Array.isArray(kv)) return false;
+        const allowed = new Set(expectedProductKeySpecKeys(languageCode, model));
+        return Object.keys(kv).every((key) => allowed.has(key));
       })) {
       throw new Error(`${languageCode}: product-detail UI nested copy keys do not match the approved contract.`);
     }
@@ -420,7 +513,7 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
     [PRODUCT_UI_SKIP_SELECTOR, 'skip link', (node) => node.text(copy.skipLink)],
     [PRODUCT_UI_IMAGES_SELECTOR, 'product images region', (node) => node.attr('aria-label', copy.productImagesLabel)],
     [PRODUCT_UI_INFO_SELECTOR, 'product information region', (node) => node.attr('aria-label', copy.productInformationLabel)],
-    ['.pd-info > .pd-sku', 'product model label', (node) => node.text(`${copy.modelLabel}: ${model}`)],
+    ['.pd-info > .pd-sku', 'product model label', (node) => node.text(`${copy.modelLabel}${languageCode === 'fr' ? ' :' : ':'} ${model}`)],
     [PRODUCT_UI_SHARE_SELECTOR, 'share menu trigger', (node) => node.text(copy.shareMenuLabel)],
   ];
   for (const [selector, label, apply] of scopes) {
@@ -459,6 +552,23 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
     node.text(copy.jumpLinks[key]);
   });
 
+  const tabLinks = $('.pd-tabs > a.pd-tab');
+  const tabTargets = {
+    '#panel-specs': 'specs',
+    '#panel-compat': 'compat',
+    '#panel-install': 'install',
+    '#panel-downloads': 'downloads',
+  };
+  if (tabLinks.length !== Object.keys(tabTargets).length) {
+    throw new Error(`${languageCode}/${pageName}: expected four product-detail tabs; found ${tabLinks.length}.`);
+  }
+  tabLinks.each((_, element) => {
+    const node = $(element);
+    const key = tabTargets[node.attr('href')];
+    if (!key) throw new Error(`${languageCode}/${pageName}: unexpected product-detail tab target ${node.attr('href')}.`);
+    node.text(copy.jumpLinks[key]);
+  });
+
   const shareMenu = $(PRODUCT_UI_SHARE_MENU_SELECTOR);
   if (shareMenu.length !== 1) {
     throw new Error(`${languageCode}/${pageName}: expected one first-view share menu; found ${shareMenu.length}.`);
@@ -492,27 +602,32 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
     }
     term.text(copy.keySpecLabels[key]);
     if (key === 'leadTime') description.text(copy.leadTimeValue);
-    const overrideKeys = ['media', 'passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
-    if (overrideKeys.includes(key)) {
-      const override = copy.keySpecValueOverrides?.[model]?.[key];
-      if (override) {
-        const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-        const parts = String(override).split('\n');
-        const markup = parts.length <= 1
-          ? esc(override)
-          : parts.map((part, index) => {
-              const span = `<span style="display:block">${esc(part)}</span>`;
-              return index === parts.length - 1
-                ? span
-                : `${span}<span style="display:block;border-top:1px solid #e7e9ed;margin:7px 0;"></span> `;
-            }).join('');
-        description.html(markup);
-      }
+    const override = copy.keySpecValueOverrides?.[model]?.[key];
+    if (override !== undefined) {
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const parts = String(override).split('\n');
+      const markup = parts.length <= 1
+        ? esc(override)
+        : parts.map((part, index) => {
+            const span = `<span style="display:block">${esc(part)}</span>`;
+            return index === parts.length - 1
+              ? span
+              : `${span}<span style="display:block;border-top:1px solid #e7e9ed;margin:7px 0;"></span> `;
+          }).join('');
+      description.html(markup);
     }
   });
 
   const actions = $('.pd-info > .pd-actions > a.btn');
   const hasPublicStep = drawingBackedPublicStep(languageCode, model);
+  const drawingLink = $('.pd-info > .pd-utility-links > a.pd-utility-link').filter((_, element) => {
+    const href = $(element).attr('href') || '';
+    return /\.pdf(?:$|[?#])/i.test(href) || href.includes('request=verified-drawing');
+  });
+  if (drawingLink.length !== 1) {
+    throw new Error(`${languageCode}/${pageName}: expected one drawing utility; found ${drawingLink.length}.`);
+  }
+  drawingLink.text(copy.drawingDownloadLabel);
   if (hasPublicStep) {
     const stepLink = $('.pd-info > .pd-utility-links > a.pd-utility-link[href*=".step"]');
     if (stepLink.length !== 1) {
@@ -691,15 +806,21 @@ function pageUrl(languageCode, pageName) {
   return `${config.siteUrl}/${languageCode}/${suffix}`;
 }
 
+function languagesForPage(pageName) {
+  const partials = partialLanguages.filter((language) => partialLanguagePages.get(language.code)?.has(pageName));
+  return [config.sourceLanguage, ...activeLanguages, ...partials];
+}
+
 function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
+  const isHomepage = pageName === 'index.html';
   if (currentLanguageCode === config.sourceLanguage.code) {
     return targetLanguageCode === config.sourceLanguage.code
-      ? pageName
-      : `${targetLanguageCode}/${pageName}`;
+      ? (isHomepage ? './' : pageName)
+      : (isHomepage ? `${targetLanguageCode}/` : `${targetLanguageCode}/${pageName}`);
   }
-  if (targetLanguageCode === config.sourceLanguage.code) return `../${pageName}`;
-  if (targetLanguageCode === currentLanguageCode) return pageName;
-  return `../${targetLanguageCode}/${pageName}`;
+  if (targetLanguageCode === config.sourceLanguage.code) return isHomepage ? '../' : `../${pageName}`;
+  if (targetLanguageCode === currentLanguageCode) return isHomepage ? './' : pageName;
+  return isHomepage ? `../${targetLanguageCode}/` : `../${targetLanguageCode}/${pageName}`;
 }
 
 function shouldTranslate(value) {
@@ -1043,6 +1164,49 @@ function decodeEntities(value) {
     .replaceAll('&gt;', '>')
     .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
     .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)));
+}
+
+function normalizeFrenchOutput(html) {
+  return html
+    .replaceAll('rotary-union-clearance-seal-explainer-en.', 'rotary-union-clearance-seal-explainer-fr.')
+    .replaceAll('../images/optimized/Working-principle-of-rotary-joint.webp', '../images/optimized/products/BP-2P-08-0001-1.webp')
+    .replaceAll('https://www.begapunk.com/images/Working-principle-of-rotary-joint.png', 'https://www.begapunk.com/images/optimized/products/BP-2P-08-0001-1.webp')
+    .replaceAll('../images/optimized/Rotary-joint-structure-diagram.webp', '../images/manufacturing-quality/anodizing/rotor-stator-anodizing-close-up.webp')
+    .replaceAll('https://www.begapunk.com/images/Rotary-joint-structure-diagram.png', 'https://www.begapunk.com/images/manufacturing-quality/anodizing/rotor-stator-anodizing-close-up.jpg')
+    .replaceAll('Coupe d’un raccord tournant montrant les passages internes et la structure d’étanchéité', 'Raccord tournant pneumatique à plusieurs passages utilisé pour illustrer la sélection d’un modèle')
+    .replaceAll('Schéma d’un raccord tournant comparant un joint torique, un joint à lèvre et un joint en PTFE à ressort', 'Gros plan d’un raccord tournant pneumatique avec corps de stator anodisé et rotor anodisé dur')
+    .replaceAll('bague Glyd Ring', 'bague Glyd')
+    .replaceAll('Glyd Ring', 'bague Glyd')
+    .replaceAll('joint Glyd en fibre de carbone', 'bague Glyd en PTFE renforcé de fibres de carbone')
+    .replaceAll('un bague Glyd', 'une bague Glyd')
+    .replaceAll('joints bague Glyd', 'bagues Glyd')
+    .replaceAll('MOQ : 1 pièce', 'quantité minimale : 1 pièce')
+    .replaceAll('MOQ : 1 pièce', 'quantité minimale : 1 pièce')
+    .replaceAll('MOQ 1 pièce', 'Quantité minimale : 1 pièce')
+    .replaceAll('<h3>MOQ 1, dans les 30 jours</h3>', '<h3>Quantité minimale : 1 pièce, fabrication sous 30 jours</h3>')
+    .replaceAll('. quantité minimale', '. Quantité minimale')
+    .replaceAll('4350 psi', '4 350 psi')
+    .replaceAll('<strong>51.7</strong>', '<strong>51,7</strong>')
+    .replaceAll('joint de secours en élastomère', 'joint secondaire en élastomère')
+    .replaceAll("Jusqu'à 12 circuits sur mesure", 'Jusqu’à 12 circuits sur mesure')
+    .replaceAll('Modèles connexes:', 'Modèles connexes :')
+    .replaceAll('<strong>Important:</strong>', '<strong>Important :</strong>')
+    .replaceAll('Maintien dans cette filière d’étude ou nécessité d’une vérification de compatibilité différente', 'Confirmation que la demande relève de cette offre, ou nécessité d’une étude de compatibilité distincte')
+    .replaceAll('presses, laminateurs, bobineuses textiles', 'presses, machines de laminage, bobineuses textiles')
+    .replaceAll('width="1440" height="960"', 'width="1536" height="1024"')
+    .replaceAll('</svg> Copied', '</svg> Lien copié')
+    .replaceAll(
+      'Current status: Optional measurement allowed — analytics and advertising-effectiveness measurement are active; personalized advertising remains off.',
+      'État actuel : mesure facultative autorisée — les mesures d’audience et d’efficacité publicitaire sont actives ; la personnalisation des annonces reste désactivée.',
+    )
+    .replaceAll(
+      'Current status: Optional measurement declined — only essential functions are active.',
+      'État actuel : mesure facultative refusée — seules les fonctions essentielles sont actives.',
+    )
+    .replaceAll(
+      'Current status: No decision yet — choose your preference in the cookie banner.',
+      'État actuel : aucune décision — choisissez votre préférence dans la bannière relative aux cookies.',
+    );
 }
 
 function normalizeJapaneseOutput(html) {
@@ -1683,6 +1847,10 @@ function localizeRelativeReference(value, pilotPages) {
   const suffix = match?.[2] || '';
   if (!pathname) return value;
   const normalized = pathname.replace(/^\.\//, '');
+  // `./` is the homepage of the current language directory. Treating its
+  // normalized empty path as a root asset incorrectly rewrites localized
+  // header-logo links to `../` (the English homepage).
+  if (!normalized) return `./${suffix}`;
   if (normalized.startsWith('../')) {
     const rootRelative = normalized.slice(3);
     if (rootRelative.startsWith('../')) {
@@ -1738,6 +1906,9 @@ function applySeoMetadata($, languageCode, pageName) {
   $('h1').first().text(seo.h1);
   setMeta('meta[property="og:title"]', { property: 'og:title' }, seo.title);
   setMeta('meta[property="og:description"]', { property: 'og:description' }, seo.description);
+  // Keep an existing site-name field language-neutral and consistent. Pages
+  // without this optional field retain their source structure.
+  $('meta[property="og:site_name"]').attr('content', canonicalBrandName);
   setMeta('meta[name="twitter:title"]', { name: 'twitter:title' }, seo.title);
   setMeta('meta[name="twitter:description"]', { name: 'twitter:description' }, seo.description);
   // Google ignores meta keywords. Removing the inherited English keyword list
@@ -1782,6 +1953,45 @@ function applyLocalizedBlogShareCopy($, languageCode, pageName) {
   buttons.whatsapp
     .attr('href', `https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareTitle} - ${localizedUrl}`)}`)
     .attr('aria-label', labels.whatsapp);
+}
+
+function applyGovernedGeneratedDomCopy($, languageCode, pageName) {
+  if (languageCode !== 'fr' || pageName !== 'index.html') return;
+  const copy = governedGeneratedCopy.fr['index.html'];
+  const requireOne = (selector, label) => {
+    const elements = $(selector);
+    if (elements.length !== 1) {
+      throw new Error(`fr/index.html: expected one ${label}; found ${elements.length}.`);
+    }
+    return elements.first();
+  };
+
+  const badge = requireOne('.hero-badge', 'hero badge');
+  badge.contents().filter((_, node) => node.type === 'text').remove();
+  badge.append(` ${copy['Pneumatic Rotary Unions | Standard & Custom']}`);
+  requireOne('.hero-def', 'hero description').text(copy['Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.']);
+  requireOne('#home-application-title', 'application section title').text(copy['Find by Application']);
+  requireOne('.portal-heading > a[href="product-comparison.html"]', 'model-comparison label').text(copy['Model Comparison']);
+  requireOne('.hero-spec-tag.tag-passages', 'passage tag').text(copy['1-8 passages']);
+  requireOne('.hero-spec-tag.tag-media', 'media tag').text(copy['Compressed air (catalog)']);
+  requireOne('.hero-spec-tag.tag-mounting', 'mounting tag').text(copy['Threaded / flange']);
+
+  const applicationCards = [
+    ['application-laser-tube-cutting.html', 'Laser tube rear chuck', 'Compressed-air transfer; verify circuits and interfaces'],
+    ['application-packaging-machinery.html', 'Packaging Lines', 'Rotary sealers and mandrels'],
+    ['application-bottle-filling-capping.html', 'Bottle Filling', 'Air distribution on rotary turrets'],
+    ['application-automation-rotary-tables.html', 'Rotary Tables', 'Pneumatic fixtures and tooling'],
+  ];
+  for (const [href, titleSource, detailSource] of applicationCards) {
+    const card = requireOne(`.home-application-card[href="${href}"]`, `application card ${href}`);
+    const title = card.find('.home-application-copy > strong');
+    const detail = card.find('.home-application-copy > small');
+    if (title.length !== 1 || detail.length !== 1) {
+      throw new Error(`fr/index.html: application card ${href} has an unexpected copy structure.`);
+    }
+    title.text(copy[titleSource]);
+    detail.text(copy[detailSource]);
+  }
 }
 
 function applyDrawingBackedProductMetadata($, languageCode, pageName) {
@@ -1851,18 +2061,27 @@ function applyDrawingBackedProductMetadata($, languageCode, pageName) {
         if (ui?.structuredDescription) value.description = ui.structuredDescription;
         if (ui?.productName) value.name = ui.productName;
         if (drawingBackedPublicStep(languageCode, model)) {
+          const cadCopy = structuredProductSchemaCopy[languageCode];
+          if (!cadCopy) throw new Error(`${pageLabel}: structured CAD copy is missing.`);
           if (!Array.isArray(value.additionalProperty)) value.additionalProperty = [];
-          const hasCad = value.additionalProperty.some((item) => item && item.name === '3D CAD model');
-          if (!hasCad) {
+          const cadPropertyNames = new Set([
+            '3D CAD model',
+            ...Object.values(structuredProductSchemaCopy).map((entry) => entry.cadPropertyName),
+          ]);
+          const cadProperty = value.additionalProperty.find((item) => item && cadPropertyNames.has(item.name));
+          if (!cadProperty) {
             value.additionalProperty.push({
               '@type': 'PropertyValue',
-              name: '3D CAD model',
-              value: 'STEP AP214 download available for fit check (simplified body)',
+              name: cadCopy.cadPropertyName,
+              value: cadCopy.cadPropertyValue,
             });
+          } else {
+            cadProperty.name = cadCopy.cadPropertyName;
+            cadProperty.value = cadCopy.cadPropertyValue;
           }
           value.associatedMedia = {
             '@type': 'MediaObject',
-            name: `${model} STEP AP214 (simplified, fit check)`,
+            name: cadCopy.cadMediaName(model),
             contentUrl: `https://www.begapunk.com/downloads/${model}.step`,
             encodingFormat: 'application/step',
           };
@@ -1884,18 +2103,146 @@ const schemaLocaleByLanguage = {
     factoryName: 'Begapunk Fertigung',
     slogan: 'Spezialist für pneumatische Drehdurchführungen',
     knowsAbout: ['Pneumatische Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrielle Automatisierung', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
+    localBusinessDescription: 'Hersteller pneumatischer Drehdurchführungen mit Sitz in Ningbo, China.',
+    localBusinessKnowsAbout: ['Luft-Drehdurchführungen', 'Pneumatische Drehdurchführungen', 'Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrieautomation', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
+  },
+  fr: {
+    founderJobTitle: 'Fondateur et ingénieur',
+    factoryName: 'Site de production Begapunk',
+    slogan: 'Spécialiste des raccords tournants pneumatiques',
+    knowsAbout: ['Raccords tournants pneumatiques', 'Raccords tournants multicanaux', 'Raccords tournants sur mesure', 'Automatisation industrielle', 'Machines CNC', 'Machines de découpe laser', 'Machines d\'emballage'],
+    localBusinessDescription: 'Fabricant de raccords tournants pneumatiques basé à Ningbo, en Chine.',
+    localBusinessKnowsAbout: ['Raccords tournants pour air comprimé', 'Raccords tournants pneumatiques', 'Raccords tournants', 'Raccords tournants multicanaux', 'Automatisation industrielle', 'Machines CNC', 'Machines de découpe laser', 'Machines d\'emballage'],
   },
   ja: {
     founderJobTitle: '創業者・エンジニア',
     factoryName: 'Begapunk 生産拠点',
     slogan: '空圧用ロータリージョイント専門メーカー',
     knowsAbout: ['空圧用ロータリージョイント', '多流路・多ポートロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
+    localBusinessDescription: '中国・寧波に拠点を置く空圧用ロータリージョイントメーカー。',
+    localBusinessKnowsAbout: ['エアロータリーユニオン', '空圧用ロータリージョイント', 'ロータリージョイント', '多流路ロータリージョイント', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
   },
   ru: {
     founderJobTitle: 'Основатель и инженер',
     factoryName: 'Производство Begapunk',
     slogan: 'Специалист по пневматическим вращающимся соединениям',
     knowsAbout: ['Пневматические вращающиеся соединения', 'Пневматические ротационные соединения', 'Многоканальные вращающиеся коллекторы', 'Специальные вращающиеся соединения', 'Промышленная автоматизация', 'Станки с ЧПУ', 'Лазерные станки', 'Упаковочное оборудование'],
+    localBusinessDescription: 'Производитель пневматических вращающихся соединений, расположенный в Нинбо, Китай.',
+    localBusinessKnowsAbout: ['Воздушные вращающиеся соединения', 'Пневматические вращающиеся соединения', 'Вращающиеся соединения', 'Многоканальные вращающиеся соединения', 'Промышленная автоматизация', 'Станки с ЧПУ', 'Лазерные станки', 'Упаковочное оборудование'],
+  },
+};
+
+const structuredProductSchemaCopy = {
+  de: {
+    category: 'Pneumatische Drehdurchführung',
+    cadPropertyName: '3D-CAD-Modell',
+    cadPropertyValue: 'STEP-AP214-Datei zur Einbauprüfung verfügbar (vereinfachter Körper)',
+    cadMediaName: (model) => `${model} – STEP AP214 (vereinfacht, zur Einbauprüfung)`,
+    itemListName: 'Begapunk Katalog für pneumatische Drehdurchführungen',
+    pieceUnit: 'Stück',
+    offerDescription: (price, minimum) => `Ab ${minimum} Stück: ${price} USD/Stück. 1–${minimum - 1} Stück: Preis auf Anfrage. Einzelbestellungen werden angenommen.`,
+  },
+  fr: {
+    category: 'Raccord tournant pneumatique',
+    cadPropertyName: 'Modèle CAO 3D',
+    cadPropertyValue: 'Fichier STEP AP214 disponible pour le contrôle d’intégration (corps simplifié)',
+    cadMediaName: (model) => `${model} — STEP AP214 (corps simplifié, contrôle d’intégration)`,
+    itemListName: 'Catalogue Begapunk de raccords tournants pneumatiques',
+    pieceUnit: 'pièces',
+    offerDescription: (price, minimum) => `À partir de ${minimum} pièces : ${price} USD/pièce. De 1 à ${minimum - 1} pièces : prix sur demande. Commande à l’unité acceptée.`,
+  },
+  ja: {
+    category: '空圧用ロータリージョイント',
+    cadPropertyName: '3D CADモデル',
+    cadPropertyValue: '取付確認用STEP AP214ファイルをダウンロード可能（簡略化ボディ）',
+    cadMediaName: (model) => `${model} STEP AP214（簡略化ボディ、取付確認用）`,
+    itemListName: 'Begapunk 空圧用ロータリージョイント製品一覧',
+    pieceUnit: '個',
+    offerDescription: (price, minimum) => `${minimum}個以上：1個あたり${price} USD。1～${minimum - 1}個：要見積。1個からご注文いただけます。`,
+  },
+  ru: {
+    category: 'Пневматическое вращающееся соединение',
+    cadPropertyName: '3D-модель CAD',
+    cadPropertyValue: 'Файл STEP AP214 доступен для проверки компоновки (упрощённый корпус)',
+    cadMediaName: (model) => `${model} — STEP AP214 (упрощённый корпус, для проверки компоновки)`,
+    itemListName: 'Каталог пневматических вращающихся соединений Begapunk',
+    pieceUnit: 'шт.',
+    offerDescription: (price, minimum) => `От ${minimum} шт.: ${price} USD/шт. От 1 до ${minimum - 1} шт.: цена по запросу. Принимаются заказы от одной штуки.`,
+  },
+};
+
+const structuredSemanticTranslations = {
+  de: {
+    'cnc pneumatic clamping': 'Pneumatische CNC-Spanntechnik',
+    'rotary table': 'Rundtisch',
+    'air rotary union': 'Luft-Drehdurchführung',
+    'pneumatic rotary joint': 'Pneumatische Drehdurchführung',
+    'pneumatic rotary union': 'Pneumatische Drehdurchführung',
+    'electronics & battery test': 'Elektronik- und Batterieprüfung',
+    'industrial automation': 'Industrieautomation',
+    'laser tube cutting machine rear chuck': 'Hinteres Spannfutter einer Laser-Rohrschneidmaschine',
+    'compressed-air circuit': 'Druckluftkreis',
+    'rotary union for dusty environments': 'Drehdurchführung für staubige Umgebungen',
+    'steel equipment': 'Stahlverarbeitungsanlagen',
+    'rotary union for printing machinery': 'Drehdurchführung für Druckmaschinen',
+    'printing machine rotary union': 'Drehdurchführung für Druckmaschinen',
+    'textile and converting equipment': 'Textil- und Verarbeitungsmaschinen',
+    'vacuum packaging': 'Vakuumverpackung',
+    'welding positioners': 'Schweißpositionierer',
+  },
+  fr: {
+    'cnc pneumatic clamping': 'Serrage pneumatique CNC',
+    'rotary table': 'Table rotative',
+    'air rotary union': 'Raccord tournant pour air comprimé',
+    'pneumatic rotary joint': 'Raccord tournant pneumatique',
+    'pneumatic rotary union': 'Raccord tournant pneumatique',
+    'electronics & battery test': 'Contrôle de composants électroniques et de batteries',
+    'industrial automation': 'Automatisation industrielle',
+    'laser tube cutting machine rear chuck': 'Mandrin arrière de machine de découpe laser de tubes',
+    'compressed-air circuit': 'Circuit d’air comprimé',
+    'rotary union for dusty environments': 'Raccord tournant pour environnements poussiéreux',
+    'steel equipment': 'Équipements sidérurgiques',
+    'rotary union for printing machinery': 'Raccord tournant pour machine d’impression',
+    'printing machine rotary union': 'Raccord tournant de machine d’impression',
+    'textile and converting equipment': 'Équipements textiles et de transformation',
+    'vacuum packaging': 'Emballage sous vide',
+    'welding positioners': 'Positionneurs de soudage',
+  },
+  ja: {
+    'cnc pneumatic clamping': 'CNC空圧クランプ',
+    'rotary table': '回転テーブル',
+    'air rotary union': 'エアロータリーユニオン',
+    'pneumatic rotary joint': '空圧用ロータリージョイント',
+    'pneumatic rotary union': '空圧用ロータリーユニオン',
+    'electronics & battery test': '電子部品・バッテリー検査',
+    'industrial automation': '産業自動化',
+    'laser tube cutting machine rear chuck': 'レーザー管切断機の後方チャック',
+    'compressed-air circuit': '圧縮空気回路',
+    'rotary union for dusty environments': '粉じん環境用ロータリージョイント',
+    'steel equipment': '鉄鋼設備',
+    'rotary union for printing machinery': '印刷機用ロータリージョイント',
+    'printing machine rotary union': '印刷機用ロータリージョイント',
+    'textile and converting equipment': '繊維・コンバーティング設備',
+    'vacuum packaging': '真空包装',
+    'welding positioners': '溶接ポジショナー',
+  },
+  ru: {
+    'cnc pneumatic clamping': 'Пневматический зажим на станках с ЧПУ',
+    'rotary table': 'Поворотный стол',
+    'air rotary union': 'Воздушное вращающееся соединение',
+    'pneumatic rotary joint': 'Пневматическое вращающееся соединение',
+    'pneumatic rotary union': 'Пневматическое вращающееся соединение',
+    'electronics & battery test': 'Испытания электроники и аккумуляторов',
+    'industrial automation': 'Промышленная автоматизация',
+    'laser tube cutting machine rear chuck': 'Задний патрон станка лазерной резки труб',
+    'compressed-air circuit': 'Контур сжатого воздуха',
+    'rotary union for dusty environments': 'Вращающееся соединение для запылённых условий',
+    'steel equipment': 'Металлургическое оборудование',
+    'rotary union for printing machinery': 'Вращающееся соединение для печатного оборудования',
+    'printing machine rotary union': 'Вращающееся соединение печатной машины',
+    'textile and converting equipment': 'Текстильное и перерабатывающее оборудование',
+    'vacuum packaging': 'Вакуумная упаковка',
+    'welding positioners': 'Сварочные позиционеры',
   },
 };
 
@@ -1904,26 +2251,33 @@ const structuredPropertyNames = {
     'Protection rating': 'Schutzart', 'Pneumatic passages': 'Pneumatische Kanäle',
     'Electrical circuits': 'Elektrische Stromkreise', 'Electrical contact material': 'Kontaktwerkstoff',
     'Insulation resistance': 'Isolationswiderstand', 'Surface treatment': 'Oberflächenbehandlung',
-    'Hollow bore diameter': 'Durchmesser der Durchgangsbohrung',
+    'Hollow bore diameter': 'Durchmesser der Durchgangsbohrung', '3D CAD model': '3D-CAD-Modell',
+  },
+  fr: {
+    'Protection rating': 'Indice de protection', 'Pneumatic passages': 'Circuits pneumatiques',
+    'Electrical circuits': 'Circuits électriques', 'Electrical contact material': 'Matériau des contacts électriques',
+    'Insulation resistance': 'Résistance d\'isolement', 'Surface treatment': 'Traitement de surface',
+    'Hollow bore diameter': 'Diamètre de l\'alésage traversant', '3D CAD model': 'Modèle CAO 3D',
   },
   ja: {
     'Protection rating': '保護等級', 'Pneumatic passages': '空圧流路数',
     'Electrical circuits': '電気回路数', 'Electrical contact material': '電気接点材質',
     'Insulation resistance': '絶縁抵抗', 'Surface treatment': '表面処理',
-    'Hollow bore diameter': '中空穴径',
+    'Hollow bore diameter': '中空穴径', '3D CAD model': '3D CADモデル',
   },
   ru: {
     'Protection rating': 'Степень защиты', 'Pneumatic passages': 'Пневматические каналы',
     'Electrical circuits': 'Электрические цепи', 'Electrical contact material': 'Материал электрических контактов',
     'Insulation resistance': 'Сопротивление изоляции', 'Surface treatment': 'Обработка поверхности',
-    'Hollow bore diameter': 'Диаметр сквозного отверстия',
+    'Hollow bore diameter': 'Диаметр сквозного отверстия', '3D CAD model': '3D-модель CAD',
   },
 };
 
 const structuredWarrantyTerms = {
-  de: { name: 'Garantiezeitraum', value: '1 Jahr' },
-  ja: { name: '保証期間', value: '1年' },
-  ru: { name: 'Гарантийный срок', value: '1 год' },
+  de: { name: 'Garantiezeitraum', value: '1 Jahr ab Versand' },
+  fr: { name: 'Durée de garantie', value: '1 an à compter de l\'expédition' },
+  ja: { name: '保証期間', value: '出荷日から1年' },
+  ru: { name: 'Гарантийный срок', value: '1 год с даты отгрузки' },
 };
 
 const structuredApplicationValues = {
@@ -1944,6 +2298,24 @@ const structuredApplicationValues = {
     'BP-3P-S06-0001.html': 'Automatisierungsdrehtische, Verpackungsmaschinen, CNC-Spanntechnik, Schweißpositionierer und pneumatisch-elektrische Rundtische',
     'BP-4P-30-0001.html': 'Mehrstations-Drehtische, Systeme mit Kabeldurchführung, Vierstations-Spannvorrichtungen, Schweiß- und Verpackungsanlagen',
     'BP-8P-0001.html': 'Hochdichte Mehrkanalsysteme, Achtstations-Spannvorrichtungen, große Rundschalttische, Verpackungs-, Schweiß- und Prüfanlagen',
+  },
+  fr: {
+    'BP-1P-0003.html': 'Outillage pneumatique portatif, petits plateaux tournants, dispositifs anti-torsion de flexible, postes d\'étiquetage et de bouchage',
+    'BP-1P-0006.html': 'Postes d\'assemblage, plateaux tournants, collecteurs pneumatiques, têtes de dosage, positionneurs de soudage et bancs d\'essai',
+    'BP-2P-0001.html': 'Plateaux tournants d\'emballage, positionneurs de soudage, tables d\'indexage à deux positions, postes de remplissage et montages de serrage à deux circuits',
+    'BP-2P-0002.html': 'Axes rotatifs CNC, tables de soudage robotisé, tables d\'indexage pneumatiques, systèmes de vision et automatismes sur mesure',
+    'BP-2P-08-0001.html': 'Petits plateaux tournants pour l\'électronique et postes compacts de dosage, de contrôle, d\'assemblage et d\'emballage',
+    'BP-2P-130-0001.html': 'Tables d\'indexage hydrauliques, systèmes de serrage haute pression, positionneurs de soudage lourds et axes rotatifs CNC',
+    'BP-2P-16-0001.html': 'Tables d\'indexage CNC, positionneurs de soudage, plateaux tournants d\'emballage, montages pneumatiques de serrage et de contrôle',
+    'BP-2P-30-0001.html': 'Plateaux tournants d\'emballage, postes de soudage, montages de serrage pneumatique, systèmes de pulvérisation et plateaux d\'automatisation',
+    'BP-2P-50-0001.html': 'Aciéries, fonderies, lignes d\'emballage poussiéreuses, positionneurs de soudage et tables d\'indexage en environnement sévère',
+    'BP-2P-95-0005.html': 'Serrage pneumatique, montages rotatifs et distribution multiple d\'air, de liquide de coupe et de fluides de faible viscosité',
+    'BP-3P-0004.html': 'Montages de serrage à trois postes, tables d\'indexage et équipements d\'emballage, de soudage, de remplissage et de contrôle',
+    'BP-3P-0006.html': 'Montages de serrage trois circuits de taille moyenne, tables d\'indexage, machines d\'emballage, tables de soudage et équipements de contrôle',
+    'BP-3P-0007.html': 'Montages pneumatiques compacts à trois circuits, petites tables d\'indexage, têtes d\'emballage, positionneurs de soudage et outillage en bout de bras robot',
+    'BP-3P-S06-0001.html': 'Plateaux tournants d\'automatisation, machines d\'emballage, serrage CNC, positionneurs de soudage et systèmes rotatifs pneumatiques-électriques',
+    'BP-4P-30-0001.html': 'Plateaux tournants multipostes, systèmes pneumatiques avec passage de câble, serrage à quatre postes et équipements de soudage et d\'emballage',
+    'BP-8P-0001.html': 'Systèmes pneumatiques multicanaux à haute densité, serrage à huit postes, grandes tables d\'indexage et équipements d\'emballage, de soudage et de contrôle',
   },
   ja: {
     'BP-1P-0003.html': '手持ち空圧工具、小型回転テーブル、ホースのねじれ防止、ラベリング機、ボトルキャッピング装置',
@@ -1991,6 +2363,13 @@ const conservativeProductPropertyValues = {
     Schutzart: 'Schutzhauben- und Labyrinthkonstruktion für staubige Umgebungen.',
     Montageart: 'Statorseite: 4 × M5, Gewindetiefe 10 mm; Rotorseite: 6 × M5, Gewindetiefe 8 mm. Vor der Bearbeitung vollständige Einbaumaße anhand der mitgelieferten Zeichnung bestätigen.',
   },
+  fr: {
+    'Type de produit': 'Raccord tournant pneumatique avec capot de protection et labyrinthe pour environnements poussiéreux.',
+    'Fluides de service': 'Fluide standard : air. Tout autre fluide nécessite une confirmation écrite de compatibilité avec les conditions de service.',
+    'Étanchéité': 'Joint composite PTFE avec joint torique.',
+    'Indice de protection': 'Construction avec capot de protection et labyrinthe pour environnements poussiéreux.',
+    'Type de montage': 'Côté stator : 4 × M5, profondeur de filetage 10 mm ; côté rotor : 6 × M5, profondeur de filetage 8 mm. Avant usinage, confirmer toutes les cotes de montage sur le plan fourni.',
+  },
   ja: {
     製品種別: '粉じん環境向け保護カバー・ラビリンス構造の空圧ロータリージョイント。',
     使用可能流体: '標準使用流体：空気。その他の流体は、使用条件に対する適合性を書面で確認する必要があります。',
@@ -2013,6 +2392,11 @@ const pageSpecificProductPropertyValues = {
       Montageart: 'Flanschbefestigung mit zwei Lochkreisen; freigegebene Zeichnung beachten.',
     },
   },
+  fr: {
+    'BP-2P-130-0001.html': {
+      'Type de montage': 'Montage par bride avec deux cercles de perçage ; consulter le plan approuvé.',
+    },
+  },
   ja: {
     'BP-2P-130-0001.html': {
       取付方式: '2つのボルト円配置によるフランジ取付；承認図面を参照してください。',
@@ -2025,7 +2409,7 @@ const pageSpecificProductPropertyValues = {
   },
 };
 
-const localizedWeightPropertyNames = new Set(['Net weight', 'Weight', 'Gewicht', 'Nettogewicht', '質量', '製品質量', 'Масса', 'Масса нетто']);
+const localizedWeightPropertyNames = new Set(['Net weight', 'Weight', 'Gewicht', 'Nettogewicht', 'Poids', 'Poids net', '質量', '製品質量', 'Масса', 'Масса нетто']);
 
 function inflectRussianCount(count, singular, paucal, plural) {
   const mod100 = count % 100;
@@ -2050,6 +2434,17 @@ function localizePassageValue(value, languageCode) {
         .replace(/(\d+)mm bore/gi, '$1 mm Durchgang').replace(/8 passages/gi, 'acht Kanäle');
       return details ? `${base} (${details})` : base;
     }
+    if (languageCode === 'fr') {
+      const base = `${inlet} ${inlet === 1 ? 'entrée' : 'entrées'} / ${outlet} ${outlet === 1 ? 'sortie' : 'sorties'}`;
+      const details = detail
+        .replace(/single passage/gi, 'un circuit').replace(/dual passage/gi, 'deux circuits')
+        .replace(/triple passage/gi, 'trois circuits').replace(/quad passage/gi, 'quatre circuits')
+        .replace(/single inlet, six outlets/gi, 'une entrée, six sorties')
+        .replace(/single inlet, eight outlets/gi, 'une entrée, huit sorties')
+        .replace(/dual inlet, triple outlet/gi, 'deux entrées, trois sorties')
+        .replace(/(\d+)mm bore/gi, 'alésage de $1 mm').replace(/8 passages/gi, 'huit circuits');
+      return details ? `${base} (${details})` : base;
+    }
     if (languageCode === 'ja') {
       const base = `${inlet}入力／${outlet}出力`;
       const details = detail
@@ -2059,15 +2454,18 @@ function localizePassageValue(value, languageCode) {
         .replace(/(\d+)mm bore/gi, '中空穴径$1 mm').replace(/8 passages/gi, '8流路');
       return details ? `${base}（${details}）` : base;
     }
-    const inletWord = inflectRussianCount(inlet, 'вход', 'входа', 'входов');
-    const outletWord = inflectRussianCount(outlet, 'выход', 'выхода', 'выходов');
-    const base = `${inlet} ${inletWord} / ${outlet} ${outletWord}`;
-    const details = detail
-      .replace(/single passage/gi, 'одноканальное исполнение').replace(/dual passage/gi, 'двухканальное исполнение')
-      .replace(/triple passage/gi, 'трёхканальное исполнение').replace(/quad passage/gi, 'четырёхканальное исполнение')
-      .replace(/single inlet, (?:six|eight) outlets/gi, 'один вход, восемь выходов').replace(/dual inlet, triple outlet/gi, 'два входа, три выхода')
-      .replace(/(\d+)mm bore/gi, 'проходное отверстие $1 мм').replace(/8 passages/gi, 'восемь каналов');
-    return details ? `${base} (${details})` : base;
+    if (languageCode === 'ru') {
+      const inletWord = inflectRussianCount(inlet, 'вход', 'входа', 'входов');
+      const outletWord = inflectRussianCount(outlet, 'выход', 'выхода', 'выходов');
+      const base = `${inlet} ${inletWord} / ${outlet} ${outletWord}`;
+      const details = detail
+        .replace(/single passage/gi, 'одноканальное исполнение').replace(/dual passage/gi, 'двухканальное исполнение')
+        .replace(/triple passage/gi, 'трёхканальное исполнение').replace(/quad passage/gi, 'четырёхканальное исполнение')
+        .replace(/single inlet, (?:six|eight) outlets/gi, 'один вход, восемь выходов').replace(/dual inlet, triple outlet/gi, 'два входа, три выхода')
+        .replace(/(\d+)mm bore/gi, 'проходное отверстие $1 мм').replace(/8 passages/gi, 'восемь каналов');
+      return details ? `${base} (${details})` : base;
+    }
+    throw new Error(`Missing passage-value localization for ${languageCode}.`);
   });
 }
 
@@ -2112,6 +2510,43 @@ function localizeStructuredValue(rawValue, languageCode) {
       ['hours (rated conditions)', 'Stunden (unter Nennbedingungen)'], ['rated conditions', 'Nennbedingungen'],
       ['Confirmed by model-specific inspection plan', 'Nach modellbezogenem Prüfplan zu bestätigen'],
       ['Approx.', 'ca.'], ['Months', 'Monate'], ['months', 'Monate'], ['Heavy duty', 'Schwerlastausführung'], ['distribution', 'Verteilung'],
+    ],
+    fr: [
+      ['Pneumatic-electric rotary joint', 'Raccord tournant pneumatique-électrique'],
+      ['Pneumatic rotary joint', 'Raccord tournant pneumatique'], ['air rotary union with slip ring', 'raccord tournant pneumatique avec collecteur tournant électrique'],
+      ['air rotary union', 'raccord tournant pneumatique'], ['air swivel', 'raccord pivotant pneumatique'],
+      ['manifold rotary joint', 'raccord tournant distributeur'], ['dual passage rotary joint', 'raccord tournant à deux circuits'],
+      ['dual inlet rotary joint', 'raccord tournant à deux entrées'], ['heavy duty rotary joint', 'raccord tournant renforcé'],
+      ['dust-proof rotary joint', 'raccord tournant protégé contre la poussière'], ['high pressure rotary union', 'raccord tournant haute pression'],
+      ['triple passage rotary joint', 'raccord tournant à trois circuits'], ['hollow bore rotary joint', 'raccord tournant à alésage traversant'],
+      ['multi-channel rotary joint', 'raccord tournant multicanal'],
+      ['Air, water, water-soluble coolant, light hydraulic oil', 'Air, eau, liquide de coupe hydrosoluble, huile hydraulique de faible viscosité'],
+      ['Air, water, coolant, light hydraulic oil', 'Air, eau, liquide de coupe, huile hydraulique de faible viscosité'],
+      ['Air, water, oil, coolant, light hydraulic oil', 'Air, eau, huile, liquide de coupe, huile hydraulique de faible viscosité'],
+      ['Air, water, coolant, hydraulic oil', 'Air, eau, liquide de coupe, huile hydraulique'],
+      ['ISO VG 32 max', 'ISO VG 32 maximum'], ['45# Steel', 'Acier 45#'],
+      ['AL6061 Aluminum Alloy, anodized', 'Alliage d\'aluminium AL6061 anodisé'],
+      ['AL6061 aluminum alloy, anodized', 'Alliage d\'aluminium AL6061 anodisé'],
+      ['AL6061 aluminum alloy', 'Alliage d\'aluminium AL6061'], ['Aluminum Alloy 6061', 'Alliage d\'aluminium 6061'],
+      ['PTFE composite seal with FKM O-ring backup', 'Joint composite PTFE avec joint torique FKM d\'appoint'],
+      ['PTFE composite seal with FKM O-ring', 'Joint composite PTFE avec joint torique FKM'],
+      ['PTFE (Teflon) composite seal with FKM O-ring backup', 'Joint composite PTFE avec joint torique FKM d\'appoint'],
+      ['PTFE (Teflon) Composite Seal', 'Joint composite PTFE'], ['PTFE composite seal', 'Joint composite PTFE'],
+      ['PTFE + Graphite Composite / PEEK', 'Composite PTFE-graphite / PEEK'],
+      ['PTFE Composite + Si3N4 Ceramic Seal', 'Joint composite PTFE + joint céramique Si3N4'],
+      ['Deep Groove Ball Bearing', 'Roulement rigide à billes'], ['Deep groove ball bearing', 'Roulement rigide à billes'],
+      ['Threaded mount', 'Montage fileté'], ['threaded mount', 'montage fileté'], ['Flange mount', 'Montage par bride'],
+      ['G1/8 threaded', 'Filetage G1/8'], ['BSP parallel', 'Filetage parallèle BSPP'], [' or ', ' ou '],
+      ['mounting holes', 'trous de fixation'], ['bolt pattern', 'cercle de perçage'], ['rotor /', 'rotor /'], ['stator', 'stator'],
+      [' with ', ' avec '], [' per ISO ', ' selon ISO '], [' rotor ', ' côté rotor '],
+      ['rotating side', 'côté rotor'], ['fixed side', 'côté stator'], ['through-hole', 'alésage traversant'],
+      ['dust-proof structure', 'construction protégée contre la poussière'], ['hollow bore', 'alésage traversant'],
+      ['Gold-plated copper alloy', 'Alliage de cuivre plaqué or'], ['circuits', 'circuits'], ['per circuit', 'par circuit'],
+      ['2A max', '2 A maximum'], ['<=500 MOhm', '≤500 MΩ'], ['at 500V DC', 'sous 500 V CC'],
+      ['Anodized (Aluminum)', 'Anodisé (aluminium)'], ['Diameter', 'Diamètre'],
+      ['hours (rated conditions)', 'heures (aux conditions nominales)'], ['rated conditions', 'conditions nominales'],
+      ['Confirmed by model-specific inspection plan', 'À confirmer selon le plan de contrôle propre au modèle'],
+      ['Approx.', 'Env.'], ['Months', 'mois'], ['months', 'mois'], ['Heavy duty', 'Version renforcée'], ['distribution', 'distribution'],
     ],
     ja: [
       ['Pneumatic-electric rotary joint', '空圧・電気複合ロータリージョイント'],
@@ -2188,12 +2623,21 @@ function localizeStructuredValue(rawValue, languageCode) {
       ['Approx.', 'Около'], ['Months', 'месяцев'], ['months', 'месяцев'], ['Heavy duty', 'Для тяжёлых условий'], ['distribution', 'распределение'],
     ],
   };
-  for (const [from, to] of replacements[languageCode] || []) value = value.replaceAll(from, to);
+  const languageReplacements = replacements[languageCode];
+  if (!languageReplacements) throw new Error(`Missing structured-value localization for ${languageCode}.`);
+  for (const [from, to] of languageReplacements) value = value.replaceAll(from, to);
   if (languageCode === 'de') {
     value = value
       .replaceAll('BSPP (zylindrisch) (BSPP)', 'BSPP (zylindrisch)')
       .replace(/\b(\d+)\.(\d+)\b/g, '$1,$2')
       .replace(/\b(\d+),(\d{3})\b/g, '$1.$2')
+      .replace(/Ø(\d+)mm/g, 'Ø$1 mm')
+      .replace(/\b(\d+(?:,\d+)?) x (\d+(?:,\d+)?)\b/g, '$1 × $2');
+  } else if (languageCode === 'fr') {
+    value = value
+      .replaceAll('Filetage parallèle BSPP (BSPP)', 'Filetage parallèle BSPP')
+      .replace(/\b(\d+)\.(\d+)\b/g, '$1,$2')
+      .replace(/\b(\d+),(\d{3})\b/g, '$1\u202f$2')
       .replace(/Ø(\d+)mm/g, 'Ø$1 mm')
       .replace(/\b(\d+(?:,\d+)?) x (\d+(?:,\d+)?)\b/g, '$1 × $2');
   } else if (languageCode === 'ja') {
@@ -2213,17 +2657,57 @@ function localizeStructuredValue(rawValue, languageCode) {
   return value.replace(/\s+/g, ' ').trim();
 }
 
+function localizeStructuredSemanticValue(rawValue, languageCode) {
+  if (Array.isArray(rawValue)) {
+    return rawValue.map((value) => localizeStructuredSemanticValue(value, languageCode));
+  }
+  if (typeof rawValue !== 'string') return rawValue;
+  const translations = structuredSemanticTranslations[languageCode];
+  if (!translations) throw new Error(`Missing structured semantic localization for ${languageCode}.`);
+  const direct = translations[rawValue.trim().toLowerCase()];
+  if (direct) return direct;
+  return rawValue.split(',').map((part) => {
+    const leading = part.match(/^\s*/)?.[0] || '';
+    const trailing = part.match(/\s*$/)?.[0] || '';
+    const localized = translations[part.trim().toLowerCase()] || localizeStructuredValue(part.trim(), languageCode);
+    return `${leading}${localized}${trailing}`;
+  }).join(',');
+}
+
+function localizeConfiguredSchemaUrl(rawValue, languageCode) {
+  if (typeof rawValue !== 'string') return rawValue;
+  try {
+    const url = new URL(rawValue);
+    if (url.origin !== new URL(config.siteUrl).origin || !url.pathname.endsWith('.html')) return rawValue;
+    const pageName = url.pathname.split('/').filter(Boolean).at(-1);
+    if (!pageName || !configuredPages.has(pageName)) return rawValue;
+    return `${pageUrl(languageCode, pageName)}${url.hash}`;
+  } catch {
+    return rawValue;
+  }
+}
+
 function localizeProductProperty(property, languageCode, pageName) {
   if (!property || typeof property !== 'object') return;
   const nameMap = structuredPropertyNames[languageCode] || {};
   const warranty = structuredWarrantyTerms[languageCode];
-  if (property.name === 'Warranty period' && warranty) {
+  const productSchemaCopy = structuredProductSchemaCopy[languageCode];
+  const cadPropertyNames = new Set([
+    '3D CAD model',
+    ...Object.values(structuredProductSchemaCopy).map((entry) => entry.cadPropertyName),
+  ]);
+  if (cadPropertyNames.has(property.name) && productSchemaCopy) {
+    property.name = productSchemaCopy.cadPropertyName;
+    property.value = productSchemaCopy.cadPropertyValue;
+    return;
+  }
+  if (drawingBackedCanonicalField(property.name) === 'warranty' && warranty) {
     property.name = warranty.name;
     property.value = warranty.value;
     return;
   }
   const isApplications = property.name === 'Typical applications'
-    || ['Typische Anwendungen', '主な用途', 'Типичные области применения'].includes(property.name);
+    || ['Typische Anwendungen', 'Applications types', '主な用途', 'Типичные области применения'].includes(property.name);
   if (nameMap[property.name]) property.name = nameMap[property.name];
   const conservativeValue = pageName === 'BP-2P-50-0001.html'
     ? conservativeProductPropertyValues[languageCode]?.[property.name]
@@ -2271,9 +2755,15 @@ function normalizeOrganizationIdentity(value, schemaLocale = {}, seo = {}, site 
       : normalizeFounder(value.founder);
   }
   if (schemaLocale.knowsAbout) value.knowsAbout = schemaLocale.knowsAbout;
+  if (value.contactPoint && typeof value.contactPoint === 'object') {
+    const contactPoints = Array.isArray(value.contactPoint) ? value.contactPoint : [value.contactPoint];
+    for (const contactPoint of contactPoints) {
+      if (contactPoint && typeof contactPoint === 'object') contactPoint.availableLanguage = ['English'];
+    }
+  }
 }
 
-function normalizeLocalBusinessIdentity(value) {
+function normalizeLocalBusinessIdentity(value, schemaLocale = {}) {
   // Preserve source-owned location and contact properties. Only identity and
   // entity-link fields are canonicalized here.
   value['@id'] = canonicalLocalBusinessId;
@@ -2283,6 +2773,12 @@ function normalizeLocalBusinessIdentity(value) {
   delete value.alternateName;
   value.sameAs = canonicalBrandSameAs;
   value.parentOrganization = { '@id': canonicalOrganizationId };
+  if (value.description && schemaLocale.localBusinessDescription) {
+    value.description = schemaLocale.localBusinessDescription;
+  }
+  if (schemaLocale.localBusinessKnowsAbout) {
+    value.knowsAbout = schemaLocale.localBusinessKnowsAbout;
+  }
 }
 
 function normalizeEntityIdentities(value, schemaLocale = {}, seo = {}, site = {}) {
@@ -2293,7 +2789,7 @@ function normalizeEntityIdentities(value, schemaLocale = {}, seo = {}, site = {}
   }
   const types = schemaTypes(value);
   if (types.has('Organization')) normalizeOrganizationIdentity(value, schemaLocale, seo, site);
-  if (types.has('LocalBusiness')) normalizeLocalBusinessIdentity(value);
+  if (types.has('LocalBusiness')) normalizeLocalBusinessIdentity(value, schemaLocale);
   return value;
 }
 
@@ -2314,16 +2810,35 @@ function normalizeEntityIdentitiesInMarkup(html) {
 function updateJsonLd($, languageCode, pageName, strict = false) {
   const englishUrl = pageUrl(config.sourceLanguage.code, pageName);
   const localizedUrl = pageUrl(languageCode, pageName);
+  const canonicalProductEntityId = productDetailPagePattern.test(pageName)
+    ? `${englishUrl}#product`
+    : null;
+  const canonicalProductEntityIds = new Set(productDetailPageNames.map(
+    (productPageName) => `${pageUrl(config.sourceLanguage.code, productPageName)}#product`,
+  ));
   const seo = seoByLanguage.get(languageCode)?.[pageName];
   const site = seoByLanguage.get(languageCode)?._site || {};
   const schemaLocale = schemaLocaleByLanguage[languageCode] || {};
   const faqEntities = visibleFaqEntities($);
   const applicationBreadcrumbLabels = {
     de: 'Anwendungen',
+    fr: 'Applications',
     ja: '用途別情報',
     ru: 'Применение',
   };
-  const contentTypes = new Set(['Article', 'Blog', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
+  const breadcrumbSectionLabels = {
+    de: { 'products.html': 'Produkte', 'applications.html': 'Anwendungen', 'case-studies.html': 'Fallstudien', 'blog.html': 'Wissenszentrum', 'manufacturing-quality.html': 'Qualität' },
+    fr: { 'products.html': 'Produits', 'applications.html': 'Applications', 'case-studies.html': 'Études de cas', 'blog.html': 'Centre technique', 'manufacturing-quality.html': 'Qualité' },
+    ja: { 'products.html': '製品情報', 'applications.html': '用途別情報', 'case-studies.html': '選定事例', 'blog.html': '技術情報', 'manufacturing-quality.html': '品質管理' },
+    ru: { 'products.html': 'Продукция', 'applications.html': 'Применение', 'case-studies.html': 'Примеры применения', 'blog.html': 'Центр знаний', 'manufacturing-quality.html': 'Качество' },
+  };
+  const breadcrumbHomeLabels = {
+    de: 'Startseite',
+    fr: 'Accueil',
+    ja: 'ホーム',
+    ru: 'Главная',
+  };
+  const contentTypes = new Set(['AboutPage', 'Article', 'Blog', 'BlogPosting', 'ContactPage', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
   const localizedCollectionAbout = {
     de: [
       'Drehdurchführungen für Druckluft',
@@ -2335,6 +2850,17 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
       'Vakuumverpackungsmaschinen',
       'Druckluftwerkzeuge',
       'Hintere Spannfutter von Laser-Rohrschneidmaschinen',
+    ],
+    fr: [
+      'Raccords tournants pour air comprimé',
+      'Raccords tournants pneumatiques',
+      'Automatisation industrielle',
+      'Machines d\'emballage',
+      'Serrage pneumatique',
+      'Effecteurs terminaux de robots',
+      'Machines d\'emballage sous vide',
+      'Outillage pneumatique',
+      'Mandrins arrière de machines de découpe laser de tubes',
     ],
     ja: [
       '空圧用ロータリジョイント',
@@ -2364,6 +2890,10 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
       name: 'BP-2P-16-0001 in einer Kunden-Produktionsmaschine zum Verschließen von Flaschen',
       description: 'BP-2P-16-0001 führt einem pneumatischen 3-Finger-Zentrischgreifer in einer Produktionsmaschine des Kunden über zwei getrennte Druckluftkanäle Druckluft zum Schließen und Öffnen zu. Der Greifer hält und dreht den Flaschenverschluss beim Verschließen. Die Identität des Kunden bleibt anonym. Erforderliche Anschlussfunktionen, Betriebsdruck, Drehzahl und Maschinenschnittstelle mit den Maschinenanforderungen und der aktuellen Zeichnung für BP-2P-16-0001 abgleichen.',
     },
+    fr: {
+      name: 'BP-2P-16-0001 sur une machine de bouchage de bouteilles en production chez un client',
+      description: 'Le BP-2P-16-0001 alimente en air comprimé, par deux passages indépendants, le serrage et le desserrage d’un préhenseur pneumatique à trois mors installé sur la boucheuse de production d’un client. Le préhenseur maintient et fait tourner le bouchon pendant le bouchage. L’identité du client reste confidentielle. Vérifiez les fonctions attribuées aux orifices, la pression de service, la vitesse de rotation et l’interface machine par rapport aux exigences de l’équipement et au plan BP-2P-16-0001 en vigueur.',
+    },
     ja: {
       name: 'お客様のボトルキャッピング生産設備に組み込まれたBP-2P-16-0001',
       description: 'BP-2P-16-0001は、お客様の量産用キャッピング機で、独立した2流路を介して3爪エアチャックの把持・開放用圧縮空気を供給しています。エアチャックはキャッピング時にボトルキャップを把持して回転させます。お客様名は非公開です。必要なポート機能、使用圧力、回転数、装置取合いを、装置要件と最新のBP-2P-16-0001図面に照らして確認してください。',
@@ -2378,6 +2908,10 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
       name: 'Eignung der BP-2P-08-0001 für einen pneumatischen 3-Finger-Zentrischgreifer für Flaschenverschlüsse',
       description: 'BP-2P-08-0001 ist eine weitere Zweikanal-Option für pneumatische 3-Finger-Zentrischgreifer von Flaschenverschlüssen. Vergleichen Sie vor der Auswahl Einbaumaße und Betriebsgrenzen mit BP-2P-16-0001. Im verlinkten Produktionsbeispiel wird BP-2P-16-0001 eingesetzt.',
     },
+    fr: {
+      name: 'Adéquation du BP-2P-08-0001 à une pince pneumatique concentrique à trois mors pour bouchons',
+      description: 'Le BP-2P-08-0001 constitue une autre option à deux circuits pour les pinces pneumatiques concentriques à trois mors destinées aux bouchons. Avant la sélection, comparez ses cotes de montage et ses limites de fonctionnement à celles du BP-2P-16-0001. L\'exemple de production associé utilise le BP-2P-16-0001.',
+    },
     ja: {
       name: 'ボトルキャップ用3爪エアチャックに対するBP-2P-08-0001の適用範囲',
       description: 'BP-2P-08-0001は、ボトルキャップ用3爪エアチャックに対応する別の2流路仕様です。選定前に、取付寸法と使用限界をBP-2P-16-0001と比較してください。リンク先の量産事例ではBP-2P-16-0001を使用しています。',
@@ -2391,6 +2925,10 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
     de: {
       name: 'BP-2P-130-0001 in einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine',
       description: 'BP-2P-130-0001 ist an der Rückseite einer kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine eingebaut. Zwei getrennte Druckluftkanäle übernehmen das Spannen und Lösen. Für vergleichbare Anwendungen Anschlussbelegung, Druck, Drehzahl, Betriebszyklus und Einbauschnittstelle mit den Vorrichtungsanforderungen und der aktuellen Zeichnung für BP-2P-130-0001 abgleichen.',
+    },
+    fr: {
+      name: 'BP-2P-130-0001 dans un montage de serrage sur mesure pour scie circulaire CNC',
+      description: 'Le BP-2P-130-0001 est installé à l\'arrière d\'un montage de serrage sur mesure pour scie circulaire CNC. Deux circuits d\'air comprimé indépendants assurent le serrage et le desserrage. Pour une application comparable, confrontez l\'affectation des orifices, la pression, la vitesse de rotation, le cycle de fonctionnement et l\'interface de montage requis aux exigences du montage et au plan actuel du BP-2P-130-0001.',
     },
     ja: {
       name: 'CNC丸鋸盤用特注クランプ治具に組み込まれたBP-2P-130-0001',
@@ -2413,10 +2951,27 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
       };
       const visit = (value) => {
         if (Array.isArray(value)) return value.map(visit);
-        if (!value || typeof value !== 'object') return value === englishUrl ? localizedUrl : value;
-        for (const [key, child] of Object.entries(value)) value[key] = visit(child);
+        if (!value || typeof value !== 'object') {
+          if (canonicalProductEntityIds.has(value)) return value;
+          if (value === englishUrl) return localizedUrl;
+          return localizeConfiguredSchemaUrl(value, languageCode);
+        }
+        for (const [key, child] of Object.entries(value)) {
+          const localizedChild = (key === 'about' || key === 'keywords')
+            ? localizeStructuredSemanticValue(child, languageCode)
+            : child;
+          value[key] = visit(localizedChild);
+        }
         const types = schemaTypes(value);
         if ([...types].some((type) => contentTypes.has(type))) value.inLanguage = languageCode;
+        // A translated product page has its own localized URL, but the Product
+        // entity is the same catalog item in every language. Keep one stable
+        // cross-language identifier while leaving Product.url localized.
+        if (types.has('Product')
+          && productDetailPagePattern.test(pageName)
+          && String(value['@id'] || '').endsWith('#product')) {
+          value['@id'] = `${pageUrl(config.sourceLanguage.code, pageName)}#product`;
+        }
         if (types.has('CreativeWork') && String(value['@id'] || '').endsWith('#bottle-capping-production-application')) {
           const localizedCreativeWork = bottleCappingCreativeWork[languageCode];
           if (!localizedCreativeWork) throw new Error(`Missing bottle-capping CreativeWork localization for ${languageCode}.`);
@@ -2475,15 +3030,60 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
           value.inLanguage = languageCode;
         }
         if (types.has('Product')) {
+          const productSchemaCopy = structuredProductSchemaCopy[languageCode];
+          if (!productSchemaCopy) throw new Error(`Missing product schema copy for ${languageCode}.`);
           value.name = seo.h1;
           value.description = seo.description;
+          value.category = productSchemaCopy.category;
           if (Array.isArray(value.additionalProperty)) {
             if (pageName === 'BP-2P-50-0001.html') {
               value.additionalProperty = value.additionalProperty.filter(
                 (property) => !localizedWeightPropertyNames.has(property?.name),
               );
             }
-            for (const property of value.additionalProperty) localizeProductProperty(property, languageCode, pageName);
+            const localizedProperties = [];
+            let hasLocalizedCadProperty = false;
+            for (const property of value.additionalProperty) {
+              localizeProductProperty(property, languageCode, pageName);
+              if (property?.name === productSchemaCopy.cadPropertyName) {
+                if (hasLocalizedCadProperty) continue;
+                hasLocalizedCadProperty = true;
+              }
+              localizedProperties.push(property);
+            }
+            value.additionalProperty = localizedProperties;
+          }
+          if (value.associatedMedia && typeof value.associatedMedia === 'object') {
+            value.associatedMedia.name = productSchemaCopy.cadMediaName(path.basename(pageName, '.html'));
+          }
+        }
+        if (types.has('Offer') && value.price !== undefined && value.price !== null) {
+          const productSchemaCopy = structuredProductSchemaCopy[languageCode];
+          if (!productSchemaCopy) throw new Error(`Missing offer schema copy for ${languageCode}.`);
+          const minimum = Number(value.eligibleQuantity?.minValue || 100);
+          value.description = productSchemaCopy.offerDescription(String(value.price), minimum);
+          if (value.eligibleQuantity && typeof value.eligibleQuantity === 'object') {
+            value.eligibleQuantity.unitText = productSchemaCopy.pieceUnit;
+          }
+        }
+        if (types.has('ItemList') && pageName === 'products.html' && Array.isArray(value.itemListElement)) {
+          const productSchemaCopy = structuredProductSchemaCopy[languageCode];
+          if (!productSchemaCopy) throw new Error(`Missing product-list schema copy for ${languageCode}.`);
+          value.name = productSchemaCopy.itemListName;
+          value.inLanguage = languageCode;
+          for (const item of value.itemListElement) {
+            if (!item || typeof item !== 'object' || typeof item.url !== 'string') continue;
+            try {
+              const itemUrl = new URL(item.url);
+              const itemPage = itemUrl.pathname.split('/').filter(Boolean).at(-1);
+              if (!itemPage || !productDetailPagePattern.test(itemPage)) continue;
+              const linkedSeo = seoByLanguage.get(languageCode)?.[itemPage];
+              if (!linkedSeo?.h1) throw new Error(`${languageCode}/${itemPage}: product-list schema title is missing.`);
+              item.name = linkedSeo.h1;
+              item.url = pageUrl(languageCode, itemPage);
+            } catch (error) {
+              throw new Error(`${languageCode}/products.html: invalid product-list schema item (${error.message}).`);
+            }
           }
         }
         if (types.has('WebPage')) {
@@ -2500,6 +3100,12 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
           value.headline = seo.h1;
           value.description = seo.description;
         }
+        if (languageCode === 'fr' && types.has('TechArticle')) {
+          if (value.proficiencyLevel === 'Intermediate') value.proficiencyLevel = 'Intermédiaire';
+          if (value.dependencies === 'Begapunk BP-series pneumatic rotary joints') {
+            value.dependencies = 'Raccords tournants pneumatiques Begapunk de la série BP';
+          }
+        }
         if (types.has('WebSite')) {
           value.name = site.heading || 'Begapunk';
           value.description = site.description || seo.description;
@@ -2507,19 +3113,25 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
         if (types.has('Organization')) {
           normalizeOrganizationIdentity(value, schemaLocale, seo, site);
         }
-        if (types.has('LocalBusiness')) normalizeLocalBusinessIdentity(value);
+        if (types.has('LocalBusiness')) normalizeLocalBusinessIdentity(value, schemaLocale);
         if (types.has('BreadcrumbList') && Array.isArray(value.itemListElement) && value.itemListElement.length) {
           for (const item of value.itemListElement) {
             if (!item || typeof item !== 'object' || typeof item.item !== 'string') continue;
             try {
               const itemUrl = new URL(item.item);
               if (itemUrl.origin !== new URL(config.siteUrl).origin) continue;
+              const normalizedPath = itemUrl.pathname.replace(/\/+$/, '');
+              if (item?.position === 1 && normalizedPath === `/${languageCode}`) {
+                item.name = breadcrumbHomeLabels[languageCode] || item.name;
+                item.item = pageUrl(languageCode, 'index.html');
+                continue;
+              }
               const itemPage = itemUrl.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
               if (config.pages.includes(itemPage)) {
                 item.item = pageUrl(languageCode, itemPage);
-                if (item?.position === 2 && itemPage === 'applications.html') {
-                  item.name = applicationBreadcrumbLabels[languageCode] || item.name;
-                }
+                const sectionLabel = breadcrumbSectionLabels[languageCode]?.[itemPage];
+                if (sectionLabel) item.name = sectionLabel;
+                else if (item?.position === 2 && itemPage === 'applications.html') item.name = applicationBreadcrumbLabels[languageCode] || item.name;
               }
             } catch {
               // Keep malformed or non-URL breadcrumb values for the validator to report.
@@ -2551,8 +3163,12 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
 
 function injectAlternateLinks($, currentLanguage, pageName) {
   $('link[rel="alternate"][hreflang]').remove();
+  if (pageName === '404.html') {
+    $('link[rel="canonical"]').remove();
+    return;
+  }
   const canonical = $('link[rel="canonical"]').first();
-  const links = [config.sourceLanguage, ...activeLanguages]
+  const links = languagesForPage(pageName)
     .map((language) => `<link rel="alternate" hreflang="${language.code}" href="${pageUrl(language.code, pageName)}">`)
     .concat(`<link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}">`)
     .join('\n');
@@ -2560,15 +3176,21 @@ function injectAlternateLinks($, currentLanguage, pageName) {
   canonical.attr('href', pageUrl(currentLanguage, pageName));
 }
 
+function applyNotFoundIndexingPolicy($, pageName) {
+  if (pageName !== '404.html') return;
+  $('link[rel="alternate"][hreflang],link[rel="canonical"],meta[property="og:url"],meta[name="robots"]').remove();
+  $('head').append('<meta name="robots" content="noindex,nofollow">');
+}
+
 function injectLanguageSwitcher($, currentLanguage, pageName) {
   $('.i18n-switcher').remove();
-  const languages = [config.sourceLanguage, ...activeLanguages];
+  const languages = languagesForPage(pageName);
   const options = languages.map((language) => {
     const selected = language.code === currentLanguage ? ' selected' : '';
     return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
   const accessibleLabel = languageSwitcherLabels[currentLanguage] || languageSwitcherLabels.en;
-  const switcher = `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
+  const switcher = `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="${languageChangeHandler}">${options}</select></div>`;
   const mobileToggle = $('.mobile-toggle').first();
   if (mobileToggle.length) mobileToggle.before(switcher);
   else $('.header-inner').first().append(switcher);
@@ -2613,6 +3235,7 @@ function applyTranslations(page, language, catalog, cache, drawingBackedDirectDo
   const editorialOverrides = editorialOverridesByLanguage.get(language.code) || {};
   const sharedEditorialOverrides = editorialOverrides['*'] || {};
   const pageEditorialOverrides = editorialOverrides[pageName] || {};
+  const generatedPageOverrides = governedGeneratedCopy[language.code]?.[pageName] || {};
   const preservedBrowserContent = (config.browserNoTranslateSelectors || []).map((selector) => ({
     selector,
     values: $(selector).map((_, element) => $(element).html()).get(),
@@ -2623,6 +3246,7 @@ function applyTranslations(page, language, catalog, cache, drawingBackedDirectDo
       id,
       source: record.source,
       pageEditorialOverrides,
+      generatedPageOverrides,
       sharedEditorialOverrides,
       overrides,
       cache,
@@ -2648,6 +3272,7 @@ function applyTranslations(page, language, catalog, cache, drawingBackedDirectDo
 
   applySeoMetadata($, language.code, pageName);
   applyLocalizedBlogShareCopy($, language.code, pageName);
+  applyGovernedGeneratedDomCopy($, language.code, pageName);
 
   $('html').attr('lang', language.code);
   const localizedUrl = pageUrl(language.code, pageName);
@@ -2692,7 +3317,9 @@ function applyTranslations(page, language, catalog, cache, drawingBackedDirectDo
     $(form).prepend(`<input type="hidden" name="source_language" value="${language.code}">`);
   });
   applyContactRfqCopy($, language.code, pageName);
+  applyFrenchContactServiceBoundary($, language.code, pageName);
   let localized = $.html().replace(/[ \t]+$/gm, '');
+  if (language.code === 'fr') localized = normalizeFrenchOutput(localized);
   if (language.code === 'ja') localized = normalizeJapaneseOutput(localized);
   if (language.code === 'de') localized = normalizeGermanOutput(localized);
   if (language.code === 'ru') localized = normalizeRussianOutput(localized);
@@ -2704,6 +3331,7 @@ function applyTranslations(page, language, catalog, cache, drawingBackedDirectDo
   updateJsonLd(finalized, language.code, pageName, true);
   applyDrawingBackedUiContract(finalized, language.code, pageName);
   applyDrawingBackedProductMetadata(finalized, language.code, pageName);
+  applyNotFoundIndexingPolicy(finalized, pageName);
   return patchDiscoveryRobotsMeta(
     finalized.html().replace(/[ \t]+$/gm, ''),
     discoveryExcludedPages.has(pageName),
@@ -2714,12 +3342,14 @@ function resolveTranslation({
   id,
   source,
   pageEditorialOverrides,
+  generatedPageOverrides,
   sharedEditorialOverrides,
   overrides,
   cache,
 }) {
   return pageEditorialOverrides[id]
     || pageEditorialOverrides[source]
+    || generatedPageOverrides[source]
     || sharedEditorialOverrides[id]
     || sharedEditorialOverrides[source]
     || overrides[source]
@@ -2749,6 +3379,7 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
         missing.push(`${language.code}/${page.pageName}: curated SEO title, description or H1`);
       }
       const pageEditorialOverrides = editorialOverrides[page.pageName] || {};
+      const generatedPageOverrides = governedGeneratedCopy[language.code]?.[page.pageName] || {};
       const seenSources = new Set();
       for (const record of page.records) {
         if (seenSources.has(record.source)) continue;
@@ -2762,6 +3393,7 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
           id,
           source: record.source,
           pageEditorialOverrides,
+          generatedPageOverrides,
           sharedEditorialOverrides,
           overrides,
           cache,
@@ -2781,16 +3413,210 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
   );
 }
 
+const frenchSearchKeywords = Object.freeze({
+  'applications.html': Object.freeze([
+    'applications des raccords tournants pneumatiques',
+    'sélection par application',
+    'transfert d’air comprimé en rotation',
+    'solutions rotatives pneumatiques',
+  ]),
+  'application-cnc-pneumatic-clamping.html': Object.freeze([
+    'serrage pneumatique CNC',
+    'raccord tournant pour dispositif de serrage CNC',
+    'BP-4P-30-0001',
+    'BP-2P-30-0001',
+    'BP-2P-16-0001',
+  ]),
+  'application-electronics-battery-test-fixtures.html': Object.freeze([
+    'montage d’essai pour composants électroniques et batteries',
+    'raccord tournant pour banc d’essai',
+    'circuits pneumatiques pour automatisation',
+    'BP-8P-0001',
+    'BP-3P-0004',
+  ]),
+  'application-laser-tube-cutting.html': Object.freeze([
+    'découpe laser de tubes',
+    'mandrin arrière rotatif',
+    'air comprimé',
+    'raccord tournant pneumatique',
+    'BP-3P-0004',
+    'BP-2P-08-0001',
+  ]),
+  'application-steel-dusty-environments.html': Object.freeze([
+    'sidérurgie et environnements poussiéreux',
+    'raccord tournant avec protection contre la poussière',
+    'BP-2P-130-0001',
+    'BP-2P-50-0001',
+    'BP-2P-95-0005, modèle à deux circuits ; le plan ne mentionne aucune protection contre la poussière',
+  ]),
+  'application-textile-printing-converting.html': Object.freeze([
+    'raccord tournant pour machine d’impression',
+    'impression textile et transformation',
+    'transfert d’air comprimé en rotation',
+    'BP-2P-50-0001',
+    'BP-2P-30-0001',
+  ]),
+  'application-vacuum-packaging-machines.html': Object.freeze([
+    'machine d’emballage sous vide',
+    'raccord tournant pour circuit de vide',
+    'vide, soufflage et serrage pneumatiques',
+    'BP-3P-0006',
+    'BP-2P-0001',
+  ]),
+  'application-welding-positioners.html': Object.freeze([
+    'positionneur de soudage',
+    'raccord tournant pneumatique pour montage de soudage',
+    'circuits de serrage, desserrage et soufflage',
+    'BP-8P-0001',
+    'BP-3P-0004',
+  ]),
+  'application-packaging-machinery.html': Object.freeze([
+    'machines d’emballage',
+    'raccord tournant pneumatique pour emballage',
+    'serrage, soufflage et vide',
+    'transfert d’air comprimé',
+  ]),
+  'application-bottle-filling-capping.html': Object.freeze([
+    'remplissage et bouchage de bouteilles',
+    'raccord tournant pour capsuleuse',
+    'transfert d’air comprimé pour tête rotative',
+    'BP-2P-08-0001',
+    'BP-2P-16-0001',
+  ]),
+  'application-automation-rotary-tables.html': Object.freeze([
+    'table rotative d’automatisation',
+    'raccord tournant pneumatique pour table rotative',
+    'indexage rotatif',
+    'circuits pneumatiques multiples',
+  ]),
+  'application-pneumatic-tools-hose-anti-twist.html': Object.freeze([
+    'outil pneumatique avec flexible anti-torsion',
+    'raccord tournant pour flexible pneumatique',
+    'anti-torsion du flexible',
+    'air comprimé',
+  ]),
+  'application-robot-end-of-arm-tooling.html': Object.freeze([
+    'outillage de bout de bras robotisé',
+    'raccord tournant pneumatique pour robot',
+    'préhenseur rotatif',
+    'circuits pneumatiques robotiques',
+  ]),
+  'custom-hydraulic-rotary-unions.html': Object.freeze([
+    'raccord tournant hydraulique sur mesure',
+    'joint tournant hydraulique',
+    'huile hydraulique',
+    'pelle hydraulique',
+    'grappin forestier',
+    'enrouleur marin',
+    '30 MPa',
+    'BP-1P-0003',
+  ]),
+  'blog.html': Object.freeze([
+    'guides techniques sur les raccords tournants',
+    'sélection, installation et maintenance',
+    'diagnostic des raccords tournants',
+    'technologie des joints tournants',
+  ]),
+  'blog-rotary-joint-installation-mistakes.html': Object.freeze([
+    'erreurs d’installation d’un raccord tournant',
+    'alignement d’un raccord tournant',
+    'efforts latéraux sur les roulements',
+    'support de tuyauterie',
+  ]),
+  'blog-rotary-joint-selection.html': Object.freeze([
+    'sélection d’un raccord tournant',
+    'choisir un raccord tournant pneumatique',
+    'pression, vitesse et nombre de passages',
+    'interface rotor-stator',
+  ]),
+  'blog-rotary-union-seal-types.html': Object.freeze([
+    'types de joints pour raccord tournant',
+    'joint torique, PTFE et bague Glyd',
+    'sélection du matériau d’étanchéité',
+    'compatibilité du fluide, de la pression et de la vitesse',
+  ]),
+  'blog-non-contact-clearance-seal-rotary-union.html': Object.freeze([
+    'raccord tournant à étanchéité radiale sans contact',
+    'jeu radial unilatéral de 0,003 mm',
+    'principe de fonctionnement d’un raccord tournant haute vitesse',
+  ]),
+  'blog-rotary-joint-leaking.html': Object.freeze([
+    'fuite de raccord tournant',
+    'diagnostic d’une fuite de raccord tournant',
+    'usure des joints et désalignement',
+    'dépannage d’un joint tournant',
+  ]),
+  'blog-threaded-vs-flange.html': Object.freeze([
+    'raccord tournant fileté ou à bride',
+    'comparaison du montage fileté et du montage à bride',
+    'cheminement des efforts',
+    'choix de l’interface de fixation',
+  ]),
+  'blog-seal-replacement.html': Object.freeze([
+    'remplacement des joints d’un raccord tournant',
+    'kit de joints pour raccord tournant',
+    'maintenance d’un raccord tournant',
+    'inspection du rotor et de l’alésage',
+  ]),
+  'blog-rotary-joint-materials.html': Object.freeze([
+    'matériaux des raccords tournants',
+    'aluminium, acier inoxydable et laiton',
+    'compatibilité chimique des matériaux',
+    'choix du matériau du corps',
+  ]),
+  'case-studies.html': Object.freeze([
+    'études de cas de raccords tournants',
+    'applications réelles',
+    'découpe laser de tubes',
+    'mandrin pneumatique',
+    'BP-2P-95-0005',
+    'BP-3P-0004',
+    'BP-2P-08-0001',
+  ]),
+  'case-bp-2p-95-pneumatic-chuck-integration.html': Object.freeze([
+    'BP-2P-95-0005',
+    'mandrin pneumatique',
+    'air comprimé',
+    'intégration du raccord tournant',
+  ]),
+  'case-bp-3p-s06-sensor-monitored-chuck.html': Object.freeze([
+    'BP-3P-S06-0001',
+    'mandrin pneumatique surveillé par capteurs',
+    'mandrin pneumatique',
+    'transmission des signaux de capteurs',
+  ]),
+});
+
+function requiresFrenchSearchKeywords(pageName) {
+  return pageName === 'applications.html'
+    || pageName.startsWith('application-')
+    || pageName === 'blog.html'
+    || pageName.startsWith('blog-')
+    || pageName.startsWith('case-')
+    || pageName === 'custom-hydraulic-rotary-unions.html';
+}
+
 async function renderLocalizedSearchIndex(language, outputDirectory) {
   const searchIndex = JSON.parse(await fs.readFile(path.join(sourceRoot, 'search-index.json'), 'utf8'));
   assertDrawingBackedProductRecordCoverage(searchIndex, 'source search-index.json');
+  if (language.code === 'fr') {
+    const missingFrenchKeywordPages = searchIndex
+      .filter((item) => config.pages.includes(item.url) && requiresFrenchSearchKeywords(item.url))
+      .filter((item) => !frenchSearchKeywords[item.url])
+      .map((item) => item.url);
+    if (missingFrenchKeywordPages.length) {
+      throw new Error(`fr: controlled search keywords are missing for ${missingFrenchKeywordPages.join(', ')}.`);
+    }
+  }
   const manufacturingQualityKeywords = {
     de: ['Statorbearbeitung', '4-Achs-Dreh-Fräs-Bearbeitung', 'Aluminium 6061', 'Aluminium 7075', 'Farbeloxieren', 'Fertigungsablauf', 'harteloxierter Rotor', 'farbeloxiertes Statorgehäuse', 'Schichtdicke', 'O-Ring-Abdichtung', '51,7 µm'],
+    fr: ['usinage du stator', 'usinage tournage-fraisage 4 axes', 'aluminium 6061', 'aluminium 7075', 'anodisation colorée', 'processus de fabrication', 'rotor anodisé dur', 'carter de stator anodisé en couleur', 'épaisseur de couche anodique', 'étanchéité par joint torique', '51,7 µm'],
     ja: ['ステータ加工', '4軸複合旋盤加工', '6061アルミ合金', '7075アルミ合金', 'カラーアルマイト', '製造工程', '硬質アルマイト処理ロータ', 'カラーアルマイト処理ステータハウジング', 'アルマイト皮膜厚さ', 'Oリングシール', '51.7 μm'],
     ru: ['обработка статора', '4-осевая токарно-фрезерная обработка', 'алюминий 6061', 'алюминий 7075', 'цветное анодирование', 'процесс изготовления', 'ротор с твёрдым анодированием', 'корпус статора с цветным анодированием', 'толщина анодного покрытия', 'уплотнение O-ring', '51,7 мкм'],
   };
   const productionInspectionKeywords = {
     de: ['100%-Dichtheitsprüfung', 'kanalweise Dichtheitsprüfung', 'Druckhaltephase', 'Druckluft 1,0 MPa', 'NG-Sperrprozess'],
+    fr: ['essai d\'étanchéité à 100 %', 'contrôle d\'étanchéité circuit par circuit', 'phase de maintien en pression', 'air comprimé à 1,0 MPa', 'isolement des unités NG'],
     ja: ['全数漏れ検査', '各回路漏れ検査', '保圧工程', '圧縮空気 1.0 MPa', '不適合品管理'],
     ru: ['100%-ный контроль герметичности', 'поканальная проверка', 'выдержка под давлением', 'сжатый воздух 1,0 МПа', 'изоляция изделий NG'],
   };
@@ -2798,6 +3624,10 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
     de: {
       'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0005', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
       'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'sensorüberwachtes pneumatisches Spannfutter', 'pneumatisches Spannfutter', 'Sensorsignalübertragung'],
+    },
+    fr: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0005', 'mandrin pneumatique', 'air comprimé', 'intégration du raccord tournant'],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': ['BP-3P-S06-0001', 'mandrin pneumatique surveillé par capteurs', 'mandrin pneumatique', 'transmission des signaux de capteurs'],
     },
     ja: {
       'case-bp-2p-95-pneumatic-chuck-integration.html': ['BP-2P-95-0005', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
@@ -2810,14 +3640,27 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
   };
   const dustyEnvironmentBoundaryKeyword = {
     de: 'BP-2P-95-0005 Zweikanalmodell; Zeichnung enthält keine Angabe zum Staubschutz',
+    fr: 'BP-2P-95-0005, modèle à deux circuits ; le plan ne mentionne aucune protection contre la poussière',
     ja: 'BP-2P-95-0005 2流路モデル、図面に防じん仕様の記載なし',
     ru: 'BP-2P-95-0005 двухканальная модель; на чертеже защита от пыли не указана',
   };
   const clearanceSealArticleKeywords = {
     de: ['berührungslose Radialspaltdichtung Drehdurchführung', 'einseitiger Radialspalt 0,003 mm', 'Funktionsprinzip Hochgeschwindigkeits-Drehdurchführung'],
+    fr: ['joint tournant à étanchéité radiale sans contact', 'jeu radial unilatéral de 0,003 mm', 'principe de fonctionnement d\'un raccord tournant haute vitesse'],
     ja: ['非接触すきまシール ロータリジョイント', '片側ラジアルすきま 0.003 mm', '高速回転 ロータリジョイント 作動原理'],
     ru: ['бесконтактное щелевое уплотнение ротационного соединения', 'односторонний радиальный зазор 0,003 мм', 'принцип работы высокоскоростного ротационного соединения'],
   };
+  for (const [label, localizedCopy] of Object.entries({
+    manufacturingQualityKeywords,
+    productionInspectionKeywords,
+    applicationCaseKeywords,
+    dustyEnvironmentBoundaryKeyword,
+    clearanceSealArticleKeywords,
+  })) {
+    if (!localizedCopy[language.code]) {
+      throw new Error(`${language.code}: ${label} search copy is missing.`);
+    }
+  }
   const localizedItems = [];
   for (const item of searchIndex) {
     if (discoveryExcludedPages.has(item.url)) continue;
@@ -2841,6 +3684,8 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
       body: content.text().replace(/\s+/g, ' ').trim(),
       ...(drawingKeywords
         ? { keywords: drawingKeywords }
+        : language.code === 'fr' && frenchSearchKeywords[item.url]
+          ? { keywords: frenchSearchKeywords[item.url] }
         : item.url === 'manufacturing-quality.html'
           ? { keywords: manufacturingQualityKeywords[language.code] }
         : item.url === 'production-inspection-testing.html'
@@ -2868,19 +3713,28 @@ const llmsLabels = {
   de: {
     summary: 'Technischer Seitenindex für pneumatische Drehdurchführungen von Begapunk. Die Auswahl erfolgt nach Medium, Betriebsdruck, Drehzahl, Kanalzahl, Anschluss und Einbausituation.',
     sections: { products: 'Produkte', applications: 'Anwendungen', articles: 'Technische Beiträge', other: 'Unternehmen und Service' },
+    links: { sitemap: 'Mehrsprachige Sitemap', englishAiIndex: 'Englischer KI-Index' },
+  },
+  fr: {
+    summary: 'Index des pages techniques Begapunk consacrées aux raccords tournants pneumatiques. Sélectionnez selon le fluide, la pression de service, la vitesse de rotation, le nombre de circuits, les raccordements et les conditions de montage.',
+    sections: { products: 'Produits', applications: 'Applications', articles: 'Articles techniques', other: 'Entreprise et services' },
+    links: { sitemap: 'Plan du site multilingue', englishAiIndex: 'Index IA en anglais' },
   },
   ja: {
     summary: 'Begapunkの空圧用ロータリージョイントに関する技術ページ索引です。使用流体、圧力、回転数、流路数・ポート数、接続、取付条件から選定してください。',
     sections: { products: '製品', applications: '用途別ガイド', articles: '技術記事', other: '会社・サポート' },
+    links: { sitemap: '多言語サイトマップ', englishAiIndex: '英語版AIインデックス' },
   },
   ru: {
     summary: 'Технический указатель страниц Begapunk о пневматических вращающихся и ротационных соединениях. При подборе учитывайте среду, давление, частоту вращения, число каналов, присоединение и монтаж.',
     sections: { products: 'Продукция', applications: 'Области применения', articles: 'Технические статьи', other: 'Компания и поддержка' },
+    links: { sitemap: 'Многоязычная карта сайта', englishAiIndex: 'Англоязычный индекс для ИИ' },
   },
 };
 
 const cncSawFixtureLlmsDescription = {
   de: 'Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.',
+  fr: 'Guide de sélection comprenant une application de production autorisée par le client : un BP-2P-130-0001 monté sur un dispositif de serrage sur mesure à faible vitesse pour scie circulaire CNC, avec deux circuits d\'air comprimé indépendants pour le serrage et le desserrage.',
   ja: 'お客様から公開許可を得た実生産事例を含む選定ガイドです。低速のCNC丸鋸盤用特注クランプ治具にBP-2P-130-0001を組み込み、独立した2つの圧縮空気流路でクランプ／アンクランプを行います。',
   ru: 'Руководство по подбору с разрешённым заказчиком производственным примером BP-2P-130-0001 в низкооборотном нестандартном зажимном приспособлении круглопильного станка с ЧПУ; два независимых канала сжатого воздуха используются для зажима и разжима.',
 };
@@ -2895,7 +3749,9 @@ function llmsGroup(pageName) {
 function renderLocalizedLlms(language) {
   const seo = seoByLanguage.get(language.code);
   const labels = llmsLabels[language.code];
-  if (!seo || !labels) throw new Error(`${language.code}: localized llms configuration is missing.`);
+  if (!seo || !labels?.links?.sitemap || !labels.links.englishAiIndex) {
+    throw new Error(`${language.code}: localized llms configuration is missing.`);
+  }
   const grouped = new Map(['products', 'applications', 'articles', 'other'].map((group) => [group, []]));
   for (const pageName of config.pages) {
     if (llmsExcludedPages.has(pageName)) continue;
@@ -2908,16 +3764,98 @@ function renderLocalizedLlms(language) {
       throw new Error(`${language.code}/${pageName}: drawing-backed llms copy is missing.`);
     }
     const description = drawingSummary || (pageName === 'application-cnc-pneumatic-clamping.html'
-        ? cncSawFixtureLlmsDescription[language.code]
+        ? (cncSawFixtureLlmsDescription[language.code]
+          || (() => { throw new Error(`${language.code}: CNC saw-fixture llms description is missing.`); })())
         : entry.description);
     grouped.get(llmsGroup(pageName)).push(`- [${drawingLabel || entry.title}](${pageUrl(language.code, pageName)}): ${description}`);
   }
   const sections = [...grouped.entries()].map(([group, lines]) => `## ${labels.sections[group]}\n\n${lines.join('\n')}`).join('\n\n');
-  return `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [Multilingual sitemap](${config.siteUrl}/sitemap-i18n.xml)\n- [English AI index](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
+  return `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [${labels.links.sitemap}](${config.siteUrl}/sitemap-i18n.xml)\n- [${labels.links.englishAiIndex}](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
 }
 
 async function writeLocalizedLlms(language, outputDirectory) {
   await fs.writeFile(path.join(outputDirectory, 'llms.txt'), renderLocalizedLlms(language), 'utf8');
+}
+
+async function copyManualLocalizedPages(languageCode, outputDirectory) {
+  const sourceDirectory = languageCode === config.sourceLanguage.code
+    ? sourceRoot
+    : path.join(sourceRoot, languageCode);
+  for (const pageName of manualLocalizedPages) {
+    const source = await fs.readFile(path.join(sourceDirectory, pageName), 'utf8');
+    const $ = load(source, { decodeEntities: false });
+    $('html').attr('lang', languageCode);
+    $('meta[property="og:site_name"]').attr('content', canonicalBrandName);
+    injectAlternateLinks($, languageCode, pageName);
+    injectLanguageSwitcher($, languageCode, pageName);
+    // English manual pages are already the governed metadata source; target
+    // languages use their curated i18n/seo records.
+    if (languageCode !== config.sourceLanguage.code) applySeoMetadata($, languageCode, pageName);
+    const manualContentTypes = new Set(['AboutPage', 'Article', 'Blog', 'BlogPosting', 'ContactPage', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
+    const manualBreadcrumbLabels = {
+      en: { 'index.html': 'Home', 'products.html': 'Products', 'applications.html': 'Applications', 'case-studies.html': 'Case Studies', 'blog.html': 'Knowledge Center', 'manufacturing-quality.html': 'Quality' },
+      de: { 'index.html': 'Startseite', 'products.html': 'Produkte', 'applications.html': 'Anwendungen', 'case-studies.html': 'Fallstudien', 'blog.html': 'Wissenszentrum', 'manufacturing-quality.html': 'Qualität' },
+      fr: { 'index.html': 'Accueil', 'products.html': 'Produits', 'applications.html': 'Applications', 'case-studies.html': 'Études de cas', 'blog.html': 'Centre technique', 'manufacturing-quality.html': 'Qualité' },
+      ja: { 'index.html': 'ホーム', 'products.html': '製品情報', 'applications.html': '用途別情報', 'case-studies.html': '選定事例', 'blog.html': '技術情報', 'manufacturing-quality.html': '品質管理' },
+      ru: { 'index.html': 'Главная', 'products.html': 'Продукция', 'applications.html': 'Применение', 'case-studies.html': 'Примеры применения', 'blog.html': 'Центр знаний', 'manufacturing-quality.html': 'Качество' },
+    };
+    $('script[type="application/ld+json"]').each((_, element) => {
+      const data = JSON.parse($(element).html());
+      const visit = (value) => {
+        if (Array.isArray(value)) return value.map(visit);
+        if (!value || typeof value !== 'object') return localizeConfiguredSchemaUrl(value, languageCode);
+        for (const [key, child] of Object.entries(value)) value[key] = visit(child);
+        const types = schemaTypes(value);
+        if ([...types].some((type) => manualContentTypes.has(type))) value.inLanguage = languageCode;
+        if (types.has('BreadcrumbList') && Array.isArray(value.itemListElement)) {
+          for (const item of value.itemListElement) {
+            if (!item || typeof item !== 'object' || typeof item.item !== 'string') continue;
+            try {
+              const itemUrl = new URL(item.item);
+              if (itemUrl.origin !== new URL(config.siteUrl).origin) continue;
+              const itemPage = itemUrl.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
+              if (!configuredPages.has(itemPage)) continue;
+              item.item = pageUrl(languageCode, itemPage);
+              const label = manualBreadcrumbLabels[languageCode]?.[itemPage];
+              if (label) item.name = label;
+            } catch {
+              // Leave malformed URLs for the localized-site validator to report.
+            }
+          }
+        }
+        return value;
+      };
+      $(element).text(JSON.stringify(visit(data)));
+    });
+    if (languageCode !== config.sourceLanguage.code) {
+      const localizedPages = new Set(config.pages);
+      $('[href], [src], [poster], [action]').each((_, element) => {
+        for (const attribute of ['href', 'src', 'poster', 'action']) {
+          const value = $(element).attr(attribute);
+          if (value) $(element).attr(attribute, localizeRelativeReference(value, localizedPages));
+        }
+      });
+      $('[srcset]').each((_, element) => {
+        const localized = ($(element).attr('srcset') || '').split(',').map((candidate) => {
+          const parts = candidate.trim().split(/\s+/);
+          parts[0] = localizeRelativeReference(parts[0], localizedPages);
+          return parts.join(' ');
+        }).join(', ');
+        $(element).attr('srcset', localized);
+      });
+    }
+    let output = patchDiscoveryRobotsMeta(
+      normalizeEntityIdentitiesInMarkup($.html()).replace(/[ \t]+$/gm, ''),
+      discoveryExcludedPages.has(pageName),
+    );
+    if (pageName === '404.html') {
+      const notFoundDocument = load(output, { decodeEntities: false });
+      applyNotFoundIndexingPolicy(notFoundDocument, pageName);
+      output = notFoundDocument.html();
+    }
+    if (languageCode === 'fr') output = normalizeFrenchOutput(output);
+    await fs.writeFile(path.join(outputDirectory, pageName), output, 'utf8');
+  }
 }
 
 async function buildLocalizedPages(catalog) {
@@ -2943,9 +3881,10 @@ async function buildLocalizedPages(catalog) {
       const localized = applyTranslations(page, language, catalog, cache, directDocument);
       await fs.writeFile(path.join(outputDirectory, page.pageName), localized, 'utf8');
     }
+    await copyManualLocalizedPages(language.code, outputDirectory);
     await writeLocalizedSearchIndex(language, outputDirectory);
     await writeLocalizedLlms(language, outputDirectory);
-    console.log(`${language.code}: built ${pages.length} localized pages.`);
+    console.log(`${language.code}: built ${pages.length} translation-managed pages and copied ${manualLocalizedPages.length} reviewed manual pages with normalized locale routing.`);
   }
 }
 
@@ -3232,10 +4171,12 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
   const details = main.find('details.faq-item');
   const summaries = details.children('summary.faq-question');
   const thumbnails = main.find('.thumbnail-row > a.thumb-link');
+  const thumbnailHrefs = thumbnails.map((_, element) => $(element).attr('href') || '').get();
   if (tabs.length !== 4 || panels.length !== 4 || details.length !== 5
-    || summaries.length !== 5 || thumbnails.length !== 3) {
+    || summaries.length !== 5 || ![2, 3].includes(thumbnails.length)
+    || new Set(thumbnailHrefs).size !== thumbnailHrefs.length) {
     throw new Error(
-      `${label}: expected 4 tabs / 4 panels / 5 FAQs / 5 summaries / 3 thumbnails; `
+      `${label}: expected 4 tabs / 4 panels / 5 FAQs / 5 summaries / 2-3 unique thumbnails; `
       + `found ${tabs.length}/${panels.length}/${details.length}/${summaries.length}/${thumbnails.length}.`,
     );
   }
@@ -3258,7 +4199,7 @@ function inspectProductDetailUi($, languageCode, pageName, side) {
     ]),
     shareMenuLabel: shareTrigger.text(),
     keyProductParametersLabel: keySpecs.attr('aria-label') || '',
-    modelLabel: $('.pd-info > .pd-sku').text().split(':')[0],
+    modelLabel: $('.pd-info > .pd-sku').text().split(':')[0].trim(),
     primaryActionLabel: actions.eq(0).text(),
     secondaryActionLabel: hasPublicStep ? '' : actions.eq(1).text(),
     keySpecLabels: controlledKeySpecLabels,
@@ -3433,6 +4374,7 @@ async function refreshLocalizedMetadata() {
       updateJsonLd($, language.code, pageName, true);
       applyDrawingBackedUiContract($, language.code, pageName);
       applyDrawingBackedProductMetadata($, language.code, pageName);
+      applyNotFoundIndexingPolicy($, pageName);
       const refreshed = patchDiscoveryRobotsMeta(
         $.html().replace(/[ \t]+$/gm, ''),
         discoveryExcludedPages.has(pageName),
@@ -3448,6 +4390,7 @@ async function refreshLocalizedMetadata() {
 function canonicalJson(value) {
   const sortValue = (input) => {
     if (Array.isArray(input)) return input.map(sortValue);
+    if (typeof input === 'string') return compactText(input);
     if (!input || typeof input !== 'object') return input;
     return Object.fromEntries(
       Object.keys(input).sort().map((key) => [key, sortValue(input[key])]),
@@ -3502,6 +4445,7 @@ function inspectLocalizedMetadata($, languageCode, pageName, phase) {
     h1Html: $('h1').first().html()?.trim() || '',
     ogTitle: uniqueContent('meta[property="og:title"]', 'og-title'),
     ogDescription: uniqueContent('meta[property="og:description"]', 'og-description'),
+    ogSiteName: $('meta[property="og:site_name"]').first().attr('content') || '',
     twitterTitle: uniqueContent('meta[name="twitter:title"]', 'twitter-title'),
     twitterDescription: uniqueContent('meta[name="twitter:description"]', 'twitter-description'),
     ...productImageMetadata,
@@ -3519,7 +4463,7 @@ async function verifyLocalizedMetadata() {
   let checkedLlmsIndexes = 0;
   for (const language of activeLanguages) {
     for (const pageName of translationManagedPages) {
-      const filePath = path.join(sourceRoot, language.code, pageName);
+      const filePath = path.join(outputRoot, language.code, pageName);
       const html = await fs.readFile(filePath, 'utf8');
       const current = inspectLocalizedMetadata(
         load(html, { decodeEntities: false }),
@@ -3550,7 +4494,7 @@ async function verifyLocalizedMetadata() {
       }
       checkedPages += 1;
     }
-    const languageDirectory = path.join(sourceRoot, language.code);
+    const languageDirectory = path.join(outputRoot, language.code);
     const currentSearchIndex = JSON.parse(await fs.readFile(path.join(languageDirectory, 'search-index.json'), 'utf8'));
     const expectedSearchIndex = await renderLocalizedSearchIndex(language, languageDirectory);
     if (canonicalJson(currentSearchIndex) !== canonicalJson(expectedSearchIndex)) {
@@ -3577,30 +4521,35 @@ async function verifyLocalizedMetadata() {
 }
 
 function alternateMarkup(pageName) {
-  return [config.sourceLanguage, ...activeLanguages]
+  return languagesForPage(pageName)
     .map((language) => `<link rel="alternate" hreflang="${language.code}" href="${pageUrl(language.code, pageName)}">`)
     .concat(`<link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}">`)
     .join('\n');
 }
 
 function switcherMarkup(currentLanguage, pageName) {
-  const options = [config.sourceLanguage, ...activeLanguages].map((language) => {
+  const options = languagesForPage(pageName).map((language) => {
     const selected = language.code === currentLanguage ? ' selected' : '';
     return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
   }).join('');
   const accessibleLabel = languageSwitcherLabels[currentLanguage] || languageSwitcherLabels.en;
-  return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="if(this.value)window.location.href=this.value">${options}</select></div>`;
+  return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="${languageChangeHandler}">${options}</select></div>`;
 }
 
 async function integrateEnglishPages() {
+  await copyManualLocalizedPages(config.sourceLanguage.code, outputRoot);
   for (const pageName of translationManagedPages) {
     const sourcePath = path.join(sourceRoot, pageName);
     const filePath = path.join(outputRoot, pageName);
     let html = await fs.readFile(sourcePath, 'utf8');
     html = html.replace(/<link\s+rel=["']alternate["']\s+hreflang=["'][^"']+["'][^>]*>\s*/gi, '');
-    const alternates = alternateMarkup(pageName);
-    if (!/<link\s+rel=["']canonical["']/i.test(html)) throw new Error(`${pageName}: canonical link is missing.`);
-    html = html.replace(/(<link\s+rel=["']canonical["'][^>]*>)/i, `${alternates}\n$1`);
+    if (pageName === '404.html') {
+      html = html.replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '');
+    } else {
+      const alternates = alternateMarkup(pageName);
+      if (!/<link\s+rel=["']canonical["']/i.test(html)) throw new Error(`${pageName}: canonical link is missing.`);
+      html = html.replace(/(<link\s+rel=["']canonical["'][^>]*>)/i, `${alternates}\n$1`);
+    }
     html = html.replace(/<div class=["']i18n-switcher["'][\s\S]*?<\/div>\s*/i, '');
     const switcher = switcherMarkup(config.sourceLanguage.code, pageName);
     if (!/<button\s+class=["']mobile-toggle["']/i.test(html)) throw new Error(`${pageName}: mobile navigation toggle is missing.`);
@@ -3612,32 +4561,76 @@ async function integrateEnglishPages() {
     }
     html = normalizeEntityIdentitiesInMarkup(html);
     html = patchDiscoveryRobotsMeta(html, discoveryExcludedPages.has(pageName));
+    if (pageName === '404.html') {
+      const notFoundDocument = load(html, { decodeEntities: false });
+      applyNotFoundIndexingPolicy(notFoundDocument, pageName);
+      html = notFoundDocument.html();
+    }
     await fs.mkdir(path.dirname(filePath), { recursive: true });
     await fs.writeFile(filePath, html, 'utf8');
   }
 }
 
-async function writeInternationalSitemap() {
-  const today = new Date().toISOString().slice(0, 10);
-  const urls = [];
-  const excludedPages = new Set([...(config.sitemapExcludedPages || []), ...discoveryExcludedPages]);
-  const sitemapPages = config.pages.filter((pageName) => !excludedPages.has(pageName));
-  for (const language of [config.sourceLanguage, ...activeLanguages]) {
-    for (const pageName of sitemapPages) {
-      const alternates = [config.sourceLanguage, ...activeLanguages]
-        .map((candidate) => `    <xhtml:link rel="alternate" hreflang="${candidate.code}" href="${pageUrl(candidate.code, pageName)}" />`)
-        .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${pageUrl(config.sourceLanguage.code, pageName)}" />`)
-        .join('\n');
-      urls.push(`  <url>\n    <loc>${pageUrl(language.code, pageName)}</loc>\n    <lastmod>${today}</lastmod>\n${alternates}\n  </url>`);
+async function integratePartialLanguagePages() {
+  for (const language of partialLanguages) {
+    const outputDirectory = path.join(outputRoot, language.code);
+    await fs.mkdir(outputDirectory, { recursive: true });
+    for (const pageName of partialLanguagePages.get(language.code)) {
+      const sourcePath = path.join(sourceRoot, language.code, pageName);
+      const html = await fs.readFile(sourcePath, 'utf8');
+      const $ = load(html, { decodeEntities: false });
+      injectAlternateLinks($, language.code, pageName);
+      injectLanguageSwitcher($, language.code, pageName);
+      applyNotFoundIndexingPolicy($, pageName);
+      await fs.writeFile(path.join(outputDirectory, pageName), $.html(), 'utf8');
+    }
+    for (const asset of partialLanguageAssets.get(language.code) || []) {
+      const target = path.join(outputDirectory, asset);
+      await fs.mkdir(path.dirname(target), { recursive: true });
+      await fs.copyFile(path.join(sourceRoot, language.code, asset), target);
     }
   }
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`;
-  await fs.writeFile(path.join(outputRoot, 'sitemap-i18n.xml'), sitemap, 'utf8');
+}
+
+async function writeInternationalSitemap() {
+  const statePath = path.join(sourceRoot, ...SITEMAP_LASTMOD_STATE.split('/'));
+  let previousState;
+  try {
+    previousState = parseSitemapLastmodState(await fs.readFile(statePath, 'utf8'));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    previousState = parseSitemapLastmodState();
+  }
+  const rendered = await renderInternationalSitemaps({
+    contentRoot: outputRoot,
+    config,
+    previousState,
+  });
+  for (const [fileName, source] of rendered.sitemaps) {
+    await fs.writeFile(path.join(outputRoot, fileName), source, 'utf8');
+  }
+
+  const partialLanguageCodes = new Set(partialLanguages.map((language) => language.code));
+  for (const language of config.languages) {
+    if (partialLanguageCodes.has(language.code)) continue;
+    await fs.rm(path.join(outputRoot, `sitemap-${language.code}.xml`), { force: true });
+  }
 
   const robotsPath = path.join(outputRoot, 'robots.txt');
   let robots = await fs.readFile(path.join(sourceRoot, 'robots.txt'), 'utf8');
-  const sitemapLine = `Sitemap: ${config.siteUrl}/sitemap-i18n.xml`;
-  if (!robots.includes(sitemapLine)) robots = `${robots.trimEnd()}\n${sitemapLine}\n`;
+  const sitemapLines = [
+    `Sitemap: ${config.siteUrl}/sitemap-i18n.xml`,
+    ...partialLanguages.map((language) => `Sitemap: ${config.siteUrl}/sitemap-${language.code}.xml`),
+  ];
+  const escapedSiteUrl = config.siteUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const configuredLanguagePattern = config.languages.map((language) => language.code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  robots = robots
+    .replace(new RegExp(`^Sitemap:\\s*${escapedSiteUrl}\\/sitemap-(?:${configuredLanguagePattern})\\.xml\\s*$`, 'gmi'), '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trimEnd();
+  for (const sitemapLine of sitemapLines) {
+    if (!robots.includes(sitemapLine)) robots = `${robots.trimEnd()}\n${sitemapLine}\n`;
+  }
   await fs.writeFile(robotsPath, robots, 'utf8');
 }
 
@@ -3648,14 +4641,21 @@ async function integrateLocalizedSite() {
       await fs.access(path.join(outputRoot, language.code, pageName));
     }
   }
+  await integratePartialLanguagePages();
   await integrateEnglishPages();
   await writeInternationalSitemap();
-  console.log(`Integrated hreflang and language switching into ${translationManagedPages.length} translation-managed English pages; ${manualLocalizedPages.length} manual English pages were not rewritten.`);
+  console.log(`Integrated hreflang and language switching into ${translationManagedPages.length} translation-managed English pages and ${manualLocalizedPages.length} reviewed manual English pages.`);
   const sitemapPageCount = config.pages.length - new Set([
     ...(config.sitemapExcludedPages || []),
     ...discoveryExcludedPages,
   ]).size;
   console.log(`Generated sitemap-i18n.xml for ${(activeLanguages.length + 1) * sitemapPageCount} URLs.`);
+  for (const language of partialLanguages) {
+    const partialSitemapPageCount = [...partialLanguagePages.get(language.code)]
+      .filter((pageName) => !(config.sitemapExcludedPages || []).includes(pageName)
+        && !discoveryExcludedPages.has(pageName)).length;
+    console.log(`Generated sitemap-${language.code}.xml for ${partialSitemapPageCount} URL(s).`);
+  }
 }
 
 let catalog;

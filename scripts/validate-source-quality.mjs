@@ -2,10 +2,13 @@ import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import { SITE_SEARCH_SCRIPT_VERSION } from './lib/site-asset-versions.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [];
-const sourceDirectories = ['', 'de', 'ja', 'ru'];
+const config = JSON.parse(await readFile(path.join(repoRoot, 'i18n', 'config.json'), 'utf8'));
+const activeLanguageCodes = config.activeLanguageCodes || [];
+const sourceDirectories = ['', ...activeLanguageCodes];
 
 function collectJsonLd($, relative) {
   const values = [];
@@ -84,50 +87,76 @@ const searchUiContracts = [
   {
     language: 'en',
     page: 'search.html',
-    script: 'js/search.js?v=20260827-i18n1',
     required: ['Product', 'Application', 'Blog', 'Page', 'Enter a search term above', '% match', 'Search is temporarily unavailable.'],
   },
   {
     language: 'de',
     page: 'de/search.html',
-    script: '../js/search.js?v=20260827-i18n1',
     required: ['Produkt', 'Anwendung', 'Fachbeitrag', 'Seite', 'Geben Sie oben einen Suchbegriff ein.', 'Übereinstimmung', 'Die Suche ist vorübergehend nicht verfügbar.'],
+  },
+  {
+    language: 'fr',
+    page: 'fr/search.html',
+    required: ['Produit', 'Application', 'Article', 'Page', 'Saisissez un terme de recherche ci-dessus.', 'résultat', 'pour « ', 'Pertinence :', 'La recherche est temporairement indisponible.'],
   },
   {
     language: 'ja',
     page: 'ja/search.html',
-    script: '../js/search.js?v=20260827-i18n1',
     required: ['製品', '用途', '技術記事', 'ページ', '上の入力欄に検索キーワードを入力してください。', '一致度', '現在、検索を利用できません。'],
   },
   {
     language: 'ru',
     page: 'ru/search.html',
-    script: '../js/search.js?v=20260827-i18n1',
     required: ['Изделие', 'Применение', 'Статья', 'Страница', 'Введите запрос в поле выше.', 'Совпадение:', 'Поиск временно недоступен.'],
   },
 ];
+const expectedSearchUiLanguages = ['en', ...activeLanguageCodes].sort();
+const actualSearchUiLanguages = searchUiContracts.map(({ language }) => language).sort();
+if (JSON.stringify(actualSearchUiLanguages) !== JSON.stringify(expectedSearchUiLanguages)) {
+  failures.push(`Search UI contracts must exactly cover active languages (${expectedSearchUiLanguages.join(', ')}).`);
+}
 for (const contract of searchUiContracts) {
   for (const text of contract.required) {
     if (!searchScript.includes(text)) failures.push(`js/search.js: missing ${contract.language} dynamic search copy (${text})`);
   }
-  const pageSource = await readFile(path.join(repoRoot, ...contract.page.split('/')), 'utf8');
+  let pageSource;
+  try {
+    pageSource = await readFile(path.join(repoRoot, ...contract.page.split('/')), 'utf8');
+  } catch (error) {
+    failures.push(`${contract.page}: cannot be read (${error.message})`);
+    continue;
+  }
   const $search = load(pageSource);
   if ($search('html').attr('lang') !== contract.language) {
     failures.push(`${contract.page}: html lang must be ${contract.language} for dynamic search localization`);
   }
-  if ($search(`script[src="${contract.script}"]`).length !== 1) {
-    failures.push(`${contract.page}: expected one cache-busted shared search script (${contract.script})`);
+  const assetPrefix = contract.page.includes('/') ? '../' : '';
+  const expectedSearchScript = `${assetPrefix}js/search.js?v=${SITE_SEARCH_SCRIPT_VERSION}`;
+  if ($search(`script[src="${expectedSearchScript}"]`).length !== 1) {
+    failures.push(`${contract.page}: expected one cache-busted shared search script (${expectedSearchScript})`);
   }
 }
 
 const privacyPolicies = [
   { file: 'privacy.html', rateWindow: '15-minute', uploadLimit: '10 MB', staleClaims: ['14 months', '26 months'] },
   { file: 'de/privacy.html', rateWindow: '15-minütig', uploadLimit: '10 MB', staleClaims: ['14 Monate', '26 Monate'] },
+  { file: 'fr/privacy.html', rateWindow: '15 minutes', uploadLimit: '10 Mo', staleClaims: ['14 mois', '26 mois'] },
   { file: 'ja/privacy.html', rateWindow: '15分', uploadLimit: '10 MB', staleClaims: ['14か月', '26か月', '14ヶ月', '26ヶ月'] },
   { file: 'ru/privacy.html', rateWindow: '15-минут', uploadLimit: '10 МБ', staleClaims: ['14 месяцев', '26 месяцев'] },
 ];
+const expectedPrivacyLanguages = ['en', ...activeLanguageCodes].sort();
+const actualPrivacyLanguages = privacyPolicies.map(({ file }) => file.includes('/') ? file.split('/')[0] : 'en').sort();
+if (JSON.stringify(actualPrivacyLanguages) !== JSON.stringify(expectedPrivacyLanguages)) {
+  failures.push(`Privacy contracts must exactly cover active languages (${expectedPrivacyLanguages.join(', ')}).`);
+}
 for (const policy of privacyPolicies) {
-  const privacy = await readFile(path.join(repoRoot, ...policy.file.split('/')), 'utf8');
+  let privacy;
+  try {
+    privacy = await readFile(path.join(repoRoot, ...policy.file.split('/')), 'utf8');
+  } catch (error) {
+    failures.push(`${policy.file}: cannot be read (${error.message})`);
+    continue;
+  }
   for (const staleClaim of ['FormBold', ...policy.staleClaims]) {
     if (privacy.includes(staleClaim)) failures.push(`${policy.file}: stale implementation claim remains (${staleClaim})`);
   }

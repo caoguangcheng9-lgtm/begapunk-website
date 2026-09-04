@@ -3,18 +3,21 @@ import path from 'node:path';
 import { load } from 'cheerio';
 
 const root = path.resolve(import.meta.dirname, '..');
+const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 const pages = [
   'case-studies.html',
   'case-bp-2p-95-pneumatic-chuck-integration.html',
   'case-bp-3p-s06-sensor-monitored-chuck.html',
 ];
 const invalidCaseTags = new Set(['core', 'page', 'information']);
-const languages = {
+const languageCopy = {
   en: { dir: '', home: 'Home', applications: 'Applications', cases: 'Case Studies' },
   de: { dir: 'de', home: 'Startseite', applications: 'Anwendungen', cases: 'Fallstudien' },
+  fr: { dir: 'fr', home: 'Accueil', applications: 'Applications', cases: 'Études de cas' },
   ja: { dir: 'ja', home: 'ホーム', applications: '用途別情報', cases: '選定事例' },
   ru: { dir: 'ru', home: 'Главная', applications: 'Применение', cases: 'Примеры применения' },
 };
+const languages = [config.sourceLanguage.code, ...config.activeLanguageCodes];
 
 function pageUrl(language, pageName = '') {
   const prefix = language === 'en' ? '' : `${language}/`;
@@ -42,7 +45,9 @@ function caseSearchMetadata(record) {
   return { category: 'application', tags };
 }
 
-for (const [language, copy] of Object.entries(languages)) {
+for (const language of languages) {
+  const copy = languageCopy[language];
+  if (!copy) throw new Error(`Missing case-study breadcrumb copy for configured language: ${language}`);
   const searchFile = path.join(root, copy.dir, 'search-index.json');
   const searchIndex = JSON.parse(await fs.readFile(searchFile, 'utf8'));
 
@@ -58,7 +63,7 @@ for (const [language, copy] of Object.entries(languages)) {
     const schemaCurrentText = currentText;
     if (!currentText) throw new Error(`${language}/${pageName}: current breadcrumb label is missing.`);
     const visibleParts = [
-      `<a href="index.html">${copy.home}</a>`,
+      `<a href="./">${copy.home}</a>`,
       `<a href="applications.html">${copy.applications}</a>`,
     ];
     if (isCenter) visibleParts.push(`<span>${copy.cases}</span>`);
@@ -103,4 +108,4 @@ for (const [language, copy] of Object.entries(languages)) {
   await fs.writeFile(searchFile, `${JSON.stringify(searchIndex, null, 2)}\n`, 'utf8');
 }
 
-console.log('Case-study breadcrumbs and search records synchronized across four languages.');
+console.log(`Case-study breadcrumbs and search records synchronized across ${languages.length} languages.`);

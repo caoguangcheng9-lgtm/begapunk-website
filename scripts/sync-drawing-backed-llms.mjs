@@ -10,17 +10,19 @@ import {
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const manifestPath = path.join(repoRoot, 'data', 'product-drawing-facts.json');
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+const siteConfig = JSON.parse(readFileSync(path.join(repoRoot, 'i18n', 'config.json'), 'utf8'));
+const sourceLocale = siteConfig.sourceLanguage?.code;
+const activeLocaleCodes = [...new Set([sourceLocale, ...(siteConfig.activeLanguageCodes || [])])];
 const siteOrigin = 'https://www.begapunk.com';
 const retiredProductModels = new Map([
   ['BP-2P-95-0001', 'BP-2P-95-0005'],
 ]);
 
-const fileSpecs = Object.freeze([
-  { locale: 'en', relativePath: 'llms.txt', webPrefix: '' },
-  { locale: 'de', relativePath: 'de/llms.txt', webPrefix: '/de' },
-  { locale: 'ja', relativePath: 'ja/llms.txt', webPrefix: '/ja' },
-  { locale: 'ru', relativePath: 'ru/llms.txt', webPrefix: '/ru' },
-]);
+const fileSpecs = Object.freeze(activeLocaleCodes.map((locale) => Object.freeze({
+  locale,
+  relativePath: locale === sourceLocale ? 'llms.txt' : `${locale}/llms.txt`,
+  webPrefix: locale === sourceLocale ? '' : `/${locale}`,
+})));
 
 function usageError(message) {
   throw new Error(`${message}\nUsage: node scripts/sync-drawing-backed-llms.mjs [--check | --write]`);
@@ -71,8 +73,8 @@ function extractProductLines(content, spec, context) {
   for (const match of content.matchAll(allProductLinesPattern(spec))) {
     records.push({ line: match[1], model: match[2] });
   }
-  if (records.length !== 16) {
-    throw new Error(`${context}: expected exactly 16 ${spec.locale} product entries, found ${records.length}.`);
+  if (records.length !== drawingBackedProductModels.length) {
+    throw new Error(`${context}: expected exactly ${drawingBackedProductModels.length} ${spec.locale} product entries, found ${records.length}.`);
   }
   const counts = new Map(drawingBackedProductModels.map((model) => [model, 0]));
   for (const record of records) {
@@ -143,7 +145,7 @@ function assertBoundaryCopy(spec, expectedByModel) {
     throw new Error(`${spec.locale}/BP-3P-0006: unresolved port annotation must remain pending.`);
   }
 
-  const technicalClaim = /\b(?:MPa|RPM)\b|min⁻¹|U\/min|МПа|об\/мин|Ø|G1\//iu;
+  const technicalClaim = /\b(?:MPa|RPM)\b|min⁻¹|U\/min|tr\/min|МПа|об\/мин|Ø|G1\//iu;
   for (const model of drawingBackedProductModels) {
     if (manifest.products[model]?.status === manifest.sourcePolicy?.quarantineStatus && technicalClaim.test(get(model))) {
       throw new Error(`${spec.locale}/${model}: quarantined drawing identity cannot publish engineering facts.`);
@@ -154,10 +156,11 @@ function assertBoundaryCopy(spec, expectedByModel) {
   const requiredLeadText = {
     en: /3-passage[\s\S]*6 electrical leads shown/iu,
     de: /3 Kan[aä]len[\s\S]*6 elektrische Leitungen dargestellt/iu,
+    fr: /3 passages[\s\S]*6 conducteurs électriques représentés/iu,
     ja: /3流路[\s\S]*電気リード6本/u,
     ru: /3-канальн[а-я]*[\s\S]*показано 6 электрических выводов/iu,
   };
-  const prohibitedCircuitText = /6-circuit|six electrical circuits|sechs Stromkreise|6 Stromkreise|電気6回路|6回路|шесть электрических цепей|6 электрических цепей/iu;
+  const prohibitedCircuitText = /6-circuit|six electrical circuits|sechs Stromkreise|6 Stromkreise|six circuits électriques|6 circuits électriques|電気6回路|6回路|шесть электрических цепей|6 электрических цепей/iu;
   if (!requiredLeadText[spec.locale].test(s06) || prohibitedCircuitText.test(s06)) {
     throw new Error(`${spec.locale}/BP-3P-S06-0001: use three pneumatic passages and six shown leads; do not infer circuits or ratings.`);
   }
@@ -239,20 +242,21 @@ const results = fileSpecs.map((spec) => {
 });
 
 const totalChanged = results.reduce((sum, result) => sum + result.changedModels.length, 0);
+const totalEntries = drawingBackedProductModels.length * fileSpecs.length;
 if (mode === 'write') {
   for (const result of results) {
     if (result.source !== result.output) writeFileSync(result.absolutePath, result.output, 'utf8');
     console.log(`${result.relativePath}: ${result.changedModels.length ? `updated ${result.changedModels.length}` : 'already synchronized'} product entries.`);
   }
-  console.log(`Drawing-backed llms synchronization complete: ${totalChanged} of 64 product entries updated.`);
+  console.log(`Drawing-backed llms synchronization complete: ${totalChanged} of ${totalEntries} product entries updated.`);
 } else if (totalChanged) {
   for (const result of results) {
     console.error(
-      `${result.relativePath}: ${result.changedModels.length}/16 product entries require synchronization${result.changedModels.length ? ` (${result.changedModels.join(', ')})` : ''}.`,
+      `${result.relativePath}: ${result.changedModels.length}/${drawingBackedProductModels.length} product entries require synchronization${result.changedModels.length ? ` (${result.changedModels.join(', ')})` : ''}.`,
     );
   }
-  console.error(`Drawing-backed llms check failed: ${totalChanged} of 64 product entries differ. Run with --write to synchronize them.`);
+  console.error(`Drawing-backed llms check failed: ${totalChanged} of ${totalEntries} product entries differ. Run with --write to synchronize them.`);
   process.exitCode = 1;
 } else {
-  console.log('Drawing-backed llms check passed: all 64 localized product entries are synchronized.');
+  console.log(`Drawing-backed llms check passed: all ${totalEntries} localized product entries are synchronized.`);
 }

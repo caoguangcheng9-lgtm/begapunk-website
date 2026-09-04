@@ -16,7 +16,7 @@
 
     <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
 
-    <meta property="og:site_name" content="Begapunk Precision Machinery">
+    <meta property="og:site_name" content="Begapunk">
 
     <meta property="og:locale" content="ru_RU">
 
@@ -43,20 +43,22 @@
 
 
 
+
 <link rel="alternate" hreflang="en" href="https://www.begapunk.com/privacy.html">
 <link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://www.begapunk.com/fr/privacy.html">
 <link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/privacy.html">
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/privacy.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/privacy.html">
 <link rel="canonical" href="https://www.begapunk.com/ru/privacy.html">
 
-    <link rel="stylesheet" href="../css/style.css?v=20260817-cls1">
+    <link rel="stylesheet" href="../css/style.css?v=20260904-nojs-flow1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
-    <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
+    <script defer="" src="../js/analytics.js?v=e061bf5d563c"></script>
 </head>
 
 <body>
@@ -66,11 +68,11 @@
 <header class="header">
  <div class="container">
   <div class="header-inner">
-   <a href="index.html" class="logo">
+   <a href="./" class="logo">
     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk — производитель прецизионных вращающихся соединений" style="height:48px;width:auto;" width="226" height="40">
    </a>
    <nav class="nav" id="mainNav">
-    <a href="index.html" class="nav-home-mobile">Главная</a>
+    <a href="./" class="nav-home-mobile">Главная</a>
     <div class="nav-dropdown">
      <a href="products.html" class="nav-dropdown-toggle">Продукция <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
@@ -107,7 +109,7 @@
     <a href="contact.html" class="nav-cta">Запросить предложение</a>
    </nav>
 
-   <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ru">Язык</label><select id="language-ru" aria-label="Язык" onchange="if(this.value)window.location.href=this.value"><option value="../privacy.html">English</option><option value="../de/privacy.html">Deutsch</option><option value="../ja/privacy.html">日本語</option><option value="privacy.html" selected="">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Меню" aria-controls="mainNav" aria-expanded="false">
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-ru">Язык</label><select id="language-ru" aria-label="Язык" onchange="if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value"><option value="../privacy.html">English</option><option value="../de/privacy.html">Deutsch</option><option value="../fr/privacy.html">Français</option><option value="../ja/privacy.html">日本語</option><option value="privacy.html" selected>Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Меню" aria-controls="mainNav" aria-expanded="false">
     <span></span><span></span><span></span>
    </button>
   </div>
@@ -133,7 +135,7 @@
 
     <p><strong>Дата вступления в силу:</strong> 11 июня 2026 г.<br>
 
-    <strong>Последнее обновление:</strong> 28 августа 2026 г.</p>
+    <strong>Последнее обновление:</strong> 4 сентября 2026 г.</p>
 
 
 
@@ -148,6 +150,8 @@
     <ul>
 
         <li><strong>Данные запроса и контактные данные:</strong> имя, адрес электронной почты, компания, страна, интересующий продукт, область применения, технические требования, тип запроса и сведения об исходной странице, отправленные через форму запроса предложения.</li>
+
+        <li><strong>Данные об источнике кампании после согласия:</strong> идентификаторы кликов Google (<code>gclid</code>, <code>gbraid</code> и <code>wbraid</code>), параметры UTM, первая целевая страница и исходный реферер. Эти значения собираются только после разрешения необязательных измерений, хранятся в хранилище текущего сеанса браузера и включаются в запрос, отправляемый во внутренний почтовый ящик отдела продаж.</li>
 
         <li><strong>Технические данные:</strong> IP-адрес и метаданные запроса, которые веб-сервер может обрабатывать для доставки, безопасности и журналирования. Обработчик формы создаёт односторонний хеш IP-адреса и хранит отметки времени последних попыток во временной области сервера для 15-минутного ограничения частоты.</li>
 
@@ -171,6 +175,8 @@
 
         <li>улучшать сайт и ассортимент продукции</li>
 
+        <li>после вашего согласия измерять эффективность рекламы и связывать запросы с кампаниями</li>
+
         <li>отправлять запрос через аутентифицированный SMTP в настроенный почтовый ящик отдела продаж</li>
 
         <li>предотвращать злоупотребления и защищать доступность формы запроса</li>
@@ -189,7 +195,7 @@
 
     <h3>3.1 Обязательное локальное хранилище (всегда активно)</h3>
 
-    <p>Менеджер согласия использует локальное хранилище браузера, а не обязательный cookie, чтобы запомнить выбор аналитики. Эта запись не идентифицирует вас напрямую и не отправляется нашему серверу при обычных запросах страниц.</p>
+    <p>Менеджер согласия использует локальное хранилище браузера, а не обязательный cookie, чтобы запомнить выбор необязательных измерений. Эта запись не идентифицирует вас напрямую и не отправляется нашему серверу при обычных запросах страниц.</p>
 
     <ul>
 
@@ -197,13 +203,15 @@
 
     </ul>
 
-    <h3>3.2 Аналитические cookie (по выбору)</h3>
+    <h3>3.2 Аналитика и измерение эффективности рекламы (по выбору)</h3>
 
-    <p>Google Analytics 4 загружается только после выбора «Принять все». До этого согласие на аналитику и рекламу установлено как отклонённое. При отказе сайт не загружает GA4 и удаляет доступные ему cookie GA.</p>
+    <p>При первом посещении Google Analytics 4 не загружается, пока вы не выберете «Разрешить измерения». По умолчанию Consent Mode v2 устанавливает для <code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> и <code>ad_personalization</code> значение «отклонено». Если вы разрешаете измерения, первые три категории включаются для аналитики и оценки эффективности рекламы, а <code>ad_personalization</code> остаётся отклонённой. Мы не используем этот выбор для показа персонализированной рекламы. Если вы откажетесь до предоставления согласия, GA4 не загрузится. Если вы отзовёте согласие после загрузки, сайт обновит эти настройки согласия на «отклонено», прекратит последующие необязательные измерения и удалит доступные ему cookie GA и данные атрибуции сеанса; уже выполненный на текущей странице скрипт нельзя выгрузить.</p>
 
     <ul>
 
-        <li><strong>Google Analytics 4:</strong> после согласия GA4 регистрирует активность страниц и сеансов, источники переходов, события согласия, взаимодействия с контактами и загрузками, попытки отправки формы и подтверждённые запросы. Подтверждённый запрос может включать тип запроса и интересующий продукт, но наш код не отправляет в GA4 имя, адрес электронной почты, компанию, страну, свободный текст требований или вложение. Google Signals и персонализация рекламы отключены. Срок хранения определяется текущими настройками ресурса GA4. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности Google</a></li>
+        <li><strong>Google Analytics 4:</strong> после согласия GA4 регистрирует активность страниц и сеансов, сведения об источниках и кампаниях, события согласия, взаимодействия с контактами и загрузками, попытки отправки формы и подтверждённые запросы. Подтверждённый запрос может включать тип запроса и интересующий продукт, но наш код не отправляет в GA4 имя, адрес электронной почты, компанию, страну, свободный текст требований, вложение или необработанный идентификатор клика в качестве параметра события. Google Signals и персонализация рекламы отключены. Срок хранения определяется текущими настройками ресурса GA4. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности Google</a></li>
+
+        <li><strong>Атрибуция сеанса:</strong> после согласия сайт сохраняет перечисленные идентификаторы кликов, значения UTM, первую целевую страницу и исходный реферер под ключом <code>begapunk_session_attribution_v1</code> в <code>sessionStorage</code>. Значения заполняют скрытые поля формы запроса и отправляются только при отправке этой формы. При отзыве согласия запись сеанса удаляется, а поля очищаются.</li>
 
     </ul>
 
@@ -217,9 +225,9 @@
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
 
-            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Принять аналитику</button>
+            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Разрешить измерения</button>
 
-            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Отклонить аналитику</button>
+            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Отклонить измерения</button>
 
             <button onclick="BegapunkConsent.reset()" style="padding:10px 18px;background:transparent;color:#666;border:none;border-radius:6px;cursor:pointer;text-decoration:underline;">Сбросить настройки и снова показать баннер</button>
 
@@ -239,7 +247,7 @@
 
         <li><strong>Поставщики хостинга и электронной почты:</strong> PHP-обработчик проверяет запрос и через PHPMailer и аутентифицированный SMTP отправляет его в настроенный почтовый ящик отдела продаж Begapunk. Поля формы и вложения не записываются в базу данных сайта.</li>
 
-        <li><strong>Поставщик аналитики:</strong> Google Analytics получает описанные выше аналитические данные только после согласия.</li>
+        <li><strong>Поставщик измерений:</strong> Google Analytics получает описанные выше данные измерений только после согласия. Персонализация рекламы остаётся отключённой.</li>
 
         <li><strong>Перевозчики:</strong> DHL, FedEx или региональные службы доставки, когда это необходимо; передаются только адрес доставки и контактные данные</li>
 
@@ -264,6 +272,8 @@
         <li><strong>Данные заказов:</strong> хранятся в соответствии с налоговыми, бухгалтерскими, гарантийными, коммерческими и иными применимыми требованиями.</li>
 
         <li><strong>Данные веб-аналитики:</strong> хранятся согласно текущим настройкам ресурса Google Analytics.</li>
+
+        <li><strong>Атрибуция сеанса:</strong> хранится в браузере в течение текущего сеанса. Если вы отправляете запрос, очищенные значения атрибуции остаются в этом письме на тех же операционных и правовых условиях хранения, что и другие данные запроса.</li>
 
     </ul>
 
@@ -325,7 +335,7 @@
 <footer class="footer" id="siteFooter">
  <div class="container">
   <div class="footer-brand footer-brand-band">
-   <a class="footer-logo" href="index.html" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+   <a class="footer-logo" href="./" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
    <div class="footer-brand-copy">
     <p class="footer-positioning">Begapunk — производитель прецизионных вращающихся соединений в Нинбо, Китай. Мы работаем с производителями промышленного оборудования и систем автоматизации.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
@@ -436,10 +446,10 @@ window.addEventListener('scroll', () => {
         if (!el) return;
         const state = (window.BegapunkConsent && window.BegapunkConsent.state) || null;
         if (state === 'granted') {
-            el.textContent = 'Current status: Analytics accepted — Google Analytics 4 is active.';
+            el.textContent = 'Current status: Optional measurement allowed — analytics and advertising-effectiveness measurement are active; personalized advertising remains off.';
             el.style.color = '#2e7d32';
         } else if (state === 'denied') {
-            el.textContent = 'Current status: Analytics declined — only essential cookies are used.';
+            el.textContent = 'Current status: Optional measurement declined — only essential functions are active.';
             el.style.color = '#c62828';
         } else {
             el.textContent = 'Current status: No decision yet — choose your preference in the cookie banner.';
@@ -457,7 +467,7 @@ window.addEventListener('scroll', () => {
     document.addEventListener('begapunk:consent-change', updateStatus);
 })();
 </script>
-<script defer="" src="../js/site-navigation.js?v=20260808-nav1"></script>
+<script defer="" src="../js/site-navigation.js?v=20260904-language-context1"></script>
 
 
 

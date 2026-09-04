@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "review": {
     "method": "AI-assisted target-market line-by-line localization review",
     "independentNativeSpeakerReview": false,
-    "reviewedAt": "2026-08-19"
+    "reviewedAt": "2026-09-04"
   },
   "modelKeySpecKeys": {
     "BP-1P-0003": [
@@ -135,6 +135,149 @@
       "leadTime"
     ]
   },
+  "relatedResourceOverrides": {
+    "fr": {
+      "*": [
+        {
+          "href": "blog-rotary-joint-selection.html",
+          "title": "Comment choisir un raccord tournant pneumatique",
+          "description": "Cinq paramètres essentiels pour éviter les erreurs coûteuses : nombre de passages, pression, vitesse de rotation, compatibilité des fluides et type de fixation."
+        },
+        {
+          "href": "blog-rotary-joint-installation-mistakes.html",
+          "title": "Sept erreurs d’installation à l’origine de défaillances prématurées",
+          "description": "Sur-serrage, tuyauteries rigides, réglage du débit et filtration inadaptés : autant de risques d’installation pouvant entraîner une usure prématurée ou des fuites."
+        },
+        {
+          "href": "installation.html",
+          "title": "Guide d’installation",
+          "description": "Procédures pas à pas pour le montage, le raccordement, la mise en service et la maintenance, avec couples de serrage et listes de contrôle."
+        }
+      ],
+      "BP-1P-0003": [
+        {
+          "href": "application-pneumatic-tools-hose-anti-twist.html",
+          "title": "Raccord tournant pneumatique pour outils pneumatiques : guide de sélection",
+          "description": "Filetages, compatibilité avec la lubrification par brouillard d’huile, limites de masse et réduction de la fatigue de l’opérateur pour les outils portatifs."
+        }
+      ],
+      "BP-1P-0006": [
+        {
+          "href": "blog-rotary-joint-leaking.html",
+          "title": "Pourquoi un raccord tournant fuit-il et comment y remédier ?",
+          "description": "Usure des joints, contamination, sur-serrage et cycles thermiques : un guide pratique pour diagnostiquer les causes courantes de fuite."
+        }
+      ],
+      "BP-2P-0001": [
+        {
+          "href": "blog-rotary-joint-leaking.html",
+          "title": "Pourquoi un raccord tournant fuit-il et comment y remédier ?",
+          "description": "Usure des joints, contamination, sur-serrage et cycles thermiques : un guide pratique pour diagnostiquer les causes courantes de fuite."
+        }
+      ],
+      "BP-2P-0002": [
+        {
+          "href": "blog-rotary-joint-leaking.html",
+          "title": "Pourquoi un raccord tournant fuit-il et comment y remédier ?",
+          "description": "Usure des joints, contamination, sur-serrage et cycles thermiques : un guide pratique pour diagnostiquer les causes courantes de fuite."
+        }
+      ],
+      "BP-2P-08-0001": [
+        {
+          "href": "blog-rotary-joint-leaking.html",
+          "title": "Pourquoi un raccord tournant fuit-il et comment y remédier ?",
+          "description": "Usure des joints, contamination, sur-serrage et cycles thermiques : un guide pratique pour diagnostiquer les causes courantes de fuite."
+        }
+      ],
+      "BP-2P-130-0001": [
+        {
+          "href": "application-automation-rotary-tables.html",
+          "title": "Tables rotatives automatisées : guide d’application",
+          "description": "Fixation par bride, assemblages boulonnés, dispositif anti-rotation et maintenance des raccords tournants pour les tables d’indexage."
+        }
+      ],
+      "BP-2P-16-0001": [
+        {
+          "href": "application-automation-rotary-tables.html",
+          "title": "Tables rotatives automatisées : guide d’application",
+          "description": "Fixation par bride, choix de l’alésage, dispositif anti-rotation et entretien des joints pour les tables d’indexage."
+        }
+      ],
+      "BP-2P-30-0001": [
+        {
+          "href": "application-packaging-machinery.html",
+          "title": "Raccords tournants pour machines d’emballage : guide d’application",
+          "description": "Choix de la vitesse, dimensionnement de l’alésage, compatibilité avec le vide et entretien des joints pour les plateaux tournants d’emballage."
+        }
+      ],
+      "BP-2P-50-0001": [
+        {
+          "href": "application-steel-dusty-environments.html",
+          "title": "Raccords tournants en environnement poussiéreux : guide d’application",
+          "description": "Protection environnementale, maîtrise de la contamination, planification de la maintenance et cas nécessitant de faire confirmer séparément la protection pour les aciéries et les fonderies."
+        }
+      ],
+      "BP-2P-95-0005": [
+        {
+          "href": "case-bp-2p-95-pneumatic-chuck-integration.html",
+          "title": "Étude de cas : intégration du BP-2P-95-0005 sur un mandrin pneumatique",
+          "description": "Découvrez l’installation en atelier documentée par photos, les raccordements pneumatiques et les contrôles techniques d’intégration sur un mandrin."
+        },
+        {
+          "href": "custom-hydraulic-rotary-unions.html",
+          "title": "Raccords tournants hydrauliques sur mesure",
+          "description": "Les fluides non indiqués sur ce plan nécessitent une étude technique spécifique. Envoyez la nature du fluide et la pression de service."
+        }
+      ],
+      "BP-3P-0004": [
+        {
+          "href": "application-automation-rotary-tables.html",
+          "title": "Tables rotatives automatisées : guide d’application",
+          "description": "Fixation par bride, assemblages boulonnés, dispositif anti-rotation et maintenance des raccords tournants pour les tables d’indexage."
+        }
+      ],
+      "BP-3P-0006": [
+        {
+          "href": "application-packaging-machinery.html",
+          "title": "Raccords tournants pour machines d’emballage : guide d’application",
+          "description": "Fonctions de vide, de soufflage et de serrage sur les têtes rotatives d’emballage : vérifiez les raccordements, le débit et les besoins de maintenance."
+        }
+      ],
+      "BP-3P-0007": [
+        {
+          "href": "application-automation-rotary-tables.html",
+          "title": "Tables rotatives automatisées : guide d’application",
+          "description": "Fixation par bride, assemblages boulonnés, dispositif anti-rotation et maintenance des raccords tournants pour les tables d’indexage."
+        }
+      ],
+      "BP-3P-S06-0001": [
+        {
+          "href": "case-bp-3p-s06-sensor-monitored-chuck.html",
+          "title": "Application réelle : mandrin pneumatique surveillé par des capteurs",
+          "description": "Voir la photo d’installation du BP-3P-S06-0001 pour le serrage, le desserrage, le soufflage et le transfert de signaux de capteurs externes."
+        },
+        {
+          "href": "application-automation-rotary-tables.html",
+          "title": "Tables rotatives automatisées : guide d’application",
+          "description": "Planification des passages, dispositif anti-rotation, gestion des câbles et intégration pneumatique-électrique pour les systèmes d’indexage."
+        }
+      ],
+      "BP-4P-30-0001": [
+        {
+          "href": "application-automation-rotary-tables.html",
+          "title": "Tables rotatives automatisées : guide d’application",
+          "description": "Planification des passages, dispositif anti-rotation, gestion des câbles et intégration d’un alésage traversant pour les systèmes d’indexage."
+        }
+      ],
+      "BP-8P-0001": [
+        {
+          "href": "application-packaging-machinery.html",
+          "title": "Raccords tournants pour machines d’emballage : guide d’application",
+          "description": "Intégration d’un raccord tournant multipassage sur les machines de formage-remplissage-scellage, d’encartonnage et d’étiquetage."
+        }
+      ]
+    }
+  },
   "locales": {
     "en": {
       "skipLink": "Skip to main content",
@@ -152,9 +295,10 @@
       },
       "shareMenuLabel": "Share",
       "keyProductParametersLabel": "Key product parameters",
-  "primaryActionLabel": "Get a Quote",
-  "secondaryActionLabel": "Download 3D Model (.step)",
-  "stepDownloadLabel": "Download 3D Model (.step)",
+      "primaryActionLabel": "Get a Quote",
+      "secondaryActionLabel": "Download 3D Model (.step)",
+      "drawingDownloadLabel": "Download 2D Drawing (PDF)",
+      "stepDownloadLabel": "Download 3D Model (.step)",
   "keySpecLabels": {
         "performance": "Pressure / speed",
         "body": "Body",
@@ -223,9 +367,10 @@
       },
       "shareMenuLabel": "Teilen",
       "keyProductParametersLabel": "Wichtige Produktparameter",
-  "primaryActionLabel": "Angebot anfordern",
-  "secondaryActionLabel": "STEP-Datei anfordern",
-  "stepDownloadLabel": "3D-Modell (.step) herunterladen",
+      "primaryActionLabel": "Angebot anfordern",
+      "secondaryActionLabel": "STEP-Datei anfordern",
+      "drawingDownloadLabel": "2D-Zeichnung (PDF) herunterladen",
+      "stepDownloadLabel": "3D-Modell (.step) herunterladen",
   "keySpecLabels": {
         "performance": "Druck / Drehzahl",
         "body": "Gehäuse",
@@ -278,6 +423,79 @@
       },
       "leadTimeValue": "Etwa 20 Kalendertage nach Zahlungseingang"
     },
+    "fr": {
+      "skipLink": "Aller au contenu principal",
+      "productInformationLabel": "Informations produit",
+      "modelLabel": "Modèle",
+      "productImagesLabel": "Images du produit",
+      "onThisPageLabel": "Sur cette page",
+      "jumpToLabel": "Accéder à :",
+      "jumpLinks": {
+        "specs": "Caractéristiques",
+        "compat": "Machines compatibles",
+        "install": "Installation",
+        "downloads": "Téléchargements",
+        "faq": "FAQ"
+      },
+      "shareMenuLabel": "Partager",
+      "keyProductParametersLabel": "Paramètres principaux du produit",
+      "primaryActionLabel": "Demander un devis",
+      "secondaryActionLabel": "Demander le fichier STEP",
+      "drawingDownloadLabel": "Télécharger le plan 2D (PDF)",
+      "stepDownloadLabel": "Télécharger le modèle 3D (.step)",
+      "keySpecLabels": {
+        "performance": "Pression / vitesse",
+        "body": "Corps",
+        "seal": "Joint d’étanchéité",
+        "passages": "Passages / quantité minimale",
+        "mount": "Fixation",
+        "media": "Fluides compatibles",
+        "leadTime": "Délai de production",
+        "ports": "Orifices",
+        "protection": "Protection",
+        "channels": "Passages / quantité minimale",
+        "price": "Prix par quantité",
+        "moq": "Quantité minimale",
+        "warranty": "Garantie",
+        "delivery": "Livraison",
+        "quality": "Qualité / contrôle"
+      },
+      "keySpecPropertyNames": {
+        "media": "Fluides compatibles",
+        "mount": "Type de fixation"
+      },
+      "keySpecValueOverrides": {
+        "BP-2P-50-0001": {
+          "media": "Fluide standard : air",
+          "protection": "Capot de protection et labyrinthe"
+        },
+        "BP-3P-0004": {
+          "price": "À partir de 100 pièces : 57 $/pièce\n1 à 99 pièces : demander un devis",
+          "warranty": "1 an à compter de l'expédition",
+          "delivery": "Expédition mondiale · FOB Ningbo",
+          "quality": "Contrôle d’étanchéité · rapport d’inspection"
+        },
+        "BP-2P-08-0001": {
+          "price": "À partir de 100 pièces : 42 $/pièce\n1 à 99 pièces : demander un devis",
+          "warranty": "1 an à compter de l'expédition",
+          "delivery": "Expédition mondiale · FOB Ningbo",
+          "quality": "Contrôle d’étanchéité · rapport d’inspection"
+        },
+        "BP-2P-95-0005": {
+          "price": "À partir de 100 pièces : 218 $/pièce\n1 à 99 pièces : demander un devis",
+          "warranty": "1 an à compter de l'expédition",
+          "delivery": "Expédition mondiale · FOB Ningbo",
+          "quality": "Contrôle d’étanchéité · rapport d’inspection"
+        },
+        "BP-3P-0007": {
+          "price": "À partir de 100 pièces : 60 $/pièce\n1 à 99 pièces : demander un devis",
+          "warranty": "1 an à compter de l'expédition",
+          "delivery": "Expédition mondiale · FOB Ningbo",
+          "quality": "Contrôle d’étanchéité · rapport d’inspection"
+        }
+      },
+      "leadTimeValue": "Environ 20 jours calendaires après paiement"
+    },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
       "productInformationLabel": "製品情報",
@@ -294,9 +512,10 @@
       },
       "shareMenuLabel": "シェア",
       "keyProductParametersLabel": "主要製品仕様",
-  "primaryActionLabel": "見積もりを依頼",
-  "secondaryActionLabel": "STEPデータを依頼",
-  "stepDownloadLabel": "3Dモデル（.step）をダウンロード",
+      "primaryActionLabel": "見積もりを依頼",
+      "secondaryActionLabel": "STEPデータを依頼",
+      "drawingDownloadLabel": "2D図面（PDF）をダウンロード",
+      "stepDownloadLabel": "3Dモデル（.step）をダウンロード",
   "keySpecLabels": {
         "performance": "圧力／回転数",
         "body": "ボディ",
@@ -365,9 +584,10 @@
       },
       "shareMenuLabel": "Поделиться",
       "keyProductParametersLabel": "Основные параметры изделия",
-  "primaryActionLabel": "Запросить предложение",
-  "secondaryActionLabel": "Запросить файл STEP",
-  "stepDownloadLabel": "Скачать 3D-модель (.step)",
+      "primaryActionLabel": "Запросить предложение",
+      "secondaryActionLabel": "Запросить файл STEP",
+      "drawingDownloadLabel": "Скачать 2D-чертёж (PDF)",
+      "stepDownloadLabel": "Скачать 3D-модель (.step)",
   "keySpecLabels": {
         "performance": "Давление / частота вращения",
         "body": "Корпус",

@@ -1,6 +1,6 @@
 # Begapunk
 
-> Begapunk is a Ningbo, China manufacturer of pneumatic rotary joints, air rotary unions, multi-passage rotary unions, and custom fluid-transfer solutions for industrial machinery. The website is available in English, German, Japanese, and Russian.
+> Begapunk is a Ningbo, China manufacturer of pneumatic rotary joints, air rotary unions, multi-passage rotary unions, and custom fluid-transfer solutions for industrial machinery. The website is available in English, German, French, Japanese, and Russian.
 
 Begapunk serves OEM machine builders, automation companies, equipment manufacturers, and distributors. Product selection depends on the medium, pressure, rotational speed, passage count, port size, mounting method, duty cycle, and operating environment.
 
@@ -12,10 +12,12 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [English homepage](https://www.begapunk.com/): Default English edition.
 - [Deutsche Startseite](https://www.begapunk.com/de/): German edition for German-language queries.
+- [Accueil en français](https://www.begapunk.com/fr/): French edition for French-language queries.
 - [日本語ホームページ](https://www.begapunk.com/ja/): Japanese edition for Japanese-language queries.
 - [Русская главная страница](https://www.begapunk.com/ru/): Russian edition for Russian-language queries.
-- [Complete multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml): Index of all published English, German, Japanese, and Russian URLs.
+- [Complete multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml): Index of all published English, German, French, Japanese, and Russian URLs.
 - [Deutscher AI-Seitenindex](https://www.begapunk.com/de/llms.txt): Vollständiger deutschsprachiger Seitenindex mit lokalisierten Beschreibungen.
+- [Index français pour les IA](https://www.begapunk.com/fr/llms.txt): Index complet des pages françaises avec leurs descriptions localisées.
 - [日本語AIページ索引](https://www.begapunk.com/ja/llms.txt): 日本語ページと技術概要をまとめた完全な索引。
 - [Русский индекс для ИИ](https://www.begapunk.com/ru/llms.txt): Полный указатель русскоязычных страниц с локализованными описаниями.
 

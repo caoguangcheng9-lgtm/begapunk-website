@@ -27,7 +27,7 @@ const blogHeroRules = [
 ];
 
 const changedStylesheets = new Map([
-  ['case-studies.css', '20260817-case-bundle1'],
+  ['case-studies.css', '20260904-native-faq1'],
   ['application-case.css', '20260814-hero1'],
   ['manufacturing-quality.css', '20260814-hero1'],
   ['production-inspection-testing.css', '20260814-hero1'],

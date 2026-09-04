@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raccord tournant qui fuit ? Guide de diagnostic | Begapunk</title>
+  <meta name="description" content="Localisez la fuite, distinguez un défaut de montage d’un défaut d’étanchéité rotative et contrôlez l’alignement avant de remplacer des composants.">
+<meta property="og:title" content="Raccord tournant qui fuit ? Guide de diagnostic | Begapunk">
+  <meta property="og:description" content="Localisez la fuite, distinguez un défaut de montage d’un défaut d’étanchéité rotative et contrôlez l’alignement avant de remplacer des composants.">
+  <meta property="og:url" content="https://www.begapunk.com/fr/blog-rotary-joint-leaking.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
+  <meta property="og:site_name" content="Begapunk">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Raccord tournant qui fuit ? Guide de diagnostic | Begapunk">
+  <meta name="twitter:description" content="Localisez la fuite, distinguez un défaut de montage d’un défaut d’étanchéité rotative et contrôlez l’alignement avant de remplacer des composants.">
+  <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
+
+
+
+
+
+
+<link rel="alternate" hreflang="en" href="https://www.begapunk.com/blog-rotary-joint-leaking.html">
+<link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/blog-rotary-joint-leaking.html">
+<link rel="alternate" hreflang="fr" href="https://www.begapunk.com/fr/blog-rotary-joint-leaking.html">
+<link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/blog-rotary-joint-leaking.html">
+<link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/blog-rotary-joint-leaking.html">
+<link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/blog-rotary-joint-leaking.html">
+<link rel="canonical" href="https://www.begapunk.com/fr/blog-rotary-joint-leaking.html">
+  <link rel="stylesheet" href="../css/style.css?v=20260904-nojs-flow1">
+  <!-- FAQPage Schema -->
+  <!-- BreadcrumbList Schema -->
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <style>
+
+    .blog-content { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+    .blog-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--dark-soft); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+    .blog-content h3 { font-size: 1.2rem; font-weight: 600; color: var(--text); margin: 28px 0 12px; }
+    .blog-content p { margin-bottom: 16px; line-height: 1.8; }
+    .blog-content ul, .blog-content ol { margin: 16px 0 16px 24px; }
+    .blog-content li { margin-bottom: 8px; line-height: 1.7; }
+    .blog-content strong { color: var(--dark-soft); }
+    .blog-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .blog-content th { background: var(--dark-soft); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; }
+    .blog-content td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .blog-content tr:nth-child(even) { background: var(--bg-alt); }
+    .blog-content blockquote { border-left: 4px solid var(--primary); padding: 16px 20px; background: var(--bg-alt); margin: 20px 0; font-style: italic; color: var(--text-light); }
+    .blog-content .cta-box { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 32px; border-radius: 12px; margin: 40px 0; text-align: center; }
+    .blog-content .cta-box h3 { color: #fff; margin-bottom: 12px; }
+    .blog-content .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+    .blog-content .cta-box .btn { display: inline-block; background: #fff; color: var(--primary); padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+    .blog-content .cta-box .btn:hover { background: var(--bg-alt); }
+    .blog-content a { color: var(--primary); }
+    .blog-content a:hover { color: var(--primary-dark); }
+    .blog-content .product-link { display: inline-block; background: var(--bg-alt); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 500; text-decoration: none; margin-left: 4px; }
+    .blog-content .product-link:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .key-takeaways { background: var(--bg-alt); border-left: 4px solid var(--primary); padding: 24px 28px; border-radius: 8px; margin: 24px 0; }
+    .key-takeaways h3 { margin-top: 0; color: var(--dark-soft); font-size: 1.1rem; }
+    .key-takeaways ul { margin: 12px 0 0 20px; }
+    .key-takeaways li { margin-bottom: 6px; line-height: 1.6; }
+
+    .audience-tag { font-size: 0.9rem; color: var(--text-light); font-style: italic; margin-bottom: 20px; }
+
+    .mistake-card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; margin: 24px 0; }
+    .mistake-card h3 { margin-top: 0; color: #dc2626; font-size: 1.15rem; }
+    .mistake-card .correct { color: #16a34a; font-weight: 600; }
+    .mistake-card .field-note { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 0.92rem; }
+    .mistake-card .pro-tip { background: #f0fdf4; border-left: 3px solid #16a34a; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 0.92rem; }
+
+    .breadcrumb { padding: 16px 0; font-size: 0.85rem; color: var(--text-light); }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .related-articles { background: var(--bg-alt); padding: 48px 0; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 24px; }
+    .related-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: box-shadow 0.2s; }
+    .related-card:hover { box-shadow: var(--shadow-hover); }
+    .related-card .tag { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
+    .related-card h3 { font-size: 1.05rem; margin: 8px 0; color: var(--dark-soft); }
+    .related-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
+    .related-card a { font-size: 0.9rem; font-weight: 600; }
+
+    .toc { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+    .toc h3 { margin-top: 0; font-size: 1rem; color: var(--dark-soft); }
+    .toc ol { margin: 8px 0 0 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    /* Social Share Buttons */
+    .social-share-wrap { margin-top: 20px; padding-top: 16px; padding-bottom: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .social-share { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social-share-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; margin-right: 4px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; line-height: 1; }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .share-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .share-linkedin { background: #0a66c2; color: #fff; }
+    .share-linkedin:hover { background: #084e96; }
+    .share-twitter { background: #000; color: #fff; }
+    .share-twitter:hover { background: #333; }
+    .share-facebook { background: #1877f2; color: #fff; }
+    .share-facebook:hover { background: #166fe5; }
+    .share-whatsapp { background: #25d366; color: #fff; }
+    .share-whatsapp:hover { background: #1da851; }
+    @media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
+
+
+  </style>
+    <script defer="" src="../js/analytics.js?v=e061bf5d563c"></script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Raccord tournant qui fuit ? Diagnostic pour la maintenance","description":"Localisez la fuite, distinguez un défaut de montage d’un défaut d’étanchéité rotative et contrôlez l’alignement avant de remplacer des composants.","author":{"@id":"https://www.begapunk.com/#organization"},"publisher":{"@id":"https://www.begapunk.com/#organization"},"dateModified":"2026-08-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.begapunk.com/fr/blog-rotary-joint-leaking.html","inLanguage":"fr","name":"Raccord tournant qui fuit ? Guide de diagnostic | Begapunk","description":"Localisez la fuite, distinguez un défaut de montage d’un défaut d’étanchéité rotative et contrôlez l’alignement avant de remplacer des composants."},"inLanguage":"fr"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.begapunk.com/fr/"},{"@type":"ListItem","position":2,"name":"Centre technique","item":"https://www.begapunk.com/fr/blog.html"},{"@type":"ListItem","position":3,"name":"Raccord tournant qui fuit ? Diagnostic pour la maintenance","item":"https://www.begapunk.com/fr/blog-rotary-joint-leaking.html"}]}</script>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="./" class="logo">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - Fabricant de raccords tournants de précision" style="height:48px;width:auto;" width="226" height="40">
+   </a>
+   <nav class="nav" id="mainNav">
+    <a href="./" class="nav-home-mobile">Accueil</a>
+    <div class="nav-dropdown">
+     <a href="products.html" class="nav-dropdown-toggle">Produits <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="product-comparison.html">Comparatif des modèles</a>
+      <a href="contact.html">Sur-mesure et devis</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="applications.html" class="nav-dropdown-toggle">Applications <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="case-studies.html">Études de cas</a>
+      <a href="application-laser-tube-cutting.html">Découpe laser de tubes</a>
+      <a href="application-packaging-machinery.html">Machines d'emballage</a>
+      <a href="application-bottle-filling-capping.html">Remplissage et bouchage de bouteilles</a>
+      <a href="application-cnc-pneumatic-clamping.html">Serrage pneumatique CNC</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="manufacturing-quality.html" class="nav-dropdown-toggle">Qualité <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="production-inspection-testing.html">Essai d'étanchéité à 100 %</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="blog.html" class="nav-dropdown-toggle active">Centre technique <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="blog-rotary-joint-selection.html">Guide de sélection</a>
+      <a href="blog-rotary-union-seal-types.html">Technologies d'étanchéité</a>
+      <a href="installation.html">Guide d'installation</a>
+      <a href="faq.html">FAQ</a>
+     </div>
+    </div>
+    <a href="about.html" class="nav-about">À propos</a>
+    <a href="contact.html" class="nav-cta">Demander un devis</a>
+   </nav>
+
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-fr">Langue</label><select id="language-fr" aria-label="Langue" onchange="if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value"><option value="../blog-rotary-joint-leaking.html">English</option><option value="../de/blog-rotary-joint-leaking.html">Deutsch</option><option value="blog-rotary-joint-leaking.html" selected>Français</option><option value="../ja/blog-rotary-joint-leaking.html">日本語</option><option value="../ru/blog-rotary-joint-leaking.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-controls="mainNav" aria-expanded="false">
+    <span></span><span></span><span></span>
+   </button>
+  </div>
+ </div>
+</header>
+
+<!-- SOFT-ISOLATION-CONTENT:START -->
+<main id="main-content" class="soft-isolation-page">
+ <section class="blog-hero">
+  <div class="container" style="max-width:980px;">
+   <span class="section-label">Préparation de l'application</span>
+   <h1>Raccord tournant qui fuit ? Diagnostic pour la maintenance</h1>
+   <p>Suivez une séquence de diagnostic maîtrisée pour distinguer les défauts de flexible, de raccord, de joint statique, de joint tournant et de communication entre circuits avant de remplacer des pièces.</p>
+  </div>
+ </section>
+ <section class="section soft-isolation-content">
+  <div class="container" style="max-width:980px;">
+   <div style="padding:22px 24px;border-left:4px solid var(--primary);background:var(--bg-alt);border-radius:8px;margin-bottom:30px;">
+    <p style="margin:0;line-height:1.8;color:var(--text);">Une fuite visible d’air ou de fluide ne signifie pas toujours que le joint tournant interne est défaillant. Des raccords desserrés, un tube endommagé, des surfaces d’étanchéité contaminées, un effort latéral, un défaut d’alignement, des conditions de fonctionnement excessives ou une communication entre circuits peuvent produire des symptômes similaires. Consignez la machine avant le contrôle et localisez la fuite avant tout démontage.</p>
+   </div>
+   <div class="soft-topic-guide" data-topic-route="blog-rotary-joint-leaking.html">
+    <section class="soft-topic-section" aria-labelledby="soft-topic-1" style="margin:0 0 36px;">
+     <h2 id="soft-topic-1" style="margin-bottom:14px;">Commencer par l’emplacement et le moment d’apparition de la fuite</h2>
+     <p style="margin:0 0 14px;line-height:1.8;color:var(--text);">Observez si la fuite provient d’un raccord de flexible, d’un assemblage fixe du corps, de l’interface tournante, d’un drain ou d’un évent, ou encore d’un autre passage. Notez si elle apparaît à l’arrêt, uniquement pendant la rotation, après la montée en température ou seulement lorsqu’un circuit précis est sous pression.</p>
+     <p style="margin:0 0 14px;line-height:1.8;color:var(--text);">Ces observations réduisent le champ du diagnostic. Une fuite sur un raccord peut souvent être corrigée sans ouvrir le raccord tournant. Une fuite qui varie avec la vitesse, la position de l’arbre, la température ou le mouvement d’un flexible oriente le diagnostic vers l’alignement, une charge externe, l’état des surfaces ou un problème d’étanchéité dynamique.</p>
+
+    </section>
+    <section class="soft-topic-section" aria-labelledby="soft-topic-2" style="margin:0 0 36px;">
+     <h2 id="soft-topic-2" style="margin-bottom:14px;">Causes courantes à contrôler</h2>
+
+     <ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0 0;padding:0;list-style:none;">
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Raccordements externes</strong>
+       <span>Inspectez la coupe des tubes, les bagues, l’état des filetages, la méthode d’étanchéité, les adaptateurs et le serrage sans dépasser les spécifications des raccords.</span></li>
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">État du montage</strong>
+       <span>Contrôlez la concentricité, le faux-rond de l’arbre, les tuyauteries rigides, la tension des flexibles, les efforts de flexion, la retenue antirotation et la contamination autour de l’interface tournante.</span></li>
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Conditions de fonctionnement</strong>
+       <span>Comparez le fluide, la pression, la vitesse, la température, le cycle de service, la filtration et la lubrification réels à la configuration sélectionnée.</span></li>
+     </ul>
+    </section>
+    <section class="soft-topic-section" aria-labelledby="soft-topic-3" style="margin:0 0 36px;">
+     <h2 id="soft-topic-3" style="margin-bottom:14px;">Séquence de diagnostic d’une fuite</h2>
+
+     <ol style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0 0;padding:0 0 0 1.35rem;">
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Mettre la machine en sécurité</strong>
+       <span>Arrêtez la rotation, isolez toutes les sources d’énergie, dépressurisez tous les passages et nettoyez la zone avant le contrôle.</span></li>
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Tester les raccordements externes</strong>
+       <span>Mettez un seul passage à la fois sous pression dans des conditions maîtrisées et employez une méthode de détection adaptée sur les flexibles et les raccords.</span></li>
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Distinguer le comportement à l’arrêt et en rotation</strong>
+       <span>Relevez la fuite à l’arrêt puis pendant une rotation lente sans dépasser les limites publiées.</span></li>
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Inspecter avant de remplacer les joints</strong>
+       <span>Si la fuite est interne, contrôlez l’arbre, les surfaces d’étanchéité, les roulements, la contamination et l’alignement ; un joint neuf ne corrigera pas à lui seul des pièces endommagées.</span></li>
+      <li style="padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.65;color:var(--text);"><strong style="display:block;margin-bottom:5px;color:var(--dark-soft);">Retester chaque passage</strong>
+       <span>Après réparation, vérifiez l’isolement et l’étanchéité des passages à basse pression et à faible vitesse avant de reprendre le fonctionnement normal.</span></li>
+     </ol>
+    </section>
+   </div>
+
+
+   <p style="margin:0 0 24px;line-height:1.8;color:var(--text);">Étape suivante du diagnostic : mettez un circuit à la fois sous pression, notez si la fuite apparaît à l’arrêt ou uniquement en rotation, puis inspectez les raccords et l’alignement avant d’ouvrir le raccord tournant. Un joint neuf ne corrigera ni un arbre rayé ni un effort radial.</p>
+   <p style="margin:0 0 24px;line-height:1.8;color:var(--text);"><strong>Modèles associés :</strong> <a href="BP-2P-95-0005.html">BP-2P-95-0005</a> · <a href="BP-3P-0004.html">BP-3P-0004</a> · <a href="BP-2P-16-0001.html">BP-2P-16-0001</a></p>
+   <div class="app-detail-cta" style="align-items:center;">
+    <div>
+     <h2>Demander de l’aide pour diagnostiquer une fuite de raccord tournant</h2>
+     <p>Envoyez le modèle, l’emplacement de la fuite, des photos, le fluide utilisé et précisez si la fuite apparaît à l’arrêt ou uniquement en rotation.</p>
+    </div>
+    <a href="contact.html?request=application-review&amp;source=blog-rotary-joint-leaking.html#quoteForm" class="btn btn-primary">Contacter l'équipe technique</a>
+   </div>
+  </div>
+ </section>
+</main>
+<!-- SOFT-ISOLATION-CONTENT:END -->
+
+<footer class="footer" id="siteFooter">
+ <div class="container">
+  <div class="footer-brand footer-brand-band">
+   <a class="footer-logo" href="./" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+   <div class="footer-brand-copy">
+    <p class="footer-positioning">Fabricant de raccords tournants de précision basé à Ningbo, en Chine. Accompagnement des constructeurs de machines et des OEM de l'automatisation industrielle.</p>
+    <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
+   </div>
+   <a class="footer-quote" href="contact.html#quoteForm">Demander un devis</a>
+  </div>
+  <div class="footer-contact-band">
+   <address class="footer-contact">
+    <span class="footer-address"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Ningbo, Zhejiang, Chine</span></span>
+    <a href="mailto:sales@begapunk.com"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg><span>sales@begapunk.com</span></a>
+    <a href="tel:+8618368425342"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.2 3.5 10 7l-2 2.4a15.5 15.5 0 0 0 6.6 6.6l2.4-2 3.5 2.8-1.5 3a2.5 2.5 0 0 1-2.6 1.3C9.2 20 4 14.8 2.9 7.6A2.5 2.5 0 0 1 4.2 5z"/></svg><span>+86 183 6842 5342</span></a>
+    <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 8.2c.5 2.7 2.6 4.8 5.3 5.3"/></svg><span>WhatsApp</span></a>
+   </address>
+   <nav class="footer-social" aria-label="Suivre Begapunk">
+    <ul class="footer-social-links">
+      <li><a href="https://www.linkedin.com/in/guangcheng-cao/" target="_blank" rel="noopener noreferrer" aria-label="G. C. Cao sur LinkedIn"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M5.4 8.2H2V22h3.4V8.2ZM3.7 2A2 2 0 1 0 3.7 6a2 2 0 0 0 0-4ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.3V22h3.4v-6.8c0-1.8.3-3.6 2.6-3.6 2.3 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg></a></li>
+      <li><a href="https://www.youtube.com/@BEGAPUNKRotaryJointsTV" target="_blank" rel="noopener noreferrer" aria-label="Begapunk sur YouTube"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6ZM9.8 15.4V8.6L16 12l-6.2 3.4Z"/></svg></a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61591616523667" target="_blank" rel="noopener noreferrer" aria-label="Begapunk sur Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M14 22v-8h2.8l.4-3H14V9.1c0-.9.3-1.6 1.7-1.6h1.7V4.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V11H7.5v3h2.9v8H14Z"/></svg></a></li>
+      <li><a href="https://x.com/Begapunk728" target="_blank" rel="noopener noreferrer" aria-label="Begapunk sur X"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M3 3h4.7l4.8 6.4L18 3h3l-7.1 8.7L22 21h-4.7l-5.2-6.9L6 21H3l7.7-9.2L3 3Zm3.5 2 11.8 14h1.2L7.7 5H6.5Z"/></svg></a></li>
+    </ul>
+   </nav>
+  </div>
+  <nav class="footer-navigation" aria-label="Navigation de pied de page">
+   <section class="footer-column">
+     <h2 class="footer-title">Produits et sélection</h2>
+     <ul class="footer-links">
+      <li><a href="products.html">Catalogue produits</a></li>
+      <li><a href="product-comparison.html">Comparatif des modèles</a></li>
+     </ul>
+    </section>
+    <section class="footer-column">
+     <h2 class="footer-title">Applications et études de cas</h2>
+     <ul class="footer-links">
+      <li><a href="case-studies.html">Études de cas réelles</a></li>
+      <li><a href="application-laser-tube-cutting.html">Découpe laser de tubes</a></li>
+      <li><a href="application-packaging-machinery.html">Machines d'emballage</a></li>
+      <li><a href="application-bottle-filling-capping.html">Remplissage et bouchage de bouteilles</a></li>
+      <li><a href="applications.html">Toutes les applications</a></li>
+     </ul>
+    </section>
+    <section class="footer-column">
+     <h2 class="footer-title">Qualité et usine</h2>
+     <ul class="footer-links">
+      <li><a href="manufacturing-quality.html">Fabrication et qualité</a></li>
+      <li><a href="production-inspection-testing.html">Essai d'étanchéité à 100 %</a></li>
+      <li><a href="about.html">Entreprise et usine</a></li>
+     </ul>
+    </section>
+    <section class="footer-column">
+     <h2 class="footer-title">Assistance technique</h2>
+     <ul class="footer-links">
+      <li><a href="blog-rotary-joint-selection.html">Guide de sélection</a></li>
+      <li><a href="installation.html">Guide d'installation</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+     </ul>
+    </section>
+  </nav>
+  <div class="footer-bottom">
+   <p>© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.</p>
+   <nav class="footer-legal" aria-label="Informations légales">
+    <a href="privacy.html">Confidentialité</a>
+    <a href="terms.html">Conditions d'utilisation</a>
+   </nav>
+  </div>
+ </div>
+</footer>
+
+<!-- ===== FLOATING CTA ===== -->
+<div class="floating-cta">
+  <a href="contact.html" class="floating-btn quote">Demander un devis</a>
+  <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp">WhatsApp</a>
+</div>
+
+<script>
+const mobileToggle = document.getElementById('mobileToggle');
+const mainNav = document.getElementById('mainNav');
+
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.style.boxShadow = '0 2px 20px rgba(15,23,42,0.08)';
+  } else {
+    header.style.boxShadow = 'none';
+  }
+});
+
+
+function copyLink(btn, url) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+            var original = btn.innerHTML;
+            btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lien copié';
+            btn.classList.add('copied');
+            setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+        });
+    } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var original = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lien copié';
+        btn.classList.add('copied');
+        setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+    }
+}
+
+</script>
+<script defer="" src="../js/site-navigation.js?v=20260904-language-context1"></script>
+
+
+</body></html>

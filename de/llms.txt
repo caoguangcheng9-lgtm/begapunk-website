@@ -2,8 +2,8 @@
 
 > Technischer Seitenindex für pneumatische Drehdurchführungen von Begapunk. Die Auswahl erfolgt nach Medium, Betriebsdruck, Drehzahl, Kanalzahl, Anschluss und Einbausituation.
 
-- [Multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml)
-- [English AI index](https://www.begapunk.com/llms.txt)
+- [Mehrsprachige Sitemap](https://www.begapunk.com/sitemap-i18n.xml)
+- [Englischer KI-Index](https://www.begapunk.com/llms.txt)
 
 ## Produkte
 
@@ -59,7 +59,7 @@
 
 ## Unternehmen und Service
 
-- [Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk](https://www.begapunk.com/de/): Pneumatische Ein- und Mehrwege-Drehdurchführungen für Drehtische, Vorrichtungen und Automatisierung. Modelle vergleichen oder Sonderausführung anfragen.
+- [Pneumatische Drehdurchführungen | 1–8 Kanäle | Begapunk](https://www.begapunk.com/de/): Pneumatische Drehdurchführungen mit 1–8 Kanälen: Standard- und Sonderausführungen, 2D-PDF-Zeichnungen und STEP-Daten, Mindestbestellmenge 1 Stück.
 - [Über Begapunk | Hersteller von Drehdurchführungen](https://www.begapunk.com/de/about.html): Erfahren Sie mehr über Begapunk, unsere Fertigung in Ningbo, Qualitätsprüfung und Entwicklung kundenspezifischer Drehdurchführungen.
 - [Fertigung & Qualität | Harteloxieren | Begapunk](https://www.begapunk.com/de/manufacturing-quality.html): Harteloxierte Rotoren, farbeloxierte Statorgehäuse und Schichtdickenprüfung für langsam laufende Drehdurchführungen mit O-Ring-Abdichtung.
 - [100%-Dichtheitsprüfung jedes einzelnen Kanals | Begapunk](https://www.begapunk.com/de/production-inspection-testing.html): Nach der Endmontage wird jede pneumatische Drehdurchführung kanalweise mit Druckluft bei 1,0 MPa geprüft, bevor sie verpackt und eingelagert werden darf.

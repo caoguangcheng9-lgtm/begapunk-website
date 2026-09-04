@@ -7,6 +7,9 @@ import CleanCSS from 'clean-css';
 import { minify as minifyJs } from 'terser';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
+const i18nConfig = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
+const partialSitemapFiles = Object.keys(i18nConfig.partialLanguagePages || {})
+  .map((code) => `sitemap-${code}.xml`);
 
 function readOutputArgument() {
   const index = process.argv.indexOf('--output');
@@ -146,6 +149,19 @@ const localizedDirectories = [...new Set(
     .filter((directory) => directory !== '.'),
 )];
 for (const directory of localizedDirectories) {
+  const localizedCssFiles = (await fs.readdir(path.join(sourceRoot, directory), { withFileTypes: true }))
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.css'))
+    .map((entry) => path.join(directory, entry.name))
+    .sort();
+  for (const relativePath of localizedCssFiles) {
+    await writeMinified(relativePath, 'css', (source) => {
+      const result = new CleanCSS({ level: 1, rebase: false, returnPromise: false }).minify(source);
+      if (result.errors.length) throw new Error(`${relativePath}: ${result.errors.join('; ')}`);
+      return result.styles;
+    });
+  }
+}
+for (const directory of localizedDirectories) {
   const relativePath = path.join(directory, 'search-index.json');
   try {
     await fs.access(path.join(sourceRoot, relativePath));
@@ -160,7 +176,7 @@ for (const relativePath of rootCopyFiles) {
   await fs.copyFile(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath));
 }
 
-for (const relativePath of ['sitemap-i18n.xml']) {
+for (const relativePath of ['sitemap-i18n.xml', ...partialSitemapFiles]) {
   try {
     await fs.copyFile(path.join(sourceRoot, relativePath), path.join(siteRoot, relativePath));
   } catch (error) {

@@ -20,7 +20,7 @@ const checks = [
       'MOQ 1',
       'Within 30 days after payment',
       'Ningbo facility',
-      'contact.html?inquiry_type=hydraulic&product=hydraulic&source=custom-hydraulic-rotary-unions.html#quoteForm',
+      'contact.html?inquiry_type=hydraulic&amp;product=hydraulic&amp;source=custom-hydraulic-rotary-unions.html#quoteForm',
     ],
     forbidden: [
       'Custom Hydraulic Rotary Unions for OEM Machinery',
@@ -33,6 +33,11 @@ const checks = [
     file: 'de/custom-hydraulic-rotary-unions.html',
     required: ['Hydraulik-Drehdurchf', '2-Wege', '12 Wege', 'Glyd-Ring', '30 MPa', 'Innerhalb von 30 Tagen nach Zahlungseingang'],
     forbidden: ['Kanalzahl', 'Etwa 30 Tage nach Zahlungseingang', 'etwa 30 Kalendertage nach Zahlungseingang'],
+  },
+  {
+    file: 'fr/custom-hydraulic-rotary-unions.html',
+    required: ['Raccords tournants hydrauliques sur mesure', '2 circuits standard', '12 circuits sur mesure', 'bague Glyd en PTFE renforcé de fibres de carbone', '30 MPa', 'Dans les 30 jours suivant le paiement', 'site de Ningbo'],
+    forbidden: ['raccords tournants hydrauliques personnalisés', 'Environ 30 jours après paiement', 'environ 30 jours calendaires après paiement', 'union douanière', 'grappins en bois et en bois'],
   },
   {
     file: 'ja/custom-hydraulic-rotary-unions.html',
@@ -228,9 +233,13 @@ const checks = [
   },
   {
     file: 'privacy.html',
-    forbidden: ['Begapunk Precision Rotary Joint Manufacturer ("we", "us", or "our")', '<strong>Last Updated:</strong> August 27, 2026'],
-    required: [
+    forbidden: [
+      'Begapunk Precision Rotary Joint Manufacturer ("we", "us", or "our")',
+      '<strong>Last Updated:</strong> August 27, 2026',
       '<strong>Last Updated:</strong> August 28, 2026',
+    ],
+    required: [
+      '<strong>Last Updated:</strong> September 4, 2026',
       'Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our")',
       'We do not use your inquiries or drawings for marketing or public display.',
     ],
@@ -261,8 +270,8 @@ const checks = [
   },
   {
     file: 'de/privacy.html',
-    forbidden: ['Begapunk, Hersteller von Präzisions-Drehdurchführungen'],
-    required: ['Ningbo Begapunk Pneumatic Components Co., Ltd.', 'Zuletzt aktualisiert:</strong> 28. August 2026', 'weder für Marketingzwecke noch zur öffentlichen Darstellung'],
+    forbidden: ['Begapunk, Hersteller von Präzisions-Drehdurchführungen', 'Zuletzt aktualisiert:</strong> 28. August 2026'],
+    required: ['Ningbo Begapunk Pneumatic Components Co., Ltd.', 'Zuletzt aktualisiert:</strong> 4. September 2026', 'weder für Marketingzwecke noch zur öffentlichen Darstellung'],
   },
   {
     file: 'de/terms.html',
@@ -275,10 +284,10 @@ const checks = [
   },
   {
     file: 'ja/privacy.html',
-    forbidden: ['精密ロータリージョイントメーカーBegapunk', 'Yugongの道', 'Zonghanの工業団地', 'アドレス:'],
+    forbidden: ['精密ロータリージョイントメーカーBegapunk', 'Yugongの道', 'Zonghanの工業団地', 'アドレス:', '最終更新日：</strong>2026年8月28日'],
     required: [
       'Ningbo Begapunk Pneumatic Components Co., Ltd.',
-      '最終更新日：</strong>2026年8月28日',
+      '最終更新日：</strong>2026年9月4日',
       'マーケティングや一般公開に使用することはありません',
       '住所：88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
     ],
@@ -290,8 +299,8 @@ const checks = [
   },
   {
     file: 'ru/privacy.html',
-    forbidden: ['Begapunk, производитель прецизионных вращающихся соединений'],
-    required: ['Ningbo Begapunk Pneumatic Components Co., Ltd.', 'Последнее обновление:</strong> 28 августа 2026 г.', 'не публикуем их в открытом доступе'],
+    forbidden: ['Begapunk, производитель прецизионных вращающихся соединений', 'Последнее обновление:</strong> 28 августа 2026 г.'],
+    required: ['Ningbo Begapunk Pneumatic Components Co., Ltd.', 'Последнее обновление:</strong> 4 сентября 2026 г.', 'не публикуем их в открытом доступе'],
   },
   {
     file: 'ru/terms.html',
@@ -464,6 +473,11 @@ const applicationOverviewChecks = [
     required: ['Zum Einstieg genügt bereits eine Angabe: Maschinentyp, Modellnummer, Foto oder Zeichnung. Senden Sie einfach die unten aufgeführten Informationen, die Ihnen bereits vorliegen. Damit können wir ein passendes Katalogmodell oder eine Sonderausführung eingrenzen.'],
   },
   {
+    file: 'fr/applications.html',
+    forbidden: ['Le nom de la machine ne suffit pas. Ces informations permettent à Begapunk de comparer un modèle standard ou de définir une configuration sur mesure.'],
+    required: ['Pour commencer, un type de machine, une référence, une photo ou un plan suffit. Partagez les informations dont vous disposez ; nous identifierons un modèle du catalogue ou une solution sur mesure adaptée.'],
+  },
+  {
     file: 'ja/applications.html',
     forbidden: ['装置名だけでは適切な選定はできません。以下の情報があれば、Begapunkが標準型式との照合または特注仕様の検討を行えます。'],
     required: ['装置名、型式、写真、図面のいずれかがあれば選定を始められます。下記のうち分かる情報だけお送りください。カタログ型式または特注仕様の候補を絞り込みます。'],
@@ -474,6 +488,14 @@ const applicationOverviewChecks = [
     required: ['Для начала достаточно указать тип оборудования или прислать номер модели, фотографию либо чертёж. Сообщите любые известные вам данные из списка ниже — мы сузим выбор до подходящей каталожной модели или заказного исполнения.'],
   },
 ];
+
+const expectedApplicationOverviewFiles = [
+  'applications.html',
+  ...(config.activeLanguageCodes || []).map((code) => `${code}/applications.html`),
+];
+if (JSON.stringify(applicationOverviewChecks.map(({ file }) => file)) !== JSON.stringify(expectedApplicationOverviewFiles)) {
+  failures.push(`application overview checks must exactly match source + active languages (${expectedApplicationOverviewFiles.join(', ')}).`);
+}
 
 checks.push(...applicationOverviewChecks);
 
@@ -524,6 +546,30 @@ const buyerFacingApplicationCopyByLocale = [
       ],
       'application-cnc-pneumatic-clamping.html': ['Eingebautes Produkt', 'Für eine ähnliche Vorrichtung', 'zwei getrennten Kanälen zum Spannen und Lösen'],
       'application-bottle-filling-capping.html': ['Für eine ähnliche Verschließmaschine', 'Eine weitere Option für diese Anwendung', 'Im gezeigten Einbau wird BP-2P-16-0001 verwendet.'],
+    },
+  },
+  {
+    prefix: 'fr/',
+    visibleForbidden: [
+      'Limite des preuves',
+      'Faits d’application vérifiés',
+      'Modèle installé vérifié',
+      'Applications documentées',
+      'Confirmation technique',
+      'Ce que montre la photographie',
+      'Note sur les photographies',
+    ],
+    visibleRequiredByPage: {
+      'applications.html': [
+        'Les gaz de procédé ou d’assistance nécessitent une solution distincte. Indiquez le gaz et les conditions de fonctionnement afin que nous puissions vérifier les matériaux, la propreté et les essais requis.',
+        'La photographie montre le type d’application ; le modèle exact visible sur l’image n’a pas été identifié.',
+      ],
+      'application-laser-tube-cutting.html': [
+        'BP-3P-0004 et BP-2P-08-0001 constituent des points de départ standard pour cette application. Les photographies prises en atelier montrent le type d’installation ; le modèle exact visible sur chaque image n’a pas été identifié.',
+        'Les gaz de procédé et d’assistance nécessitent une solution distincte',
+      ],
+      'application-cnc-pneumatic-clamping.html': ['Produit installé', 'Pour un montage comparable', 'deux circuits indépendants pour le serrage et le desserrage'],
+      'application-bottle-filling-capping.html': ['Pour une machine de bouchage comparable', 'Le BP-2P-08-0001 constitue une autre option pour une pince pneumatique à trois mors destinée aux bouchons.', 'L\'installation illustrée utilise le BP-2P-16-0001.'],
     },
   },
   {
@@ -614,6 +660,16 @@ const applicationCopyByLocale = [
     newCnc: 'Senden Sie einfach, was Ihnen bereits vorliegt – Vorrichtungszeichnung, Foto, Pneumatikplan oder bekannte Betriebsdaten. Wir empfehlen ein passendes Katalogmodell oder eine kundenspezifische Schnittstelle und teilen Ihnen mit, falls noch Angaben fehlen.',
   },
   {
+    prefix: 'fr/',
+    oldHeader: 'Orientation Begapunk',
+    oldHeaderVariants: ['Recommandation Begapunk', 'Orientation de sélection'],
+    newHeader: 'Modèle ou configuration envisageable',
+    oldCommon: 'Envoyez le plan de la machine, le fluide, la pression, le nombre de circuits, la vitesse, la taille des orifices et l’espace de montage. Nous vous proposerons un raccord tournant pneumatique standard ou sur mesure adapté.',
+    newCommon: 'Envoyez les éléments déjà disponibles — schéma d’implantation, photo, plan coté ou conditions de fonctionnement connues. Nous recommanderons un modèle du catalogue ou une solution sur mesure et préciserons les informations encore nécessaires.',
+    oldCnc: 'Envoyez le plan du montage, le circuit pneumatique, la pression, la vitesse et l’espace de montage. Nous vous proposerons un modèle standard ou une interface sur mesure.',
+    newCnc: 'Envoyez les éléments déjà disponibles — plan du montage, photo, schéma pneumatique ou conditions de fonctionnement connues. Nous recommanderons un modèle du catalogue ou une interface sur mesure et préciserons les informations encore nécessaires.',
+  },
+  {
     prefix: 'ja/',
     oldHeader: 'Begapunkの推奨',
     oldHeaderVariants: ['Begapunkの提案方針', '選定の方向性'],
@@ -660,18 +716,21 @@ const productPageNames = config.pages.filter((pageName) => /^BP-[\w-]+\.html$/.t
 const STEP_CAD_REQUIRED_PHRASES = {
   en: 'Download 3D Model (.step)',
   de: '3D-Modell (.step) herunterladen',
+  fr: 'Télécharger le modèle 3D (.step)',
   ja: '3Dモデル（.step）をダウンロード',
   ru: 'Скачать 3D-модель (.step)',
 };
 const STEP_CAD_REQUIRED_DESC = {
   en: '3D STEP model (AP214) for the selected configuration and fit check.',
   de: '3D-STEP-Modell (AP214) für die ausgewählte Ausführung und Einbauprüfung.',
+  fr: 'Modèle 3D STEP (AP214) de la configuration retenue pour vérifier l’intégration.',
   ja: '選定仕様の組込み確認用の3D STEPモデル（AP214）です。',
   ru: '3D STEP-модель (AP214) для выбранного исполнения и проверки компоновки.',
 };
 const STEP_CAD_REQUEST_FORBIDDEN = {
   en: ['Request 3D STEP/IGES file', 'Request STEP File'],
   de: ['3D-STEP-/IGES-Datei anfordern', 'STEP-Datei anfordern'],
+  fr: ['Demander un fichier 3D STEP/IGES', 'Demander le fichier STEP'],
   ja: ['3D STEP／IGESデータを依頼', 'STEPデータを依頼'],
   ru: ['Запросить 3D STEP/IGES', 'Запросить файл STEP'],
 };
@@ -708,6 +767,23 @@ const commercialProductCopyByLocale = [
       '3D-STEP-Modell (AP214) für die ausgewählte Ausführung und Einbauprüfung.',
       'Prüfunterlagen',
       'Benötigen Sie ein Prüfprotokoll oder einen Werkstoffnachweis? Geben Sie die Anforderung in Ihrer Anfrage an.',
+    ],
+  },
+  {
+    prefix: 'fr/',
+    forbidden: [
+      'Les caractéristiques publiées pour ce modèle sont indiquées ci-dessous.',
+      'La disponibilité et la révision des fichiers CAO sont confirmées après examen du modèle et des exigences de l’application.',
+      'Documents de contrôle et de commande',
+      'Indiquez avant la commande les rapports de contrôle, certificats matière et critères d’acceptation requis.',
+      'La pression et la vitesse maximales constituent des limites de sélection ; leur utilisation continue combinée dépend du fluide, de la température, du montage et du cycle de fonctionnement.',
+      'Envoyez le fluide, la température, le montage, le cycle de fonctionnement ainsi que la pression et la vitesse requises afin que nous examinions le point de fonctionnement.',
+    ],
+    required: [
+      'Les principales dimensions et limites de fonctionnement de ce modèle sont indiquées ci-dessous.',
+      'Modèle 3D STEP (AP214) de la configuration retenue pour vérifier l’intégration.',
+      'Documents de contrôle',
+      'Besoin d’un rapport de contrôle ou d’un certificat matière ? Indiquez cette exigence dans votre demande.',
     ],
   },
   {
@@ -785,6 +861,15 @@ const caseCopyByLocale = [
     llmsRequired: ['Drei fotodokumentierte Einbaufälle und zwei Auslegungsbeispiele', 'BP-2P-95-0005 führt Druckluft von der feststehenden Seite zum rotierenden pneumatischen Spannfutter', 'Druckluftübertragung über drei getrennte Kanäle'],
   },
   {
+    prefix: 'fr/',
+    centerForbidden: ['Examiner des installations documentées de raccords tournants', 'applications réelles étayées par des photographies d’atelier', 'Deux photographies d’atelier publiées avec l’autorisation du client documentent'],
+    centerRequired: ['Découvrez des raccords tournants intégrés à des machines réelles, puis les données à réunir pour sélectionner un modèle et vérifier son intégration.', 'Les trois entrées ci-dessus présentent des applications installées. Les deux entrées suivantes sont des exemples de sélection, et non des résultats de performance obtenus chez un client. Le modèle final doit être choisi d’après le plan de la machine et ses conditions de fonctionnement réelles.', 'Dans cette installation, le BP-2P-95-0005 achemine l’air comprimé de la partie fixe vers le mandrin en rotation. La page détaillée montre la position de montage et le cheminement des flexibles pneumatiques.'],
+    detailForbidden: ['Note sur les photographies', 'Ce que montre la photographie', 'métadonnées supprimées', 'Le responsable du projet a confirmé le modèle'],
+    bpRequired: ['Transfert d’air comprimé de la partie fixe vers le mandrin en rotation'],
+    smartRequired: ['serrage, desserrage et soufflage dans cette installation', 'La détection assurée par des capteurs externes et le système de commande reste indépendante du raccord tournant. Celui-ci ne détecte donc pas lui-même la présence d’une pièce ni l’état du serrage.'],
+    llmsRequired: ['Découvrez trois installations réelles documentées par des photos et deux exemples de sélection technique, dont un mandrin pneumatique équipé de capteurs externes.', 'Dans cette installation client, le BP-2P-95-0005 achemine l’air comprimé de la partie fixe vers le mandrin pneumatique en rotation.', 'Cas documenté par photo : le BP-3P-S06-0001 transfère trois circuits d’air comprimé et les signaux de capteurs externes sur un mandrin pneumatique.'],
+  },
+  {
     prefix: 'ja/',
     centerForbidden: ['工場内写真に基づく実際の用途事例', 'お客様の許可を得た2点の工場内組立写真'],
     centerRequired: ['ロータリジョイントの組込み用途', '上の3項目は実機への組込み用途です。', 'BP-2P-95-0005が固定側から回転チャックへ圧縮空気を供給します。'],
@@ -803,6 +888,36 @@ const caseCopyByLocale = [
     llmsRequired: ['Три фотоподтверждённых примера установки и два инженерных примера подбора', 'BP-2P-95-0005 передаёт сжатый воздух от неподвижной стороны к вращающемуся пневматическому патрону', 'три независимых пневмоканала и передача сигналов внешних датчиков'],
   },
 ];
+
+const expectedLocaleCodes = [config.sourceLanguage.code, ...(config.activeLanguageCodes || [])];
+const expectedLocalePrefixes = expectedLocaleCodes.map((code) => code === config.sourceLanguage.code ? '' : `${code}/`);
+
+function assertLocalePrefixCoverage(label, entries) {
+  const actual = entries.map((entry) => entry.prefix ?? '');
+  const missing = expectedLocalePrefixes.filter((prefix) => !actual.includes(prefix));
+  const unexpected = actual.filter((prefix) => !expectedLocalePrefixes.includes(prefix));
+  const duplicates = actual.filter((prefix, index) => actual.indexOf(prefix) !== index);
+  if (missing.length || unexpected.length || duplicates.length) {
+    failures.push(`${label}: locale coverage must exactly match source + active languages; missing=${JSON.stringify(missing)}, unexpected=${JSON.stringify(unexpected)}, duplicates=${JSON.stringify([...new Set(duplicates)])}.`);
+  }
+}
+
+function assertLocaleObjectCoverage(label, value) {
+  const actual = Object.keys(value);
+  const missing = expectedLocaleCodes.filter((code) => !actual.includes(code));
+  const unexpected = actual.filter((code) => !expectedLocaleCodes.includes(code));
+  if (missing.length || unexpected.length) {
+    failures.push(`${label}: locale coverage must exactly match source + active languages; missing=${JSON.stringify(missing)}, unexpected=${JSON.stringify(unexpected)}.`);
+  }
+}
+
+assertLocalePrefixCoverage('buyer-facing application copy', buyerFacingApplicationCopyByLocale);
+assertLocalePrefixCoverage('application CTA copy', applicationCopyByLocale);
+assertLocalePrefixCoverage('commercial product copy', commercialProductCopyByLocale);
+assertLocalePrefixCoverage('case-study copy', caseCopyByLocale);
+assertLocaleObjectCoverage('STEP download titles', STEP_CAD_REQUIRED_PHRASES);
+assertLocaleObjectCoverage('STEP descriptions', STEP_CAD_REQUIRED_DESC);
+assertLocaleObjectCoverage('STEP request legacy copy', STEP_CAD_REQUEST_FORBIDDEN);
 
 for (const copy of caseCopyByLocale) {
   checks.push({ file: `${copy.prefix}case-studies.html`, forbidden: copy.centerForbidden, required: copy.centerRequired });

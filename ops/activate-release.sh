@@ -25,7 +25,11 @@ if [[ ! -f "$BASE_DIR/.bootstrap-complete" ]]; then
   exit 7
 fi
 
-mkdir -p "$BASE_DIR" "$RELEASES_DIR" "$SHARED_DIR"
+mkdir -p "$BASE_DIR" "$RELEASES_DIR"
+if [[ ! -d "$SHARED_DIR" || "$(stat -c '%U' "$SHARED_DIR")" != 'root' ]]; then
+  echo "Shared runtime directory is missing or is not root-owned." >&2
+  exit 8
+fi
 exec 9>"$BASE_DIR/deploy.lock"
 if ! flock -n 9; then
   echo "Another deployment is already running." >&2
@@ -37,13 +41,24 @@ fi
   sha256sum -c manifest.sha256 >/dev/null
 )
 
-if [[ ! -e "$SHARED_DIR/.env" ]]; then
-  echo "Shared production environment file is missing: $SHARED_DIR/.env" >&2
+if [[ -L "$release_dir/.env" ]]; then
+  legacy_env_target="$(readlink -f "$release_dir/.env" 2>/dev/null || true)"
+  if [[ "$legacy_env_target" != "$SHARED_DIR/.env" ]]; then
+    echo "Release contains an unexpected .env symlink." >&2
+    exit 5
+  fi
+  if grep -Fq "'/www/begapunk/shared/.env'" "$release_dir/send_inquiry.php"; then
+    # New releases read outside the web root and must not retain the legacy link.
+    rm -f -- "$release_dir/.env"
+  else
+    # A legacy rollback still needs its historical path. The managed Nginx
+    # policy blocks every dotfile before content handling.
+    echo "Warning: retaining the protected .env link for a legacy rollback release." >&2
+  fi
+elif [[ -e "$release_dir/.env" ]]; then
+  echo "Release contains a forbidden public .env path." >&2
   exit 5
 fi
-
-rm -f "$release_dir/.env"
-ln -s "$SHARED_DIR/.env" "$release_dir/.env"
 
 if [[ -d "$SHARED_DIR/.well-known" ]]; then
   rm -rf "$release_dir/.well-known"
@@ -98,7 +113,8 @@ current_target="$(readlink -f "$CURRENT_LINK")"
 kept=0
 while IFS= read -r candidate; do
   [[ -n "$candidate" ]] || continue
-  if [[ "$(readlink -f "$candidate")" == "$current_target" ]]; then
+  candidate_target="$(readlink -f "$candidate")"
+  if [[ "$candidate_target" == "$current_target" || "$candidate_target" == "$previous_target" ]]; then
     continue
   fi
   if (( kept < KEEP_RELEASES - 1 )); then

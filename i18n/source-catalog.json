@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-03T10:12:20.843Z",
+  "generatedAt": "2026-09-04T12:05:42.444Z",
   "pages": [
     "index.html",
     "about.html",
@@ -1574,13 +1574,6 @@
       ]
     },
     {
-      "id": "e8ff0a69fc71073c",
-      "source": "<strong>Analytics provider:</strong> Google Analytics receives the analytics data described above only after consent.",
-      "pages": [
-        "privacy.html"
-      ]
-    },
-    {
       "id": "48c529991dd00bcc",
       "source": "<strong>Annually:</strong> Replace seals if leakage exceeds acceptable limits. Contact Begapunk for OEM seal kits — third-party seals may have incorrect durometer or material.",
       "pages": [
@@ -1875,6 +1868,13 @@
       ]
     },
     {
+      "id": "d51760b50d5c6c62",
+      "source": "<strong>Campaign attribution after consent:</strong> Google click identifiers (<code>gclid</code>, <code>gbraid</code>, and <code>wbraid</code>), UTM campaign parameters, the first landing page, and the initial referrer. These values are collected only after you allow optional measurement, kept in session storage for the current browser session, and included with an inquiry sent to our internal sales mailbox.",
+      "pages": [
+        "privacy.html"
+      ]
+    },
+    {
       "id": "b8c319ebaa10b90a",
       "source": "<strong>Clean and seal threads.</strong> Clean female threads and the face of the shaft prior to installation. Use PTFE (Teflon) pipe tape or pipe sealant on NPT threads. NPT threads should be hand-tight plus 1–3 turns to seal. For parallel threads, use appropriate gaskets or O-rings.",
       "pages": [
@@ -1931,8 +1931,8 @@
       ]
     },
     {
-      "id": "11dc8e40223004f9",
-      "source": "<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> August 28, 2026",
+      "id": "aba0c91f53ab9078",
+      "source": "<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> September 4, 2026",
       "pages": [
         "privacy.html"
       ]
@@ -1973,8 +1973,8 @@
       ]
     },
     {
-      "id": "884e15e3e728c61f",
-      "source": "<strong>Google Analytics 4</strong> — After consent, GA4 records page and session activity, referral information, consent events, contact/download interactions, form attempts, and confirmed inquiry events. A confirmed inquiry event may include the inquiry type and requested product, but our code does not send your name, email address, company, country, free-text requirements, or attachment to GA4. Google Signals and advertising personalization are disabled. Analytics retention follows the current GA4 property configuration. <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\">Google Privacy Policy</a>",
+      "id": "33f77457332bafae",
+      "source": "<strong>Google Analytics 4</strong> — After consent, GA4 records page and session activity, referral and campaign information, consent events, contact/download interactions, form attempts, and confirmed inquiry events. A confirmed inquiry event may include the inquiry type and requested product, but our code does not send your name, email address, company, country, free-text requirements, attachment, or raw click identifier as an event parameter. Google Signals and advertising personalization are disabled. Analytics retention follows the current GA4 property configuration. <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\">Google Privacy Policy</a>",
       "pages": [
         "privacy.html"
       ]
@@ -2061,6 +2061,13 @@
       "source": "<strong>Materials:</strong> review body, seal, and exposed hardware materials for dust, chips, spatter, temperature, and cleaning conditions",
       "pages": [
         "application-steel-dusty-environments.html"
+      ]
+    },
+    {
+      "id": "c76481302cf7a29d",
+      "source": "<strong>Measurement provider:</strong> Google Analytics receives the measurement data described above only after consent. Advertising personalization remains disabled.",
+      "pages": [
+        "privacy.html"
       ]
     },
     {
@@ -2446,6 +2453,20 @@
       "source": "<strong>Selection rule:</strong> Treat the resulting water, coolant, or hydraulic rotary joint as a project-specific configuration with its own confirmed limits.",
       "pages": [
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "69c710296c41ea27",
+      "source": "<strong>Session attribution:</strong> Retained in the browser for the current session. If you submit an inquiry, the sanitized attribution values remain with that email under the same operational and legal retention approach as other inquiry data.",
+      "pages": [
+        "privacy.html"
+      ]
+    },
+    {
+      "id": "8d53569e70d1ee2c",
+      "source": "<strong>Session attribution</strong> — After consent, the site stores the listed click IDs, UTM values, first landing page, and initial referrer under <code>begapunk_session_attribution_v1</code> in <code>sessionStorage</code>. The values are used to populate hidden inquiry-form fields and are sent only if you submit that form. Revoking measurement consent removes the session record and clears those fields.",
+      "pages": [
+        "privacy.html"
       ]
     },
     {
@@ -3196,8 +3217,8 @@
       ]
     },
     {
-      "id": "bab7b12ebbb0716a",
-      "source": "3.2 Analytics Cookies (Optional)",
+      "id": "2e7c2bb878b8dfd8",
+      "source": "3.2 Analytics and Advertising Measurement (Optional)",
       "pages": [
         "privacy.html"
       ]
@@ -3713,13 +3734,6 @@
       ]
     },
     {
-      "id": "601ce5bbbbf47d99",
-      "source": "Accept Analytics",
-      "pages": [
-        "privacy.html"
-      ]
-    },
-    {
       "id": "e153f339a09b2fa4",
       "source": "Access the personal data we hold about you",
       "pages": [
@@ -4007,6 +4021,13 @@
       "source": "All product specifications on this website are provided for reference. We reserve the right to modify designs without prior notice if the changes improve performance or manufacturability. For critical applications, confirm specifications with our engineering team before ordering.",
       "pages": [
         "terms.html"
+      ]
+    },
+    {
+      "id": "900321cad6dc3cc1",
+      "source": "Allow Measurement",
+      "pages": [
+        "privacy.html"
       ]
     },
     {
@@ -4721,14 +4742,6 @@
       ]
     },
     {
-      "id": "8c6bc099534a0251",
-      "source": "Blog",
-      "pages": [
-        "blog-rotary-joint-installation-mistakes.html",
-        "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
       "id": "7b0e63e203df045f",
       "source": "Blog &amp; Guides",
       "pages": [
@@ -4787,13 +4800,6 @@
     {
       "id": "cb34f6cb62191feb",
       "source": "BP-1P-0003 view 1",
-      "pages": [
-        "BP-1P-0003.html"
-      ]
-    },
-    {
-      "id": "3ced4e4ecee113f0",
-      "source": "BP-1P-0003 view 2",
       "pages": [
         "BP-1P-0003.html"
       ]
@@ -4969,13 +4975,6 @@
       ]
     },
     {
-      "id": "78183076e626e1ed",
-      "source": "BP-2P-08-0001 view 2",
-      "pages": [
-        "BP-2P-08-0001.html"
-      ]
-    },
-    {
       "id": "2b1ffd40f454c698",
       "source": "BP-2P-08-0001 view 3",
       "pages": [
@@ -5047,13 +5046,6 @@
       ]
     },
     {
-      "id": "b074349d9107976f",
-      "source": "BP-2P-130-0001 view 2",
-      "pages": [
-        "BP-2P-130-0001.html"
-      ]
-    },
-    {
       "id": "64d530ce74142c00",
       "source": "BP-2P-130-0001 view 3",
       "pages": [
@@ -5119,13 +5111,6 @@
     {
       "id": "674f1ba36141279e",
       "source": "BP-2P-16-0001 view 1",
-      "pages": [
-        "BP-2P-16-0001.html"
-      ]
-    },
-    {
-      "id": "d249a0c2e08098fd",
-      "source": "BP-2P-16-0001 view 2",
       "pages": [
         "BP-2P-16-0001.html"
       ]
@@ -5208,13 +5193,6 @@
       ]
     },
     {
-      "id": "14b69db50c46509f",
-      "source": "BP-2P-50-0001 view 2",
-      "pages": [
-        "BP-2P-50-0001.html"
-      ]
-    },
-    {
       "id": "cec9e833d5db39c6",
       "source": "BP-2P-50-0001 view 3",
       "pages": [
@@ -5252,13 +5230,6 @@
     {
       "id": "63b2cc881ca6aa17",
       "source": "BP-2P-95-0005 view 1",
-      "pages": [
-        "BP-2P-95-0005.html"
-      ]
-    },
-    {
-      "id": "91a6b7aeefee165b",
-      "source": "BP-2P-95-0005 view 2",
       "pages": [
         "BP-2P-95-0005.html"
       ]
@@ -5315,13 +5286,6 @@
     {
       "id": "fee86a30c77e423e",
       "source": "BP-3P-0004 view 1",
-      "pages": [
-        "BP-3P-0004.html"
-      ]
-    },
-    {
-      "id": "87be0f7d2d6e7e80",
-      "source": "BP-3P-0004 view 2",
       "pages": [
         "BP-3P-0004.html"
       ]
@@ -5525,13 +5489,6 @@
     {
       "id": "f86bdb2d8c160085",
       "source": "BP-8P-0001 view 1",
-      "pages": [
-        "BP-8P-0001.html"
-      ]
-    },
-    {
-      "id": "9c1dde9a802c1c42",
-      "source": "BP-8P-0001 view 2",
       "pages": [
         "BP-8P-0001.html"
       ]
@@ -6792,8 +6749,8 @@
       ]
     },
     {
-      "id": "a9969e7ab4db85ea",
-      "source": "Decline Analytics",
+      "id": "a1c687ac4b9e1bf9",
+      "source": "Decline Optional Measurement",
       "pages": [
         "privacy.html"
       ]
@@ -7310,6 +7267,13 @@
       "source": "Feasibility, next questions, and quotation",
       "pages": [
         "index.html"
+      ]
+    },
+    {
+      "id": "3f1bdafc52e3d44c",
+      "source": "Filter search results by content type",
+      "pages": [
+        "search.html"
       ]
     },
     {
@@ -7831,13 +7795,6 @@
       "source": "Get a Quote →",
       "pages": [
         "about.html"
-      ]
-    },
-    {
-      "id": "7fab0e15fe56920c",
-      "source": "Google Analytics 4 is loaded only after you choose \"Accept All\". Before that decision, analytics and advertising consent are set to denied. If you decline, the site does not load GA4 and removes GA cookies that it can access.",
-      "pages": [
-        "privacy.html"
       ]
     },
     {
@@ -8492,6 +8449,14 @@
       ]
     },
     {
+      "id": "984946c93be9fd93",
+      "source": "Knowledge Center",
+      "pages": [
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "59649160f06ad6cc",
       "source": "Large fixture plate",
       "pages": [
@@ -8927,6 +8892,13 @@
       "source": "May 24, 2026",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "60e6a197c9f11e3e",
+      "source": "Measure advertising effectiveness and attribute inquiries to campaigns after you allow optional measurement",
+      "pages": [
+        "privacy.html"
       ]
     },
     {
@@ -9678,6 +9650,13 @@
       "source": "Oil name and grade, viscosity, additives, temperature, normal and peak pressure, speed, and leakage requirement",
       "pages": [
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "adaead9333a216aa",
+      "source": "On a first visit, Google Analytics 4 is not loaded unless you choose “Allow measurement.” By default, Consent Mode v2 sets <code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code>, and <code>ad_personalization</code> to denied. If you allow measurement, the first three are granted for analytics and advertising-effectiveness measurement; <code>ad_personalization</code> remains denied. We do not use this choice to serve personalized advertising. If you decline before granting consent, GA4 is not loaded. If you withdraw consent after it has loaded, the site updates these consent settings to denied, stops subsequent optional measurement, and removes GA cookies and session attribution that it can access; the already executed script cannot be unloaded from the current page.",
+      "pages": [
+        "privacy.html"
       ]
     },
     {
@@ -11546,6 +11525,13 @@
       ]
     },
     {
+      "id": "37c14ab62ea37537",
+      "source": "Search the Begapunk website",
+      "pages": [
+        "search.html"
+      ]
+    },
+    {
       "id": "ca4b1d25ed58ceee",
       "source": "See 100% Leak Testing",
       "pages": [
@@ -12095,6 +12081,13 @@
       ]
     },
     {
+      "id": "f38eaae00dc2f5ee",
+      "source": "Site search",
+      "pages": [
+        "search.html"
+      ]
+    },
+    {
       "id": "c887f134c26ea831",
       "source": "Skip to main content",
       "pages": [
@@ -12565,8 +12558,8 @@
       ]
     },
     {
-      "id": "8bb221a58a91f790",
-      "source": "The consent manager uses browser local storage rather than an essential cookie to remember your analytics choice. This record does not directly identify you and is not sent to our server with normal page requests.",
+      "id": "84c794c9b56d9b6b",
+      "source": "The consent manager uses browser local storage rather than an essential cookie to remember your optional-measurement choice. This record does not directly identify you and is not sent to our server with normal page requests.",
       "pages": [
         "privacy.html"
       ]

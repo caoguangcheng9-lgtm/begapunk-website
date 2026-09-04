@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { loadPublicDownloadAllowlist } from './lib/public-downloads.mjs';
+import { filterExistingNoindexUrls } from './lib/indexing-policy.mjs';
 
 const [, , baseRef, headRef = 'HEAD', outputFile] = process.argv;
 if (!baseRef || !outputFile) {
@@ -12,6 +13,17 @@ if (!baseRef || !outputFile) {
 const siteOrigin = 'https://www.begapunk.com';
 const repoRoot = process.cwd();
 const urls = new Set();
+const i18nConfig = JSON.parse(await readFile(path.join(repoRoot, 'i18n', 'config.json'), 'utf8'));
+const partialLanguageCodes = Object.keys(i18nConfig.partialLanguagePages || {});
+const deployedLanguageCodes = [...new Set([
+  ...(i18nConfig.activeLanguageCodes || []),
+  ...partialLanguageCodes,
+])].sort();
+const escapedLanguageCodes = deployedLanguageCodes
+  .map((code) => code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  .join('|');
+const localizedHomepagePattern = new RegExp(`^(?:${escapedLanguageCodes})/index\\.html$`, 'i');
+const localizedHtmlPattern = new RegExp(`^(?:${escapedLanguageCodes})/.*\\.html$`, 'i');
 const approvedDownloadPaths = new Set(
   (await loadPublicDownloadAllowlist(repoRoot)).map((fileName) => `downloads/${fileName}`),
 );
@@ -20,7 +32,7 @@ async function addPublicPath(relativePath) {
   const normalized = relativePath.replaceAll('\\', '/').replace(/^\.\//, '');
   if (!normalized || normalized === '404.html') return;
 
-  if (/^(?:de|ja|ru)\/index\.html$/i.test(normalized)) {
+  if (localizedHomepagePattern.test(normalized)) {
     urls.add(`${siteOrigin}/${normalized.split('/')[0]}/`);
     return;
   }
@@ -28,7 +40,7 @@ async function addPublicPath(relativePath) {
     urls.add(`${siteOrigin}/`);
     return;
   }
-  if (/^(?:de|ja|ru)\/.*\.html$/i.test(normalized) || /^[^/]+\.html$/i.test(normalized)) {
+  if (localizedHtmlPattern.test(normalized) || /^[^/]+\.html$/i.test(normalized)) {
     try {
       const html = await readFile(path.join(repoRoot, normalized), 'utf8');
       const canonical = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1];
@@ -48,7 +60,11 @@ async function addPublicPath(relativePath) {
 }
 
 async function addAllSitemapUrls() {
-  for (const sitemap of ['sitemap.xml', 'sitemap-i18n.xml']) {
+  for (const sitemap of [
+    'sitemap.xml',
+    'sitemap-i18n.xml',
+    ...partialLanguageCodes.map((code) => `sitemap-${code}.xml`),
+  ]) {
     const xml = await readFile(path.join(repoRoot, sitemap), 'utf8');
     for (const match of xml.matchAll(/<loc>(https:\/\/www\.begapunk\.com\/[^<]*)<\/loc>/g)) {
       urls.add(match[1].trim());
@@ -107,7 +123,8 @@ if (baseRef === '--all') {
   if (diff.includes('ops/indexnow-retired-urls.txt')) await addRetiredUrls();
 }
 
-const sorted = [...urls].sort((left, right) => left.localeCompare(right, 'en'));
+const filteredUrls = await filterExistingNoindexUrls(urls, { siteOrigin, contentRoot: repoRoot });
+const sorted = [...filteredUrls].sort((left, right) => left.localeCompare(right, 'en'));
 if (sorted.length > 10_000) throw new Error(`IndexNow URL count exceeds protocol limit: ${sorted.length}`);
 await writeFile(outputFile, sorted.length ? `${sorted.join('\n')}\n` : '', 'utf8');
 console.log(`Prepared ${sorted.length} IndexNow URL notification(s).`);

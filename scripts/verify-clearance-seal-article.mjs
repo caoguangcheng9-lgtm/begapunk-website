@@ -13,6 +13,7 @@ const failures = [];
 const routes = {
   en: pageName,
   de: `de/${pageName}`,
+  fr: `fr/${pageName}`,
   ja: `ja/${pageName}`,
   ru: `ru/${pageName}`,
 };
@@ -24,7 +25,6 @@ const pages = [
     canonical: `${publicOrigin}/${pageName}`,
     fact: '0.003 mm one-side radial clearance',
     caution: '“Non-contact” does not mean “zero leakage.”',
-    selectorValues: [routes.en, routes.de, routes.ja, routes.ru],
   },
   {
     code: 'de',
@@ -32,7 +32,13 @@ const pages = [
     canonical: `${publicOrigin}/${routes.de}`,
     fact: 'einseitiger Radialspalt von 0,003 mm',
     caution: '„Berührungslos“ bedeutet nicht „leckagefrei“.',
-    selectorValues: [`../${routes.en}`, pageName, `../${routes.ja}`, `../${routes.ru}`],
+  },
+  {
+    code: 'fr',
+    file: path.join(root, 'fr', pageName),
+    canonical: `${publicOrigin}/${routes.fr}`,
+    fact: 'jeu radial unilatéral de 0,003 mm',
+    caution: '« Sans contact » ne signifie pas « zéro fuite ».',
   },
   {
     code: 'ja',
@@ -40,7 +46,6 @@ const pages = [
     canonical: `${publicOrigin}/${routes.ja}`,
     fact: '片側ラジアルすきま0.003 mm',
     caution: '「非接触」は「漏れゼロ」を意味しません。',
-    selectorValues: [`../${routes.en}`, `../${routes.de}`, pageName, `../${routes.ru}`],
   },
   {
     code: 'ru',
@@ -48,7 +53,6 @@ const pages = [
     canonical: `${publicOrigin}/${routes.ru}`,
     fact: 'односторонним радиальным зазором 0,003 мм',
     caution: '«Бесконтактное» не означает «без утечек».',
-    selectorValues: [`../${routes.en}`, `../${routes.de}`, `../${routes.ja}`, pageName],
   },
 ];
 
@@ -118,7 +122,7 @@ async function validatePage(page) {
   assert($('html').attr('lang') === page.code, `${label}: incorrect html lang`);
   assert($('base').length === 0, `${label}: production page must not depend on a base element`);
   assert(!$('meta[name="robots"]').attr('content')?.toLowerCase().includes('noindex'), `${label}: production candidate remains noindex`);
-  assert($('.ta-draft-notice').length === 0 && !/local (?:english|german|japanese|russian)|lokaler .*prüfstand|локальный .*проект/i.test(html), `${label}: draft notice remains`);
+  assert($('.ta-draft-notice').length === 0 && !/local (?:english|french|german|japanese|russian)|lokaler .*prüfstand|banc d'essai local|локальный .*проект/i.test(html), `${label}: draft notice remains`);
   assert($('link[rel="canonical"]').attr('href') === page.canonical, `${label}: canonical differs`);
   assert($('main').length === 1, `${label}: expected one main element`);
   assert($('h1').length === 1, `${label}: expected one H1`);
@@ -131,20 +135,27 @@ async function validatePage(page) {
     href: code === 'x-default' ? publicUrl('en') : publicUrl(code),
   }));
   const alternates = $('link[rel="alternate"][hreflang]');
-  assert(alternates.length === expectedAlternates.length, `${label}: expected five hreflang links`);
+  assert(alternates.length === expectedAlternates.length, `${label}: expected ${expectedAlternates.length} hreflang links`);
   for (const expected of expectedAlternates) {
     assert(alternates.filter(`[hreflang="${expected.code}"][href="${expected.href}"]`).length === 1, `${label}: ${expected.code} hreflang differs`);
   }
 
   const selector = $('.i18n-switcher select');
   const options = selector.find('option');
-  assert(selector.length === 1 && options.length === 4, `${label}: language selector structure differs`);
-  assert(JSON.stringify(options.map((_, node) => $(node).attr('value')).get()) === JSON.stringify(page.selectorValues), `${label}: language selector routes differ`);
+  const selectorValues = Object.keys(routes).map((targetCode) => {
+    if (page.code === 'en') return routes[targetCode];
+    if (targetCode === 'en') return `../${routes.en}`;
+    if (targetCode === page.code) return pageName;
+    return `../${routes[targetCode]}`;
+  });
+  assert(selector.length === 1 && options.length === Object.keys(routes).length, `${label}: language selector structure differs`);
+  assert(JSON.stringify(options.map((_, node) => $(node).attr('value')).get()) === JSON.stringify(selectorValues), `${label}: language selector routes differ`);
   assert(options.filter('[selected]').length === 1 && options.filter('[selected]').index() === Object.keys(routes).indexOf(page.code), `${label}: selected language differs`);
 
   if (page.code !== 'en') {
     const articleText = normalize($('.ta-content').text()).toLowerCase();
     forbiddenEnglishArticleText.forEach((phrase) => assert(!articleText.includes(phrase.toLowerCase()), `${label}: English article residue: ${phrase}`));
+    if (page.code === 'fr') assert(!/[\u0400-\u04ff]/u.test(articleText), `${label}: Russian fallback residue found in French article`);
   }
 
   const schemaNodes = parseSchemas($, label);
@@ -193,6 +204,9 @@ async function validatePage(page) {
   }));
 }
 
+const expectedLanguageCodes = [config.sourceLanguage.code, ...(config.activeLanguageCodes || [])];
+assert(JSON.stringify(Object.keys(routes)) === JSON.stringify(expectedLanguageCodes), 'Article route contracts must exactly follow the configured active-language order');
+assert(JSON.stringify(pages.map(({ code }) => code)) === JSON.stringify(expectedLanguageCodes), 'Article page contracts must exactly follow the configured active-language order');
 await Promise.all(pages.map(validatePage));
 
 assert(config.pages.includes(pageName), `i18n/config.json: ${pageName} missing from pages`);
@@ -241,17 +255,19 @@ assert(sitemap.split(publicUrl('en')).length - 1 === 1, 'sitemap.xml: English ar
 const internationalSitemap = await readFile(path.join(root, 'sitemap-i18n.xml'), 'utf8');
 for (const page of pages) {
   assert(internationalSitemap.match(new RegExp(`<loc>${publicUrl(page.code).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`, 'g'))?.length === 1, `sitemap-i18n.xml: ${page.code} article loc missing or duplicated`);
-  assert(internationalSitemap.match(new RegExp(`hreflang="${page.code}" href="${publicUrl(page.code).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`, 'g'))?.length === 4, `sitemap-i18n.xml: ${page.code} alternate count differs`);
+  assert(internationalSitemap.match(new RegExp(`hreflang="${page.code}" href="${publicUrl(page.code).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`, 'g'))?.length === pages.length, `sitemap-i18n.xml: ${page.code} alternate count differs`);
 }
 
 const imageFiles = [
-  ['images/knowledge/clearance-seal/rotary-union-clearance-seal-explainer-en.png', 'png'],
-  ['images/knowledge/clearance-seal/rotary-union-clearance-seal-explainer-en.webp', 'webp'],
+  ['images/knowledge/clearance-seal/rotary-union-clearance-seal-explainer-en.png', 'png', 1440, 960],
+  ['images/knowledge/clearance-seal/rotary-union-clearance-seal-explainer-en.webp', 'webp', 1440, 960],
+  ['images/knowledge/clearance-seal/rotary-union-clearance-seal-explainer-fr.png', 'png', 1536, 1024],
+  ['images/knowledge/clearance-seal/rotary-union-clearance-seal-explainer-fr.webp', 'webp', 1536, 1024],
 ];
-for (const [relativePath, expectedFormat] of imageFiles) {
+for (const [relativePath, expectedFormat, expectedWidth, expectedHeight] of imageFiles) {
   const metadata = await sharp(path.join(root, relativePath)).metadata();
   assert(metadata.format === expectedFormat, `${relativePath}: expected ${expectedFormat}, got ${metadata.format}`);
-  assert(metadata.width === 1440 && metadata.height === 960, `${relativePath}: expected 1440x960`);
+  assert(metadata.width === expectedWidth && metadata.height === expectedHeight, `${relativePath}: expected ${expectedWidth}x${expectedHeight}`);
 }
 
 if (failures.length) {
@@ -260,4 +276,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('Clearance-seal article verification passed: four pages, facts, FAQ/Schema, hub links, search, AI indexes, sitemaps, and assets are synchronized.');
+console.log(`Clearance-seal article verification passed: ${pages.length} pages, facts, FAQ/Schema, hub links, search, AI indexes, sitemaps, and assets are synchronized.`);

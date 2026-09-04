@@ -287,6 +287,283 @@ export const SOFT_ISOLATION_TOPIC_CONTENT = {
       inquiryText: 'Send the medium and concentration, additives, pressure, temperature, speed, cleaning method, external environment, connected materials, required documentation, and annual quantity.',
     },
   },
+  fr: {
+    'application-packaging-machinery.html': {
+      metaDescription: 'Préparez l’intégration d’un raccord tournant pneumatique sur une machine d’indexage, de remplissage, de bouchage ou d’emballage en définissant les circuits, le débit, la vitesse, le montage et le nettoyage.',
+      heroText: 'Acheminez l’air comprimé ou le vide vers les postes d’emballage en rotation sans torsion des flexibles ni communication entre les circuits de la machine.',
+      opening: 'Les machines d’emballage placent souvent des vérins pneumatiques, des pinces, des ventouses ou des buses de soufflage sur un carrousel tournant, tandis que le collecteur d’alimentation reste fixe. Un raccord tournant transfère ces services à travers l’interface en rotation. La configuration correcte dépend du schéma pneumatique et de l’implantation mécanique, et non de la seule désignation de la machine.',
+      sections: [
+        {
+          heading: 'Emplacement du raccord tournant dans une machine d’emballage',
+          paragraphs: [
+            'Les emplacements courants comprennent les tables d’indexage, les carrousels de remplissage et de bouchage, les postes de scellage rotatifs, les mécanismes de manipulation d’étiquettes et les tourelles de transfert de produits. Des circuits distincts peuvent assurer le serrage et le desserrage, le vide et le soufflage, ou alimenter plusieurs actionneurs commandés indépendamment.',
+            'Commencez par définir la fonction de chaque poste tournant. Tout circuit qui doit maintenir la pression, commuter indépendamment ou rester isolé du vide nécessite un passage clairement défini. Les signaux électriques, les fluides de lavage ou d’autres services peuvent exiger des interfaces séparées ou une conception combinée sur mesure.',
+          ],
+        },
+        {
+          heading: 'Trois décisions qui déterminent la configuration',
+          points: [
+            ['Plan des circuits', 'Indiquez chaque fonction en rotation, son fluide, le sens d’écoulement et si elle doit rester indépendante des autres passages.'],
+            ['Profil de fonctionnement', 'Précisez les pressions normale et maximale, le débit requis, la vitesse de rotation, la fréquence des démarrages et arrêts, la température et les conditions de nettoyage.'],
+            ['Intégration mécanique', 'Vérifiez l’encombrement disponible, le besoin d’un alésage traversant, les côtés fixe et tournant, les éléments de montage, l’accès aux orifices, le support des flexibles et le dégagement nécessaire à la maintenance.'],
+          ],
+        },
+        {
+          heading: 'Séquence pratique de revue d’une machine d’emballage',
+          ordered: true,
+          points: [
+            ['Repérer les circuits en rotation', 'Identifiez le serrage, le desserrage, le vide, le soufflage et toute autre fonction sur le schéma pneumatique.'],
+            ['Vérifier la demande maximale', 'Dimensionnez le système pour les fonctions qui opèrent simultanément, en tenant compte de la perte de charge admissible au niveau de l’actionneur le plus éloigné.'],
+            ['Comparer l’interface physique', 'Confrontez les orifices, le plan de fixation, l’encombrement, le passage central et le cheminement des flexibles à l’implantation de la machine.'],
+            ['Mettre en service un circuit à la fois', 'Commencez à basse pression et à faible vitesse, vérifiez le fonctionnement et l’étanchéité, puis augmentez progressivement jusqu’aux conditions prévues.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Faire vérifier un raccord tournant pour machine d’emballage',
+      inquiryText: 'Envoyez l’implantation de la machine, le schéma pneumatique ou de vide, la fonction des passages, la pression, le débit, la vitesse, l’espace de montage, les conditions de nettoyage et la quantité annuelle. Nous pourrons comparer les modèles standard et déterminer si une interface sur mesure est justifiée.',
+    },
+    'application-automation-rotary-tables.html': {
+      metaDescription: 'Sélectionnez un raccord tournant pneumatique pour table rotative automatisée en définissant le serrage, le desserrage, le positionnement, le soufflage, les passages, la vitesse, l’alésage et le montage.',
+      heroText: 'Acheminez l’air comprimé à travers des tables automatisées indexées ou en rotation continue en maintenant chaque fonction de la machine clairement séparée.',
+      opening: 'Une table rotative automatisée peut passer d’un poste de travail à l’autre, s’arrêter pour une opération d’assemblage ou tourner en continu. Sur la partie mobile, les fonctions pneumatiques peuvent inclure le serrage, les pions de positionnement, l’éjection de pièces, le soufflage et le desserrage du montage. Le raccord tournant doit correspondre à la fois à la logique des circuits et à la mécanique de la table.',
+      sections: [
+        {
+          heading: 'Adapter le raccord au cycle de la table',
+          paragraphs: [
+            'Une table alternant indexage et arrêt n’impose pas les mêmes mouvements ni le même cycle de service qu’une table en rotation continue. Relevez la vitesse réelle pendant le mouvement, la fréquence des accélérations, le temps d’arrêt, le nombre de cycles par poste et la nécessité éventuelle de maintenir la pression lorsque la table est immobile.',
+            'Comptez les fonctions indépendantes, et pas seulement les flexibles. Le serrage et le desserrage peuvent nécessiter des passages distincts ; plusieurs montages identiques ne peuvent partager un collecteur que si le circuit de la machine le permet. Un passage central destiné aux câbles, arbres ou outils peut être aussi déterminant que le nombre de passages.',
+          ],
+        },
+        {
+          heading: 'Contrôles d’interface pour une table rotative',
+          points: [
+            ['Circuit pneumatique', 'Définissez la fonction de chaque passage, le sens d’écoulement, la pression, le débit demandé et le risque admissible de communication entre circuits.'],
+            ['Géométrie de la table', 'Confirmez l’alésage central, le diamètre de centrage, le plan de perçage, la longueur axiale, l’orientation des orifices et l’accès aux raccords.'],
+            ['Charges et alignement', 'Supportez les flexibles et les collecteurs indépendamment afin que le faux-rond de la table, les efforts de flexion ou le dispositif antirotation ne chargent pas le raccord tournant.'],
+          ],
+        },
+        {
+          heading: 'Du plan de la table à la sélection du modèle',
+          ordered: true,
+          points: [
+            ['Fournir une vue en coupe', 'Montrez l’axe de la table, les parties fixe et tournante, l’encombrement disponible ainsi que les câbles ou arbres adjacents.'],
+            ['Joindre le schéma des circuits', 'Indiquez les fonctions qui opèrent ensemble et celles qui doivent rester isolées.'],
+            ['Décrire le cycle réel', 'Incluez les pressions normale et maximale, la vitesse, la température, le nombre de démarrages par heure et les heures de fonctionnement par jour.'],
+            ['Vérifier la table assemblée', 'Après l’alignement, contrôlez chaque passage à l’arrêt puis pendant une rotation maîtrisée avant la mise en production.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Adapter un raccord tournant à votre table automatisée',
+      inquiryText: 'Envoyez la vue en coupe de la table, le schéma pneumatique, l’alésage central requis, la fonction des passages, la pression, le débit, le cycle d’indexage ou la vitesse de rotation, l’encombrement de montage et la quantité afin de comparer les modèles.',
+    },
+    'application-pneumatic-tools-hose-anti-twist.html': {
+      metaDescription: 'Choisissez un raccord pivotant pneumatique pour outil ou dispositif anti-torsion de flexible en vérifiant le débit, la perte de charge, le mouvement, le filetage, les efforts du flexible et la sécurité.',
+      heroText: 'Réduisez la torsion des flexibles sur les outils pneumatiques et les postes suspendus tout en préservant le débit d’air et la sécurité de manipulation.',
+      opening: 'Un raccord pivotant autorise un mouvement relatif entre un flexible d’air comprimé et un outil pneumatique. Il peut faciliter la manipulation et limiter les torsions répétées du flexible, mais il ne convient pas automatiquement comme raccord tournant à grande vitesse, organe de reprise du couple, liaison structurelle ou point de levage.',
+      sections: [
+        {
+          heading: 'Définir le mouvement avant de choisir un raccord pivotant',
+          paragraphs: [
+            'Les outils manuels nécessitent généralement des mouvements angulaires intermittents lorsque l’opérateur change de position. Les équilibreurs, outils dynamométriques, dévidoirs et montages articulés peuvent imposer une rotation plus ample ou plus fréquente. Indiquez si la liaison oscille, pivote occasionnellement ou tourne en continu, et repérez toute traction latérale exercée par le flexible.',
+            'Le débit d’air compte autant que le diamètre du filetage. Un raccord compact dont le passage interne est réduit peut provoquer une perte de charge, ralentir l’outil ou modifier ses performances de couple. Pour vérifier le passage d’air, utilisez la consommation et la pression minimale à l’entrée indiquées par le fabricant de l’outil.',
+          ],
+        },
+        {
+          heading: 'Contrôles pour l’outil et le flexible',
+          points: [
+            ['Performances pneumatiques', 'Précisez la pression d’alimentation, le débit de pointe, le cycle de service, la qualité de l’air, la pratique de lubrification et la pression minimale requise à l’outil.'],
+            ['Raccordement et mouvement', 'Faites correspondre les deux normes de filetage, le diamètre du flexible, l’amplitude de rotation, le rayon de courbure et l’espace disponible autour de la prise en main de l’opérateur.'],
+            ['Sécurité mécanique', 'Prévoyez un dispositif de décharge de traction et un support du flexible ; n’utilisez pas le raccord pivotant pour porter le poids de l’outil, reprendre le couple de serrage ou retenir un flexible qui fouette.'],
+          ],
+        },
+        {
+          heading: 'Évaluer une installation anti-torsion',
+          ordered: true,
+          points: [
+            ['Inspecter le flexible existant', 'Remplacez tout flexible ou raccord endommagé avant d’attribuer une fuite ou une raideur au raccord pivotant.'],
+            ['Mesurer le mouvement nécessaire', 'Observez le mouvement réel de l’outil et relevez l’angle de rotation, la fréquence, la traction du flexible et les points d’interférence.'],
+            ['Vérifier le débit et les interfaces', 'Comparez la pression, le débit, les filetages des orifices, la méthode d’étanchéité et le diamètre du flexible aux caractéristiques du raccord envisagé.'],
+            ['Essayer dans les conditions normales de manipulation', 'Effectuez d’abord un essai d’étanchéité, puis contrôlez la liberté de mouvement, la pression à l’outil et le comportement du flexible sur l’ensemble du cycle de travail.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Faire vérifier une application de raccord pivotant pneumatique',
+      inquiryText: 'Envoyez le modèle d’outil, la consommation d’air, la pression d’alimentation, les dimensions des filetages et du flexible, le type de mouvement, des photos du raccordement et la quantité annuelle. Nous pourrons étudier un raccord standard ou une interface compacte sur mesure.',
+    },
+    'application-robot-end-of-arm-tooling.html': {
+      metaDescription: 'Préparez un raccord tournant pneumatique pour outillage en bout de bras en définissant la pince, le vide, le soufflage, le mouvement du poignet, la charge utile, les flexibles et l’interface.',
+      heroText: 'Alimentez les pinces pneumatiques, ventouses, circuits de soufflage et autres fonctions terminales à travers un poignet robotisé en rotation sans enroulement incontrôlé des flexibles.',
+      opening: 'Un outillage en bout de bras peut réunir des pinces, des circuits de vide, du soufflage, un changeur d’outil et des capteurs dans un encombrement mobile réduit. Un raccord tournant peut transférer les services pneumatiques à travers un axe en rotation, mais la disposition des passages, le mouvement du poignet, la charge utile et l’interface de l’outil doivent être examinés ensemble.',
+      sections: [
+        {
+          heading: 'Cartographier les services au niveau du poignet du robot',
+          paragraphs: [
+            'Répertoriez chaque pince, zone de vide, circuit de desserrage, ligne de purge et fonction de soufflage. Indiquez les fonctions qui opèrent simultanément et celles qui doivent rester isolées. Ne regroupez pas des circuits au seul motif qu’ils utilisent la même pression d’alimentation.',
+            'La puissance électrique, les signaux de capteurs, les données, le liquide de refroidissement et les services hydrauliques exigent chacun une interface compatible. Un raccord tournant pneumatique peut faire partie d’un ensemble combiné, mais les exigences électriques et fluidiques doivent être définies séparément et ne doivent pas être déduites du nombre de passages d’air.',
+          ],
+        },
+        {
+          heading: 'Facteurs d’intégration au robot',
+          points: [
+            ['Mouvement et cycle de service', 'Précisez l’amplitude de rotation de l’axe, la vitesse maximale, l’accélération, les inversions, les cycles par heure et la nécessité éventuelle d’une rotation illimitée.'],
+            ['Charge utile et encombrement', 'Tenez compte de la masse du raccord, du centre de gravité de l’outil, des limites d’inertie, du besoin d’un alésage central, du plan de perçage du poignet et des dégagements anticollision.'],
+            ['Tuyauterie et maintenance', 'Supportez les flexibles, respectez leur rayon de courbure, protégez-les des points de pincement et laissez un accès suffisant aux raccords et au remplacement.'],
+          ],
+        },
+        {
+          heading: 'Dossier utile pour sélectionner un outillage en bout de bras',
+          ordered: true,
+          points: [
+            ['Fournir les plans du poignet et de l’outil', 'Montrez la bride du robot, la platine de l’outil, l’axe, l’empilage de montage et l’espace disponible.'],
+            ['Fournir le plan des services', 'Indiquez le fluide, la pression, le débit, la fonction du passage, l’emplacement de la vanne et la demande simultanée.'],
+            ['Fournir le profil de mouvement', 'Incluez l’amplitude de l’axe, la vitesse, l’accélération, les inversions, le temps de cycle et la durée de fonctionnement prévue.'],
+            ['Valider sur le robot', 'Contrôlez les fuites, le comportement des flexibles, les dégagements anticollision, les données de charge utile et chaque fonction de l’outil à vitesse réduite avant la pleine production.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Faire vérifier un poignet de robot ou une interface d’outillage terminal',
+      inquiryText: 'Envoyez le modèle de robot, les plans du poignet et de l’outil, le schéma pneumatique, la fonction des passages, la pression, le débit, le profil de mouvement, les limites de charge utile, les autres services requis et la quantité annuelle.',
+    },
+    'blog-rotary-joint-leaking.html': {
+      metaDescription: 'Diagnostiquez une fuite de raccord tournant en localisant la fuite, en distinguant raccords et joints, en contrôlant l’alignement et les conditions d’utilisation, puis en testant chaque passage en sécurité.',
+      heroText: 'Suivez une séquence de diagnostic maîtrisée pour distinguer les défauts de flexible, de raccord, de joint statique, de joint tournant et de communication entre circuits avant de remplacer des pièces.',
+      opening: 'Une fuite visible d’air ou de fluide ne signifie pas toujours que le joint tournant interne est défaillant. Des raccords desserrés, un tube endommagé, des surfaces d’étanchéité contaminées, un effort latéral, un défaut d’alignement, des conditions de fonctionnement excessives ou une communication entre circuits peuvent produire des symptômes similaires. Consignez la machine avant le contrôle et localisez la fuite avant tout démontage.',
+      sections: [
+        {
+          heading: 'Commencer par l’emplacement et le moment d’apparition de la fuite',
+          paragraphs: [
+            'Observez si la fuite provient d’un raccord de flexible, d’un assemblage fixe du corps, de l’interface tournante, d’un drain ou d’un évent, ou encore d’un autre passage. Notez si elle apparaît à l’arrêt, uniquement pendant la rotation, après la montée en température ou seulement lorsqu’un circuit précis est sous pression.',
+            'Ces observations réduisent le champ du diagnostic. Une fuite sur un raccord peut souvent être corrigée sans ouvrir le raccord tournant. Une fuite qui varie avec la vitesse, la position de l’arbre, la température ou le mouvement d’un flexible oriente vers l’alignement, une charge externe, l’état des surfaces ou un problème d’étanchéité dynamique.',
+          ],
+        },
+        {
+          heading: 'Causes courantes à contrôler',
+          points: [
+            ['Raccordements externes', 'Inspectez la coupe des tubes, les bagues, l’état des filetages, la méthode d’étanchéité, les adaptateurs et le serrage sans dépasser les spécifications des raccords.'],
+            ['État du montage', 'Contrôlez la concentricité, le faux-rond de l’arbre, les tuyauteries rigides, la tension des flexibles, les efforts de flexion, la retenue antirotation et la contamination autour de l’interface tournante.'],
+            ['Conditions de fonctionnement', 'Comparez le fluide, la pression, la vitesse, la température, le cycle de service, la filtration et la lubrification réels à la configuration sélectionnée.'],
+          ],
+        },
+        {
+          heading: 'Séquence de diagnostic d’une fuite',
+          ordered: true,
+          points: [
+            ['Mettre la machine en sécurité', 'Arrêtez la rotation, isolez toutes les sources d’énergie, dépressurisez tous les passages et nettoyez la zone avant le contrôle.'],
+            ['Tester les raccordements externes', 'Mettez un seul passage à la fois sous pression dans des conditions maîtrisées et employez une méthode de détection adaptée sur les flexibles et les raccords.'],
+            ['Distinguer le comportement à l’arrêt et en rotation', 'Relevez la fuite à l’arrêt puis pendant une rotation lente sans dépasser les limites publiées.'],
+            ['Inspecter avant de remplacer les joints', 'Si la fuite est interne, contrôlez l’arbre, les surfaces d’étanchéité, les roulements, la contamination et l’alignement ; un joint neuf ne corrigera pas à lui seul des pièces endommagées.'],
+            ['Retester chaque passage', 'Après réparation, vérifiez l’isolement et l’étanchéité des passages à basse pression et à faible vitesse avant de reprendre le fonctionnement normal.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Demander de l’aide pour diagnostiquer une fuite de raccord tournant',
+      inquiryText: 'Envoyez le modèle, l’emplacement de la fuite, des photos ou une vidéo, le fluide, la pression, la vitesse, la température, le cycle de service, le plan de montage, les heures de fonctionnement et les changements intervenus avant l’apparition de la fuite.',
+    },
+    'blog-seal-replacement.html': {
+      metaDescription: 'Remplacez les joints d’un raccord tournant en sécurité en confirmant le défaut, en utilisant le bon jeu de joints, en inspectant les pièces, en maîtrisant la propreté et en remettant chaque passage en service.',
+      heroText: 'Confirmez que le joint est bien en cause, protégez les surfaces d’étanchéité, puis contrôlez le raccord tournant réparé avant sa remise en service.',
+      opening: 'Le remplacement des joints peut remettre en état un raccord tournant réparable, mais il ne constitue pas une solution universelle aux fuites. Un arbre rayé, un roulement usé, une surface d’étanchéité corrodée, un fluide inadapté, un effort latéral excessif ou un raccord endommagé peuvent provoquer une nouvelle fuite. Diagnostiquez l’ensemble et procurez-vous le jeu de joints correspondant exactement au modèle avant de l’ouvrir.',
+      sections: [
+        {
+          heading: 'Déterminer si le remplacement des joints est approprié',
+          paragraphs: [
+            'Confirmez le modèle et la révision exacts, puis localisez la fuite et comparez les conditions de fonctionnement à la configuration retenue. Contrôlez d’abord les raccords externes et l’alignement du montage. Si le corps, l’arbre, un roulement ou une portée d’étanchéité est endommagé, la réparation ou le remplacement de l’ensemble complet peut être plus fiable que le seul remplacement des joints.',
+            'Le matériau et la géométrie du joint doivent correspondre au fluide, à la pression, à la température, à la vitesse et aux surfaces en contact. Ne remplacez pas un joint torique ou dynamique par un élément d’apparence similaire sans en confirmer les dimensions et la compatibilité du matériau.',
+          ],
+        },
+        {
+          heading: 'Préparation pour éviter une nouvelle fuite',
+          points: [
+            ['Pièces correctes', 'Utilisez le jeu de joints, le plan d’assemblage, les outils, le lubrifiant et les données de serrage propres à la configuration exacte du raccord tournant.'],
+            ['Zone de travail propre', 'Tenez les fibres, copeaux, poussières abrasives, crochets endommagés et produits de nettoyage non approuvés éloignés des joints et des surfaces d’étanchéité.'],
+            ['Critères d’inspection', 'Contrôlez les arbres, gorges, portées d’étanchéité, roulements, filetages et orifices afin de repérer l’usure, la corrosion, les bavures, les rayures ou les contaminants incrustés.'],
+          ],
+        },
+        {
+          heading: 'Séquence de remplacement des joints et de remise en service',
+          ordered: true,
+          points: [
+            ['Consigner et documenter', 'Consignez la machine, dépressurisez chaque passage, repérez l’orientation et photographiez les tuyauteries ainsi que l’ordre des composants.'],
+            ['Démonter sans rayer', 'Utilisez les outils prescrits et protégez les surfaces de précision ; ne prenez jamais appui sur une portée d’étanchéité.'],
+            ['Nettoyer et inspecter', 'Éliminez les résidus sans modifier les dimensions, puis déterminez si les pièces sont aptes à être réutilisées.'],
+            ['Monter sans vriller', 'Lubrifiez uniquement comme prescrit, protégez les lèvres des joints des filetages et arêtes vives, et confirmez la bonne mise en place de chaque joint.'],
+            ['Remonter selon les données correctes', 'Rétablissez l’orientation, les fixations, les raccords et le support antirotation conformément aux exigences du modèle et des raccordements.'],
+            ['Tester progressivement', 'Vérifiez l’isolement et l’étanchéité de chaque passage à basse pression, puis faites tourner lentement et augmentez le cycle de service en surveillant la température et le frottement.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Déterminer la méthode correcte de réparation des joints',
+      inquiryText: 'Envoyez le modèle du raccord tournant, le numéro de série ou la révision s’ils sont disponibles, le fluide, la pression, la vitesse, l’emplacement de la fuite, des photos des pièces déposées et l’état de l’arbre ou des surfaces d’étanchéité.',
+    },
+    'blog-threaded-vs-flange.html': {
+      metaDescription: 'Comparez les raccords tournants filetés et à bride selon l’encombrement, l’alignement, l’antirotation, les efforts de tuyauterie, l’accès au montage et les besoins de maintenance.',
+      heroText: 'Choisissez l’interface de montage à partir de la structure de la machine et du plan de maintenance, et non de la seule apparence extérieure du raccord tournant.',
+      opening: 'Les raccords tournants filetés et à bride peuvent tous deux assurer un transfert fiable en rotation lorsque l’interface est correctement conçue. Le meilleur choix dépend de l’espace disponible, de la méthode d’alignement, du chemin de charge, de l’accès aux raccordements, de la procédure de dépose et du support des côtés fixe et tournant.',
+      sections: [
+        {
+          heading: 'Différences entre les deux modes de montage',
+          paragraphs: [
+            'Un raccord fileté peut être compact et direct, mais la longueur d’engagement, la méthode d’étanchéité, le couple de montage, l’orientation et l’accès pour la dépose sont déterminants. La structure environnante doit empêcher les flexibles ou raccords d’imposer au raccord tournant des efforts de flexion ou de torsion.',
+            'Une bride peut fournir un plan de perçage et un centrage définis, ce qui facilite l’orientation et une dépose reproductible. Elle nécessite généralement davantage d’espace radial et une face d’appui appropriée. Une bride ne corrige pas un défaut de concentricité et ne dispense pas de soutenir les flexibles ni de maîtriser l’antirotation.',
+          ],
+        },
+        {
+          heading: 'Facteurs à comparer au niveau de la machine',
+          points: [
+            ['Alignement et chemin de charge', 'Déterminez comment l’axe tournant est positionné et comment les efforts axiaux, radiaux, de flexion et de torsion sont tenus à l’écart du raccord tournant.'],
+            ['Accès au montage et à la maintenance', 'Vérifiez le dégagement pour les outils, l’accès aux raccords, la maîtrise de l’orientation, le temps de remplacement et la nécessité éventuelle de déposer des composants adjacents.'],
+            ['Définition de l’interface', 'Spécifiez la norme et la longueur d’engagement du filetage, ou le centrage de bride, le plan de perçage, les fixations, la face d’étanchéité, les tolérances et la répartition entre côtés fixe et tournant.'],
+          ],
+        },
+        {
+          heading: 'Processus pratique de choix du montage',
+          ordered: true,
+          points: [
+            ['Dessiner les deux interfaces en coupe', 'Incluez l’arbre et le bâti de la machine, le raccord tournant, les raccords, les flexibles, les supports et le sens de dépose.'],
+            ['Vérifier les tolérances d’assemblage', 'Examinez la concentricité, le faux-rond, les éléments de centrage, les tolérances du filetage ou de la bride et les déplacements thermiques.'],
+            ['Revoir la procédure de maintenance', 'Confirmez comment les techniciens consignent, accèdent, déposent, remontent et testent l’étanchéité du raccord tournant.'],
+            ['Choisir selon le risque d’intégration global', 'Retenez l’interface qui maîtrise l’alignement et les charges externes avec le moins de pièces spéciales et la procédure de maintenance la plus claire.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Comparer les interfaces filetée et à bride pour votre machine',
+      inquiryText: 'Envoyez une vue en coupe de l’arbre et du bâti, l’encombrement disponible, les côtés fixe et tournant, la vitesse, la pression, l’orientation des orifices, le cheminement des flexibles, l’accès de maintenance prévu et la quantité annuelle.',
+    },
+    'blog-rotary-joint-materials.html': {
+      metaDescription: 'Comparez les corps de raccords tournants en aluminium, acier inoxydable et laiton selon la masse, la corrosion, le fluide, la résistance, la fabrication et le cycle de vie.',
+      heroText: 'Choisissez les matériaux du corps, des pièces en contact avec le fluide et des joints selon le fluide et l’environnement ; aucun métal n’offre la durée de vie maximale dans toutes les applications.',
+      opening: 'Le matériau du corps ne constitue qu’un aspect de la durabilité d’un raccord tournant. Le fluide peut aussi entrer en contact avec les arbres, douilles, orifices, fixations et joints, tandis que l’extérieur est exposé à l’humidité, aux produits de lavage, à la poussière ou au sel. Une sélection pertinente distingue le corps, les pièces en contact avec le fluide, les surfaces d’étanchéité dynamique et les élastomères, au lieu de considérer le produit comme un seul métal.',
+      sections: [
+        {
+          heading: 'Apports des matériaux de corps courants',
+          paragraphs: [
+            'L’aluminium réduit la masse et s’usine facilement ; le traitement de surface et l’environnement de fonctionnement influencent son comportement face à la corrosion et à l’usure. L’acier inoxydable est souvent choisi pour une meilleure résistance à la corrosion ou des nettoyages exigeants, avec une masse et un coût d’usinage supérieurs ainsi qu’un risque éventuel de grippage. Le laiton s’usine bien et équipe de nombreux composants pour l’air et l’eau, mais sa compatibilité dépend toujours de la chimie du fluide, de la température et des métaux raccordés.',
+            'Aucune de ces descriptions ne confirme à elle seule la compatibilité. La nuance, le traitement thermique, le revêtement, l’état de surface, les matériaux associés, la composition du joint et le fluide exact peuvent modifier le résultat.',
+          ],
+        },
+        {
+          heading: 'Dissocier les décisions relatives aux matériaux',
+          points: [
+            ['Corps et structure de montage', 'Examinez la masse, la rigidité, la résistance des filetages, la corrosion externe, la tenue du revêtement et la fixation du raccord à la machine.'],
+            ['Pièces en contact avec le fluide et pièces dynamiques', 'Répertoriez tous les matériaux en contact avec le fluide, y compris l’arbre et les surfaces d’étanchéité, puis vérifiez leur compatibilité chimique et galvanique.'],
+            ['Joints et conditions de fonctionnement', 'Adaptez le matériau du joint au fluide, à la pression, à la température, à la vitesse, à la lubrification, à la propreté et aux périodes prévues d’arrêt ou de rotation.'],
+          ],
+        },
+        {
+          heading: 'Séquence défendable de sélection des matériaux',
+          ordered: true,
+          points: [
+            ['Définir les fluides', 'Précisez la concentration, les additifs, la contamination, les produits de nettoyage, la plage de température et si le circuit est rincé ou reste rempli.'],
+            ['Définir l’environnement', 'Relevez l’humidité, le lavage, le sel, la poussière abrasive, l’exposition aux UV et le contact avec les produits chimiques présents autour de la machine.'],
+            ['Comparer l’ensemble complet des matériaux', 'Examinez le corps, l’arbre, les orifices, les fixations, les revêtements, les joints, les lubrifiants et la tuyauterie raccordée comme un système unique.'],
+            ['Valider les conditions spéciales', 'Pour un fluide ou un environnement non répertorié, demandez une revue des matériaux et convenez des essais ou contrôles requis avant la mise en production.'],
+          ],
+        },
+      ],
+      inquiryHeading: 'Faire vérifier les matériaux pour un fluide ou un environnement précis',
+      inquiryText: 'Envoyez le fluide et sa concentration, les additifs, la pression, la température, la vitesse, la méthode de nettoyage, l’environnement extérieur, les matériaux raccordés, les documents requis et la quantité annuelle.',
+    },
+  },
   de: {
     'application-packaging-machinery.html': {
       metaDescription: 'Planen Sie eine pneumatische Drehdurchführung für Takt-, Füll-, Verschließ- und Siegelmaschinen anhand von Kanälen, Durchfluss, Drehzahl, Einbau und Reinigungsbedingungen.',

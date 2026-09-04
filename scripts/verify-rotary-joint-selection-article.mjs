@@ -6,6 +6,7 @@ import { load } from 'cheerio';
 const root = path.resolve(import.meta.dirname, '..');
 const pageName = 'blog-rotary-joint-selection.html';
 const failures = [];
+const config = JSON.parse(await readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 
 const pages = [
   {
@@ -31,6 +32,18 @@ const pages = [
     liquid: /Wasser|Kühlschmierstoff|Hydrauliköl/i,
     customWater: /Drehdurchführung für Wasser oder Kühlschmierstoff/i,
     customHydraulic: /Hydraulische Drehdurchführung/i,
+  },
+  {
+    code: 'fr',
+    file: `fr/${pageName}`,
+    air: /Air comprimé/i,
+    pressure1: /1,0 MPa/,
+    pressure5: /5,0 MPa/,
+    speed200: /200 tr\/min/,
+    speed80: /80 tr\/min/,
+    liquid: /eau|liquide de refroidissement|fluide hydraulique|huile/i,
+    customWater: /Raccord tournant pour eau ou liquide de refroidissement/i,
+    customHydraulic: /Raccord tournant hydraulique/i,
   },
   {
     code: 'ja',
@@ -60,12 +73,13 @@ const pages = [
 
 const forbiddenPatterns = [
   /0[.,]9\s*(?:MPa|МПа)/i,
-  /three months|drei Monate|3か月|три месяца/i,
+  /three months|drei Monate|trois mois|3か月|три месяца/i,
   /200\s*[–-]\s*500/i,
   /500\s*[–-]\s*2[,.]?000/i,
   /Spec Is Misleading/i,
   /Water\/oil compatible[^<]*BP-2P-130-0001/i,
   /Wasser- oder ölverträgliche Ausführung[^<]*BP-2P-130-0001/i,
+  /Version compatible eau\/huile[^<]*BP-2P-130-0001/i,
   /水・油対応仕様[^<]*BP-2P-130-0001/i,
   /Исполнение для воды или масла[^<]*BP-2P-130-0001/i,
 ];
@@ -91,6 +105,9 @@ for (const [model, expected] of Object.entries(expectedFacts)) {
   assert(product?.drawingFacts?.maximumSpeed?.value === expected.speed, `${model}: controlled maximum speed differs`);
 }
 
+const expectedLanguageCodes = [config.sourceLanguage.code, ...(config.activeLanguageCodes || [])];
+assert(JSON.stringify(pages.map(({ code }) => code)) === JSON.stringify(expectedLanguageCodes), 'Article page contracts must exactly follow the configured active-language order');
+
 for (const page of pages) {
   const html = await readFile(path.join(root, page.file), 'utf8');
   const $ = load(html);
@@ -101,6 +118,10 @@ for (const page of pages) {
   assert(article.length === 1, `${label}: expected one article.blog-content`);
   assert(article.find('h2').length === 7, `${label}: expected seven article section headings`);
   forbiddenPatterns.forEach((pattern) => assert(!pattern.test(html), `${label}: forbidden legacy claim remains (${pattern})`));
+  if (page.code === 'fr') {
+    assert(!/[\u0400-\u04ff]/u.test(articleText), `${label}: Russian fallback residue found in French article`);
+    assert(!/Water or coolant rotary joint|Hydraulic rotary joint/i.test(articleText), `${label}: English fallback residue found in French article`);
+  }
 
   const modelRows = new Map();
   article.find('tr').each((_, row) => {
@@ -137,4 +158,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('Rotary-joint selection article verification passed: 4 languages, 2 controlled model rows, and custom-fluid inquiry boundaries.');
+console.log(`Rotary-joint selection article verification passed: ${pages.length} languages, 2 controlled model rows, and custom-fluid inquiry boundaries.`);

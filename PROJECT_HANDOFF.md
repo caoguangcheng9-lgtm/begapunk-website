@@ -1,7 +1,7 @@
 # Begapunk Website Project Handoff
 
 状态：当前项目恢复入口
-更新日期：2026-08-22
+更新日期：2026-09-04
 
 本文件只保存稳定的项目位置、技术合同和恢复顺序。商业目标、内容规则、严重级别和上线验收以 docs/standards/README.md 与 docs/standards/BEGAPUNK_WEBSITE_STANDARD.md 为准。
 
@@ -13,11 +13,14 @@
 - 生产网站：https://www.begapunk.com/
 - GitHub：caoguangcheng9-lgtm/begapunk-website
 - 一键部署脚本：E:\begapunk-site-v2\deploy.ps1
+- 本地交互预览：在仓库目录运行 `npm run preview`，再打开 `http://127.0.0.1:8080/`
 - CRM 源码：E:\BEGAPUNK-CRM
 - 独立目录产品目录项目：E:\begapunk-catalog-project
 - 仓库内 catalog-project/：受保护的现有工作，不得自动清理、移动、暂存或删除
 
 E:\begapunk-site-v2 是网站唯一正式源码。备份、发布包、审计报告和外部目录不能替代它。
+
+不要把直接双击 HTML 的 `file:///` 页面作为完整验收环境。浏览器会阻止站内搜索读取 JSON，PHP 询盘也不会执行；`npm run preview` 用于页面、导航和搜索预览，但会明确拒绝真实询盘提交。
 
 ## 2. 每次任务开始
 
@@ -47,7 +50,7 @@ E:\begapunk-site-v2 是网站唯一正式源码。备份、发布包、审计报
 - 产品事实优先使用已确认且型号匹配的图纸或对应领域的一手资料。
 - 客户页面直接陈述确认事实，不展示内部 QC、图签匹配、证据等级或审核状态。
 - 英文是主要内容母版，明确受控的人工本地化页面除外。
-- 德文、日文、俄文必须保持关键事实和询盘含义一致，但可以按照当地阅读习惯自然表达。
+- 德文、法文、日文、俄文必须保持关键事实和询盘含义一致，但可以按照当地阅读习惯自然表达。
 - i18n/config.json 是当前页面和语言范围的实时配置；不要在文档中维护容易过期的固定页面数量。
 - 通用多语言写入模式必须使用仓库外的 I18N_OUTPUT_ROOT。不要用通用 i18n:build 覆盖当前已审校页面。
 - 发布准备使用只读验证路径；历史页面数量和旧审校次数只是证据快照。

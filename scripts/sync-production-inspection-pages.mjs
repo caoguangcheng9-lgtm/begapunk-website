@@ -3,6 +3,8 @@ import path from 'node:path';
 import { load } from 'cheerio';
 
 const root = path.resolve(import.meta.dirname, '..');
+const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const languages = [config.sourceLanguage.code, ...config.activeLanguageCodes];
 const data = {
   en: {
     dir: '', home: 'Home', quality: 'Quality', current: '100% Leak Testing', eyebrow: 'Production inspection',
@@ -44,6 +46,23 @@ const data = {
     requestItems: ['Produktzeichnung und Kanalzahl', 'Betriebsmedium und -druck', 'Auftragsbezogene Annahmekriterien', 'Mit der Lieferung benötigte Prüfunterlagen'],
     cta: 'Technische Prüfung anfragen →', back: '← Zurück zu Fertigung &amp; Qualität',
   },
+  fr: {
+    dir: 'fr', home: 'Accueil', quality: 'Qualité', current: 'Essai d\'étanchéité à 100 %', eyebrow: 'Contrôle de production', statement: 'Processus de production actuel',
+    intro: 'Après l\'assemblage final, chaque raccord tournant pneumatique Begapunk est contrôlé circuit par circuit à l\'air comprimé avant son emballage et son stockage.',
+    facts: ['100 % des unités finies', 'Chaque circuit est testé séparément', '1,0 MPa · environ 5 secondes', 'Rotation intégrée · PASS/NG'],
+    processTitle: 'Contrôle de production en cinq étapes', processIntro: 'Chaque unité finie suit le même processus de contrôle et de traitement des non-conformités avant libération.',
+    steps: [['Assemblage final et file d\'attente de contrôle', 'Les unités terminées rejoignent la file d\'attente du contrôle final de production.'], ['Contrôle individuel de chaque circuit', 'Un circuit est testé à 1,0 MPa tandis que tous les autres restent sans pression et ouverts.'], ['Mise sous pression, rotation et maintien', 'L\'équipement monte en pression pendant environ 1 seconde, fait tourner le raccord puis maintient la pression pendant environ 4 secondes. La fluidité de rotation, les points durs et les bruits anormaux sont également contrôlés.'], ['Libération uniquement après PASS', 'Une unité ne peut être emballée et stockée que lorsque l\'appareil affiche PASS pour chaque circuit.'], ['Isolement de toute unité non conforme', 'L\'unité est placée dans le bac jaune de quarantaine, diagnostiquée, réparée puis entièrement retestée si possible, ou mise au rebut.']],
+    tableTitle: 'Paramètres de production confirmés', col1: 'Point de contrôle', col2: 'Processus de production actuel',
+    rows: [['Étape de contrôle', 'Après l\'assemblage final'], ['Couverture du contrôle', '100 % des unités finies'], ['Couverture des circuits', 'Chaque circuit est testé séparément'], ['Fluide et pression', 'Air comprimé à 1,0 MPa (environ 10 bar)'], ['État des autres circuits', 'Sans pression et ouverts'], ['Cycle d\'essai', 'Environ 1 seconde de mise sous pression puis 4 secondes de maintien en pression'], ['Contrôle de rotation', 'Rotation intégrée à l\'équipement ; contrôle de la fluidité, des points durs et des bruits anormaux'], ['Acceptation', 'L\'appareil affiche PASS pour chaque circuit'], ['Traitement des unités non conformes', 'Bac jaune de quarantaine ; diagnostic ; réparation et nouveau contrôle complet, ou mise au rebut']],
+    evidenceTitle: 'Le contrôle de production en pratique', evidenceIntro: 'Les photographies montrent des unités assemblées en attente de contrôle et un cycle d\'essai circuit par circuit.',
+    queueAlt: 'Raccords tournants pneumatiques assemblés en attente du contrôle de production', queueCaption: 'Unités assemblées en attente du contrôle circuit par circuit.',
+    passAlt: 'Poste d\'essai d\'étanchéité affichant PASS pendant le contrôle d\'un circuit', passCaption: 'Poste d\'essai affichant PASS pour le cycle de contrôle photographié.',
+    boundary: 'La procédure à 100 % et circuit par circuit décrite ci-dessus est le processus actuel de contrôle de production de Begapunk. Toute limite d\'acceptation propre au projet ou demande de relevés de contrôle doit être convenue avant la commande.',
+    ngTitle: 'Isolement et traitement des unités non conformes', ngText: 'Toute unité non conforme est placée dans le bac jaune de quarantaine afin d\'être examinée par le personnel désigné. Les unités réparables sont remises en état puis soumises de nouveau au contrôle complet, circuit par circuit. Les unités irréparables sont mises au rebut. L\'emballage et le stockage ne sont autorisés qu\'après la validation de tous les circuits.',
+    ctaTitle: 'Définissons les exigences de contrôle de votre projet', ctaText: 'Envoyez le modèle ou le plan, le nombre de circuits, le fluide, la pression ainsi que les relevés ou critères d\'acceptation requis.',
+    requestItems: ['Plan du produit et nombre de circuits', 'Fluide de service et pression', 'Exigences d\'acceptation propres à la commande', 'Relevés de contrôle à joindre à l\'expédition'],
+    cta: 'Envoyer les exigences de contrôle →', back: '← Retour à Fabrication et qualité',
+  },
   ja: {
     dir: 'ja', home: 'ホーム', quality: '品質管理', current: '全数漏れ検査', eyebrow: '量産検査', statement: '現在の量産検査工程', statementSeparator: '：',
     intro: 'Begapunkでは、最終組立後の空圧用ロータリージョイントを全数対象とし、梱包・入庫前に各流路を圧縮空気で個別に検査します。',
@@ -80,6 +99,14 @@ const data = {
   },
 };
 
+const h1ByLanguage = {
+  en: '100% Passage-by-Passage Leak Testing for Pneumatic Rotary Unions',
+  de: '100%-Dichtheitsprüfung jedes einzelnen Kanals bei pneumatischen Drehdurchführungen',
+  fr: 'Essai d’étanchéité à 100 %, circuit par circuit, des raccords tournants pneumatiques',
+  ja: '空圧用ロータリージョイントの全数・流路別漏れ検査',
+  ru: '100%-ный поканальный контроль герметичности пневматических вращающихся соединений',
+};
+
 function schema(lang, t) {
   const prefix = lang === 'en' ? '' : `${lang}/`;
   const pageUrl = `https://www.begapunk.com/${prefix}production-inspection-testing.html`;
@@ -105,7 +132,7 @@ function markup(lang, t) {
 <section class="pit-hero"><div class="container">
   <div class="pit-breadcrumb"><a href="index.html">${t.home}</a> / <a href="manufacturing-quality.html">${t.quality}</a> / ${t.current}</div>
   <span class="pit-eyebrow">${t.eyebrow}</span>
-  <h1>${lang === 'en' ? '100% Passage-by-Passage Leak Testing for Pneumatic Rotary Unions' : lang === 'de' ? '100%-Dichtheitsprüfung jedes einzelnen Kanals bei pneumatischen Drehdurchführungen' : lang === 'ja' ? '空圧用ロータリージョイントの全数・流路別漏れ検査' : '100%-ный поканальный контроль герметичности пневматических вращающихся соединений'}</h1>
+  <h1>${h1ByLanguage[lang]}</h1>
   <p>${t.intro}</p>
 </div></section>
 <section class="pit-section pit-facts-section"><div class="container"><div class="pit-facts">${facts}</div></div></section>
@@ -131,7 +158,9 @@ function markup(lang, t) {
 </main>`;
 }
 
-for (const [lang, t] of Object.entries(data)) {
+for (const lang of languages) {
+  const t = data[lang];
+  if (!t || !h1ByLanguage[lang]) throw new Error(`Missing production-inspection copy for configured language: ${lang}`);
   const file = lang === 'en' ? path.join(root, 'production-inspection-testing.html') : path.join(root, lang, 'production-inspection-testing.html');
   let html = await fs.readFile(file, 'utf8');
   const $ = load(html, { decodeEntities: false, sourceCodeLocationInfo: true });
@@ -159,4 +188,4 @@ for (const [lang, t] of Object.entries(data)) {
   await fs.writeFile(searchFile, `${JSON.stringify(searchIndex, null, 2)}\n`, 'utf8');
 }
 
-console.log('Production inspection pages synchronized across four languages.');
+console.log(`Production inspection pages synchronized across ${languages.length} languages.`);

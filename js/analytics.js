@@ -3,9 +3,10 @@
  * GDPR / CCPA baseline compliance for B2B industrial websites
  * 
  * Features:
- * - Cookie consent banner (accept / decline)
+ * - Measurement consent banner (accept / decline)
  * - Conditional GA4 loading (only after consent)
  * - Consent state persisted in localStorage
+ * - Consent-gated Google Ads / UTM session attribution
  * - No third-party cookie consent libraries (zero dependencies)
  * - Lightweight (~3 KB minified)
  * 
@@ -23,11 +24,41 @@
         GA_ID: 'G-D4FZF37Z07',
         GA_DEBUG: false,               // Set true to log GA events to console
         STORAGE_KEY: 'begapunk_cookie_consent',
-        BANNER_VERSION: '1.0',
+        ATTRIBUTION_STORAGE_KEY: 'begapunk_session_attribution_v1',
+        // Version 2 expands the optional choice from analytics-only to analytics
+        // and advertising-effectiveness measurement. Existing choices must be
+        // collected again instead of silently broadening a prior consent.
+        BANNER_VERSION: '2.0',
         COOKIE_MAX_AGE_DAYS: 365,
         // CSS class names used by the banner (prefix to avoid collisions)
         PREFIX: 'bp-consent-'
     };
+
+    const ATTRIBUTION_FIELDS = Object.freeze([
+        'gclid',
+        'gbraid',
+        'wbraid',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+        'first_landing_page',
+        'initial_referrer'
+    ]);
+    const CLICK_ID_FIELDS = Object.freeze(['gclid', 'gbraid', 'wbraid']);
+    const ATTRIBUTION_LIMITS = Object.freeze({
+        gclid: 300,
+        gbraid: 300,
+        wbraid: 300,
+        utm_source: 200,
+        utm_medium: 200,
+        utm_campaign: 200,
+        utm_term: 200,
+        utm_content: 200,
+        first_landing_page: 500,
+        initial_referrer: 500
+    });
 
     /* ===================== STATE ===================== */
     let bannerEl = null;
@@ -45,8 +76,8 @@
         }
     }
 
-    // Queue Consent Mode commands before Google Analytics is loaded. Advertising
-    // storage and personalization stay disabled because this site only uses GA4.
+    // Queue Consent Mode v2 defaults before any Google measurement library loads.
+    // No optional storage or user-data processing is enabled before a choice.
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () {
         window.dataLayer.push(arguments);
@@ -93,11 +124,11 @@
         consentState = value;
     }
 
-    function updateGoogleConsent(analyticsStorage) {
+    function updateGoogleConsent(measurementStorage) {
         window.gtag('consent', 'update', {
-            analytics_storage: analyticsStorage,
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
+            analytics_storage: measurementStorage,
+            ad_storage: measurementStorage,
+            ad_user_data: measurementStorage,
             ad_personalization: 'denied'
         });
     }
@@ -128,6 +159,111 @@
                 document.cookie = name + '=; Max-Age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + domainPart + '; SameSite=Lax';
             });
         });
+    }
+
+    function cleanAttributionValue(fieldName, rawValue) {
+        if (typeof rawValue !== 'string') return '';
+        const maximum = ATTRIBUTION_LIMITS[fieldName] || 200;
+        const value = rawValue
+            .replace(/[\u0000-\u001F\u007F]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .slice(0, maximum);
+        if (CLICK_ID_FIELDS.indexOf(fieldName) !== -1
+            && value !== ''
+            && !/^[A-Za-z0-9._~-]+$/.test(value)) {
+            return '';
+        }
+        return value;
+    }
+
+    function normalizeTrackingUrl(rawValue, sameSiteOnly) {
+        if (!rawValue) return '';
+        try {
+            const parsed = new URL(rawValue, window.location.href);
+            if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return '';
+            if (parsed.username || parsed.password) return '';
+            if (sameSiteOnly && parsed.origin !== window.location.origin) return '';
+            parsed.hash = '';
+            return cleanAttributionValue(
+                sameSiteOnly ? 'first_landing_page' : 'initial_referrer',
+                parsed.href
+            );
+        } catch (error) {
+            return '';
+        }
+    }
+
+    function readSessionAttribution() {
+        const cleanRecord = {};
+        try {
+            const raw = sessionStorage.getItem(CONFIG.ATTRIBUTION_STORAGE_KEY);
+            const parsed = raw ? JSON.parse(raw) : {};
+            if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return cleanRecord;
+            ATTRIBUTION_FIELDS.forEach(function (fieldName) {
+                if (!Object.prototype.hasOwnProperty.call(parsed, fieldName)) return;
+                cleanRecord[fieldName] = cleanAttributionValue(fieldName, parsed[fieldName]);
+            });
+        } catch (error) {
+            // sessionStorage unavailable or corrupt
+        }
+        return cleanRecord;
+    }
+
+    function writeSessionAttribution(record) {
+        try {
+            sessionStorage.setItem(CONFIG.ATTRIBUTION_STORAGE_KEY, JSON.stringify(record));
+        } catch (error) {
+            // sessionStorage unavailable (private mode, etc.)
+        }
+    }
+
+    function populateAttributionFields(record) {
+        ATTRIBUTION_FIELDS.forEach(function (fieldName) {
+            const field = document.getElementById(fieldName);
+            if (field && field.tagName === 'INPUT' && field.type === 'hidden') {
+                field.value = record[fieldName] || '';
+            }
+        });
+    }
+
+    function captureSessionAttribution() {
+        if (consentState !== 'granted') return {};
+
+        const record = readSessionAttribution();
+        if (!Object.prototype.hasOwnProperty.call(record, 'first_landing_page')) {
+            record.first_landing_page = normalizeTrackingUrl(window.location.href, true);
+            record.initial_referrer = normalizeTrackingUrl(document.referrer, false);
+        }
+
+        try {
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.forEach(function (rawValue, rawKey) {
+                const fieldName = String(rawKey).toLowerCase();
+                if (ATTRIBUTION_FIELDS.indexOf(fieldName) === -1
+                    || fieldName === 'first_landing_page'
+                    || fieldName === 'initial_referrer') {
+                    return;
+                }
+                const value = cleanAttributionValue(fieldName, rawValue);
+                if (value !== '') record[fieldName] = value;
+            });
+        } catch (error) {
+            // An invalid URL must not break consent or form behavior.
+        }
+
+        writeSessionAttribution(record);
+        populateAttributionFields(record);
+        return record;
+    }
+
+    function clearSessionAttribution() {
+        try {
+            sessionStorage.removeItem(CONFIG.ATTRIBUTION_STORAGE_KEY);
+        } catch (error) {
+            // sessionStorage unavailable
+        }
+        populateAttributionFields({});
     }
 
     function loadScript(src, async, defer) {
@@ -182,12 +318,17 @@
             }
         });
 
+        // Capture phase is intentional: contact-page handlers serialize
+        // FormData on the form itself, so attribution must be refreshed first.
         document.addEventListener('submit', function (event) {
             const form = event.target;
             if (!form || form.tagName !== 'FORM') return;
 
             const action = form.getAttribute('action') || '';
             if (form.id === 'quoteForm' || /send_inquiry|contact/i.test(action)) {
+                // Refresh hidden attribution immediately before native or AJAX
+                // serialization. This is a no-op until measurement is accepted.
+                captureSessionAttribution();
                 // This records an attempt for funnel analysis. The confirmed
                 // conversion is generate_lead, emitted only after server success.
                 trackEvent('contact_form_attempt', {
@@ -195,7 +336,7 @@
                     page_path: window.location.pathname
                 });
             }
-        });
+        }, true);
     }
 
     function bindSuccessfulInquiryTracking() {
@@ -219,6 +360,7 @@
         }
 
         updateGoogleConsent('granted');
+        captureSessionAttribution();
 
         // Consent may be granted again after a prior decline while gtag.js is
         // already present. Update consent above, but do not configure it twice.
@@ -260,6 +402,14 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
+                box-sizing: border-box;
+                width: 100%;
+                max-height: 100vh;
+                max-height: 100dvh;
+                overflow-x: hidden;
+                overflow-y: auto;
+                overscroll-behavior: contain;
+                -webkit-overflow-scrolling: touch;
                 z-index: 99999;
                 background: rgba(255,255,255,0.97);
                 border-top: 3px solid #0056b3;
@@ -275,9 +425,14 @@
                 transform: translateY(0);
             }
             #bp-consent-banner .bp-inner {
+                box-sizing: border-box;
+                width: 100%;
                 max-width: 1200px;
                 margin: 0 auto;
-                padding: 16px 24px calc(16px + env(safe-area-inset-bottom, 0px));
+                padding-top: calc(16px + env(safe-area-inset-top, 0px));
+                padding-right: calc(24px + env(safe-area-inset-right, 0px));
+                padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+                padding-left: calc(24px + env(safe-area-inset-left, 0px));
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -346,7 +501,10 @@
                 #bp-consent-banner .bp-inner {
                     flex-direction: column;
                     align-items: flex-start;
-                    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+                    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+                    padding-right: calc(16px + env(safe-area-inset-right, 0px));
+                    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+                    padding-left: calc(16px + env(safe-area-inset-left, 0px));
                     gap: 14px;
                 }
                 #bp-consent-banner .bp-actions {
@@ -354,8 +512,11 @@
                     justify-content: stretch;
                 }
                 #bp-consent-banner button {
-                    flex: 1;
+                    flex: 1 1 10rem;
+                    min-width: 0;
                     text-align: center;
+                    white-space: normal;
+                    overflow-wrap: anywhere;
                 }
             }
             @media (prefers-reduced-motion: reduce) {
@@ -382,37 +543,45 @@
 
         const language = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
         const messages = {
+            fr: {
+                label: 'Mesure facultative',
+                title: 'Analyse et mesure de l’efficacité publicitaire',
+                body: 'Avec votre accord, nous utilisons des cookies et le stockage facultatifs pour analyser la fréquentation du site et mesurer l’efficacité de la publicité. La publicité personnalisée reste désactivée. Les fonctions essentielles sont toujours actives.',
+                privacy: 'Politique de confidentialité',
+                decline: 'Refuser la mesure facultative',
+                accept: 'Autoriser la mesure'
+            },
             de: {
-                label: 'Cookie-Einstellungen',
-                title: 'Cookie-Einstellungen',
-                body: 'Wir verwenden Analyse-Cookies, um den Websiteverkehr zu verstehen und das Nutzungserlebnis zu verbessern. Notwendige Cookies sind immer aktiv.',
+                label: 'Optionale Messung',
+                title: 'Analyse und Werbeerfolg messen',
+                body: 'Mit Ihrer Einwilligung nutzen wir optionale Cookies und Speicher für Webanalyse und die Messung des Werbeerfolgs. Personalisierte Werbung bleibt deaktiviert. Notwendige Funktionen sind immer aktiv.',
                 privacy: 'Datenschutzerklärung',
-                decline: 'Ablehnen',
-                accept: 'Alle akzeptieren'
+                decline: 'Optionale Messung ablehnen',
+                accept: 'Messung erlauben'
             },
             ja: {
-                label: 'Cookie設定',
-                title: 'Cookie設定',
-                body: 'アクセス解析Cookieは、サイトの利用状況を把握し、利便性を改善するために使用します。必須Cookieは常に有効です。',
+                label: '任意の計測設定',
+                title: 'アクセス解析と広告効果の計測',
+                body: '同意いただいた場合、任意のCookieとストレージをアクセス解析および広告効果の計測に使用します。パーソナライズ広告は行いません。必須機能は常に有効です。',
                 privacy: 'プライバシーポリシー',
-                decline: '拒否する',
-                accept: 'すべて許可'
+                decline: '任意の計測を拒否',
+                accept: '計測を許可'
             },
             ru: {
-                label: 'Настройки cookie',
-                title: 'Настройки cookie',
-                body: 'Аналитические cookie помогают понять использование сайта и улучшить его работу. Необходимые cookie всегда активны.',
+                label: 'Необязательные измерения',
+                title: 'Аналитика и оценка эффективности рекламы',
+                body: 'С вашего согласия мы используем необязательные cookie и хранилище для веб-аналитики и оценки эффективности рекламы. Персонализированная реклама остаётся отключённой. Необходимые функции всегда активны.',
                 privacy: 'Политика конфиденциальности',
-                decline: 'Отклонить',
-                accept: 'Принять все'
+                decline: 'Отклонить измерения',
+                accept: 'Разрешить измерения'
             },
             en: {
-                label: 'Cookie consent',
-                title: 'Cookie Preferences',
-                body: 'We use analytics cookies to understand site traffic and improve your experience. Essential cookies are always active.',
+                label: 'Optional measurement consent',
+                title: 'Analytics and advertising measurement',
+                body: 'With your permission, we use optional cookies and storage for site analytics and advertising-effectiveness measurement. Personalized advertising remains off. Essential functions are always active.',
                 privacy: 'Privacy Policy',
-                decline: 'Decline',
-                accept: 'Accept All'
+                decline: 'Decline optional measurement',
+                accept: 'Allow measurement'
             }
         };
         const copy = messages[language] || messages.en;
@@ -507,10 +676,13 @@
         updateGoogleConsent('denied');
         window['ga-disable-' + CONFIG.GA_ID] = true;
         clearAnalyticsCookies();
+        clearSessionAttribution();
         hideBanner();
         notifyConsentChange();
-        // Ensure no GA4 scripts are loaded
-        if (CONFIG.GA_DEBUG) console.log('[Begapunk Analytics] User declined analytics cookies');
+        // A first-page decline prevents GA4 loading. If GA4 was loaded after an
+        // earlier grant, Consent Mode plus ga-disable stop subsequent optional
+        // measurement; the already executed script cannot be unloaded.
+        if (CONFIG.GA_DEBUG) console.log('[Begapunk Analytics] User declined optional measurement');
     }
 
     /* ===================== PUBLIC API ===================== */
@@ -536,6 +708,7 @@
             updateGoogleConsent('denied');
             window['ga-disable-' + CONFIG.GA_ID] = true;
             clearAnalyticsCookies();
+            clearSessionAttribution();
             showBanner();
             notifyConsentChange();
         },
@@ -566,8 +739,10 @@
             setConsentUiState('settled');
             updateGoogleConsent('denied');
             window['ga-disable-' + CONFIG.GA_ID] = true;
+            clearSessionAttribution();
             // Banner not shown, GA4 not loaded
         } else {
+            clearSessionAttribution();
             // No decision yet — show banner when DOM is ready
             if (document.readyState === 'loading') {
                 setConsentUiState('open');

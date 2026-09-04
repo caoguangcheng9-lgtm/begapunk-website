@@ -14,12 +14,10 @@ import {
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteOrigin = 'https://www.begapunk.com';
 const drawingManifest = JSON.parse(await readFile(path.join(repoRoot, 'data/product-drawing-facts.json'), 'utf8'));
-const locales = [
-  { code: 'en', directory: '' },
-  { code: 'de', directory: 'de' },
-  { code: 'ja', directory: 'ja' },
-  { code: 'ru', directory: 'ru' },
-];
+const siteConfig = JSON.parse(await readFile(path.join(repoRoot, 'i18n/config.json'), 'utf8'));
+const sourceLocale = siteConfig.sourceLanguage?.code;
+const activeLocaleCodes = [...new Set([sourceLocale, ...(siteConfig.activeLanguageCodes || [])])];
+const locales = activeLocaleCodes.map((code) => ({ code, directory: code === sourceLocale ? '' : code }));
 const failures = [];
 const catalogFilterCodes = [
   'all',
@@ -47,6 +45,13 @@ const drawingBackedPolicyByLocale = {
     comparisonFragments: ['2 Kanäle', '2 Einlässe / 2 Auslässe', '1 MPa', '100 min⁻¹', '4 × M5 × 10 mm', '6 × M5 × 8 mm', 'AL6061', 'Luftbetrieb'],
     nonAirTerms: /\b(?:Wasser|Kühlmittel|Flüssigkeit|Nicht-Luft-Medium)\b/iu,
     nonAirQualification: /\b(?:schriftliche Kompatibilitätsbestätigung|nicht vorgesehen|nicht angegeben|nicht direkt|Waschstrahl nicht|keine geeignete|außerhalb|vor der Inbetriebnahme|vor jeder Flüssigkeitszufuhr|konsultieren)\b/iu,
+  },
+  fr: {
+    cardText: 'Capot de protection et labyrinthe',
+    catalogFragments: ['2 entrées / 2 sorties', 'Fluide standard : air', 'Stator 4 × M5 / Rotor 6 × M5', '1 MPa', '100 tr/min', 'AL6061', 'PTFE', 'joint torique'],
+    comparisonFragments: ['2 passages', '2 entrées / 2 sorties', '1 MPa', '100 tr/min', '4 × M5 × 10 mm', '6 × M5 × 8 mm', 'AL6061', 'Air'],
+    nonAirTerms: /\b(?:eau|liquide de refroidissement|liquide|fluide autre que l’air)\b/iu,
+    nonAirQualification: /\b(?:confirmation écrite|ne doit pas|ne pas diriger|non (?:recommandé|approuvé|prévu)|hors|consulter|nécessite? (?:une )?(?:confirmation|validation)|avant (?:la mise en service|utilisation|l’alimentation))\b/iu,
   },
   ja: {
     cardText: '保護カバー・ラビリンス構造',
@@ -89,6 +94,19 @@ const secondarySurfacePolicyByLocale = {
     bp4MaterialStale: ['Keramik', 'ceramic'],
     bp4DirectionStale: '4 Einlässe / 4 Auslässe',
     bp30RequestStale: 'Modellspezifische Datei anfordern',
+  },
+  fr: {
+    bp16Passages: '2 passages, alésage 16 mm',
+    bp3Mount: 'Montage frontal',
+    bp3Weight: '0,36 kg',
+    bp3ComparisonStale: ['3 passages, orifice 6 mm', 'filetage G1/4'],
+    bp3CatalogStale: ['3 passages (G1/4)', 'Orifice 6 mm', 'Filetage G1/4'],
+    s06Leads: '6 conducteurs électriques',
+    s06Circuits: '6 circuits électriques',
+    bp4Seal: 'PTFE + joint torique',
+    bp4MaterialStale: ['céramique', 'ceramic'],
+    bp4DirectionStale: '4 entrées / 4 sorties',
+    bp30RequestStale: 'Demander le fichier propre au modèle',
   },
   ja: {
     bp16Passages: '2流路・中空径16 mm',
@@ -133,6 +151,12 @@ const drawingBackedTargetForbiddenByLocale = {
     { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:wöchentlich|monatlich|alle\s+\d+\s+(?:Wochen|Monate)|\d+\s*[–—-]\s*\d+\s+Monate)\b/iu },
     { label: 'unapproved non-air operating implication', pattern: /\bWasser- oder Kühlmittelbetrieb\b/iu },
     { label: 'stale unverified-weight fallback', pattern: /(?:(?:Gewicht|Masse)[^.!?\n]{0,120}(?:bestätigen|prüfen|klären|anfragen)|(?:bestätigen|prüfen|klären|anfragen)[^.!?\n]{0,120}(?:Gewicht|Masse))/iu },
+  ],
+  fr: [
+    { label: 'absolute dust-protected product-type claim', pattern: /\b(?:raccord|joint) tournant (?:étanche à la poussière|antipoussière)\b/iu },
+    { label: 'fixed maintenance or seal-replacement interval', pattern: /\b(?:chaque semaine|mensuel(?:le)?|tous les \d+ (?:semaines|mois)|\d+\s*[–—-]\s*\d+ mois)\b/iu },
+    { label: 'unapproved non-air operating implication', pattern: /(?:eau|liquide de refroidissement).{0,40}environnement poussiéreux/iu },
+    { label: 'stale unverified-weight fallback', pattern: /(?:(?:masse|poids)[^.!?\n]{0,120}(?:confirmer|vérifier|demander|déterminer)|(?:confirmer|vérifier|demander|déterminer)[^.!?\n]{0,120}(?:masse|poids))/iu },
   ],
   ja: [
     { label: 'absolute dust-protected product-type claim', pattern: /(?:防じんロータリージョイント|防じん型)/u },
@@ -181,9 +205,11 @@ function runDrawingBackedValidatorCases() {
   const cases = [
     { locale: 'en', text: 'Inspect dust seal weekly and replace it every 3–4 months.', expected: true },
     { locale: 'de', text: 'BP-2P-50-0001 ist eine staubgeschützte Drehdurchführung.', expected: true },
+    { locale: 'fr', text: 'BP-2P-50-0001 est un raccord tournant étanche à la poussière.', expected: true },
     { locale: 'ja', text: 'BP-2P-50-0001 防じんロータリージョイント', expected: true },
     { locale: 'ru', text: 'BP-2P-50-0001 — пылезащищённое вращающееся соединение.', expected: true },
     { locale: 'de', text: 'Wasser- oder Kühlmittelbetrieb in staubiger Umgebung', expected: true },
+    { locale: 'fr', text: 'Eau ou liquide de refroidissement en environnement poussiéreux', expected: true },
     { locale: 'ja', text: '粉じん環境での水・クーラント使用', expected: true },
     { locale: 'ru', text: 'Вода или СОЖ в запылённой среде', expected: true },
     {
@@ -205,6 +231,7 @@ function runDrawingBackedValidatorCases() {
     { locale: 'en', text: 'Net weight: 2.3 kg (2,300 g).', expected: false },
     { locale: 'en', text: 'Confirm weight for the supplied configuration.', expected: true },
     { locale: 'de', text: 'Gewicht der gelieferten Konfiguration bestätigen.', expected: true },
+    { locale: 'fr', text: 'Confirmer la masse de la configuration livrée.', expected: true },
     { locale: 'ja', text: '納入仕様の質量をご確認ください。', expected: true },
     { locale: 'ru', text: 'Уточните массу поставляемой конфигурации.', expected: true },
   ];

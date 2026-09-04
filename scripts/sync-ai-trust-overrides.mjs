@@ -4,6 +4,8 @@ import process from 'node:process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const checkOnly = process.argv.includes('--check');
+const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const languageCodes = [...config.activeLanguageCodes];
 
 const rows = [
   {
@@ -1700,6 +1702,7 @@ const editorialRows = [
     pages: ['BP-3P-0006.html', 'BP-3P-0007.html'],
     id: '856aff6a43bfb285',
     de: 'G1/8-Gewinde, 1 MPa, zwei Eingänge / drei Ausgänge',
+    fr: 'Filetage G1/8, 1 MPa, deux entrées / trois sorties',
     ja: 'G1/8ねじ、1 MPa、2入力・3出力',
     ru: 'Резьба G1/8, 1 МПа, два входа / три выхода',
   },
@@ -1707,34 +1710,77 @@ const editorialRows = [
     pages: ['BP-1P-0003.html', 'BP-1P-0006.html', 'BP-2P-0002.html', 'BP-2P-08-0001.html', 'BP-2P-16-0001.html', 'BP-2P-30-0001.html', 'BP-3P-0006.html', 'BP-3P-0007.html', 'BP-4P-30-0001.html'],
     id: 'c6d36ee1a63a6495',
     de: '<h3>Sonderausführung</h3>\n    <p>Für kundenspezifische Anforderungen werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie und erforderliche Dokumentation projektbezogen geprüft. Verfügbare CAD-Formate und Lieferzeit werden für das ausgewählte Projekt bestätigt.</p>\n    <div class="price">Angebot anfordern</div>',
+    fr: '<h3>Conception sur mesure</h3>\n    <p>Pour toute exigence sur mesure, les matériaux en contact avec le fluide, le matériau des joints, les produits de nettoyage et la documentation requise sont examinés pour chaque projet. Les formats CAO disponibles et le délai sont confirmés pour le projet sélectionné.</p>\n    <div class="price">Demander un devis</div>',
     ja: '<h3>カスタム設計</h3>\n    <p>カスタム要件については、接液部材質、シール材質、洗浄薬品、必要書類を案件ごとに確認します。提供可能なCAD形式と納期は選定案件ごとに確定します。</p>\n    <div class="price">見積もりを依頼</div>',
     ru: '<h3>Специальное исполнение</h3>\n    <p>Для индивидуальных требований смачиваемые материалы, материал уплотнения, моющая химия и необходимая документация проверяются для конкретного проекта. Доступные форматы CAD и срок поставки подтверждаются для выбранного проекта.</p>\n    <div class="price">Запросить коммерческое предложение</div>',
   },
 ];
 
+let frenchCatalogSources = new Set();
+let frenchCatalogTranslations = new Map();
+if (languageCodes.includes('fr')) {
+  const [catalog, cache] = await Promise.all([
+    fs.readFile(path.join(root, 'i18n', 'source-catalog.json'), 'utf8').then(JSON.parse),
+    fs.readFile(path.join(root, 'i18n', 'cache', 'fr.json'), 'utf8').then(JSON.parse),
+  ]);
+  frenchCatalogSources = new Set((catalog.entries || []).map((entry) => entry.source));
+  frenchCatalogTranslations = new Map((catalog.entries || []).map((entry) => [
+    entry.source,
+    cache.translations?.[entry.id],
+  ]));
+}
+
+function approvedTranslation(row, language, existingValue) {
+  if (typeof row[language] === 'string' && row[language]) return row[language];
+  if (language === 'fr') {
+    if (!frenchCatalogSources.has(row.source)) return null;
+    const catalogValue = frenchCatalogTranslations.get(row.source);
+    const value = typeof catalogValue === 'string' && catalogValue ? catalogValue : existingValue;
+    if (typeof value === 'string' && value) return value;
+    return null;
+  }
+  throw new Error(`${language}: inline AI-trust translation is missing: ${row.source}`);
+}
+
 let changed = 0;
-for (const language of ['de', 'ja', 'ru']) {
+const synchronizedRowCounts = new Map();
+for (const language of languageCodes) {
   const filePath = path.join(root, 'i18n', 'overrides', `${language}.json`);
   const before = await fs.readFile(filePath, 'utf8');
   const current = JSON.parse(before);
   const legacySources = [...legacyToneSources];
   const hasLegacy = legacySources.some((source) => Object.hasOwn(current, source));
   for (const legacySource of legacySources) delete current[legacySource];
-  const missing = rows.filter((row) => current[row.source] !== row[language]);
+  // French was promoted after the other full-site locales. Keep its AI-trust
+  // corpus bounded to currently reachable catalog sources; do not manufacture
+  // translations for the historical orphan rows retained by older locales.
+  const applicableRows = language === 'fr'
+    ? rows.filter((row) => frenchCatalogSources.has(row.source))
+    : rows;
+  synchronizedRowCounts.set(language, applicableRows.length);
+  const desiredRows = applicableRows.map((row) => [row, approvedTranslation(row, language, current[row.source])]);
+  const untranslated = desiredRows.filter(([, translation]) => !translation);
+  if (untranslated.length) {
+    const sources = untranslated.map(([row]) => `\n- ${row.source}`).join('');
+    throw new Error(
+      `${language}: ${untranslated.length} approved AI-trust translation(s) are missing from the locale catalog/cache and overrides:${sources}`,
+    );
+  }
+  const missing = desiredRows.filter(([row, translation]) => current[row.source] !== translation);
   if (checkOnly) {
     if (missing.length || hasLegacy) {
-      const missingSources = missing.map((row) => `\n- ${row.source}`).join('');
+      const missingSources = missing.map(([row]) => `\n- ${row.source}`).join('');
       throw new Error(`${language}: ${missing.length} approved AI-trust translation(s) are not synchronized; legacy entries present: ${hasLegacy}.${missingSources}`);
     }
     continue;
   }
   if (!missing.length && !hasLegacy) continue;
-  for (const row of rows) current[row.source] = row[language];
+  for (const [row, translation] of desiredRows) current[row.source] = translation;
   await fs.writeFile(filePath, `${JSON.stringify(current, null, 2)}\n`, 'utf8');
   changed += 1;
 }
 
-for (const language of ['de', 'ja', 'ru']) {
+for (const language of languageCodes) {
   const filePath = path.join(root, 'i18n', 'editorial', `${language}.json`);
   const before = await fs.readFile(filePath, 'utf8');
   const current = JSON.parse(before);
@@ -1755,5 +1801,5 @@ for (const language of ['de', 'ja', 'ru']) {
 }
 
 console.log(checkOnly
-  ? `Approved AI-trust translations are synchronized for ${rows.length} source statements and ${editorialRows.length} page-specific statement group(s) in three languages.`
+  ? `Approved AI-trust translations are synchronized for ${[...synchronizedRowCounts].map(([language, count]) => `${language}=${count}`).join(', ')} reachable source statement(s) and ${editorialRows.length} page-specific statement group(s) in ${languageCodes.length} target languages.`
   : `Synchronized approved AI-trust translations in ${changed} localization file(s).`);

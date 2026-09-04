@@ -3,14 +3,19 @@ import path from 'node:path';
 import { load } from 'cheerio';
 
 const root = path.resolve(import.meta.dirname, '..');
-const pages = {
+const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const languageCopy = {
   en: { dir: '', home: 'Home', quality: 'Quality' },
   de: { dir: 'de', home: 'Startseite', quality: 'Qualität' },
+  fr: { dir: 'fr', home: 'Accueil', quality: 'Qualité' },
   ja: { dir: 'ja', home: 'ホーム', quality: '品質管理' },
   ru: { dir: 'ru', home: 'Главная', quality: 'Качество' },
 };
+const languages = [config.sourceLanguage.code, ...config.activeLanguageCodes];
 
-for (const [language, copy] of Object.entries(pages)) {
+for (const language of languages) {
+  const copy = languageCopy[language];
+  if (!copy) throw new Error(`Missing quality breadcrumb copy for configured language: ${language}`);
   const file = path.join(root, copy.dir, 'manufacturing-quality.html');
   let html = await fs.readFile(file, 'utf8');
   const $ = load(html, { decodeEntities: false, sourceCodeLocationInfo: true });
@@ -20,7 +25,7 @@ for (const [language, copy] of Object.entries(pages)) {
   const prefix = language === 'en' ? '' : `${language}/`;
   const homeUrl = `https://www.begapunk.com/${prefix}`;
   const pageUrl = `https://www.begapunk.com/${prefix}manufacturing-quality.html`;
-  const visible = `<div class="mq-breadcrumb"><a href="index.html">${copy.home}</a> / ${copy.quality}</div>`;
+  const visible = `<div class="mq-breadcrumb"><a href="./">${copy.home}</a> / ${copy.quality}</div>`;
   html = `${html.slice(0, breadcrumb.sourceCodeLocation.startOffset)}${visible}${html.slice(breadcrumb.sourceCodeLocation.endOffset)}`;
 
   const refreshed = load(html, { decodeEntities: false });
@@ -44,4 +49,4 @@ for (const [language, copy] of Object.entries(pages)) {
   await fs.writeFile(file, refreshed.html(), 'utf8');
 }
 
-console.log('Manufacturing & Quality breadcrumbs synchronized across four languages.');
+console.log(`Manufacturing & Quality breadcrumbs synchronized across ${languages.length} languages.`);

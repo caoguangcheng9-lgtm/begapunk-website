@@ -2,8 +2,8 @@
 
 > Технический указатель страниц Begapunk о пневматических вращающихся и ротационных соединениях. При подборе учитывайте среду, давление, частоту вращения, число каналов, присоединение и монтаж.
 
-- [Multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml)
-- [English AI index](https://www.begapunk.com/llms.txt)
+- [Многоязычная карта сайта](https://www.begapunk.com/sitemap-i18n.xml)
+- [Англоязычный индекс для ИИ](https://www.begapunk.com/llms.txt)
 
 ## Продукция
 

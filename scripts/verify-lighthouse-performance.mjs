@@ -8,6 +8,7 @@ import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
 import { Browser, computeExecutablePath, detectBrowserPlatform } from '@puppeteer/browsers';
 
+const sourceRoot = path.resolve(import.meta.dirname, '..');
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
 const reportFlagIndex = process.argv.indexOf('--report');
 const reportPath = reportFlagIndex >= 0 ? process.argv[reportFlagIndex + 1] : '';
@@ -32,11 +33,10 @@ const routeFamilies = Object.freeze([
   { family: 'quality-evidence', route: 'manufacturing-quality.html', critical: false },
   { family: 'contact-rfq', route: 'contact.html', critical: true },
 ]);
+const i18nConfig = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
 const languages = Object.freeze([
-  { code: 'en', prefix: '' },
-  { code: 'de', prefix: 'de' },
-  { code: 'ja', prefix: 'ja' },
-  { code: 'ru', prefix: 'ru' },
+  { code: i18nConfig.sourceLanguage.code, prefix: '' },
+  ...(i18nConfig.activeLanguageCodes || []).map((code) => ({ code, prefix: code })),
 ]);
 const thresholds = Object.freeze({
   performanceScore: 90,

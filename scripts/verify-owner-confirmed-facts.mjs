@@ -73,6 +73,39 @@ const locales = {
       ],
     },
   },
+  fr: {
+    prefix: 'fr',
+    warrantyName: 'Durée de garantie',
+    warrantyValue: '1 an à compter de l\'expédition',
+    privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre ») respecte votre vie privée. La présente politique de confidentialité explique comment nous recueillons, utilisons, communiquons et protégeons vos informations lorsque vous consultez notre site ou envoyez une demande.',
+    termsIdentity: 'Les présentes Conditions d\'utilisation (« Conditions ») régissent votre utilisation du site Begapunk et l\'achat de raccords tournants auprès de Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre »). En accédant à notre site ou en passant une commande, vous acceptez ces Conditions.',
+    termsArbitration: 'Les présentes Conditions sont régies par le droit de la République populaire de Chine. Tout litige découlant des présentes Conditions ou s\'y rapportant doit d\'abord faire l\'objet d\'une tentative de règlement amiable de bonne foi. À défaut d\'accord, le litige sera soumis à la Commission d\'arbitrage de Ningbo conformément au règlement d\'arbitrage en vigueur au moment de la saisine.',
+    aboutRoleTitles: ['GuangCheng Cao', 'Production et qualité', 'Ventes internationales'],
+    aboutRoleDescriptions: ['Fondateur et ingénieur', 'Usinage, assemblage et contrôle circuit par circuit', 'Coordination des demandes, plans, devis et commandes'],
+    termsPolicies: [
+      'La quantité minimale de commande est d\'une unité, tant pour les modèles du catalogue que pour les produits sur mesure.',
+      'La fabrication des modèles du catalogue prend généralement environ 20 jours calendaires. Les produits sur mesure sont achevés dans un délai de 30 jours calendaires. Le délai de fabrication commence à réception du paiement et n\'inclut pas le transport international.',
+      'La durée de garantie standard de Begapunk est d\'un an à compter de la date d\'expédition pour tous les produits, sous réserve des caractéristiques approuvées et des conditions écrites de la commande.',
+      'Si Begapunk confirme un défaut de produit ou de fabrication couvert dont elle est responsable, la mesure standard consiste en un remplacement sans frais. Begapunk prend en charge les frais de retour et d\'expédition du produit de remplacement convenus par écrit pour cette réclamation. Les autres problèmes sont traités selon les conclusions du contrôle et l\'accord écrit entre les parties.',
+    ],
+    selectionBoundaries: [
+      /(?:envoyez|indiquez)[\s\S]{0,100}(?:fluide|milieu)[\s\S]{0,160}température[\s\S]{0,160}(?:montage|fixation)[\s\S]{0,160}(?:cycle de fonctionnement|cycle de travail|cycle de service)[\s\S]{0,180}(?:pression|vitesse)/iu,
+      /(?:envoyez|indiquez)[\s\S]{0,100}(?:exigences|conditions) de l['’]application[\s\S]{0,220}(?:fichier|document)[\s\S]{0,100}(?:modèle|référence)[\s\S]{0,160}(?:sélectionner|commander)/iu,
+      /rotation continue[\s\S]{0,160}(?:cycle de fonctionnement|cycle de travail|cycle de service)[\s\S]{0,180}(?:point de fonctionnement|point d['’]exploitation)[\s\S]{0,120}(?:production|fabrication)/iu,
+    ],
+    caseFacts: {
+      'case-bp-2p-95-pneumatic-chuck-integration.html': [
+        'BP-2P-95-0005',
+        'Air comprimé',
+        'Transfert d’air comprimé de la partie fixe vers le mandrin en rotation',
+      ],
+      'case-bp-3p-s06-sensor-monitored-chuck.html': [
+        'Serrage, desserrage et soufflage dans cette installation',
+        'Transfert des signaux de capteurs externes à travers l\'interface tournante',
+        'La détection assurée par des capteurs externes et le système de commande reste indépendante du raccord tournant. Celui-ci ne détecte donc pas lui-même la présence d\'une pièce ni l\'état du serrage.',
+      ],
+    },
+  },
   ja: {
     prefix: 'ja',
     warrantyName: '保証期間',
@@ -157,14 +190,19 @@ const casePages = [
   'case-bp-2p-95-pneumatic-chuck-integration.html',
   'case-bp-3p-s06-sensor-monitored-chuck.html',
 ];
-const retiredCaseAuditCopy = /Photo note:|project owner confirmed|photographs? (?:alone )?(?:do not|does not)|Fotohinweis:|Projektverantwortlich|Fotos? (?:allein )?(?:nicht|keine)|写真に関する注記|案件責任者|写真だけでは|Примечание к фотографиям|Владелец проекта|по самим фотографиям/iu;
+const retiredCaseAuditCopy = /Photo note:|project owner confirmed|photographs? (?:alone )?(?:do not|does not)|Fotohinweis:|Projektverantwortlich|Fotos? (?:allein )?(?:nicht|keine)|Note sur les photographies\s*:|responsable du projet|les photographies? seules? ne|写真に関する注記|案件責任者|写真だけでは|Примечание к фотографиям|Владелец проекта|по самим фотографиям/iu;
+
+const expectedLocaleCodes = [config.sourceLanguage.code, ...(config.activeLanguageCodes || [])];
+if (JSON.stringify(Object.keys(locales)) !== JSON.stringify(expectedLocaleCodes)) {
+  fail(`owner-confirmed locale contract must exactly match source + active languages (${expectedLocaleCodes.join(', ')}).`);
+}
 
 function fail(message) {
   failures.push(message);
 }
 
 function compact(value = '') {
-  return String(value).replace(/\s+/g, ' ').trim();
+  return String(value).replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
 }
 
 function relativeFile(locale, pageName) {
@@ -212,6 +250,7 @@ function visiblePageText($) {
 }
 
 function containsText(haystack, needle) {
+  if (needle instanceof RegExp) return needle.test(compact(haystack));
   return compact(haystack).toLocaleLowerCase().includes(compact(needle).toLocaleLowerCase());
 }
 
@@ -275,7 +314,7 @@ for (const entry of await fs.readdir(root, { withFileTypes: true })) {
     claimFiles.push(path.join(root, entry.name));
   }
 }
-for (const language of ['de', 'ja', 'ru']) {
+for (const language of config.activeLanguageCodes || []) {
   claimFiles.push(...await collectFiles(path.join(root, language), (name) => /\.(?:html|json|txt)$/i.test(name)));
 }
 claimFiles.push(...await collectFiles(path.join(root, 'i18n'), (name) => /\.json$/i.test(name)));
@@ -283,8 +322,8 @@ claimFiles.push(...await collectFiles(path.join(root, 'i18n'), (name) => /\.json
 const globalForbidden = [
   { label: 'retired founder-history claim from 2006', pattern: /\b2006\b|2006年/i },
   { label: 'unsupported 200,000/200K production-volume claim', pattern: /\b(?:200(?:,|\s)?000\+?|200K\+?)\b/i },
-  { label: 'unsupported 20+ years claim', pattern: /\b20\+\s*years?\b|\b20\+\s*Jahre\b|20年以上|\b20\+\s*лет\b/i },
-  { label: 'controlled-laboratory validation claim', pattern: /controlled\s+laboratory\s+conditions|kontrollierten?\s+Laborbedingungen|管理された(?:試験|実験)(?:条件|環境)|контролируем(?:ых|ые)\s+лабораторн(?:ых|ые)\s+услов/i },
+  { label: 'unsupported 20+ years claim', pattern: /\b20\+\s*years?\b|\b20\+\s*Jahre\b|\b20\+\s*ans?\b|20年以上|\b20\+\s*лет\b/i },
+  { label: 'controlled-laboratory validation claim', pattern: /controlled\s+laboratory\s+conditions|kontrollierten?\s+Laborbedingungen|conditions?\s+(?:contrôlées?\s+)?(?:de|en)\s+laboratoire|管理された(?:試験|実験)(?:条件|環境)|контролируем(?:ых|ые)\s+лабораторн(?:ых|ые)\s+услов/i },
 ];
 
 for (const absolute of claimFiles) {
@@ -297,15 +336,15 @@ for (const absolute of claimFiles) {
 
 const commercialPages = ['terms.html', 'faq.html', ...productPages];
 const commercialForbidden = [
-  { label: 'fixed quotation-validity period', pattern: /\bquotation[^.!?]{0,80}\bvalid\s+for\s+30\s+days\b|Angebot[^.!?]{0,80}30\s*Tage[^.!?]{0,30}gültig|見積[^。]{0,80}30日[^。]{0,30}有効|предложени[^.!?]{0,80}действительн[^.!?]{0,30}30\s*дн/i },
-  { label: 'fixed three-week production lead time', pattern: /\b3\s*weeks?\b|\b3\s*Wochen\b|3週間|\b3\s*недел/i },
-  { label: 'fixed 5-10 day shipping time', pattern: /\b5\s*[-–—]\s*10\s*(?:business\s*)?days?\b|\b5\s*[-–—]\s*10\s*(?:Werk)?tage\b|5\s*[-–—]\s*10営業日|\b5\s*[-–—]\s*10\s*(?:рабочих\s*)?дн/i },
-  { label: 'fixed deposit/balance split', pattern: /\b60\s*%[^.!?]{0,80}\bdeposit\b|\b40\s*%[^.!?]{0,80}\bbalance\b|\b60\s*%[^.!?]{0,80}(?:Anzahlung|депозит)|60\s*%[^。]{0,80}(?:前金|着手金)/i },
-  { label: 'fixed PayPal order-value cutoff', pattern: /PayPal[^.!?。]{0,80}(?:under|below|less\s+than)\s*(?:USD\s*)?\$?\s*500|PayPal[^.!?。]{0,80}(?:unter|weniger\s+als)\s*500|PayPal[^。]{0,80}500(?:米ドル|ドル)未満|PayPal[^.!?]{0,80}(?:менее|до)\s*500/i },
-  { label: 'default EXW Incoterm', pattern: /(?:default|standard)\s+(?:shipping\s+)?(?:term|Incoterm)[^.!?]{0,30}\bEXW\b|Standard-Lieferbedingung[^.!?]{0,30}\bEXW\b|標準の取引条件[^。]{0,30}EXW|Стандартное\s+условие\s+поставки[^.!?]{0,30}\bEXW\b/i },
-  { label: 'automatic immediate replacement', pattern: /\bimmediate\s+replacement\b|sofortig(?:er|e|en)\s+Ersatz|即時交換|немедленн(?:ая|ую)\s+замен/i },
-  { label: 'no-return replacement promise', pattern: /\b(?:no|without)\s+return\s+(?:is\s+)?required\b|Rücksendung\s+nicht\s+erforderlich|返品不要|без\s+возврат/i },
-  { label: 'fixed 30-day full-refund promise', pattern: /\b30[-\s]?day[^.!?]{0,80}\bfull\s+refund\b|\b30\s*Tage[^.!?]{0,80}(?:volle|vollständige)\s+Erstattung|30日[^。]{0,80}全額返金|\b30\s*дн[^.!?]{0,80}полн[^.!?]{0,30}возврат/i },
+  { label: 'fixed quotation-validity period', pattern: /\bquotation[^.!?]{0,80}\bvalid\s+for\s+30\s+days\b|Angebot[^.!?]{0,80}30\s*Tage[^.!?]{0,30}gültig|devis[^.!?]{0,80}(?:valable|validité)[^.!?]{0,30}30\s*jours|見積[^。]{0,80}30日[^。]{0,30}有効|предложени[^.!?]{0,80}действительн[^.!?]{0,30}30\s*дн/i },
+  { label: 'fixed three-week production lead time', pattern: /\b3\s*weeks?\b|\b3\s*Wochen\b|\b3\s*semaines?\b|3週間|\b3\s*недел/i },
+  { label: 'fixed 5-10 day shipping time', pattern: /\b5\s*[-–—]\s*10\s*(?:business\s*)?days?\b|\b5\s*[-–—]\s*10\s*(?:Werk)?tage\b|\b5\s*[-–—]\s*10\s*jours?(?:\s+ouvrés?)?\b|5\s*[-–—]\s*10営業日|\b5\s*[-–—]\s*10\s*(?:рабочих\s*)?дн/i },
+  { label: 'fixed deposit/balance split', pattern: /\b60\s*%[^.!?]{0,80}\bdeposit\b|\b40\s*%[^.!?]{0,80}\bbalance\b|\b60\s*%[^.!?]{0,80}(?:Anzahlung|acompte|dépot|депозит)|\b40\s*%[^.!?]{0,80}solde|60\s*%[^。]{0,80}(?:前金|着手金)/i },
+  { label: 'fixed PayPal order-value cutoff', pattern: /PayPal[^.!?。]{0,80}(?:under|below|less\s+than)\s*(?:USD\s*)?\$?\s*500|PayPal[^.!?。]{0,80}(?:unter|weniger\s+als)\s*500|PayPal[^.!?。]{0,80}(?:moins de|inférieur à)\s*(?:USD\s*)?500|PayPal[^。]{0,80}500(?:米ドル|ドル)未満|PayPal[^.!?]{0,80}(?:менее|до)\s*500/i },
+  { label: 'default EXW Incoterm', pattern: /(?:default|standard)\s+(?:shipping\s+)?(?:term|Incoterm)[^.!?]{0,30}\bEXW\b|Standard-Lieferbedingung[^.!?]{0,30}\bEXW\b|(?:Incoterm|condition de livraison)\s+(?:par défaut|standard)[^.!?]{0,30}\bEXW\b|標準の取引条件[^。]{0,30}EXW|Стандартное\s+условие\s+поставки[^.!?]{0,30}\bEXW\b/i },
+  { label: 'automatic immediate replacement', pattern: /\bimmediate\s+replacement\b|sofortig(?:er|e|en)\s+Ersatz|remplacement\s+(?:automatique|immédiat)|即時交換|немедленн(?:ая|ую)\s+замен/i },
+  { label: 'no-return replacement promise', pattern: /\b(?:no|without)\s+return\s+(?:is\s+)?required\b|Rücksendung\s+nicht\s+erforderlich|(?:aucun|sans)\s+retour\s+(?:n['’]est\s+)?(?:requis|nécessaire)|返品不要|без\s+возврат/i },
+  { label: 'fixed 30-day full-refund promise', pattern: /\b30[-\s]?day[^.!?]{0,80}\bfull\s+refund\b|\b30\s*Tage[^.!?]{0,80}(?:volle|vollständige)\s+Erstattung|30\s*jours[^.!?]{0,80}remboursement\s+intégral|30日[^。]{0,80}全額返金|\b30\s*дн[^.!?]{0,80}полн[^.!?]{0,30}возврат/i },
 ];
 
 for (const [language, locale] of Object.entries(locales)) {
@@ -454,6 +493,7 @@ const hydraulicPage = 'custom-hydraulic-rotary-unions.html';
 const hydraulicFacts = {
   en: ['30 MPa', '300 bar', '4350 psi', '2 passages typical', 'Up to 12 custom', 'Carbon-fiber Glyd ring', 'MOQ 1', 'Within 30 days after payment', 'Ningbo facility'],
   de: ['30 MPa', '300 bar', '2-Wege', '12 Wege', 'Glyd-Ring', 'MOQ 1', 'Innerhalb von 30 Tagen nach Zahlungseingang'],
+  fr: ['30 MPa', '300 bar', '2 circuits standard', 'jusqu\'à 12 circuits sur mesure', 'bague Glyd en PTFE renforcé de fibres de carbone', 'Quantité minimale : 1 pièce', 'Dans les 30 jours suivant le paiement', 'site de Ningbo'],
   ja: ['30 MPa', '2\u6d41\u8def', '12\u6d41\u8def', '\u30b0\u30e9\u30a4\u30c9\u30ea\u30f3\u30b0', 'MOQ 1', '\u5165\u91d1\u5f8c 30\u65e5\u4ee5\u5185'],
   ru: ['30 \u041c\u041f\u0430', '300 \u0431\u0430\u0440', '2 \u043f\u0440\u043e\u0445\u043e\u0434', 'Glyd', 'MOQ 1', '\u0412 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
 };

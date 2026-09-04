@@ -104,7 +104,7 @@ a:hover { color: var(--primary-dark); }
     display:flex; align-items:center; gap:8px;
 }
 .logo span { color:#60a5fa; }
-.nav { display:flex; gap:18px; align-items:center; }
+.nav { display:flex; gap:14px; align-items:center; }
 .nav a {
     font-size:0.875rem; font-weight:500; color:rgba(255,255,255,0.85);
     position:relative;
@@ -176,7 +176,7 @@ a:hover { color: var(--primary-dark); }
     display:none; flex-direction:column; gap:5px; cursor:pointer;
     background:none; border:none; padding:8px;
 }
-.nav-home-mobile { display:none !important; }
+.nav-home-mobile { display:flex; }
 .mobile-toggle span {
     display:block; width:24px; height:2px; background:rgba(255,255,255,0.9);
     transition: var(--transition);
@@ -4407,8 +4407,9 @@ line-height: 1.65;
     }
 }
 
-/* Canonical site header: desktop above 1024px, one scrollable mobile menu at 1024px and below. */
-@media (max-width: 1024px) {
+/* Canonical site header: keep long localized labels and the explicit Home
+   entry readable; use the compact menu below a 1280px desktop canvas. */
+@media (max-width: 1279px) {
     .header {
         z-index:1200;
     }
@@ -4461,6 +4462,7 @@ line-height: 1.65;
 
     html[lang^="en"] .i18n-switcher::before { content:"EN"; }
     html[lang^="de"] .i18n-switcher::before { content:"DE"; }
+    html[lang^="fr"] .i18n-switcher::before { content:"FR"; }
     html[lang^="ja"] .i18n-switcher::before { content:"JA"; }
     html[lang^="ru"] .i18n-switcher::before { content:"RU"; }
 
@@ -4525,9 +4527,12 @@ line-height: 1.65;
         min-width:86px;
     }
 
-    .nav { display:none; }
+    .site-navigation-ready .nav { display:none; }
 
-    .nav.mobile-open {
+    html:not(.site-navigation-ready) .mobile-toggle { display:none; }
+
+    .nav.mobile-open,
+    html:not(.site-navigation-ready) .nav {
         position:absolute;
         top:64px;
         right:0;
@@ -4546,10 +4551,37 @@ line-height: 1.65;
         box-shadow:0 18px 36px rgba(0,0,0,0.24);
     }
 
-    .nav.mobile-open .nav-home-mobile { display:flex !important; }
+    /* With JavaScript unavailable there is no close control. Keep the full
+       navigation in normal document flow so it cannot cover the page body. */
+    html:not(.site-navigation-ready) .header {
+        position:relative;
+        top:auto;
+    }
 
-    .nav.mobile-open > a,
-    .nav.mobile-open .nav-dropdown-toggle {
+    html:not(.site-navigation-ready) .header-inner {
+        height:auto;
+        min-height:64px;
+        padding-top:10px;
+        padding-bottom:14px;
+        flex-wrap:wrap;
+    }
+
+    html:not(.site-navigation-ready) .nav {
+        position:static;
+        inset:auto;
+        z-index:auto;
+        order:4;
+        width:100%;
+        max-height:none;
+        flex:1 0 100%;
+        overflow:visible;
+        box-shadow:none;
+    }
+
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-home-mobile { display:flex !important; }
+
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) > a,
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-toggle {
         display:flex;
         width:100%;
         min-height:44px;
@@ -4565,7 +4597,7 @@ line-height: 1.65;
         overflow-wrap:anywhere;
     }
 
-    .nav.mobile-open .nav-dropdown {
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown {
         display:flex;
         width:100%;
         min-width:0;
@@ -4574,7 +4606,7 @@ line-height: 1.65;
         gap:4px;
     }
 
-    .nav.mobile-open .nav-dropdown-menu {
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-menu {
         position:static;
         width:100%;
         min-width:0;
@@ -4590,9 +4622,9 @@ line-height: 1.65;
         box-shadow:none;
     }
 
-    .nav.mobile-open .nav-dropdown-menu::before { display:none; }
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-menu::before { display:none; }
 
-    .nav.mobile-open .nav-dropdown-menu a {
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-menu a {
         display:flex;
         min-height:44px;
         align-items:center;
@@ -4604,7 +4636,7 @@ line-height: 1.65;
         overflow-wrap:anywhere;
     }
 
-    .nav.mobile-open .nav-cta {
+    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-cta {
         justify-content:center;
         border-color:transparent;
         background:var(--primary);
@@ -4934,4 +4966,28 @@ html[lang="ja"] .legal-hero h1 {
 .hero-hydraulic-link a:hover,
 .hero-hydraulic-link a:focus-visible {
     opacity: 1;
+}
+
+/* Search stays visibly unavailable until its client-side index is ready. */
+.search-box-wrap :disabled,
+.search-filters :disabled {
+    cursor: not-allowed;
+    opacity: 0.58;
+}
+
+.search-hero .search-no-js {
+    max-width: 720px;
+    margin: 18px auto 0;
+    padding: 12px 16px;
+    border: 1px solid #f0c36d;
+    border-radius: 8px;
+    background: #fff8e8;
+    color: var(--text, #1f2937);
+    line-height: 1.55;
+    text-align: left;
+}
+
+.search-hero .search-no-js a {
+    color: var(--primary, #0056b3);
+    text-decoration: underline;
 }

@@ -15,7 +15,7 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
 function normalize_source_language($value): string
 {
     $language = is_string($value) ? strtolower(trim($value)) : '';
-    return in_array($language, ['en', 'de', 'ja', 'ru'], true) ? $language : 'en';
+    return in_array($language, ['en', 'fr', 'de', 'ja', 'ru'], true) ? $language : 'en';
 }
 
 function request_wants_json(): bool
@@ -68,6 +68,28 @@ function localized_message(string $language, string $key): string
             'error_title' => 'Inquiry not sent',
             'return_form' => 'Return to the inquiry form',
             'email_sales' => 'Email sales@begapunk.com',
+        ],
+        'fr' => [
+            'sent' => 'Merci. Nous avons bien reçu votre demande. Nos ingénieurs vont l’examiner. Si une information manque, nous vous demanderons uniquement le détail nécessaire.',
+            'invalid_method' => 'Ce mode d’envoi n’est pas pris en charge.',
+            'origin_not_allowed' => 'La demande ne peut pas être acceptée depuis cette page.',
+            'rate_limited' => 'Trop de demandes ont été envoyées. Veuillez réessayer plus tard.',
+            'spam_detected' => 'La demande n’a pas pu être acceptée.',
+            'field_too_long' => 'Un ou plusieurs champs dépassent la longueur autorisée.',
+            'required_fields' => 'Veuillez remplir tous les champs obligatoires.',
+            'invalid_contact' => 'Veuillez vérifier le nom et l’adresse e-mail.',
+            'attachment_upload' => 'La pièce jointe n’a pas pu être téléversée. Vérifiez la limite de 10 Mo et réessayez.',
+            'attachment_size' => 'La pièce jointe est invalide ou dépasse la limite de 10 Mo.',
+            'attachment_type' => 'Ce format de fichier n’est pas pris en charge. Formats autorisés : PDF, STEP, STP, IGES, IGS, DWG, DXF, JPG, JPEG et PNG.',
+            'attachment_mismatch' => 'Le contenu de la pièce jointe ne correspond pas à son extension.',
+            'attachment_dwg' => 'La pièce jointe ne semble pas être un fichier DWG valide.',
+            'attachment_cad' => 'Le fichier CAO ne semble pas être un fichier valide pris en charge.',
+            'attachment_service_unavailable' => 'Le téléversement de fichiers est temporairement indisponible. Veuillez envoyer directement le plan à sales@begapunk.com.',
+            'service_unavailable' => 'Le service de demande est temporairement indisponible. Veuillez écrire à sales@begapunk.com.',
+            'mail_failed' => 'La demande n’a pas pu être envoyée. Veuillez réessayer ou écrire à sales@begapunk.com.',
+            'error_title' => 'Demande non envoyée',
+            'return_form' => 'Revenir au formulaire de demande',
+            'email_sales' => 'Écrire à sales@begapunk.com',
         ],
         'de' => [
             'sent' => 'Vielen Dank. Wir haben Ihre Anfrage erhalten. Unsere Ingenieure prüfen sie und antworten in der Regel innerhalb eines Arbeitstags. Sollte noch etwas fehlen, fragen wir nur gezielt nach der benötigten Angabe.',
@@ -144,6 +166,7 @@ function contact_path(string $language): string
 {
     $paths = [
         'en' => '/contact.html#quoteForm',
+        'fr' => '/fr/contact.html#quoteForm',
         'de' => '/de/contact.html#quoteForm',
         'ja' => '/ja/contact.html#quoteForm',
         'ru' => '/ru/contact.html#quoteForm',
@@ -155,6 +178,7 @@ function thank_you_path(string $language): string
 {
     $paths = [
         'en' => '/thank-you.html',
+        'fr' => '/fr/thank-you.html',
         'de' => '/de/thank-you.html',
         'ja' => '/ja/thank-you.html',
         'ru' => '/ru/thank-you.html',
@@ -264,6 +288,21 @@ function env_value(string $key)
         return getenv($key);
     }
     return false;
+}
+
+function inquiry_env_file(): string
+{
+    $configured = env_value('BEGAPUNK_ENV_FILE');
+    if (is_string($configured) && trim($configured) !== '') {
+        return trim($configured);
+    }
+
+    $productionPath = '/www/begapunk/shared/.env';
+    if (PHP_SAPI === 'cli-server' && !is_file($productionPath)) {
+        return __DIR__ . '/.env';
+    }
+
+    return $productionPath;
 }
 
 function enforce_same_origin(array $context): void
@@ -431,6 +470,53 @@ function normalize_source_page(string $value): string
     return preg_match('/^[A-Za-z0-9._~-]+(?:\/[A-Za-z0-9._~-]+)*\.html$/', $value) === 1 ? $value : '';
 }
 
+function normalize_click_identifier(string $value): string
+{
+    return preg_match('/\A[A-Za-z0-9._~-]+\z/', $value) === 1 ? $value : '';
+}
+
+function normalize_campaign_value(string $value): string
+{
+    $value = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $value);
+    if (!is_string($value)) {
+        return '';
+    }
+    $value = preg_replace('/[^\p{L}\p{N}\p{M} _.,:+\-\/@~()%]/u', '', $value);
+    if (!is_string($value)) {
+        return '';
+    }
+    $value = preg_replace('/\s+/u', ' ', $value);
+    return is_string($value) ? trim($value) : '';
+}
+
+function normalize_tracking_url(string $value, bool $sameSiteOnly): string
+{
+    $value = preg_replace('/[\x00-\x1F\x7F]/u', '', trim($value));
+    if (!is_string($value) || $value === '' || filter_var($value, FILTER_VALIDATE_URL) === false) {
+        return '';
+    }
+
+    $parts = parse_url($value);
+    if (!is_array($parts) || isset($parts['user']) || isset($parts['pass'])) {
+        return '';
+    }
+    $scheme = strtolower((string) ($parts['scheme'] ?? ''));
+    $host = strtolower(rtrim((string) ($parts['host'] ?? ''), '.'));
+    if (!in_array($scheme, ['https', 'http'], true) || $host === '') {
+        return '';
+    }
+    if ($sameSiteOnly && (
+        $scheme !== 'https'
+        || !in_array($host, ['begapunk.com', 'www.begapunk.com'], true)
+        || (isset($parts['port']) && (int) $parts['port'] !== 443)
+    )) {
+        return '';
+    }
+
+    // Fragments never reach the server and are not useful for campaign attribution.
+    return preg_replace('/#.*$/s', '', $value) ?? '';
+}
+
 $context = [
     'language' => normalize_source_language($_POST['source_language'] ?? ''),
     'json' => request_wants_json(),
@@ -443,7 +529,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 
 enforce_same_origin($context);
 enforce_rate_limit($context);
-load_env_file(__DIR__ . '/.env');
+load_env_file(inquiry_env_file());
 
 $smtpHost = env_value('SMTP_HOST');
 $smtpPort = env_value('SMTP_PORT');
@@ -473,6 +559,16 @@ $sourcePage = normalize_source_page(post_value('source_page', 300, $context));
 post_value('source_url', 500, $context);
 $sourceUrl = $sourcePage === '' ? '' : 'https://www.begapunk.com/' . $sourcePage;
 $sourceLanguage = normalize_source_language(post_value('source_language', 20, $context));
+$gclid = normalize_click_identifier(post_value('gclid', 300, $context));
+$gbraid = normalize_click_identifier(post_value('gbraid', 300, $context));
+$wbraid = normalize_click_identifier(post_value('wbraid', 300, $context));
+$utmSource = normalize_campaign_value(post_value('utm_source', 200, $context));
+$utmMedium = normalize_campaign_value(post_value('utm_medium', 200, $context));
+$utmCampaign = normalize_campaign_value(post_value('utm_campaign', 200, $context));
+$utmTerm = normalize_campaign_value(post_value('utm_term', 200, $context));
+$utmContent = normalize_campaign_value(post_value('utm_content', 200, $context));
+$firstLandingPage = normalize_tracking_url(post_value('first_landing_page', 500, $context), true);
+$initialReferrer = normalize_tracking_url(post_value('initial_referrer', 500, $context), false);
 $inquiryLabels = [
     'quote' => 'Quotation request',
     '3d_step' => 'STEP file request',
@@ -510,6 +606,16 @@ $rows = [
     'Request Type' => $inquiryLabel,
     'Source URL' => $sourceUrl,
     'Source Language' => $sourceLanguage,
+    'Google Click ID (gclid)' => $gclid,
+    'Google App Click ID (gbraid)' => $gbraid,
+    'Google Web Click ID (wbraid)' => $wbraid,
+    'Campaign Source (utm_source)' => $utmSource,
+    'Campaign Medium (utm_medium)' => $utmMedium,
+    'Campaign Name (utm_campaign)' => $utmCampaign,
+    'Campaign Term (utm_term)' => $utmTerm,
+    'Campaign Content (utm_content)' => $utmContent,
+    'First Landing Page' => $firstLandingPage,
+    'Initial Referrer' => $initialReferrer,
 ];
 
 $tableRows = '';

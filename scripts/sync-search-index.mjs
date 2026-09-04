@@ -27,15 +27,32 @@ const pneumaticChuckCaseRoute = 'case-bp-2p-95-pneumatic-chuck-integration.html'
 const pneumaticChuckCaseKeywords = {
   en: ['BP-2P-95-0005', 'pneumatic chuck', 'compressed air', 'rotary union integration'],
   de: ['BP-2P-95-0005', 'pneumatisches Spannfutter', 'Druckluft', 'Drehdurchführung im Spannfutter'],
+  fr: ['BP-2P-95-0005', 'mandrin pneumatique', 'air comprimé', 'intégration du raccord tournant'],
   ja: ['BP-2P-95-0005', 'エアチャック', '空圧式チャック', '圧縮空気', 'ロータリージョイント組込み'],
   ru: ['BP-2P-95-0005', 'пневматический патрон', 'сжатый воздух', 'установка вращающегося соединения'],
 };
 const dustyEnvironmentBoundaryKeyword = {
   en: 'BP-2P-95-0005 2-passage model; drawing does not specify dust protection',
   de: 'BP-2P-95-0005 Zweikanalmodell; Zeichnung enthält keine Angabe zum Staubschutz',
+  fr: 'BP-2P-95-0005, modèle à deux circuits ; le plan ne mentionne aucune protection contre la poussière',
   ja: 'BP-2P-95-0005 2流路モデル、図面に防じん仕様の記載なし',
   ru: 'BP-2P-95-0005 двухканальная модель; на чертеже защита от пыли не указана',
 };
+
+for (const locale of locales) {
+  if (!pneumaticChuckCaseKeywords[locale.code]) {
+    throw new Error(`${locale.code}: pneumatic-chuck search keywords are not configured.`);
+  }
+  if (!dustyEnvironmentBoundaryKeyword[locale.code]) {
+    throw new Error(`${locale.code}: dusty-environment search boundary is not configured.`);
+  }
+}
+
+const searchClientSource = await fs.readFile(path.join(root, 'js', 'search.js'), 'utf8');
+if (!/item\.url\s*===\s*['"]index\.html['"]\s*\?\s*['"]\.\/['"]\s*:\s*item\.url/.test(searchClientSource)
+  || !/escapeHtml\(resultUrl\)/.test(searchClientSource)) {
+  failures.push('js/search.js must render the homepage search record as ./ instead of the redirecting index.html alias.');
+}
 
 function compact(value = '') {
   return value.replace(/\s+/g, ' ').trim();

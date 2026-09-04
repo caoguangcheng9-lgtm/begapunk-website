@@ -2,12 +2,12 @@
 
 > Begapunkの空圧用ロータリージョイントに関する技術ページ索引です。使用流体、圧力、回転数、流路数・ポート数、接続、取付条件から選定してください。
 
-- [Multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml)
-- [English AI index](https://www.begapunk.com/llms.txt)
+- [多言語サイトマップ](https://www.begapunk.com/sitemap-i18n.xml)
+- [英語版AIインデックス](https://www.begapunk.com/llms.txt)
 
 ## 製品
 
-- [ロータリージョイント製品一覧 | Begapunk](https://www.begapunk.com/ja/products.html): 流路数・ポート数、取付方式、貫通穴径、材質、用途からロータリージョイントを選定。仕様、図面、対応流体を比較できます。
+- [エアーロータリージョイント製品一覧 | Begapunk](https://www.begapunk.com/ja/products.html): 空圧用ロータリージョイントを流路数、取付方式、貫通穴径、材質、用途から選定。各エアーロータリージョイントの仕様、2D図面、STEPを比較できます。
 - [空圧用ロータリージョイント比較表 | Begapunk](https://www.begapunk.com/ja/product-comparison.html): 流路数、最高使用圧力、最高回転数、取付方式、材質、主な用途からBegapunkの空圧用ロータリージョイントを比較できます。
 - [BP-1P-0003 — 1流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-1P-0003.html): BP-1P-0003は1流路、入口1・出口1の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 500 min⁻¹、温度範囲 -20～+80 °C、質量 270 g、45鋼ボディ、PTFEシールとOリング、使用流体 空気・油・水。ポート表記：流体入口：1 × G3/8・流体出口：1 × M10×1.5。
 - [BP-1P-0006 — 1流路の空圧ロータリージョイント](https://www.begapunk.com/ja/BP-1P-0006.html): BP-1P-0006は1流路、入口1・出口8の空圧ロータリージョイントです。公開値：最高使用圧力 1 MPa、最高回転数 300 min⁻¹、温度範囲 -20～+80 °C、質量 265 g、6061アルミニウム合金ボディ、PTFEシールとOリング、使用流体 空気。ポート表記：入口：1 × G1/8・出口：8 × G1/8。
@@ -59,7 +59,7 @@
 
 ## 会社・サポート
 
-- [OEM機械向け空圧用ロータリージョイント | Begapunk](https://www.begapunk.com/ja/): 回転テーブル、治具、自動化設備向けの空圧用ロータリージョイント。1流路から多流路・多ポート、貫通穴付き、特注仕様まで対応します。
+- [エアーロータリージョイント（空圧用）｜標準・特注 | Begapunk](https://www.begapunk.com/ja/): 回転テーブル、治具、自動化設備向けのエアーロータリージョイント（空圧用ロータリージョイント）。1～8流路、貫通穴付き、標準品・特注品に対応します。
 - [Begapunkについて | ロータリージョイントメーカー](https://www.begapunk.com/ja/about.html): Begapunkの会社概要、寧波の生産体制、品質検査、設計・加工工程、特注ロータリージョイントへの取り組みをご紹介します。
 - [製造・品質管理 | 硬質アルマイト | Begapunk](https://www.begapunk.com/ja/manufacturing-quality.html): 低速Oリングシール式ロータリージョイントの硬質アルマイト処理ロータ、カラーアルマイト処理ステータハウジング、皮膜厚さ測定を紹介します。
 - [空圧用ロータリージョイントの全数・流路別漏れ検査 | Begapunk](https://www.begapunk.com/ja/production-inspection-testing.html): Begapunkでは、最終組立後の空圧用ロータリージョイントを全数対象とし、梱包・入庫前に各流路を圧縮空気で個別に検査します。

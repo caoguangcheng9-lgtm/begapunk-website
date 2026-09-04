@@ -12,7 +12,8 @@ const root = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 const checkOnly = process.argv.includes('--check');
 const productPages = config.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
-const productLocales = ['en', ...(config.activeLanguageCodes || [])];
+const sourceLocale = config.sourceLanguage?.code;
+const productLocales = [...new Set([sourceLocale, ...(config.activeLanguageCodes || [])])];
 const drawingBackedModelSet = new Set(drawingBackedProductModels);
 const deepContractPath = path.join(root, 'scripts', 'sync-drawing-backed-product-content.mjs');
 
@@ -61,6 +62,28 @@ const translations = {
     [copy.maintenance]: 'Inspektions- und Austauschintervalle sind aus dem tatsächlichen Medium, Druck, der Drehzahl, Temperatur, Ausrichtung, Filtration, Einschaltdauer, Leckageentwicklung, dem Lagerzustand und den dokumentierten Prüfergebnissen abzuleiten.',
     [copy.regulated]: 'Für regulierte Anwendungen oder Lebensmittelkontakt werden medienberührte Werkstoffe, Dichtungswerkstoff, Reinigungschemie, Temperatur und geltende Anforderungen projektbezogen geprüft. FDA-bezogene Anforderungen müssen für die ausgewählte Ausführung dokumentiert sein.',
     [copy.multiPassage]: 'Ein Mehrkanalgehäuse kann gegenüber mehreren einzelnen Drehdurchführungen die externe Verrohrung reduzieren. Die tatsächliche Anordnung und die Auswirkungen auf den Service hängen von der Maschinenkonstruktion ab.',
+  },
+  fr: {
+    [copy.installRisks]: 'Un serrage excessif, une tuyauterie rigide, l’absence de contrôles au rodage et une filtration inadaptée sont des risques d’installation courants pouvant entraîner une usure prématurée ou des fuites.',
+    [copy.installIntro]: 'Une installation correcte aide à limiter l’usure prématurée des joints et des roulements. Avant la mise en service, vérifiez la fixation, l’alignement, les raccordements et les limites de fonctionnement approuvées.',
+    [copy.cad]: 'Téléchargez le fichier STEP (AP214, simplifié) sur la page du modèle catalogue pour vérifier l’intégration. Le fichier CAO d’une version personnalisée est fourni après demande.',
+    [copy.custom]: 'Le nombre de passages, les raccordements et les options de fixation peuvent être étudiés selon l’application. La disponibilité du fichier CAO et le délai sont confirmés selon le modèle, la quantité, les adaptations et la destination.',
+    [copy.scenario]: 'Ces exemples présentent des risques courants de sélection et d’installation. Avant la mise en service, confirmez la configuration approuvée et les instructions de montage.',
+    [copy.runIn]: 'Mettez le raccord tournant en service à pression et vitesse contrôlées, puis vérifiez l’absence de fuite, de frottement anormal, d’échauffement et de vibration avant le fonctionnement à pleine charge.',
+    [copy.mistakeTorque]: 'Un couple de serrage excessif peut endommager les filetages en aluminium ou déformer les surfaces de fixation et d’étanchéité. Serrez uniformément selon le plan approuvé ou la spécification d’installation.',
+    [copy.mistakeAlignment]: 'Les boulons de bride ne corrigent pas un défaut d’alignement de l’arbre ; un montage forcé transmet une charge latérale à l’interface tournante. Alignez et soutenez l’ensemble avant le serrage.',
+    [copy.mistakeRigid]: 'Une tuyauterie rigide transmet les défauts d’alignement et les charges latérales au raccord tournant, aux roulements et aux joints. Utilisez des raccordements flexibles soutenus et terminez l’alignement avant le serrage.',
+    [copy.mistakePassage]: 'Un passage commun ou mal choisi ne permet pas de maintenir des circuits pneumatiques indépendants. Vérifiez le schéma de la machine et la fonction de chaque orifice, puis choisissez le nombre requis de passages indépendants.',
+    [copy.mistakeLimits]: 'Un fonctionnement hors des limites publiées de pression, de vitesse ou de fluide augmente la charge sur les joints et l’échauffement. Confirmez la configuration approuvée avant la mise en service.',
+    [copy.mistakeSideLoad]: 'Une charge radiale ou latérale externe peut désaligner l’interface tournante et accélérer l’usure des joints ou des roulements. Soutenez les charges externes et vérifiez l’alignement avant le fonctionnement.',
+    [copy.mistakeFlow]: 'Un passage de faible section peut provoquer une perte de pression lorsque la demande dépasse sa capacité. Avant la sélection, vérifiez le débit et le temps de réponse requis par rapport à l’orifice et au passage interne.',
+    [copy.mistakeElectrical]: 'Un courant supérieur à la valeur nominale par circuit ou un courant d’appel inductif peut surchauffer et endommager les contacts du collecteur tournant. Vérifiez le courant continu et le courant d’appel, puis affectez les circuits selon la spécification approuvée.',
+    [copy.upgrade]: 'Étudiez une autre configuration si le nombre de passages, la pression, la vitesse, l’alésage, la fixation, le fluide ou la protection environnementale requis dépassent les limites publiées de ce modèle. Le modèle final, les adaptations, le prix et le délai sont confirmés après examen technique.',
+    [copy.materials]: 'La compatibilité des matériaux et des joints est confirmée pour la configuration retenue. Avant la commande, vérifiez le plan approuvé, l’alliage exact du corps, le matériau du joint, le fluide, la pression, la vitesse, la température, le cycle de fonctionnement et l’environnement.',
+    [copy.electrical]: 'La durée de vie des circuits électriques et la qualité du signal dépendent du courant, de la tension, de la vitesse, du cycle de fonctionnement, de l’environnement et de la configuration du collecteur tournant. Confirmez la spécification approuvée avant la commande.',
+    [copy.maintenance]: 'Les intervalles d’inspection et de remplacement doivent être établis à partir du fluide, de la pression, de la vitesse, de la température, de l’alignement, de la filtration, du cycle de fonctionnement, de l’évolution des fuites, de l’état des roulements et des résultats d’inspection consignés.',
+    [copy.regulated]: 'Pour une utilisation réglementée ou au contact des aliments, réalisez une étude propre au projet portant sur les matériaux en contact avec le fluide, le matériau du joint, les produits de nettoyage, la température et les exigences applicables. Toute exigence liée à la FDA doit être documentée pour la configuration retenue.',
+    [copy.multiPassage]: 'Un corps multipassage peut réduire le nombre de composants de tuyauterie externes par rapport à plusieurs raccords tournants distincts. L’agencement réel et les conséquences sur la maintenance dépendent de la conception de la machine.',
   },
   ja: {
     [copy.installRisks]: '締付け過多、剛性配管、ならし運転時の確認不足、不適切なろ過は、早期摩耗や漏れにつながる代表的な取付リスクです。',
@@ -342,7 +365,7 @@ for (const locale of productLocales) {
   for (const pageName of productPages) {
     const model = path.basename(pageName, '.html');
     if (!drawingBackedModelSet.has(model)) throw new Error(`${pageName}: product is absent from the shared drawing-backed model contract.`);
-    const relativePath = locale === 'en' ? pageName : path.join(locale, pageName);
+    const relativePath = locale === sourceLocale ? pageName : path.join(locale, pageName);
     if (relativePath.toLowerCase().includes('catalog-project')) throw new Error(`Protected path rejected: ${relativePath}`);
     const filePath = path.resolve(root, relativePath);
     if (!filePath.startsWith(`${root}${path.sep}`)) throw new Error(`Product page escaped repository root: ${relativePath}`);
@@ -352,7 +375,7 @@ for (const locale of productLocales) {
     const current = load(before, { decodeEntities: false });
     try {
       assertRelatedProducts(current, { model, locale, pageName: label, actions });
-      if (locale === 'en') assertProductTrustContent(current, label);
+      if (locale === sourceLocale) assertProductTrustContent(current, label);
     } catch (error) {
       if (checkOnly) throw error;
       pendingUpdates.push(`${label}: ${error.message}`);
@@ -389,4 +412,4 @@ if (pendingUpdates.length) {
   ].join('\n'));
 }
 
-console.log(`Product trust content is synchronized across ${productPages.length * productLocales.length} drawing-backed product pages and three localization override files; no files changed.`);
+console.log(`Product trust content is synchronized across ${productPages.length * productLocales.length} drawing-backed product pages and ${Object.keys(translations).length} localization override files; no files changed.`);

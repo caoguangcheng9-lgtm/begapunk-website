@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-04T10:13:11.615Z",
+  "completedAt": "2026-09-04T10:25:55.836Z",
+  "siteRoot": "E:\\begapunk-site-v2",
+  "browserExecutable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "languages": [
+    "de",
+    "fr",
+    "ja",
+    "ru"
+  ],
+  "pagesPerLanguage": 56,
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "checkedViewports": 448,
+  "languageNavigationChecks": 448,
+  "logoNavigationChecks": 448,
+  "homeNavigationChecks": 448,
+  "failures": []
+}

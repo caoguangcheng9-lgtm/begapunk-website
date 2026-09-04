@@ -48,10 +48,10 @@
   },
   "index.html": {
     "b7c3e11d66780f56": "Pneumatische Drehdurchführungen für den Maschinenbau",
-    "f8e3bcf95f065143": "Pneumatische Drehdurchführungen | Standard & kundenspezifisch",
+    "f8e3bcf95f065143": "Pneumatische Drehdurchführungen | Standard- und Sonderausführungen",
     "5291c2317381a072": "Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden; Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.",
     "297ad8531d8726ec": "Nach Anwendung auswählen",
-    "6d584ef3a0817174": "1-8 Kanäle",
+    "6d584ef3a0817174": "1–8 Wege",
     "8127b08354f14a88": "Luft / Hydrauliköl",
     "362c21c2ed292383": "Gewinde / Flansch",
     "bdab0463aa465968": "<span class=\"home-application-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"5\"></circle><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4M15.5 8.5l3-3\"></path></svg></span><span class=\"home-application-copy\"><strong>Laserrohrschneiden</strong><small>Druckluftübertragung zum hinteren Spannfutter</small></span>",
@@ -185,7 +185,10 @@
     "48bc23c93a039967": "Durchsuchen Sie Begapunk-Produkte, Anwendungen und technische Leitfäden. Finden Sie eine Drehdurchführung nach Modell, Spezifikation oder Maschinentyp.",
     "fb9206ea4ab288dd": "Nach Modellnummer, Spezifikation, Maschinentyp oder Anwendung suchen.",
     "0b0467e387974c16": "Produkte, Anwendungen und technische Ressourcen auf der Begapunk-Website durchsuchen.",
-    "ff6784d2acfa4319": "Versuchen Sie andere Suchbegriffe oder <a href=\"products.html\">öffnen Sie den vollständigen Katalog</a>."
+    "ff6784d2acfa4319": "Versuchen Sie andere Suchbegriffe oder <a href=\"products.html\">öffnen Sie den vollständigen Katalog</a>.",
+    "3f1bdafc52e3d44c": "Suchergebnisse nach Inhaltstyp filtern",
+    "37c14ab62ea37537": "Begapunk-Website durchsuchen",
+    "f38eaae00dc2f5ee": "Website-Suche"
   },
   "thank-you.html": {
     "1d8c835bc66f3db6": "✅ Technische Unterstützung",
@@ -759,7 +762,19 @@
     "1b61085c8e24ced7": "Wir verwenden Ihre Daten, um:",
     "c88d990eb826f872": "eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen",
     "fcc2a8f5af96d663": "Sie können Cookies außerdem in Ihren Browsereinstellungen deaktivieren. Der lokale Einwilligungsstatus ist erforderlich, damit das Banner Ihre Auswahl korrekt berücksichtigt.",
-    "57c602f098903555": "Sie können Ihre Auswahl jederzeit mit den folgenden Schaltflächen ändern."
+    "57c602f098903555": "Sie können Ihre Auswahl jederzeit mit den folgenden Schaltflächen ändern.",
+    "d51760b50d5c6c62": "<strong>Kampagnenzuordnung nach Einwilligung:</strong> Google-Klickkennungen (<code>gclid</code>, <code>gbraid</code> und <code>wbraid</code>), UTM-Kampagnenparameter, die erste Einstiegsseite und der ursprüngliche Referrer. Diese Werte werden erst nach Ihrer Zustimmung zur optionalen Messung erfasst, für die aktuelle Browsersitzung im Sitzungsspeicher gehalten und bei einer Anfrage an unser internes Vertriebs-Postfach übermittelt.",
+    "aba0c91f53ab9078": "<strong>Gültig ab:</strong> 11. Juni 2026<br>\n\n    <strong>Zuletzt aktualisiert:</strong> 4. September 2026",
+    "33f77457332bafae": "<strong>Google Analytics 4</strong> — Nach Ihrer Einwilligung erfasst GA4 Seiten- und Sitzungsaktivität, Verweis- und Kampagneninformationen, Einwilligungsereignisse, Kontakt- und Download-Interaktionen, Formularversuche und bestätigte Anfragen. Bei einer bestätigten Anfrage können Anfrageart und gewünschtes Produkt übermittelt werden; Name, E-Mail-Adresse, Unternehmen, Land, Freitext, Anhänge oder rohe Klickkennungen sendet unser Code nicht als Ereignisparameter an GA4. Google Signals und personalisierte Werbung sind deaktiviert. Die Speicherdauer richtet sich nach der aktuellen GA4-Property-Konfiguration. <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\">Datenschutzerklärung von Google</a>",
+    "c76481302cf7a29d": "<strong>Messdienst:</strong> Google Analytics erhält die oben beschriebenen Messdaten ausschließlich nach Ihrer Einwilligung. Personalisierte Werbung bleibt deaktiviert.",
+    "69c710296c41ea27": "<strong>Sitzungszuordnung:</strong> Speicherung im Browser für die aktuelle Sitzung. Wenn Sie eine Anfrage absenden, verbleiben die bereinigten Zuordnungswerte zusammen mit dieser E-Mail entsprechend den gleichen betrieblichen und rechtlichen Aufbewahrungsgrundsätzen wie andere Anfragedaten.",
+    "8d53569e70d1ee2c": "<strong>Sitzungszuordnung</strong> — Nach Ihrer Einwilligung speichert die Website die aufgeführten Klickkennungen, UTM-Werte, die erste Einstiegsseite und den ursprünglichen Referrer unter <code>begapunk_session_attribution_v1</code> im <code>sessionStorage</code>. Die Werte füllen verborgene Felder des Anfrageformulars und werden nur übermittelt, wenn Sie dieses Formular absenden. Beim Widerruf der Einwilligung wird der Sitzungseintrag entfernt und die Felder werden geleert.",
+    "2e7c2bb878b8dfd8": "3.2 Analyse und Messung des Werbeerfolgs (optional)",
+    "900321cad6dc3cc1": "Messung erlauben",
+    "a1c687ac4b9e1bf9": "Optionale Messung ablehnen",
+    "60e6a197c9f11e3e": "nach Ihrer Zustimmung zur optionalen Messung die Werbewirkung messen und Anfragen Kampagnen zuordnen",
+    "adaead9333a216aa": "Beim ersten Besuch wird Google Analytics 4 nur geladen, wenn Sie „Messung erlauben“ wählen. Standardmäßig setzt Consent Mode v2 <code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> und <code>ad_personalization</code> auf „verweigert“. Wenn Sie die Messung erlauben, werden die ersten drei Kategorien für Analyse und Werbewirkungsmessung freigegeben; <code>ad_personalization</code> bleibt verweigert. Wir verwenden diese Auswahl nicht für personalisierte Werbung. Lehnen Sie vor einer Einwilligung ab, wird GA4 nicht geladen. Widerrufen Sie nach dem Laden, setzt die Website diese Einwilligungswerte auf „verweigert“, beendet die weitere optionale Messung und entfernt erreichbare GA-Cookies sowie die Sitzungszuordnung; ein auf der aktuellen Seite bereits ausgeführtes Skript kann nicht entladen werden.",
+    "84c794c9b56d9b6b": "Der Einwilligungsmanager verwendet den lokalen Browserspeicher statt eines erforderlichen Cookies, um Ihre Auswahl zur optionalen Messung zu speichern. Dieser Datensatz identifiziert Sie nicht unmittelbar und wird bei normalen Seitenaufrufen nicht an unseren Server gesendet."
   },
   "BP-3P-0004.html": {
     "f7edd90075a5d2dc": "/ BP-3P-0004 · Dreikanal-Drehdurchführung",

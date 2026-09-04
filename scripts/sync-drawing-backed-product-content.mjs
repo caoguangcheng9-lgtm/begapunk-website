@@ -4,7 +4,8 @@
  * Synchronize the long-form product-detail content with the reviewed drawing
  * manifest. The command is deliberately read-only unless --write is supplied.
  *
- * Scope: the 16 product HTML files in the root and their de/ja/ru variants.
+ * Scope: the drawing-backed product HTML files in the source locale and every
+ * active localized variant configured in i18n/config.json.
  * This script never walks the repository and never reads catalog-project/.
  */
 
@@ -22,12 +23,14 @@ import {
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, '..');
 const MANIFEST_PATH = path.join(ROOT_DIR, 'data', 'product-drawing-facts.json');
+const I18N_CONFIG_PATH = path.join(ROOT_DIR, 'i18n', 'config.json');
 const PRODUCT_DETAIL_UI_PATH = path.join(ROOT_DIR, 'i18n', 'manual', 'product-detail-ui.json');
 const START_MARKER = '<!-- ===== KEY TAKEAWAYS ===== -->';
 const END_MARKER = '<!-- ===== RELATED RESOURCES ===== -->';
 
 const productDetailUiContract = JSON.parse(await fs.readFile(PRODUCT_DETAIL_UI_PATH, 'utf8'));
-if (![4, 5].includes(productDetailUiContract.schemaVersion)) {
+const i18nConfig = JSON.parse(await fs.readFile(I18N_CONFIG_PATH, 'utf8'));
+if (![4, 5, 6].includes(productDetailUiContract.schemaVersion)) {
   throw new Error(`Unsupported product-detail UI schema: ${productDetailUiContract.schemaVersion}`);
 }
 
@@ -41,12 +44,24 @@ function controlledTabs(locale) {
   return tabs;
 }
 
-const LOCALES = {
+const LOCALE_SETTINGS = Object.freeze({
   en: { dir: '', htmlLang: 'en', speedUnit: 'RPM', decimal: '.', prefix: '' },
   de: { dir: 'de', htmlLang: 'de', speedUnit: 'U/min', decimal: ',', prefix: '../' },
+  fr: { dir: 'fr', htmlLang: 'fr', speedUnit: 'tr/min', decimal: ',', prefix: '../' },
   ja: { dir: 'ja', htmlLang: 'ja', speedUnit: 'min⁻¹', decimal: '.', prefix: '../' },
   ru: { dir: 'ru', htmlLang: 'ru', speedUnit: 'об/мин', decimal: ',', prefix: '../' },
-};
+});
+const SOURCE_LOCALE = i18nConfig.sourceLanguage?.code;
+const ACTIVE_LOCALE_CODES = [...new Set([SOURCE_LOCALE, ...(i18nConfig.activeLanguageCodes ?? [])])];
+const LOCALES = Object.freeze(Object.fromEntries(ACTIVE_LOCALE_CODES.map((locale) => {
+  const settings = LOCALE_SETTINGS[locale];
+  if (!settings) throw new Error(`Unsupported active locale in i18n/config.json: ${locale}`);
+  return [locale, Object.freeze({
+    ...settings,
+    dir: locale === SOURCE_LOCALE ? '' : locale,
+    prefix: locale === SOURCE_LOCALE ? '' : '../',
+  })];
+})));
 
 const COPY = {
   en: {
@@ -176,9 +191,70 @@ const COPY = {
   },
 };
 
+COPY.fr = {
+  ...COPY.en,
+  home: 'Accueil', products: 'Produits', category: 'Raccord tournant pneumatique', productOverview: 'présentation du produit',
+  drawingSummary: 'Résumé technique', drawingBasis: 'Base de sélection', operatingLimits: 'Limites de fonctionnement', materialsMedia: 'Matériaux et fluide', interfaces: 'Interfaces', selectionStatus: 'État de sélection',
+  pendingBasis: 'Une validation de l’application est requise avant de sélectionner ce modèle.',
+  pendingAction: 'Envoyez l’application, le fluide, la pression, la vitesse, la fixation et la quantité pour validation avant de sélectionner ou commander ce modèle.',
+  specHeading: 'Données techniques',
+  specIntro: 'Les principales dimensions et limites de fonctionnement de ce modèle sont indiquées ci-dessous.',
+  specIntroPending: 'Les valeurs techniques de ce modèle ne sont pas publiées. Demandez le fichier à jour propre au modèle avant toute sélection.',
+  labels: {
+    model: 'Référence', status: 'État de sélection', document: 'Fichier technique', pressure: 'Pression maximale',
+    speed: 'Vitesse maximale', media: 'Fluides compatibles', body: 'Matériau du corps', seal: 'Matériaux du joint',
+    ports: 'Repérage des orifices', mounting: 'Caractéristiques de fixation', envelope: 'Dimensions hors tout', bore: 'Alésage traversant',
+    temperature: 'Plage de température', weight: 'Masse', electrical: 'Interface électrique', warranty: 'Durée de garantie',
+  },
+  statusVerified: 'Disponible pour validation de l’application',
+  statusPending: 'Validation de l’application requise avant sélection',
+  portsCountPending: 'Le nombre de sorties n’est pas indiqué ; demandez le plan à jour propre au modèle avant la sélection',
+  portsSizePending: 'La spécification des orifices est en attente ; demandez le plan à jour propre au modèle',
+  inletPending: 'Le raccordement de l’entrée d’air n’est pas identifié ; demandez le plan à jour propre au modèle',
+  mountNotStated: 'Aucune caractéristique de fixation distincte n’est indiquée',
+  noBore: 'Aucune dimension d’alésage traversant n’est indiquée',
+  warranty: "1 an à compter de l'expédition",
+  electrical: 'Le plan représente 6 conducteurs électriques ; confirmez l’affectation des circuits et les caractéristiques électriques nominales de la configuration retenue',
+  compatHeading: 'Compatibilité machine et adéquation à l’application',
+  compatIntro: 'Vérifiez le modèle retenu par rapport aux circuits, orifices, pression, vitesse, espace de fixation et cycle de service requis par la machine.',
+  compatCards: [
+    ['Correspondance des circuits et des orifices', 'Associez chaque circuit de la machine à la configuration des orifices. Confirmez les détails non résolus avant de choisir les raccords ou d’usiner les pièces d’interface.'],
+    ['Pression et vitesse', 'Confirmez la combinaison fluide, pression, vitesse, température et cycle de service pour la configuration retenue.'],
+    ['Fixation et encombrement', 'Vérifiez les caractéristiques de fixation, les dégagements, le cheminement des flexibles, l’alignement de l’arbre et les charges externes dans l’ensemble machine.'],
+  ],
+  notApproved: 'Validation de l’application requise pour',
+  notApprovedItems: ['Fluides non indiqués sur la page', 'Fonctionnement au-delà d’une valeur maximale publiée', 'Détails non résolus des orifices ou de l’interface électrique', 'Service réglementé, critique pour la sécurité, en contact alimentaire, sous vide ou en environnement spécial sans revue du projet'],
+  installHeading: 'Guide d’installation et de mise en service', installIntro: 'Utilisez le plan du modèle et le plan d’installation de la machine pendant le montage.',
+  installSteps: [
+    ['Mettre la machine en sécurité', 'Avant toute intervention, isolez et consignez toutes les sources d’énergie, dépressurisez complètement tous les passages et empêchez toute rotation intempestive.'],
+    ['Identifier les côtés fixe et tournant', 'Orientez le raccord tournant selon l’implantation de la machine, puis alignez les orifices et les éléments de fixation avant le serrage.'],
+    ['Vérifier les interfaces avant le montage', 'Faites correspondre exactement les filetages, trous, faces d’étanchéité, dimensions d’accouplement et orientations. Confirmez les adaptateurs, le couple de serrage et le produit d’étanchéité adaptés aux raccords et matériaux d’interface retenus.'],
+    ['Maîtriser l’alignement et les charges externes', 'Soutenez les flexibles et les éléments du côté fixe afin que flexion, traction, torsion, défaut d’alignement et charges de la machine ne soient pas transmis au raccord tournant.'],
+    ['Utiliser le fluide indiqué', 'Contactez-nous avant d’utiliser un autre fluide afin de vérifier la compatibilité des joints et des matériaux en contact avec le fluide.'],
+    ['Effectuer une mise en service contrôlée', 'Commencez à faible pression et à faible vitesse, dans les limites indiquées. Contrôlez l’étanchéité de chaque passage ainsi que le frottement, la température, les vibrations et les bruits anormaux avant d’augmenter la charge.'],
+  ],
+  maintenanceTitle: 'Intervalle d’inspection', maintenance: 'Définissez les intervalles d’inspection et de remplacement à partir des conditions de fonctionnement consignées et des résultats d’inspection ; il n’existe pas de durée de vie universelle.',
+  downloadsHeading: 'Téléchargements et fichiers d’ingénierie', drawingTitle: 'Plan technique 2D (PDF)', drawingDescription: 'Plan du modèle avec dimensions, orifices, caractéristiques de fixation et valeurs techniques publiées.',
+  drawingPendingTitle: 'Demander le fichier propre au modèle', drawingPendingDescription: 'Demandez le fichier à jour propre au modèle avant toute sélection technique ou commande.',
+  cadTitle: 'Demander un fichier CAO 3D personnalisé', cadDescription: 'La CAO des versions personnalisées ou hors catalogue est préparée après demande. Les fichiers STEP AP214 du catalogue sont téléchargeables sur la page du modèle.',
+  cadDownloadTitle: 'Télécharger le modèle 3D (.step)', cadDownloadDescription: 'Modèle 3D STEP (AP214) de la configuration retenue pour vérifier l’intégration.',
+  manualTitle: 'Manuel général d’installation (PDF)', manualDescription: 'Guide général de manutention, alignement, raccordement, mise en service et maintenance.',
+  docsTitle: 'Documents de contrôle', docsDescription: 'Besoin d’un rapport de contrôle ou d’un certificat matière ? Indiquez cette exigence dans votre demande.',
+  commonLabel: 'Erreurs d’installation', commonHeading: 'Trois erreurs courantes d’installation et de démarrage', commonIntro: 'Évitez ces erreurs afin de réduire les fuites, l’usure anormale et les reprises lors de la mise en service.',
+  commonCards: [
+    ['Transmettre les charges de tuyauterie au raccord tournant', 'La tension, la flexion ou la torsion des flexibles, une liaison rigide ou un défaut d’alignement peuvent appliquer une charge latérale au raccord tournant. Soutenez la tuyauterie et prévoyez une liberté de mouvement suffisante.'],
+    ['Raccorder les orifices sans vérifier l’interface', 'Confirmez la fonction, le filetage et la méthode d’étanchéité de chaque orifice avant l’installation. Ne reprenez pas l’interface d’un autre modèle et n’utilisez pas les orifices de fluide comme trous de fixation.'],
+    ['Démarrer directement aux conditions nominales', 'Commencez la mise en service à faible pression et faible vitesse, puis augmentez progressivement jusqu’aux conditions réelles tout en contrôlant chaque passage : fuite, élévation de température, vibrations et bruits anormaux.'],
+  ],
+  relatedHeading: 'Produits associés', relatedIntro: 'Comparez les modèles proches à partir des caractéristiques publiées pour chaque modèle.', relatedDescription: 'Ouvrez la page du modèle pour vérifier ses caractéristiques et son adéquation à l’application.',
+  compareTitle: 'Comparer les modèles', compareDescription: 'Présélectionnez les modèles sur la page de comparaison, puis vérifiez chaque candidat par rapport aux exigences de la machine et au plan disponible.',
+  customTitle: 'Envoyer les données de la machine', customDescription: 'Envoyez le nombre de passages, le fluide, la pression, la vitesse, la température, la fixation, l’espace disponible ainsi que tout plan ou photo déjà disponible.',
+  viewModel: 'Voir le modèle', compareModels: 'Comparer les modèles', requestReview: 'Demander une comparaison',
+};
+
 COPY.ja = {
   ...COPY.en,
-  home: 'ホーム', products: '製品', category: '空圧ロータリージョイント', productOverview: '製品概要',
+  home: 'ホーム', products: '製品情報', category: '空圧用ロータリージョイント', productOverview: '製品概要',
   drawingSummary: '技術要約', drawingBasis: '選定条件', operatingLimits: '使用限界', materialsMedia: '材質・流体', interfaces: '接続仕様', selectionStatus: '選定状態',
   pendingBasis: '選定前に用途条件の確認が必要です。',
   pendingAction: 'この型式を選定・発注する前に、用途、流体、圧力、回転数、取付け、数量をお知らせください。',
@@ -269,6 +345,19 @@ const BUYER_COPY = Object.freeze({
     privacyLead: 'Für den Anfang genügt eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung.',
     privacy: 'Wir verwenden Ihre Anfragen oder Zeichnungen weder für Marketingzwecke noch zur öffentlichen Darstellung.',
   }),
+  fr: Object.freeze({
+    compatTitle: 'Vous ne savez pas si ce modèle convient ?',
+    compatText: 'Une référence, une photo, un plan ou une brève description suffit pour commencer. Ajoutez les conditions de fonctionnement que vous connaissez déjà ; des informations incomplètes ne sont pas un problème. Nous vérifierons si {model} convient ou proposerons un modèle du catalogue plus proche ou une version personnalisée.',
+    compatAction: 'Faire vérifier ce modèle',
+    helpTitle: 'Besoin d’aide pour choisir ?',
+    helpText: 'Envoyez une référence, une photo, un plan ou une brève description. Nous comparerons les options les plus proches.',
+    helpAction: 'Demander une comparaison',
+    bottomTitle: 'Besoin d’une autre configuration ?',
+    bottomText: 'Envoyez les informations dont vous disposez. Nous vous répondrons avec un modèle du catalogue ou une version personnalisée, un devis, un délai estimatif ainsi que les fichiers 2D et STEP 3D correspondants.',
+    bottomAction: 'Demander une autre option',
+    privacyLead: 'Une référence, une photo, un plan ou une brève description suffit pour commencer.',
+    privacy: 'Nous n’utilisons pas vos demandes ni vos plans à des fins de marketing ou de diffusion publique.',
+  }),
   ja: Object.freeze({
     compatTitle: 'この型式でよいか迷っていますか？',
     compatText: '型式、写真、図面、または短い説明のいずれかがあれば始められます。分かる範囲の使用条件だけ添えてください。情報が不完全でも問題ありません。{model}が適するか確認し、より近い標準型式またはカスタム仕様をご提案します。',
@@ -356,6 +445,35 @@ const FAQ_COPY = Object.freeze({
       Object.freeze(['Kann Begapunk eine kundenspezifische Schnittstelle für {model} prüfen?', 'Ja. Gegenstückzeichnung, Anschlussanordnung, Bauraum, Betriebsbedingungen und Menge für Schnittstellenprüfung und Angebot senden.']),
     ]),
   }),
+  fr: Object.freeze({
+    heading: 'Questions fréquentes sur {model}',
+    fitQuestion: '{model} convient-il à ma machine ?',
+    fitAnswer: '{model} est une configuration à {passages}. Fluide compatible : {media}. Orifices : {ports}. Fixation : {mounting}.',
+    fitAnswerWithBore: '{model} est une configuration à {passages}. Fluide compatible : {media}. Orifices : {ports}. Fixation : {mounting}. {bore}.',
+    hybridFitAnswer: '{model} associe {passages} et six conducteurs électriques. Fluide compatible : {media}. Orifices pneumatiques : {ports}. Fixation : {mounting}. L’affectation des circuits et les caractéristiques nominales dépendent de la spécification électrique retenue.',
+    limitsQuestion: 'Quelles sont la pression et la vitesse maximales de {model} ?',
+    limitsAnswer: 'Pression maximale : {pressure}. Vitesse maximale : {speed}. Pour une rotation continue, envoyez votre cycle de service. Nous confirmerons le point de fonctionnement avant la production.',
+    materialsQuestion: '{model} peut-il être utilisé sous vide, avec de l’eau ou de l’huile hydraulique ?',
+    materialsAnswer: 'Les caractéristiques du catalogue de {model} couvrent uniquement l’air comprimé. Le vide, l’eau et l’huile hydraulique nécessitent une étude propre au fluide et une confirmation écrite de compatibilité. Envoyez le fluide, la pression, la température et la vitesse afin que nous confirmions les joints, matériaux et la configuration requis.',
+    interfaceQuestion: 'Quels orifices et quelle fixation {model} utilise-t-il ?',
+    interfaceQuestionWithBore: 'Quels orifices, quelle fixation et quel alésage traversant {model} utilise-t-il ?',
+    interfaceAnswer: 'Orifices : {ports}. Fixation : {mounting}.',
+    interfaceAnswerWithBore: 'Orifices : {ports}. Fixation : {mounting}. {bore}.',
+    hybridInterfaceQuestion: 'Quelles interfaces pneumatiques et électriques {model} propose-t-il ?',
+    hybridInterfaceAnswer: 'Orifices pneumatiques : {ports}. Électricité : six conducteurs ; confirmez l’affectation des circuits et les caractéristiques nominales de la configuration retenue. Fixation : {mounting}.',
+    quoteQuestion: 'Que dois-je envoyer pour obtenir un devis ou un fichier CAO pour {model} ?',
+    quoteAnswer: 'La référence suffit pour commencer. Une photo, un plan ou les conditions de fonctionnement déjà connues peuvent nous aider à confirmer l’adéquation. Nous vous indiquerons ensuite le modèle adapté ou les informations encore nécessaires pour établir le devis.',
+    quoteQuestionStep: 'Comment obtenir un devis pour {model} ?',
+    quoteAnswerStep: 'La référence suffit pour commencer. Une photo, un plan ou les conditions de fonctionnement déjà connues peuvent nous aider à confirmer l’adéquation. Le fichier STEP 3D est disponible dans le panneau Téléchargements ; envoyez les conditions de fonctionnement pour obtenir un devis. Nous vous indiquerons ensuite le modèle adapté ou les informations encore nécessaires pour établir le devis.',
+    hybridQuoteAnswer: 'La référence suffit pour commencer. Si vous les connaissez, ajoutez une photo ou un plan ainsi que les fonctions pneumatiques et électriques requises. Nous vous indiquerons ensuite la configuration adaptée ou les informations encore nécessaires pour établir le devis.',
+    pendingItems: Object.freeze([
+      Object.freeze(['{model} est-il prêt à être sélectionné ?', 'Une validation de l’application est requise avant de sélectionner {model} ; les limites de fonctionnement et interfaces propres au modèle ne sont pas publiées actuellement.']),
+      Object.freeze(['Quelles informations envoyer pour la validation de l’application ?', 'Envoyez le nombre de passages requis, le fluide, la pression de service, la vitesse, la température, le cycle de service, l’espace de fixation, l’encombrement et la quantité.']),
+      Object.freeze(['Puis-je demander le plan 2D à jour de {model} ?', 'Oui. Demandez le fichier propre au modèle et joignez les exigences de l’application afin que le bon document puisse être fourni.']),
+      Object.freeze(['Puis-je télécharger le fichier CAO 3D de {model} ?', 'Oui. Le fichier catalogue STEP AP214 est disponible sur cette page pour vérifier l’intégration. Les fichiers CAO personnalisés restent fournis sur demande.']),
+      Object.freeze(['Begapunk peut-il étudier une interface personnalisée pour {model} ?', 'Oui. Envoyez le plan de la pièce d’interface, la disposition des orifices, l’encombrement, les conditions de fonctionnement et la quantité pour étude et devis.']),
+    ]),
+  }),
   ja: Object.freeze({
     heading: '{model} よくあるご質問',
     fitQuestion: '{model} は機械に適合しますか？',
@@ -420,24 +538,28 @@ const SPECIAL_FAQ_COPY = Object.freeze({
   'BP-1P-0003': Object.freeze({
     en: Object.freeze({ materialsQuestion: 'Which media are listed for {model}?', materialsAnswer: 'The drawing lists air, oil, and water. Send the exact fluid, temperature, pressure, and speed so we can confirm compatibility; “oil” does not cover every hydraulic oil, and “water” does not automatically cover other water-based process fluids.' }),
     de: Object.freeze({ materialsQuestion: 'Welche Medien sind für {model} angegeben?', materialsAnswer: 'Die Zeichnung nennt Luft, Öl und Wasser. Nennen Sie das genaue Medium, Temperatur, Druck und Drehzahl, damit wir die Verträglichkeit prüfen können; „Öl“ umfasst nicht jedes Hydrauliköl und „Wasser“ bestätigt nicht automatisch andere wasserbasierte Prozessmedien.' }),
+    fr: Object.freeze({ fitAnswer: '{model} est une configuration à {passages}. Fluides compatibles : {media}. Orifices : {ports}. Fixation : {mounting}.', materialsQuestion: 'Quels fluides sont indiqués pour {model} ?', materialsAnswer: 'Le plan indique l’air, l’huile et l’eau. Envoyez le fluide exact, la température, la pression et la vitesse afin que nous confirmions la compatibilité ; « huile » ne couvre pas toutes les huiles hydrauliques et « eau » ne valide pas automatiquement les autres fluides de procédé à base d’eau.' }),
     ja: Object.freeze({ materialsQuestion: '{model}に記載されている流体は何ですか？', materialsAnswer: '図面には空気、油、水が記載されています。適合性を確認するため、具体的な流体、温度、圧力、回転数をお知らせください。「油」はすべての作動油を、「水」は他の水系プロセス流体を自動的に保証するものではありません。' }),
     ru: Object.freeze({ materialsQuestion: 'Какие среды указаны для {model}?', materialsAnswer: 'На чертеже указаны воздух, масло и вода. Сообщите точную среду, температуру, давление и частоту вращения, чтобы мы подтвердили совместимость; «масло» не означает любое гидравлическое масло, а «вода» не подтверждает автоматически другие технологические среды на водной основе.' }),
   }),
   'BP-1P-0006': Object.freeze({
     en: Object.freeze({ fitAnswer: '{model} distributes one shared air circuit from 1 inlet to 8 outlets; the outlets are not separate passages. Suitable medium: {media}. Mounting: {mounting}.' }),
     de: Object.freeze({ fitAnswer: '{model} verteilt einen gemeinsamen Druckluftkreis von 1 Eingang auf 8 Ausgänge; die Ausgänge sind keine getrennten Kanäle. Geeignetes Medium: {media}. Montage: {mounting}.' }),
+    fr: Object.freeze({ fitAnswer: '{model} distribue un circuit d’air commun d’une entrée vers 8 sorties ; les sorties ne constituent pas des passages distincts. Fluide compatible : {media}. Fixation : {mounting}.' }),
     ja: Object.freeze({ fitAnswer: '{model}は、1つの共通エア回路を1入口から8出口へ分配する仕様です。8つの出口は別々の流路ではありません。適用流体：{media}。取付け：{mounting}。' }),
     ru: Object.freeze({ fitAnswer: '{model} распределяет один общий пневматический контур от 1 входа к 8 выходам; выходы не являются отдельными каналами. Подходящая среда: {media}. Монтаж: {mounting}.' }),
   }),
   'BP-2P-95-0005': Object.freeze({
     en: Object.freeze({ fitAnswer: '{model} uses a 2-in/4-out air layout: 2 outlets for clamp and 2 for release. Suitable medium: {media}. Mounting: {mounting}.' }),
     de: Object.freeze({ fitAnswer: '{model} hat eine Druckluftanordnung mit 2 Eingängen und 4 Ausgängen: 2 Ausgänge zum Spannen und 2 zum Lösen. Geeignetes Medium: {media}. Montage: {mounting}.' }),
+    fr: Object.freeze({ fitAnswer: '{model} utilise une configuration pneumatique à 2 entrées et 4 sorties : 2 sorties pour le serrage et 2 pour le desserrage. Fluide compatible : {media}. Fixation : {mounting}.' }),
     ja: Object.freeze({ fitAnswer: '{model}は2入力・4出力の空圧構成で、クランプ用2出力とアンクランプ用2出力を備えます。適用流体：{media}。取付け：{mounting}。' }),
     ru: Object.freeze({ fitAnswer: '{model} имеет пневматическую схему 2 входа / 4 выхода: 2 выхода для зажима и 2 для разжима. Подходящая среда: {media}. Монтаж: {mounting}.' }),
   }),
   'BP-3P-0006': Object.freeze({
     en: Object.freeze({ interfaceAnswer: 'The port thread is confirmed from the current model-specific drawing before fitting selection. Mounting: {mounting}. Send the mating-part drawing before selecting fittings.' }),
     de: Object.freeze({ interfaceAnswer: 'Das Anschlussgewinde wird vor der Auswahl der Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt. Montage: {mounting}. Senden Sie vor der Auswahl der Verschraubungen die Gegenstückzeichnung.' }),
+    fr: Object.freeze({ interfaceAnswer: 'Le filetage des orifices est confirmé sur le plan à jour propre au modèle avant la sélection des raccords. Fixation : {mounting}. Envoyez le plan de la pièce d’interface avant de choisir les raccords.' }),
     ja: Object.freeze({ interfaceAnswer: 'ポートねじは継手選定前に最新の型式専用図面で確認します。取付け：{mounting}。継手選定前に相手部品図をお送りください。' }),
     ru: Object.freeze({ interfaceAnswer: 'Резьба порта подтверждается по актуальному чертежу конкретной модели до выбора фитингов. Монтаж: {mounting}. До выбора фитингов отправьте чертёж сопрягаемой детали.' }),
   }),
@@ -449,6 +571,10 @@ const SPECIAL_FAQ_COPY = Object.freeze({
     de: Object.freeze({
       fitAnswer: '{model} kombiniert 3 Pneumatikkanäle mit 6 elektrischen Leitungen. Geeignetes Medium: {media}. Lufteinlass, Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen. Montage: {mounting}.',
       interfaceAnswer: 'Pneumatikausgänge: {ports}. Elektrik: 6 Leitungen. Lufteinlass, Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen. Montage: {mounting}.',
+    }),
+    fr: Object.freeze({
+      fitAnswer: '{model} associe 3 passages pneumatiques à 6 conducteurs électriques. Fluide compatible : {media}. Confirmez l’entrée d’air, l’affectation des circuits et les caractéristiques électriques nominales de la configuration retenue. Fixation : {mounting}.',
+      interfaceAnswer: 'Sorties pneumatiques : {ports}. Électricité : 6 conducteurs électriques. Confirmez l’entrée d’air, l’affectation des circuits et les caractéristiques électriques nominales de la configuration retenue. Fixation : {mounting}.',
     }),
     ja: Object.freeze({
       fitAnswer: '{model}は3つの空圧流路と電気リード6本を組み合わせた仕様です。適用流体：{media}。選定仕様のエア入口、回路割当、電気定格をご確認ください。取付け：{mounting}。',
@@ -514,6 +640,32 @@ const MODEL_APPLICATION_COPY = Object.freeze({
       inquiryText: 'Senden Sie Maschinen- oder Anbaugerätetyp, Einbauzeichnung, Medium, Arbeits- und Rücklaufdruck, Volumenstrom, Drehzahl, Betriebszyklus, Kanalzahl, äußere Lasten, verfügbaren Bauraum, Anschlussgewinde und Menge. Begapunk empfiehlt eine pneumatische Standard- oder kundenspezifische Hydraulikausführung und antwortet mit Angebot sowie verfügbaren 2D- oder 3D-Dateien.',
       inquiryAction: 'Kundenspezifische Drehdurchführung anfragen',
       requiredTerms: Object.freeze(['CNC-Rundschalttische', 'Schweißpositionierer', 'Hydraulische Spann-', 'Holzgreifer', 'Hydraulikausführungen']),
+    }),
+    fr: Object.freeze({
+      heading: 'Équipements courants pour BP-2P-130-0001 et versions hydrauliques personnalisées',
+      intro: 'BP-2P-130-0001 assure deux voies de fluide à travers une interface tournante. La configuration standard présentée sur cette page est destinée à l’air comprimé ; Begapunk fabrique également des versions hydrauliques dont l’étanchéité est sélectionnée selon l’huile hydraulique et les conditions de fonctionnement. Les exemples ci-dessous présentent les équipements courants, la fonction du raccord tournant dans chaque machine et les informations nécessaires à une recommandation et un devis pertinents.',
+      cards: Object.freeze([
+        Object.freeze([
+          'Tables d’indexage CNC et montages de serrage rotatifs',
+          'Utilisez les deux passages pour alimenter en air comprimé les fonctions de serrage/desserrage, le positionnement, les doigts d’indexage ou deux actionneurs pneumatiques pendant la rotation de la table ou du montage. La configuration standard BP-2P-130-0001 peut convenir aux machines lentes dont la pression, la vitesse, les orifices G1/8, les faces de fixation à six trous et l’espace d’installation disponible correspondent.',
+        ]),
+        Object.freeze([
+          'Positionneurs de soudage et montages rotatifs lourds',
+          'Acheminez l’air comprimé vers les dispositifs de serrage, butées et actionneurs pneumatiques des positionneurs de soudage, tables de soudage rotatives et montages d’assemblage sans torsion des flexibles d’alimentation. Deux passages peuvent assurer une fonction couplée serrage/desserrage ou un autre circuit à deux fonctions après confirmation de l’affectation des orifices sur le plan retenu ; les équipements exigeant davantage de fonctions nécessitent un raccord tournant comportant plus de passages.',
+        ]),
+        Object.freeze([
+          'Équipements hydrauliques de serrage et d’indexage',
+          'Begapunk peut fabriquer une configuration personnalisée pour huile hydraulique destinée aux mandrins hydrauliques, montages de serrage, tables d’indexage et équipements rotatifs lents. Le système d’étanchéité est sélectionné selon l’huile et les conditions de fonctionnement. Envoyez les pressions de travail et de retour, le débit, la qualité et la température de l’huile, la vitesse de rotation, le cycle de service, les exigences relatives aux orifices, le plan d’installation et la quantité.',
+        ]),
+        Object.freeze([
+          'Grappins à bois, pinces forestières et accessoires rotatifs pour pelle',
+          'Pour les grappins à bois, pinces forestières, rotateurs forestiers et accessoires rotatifs de pelle, Begapunk peut fabriquer un raccord tournant hydraulique à deux passages pour l’ouverture/fermeture du grappin ou une autre fonction hydraulique couplée. Envoyez les pressions maximale et de retour, le débit dans les deux sens, la spécification de l’huile, la vitesse de rotation, les charges axiales et radiales, l’encombrement disponible, les dimensions des flexibles et des orifices ainsi que la quantité. Les fonctions hydrauliques supplémentaires nécessitent davantage de passages.',
+        ]),
+      ]),
+      inquiryTitle: 'Décrivez-nous votre machine',
+      inquiryText: 'Envoyez le nom de l’équipement, le plan de la machine ou de l’accessoire, le fluide, les pressions de travail et de retour, le débit, la vitesse de rotation, le cycle de service, le nombre de passages, les charges externes, l’espace disponible, les filetages des orifices et la quantité. Begapunk recommandera une configuration pneumatique standard ou hydraulique personnalisée et répondra avec un devis et les fichiers 2D ou 3D disponibles.',
+      inquiryAction: 'Demander un raccord tournant personnalisé',
+      requiredTerms: Object.freeze(['Tables d’indexage CNC', 'Positionneurs de soudage', 'Équipements hydrauliques', 'Grappins à bois', 'versions hydrauliques personnalisées']),
     }),
     ja: Object.freeze({
       heading: 'BP-2P-130-0001と油圧カスタム仕様の主な搭載設備',
@@ -713,6 +865,67 @@ const APPLICATION_PANEL_COPY = Object.freeze({
       multiStationCarousels: Object.freeze(['Mehrstationen-Montage-, Verpackungs- und Prüfkarussells', 'Mehrere getrennte Kanäle für stationsbezogene Spann-, Auswerf-, Abblas-, Prüf-, Ausschleus- oder Handhabungsfunktionen verwenden. Einen Kreisplan mit Kanal, Gleichzeitigkeit, Stationstakt, Trennanforderung, Druck, Volumenstrom und Wartungszugang senden.']),
     }),
   }),
+  fr: Object.freeze({
+    modes: Object.freeze({
+      standard: Object.freeze({
+        heading: 'Équipements courants pour {model}',
+        intro: '{model} assure {passages} à travers une interface tournante. Pression / vitesse : {pressure} · {speed} ; {compatibleMediaLabel} : {media}. Disposition des orifices : {ports}. Fixation : {mounting}. Les exemples ci-dessous indiquent les équipements auxquels cette disposition convient couramment et les paramètres à vérifier avant la sélection.',
+        inquiryTitle: 'Envoyez les conditions de la machine',
+        inquiryText: 'Envoyez le nom de l’équipement, le plan de la machine ou de l’accessoire, la fonction requise pour chaque passage, le fluide, la pression de travail, la pression de retour le cas échéant, le débit, la vitesse de rotation, la température, le cycle de service, les charges externes, l’espace disponible, les filetages des orifices, le schéma de fixation et la quantité. Begapunk recommandera un modèle standard ou une configuration personnalisée et répondra avec un devis et les fichiers 2D ou 3D disponibles.',
+        inquiryAction: 'Demander une recommandation de modèle',
+      }),
+      distribution: Object.freeze({
+        heading: 'Équipements utilisant le circuit d’air commun de {model}',
+        intro: '{model} utilise un passage pneumatique avec une entrée et huit sorties pour distribuer un circuit d’air commun vers plusieurs points d’un ensemble tournant. Pression / vitesse : {pressure} · {speed}. Disposition des orifices : {ports}. Les sorties appartiennent au même circuit ; les fonctions commandées indépendamment nécessitent des distributeurs côté tournant ou des passages supplémentaires.',
+        inquiryTitle: 'Décrivez la disposition des sorties et la demande simultanée',
+        inquiryText: 'Envoyez le plan de la machine, l’alimentation d’entrée, la fonction et l’emplacement des huit sorties, leur fonctionnement simultané ou non, les débits total et de pointe, la pression de travail, la vitesse de rotation, la température, le cycle de service, la disposition des distributeurs, l’espace de fixation et la quantité. Begapunk vérifiera si un circuit commun convient ou si la machine exige des passages séparés indépendants.',
+        inquiryAction: 'Faire vérifier la distribution d’air',
+      }),
+      pending: Object.freeze({
+        heading: 'Demandes d’équipement que Begapunk peut étudier pour {model}',
+        intro: '{model} ne peut pas être sélectionné directement à partir des valeurs actuellement publiées. Les catégories ci-dessous illustrent des demandes courantes de raccord tournant à deux circuits que Begapunk peut étudier. Envoyez les conditions réelles de la machine afin que nous puissions proposer un modèle standard vérifié ou préparer un devis personnalisé sans nous appuyer sur une interface ou une limite non confirmée.',
+        pendingCardText: 'Cette catégorie d’équipement peut nécessiter une liaison tournante, mais les informations actuelles ne suffisent pas pour sélectionner {model}. Envoyez le plan de la machine, les fonctions des circuits, le fluide, la pression, la vitesse, l’espace de fixation et la quantité afin que Begapunk propose un modèle standard vérifié ou chiffre une conception personnalisée.',
+        inquiryTitle: 'Confiez-nous l’étude de l’application',
+        inquiryText: 'Envoyez le nom de l’équipement, le plan, le nombre et les fonctions des circuits requis, le fluide, la pression, le débit, la vitesse, la température, le cycle de service, l’espace disponible, les orifices souhaités, le mode de fixation et la quantité. Begapunk répondra avec un modèle vérifié adapté ou une proposition personnalisée, un devis et les fichiers techniques disponibles.',
+        inquiryAction: 'Demander à Begapunk d’étudier l’application',
+      }),
+      hybrid: Object.freeze({
+        heading: 'Équipements utilisant les passages pneumatiques et conducteurs électriques de {model}',
+        intro: '{model} associe 3 passages pneumatiques à 6 conducteurs électriques. Pression pneumatique / vitesse : {pressure} · {speed} ; fluide compatible : {media}. Disposition des orifices : {ports}. Confirmez l’entrée d’air, l’affectation des circuits et les caractéristiques électriques nominales de la configuration retenue.',
+        inquiryTitle: 'Envoyez les exigences pneumatiques et électriques',
+        inquiryText: 'Envoyez le plan de l’équipement, la fonction pneumatique de chaque passage, la pression, le débit, la vitesse, la température et le cycle de service, ainsi que la tension, le courant, le type de signal, l’affectation des circuits, les exigences de blindage ou de connecteur, l’espace de fixation, le cheminement des câbles et la quantité. Begapunk vérifiera l’interface combinée et répondra avec un devis et les fichiers techniques disponibles.',
+        inquiryAction: 'Envoyer les exigences pneumatiques et électriques',
+      }),
+    }),
+    cards: Object.freeze({
+      hoseReels: Object.freeze(['Enrouleurs de flexibles industriels, bobineuses et tambours de service', 'Transmettez un circuit d’air, d’huile ou d’eau vers un enrouleur, une bobineuse ou un tambour tournant sans enrouler la conduite fixe autour de l’arbre. Vérifiez le fluide, la température, la pression, la vitesse, la charge du flexible, l’entrée G3/8, la sortie M10×1,5 et la longueur d’installation disponible.']),
+      rotaryProcessStations: Object.freeze(['Postes rotatifs de remplissage, rinçage, dosage et contrôle d’étanchéité', 'Alimentez un circuit de fluide sur un poste industriel rotatif de remplissage, rinçage, dosage, essai de pression ou contrôle d’étanchéité. Précisez le service exact avec air, huile ou eau, la température et la propreté du fluide, le débit requis, la pression, la vitesse de rotation ainsi que toute exigence réglementaire ou relative aux matériaux.']),
+      windingMachines: Object.freeze(['Machines d’enroulement, de rembobinage et de tension rotative', 'Alimentez un frein pneumatique, un actionneur de tension, un point de lubrification ou un circuit d’eau sur une bobineuse ou rembobineuse tournante. Vérifiez le cheminement des flexibles, le support de l’arbre, le fonctionnement marche-arrêt, les pointes de pression, la vitesse et la capacité d’un seul circuit à assurer la fonction requise.']),
+      rotaryTestFixtures: Object.freeze(['Montages rotatifs d’essai de pression, d’étanchéité et de fonctionnement', 'Raccordez des montages d’essai rotatifs, bancs d’endurance, bancs d’essai de vannes et postes d’inspection indexés sans torsion des flexibles d’alimentation. Définissez chaque circuit et fluide d’essai, la plage de pression, le débit, la fréquence des cycles, le profil de rotation, la méthode d’acceptation des fuites et l’interface du montage.']),
+      sharedIndexingTables: Object.freeze(['Tables d’indexage multipostes à alimentation d’air commune', 'Distribuez un circuit commun d’air comprimé vers les dispositifs de serrage, butées, buses de soufflage ou actionneurs d’une table d’indexage tournante. Les huit sorties partagent la même alimentation ; utilisez des distributeurs côté tournant lorsque les postes doivent être commandés indépendamment.']),
+      sharedPackagingCarousels: Object.freeze(['Carrousels d’emballage à plusieurs points pneumatiques communs', 'Alimentez en air commun plusieurs buses, éjecteurs, guides ou dispositifs de serrage sur un carrousel d’emballage. Calculez le débit total et le débit de pointe simultané, confirmez l’emplacement des distributeurs et vérifiez que la perte de charge entre les huit sorties reste acceptable.']),
+      sharedAssemblyDials: Object.freeze(['Plateaux d’assemblage indexés et montages multipositions', 'Alimentez un circuit d’air commun vers des positions de montage répétées sur des plateaux d’assemblage, machines de transfert rotatives et carrousels d’inspection. Confirmez que chaque poste exécute la même fonction ; des fonctions à séquences indépendantes nécessitent des passages séparés ou des distributeurs côté tournant.']),
+      sharedBlowOffManifolds: Object.freeze(['Collecteurs rotatifs de soufflage, purge et nettoyage', 'Distribuez l’air comprimé vers plusieurs points de soufflage, purge, évacuation de copeaux ou nettoyage de pièces sur un outil ou une table tournante. Fournissez le nombre de buses, la demande simultanée, la perte de charge admissible, le niveau de contamination, la vitesse de rotation et le plan complet du collecteur.']),
+      cncIndexingTables: Object.freeze(['Tables d’indexage CNC et montages de serrage rotatifs', 'Acheminez des circuits indépendants vers les fonctions de serrage/desserrage, doigts d’indexage, butées ou actionneurs pneumatiques pendant la rotation d’une table d’indexage CNC ou d’un montage. Vérifiez le nombre de fonctions, l’affectation des orifices, la pression, la vitesse, le schéma de fixation, le dégagement central, les charges externes et le cheminement des flexibles.']),
+      weldingPositioners: Object.freeze(['Positionneurs de soudage et montages de soudage rotatifs', 'Alimentez les dispositifs de serrage, butées, circuits d’inertage de la face envers ou actionneurs pneumatiques sur les positionneurs et tables de soudage rotatives sans torsion des flexibles. Protégez le raccord tournant de la chaleur, des projections, de la poussière, des charges latérales et des tuyauteries non soutenues, puis précisez le cycle de service combiné réel.']),
+      packagingCarousels: Object.freeze(['Carrousels d’emballage, remplissage, étiquetage et inspection', 'Transmettez des fonctions pneumatiques séparées aux préhenseurs, dispositifs de serrage, éjecteurs, butées, buses ou montages d’inspection d’un carrousel d’emballage tournant. Listez chaque fonction et sa séquence afin que le nombre de passages et le débit de pointe correspondent au cycle réel de la machine.']),
+      hoseAntiTwist: Object.freeze(['Outils pneumatiques, enrouleurs et liaisons tournantes anti-torsion', 'Évitez la torsion des flexibles sur les outils pneumatiques tournants, manipulateurs, enrouleurs et équipements de service tout en conservant une alimentation et un retour séparés ou deux fonctions d’air indépendantes. Vérifiez le couple exercé par le flexible, le rayon de courbure, la charge supportée, la vitesse et l’encombrement disponible.']),
+      assemblyDialTables: Object.freeze(['Plateaux d’assemblage automatisés indexés', 'Alimentez les dispositifs de serrage, doigts d’indexage, éjecteurs, actionneurs de détection de présence ou montages d’essai d’un plateau tournant automatisé. Définissez les fonctions actives à chaque poste et précisez si les passages sont indépendants, partagés par des distributeurs côté tournant ou nécessaires simultanément.']),
+      rotaryPickAndPlace: Object.freeze(['Unités rotatives de transfert et bras de manipulation', 'Alimentez les fonctions d’ouverture/fermeture du préhenseur, commande du vide, soufflage ou positionnement sur les bras de transfert rotatifs et unités de manipulation. Confirmez que le nombre de passages couvre les fonctions requises et fournissez l’accélération, les charges externes, le cheminement des flexibles et les données de cycle.']),
+      cappingHeads: Object.freeze(['Têtes rotatives de bouchage, serrage et fermeture', 'Acheminez les fonctions pneumatiques de préhension/libération et les fonctions auxiliaires vers les têtes de bouchage de bouteilles, postes de serrage de fermetures et têtes d’assemblage rotatives. Envoyez la plage de dimensions des bouchons ou pièces, la séquence de préhension requise, la méthode de génération du couple, la vitesse, le cycle de service et l’exposition au lavage ou aux produits chimiques.']),
+      laserRearChucks: Object.freeze(['Mandrins arrière et mandrins de support pour découpe laser de tubes', 'Transmettez les circuits d’air comprimé de serrage/desserrage, commande des mors, centrage ou fonctions auxiliaires des machines de découpe laser de tubes. Vérifiez le nombre réel de circuits, l’affectation des orifices, la pression, la vitesse de rotation, l’alésage et les dégagements de fixation, le cheminement des flexibles et l’environnement du mandrin.']),
+      pneumaticChucks: Object.freeze(['Mandrins pneumatiques, montages à pinces et systèmes de maintien rotatifs', 'Alimentez les fonctions de serrage/desserrage ou les commandes multiples de mors des mandrins pneumatiques, montages à pinces, mandrins expansibles et systèmes de maintien rotatifs. Définissez le comportement de sécurité, la séquence des fonctions, la pression, la vitesse, l’interface de fixation, la charge de la pièce et l’isolation requise entre passages.']),
+      bottleCapGrippers: Object.freeze(['Préhenseurs de bouchons et montages de manipulation des fermetures', 'Alimentez des circuits indépendants de préhension/libération vers les préhenseurs pneumatiques à trois mors et les montages de manipulation des bouchons sur les machines de remplissage et bouchage. Fournissez les dimensions du bouchon, l’effort de préhension requis, la vitesse de la machine, le temps de cycle, l’affectation des orifices, le plan d’installation et l’environnement de nettoyage.']),
+      robotTooling: Object.freeze(['Outillages de bout de bras robotisé et préhenseurs rotatifs', 'Transmettez les fonctions pneumatiques vers les préhenseurs robotisés tournants, plaques porte-outils, effecteurs indexables et montages automatiques. Affectez chaque passage à une fonction et fournissez les mouvements du poignet, l’accélération, les charges radiales et axiales, le cheminement des flexibles, la charge utile, les orifices et les contraintes de fixation.']),
+      heavyRotaryFixtures: Object.freeze(['Montages rotatifs lourds, positionneurs et grandes tables de serrage', 'Alimentez les dispositifs de serrage, supports, butées ou autres fonctions pneumatiques sur de grands montages et positionneurs rotatifs lents. Fournissez le plan d’installation complet, les charges axiales et radiales externes, le dégagement central, la pression, la vitesse, le cycle de service, le support des tuyauteries et l’accès de maintenance requis.']),
+      customRotaryEquipment: Object.freeze(['Équipements sur mesure et applications rotatives spécifiques', 'Pour une machine hors des catégories standard, envoyez le plan complet de l’interface tournante et la fonction de chaque circuit. Begapunk peut étudier une configuration sur mesure couvrant le nombre de passages, les orifices, la fixation, l’encombrement, les matériaux, l’étanchéité, la vitesse, la pression, l’environnement de service, la documentation et la quantité.']),
+      hybridRobotTooling: Object.freeze(['Outillage robotisé à commande pneumatique et retour électrique', 'Associez les passages d’air destinés aux préhenseurs ou dispositifs de serrage à des conducteurs électriques pour capteurs, contacts ou identification d’outil sur un outillage robotisé tournant. Définissez chaque fonction pneumatique et chaque circuit électrique ; ne déduisez pas la tension, le courant, le protocole de signal ou le blindage du seul nombre de conducteurs.']),
+      hybridInspectionStations: Object.freeze(['Postes rotatifs d’inspection, de vision et de détection', 'Utilisez les passages pneumatiques pour le serrage des pièces, l’éjection ou la purge d’air, tandis que les conducteurs électriques desservent des capteurs ou circuits d’inspection définis sur un poste tournant. Envoyez la liste des E/S, la tension, le courant, le type de signal, la mise à la terre, le blindage, les connecteurs, le débit d’air et les exigences de cycle.']),
+      hybridAssemblyTables: Object.freeze(['Tables d’assemblage automatisées à circuits pneumatiques et électriques', 'Raccordez les montages pneumatiques et les dispositifs électriques définis à travers un plateau d’assemblage ou une table d’indexage tournante. Fournissez la séquence des postes, la demande pneumatique simultanée, la nomenclature complète des circuits, les exigences de flexion des câbles, le plan de fixation, la vitesse, le cycle de service et l’accès de maintenance.']),
+      hybridPackagingMachines: Object.freeze(['Têtes d’emballage, bouchage et étiquetage équipées de capteurs', 'Transmettez les circuits pneumatiques de préhension, libération, soufflage ou actionnement avec le câblage défini des capteurs ou contacts sur les têtes d’emballage tournantes. Précisez l’environnement de lavage, les caractéristiques électriques nominales, l’affectation des signaux, la cadence, la demande d’air, la stratégie de connectique et le nombre de passages requis.']),
+      multiStationCarousels: Object.freeze(['Carrousels multipostes d’assemblage, d’emballage et d’inspection', 'Utilisez plusieurs passages indépendants pour les fonctions propres à chaque poste : serrage, éjection, soufflage, essai, rejet ou manipulation. Envoyez un tableau des circuits indiquant chaque passage, la demande simultanée, la séquence des postes, l’isolation requise, la pression, le débit et l’accès de maintenance.']),
+    }),
+  }),
   ja: Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
@@ -837,10 +1050,6 @@ const APPLICATION_PANEL_COPY = Object.freeze({
   }),
 });
 
-if (Object.keys(MODEL_APPLICATION_CONFIG).length + Object.keys(MODEL_APPLICATION_COPY).length !== 16) {
-  throw new Error('Equipment-application copy must cover all 16 product models.');
-}
-
 const ENGINEERING_PENDING_MODELS = new Set();
 const ELECTRICAL_LEADS_MODEL = 'BP-3P-S06-0001';
 const EXPECTED_APPLICATION_EVIDENCE = Object.freeze({
@@ -870,6 +1079,21 @@ const CUSTOMER_APPLICATION_COPY = Object.freeze({
     bottleTitle: 'Anwendung: pneumatischer 3-Finger-Zentrischgreifer für Flaschenverschlüsse',
     bottleText: 'BP-2P-08-0001 ist eine weitere Zweikanal-Option für pneumatische 3-Finger-Zentrischgreifer von Flaschenverschlüssen. Vergleichen Sie vor der Auswahl Einbaumaße und Betriebsgrenzen mit BP-2P-16-0001. Im verlinkten Produktionsbeispiel wird BP-2P-16-0001 eingesetzt.',
     bottleLink: 'Anwendung und Modelle vergleichen →',
+  }),
+  fr: Object.freeze({
+    laserTitle: 'Application : mandrin arrière de machine de découpe laser de tubes',
+    laserText: ({ model, passages }) => `${model} comporte ${passages} passages indépendants et est utilisé pour les circuits d’air comprimé du mandrin arrière des machines de découpe laser de tubes. Vérifiez l’affectation des passages, la pression, la vitesse, les dimensions de fixation et le cheminement des flexibles par rapport au plan du mandrin et aux conditions de fonctionnement. Les photos du cas d’application illustrent ce type d’intégration ; sélectionnez le modèle à commander selon les exigences de la machine.`,
+    laserCaseLink: 'Voir le cas d’application →',
+    laserGuideLink: 'Lire le guide d’application →',
+    bottleTitle: 'Application : préhenseur pneumatique à trois mors pour bouchons de bouteille',
+    bottleText: 'BP-2P-08-0001 est une autre option à deux passages pour les préhenseurs pneumatiques à trois mors destinés aux bouchons. Comparez ses dimensions de fixation et ses limites de fonctionnement à celles de BP-2P-16-0001 avant la sélection. L’exemple de production associé utilise BP-2P-16-0001.',
+    bottleLink: 'Comparer l’application et les modèles →',
+    verifiedBottleTitle: 'Application de production : préhenseur pneumatique à trois mors pour bouchons',
+    verifiedBottleText: 'Le BP-2P-16-0001 alimente en air comprimé, par deux passages indépendants, le serrage et le desserrage d’un préhenseur pneumatique à trois mors installé sur la boucheuse de production d’un client. Le préhenseur maintient et fait tourner le bouchon pendant le bouchage. L’identité du client reste confidentielle. Pour une application similaire, vérifiez les fonctions attribuées aux orifices, la pression de service, la vitesse de rotation et l’interface machine par rapport aux exigences de l’équipement et au plan BP-2P-16-0001 en vigueur.',
+    verifiedBottleLink: 'Voir l’application de production →',
+    cncSawTitle: 'Application client : montage sur mesure pour scie circulaire CNC',
+    cncSawText: 'Le BP-2P-130-0001 est installé à l’arrière d’un montage de production client sur une scie à lame circulaire. Deux passages indépendants d’air comprimé assurent le serrage et le desserrage du montage. L’équipement fonctionne à faible vitesse. Pour un montage similaire, vérifiez la vitesse et la pression requises, l’affectation des orifices et l’interface par rapport aux exigences du montage et au plan BP-2P-130-0001 en vigueur.',
+    cncSawLink: 'Voir l’application client →',
   }),
   ja: Object.freeze({
     laserTitle: '用途：レーザー管切断機の後方チャック',
@@ -1006,9 +1230,13 @@ function localizedPassagePhrase(locale, count) {
   // model-specific fact, never from a missing drawing field.
   if (locale === 'en') return `${count}-passage configuration`;
   if (locale === 'de') return `${count}-Kanal-Ausführung`;
+  if (locale === 'fr') return `${count} ${count === 1 ? 'passage' : 'passages'}`;
   if (locale === 'ja') return `${count}流路仕様`;
-  if (count === 1) return 'исполнение с 1 каналом';
-  return `исполнение с ${count} каналами`;
+  if (locale === 'ru') {
+    if (count === 1) return 'исполнение с 1 каналом';
+    return `исполнение с ${count} каналами`;
+  }
+  throw new Error(`Unsupported passage locale: ${locale}`);
 }
 
 function interpolateApplicationCopy(template, values, label) {
@@ -1041,6 +1269,9 @@ function applicationCopyForModel(model, locale, facts) {
     ports: facts.ports ?? '',
     mounting: facts.mounting ?? '',
     electrical: facts.electrical ?? '',
+    compatibleMediaLabel: locale === 'fr' && String(facts.media || '').includes(',')
+      ? 'fluides compatibles'
+      : 'fluide compatible',
   };
   const render = (template, surface) => interpolateApplicationCopy(template, values, `${model}/${locale}: ${surface}`);
   const cards = config.cards.map((key) => {
@@ -1158,6 +1389,7 @@ function relatedModels(model, orderedModels, products) {
 const RELATED_FACT_COPY = Object.freeze({
   en: ({ pressure, speed, bore, envelope }) => `Maximum pressure: ${pressure}; maximum speed: ${speed}. ${bore ? `Through bore: ${bore}.` : `Listed envelope: ${envelope}.`}`,
   de: ({ pressure, speed, bore, envelope }) => `Maximaldruck: ${pressure}; maximale Drehzahl: ${speed}. ${bore ? `Durchgangsbohrung: ${bore}.` : `Angegebene Außenabmessungen: ${envelope}.`}`,
+  fr: ({ pressure, speed, bore, envelope }) => `Pression maximale : ${pressure} ; vitesse maximale : ${speed}. ${bore ? `${bore}.` : `Dimensions hors tout indiquées : ${envelope}.`}`,
   ja: ({ pressure, speed, bore, envelope }) => `最高使用圧力：${pressure}。最高回転数：${speed}。${bore ? `貫通穴：${bore}。` : `記載外形：${envelope}。`}`,
   ru: ({ pressure, speed, bore, envelope }) => `Максимальное давление: ${pressure}; максимальная частота вращения: ${speed}. ${bore ? `Сквозное отверстие: ${bore}.` : `Указанные габариты: ${envelope}.`}`,
 });
@@ -1166,30 +1398,35 @@ const SPECIAL_RELATED_MODEL_COPY = Object.freeze({
   'BP-1P-0003': Object.freeze({
     en: (facts) => `Three suitable media are listed on this model page. Maximum pressure: ${facts.pressure}; maximum speed: ${facts.speed}.`,
     de: (facts) => `Auf dieser Modellseite sind drei geeignete Medien angegeben. Maximaldruck: ${facts.pressure}; maximale Drehzahl: ${facts.speed}.`,
+    fr: (facts) => `Trois fluides compatibles sont indiqués sur cette page. Pression maximale : ${facts.pressure} ; vitesse maximale : ${facts.speed}.`,
     ja: (facts) => `この型式ページには3種類の適用流体が記載されています。最高使用圧力：${facts.pressure}。最高回転数：${facts.speed}。`,
     ru: (facts) => `На странице этой модели указаны три подходящие среды. Максимальное давление: ${facts.pressure}; максимальная частота вращения: ${facts.speed}.`,
   }),
   'BP-1P-0006': Object.freeze({
     en: (facts) => `One shared air circuit with 1 inlet and 8 outlets; this is not an eight-passage configuration. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
     de: (facts) => `Ein gemeinsamer Druckluftkreis mit 1 Eingang und 8 Ausgängen; dies ist keine 8-Kanal-Ausführung. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    fr: (facts) => `Un circuit d’air commun avec 1 entrée et 8 sorties ; il ne s’agit pas d’une configuration à huit passages. Pression maximale ${facts.pressure} · vitesse maximale ${facts.speed}.`,
     ja: (facts) => `1つの共通エア回路を1入口から8出口へ分配する仕様で、8流路仕様ではありません。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
     ru: (facts) => `Один общий пневматический контур с 1 входом и 8 выходами; это не восьмиканальное исполнение. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
   }),
   'BP-2P-95-0005': Object.freeze({
     en: (facts) => `2-in/4-out air layout with 2 clamp and 2 release outlets. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
     de: (facts) => `Druckluftanordnung mit 2 Eingängen und 4 Ausgängen: 2 zum Spannen und 2 zum Lösen. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    fr: (facts) => `Configuration pneumatique à 2 entrées et 4 sorties, dont 2 de serrage et 2 de desserrage. Pression maximale ${facts.pressure} · vitesse maximale ${facts.speed}.`,
     ja: (facts) => `2入力・4出力の空圧構成で、クランプ用2出力とアンクランプ用2出力を備えます。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
     ru: (facts) => `Пневматическая схема 2 входа / 4 выхода: 2 выхода для зажима и 2 для разжима. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
   }),
   'BP-3P-0006': Object.freeze({
     en: (facts) => `Port thread is confirmed from the current model-specific drawing before fitting selection. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
     de: (facts) => `Das Anschlussgewinde wird vor der Auswahl der Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    fr: (facts) => `Le filetage des orifices est confirmé sur le plan à jour propre au modèle avant la sélection des raccords. Pression maximale ${facts.pressure} · vitesse maximale ${facts.speed}.`,
     ja: (facts) => `ポートねじは継手選定前に最新の型式専用図面で確認します。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
     ru: (facts) => `Резьба порта подтверждается по актуальному чертежу конкретной модели до выбора фитингов. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
   }),
   'BP-3P-S06-0001': Object.freeze({
     en: (facts) => `3 pneumatic passages plus 6 electrical leads; confirm the air inlet, circuit allocation, and electrical ratings. ${facts.pressure} · ${facts.speed}.`,
     de: (facts) => `3 Pneumatikkanäle plus 6 elektrische Leitungen; Lufteinlass, Kreiszuordnung und elektrische Nennwerte bestätigen. ${facts.pressure} · ${facts.speed}.`,
+    fr: (facts) => `3 passages pneumatiques et 6 conducteurs électriques ; confirmez l’entrée d’air, l’affectation des circuits et les caractéristiques électriques nominales. ${facts.pressure} · ${facts.speed}.`,
     ja: (facts) => `空圧3流路と電気リード6本の仕様です。エア入口、回路割当、電気定格をご確認ください。${facts.pressure}・${facts.speed}。`,
     ru: (facts) => `3 пневматических канала и 6 электрических выводов; подтвердите вход воздуха, распределение цепей и электрические номиналы. ${facts.pressure} · ${facts.speed}.`,
   }),
@@ -1232,6 +1469,7 @@ function renderCustomerApplicationEvidence(model, locale, item) {
     const passages = {
       en: model === 'BP-2P-08-0001' ? 'two' : 'three',
       de: model === 'BP-2P-08-0001' ? 'zwei' : 'drei',
+      fr: model === 'BP-2P-08-0001' ? 'deux' : 'trois',
       ja: model === 'BP-2P-08-0001' ? '2' : '3',
       ru: model === 'BP-2P-08-0001' ? 'два' : 'три',
     }[locale];
@@ -1240,6 +1478,16 @@ function renderCustomerApplicationEvidence(model, locale, item) {
   if (model === 'BP-2P-08-0001'
       && item.key === 'confirmed-application-fit:bottle-capping-three-jaw-gripper') {
     return `<div class="compat-item" data-confirmed-application-fit="bottle-capping-three-jaw-gripper"><strong>${copy.bottleTitle}</strong><span style="display:block;font-size:0.85rem;color:var(--text-light);margin-top:4px;">${copy.bottleText} <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">${copy.bottleLink}</a></span></div>`;
+  }
+  if (locale === 'fr' && model === 'BP-2P-16-0001'
+      && item.key === 'verified-application:bottle-capping-three-jaw-gripper') {
+    return `<div class="compat-item" data-verified-application="bottle-capping-three-jaw-gripper"><strong>${copy.verifiedBottleTitle}</strong><span style="display:block;font-size:0.85rem;color:var(--text-light);margin-top:4px;">${copy.verifiedBottleText} <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">${copy.verifiedBottleLink}</a></span></div>`;
+  }
+  if (locale === 'fr' && model === 'BP-2P-130-0001'
+      && item.key === 'verified-application:cnc-circular-saw-fixture') {
+    return `<!-- CNC-SAW-FIXTURE-PRODUCT:START -->
+<div class="compat-item" data-verified-application="cnc-circular-saw-fixture"><strong>${copy.cncSawTitle}</strong><span style="display:block;font-size:0.85rem;color:var(--text-light);margin-top:4px;">${copy.cncSawText} <a href="application-cnc-pneumatic-clamping.html#verified-bp-2p-130-cnc-saw-fixture">${copy.cncSawLink}</a></span></div>
+<!-- CNC-SAW-FIXTURE-PRODUCT:END -->`;
   }
   return item.html;
 }
@@ -1301,7 +1549,7 @@ function renderDeepContent(model, product, locale, orderedModels, products, appl
      <div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>
     </div>`).join('\n');
   // The six installation steps already contain the actionable checks. Keep the
-  // same lean structure in all four languages instead of adding a duplicate
+  // same lean structure in every active language instead of adding a duplicate
   // inspection-interval card to only some locales.
   const maintenanceBlock = '';
   const commonCards = copy.commonCards.map(([title, text]) => `   <div class="app-detail-card"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div>`).join('\n');
@@ -1472,6 +1720,27 @@ function assertUiJsonProperties(productNode, ui, model, locale) {
   }
 }
 
+function synchronizeUiJsonProperties(productNode, ui, model, locale) {
+  if (!Array.isArray(productNode.additionalProperty)) {
+    throw new Error(`${model}/${locale}: Product JSON-LD additionalProperty missing`);
+  }
+  for (const field of ui.requiredJsonFields) {
+    const name = ui.jsonPropertyNames[field];
+    const matches = productNode.additionalProperty.filter((item) => item?.name === name);
+    if (matches.length !== 1) {
+      throw new Error(`${model}/${locale}: Product JSON-LD ${field} property is missing or duplicated`);
+    }
+    matches[0].value = ui.fields[field];
+  }
+  if (ui.hybridInterfacePropertyName) {
+    const matches = productNode.additionalProperty.filter((item) => item?.name === ui.hybridInterfacePropertyName);
+    if (matches.length !== 1) {
+      throw new Error(`${model}/${locale}: Product JSON-LD hybrid interface property is missing or duplicated`);
+    }
+    matches[0].value = ui.keyValues.channels;
+  }
+}
+
 function locateProductJsonScript(value, label) {
   const scripts = [];
   const regex = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi;
@@ -1504,11 +1773,7 @@ function updateStructuredData(value, model, product, locale, contract, ui) {
   if (!breadcrumb || !productNode) throw new Error(`${model}/${locale}: Product/Breadcrumb JSON-LD nodes missing`);
   const lastCrumb = breadcrumb.itemListElement?.at(-1);
   if (!lastCrumb) throw new Error(`${model}/${locale}: final JSON-LD breadcrumb missing`);
-  if (ui.hybridInterfacePropertyName) {
-    const hybridProperties = productNode.additionalProperty?.filter((item) => item?.name === ui.hybridInterfacePropertyName) ?? [];
-    if (hybridProperties.length !== 1) throw new Error(`${model}/${locale}: Product JSON-LD hybrid interface property is missing or duplicated`);
-    hybridProperties[0].value = ui.keyValues.channels;
-  }
+  synchronizeUiJsonProperties(productNode, ui, model, locale);
   assertUiJsonProperties(productNode, ui, model, locale);
   lastCrumb.name = contract.breadcrumb;
   productNode.name = ui.productName || contract.h1;
@@ -1522,7 +1787,7 @@ function updateStructuredData(value, model, product, locale, contract, ui) {
 
 function updateBreadcrumb(value, locale, contract, label) {
   const block = `<div class="breadcrumb">
-   <a href="index.html">${escapeHtml(COPY[locale].home)}</a> /
+   <a href="./">${escapeHtml(COPY[locale].home)}</a> /
    <a href="products.html">${escapeHtml(COPY[locale].products)}</a> /
    ${escapeHtml(contract.breadcrumb)}
   </div>`;
@@ -1558,7 +1823,7 @@ function updateFirstViewIdentity(value, model, locale, contract) {
   const encodedLabel = encodeURIComponent(contract.linkLabel);
   next = next.replace(/(href="contact\.html\?request=(?:quote|3d-step)&amp;model=[^"]*?&amp;product=)[^&"]+(&amp;source=)/gi, `$1${encodedLabel}$2`);
 
-  const localePath = locale === 'en' ? '' : `${locale}/`;
+  const localePath = locale === SOURCE_LOCALE ? '' : `${locale}/`;
   const publicUrl = `https://www.begapunk.com/${localePath}${model}.html`;
   next = replaceOnce(
     next,
@@ -1698,7 +1963,7 @@ function assertLocalizedShareTargets(value, model, locale, label) {
   const targets = [...block.matchAll(/data-share-channel="([^"]+)"\s+href="([^"]+)"/gi)];
   const expectedChannels = ['linkedin', 'x', 'facebook', 'whatsapp'];
   if (targets.length !== expectedChannels.length) throw new Error(`${label}: expected four share targets, found ${targets.length}`);
-  const localePath = locale === 'en' ? '' : `${locale}/`;
+  const localePath = locale === SOURCE_LOCALE ? '' : `${locale}/`;
   const publicUrl = `https://www.begapunk.com/${localePath}${model}.html`;
   for (const channel of expectedChannels) {
     const target = targets.find((match) => match[1].toLowerCase() === channel);
@@ -1801,7 +2066,7 @@ function findRisks(value, model, product) {
       + text.slice(relatedStart, relatedEnd).replace(/[^\r\n]/g, ' ')
       + text.slice(relatedEnd);
   }
-  const localeMatch = /<html\b[^>]*\blang="(en|de|ja|ru)"/i.exec(value);
+  const localeMatch = new RegExp(`<html\\b[^>]*\\blang="(${ACTIVE_LOCALE_CODES.map(escapeRegExp).join('|')})"`, 'i').exec(value);
   const locale = localeMatch?.[1]?.toLowerCase();
   if (locale && model !== 'BP-1P-0003' && product.status !== 'identity-pending') {
     const mediaFaq = productFaq(model, productFacts(model, product, locale), locale).items[2];
@@ -2032,7 +2297,13 @@ async function main() {
   const manifest = JSON.parse(await fs.readFile(MANIFEST_PATH, 'utf8'));
   const products = manifest.products ?? {};
   const orderedModels = Object.keys(products);
-  if (orderedModels.length !== 16) throw new Error(`Expected 16 drawing-manifest products, found ${orderedModels.length}`);
+  if (!orderedModels.length) throw new Error('The drawing manifest does not contain any products.');
+  const applicationModels = [...Object.keys(MODEL_APPLICATION_CONFIG), ...Object.keys(MODEL_APPLICATION_COPY)];
+  const missingApplicationModels = orderedModels.filter((model) => !applicationModels.includes(model));
+  const unexpectedApplicationModels = applicationModels.filter((model) => !orderedModels.includes(model));
+  if (new Set(applicationModels).size !== applicationModels.length || missingApplicationModels.length || unexpectedApplicationModels.length) {
+    throw new Error(`Equipment-application copy must match the drawing manifest exactly (missing: ${missingApplicationModels.join(', ') || 'none'}; unexpected or duplicate: ${unexpectedApplicationModels.join(', ') || (new Set(applicationModels).size !== applicationModels.length ? 'duplicate model' : 'none')}).`);
+  }
 
   const plans = [];
   for (const model of orderedModels) {
@@ -2052,7 +2323,7 @@ async function main() {
   for (const item of changed) for (const surface of item.surfaces) surfaceCounts.set(surface, (surfaceCounts.get(surface) ?? 0) + 1);
 
   console.log(`Drawing-backed long-form product content: ${mode}`);
-  console.log(`Pages scanned: ${plans.length} (16 models × 4 languages)`);
+  console.log(`Pages scanned: ${plans.length} (${orderedModels.length} models × ${Object.keys(LOCALES).length} languages)`);
   console.log(`Pages requiring synchronization: ${changed.length}`);
   if (changed.length) console.log(`Files requiring synchronization: ${changed.map((item) => item.relativePath).join(', ')}`);
   console.log(`Changed surfaces: ${[...surfaceCounts.entries()].map(([name, count]) => `${name}=${count}`).join(', ') || 'none'}`);

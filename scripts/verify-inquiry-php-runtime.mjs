@@ -27,6 +27,7 @@ const INVALID_EMAIL = 'invalid@@example.invalid';
 const TEST_PASSWORD_MARKER = 'non-secret-test-value';
 const LONG_NAME = 'A'.repeat(101);
 const LONG_QUANTITY = 'Q'.repeat(101);
+const LONG_CLICK_ID = 'G'.repeat(301);
 
 const TEST_CASES = [
   {
@@ -166,6 +167,20 @@ const TEST_CASES = [
       language: 'en',
       code: 'field_too_long',
       message: 'One or more fields exceed the allowed length.',
+    },
+  },
+  {
+    group: 'loopback-smtp-attribution',
+    name: 'POST overlong gclid FR JSON',
+    method: 'POST',
+    accept: 'application/json',
+    form: { source_language: 'fr', gclid: LONG_CLICK_ID },
+    expected: {
+      format: 'json',
+      status: 422,
+      language: 'fr',
+      code: 'field_too_long',
+      message: 'Un ou plusieurs champs dépassent la longueur autorisée.',
     },
   },
 ];
@@ -468,6 +483,7 @@ function assertNoDiagnosticLeak(testCase, response, tempRoot) {
   ensure(!response.body.includes(tempRoot), `${testCase.name}: response exposed the temporary path.`);
   ensure(!response.body.includes(TEST_PASSWORD_MARKER), `${testCase.name}: response exposed the SMTP test marker.`);
   ensure(!response.body.includes(LONG_QUANTITY), `${testCase.name}: response echoed the overlong quantity.`);
+  ensure(!response.body.includes(LONG_CLICK_ID), `${testCase.name}: response echoed the overlong click identifier.`);
 }
 
 function validateResponse(testCase, response, tempRoot) {
@@ -511,7 +527,7 @@ function validateResponse(testCase, response, tempRoot) {
   ensure(headerValue(response, 'content-security-policy').length > 0, `${testCase.name}: Content-Security-Policy is missing.`);
   ensure(response.body.includes(`href="${expected.contactPath}"`), `${testCase.name}: localized Contact return path is missing.`);
   ensure(response.body.includes(escapeHtml(expected.message)), `${testCase.name}: localized HTML message is incorrect.`);
-  for (const marker of [TEST_EMAIL, INVALID_EMAIL, TEST_PASSWORD_MARKER, LONG_NAME, LONG_QUANTITY]) {
+  for (const marker of [TEST_EMAIL, INVALID_EMAIL, TEST_PASSWORD_MARKER, LONG_NAME, LONG_QUANTITY, LONG_CLICK_ID]) {
     ensure(!response.body.includes(marker), `${testCase.name}: response echoed isolated test data.`);
   }
 }
@@ -542,7 +558,7 @@ async function closeSmtpTrap(trap) {
 
 function sanitizeFailureText(value, tempRoot) {
   let text = String(value ?? 'Unknown failure');
-  for (const marker of [TEST_EMAIL, INVALID_EMAIL, 'rfq-recipient@example.invalid', TEST_PASSWORD_MARKER, LONG_NAME, LONG_QUANTITY]) {
+  for (const marker of [TEST_EMAIL, INVALID_EMAIL, 'rfq-recipient@example.invalid', TEST_PASSWORD_MARKER, LONG_NAME, LONG_QUANTITY, LONG_CLICK_ID]) {
     text = text.replaceAll(marker, '[redacted-test-value]');
   }
   if (tempRoot) text = text.replaceAll(tempRoot, '[temporary-root]');
@@ -582,7 +598,7 @@ async function main() {
   process.once('SIGTERM', handleSigterm);
 
   try {
-    ensure(TEST_CASES.length === 9, `Runtime matrix must contain exactly 9 cases; found ${TEST_CASES.length}.`);
+    ensure(TEST_CASES.length === 10, `Runtime matrix must contain exactly 10 cases; found ${TEST_CASES.length}.`);
     ensure(
       !expectedPhpMinor || SUPPORTED_PHP_MINORS.has(expectedPhpMinor),
       `BEGAPUNK_EXPECTED_PHP_MINOR must be 8.2 or 8.3; found ${expectedPhpMinor || 'empty'}.`,
@@ -627,10 +643,12 @@ async function main() {
     const siteDirectory = path.join(tempRoot, 'site');
     const withoutSmtpDirectory = path.join(tempRoot, 'runtime-without-smtp');
     const loopbackSmtpDirectory = path.join(tempRoot, 'runtime-loopback-smtp');
+    const attributionSmtpDirectory = path.join(tempRoot, 'runtime-loopback-smtp-attribution');
     await Promise.all([
       fsp.mkdir(siteDirectory),
       fsp.mkdir(withoutSmtpDirectory),
       fsp.mkdir(loopbackSmtpDirectory),
+      fsp.mkdir(attributionSmtpDirectory),
     ]);
 
     copiedFile = path.join(siteDirectory, 'send_inquiry.php');
@@ -657,19 +675,32 @@ async function main() {
       runtimeDirectory: loopbackSmtpDirectory,
       smtp: { port: smtpTrap.port },
     }, phpServers);
+    const attributionSmtpServer = await startPhpServer({
+      phpBin,
+      siteDirectory,
+      runtimeDirectory: attributionSmtpDirectory,
+      smtp: { port: smtpTrap.port },
+    }, phpServers);
+    const serverByGroup = {
+      'without-smtp': withoutSmtpServer,
+      'loopback-smtp': loopbackSmtpServer,
+      'loopback-smtp-attribution': attributionSmtpServer,
+    };
 
     for (const testCase of TEST_CASES) {
-      const server = testCase.group === 'without-smtp' ? withoutSmtpServer : loopbackSmtpServer;
+      const server = serverByGroup[testCase.group];
+      ensure(server, 'Runtime test case uses an unknown isolation group.');
       ensure(!interruptionSignal, `Runtime verification interrupted by ${interruptionSignal}.`);
       const response = await requestLocalPhp(server.port, testCase, networkAudit);
       validateResponse(testCase, response, tempRoot);
       ensure(smtpTrap.connections === 0, `${testCase.name}: SMTP trap received a connection.`);
       passedCases += 1;
     }
-    ensure(passedCases === TEST_CASES.length, 'Runtime test matrix did not complete all nine cases.');
-    ensure(networkAudit.httpRequests === 9, `Runtime verification made ${networkAudit.httpRequests} HTTP request(s), expected exactly 9.`);
+    ensure(passedCases === TEST_CASES.length, 'Runtime test matrix did not complete all ten cases.');
+    ensure(networkAudit.httpRequests === 10, `Runtime verification made ${networkAudit.httpRequests} HTTP request(s), expected exactly 10.`);
     await assertRateDirectory(withoutSmtpDirectory, 1);
     await assertRateDirectory(loopbackSmtpDirectory, 5);
+    await assertRateDirectory(attributionSmtpDirectory, 1);
     ensure(smtpTrap.connections === 0, 'SMTP trap received a connection.');
     ensure([...networkAudit.requestedHosts].join(',') === '127.0.0.1', 'An external HTTP host was accessed.');
     const [finalSourceHash, finalCopiedHash] = await Promise.all([

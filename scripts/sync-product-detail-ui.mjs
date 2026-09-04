@@ -1,21 +1,26 @@
 import fs from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
 import { drawingBackedUiContract, drawingBackedPublicStep } from './lib/drawing-backed-product-facts.mjs';
+import { SITE_NAVIGATION_SCRIPT_VERSION, SITE_STYLE_VERSION } from './lib/site-asset-versions.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MODE = process.argv[2] || '';
+const SITE_CONFIG = JSON.parse(readFileSync(path.join(ROOT, 'i18n', 'config.json'), 'utf8'));
+const SOURCE_LOCALE = SITE_CONFIG.sourceLanguage?.code;
+const ACTIVE_LOCALES = Object.freeze([...new Set([SOURCE_LOCALE, ...(SITE_CONFIG.activeLanguageCodes || [])])]);
 const EXPECTED_MODEL_COUNT = 16;
-const EXPECTED_PAGE_COUNT = 64;
+const EXPECTED_PAGE_COUNT = EXPECTED_MODEL_COUNT * ACTIVE_LOCALES.length;
 const EXPECTED_STYLE_HASH = '7D81DA13137D9D1435ABCABF962E8E46C20DB03F6B52F8BA45F2E71E9EAAF9FB';
 const EXPECTED_SHARED_CSS_HASH = 'AE6C0B5B1635D80BE23A1705F50AB53A354CD02BCA705194DE3E8BEAEF26F818';
-const EXPECTED_SHARED_JS_HASH = 'C3881432F1C303A918E38752AC66A23973896E90C45F616F7EA0F5C464ABEA59';
+const EXPECTED_SHARED_JS_HASH = '7F506B9D3CEB495F64922423370F9A9765F4C78FC2B645D8B291D5B92A1F8EBC';
 const PRODUCT_STYLE_VERSION = '20260828-product-compat2';
-const PRODUCT_SCRIPT_VERSION = '20260822-product-faq1';
-const LOCALE_PREFIXES = ['', 'de', 'ja', 'ru'];
+const PRODUCT_SCRIPT_VERSION = '20260904-product-ui3';
+const LOCALE_PREFIXES = Object.freeze(ACTIVE_LOCALES.map((locale) => (locale === SOURCE_LOCALE ? '' : locale)));
 const PANEL_NAMES = ['specs', 'compat', 'install', 'downloads'];
 const JUMP_LINKS = Object.freeze([
   Object.freeze({ key: 'specs', href: '#panel-specs' }),
@@ -45,6 +50,13 @@ const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
   'BP-4P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-8P-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
 });
+const REQUIRED_RELATED_RESOURCE_OVERRIDE = Object.freeze({
+  locale: 'fr',
+  model: 'BP-3P-S06-0001',
+  href: 'case-bp-3p-s06-sensor-monitored-chuck.html',
+  title: 'Application réelle : mandrin pneumatique surveillé par des capteurs',
+  description: 'Voir la photo d’installation du BP-3P-S06-0001 pour le serrage, le desserrage, le soufflage et le transfert de signaux de capteurs externes.',
+});
 const MANUAL_COPY_PATH = path.join(ROOT, 'i18n', 'manual', 'product-detail-ui.json');
 const EXPECTED_UI_COPY = Object.freeze({
   en: Object.freeze({
@@ -58,6 +70,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Key product parameters',
     primaryActionLabel: 'Get a Quote',
     secondaryActionLabel: 'Download 3D Model (.step)',
+    drawingDownloadLabel: 'Download 2D Drawing (PDF)',
     stepDownloadLabel: 'Download 3D Model (.step)',
     leadTimeValue: 'About 20 calendar days after payment',
   }),
@@ -72,8 +85,24 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Wichtige Produktparameter',
     primaryActionLabel: 'Angebot anfordern',
     secondaryActionLabel: 'STEP-Datei anfordern',
+    drawingDownloadLabel: '2D-Zeichnung (PDF) herunterladen',
     stepDownloadLabel: '3D-Modell (.step) herunterladen',
     leadTimeValue: 'Etwa 20 Kalendertage nach Zahlungseingang',
+  }),
+  fr: Object.freeze({
+    skipLink: 'Aller au contenu principal',
+    productInformationLabel: 'Informations produit',
+    modelLabel: 'Modèle',
+    productImagesLabel: 'Images du produit',
+    onThisPageLabel: 'Sur cette page',
+    jumpToLabel: 'Accéder à :',
+    shareMenuLabel: 'Partager',
+    keyProductParametersLabel: 'Paramètres principaux du produit',
+    primaryActionLabel: 'Demander un devis',
+    secondaryActionLabel: 'Demander le fichier STEP',
+    drawingDownloadLabel: 'Télécharger le plan 2D (PDF)',
+    stepDownloadLabel: 'Télécharger le modèle 3D (.step)',
+    leadTimeValue: 'Environ 20 jours calendaires après paiement',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
@@ -86,6 +115,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: '主要製品仕様',
     primaryActionLabel: '見積もりを依頼',
     secondaryActionLabel: 'STEPデータを依頼',
+    drawingDownloadLabel: '2D図面（PDF）をダウンロード',
     stepDownloadLabel: '3Dモデル（.step）をダウンロード',
     leadTimeValue: '入金後、約20暦日',
   }),
@@ -100,6 +130,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     keyProductParametersLabel: 'Основные параметры изделия',
     primaryActionLabel: 'Запросить предложение',
     secondaryActionLabel: 'Запросить файл STEP',
+    drawingDownloadLabel: 'Скачать 2D-чертёж (PDF)',
     stepDownloadLabel: 'Скачать 3D-модель (.step)',
     leadTimeValue: 'Около 20 календарных дней после оплаты',
   }),
@@ -293,7 +324,7 @@ function regexForLegacyFunction(block) {
 
 function localeForFile(relativePath) {
   const prefix = relativePath.includes('/') ? relativePath.split('/')[0] : '';
-  return prefix || 'en';
+  return prefix || SOURCE_LOCALE;
 }
 
 function resourcePrefix(relativePath) {
@@ -301,7 +332,7 @@ function resourcePrefix(relativePath) {
 }
 
 function validateManualCopy(contract) {
-  if (contract?.schemaVersion !== 5) throw new Error('Product-detail UI schemaVersion must be 5.');
+  if (contract?.schemaVersion !== 6) throw new Error('Product-detail UI schemaVersion must be 6.');
   if (contract?.review?.method !== 'AI-assisted target-market line-by-line localization review') {
     throw new Error('Product-detail UI review method is missing or unsupported.');
   }
@@ -309,8 +340,9 @@ function validateManualCopy(contract) {
     throw new Error('Product-detail UI data must not claim independent native-speaker review.');
   }
   const localeKeys = Object.keys(contract.locales || {}).sort();
-  if (localeKeys.join(',') !== ['de', 'en', 'ja', 'ru'].join(',')) {
-    throw new Error('Product-detail UI locales must be exactly EN, DE, JA, and RU.');
+  const expectedLocaleKeys = [...ACTIVE_LOCALES].sort();
+  if (localeKeys.join(',') !== expectedLocaleKeys.join(',')) {
+    throw new Error(`Product-detail UI locales must exactly match active locales: ${expectedLocaleKeys.join(', ')}.`);
   }
 
   const expectedModels = Object.keys(EXPECTED_MODEL_KEY_SPEC_KEYS).sort();
@@ -323,6 +355,47 @@ function validateManualCopy(contract) {
     const expected = EXPECTED_MODEL_KEY_SPEC_KEYS[model];
     if (!Array.isArray(actual) || actual.length !== expected.length || actual.join(',') !== expected.join(',')) {
       throw new Error(`${model}: key-spec category order does not match the approved model contract.`);
+    }
+  }
+
+  const relatedOverrides = contract.relatedResourceOverrides;
+  if (!relatedOverrides || typeof relatedOverrides !== 'object' || Array.isArray(relatedOverrides)) {
+    throw new Error('Product-detail UI relatedResourceOverrides must be an object.');
+  }
+  for (const [locale, localeOverrides] of Object.entries(relatedOverrides)) {
+    if (!ACTIVE_LOCALES.includes(locale) || !localeOverrides || typeof localeOverrides !== 'object' || Array.isArray(localeOverrides)) {
+      throw new Error(`Invalid related-resource locale contract: ${locale}.`);
+    }
+    for (const [scope, overrides] of Object.entries(localeOverrides)) {
+      if ((scope !== '*' && !expectedModels.includes(scope)) || !Array.isArray(overrides) || !overrides.length) {
+        throw new Error(`${locale}/${scope}: invalid related-resource override list.`);
+      }
+      const hrefs = new Set();
+      for (const override of overrides) {
+        if (!override || typeof override !== 'object' || Array.isArray(override)
+            || Object.keys(override).sort().join(',') !== ['description', 'href', 'title'].join(',')) {
+          throw new Error(`${locale}/${scope}: related-resource override keys do not match the contract.`);
+        }
+        for (const key of ['href', 'title', 'description']) {
+          if (typeof override[key] !== 'string' || !override[key].trim()) {
+            throw new Error(`${locale}/${scope}: related-resource ${key} must be a non-empty string.`);
+          }
+        }
+        if (!/^[a-z0-9-]+\.html$/i.test(override.href)) {
+          throw new Error(`${locale}/${scope}: related-resource href must be a local HTML page.`);
+        }
+        if (hrefs.has(override.href)) throw new Error(`${locale}/${scope}: duplicate related-resource href ${override.href}.`);
+        hrefs.add(override.href);
+      }
+    }
+  }
+  const requiredOverride = [
+    ...(relatedOverrides[REQUIRED_RELATED_RESOURCE_OVERRIDE.locale]?.['*'] || []),
+    ...(relatedOverrides[REQUIRED_RELATED_RESOURCE_OVERRIDE.locale]?.[REQUIRED_RELATED_RESOURCE_OVERRIDE.model] || []),
+  ].find((item) => item.href === REQUIRED_RELATED_RESOURCE_OVERRIDE.href);
+  for (const key of ['href', 'title', 'description']) {
+    if (requiredOverride?.[key] !== REQUIRED_RELATED_RESOURCE_OVERRIDE[key]) {
+      throw new Error(`French BP-3P-S06-0001 related-resource ${key} does not match the approved localization.`);
     }
   }
 
@@ -342,6 +415,7 @@ function validateManualCopy(contract) {
     'secondaryActionLabel',
     'shareMenuLabel',
     'skipLink',
+    'drawingDownloadLabel',
     'stepDownloadLabel',
   ].sort();
   const scalarKeys = Object.keys(EXPECTED_UI_COPY.en);
@@ -394,7 +468,7 @@ function validateManualCopy(contract) {
     for (const model of Object.keys(overrides)) {
       for (const key of Object.keys(overrides[model] || {})) {
         const value = overrides[model][key];
-        const allowed = (model === 'BP-2P-50-0001' && key === 'media')
+        const allowed = (model === 'BP-2P-50-0001' && ['media', 'protection'].includes(key))
           || ['price', 'moq', 'warranty', 'delivery', 'passages', 'quality'].includes(key);
         if (!allowed || typeof value !== 'string' || !value.trim()) {
           throw new Error(`${locale}.keySpecValueOverrides contains an unsupported or empty override (${model}.${key}).`);
@@ -657,6 +731,7 @@ function validateFinalStructure(source, relativePath, copy, contract) {
   const supportingActionIsVerifiedDrawing = supportingHref.includes('request=verified-drawing');
   let utilityValid = utilityRegion.length === 1
     && (supportingActionIsPdf || supportingActionIsVerifiedDrawing)
+    && utilityLinks.eq(0).text().trim() === copy.drawingDownloadLabel
     && utilityRegion.find('a[href="product-comparison.html"]').length === 0;
   if (hasPublicStep) {
     const stepHref = utilityLinks.eq(1).attr('href') || '';
@@ -699,7 +774,11 @@ function validateFinalStructure(source, relativePath, copy, contract) {
         errors.push(`key product parameter ${index + 1}`);
       }
       const overrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
-      const expectedValue = overrideKeys.includes(key) && copy.keySpecValueOverrides?.[model]?.[key]
+      const locale = localeForFile(relativePath);
+      const allowLocalizedDrawingOverride = locale === 'fr'
+        && model === 'BP-2P-50-0001'
+        && ['media', 'protection'].includes(key);
+      const expectedValue = (overrideKeys.includes(key) || allowLocalizedDrawingOverride) && copy.keySpecValueOverrides?.[model]?.[key]
         ? copy.keySpecValueOverrides[model][key]
         : (key === 'leadTime' ? copy.leadTimeValue : drawingContract?.keyValues?.[key]);
       if (expectedValue && item.children('dd').text().replace(/\s+/g, ' ').trim() !== expectedValue.replace(/\s+/g, ' ').trim()) {
@@ -798,8 +877,11 @@ function validateFinalStructure(source, relativePath, copy, contract) {
       || summary.length !== 1 || summary.attr('onclick') !== undefined
       || summary.attr('aria-expanded') !== undefined) errors.push('FAQ source state');
   });
-  if ($('.thumbnail-row').length !== 1 || thumbLinks.length !== 3 || $('.thumb-link').length !== 3
-    || $('.thumb').length !== 3 || thumbLinks.filter('[aria-current="true"]').length !== 1) {
+  const thumbnailHrefs = thumbLinks.map((_, element) => $(element).attr('href') || '').get();
+  if ($('.thumbnail-row').length !== 1 || ![2, 3].includes(thumbLinks.length)
+    || $('.thumb-link').length !== thumbLinks.length || $('.thumb').length !== thumbLinks.length
+    || thumbLinks.filter('[aria-current="true"]').length !== 1
+    || new Set(thumbnailHrefs).size !== thumbnailHrefs.length) {
     errors.push('thumbnail count/state');
   }
   thumbLinks.each((_, element) => {
@@ -835,7 +917,7 @@ function transformLegacyPage(source, relativePath, contract) {
   const styleBlocks = source.match(/<style>[\s\S]*?<\/style>/g);
   let next = source;
 
-  const globalCss = `<link rel="stylesheet" href="${prefix}css/style.css?v=20260817-cls1">`;
+  const globalCss = `<link rel="stylesheet" href="${prefix}css/style.css?v=${SITE_STYLE_VERSION}">`;
   const productCss = `<link rel="stylesheet" href="${prefix}css/product-detail.css?v=${PRODUCT_STYLE_VERSION}">`;
   next = replaceLiteralOnce(next, globalCss, `${globalCss}${eol} ${productCss}`, `${relativePath} CSS resource`);
   next = replaceLiteralOnce(next, styleBlocks[0], '', `${relativePath} inline CSS removal`);
@@ -919,7 +1001,7 @@ function transformLegacyPage(source, relativePath, contract) {
     next = replaceRegexExact(next, regexForLegacyFunction(block), '', 1, `${relativePath} legacy function`);
   }
 
-  const navScript = `<script defer="" src="${prefix}js/site-navigation.js?v=20260808-nav1"></script>`;
+  const navScript = `<script defer="" src="${prefix}js/site-navigation.js?v=${SITE_NAVIGATION_SCRIPT_VERSION}"></script>`;
   const productScript = `<script defer src="${prefix}js/product-detail.js?v=${PRODUCT_SCRIPT_VERSION}"></script>`;
   next = replaceLiteralOnce(next, navScript, `${productScript}${eol}${navScript}`, `${relativePath} JS resource`);
 
@@ -933,6 +1015,9 @@ function firstViewProtectedSnapshot(source) {
   $('script[src*="js/product-detail.js?v="]').attr('src', '__PRODUCT_DETAIL_JS__');
   $('link[rel="stylesheet"][href*="product-detail-first-view-pilot.css"]').remove();
   $('body').removeClass('page-product-detail-pilot');
+  $('body > a.skip-link[data-search-exclude][href="#main-content"]').text('__SKIP_LINK__');
+  $('.pd-gallery[role="region"]').attr('aria-label', '__PRODUCT_IMAGES_LABEL__');
+  $('.pd-info[role="region"]').attr('aria-label', '__PRODUCT_INFORMATION_LABEL__');
   const information = $('.pd-info');
   information.children('div[style]').filter((_, element) => (
     String($(element).attr('style') || '').includes('display:flex')
@@ -953,6 +1038,36 @@ function firstViewProtectedSnapshot(source) {
 
 function anchorHref(anchor) {
   return anchor.match(/\bhref="([^"]+)"/)?.[1] || '';
+}
+
+function deduplicateFinalThumbnails(source, relativePath) {
+  const thumbnailPattern = /<a\b(?=[^>]*\bclass="[^"]*\bthumb-link\b[^"]*")(?=[^>]*\bhref="([^"]+)")[^>]*>[\s\S]*?<\/a>/gi;
+  const matches = [...source.matchAll(thumbnailPattern)];
+  if (matches.length === 0) return source;
+  if (matches.length < 2 || matches.length > 3) {
+    throw new Error(`${relativePath}: expected two or three product thumbnails; found ${matches.length}.`);
+  }
+
+  const seen = new Set();
+  let duplicateCount = 0;
+  const next = source.replace(thumbnailPattern, (markup, href) => {
+    if (!seen.has(href)) {
+      seen.add(href);
+      return markup;
+    }
+    duplicateCount += 1;
+    return '';
+  });
+  if (seen.size < 2) {
+    throw new Error(`${relativePath}: product gallery must contain at least two unique images.`);
+  }
+  if (duplicateCount > 1) {
+    throw new Error(`${relativePath}: product gallery contains more than one duplicate thumbnail.`);
+  }
+  return next.replace(
+    /(<div\b[^>]*\bclass="[^"]*\bthumbnail-row\b[^"]*"[^>]*>[\s\S]*?<\/div>)/gi,
+    (row) => row.replace(/^[ \t]+$/gm, ''),
+  );
 }
 
 function asUtilityLink(anchor, relativePath) {
@@ -1084,7 +1199,10 @@ function keySpecValuesFromDocument($, relativePath, contract, copy) {
   return keys.map((key, index) => {
     if (key === 'leadTime') return copy.leadTimeValue;
     const commercialOverrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
-    const override = commercialOverrideKeys.includes(key)
+    const allowLocalizedDrawingOverride = locale === 'fr'
+      && model === 'BP-2P-50-0001'
+      && ['media', 'protection'].includes(key);
+    const override = commercialOverrideKeys.includes(key) || allowLocalizedDrawingOverride
       ? copy.keySpecValueOverrides?.[model]?.[key]
       : undefined;
     if (override && override.trim()) return override.trim();
@@ -1133,8 +1251,28 @@ function transformFirstView(source, relativePath, contract) {
 
   next = replaceRegexExact(
     next,
+    /(<a\b(?=[^>]*\bclass=(['"])[^'"]*\bskip-link\b[^'"]*\2)(?=[^>]*\bhref=(['"])#main-content\3)[^>]*>)[\s\S]*?(<\/a>)/gi,
+    (_, start, _classQuote, _hrefQuote, end) => `${start}${escapeText(copy.skipLink)}${end}`,
+    1,
+    `${relativePath} skip link label`,
+  );
+  for (const [className, label, description] of [
+    ['pd-gallery', copy.productImagesLabel, 'product image region'],
+    ['pd-info', copy.productInformationLabel, 'product information region'],
+  ]) {
+    next = replaceRegexExact(
+      next,
+      new RegExp(`<div\\b(?=[^>]*\\bclass=(['"])[^'"]*\\b${className}\\b[^'"]*\\1)(?=[^>]*\\brole=(['"])region\\2)[^>]*>`, 'gi'),
+      (openingTag) => openingTag.replace(/\baria-label=(['"])[^'"]*\1/i, `aria-label="${escapeAttribute(label)}"`),
+      1,
+      `${relativePath} ${description} label`,
+    );
+  }
+
+  next = replaceRegexExact(
+    next,
     /(<div\b[^>]*class=(['"])[^'"]*\bpd-sku\b[^'"]*\2[^>]*>)[\s\S]*?(<\/div>)/gi,
-    (_, start, _quote, end) => `${start}${escapeText(copy.modelLabel)}: ${escapeText(model)}${end}`,
+    (_, start, _quote, end) => `${start}${escapeText(copy.modelLabel)}${locale === 'fr' ? ' :' : ':'} ${escapeText(model)}${end}`,
     1,
     `${relativePath} product model label`,
   );
@@ -1178,7 +1316,7 @@ function transformFirstView(source, relativePath, contract) {
       : []),
     '  </div>',
     '  <div class="pd-utility-links">',
-    `   ${actions.utility[0]}`,
+    `   ${withActionLabel(actions.utility[0], copy.drawingDownloadLabel)}`,
     '   <span class="pd-separator" aria-hidden="true">·</span>',
     ...(hasPublicStep ? [
       `   <a href="${resourcePrefix(relativePath)}downloads/${model}.step" class="pd-utility-link" download="">${copy.stepDownloadLabel}</a>`,
@@ -1219,6 +1357,42 @@ function normalizeFirstViewWhitespace(source) {
     /(<div\b[^>]*class=(['"])[^'"]*\bpd-sku\b[^'"]*\2[^>]*>[\s\S]*?<\/div>\r?\n)(?:[ \t]*\r?\n)+([ \t]*<nav class="pd-jump-nav")/g,
     '$1$3',
   );
+}
+
+function transformRelatedResourceOverrides(source, relativePath, contract) {
+  const locale = localeForFile(relativePath);
+  const model = modelForFile(relativePath);
+  const localeOverrides = contract.relatedResourceOverrides?.[locale];
+  const overrides = [...(localeOverrides?.['*'] || []), ...(localeOverrides?.[model] || [])];
+  let next = source;
+  for (const override of overrides) {
+    const anchorPattern = new RegExp(
+      `<a\\b(?=[^>]*\\bclass=(["'])[^"']*\\bapp-related-product\\b[^"']*\\1)(?=[^>]*\\bhref=(["'])${escapeRegex(override.href)}\\2)[^>]*>[\\s\\S]*?<\\/a>`,
+      'gi',
+    );
+    const matches = [...next.matchAll(anchorPattern)];
+    if (matches.length !== 1) {
+      throw new Error(`${relativePath}: expected one managed related-resource link to ${override.href}; found ${matches.length}.`);
+    }
+
+    const original = matches[0][0];
+    let updated = replaceRegexExact(
+      original,
+      /(<strong>)[\s\S]*?(<\/strong>)/i,
+      (_, start, end) => `${start}${escapeText(override.title)}${end}`,
+      1,
+      `${relativePath}: related-resource title`,
+    );
+    updated = replaceRegexExact(
+      updated,
+      /(<span>)[\s\S]*?(<\/span>)/i,
+      (_, start, end) => `${start}${escapeText(override.description)}${end}`,
+      1,
+      `${relativePath}: related-resource description`,
+    );
+    next = next.slice(0, matches[0].index) + updated + next.slice(matches[0].index + original.length);
+  }
+  return next;
 }
 
 async function discoverPages() {
@@ -1285,11 +1459,13 @@ async function main() {
       || source.includes('product-detail.js?v=')
       || source.includes('class="skip-link"');
     let next = hasFinalMarker ? source : transformLegacyPage(source, relativePath, contract);
+    next = deduplicateFinalThumbnails(next, relativePath);
     // Rebuild the governed first-view block on every run so approved copy changes
     // migrate existing canonical pages as well as legacy pages. The transform
     // freezes every byte outside the governed block and is idempotent.
     next = transformFirstView(next, relativePath, contract);
     next = normalizeFirstViewWhitespace(next);
+    next = transformRelatedResourceOverrides(next, relativePath, contract);
     validateFinalStructure(next, relativePath, copy, contract);
     if (next !== source) pending.push({ relativePath, absolutePath, next });
   }

@@ -8,11 +8,12 @@
     "sourceLanguage": "en",
     "targetLanguages": [
       "de",
+      "fr",
       "ja",
       "ru"
     ],
-    "scope": "Dynamic Contact RFQ prompts, validation, attachment feedback, and warm submission-state copy in German, Japanese, and Russian.",
-    "priorReview": "audit/localization/2026-08-28-contact-rfq-warmth-review.md"
+    "scope": "Dynamic Contact RFQ prompts, validation, attachment feedback, and warm submission-state copy in German, French, Japanese, and Russian.",
+    "priorReview": "audit/localization/2026-09-04-french-commercial-funnel-review.md"
   },
   "copies": {
     "de": {
@@ -107,6 +108,37 @@
       "invalidResponse": "Не удалось подтвердить, был ли запрос отправлен. Перед повторной отправкой свяжитесь с нами по адресу sales@begapunk.com.",
       "networkFailure": "Произошла ошибка сети. Проверьте подключение и повторите попытку или напишите на sales@begapunk.com.",
       "stepButton": "Отправить запрос CAD →"
+    },
+    "fr": {
+      "requestTemplates": {
+        "quote": "Je souhaite obtenir un devis pour ce modèle ou cette application.",
+        "3d_step": "Le fichier STEP du catalogue se trouve sur la page produit. Je souhaite demander un fichier CAO pour un modèle sur mesure ou un autre besoin.",
+        "application_review": "Aidez-moi à choisir un raccord tournant adapté à cette application.",
+        "seal_review": "Aidez-moi à vérifier la compatibilité des joints avec ces conditions d’utilisation.",
+        "verified_drawing": "Veuillez vérifier l’interface ou les dimensions indiquées pour ce modèle.",
+        "technical_consultation": "J’ai une question technique concernant ce modèle ou cette application.",
+        "general_inquiry": "Veuillez examiner les informations ci-dessous et m’indiquer la prochaine étape.",
+        "hydraulic": "Veuillez étudier un raccord tournant sur mesure pour huile hydraulique, eau ou liquide de refroidissement. Fluide et pression :"
+      },
+      "modelRequestTemplates": {
+        "3d_step": "Le fichier STEP catalogue de {model} se trouve sur la page produit. J’utilise ce formulaire pour un fichier CAO sur mesure ou un autre format."
+      },
+      "requiredFields": {
+        "email": "E-mail",
+        "requirements": "Votre besoin"
+      },
+      "required": "Le champ « {field} » est obligatoire.",
+      "invalidEmail": "Veuillez saisir une adresse e-mail valide, par exemple prenom@entreprise.com.",
+      "emailSuggestion": "Vouliez-vous saisir {domain} ? Vérifiez votre adresse e-mail.",
+      "invalidFileType": "Type de fichier non accepté : .{ext}. Formats autorisés : PDF, STEP, IGES, DWG, DXF, JPG, PNG.",
+      "fileTooLarge": "Le fichier est trop volumineux ({size} Mo). Taille maximale : 10 Mo.",
+      "noFile": "Aucun fichier sélectionné",
+      "sending": "Envoi en cours…",
+      "success": "Merci. Nous avons bien reçu votre demande. Notre équipe technique va l’examiner. Si une donnée manque, nous demanderons uniquement l’information nécessaire.",
+      "serviceUnavailable": "Le service de traitement des demandes est temporairement indisponible. Écrivez à sales@begapunk.com.",
+      "invalidResponse": "Nous n’avons pas pu confirmer l’envoi de votre demande. Contactez sales@begapunk.com avant de l’envoyer de nouveau.",
+      "networkFailure": "La demande n’a pas pu être envoyée. Réessayez ou écrivez à sales@begapunk.com.",
+      "stepButton": "Envoyer la demande de CAO →"
     }
   }
 }

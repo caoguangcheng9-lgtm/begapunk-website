@@ -1,10 +1,47 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import process from 'node:process';
 import { load } from 'cheerio';
+import {
+  SITE_NAVIGATION_SCRIPT_VERSION,
+  SITE_SEARCH_SCRIPT_VERSION,
+  SITE_STYLE_VERSION,
+} from './lib/site-asset-versions.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
+const outputRoot = process.env.I18N_OUTPUT_ROOT
+  ? path.resolve(process.env.I18N_OUTPUT_ROOT)
+  : root;
+const checkOnly = process.argv.includes('--check');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
-const languages = [config.sourceLanguage.code, ...config.activeLanguageCodes];
+const configuredLanguages = outputRoot === root
+  ? [config.sourceLanguage.code, ...config.activeLanguageCodes]
+  : [...config.activeLanguageCodes];
+
+function envList(name) {
+  return (process.env[name] || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+}
+
+const requestedLanguages = envList('I18N_LANGUAGE_CODES');
+const requestedPages = envList('I18N_PAGE_NAMES');
+const languages = requestedLanguages.length ? requestedLanguages : configuredLanguages;
+const pages = requestedPages.length ? requestedPages : config.pages;
+const navigationScriptVersion = SITE_NAVIGATION_SCRIPT_VERSION;
+const searchScriptVersion = SITE_SEARCH_SCRIPT_VERSION;
+
+for (const language of languages) {
+  if (!configuredLanguages.includes(language)) {
+    throw new Error(`I18N_LANGUAGE_CODES contains an unavailable language for this output root: ${language}`);
+  }
+}
+for (const page of pages) {
+  if (!config.pages.includes(page)) {
+    throw new Error(`I18N_PAGE_NAMES contains a page outside i18n/config.json: ${page}`);
+  }
+}
 
 const copy = {
   en: {
@@ -22,6 +59,14 @@ const copy = {
     knowledge: 'Wissenszentrum', knowledgeLinks: [['blog.html', 'Technischer Blog'], ['blog-rotary-joint-selection.html', 'Auswahlleitfaden'], ['blog-rotary-union-seal-types.html', 'Dichtungstechnik'], ['installation.html', 'Montageanleitung'], ['faq.html', 'FAQ']],
     about: 'Unternehmen', quote: 'Angebot anfordern', footerTitles: ['Produkte', 'Anwendungen', 'Wissenszentrum', 'Unternehmen'],
     companyLinks: [['about.html', 'Unternehmen / Werk'], ['manufacturing-quality.html', 'Fertigung &amp; Qualität'], ['production-inspection-testing.html', '100%-Dichtheitsprüfung'], ['contact.html', 'Kontakt']],
+  },
+  fr: {
+    home: 'Accueil', products: 'Produits', productLinks: [['products.html', 'Catalogue produits'], ['product-comparison.html', 'Comparatif des modèles'], ['contact.html', 'Sur-mesure et devis']],
+    applications: 'Applications', applicationLinks: [['applications.html', 'Vue d\'ensemble des applications'], ['case-studies.html', 'Études de cas'], ['application-laser-tube-cutting.html', 'Découpe laser de tubes'], ['application-packaging-machinery.html', 'Machines d\'emballage'], ['application-bottle-filling-capping.html', 'Remplissage et bouchage de bouteilles'], ['application-cnc-pneumatic-clamping.html', 'Serrage pneumatique CNC']],
+    quality: 'Qualité', qualityLinks: [['manufacturing-quality.html', 'Fabrication et qualité'], ['production-inspection-testing.html', 'Essai d\'étanchéité à 100 %']],
+    knowledge: 'Centre technique', knowledgeLinks: [['blog.html', 'Blog technique'], ['blog-rotary-joint-selection.html', 'Guide de sélection'], ['blog-rotary-union-seal-types.html', 'Technologies d\'étanchéité'], ['installation.html', 'Guide d\'installation'], ['faq.html', 'FAQ']],
+    about: 'À propos', quote: 'Demander un devis', footerTitles: ['Produits', 'Applications', 'Centre technique', 'Entreprise'],
+    companyLinks: [['about.html', 'Entreprise / Usine'], ['manufacturing-quality.html', 'Fabrication et qualité'], ['production-inspection-testing.html', 'Essai d\'étanchéité à 100 %'], ['contact.html', 'Contact']],
   },
   ja: {
     home: 'ホーム', products: '製品情報', productLinks: [['products.html', '製品一覧'], ['product-comparison.html', '機種選定表'], ['contact.html', '特注品・見積依頼']],
@@ -69,6 +114,21 @@ const footerCopy = {
     copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.',
     socialLabels: ['G. C. Cao auf LinkedIn', 'Begapunk auf YouTube', 'Begapunk auf Facebook', 'Begapunk auf X'],
   },
+  fr: {
+    positioning: 'Fabricant de raccords tournants de précision basé à Ningbo, en Chine. Accompagnement des constructeurs de machines et des OEM de l\'automatisation industrielle.',
+    address: 'Ningbo, Zhejiang, Chine', quote: 'Demander un devis', socialTitle: 'Suivre Begapunk',
+    navigationLabel: 'Navigation de pied de page', legalLabel: 'Informations légales',
+    titles: ['Produits et sélection', 'Applications et études de cas', 'Qualité et usine', 'Assistance technique'],
+    links: [
+      [['products.html', 'Catalogue produits'], ['product-comparison.html', 'Comparatif des modèles']],
+      [['case-studies.html', 'Études de cas réelles'], ['application-laser-tube-cutting.html', 'Découpe laser de tubes'], ['application-packaging-machinery.html', 'Machines d\'emballage'], ['application-bottle-filling-capping.html', 'Remplissage et bouchage de bouteilles'], ['applications.html', 'Toutes les applications']],
+      [['manufacturing-quality.html', 'Fabrication et qualité'], ['production-inspection-testing.html', 'Essai d\'étanchéité à 100 %'], ['about.html', 'Entreprise et usine']],
+      [['blog-rotary-joint-selection.html', 'Guide de sélection'], ['installation.html', 'Guide d\'installation'], ['faq.html', 'FAQ'], ['contact.html', 'Contact']],
+    ],
+    privacy: 'Confidentialité', terms: 'Conditions d\'utilisation',
+    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.',
+    socialLabels: ['G. C. Cao sur LinkedIn', 'Begapunk sur YouTube', 'Begapunk sur Facebook', 'Begapunk sur X'],
+  },
   ja: {
     positioning: '中国・寧波の産業用ロータリージョイントメーカーです。産業オートメーションのOEM・装置メーカーを支援します。',
     address: '中国 浙江省 寧波市', quote: '見積もりを依頼', socialTitle: 'Begapunk公式SNS',
@@ -101,11 +161,96 @@ const footerCopy = {
   },
 };
 
+const breadcrumbCopy = {
+  en: { caseStudies: 'Case Studies' },
+  de: { caseStudies: 'Fallstudien' },
+  fr: { caseStudies: 'Études de cas' },
+  ja: { caseStudies: '選定事例' },
+  ru: { caseStudies: 'Примеры применения' },
+};
+
+const languageSwitcherLabels = {
+  en: 'Language',
+  de: 'Sprache',
+  fr: 'Langue',
+  ja: '言語',
+  ru: 'Язык',
+};
+const languageChangeHandler = 'if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value';
+const searchFallbackCopy = {
+  en: {
+    inputLabel: 'Search the Begapunk website',
+    searchRegionLabel: 'Site search',
+    filterGroupLabel: 'Filter search results by content type',
+    noScriptHtml: 'Site search requires JavaScript. Enable JavaScript to search, or <a href="products.html">browse the product catalog</a>.',
+  },
+  de: {
+    inputLabel: 'Begapunk-Website durchsuchen',
+    searchRegionLabel: 'Website-Suche',
+    filterGroupLabel: 'Suchergebnisse nach Inhaltstyp filtern',
+    noScriptHtml: 'Die Website-Suche benötigt JavaScript. Aktivieren Sie JavaScript oder öffnen Sie direkt den <a href="products.html">Produktkatalog</a>.',
+  },
+  fr: {
+    inputLabel: 'Rechercher sur le site Begapunk',
+    searchRegionLabel: 'Recherche sur le site',
+    filterGroupLabel: 'Filtrer les résultats par type de contenu',
+    noScriptHtml: 'La recherche sur le site nécessite JavaScript. Activez JavaScript ou consultez directement le <a href="products.html">catalogue produits</a>.',
+  },
+  ja: {
+    inputLabel: 'Begapunkサイト内を検索',
+    searchRegionLabel: 'サイト内検索',
+    filterGroupLabel: 'コンテンツ種別で検索結果を絞り込む',
+    noScriptHtml: 'サイト内検索にはJavaScriptが必要です。JavaScriptを有効にするか、<a href="products.html">製品一覧</a>をご覧ください。',
+  },
+  ru: {
+    inputLabel: 'Поиск по сайту Begapunk',
+    searchRegionLabel: 'Поиск по сайту',
+    filterGroupLabel: 'Фильтр результатов по типу материала',
+    noScriptHtml: 'Для поиска по сайту требуется JavaScript. Включите JavaScript или откройте <a href="products.html">каталог продукции</a>.',
+  },
+};
+const configuredLanguageByCode = new Map(config.languages.map((language) => [language.code, language]));
+const activeLanguageSet = new Set(config.activeLanguageCodes);
+const activeLanguages = config.activeLanguageCodes.map((code) => {
+  const language = configuredLanguageByCode.get(code);
+  if (!language) throw new Error(`Missing configured language metadata: ${code}`);
+  return language;
+});
+
+function switcherLanguagesForPage(pageName) {
+  const partialLanguages = config.languages.filter((language) => (
+    !activeLanguageSet.has(language.code)
+    && (config.partialLanguagePages?.[language.code] || []).includes(pageName)
+  ));
+  return [config.sourceLanguage, ...activeLanguages, ...partialLanguages];
+}
+
+function switcherReference(currentLanguageCode, targetLanguageCode, pageName) {
+  const isHomepage = pageName === 'index.html';
+  if (currentLanguageCode === config.sourceLanguage.code) {
+    return targetLanguageCode === config.sourceLanguage.code
+      ? (isHomepage ? './' : pageName)
+      : (isHomepage ? `${targetLanguageCode}/` : `${targetLanguageCode}/${pageName}`);
+  }
+  if (targetLanguageCode === config.sourceLanguage.code) return isHomepage ? '../' : `../${pageName}`;
+  if (targetLanguageCode === currentLanguageCode) return isHomepage ? './' : pageName;
+  return isHomepage ? `../${targetLanguageCode}/` : `../${targetLanguageCode}/${pageName}`;
+}
+
+function switcherMarkup(currentLanguage, pageName) {
+  const options = switcherLanguagesForPage(pageName).map((language) => {
+    const selected = language.code === currentLanguage ? ' selected' : '';
+    return `<option value="${switcherReference(currentLanguage, language.code, pageName)}"${selected}>${language.label}</option>`;
+  }).join('');
+  const accessibleLabel = languageSwitcherLabels[currentLanguage] || languageSwitcherLabels.en;
+  return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="${languageChangeHandler}">${options}</select></div>`;
+}
+
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
-const styleVersion = '20260817-cls1';
-const homepageStyleVersion = '20260829-hero-hyd1';
-const englishStyleVersion = '20260825-nav-compact1';
-const englishHomepageStyleVersion = '20260829-hero-hyd1';
+const styleVersion = SITE_STYLE_VERSION;
+const homepageStyleVersion = SITE_STYLE_VERSION;
+const englishStyleVersion = SITE_STYLE_VERSION;
+const englishHomepageStyleVersion = SITE_STYLE_VERSION;
 const socialLinks = [
   ['linkedin', 'LinkedIn', 'https://www.linkedin.com/in/guangcheng-cao/'],
   ['youtube', 'YouTube', 'https://www.youtube.com/@BEGAPUNKRotaryJointsTV'],
@@ -138,6 +283,7 @@ function dropdown(href, label, items, active, page) {
 
 function navMarkup(language, page) {
   const t = copy[language];
+  if (!t) throw new Error(`Missing navigation copy for configured language: ${language}`);
   const active = pageCategory(page);
   if (language === 'en') {
     return `<nav class="nav" id="mainNav">\n    <a href="index.html" class="nav-home-mobile${active === 'home' ? ' active' : ''}"${active === 'home' ? ' aria-current="page"' : ''}>${t.home}</a>\n${dropdown('products.html', t.products, t.productLinks.slice(1), active === 'products', page)}\n${dropdown('applications.html', t.applications, t.applicationLinks.slice(1), active === 'applications', page)}\n    <a href="manufacturing-quality.html" class="nav-quality${active === 'quality' ? ' active' : ''}"${page === 'manufacturing-quality.html' ? ' aria-current="page"' : ''}>${t.quality}</a>\n    <a href="about.html" class="nav-about${active === 'about' ? ' active' : ''}"${active === 'about' ? ' aria-current="page"' : ''}>${t.about}</a>\n    <a href="contact.html" class="nav-cta"${page === 'contact.html' ? ' aria-current="page"' : ''}>${t.quote}</a>\n   </nav>`;
@@ -173,6 +319,7 @@ function footerColumn(title, items) {
 
 function footerMarkup(language, page) {
   const t = footerCopy[language];
+  if (!t) throw new Error(`Missing footer copy for configured language: ${language}`);
   const assetPrefix = language === 'en' ? '' : '../';
   const social = socialLinks.map(([key, , href], index) => `      <li><a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${t.socialLabels[index]}">${icon(key)}</a></li>`).join('\n');
   const columns = t.links.map((links, index) => footerColumn(t.titles[index], links)).join('\n    ');
@@ -189,36 +336,224 @@ function replacementRange(element) {
   return { start: location.startOffset, end: location.endOffset };
 }
 
+function canonicalHomepageLinks(markup) {
+  return markup.replaceAll('href="index.html"', 'href="./"');
+}
+
+function escapeAttribute(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
+function setTagAttribute(tag, name, value = null) {
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const attributePattern = new RegExp(`\\s${escapedName}(?:\\s*=\\s*(?:"[^"]*"|'[^']*'|[^\\s>]+))?`, 'i');
+  const withoutAttribute = tag.replace(attributePattern, '');
+  const closing = withoutAttribute.endsWith('/>') ? '/>' : '>';
+  const prefix = withoutAttribute.slice(0, -closing.length).trimEnd();
+  const attribute = value === null ? name : `${name}="${escapeAttribute(value)}"`;
+  return `${prefix} ${attribute}${closing}`;
+}
+
+function updateSearchTag(html, pattern, attributes, description) {
+  let matched = false;
+  const next = html.replace(pattern, (tag) => {
+    matched = true;
+    return Object.entries(attributes).reduce(
+      (updatedTag, [name, value]) => setTagAttribute(updatedTag, name, value),
+      tag,
+    );
+  });
+  if (!matched) throw new Error(`search.html: ${description} is missing.`);
+  return next;
+}
+
+function synchronizeSearchFallback(html, language, page) {
+  if (page !== 'search.html') return html;
+  const localizedCopy = searchFallbackCopy[language];
+  if (!localizedCopy) throw new Error(`${language}/search.html: search fallback copy is missing.`);
+
+  let next = html.replace(
+    /\s*<!-- search-no-js:start -->[\s\S]*?<!-- search-no-js:end -->/gi,
+    '',
+  );
+  next = updateSearchTag(
+    next,
+    /<div\b(?=[^>]*\bclass=["'][^"']*\bsearch-box-wrap\b[^"']*["'])[^>]*>/i,
+    { role: 'search', 'aria-label': localizedCopy.searchRegionLabel, 'aria-busy': 'false' },
+    '.search-box-wrap',
+  );
+  next = updateSearchTag(
+    next,
+    /<input\b(?=[^>]*\bid=["']search-input["'])[^>]*>/i,
+    { 'aria-label': localizedCopy.inputLabel, 'aria-controls': 'search-results', disabled: null },
+    '#search-input',
+  );
+  next = updateSearchTag(
+    next,
+    /<button\b(?=[^>]*\bid=["']search-btn["'])[^>]*>/i,
+    { type: 'button', disabled: null },
+    '#search-btn',
+  );
+  next = updateSearchTag(
+    next,
+    /<div\b(?=[^>]*\bclass=["'][^"']*\bsearch-filters\b[^"']*["'])[^>]*>/i,
+    { role: 'group', 'aria-label': localizedCopy.filterGroupLabel },
+    '.search-filters',
+  );
+
+  let filterCount = 0;
+  next = next.replace(
+    /<button\b(?=[^>]*\bclass=["'][^"']*\bsearch-filter-btn\b[^"']*["'])[^>]*>/gi,
+    (tag) => {
+      filterCount += 1;
+      const active = /\bactive\b/i.test(tag.match(/\bclass=["']([^"']*)["']/i)?.[1] || '');
+      return Object.entries({ type: 'button', 'aria-pressed': String(active), disabled: null }).reduce(
+        (updatedTag, [name, value]) => setTagAttribute(updatedTag, name, value),
+        tag,
+      );
+    },
+  );
+  if (!filterCount) throw new Error(`${language}/search.html: search filter buttons are missing.`);
+
+  next = updateSearchTag(
+    next,
+    /<p\b(?=[^>]*\bid=["']search-count["'])[^>]*>/i,
+    { role: 'status', 'aria-live': 'polite', 'aria-atomic': 'true' },
+    '#search-count',
+  );
+
+  const fallbackMarkup = `<!-- search-no-js:start -->\n        <noscript><p class="search-no-js" id="search-no-js-${language}" data-search-exclude>${localizedCopy.noScriptHtml}</p></noscript>\n        <!-- search-no-js:end -->`;
+  let inserted = false;
+  next = next.replace(
+    /<div\b(?=[^>]*\bclass=["'][^"']*\bsearch-filters\b[^"']*["'])[^>]*>[\s\S]*?<\/div>/i,
+    (filterMarkup) => {
+      inserted = true;
+      return `${filterMarkup}\n\n        ${fallbackMarkup}`;
+    },
+  );
+  if (!inserted) throw new Error(`${language}/search.html: could not insert the no-JavaScript fallback.`);
+  return next;
+}
+
+function breadcrumbSectionName(language, itemReference) {
+  if (typeof itemReference !== 'string' || !itemReference) return null;
+  let pathname;
+  try {
+    pathname = new URL(itemReference, 'https://www.begapunk.com/').pathname;
+  } catch {
+    return null;
+  }
+  const filename = pathname.endsWith('/') ? 'index.html' : pathname.split('/').pop();
+  const t = copy[language];
+  const sectionNames = {
+    'index.html': t.home,
+    'products.html': t.products,
+    'applications.html': t.applications,
+    'case-studies.html': breadcrumbCopy[language].caseStudies,
+    'manufacturing-quality.html': t.quality,
+    'blog.html': t.knowledge,
+    'about.html': t.about,
+  };
+  return sectionNames[filename] || null;
+}
+
 let changed = 0;
 for (const language of languages) {
-  for (const page of config.pages) {
-    const file = language === 'en' ? path.join(root, page) : path.join(root, language, page);
+  for (const page of pages) {
+    const file = language === config.sourceLanguage.code
+      ? path.join(outputRoot, page)
+      : path.join(outputRoot, language, page);
     const original = await fs.readFile(file, 'utf8');
     const pageStyleVersion = language === 'en'
       ? (page === 'index.html' ? englishHomepageStyleVersion : englishStyleVersion)
       : (page === 'index.html' ? homepageStyleVersion : styleVersion);
-    const html = removeLegacyMobileListeners(original).replace(
-      /(href=["'](?:\.\.\/)?css\/style\.css\?v=)[^"']+/g,
-      `$1${pageStyleVersion}`,
-    );
+    let html = removeLegacyMobileListeners(original)
+      .replace(
+        /(href=["'](?:\.\.\/)?css\/style\.css\?v=)[^"']+/g,
+        `$1${pageStyleVersion}`,
+      )
+      .replace(
+        /(src=["'](?:\.\.\/)?js\/site-navigation\.js\?v=)[^"']+/g,
+        `$1${navigationScriptVersion}`,
+      )
+      .replace(
+        /(src=["'](?:\.\.\/)?js\/search\.js\?v=)[^"']+/g,
+        `$1${searchScriptVersion}`,
+      );
+    html = synchronizeSearchFallback(html, language, page);
     const $ = load(html, { decodeEntities: false, sourceCodeLocationInfo: true });
     const nav = $('#mainNav').get(0);
+    const switcher = $('.i18n-switcher').first().get(0);
     const footer = $('footer.footer').first().get(0);
     if (!nav) throw new Error(`${language}/${page}: #mainNav missing.`);
+    if (!switcher) throw new Error(`${language}/${page}: language switcher is missing.`);
     if (!footer) throw new Error(`${language}/${page}: footer is missing.`);
     const navRange = replacementRange(nav);
+    const switcherRange = replacementRange(switcher);
     const footerRange = replacementRange(footer);
     const edits = [
-      { ...navRange, value: navMarkup(language, page) },
-      { ...footerRange, value: footerMarkup(language, page) },
-    ].sort((a, b) => b.start - a.start);
+      { ...navRange, value: canonicalHomepageLinks(navMarkup(language, page)) },
+      { ...switcherRange, value: switcherMarkup(language, page) },
+      { ...footerRange, value: canonicalHomepageLinks(footerMarkup(language, page)) },
+    ];
+    $('[class*="breadcrumb"] a[href]').each((_, element) => {
+      const localizedName = breadcrumbSectionName(language, $(element).attr('href'));
+      if (!localizedName) return;
+      const location = element.sourceCodeLocation;
+      if (!location?.startTag || !location?.endTag) {
+        throw new Error(`${language}/${page}: breadcrumb link source location is unavailable.`);
+      }
+      edits.push({ start: location.startTag.endOffset, end: location.endTag.startOffset, value: localizedName });
+    });
+    $('script[type="application/ld+json"]').each((_, element) => {
+      const raw = $(element).html() || '';
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        return;
+      }
+      let touched = false;
+      const visit = (value) => {
+        if (!value || typeof value !== 'object') return;
+        if (value['@type'] === 'BreadcrumbList' && Array.isArray(value.itemListElement)) {
+          // The terminal crumb is the current page title and is governed by the
+          // localized SEO entry. Only normalize ancestor section labels here.
+          for (const item of value.itemListElement.slice(0, -1)) {
+            const localizedName = breadcrumbSectionName(language, item?.item);
+            if (localizedName && typeof item.name === 'string' && item.name !== localizedName) {
+              item.name = localizedName;
+              touched = true;
+            }
+          }
+        }
+        for (const child of Object.values(value)) visit(child);
+      };
+      visit(data);
+      if (!touched) return;
+      const location = element.sourceCodeLocation;
+      if (!location?.startTag || !location?.endTag) {
+        throw new Error(`${language}/${page}: structured breadcrumb source location is unavailable.`);
+      }
+      edits.push({ start: location.startTag.endOffset, end: location.endTag.startOffset, value: JSON.stringify(data) });
+    });
+    edits.sort((a, b) => b.start - a.start);
     let next = html;
     for (const edit of edits) next = `${next.slice(0, edit.start)}${edit.value}${next.slice(edit.end)}`;
     if (next !== original) {
-      await fs.writeFile(file, next, 'utf8');
       changed += 1;
+      if (!checkOnly) await fs.writeFile(file, next, 'utf8');
     }
   }
 }
 
-console.log(`Navigation/footer synchronization complete: ${changed} of ${languages.length * config.pages.length} pages changed.`);
+if (checkOnly && changed) {
+  throw new Error(`Navigation/footer verification failed: ${changed} of ${languages.length * pages.length} pages need synchronization.`);
+}
+console.log(checkOnly
+  ? `Navigation/footer verification passed: ${languages.length * pages.length} pages are synchronized.`
+  : `Navigation/footer synchronization complete: ${changed} of ${languages.length * pages.length} pages changed.`);

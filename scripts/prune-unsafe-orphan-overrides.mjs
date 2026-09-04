@@ -4,7 +4,8 @@ import process from 'node:process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const checkOnly = process.argv.includes('--check');
-const languages = ['de', 'ja', 'ru'];
+const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const languages = config.activeLanguageCodes;
 
 const unsafeOrphanPatterns = [
   /\bfree\b[^\n]{0,120}\b(?:STEP|IGES|CAD|3D files?)\b/i,

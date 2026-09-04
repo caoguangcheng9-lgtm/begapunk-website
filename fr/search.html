@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="fr"><head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rechercher un raccord tournant | Begapunk</title>
+
+    <meta name="description" content="Recherchez les produits, applications, guides et ressources Begapunk par modèle, caractéristique technique ou type de machine.">
+
+    <meta name="robots" content="noindex, follow">
+
+
+
+
+
+
+
+<link rel="alternate" hreflang="en" href="https://www.begapunk.com/search.html">
+<link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/search.html">
+<link rel="alternate" hreflang="fr" href="https://www.begapunk.com/fr/search.html">
+<link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/search.html">
+<link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/search.html">
+<link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/search.html">
+<link rel="canonical" href="https://www.begapunk.com/fr/search.html">
+
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+
+
+    <!-- Open Graph -->
+
+    <meta property="og:title" content="Rechercher un raccord tournant | Begapunk">
+
+    <meta property="og:description" content="Recherchez les produits, applications, guides et ressources Begapunk par modèle, caractéristique technique ou type de machine.">
+
+    <meta property="og:url" content="https://www.begapunk.com/fr/search.html">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" content="https://www.begapunk.com/images/og-image.jpg">
+
+    <meta property="og:site_name" content="Begapunk">
+
+    <meta property="og:locale" content="fr_FR">
+
+
+
+    <!-- Twitter Card -->
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Rechercher un raccord tournant | Begapunk">
+
+    <meta name="twitter:description" content="Recherchez les produits, applications, guides et ressources Begapunk par modèle, caractéristique technique ou type de machine.">
+
+    <meta name="twitter:image" content="https://www.begapunk.com/images/og-image.jpg">
+
+
+
+    <link rel="stylesheet" href="../css/style.css?v=20260904-nojs-flow1">
+
+    <script defer="" src="../js/analytics.js?v=e061bf5d563c"></script>
+
+
+
+    <style>
+    /* ===== Search Page Styles ===== */
+    .search-hero {
+        background: var(--bg-alt);
+        padding: 60px 0 40px;
+        border-bottom: 1px solid var(--border);
+    }
+    .search-hero h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .search-hero p {
+        text-align: center;
+        color: var(--text-light);
+        margin-bottom: 28px;
+    }
+
+    .search-box-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .search-box-wrap input {
+        width: 100%;
+        padding: 16px 56px 16px 20px;
+        font-size: 1.05rem;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box-wrap input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(0,86,179,0.08);
+    }
+    .search-box-wrap button {
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .search-box-wrap button:hover {
+        background: var(--primary-dark);
+    }
+
+    .search-filters {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 18px;
+    }
+    .search-filter-btn {
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--text);
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .search-filter-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    .search-filter-btn.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+    }
+
+    .search-results-area {
+        padding: 40px 0 80px;
+    }
+    .search-count {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        margin-bottom: 20px;
+    }
+
+    .search-result-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .search-result-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        transform: translateY(-2px);
+    }
+    .search-result-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .search-result-badge {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--primary);
+        background: rgba(0,86,179,0.06);
+        padding: 4px 10px;
+        border-radius: 12px;
+    }
+    .search-result-score {
+        font-size: 0.75rem;
+        color: var(--text-light);
+    }
+    .search-result-title {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    .search-result-title a {
+        color: var(--text);
+        text-decoration: none;
+    }
+    .search-result-title a:hover {
+        color: var(--primary);
+    }
+    .search-result-desc {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+    .search-result-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .search-tag {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        background: var(--bg-alt);
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+    .search-result-card mark {
+        background: rgba(255, 214, 0, 0.35);
+        padding: 0 2px;
+        border-radius: 2px;
+    }
+
+    .search-empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--text-light);
+    }
+    .search-empty h3 {
+        color: var(--text);
+        margin-bottom: 8px;
+    }
+    .search-empty a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .search-loading,
+    .search-error {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-light);
+    }
+    .search-error a {
+        color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+        .search-hero {
+            padding: 40px 0 30px;
+        }
+        .search-hero h1 {
+            font-size: 1.5rem;
+        }
+        .search-box-wrap input {
+            font-size: 1rem;
+            padding: 14px 50px 14px 16px;
+        }
+        .search-box-wrap button {
+            padding: 8px 14px;
+        }
+    }
+    </style>
+
+</head>
+
+<body>
+
+
+
+<!-- ===== HEADER ===== -->
+
+<header class="header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="./" class="logo">
+    <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk - Fabricant de raccords tournants de précision" style="height:48px;width:auto;" width="226" height="40">
+   </a>
+   <nav class="nav" id="mainNav">
+    <a href="./" class="nav-home-mobile">Accueil</a>
+    <div class="nav-dropdown">
+     <a href="products.html" class="nav-dropdown-toggle">Produits <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="product-comparison.html">Comparatif des modèles</a>
+      <a href="contact.html">Sur-mesure et devis</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="applications.html" class="nav-dropdown-toggle">Applications <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="case-studies.html">Études de cas</a>
+      <a href="application-laser-tube-cutting.html">Découpe laser de tubes</a>
+      <a href="application-packaging-machinery.html">Machines d'emballage</a>
+      <a href="application-bottle-filling-capping.html">Remplissage et bouchage de bouteilles</a>
+      <a href="application-cnc-pneumatic-clamping.html">Serrage pneumatique CNC</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="manufacturing-quality.html" class="nav-dropdown-toggle">Qualité <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="production-inspection-testing.html">Essai d'étanchéité à 100 %</a>
+     </div>
+    </div>
+    <div class="nav-dropdown">
+     <a href="blog.html" class="nav-dropdown-toggle">Centre technique <span class="chevron"></span></a>
+     <div class="nav-dropdown-menu">
+      <a href="blog-rotary-joint-selection.html">Guide de sélection</a>
+      <a href="blog-rotary-union-seal-types.html">Technologies d'étanchéité</a>
+      <a href="installation.html">Guide d'installation</a>
+      <a href="faq.html">FAQ</a>
+     </div>
+    </div>
+    <a href="about.html" class="nav-about">À propos</a>
+    <a href="contact.html" class="nav-cta">Demander un devis</a>
+   </nav>
+
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-fr">Langue</label><select id="language-fr" aria-label="Langue" onchange="if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value"><option value="../search.html">English</option><option value="../de/search.html">Deutsch</option><option value="search.html" selected>Français</option><option value="../ja/search.html">日本語</option><option value="../ru/search.html">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-controls="mainNav" aria-expanded="false">
+    <span></span><span></span><span></span>
+   </button>
+  </div>
+ </div>
+</header>
+<main id="main-content">
+
+
+
+<!-- ===== SEARCH HERO ===== -->
+
+<section class="search-hero">
+    <div class="container">
+        <h1>Trouver le raccord tournant adapté</h1>
+        <p>Recherchez par référence, caractéristique, type de machine ou application.</p>
+
+        <div class="search-box-wrap" role="search" aria-label="Recherche sur le site" aria-busy="false">
+            <input id="search-input" type="search" placeholder="Ex. : BP-2P-0001, découpe laser, 1 MPa, 4 passages…" autocomplete="off" aria-label="Rechercher sur le site Begapunk" aria-controls="search-results" disabled>
+            <button id="search-btn" type="button" disabled>Rechercher</button>
+        </div>
+
+        <div class="search-filters" role="group" aria-label="Filtrer les résultats par type de contenu">
+            <button class="search-filter-btn active" data-filter="all" type="button" aria-pressed="true" disabled>Tous</button>
+            <button class="search-filter-btn" data-filter="product" type="button" aria-pressed="false" disabled>Produits</button>
+            <button class="search-filter-btn" data-filter="application" type="button" aria-pressed="false" disabled>Applications</button>
+            <button class="search-filter-btn" data-filter="blog" type="button" aria-pressed="false" disabled>Blog et guides</button>
+            <button class="search-filter-btn" data-filter="core" type="button" aria-pressed="false" disabled>Pages</button>
+        </div>
+
+        <!-- search-no-js:start -->
+        <noscript><p class="search-no-js" id="search-no-js-fr" data-search-exclude>La recherche sur le site nécessite JavaScript. Activez JavaScript ou consultez directement le <a href="products.html">catalogue produits</a>.</p></noscript>
+        <!-- search-no-js:end -->
+    </div>
+</section>
+
+
+
+<!-- ===== RESULTS ===== -->
+
+<section class="search-results-area">
+    <div class="container">
+        <p class="search-count" id="search-count" role="status" aria-live="polite" aria-atomic="true">Chargement de l’index de recherche…</p>
+        <div id="search-results"></div>
+
+        <div class="search-empty" id="search-empty" style="display:none;">
+            <h3>Aucun résultat trouvé</h3>
+            <p>Essayez d’autres mots-clés ou <a href="products.html">consultez le catalogue complet</a>.</p>
+            <p style="margin-top:8px;font-size:0.9rem;">Recherches fréquentes : <a href="search.html?q=2-in-2-out">2 entrées / 2 sorties</a>, <a href="search.html?q=laser">découpe laser</a>, <a href="search.html?q=1+MPa">1 MPa</a>, <a href="search.html?q=dust">protection contre la poussière</a></p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ===== FOOTER ===== -->
+
+</main>
+<footer class="footer" id="siteFooter">
+ <div class="container">
+  <div class="footer-brand footer-brand-band">
+   <a class="footer-logo" href="./" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+   <div class="footer-brand-copy">
+    <p class="footer-positioning">Fabricant de raccords tournants de précision basé à Ningbo, en Chine. Accompagnement des constructeurs de machines et des OEM de l'automatisation industrielle.</p>
+    <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
+   </div>
+   <a class="footer-quote" href="contact.html#quoteForm">Demander un devis</a>
+  </div>
+  <div class="footer-contact-band">
+   <address class="footer-contact">
+    <span class="footer-address"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Ningbo, Zhejiang, Chine</span></span>
+    <a href="mailto:sales@begapunk.com"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg><span>sales@begapunk.com</span></a>
+    <a href="tel:+8618368425342"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.2 3.5 10 7l-2 2.4a15.5 15.5 0 0 0 6.6 6.6l2.4-2 3.5 2.8-1.5 3a2.5 2.5 0 0 1-2.6 1.3C9.2 20 4 14.8 2.9 7.6A2.5 2.5 0 0 1 4.2 5z"/></svg><span>+86 183 6842 5342</span></a>
+    <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 8.2c.5 2.7 2.6 4.8 5.3 5.3"/></svg><span>WhatsApp</span></a>
+   </address>
+   <nav class="footer-social" aria-label="Suivre Begapunk">
+    <ul class="footer-social-links">
+      <li><a href="https://www.linkedin.com/in/guangcheng-cao/" target="_blank" rel="noopener noreferrer" aria-label="G. C. Cao sur LinkedIn"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M5.4 8.2H2V22h3.4V8.2ZM3.7 2A2 2 0 1 0 3.7 6a2 2 0 0 0 0-4ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.3V22h3.4v-6.8c0-1.8.3-3.6 2.6-3.6 2.3 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg></a></li>
+      <li><a href="https://www.youtube.com/@BEGAPUNKRotaryJointsTV" target="_blank" rel="noopener noreferrer" aria-label="Begapunk sur YouTube"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6ZM9.8 15.4V8.6L16 12l-6.2 3.4Z"/></svg></a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61591616523667" target="_blank" rel="noopener noreferrer" aria-label="Begapunk sur Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M14 22v-8h2.8l.4-3H14V9.1c0-.9.3-1.6 1.7-1.6h1.7V4.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V11H7.5v3h2.9v8H14Z"/></svg></a></li>
+      <li><a href="https://x.com/Begapunk728" target="_blank" rel="noopener noreferrer" aria-label="Begapunk sur X"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M3 3h4.7l4.8 6.4L18 3h3l-7.1 8.7L22 21h-4.7l-5.2-6.9L6 21H3l7.7-9.2L3 3Zm3.5 2 11.8 14h1.2L7.7 5H6.5Z"/></svg></a></li>
+    </ul>
+   </nav>
+  </div>
+  <nav class="footer-navigation" aria-label="Navigation de pied de page">
+   <section class="footer-column">
+     <h2 class="footer-title">Produits et sélection</h2>
+     <ul class="footer-links">
+      <li><a href="products.html">Catalogue produits</a></li>
+      <li><a href="product-comparison.html">Comparatif des modèles</a></li>
+     </ul>
+    </section>
+    <section class="footer-column">
+     <h2 class="footer-title">Applications et études de cas</h2>
+     <ul class="footer-links">
+      <li><a href="case-studies.html">Études de cas réelles</a></li>
+      <li><a href="application-laser-tube-cutting.html">Découpe laser de tubes</a></li>
+      <li><a href="application-packaging-machinery.html">Machines d'emballage</a></li>
+      <li><a href="application-bottle-filling-capping.html">Remplissage et bouchage de bouteilles</a></li>
+      <li><a href="applications.html">Toutes les applications</a></li>
+     </ul>
+    </section>
+    <section class="footer-column">
+     <h2 class="footer-title">Qualité et usine</h2>
+     <ul class="footer-links">
+      <li><a href="manufacturing-quality.html">Fabrication et qualité</a></li>
+      <li><a href="production-inspection-testing.html">Essai d'étanchéité à 100 %</a></li>
+      <li><a href="about.html">Entreprise et usine</a></li>
+     </ul>
+    </section>
+    <section class="footer-column">
+     <h2 class="footer-title">Assistance technique</h2>
+     <ul class="footer-links">
+      <li><a href="blog-rotary-joint-selection.html">Guide de sélection</a></li>
+      <li><a href="installation.html">Guide d'installation</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+     </ul>
+    </section>
+  </nav>
+  <div class="footer-bottom">
+   <p>© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.</p>
+   <nav class="footer-legal" aria-label="Informations légales">
+    <a href="privacy.html">Confidentialité</a>
+    <a href="terms.html">Conditions d'utilisation</a>
+   </nav>
+  </div>
+ </div>
+</footer>
+
+
+
+<div class="floating-cta">
+ <a href="contact.html" class="floating-btn quote">Demander un devis</a>
+<a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp">WhatsApp</a>
+</div>
+
+
+
+<!-- ===== JS ===== -->
+
+<script>
+
+// Mobile Menu
+const mobileToggle = document.getElementById('mobileToggle');
+const mainNav = document.getElementById('mainNav');
+
+
+// Header scroll effect
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.style.boxShadow = '0 2px 20px rgba(15,23,42,0.08)';
+    } else {
+        header.style.boxShadow = 'none';
+    }
+});
+
+</script>
+
+<script src="../js/search.js?v=20260904-search-loading1"></script>
+<script defer="" src="../js/site-navigation.js?v=20260904-language-context1"></script>
+
+
+
+</body></html>

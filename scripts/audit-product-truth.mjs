@@ -14,8 +14,13 @@ const BASELINE_COMMIT = "d95d4db1ce908f941e76bff3f78bc052455d0b0b";
 const INVENTORY_PATH = "audit/product-truth-source-inventory.json";
 const CONFLICT_PATH = "audit/product-truth-conflicts.json";
 const REPORT_PATH = "audit/product-truth-baseline-20260731.md";
+const I18N_CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, "i18n", "config.json"), "utf8"));
+const ACTIVE_LANGUAGE_CODES = [...(I18N_CONFIG.activeLanguageCodes || [])];
+const LOCALIZED_PREFIX_SOURCE = ACTIVE_LANGUAGE_CODES
+  .map((code) => code.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  .join("|");
 
-const PRODUCT_FILE_RE = /^(?:(de|ja|ru)\/)?(BP-[A-Z0-9]+(?:-[A-Z0-9]+)+)\.html$/i;
+const PRODUCT_FILE_RE = new RegExp(`^(?:(${LOCALIZED_PREFIX_SOURCE})/)?(BP-[A-Z0-9]+(?:-[A-Z0-9]+)+)\\.html$`, "i");
 const MODEL_RE = /\bBP-[A-Z0-9]+(?:-[A-Z0-9]+)+\b/gi;
 const knownModels = new Set();
 const ENGINEERING_EXTENSIONS = new Set([
@@ -126,9 +131,8 @@ function extractModels(value) {
 }
 
 function inferLanguage(relativePath) {
-  if (relativePath.startsWith("de/")) return "de";
-  if (relativePath.startsWith("ja/")) return "ja";
-  if (relativePath.startsWith("ru/")) return "ru";
+  const prefix = relativePath.split("/", 1)[0];
+  if (ACTIVE_LANGUAGE_CODES.includes(prefix)) return prefix;
   return "en";
 }
 
@@ -899,17 +903,17 @@ function factFromCardTag(tag) {
   if (/MPa|МПа/i.test(value) && /max|maximal|最高|макс/i.test(value)) {
     return ["maximum_pressure", value];
   }
-  if (/RPM|min[⁻-]?1|об\/мин/i.test(value)) return ["maximum_speed", value];
+  if (/RPM|min[⁻-]?1|tr\/min|об\/мин/i.test(value)) return ["maximum_speed", value];
   if (/\b(?:G\s*\d+\/\d+|NPT\s*\d+\/\d+|BSP\s*\d+\/\d+)\b/i.test(value)) {
     return ["port_thread", value];
   }
-  if (/flange|flansch|フランジ|фланц|threaded mount|gewindemontage|ねじ取付|резьбов.*креплен/i.test(value)) {
+  if (/flange|flansch|bride|フランジ|фланц|threaded mount|gewindemontage|montage fileté|ねじ取付|резьбов.*креплен/i.test(value)) {
     return ["mounting_style", value];
   }
-  if (/6061|45#|steel|stahl|鋼|сталь|aluminum|aluminium|アルミ|алюмин/i.test(value)) {
+  if (/6061|45#|steel|stahl|acier|鋼|сталь|aluminum|aluminium|アルミ|алюмин/i.test(value)) {
     return ["body_material", value];
   }
-  if (/IP\s*\d{2}|dust|staub|防じん|пыл/i.test(value)) {
+  if (/IP\s*\d{2}|dust|staub|poussière|防じん|пыл/i.test(value)) {
     return ["protection_rating", value];
   }
   if (/\d+\s*(?:-in-|inlet|passage|канал|流路)/i.test(value)) {
@@ -919,8 +923,9 @@ function factFromCardTag(tag) {
 }
 
 function addProductListingSources() {
+  const productListingPattern = new RegExp(`^(?:(${LOCALIZED_PREFIX_SOURCE})/)?products(?:-p2)?\\.html$`, "i");
   const files = [...trackedFiles]
-    .filter((file) => /^(?:(de|ja|ru)\/)?products(?:-p2)?\.html$/i.test(file))
+    .filter((file) => productListingPattern.test(file))
     .sort();
 
   for (const file of files) {
@@ -1347,12 +1352,12 @@ function inferFieldTypesFromText(text) {
   const tests = [
     ["weight", /\b(?:kg|g)\b|кг|質量|重量/i],
     ["maximum_pressure", /\b(?:MPa|bar|psi)\b|МПа/i],
-    ["maximum_speed", /\bRPM\b|min⁻¹|об\/мин/i],
-    ["compatible_media", /air|water|coolant|hydraulic|luft|wasser|空気|作動油|воздух|масло/i],
-    ["mounting_style", /flange mount|threaded mount|flanschmontage|gewindemontage|フランジ取付|ねじ取付|фланцев.*креплен|резьбов.*креплен/i],
+    ["maximum_speed", /\bRPM\b|min⁻¹|tr\/min|об\/мин/i],
+    ["compatible_media", /air|water|coolant|hydraulic|luft|wasser|eau|liquide de refroidissement|hydraulique|空気|作動油|воздух|масло/i],
+    ["mounting_style", /flange mount|threaded mount|flanschmontage|gewindemontage|montage (?:à bride|fileté)|フランジ取付|ねじ取付|фланцев.*креплен|резьбов.*креплен/i],
     ["port_thread", /\bG\s*\d+\/\d+\b|\b(?:NPT|BSP)\s*\d+\/\d+\b/i],
-    ["protection_rating", /\bIP\s*\d{2}\b|dust|staub|防じん|пыл/i],
-    ["body_material", /6061|45#|stainless|steel|aluminum|aluminium|сталь|алюмин|鋼|アルミ/i],
+    ["protection_rating", /\bIP\s*\d{2}\b|dust|staub|poussière|防じん|пыл/i],
+    ["body_material", /6061|45#|stainless|steel|acier|aluminum|aluminium|сталь|алюмин|鋼|アルミ/i],
   ];
   for (const [field, pattern] of tests) {
     if (pattern.test(text)) fieldTypes.push(field);
@@ -1361,13 +1366,14 @@ function inferFieldTypesFromText(text) {
 }
 
 function addSecondaryTextSources() {
+  const localized = `(?:(${LOCALIZED_PREFIX_SOURCE})/)?`;
   const contentPatterns = [
-    /^(?:(de|ja|ru)\/)?faq\.html$/i,
-    /^(?:(de|ja|ru)\/)?application[^/]*\.html$/i,
-    /^(?:(de|ja|ru)\/)?applications\.html$/i,
-    /^(?:(de|ja|ru)\/)?blog[^/]*\.html$/i,
-    /^(?:(de|ja|ru)\/)?installation\.html$/i,
-    /^(?:(de|ja|ru)\/)?product-comparison\.html$/i,
+    new RegExp(`^${localized}faq\\.html$`, "i"),
+    new RegExp(`^${localized}application[^/]*\\.html$`, "i"),
+    new RegExp(`^${localized}applications\\.html$`, "i"),
+    new RegExp(`^${localized}blog[^/]*\\.html$`, "i"),
+    new RegExp(`^${localized}installation\\.html$`, "i"),
+    new RegExp(`^${localized}product-comparison\\.html$`, "i"),
   ];
 
   for (const file of [...trackedFiles].sort()) {
@@ -2060,7 +2066,7 @@ function buildReport(inventoryDocument, conflictDocument) {
     "",
     "## 1. Scope",
     "",
-    "Phase 1B re-read product-detail HTML in four languages, JSON-LD, product cards, search and AI derivatives, localization sources, existing audit evidence, public download manifests, tracked engineering files, content-generation scripts, and approved read-only local catalog sources.",
+    `Phase 1B re-read product-detail HTML in ${ACTIVE_LANGUAGE_CODES.length + 1} languages, JSON-LD, product cards, search and AI derivatives, localization sources, existing audit evidence, public download manifests, tracked engineering files, content-generation scripts, and approved read-only local catalog sources.`,
     "",
     "The audit normalizes current observations and reports differences. Historical audit statements remain visible but cannot independently create an active conflict. The audit does not decide which conflicting value is correct.",
     "",

@@ -17,8 +17,10 @@
 
 
 
+
 <link rel="alternate" hreflang="en" href="https://www.begapunk.com/search.html">
 <link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/search.html">
+<link rel="alternate" hreflang="fr" href="https://www.begapunk.com/fr/search.html">
 <link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/search.html">
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/search.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/search.html">
@@ -58,9 +60,9 @@
 
 
 
-    <link rel="stylesheet" href="../css/style.css?v=20260817-cls1">
+    <link rel="stylesheet" href="../css/style.css?v=20260904-nojs-flow1">
 
-    <script defer="" src="../js/analytics.js?v=20260727-render-qa"></script>
+    <script defer="" src="../js/analytics.js?v=e061bf5d563c"></script>
 
 
 
@@ -272,11 +274,11 @@
 <header class="header">
  <div class="container">
   <div class="header-inner">
-   <a href="index.html" class="logo">
+   <a href="./" class="logo">
     <img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk — производитель прецизионных вращающихся соединений" style="height:48px;width:auto;" width="226" height="40">
    </a>
    <nav class="nav" id="mainNav">
-    <a href="index.html" class="nav-home-mobile">Главная</a>
+    <a href="./" class="nav-home-mobile">Главная</a>
     <div class="nav-dropdown">
      <a href="products.html" class="nav-dropdown-toggle">Продукция <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
@@ -313,7 +315,7 @@
     <a href="contact.html" class="nav-cta">Запросить предложение</a>
    </nav>
 
-   <div class="i18n-switcher" data-no-translate=""><label class="sr-only" for="language-ru">Язык</label><select id="language-ru" aria-label="Язык" onchange="if(this.value)window.location.href=this.value"><option value="../search.html">English</option><option value="../de/search.html">Deutsch</option><option value="../ja/search.html">日本語</option><option value="search.html" selected="">Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Меню" aria-controls="mainNav" aria-expanded="false">
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-ru">Язык</label><select id="language-ru" aria-label="Язык" onchange="if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value"><option value="../search.html">English</option><option value="../de/search.html">Deutsch</option><option value="../fr/search.html">Français</option><option value="../ja/search.html">日本語</option><option value="search.html" selected>Русский</option></select></div><button class="mobile-toggle" id="mobileToggle" aria-label="Меню" aria-controls="mainNav" aria-expanded="false">
     <span></span><span></span><span></span>
    </button>
   </div>
@@ -330,18 +332,22 @@
         <h1>Найти подходящее ротационное соединение</h1>
         <p>Поиск по модели, параметрам, типу машины или области применения.</p>
 
-        <div class="search-box-wrap">
-            <input id="search-input" type="search" placeholder="Например: BP-2P-0001, лазерная резка, 1 МПа, 4 канала ..." autocomplete="off">
-            <button type="button" id="search-btn">Поиск</button>
+        <div class="search-box-wrap" role="search" aria-label="Поиск по сайту" aria-busy="false">
+            <input id="search-input" type="search" placeholder="Например: BP-2P-0001, лазерная резка, 1 МПа, 4 канала ..." autocomplete="off" aria-label="Поиск по сайту Begapunk" aria-controls="search-results" disabled>
+            <button id="search-btn" type="button" disabled>Поиск</button>
         </div>
 
-        <div class="search-filters">
-            <button class="search-filter-btn active" data-filter="all">Все</button>
-            <button class="search-filter-btn" data-filter="product">Продукты</button>
-            <button class="search-filter-btn" data-filter="application">Применение</button>
-            <button class="search-filter-btn" data-filter="blog">Статьи и руководства</button>
-            <button class="search-filter-btn" data-filter="core">Страницы</button>
+        <div class="search-filters" role="group" aria-label="Фильтр результатов по типу материала">
+            <button class="search-filter-btn active" data-filter="all" type="button" aria-pressed="true" disabled>Все</button>
+            <button class="search-filter-btn" data-filter="product" type="button" aria-pressed="false" disabled>Продукты</button>
+            <button class="search-filter-btn" data-filter="application" type="button" aria-pressed="false" disabled>Применение</button>
+            <button class="search-filter-btn" data-filter="blog" type="button" aria-pressed="false" disabled>Статьи и руководства</button>
+            <button class="search-filter-btn" data-filter="core" type="button" aria-pressed="false" disabled>Страницы</button>
         </div>
+
+        <!-- search-no-js:start -->
+        <noscript><p class="search-no-js" id="search-no-js-ru" data-search-exclude>Для поиска по сайту требуется JavaScript. Включите JavaScript или откройте <a href="products.html">каталог продукции</a>.</p></noscript>
+        <!-- search-no-js:end -->
     </div>
 </section>
 
@@ -351,7 +357,7 @@
 
 <section class="search-results-area">
     <div class="container">
-        <p class="search-count" id="search-count">Загрузка поискового индекса ...</p>
+        <p class="search-count" id="search-count" role="status" aria-live="polite" aria-atomic="true">Загрузка поискового индекса ...</p>
         <div id="search-results"></div>
 
         <div class="search-empty" id="search-empty" style="display:none;">
@@ -370,7 +376,7 @@
 <footer class="footer" id="siteFooter">
  <div class="container">
   <div class="footer-brand footer-brand-band">
-   <a class="footer-logo" href="index.html" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+   <a class="footer-logo" href="./" aria-label="Begapunk"><img src="../images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
    <div class="footer-brand-copy">
     <p class="footer-positioning">Begapunk — производитель прецизионных вращающихся соединений в Нинбо, Китай. Мы работаем с производителями промышленного оборудования и систем автоматизации.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
@@ -469,8 +475,8 @@ window.addEventListener('scroll', () => {
 
 </script>
 
-<script src="../js/search.js?v=20260827-i18n1"></script>
-<script defer="" src="../js/site-navigation.js?v=20260808-nav1"></script>
+<script src="../js/search.js?v=20260904-search-loading1"></script>
+<script defer="" src="../js/site-navigation.js?v=20260904-language-context1"></script>
 
 
 

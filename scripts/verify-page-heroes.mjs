@@ -25,7 +25,7 @@ const homeContracts = {
     ],
   },
   de: {
-    badge: 'Pneumatische Drehdurchführungen | Standard & kundenspezifisch',
+    badge: 'Pneumatische Drehdurchführungen | Standard- und Sonderausführungen',
     description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für OEM-Maschinen, abgestimmt auf die tatsächlichen Betriebsbedingungen. Mindestbestellmenge: 1 Stück. Fertigungszeit: Katalogmodelle typischerweise etwa 20 Kalendertage; Sonderanfertigungen höchstens 30 Kalendertage. Jede Katalogseite enthält eine 2D-Zeichnung und ein STEP-AP214 zum Download.',
     sectionTitle: 'Nach Anwendung auswählen',
     comparisonLabel: 'Modellvergleich',
@@ -37,9 +37,22 @@ const homeContracts = {
       ['application-automation-rotary-tables.html', 'Rundtische', 'Pneumatische Vorrichtungen und Spanntechnik'],
     ],
   },
+  fr: {
+    badge: 'Raccords tournants pneumatiques | Standard et sur mesure',
+    description: 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de fabrication : environ 20 jours calendaires pour les modèles du catalogue ; dans les 30 jours calendaires pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
+    sectionTitle: 'Choisir par application',
+    comparisonLabel: 'Comparer les modèles',
+    tags: ['1 à 8 circuits', 'Air comprimé (catalogue)', 'Filetage / bride'],
+    applications: [
+      ['application-laser-tube-cutting.html', 'Mandrin arrière pour découpe laser de tubes', 'Transfert d’air comprimé ; vérifier les circuits et les interfaces'],
+      ['application-packaging-machinery.html', 'Lignes d’emballage', 'Scelleuses rotatives et mandrins'],
+      ['application-bottle-filling-capping.html', 'Remplissage de bouteilles', 'Distribution d’air sur tourelles rotatives'],
+      ['application-automation-rotary-tables.html', 'Tables rotatives', 'Montages et outillages pneumatiques'],
+    ],
+  },
   ja: {
     badge: '空圧ロータリージョイント｜標準品・特注品',
-    description: 'OEM装置向けの標準・特注空圧ロータリージョイントを、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
+    description: 'OEM装置向けのエアーロータリージョイント（空圧用ロータリージョイント）を、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
     sectionTitle: '用途から探す',
     comparisonLabel: '機種選定表',
     tags: ["1～8流路", "圧縮空気（カタログ）", "ねじ取付・フランジ取付"],
@@ -65,6 +78,11 @@ const homeContracts = {
   },
 };
 
+const expectedHomeContractLanguages = languages.map(({ code }) => code);
+if (JSON.stringify(Object.keys(homeContracts)) !== JSON.stringify(expectedHomeContractLanguages)) {
+  throw new Error(`Homepage hero contracts must exactly match source + active languages (${expectedHomeContractLanguages.join(', ')}).`);
+}
+
 function compact(value = '') {
   return String(value).replace(/\s+/g, ' ').trim();
 }
@@ -72,7 +90,7 @@ function compact(value = '') {
 const softIsolationRoutes = new Set([]);
 
 const changedStylesheets = new Map([
-  ['case-studies.css', '20260817-case-bundle1'],
+  ['case-studies.css', '20260904-native-faq1'],
   ['application-case.css', '20260814-hero1'],
   ['manufacturing-quality.css', '20260814-hero1'],
   ['production-inspection-testing.css', '20260814-hero1'],
@@ -111,7 +129,12 @@ for (const language of languages) {
   for (const route of config.pages) {
     const relativePath = language.directory ? path.join(language.directory, route) : route;
     const normalizedPath = relativePath.replaceAll('\\', '/');
-    const html = fs.readFileSync(path.join(root, relativePath), 'utf8');
+    const absolutePath = path.join(root, relativePath);
+    if (!fs.existsSync(absolutePath)) {
+      failures.push(`${normalizedPath}: page is missing.`);
+      continue;
+    }
+    const html = fs.readFileSync(absolutePath, 'utf8');
     const $ = load(html);
     const contract = contractFor(route);
     const hero = $(contract.selector);

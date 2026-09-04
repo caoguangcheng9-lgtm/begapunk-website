@@ -284,7 +284,7 @@ if (approval) {
     exceptionFail('release approval must explicitly state that independent native-speaker confirmation is not complete.');
   }
   if (!sameSet(approval.pages ?? [], allowedEditorialDebtPages)) {
-    exceptionFail('release approval pages must exactly match the four known editorial-debt pages.');
+    exceptionFail(`release approval pages must exactly match the ${allowedEditorialDebtPages.length} known editorial-debt pages.`);
   }
 
   const approvedAt = Date.parse(approval.approvedAt);
@@ -323,10 +323,10 @@ if (approval) {
     const seoGeo = status.seoGeo?.[language];
 
     if (!sameSet(missing, allowedEditorialDebtPages)) {
-      exceptionFail(`${language}: missing pages differ from the approved four-page editorial debt.`);
+      exceptionFail(`${language}: missing pages differ from the approved ${allowedEditorialDebtPages.length}-page editorial debt.`);
     }
     if (!sameSet(inProgress, allowedEditorialDebtPages)) {
-      exceptionFail(`${language}: inProgress pages differ from the approved four-page editorial debt.`);
+      exceptionFail(`${language}: inProgress pages differ from the approved ${allowedEditorialDebtPages.length}-page editorial debt.`);
     }
     if (reviewed.length !== pages.length - allowedEditorialDebtPages.length) {
       exceptionFail(`${language}: reviewed count must remain ${pages.length - allowedEditorialDebtPages.length}.`);
@@ -355,7 +355,7 @@ if (approval) {
   const artifactPaths = artifacts.map((artifact) => artifact?.path).sort();
   if (artifacts.length !== expectedArtifactPaths.length
     || JSON.stringify(artifactPaths) !== JSON.stringify(expectedArtifactPaths)) {
-    exceptionFail('release approval artifacts must exactly cover the 12 localized debt pages.');
+    exceptionFail(`release approval artifacts must exactly cover the ${expectedArtifactPaths.length} localized debt pages.`);
   } else {
     for (const artifact of artifacts) {
       const relativePath = artifact.path;

@@ -42,20 +42,21 @@
 
     <meta name="description" content="Begapunk privacy policy explaining website analytics, inquiry form processing, data use, retention, security, and user choices.">
 
-    <link rel="alternate" hreflang="en" href="https://www.begapunk.com/privacy.html">
+<link rel="alternate" hreflang="en" href="https://www.begapunk.com/privacy.html">
 <link rel="alternate" hreflang="de" href="https://www.begapunk.com/de/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://www.begapunk.com/fr/privacy.html">
 <link rel="alternate" hreflang="ja" href="https://www.begapunk.com/ja/privacy.html">
 <link rel="alternate" hreflang="ru" href="https://www.begapunk.com/ru/privacy.html">
 <link rel="alternate" hreflang="x-default" href="https://www.begapunk.com/privacy.html">
 <link rel="canonical" href="https://www.begapunk.com/privacy.html">
 
-    <link rel="stylesheet" href="css/style.css?v=20260825-nav-compact1">
+    <link rel="stylesheet" href="css/style.css?v=20260904-nojs-flow1">
 
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <script defer src="js/analytics.js?v=20260727-render-qa"></script>
+    <script defer src="js/analytics.js?v=e061bf5d563c"></script>
 </head>
 
 <body>
@@ -65,11 +66,11 @@
 <header class="header">
  <div class="container">
   <div class="header-inner">
-   <a href="index.html" class="logo">
+   <a href="./" class="logo">
     <img src="images/optimized/begapunk-logo-header.webp" alt="Begapunk - Precision Rotary Joint Manufacturer" style="height:48px;width:auto;" width="226" height="40">
    </a>
    <nav class="nav" id="mainNav">
-    <a href="index.html" class="nav-home-mobile">Home</a>
+    <a href="./" class="nav-home-mobile">Home</a>
     <div class="nav-dropdown">
      <a href="products.html" class="nav-dropdown-toggle">Products <span class="chevron"></span></a>
      <div class="nav-dropdown-menu">
@@ -89,7 +90,7 @@
     <a href="about.html" class="nav-about">About</a>
     <a href="contact.html" class="nav-cta">Get a Quote</a>
    </nav>
-   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-en">Language</label><select id="language-en" aria-label="Language" onchange="if(this.value)window.location.href=this.value"><option value="privacy.html" selected>English</option><option value="de/privacy.html">Deutsch</option><option value="ja/privacy.html">日本語</option><option value="ru/privacy.html">Русский</option></select></div>
+   <div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-en">Language</label><select id="language-en" aria-label="Language" onchange="if(this.value)window.location.href=window.BegapunkLanguageUrl?window.BegapunkLanguageUrl(this.value):this.value"><option value="privacy.html" selected>English</option><option value="de/privacy.html">Deutsch</option><option value="fr/privacy.html">Français</option><option value="ja/privacy.html">日本語</option><option value="ru/privacy.html">Русский</option></select></div>
    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-controls="mainNav" aria-expanded="false">
     <span></span><span></span><span></span>
    </button>
@@ -116,7 +117,7 @@
 
     <p><strong>Effective Date:</strong> June 11, 2026<br>
 
-    <strong>Last Updated:</strong> August 28, 2026</p>
+    <strong>Last Updated:</strong> September 4, 2026</p>
 
 
 
@@ -131,6 +132,8 @@
     <ul>
 
         <li><strong>Inquiry and contact information:</strong> Name, email address, company name, country, product interest, application details, technical requirements, inquiry type, and source-page information that you submit through the quote request form.</li>
+
+        <li><strong>Campaign attribution after consent:</strong> Google click identifiers (<code>gclid</code>, <code>gbraid</code>, and <code>wbraid</code>), UTM campaign parameters, the first landing page, and the initial referrer. These values are collected only after you allow optional measurement, kept in session storage for the current browser session, and included with an inquiry sent to our internal sales mailbox.</li>
 
         <li><strong>Technical information:</strong> IP address and request metadata that may be processed by the web server for delivery, security, and logging. The inquiry handler derives a one-way hash from the request IP address and keeps recent attempt timestamps in server temporary storage for a 15-minute rate-limit window.</li>
 
@@ -154,6 +157,8 @@
 
         <li>Improve our website and product offerings</li>
 
+        <li>Measure advertising effectiveness and attribute inquiries to campaigns after you allow optional measurement</li>
+
         <li>Send the inquiry to our configured sales mailbox through authenticated SMTP</li>
 
         <li>Prevent abuse and protect the availability of the inquiry service</li>
@@ -172,7 +177,7 @@
 
     <h3>3.1 Essential Local Storage (Always Active)</h3>
 
-    <p>The consent manager uses browser local storage rather than an essential cookie to remember your analytics choice. This record does not directly identify you and is not sent to our server with normal page requests.</p>
+    <p>The consent manager uses browser local storage rather than an essential cookie to remember your optional-measurement choice. This record does not directly identify you and is not sent to our server with normal page requests.</p>
 
     <ul>
 
@@ -180,13 +185,15 @@
 
     </ul>
 
-    <h3>3.2 Analytics Cookies (Optional)</h3>
+    <h3>3.2 Analytics and Advertising Measurement (Optional)</h3>
 
-    <p>Google Analytics 4 is loaded only after you choose "Accept All". Before that decision, analytics and advertising consent are set to denied. If you decline, the site does not load GA4 and removes GA cookies that it can access.</p>
+    <p>On a first visit, Google Analytics 4 is not loaded unless you choose “Allow measurement.” By default, Consent Mode v2 sets <code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code>, and <code>ad_personalization</code> to denied. If you allow measurement, the first three are granted for analytics and advertising-effectiveness measurement; <code>ad_personalization</code> remains denied. We do not use this choice to serve personalized advertising. If you decline before granting consent, GA4 is not loaded. If you withdraw consent after it has loaded, the site updates these consent settings to denied, stops subsequent optional measurement, and removes GA cookies and session attribution that it can access; the already executed script cannot be unloaded from the current page.</p>
 
     <ul>
 
-        <li><strong>Google Analytics 4</strong> — After consent, GA4 records page and session activity, referral information, consent events, contact/download interactions, form attempts, and confirmed inquiry events. A confirmed inquiry event may include the inquiry type and requested product, but our code does not send your name, email address, company, country, free-text requirements, or attachment to GA4. Google Signals and advertising personalization are disabled. Analytics retention follows the current GA4 property configuration. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+        <li><strong>Google Analytics 4</strong> — After consent, GA4 records page and session activity, referral and campaign information, consent events, contact/download interactions, form attempts, and confirmed inquiry events. A confirmed inquiry event may include the inquiry type and requested product, but our code does not send your name, email address, company, country, free-text requirements, attachment, or raw click identifier as an event parameter. Google Signals and advertising personalization are disabled. Analytics retention follows the current GA4 property configuration. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+
+        <li><strong>Session attribution</strong> — After consent, the site stores the listed click IDs, UTM values, first landing page, and initial referrer under <code>begapunk_session_attribution_v1</code> in <code>sessionStorage</code>. The values are used to populate hidden inquiry-form fields and are sent only if you submit that form. Revoking measurement consent removes the session record and clears those fields.</li>
 
     </ul>
 
@@ -200,9 +207,9 @@
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
 
-            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Accept Analytics</button>
+            <button onclick="BegapunkConsent.grant()" style="padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Allow Measurement</button>
 
-            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Decline Analytics</button>
+            <button onclick="BegapunkConsent.deny()" style="padding:10px 18px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-weight:600;">Decline Optional Measurement</button>
 
             <button onclick="BegapunkConsent.reset()" style="padding:10px 18px;background:transparent;color:#666;border:none;border-radius:6px;cursor:pointer;text-decoration:underline;">Reset & Show Banner Again</button>
 
@@ -222,7 +229,7 @@
 
         <li><strong>Hosting and email providers:</strong> The PHP form handler validates the request and uses PHPMailer to send it through authenticated SMTP to the configured Begapunk sales mailbox. The handler does not write inquiry fields or attachments to a website database.</li>
 
-        <li><strong>Analytics provider:</strong> Google Analytics receives the analytics data described above only after consent.</li>
+        <li><strong>Measurement provider:</strong> Google Analytics receives the measurement data described above only after consent. Advertising personalization remains disabled.</li>
 
         <li><strong>Shipping carriers:</strong> DHL, FedEx, or local carriers (only shipping address and contact info)</li>
 
@@ -247,6 +254,8 @@
         <li><strong>Order data:</strong> Retained as required by applicable tax, accounting, warranty, and commercial laws.</li>
 
         <li><strong>Analytics data:</strong> Retained according to the current Google Analytics property configuration.</li>
+
+        <li><strong>Session attribution:</strong> Retained in the browser for the current session. If you submit an inquiry, the sanitized attribution values remain with that email under the same operational and legal retention approach as other inquiry data.</li>
 
     </ul>
 
@@ -310,7 +319,7 @@
 <footer class="footer" id="siteFooter">
  <div class="container">
   <div class="footer-brand footer-brand-band">
-   <a class="footer-logo" href="index.html" aria-label="Begapunk"><img src="images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+   <a class="footer-logo" href="./" aria-label="Begapunk"><img src="images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
    <div class="footer-brand-copy">
     <p class="footer-positioning">Precision rotary joint manufacturer based in Ningbo, China. Supporting industrial automation OEMs and machine builders.</p>
     <p class="footer-company-name">Ningbo Begapunk Pneumatic Components Co., Ltd.</p>
@@ -397,10 +406,10 @@ window.addEventListener('scroll', () => {
         if (!el) return;
         const state = (window.BegapunkConsent && window.BegapunkConsent.state) || null;
         if (state === 'granted') {
-            el.textContent = 'Current status: Analytics accepted — Google Analytics 4 is active.';
+            el.textContent = 'Current status: Optional measurement allowed — analytics and advertising-effectiveness measurement are active; personalized advertising remains off.';
             el.style.color = '#2e7d32';
         } else if (state === 'denied') {
-            el.textContent = 'Current status: Analytics declined — only essential cookies are used.';
+            el.textContent = 'Current status: Optional measurement declined — only essential functions are active.';
             el.style.color = '#c62828';
         } else {
             el.textContent = 'Current status: No decision yet — choose your preference in the cookie banner.';
@@ -418,7 +427,7 @@ window.addEventListener('scroll', () => {
     document.addEventListener('begapunk:consent-change', updateStatus);
 })();
 </script>
-<script defer src="js/site-navigation.js?v=20260808-nav1"></script>
+<script defer src="js/site-navigation.js?v=20260904-language-context1"></script>
 </body>
 
 </html>

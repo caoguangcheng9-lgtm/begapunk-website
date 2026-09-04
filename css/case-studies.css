@@ -406,6 +406,11 @@
     line-height: 1.45;
     text-align: left;
     cursor: pointer;
+    list-style: none;
+}
+
+.page-case-studies .faq-question::-webkit-details-marker {
+    display: none;
 }
 
 .page-case-studies .faq-question:focus-visible {
@@ -421,22 +426,20 @@
     line-height: 1;
 }
 
-.page-case-studies .faq-item.open .faq-question::after {
-    content: '-';
+.page-case-studies details.faq-item[open] > .faq-question::after {
+    content: '−';
 }
 
-.page-case-studies .faq-answer {
+.page-case-studies details.faq-item > .faq-answer {
     display: none;
+    max-height: none;
+    overflow: visible;
     padding: 0 20px 18px;
     color: var(--text-light);
     line-height: 1.7;
 }
 
-.page-case-studies .faq-answer[hidden] {
-    display: none;
-}
-
-.page-case-studies .faq-item.open .faq-answer {
+.page-case-studies details.faq-item[open] > .faq-answer {
     display: block;
 }
 

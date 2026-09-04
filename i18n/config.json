@@ -13,6 +13,11 @@
       "locale": "de_DE"
     },
     {
+      "code": "fr",
+      "label": "Français",
+      "locale": "fr_FR"
+    },
+    {
       "code": "es",
       "label": "Español",
       "locale": "es_ES"
@@ -40,9 +45,12 @@
   ],
   "activeLanguageCodes": [
     "de",
+    "fr",
     "ja",
     "ru"
   ],
+  "partialLanguagePages": {},
+  "partialLanguageAssets": {},
   "sitemapExcludedPages": [
     "404.html",
     "thank-you.html",

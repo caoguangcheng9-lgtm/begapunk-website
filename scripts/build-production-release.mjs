@@ -10,6 +10,12 @@ import {
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputRoot = path.join(sourceRoot, 'dist', 'production');
+const i18nConfig = JSON.parse(await readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
+const partialLanguageCodes = Object.keys(i18nConfig.partialLanguagePages || {});
+const deployedLanguageCodes = [...new Set([
+  ...(i18nConfig.activeLanguageCodes || []),
+  ...partialLanguageCodes,
+])].sort();
 
 if (!outputRoot.startsWith(`${sourceRoot}${path.sep}`)) {
   throw new Error(`Refusing to clean an output path outside the repository: ${outputRoot}`);
@@ -25,6 +31,7 @@ const explicitFiles = [
   'robots.txt',
   'sitemap.xml',
   'sitemap-i18n.xml',
+  ...partialLanguageCodes.map((code) => `sitemap-${code}.xml`),
   'llms.txt',
   'search-index.json',
   'send_inquiry.php',
@@ -37,9 +44,7 @@ const publicDirectories = [
   'images',
   'videos',
   'PHPMailer',
-  'de',
-  'ja',
-  'ru',
+  ...deployedLanguageCodes,
 ];
 
 function toReleasePath(fileName) {

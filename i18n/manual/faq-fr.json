@@ -1,0 +1,181 @@
+{
+  "language": "fr",
+  "meta": {
+    "title": "FAQ technique sur les raccords tournants | Begapunk",
+    "description": "27 réponses techniques sur le fonctionnement, la sélection, les fluides, la conception sur mesure, le montage, les contrôles d’étanchéité et la traçabilité des raccords tournants.",
+    "h1": "FAQ technique sur les raccords tournants",
+    "heroIntro": "27 réponses pratiques destinées aux constructeurs de machines et aux ingénieurs en automatisation : fonctionnement, sélection, conception sur mesure, installation, essais et étude d’application.",
+    "jumpTitle": "Parcourir par thème",
+    "jumpAria": "Catégories de la foire aux questions"
+  },
+  "sections": [
+    { "id": "faq-basics", "navLabel": "Principes fondamentaux", "heading": "Principes fondamentaux" },
+    { "id": "faq-selection", "navLabel": "Conditions de service et sélection", "heading": "Conditions de service et sélection" },
+    { "id": "faq-customization", "navLabel": "Conception sur mesure et plans", "heading": "Conception sur mesure, plans et intégration" },
+    { "id": "faq-installation", "navLabel": "Installation et durée de vie", "heading": "Installation, fonctionnement et durée de vie" },
+    { "id": "faq-testing", "navLabel": "Essais de production et traçabilité", "heading": "Essais de production et traçabilité" },
+    { "id": "faq-commercial", "navLabel": "Réparation, conditions commerciales et étude d’application", "heading": "Réparation, conditions commerciales et étude d’application" }
+  ],
+  "questions": [
+    {
+      "id": "faq-01",
+      "question": "Qu’est-ce qu’un raccord tournant industriel pour fluides ?",
+      "answer": "Un raccord tournant industriel est un dispositif mécanique qui transfère un gaz ou un liquide entre une partie fixe et une partie en rotation. Selon sa conception, il peut permettre une rotation continue, une rotation dans les deux sens ou une oscillation d’angle limité, tout en maintenant des circuits de fluide continus et en maîtrisant les fuites dans les conditions validées pour le modèle choisi. Un raccord tournant peut comporter un ou plusieurs circuits indépendants. Le fluide, la pression, la vitesse de rotation, les raccordements et le montage doivent être vérifiés pour chaque modèle et chaque machine."
+    },
+    {
+      "id": "faq-02",
+      "question": "Les termes rotary joint, rotary union et swivel joint désignent-ils la même chose ?",
+      "answer": "Dans les applications industrielles de transfert de fluides couvertes par Begapunk, les termes rotary joint, rotary union et swivel joint sont souvent employés pour désigner un dispositif qui transfère un fluide entre une partie fixe et une partie en rotation. Le terme privilégié varie selon la région, le secteur et le client. Le nom ne suffit toutefois pas pour sélectionner un produit : il faut aussi confirmer le fluide, la pression, la vitesse de rotation, le nombre de circuits, le type de mouvement et le montage."
+    },
+    {
+      "id": "faq-03",
+      "question": "Comment un raccord tournant transfère-t-il un fluide pendant la rotation ?",
+      "answer": "Dans une installation classique, le fluide entre par un orifice du côté fixe, circule dans un passage interne indépendant, puis ressort par un orifice du côté qui tourne avec la machine. Les joints d’étanchéité limitent les fuites vers l’extérieur au niveau de l’interface rotative ainsi que les fuites entre les passages. La structure de guidage interne maintient l’alignement des composants rotatifs, mais elle n’est pas conçue pour reprendre des charges supplémentaires de la machine. Selon le montage et la conception retenue, l’arbre ou le carter peut être la partie tournante."
+    },
+    {
+      "id": "faq-04",
+      "question": "Quelle est la différence entre un raccord tournant pour fluides et un collecteur tournant électrique ?",
+      "answer": "Un raccord tournant transfère un gaz ou un liquide entre une partie fixe et une partie en rotation, tandis qu’un collecteur tournant transfère de l’énergie électrique ou des signaux. Leur fonction et leur structure interne sont différentes. Lorsqu’une machine nécessite les deux transferts, ils peuvent être intégrés dans un même ensemble. Les exigences liées au fluide — nature du fluide, pression et organisation des passages — et les exigences électriques — tension, courant et type de signal — doivent être étudiées séparément puis indiquées sur le plan et dans la spécification électrique approuvés par les deux parties."
+    },
+    {
+      "id": "faq-05",
+      "question": "Quels types d’équipements industriels utilisent des raccords tournants ?",
+      "answer": "Les raccords tournants équipent les machines qui doivent transférer un gaz ou un liquide entre une tuyauterie fixe et un composant rotatif ou oscillant. Les applications courantes comprennent les équipements d’emballage, de remplissage et de bouchage ; les machines CNC, tables rotatives et montages pneumatiques ; les machines de découpe laser de tubes et leurs mandrins ; les plateaux d’automatisation et les effecteurs de robots ; les positionneurs de soudage ; les machines d’impression, textiles et de transformation de bandes ; les montages d’essai pour batteries et équipements électroniques ; ainsi que certains équipements forestiers ou hydrauliques sur mesure. Chaque application doit être étudiée selon le fluide, le nombre de circuits, la pression, la vitesse de rotation, la température, l’encombrement et le cycle de fonctionnement. Cette liste n’est pas exhaustive."
+    },
+    {
+      "id": "faq-06",
+      "question": "Quelles informations faut-il fournir pour sélectionner un raccord tournant ou demander un devis ?",
+      "answer": "Une référence, une photo ou un plan suffit pour commencer. Si vous les connaissez, indiquez également le fluide, le nombre de circuits, la pression maximale et la vitesse de rotation. Nous vous aiderons à confirmer les autres paramètres avant de recommander un modèle standard ou une configuration sur mesure."
+    },
+    {
+      "id": "faq-07",
+      "question": "Les valeurs maximales de pression, de vitesse et de température d’une fiche produit peuvent-elles être atteintes simultanément ?",
+      "answer": "Pas nécessairement. Les valeurs maximales de pression, de vitesse et de température indiquées sur une fiche produit sont des limites distinctes ; il ne faut pas supposer qu’elles s’appliquent simultanément. Si votre machine doit fonctionner avec plusieurs valeurs élevées en même temps, communiquez-nous le fluide, la pression, la vitesse ainsi que les températures maximales du fluide et de l’environnement. Nous étudierons l’ensemble de ces conditions et établirons un devis pour une configuration adaptée."
+    },
+    {
+      "id": "faq-08",
+      "question": "De combien de circuits mon raccord tournant a-t-il besoin ?",
+      "answer": "Chaque alimentation en gaz, alimentation en liquide ou ligne de retour commandée indépendamment nécessite généralement son propre passage. Indiquez la fonction et le fluide de chaque ligne, ainsi que la pression maximale requise pour l’ensemble du raccord tournant. Begapunk confirmera le nombre de circuits nécessaire et attribuera les orifices côté fixe et côté rotatif sur le plan du produit."
+    },
+    {
+      "id": "faq-09",
+      "question": "Les différents passages d’un raccord tournant multicanal peuvent-ils transporter des fluides différents ?",
+      "answer": "Oui. Indiquez le fluide et la fonction de chaque passage. Begapunk étudiera l’ensemble des conditions de service, sélectionnera des matériaux en contact avec le fluide et des joints compatibles, puis évaluera l’isolation requise entre les passages."
+    },
+    {
+      "id": "faq-10",
+      "question": "Avec quels fluides les raccords tournants Begapunk ont-ils déjà été utilisés ?",
+      "answer": "Begapunk possède une expérience de projet avec l’air comprimé, l’eau, certains liquides de refroidissement hydrosolubles contenant des additifs et l’huile hydraulique. Cela ne signifie pas que chaque modèle est compatible avec tous ces fluides. Pour une nouvelle application, indiquez le nom du fluide, sa composition principale et ses additifs, sa température et sa pression afin que Begapunk puisse vérifier la compatibilité et sélectionner des matériaux en contact avec le fluide ainsi que des joints adaptés."
+    },
+    {
+      "id": "faq-11",
+      "question": "Un raccord tournant peut-il fonctionner sans lubrification, et quand faut-il lubrifier l’air comprimé ?",
+      "answer": "Les modèles pneumatiques standard sont conçus pour fonctionner avec de l’air comprimé lubrifié, préparé par une unité complète en trois éléments : filtre à particules, séparateur d’eau et lubrificateur à brouillard d’huile. Si la machine doit utiliser de l’air sans huile, précisez-le avant la sélection ; une configuration de joints résistante à l’usure, prévue pour un fonctionnement sans huile, est disponible."
+    },
+    {
+      "id": "faq-12",
+      "question": "Peut-on personnaliser les raccordements, le montage et l’alésage traversant central ?",
+      "answer": "Oui, sous réserve d’une étude technique. Begapunk peut adapter les filetages de raccordement, le nombre et la position des orifices, la bride ou un autre type de montage, les dimensions hors tout ainsi que l’alésage traversant central à la machine du client."
+    },
+    {
+      "id": "faq-13",
+      "question": "Comment se déroule la conception et l’approbation d’un raccord tournant sur mesure chez Begapunk ?",
+      "answer": "Une référence, une photo ou un plan suffit pour commencer. Nous étudions les conditions de service, proposons un modèle standard ou une configuration sur mesure, puis fournissons un plan et un devis. La production commence après accord sur la configuration finale et réception du paiement. Si la conception évolue, nous mettons le plan à jour avant de poursuivre la production."
+    },
+    {
+      "id": "faq-14",
+      "question": "Puis-je obtenir un devis et des fichiers CAO sans disposer du plan complet de la machine ?",
+      "answer": "Oui. Une référence produit suffit pour établir un devis. Les plans 2D au format PDF et les modèles STEP des produits catalogue sont téléchargeables depuis les pages produit. Une demande spécifique reste nécessaire pour une conception sur mesure. Les fichiers CAO destinés aux clients ne révèlent pas la structure interne d’étanchéité."
+    },
+    {
+      "id": "faq-15",
+      "question": "Quelles sont les principales règles d’installation d’un raccord tournant ?",
+      "answer": "Installez le raccord tournant conformément au plan approuvé par les deux parties et alignez-le sur l’axe de rotation de la machine. Utilisez un flexible adapté entre la partie fixe et la tuyauterie extérieure, puis reliez la partie rotative à la machine comme indiqué sur le plan. Le montage doit empêcher que les défauts d’alignement, les vibrations et les charges externes soient transmis au raccord tournant. Le dispositif antirotation ou de reprise de couple doit seulement empêcher la partie censée rester fixe de tourner ; il doit conserver le jeu flottant spécifié et ne doit ni brider rigidement le raccord ni lui faire reprendre les charges de la machine."
+    },
+    {
+      "id": "faq-16",
+      "question": "Un raccord tournant peut-il reprendre des charges radiales ou axiales ?",
+      "answer": "Lorsqu’il est correctement installé, un raccord tournant peut tolérer les faibles efforts accessoires provenant de flexibles et de câbles correctement acheminés et soutenus indépendamment. Il n’existe toutefois pas de limite de charge unique publiée pour tous les modèles. Le raccord tournant ne doit pas reprendre de charges radiales ou axiales supplémentaires provenant de la machine ; celles-ci doivent être supportées par des roulements ou des structures indépendantes intégrés à la machine."
+    },
+    {
+      "id": "faq-17",
+      "question": "Quelle partie du raccord tournant tourne, et peut-il tourner dans les deux sens ou osciller ?",
+      "answer": "Selon l’architecture de la machine et la conception choisie, l’arbre ou le carter peut tourner. Le raccord tournant peut fonctionner dans les deux sens et effectuer une oscillation d’angle limité, dans les limites d’angle, de fréquence d’inversion, de cycle de fonctionnement et de vitesse validées pour la configuration. Aucun temps d’arrêt n’est nécessaire lors d’un changement de sens effectué dans ces limites. En revanche, un raccord tournant n’est pas conçu pour accepter un mouvement alternatif axial."
+    },
+    {
+      "id": "faq-19",
+      "question": "Quels signes imposent l’arrêt immédiat de la machine et le contrôle du raccord tournant ?",
+      "answer": "Arrêtez immédiatement la machine si le raccord tournant présente une fuite externe, de la fumée, une surchauffe, un bruit inhabituel, une hausse soudaine de la résistance à la rotation ou des vibrations anormales. Suivez la procédure de sécurité de la machine pour couper l’alimentation en fluide et dépressuriser le système. Une baisse de pression ne prouve pas à elle seule que le raccord tournant est défaillant : la tuyauterie, les vannes et les autres composants associés doivent également être contrôlés. Après l’arrêt, relevez la référence produit, le numéro de traçabilité et les conditions de fonctionnement réelles, puis contactez un ingénieur Begapunk."
+    },
+    {
+      "id": "faq-20",
+      "question": "Quels facteurs influencent la durée de vie d’un raccord tournant ?",
+      "answer": "Aucune durée de vie unique ne s’applique à toutes les applications. La durée de vie réelle dépend de la vitesse de rotation et de la vitesse de glissement qui en résulte au niveau des joints, de la pression, de la température, de la composition et de la propreté du fluide, de la lubrification, de l’alignement au montage, des charges externes et du cycle de fonctionnement. Begapunk évalue chaque conception à partir des conditions de service du client et de l’expérience acquise sur des projets comparables ; cette expérience ne constitue pas une garantie universelle de durée de vie. Une installation correcte, un fluide propre et une lubrification adaptée peuvent contribuer à prolonger la durée de service."
+    },
+    {
+      "id": "faq-21",
+      "question": "Comment Begapunk contrôle-t-il chaque raccord tournant entièrement assemblé ?",
+      "answer": "Chaque raccord tournant entièrement assemblé est testé passage par passage avant l’emballage. L’équipement automatisé fait tourner le produit et exécute une séquence de mise sous pression, de maintien en pression et d’évaluation PASS/NG. Pendant la rotation, il contrôle également la régularité du mouvement, l’absence de point dur et l’absence de bruit anormal. Seules les unités affichant PASS pour chaque passage sont libérées. Une unité non conforme est isolée puis, lorsque cela est possible, réparée et entièrement retestée ; sinon, elle est mise au rebut."
+    },
+    {
+      "id": "faq-22",
+      "question": "Que démontre le contrôle d’étanchéité standard à 1,0 MPa, et que ne démontre-t-il pas ?",
+      "answer": "Le contrôle d’étanchéité standard en production utilise de l’air comprimé à 1,0 MPa. Chaque passage est mis sous pression pendant environ 1 seconde, puis maintenu pendant environ 4 secondes tandis que l’équipement fait tourner le produit. Tous les autres passages restent ouverts et sans pression afin de détecter les fuites externes et les fuites entre passages. L’unité n’est acceptée que si l’instrument affiche PASS. Ce contrôle de production ne confirme pas la durée de vie ni l’aptitude à fonctionner avec un autre fluide, une autre pression, une autre vitesse ou d’autres conditions de service."
+    },
+    {
+      "id": "faq-23",
+      "question": "Comment Begapunk contrôle-t-il les fuites entre passages ?",
+      "answer": "Sur un raccord tournant multicanal, chaque passage est mis sous pression séparément tandis que tous les autres restent ouverts et sans pression. L’équipement compare le résultat à la pression, au temps de maintien et aux critères d’acceptation définis. Si une fuite entre passages est détectée, l’unité est classée NG. Elle n’est acceptée que si l’équipement ne détecte aucune fuite entre passages supérieure au seuil de détection défini, dans les conditions d’essai spécifiées."
+    },
+    {
+      "id": "faq-24",
+      "question": "Un client peut-il obtenir le rapport de contrôle et les données de traçabilité d’une unité précise ?",
+      "answer": "Oui. Chaque raccord tournant possède un numéro individuel de traçabilité lié à son rapport de contrôle. Envoyez-nous ce numéro pour demander le rapport correspondant. Si ce document doit accompagner la livraison ou respecter un format ou un critère d’acceptation particulier, précisez-le avant la commande."
+    },
+    {
+      "id": "faq-25",
+      "question": "Un raccord tournant peut-il être réparé, et comment la prise en charge sous garantie est-elle évaluée ?",
+      "answer": "Certains raccords tournants peuvent être réparés ; des dommages importants peuvent nécessiter leur remplacement. La garantie standard est d’un an à compter de la date d’expédition, sous réserve du devis, de la commande acceptée et des conditions de garantie écrites. En cas de problème, envoyez la référence, le numéro de traçabilité, un résumé des conditions de service, les symptômes et toute photo ou vidéo utile. Si Begapunk confirme un défaut de fabrication couvert, la solution standard est un remplacement sans frais ; les frais de retour et d’expédition du produit de remplacement sont traités selon l’accord écrit. Dans les autres cas, nous recommanderons une réparation ou un remplacement après contrôle."
+    },
+    {
+      "id": "faq-26",
+      "question": "Quelle est la quantité minimale de commande et quels sont les délais de production habituels ?",
+      "answer": "La quantité minimale de commande est d’une unité, pour les produits catalogue comme pour les produits sur mesure. La fabrication d’un modèle catalogue demande généralement environ 20 jours calendaires. Un produit sur mesure est généralement réalisé dans un délai de 30 jours calendaires. Le délai de production commence à la réception du paiement et n’inclut pas le transport international."
+    },
+    {
+      "id": "faq-27",
+      "question": "Comment demander l’étude technique d’une application de raccord tournant ?",
+      "answer": "Envoyez une demande d’étude d’application au moyen du formulaire Begapunk ou par courriel à sales@begapunk.com. Une référence, une photo, un plan ou une brève description suffit pour commencer ; les informations peuvent être incomplètes à ce stade. Un ingénieur Begapunk vous aidera à préciser les données manquantes et vous fournira, selon le besoin, une recommandation, un plan et un devis."
+    },
+    {
+      "id": "faq-28",
+      "question": "Utilisez-vous les plans des clients ou les informations de leurs demandes à des fins marketing ?",
+      "answer": "Non. Nous n’utilisons pas vos demandes ni vos plans à des fins marketing et nous ne les publions ni ne les rendons publics."
+    }
+  ],
+  "relatedLinks": [
+    { "faqId": "faq-04", "text": "Voir le raccord tournant pneumatique-électrique BP-3P-S06-0001.", "href": "BP-3P-S06-0001.html" },
+    { "faqId": "faq-05", "text": "Découvrir les applications des raccords tournants par type de machine.", "href": "applications.html" },
+    { "faqId": "faq-08", "text": "Comparer les modèles Begapunk selon leur nombre de circuits.", "href": "product-comparison.html" },
+    { "faqId": "faq-13", "text": "Consulter le processus de demande et d’approbation des plans Begapunk.", "href": "contact.html#inquiry-process" },
+    { "faqId": "faq-14", "text": "Télécharger les plans 2D et les modèles STEP depuis les pages produit.", "href": "products.html?source=fr/faq.html" },
+    { "faqId": "faq-15", "text": "Consulter la liste de contrôle pour l’installation d’un raccord tournant.", "href": "blog-rotary-joint-installation-mistakes.html#checklist" },
+    { "faqId": "faq-22", "text": "Voir les paramètres confirmés du contrôle d’étanchéité en production.", "href": "production-inspection-testing.html#verified-test-parameters" },
+    { "faqId": "faq-27", "text": "Demander l’étude technique de votre application de raccord tournant.", "href": "contact.html?request=application-review&source=fr/faq.html#quoteForm" }
+  ],
+  "cta": {
+    "heading": "Besoin d’une réponse pour votre machine ?",
+    "body": "Une référence, une photo, un plan ou une brève description suffit pour commencer. Les informations peuvent être incomplètes à ce stade. Nous n’utilisons pas vos demandes ni vos plans à des fins marketing et nous ne les rendons pas publics.",
+    "button": "Poser une question technique →"
+  },
+  "review": {
+    "method": "AI-assisted target-market line-by-line localization review",
+    "nativeHumanSignoff": false,
+    "unresolvedIssues": [],
+    "officialTerminologySources": [
+      { "name": "DEUBLIN France – Joints tournants, raccords tournants", "url": "https://www.deublin.eu/joints-tournants-raccords-tournants" },
+      { "name": "SCHUNK France – Joint tournant DDF 2", "url": "https://schunk.com/fr/fr/technologie-d-automatisation/joint-tournant/c/PUB_8326" },
+      { "name": "Festo France – Fonctionnement d’une unité de traitement d’air", "url": "https://www.festo.com/fr/fr/e/blog/in-practice/comment-fonctionne-une-unite-de-traitement-d-air-id_4074291" }
+    ]
+  }
+}

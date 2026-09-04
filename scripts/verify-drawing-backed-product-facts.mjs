@@ -18,13 +18,13 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, "..");
 const manifestPath = path.join(repositoryRoot, "data", "product-drawing-facts.json");
 const downloadsRoot = path.join(repositoryRoot, "downloads");
-
-const locales = [
-  { code: "en", directory: "", searchIndex: "search-index.json" },
-  { code: "de", directory: "de", searchIndex: path.join("de", "search-index.json") },
-  { code: "ja", directory: "ja", searchIndex: path.join("ja", "search-index.json") },
-  { code: "ru", directory: "ru", searchIndex: path.join("ru", "search-index.json") }
-];
+const siteConfig = JSON.parse(readFileSync(path.join(repositoryRoot, "i18n", "config.json"), "utf8"));
+const sourceLocale = siteConfig.sourceLanguage?.code;
+const activeLocaleCodes = [...new Set([sourceLocale, ...(siteConfig.activeLanguageCodes || [])])];
+const locales = activeLocaleCodes.map((code) => {
+  const directory = code === sourceLocale ? "" : code;
+  return { code, directory, searchIndex: directory ? path.join(directory, "search-index.json") : "search-index.json" };
+});
 
 const bp1p0006PublicSurfaceContract = {
   en: {
@@ -40,6 +40,13 @@ const bp1p0006PublicSurfaceContract = {
     imageAlt: "BP-1P-0006 Drehdurchführung mit 1 Eingang, 8 Ausgängen, 4-mm-Durchlass und G1/8-Gewinde aus Aluminium 6061",
     comparison: "1 Einlass / 8 Auslässe, 4 mm Durchlass",
     retiredPattern: /(?:1-zu-6|1 (?:Eingang|Einlass)\s*\/\s*6 Ausg)/iu
+  },
+  fr: {
+    cardTitle: "BP-1P-0006 · 1 entrée / 8 sorties (G1/8)",
+    cardSpec: "1 entrée / 8 sorties",
+    imageAlt: "BP-1P-0006 raccord tournant en aluminium 6061 avec 1 entrée, 8 sorties, passage 4 mm et filetage G1/8",
+    comparison: "1 entrée / 8 sorties, orifice 4 mm",
+    retiredPattern: /1 entrée\s*\/\s*6 sorties?/iu
   },
   ja: {
     cardTitle: "BP-1P-0006・1入力8出力(G1/8)",
@@ -58,36 +65,39 @@ const bp1p0006PublicSurfaceContract = {
 };
 
 const labelPatterns = {
-  pressure: /pressure|druck|圧力|давлен/iu,
-  speed: /speed|drehzahl|回転(?:数|速度)|скорост|частот.*вращ/iu,
-  material: /body\s*material|housing\s*material|gehäuse(?:werkstoff|material)|werkstoff.*gehäuse|本体材質|ボディ材質|材料.*本体|материал.*корпус|корпус.*материал/iu,
-  seal: /seal|dicht|シール|уплот/iu,
-  media: /compatible\s*media|suitable\s*media|operating\s*media|medium|media|betriebsmedien|betriebsmedium|geeignete\s*medien|使用可能流体|対応流体|使用流体|媒体|рабочая\s*сред|совместим.*сред/iu,
-  temperature: /temperature|temperatur|温度|температур/iu,
-  weight: /weight|gewicht|質量|重量|вес|масса/iu,
-  dimensions: /dimension|envelope|overall\s*size|abmess|bauma(?:ß|ss)|寸法|外形|габарит|размер/iu,
-  bore: /through[\s-]*bore|\bbore\b|durchgang|bohrung|中空|貫通|穴径|сквозн|проходн.*отверст/iu,
-  mounting: /mount|mounting|montage|befestig|取付|取り付け|マウント|креплен|монтаж/iu,
-  ports: /process\s*port|media\s*(?:inlet|outlet)|port\s*(?:configuration|thread|size)|\bports?\b|medienanschl(?:uss|üsse?)|anschl(?:uss|üsse?)gewinde|ポート|流体接続|接続ねじ|通気口|吸気口|排気口|порт|присоедин.*резьб/iu
+  pressure: /pressure|druck|pression|圧力|давлен/iu,
+  speed: /speed|drehzahl|vitesse|回転(?:数|速度)|скорост|частот.*вращ/iu,
+  material: /body\s*material|housing\s*material|gehäuse(?:werkstoff|material)|werkstoff.*gehäuse|matériau.*corps|本体材質|ボディ材質|材料.*本体|материал.*корпус|корпус.*материал/iu,
+  seal: /seal|dicht|joint(?: d’étanchéité| torique)?|シール|уплот/iu,
+  media: /compatible\s*media|suitable\s*media|operating\s*media|medium|media|betriebsmedien|betriebsmedium|geeignete\s*medien|fluides?|使用可能流体|対応流体|使用流体|媒体|рабочая\s*сред|совместим.*сред/iu,
+  temperature: /temperature|temperatur|température|温度|температур/iu,
+  weight: /weight|gewicht|masse|poids|質量|重量|вес|масса/iu,
+  dimensions: /dimension|envelope|overall\s*size|abmess|bauma(?:ß|ss)|hors tout|寸法|外形|габарит|размер/iu,
+  bore: /through[\s-]*bore|\bbore\b|durchgang|bohrung|alésage|中空|貫通|穴径|сквозн|проходн.*отверст/iu,
+  mounting: /mount|mounting|montage|befestig|fixation|取付|取り付け|マウント|креплен|монтаж/iu,
+  ports: /process\s*port|media\s*(?:inlet|outlet)|port\s*(?:configuration|thread|size)|\bports?\b|medienanschl(?:uss|üsse?)|anschl(?:uss|üsse?)gewinde|orifices?|filetage|ポート|流体接続|接続ねじ|通気口|吸気口|排気口|порт|присоедин.*резьб/iu
 };
 
 const pendingDrawingPatterns = {
   en: /application review|required.*model-specific file|current model-specific file/iu,
   de: /Anwendungsprüfung|aktuelle modellspezifische Datei|modellspezifische Datei/iu,
+  fr: /validation de l’application|fichier à jour propre au modèle|fichier propre au modèle/iu,
   ja: /用途確認|型式専用ファイル/iu,
   ru: /проверка применения|актуальн.*файл.*модел|файл.*конкретн.*модел/iu
 };
 
-const pendingPortPattern = /pending|unresolved|clarif|confirm(?:ation|ed)? required|confirmed from the current model-specific drawing|to be confirmed|not listed|application review|aussteh|offen|nicht angegeben|ungeklärt|klär|bestätig|Anwendungsprüfung|確認します|待確認|確認待ち|要確認|確認中|未確定|記載されていません|用途確認|уточн|не указан|не определен|не подтвержд|требует подтвержд|ожидает подтвержд|должн\p{L}*\s+быть\s+подтвержд|подтвержда|подтверд|провер/iu;
+const pendingPortPattern = /pending|unresolved|clarif|confirm(?:ation|ed)? required|confirmed from the current model-specific drawing|to be confirmed|not listed|application review|aussteh|offen|nicht angegeben|ungeklärt|klär|bestätig|Anwendungsprüfung|en attente|à confirmer|confirmé sur le plan|(?:n[’']est pas|non) indiqué|validation de l’application|確認します|待確認|確認待ち|要確認|確認中|未確定|記載されていません|用途確認|уточн|не указан|не определен|не подтвержд|требует подтвержд|ожидает подтвержд|должн\p{L}*\s+быть\s+подтвержд|подтвержда|подтверд|провер/iu;
 const pendingOutletCountPatterns = {
   en: /outlet count.*(?:pending|confirm|not listed|current.*drawing)/iu,
   de: /ausgangs(?:an)?zahl.*(?:aussteh|offen|nicht angegeben|klär|bestätig|zeichnung)/iu,
+  fr: /nombre de sorties?.*(?:en attente|confirmer|non indiqué|plan à jour)/iu,
   ja: /出口数.*(?:確認待ち|要確認|確認中|未確定|記載されていません|型式専用図面)/iu,
   ru: /количеств.*выход.*(?:уточн|подтвержд|провер|не указан|черт[её]ж)/iu
 };
 const warrantyLabels = {
   en: "Warranty period",
   de: "Garantiezeitraum",
+  fr: "Durée de garantie",
   ja: "保証期間",
   ru: "Гарантийный срок"
 };
@@ -186,7 +196,7 @@ function matchesSpeed(value, fact) {
   return assertUnitValue(
     value,
     fact.value,
-    "rpm|r\\s*\\/\\s*min|min\\s*(?:\\^?\\s*[-−]?\\s*1|⁻¹)|об\\.?\\s*\\/\\s*мин"
+    "rpm|(?:tr|r)\\s*\\/\\s*min|min\\s*(?:\\^?\\s*[-−]?\\s*1|⁻¹)|об\\.?\\s*\\/\\s*мин"
   );
 }
 
@@ -234,21 +244,21 @@ function matchesWeight(value, fact) {
 function matchesMaterial(value, expected) {
   const normalized = normalizeText(value);
   if (/steel\s*45|45#/iu.test(expected)) {
-    const hasSteel45 = /45#|grade\s*45|45\s*(?:carbon\s*)?steel|steel\s*45|45号|сталь\s*45/iu.test(normalized);
-    const hasContradictoryMaterial = /6061|aluminium|aluminum|aluminiumlegierung|アルミ|алюмин|ceramic|keramik|セラミ|керами/iu.test(normalized);
+    const hasSteel45 = /45#|grade\s*45|45\s*(?:carbon\s*)?steel|steel\s*45|acier(?: au carbone)?(?: nuance)?\s*45|45号|сталь\s*45/iu.test(normalized);
+    const hasContradictoryMaterial = /6061|aluminium|aluminum|aluminiumlegierung|アルミ|алюмин|ceramic|céramique|keramik|セラミ|керами/iu.test(normalized);
     return hasSteel45 && !hasContradictoryMaterial;
   }
 
   const hasAluminum6061 = /6061/iu.test(normalized)
     && /al(?:uminium|uminum)?|aluminiumlegierung|aluminum\s*alloy|アルミ|алюмин/iu.test(normalized);
-  const hasContradictoryMaterial = /steel|stahl|鋼|сталь|ceramic|keramik|セラミ|керами|stainless|edelstahl|ステンレス|нержав/iu.test(normalized);
+  const hasContradictoryMaterial = /steel|stahl|acier|鋼|сталь|ceramic|céramique|keramik|セラミ|керами|stainless|inoxydable|edelstahl|ステンレス|нержав/iu.test(normalized);
   return hasAluminum6061 && !hasContradictoryMaterial;
 }
 
 function matchesSeal(value) {
   const normalized = normalizeText(value);
   const hasPtfe = /\bptfe\b|птфэ/iu.test(normalized);
-  const hasORing = /(?:^|[^a-zа-я])(?:o|о)[\s-]?(?:ring|リング|кольц)/iu.test(normalized);
+  const hasORing = /(?:^|[^a-zа-я])(?:o|о)[\s-]?(?:ring|リング|кольц)|joint\s+torique/iu.test(normalized);
   return hasPtfe && hasORing && !unsupportedSealPattern.test(normalized);
 }
 
@@ -259,13 +269,13 @@ function detectedMedia(value) {
   if (/(?:^|[^a-z])air(?:$|[^a-z])|luft|空気|エア|воздух/iu.test(normalized)) {
     media.add("air");
   }
-  if (/(?:^|[^a-z])water(?:$|[^a-z])|wasser|水|вода|воды|водн/iu.test(normalized)) {
+  if (/(?:^|[^a-z])water(?:$|[^a-z])|wasser|\beau\b|水|вода|воды|водн/iu.test(normalized)) {
     media.add("water");
   }
-  if (/(?:^|[^a-z])oil(?:$|[^a-z])|hydraulic|öl|オイル|作動油|油|масл|гидравл/iu.test(normalized)) {
+  if (/(?:^|[^a-z])oil(?:$|[^a-z])|hydraulic|öl|\bhuile\b|オイル|作動油|油|масл|гидравл/iu.test(normalized)) {
     media.add("oil");
   }
-  if (/coolant|kühlmittel|クーラント|冷却液|сож|охлаждающ/iu.test(normalized)) {
+  if (/coolant|kühlmittel|liquide de refroidissement|クーラント|冷却液|сож|охлаждающ/iu.test(normalized)) {
     media.add("coolant");
   }
 
@@ -300,7 +310,7 @@ function containsThread(value, expectedThread) {
 function containsDiameter(value, diameterMm) {
   const normalized = compactTechnicalText(value);
   const number = String(diameterMm).replace(".", "[.,]");
-  const expression = new RegExp(`(?:ø|dia(?:meter)?|φ|径)${number}(?!\\d)`, "iu");
+  const expression = new RegExp(`(?:ø|dia(?:meter)?|diamètre|alésage|φ|径)${number}(?!\\d)`, "iu");
   return expression.test(normalized);
 }
 
@@ -750,7 +760,7 @@ function checkSearchRecord(context, searchRecord, record, locale) {
 
 function checkLlmsRecord(context, llmsText, locale, record) {
   const model = record.websiteModel;
-  const localePath = locale === "en" ? "" : `${locale}/`;
+  const localePath = locale === sourceLocale ? "" : `${locale}/`;
   const publicUrl = `https://www.begapunk.com/${localePath}${model}.html`;
   const matchingLines = llmsText
     .split(/\r?\n/gu)
@@ -1070,7 +1080,9 @@ if (manifest) {
   }
 }
 
-const summary = `checked ${checked.pdfs}/16 PDF hashes, ${checked.pages}/64 localized product pages, ${checked.searchIndexes}/4 search indexes, ${checked.searchProductRecords}/64 product search records, and ${checked.llmsConflictRecords}/64 records in ${checked.llmsFiles}/4 llms.txt files`;
+const expectedModelCount = manifest ? Object.keys(manifest.products ?? {}).length : 16;
+const expectedLocalizedRecordCount = expectedModelCount * locales.length;
+const summary = `checked ${checked.pdfs}/${expectedModelCount} PDF hashes, ${checked.pages}/${expectedLocalizedRecordCount} localized product pages, ${checked.searchIndexes}/${locales.length} search indexes, ${checked.searchProductRecords}/${expectedLocalizedRecordCount} product search records, and ${checked.llmsConflictRecords}/${expectedLocalizedRecordCount} records in ${checked.llmsFiles}/${locales.length} llms.txt files`;
 if (failures.length > 0) {
   console.error(`Drawing-backed product facts: FAIL (${failures.length} issue(s); ${summary}).`);
   const issueCounts = [...failures.reduce((counts, failure) => {

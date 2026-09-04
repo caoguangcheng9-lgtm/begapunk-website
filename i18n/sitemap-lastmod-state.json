@@ -1,0 +1,1065 @@
+{
+  "schemaVersion": 1,
+  "pages": {
+    "https://www.begapunk.com/": {
+      "contentSha256": "553bd2defcd0ad86d87d0ac888d3918cfe5432a1618a7f9b77e2ae1316bc6937",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/about.html": {
+      "contentSha256": "24badebe05e83628940e333018404df891fa79cad9603a63455b5050623f59d8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/manufacturing-quality.html": {
+      "contentSha256": "8774edbaeb5fa521851b08073d299871b186a170b0b21b89d7f5908da174dcbe",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/production-inspection-testing.html": {
+      "contentSha256": "adb9b4bd6ce62a92a38984594f6494dadad9e8fe2d40fd8f6f4f5e4aa8c91bc3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/products.html": {
+      "contentSha256": "92e4c35f92227a472c3e1d142ea8855e277c1ffcfdbea5db9f113ecaf04c69e1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/product-comparison.html": {
+      "contentSha256": "a50b33916030b4c885a6613e218e0fb85bcbd5644e166a17d1d3bdf631df4f6f",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-1P-0003.html": {
+      "contentSha256": "9d60be00b713a69fd4f5e25fd8c77a87f6af2057ee525f708cb72f0feb68226d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-1P-0006.html": {
+      "contentSha256": "1adea9a0433f8a300fd085243dae4d449b059ba21aa3e397d695d687f3e8554c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-0001.html": {
+      "contentSha256": "6770e49df8d59eb4814fae0da9d688fd4771d0400afa996a71f26cdc5e378854",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-0002.html": {
+      "contentSha256": "f7803daf863e982463e3a67953397af6505eac98b47fba5adc7373cd392bf870",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-08-0001.html": {
+      "contentSha256": "7ed16ec57dd62505fc3683d00aadd3bce999136fd361b5ceecb7377d866a5c11",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-130-0001.html": {
+      "contentSha256": "a170218f90db9166f731f44bcb7c96f6e918e58282fb20eabb845cb298626d20",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-16-0001.html": {
+      "contentSha256": "519051d6f511a7bc3e318982bb06ff003556937aa75e89fa9748b37f978a0d90",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-30-0001.html": {
+      "contentSha256": "77d383413bfbbf36636be7bbc4b4997beed97eec25c05276a5555e3a5f4bbc94",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-50-0001.html": {
+      "contentSha256": "47ca83374ffc6d4388d519875fcbb695d2a7d8f7ed8722fc76ece5b69ecccc63",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-2P-95-0005.html": {
+      "contentSha256": "d70eb36ce0e7e68ff5bf5b7f9170061b0b7ce807c35ee373e07c761fbb5bd8a7",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-3P-0004.html": {
+      "contentSha256": "2561cfe394a87ebeceba168c2376f7e1dc004502a15e3521c3e12f43439a8884",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-3P-0006.html": {
+      "contentSha256": "97137c6582cecd4b987606ab46fe3192e4b49e42ce5d8b07b115aa360af8202a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-3P-0007.html": {
+      "contentSha256": "9a66c428597137747ce764bdb21f7e19602ce631ad9e3a34de0deb074d24f3ed",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-3P-S06-0001.html": {
+      "contentSha256": "b68a07b3351fd71d5b3a16292e68f0aa07a7f9c127feba85bcf104c03cfee580",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-4P-30-0001.html": {
+      "contentSha256": "8d55f6a9e77c93778333589e8df51bd376ce6c00ea7f785e2aecb4b60c0118f3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/BP-8P-0001.html": {
+      "contentSha256": "f45532b8386a427d207720c7558c874b7460bbefd4c3424c3d136ce600a24d8b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/applications.html": {
+      "contentSha256": "1c19fb3a4a0fb2db130595f16dca97a4e66c058e55410cda3feae33721fb2372",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-automation-rotary-tables.html": {
+      "contentSha256": "3c4653ffcb472f9186562404dece301bc40fb800c2e044e6996ed6ab277d7df0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-bottle-filling-capping.html": {
+      "contentSha256": "6f2e0c9201802ab756bbb07271f6602890cace42c420b265d2a04123981058b2",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-cnc-pneumatic-clamping.html": {
+      "contentSha256": "e1381d0f889890d4360027ba0a33032707fc45700094e66a35e5666d03f416c6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-electronics-battery-test-fixtures.html": {
+      "contentSha256": "36696fe667d6b98a8251e1e3e58e597c59cab00f8f48da6e5ef0dc7b9679ca6a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-laser-tube-cutting.html": {
+      "contentSha256": "eec1f492e3283bcdb430e73b4b3545f3f0ba01fae2c4ee0adbf76f85c087bff3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-packaging-machinery.html": {
+      "contentSha256": "d41a9919f92bd088846e0aa524c5744eab8c4b1cf4b1b03a8155a73a0aecee8c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html": {
+      "contentSha256": "5773aa43deaa8bc06cf364e4cdf6af8be8e5f15407e3b7413deaa9429a2e1f28",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-robot-end-of-arm-tooling.html": {
+      "contentSha256": "77a0bc46c8532bc73c0807c13727121f5422aad6daaebf59cbb39fe09bf85b2a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-steel-dusty-environments.html": {
+      "contentSha256": "16606a65d1e79018c7ebee51645ef28208b4eb152f2f94dae09335744c61ee60",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-textile-printing-converting.html": {
+      "contentSha256": "1bd015905224848b7333f2af547bb82f4cd2fc9ebbba9e0c7e9d1e0dd3a71aa8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-vacuum-packaging-machines.html": {
+      "contentSha256": "ef6e07d7f35af44ff23bd535d9c5c48d8e13e3b0a84571773efbc9dd51e2ee48",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/application-welding-positioners.html": {
+      "contentSha256": "e267bb69926031da3dacc71948487087843fc7a2541149937db5f83efb9f170b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/custom-hydraulic-rotary-unions.html": {
+      "contentSha256": "101d419713882bdeaeb30ea231b34a21b44244fe04d76fdcd2d124b8759d4878",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/installation.html": {
+      "contentSha256": "f74f57503a261b405f3a193bef220a3292d02b7fc7b7bbdc819e3ccdf4dbade8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog.html": {
+      "contentSha256": "e4c68ae04c63a16ea9c0838953bbc3bf9e31723f4454caac18595b308e8cec20",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-non-contact-clearance-seal-rotary-union.html": {
+      "contentSha256": "5be166ca68c32ddfca65813b79edd668cc07a486708aebb4fcaac3aabbf0244d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-rotary-joint-installation-mistakes.html": {
+      "contentSha256": "6119a4383cd22bdf50e13418feb5f0691d1cfb00f25fe8fbe6f94400ad77b7bc",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-rotary-joint-leaking.html": {
+      "contentSha256": "b1a3259d5f263f1cb97e7f59c627237604a851987eb233c976f5ed56fde8d083",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-rotary-joint-materials.html": {
+      "contentSha256": "f9f959695d950386b277c9e4e47c140d340ea3c6f587479fd338b2b0aa09867b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-rotary-joint-selection.html": {
+      "contentSha256": "898e77c60e88586a983e3c01f9745f659427ab5306836cf6b765e9cd3bbcbee7",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-rotary-union-seal-types.html": {
+      "contentSha256": "bcf1b1ef6b88279488dc2f1368e8a63c8c7dc910032a87f40f160cda89bb2048",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-seal-replacement.html": {
+      "contentSha256": "f59e4936e96adc27d5c48e10be652e81e19f72c82c8eb16baf83f3313dc50a78",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/blog-threaded-vs-flange.html": {
+      "contentSha256": "8f9f040054fb9e9798127db72a88ff87b2063fea6849cf65fe6ab2d94fd1b095",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/case-studies.html": {
+      "contentSha256": "3ef94eccb4f2d223b0ccf24d2cd2c5c664e05c4d50599f1842f612a49bde8595",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html": {
+      "contentSha256": "6575a0028e239d10c77e12e48c3ae41fdf9ef3c122c964d1fc47f8f783679d82",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html": {
+      "contentSha256": "e46e7531fde694e6be613921d789094e7601d34fda6c091326d4701ee4c8dc9e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/faq.html": {
+      "contentSha256": "9e974d5a80c03ed0efc093b4677d804657889d790f128bdaed670f4dea459151",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/contact.html": {
+      "contentSha256": "1eca8f610af3153672f2d83e78a78c72fff1c1b0e1c46b42ab2bbe00f3d018cc",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/privacy.html": {
+      "contentSha256": "270e63aab4b9cf315614f39fd3a1c821820e649866d773363ef79c9b9eb61170",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/terms.html": {
+      "contentSha256": "cbcc78462070e63f057b0270b019c0b9b5f3381f254d4fd0bac23c3dbb134f1c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/": {
+      "contentSha256": "19b8db0d3d623ed195211c320a4e670b5b5deb3aa9cfc97eeafda6b0cd66044c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/about.html": {
+      "contentSha256": "f2a4f052ac8d00a649f360e6e880db476c47ecd2ffd97a44e5b3c4e47f7c0953",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/manufacturing-quality.html": {
+      "contentSha256": "85316f088c2e4fa934e66504a3eb7f2f5a215802a76d413d44e0f9ceffaaa65d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/production-inspection-testing.html": {
+      "contentSha256": "88f9686f5a26fc74ebe2aad272b4a1a7cb559b45f73f7aa8b6bc4bb16c301eda",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/products.html": {
+      "contentSha256": "9cd520627061ec276e44f6d03f204f3d8d4819f60983b42cf4741e2edc5631ef",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/product-comparison.html": {
+      "contentSha256": "c946145d3c9987273763cf8ed301de316fee09493412831171e6754122d70ab5",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-1P-0003.html": {
+      "contentSha256": "268efe8e03dbc482d16c7dec082c9c9efdc555b518f6c470779582bf5fefc6ed",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-1P-0006.html": {
+      "contentSha256": "cd884f49d5bc1e1e441a4aaba80de5c62d2115f3638c56e7d735002345b58358",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-0001.html": {
+      "contentSha256": "6cfdc445100faeaf46484d8ea26d3ff9987a66599cdf74e81461512af20255da",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-0002.html": {
+      "contentSha256": "5dd35700326adf34041bba7cf741e2b1a29f603a87d122b5cd8c9c1a6540893c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-08-0001.html": {
+      "contentSha256": "0476e0fb9ec55e189814b857670c87c282c836434fae2ad8ce7a09ac485de907",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-130-0001.html": {
+      "contentSha256": "078132255bf32ecd0ddb014bdcb9ef4def245ff01932b42de540b407ba52289b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-16-0001.html": {
+      "contentSha256": "e0c4bcc601f30955df36091435f7ecc0c597e36f992ac339449f7afd77c8f621",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-30-0001.html": {
+      "contentSha256": "d3b4145fee9c1e4f688e02b4454622a2a33efaeb12409811c7a38b5df43fa33e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-50-0001.html": {
+      "contentSha256": "9b554845ed4c1cc43b1a684d8c9e49d172ce68b7e52b04a164a01fe68cb5b456",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-2P-95-0005.html": {
+      "contentSha256": "a0d8ffce8f7e49e7320537a44b380457995b4b624e6c2226c3473c7f32be64fb",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-3P-0004.html": {
+      "contentSha256": "8d601f4466f18c2931246469ffdab67295688d5eae8597208a16a076279d10d8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-3P-0006.html": {
+      "contentSha256": "b998c41a7e3e8e7ef427acaecc54a6514a3066539f96dbd2c44e9c65a03aa02c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-3P-0007.html": {
+      "contentSha256": "dc4b515796b0d1571af2a8cf79fd5409665c7030ae1f57fb650486c4142ef732",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-3P-S06-0001.html": {
+      "contentSha256": "09e5c58290eb346a6c26f0f9cfd05172889a2f1c8aa6f4ce9b6317f934625a60",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-4P-30-0001.html": {
+      "contentSha256": "a80b127aeafa7466d04add540d618c1ad206bf2ebc9357609f11e0168cb687f3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/BP-8P-0001.html": {
+      "contentSha256": "2610fef15610a0d97446e39eadec2568745ff5e0f2ff0c351c0786621cdee1dd",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/applications.html": {
+      "contentSha256": "e00428a929fefb81aef2d957c481785c924e3e5ac6065a1da773eefcd28c8dbe",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-automation-rotary-tables.html": {
+      "contentSha256": "2f67dab1e0d48b905b0be45cb9bf6c632122e25cd4729f5d0e17645770cf0ae8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-bottle-filling-capping.html": {
+      "contentSha256": "3348f35047354aa3157dc789e9e928a7240b9c870f2d3a05a2702526d943a5ea",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-cnc-pneumatic-clamping.html": {
+      "contentSha256": "f2570ef48d499f9895162a01a62a1b5fccdac600c5416b0e5da15d4a031c2c4d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-electronics-battery-test-fixtures.html": {
+      "contentSha256": "9015142cb8f15f2a3cc15ebeb700bf06020fac24c9f8f12f4c1de0390a1681b8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-laser-tube-cutting.html": {
+      "contentSha256": "f891d217f09477ad21661a03778e692ba58322a48be6380b0e73ce407813c78e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-packaging-machinery.html": {
+      "contentSha256": "89fdcf56188d697327de1e89827c94acb35c619fd979f5ff8b886ef51642885e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-pneumatic-tools-hose-anti-twist.html": {
+      "contentSha256": "e8fd6696a498f97b057735dcafeddd01881d28cbd767640ca9d76510601d608d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-robot-end-of-arm-tooling.html": {
+      "contentSha256": "b4acbf1f8c733a3fd40d33e1488b3b3678f09c15789286d0f98f40b3159a303d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-steel-dusty-environments.html": {
+      "contentSha256": "c099a6c6b84d949723283d0fe8ce5263f31aeafa88005d3e150d44f646217002",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-textile-printing-converting.html": {
+      "contentSha256": "51acfde9db205c31d3c003c644feaf09b3a5e9e41c103ff0d1761a9e99586936",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-vacuum-packaging-machines.html": {
+      "contentSha256": "4aacbdc0771612a5aafdc54b57cfe0b89691f48c93493aac30f560aa2ba9a440",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/application-welding-positioners.html": {
+      "contentSha256": "dda5d1f0bf386e780628d7f8aa9b1b72eda03490f1661ad71336e711f8081b57",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/custom-hydraulic-rotary-unions.html": {
+      "contentSha256": "78c7f79516777698bc47d63002198c4cd568740a8e2353eece29b683c923524e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/installation.html": {
+      "contentSha256": "e20dd34792c80fe417f2bb3a4dbab1b6bf71689e35086e444337b9f3afa2c5b3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog.html": {
+      "contentSha256": "f3e6e7dabc60e179a008e5f1d2fe693ccb0b8881ce302f7810f957c11803e86b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-non-contact-clearance-seal-rotary-union.html": {
+      "contentSha256": "369a77a1483a54c0360e598aa21319ffb99eb8eee6845ec9d1c6eda9da57f06c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-rotary-joint-installation-mistakes.html": {
+      "contentSha256": "57553f904426a8448ae303f59053a043db782d88422e94d27355a243d6b7bf00",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-rotary-joint-leaking.html": {
+      "contentSha256": "0a02ff954f22ef7f8beba496044d76ae8557675e2b65afb952fc4d7a757013e1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-rotary-joint-materials.html": {
+      "contentSha256": "5cae32b185f72bfb1ef1e1ea1b6c95d6b84e9eab24c7f15f525beb3e893e75fb",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-rotary-joint-selection.html": {
+      "contentSha256": "d47f1d3d65f0ea4b5a8f6453cc8b28562ddcf67542a1aa5add7740af281be6b6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-rotary-union-seal-types.html": {
+      "contentSha256": "4216f1c472275fd4b86c7c63756865f5fe25df329a110b7597f7eb1f046292e8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-seal-replacement.html": {
+      "contentSha256": "848d7034475418067658c19a8a6c3199789acb299b83ee79519802af7434509d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/blog-threaded-vs-flange.html": {
+      "contentSha256": "f2f4a21ba856961512aeb7c1fa355c4d9630068a8d0f0ea199b753cc01330a5b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/case-studies.html": {
+      "contentSha256": "552f146e98dd2c6804f3a67e52aa0c1f6bf2891ae6a9436d6bd12e278adfb12d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/case-bp-2p-95-pneumatic-chuck-integration.html": {
+      "contentSha256": "0d3a6e50746bd84a48c8512fabf827ffbaca6ee6413af971babde94720e0e095",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/case-bp-3p-s06-sensor-monitored-chuck.html": {
+      "contentSha256": "51869277f3b5eb2b5adb4230cd6a41aca74d0014af0978357fe86f8d4c21f239",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/faq.html": {
+      "contentSha256": "f98cbdff4582ddffd208b18be417101fb1af23539ccc326b00bc6b38276edaa7",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/contact.html": {
+      "contentSha256": "152712c90ceb93f06dd6ea2966d51792abd45bf3975dd397c2faee6caf608854",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/privacy.html": {
+      "contentSha256": "f6793da42601ec8f0a2cd0b6b5a61c072badf543597b32f334803c95457b6671",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/de/terms.html": {
+      "contentSha256": "0fd5de0d8518cd829866b8ff61922bdd8c7273e40e3d2f75a0314679bbe50ae6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/": {
+      "contentSha256": "81b547bc066f252c0f1bee55b3b2149643efb9b257245883f69f614b3af3d607",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/about.html": {
+      "contentSha256": "05d6c5c9f44ca3c63ac5b563b653e6db63e7c8402f2dd946ba2ddffad82da329",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/manufacturing-quality.html": {
+      "contentSha256": "b3baecc041e222281ca087658db2c77c9e1bc07e1c7f3ad861e3abdcda6c4e53",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/production-inspection-testing.html": {
+      "contentSha256": "7fc5658603f7292582ba110d7ee4a2994b42f65d90db5286e2d96d6bfcb74a10",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/products.html": {
+      "contentSha256": "8c94b3fdfd7cc3ac0dcfc6e7482c2c8c3d25bcd4b3ffc77a15e5d04f4ec80c10",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/product-comparison.html": {
+      "contentSha256": "2414067db4a4f397849ca99702786e427f12c2611eb7a782cf26eb8437a75c0e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-1P-0003.html": {
+      "contentSha256": "35f01f46d3d463ff15aad8fc12609815fecb6ba53f790d3357bf3d5ea5087e4d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-1P-0006.html": {
+      "contentSha256": "be2a89880a6ab8a78fed2447cc00e02c5925a10a9fdeca24072a954727451fd8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-0001.html": {
+      "contentSha256": "b310579b6ab794ac129c951e522bd1c9e16fd32424599d60784d3b0219c45553",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-0002.html": {
+      "contentSha256": "dfb269ae9e49bdd9bf282e53c0745e7c1129facfdaa3c500ce50612e271c9d8f",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-08-0001.html": {
+      "contentSha256": "16a58784dc0752ce10b31a087d5efe2f89bc0dbc74e411ff32838290294cde0f",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-130-0001.html": {
+      "contentSha256": "cd9c7e59fa49892a30db7d9732b50598a83fb533e9e0cdc1d1edd222a62e536a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-16-0001.html": {
+      "contentSha256": "474921349d432680500badb7f4695b334a8d9232da51ae4069cf52f863f91d18",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-30-0001.html": {
+      "contentSha256": "a68c3e5a09b1b3d65e194678ae7b6ef8b7e22af1ed4af870eaab7bb90dec3cff",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-50-0001.html": {
+      "contentSha256": "414e35c8f0b964b3bfbf1bfb59bbf34a0f220a43471bd01b7f215a0ec394ddbb",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-2P-95-0005.html": {
+      "contentSha256": "e332e3c80e6e50734d6193a408bc977b544f7c9c1fce55730cff8956193104c0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-3P-0004.html": {
+      "contentSha256": "4c298bb2a865bc98543ef59c27273d29a8cbb0eb65b26d27a169c64c4f9b60c8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-3P-0006.html": {
+      "contentSha256": "6fc439ab0ead49a437730e9d5eaaebe1d6fad8ce4a20e0c32a149be42093273e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-3P-0007.html": {
+      "contentSha256": "a4ffdbe56383099e5470a3ac2a850e848c92ed700cfc39c9af28f6f6895f2f7f",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-3P-S06-0001.html": {
+      "contentSha256": "05ed68e7b81a196b6b3744fd9871bedae5bbc60ada28aa4c5a59e7caf6b11ce0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-4P-30-0001.html": {
+      "contentSha256": "3dc0519ef1f0bd73b07d5d158785adf670b1dd508b9bbc49d753f369f6a693bc",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/BP-8P-0001.html": {
+      "contentSha256": "50d69275cd74b0be7ad27455570381e794b2c56d0d7450545bb62bbc90f13d92",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/applications.html": {
+      "contentSha256": "0771624b57e962a6c23148eb347a66af47cb11151fc50501681db31508d10b71",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-automation-rotary-tables.html": {
+      "contentSha256": "5b34b147d22a088286b10143879f567f7eb5374ff421496cae4f24871be7a5f0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-bottle-filling-capping.html": {
+      "contentSha256": "c664a2d35e6d49d98f84e8f4c7f7044bb4302d0edf426600becc04f2e3731ced",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-cnc-pneumatic-clamping.html": {
+      "contentSha256": "906ffe41f6a35af2fa2bd5d0e397450c989993a73027cd4a689129deeaa495f9",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-electronics-battery-test-fixtures.html": {
+      "contentSha256": "33a381ad8a992a9a283fefd24c9a713dd26f5489dc39bceabe17afb3f1815d69",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-laser-tube-cutting.html": {
+      "contentSha256": "39330b357616f6703194657c1b378bebc6542ddb18c102cbf2b546da14e511ce",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-packaging-machinery.html": {
+      "contentSha256": "bca59e41cf0e1569605f0321640dcd8cc30270d4b8d03376053ae3086ad3dba3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-pneumatic-tools-hose-anti-twist.html": {
+      "contentSha256": "647d97f57a24bd4391dc6f106b3c5ee2bdd56d70ceae3d26b0ed35349952e842",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-robot-end-of-arm-tooling.html": {
+      "contentSha256": "93fb45eefa91e3a628fa9b2401b3ce46b67f62550d9058446c075a3630bab2b8",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-steel-dusty-environments.html": {
+      "contentSha256": "444052890a71074c42235b978d90cab5b8fc78850d1a29f0ff06e2ce725c92ad",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-textile-printing-converting.html": {
+      "contentSha256": "55ce30d672b7d65aef29c7b8986b841e65579e5791dbadd38d5cf82c41a48371",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-vacuum-packaging-machines.html": {
+      "contentSha256": "26e6c7ebfc6324df3851dc7baee6c1893d3f80301f0402368fbe8a324a5b1f7e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/application-welding-positioners.html": {
+      "contentSha256": "ebbf9d253c63aff07ce99771941668a3ab4bbd284d93910ffb9b5952f75ebd55",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/custom-hydraulic-rotary-unions.html": {
+      "contentSha256": "fc04f5f40c6ed107f21e296bd1237a50c2ae3a4e699b8c936a85f2fd1f0785a3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/installation.html": {
+      "contentSha256": "a44d4473b18c3d7415a42289b42df1a86193e82794a51f310751732ef7526a2c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog.html": {
+      "contentSha256": "234c149d6e1e92625e72ba774bd886ff2738f07522eeda489c6ff4a36ab25fc2",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-non-contact-clearance-seal-rotary-union.html": {
+      "contentSha256": "c51dbfcc009978a9ca17e2f9d29f9584d2dc50c60ea1baf4a865019ae479eaf5",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-rotary-joint-installation-mistakes.html": {
+      "contentSha256": "7b156aaae1279ef7126b164de8278bcf55441d6e6538294b4bce366fa342316d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-rotary-joint-leaking.html": {
+      "contentSha256": "908ac1d47238e540b99e34dde0e281aa86796ee2173555810c167088144833e6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-rotary-joint-materials.html": {
+      "contentSha256": "0d947de6ee7b061f5c58be80c12005b1b73f80faf65f15a64043a80a5f12c00d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-rotary-joint-selection.html": {
+      "contentSha256": "e65c0ea586e3d0f73dfedba03f25250175206beae7bbb8339ec6b4e3e4bd4b42",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-rotary-union-seal-types.html": {
+      "contentSha256": "dc215e61673b682cf98f6c39967fa31f40531142e7b98cf48f6499bf1e0def56",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-seal-replacement.html": {
+      "contentSha256": "d2ff78df08f4c6c8882f54be9f991d830f1cc75ef499619fa0fdcf328aa893bc",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/blog-threaded-vs-flange.html": {
+      "contentSha256": "4b03b5af975d30b467d61993c4d20cabb93119289d49bae115ed9548acdb258d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/case-studies.html": {
+      "contentSha256": "e3ac7fd5e83f34251155be6c96d647ce2cb8be61658c9a3fd85cdfc0af5605f9",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/case-bp-2p-95-pneumatic-chuck-integration.html": {
+      "contentSha256": "9cb2db287c0b6817d555b2713ab8c072c9c391d54b6f6ed033773869d8fa4b4d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/case-bp-3p-s06-sensor-monitored-chuck.html": {
+      "contentSha256": "76ae4eaf09a57da69f3a33d68f240d8eabc6c1fda6d3b7e65e869501dc2538ba",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/faq.html": {
+      "contentSha256": "73e3284fa23ef8776d1b1d49da62a9b1b62cb36813ba140a37db7ba1307daa8c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/contact.html": {
+      "contentSha256": "d37f663378a422da629c8abc0405c04e448db7efaa64d0e7217bb4842d03d0cb",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/privacy.html": {
+      "contentSha256": "2c721e08e9be21e3350dc33663b2fd8efa6686eeb6594638387dd6a81c715e14",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/fr/terms.html": {
+      "contentSha256": "813a13dc82a5f032e6f19bade624b5104489959b89d9d75de04d5164efd85ea6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/": {
+      "contentSha256": "059dd6748812218d806af98551bdf1385bf10d568d8b724ebac38415a1764595",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/about.html": {
+      "contentSha256": "df910997ade122a570da920a01a5efc1bd94e9e93d181999e5e0b46053afd72e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/manufacturing-quality.html": {
+      "contentSha256": "92b9eb0ec4e1172e044392f87f0ce46e04e2a8f75c057cc292a725b67db5063f",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/production-inspection-testing.html": {
+      "contentSha256": "839c71fc5932451cf5835930b8478ff2d300cd36428dd60aabeab3bf478924b1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/products.html": {
+      "contentSha256": "b19d1bb15e950c50f5041281c6d51d68e70e6e753120496a3c929a8b1412efa2",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/product-comparison.html": {
+      "contentSha256": "acbfae3255c7ff714c0c2d6e1f5884339fd1d934cb196b5f81da919a1284dee2",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-1P-0003.html": {
+      "contentSha256": "5eebea4caf8099af57a112c372bb3e018c4a9f667ef11ea71cf727a300c95941",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-1P-0006.html": {
+      "contentSha256": "c241f5a5bb7be3fc3d6309075ba68c53bc8077b96aacdd2f89f78086fb2443e1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-0001.html": {
+      "contentSha256": "b88bfbefad4d3225655903b0bac9fe218d5a83369362925635dab4e3fb4ea7e7",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-0002.html": {
+      "contentSha256": "7560da92c1669be581a00dc10565b66aa352de22b2a38b8986b6f1653cc44371",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-08-0001.html": {
+      "contentSha256": "014142617405f4a22d5edd753de7dc569229761ca1aa1d878b7978006b282759",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-130-0001.html": {
+      "contentSha256": "8f17e9a4d284a1af96b81c63df15a3319cbbe54e150743469507ed5bbd5a38de",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-16-0001.html": {
+      "contentSha256": "78e9611d9fe0d23f663c4288826e0d0ac74dad9f4ddbbe8336153e29087e062e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-30-0001.html": {
+      "contentSha256": "adda0c695a118a819c72c00bdd475d67402600379fbc06add1a494e89e2bc475",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-50-0001.html": {
+      "contentSha256": "d93e9bedac9e27ac3bd62c5a31cd1dc1634f7d9371b19cea4a59e027820d014d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-2P-95-0005.html": {
+      "contentSha256": "34f195109748e7d330bfa01f071052bffa4405be61a9924e5dd0ce9b9998dc22",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-3P-0004.html": {
+      "contentSha256": "1e661d1f10a6366579a4577073d542043addde61308bcc072894234957b199d1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-3P-0006.html": {
+      "contentSha256": "82f0c58b14332e68a30a1509a43008f64de4104713285c8d89593f7b4902167d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-3P-0007.html": {
+      "contentSha256": "b605a14e49b6bfdc59af18bc8fd3c10c178532e7da01d7c890c0ccb9d1da611d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-3P-S06-0001.html": {
+      "contentSha256": "c6722bfa77e0e6174773ac9f1ab56d5231b60cb491b0a6325e57fe6afb2a2219",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-4P-30-0001.html": {
+      "contentSha256": "512c058e1822bd827eb9b6bd53bde68ecda87d5b8c083d8d08f557ab4e3598af",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/BP-8P-0001.html": {
+      "contentSha256": "3c580fb1218c3cb898b1b2a35ecdf671b77b092f46986d5e37e38a7f143bcb5c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/applications.html": {
+      "contentSha256": "420bfb24d88f12d3e752c59816340c2719fcfe700bc83fce1468b5d3457a95e3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-automation-rotary-tables.html": {
+      "contentSha256": "50c265a588fc5e62277797c67ba7de9e22fc29194e5522c538bf847a2f5d0948",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-bottle-filling-capping.html": {
+      "contentSha256": "d99862930aaa8ef373f7de7285d01eaafa378b2860d0f976d049469a0130a644",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-cnc-pneumatic-clamping.html": {
+      "contentSha256": "79b6036fa12116b549c3917bb64ad9701fbb4f2763d89d3cbfba589987ded3f3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-electronics-battery-test-fixtures.html": {
+      "contentSha256": "eddc97d8d141b2e1be50d05da8d6300aefa4a99ecbdcbf0ed1b3f6477c74d5a5",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-laser-tube-cutting.html": {
+      "contentSha256": "984e5fe18bd1c101dbe8a5e8f876d40c733928c36d08a9257780ddb5c797f7ac",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-packaging-machinery.html": {
+      "contentSha256": "79c6c1f1d55bec086aabca0ab383c0b249a04b5aaa06fbad3c6721652ef4b4e1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-pneumatic-tools-hose-anti-twist.html": {
+      "contentSha256": "e0810f4ff182efcd1323a22b38f66b4c512ac931c51be058f774aa2ceb9493c7",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-robot-end-of-arm-tooling.html": {
+      "contentSha256": "c5b4d7d992156930a9005ad1f4b6a2b92596aab5baed3935204ec3821e12d402",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-steel-dusty-environments.html": {
+      "contentSha256": "93f2f3d893b6ec2d36619b8146af990315251a9a6a84c2533dcaffd9dfdd6a2d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-textile-printing-converting.html": {
+      "contentSha256": "df9cc9e50a4c4203c848e72ca3a05fcc5691ed014b9e229050b0fa2f62fa816c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-vacuum-packaging-machines.html": {
+      "contentSha256": "90f5261e809bfa2bcf84f6ef3289735096d1630365ebc72a9d64ad61a392a2a0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/application-welding-positioners.html": {
+      "contentSha256": "968734b36382f32085e34e04a6e3a875e06eacc8d4806ecac690a1ef3ba0f850",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/custom-hydraulic-rotary-unions.html": {
+      "contentSha256": "2b7795d4ed20369716d1e19c43449e26040383e6b48cf90f3da40164e259bab6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/installation.html": {
+      "contentSha256": "e9416630c9ec364964fc8086c13f7eb583fcc13c78ce7aef028a86140a7d8844",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog.html": {
+      "contentSha256": "92b87fea7b7db3f76afac83d49115eb6081fa97f5df4dad3c11e65df4b37d929",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-non-contact-clearance-seal-rotary-union.html": {
+      "contentSha256": "e85f9b7469c5fca86c3537bd290ef4d2ff889a740db8b6371f3d5384e8ef3fb6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-rotary-joint-installation-mistakes.html": {
+      "contentSha256": "bc169c3a0d4d3d0af90a63e7c9246dc1bf93273b1325c617f8c95915d0959aa6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-rotary-joint-leaking.html": {
+      "contentSha256": "6bbc3938887f7b537ebc67754a4d8e30c9c3fdcf3c7aa68f793615cdf078ae32",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-rotary-joint-materials.html": {
+      "contentSha256": "b46b1a1e2fd15dd62a17fb0b75f055b8a247f98431036ac945728cf5c90d4e3d",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-rotary-joint-selection.html": {
+      "contentSha256": "1c1fecec84d4933926549f9826a119a7f591ac3e94a2c8d0147ce28601433d56",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-rotary-union-seal-types.html": {
+      "contentSha256": "601f57e5dd21695659eaab7e9d66817ea9ee54b58036b4531b94a4ca26d42490",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-seal-replacement.html": {
+      "contentSha256": "c091c7ca3175b70fcd75d2a2a7b4f445c60b20821d8fc917b0988a0e47c2298b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/blog-threaded-vs-flange.html": {
+      "contentSha256": "1d34dcc33b15df48698a7b4ab4f02daefdc383ae7edd181111f0af66a68ad9f4",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/case-studies.html": {
+      "contentSha256": "e69dd8bcb1f92fc005d1778229d516a4495cc98b1757187cf839d5ffef9d5098",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/case-bp-2p-95-pneumatic-chuck-integration.html": {
+      "contentSha256": "00a48028ccad9aaf697b030fb5076a0e5c25857f73f8d0f667160a491d450981",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/case-bp-3p-s06-sensor-monitored-chuck.html": {
+      "contentSha256": "3bcfc585ba74678fad64a73e1ee663b7093684d713f750c95ab9b174ccc9a7b4",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/faq.html": {
+      "contentSha256": "3b3c36a77604675f438dc53e07eb1299b5883f55d30521cd0567929b29007286",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/contact.html": {
+      "contentSha256": "240009ad38d2a13a587b5040a826b8f30f17f4195ba80b05fb23fe81bc30b4e0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/privacy.html": {
+      "contentSha256": "3069235e2a1f5ee6c5932838d814aed0e4b6d9230f213ac3c2e29d12bc1b5439",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ja/terms.html": {
+      "contentSha256": "ed7be38c4f7a01a9688741cf5e25652f0ff657185c5e1320cc54f8ac900027bd",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/": {
+      "contentSha256": "5258a3cfb54233e77642c5f90e538fd671bbeed7ac277474699d0ffc0bed0416",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/about.html": {
+      "contentSha256": "ee88541c8a4648d897376e0717fca9b95126e29987766ee034cd7e1b7f406756",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/manufacturing-quality.html": {
+      "contentSha256": "3f8ecf8b368bc2bf1878ac7370a7549b9f7d84c69a95794580c3b4e839e2377e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/production-inspection-testing.html": {
+      "contentSha256": "aef5637efef949d55c13e0605cae5a55db1a29c4fcd324740c6628d32c7a3c1a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/products.html": {
+      "contentSha256": "a59b8366c8b954e02f09e3f0d5efbeabb94399190dddd5e05d62bae4a3ede09c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/product-comparison.html": {
+      "contentSha256": "031a45fdc14a077f460df1b3c4b9468574225127d1ce8407d9c16d142f999e62",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-1P-0003.html": {
+      "contentSha256": "63b5f2a9a170a5c1aba1396e1abc69bda27cacb642766cbcd0394bcc957be759",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-1P-0006.html": {
+      "contentSha256": "818a7c29b0919e003e5cb87570bf8c83bdacdb2aff64a69b80d236ec3075b34a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-0001.html": {
+      "contentSha256": "1f36762f702e1dd08ee112de559afce3251c0f1bf954795eedebf102afe1fe82",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-0002.html": {
+      "contentSha256": "f86c18aa916483c0d6175bcbc65a15be2b795e0ffd04c9807323306c7c443f98",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-08-0001.html": {
+      "contentSha256": "cc15fc00e84214da50487b11dc44d584849b1882fb44b5ff2cd784efd5c3c796",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-130-0001.html": {
+      "contentSha256": "b0b121da89e9f9b7beea2352a0aed24809c88198b2ca6fc7ead599c3a01032f6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-16-0001.html": {
+      "contentSha256": "99b7a5b4f64969ece9202e58c744460e1feb2dd867b4176b1153c2a2cef0cadc",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-30-0001.html": {
+      "contentSha256": "5ea6667aef7dae4687b5488818da8e0c6df138ef292605bda7d2061a5e539761",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-50-0001.html": {
+      "contentSha256": "d73df49235f516dbdcb86ec6586fa71228d719fc1ab84ca87ac887d278cf1002",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-2P-95-0005.html": {
+      "contentSha256": "fe8109081671c2045c060d5fd81642d3b0b0538b4e515b2cefc8be69e75f2803",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-3P-0004.html": {
+      "contentSha256": "1f50b3f2461d95e4e0c03b63bff79b28e30c68972b8d6e45a0c91ce48a88d2b6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-3P-0006.html": {
+      "contentSha256": "c3eee3bd1f5ad6fe9831b985a9a9677428fb924fb54228b97ad5fa5d86bd1ef6",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-3P-0007.html": {
+      "contentSha256": "eaacbec6b85929c28efae12001a979bdaa4f8fc59aba01556111bab006e4b67a",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-3P-S06-0001.html": {
+      "contentSha256": "0e00dcb14ee91abf6b7c32c9c7d8f04afe40ece7550d9f0e8b359fd2785ba91b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-4P-30-0001.html": {
+      "contentSha256": "2e0dfcdeeeff21bd14ed8bbc8ddf9b5e3e3b379c39eab0efa4816e2a4d965e1c",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/BP-8P-0001.html": {
+      "contentSha256": "c2990c3598ae852091f233277abb630e9d793147c9b4677068675301d158ca31",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/applications.html": {
+      "contentSha256": "391d6a4cadc025ff788211e0d50848ef61fdf5c24eadaef1b3eb2840f9d63cad",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-automation-rotary-tables.html": {
+      "contentSha256": "2436e67b7224243ceec7db836d735484950215cfdcac948ff0ba4891824850ec",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-bottle-filling-capping.html": {
+      "contentSha256": "3c489cf1677bbee60efcadd84eb5ce289db096577eefc03e50e89e965c61c3f1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-cnc-pneumatic-clamping.html": {
+      "contentSha256": "9a4f704d051f928d9f39a72209c8531cffa36207c526c651c690bae9ef07eeac",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-electronics-battery-test-fixtures.html": {
+      "contentSha256": "3e7bd38f3742064758ed4f848631098b8deb1f5bbf8277a0a58448c660dbf400",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-laser-tube-cutting.html": {
+      "contentSha256": "fc4962efa5f558cb24dc00f69d4ce96b7a42648281256f0850e0cf65050a4352",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-packaging-machinery.html": {
+      "contentSha256": "d86389f5a02895fbc2548226259449698642fe41a1f29027db769b588e82c23b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-pneumatic-tools-hose-anti-twist.html": {
+      "contentSha256": "1b0556c0897a165b4b588a48957e8c4691b5c4ce99cb3589778c92bb67620305",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-robot-end-of-arm-tooling.html": {
+      "contentSha256": "ca6a21dfa26810cc4974185ffd2f4b148bcc5369db802fe92adb584379f40f70",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-steel-dusty-environments.html": {
+      "contentSha256": "43b488140326509327cc9eefa85a1f983b55bfc971826e9407f2b0bd4ae4dc12",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-textile-printing-converting.html": {
+      "contentSha256": "d45463925f24d23ff6cdbb9807a92a12cf7d860f51832bb9252d55f46bfc421e",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-vacuum-packaging-machines.html": {
+      "contentSha256": "9cc3afadc2aa615f2ab7c8d07e739f35dada2921d529db59453208bc2ecc65d1",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/application-welding-positioners.html": {
+      "contentSha256": "29d51a29763d7b1eafedc6882eac1dc419324a759808e2a470f8e7e43f35d5f3",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/custom-hydraulic-rotary-unions.html": {
+      "contentSha256": "56cc0473b2795a4e574ea831fbfaea191608337de2ecd6dc440cddd6fc737293",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/installation.html": {
+      "contentSha256": "c9a8fb583196acbfab3aa14d78d214cdd307cd4c181cc44d6fa58b64b0cb9e38",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog.html": {
+      "contentSha256": "a469f87cbb325afbf0ee6f9dd5673c278edbae1c2432bda0a22459df4a00e798",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-non-contact-clearance-seal-rotary-union.html": {
+      "contentSha256": "9ddab1e4c2a99b587a180115c9e283f2cebbfd8f2f10e55fe57d2ead4ab3d6d7",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-rotary-joint-installation-mistakes.html": {
+      "contentSha256": "9b1771b3f2d9ce3668e41ed182b6cc3e8276ac6dcee6343b4f8ad9ebf2611e72",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-rotary-joint-leaking.html": {
+      "contentSha256": "0b921f4cdca2e11d5f8141f4dd09215a6f8c08250f55c885881de53a7f252c39",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-rotary-joint-materials.html": {
+      "contentSha256": "d3915eaf88565882d2ff70234a06076f547cd98e570377286c93a9caf4e873d4",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-rotary-joint-selection.html": {
+      "contentSha256": "2eb6cbcb2a59a303c98e7547c8053f094b6b706607d00239eedd553e64d413d2",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-rotary-union-seal-types.html": {
+      "contentSha256": "680a67e775c1e28dcd126c94ac34851347430e3bcb1fcd47528d918eb788ea7b",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-seal-replacement.html": {
+      "contentSha256": "242367849086fbf8befcdd273e710fd3c3412a9cef444059b8fb060cc166c860",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/blog-threaded-vs-flange.html": {
+      "contentSha256": "99d450f85d8e61fe5ae92d4c716fdc09b1bcd561f578b387f42c14a3aa53b519",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/case-studies.html": {
+      "contentSha256": "a28fc7017904349d8137b7028f84a8235d23dcbc2a8548ba27ff61fa344e8f14",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/case-bp-2p-95-pneumatic-chuck-integration.html": {
+      "contentSha256": "3e93469b3981335d30b0e87699ccd7e6d4f472b55e3f1c42688b5b6edc546d15",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/case-bp-3p-s06-sensor-monitored-chuck.html": {
+      "contentSha256": "842837ed73dac8b5144c22ed1b8a119a5a4d51ac3b99f4d79aab41ce1e221114",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/faq.html": {
+      "contentSha256": "984773a051c0afba580770545aa9d444b0457c58b2973d32080de02fa64420f5",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/contact.html": {
+      "contentSha256": "e8e3f454db7cd08a29ff29820fafc1b02091056e293a78fb1741d3d4859849d0",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/privacy.html": {
+      "contentSha256": "609bc1c6d564f48ea059c383485cfc98f10c906918ddd80092e8e2040f28f472",
+      "lastmod": "2026-09-04"
+    },
+    "https://www.begapunk.com/ru/terms.html": {
+      "contentSha256": "db56fd0203a52fa729831150aeaeb34b135d7e5ec1b74cb4fbd31b263986e7e7",
+      "lastmod": "2026-09-04"
+    }
+  }
+}

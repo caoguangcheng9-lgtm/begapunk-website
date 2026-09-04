@@ -74,7 +74,7 @@ jobs:
     needs: [inquiry-php, lighthouse-performance]
     runs-on: ubuntu-24.04
     environment: production
-    timeout-minutes: 20
+    timeout-minutes: 45
 
     steps:
       - name: Check out release source
@@ -115,6 +115,16 @@ jobs:
           git diff --exit-code
           test -z "$(git status --porcelain=v1 --untracked-files=all)"
 
+      - name: Verify deployment shell and Nginx policy contracts
+        run: |
+          bash -n \
+            ops/activate-release.sh \
+            ops/bootstrap-server.sh \
+            ops/install-nginx-managed-redirects.sh \
+            ops/upgrade-deployment-hardening.sh \
+            ops/verify-public-deployment.sh
+          bash ops/install-nginx-managed-redirects.sh validate ops/nginx-managed-redirects.conf
+
       - name: Prepare IndexNow verification file
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
@@ -137,6 +147,132 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
 
+      - name: Verify hardened server deployment contract
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          test -n "$DEPLOY_HOST"
+          test -n "$DEPLOY_USER"
+          port="${DEPLOY_PORT:-22}"
+          [[ "$port" =~ ^[0-9]{1,5}$ ]] && (( port >= 1 && port <= 65535 ))
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          ssh_args=(
+            -o BatchMode=yes
+            -o ConnectTimeout=15
+            -o ConnectionAttempts=2
+            -o ServerAliveInterval=15
+            -o ServerAliveCountMax=3
+            -p "$port"
+          )
+
+          ssh "${ssh_args[@]}" "$target" 'bash -se' <<'REMOTE'
+          set -Eeuo pipefail
+
+          base_dir='/www/begapunk'
+          current_link="$base_dir/current"
+          helper='/usr/local/sbin/begapunk-nginx-config'
+          inquiry_env="$base_dir/shared/.env"
+          maintenance_lock="$base_dir/maintenance.lock"
+          hardening_marker="$base_dir/.hardening-complete"
+          expected_helper_version='begapunk-nginx-config-v2'
+          expected_marker_version='v2'
+          expected_doctor_result='begapunk-nginx-config-doctor-ok:v2'
+          failures=0
+
+          fail_check() {
+            printf 'ERROR: %s\n' "$1" >&2
+            failures=$((failures + 1))
+          }
+
+          if [[ ! -L "$current_link" ]]; then
+            fail_check "$current_link must be a symbolic link to an initialized release."
+          else
+            active_release="$(readlink -f "$current_link" 2>/dev/null || true)"
+            if [[ -z "$active_release" || "$active_release" != "$base_dir/releases/"* || ! -d "$active_release" || ! -f "$active_release/index.html" ]]; then
+              fail_check "$current_link must resolve inside $base_dir/releases and contain index.html."
+            else
+              printf 'OK: active release %s\n' "$active_release"
+            fi
+          fi
+
+          if [[ ! -f "$helper" || -L "$helper" || ! -x "$helper" ]]; then
+            fail_check "$helper must be a regular, non-symlink executable."
+          else
+            helper_metadata="$(stat -c '%U:%G:%a' "$helper" 2>/dev/null || true)"
+            if [[ "$helper_metadata" != 'root:root:755' ]]; then
+              fail_check "$helper must be owned by root:root with mode 0755; found ${helper_metadata:-unreadable}."
+            else
+              printf 'OK: privileged helper ownership and mode %s\n' "$helper_metadata"
+            fi
+
+            if helper_version="$(sudo -n "$helper" version 2>/dev/null)"; then
+              if [[ "$helper_version" != "$expected_helper_version" ]]; then
+                fail_check "privileged helper version mismatch; expected $expected_helper_version, found ${helper_version:-empty}."
+              else
+                printf 'OK: privileged helper version %s\n' "$helper_version"
+              fi
+            else
+              fail_check "sudo -n $helper version failed; install the current helper and narrow sudoers rule."
+            fi
+          fi
+
+          if [[ ! -f "$inquiry_env" || -L "$inquiry_env" ]]; then
+            fail_check "$inquiry_env must be a regular, non-symlink file."
+          else
+            env_metadata="$(stat -c '%U:%G:%a' "$inquiry_env" 2>/dev/null || true)"
+            if [[ "$env_metadata" != 'root:www:640' ]]; then
+              fail_check "$inquiry_env must be owned by root:www with mode 0640; found ${env_metadata:-unreadable}."
+            else
+              printf 'OK: inquiry environment ownership and mode %s\n' "$env_metadata"
+            fi
+          fi
+
+          if [[ ! -f "$maintenance_lock" || -L "$maintenance_lock" ]]; then
+            fail_check "$maintenance_lock must be a regular, non-symlink file."
+          else
+            deployment_group="$(id -gn)"
+            lock_metadata="$(stat -c '%U:%G:%a' "$maintenance_lock" 2>/dev/null || true)"
+            if [[ "$lock_metadata" != "root:$deployment_group:660" ]]; then
+              fail_check "$maintenance_lock must be owned by root:$deployment_group with mode 0660; found ${lock_metadata:-unreadable}."
+            else
+              printf 'OK: deployment maintenance lock ownership and mode %s\n' "$lock_metadata"
+            fi
+          fi
+
+          if [[ ! -f "$hardening_marker" || -L "$hardening_marker" ]]; then
+            fail_check "$hardening_marker must be a regular, non-symlink file."
+          else
+            marker_metadata="$(stat -c '%U:%G:%a' "$hardening_marker" 2>/dev/null || true)"
+            if [[ "$marker_metadata" != 'root:root:644' ]]; then
+              fail_check "$hardening_marker must be owned by root:root with mode 0644; found ${marker_metadata:-unreadable}."
+            elif [[ "$(grep -Fxc "helper_version=$expected_marker_version" "$hardening_marker" 2>/dev/null || true)" != '1' ]]; then
+              fail_check "$hardening_marker does not attest helper_version=$expected_marker_version exactly once."
+            else
+              printf 'OK: hardening marker ownership, mode and version %s\n' "$expected_marker_version"
+            fi
+          fi
+
+          if doctor_output="$(sudo -n "$helper" doctor 2>/dev/null)"; then
+            doctor_last_line="${doctor_output##*$'\n'}"
+            if [[ "$doctor_last_line" != "$expected_doctor_result" ]]; then
+              fail_check "privileged helper doctor result mismatch; expected $expected_doctor_result, found ${doctor_last_line:-empty}."
+            else
+              printf 'OK: privileged helper doctor %s\n' "$doctor_last_line"
+            fi
+          else
+            fail_check "sudo -n $helper doctor failed; server hardening is incomplete or inconsistent."
+          fi
+
+          if (( failures > 0 )); then
+            printf 'Deployment blocked: %d hardened server prerequisite(s) failed.\n' "$failures" >&2
+            exit 1
+          fi
+          echo 'Hardened server deployment contract verified.'
+          REMOTE
+
       - name: Prepare IndexNow URLs from the active release
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -146,7 +282,8 @@ jobs:
           set -Eeuo pipefail
           port="${DEPLOY_PORT:-22}"
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
-          active_release="$(ssh -p "$port" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
+          active_release="$(ssh "${ssh_args[@]}" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
           if [[ "$active_release" =~ -([0-9a-f]{12})$ ]] && git cat-file -e "${BASH_REMATCH[1]}^{commit}"; then
             node scripts/prepare-indexnow-urls.mjs "${BASH_REMATCH[1]}" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
           else
@@ -166,42 +303,126 @@ jobs:
           port="${DEPLOY_PORT:-22}"
           release_id="$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA::12}"
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
-          ssh -p "$port" "$target" "mkdir -p /www/begapunk/releases/$release_id /www/begapunk/bin"
-          rsync -az --delete -e "ssh -p $port" dist/production/ "$target:/www/begapunk/releases/$release_id/"
-          rsync -az -e "ssh -p $port" \
-            ops/activate-release.sh \
-            ops/install-nginx-managed-redirects.sh \
-            ops/nginx-managed-redirects.conf \
-            "$target:/www/begapunk/bin/"
-          ssh -p "$port" "$target" \
-            "chmod 750 /www/begapunk/bin/activate-release.sh /www/begapunk/bin/install-nginx-managed-redirects.sh"
-          redirect_mode="static canonical fallback"
-          if ssh -p "$port" "$target" "sudo -n true"; then
-            ssh -p "$port" "$target" \
-              "sudo -n /www/begapunk/bin/install-nginx-managed-redirects.sh /www/begapunk/bin/nginx-managed-redirects.conf"
-            redirect_mode="verified HTTP 301"
-          else
-            echo "::warning::Deployment account has no non-interactive sudo permission; keeping the canonical/meta-refresh fallback for the legacy URL."
-          fi
-          ssh -p "$port" "$target" "/www/begapunk/bin/activate-release.sh '$release_id'"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
+          rsync_ssh="ssh -o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p $port"
+          previous_release_id="$(ssh "${ssh_args[@]}" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
+          [[ "$previous_release_id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{5,100}$ ]]
+          nginx_candidate="/www/begapunk/staging/nginx-managed-${release_id}.conf"
           echo "release_id=$release_id" >> "$GITHUB_ENV"
-          echo "redirect_mode=$redirect_mode" >> "$GITHUB_ENV"
+          echo "previous_release_id=$previous_release_id" >> "$GITHUB_ENV"
+          echo "nginx_candidate=$nginx_candidate" >> "$GITHUB_ENV"
 
-      - name: Verify public homepage
-        run: |
-          curl --fail --silent --show-error --max-time 30 https://www.begapunk.com/ | grep -Eiq '<html|<!doctype html|BEGAPUNK'
+          ssh "${ssh_args[@]}" "$target" \
+            "mkdir -p /www/begapunk/releases/$release_id /www/begapunk/bin /www/begapunk/staging"
+          rsync -az --delete -e "$rsync_ssh" dist/production/ "$target:/www/begapunk/releases/$release_id/"
+          rsync -az -e "$rsync_ssh" ops/activate-release.sh "$target:/www/begapunk/bin/activate-release.sh"
+          rsync -az -e "$rsync_ssh" ops/nginx-managed-redirects.conf "$target:$nginx_candidate"
+          ssh "${ssh_args[@]}" "$target" \
+            "chmod 750 /www/begapunk/bin/activate-release.sh && chmod 640 '$nginx_candidate'"
 
-      - name: Verify legacy product URL recovery
+      - name: Stage managed Nginx policy
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         run: |
           set -Eeuo pipefail
-          legacy_url="https://www.begapunk.com/3-in-3-out-Pneumatic-rotary-joint-P6776400.html"
-          result="$(curl --silent --show-error --output /dev/null --max-time 30 --write-out '%{http_code}|%{redirect_url}' "$legacy_url")"
-          if [[ "$result" == "301|https://www.begapunk.com/BP-3P-0004.html" ]]; then
-            exit 0
+          port="${DEPLOY_PORT:-22}"
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
+          echo "nginx_transaction_attempted=true" >> "$GITHUB_ENV"
+          ssh "${ssh_args[@]}" "$target" \
+            "flock -w 30 /www/begapunk/maintenance.lock sudo -n /usr/local/sbin/begapunk-nginx-config stage '$nginx_candidate' '$release_id'"
+          echo "nginx_transaction_staged=true" >> "$GITHUB_ENV"
+
+      - name: Activate release
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          port="${DEPLOY_PORT:-22}"
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
+          ssh "${ssh_args[@]}" "$target" \
+            "flock -w 30 /www/begapunk/maintenance.lock /www/begapunk/bin/activate-release.sh '$release_id'"
+
+      - name: Verify public deployment boundary
+        run: bash ops/verify-public-deployment.sh
+
+      - name: Commit deployment transaction
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          port="${DEPLOY_PORT:-22}"
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
+          ssh "${ssh_args[@]}" "$target" \
+            "flock -w 30 /www/begapunk/maintenance.lock sudo -n /usr/local/sbin/begapunk-nginx-config commit '$release_id' && rm -f -- '$nginx_candidate'"
+          echo "deployment_committed=true" >> "$GITHUB_ENV"
+          echo "redirect_mode=verified HTTP 301" >> "$GITHUB_ENV"
+
+      - name: Roll back an uncommitted deployment
+        if: ${{ always() && env.nginx_transaction_attempted == 'true' && env.deployment_committed != 'true' }}
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          port="${DEPLOY_PORT:-22}"
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
+
+          if ! ssh "${ssh_args[@]}" "$target" 'bash -se' -- \
+            "$previous_release_id" "$release_id" "$nginx_candidate" <<'REMOTE'
+          set -Eeuo pipefail
+          previous_release_id="$1"
+          release_id="$2"
+          nginx_candidate="$3"
+          maintenance_lock='/www/begapunk/maintenance.lock'
+          rollback_failed=0
+          release_recovered=false
+
+          exec 8<>"$maintenance_lock"
+          if ! flock -w 45 8; then
+            echo 'Could not acquire the deployment maintenance lock for rollback.' >&2
+            exit 20
           fi
-          [[ "$result" == "200|" ]]
-          curl --fail --silent --show-error --max-time 30 "$legacy_url" \
-            | grep -Fq '<link rel="canonical" href="https://www.begapunk.com/BP-3P-0004.html">'
+
+          current_release_id="$(basename "$(readlink -f /www/begapunk/current 2>/dev/null || true)")"
+          if [[ "$current_release_id" == "$previous_release_id" ]]; then
+            release_recovered=true
+          elif /www/begapunk/bin/activate-release.sh "$previous_release_id"; then
+            release_recovered=true
+          else
+            current_release_id="$(basename "$(readlink -f /www/begapunk/current 2>/dev/null || true)")"
+            if [[ "$current_release_id" == "$previous_release_id" ]]; then
+              release_recovered=true
+            else
+              echo 'Release rollback failed; retaining the staged Nginx policy and transaction for manual recovery.' >&2
+              rollback_failed=1
+            fi
+          fi
+
+          if [[ "$release_recovered" == true ]]; then
+            if ! sudo -n /usr/local/sbin/begapunk-nginx-config rollback "$release_id"; then
+              echo 'Nginx transaction rollback failed; manual recovery is required.' >&2
+              rollback_failed=1
+            fi
+          fi
+
+          rm -f -- "$nginx_candidate" || rollback_failed=1
+          [[ "$rollback_failed" -eq 0 ]]
+          REMOTE
+          then
+            echo "::error::Deployment rollback failed or could not be confirmed; manual recovery is required."
+            exit 1
+          fi
 
       - name: Notify IndexNow of changed URLs
         env:

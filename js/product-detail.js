@@ -103,8 +103,6 @@
   function initializeFaq() {
     const items = [...document.querySelectorAll('.page-product-detail details.faq-item')];
     const valid = items.length === 5 && items.every((item) => (
-      item.hasAttribute('open')
-      &&
       item.querySelectorAll(':scope > summary.faq-question').length === 1
       && item.querySelectorAll(':scope > .faq-answer').length === 1
     ));
@@ -118,8 +116,10 @@
     if (!row || !mainImage) return;
     const links = [...row.querySelectorAll(':scope > a.thumb-link')];
     const images = links.map((link) => link.querySelector(':scope > img.thumb'));
-    const valid = links.length === 3
+    const hrefs = links.map((link) => link.getAttribute('href') || '');
+    const valid = [2, 3].includes(links.length)
       && images.every(Boolean)
+      && new Set(hrefs).size === hrefs.length
       && links.every((link, index) => (
         link.querySelectorAll(':scope > img.thumb').length === 1
         && link.getAttribute('href') === images[index].getAttribute('src')

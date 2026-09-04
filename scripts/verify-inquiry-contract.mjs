@@ -13,7 +13,8 @@ import {
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'i18n', 'config.json'), 'utf8'));
 const PRODUCT_PAGE_NAMES = SITE_CONFIG.pages.filter((pageName) => /^BP-[\w-]+\.html$/.test(pageName));
-const PRODUCT_LOCALES = ['en', ...(SITE_CONFIG.activeLanguageCodes || [])];
+const TARGET_LANGUAGES = [...(SITE_CONFIG.activeLanguageCodes || [])];
+const PRODUCT_LOCALES = ['en', ...TARGET_LANGUAGES];
 const DRAWING_BACKED_PRODUCT_MODELS = new Set(drawingBackedProductModels);
 const CONTACT_PAGES = [
   {
@@ -24,6 +25,15 @@ const CONTACT_PAGES = [
     uploadAction: 'Choose a file',
     quoteTemplate: 'I need a quote for this model or application.',
     stepModelTemplate: 'Catalog STEP for BP-2P-0001 is on the product page. Use this form for custom CAD or other files.',
+  },
+  {
+    file: 'fr/contact.html', language: 'fr', basePath: '/fr/contact.html', sending: 'Envoi en cours…',
+    quantityLabel: 'Quantité estimée (facultatif)',
+    quantityPlaceholder: 'Ex. : 1 prototype, 10 unités ou 100 unités/an',
+    uploadLabel: 'Plan ou photo (facultatif)',
+    uploadAction: 'Choisir un fichier',
+    quoteTemplate: 'Je souhaite obtenir un devis pour ce modèle ou cette application.',
+    stepModelTemplate: 'Le fichier STEP catalogue de BP-2P-0001 se trouve sur la page produit. J’utilise ce formulaire pour un fichier CAO sur mesure ou un autre format.',
   },
   {
     file: 'de/contact.html', language: 'de', basePath: '/de/contact.html', sending: 'Anfrage wird gesendet…',
@@ -55,11 +65,20 @@ const CONTACT_PAGES = [
 ];
 const THANK_YOU_PAGES = [
   { file: 'thank-you.html', language: 'en' },
+  { file: 'fr/thank-you.html', language: 'fr' },
   { file: 'de/thank-you.html', language: 'de' },
   { file: 'ja/thank-you.html', language: 'ja' },
   { file: 'ru/thank-you.html', language: 'ru' },
 ];
-const REQUIRED_HIDDEN_FIELDS = ['inquiry_type', 'source_model', 'source_product', 'source_page', 'source_url'];
+const ATTRIBUTION_HIDDEN_FIELDS = [
+  'gclid', 'gbraid', 'wbraid',
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+  'first_landing_page', 'initial_referrer',
+];
+const REQUIRED_HIDDEN_FIELDS = [
+  'inquiry_type', 'source_model', 'source_product', 'source_page', 'source_url',
+  ...ATTRIBUTION_HIDDEN_FIELDS,
+];
 const REQUIRED_NATIVE_FIELDS = ['email', 'requirements'];
 const OPTIONAL_NATIVE_FIELDS = ['fullname', 'company', 'country', 'product'];
 const REQUEST_CODE_MAP = {
@@ -269,7 +288,8 @@ function runPageScript(page, search, initialValues = {}, runtime = {}) {
   };
   const ids = [
     'mobileToggle', 'mainNav', 'quoteForm', 'formMessage', 'submitBtn', 'inquiry_type',
-    'source_model', 'source_product', 'source_page', 'source_url', 'product', 'application', 'quantity',
+    'source_model', 'source_product', 'source_page', 'source_url', ...ATTRIBUTION_HIDDEN_FIELDS,
+    'product', 'application', 'quantity',
     'requirements', 'fullname', 'email', 'company', 'country', 'drawing', 'drawing-name', 'thankYouRedirect', 'contact-rfq-copy',
   ];
   for (const id of ids) {
@@ -468,8 +488,16 @@ check(
   'contact-rfq-copy.json: the review metadata must not claim independent native-speaker review.',
 );
 check(
-  sameKeys(Object.keys(manualRfqContract.copies || {}), ['de', 'ja', 'ru']),
-  'contact-rfq-copy.json: target copies must exactly cover de, ja, and ru.',
+  sameKeys(Object.keys(manualRfqContract.copies || {}), TARGET_LANGUAGES),
+  `contact-rfq-copy.json: target copies must exactly cover active languages (${TARGET_LANGUAGES.join(', ')}).`,
+);
+check(
+  sameKeys(CONTACT_PAGES.map(({ language }) => language), ['en', ...TARGET_LANGUAGES]),
+  'Contact-page contracts must exactly cover English and every active language.',
+);
+check(
+  sameKeys(THANK_YOU_PAGES.map(({ language }) => language), ['en', ...TARGET_LANGUAGES]),
+  'Thank-you-page contracts must exactly cover English and every active language.',
 );
 
 for (const page of pages) {
@@ -494,6 +522,9 @@ for (const page of pages) {
     const field = page.$(`input[type="hidden"][name="${fieldName}"]`);
     check(field.length === 1, `${page.file}: hidden field ${fieldName} is missing or duplicated.`);
     check(field.attr('id') === fieldName, `${page.file}: hidden field ${fieldName} must retain its id.`);
+    if (ATTRIBUTION_HIDDEN_FIELDS.includes(fieldName)) {
+      check((field.attr('value') || '') === '', `${page.file}: attribution field ${fieldName} must start empty.`);
+    }
   }
   check(page.$('#inquiry_type').attr('value') === 'general_inquiry', `${page.file}: inquiry_type default must be general_inquiry.`);
   check(page.$('select[name="product"]').length === 1, `${page.file}: product select is missing.`);
@@ -533,7 +564,7 @@ for (const page of pages) {
     `${page.file}: drawing formats changed.`,
   );
   check(drawingInput.attr('aria-describedby') === 'drawing-help drawing-name', `${page.file}: drawing aria-describedby changed.`);
-  check(/10\s*(?:MB|МБ)/u.test(form.find('#drawing-help').text()), `${page.file}: drawing 10 MB guidance is missing.`);
+  check(/10\s*(?:MB|Mo|МБ)/u.test(form.find('#drawing-help').text()), `${page.file}: drawing 10 MB guidance is missing.`);
   check(form.find('#drawing-name').length === 1, `${page.file}: drawing filename feedback is missing.`);
   for (const fieldName of REQUIRED_NATIVE_FIELDS) {
     const field = form.find(`[name="${fieldName}"]`);
@@ -577,7 +608,7 @@ for (const page of pages) {
         `${page.file}: ${key} placeholders differ from the approved contract.`,
       );
     }
-    if (page.language !== 'en') {
+    if (Object.hasOwn(manualRfqContract.copies || {}, page.language)) {
       check(
         sameObject(page.copy, manualRfqContract.copies?.[page.language]),
         `${page.file}: RFQ data block differs from the reviewed manual source.`,
@@ -898,7 +929,7 @@ try {
 check(contactGenerationReport !== null, 'Contact generation verifier did not emit one valid JSON result.');
 if (contactGenerationReport) {
   const expectedResultKeys = ['result', 'targetLanguageCount', 'wroteFiles', 'comparisons'];
-  const expectedLanguages = ['de', 'ja', 'ru'];
+  const expectedLanguages = TARGET_LANGUAGES;
   const expectedScopes = [
     'section.bp-rfq-hero',
     'main.bp-rfq-main',
@@ -917,7 +948,7 @@ if (contactGenerationReport) {
   );
   check(
     contactGenerationReport.targetLanguageCount === expectedLanguages.length,
-    'Contact generation verifier target-language count is not exactly three.',
+    `Contact generation verifier target-language count must be ${expectedLanguages.length}.`,
   );
   check(
     contactGenerationReport.wroteFiles === false,
@@ -926,7 +957,7 @@ if (contactGenerationReport) {
   check(
     Array.isArray(contactGenerationReport.comparisons)
       && contactGenerationReport.comparisons.length === expectedLanguages.length * expectedScopes.length,
-    'Contact generation verifier did not return exactly 18 scope comparisons.',
+    `Contact generation verifier must return ${expectedLanguages.length * expectedScopes.length} scope comparisons.`,
   );
   const observedComparisons = new Set();
   for (const comparison of Array.isArray(contactGenerationReport.comparisons)
@@ -1050,9 +1081,21 @@ for (const parameterName of ['request', 'model', 'product', 'application', 'inqu
 }
 
 const php = read('send_inquiry.php');
+check(
+  php.includes("$productionPath = '/www/begapunk/shared/.env';")
+    && php.includes('load_env_file(inquiry_env_file());'),
+  'send_inquiry.php: production SMTP configuration must load from outside the public release root.',
+);
+check(
+  !php.includes("load_env_file(__DIR__ . '/.env');"),
+  'send_inquiry.php: the public release root must not be the production .env location.',
+);
 const wantsJsonBody = extractFunctionBody(php, 'request_wants_json');
 const respondBody = extractFunctionBody(php, 'respond');
 const languageBody = extractFunctionBody(php, 'normalize_source_language');
+const clickIdentifierBody = extractFunctionBody(php, 'normalize_click_identifier');
+const campaignValueBody = extractFunctionBody(php, 'normalize_campaign_value');
+const trackingUrlBody = extractFunctionBody(php, 'normalize_tracking_url');
 const attachmentBody = extractFunctionBody(php, 'validate_attachment');
 const quantityRead = "$quantity = post_value('quantity', 100, $context);";
 const productReadPosition = php.indexOf("$product = post_value('product', 200, $context);");
@@ -1105,12 +1148,46 @@ check(/['"]code['"]\s*=>\s*\$code/.test(respondBody), 'send_inquiry.php: JSON re
 check(/['"]message['"]\s*=>\s*\$message/.test(respondBody), 'send_inquiry.php: JSON response must retain message.');
 check(respondBody.includes('application/json') && respondBody.includes('text/html'), 'send_inquiry.php: both JSON and HTML response modes are required.');
 check(respondBody.includes("header('Location: '") && respondBody.includes('303'), 'send_inquiry.php: native success must use a fixed 303 redirect.');
-check(languageBody.includes("['en', 'de', 'ja', 'ru']") && languageBody.includes("? $language : 'en'"), 'send_inquiry.php: source_language must use a strict four-language allowlist with English fallback.');
-for (const requiredPath of ['/thank-you.html', '/de/thank-you.html', '/ja/thank-you.html', '/ru/thank-you.html']) {
+const sourceLanguageAllowlistMatch = languageBody.match(/in_array\(\$language,\s*\[([^\]]+)\],\s*true\)/);
+const sourceLanguageAllowlist = sourceLanguageAllowlistMatch
+  ? [...sourceLanguageAllowlistMatch[1].matchAll(/'([a-z]{2})'/g)].map((match) => match[1])
+  : [];
+check(
+  sameKeys(sourceLanguageAllowlist, PRODUCT_LOCALES) && languageBody.includes("? $language : 'en'"),
+  `send_inquiry.php: source_language must use a strict source + active-language allowlist (${PRODUCT_LOCALES.join(', ')}) with English fallback.`,
+);
+check(php.includes("'fr' => [") && php.includes("'error_title' => 'Demande non envoyée'"), 'send_inquiry.php: French responses must not fall back to English.');
+for (const language of PRODUCT_LOCALES) {
+  const requiredPath = language === SITE_CONFIG.sourceLanguage.code ? '/thank-you.html' : `/${language}/thank-you.html`;
   check(php.includes(`'${requiredPath}'`), `send_inquiry.php: missing fixed success path ${requiredPath}.`);
 }
-for (const requiredPath of ['/contact.html#quoteForm', '/de/contact.html#quoteForm', '/ja/contact.html#quoteForm', '/ru/contact.html#quoteForm']) {
+for (const language of PRODUCT_LOCALES) {
+  const requiredPath = language === SITE_CONFIG.sourceLanguage.code ? '/contact.html#quoteForm' : `/${language}/contact.html#quoteForm`;
   check(php.includes(`'${requiredPath}'`), `send_inquiry.php: missing fixed Contact return path ${requiredPath}.`);
+}
+check(clickIdentifierBody.includes('[A-Za-z0-9._~-]+'), 'send_inquiry.php: click identifiers must use a strict character allowlist.');
+check(campaignValueBody.includes('\\p{L}') && campaignValueBody.includes('\\p{N}'), 'send_inquiry.php: campaign fields must preserve international text through an explicit allowlist.');
+check(trackingUrlBody.includes('FILTER_VALIDATE_URL'), 'send_inquiry.php: attribution URLs must be structurally validated.');
+check(trackingUrlBody.includes("['https', 'http']"), 'send_inquiry.php: attribution URLs must be restricted to HTTP(S).');
+check(trackingUrlBody.includes("['begapunk.com', 'www.begapunk.com']"), 'send_inquiry.php: first landing pages must use the Begapunk host allowlist.');
+check(trackingUrlBody.includes("(int) $parts['port'] !== 443"), 'send_inquiry.php: first landing pages must reject nonstandard ports.');
+const attributionReads = [
+  ['gclid', '$gclid', 'normalize_click_identifier', 300],
+  ['gbraid', '$gbraid', 'normalize_click_identifier', 300],
+  ['wbraid', '$wbraid', 'normalize_click_identifier', 300],
+  ['utm_source', '$utmSource', 'normalize_campaign_value', 200],
+  ['utm_medium', '$utmMedium', 'normalize_campaign_value', 200],
+  ['utm_campaign', '$utmCampaign', 'normalize_campaign_value', 200],
+  ['utm_term', '$utmTerm', 'normalize_campaign_value', 200],
+  ['utm_content', '$utmContent', 'normalize_campaign_value', 200],
+  ['first_landing_page', '$firstLandingPage', 'normalize_tracking_url', 500],
+  ['initial_referrer', '$initialReferrer', 'normalize_tracking_url', 500],
+];
+for (const [fieldName, variable, normalizer, limit] of attributionReads) {
+  const expectedRead = variable + ' = ' + normalizer + "(post_value('" + fieldName + "', " + limit + ', $context)';
+  check(php.includes(expectedRead), 'send_inquiry.php: ' + fieldName + ' must use ' + normalizer + ' after the ' + limit + '-character limit.');
+  check(rowsRendering.includes(variable), 'send_inquiry.php: sanitized ' + fieldName + ' is missing from the internal inquiry record.');
+  check(!respondBody.includes(fieldName), 'send_inquiry.php: response must not echo attribution field ' + fieldName + '.');
 }
 for (const resultCode of [
   'sent', 'invalid_method', 'origin_not_allowed', 'rate_limited', 'spam_detected',
@@ -1160,16 +1237,25 @@ for (const page of THANK_YOU_PAGES) {
 }
 
 const packageJson = JSON.parse(read('package.json'));
-check(packageJson.scripts?.['inquiry:verify'] === 'node scripts/verify-inquiry-contract.mjs', 'package.json: inquiry:verify script is missing or incorrect.');
+check(
+  packageJson.scripts?.['inquiry:verify'] === 'node scripts/verify-inquiry-contract.mjs && node scripts/verify-analytics-attribution.mjs',
+  'package.json: inquiry:verify must include the contract and consent-attribution checks.',
+);
 for (const scriptName of ['quality:pr', 'deploy:prepare']) {
   const chain = String(packageJson.scripts?.[scriptName] || '').split(' && ');
   const inquiryIndexes = chain.reduce((indexes, command, index) => command === 'npm run inquiry:verify' ? [...indexes, index] : indexes, []);
+  const analyticsCacheIndexes = chain.reduce((indexes, command, index) => command === 'npm run analytics:cache:verify' ? [...indexes, index] : indexes, []);
+  const homepageLinksIndexes = chain.reduce((indexes, command, index) => command === 'npm run homepage-links:verify' ? [...indexes, index] : indexes, []);
   const discoveryIndexes = chain.reduce((indexes, command, index) => command === 'npm run discovery:verify' ? [...indexes, index] : indexes, []);
   check(inquiryIndexes.length === 1, `package.json: ${scriptName} must contain inquiry:verify exactly once.`);
+  check(analyticsCacheIndexes.length === 1, `package.json: ${scriptName} must contain analytics:cache:verify exactly once.`);
+  check(homepageLinksIndexes.length === 1, `package.json: ${scriptName} must contain homepage-links:verify exactly once.`);
   check(discoveryIndexes.length === 1, `package.json: ${scriptName} must contain discovery:verify exactly once.`);
   check(
-    inquiryIndexes[0] + 1 === discoveryIndexes[0],
-    `package.json: ${scriptName} must place inquiry:verify immediately before discovery:verify.`,
+    inquiryIndexes[0] + 1 === analyticsCacheIndexes[0]
+      && analyticsCacheIndexes[0] + 1 === homepageLinksIndexes[0]
+      && homepageLinksIndexes[0] + 1 === discoveryIndexes[0],
+    `package.json: ${scriptName} must run inquiry:verify, analytics:cache:verify, homepage-links:verify, and discovery:verify in sequence.`,
   );
 }
 

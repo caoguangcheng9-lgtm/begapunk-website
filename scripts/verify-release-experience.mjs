@@ -6,7 +6,11 @@ import { gzipSync } from 'node:zlib';
 import { load } from 'cheerio';
 
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
+const sourceRoot = path.resolve(import.meta.dirname, '..');
 const siteOrigin = 'https://www.begapunk.com';
+const i18nConfig = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
+const partialSitemapFiles = Object.keys(i18nConfig.partialLanguagePages || {})
+  .map((code) => `sitemap-${code}.xml`);
 const KiB = 1024;
 const budgets = Object.freeze({
   total: 1600 * KiB,
@@ -270,7 +274,13 @@ async function verifyHttpAvailability(pages) {
   let maxResponseMs = 0;
   try {
     const htmlPaths = pages.map((page) => `/${page.relativePath}`);
-    htmlPaths.push('/', '/robots.txt', '/sitemap.xml', '/sitemap-i18n.xml');
+    htmlPaths.push(
+      '/',
+      '/robots.txt',
+      '/sitemap.xml',
+      '/sitemap-i18n.xml',
+      ...partialSitemapFiles.map((fileName) => `/${fileName}`),
+    );
     const resourcePaths = new Set();
     for (const page of pages) for (const resource of page.localResources.values()) resourcePaths.add(`/${resource.publicPath}`);
     const targets = [...new Set([...htmlPaths, ...resourcePaths])];
@@ -304,7 +314,7 @@ async function verifyHttpAvailability(pages) {
       }
     });
 
-    for (const sitemapName of ['sitemap.xml', 'sitemap-i18n.xml']) {
+    for (const sitemapName of ['sitemap.xml', 'sitemap-i18n.xml', ...partialSitemapFiles]) {
       const source = await fs.readFile(path.join(releaseRoot, sitemapName), 'utf8');
       for (const match of source.matchAll(/<loc>(.*?)<\/loc>/g)) {
         const resolved = resolveResource(match[1], `${siteOrigin}/${sitemapName}`);

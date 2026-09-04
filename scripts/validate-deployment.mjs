@@ -13,6 +13,21 @@ import {
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
 const failures = [];
+const i18nConfig = JSON.parse(await readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
+const partialLanguagePages = i18nConfig.partialLanguagePages || {};
+const partialLanguageAssets = i18nConfig.partialLanguageAssets || {};
+const partialLanguageCodes = Object.keys(partialLanguagePages);
+const deployedLanguageCodes = [...new Set([
+  ...(i18nConfig.activeLanguageCodes || []),
+  ...partialLanguageCodes,
+])].sort();
+const escapedLanguageCodes = deployedLanguageCodes
+  .map((code) => code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  .join('|');
+const homepageAliasPathPattern = new RegExp(
+  `^/(?:index\\.html|(?:${escapedLanguageCodes})/index\\.html)$`,
+);
+const partialSitemapFiles = partialLanguageCodes.map((code) => `sitemap-${code}.xml`);
 const approvedPublicDownloadFiles = await loadPublicDownloadAllowlist(sourceRoot);
 const approvedPublicDownloads = new Set(approvedPublicDownloadFiles);
 
@@ -57,11 +72,18 @@ const requiredFiles = [
   'robots.txt',
   'sitemap.xml',
   'sitemap-i18n.xml',
+  ...partialSitemapFiles,
   'manifest.sha256',
   'downloads/public-downloads.sha256',
-  'de/index.html',
-  'ja/index.html',
-  'ru/index.html',
+  ...(i18nConfig.activeLanguageCodes || []).flatMap((code) => (
+    (i18nConfig.pages || []).map((pageName) => `${code}/${pageName}`)
+  )),
+  ...Object.entries(partialLanguagePages).flatMap(([code, pages]) => (
+    pages.map((pageName) => `${code}/${pageName}`)
+  )),
+  ...Object.entries(partialLanguageAssets).flatMap(([code, assets]) => (
+    assets.map((assetName) => `${code}/${assetName}`)
+  )),
 ];
 
 for (const fileName of requiredFiles) {
@@ -74,6 +96,12 @@ for (const forbidden of ['.env', '.git', 'audit', 'catalog-project', 'i18n', 'sc
 
 const allFiles = await walk(releaseRoot);
 const htmlFiles = allFiles.filter((fileName) => fileName.endsWith('.html'));
+const allowedPartialSitemaps = new Set(partialSitemapFiles);
+for (const relativePath of allFiles.map(toReleasePath).filter((fileName) => /^sitemap-[a-z]{2}\.xml$/i.test(fileName))) {
+  if (!allowedPartialSitemaps.has(relativePath)) {
+    failures.push(`Stale partial-locale sitemap in release: ${relativePath}`);
+  }
+}
 
 for (const fileName of allFiles) {
   const relative = toReleasePath(fileName);
@@ -185,6 +213,20 @@ for (const htmlFile of htmlFiles) {
   if (!$('meta[charset]').length) failures.push(`${relative}: missing charset declaration`);
   if (!$('h1').length) failures.push(`${relative}: missing H1`);
 
+  $('a[href]').each((_, element) => {
+    const href = $(element).attr('href') || '';
+    if (/^(?:mailto:|tel:|data:|blob:|javascript:|#)/i.test(href)) return;
+    try {
+      const resolved = new URL(href, `https://www.begapunk.com/${relative}`);
+      if (['begapunk.com', 'www.begapunk.com'].includes(resolved.hostname)
+        && homepageAliasPathPattern.test(resolved.pathname)) {
+        failures.push(`${relative}: internal link points to a redirecting homepage alias (${href})`);
+      }
+    } catch {
+      // Malformed and missing references are reported by the ordinary link checks below.
+    }
+  });
+
   $('script[type="application/ld+json"]').each((index, element) => {
     try {
       JSON.parse($(element).html() || '');
@@ -225,7 +267,7 @@ for (const jsFile of allFiles.filter((fileName) => /\.m?js$/i.test(fileName))) {
   if (result.status !== 0) failures.push(`${path.relative(releaseRoot, jsFile)}: JavaScript syntax check failed (${result.stderr.trim()})`);
 }
 
-for (const sitemapName of ['sitemap.xml', 'sitemap-i18n.xml']) {
+for (const sitemapName of ['sitemap.xml', 'sitemap-i18n.xml', ...partialSitemapFiles]) {
   if (!await exists(sitemapName)) continue;
   const source = await readFile(path.join(releaseRoot, sitemapName), 'utf8');
   const locations = [...source.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
@@ -246,6 +288,238 @@ if (await exists('robots.txt')) {
   const robots = await readFile(path.join(releaseRoot, 'robots.txt'), 'utf8');
   if (!/^User-agent:/im.test(robots)) failures.push('robots.txt: missing User-agent directive');
   if (!/^Sitemap:\s*https:\/\/www\.begapunk\.com\/sitemap\.xml/im.test(robots)) failures.push('robots.txt: primary sitemap is not declared');
+  for (const sitemapName of partialSitemapFiles) {
+    const declaration = `Sitemap: https://www.begapunk.com/${sitemapName}`;
+    if (!robots.split(/\r?\n/).some((line) => line.trim() === declaration)) {
+      failures.push(`robots.txt: partial sitemap is not declared (${sitemapName})`);
+    }
+  }
+  const declaredPartialSitemaps = [...robots.matchAll(/^Sitemap:\s*\S+\/(sitemap-[a-z]{2}\.xml)\s*$/gim)]
+    .map((match) => match[1]);
+  for (const sitemapName of declaredPartialSitemaps) {
+    if (!allowedPartialSitemaps.has(sitemapName)) {
+      failures.push(`robots.txt: stale partial-locale sitemap declaration (${sitemapName})`);
+    }
+  }
+}
+
+if (await exists('.htaccess')) {
+  const htaccess = await readFile(path.join(releaseRoot, '.htaccess'), 'utf8');
+  const requiredRedirects = [
+    ['root homepage alias', 'RedirectMatch 301 "^/index\\.html$" "https://www.begapunk.com/"'],
+    [
+      'localized homepage aliases',
+      `RedirectMatch 301 "^/(${deployedLanguageCodes.join('|')})/index\\.html$" "https://www.begapunk.com/$1/"`,
+    ],
+  ];
+  for (const [label, directive] of requiredRedirects) {
+    if (!htaccess.split(/\r?\n/).some((line) => line.trim() === directive)) {
+      failures.push(`.htaccess: missing ${label} canonical 301 redirect`);
+    }
+  }
+}
+
+try {
+  const [nginxPolicy, nginxInstaller, activationScript, bootstrapScript, hardeningUpgrade, inquiryPhp, workflow, publicVerifier] = await Promise.all([
+    readFile(path.join(sourceRoot, 'ops', 'nginx-managed-redirects.conf'), 'utf8'),
+    readFile(path.join(sourceRoot, 'ops', 'install-nginx-managed-redirects.sh'), 'utf8'),
+    readFile(path.join(sourceRoot, 'ops', 'activate-release.sh'), 'utf8'),
+    readFile(path.join(sourceRoot, 'ops', 'bootstrap-server.sh'), 'utf8'),
+    readFile(path.join(sourceRoot, 'ops', 'upgrade-deployment-hardening.sh'), 'utf8'),
+    readFile(path.join(sourceRoot, 'send_inquiry.php'), 'utf8'),
+    readFile(path.join(sourceRoot, '.github', 'workflows', 'deploy.yml'), 'utf8'),
+    readFile(path.join(sourceRoot, 'ops', 'verify-public-deployment.sh'), 'utf8'),
+  ]);
+  const policyDirectives = nginxPolicy.split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'));
+  const requiredNginxDirectives = [
+    ['root homepage alias', 'rewrite ^/index[.]html$ https://www.begapunk.com/ permanent;'],
+    [
+      'localized homepage aliases',
+      `rewrite ^/(${deployedLanguageCodes.join('|')})/index[.]html$ https://www.begapunk.com/$1/ permanent;`,
+    ],
+    ['root product alias', 'rewrite ^/BP-2P-95-0001[.]html$ https://www.begapunk.com/BP-2P-95-0005.html permanent;'],
+    [
+      'localized product aliases',
+      `rewrite ^/(${deployedLanguageCodes.join('|')})/BP-2P-95-0001[.]html$ https://www.begapunk.com/$1/BP-2P-95-0005.html permanent;`,
+    ],
+    ['root product-list alias', 'rewrite ^/products-p2[.]html$ https://www.begapunk.com/products.html permanent;'],
+    [
+      'localized product-list aliases',
+      `rewrite ^/(${deployedLanguageCodes.join('|')})/products-p2[.]html$ https://www.begapunk.com/$1/products.html permanent;`,
+    ],
+    ['legacy product alias', 'rewrite (?i)^/3-in-3-out-Pneumatic-rotary-joint-P6776400[.]html$ https://www.begapunk.com/BP-3P-0004.html permanent;'],
+    ['legacy pneumatic category', 'rewrite (?i)^/Pneumatic-rotary-joint-c[0-9]+(?:/.*)?$ https://www.begapunk.com/products.html permanent;'],
+    ['legacy fittings category', 'rewrite (?i)^/Pneumatic-Fittings-c[0-9]+(?:/.*)?$ https://www.begapunk.com/products.html permanent;'],
+    ['legacy inquiry route', 'rewrite (?i)^/(?:inquiry|register)/?$ https://www.begapunk.com/contact.html permanent;'],
+    ['legacy FAQ route', 'rewrite (?i)^/pages/faq[.]html$ https://www.begapunk.com/faq.html permanent;'],
+    ['legacy about route', 'rewrite (?i)^/pages/about-us(?:-[0-9]+)?[.]html$ https://www.begapunk.com/about.html permanent;'],
+    ['legacy privacy route', 'rewrite (?i)^/pages/privacy-policy[.]html$ https://www.begapunk.com/privacy.html permanent;'],
+    ['legacy commercial terms routes', 'rewrite (?i)^/pages/(?:payment-methods|warranty-and-return)[.]html$ https://www.begapunk.com/terms.html permanent;'],
+    ['legacy editorial fallback', 'rewrite (?i)^/blog-123-13355/.*$ https://www.begapunk.com/blog.html permanent;'],
+    ['legacy tag fallback', 'rewrite (?i)^/tags/.*$ https://www.begapunk.com/blog.html permanent;'],
+    ['canonical apex host', 'if ($host = begapunk.com) { return 301 https://www.begapunk.com$request_uri; }'],
+    ['canonical HTTP scheme', 'if ($scheme = http) { return 301 https://www.begapunk.com$request_uri; }'],
+    ['legacy hydraulic category', 'rewrite (?i)^/hydraulic-rotary-joint-c[0-9]+(?:/.*)?$ https://www.begapunk.com/custom-hydraulic-rotary-unions.html permanent;'],
+    ['retired platform endpoints', 'if ($uri ~* ^/(?:locales/en[.]json|cgi-sys/suspendedpage[.]cgi)$) { return 410; }'],
+    ['request body limit', 'client_max_body_size 12m;'],
+    ['custom 404', 'error_page 404 /404.html;'],
+    ['default cache revalidation', 'expires -1;'],
+    ['MIME sniffing header', 'add_header X-Content-Type-Options "nosniff" always;'],
+    ['clickjacking header', 'add_header X-Frame-Options "SAMEORIGIN" always;'],
+    ['HSTS header', 'add_header Strict-Transport-Security "max-age=31536000" always;'],
+    ['dotfile boundary', 'if ($uri ~ "(^|/)[.](?!well-known(?:/|$))") { return 404; }'],
+    ['runtime directory boundary', 'if ($uri ~* ^/(PHPMailer|audit|catalog-project|i18n|scripts|ops|tests|tmp|node_modules)(/|$)) { return 404; }'],
+    ['manifest boundary', 'if ($uri ~* ^/(manifest[.]sha256|package(-lock)?[.]json|DEPLOYMENT[.]md|PROJECT_HANDOFF[.]md|AGENTS[.]md)$) { return 404; }'],
+  ];
+  for (const [label, directive] of requiredNginxDirectives) {
+    if (!policyDirectives.includes(directive)) {
+      failures.push(`ops/nginx-managed-redirects.conf: missing managed ${label}`);
+    }
+  }
+  if (policyDirectives.length !== 43 || new Set(policyDirectives).size !== 43) {
+    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 43 unique approved directives; found ${policyDirectives.length}`);
+  }
+  if (policyDirectives.some((line) => /^location\b|\b(?:root|alias|proxy_pass|include)\b/i.test(line))) {
+    failures.push('ops/nginx-managed-redirects.conf: policy must remain location-free and must not change roots, aliases, proxies, or includes');
+  }
+  if (nginxPolicy.includes('includeSubDomains')) {
+    failures.push('ops/nginx-managed-redirects.conf: HSTS must stay host-scoped until every subdomain is confirmed HTTPS-only');
+  }
+
+  if (!inquiryPhp.includes("$productionPath = '/www/begapunk/shared/.env';")
+    || !inquiryPhp.includes('load_env_file(inquiry_env_file());')) {
+    failures.push('send_inquiry.php: production environment must load from the shared file outside the web root');
+  }
+  if (/ln\s+-s\s+["']?\$?(?:SHARED_DIR|BASE_DIR)[^\n]*[.]env[^\n]*release/i.test(activationScript)
+    || /release[^\n]*[.]env[^\n]*ln\s+-s/i.test(activationScript)) {
+    failures.push('ops/activation: new releases must not receive a public .env link');
+  }
+  if (!activationScript.includes('Release contains a forbidden public .env path.')) {
+    failures.push('ops/activate-release.sh: missing public .env fail-closed guard');
+  }
+  const activationPreviousTargetCapture = activationScript.indexOf('previous_target="$(readlink -f "$CURRENT_LINK"');
+  const activationPruneTargetResolution = activationScript.indexOf('candidate_target="$(readlink -f "$candidate")"');
+  const activationPreviousTargetProtection = activationScript.indexOf('"$candidate_target" == "$previous_target"');
+  const activationPruneRemoval = activationScript.indexOf('rm -rf -- "$candidate"');
+  if (activationPreviousTargetCapture < 0
+    || activationPruneTargetResolution < activationPreviousTargetCapture
+    || activationPreviousTargetProtection < activationPruneTargetResolution
+    || activationPruneRemoval < activationPreviousTargetProtection) {
+    failures.push('ops/activate-release.sh: release pruning must preserve the pre-activation rollback target');
+  }
+  if (!bootstrapScript.includes('/usr/local/sbin/begapunk-nginx-config')
+    || !bootstrapScript.includes('NOPASSWD: %s')) {
+    failures.push('ops/bootstrap-server.sh: root-owned helper and minimal sudoers bootstrap are incomplete');
+  }
+  const bootstrapPolicyStage = bootstrapScript.indexOf('stage "$bootstrap_candidate" "$bootstrap_transaction"');
+  const bootstrapReleaseSwitch = bootstrapScript.indexOf('mv -Tf "$next_link" "$CURRENT_LINK"');
+  const bootstrapPolicyCommit = bootstrapScript.indexOf('commit "$bootstrap_transaction"');
+  const bootstrapMarkerCommit = bootstrapScript.indexOf('mv -f -- "$bootstrap_marker_candidate" "$bootstrap_marker"');
+  const bootstrapRollbackDisarm = bootstrapScript.indexOf('bootstrap_policy_staged=false');
+  if (bootstrapPolicyStage < 0
+    || bootstrapReleaseSwitch < 0
+    || bootstrapPolicyStage > bootstrapReleaseSwitch
+    || bootstrapPolicyCommit < bootstrapReleaseSwitch
+    || bootstrapMarkerCommit < bootstrapPolicyCommit
+    || bootstrapRollbackDisarm < bootstrapMarkerCommit
+    || !bootstrapScript.includes("! grep -Eq '/www/begapunk/shared/[.]env|BEGAPUNK_ENV_FILE'")
+    || !bootstrapScript.includes('ln -s "$BASE_DIR/shared/.env" "$seed_dir/.env"')
+    || !bootstrapScript.includes('rollback_bootstrap_on_exit')) {
+    failures.push('ops/bootstrap-server.sh: legacy inquiry compatibility must be protected before the initial release switch and covered by transactional rollback');
+  }
+  const helperRollbackArm = hardeningUpgrade.indexOf('helper_changed=true');
+  const helperAtomicReplace = hardeningUpgrade.indexOf('mv -Tf -- "$helper_candidate" "$PRIVILEGED_NGINX_HELPER"');
+  const sudoersRollbackArm = hardeningUpgrade.indexOf('sudoers_changed=true');
+  const sudoersAtomicReplace = hardeningUpgrade.indexOf('mv -Tf -- "$sudoers_candidate" "$SUDOERS_FILE"');
+  const upgradeSuccessCommit = hardeningUpgrade.lastIndexOf('upgrade_succeeded=true');
+  const policyRollbackDisarm = hardeningUpgrade.lastIndexOf('policy_attempted=false');
+  if (!hardeningUpgrade.includes("MODE=\"${1:---check}\"")
+    || !hardeningUpgrade.includes('/usr/local/sbin/begapunk-nginx-config')
+    || !hardeningUpgrade.includes('stage "$policy_candidate" "$policy_transaction"')
+    || !hardeningUpgrade.includes('EXPECTED_HELPER_VERSION="begapunk-nginx-config-v2"')
+    || !hardeningUpgrade.includes('run_hardening_checks')
+    || !hardeningUpgrade.includes('recovery_failed=1')
+    || helperRollbackArm < 0
+    || helperAtomicReplace < helperRollbackArm
+    || sudoersRollbackArm < 0
+    || sudoersAtomicReplace < sudoersRollbackArm
+    || upgradeSuccessCommit < 0
+    || policyRollbackDisarm < upgradeSuccessCommit) {
+    failures.push('ops/upgrade-deployment-hardening.sh: existing-layout hardening path is incomplete');
+  }
+  if (!nginxInstaller.includes('Never allow caller-controlled environment variables')
+    || !nginxInstaller.includes('validate_candidate')
+    || !nginxInstaller.includes('restore_transaction')
+    || !nginxInstaller.includes("printf '%s\\n' 'begapunk-nginx-config-v2'")) {
+    failures.push('ops/install-nginx-managed-redirects.sh: privileged scope validation or transaction rollback is incomplete');
+  }
+  for (const requiredMigrationControl of [
+    'LEGACY_REWRITE_CONF="/www/server/panel/vhost/rewrite/begapunk_legacy_redirects.conf"',
+    'legacy_rewrite_include_count',
+    'html_cache_state',
+    'alt_svc_before',
+    'Expected one Begapunk HTML cache location with exactly one supported expires value',
+    'The effective Nginx configuration must load the managed policy exactly once and must not load either legacy policy',
+  ]) {
+    if (!nginxInstaller.includes(requiredMigrationControl)) {
+      failures.push(`ops/install-nginx-managed-redirects.sh: missing fail-closed Baota migration control (${requiredMigrationControl})`);
+    }
+  }
+  if (workflow.includes('sudo -n /www/begapunk/bin/install-nginx-managed-redirects.sh')
+    || /rsync[^\n]*install-nginx-managed-redirects[.]sh/.test(workflow)) {
+    failures.push('.github/workflows/deploy.yml: must not upload and sudo-execute a deployment-user-writable helper');
+  }
+  for (const requiredWorkflowText of [
+    '/usr/local/sbin/begapunk-nginx-config stage',
+    '/usr/local/sbin/begapunk-nginx-config commit',
+    '/usr/local/sbin/begapunk-nginx-config rollback',
+    "expected_helper_version='begapunk-nginx-config-v2'",
+    'Verify hardened server deployment contract',
+    "helper_metadata\" != 'root:root:755'",
+    "env_metadata\" != 'root:www:640'",
+    'bash ops/verify-public-deployment.sh',
+    'previous_release_id',
+  ]) {
+    if (!workflow.includes(requiredWorkflowText)) {
+      failures.push(`.github/workflows/deploy.yml: missing deployment transaction control (${requiredWorkflowText})`);
+    }
+  }
+  const deployTimeout = workflow.match(/validate-and-deploy:\s*[\s\S]*?timeout-minutes:\s*(\d+)/)?.[1];
+  if (!deployTimeout || Number(deployTimeout) < 45) {
+    failures.push('.github/workflows/deploy.yml: deployment job must reserve at least 45 minutes for validation and rollback');
+  }
+  for (const requiredPublicProbe of [
+    "'/.env'",
+    "'/manifest.sha256'",
+    "'/PHPMailer/PHPMailer.php'",
+    "'/BP-2P-95-0001.html'",
+    "'/products-p2.html'",
+    "'http://www.begapunk.com/?utm_source=post-deploy-http'",
+    "'http://begapunk.com/?utm_source=post-deploy-apex-http'",
+    "'https://begapunk.com/?utm_source=post-deploy-host'",
+    "'/Pneumatic-rotary-joint-c123/'",
+    "'/inquiry/?utm_source=legacy-gate'",
+    "'/blog-123-13355/Industrial-Laser-Pipe-Cutting-Guide.html'",
+    "'/tags/Low-speed-rotary-joint.html'",
+    "'/hydraulic-rotary-joint-c123/retired.html'",
+    "'/locales/en.json'",
+    "'/cgi-sys/suspendedpage.cgi'",
+    "'/__begapunk_missing_policy_probe__'",
+    'x-content-type-options:',
+    'cache-control:',
+    "'Alt-Svc'",
+  ]) {
+    if (!publicVerifier.includes(requiredPublicProbe)) {
+      failures.push(`ops/verify-public-deployment.sh: missing public boundary probe (${requiredPublicProbe})`);
+    }
+  }
+  if (publicVerifier.includes('includeSubDomains')) {
+    failures.push('ops/verify-public-deployment.sh: HSTS verification must not require unreviewed subdomain coverage');
+  }
+} catch (error) {
+  failures.push(`Cannot validate deployment hardening: ${error.message}`);
 }
 
 if (failures.length) {

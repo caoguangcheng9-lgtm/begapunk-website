@@ -10,7 +10,17 @@ const parsedMaxFailures = Number.parseInt(maxFailuresArgument?.split('=')[1] || 
 const maxFailures = Number.isFinite(parsedMaxFailures) && parsedMaxFailures > 0 ? parsedMaxFailures : 200;
 const includeProduction = !selfTestOnly && !process.argv.includes('--source-only');
 const config = JSON.parse(await fs.readFile(path.join(repo, 'i18n', 'config.json'), 'utf8'));
-const languages = config.activeLanguageCodes || ['de', 'ja', 'ru'];
+const languages = config.activeLanguageCodes || [];
+const escapedLanguages = languages.map((language) => language.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+const activeLanguageAlternation = escapedLanguages.length ? escapedLanguages.join('|') : '(?!)';
+const optionalActiveLanguagePrefix = escapedLanguages.length ? `(?:(?:${activeLanguageAlternation})/)?` : '';
+const localizedCatalogArtifactPattern = new RegExp(`^i18n/(?:source-catalog|cache/(?:${activeLanguageAlternation})|editorial/(?:${activeLanguageAlternation})|overrides/(?:${activeLanguageAlternation}))\\.json$`);
+const localizedEditorialArtifactPattern = new RegExp(`^i18n/editorial/(?:${activeLanguageAlternation})\\.json$`);
+const localizedSeoArtifactPattern = new RegExp(`^i18n/seo/(?:${activeLanguageAlternation})\\.json$`);
+const productionInspectionPagePattern = new RegExp(`^${optionalActiveLanguagePrefix}production-inspection-testing\\.html$`);
+const manufacturingQualityPagePattern = new RegExp(`^${optionalActiveLanguagePrefix}manufacturing-quality\\.html$`);
+const searchIndexPathPattern = new RegExp(`^${optionalActiveLanguagePrefix}search-index\\.json$`);
+const llmsPathPattern = new RegExp(`^${optionalActiveLanguagePrefix}llms\\.txt$`);
 const files = new Set();
 const failures = [];
 const productionRoot = path.join(repo, 'dist', 'production');
@@ -22,14 +32,12 @@ for (const pageName of config.pages) {
 }
 for (const relativePath of [
   'search-index.json', 'llms.txt',
-  'de/search-index.json', 'de/llms.txt',
-  'ja/search-index.json', 'ja/llms.txt',
-  'ru/search-index.json', 'ru/llms.txt',
+  ...languages.flatMap((language) => [
+    `${language}/search-index.json`, `${language}/llms.txt`,
+    `i18n/cache/${language}.json`, `i18n/overrides/${language}.json`,
+    `i18n/editorial/${language}.json`, `i18n/seo/${language}.json`,
+  ]),
   'i18n/source-catalog.json', 'i18n/glossary.json',
-  'i18n/cache/de.json', 'i18n/cache/ja.json', 'i18n/cache/ru.json',
-  'i18n/overrides/de.json', 'i18n/overrides/ja.json', 'i18n/overrides/ru.json',
-  'i18n/editorial/de.json', 'i18n/editorial/ja.json', 'i18n/editorial/ru.json',
-  'i18n/seo/de.json', 'i18n/seo/ja.json', 'i18n/seo/ru.json',
   'ops/indexnow-extra-urls.txt',
 ]) files.add(path.join(repo, relativePath));
 
@@ -97,6 +105,9 @@ const disclaimerPatterns = [
   /(?:保証|確約|表示|記載|主張|認証|確認)しません/,
   /保証[^。！？\n]{0,40}(?:しません|使用しません|していません|されていません)/,
   /(?:要確認|確認が必要|注文ごとに確認|案件ごとに確認|保証対象外)/,
+  /\bne\s+(?:doit|devrait|peut)\s+pas\b[^.!?。！？\n]{0,90}\b(?:revendiqu(?:é|ée|er)|garanti(?:e)?|promis(?:e)?|décrit(?:e)?|présenté(?:e)?)\b/i,
+  /\b(?:aucun(?:e)?|sans)\b[^.!?。！？\n]{0,70}\b(?:garantie|promesse|assurance|certification)\b/i,
+  /\b(?:soumis(?:e)?\s+à|nécessite|requiert|doit\s+être)\b[^.!?。！？\n]{0,60}\b(?:confirmation|validation|vérification|approbation\s+écrite)\b/i,
   /\bне\b[^.!?。！？\n]{0,70}\b(?:гарантируется|заявляется|обещается|подтверждено|сертифицировано)\b/i,
   /\b(?:нет|без)\b[^.!?。！？\n]{0,70}\b(?:гарантии|обещания|подтверждения|сертификации)\b/i,
   /\b(?:требует|подлежит)\b[^.!?。！？\n]{0,50}\bподтверждени/i,
@@ -213,6 +224,12 @@ const zeroLeakageBoundaryPatterns = [
   /\b(?:kann|könnte)\s+ungeeignet\s+sein\b[^.!?。！？]{0,170}\bnahezu\s+keine\s+Leckage\s+zulässig\s+ist\b/i,
   /漏れゼロ[^。！？]{0,35}意味しません/,
   /漏れゼロ[^。！？]{0,55}表現できません/,
+  /\b(?:sans\s+contact|ce(?:tte)?|il)\b[^.!?。！？]{0,55}\bne\s+(?:signifie|veut\s+dire)\s+pas\b[^.!?。！？]{0,45}\b(?:zéro\s+fuite|sans\s+fuite)\b/i,
+  /\bne\s+(?:doit|devrait)\s+pas\s+être\s+(?:décrit(?:e)?|présenté(?:e)?|qualifi(?:é|ée))\b[^.!?。！？]{0,120}\b(?:zéro\s+fuite|sans\s+fuite)\b/i,
+  /\b(?:peut|pourrait)\s+(?:ne\s+pas\s+convenir|être\s+inadapté(?:e)?)\b[^.!?。！？]{0,170}\b(?:fuite\s+quasi\s+nulle|pratiquement\s+aucune\s+fuite)\b/i,
+  /\b(?:zéro\s+fuite|sans\s+fuite)\b[^.!?。！？]{0,100}\b(?:n['’]est\s+pas|ne\s+(?:peut|doit)\s+pas\s+être)\b[^.!?。！？]{0,55}\b(?:garanti(?:e)?|revendiqu(?:é|ée)|décrit(?:e)?)\b/i,
+  /\baucune\s+fuite\b[^.!?。！？]{0,120}\bsupérieure\s+au\s+seuil\s+de\s+détection\s+défini\b/i,
+  /\baucune\s+fuite\b[^.!?。！？]{0,100}\banormal(?:e|es|s)?\b/i,
   /не\s+означает[^.!?。！？]{0,55}без\s+утеч\p{L}*/iu,
   /может\s+не\s+подойти[^.!?。！？]{0,170}требуется\s+практически\s+нулев\p{L}*\s+утеч\p{L}*/iu,
   /нулев\p{L}*\s+утеч\p{L}*[^.!?。！？]{0,90}не\s+гарантир\p{L}*/iu,
@@ -222,6 +239,7 @@ const zeroLeakageQuestionAnswerPatterns = [
   /\bdoes\b[^?]{0,120}\b(?:zero[-\s]?leakage|leak[-\s]?free)\?[^.!?。！？]{0,180}\bNo\b/i,
   /\bist\b[^?]{0,120}\bleckagefrei\?[^.!?。！？]{0,180}\bNein\b/i,
   /漏れゼロですか[？?][^。！？]{0,180}いいえ/,
+  /\b(?:permet|assure|garantit)\b[^?]{0,120}\b(?:zéro\s+fuite|aucune\s+fuite|sans\s+fuite)\s*\?[^.!?。！？]{0,180}\b(?:Non|Ce\s+n['’]est\s+pas\s+vrai|C['’]est\s+pas\s+vrai)\b/i,
   /обеспечивает[^?]{0,120}нулев\p{L}*\s+утеч\p{L}*\?[^.!?。！？]{0,180}Нет/iu,
 ];
 
@@ -382,10 +400,10 @@ const banned = [
   { name: 'incorrect 200k experience claim', pattern: /(?:200\s*[KК]\+?|200[.,\s]?000\+?|20万)[^.!?。]{0,80}(?:field experience|Praxiserfahrung|Felderfahrung|現場経験|полевого опыта|практического опыта)/gi, allowDisclaimer: true },
   { name: 'unsupported global-service history', pattern: /(?:worldwide\s+since\s+2010|since\s+2010[^\n<]{0,180}(?:delivered|shipping|supplied|served)[^\n<]{0,40}worldwide|delivered\s+worldwide[^\n<]{0,180}since\s+2010|seit\s+2010[^\n<]{0,180}weltweit\s+(?:ausgeliefert|geliefert)|weltweit[^\n<]{0,80}seit\s+2010|2010年(?:から|以来)[^\n<]{0,180}(?:世界(?:中)?|海外)[^\n<]{0,80}(?:供給|出荷|納入|配信)|(?:世界(?:中)?|海外)[^\n<]{0,80}(?:供給|出荷|納入|配信)[^\n<]{0,180}2010年(?:から|以来)|с\s+2010\s+года[^\n<]{0,180}(?:доставлено|поставлено)[^\n<]{0,80}по\s+всему\s+миру|по\s+всему\s+миру[^\n<]{0,80}с\s+2010\s+года)/gi, allowDisclaimer: true },
   { name: 'unsupported structured service area', pattern: /["']areaServed["']\s*:/g, publicOnly: true },
-  { name: 'unsupported ISO lead-auditor claim', pattern: /Lead Auditor|Leitender Auditor|主任監査員|鉛の監査人|ведущий аудитор/gi, allowDisclaimer: true },
-  { name: 'unsupported 100-percent pressure-test claim', pattern: /(?:100\s*%[^.!?。！？\n]{0,60}(?:pressure|leak(?:age)?)[^.!?。！？\n]{0,30}(?:test(?:ed|ing)?|inspection)|(?:pressure|leak(?:age)?)[^.!?。！？\n]{0,30}(?:test(?:ed|ing)?|inspection)[^.!?。！？\n]{0,30}100\s*%|全数[^。！？\n]{0,30}(?:圧力試験|漏れ検査|检漏|泄漏测试|气密性检测|压力测试)|100\s*%[^。！？\n]{0,30}(?:圧力試験|漏れ検査|检漏|泄漏测试|气密性检测|压力测试)|100\s*%[^.!?。！？\n]{0,50}(?:Druckprüfung|Dichtheitsprüfung|испытани[^.!?。！？\n]{0,20}давлени|провер[^.!?。！？\n]{0,20}герметич))/gi, allowDisclaimer: true },
-  { name: 'unsupported 1.5x pressure-test claim', pattern: /(?:1[.,]5\s*(?:×|x|&times;|fach(?:en)?|-fach(?:en)?|倍|[-‑–—]?кратн\w*)[^.!?。！？\n]{0,60}(?:rated|working|operating|Nenn|Betriebs|定格|使用|рабоч\w*)?\s*(?:pressure|Druck|圧力|давлени\w*)|(?:pressure|Druck|圧力|давлени\w*)[^.!?。！？\n]{0,60}1[.,]5\s*(?:×|x|&times;|fach(?:en)?|-fach(?:en)?|倍|[-‑–—]?кратн\w*))/gi, allowDisclaimer: true },
-  { name: 'unsupported zero-leakage promise', pattern: /\b(?:zero[-\s]?leakage(?![-\s]+requirements?\b)|leak[-\s]?free|guaranteed\s+(?:no|zero)\s+leakage|(?:guarantees?|ensures?|provides?|achieves?|maintains?|with|offers?)[^.!?。！？\n]{0,30}no\s+leakage|no\s+leakage[^.!?。！？\n]{0,30}(?:between|under|at|during|across|for))\b|(?:null|keine)\s+Leckage|leckagefrei|漏れ(?:ゼロ|なし)|無漏洩|(?:нулев\p{L}*\s+утеч\p{L}*|без\s+утеч\p{L}*)/giu, allowDisclaimer: true, semantic: 'zero-leakage' },
+  { name: 'unsupported ISO lead-auditor claim', pattern: /Lead Auditor|Leitender Auditor|auditeur principal|主任監査員|鉛の監査人|ведущий аудитор/gi, allowDisclaimer: true },
+  { name: 'unsupported 100-percent pressure-test claim', pattern: /(?:(?:essai|contrôle)[^.!?。！？\n]{0,25}(?:de pression|d['’]étanchéité)[^.!?。！？\n]{0,35}100\s*%|100\s*%[^.!?。！？\n]{0,60}(?:pressure|leak(?:age)?|pression|étanchéité)[^.!?。！？\n]{0,30}(?:test(?:ed|ing)?|inspection|essai|contrôle)|(?:pressure|leak(?:age)?|pression|étanchéité)[^.!?。！？\n]{0,30}(?:test(?:ed|ing)?|inspection|essai|contrôle)[^.!?。！？\n]{0,30}100\s*%|全数[^。！？\n]{0,30}(?:圧力試験|漏れ検査|检漏|泄漏测试|气密性检测|压力测试)|100\s*%[^。！？\n]{0,30}(?:圧力試験|漏れ検査|检漏|泄漏测试|气密性检测|压力测试)|100\s*%[^.!?。！？\n]{0,50}(?:Druckprüfung|Dichtheitsprüfung|essai[^.!?。！？\n]{0,20}(?:de pression|d['’]étanchéité)|contrôle[^.!?。！？\n]{0,20}d['’]étanchéité|испытани[^.!?。！？\n]{0,20}давлени|провер[^.!?。！？\n]{0,20}герметич))/gi, allowDisclaimer: true },
+  { name: 'unsupported 1.5x pressure-test claim', pattern: /(?:1[.,]5\s*(?:×|x|&times;|fach(?:en)?|-fach(?:en)?|fois|倍|[-‑–—]?кратн\w*)[^.!?。！？\n]{0,60}(?:rated|working|operating|Nenn|Betriebs|nominale|service|定格|使用|рабоч\w*)?\s*(?:pressure|Druck|pression|圧力|давлени\w*)|(?:pressure|Druck|pression|圧力|давлени\w*)[^.!?。！？\n]{0,60}1[.,]5\s*(?:×|x|&times;|fach(?:en)?|-fach(?:en)?|fois|倍|[-‑–—]?кратн\w*))/gi, allowDisclaimer: true },
+  { name: 'unsupported zero-leakage promise', pattern: /\b(?:zero[-\s]?leakage(?![-\s]+requirements?\b)|leak[-\s]?free|guaranteed\s+(?:no|zero)\s+leakage|(?:guarantees?|ensures?|provides?|achieves?|maintains?|with|offers?)[^.!?。！？\n]{0,30}no\s+leakage|no\s+leakage[^.!?。！？\n]{0,30}(?:between|under|at|during|across|for))\b|(?:null|keine)\s+Leckage|leckagefrei|zéro\s+fuite|sans\s+fuite|aucune\s+fuite|漏れ(?:ゼロ|なし)|無漏洩|(?:нулев\p{L}*\s+утеч\p{L}*|без\s+утеч\p{L}*)/giu, allowDisclaimer: true, semantic: 'zero-leakage' },
   { name: 'unsupported fixed 7-day shipping claim', pattern: /(?:(?:ships?|shipping|dispatch(?:ed)?|delivery|lead[\s-]?time|turnaround)[^.!?。！？\n]{0,55}(?:within|in|of|:)?\s*7(?:\s*[-‐‑‒–—~～]\s*14)?\s*[-‐‑‒–—]?\s*(?:business\s*)?days?|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*[-‐‑‒–—]?\s*(?:business\s*)?days?[^.!?。！？\n]{0,55}(?:ship|deliver|dispatch|lead[\s-]?time|turnaround)|(?:Lieferung|Versand|Lieferzeit)[^.!?。！？\n]{0,55}7(?:\s*[-‐‑‒–—~～]\s*14)?\s*Tage?|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*Tage?[^.!?。！？\n]{0,55}(?:Lieferung|Versand|Lieferzeit)|(?:出荷|納期|配送)[^。！？\n]{0,40}7(?:\s*[-‐‑‒–—~～]\s*14)?\s*日|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*日[^。！？\n]{0,40}(?:出荷|納期|配送)|(?:доставк\w*|отправк\w*|срок\s+поставки)[^.!?。！？\n]{0,55}7(?:\s*[-‐‑‒–—~～]\s*14)?\s*дн\w*|7(?:\s*[-‐‑‒–—~～]\s*14)?\s*дн\w*[^.!?。！？\n]{0,55}(?:доставк\w*|отправк\w*|срок\s+поставки))/gi, allowDisclaimer: true },
   { name: 'unsupported 24-hour response promise', pattern: /(?:(?:respond|reply|response|quote|quotation|feedback|support|review|check|contact)[^.!?。！？\n]{0,70}(?:within\s+)?24\s*[-‐‑‒–—]?\s*(?:hours?|hrs?|h\b)|(?:within\s+)?24\s*[-‐‑‒–—]?\s*(?:hours?|hrs?|h\b)[^.!?。！？\n]{0,70}(?:respond|reply|response|quote|quotation|feedback|support|review|check|contact)|(?:Antwort|Angebot|Rückmeldung|Prüfung)[^.!?。！？\n]{0,60}24\s*[-‐‑‒–—]?\s*Stunden|24\s*[-‐‑‒–—]?\s*Stunden[^.!?。！？\n]{0,60}(?:Antwort|Angebot|Rückmeldung|Prüfung)|(?:返信|回答|見積|対応|確認)[^。！？\n]{0,45}24\s*時間|24\s*時間[^。！？\n]{0,45}(?:返信|回答|見積|対応|確認)|(?:ответ|предложени\w*|провер\w*|свяж\w*)[^.!?。！？\n]{0,65}24\s*час\w*|24\s*час\w*[^.!?。！？\n]{0,65}(?:ответ|предложени\w*|провер\w*|свяж\w*))/gi, allowDisclaimer: true },
   { name: 'unsupported exact factory metric', pattern: /(?:(?:factory|facility|plant|workshop|assembly\s+hall|Fabrik|Werk|Werkstatt|Montagehalle|工場|組立棟|завод|цех)[^.!?。！？\n]{0,100}(?:\d{1,3}(?:,\d{3})+|\d{3,})\s*(?:square\s+meters?|m\s*(?:2|²)|sqm|㎡|平方米)|(?:\d{1,3}(?:,\d{3})+|\d{3,})\s*(?:square\s+meters?|m\s*(?:2|²)|sqm|㎡|平方米)[^.!?。！？\n]{0,100}(?:factory|facility|plant|workshop|assembly\s+hall|Fabrik|Werk|Werkstatt|Montagehalle|工場|組立棟|завод|цех)|\b\d+\s*(?:CNC\s+machines?|seal\s+testing\s+stations?|production\s+lines?|assembly\s+lines?|CNC[-\s]?Maschinen|Prüfstationen|CNC設備|試験ステーション|станк\w*\s+с\s+ЧПУ|испытательн\w*\s+стенд\w*)\b)/gi, allowDisclaimer: true },
@@ -394,7 +412,7 @@ const banned = [
   { name: 'broken double punctuation', pattern: /\.\s+\.|(?<!\.)\.\.(?![./])/g, publicOnly: true, excludedExtensions: ['.dxf'] },
   { name: 'broken production counter', pattern: /200K\+\+/g },
   { name: 'corrupted diameter in search index', pattern: /\?(?:230|64|78\.9)\b|3-\?6\b/g, publicOnly: true, pathPattern: /(?:^|\/)search-index\.json$/ },
-  { name: 'unsupported material-certificate heading', pattern: /(?:>|\")(?:Material Certificate|Werkstoffzeugnis|材質証明書|Сертификат на материал)(?:<|\")/g },
+  { name: 'unsupported material-certificate heading', pattern: /(?:>|\")(?:Material Certificate|Werkstoffzeugnis|Certificat de matériau|材質証明書|Сертификат на материал)(?:<|\")/g },
 ];
 
 const exactProductionInspectionLabels = new Set([
@@ -406,6 +424,10 @@ const exactProductionInspectionLabels = new Set([
   '100 % Dichtheitsprüfung',
   '100%-Dichtheitsprüfung ansehen',
   '100%-Dichtheitsprüfung ansehen',
+  'Essai d’étanchéité à 100 %',
+  "Essai d'étanchéité à 100 %",
+  "Voir l’essai d’étanchéité à 100 %",
+  "Voir l'essai d'étanchéité à 100 %",
   '全数漏れ検査',
   '全数漏れ検査を見る',
   '100% 泄漏测试',
@@ -471,10 +493,12 @@ function isExactProductionInspectionFragment(value) {
   return [
     /documented production leak-test process[^.!?]{0,80}stated test conditions/i,
     /dokumentierten Produktions-Dichtheitsprüfprozess[^.!?]{0,80}angegebenen Prüfbedingungen/i,
+    /processus documenté d['’]essai d['’]étanchéité en production[^.!?]{0,100}conditions d['’]essai/i,
     /公開済みの生産時漏れ検査工程[^。！？]{0,80}試験条件/,
     /описанный процесс производственной проверки герметичности[^.!?]{0,100}указанные условия испытания/i,
     /current passage-by-passage production inspection process/i,
     /aktuellen kanalweisen Produktionsprüfprozess/i,
+    /processus actuel de contrôle (?:de|en) production,? circuit par circuit/i,
     /現在実施している流路ごとの生産検査工程/,
     /現在実施している流路別の量産検査工程/,
     /действующий поканальный процесс производственного контроля/i,
@@ -483,13 +507,15 @@ function isExactProductionInspectionFragment(value) {
 
 function isSearchIndexProductionInspectionReference(relativePath, source, match) {
   const normalizedPath = relativePath.replace(/^dist\/production\//, '');
-  if (!/^(?:de\/|ja\/|ru\/)?search-index\.json$/.test(normalizedPath)) return false;
+  if (!searchIndexPathPattern.test(normalizedPath)) return false;
   const context = getSemanticStatementContext(source, match.index || 0, match[0].length);
   return [
     /\b(?:see|view|under)\b[^.!?。！？]{0,45}\b100\s*%\s*Leak Testing\b/i,
     /\b100\s*%\s*Leak Testing\b[^.!?。！？]{0,55}\b(?:page|described|documented|reference)\b/i,
     /\bunter\b[^.!?。！？]{0,45}\b100\s*%\s*Leak Testing\b[^.!?。！？]{0,35}\bbeschrieben\b/i,
     /\b100\s*%-Dichtheitsprüfung\s+ansehen\b/i,
+    /(?:voir|consulter)[^.!?。！？]{0,45}(?:essai|contrôle) d['’]étanchéité à 100\s*%/i,
+    /(?:présenté|décrit|documenté)[^.!?。！？]{0,45}(?:à la page\s+)?(?:essai|contrôle) d['’]étanchéité à 100\s*%/i,
     /\b100\s*%\s*Leak Testing\b[^。！？]{0,45}(?:に記載|に掲載|を参照)/,
     /(?:описан\w*|см\.)[^.!?。！？]{0,55}(?:страниц\w*\s+)?100\s*%\s*Leak Testing/i,
     /(?:详见|参见|查看)[^。！？]{0,30}100\s*%\s*(?:泄漏测试|检漏)/,
@@ -509,7 +535,7 @@ function isExactProductionInspectionReference(relativePath, source, match) {
     }
   }
 
-  if (/^i18n\/(?:source-catalog|cache\/(?:de|ja|ru)|editorial\/(?:de|ja|ru)|overrides\/(?:de|ja|ru))\.json$/.test(normalizedPath)) {
+  if (localizedCatalogArtifactPattern.test(normalizedPath)) {
     const jsonValue = getEnclosingJsonString(source, index);
     if (exactProductionInspectionLabels.has(jsonValue)
       || isExactProductionInspectionAnchor(jsonValue)
@@ -540,28 +566,28 @@ function isApprovedProductionInspectionClaim(relativePath, source, match) {
       }
     }
   }
-  if (/^(?:de\/|ja\/|ru\/)?production-inspection-testing\.html$/.test(normalizedPath)) {
+  if (productionInspectionPagePattern.test(normalizedPath)) {
     return /page-production-inspection-testing/.test(source)
       && /production-inspection-testing\.html/.test(source)
       && /(?:1[.,]0\s*(?:MPa|МПа)|1\.0\s*MPa)/i.test(source);
   }
-  if (/^(?:de\/|ja\/|ru\/)?manufacturing-quality\.html$/.test(normalizedPath)) {
+  if (manufacturingQualityPagePattern.test(normalizedPath)) {
     return /(?:production-leak-testing-title|mq-stator-leak-link)/.test(nearby)
       && /production-inspection-testing\.html/.test(nearby);
   }
-  if (/^i18n\/editorial\/(?:de|ja|ru)\.json$/.test(normalizedPath)) {
+  if (localizedEditorialArtifactPattern.test(normalizedPath)) {
     return /After final assembly, every finished rotary union and every individual passage enters the existing 100% leak-testing process\./.test(nearby)
       && /View 100% Leak Testing/.test(nearby);
   }
-  if (/^(?:de\/|ja\/|ru\/)?search-index\.json$/.test(normalizedPath)) {
+  if (searchIndexPathPattern.test(normalizedPath)) {
     const recordStart = source.lastIndexOf('"id":', index);
     const recordContext = source.slice(Math.max(0, recordStart), Math.min(source.length, index + match[0].length + 200));
     return /"id":\s*"(?:manufacturing-quality|production-inspection-testing)"/.test(recordContext);
   }
-  if (/^(?:de\/|ja\/|ru\/)?llms\.txt$/.test(normalizedPath)) {
+  if (llmsPathPattern.test(normalizedPath)) {
     return /production-inspection-testing\.html/.test(nearby);
   }
-  if (/^i18n\/seo\/(?:de|ja|ru)\.json$/.test(normalizedPath)) {
+  if (localizedSeoArtifactPattern.test(normalizedPath)) {
     return /"production-inspection-testing\.html"/.test(nearby);
   }
   return false;
@@ -901,6 +927,7 @@ verifyRuleSamples('unsupported zero-leakage promise', {
     'Does this seal provide zero leakage? Yes, it does.',
     'This non-contact seal is leak-free at high speed.',
     'Diese Spaltdichtung ist leckagefrei.',
+    'Ce joint sans contact garantit zéro fuite.',
     'このシールは漏れゼロです。',
     'Это уплотнение обеспечивает нулевую утечку.',
   ],
@@ -913,6 +940,13 @@ verifyRuleSamples('unsupported zero-leakage promise', {
     '„Berührungslos“ bedeutet nicht „leckagefrei“.',
     'Ohne anwendungsspezifischen Prüfnachweis darf sie nicht als hermetisch oder leckagefrei beschrieben werden.',
     'Dieses Prinzip kann ungeeignet sein, wenn nahezu keine Leckage zulässig ist.',
+    'Un joint sans contact permet-il zéro fuite ? Non. Il limite le débit de fuite sans être hermétique.',
+    '« Sans contact » ne signifie pas « zéro fuite ».',
+    'Sans preuve d’essai propre à l’application, il ne doit pas être décrit comme zéro fuite.',
+    'Elle ne doit pas être qualifiée d’hermétique ou de « zéro fuite » sans résultats d’essais propres à l’application.',
+    'Ce principe peut ne pas convenir lorsqu’une fuite quasi nulle est requise.',
+    'La pièce n’est acceptée que si aucune fuite entre passages supérieure au seuil de détection défini n’est mesurée.',
+    'Aucune fuite anormale, ni élévation de température ou bruit anormal.',
     '非接触すきまシールは漏れゼロですか？ いいえ。',
     '「非接触」は「漏れゼロ」を意味しません。',
     '用途別の試験根拠がない限り、気密または漏れゼロとは表現できません。',
@@ -1205,6 +1239,11 @@ const productionInspectionReferenceSamples = [
     language: 'German',
     allowed: '<a href="production-inspection-testing.html">100%-Dichtheitsprüfung</a>',
     blocked: 'Jedes Produkt erhält garantiert eine 100%-Dichtheitsprüfung.',
+  },
+  {
+    language: 'French',
+    allowed: '<a href="production-inspection-testing.html">Essai d’étanchéité à 100 %</a>',
+    blocked: 'Chaque produit bénéficie d’un essai d’étanchéité à 100 % garanti.',
   },
   {
     language: 'Japanese',

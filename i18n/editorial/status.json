@@ -1,6 +1,6 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
-  "updatedAt": "2026-09-03",
+  "updatedAt": "2026-09-04",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -38,10 +38,11 @@
     "schemaVersion": 2,
     "algorithm": "sha256-bytes-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "capturedAt": "2026-09-03T10:16:41.375Z",
+    "capturedAt": "2026-09-04T12:46:40.021Z",
     "pagesPerLanguage": 56,
     "languages": [
       "de",
+      "fr",
       "ja",
       "ru"
     ],
@@ -58,6 +59,10 @@
       "total": 56
     },
     "ru": {
+      "reviewed": 56,
+      "total": 56
+    },
+    "fr": {
       "reviewed": 56,
       "total": 56
     }
@@ -126,10 +131,12 @@
       "inProgress": [],
       "remaining": 0
     },
-    "ru": {
+    "fr": {
       "reviewed": [
         "index.html",
         "about.html",
+        "manufacturing-quality.html",
+        "production-inspection-testing.html",
         "products.html",
         "product-comparison.html",
         "BP-1P-0003.html",
@@ -173,16 +180,14 @@
         "blog-seal-replacement.html",
         "blog-threaded-vs-flange.html",
         "case-studies.html",
+        "case-bp-2p-95-pneumatic-chuck-integration.html",
+        "case-bp-3p-s06-sensor-monitored-chuck.html",
         "faq.html",
         "contact.html",
         "search.html",
         "privacy.html",
         "terms.html",
         "thank-you.html",
-        "case-bp-2p-95-pneumatic-chuck-integration.html",
-        "case-bp-3p-s06-sensor-monitored-chuck.html",
-        "manufacturing-quality.html",
-        "production-inspection-testing.html",
         "404.html"
       ],
       "copyReviewedAwaitingRender": [],
@@ -251,14 +256,77 @@
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
       "remaining": 0
+    },
+    "ru": {
+      "reviewed": [
+        "index.html",
+        "about.html",
+        "products.html",
+        "product-comparison.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "applications.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "custom-hydraulic-rotary-unions.html",
+        "installation.html",
+        "blog.html",
+        "blog-non-contact-clearance-seal-rotary-union.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-rotary-union-seal-types.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "case-studies.html",
+        "faq.html",
+        "contact.html",
+        "search.html",
+        "privacy.html",
+        "terms.html",
+        "thank-you.html",
+        "case-bp-2p-95-pneumatic-chuck-integration.html",
+        "case-bp-3p-s06-sensor-monitored-chuck.html",
+        "manufacturing-quality.html",
+        "production-inspection-testing.html",
+        "404.html"
+      ],
+      "copyReviewedAwaitingRender": [],
+      "inProgress": [],
+      "remaining": 0
     }
   },
   "renderQa": {
-    "completedAt": "2026-08-20T14:42:45.7735607+09:00",
-    "browser": "Google Chrome (294 prior checks) + Codex in-app Browser (42 checks, including 6 current article checks)",
+    "completedAt": "2026-09-04T08:50:17.448Z",
+    "browser": "Automated Microsoft Edge (C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe)",
     "pagesPerLanguage": 56,
     "viewportsPerPage": 2,
-    "checkedViewports": 336,
+    "checkedViewports": 448,
     "criteria": [
       "one visible H1",
       "correct html lang",

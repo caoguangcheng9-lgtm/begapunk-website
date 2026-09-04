@@ -10,12 +10,13 @@ import {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FACTS_PATH = path.join(ROOT, 'data', 'product-drawing-facts.json');
-const LOCALES = Object.freeze({
-  en: Object.freeze({ prefix: '' }),
-  de: Object.freeze({ prefix: 'de' }),
-  ja: Object.freeze({ prefix: 'ja' }),
-  ru: Object.freeze({ prefix: 'ru' }),
-});
+const SITE_CONFIG = JSON.parse(await fs.readFile(path.join(ROOT, 'i18n', 'config.json'), 'utf8'));
+const SOURCE_LOCALE = SITE_CONFIG.sourceLanguage?.code;
+const ACTIVE_LOCALES = Object.freeze([...new Set([SOURCE_LOCALE, ...(SITE_CONFIG.activeLanguageCodes || [])])]);
+const LOCALES = Object.freeze(Object.fromEntries(ACTIVE_LOCALES.map((locale) => [
+  locale,
+  Object.freeze({ prefix: locale === SOURCE_LOCALE ? '' : locale }),
+])));
 const EXPECTED_MODEL_COUNT = 16;
 const EXPECTED_PAGE_COUNT = EXPECTED_MODEL_COUNT * Object.keys(LOCALES).length;
 const PORT_CATEGORY_MODELS = new Set(['BP-1P-0003', 'BP-2P-08-0001']);
@@ -34,13 +35,31 @@ const mode = args[0] === '--write' ? 'write' : 'check';
 const WARRANTY_EXPECTATIONS = Object.freeze({
   en: Object.freeze({ label: 'Warranty period', value: '1 year from shipment' }),
   de: Object.freeze({ label: 'Garantiezeitraum', value: '1 Jahr ab Versand' }),
+  fr: Object.freeze({ label: 'Durée de garantie', value: "1 an à compter de l'expédition" }),
   ja: Object.freeze({ label: '保証期間', value: '出荷日から1年' }),
   ru: Object.freeze({ label: 'Гарантийный срок', value: '1 год с даты отгрузки' }),
+});
+
+const CAD_EXPECTATIONS = Object.freeze({
+  en: Object.freeze({ label: '3D CAD model', value: 'STEP AP214 download available for fit check (simplified body)', mediaName: (model) => `${model} STEP AP214 (simplified, fit check)` }),
+  de: Object.freeze({ label: '3D-CAD-Modell', value: 'STEP-AP214-Datei zur Einbauprüfung verfügbar (vereinfachter Körper)', mediaName: (model) => `${model} – STEP AP214 (vereinfacht, zur Einbauprüfung)` }),
+  fr: Object.freeze({ label: 'Modèle CAO 3D', value: 'Fichier STEP AP214 disponible pour le contrôle d’intégration (corps simplifié)', mediaName: (model) => `${model} — STEP AP214 (corps simplifié, contrôle d’intégration)` }),
+  ja: Object.freeze({ label: '3D CADモデル', value: '取付確認用STEP AP214ファイルをダウンロード可能（簡略化ボディ）', mediaName: (model) => `${model} STEP AP214（簡略化ボディ、取付確認用）` }),
+  ru: Object.freeze({ label: '3D-модель CAD', value: 'Файл STEP AP214 доступен для проверки компоновки (упрощённый корпус)', mediaName: (model) => `${model} — STEP AP214 (упрощённый корпус, для проверки компоновки)` }),
+});
+const CAD_PROPERTY_LABELS = new Set(['3D CAD model', '3D CAD modèle', ...Object.values(CAD_EXPECTATIONS).map(({ label }) => label)]);
+const PRODUCT_CATEGORY_EXPECTATIONS = Object.freeze({
+  en: 'Pneumatic rotary union',
+  de: 'Pneumatische Drehdurchführung',
+  fr: 'Raccord tournant pneumatique',
+  ja: '空圧用ロータリージョイント',
+  ru: 'Пневматическое вращающееся соединение',
 });
 
 const KEY_PORT_LABELS = Object.freeze({
   en: 'Ports',
   de: 'Anschlüsse',
+  fr: 'Orifices',
   ja: 'ポート',
   ru: 'Порты',
 });
@@ -90,7 +109,7 @@ if (pagePlans.length !== EXPECTED_PAGE_COUNT) {
   throw new Error(`Expected ${EXPECTED_PAGE_COUNT} localized product pages; planned ${pagePlans.length}.`);
 }
 
-// No page is written until all 64 in-memory transformations and protection assertions pass.
+// No page is written until every in-memory transformation and protection assertion passes.
 if (mode === 'write') {
   for (const plan of pagePlans) {
     if (plan.changed) await fs.writeFile(plan.filePath, plan.after, 'utf8');
@@ -189,23 +208,39 @@ function buildDesiredProduct(currentProduct, localized, locale, model, product) 
   const desired = JSON.parse(JSON.stringify(currentProduct));
   desired.description = localized.structuredDescription;
   if (localized.productName) desired.name = localized.productName;
+  if (PRODUCT_CATEGORY_EXPECTATIONS[locale]) desired.category = PRODUCT_CATEGORY_EXPECTATIONS[locale];
   if (!Array.isArray(desired.additionalProperty)) {
     throw new Error(`${model}/${locale}: Product JSON-LD has no additionalProperty array.`);
   }
 
   findWarrantyProperty(currentProduct, locale, `${model}/${locale}`);
-  if (drawingBackedPublicStep(locale, model)) {
-    const hasCad = desired.additionalProperty.some((item) => item && item.name === '3D CAD model');
-    if (!hasCad) {
-      desired.additionalProperty.push({
-        '@type': 'PropertyValue',
-        name: '3D CAD model',
-        value: 'STEP AP214 download available for fit check (simplified body)',
-      });
+  for (const field of localized.requiredJsonFields) {
+    const matches = desired.additionalProperty.filter((item) => drawingBackedCanonicalField(item?.name) === field);
+    if (matches.length !== 1) {
+      throw new Error(`${model}/${locale}: expected one Product JSON-LD property for ${field}; found ${matches.length}.`);
     }
+    matches[0].name = localized.jsonPropertyNames[field];
+    matches[0].value = localized.fields[field];
+  }
+  if (localized.hybridInterfacePropertyName) {
+    const matches = desired.additionalProperty.filter((item) => item?.name === localized.hybridInterfacePropertyName);
+    if (matches.length !== 1) {
+      throw new Error(`${model}/${locale}: expected one hybrid Product JSON-LD property; found ${matches.length}.`);
+    }
+    matches[0].value = localized.keyValues.channels;
+  }
+  if (drawingBackedPublicStep(locale, model)) {
+    const cad = CAD_EXPECTATIONS[locale];
+    if (!cad) throw new Error(`${model}/${locale}: localized CAD schema copy is missing.`);
+    desired.additionalProperty = desired.additionalProperty.filter((item) => !CAD_PROPERTY_LABELS.has(item?.name));
+    desired.additionalProperty.push({
+      '@type': 'PropertyValue',
+      name: cad.label,
+      value: cad.value,
+    });
     desired.associatedMedia = {
       '@type': 'MediaObject',
-      name: `${model} STEP AP214 (simplified, fit check)`,
+      name: cad.mediaName(model),
       contentUrl: `https://www.begapunk.com/downloads/${model}.step`,
       encodingFormat: 'application/step',
     };
@@ -663,11 +698,12 @@ function residualRiskTerms(locale, model, product) {
   for (const claim of product.prohibitedWebClaims || []) add(`contract:${claim.id}`, claim.match || []);
   if (product.status === 'identity-pending') {
     const facts = product.drawingFacts;
+    const speedUnit = localizedPhrase(locale, {
+      en: 'RPM', de: 'min⁻¹', fr: 'tr/min', ja: 'min⁻¹', ru: 'об/мин',
+    });
     add('identity-pending:unverified-rating', [
       locale === 'ru' ? `${facts.maximumPressure.value} МПа` : `${facts.maximumPressure.value} MPa`,
-      locale === 'en' ? `${facts.maximumSpeed.value} RPM`
-        : locale === 'de' || locale === 'ja' ? `${facts.maximumSpeed.value} min⁻¹`
-          : `${facts.maximumSpeed.value} об/мин`,
+      `${facts.maximumSpeed.value} ${speedUnit}`,
       '6061', 'PTFE', 'G1/8',
     ]);
     return deduplicateRisks(terms);
@@ -678,11 +714,13 @@ function residualRiskTerms(locale, model, product) {
     add('media:beyond-drawing', localizedPhrase(locale, customHydraulic ? {
       en: ['water', 'coolant'],
       de: ['Wasser', 'Kühlmittel', 'Kühler'],
+      fr: ['eau', 'liquide de refroidissement'],
       ja: ['水', 'クーラント'],
       ru: ['вода', 'водораствор', 'охладител'],
     } : {
       en: ['water', 'coolant', 'hydraulic oil'],
       de: ['Wasser', 'Kühlmittel', 'Kühler', 'Hydrauliköl'],
+      fr: ['eau', 'liquide de refroidissement', 'huile hydraulique'],
       ja: ['水', 'クーラント', '油圧オイル'],
       ru: ['вода', 'водораствор', 'охладител', 'гидравлическое масло'],
     }));
@@ -690,6 +728,7 @@ function residualRiskTerms(locale, model, product) {
   add('seal:beyond-drawing', localizedPhrase(locale, {
     en: ['FKM', 'Viton', 'Graphite', 'PEEK'],
     de: ['FKM', 'Viton', 'Graphit', 'PEEK'],
+    fr: ['FKM', 'Viton', 'graphite', 'PEEK'],
     ja: ['FKM', 'Viton', 'グラファイト', 'PEEK'],
     ru: ['FKM', 'Viton', 'графит', 'PEEK'],
   }));
@@ -697,6 +736,7 @@ function residualRiskTerms(locale, model, product) {
     add('body:beyond-drawing', localizedPhrase(locale, {
       en: ['steel body', '+ Steel'],
       de: ['Stahlkörper', '+ Stahl'],
+      fr: ['corps en acier', '+ acier'],
       ja: ['鋼製ボディ', '+鋼'],
       ru: ['стальной корпус', '+ сталь'],
     }));
@@ -750,394 +790,6 @@ function printReport(plans, selectedMode) {
   if (selectedMode === 'check' && changed.length) {
     console.log('Check failed as expected while target ranges differ. Re-run with --write only after explicit approval.');
   }
-}
-
-function formatPressure(locale, pressure) {
-  const unit = locale === 'ru' ? 'МПа' : pressure.unit;
-  return `${formatNumber(locale, pressure.value)} ${unit}`;
-}
-
-function formatSpeed(locale, speed) {
-  const unit = locale === 'en' ? 'RPM' : locale === 'ru' ? 'об/мин' : 'min⁻¹';
-  return `${formatNumber(locale, speed.value)} ${unit}`;
-}
-
-function formatBody(locale, material) {
-  const isSteel = material === 'Steel 45#';
-  return localizedPhrase(locale, isSteel ? {
-    en: 'Grade 45 carbon steel',
-    de: 'Stahl 45#',
-    ja: '45#鋼',
-    ru: 'Сталь 45#',
-  } : {
-    en: '6061 aluminum alloy',
-    de: 'Aluminiumlegierung 6061',
-    ja: '6061アルミニウム合金',
-    ru: 'Алюминиевый сплав 6061',
-  });
-}
-
-function formatSeal(locale, materials) {
-  if (materials.length !== 2 || materials[0] !== 'PTFE' || materials[1] !== 'O-ring') {
-    throw new Error(`Unexpected drawing seal contract: ${materials.join(', ')}`);
-  }
-  return localizedPhrase(locale, {
-    en: 'PTFE + O-ring',
-    de: 'PTFE + O-Ring',
-    ja: 'PTFE＋Oリング',
-    ru: 'ПТФЭ + O-кольцо',
-  });
-}
-
-function formatMedia(locale, media) {
-  const supported = media.join(',');
-  if (!['air', 'air,oil,water'].includes(supported)) {
-    throw new Error(`Unexpected drawing media contract: ${supported}`);
-  }
-  if (supported === 'air') {
-    return localizedPhrase(locale, {
-      en: 'Drawing-listed medium: air',
-      de: 'In der Zeichnung genanntes Medium: Luft',
-      ja: '図面記載流体：空気',
-      ru: 'Среда по чертежу: воздух',
-    });
-  }
-  return localizedPhrase(locale, {
-    en: 'Drawing-listed media: air, oil, and water',
-    de: 'In der Zeichnung genannte Medien: Luft, Öl und Wasser',
-    ja: '図面記載流体：空気・油・水',
-    ru: 'Среды по чертежу: воздух, масло и вода',
-  });
-}
-
-function formatTemperature(locale, range) {
-  const minimum = formatSignedNumber(locale, range.minimum, false);
-  const maximum = formatSignedNumber(locale, range.maximum, true);
-  return localizedPhrase(locale, {
-    en: `${minimum} to ${maximum} °C`,
-    de: `${minimum} bis ${maximum} °C`,
-    ja: `${minimum}～${maximum} °C`,
-    ru: `от ${minimum} до ${maximum} °C`,
-  });
-}
-
-function formatWeight(locale, weight) {
-  if (weight.unit !== 'g') throw new Error(`Unexpected weight unit: ${weight.unit}`);
-  const grams = Number(weight.value);
-  const kilograms = trimDecimal(grams / 1000, 3);
-  if (locale === 'en') return `${kilograms} kg (${formatIntegerWithSeparator(grams, ',')} g)`;
-  if (locale === 'de') return `${kilograms.replace('.', ',')} kg (${formatIntegerWithSeparator(grams, '.')} g)`;
-  if (locale === 'ja') return `${kilograms} kg（${formatIntegerWithSeparator(grams, ',')} g）`;
-  return `${kilograms.replace('.', ',')} кг (${formatIntegerWithSeparator(grams, ' ')} г)`;
-}
-
-function formatPorts(locale, model, ports) {
-  if (ports.status === 'anomaly-unresolved') {
-    return localizedPhrase(locale, {
-      en: 'Port thread is confirmed from the current model-specific drawing before fitting selection',
-      de: 'Das Anschlussgewinde wird vor der Auswahl von Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt',
-      ja: 'ポートねじは継手選定前に最新の型式専用図面で確認します',
-      ru: 'Резьба портов подтверждается по актуальному чертежу конкретной модели до выбора фитингов',
-    });
-  }
-  if (!Array.isArray(ports.annotations) || !ports.annotations.length) {
-    throw new Error(`${model}: verified port contract has no annotations.`);
-  }
-  const roleText = {
-    en: {
-      'media-inlet': 'media inlet', inlet: 'inlet', 'media-outlet': 'media outlet', outlet: 'outlet',
-      'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B',
-      'side-group': 'side port group', 'end-face-group': 'end-face port group',
-      'opposite-face': 'opposite-face port', 'air-port-group': 'air-port group',
-      'air-outlet': 'air outlet', 'release-port': 'release port', 'clamp-port': 'clamp port',
-    },
-    de: {
-      'media-inlet': 'Medieneingang', inlet: 'Eingang', 'media-outlet': 'Medienausgang', outlet: 'Ausgang',
-      'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B',
-      'side-group': 'seitliche Anschlussgruppe', 'end-face-group': 'stirnseitige Anschlussgruppe',
-      'opposite-face': 'Anschluss auf der Gegenseite', 'air-port-group': 'Luftanschlussgruppe',
-      'air-outlet': 'Luftausgang', 'release-port': 'Löseanschluss', 'clamp-port': 'Klemmanschluss',
-    },
-    ja: {
-      'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口',
-      'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面',
-      'side-group': '側面ポート群', 'end-face-group': '端面ポート群',
-      'opposite-face': '反対側ポート', 'air-port-group': '空気ポート群',
-      'air-outlet': '空気出口', 'release-port': '解除ポート', 'clamp-port': 'クランプポート',
-    },
-    ru: {
-      'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход',
-      'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B',
-      'side-group': 'группа боковых портов', 'end-face-group': 'группа торцевых портов',
-      'opposite-face': 'порт на противоположном торце', 'air-port-group': 'группа воздушных портов',
-      'air-outlet': 'выход воздуха', 'release-port': 'порт разжима', 'clamp-port': 'порт зажима',
-    },
-  }[locale];
-  const parts = ports.annotations.map((annotation) => {
-    const role = roleText[annotation.role];
-    if (!role) throw new Error(`${model}: unsupported port role ${annotation.role}.`);
-    const interfaceSize = annotation.thread
-      ? formatThread(locale, annotation.thread)
-      : `Ø${formatNumber(locale, annotation.diameterMm)} ${locale === 'ru' ? 'мм' : 'mm'}`;
-    const depth = annotation.depthMm === undefined
-      ? ''
-      : localizedPhrase(locale, {
-        en: `, depth ${formatNumber(locale, annotation.depthMm)} mm`,
-        de: `, Tiefe ${formatNumber(locale, annotation.depthMm)} mm`,
-        ja: `、深さ${formatNumber(locale, annotation.depthMm)} mm`,
-        ru: `, глубина ${formatNumber(locale, annotation.depthMm)} мм`,
-      });
-    return `${annotation.count} × ${interfaceSize}${depth} ${role}`;
-  });
-  let result = parts.join(' · ');
-  if (ports.status === 'verified-threads-only') {
-    result += localizedPhrase(locale, {
-      en: '; port functions are assigned in the confirmed drawing before production',
-      de: '; Anschlussfunktionen werden in der bestätigten Zeichnung vor der Fertigung zugeordnet',
-      ja: '（ポート機能は確定図面で生産前に割り当てます）',
-      ru: '; функции портов назначаются в подтверждённом чертеже до производства',
-    });
-  }
-  if (ports.status === 'verified-outlets-only') {
-    result += localizedPhrase(locale, {
-      en: '; the air inlet is assigned in the confirmed drawing before production',
-      de: '; der Lufteingang wird in der bestätigten Zeichnung vor der Fertigung zugeordnet',
-      ja: '（空気入口は確定図面で生産前に割り当てます）',
-      ru: '; вход воздуха назначается в подтверждённом чертеже до производства',
-    });
-  }
-  return result;
-}
-
-function formatPortsKey(locale, model, ports) {
-  if (ports.status === 'anomaly-unresolved') return formatPorts(locale, model, ports);
-  const compactRoles = {
-    en: {
-      'media-inlet': 'media in', inlet: 'in', 'media-outlet': 'media out', outlet: 'out',
-      'side-a': 'side A', 'side-b': 'side B', 'face-a': 'face A', 'face-b': 'face B',
-      'side-group': 'side', 'end-face-group': 'end face', 'opposite-face': 'opposite face',
-      'air-port-group': 'air', 'air-outlet': 'air out', 'release-port': 'release', 'clamp-port': 'clamp',
-    },
-    de: {
-      'media-inlet': 'Medieneingang', inlet: 'ein', 'media-outlet': 'Medienausgang', outlet: 'aus',
-      'side-a': 'Seite A', 'side-b': 'Seite B', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B',
-      'side-group': 'seitlich', 'end-face-group': 'stirnseitig', 'opposite-face': 'Gegenseite',
-      'air-port-group': 'Luft', 'air-outlet': 'Luft aus', 'release-port': 'Lösen', 'clamp-port': 'Klemmen',
-    },
-    ja: {
-      'media-inlet': '流体入口', inlet: '入口', 'media-outlet': '流体出口', outlet: '出口',
-      'side-a': 'A側', 'side-b': 'B側', 'face-a': 'A面', 'face-b': 'B面',
-      'side-group': '側面', 'end-face-group': '端面', 'opposite-face': '反対面',
-      'air-port-group': '空気', 'air-outlet': '空気出口', 'release-port': '解除', 'clamp-port': 'クランプ',
-    },
-    ru: {
-      'media-inlet': 'вход среды', inlet: 'вход', 'media-outlet': 'выход среды', outlet: 'выход',
-      'side-a': 'сторона A', 'side-b': 'сторона B', 'face-a': 'торец A', 'face-b': 'торец B',
-      'side-group': 'сбоку', 'end-face-group': 'на торце', 'opposite-face': 'противоположный торец',
-      'air-port-group': 'воздух', 'air-outlet': 'выход воздуха', 'release-port': 'разжим', 'clamp-port': 'зажим',
-    },
-  }[locale];
-  const parts = ports.annotations.map((annotation) => {
-    const size = annotation.thread
-      ? formatThread(locale, annotation.thread)
-      : `Ø${formatNumber(locale, annotation.diameterMm)} ${locale === 'ru' ? 'мм' : 'mm'}`;
-    const depth = annotation.depthMm === undefined
-      ? ''
-      : localizedPhrase(locale, {
-        en: `×${formatNumber(locale, annotation.depthMm)} mm deep`,
-        de: `, ${formatNumber(locale, annotation.depthMm)} mm tief`,
-        ja: `、深さ${formatNumber(locale, annotation.depthMm)} mm`,
-        ru: `, глуб. ${formatNumber(locale, annotation.depthMm)} мм`,
-      });
-    return `${annotation.count}×${size}${depth} ${compactRoles[annotation.role]}`;
-  });
-  let result = parts.join(' · ');
-  if (ports.status === 'verified-threads-only') {
-    result += localizedPhrase(locale, {
-      en: '; assignment open', de: '; Zuordnung offen', ja: '（割当未確定）', ru: '; назначение не указано',
-    });
-  }
-  return result;
-}
-
-function formatMounting(locale, model, mounting) {
-  if (mounting.status === 'not-separately-specified') {
-    return localizedPhrase(locale, {
-      en: 'No separate mounting feature specified; media ports are not mounting holes',
-      de: 'Keine separate Montageangabe; Medienanschlüsse sind keine Montagebohrungen',
-      ja: '独立した取付部の記載なし（流体ポートは取付穴ではありません）',
-      ru: 'Отдельный монтажный элемент не указан; порты среды не являются монтажными отверстиями',
-    });
-  }
-  if (mounting.status !== 'verified' || !Array.isArray(mounting.features) || !mounting.features.length) {
-    throw new Error(`${model}: mounting facts are not publishable.`);
-  }
-  return mounting.features.map((feature) => formatMountingFeature(locale, feature)).join(' · ');
-}
-
-function formatMountingKey(locale, model, mounting) {
-  if (mounting.status === 'not-separately-specified') {
-    return localizedPhrase(locale, {
-      en: 'No separate mount specified', de: 'Keine separate Montageangabe',
-      ja: '独立した取付部の記載なし', ru: 'Отдельное крепление не указано',
-    });
-  }
-  if (mounting.status !== 'verified') throw new Error(`${model}: mounting key is not publishable.`);
-  return mounting.features.map((feature) => {
-    const side = localizedMountingSide(locale, feature.side);
-    const size = feature.thread
-      || `Ø${formatNumber(locale, feature.diameterMm)} ${locale === 'ru' ? 'мм' : 'mm'}`;
-    const depth = feature.depthMm === undefined
-      ? ''
-      : localizedPhrase(locale, {
-        en: `, ${formatNumber(locale, feature.depthMm)} mm deep`,
-        de: `, ${formatNumber(locale, feature.depthMm)} mm tief`,
-        ja: `、深さ${formatNumber(locale, feature.depthMm)} mm`,
-        ru: `, глуб. ${formatNumber(locale, feature.depthMm)} мм`,
-      });
-    return `${side} ${feature.count}×${size}${depth}`;
-  }).join(' · ');
-}
-
-function formatMountingSide(locale, model, mounting, requestedSide) {
-  if (mounting.status === 'not-separately-specified') return formatMounting(locale, model, mounting);
-  const exact = mounting.features.filter((feature) => feature.side === requestedSide);
-  if (exact.length) return exact.map((feature) => formatMountingFeature(locale, feature)).join(' · ');
-  return localizedPhrase(locale, {
-    en: 'See the approved drawing; the rotor/stator assignment is confirmed in the approved drawing before production',
-    de: 'Siehe freigegebene Zeichnung; die Zuordnung der Stirnseiten zu Rotor und Stator wird in der freigegebenen Zeichnung vor der Fertigung bestätigt',
-    ja: '承認図面を参照してください。ロータ／ステータの対応は承認図面で生産前に確定します',
-    ru: 'См. согласованный чертёж: соответствие торцов ротору и статору подтверждается в согласованном чертеже до производства',
-  });
-}
-
-function formatMountingFeature(locale, feature) {
-  const side = localizedMountingSide(locale, feature.side);
-  let size;
-  if (feature.thread) size = feature.thread;
-  else if (feature.diameterMm !== undefined) {
-    size = `Ø${formatNumber(locale, feature.diameterMm)} ${locale === 'ru' ? 'мм' : 'mm'}`;
-  }
-  else throw new Error(`Mounting feature on ${feature.side} has no thread or diameter.`);
-  const depth = feature.depthMm === undefined
-    ? ''
-    : localizedPhrase(locale, {
-      en: `, depth ${formatNumber(locale, feature.depthMm)} mm`,
-      de: `, Tiefe ${formatNumber(locale, feature.depthMm)} mm`,
-      ja: `、深さ${formatNumber(locale, feature.depthMm)} mm`,
-      ru: `, глубина ${formatNumber(locale, feature.depthMm)} мм`,
-    });
-  const featureType = feature.feature
-    ? localizedMountingFeatureType(locale, feature.feature)
-    : '';
-  return `${side}: ${feature.count} × ${size}${depth}${featureType}`;
-}
-
-function localizedMountingSide(locale, side) {
-  const labels = {
-    en: { stator: 'stator', rotor: 'rotor', 'face-a': 'face A', 'face-b': 'face B', body: 'body' },
-    de: { stator: 'Stator', rotor: 'Rotor', 'face-a': 'Stirnseite A', 'face-b': 'Stirnseite B', body: 'Gehäuse' },
-    ja: { stator: 'ステータ側', rotor: 'ロータ側', 'face-a': 'A面', 'face-b': 'B面', body: '本体' },
-    ru: { stator: 'статор', rotor: 'ротор', 'face-a': 'торец A', 'face-b': 'торец B', body: 'корпус' },
-  }[locale];
-  if (!labels[side]) throw new Error(`Unsupported mounting side: ${side}`);
-  return labels[side];
-}
-
-function localizedMountingFeatureType(locale, feature) {
-  const labels = {
-    'through-hole': { en: ' through-hole', de: ' Durchgangsbohrung', ja: ' 貫通穴', ru: ' сквозное отверстие' },
-    hole: { en: ' hole', de: ' Bohrung', ja: ' 穴', ru: ' отверстие' },
-    'anti-rotation': { en: ' anti-rotation', de: ' Verdrehsicherung', ja: ' 回り止め', ru: ' против проворачивания' },
-    'anti-rotation-set-screw': { en: ' anti-rotation set-screw', de: ' Gewindestift zur Verdrehsicherung', ja: ' 回り止め止めねじ', ru: ' установочный винт против проворачивания' },
-  }[feature];
-  if (!labels) throw new Error(`Unsupported mounting feature type: ${feature}`);
-  return labels[locale];
-}
-
-function formatEnvelope(locale, envelope) {
-  if (envelope.status === 'drawing-audit-only') {
-    throw new Error('Audit-only envelope must not be formatted for publication.');
-  }
-  const length = formatNumber(locale, envelope.overallLengthMm);
-  if (envelope.shape === 'cylindrical') {
-    const diameter = formatNumber(locale, envelope.maximumDiameterMm);
-    return localizedPhrase(locale, {
-      en: `Maximum Ø${diameter} × ${length} mm overall`,
-      de: `Max. Ø${diameter} × ${length} mm Gesamtlänge`,
-      ja: `最大Ø${diameter} × 全長${length} mm`,
-      ru: `Макс. Ø${diameter} × общая длина ${length} мм`,
-    });
-  }
-  if (envelope.shape === 'hex-body') {
-    const width = formatNumber(locale, envelope.maximumWidthMm);
-    return localizedPhrase(locale, {
-      en: `Maximum width ${width} × ${length} mm overall`,
-      de: `Max. Breite ${width} × ${length} mm Gesamtlänge`,
-      ja: `最大幅${width} × 全長${length} mm`,
-      ru: `Макс. ширина ${width} × общая длина ${length} мм`,
-    });
-  }
-  throw new Error(`Unsupported envelope shape: ${envelope.shape}`);
-}
-
-function formatEnvelopeDiameter(locale, envelope) {
-  if (envelope.shape !== 'cylindrical' || envelope.status === 'drawing-audit-only') {
-    return formatEnvelope(locale, envelope);
-  }
-  const diameter = formatNumber(locale, envelope.maximumDiameterMm);
-  return localizedPhrase(locale, {
-    en: `Maximum Ø${diameter} mm`,
-    de: `Max. Ø${diameter} mm`,
-    ja: `最大Ø${diameter} mm`,
-    ru: `Макс. Ø${diameter} мм`,
-  });
-}
-
-function formatThroughBore(locale, bore) {
-  const diameter = formatNumber(locale, bore.diameterMm);
-  return localizedPhrase(locale, {
-    en: `Ø${diameter} mm through bore`,
-    de: `Durchgangsbohrung Ø${diameter} mm`,
-    ja: `貫通穴Ø${diameter} mm`,
-    ru: `Сквозное отверстие Ø${diameter} мм`,
-  });
-}
-
-function detailedLimit(locale, kind, value) {
-  if (kind === 'pressure') {
-    return localizedPhrase(locale, {
-      en: `${value} (drawing maximum; confirm the allowable continuous-duty value for the approved configuration and operating conditions)`,
-      de: `${value} (Höchstwert laut Zeichnung; zulässigen Dauerbetriebswert für die freigegebene Ausführung und Betriebsbedingungen bestätigen)`,
-      ja: `${value}（図面上限。承認仕様と運転条件に対する連続運転許容値を確認）`,
-      ru: `${value} (максимум по чертежу; допустимое значение для непрерывной работы подтвердить для согласованного исполнения и условий эксплуатации)`,
-    });
-  }
-  return localizedPhrase(locale, {
-    en: `${value} (drawing maximum; confirm the allowable continuous-duty value for the approved configuration and operating conditions)`,
-    de: `${value} (Höchstwert laut Zeichnung; zulässigen Dauerbetriebswert für die freigegebene Ausführung und Betriebsbedingungen bestätigen)`,
-    ja: `${value}（図面上限。承認仕様と運転条件に対する連続運転許容値を確認）`,
-    ru: `${value} (максимум по чертежу; допустимое значение для непрерывной работы подтвердить для согласованного исполнения и условий эксплуатации)`,
-  });
-}
-
-function performanceText(locale, pressure, speed) {
-  return localizedPhrase(locale, {
-    en: `Drawing max: ${pressure} · ${speed}`,
-    de: `Zeichnungsmaxima: ${pressure} · ${speed}`,
-    ja: `図面上限：${pressure}・${speed}`,
-    ru: `Максимумы по чертежу: ${pressure} · ${speed}`,
-  });
-}
-
-function verifiedPriceNote(locale, model, values) {
-  const { pressure, speed, media } = values;
-  return localizedPhrase(locale, {
-    en: `${model} drawing maxima: ${pressure} pressure, ${speed} speed; ${lowercaseInitial(media)}. Confirm continuous-duty limits against the approved order drawing.`,
-    de: `${model}-Zeichnung: ${pressure} Maximaldruck, ${speed} Maximaldrehzahl; ${lowercaseInitial(media)}. Dauerbetriebswerte anhand der freigegebenen Auftragszeichnung bestätigen.`,
-    ja: `${model}図面上限：圧力${pressure}、回転数${speed}、${media}。連続運転許容値は承認済み注文図面で確認してください。`,
-    ru: `Чертёж ${model}: максимум ${pressure} и ${speed}; ${lowercaseInitial(media)}. Допустимые значения для непрерывной работы подтвердите по согласованному чертежу заказа.`,
-  });
 }
 
 function canonicalField(label) {
@@ -1292,13 +944,8 @@ function localizedPhrase(locale, values) {
   return values[locale];
 }
 
-function lowercaseInitial(value) {
-  if (!value) return value;
-  return `${value[0].toLocaleLowerCase()}${value.slice(1)}`;
-}
-
 function estimateFirstViewLines(locale, localized, finalKeys) {
-  const keyCapacity = locale === 'ja' ? 32 : locale === 'de' || locale === 'ru' ? 30 : 34;
+  const keyCapacity = locale === 'ja' ? 32 : ['de', 'fr', 'ru'].includes(locale) ? 30 : 34;
   const keyValues = finalKeys
     .filter((key) => Object.hasOwn(localized.keyValues, key))
     .map((key) => localized.keyValues[key]);
@@ -1313,31 +960,6 @@ function displayUnits(value) {
     units += /[\u1100-\u11ff\u2e80-\u9fff\uac00-\ud7af\uff01-\uff60]/u.test(character) ? 2 : 1;
   }
   return units;
-}
-
-function formatNumber(locale, value) {
-  const text = String(value);
-  return ['de', 'ru'].includes(locale) ? text.replace('.', ',') : text;
-}
-
-function formatThread(locale, value) {
-  const text = String(value).replace(/x/giu, '×');
-  return ['de', 'ru'].includes(locale) ? text.replace(/\.(?=\d)/gu, ',') : text;
-}
-
-function formatSignedNumber(locale, value, showPositive) {
-  const absolute = formatNumber(locale, Math.abs(value));
-  if (value < 0) return `−${absolute}`;
-  if (showPositive && value > 0) return `+${absolute}`;
-  return absolute;
-}
-
-function trimDecimal(value, digits) {
-  return value.toFixed(digits).replace(/\.0+$|(?<=\.[0-9]*?)0+$/g, '').replace(/\.$/, '');
-}
-
-function formatIntegerWithSeparator(value, separator) {
-  return String(Math.trunc(value)).replace(/\B(?=(\d{3})+(?!\d))/g, separator);
 }
 
 function setEquals(left, right) {

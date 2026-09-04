@@ -22,6 +22,18 @@ const productWarrantyByLocale = Object.freeze({
     name: 'Garantiezeitraum',
     value: '1 Jahr ab Versand',
   }),
+  fr: Object.freeze({
+    prefix: 'fr',
+    legacyName: 'Conditions de garantie',
+    legacyValue: 'Confirmées dans le devis/la commande',
+    legacyPairs: Object.freeze([
+      Object.freeze({ name: 'Conditions de garantie', value: 'Confirmées dans le devis/la commande' }),
+      Object.freeze({ name: 'Période de garantie', value: '1 an à partir de l\'expédition' }),
+      Object.freeze({ name: 'Durée de garantie', value: '1 an à partir de l\'expédition' }),
+    ]),
+    name: 'Durée de garantie',
+    value: '1 an à compter de l\'expédition',
+  }),
   ja: Object.freeze({
     prefix: 'ja',
     legacyName: '保証条件',
@@ -54,6 +66,56 @@ const customHydraulicLeadTimeContracts = Object.freeze([
       Object.freeze({ legacy: 'MOQ 1, etwa 30 Tage', current: 'MOQ 1, innerhalb von 30 Tagen', count: 1 }),
     ]),
   }),
+  ...(i18nConfig.activeLanguageCodes.includes('fr') ? [Object.freeze({
+    file: 'fr/custom-hydraulic-rotary-unions.html',
+    normalizations: Object.freeze([
+      Object.freeze({
+        current: '2 circuits standard',
+        legacy: Object.freeze(['2 passages typique', '2 passages standard']),
+      }),
+      Object.freeze({
+        current: 'Jusqu’à 12 circuits sur mesure',
+        legacy: Object.freeze(['Jusqu\'à 12 circuits sur mesure', 'Jusqu\'à 12 sur mesure', 'Jusqu’à 12 sur mesure']),
+      }),
+      Object.freeze({
+        current: 'bague Glyd en PTFE renforcé de fibres de carbone',
+        legacy: Object.freeze([
+          'joint Glyd en fibre de carbone',
+          'Bague en fibre de carbone',
+          'anneau Glyd en fibre de carbone',
+          'Anneau Glyd en fibre de carbone',
+          'anneau Glyde en fibre de carbone',
+          'Anneau Glyde en fibre de carbone',
+        ]),
+      }),
+      Object.freeze({
+        current: 'site de Ningbo',
+        legacy: Object.freeze(['installation de Ningbo', 'Installation de Ningbo']),
+      }),
+      Object.freeze({
+        current: 'Dans les 30 jours suivant le paiement',
+        legacy: Object.freeze(['Dans les 30 jours après paiement', 'Sous 30 jours après paiement']),
+      }),
+    ]),
+    replacements: Object.freeze([
+      Object.freeze({
+        legacy: 'La fabrication hydraulique sur mesure prend environ 30 jours calendaires après paiement.',
+        legacyVariants: Object.freeze([
+          'L\'hydraulique personnalisé est complété dans les 30 jours civils suivant le paiement.',
+          'L\'hydraulique sur mesure est réalisée dans les 30 jours calendaires suivant le paiement.',
+        ]),
+        current: 'La fabrication hydraulique sur mesure est achevée dans un délai de 30 jours calendaires après paiement.',
+        count: 3,
+      }),
+      Object.freeze({ legacy: 'Environ 30 jours après paiement', current: 'Dans les 30 jours suivant le paiement', count: 1 }),
+      Object.freeze({
+        legacy: 'MOQ 1, environ 30 jours',
+        legacyVariants: Object.freeze(['MOQ 1, dans les 30 jours']),
+        current: 'Quantité minimale : 1 pièce, fabrication sous 30 jours',
+        count: 1,
+      }),
+    ]),
+  })] : []),
   Object.freeze({
     file: 'ja/custom-hydraulic-rotary-unions.html',
     replacements: Object.freeze([
@@ -77,17 +139,18 @@ const previousBottleCappingProductClaim = 'A customer-authorized production appl
 const approvedBottleCappingProductClaim = 'A customer-authorized production application uses BP-2P-16-0001 to route compressed air through two independent passages for clamping and releasing a pneumatic three-jaw bottle-cap gripper.';
 
 const technicalNoteVariants = [
-  { sourceThreshold: '', deThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
-  { sourceThreshold: '', deThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'August 7, 2026', deDate: '7. August 2026', jaDate: '2026年8月7日', ruDate: '7 августа 2026 г.' },
-  { sourceThreshold: ' above 5 MPa', deThreshold: ' über 5 MPa', jaThreshold: '（5 MPa超）', ruThreshold: ' свыше 5 МПа', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
-  { sourceThreshold: ' above 1 MPa', deThreshold: ' über 1 MPa', jaThreshold: '（1 MPa超）', ruThreshold: ' свыше 1 МПа', sourceDate: 'August 7, 2026', deDate: '7. August 2026', jaDate: '2026年8月7日', ruDate: '7 августа 2026 г.' },
-  { sourceThreshold: ' above 1 MPa', deThreshold: ' über 1 MPa', jaThreshold: '（1 MPa超）', ruThreshold: ' свыше 1 МПа', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
+  { sourceThreshold: '', deThreshold: '', frThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', frDate: '11 juin 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
+  { sourceThreshold: '', deThreshold: '', frThreshold: '', jaThreshold: '', ruThreshold: '', sourceDate: 'August 7, 2026', deDate: '7. August 2026', frDate: '7 août 2026', jaDate: '2026年8月7日', ruDate: '7 августа 2026 г.' },
+  { sourceThreshold: ' above 5 MPa', deThreshold: ' über 5 MPa', frThreshold: ' au-dessus de 5 MPa', jaThreshold: '（5 MPa超）', ruThreshold: ' свыше 5 МПа', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', frDate: '11 juin 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
+  { sourceThreshold: ' above 1 MPa', deThreshold: ' über 1 MPa', frThreshold: ' au-dessus de 1 MPa', jaThreshold: '（1 MPa超）', ruThreshold: ' свыше 1 МПа', sourceDate: 'August 7, 2026', deDate: '7. August 2026', frDate: '7 août 2026', jaDate: '2026年8月7日', ruDate: '7 августа 2026 г.' },
+  { sourceThreshold: ' above 1 MPa', deThreshold: ' über 1 MPa', frThreshold: ' au-dessus de 1 MPa', jaThreshold: '（1 MPa超）', ruThreshold: ' свыше 1 МПа', sourceDate: 'June 11, 2026', deDate: '11. Juni 2026', frDate: '11 juin 2026', jaDate: '2026年6月11日', ruDate: '11 июня 2026 г.' },
 ];
 
 const technicalNoteRows = technicalNoteVariants.map((variant) => ({
   legacySource: `<strong>Technical Note:</strong> Published operating limits must be confirmed against the current product page and approved drawing; production inspection is separate from operating-rating validation. Actual performance depends on operating conditions, media quality, installation practices, and maintenance schedule. For applications outside standard ratings — including high-pressure hydraulic${variant.sourceThreshold}, continuous water immersion, food-grade, or cleanroom environments — consult Begapunk factory engineering before specification. <strong>Last updated:</strong> ${variant.sourceDate}.`,
   source: `<strong>Technical Note:</strong> Use the current product page and approved drawing to select and operate the model within its published limits. Each finished unit follows the documented production inspection process. Actual performance depends on operating conditions, media quality, installation practices, and maintenance schedule. For applications outside standard ratings — including high-pressure hydraulic${variant.sourceThreshold}, continuous water immersion, food-grade, or cleanroom environments — consult Begapunk factory engineering before specification. <strong>Last updated:</strong> ${variant.sourceDate}.`,
   de: `<strong>Technischer Hinweis:</strong> Für Auswahl und Betrieb des Modells gelten die veröffentlichten Grenzen auf der aktuellen Produktseite und in der freigegebenen Zeichnung. Jede fertige Einheit durchläuft den dokumentierten Produktionsprüfprozess. Die tatsächliche Leistung hängt von den Betriebsbedingungen, der Medienqualität, der Montage und den Wartungsintervallen ab. Bei Anwendungen außerhalb der Standardgrenzen – einschließlich Hochdruckhydraulik${variant.deThreshold}, dauerhaftem Eintauchen in Wasser, Lebensmittelanwendungen oder Reinraumumgebungen – ist vor der Spezifikation eine Abstimmung mit der Anwendungstechnik von Begapunk erforderlich. <strong>Letzte Aktualisierung:</strong> ${variant.deDate}.`,
+  fr: `<strong>Note technique :</strong> Sélectionnez et utilisez le modèle dans les limites publiées sur la page produit actuelle et le plan approuvé. Chaque unité finie suit le processus documenté de contrôle de production. Les performances réelles dépendent des conditions de fonctionnement, de la qualité du fluide, du montage et du programme de maintenance. Pour toute application hors des caractéristiques standard — notamment l\'hydraulique haute pression${variant.frThreshold}, l\'immersion continue dans l\'eau, les applications alimentaires ou les salles propres — consultez l\'équipe technique de Begapunk avant d\'établir la spécification. <strong>Dernière mise à jour :</strong> ${variant.frDate}.`,
   ja: `<strong>技術注記：</strong> 型式の選定・使用は、最新の製品ページおよび承認図面に記載された公開限界内で行ってください。完成品はすべて、公開された生産検査工程に従って検査します。実際の性能は、運転条件、使用流体の品質、取付方法および保守周期によって異なります。高圧油圧${variant.jaThreshold}、水中での連続使用、食品用途、クリーンルーム環境など、標準定格外の用途については、仕様決定前にBegapunkの技術部門へご相談ください。<strong>最終更新：</strong>${variant.jaDate}`,
   ru: `<strong>Техническое примечание:</strong> При выборе и эксплуатации модели соблюдайте опубликованные пределы, указанные на актуальной странице изделия и согласованном чертеже. Каждое готовое изделие проходит предусмотренный производственный контроль. Фактические характеристики зависят от условий эксплуатации, качества рабочей среды, монтажа и графика технического обслуживания. Для применений за пределами стандартных характеристик — включая гидравлические системы высокого давления${variant.ruThreshold}, длительное погружение в воду, пищевые применения и чистые помещения — до выбора спецификации необходимо проконсультироваться с инженерной службой Begapunk. <strong>Последнее обновление:</strong> ${variant.ruDate}`,
 }));
@@ -133,6 +196,7 @@ const retiredCommercialPolicySources = [
   `The warranty period for all Begapunk products is one year. The warranty start date, coverage, exclusions, evidence requirements, and remedies are established by the formal quotation, accepted order, and any written warranty document supplied for the order.`,
   `Repair, replacement, credit, refund, or another remedy is not automatic. The approved remedy, timing, return requirement, and shipping responsibility are confirmed in writing for the specific claim.`,
   `<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> July 31, 2026`,
+  `<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> August 28, 2026`,
   `Begapunk Precision Rotary Joint Manufacturer ("we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.`,
   `These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Begapunk Precision Rotary Joint Manufacturer ("we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.`,
   `These Terms are governed by the laws of the People's Republic of China. Any disputes shall be resolved through good-faith negotiation. If negotiation fails, disputes shall be submitted to the Ningbo International Arbitration Court.`,
@@ -309,10 +373,10 @@ const rows = [
     ru: `Несоответствие спецификации — предотвратимая причина проблем при эксплуатации. Работа за пределами опубликованных характеристик модели или выбор сочетания уплотнения и материала без учета рабочей среды и режима эксплуатации может привести к утечке или повреждению. Перед заказом проверьте актуальную страницу изделия и согласованный чертеж.`,
   },
   {
-    source: `<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> August 28, 2026`,
-    de: `<strong>Gültig ab:</strong> 11. Juni 2026<br>\n\n    <strong>Zuletzt aktualisiert:</strong> 28. August 2026`,
-    ja: `<strong>施行日：</strong>2026年6月11日<br>\n\n    <strong>最終更新日：</strong>2026年8月28日`,
-    ru: `<strong>Дата вступления в силу:</strong> 11 июня 2026 г.<br>\n\n    <strong>Последнее обновление:</strong> 28 августа 2026 г.`,
+    source: `<strong>Effective Date:</strong> June 11, 2026<br>\n\n    <strong>Last Updated:</strong> September 4, 2026`,
+    de: `<strong>Gültig ab:</strong> 11. Juni 2026<br>\n\n    <strong>Zuletzt aktualisiert:</strong> 4. September 2026`,
+    ja: `<strong>施行日：</strong>2026年6月11日<br>\n\n    <strong>最終更新日：</strong>2026年9月4日`,
+    ru: `<strong>Дата вступления в силу:</strong> 11 июня 2026 г.<br>\n\n    <strong>Последнее обновление:</strong> 4 сентября 2026 г.`,
   },
   {
     source: `Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.`,
@@ -454,6 +518,69 @@ const rows = [
   },
 ];
 
+const frenchStaticTranslations = Object.freeze([
+  `Usine de Ningbo · fondée en 2022`,
+  `Fabricant de raccords tournants standard et sur mesure pour l'automatisation industrielle, basé à Ningbo et fondé en 2022.`,
+  `Création de Begapunk à Ningbo`,
+  `Ningbo Begapunk Pneumatic Components Co., Ltd. a été créée pour développer et fabriquer des raccords tournants pneumatiques destinés aux machines industrielles.`,
+  `Accompagnement de projet`,
+  `Ingénierie, production et ventes`,
+  `Fondateur et ingénieur`,
+  `Production et qualité`,
+  `Usinage, assemblage et contrôle circuit par circuit`,
+  `Ventes internationales`,
+  `Coordination des demandes, plans, devis et commandes`,
+  `Les composants en aluminium, en acier au carbone et en acier inoxydable sont usinés conformément au plan approuvé.`,
+  `Chaque unité finie fait l'objet d'un essai d'étanchéité circuit par circuit. Si votre projet nécessite un relevé d'essai particulier, indiquez-le avant la commande.`,
+  `Les produits sont emballés pour l'expédition avec les documents convenus. Les pages des modèles du catalogue proposent un plan 2D et un fichier STEP AP214 à télécharger pour vérifier l'encombrement.`,
+  `Découvrez notre processus de fabrication et de contrôle.`,
+  `Découvrez Begapunk, fabricant basé à Ningbo de raccords tournants pneumatiques standard et sur mesure pour l'automatisation industrielle et les machines tournantes.`,
+  `Fabricant de raccords tournants pneumatiques basé à Ningbo et fondé en 2022, au service de projets d'automatisation industrielle et de machines tournantes.`,
+  `Begapunk est un fabricant de raccords tournants pneumatiques basé à Ningbo pour l'automatisation industrielle et les machines tournantes. Depuis notre création en 2022, nous développons des solutions standard et sur mesure, à un ou plusieurs circuits, pour transférer l'air comprimé entre les parties fixes et tournantes des machines.`,
+  `Avant la production, notre équipe examine avec les constructeurs de machines le nombre de circuits, la pression, la vitesse, l'espace de montage, les matériaux et les exigences de raccordement. Chaque modèle standard ou configuration sur mesure peut ainsi être adapté à l'implantation réelle de la machine et à ses conditions de fonctionnement.`,
+  `À Ningbo, les composants sont usinés conformément au plan approuvé, puis assemblés et contrôlés. Avant emballage, chaque raccord tournant fini fait l'objet d'un essai d'étanchéité circuit par circuit. Toute exigence propre au projet concernant les essais ou les documents est convenue avant la production.`,
+  `Durée de garantie`,
+  `1 an`,
+  `Confirmé dans le devis/la commande`,
+  `Application en production : pince pneumatique à trois mors pour bouchons`,
+  `Le BP-2P-16-0001 achemine l'air comprimé par deux circuits indépendants afin de serrer et desserrer une pince pneumatique à trois mors sur la machine de bouchage en production d'un client. La pince maintient et fait tourner le bouchon pendant le bouchage. Le client reste anonyme. Confrontez les fonctions des orifices, la pression de service, la vitesse de rotation et l'interface machine requises aux exigences de la machine et au plan actuel du BP-2P-16-0001. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Voir l'application en production →</a>`,
+  `Adéquation à l'application : pince pneumatique à trois mors pour bouchons`,
+  `Le BP-2P-08-0001 constitue une autre option à deux circuits pour les pinces pneumatiques à trois mors destinées aux bouchons. Avant la sélection, comparez ses cotes de montage et ses limites de fonctionnement à celles du BP-2P-16-0001. L'exemple de production associé utilise le BP-2P-16-0001. <a href="application-bottle-filling-capping.html#verified-bp-2p-16-capping">Comparer l'application et les modèles →</a>`,
+  `Une inadéquation entre l'application et les caractéristiques constitue une cause évitable de problèmes. Dépasser les limites publiées d'un modèle, ou choisir une combinaison de joints et de matériaux sans examiner le fluide et le cycle de fonctionnement, peut entraîner une fuite ou une détérioration. Vérifiez la page produit actuelle et le plan approuvé avant de commander.`,
+  `<strong>Date d'entrée en vigueur :</strong> 11 juin 2026<br>\n\n    <strong>Dernière mise à jour :</strong> 4 septembre 2026`,
+  `Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre ») respecte votre vie privée. La présente politique de confidentialité explique comment nous recueillons, utilisons, communiquons et protégeons vos informations lorsque vous consultez notre site ou envoyez une demande.`,
+  `Les présentes Conditions d'utilisation (« Conditions ») régissent votre utilisation du site Begapunk et l'achat de raccords tournants auprès de Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre »). En accédant à notre site ou en passant une commande, vous acceptez ces Conditions.`,
+  `Les présentes Conditions sont régies par le droit de la République populaire de Chine. Tout litige découlant des présentes Conditions ou s'y rapportant doit d'abord faire l'objet d'une tentative de règlement amiable de bonne foi. À défaut d'accord, le litige sera soumis à la Commission d'arbitrage de Ningbo conformément au règlement d'arbitrage en vigueur au moment de la saisine.`,
+  `Les prix éventuellement affichés sur le site sont uniquement indicatifs. Le devis formel et la commande acceptée déterminent le prix final, la devise, la quantité, les caractéristiques et les conditions commerciales.`,
+  `La durée de validité du devis et ses conditions d'acceptation figurent dans le devis formel ; cette page ne promet aucune durée de validité fixe.`,
+  `Le fret, l'assurance, le dédouanement, les droits, les taxes et les autres frais à destination sont répartis uniquement selon l'Incoterm et les conditions écrites figurant dans le devis formel et la commande acceptée.`,
+  `Une commande n'est confirmée que lorsque ses conditions commerciales et techniques ont été acceptées par écrit par les deux parties.`,
+  `L'acompte, le solde, les conditions de crédit et le calendrier de paiement sont confirmés dans le devis formel et la commande acceptée ; cette page ne fixe aucun pourcentage d'acompte standard.`,
+  `Les modes de paiement disponibles et les éventuels frais de transaction sont confirmés pour chaque devis et chaque commande.`,
+  `La quantité minimale de commande est d'une unité, tant pour les modèles du catalogue que pour les produits sur mesure.`,
+  `La fabrication des modèles du catalogue prend généralement environ 20 jours calendaires. Les produits sur mesure sont achevés dans un délai de 30 jours calendaires. Le délai de fabrication commence à réception du paiement et n'inclut pas le transport international.`,
+  `La date d'expédition estimée, le mode d'expédition, le transporteur et le délai de transport estimé sont confirmés dans le devis formel et la commande acceptée.`,
+  `EXW, FOB, CIF, DDP ou un autre Incoterm peut être envisagé s'il est expressément indiqué dans le devis formel et la commande acceptée. La mention d'un Incoterm sur cette page ne garantit pas sa disponibilité pour chaque commande.`,
+  `La responsabilité du fret, de l'assurance, du dédouanement à l'exportation ou à l'importation, des droits, des taxes, du transfert des risques et de la livraison est déterminée uniquement par l'Incoterm confirmé et les conditions écrites de la commande. Begapunk ne prend pas en charge le dédouanement à l'importation, les droits ou les taxes, sauf acceptation expresse et écrite de cette responsabilité.`,
+  `Le dédouanement, les conditions météorologiques, une perturbation du transporteur ou tout autre événement échappant au contrôle raisonnable des parties peut affecter l'expédition ou le transport international après l'achèvement de la production ; le traitement qui en résulte suit la commande acceptée et le droit applicable.`,
+  `La durée de garantie standard de Begapunk est d'un an à compter de la date d'expédition pour tous les produits, sous réserve des caractéristiques approuvées et des conditions écrites de la commande.`,
+  `Tout problème signalé est examiné au regard des caractéristiques approuvées, des conditions de fonctionnement documentées ainsi que des informations relatives à l'installation, à la maintenance et au contrôle.`,
+  `Avant de déterminer si une réclamation est couverte, Begapunk peut demander des photographies, des relevés de fonctionnement, des résultats de contrôle ou le retour de l'unité.`,
+  `Si Begapunk confirme un défaut de produit ou de fabrication couvert dont elle est responsable, la mesure standard consiste en un remplacement sans frais. Begapunk prend en charge les frais de retour et d'expédition du produit de remplacement convenus par écrit pour cette réclamation. Les autres problèmes sont traités selon les conclusions du contrôle et l'accord écrit entre les parties.`,
+  `Cette page ne promet ni délai de retour automatique ni droit au remboursement intégral. Tout retour ou remboursement nécessite une autorisation écrite préalable et suit le devis formel, la commande acceptée et le droit applicable.`,
+  `L'admissibilité des produits standard ou sur mesure à un retour ou à un autre traitement dépend des caractéristiques approuvées, de l'état du produit, de l'avancement de la production, du motif de la demande et des conditions écrites de la commande.`,
+  `L'adresse de retour, la procédure de contrôle, le fret, l'assurance, les frais de douane, les droits, les taxes, les frais de remise en stock et le montant de tout remboursement ou avoir sont confirmés dans l'autorisation écrite de retour.`,
+  `Aucune disposition des présentes Conditions ne limite les droits ou obligations qui ne peuvent légalement être exclus en vertu du droit applicable.`,
+]);
+
+const staticRows = rows.filter((row) => !row.legacySource);
+if (staticRows.length !== frenchStaticTranslations.length) {
+  throw new Error(`French owner-confirmed translation inventory mismatch: ${frenchStaticTranslations.length} translations for ${staticRows.length} rows.`);
+}
+staticRows.forEach((row, index) => {
+  row.fr = frenchStaticTranslations[index];
+});
+
 const sourceSet = new Set(rows.map((row) => row.source));
 if (sourceSet.size !== rows.length) {
   throw new Error('Owner-confirmed translation rows contain duplicate source strings.');
@@ -491,7 +618,10 @@ const catalogManagedRows = rows.filter((row) => !directManagedProductSources.has
 
 let changed = 0;
 const checkFailures = [];
-for (const language of ['de', 'ja', 'ru']) {
+for (const language of i18nConfig.activeLanguageCodes) {
+  if (!catalogManagedRows.every((row) => typeof row[language] === 'string' && row[language])) {
+    throw new Error(`${language}: owner-confirmed translation rows are incomplete.`);
+  }
   const filePath = path.join(root, 'i18n', 'overrides', `${language}.json`);
   const before = await fs.readFile(filePath, 'utf8');
   const current = JSON.parse(before);
@@ -544,7 +674,8 @@ function synchronizeStructuredWarranty(source, warranty, relativePath, validateO
   let productCount = 0;
   let warrantyCount = 0;
   let currentCount = 0;
-  const warrantyNames = new Set([warranty.legacyName, warranty.name]);
+  const legacyPairs = warranty.legacyPairs || [{ name: warranty.legacyName, value: warranty.legacyValue }];
+  const warrantyNames = new Set([...legacyPairs.map((pair) => pair.name), warranty.name]);
   const scriptPattern = /(<script\b[^>]*\btype=(['"])application\/ld\+json\2[^>]*>)([\s\S]*?)(<\/script>)/gi;
   const result = source.replace(scriptPattern, (full, opening, quote, rawJson, closing) => {
     let payload;
@@ -598,14 +729,18 @@ function synchronizeStructuredWarranty(source, warranty, relativePath, validateO
   return result;
 }
 
-for (const [language, warranty] of Object.entries(productWarrantyByLocale)) {
+for (const language of [i18nConfig.sourceLanguage.code, ...i18nConfig.activeLanguageCodes]) {
+  const warranty = productWarrantyByLocale[language];
+  if (!warranty) throw new Error(`${language}: product warranty copy is missing.`);
   for (const pageName of productPageNames) {
     const relativePath = warranty.prefix ? `${warranty.prefix}/${pageName}` : pageName;
     const filePath = path.join(root, ...relativePath.split('/'));
     const before = await fs.readFile(filePath, 'utf8');
-    const legacyVisible = `<th>${warranty.legacyName}</th><td>${warranty.legacyValue}</td>`;
+    const legacyPairs = warranty.legacyPairs || [{ name: warranty.legacyName, value: warranty.legacyValue }];
+    const legacyVisiblePairs = legacyPairs.map(({ name, value }) => `<th>${name}</th><td>${value}</td>`);
     const currentVisible = `<th>${warranty.name}</th><td>${warranty.value}</td>`;
-    const visibleLegacyCount = exactCount(before, legacyVisible);
+    const visibleLegacyCount = legacyVisiblePairs
+      .reduce((total, legacyVisible) => total + exactCount(before, legacyVisible), 0);
     const visibleCurrentCount = exactCount(before, currentVisible);
     if (visibleLegacyCount + visibleCurrentCount !== 1) {
       throw new Error(
@@ -618,7 +753,8 @@ for (const [language, warranty] of Object.entries(productWarrantyByLocale)) {
       synchronizeStructuredWarranty(before, warranty, relativePath, true);
       continue;
     }
-    const visibleSynchronized = before.replace(legacyVisible, currentVisible);
+    const visibleSynchronized = legacyVisiblePairs
+      .reduce((html, legacyVisible) => html.replace(legacyVisible, currentVisible), before);
     const after = synchronizeStructuredWarranty(visibleSynchronized, warranty, relativePath);
     synchronizeStructuredWarranty(after, warranty, relativePath, true);
     if (exactCount(after, currentVisible) !== 1) {
@@ -634,9 +770,17 @@ for (const contract of customHydraulicLeadTimeContracts) {
   const filePath = path.join(root, ...contract.file.split('/'));
   const before = await fs.readFile(filePath, 'utf8');
   let after = before;
+  for (const normalization of contract.normalizations || []) {
+    for (const legacy of normalization.legacy) after = after.replaceAll(legacy, normalization.current);
+    if (!after.includes(normalization.current)) {
+      throw new Error(`${contract.file}: required owner-confirmed wording is missing: ${normalization.current}`);
+    }
+  }
   for (const replacement of contract.replacements) {
-    const legacyCount = exactCount(before, replacement.legacy);
-    const currentCount = exactCount(before, replacement.current);
+    const legacyValues = [replacement.legacy, ...(replacement.legacyVariants || [])];
+    const legacyCounts = legacyValues.map((value) => exactCount(after, value));
+    const legacyCount = legacyCounts.reduce((total, count) => total + count, 0);
+    const currentCount = exactCount(after, replacement.current);
     if (legacyCount + currentCount !== replacement.count) {
       throw new Error(
         `${contract.file}: expected ${replacement.count} legacy/current custom-lead-time occurrence(s); `
@@ -646,7 +790,12 @@ for (const contract of customHydraulicLeadTimeContracts) {
     if (checkOnly && legacyCount) {
       throw new Error(`${contract.file}: custom hydraulic lead time is not synchronized to the within-30-day promise.`);
     }
-    if (!checkOnly && legacyCount) after = after.replaceAll(replacement.legacy, replacement.current);
+    if (!checkOnly && legacyCount) {
+      for (const legacy of legacyValues) after = after.replaceAll(legacy, replacement.current);
+    }
+  }
+  if (checkOnly && after !== before) {
+    throw new Error(`${contract.file}: owner-confirmed terminology is not synchronized.`);
   }
   if (!checkOnly && after !== before) {
     await fs.writeFile(filePath, after, 'utf8');
@@ -681,5 +830,5 @@ if (checkOnly && checkFailures.length) {
 }
 
 console.log(checkOnly
-  ? `Owner-confirmed translations, 64 one-year product warranties, four custom-hydraulic lead-time pages, and bottle-capping structured data are synchronized for ${catalogManagedRows.length} catalog-managed and ${directManagedProductSources.size} direct-managed source statements in three languages.`
+  ? `Owner-confirmed translations, ${productPageNames.length * (i18nConfig.activeLanguageCodes.length + 1)} one-year product warranties, ${customHydraulicLeadTimeContracts.length} custom-hydraulic lead-time pages, and bottle-capping structured data are synchronized for ${catalogManagedRows.length} catalog-managed and ${directManagedProductSources.size} direct-managed source statements in ${i18nConfig.activeLanguageCodes.length} target languages.`
   : `Synchronized owner-confirmed translations and structured data in ${changed} file(s).`);
