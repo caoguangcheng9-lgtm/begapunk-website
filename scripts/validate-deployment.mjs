@@ -334,10 +334,10 @@ try {
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith('#'));
   const requiredNginxDirectives = [
-    ['root homepage alias', 'rewrite ^/index[.]html$ https://www.begapunk.com/ permanent;'],
+    ['root homepage alias', 'if ($request_uri ~ "^/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$is_args$args; }'],
     [
       'localized homepage aliases',
-      `rewrite ^/(${deployedLanguageCodes.join('|')})/index[.]html$ https://www.begapunk.com/$1/ permanent;`,
+      `if ($request_uri ~ "^/(${deployedLanguageCodes.join('|')})/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$1/$is_args$args; }`,
     ],
     ['root product alias', 'rewrite ^/BP-2P-95-0001[.]html$ https://www.begapunk.com/BP-2P-95-0005.html permanent;'],
     [
@@ -435,12 +435,19 @@ try {
   const sudoersAtomicReplace = hardeningUpgrade.indexOf('mv -Tf -- "$sudoers_candidate" "$SUDOERS_FILE"');
   const upgradeSuccessCommit = hardeningUpgrade.lastIndexOf('upgrade_succeeded=true');
   const policyRollbackDisarm = hardeningUpgrade.lastIndexOf('policy_attempted=false');
+  const backupRootSafetyCheck = hardeningUpgrade.indexOf('backup_root_owner="$(stat -c');
+  const firstBasePermissionChange = hardeningUpgrade.indexOf('chown "root:$deploy_group" "$BASE_DIR"');
   if (!hardeningUpgrade.includes("MODE=\"${1:---check}\"")
     || !hardeningUpgrade.includes('/usr/local/sbin/begapunk-nginx-config')
     || !hardeningUpgrade.includes('stage "$policy_candidate" "$policy_transaction"')
-    || !hardeningUpgrade.includes('EXPECTED_HELPER_VERSION="begapunk-nginx-config-v2"')
+    || !hardeningUpgrade.includes('EXPECTED_HELPER_VERSION="begapunk-nginx-config-v3"')
+    || !hardeningUpgrade.includes('BACKUP_ROOT="/var/backups"')
+    || !hardeningUpgrade.includes('install -d -o root -g root -m 0755 "$BACKUP_ROOT"')
+    || !hardeningUpgrade.includes('mktemp -d "$BACKUP_ROOT/begapunk-hardening.XXXXXX"')
     || !hardeningUpgrade.includes('run_hardening_checks')
     || !hardeningUpgrade.includes('recovery_failed=1')
+    || backupRootSafetyCheck < 0
+    || firstBasePermissionChange < backupRootSafetyCheck
     || helperRollbackArm < 0
     || helperAtomicReplace < helperRollbackArm
     || sudoersRollbackArm < 0
@@ -452,7 +459,7 @@ try {
   if (!nginxInstaller.includes('Never allow caller-controlled environment variables')
     || !nginxInstaller.includes('validate_candidate')
     || !nginxInstaller.includes('restore_transaction')
-    || !nginxInstaller.includes("printf '%s\\n' 'begapunk-nginx-config-v2'")) {
+    || !nginxInstaller.includes("printf '%s\\n' 'begapunk-nginx-config-v3'")) {
     failures.push('ops/install-nginx-managed-redirects.sh: privileged scope validation or transaction rollback is incomplete');
   }
   for (const requiredMigrationControl of [
@@ -475,7 +482,9 @@ try {
     '/usr/local/sbin/begapunk-nginx-config stage',
     '/usr/local/sbin/begapunk-nginx-config commit',
     '/usr/local/sbin/begapunk-nginx-config rollback',
-    "expected_helper_version='begapunk-nginx-config-v2'",
+    "expected_helper_version='begapunk-nginx-config-v3'",
+    "expected_marker_version='v3'",
+    "expected_doctor_result='begapunk-nginx-config-doctor-ok:v3'",
     'Verify hardened server deployment contract',
     "helper_metadata\" != 'root:root:755'",
     "env_metadata\" != 'root:www:640'",
@@ -507,6 +516,7 @@ try {
     "'/locales/en.json'",
     "'/cgi-sys/suspendedpage.cgi'",
     "'/__begapunk_missing_policy_probe__'",
+    "verify_status '/' 200",
     'x-content-type-options:',
     'cache-control:',
     "'Alt-Svc'",

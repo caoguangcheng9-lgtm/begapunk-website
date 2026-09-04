@@ -13,9 +13,10 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PRIVILEGED_NGINX_HELPER="/usr/local/sbin/begapunk-nginx-config"
 SUDOERS_FILE="/etc/sudoers.d/begapunk-nginx-config"
 LEGACY_SUDOERS_FILE="/etc/sudoers.d/codexdeploy"
-EXPECTED_HELPER_VERSION="begapunk-nginx-config-v2"
-EXPECTED_MARKER_VERSION="v2"
-EXPECTED_DOCTOR_RESULT="begapunk-nginx-config-doctor-ok:v2"
+BACKUP_ROOT="/var/backups"
+EXPECTED_HELPER_VERSION="begapunk-nginx-config-v3"
+EXPECTED_MARKER_VERSION="v3"
+EXPECTED_DOCTOR_RESULT="begapunk-nginx-config-doctor-ok:v3"
 
 echo "Deployment base: $BASE_DIR"
 echo "Current release: $(readlink -f "$CURRENT_LINK" 2>/dev/null || echo missing)"
@@ -244,6 +245,23 @@ fi
 env -u SUDO_USER -u SUDO_UID -u SUDO_GID \
   bash "$SCRIPT_DIR/install-nginx-managed-redirects.sh" validate "$SCRIPT_DIR/nginx-managed-redirects.conf"
 
+# Some minimal server images omit /var/backups. Create only that conventional
+# root-owned container, and fail closed if an existing path is unsafe.
+if [[ -e "$BACKUP_ROOT" || -L "$BACKUP_ROOT" ]]; then
+  [[ -d "$BACKUP_ROOT" && ! -L "$BACKUP_ROOT" ]] || {
+    echo "Hardening backup root must be a real directory: $BACKUP_ROOT" >&2
+    exit 6
+  }
+else
+  install -d -o root -g root -m 0755 "$BACKUP_ROOT"
+fi
+backup_root_owner="$(stat -c '%U' "$BACKUP_ROOT")"
+backup_root_mode="$(stat -c '%a' "$BACKUP_ROOT")"
+if [[ "$backup_root_owner" != root || $((8#$backup_root_mode & 8#22)) -ne 0 ]]; then
+  echo "Hardening backup root must be root-owned and not group/world writable: $BACKUP_ROOT ($backup_root_owner:$backup_root_mode)." >&2
+  exit 6
+fi
+
 deploy_group="$(id -gn "$DEPLOY_USER")"
 
 # Secure the group-writable base before creating a root-owned lock inside it.
@@ -323,7 +341,9 @@ else
   chmod 0640 "$SHARED_DIR/.env"
 fi
 
-backup_dir="$(mktemp -d /var/backups/begapunk-hardening.XXXXXX)"
+backup_dir="$(mktemp -d "$BACKUP_ROOT/begapunk-hardening.XXXXXX")"
+chown root:root "$backup_dir"
+chmod 0700 "$backup_dir"
 helper_had_previous=false
 sudoers_had_previous=false
 marker_had_previous=false
@@ -439,7 +459,7 @@ cleanup_upgrade() {
     recovery_failed=1
   fi
   if [[ "$upgrade_succeeded" == true || ( "$policy_rollback_ok" == true && "$recovery_failed" -eq 0 ) ]]; then
-    if [[ "$backup_dir" == /var/backups/begapunk-hardening.* && -d "$backup_dir" && ! -L "$backup_dir" ]]; then
+    if [[ "$backup_dir" == "$BACKUP_ROOT"/begapunk-hardening.* && -d "$backup_dir" && ! -L "$backup_dir" ]]; then
       if ! rm -rf -- "$backup_dir"; then
         echo "CRITICAL: upgrade completed or recovered, but recovery backups could not be removed: $backup_dir" >&2
         recovery_failed=1

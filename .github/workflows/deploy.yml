@@ -177,9 +177,9 @@ jobs:
           inquiry_env="$base_dir/shared/.env"
           maintenance_lock="$base_dir/maintenance.lock"
           hardening_marker="$base_dir/.hardening-complete"
-          expected_helper_version='begapunk-nginx-config-v2'
-          expected_marker_version='v2'
-          expected_doctor_result='begapunk-nginx-config-doctor-ok:v2'
+          expected_helper_version='begapunk-nginx-config-v3'
+          expected_marker_version='v3'
+          expected_doctor_result='begapunk-nginx-config-doctor-ok:v3'
           failures=0
 
           fail_check() {

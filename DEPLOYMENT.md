@@ -18,7 +18,7 @@ Git commit and deploy tag
         -> automatic Nginx + release rollback attempt on a runner-visible pre-commit failure or normal cancellation
 ```
 
-As verified on 2026-09-04, production already uses `/www/begapunk/current` and has `/www/begapunk/.bootstrap-complete`; `rsync` and the external shared `.env` are present. The v2 privileged helper and `.hardening-complete` marker were not yet installed at that observation, so use the hardening upgrade—not bootstrap—before the next automated release. Treat this as a dated observation and re-run `--check` before acting.
+As verified on 2026-09-04, production already uses `/www/begapunk/current` and has `/www/begapunk/.bootstrap-complete`; `rsync` and the external shared `.env` are present. The v3 privileged helper and matching `.hardening-complete` marker are required before the next automated release, so use the hardening upgrade—not bootstrap—when `--check` reports an older contract. Treat this as a dated observation and re-run `--check` before acting.
 
 ## Files in this deployment system
 
@@ -165,7 +165,7 @@ sudo bash upgrade-deployment-hardening.sh --check
 sudo bash upgrade-deployment-hardening.sh --apply
 ```
 
-`--check` is fail-closed: it returns a non-zero status until the active-release symlink, v2 helper and doctor result, helper ownership/mode, external `.env`, root-owned maintenance lock, root-owned `helper_version=v2` marker, narrow sudoers rule and removal of the older broad sudo rule all pass. `--apply` refuses the old broad rule before changing hardening files, preserves the active release, normalizes the external `.env`, installs the helper and sudoers file through validated atomic replacements, stages and self-checks the policy, commits it, and writes the marker last with an atomic rename. Directory, ownership, lock and `.env` normalization are idempotent preparatory changes and are not reverted. During helper/sudoers/policy/marker replacement, the signal/exit trap rolls back the policy first, restores prior files when safe, checks every recovery operation and retains root-only backups if recovery is incomplete.
+`--check` is fail-closed: it returns a non-zero status until the active-release symlink, v3 helper and doctor result, helper ownership/mode, external `.env`, root-owned maintenance lock, root-owned `helper_version=v3` marker, narrow sudoers rule and removal of the older broad sudo rule all pass. `--apply` refuses the old broad rule before changing hardening files, preserves the active release, normalizes the external `.env`, installs the helper and sudoers file through validated atomic replacements, stages and self-checks the policy, commits it, and writes the marker last with an atomic rename. Directory, ownership, lock and `.env` normalization are idempotent preparatory changes and are not reverted. During helper/sudoers/policy/marker replacement, the signal/exit trap rolls back the policy first, restores prior files when safe, checks every recovery operation and retains root-only backups if recovery is incomplete.
 
 The maintenance lock prevents the upgrade from replacing the helper during a workflow stage, activation, commit or rollback. Do not bypass it with direct helper or activation commands while an upgrade or deployment is running.
 

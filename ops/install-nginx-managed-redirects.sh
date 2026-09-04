@@ -25,7 +25,7 @@ fi
 PRIVILEGED_HELPER="/usr/local/sbin/begapunk-nginx-config"
 SUDOERS_FILE="/etc/sudoers.d/begapunk-nginx-config"
 LEGACY_SUDOERS_FILE="/etc/sudoers.d/codexdeploy"
-EXPECTED_HELPER_VERSION="begapunk-nginx-config-v2"
+EXPECTED_HELPER_VERSION="begapunk-nginx-config-v3"
 EXPECTED_SUDOERS_RULE="codexdeploy ALL=(root) NOPASSWD: $PRIVILEGED_HELPER"
 INCLUDE_LINE="    include $MANAGED_CONF;"
 
@@ -44,7 +44,7 @@ candidate=""
 case "$action" in
   version)
     [[ "$#" -eq 1 ]] || { usage; exit 2; }
-    printf '%s\n' 'begapunk-nginx-config-v2'
+    printf '%s\n' 'begapunk-nginx-config-v3'
     exit 0
     ;;
   doctor)
@@ -152,7 +152,7 @@ run_doctor() {
     return 1
   fi
 
-  printf '%s\n' 'begapunk-nginx-config-doctor-ok:v2'
+  printf '%s\n' 'begapunk-nginx-config-doctor-ok:v3'
 }
 
 is_allowed_directive() {
@@ -199,8 +199,8 @@ is_allowed_directive() {
     'rewrite ^/(de|fr|ja|ru)/BP-2P-95-0001[.]html$ https://www.begapunk.com/$1/BP-2P-95-0005.html permanent;') ;;
     'rewrite ^/products-p2[.]html$ https://www.begapunk.com/products.html permanent;') ;;
     'rewrite ^/(de|fr|ja|ru)/products-p2[.]html$ https://www.begapunk.com/$1/products.html permanent;') ;;
-    'rewrite ^/index[.]html$ https://www.begapunk.com/ permanent;') ;;
-    'rewrite ^/(de|fr|ja|ru)/index[.]html$ https://www.begapunk.com/$1/ permanent;') ;;
+    'if ($request_uri ~ "^/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$is_args$args; }') ;;
+    'if ($request_uri ~ "^/(de|fr|ja|ru)/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$1/$is_args$args; }') ;;
     *)
       return 1
       ;;
@@ -589,6 +589,7 @@ verify_single_header_present() {
 }
 
 verify_live_policy() {
+  verify_status 'https://www.begapunk.com/' 200 || return 1
   verify_redirect 'http://www.begapunk.com/?utm_source=nginx-install-http' 'https://www.begapunk.com/?utm_source=nginx-install-http' || return 1
   verify_redirect 'http://begapunk.com/?utm_source=nginx-install-apex-http' 'https://www.begapunk.com/?utm_source=nginx-install-apex-http' || return 1
   verify_redirect 'https://begapunk.com/?utm_source=nginx-install-apex' 'https://www.begapunk.com/?utm_source=nginx-install-apex' || return 1

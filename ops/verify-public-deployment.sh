@@ -116,6 +116,7 @@ verify_single_hop_redirect() {
 }
 
 homepage="$(curl --fail --silent --show-error --max-time 30 "$BASE_URL/")"
+verify_status '/' 200
 grep -Eiq '<html|<!doctype html|BEGAPUNK' <<<"$homepage" || {
   echo "The public homepage did not contain the expected HTML marker." >&2
   exit 1
