@@ -5,8 +5,13 @@ import path from 'node:path';
 const root = path.resolve(import.meta.dirname, '..');
 const write = process.argv.includes('--write');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
-const analyticsSource = await fs.readFile(path.join(root, 'js', 'analytics.js'));
-const version = createHash('sha256').update(analyticsSource).digest('hex').slice(0, 12);
+const analyticsSource = await fs.readFile(path.join(root, 'js', 'analytics.js'), 'utf8');
+// Git may materialize text files with LF, CRLF, or a temporary mixture while a
+// patch is being applied. Hash the canonical text so identical JavaScript gets
+// the same cache key on Windows and Linux while every non-EOL change still
+// invalidates the asset URL.
+const canonicalAnalyticsSource = analyticsSource.replace(/\r\n?/g, '\n');
+const version = createHash('sha256').update(canonicalAnalyticsSource, 'utf8').digest('hex').slice(0, 12);
 const localeCodes = new Set([
   ...(config.activeLanguageCodes || []),
   ...Object.keys(config.partialLanguagePages || {}),

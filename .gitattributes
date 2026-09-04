@@ -2,6 +2,7 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.mjs text eol=lf
+js/analytics.js text eol=lf
 *.py text eol=lf
 llms.txt text eol=lf
 ops/*.conf text eol=lf
