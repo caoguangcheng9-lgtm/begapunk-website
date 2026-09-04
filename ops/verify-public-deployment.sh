@@ -199,10 +199,7 @@ grep -Eq '^HTTP/[^ ]+ 405([[:space:]]|\r?$)' <<<"$endpoint_headers" || {
   echo "The inquiry endpoint did not return HTTP 405 for a non-POST request." >&2
   exit 1
 }
-grep -Eiq '^allow:[[:space:]]*POST\r?$' <<<"$endpoint_headers" || {
-  echo "The inquiry endpoint did not advertise POST as its allowed method." >&2
-  exit 1
-}
+verify_single_header_value "$endpoint_headers" 'Allow' 'POST'
 
 homepage_headers="$(curl --silent --show-error --head --max-time 30 "$BASE_URL/")"
 verify_single_header_value "$homepage_headers" 'x-content-type-options:' 'nosniff'
