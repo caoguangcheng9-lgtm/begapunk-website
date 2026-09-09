@@ -1,6 +1,6 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
-  "updatedAt": "2026-09-05",
+  "updatedAt": "2026-09-09",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -40,7 +40,7 @@
     "semanticAlgorithm": "sha256-semantic-html-v1",
     "mechanicalAlgorithm": "sha256-lf-text-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "manifestUpdatedAt": "2026-09-04T18:01:49.095Z",
+    "manifestUpdatedAt": "2026-09-09T09:00:37.401Z",
     "pagesPerLanguage": 56,
     "languages": [
       "de",

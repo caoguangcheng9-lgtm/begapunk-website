@@ -1464,6 +1464,27 @@ function pendingIdentityMetadataDescription(locale, model, heading) {
   });
 }
 
+// Exact reviewed search-title overrides; visible product headings and facts stay unchanged.
+const productSearchTitleOverrides = Object.freeze({
+  "ru/BP-1P-0003": "BP-1P-0003 1-канальное пневматическое вращающееся соединение",
+  "ru/BP-2P-08-0001": "BP-2P-08-0001 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-2P-50-0001": "BP-2P-50-0001 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-2P-0001": "BP-2P-0001 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-3P-S06-0001": "BP-3P-S06-0001 3-канальное пневмоэлектрическое вращающееся соединение",
+  "ru/BP-2P-16-0001": "BP-2P-16-0001 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-1P-0006": "BP-1P-0006 1-канальное пневматическое вращающееся соединение",
+  "ru/BP-3P-0006": "BP-3P-0006 3-канальное пневматическое вращающееся соединение",
+  "ru/BP-8P-0001": "BP-8P-0001 8-канальное пневматическое вращающееся соединение",
+  "ru/BP-3P-0004": "BP-3P-0004 3-канальное пневматическое вращающееся соединение",
+  "ru/BP-2P-30-0001": "BP-2P-30-0001 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-2P-130-0001": "BP-2P-130-0001 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-2P-0002": "BP-2P-0002 2-канальное пневматическое вращающееся соединение",
+  "ru/BP-3P-0007": "BP-3P-0007 3-канальное пневматическое вращающееся соединение",
+  "fr/BP-2P-95-0005": "BP-2P-95-0005 raccord tournant pneumatique à 2 passages | Begapunk",
+  "ru/BP-4P-30-0001": "BP-4P-30-0001 4-канальное пневматическое вращающееся соединение",
+  "fr/BP-3P-S06-0001": "BP-3P-S06-0001 raccord tournant pneumatique-électrique à 3 passages"
+});
+
 export function drawingBackedProductMetadata(locale, model) {
   const product = products[model];
   if (!product) return null;
@@ -1472,7 +1493,7 @@ export function drawingBackedProductMetadata(locale, model) {
   const description = product.status === quarantineStatus
     ? pendingIdentityMetadataDescription(locale, model, h1)
     : verifiedMetadataDescription(locale, model, product, h1);
-  const title = `${h1} | Begapunk`;
+  const title = productSearchTitleOverrides[`${locale}/${model}`] ?? `${h1} | Begapunk`;
   return Object.freeze({
     title,
     description,
@@ -1528,7 +1549,8 @@ for (const locale of Object.keys(copy)) {
       || /\bindependent\b/iu.test(uiContract.keyValues.passages)) {
       throw new Error(`${locale}/${model}: first-view passages/MOQ value is missing or overstates passage topology.`);
     }
-    if (!metadata || metadata.title !== `${metadata.h1} | Begapunk`
+    if (!metadata || metadata.title !== (productSearchTitleOverrides[`${locale}/${model}`] ?? `${metadata.h1} | Begapunk`)
+      || metadata.openGraphTitle !== metadata.title || metadata.twitterTitle !== metadata.title
       || metadata.breadcrumb !== metadata.h1 || metadata.imageAlt !== metadata.h1
       || metadata.linkLabel !== metadata.h1 || metadata.openGraphDescription !== metadata.description
       || metadata.twitterDescription !== metadata.description || metadata.openGraphImageAlt !== metadata.imageAlt

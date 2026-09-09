@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-04T12:05:42.444Z",
+  "generatedAt": "2026-09-09T08:23:25.831Z",
   "pages": [
     "index.html",
     "about.html",
@@ -3819,13 +3819,6 @@
       ]
     },
     {
-      "id": "db22d8756bd2cd0f",
-      "source": "Air Rotary Union & Rotary Joint Model Comparison | Begapunk",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
       "id": "db3c9867ed1d8825",
       "source": "Air Rotary Union &amp; Rotary Joint Applications",
       "pages": [
@@ -3835,13 +3828,6 @@
     {
       "id": "97b6f434021090d8",
       "source": "Air Rotary Union &amp; Rotary Joint Model Comparison",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "ea320c8d9c785354",
-      "source": "Air Rotary Union &amp; Rotary Joint Model Comparison | Begapunk Selection Table",
       "pages": [
         "product-comparison.html"
       ]
@@ -10117,6 +10103,13 @@
       "source": "Pneumatic rotary union installed at the rear chuck of a laser tube cutting machine",
       "pages": [
         "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "9b9c5ccfa56dfab0",
+      "source": "Pneumatic Rotary Union Model Comparison | Begapunk",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {

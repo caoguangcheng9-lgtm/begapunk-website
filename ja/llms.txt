@@ -51,9 +51,9 @@
 - [非接触すきまシール式ロータリジョイントの原理 | Begapunk](https://www.begapunk.com/ja/blog-non-contact-clearance-seal-rotary-union.html): 非接触すきまシール式ロータリジョイントで、固定側から高速回転するロータへ流体を供給する仕組みと、片側ラジアルすきま0.003 mmの意味を解説します。
 - [ロータリージョイント取付時の7つの注意点](https://www.begapunk.com/ja/blog-rotary-joint-installation-mistakes.html): 早期故障につながる取付ミスを防ぐため、芯合わせ、配管荷重、ろ過、ねじシール、ならし運転、漏れ確認を解説します。
 - [ロータリージョイントの漏れ原因と点検手順](https://www.begapunk.com/ja/blog-rotary-joint-leaking.html): ロータリージョイントの漏れは、漏れ位置の特定、継手不良と回転シール不良の切り分け、芯出し確認を部品交換の前に行います。
-- [ロータリージョイント本体材質の選び方](https://www.begapunk.com/ja/blog-rotary-joint-materials.html): アルミ・ステンレス・黄銅の本体を質量と環境で比較し、選定型式の公開本体材料を確認します。どの金属が長持ちするかの順位付けではありません。
-- [空圧用ロータリージョイントの選定5項目](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 流路数、使用圧力、回転数、流体適合性、取付方式の5項目から、設備に合う空圧用ロータリージョイントを選定します。
-- [ロータリージョイントのシール方式比較](https://www.begapunk.com/ja/blog-rotary-union-seal-types.html): Oリング、リップシール、ばね式PTFEシールを、圧力、回転数、流体、摩擦、許容漏れ量から比較します。
+- [ロータリージョイントの材質選定：アルミ・ステンレス・黄銅の比較 | Begapunk](https://www.begapunk.com/ja/blog-rotary-joint-materials.html): アルミ・ステンレス・黄銅の本体を質量と環境で比較し、選定型式の公開本体材料を確認します。どの金属が長持ちするかの順位付けではありません。
+- [空圧用ロータリージョイントの選び方：流路数・圧力・回転数など5項目 | Begapunk](https://www.begapunk.com/ja/blog-rotary-joint-selection.html): 流路数、使用圧力、回転数、流体適合性、取付方式の5項目から、設備に合う空圧用ロータリージョイントを選定します。
+- [ロータリージョイントのシール比較：Oリング・リップシール・ばね式PTFE | Begapunk](https://www.begapunk.com/ja/blog-rotary-union-seal-types.html): Oリング、リップシール、ばね式PTFEシールを、圧力、回転数、流体、摩擦、許容漏れ量から比較します。
 - [ロータリージョイントのシール交換手順](https://www.begapunk.com/ja/blog-seal-replacement.html): 軸・シール面・漏れ位置を点検したうえで、シール交換かユニット交換かを判断します。公開型式の指定シールセットを使ってください。
 - [ロータリージョイントのねじ取付とフランジ取付](https://www.begapunk.com/ja/blog-threaded-vs-flange.html): ねじ込みとフランジ取付は、外形の見た目ではなく、取付空間・芯出し・回り止め・保全アクセスから選びます。
 
