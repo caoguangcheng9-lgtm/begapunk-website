@@ -35,10 +35,12 @@
     ]
   },
   "reviewedArtifactSnapshot": {
-    "schemaVersion": 2,
-    "algorithm": "sha256-bytes-v1",
+    "schemaVersion": 3,
+    "manifestSchemaVersion": 2,
+    "semanticAlgorithm": "sha256-semantic-html-v1",
+    "mechanicalAlgorithm": "sha256-lf-text-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "capturedAt": "2026-09-04T15:09:00.128Z",
+    "manifestUpdatedAt": "2026-09-04T18:01:49.095Z",
     "pagesPerLanguage": 56,
     "languages": [
       "de",
@@ -46,7 +48,9 @@
       "ja",
       "ru"
     ],
-    "qualityBoundary": "integrity-only-not-native-speaker-or-semantic-proof"
+    "qualityBoundary": "semantic-change-detection-plus-mechanical-integrity-not-native-speaker-or-new-editorial-proof",
+    "migrationRecord": "audit/localization/2026-09-05-editorial-snapshot-schema-migration.md",
+    "migrationRecordSha256": "b83f02902ca741cc2ddc7a38f1e7974a79aee6d38a4d1870511fcd516110217a"
   },
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
