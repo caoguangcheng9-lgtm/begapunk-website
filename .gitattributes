@@ -9,6 +9,7 @@
 *.xml text eol=lf
 *.css text eol=lf
 *.txt text eol=lf
+*.sha256 text eol=lf
 *.md text eol=lf
 .htaccess text eol=lf
 .gitattributes text eol=lf
