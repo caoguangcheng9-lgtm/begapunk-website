@@ -241,6 +241,25 @@ test('SMTP helper fixture regression suite passes', {
   assert.equal(stderr, '');
 });
 
+test('BaoTa ACME ownership exception is fixed-path and leaves other runtime nodes protected', async () => {
+  const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const source = await readFile(path.join(repositoryRoot, 'ops', 'activate-release.sh'), 'utf8');
+  assert.match(source, /local tree_root='\/www\/begapunk\/shared\/\.well-known'/);
+  assert.ok(source.includes('"$expected_uid:$expected_gid" == \'0:0\''));
+  assert.ok(source.includes('^[A-Za-z0-9_-]{22,256}$'));
+  assert.ok(source.includes('validate_plain_directory_tree "$tree_root"'));
+  assert.ok(source.includes('validate_managed_runtime_file "$verification_file" "$expected_uid" "$expected_gid" 644'));
+});
+
+test('BaoTa ACME runtime fixtures reject unsafe ownership, paths, nodes and modes', {
+  skip: process.platform === 'win32' ? 'Requires Linux file metadata semantics.' : false,
+}, async () => {
+  const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const { stdout, stderr } = await execFileAsync('bash', ['tests/acme-runtime.test.sh'], { cwd: repositoryRoot });
+  assert.match(stdout, /ACME runtime fixture tests passed/);
+  assert.equal(stderr, '');
+});
+
 test('bootstrap exact-verifies the copied seed before adding runtime links', async () => {
   const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const bootstrapSource = await readFile(path.join(repositoryRoot, 'ops', 'bootstrap-server.sh'), 'utf8');

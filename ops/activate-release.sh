@@ -147,6 +147,49 @@ validate_managed_runtime_file() {
   validate_runtime_node_metadata "$file_path" "$expected_uid" "$expected_gid" "$expected_mode"
 }
 
+# BaoTa's root-run ACME renewer explicitly assigns www ownership to these
+# public challenge directories. Do not extend that exception to other runtime
+# files, nested directories, executable filenames, or the credential store.
+validate_baota_acme_runtime_tree() (
+  local tree_root='/www/begapunk/shared/.well-known'
+  local www_uid www_gid inventory_file node relative expected_mode actual_metadata
+  www_uid="$(id -u www 2>/dev/null)" || return 1
+  www_gid="$(id -g www 2>/dev/null)" || return 1
+  [[ "$www_uid" =~ ^[0-9]+$ && "$www_gid" =~ ^[0-9]+$ && "$www_uid" != 0 && "$www_gid" != 0 ]] || {
+    release_safety_error 'ACME writer must be the existing non-root www account.'
+    return 1
+  }
+  validate_plain_directory_tree "$tree_root" || return 1
+  inventory_file="$(mktemp)" || return 1
+  trap 'rm -f -- "$inventory_file"' EXIT
+  find "$tree_root" -print0 > "$inventory_file" || return 1
+  while IFS= read -r -d '' node; do
+    relative="${node#"$tree_root"}"
+    expected_mode=644
+    [[ ! -d "$node" ]] || expected_mode=755
+    actual_metadata="$(stat -c '%u:%g:%a' -- "$node")" || return 1
+    if [[ "$actual_metadata" == "0:0:$expected_mode" ]]; then
+      continue
+    fi
+    case "$relative" in
+      ''|/acme-challenge)
+        [[ -d "$node" ]] || { release_safety_error "ACME directory is not a directory ($node)."; return 1; }
+        ;;
+      /acme-challenge/*)
+        [[ -f "$node" && "${relative#/acme-challenge/}" =~ ^[A-Za-z0-9_-]{22,256}$ ]] || {
+          release_safety_error "www-owned ACME node is not a direct token file ($node)."
+          return 1
+        }
+        ;;
+      *) release_safety_error "www ownership is forbidden outside ACME token paths ($node)."; return 1 ;;
+    esac
+    if [[ "$actual_metadata" != "$www_uid:$www_gid:$expected_mode" ]]; then
+      release_safety_error "ACME runtime owner/mode mismatch ($node)."
+      return 1
+    fi
+  done < "$inventory_file"
+)
+
 validate_inquiry_environment_file() {
   local file_path="$1"
   local expected_uid="$2"
@@ -224,7 +267,11 @@ validate_shared_runtime_bindings() {
   validate_runtime_node_metadata "$shared_dir" "$expected_uid" "$expected_gid" 755 || return 1
 
   if [[ -e "$well_known" || -L "$well_known" ]]; then
-    validate_managed_runtime_tree "$well_known" "$expected_uid" "$expected_gid" || return 1
+    if [[ "$well_known" == '/www/begapunk/shared/.well-known' && "$expected_uid:$expected_gid" == '0:0' ]]; then
+      validate_baota_acme_runtime_tree || return 1
+    else
+      validate_managed_runtime_tree "$well_known" "$expected_uid" "$expected_gid" || return 1
+    fi
   fi
 
   shopt -s nullglob
