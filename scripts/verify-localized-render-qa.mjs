@@ -1,19 +1,39 @@
 import { promises as fs } from 'node:fs';
+import { createHash } from 'node:crypto';
 import http from 'node:http';
 import path from 'node:path';
 import process from 'node:process';
 import puppeteer from 'puppeteer-core';
+import {
+  chooseSelectOptionWithPointerAndKeyboard,
+  collectPageErrors,
+} from './lib/browser-interaction-gate.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
-const siteRoot = path.resolve(process.argv[2] || sourceRoot);
-const languageArgument = process.argv.find((argument) => argument.startsWith('--languages='));
-const pagesArgument = process.argv.find((argument) => argument.startsWith('--pages='));
-const reportArgument = process.argv.find((argument) => argument.startsWith('--report='));
+const releaseInventory = JSON.parse(await fs.readFile(
+  path.join(sourceRoot, 'audit', 'policy', 'release-html-inventory.json'),
+  'utf8',
+));
+const errorPages = new Set(releaseInventory.errorPages || []);
+const argumentsList = process.argv.slice(2);
+const positionalRoot = argumentsList.find((argument) => !argument.startsWith('--'));
+const siteRoot = path.resolve(positionalRoot || sourceRoot);
+const languageArgument = argumentsList.find((argument) => argument.startsWith('--languages='));
+const pagesArgument = argumentsList.find((argument) => argument.startsWith('--pages='));
+const reportArgument = argumentsList.find((argument) => argument.startsWith('--report='));
+const baseUrlArgument = argumentsList.find((argument) => argument.startsWith('--base-url='));
+const expectedRootArgument = argumentsList.find((argument) => argument.startsWith('--expected-root='));
+const externalBaseUrl = baseUrlArgument
+  ? baseUrlArgument.slice('--base-url='.length).replace(/\/+$/u, '')
+  : null;
+const expectedArtifactRoot = expectedRootArgument
+  ? path.resolve(expectedRootArgument.slice('--expected-root='.length))
+  : null;
 const requestedLanguages = languageArgument
   ? languageArgument.slice('--languages='.length).split(',').map((value) => value.trim()).filter(Boolean)
-  : [...config.activeLanguageCodes];
-const configuredLanguages = new Set(config.activeLanguageCodes);
+  : [config.sourceLanguage.code, ...config.activeLanguageCodes];
+const configuredLanguages = new Set([config.sourceLanguage.code, ...config.activeLanguageCodes]);
 const switcherLanguages = [config.sourceLanguage, ...config.activeLanguageCodes.map((code) => {
   const language = config.languages.find((candidate) => candidate.code === code);
   if (!language) throw new Error(`Missing language metadata for ${code}.`);
@@ -30,6 +50,18 @@ for (const language of requestedLanguages) {
 for (const pageName of requestedPages) {
   if (!config.pages.includes(pageName)) throw new Error(`Unsupported localized page: ${pageName}.`);
 }
+if (externalBaseUrl) {
+  const target = new URL(externalBaseUrl);
+  if (target.protocol !== 'https:' || target.username || target.password || target.pathname !== '/' || target.search || target.hash) {
+    throw new Error('--base-url must be a clean HTTPS origin without credentials, path, query, or fragment.');
+  }
+}
+if (expectedArtifactRoot && !externalBaseUrl) {
+  throw new Error('--expected-root is only valid with --base-url production verification.');
+}
+const expectedReleaseManifestSha256 = expectedArtifactRoot
+  ? sha256(await fs.readFile(path.join(expectedArtifactRoot, 'manifest.sha256')))
+  : null;
 
 const viewports = Object.freeze([
   { name: 'desktop', width: 1440, height: 900 },
@@ -66,6 +98,87 @@ function contentType(filePath) {
 function publicPathname(language, pageName) {
   if (language === config.sourceLanguage.code) return pageName === 'index.html' ? '/' : `/${pageName}`;
   return pageName === 'index.html' ? `/${language}/` : `/${language}/${pageName}`;
+}
+
+function artifactRelativePath(language, pageName) {
+  return language === config.sourceLanguage.code ? pageName : `${language}/${pageName}`;
+}
+
+function sha256(buffer) {
+  return createHash('sha256').update(buffer).digest('hex');
+}
+
+async function verifyExactArtifactResponse(response, language, pageName, route, viewportName) {
+  if (!expectedArtifactRoot) return null;
+  const relativePath = artifactRelativePath(language, pageName);
+  const expectedBytes = await fs.readFile(path.join(expectedArtifactRoot, ...relativePath.split('/')));
+  const actualBytes = await response.buffer();
+  const expectedDigest = sha256(expectedBytes);
+  const actualDigest = sha256(actualBytes);
+  if (actualDigest !== expectedDigest) {
+    failures.push(`${route} @ ${viewportName}: public HTML SHA-256 ${actualDigest} does not match audited artifact ${expectedDigest}.`);
+  }
+  return { relativePath, expectedDigest, actualDigest };
+}
+
+async function settleOptionalConsent(page) {
+  const declineButton = await page.$('#bp-decline-btn');
+  if (!declineButton) return false;
+  const rendered = await declineButton.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return style.display !== 'none'
+      && style.visibility !== 'hidden'
+      && Number.parseFloat(style.opacity || '1') !== 0
+      && element.getClientRects().length > 0;
+  });
+  if (!rendered) return false;
+  await declineButton.click();
+  await page.waitForFunction(
+    () => document.documentElement.getAttribute('data-bp-consent-ui') === 'settled'
+      && !document.querySelector('#bp-consent-banner'),
+    { timeout: 3000 },
+  );
+  return true;
+}
+
+async function inspectClickableElement(element, { scroll = false } = {}) {
+  if (scroll) {
+    await element.evaluate((candidate) => {
+      const root = document.documentElement;
+      const previousInlineBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      candidate.scrollIntoView({ block: 'center', inline: 'center' });
+      root.style.scrollBehavior = previousInlineBehavior;
+    });
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+  return element.evaluate((candidate) => {
+    const style = getComputedStyle(candidate);
+    const rect = candidate.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const centerInsideViewport = centerX >= 0
+      && centerX <= document.documentElement.clientWidth
+      && centerY >= 0
+      && centerY <= document.documentElement.clientHeight;
+    const hitTarget = centerInsideViewport ? document.elementFromPoint(centerX, centerY) : null;
+    return {
+      rendered: style.display !== 'none'
+        && style.visibility !== 'hidden'
+        && Number.parseFloat(style.opacity || '1') !== 0
+        && style.pointerEvents !== 'none'
+        && rect.width > 0
+        && rect.height > 0
+        && centerInsideViewport
+        && Boolean(hitTarget && candidate.contains(hitTarget)),
+      disabled: Boolean(candidate.disabled) || candidate.getAttribute('aria-disabled') === 'true',
+      href: candidate.getAttribute('href'),
+      rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height },
+      hitTarget: hitTarget
+        ? `${hitTarget.tagName.toLowerCase()}${hitTarget.id ? `#${hitTarget.id}` : ''}${[...hitTarget.classList].map((name) => `.${name}`).join('')}`
+        : null,
+    };
+  });
 }
 
 async function createServer() {
@@ -125,15 +238,17 @@ const suspiciousByLanguage = Object.freeze({
 });
 const genericGarbled = /\uFFFD|__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__|(?:\bX\s+){5,}\bX\b/u;
 
-const server = await createServer();
-const address = server.address();
-const baseUrl = `http://127.0.0.1:${address.port}`;
+const server = externalBaseUrl ? null : await createServer();
+const address = server?.address();
+const baseUrl = externalBaseUrl || `http://127.0.0.1:${address.port}`;
+const allowedOrigin = new URL(baseUrl).origin;
 const executablePath = await findBrowser();
 const browser = await puppeteer.launch({
   executablePath,
   headless: true,
   args: ['--disable-background-networking', '--disable-component-update', '--disable-default-apps', '--no-first-run'],
 });
+const browserVersion = await browser.version();
 
 const startedAt = new Date().toISOString();
 const failures = [];
@@ -141,6 +256,10 @@ let checks = 0;
 let logoNavigationChecks = 0;
 let homeNavigationChecks = 0;
 let languageNavigationChecks = 0;
+let quoteNavigationChecks = 0;
+let quoteFormChecks = 0;
+let exactArtifactChecks = 0;
+let consentSettlementChecks = 0;
 
 try {
   for (const language of requestedLanguages) {
@@ -148,6 +267,7 @@ try {
       for (const viewport of viewports) {
         const page = await browser.newPage();
         const consoleErrors = [];
+        const pageErrors = collectPageErrors(page);
         page.on('console', (message) => {
           if (message.type() === 'error' && !/net::ERR_FAILED/u.test(message.text())) consoleErrors.push(message.text());
         });
@@ -155,16 +275,25 @@ try {
         await page.setRequestInterception(true);
         page.on('request', (request) => {
           const url = request.url();
-          if (url.startsWith(baseUrl) || url.startsWith('data:') || url.startsWith('blob:')) request.continue();
-          else request.abort();
+          try {
+            if (new URL(url).origin === allowedOrigin || url.startsWith('data:') || url.startsWith('blob:')) request.continue();
+            else request.abort();
+          } catch {
+            request.abort();
+          }
         });
         const route = `${language}/${pageName}`;
+        const pathname = publicPathname(language, pageName);
         try {
-          const response = await page.goto(`${baseUrl}/${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+          const response = await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'networkidle0', timeout: 30000 });
           if (!response || response.status() !== 200) {
             failures.push(`${route} @ ${viewport.name}: HTTP ${response?.status() ?? 'no response'}.`);
             continue;
           }
+          if (await verifyExactArtifactResponse(response, language, pageName, route, viewport.name)) {
+            exactArtifactChecks += 1;
+          }
+          if (await settleOptionalConsent(page)) consentSettlementChecks += 1;
           await page.evaluate(async () => {
             document.querySelectorAll('img[loading="lazy"]').forEach((image) => { image.loading = 'eager'; });
             if (document.fonts?.ready) await document.fonts.ready;
@@ -224,6 +353,10 @@ try {
                 .map((option) => option.textContent.trim()),
               selectedLanguageLabels: [...document.querySelectorAll('.i18n-switcher option:checked')]
                 .map((option) => option.textContent.trim()),
+              canonicalHrefs: [...document.querySelectorAll('link[rel="canonical"]')]
+                .map((link) => link.href),
+              hreflangEntries: [...document.querySelectorAll('link[rel="alternate"][hreflang]')]
+                .map((link) => ({ language: link.getAttribute('hreflang'), href: link.href })),
               title: document.title,
               expectedLanguage,
             };
@@ -251,39 +384,155 @@ try {
             failures.push(`${route} @ ${viewport.name}: selected language is ${JSON.stringify(result.selectedLanguageLabels)}, expected ${currentLanguageLabel}.`);
           }
           if (!result.title.trim()) failures.push(`${route} @ ${viewport.name}: document title is empty.`);
+          if (errorPages.has(pageName)) {
+            if (result.canonicalHrefs.length || result.hreflangEntries.length) {
+              failures.push(`${route} @ ${viewport.name}: error pages must not advertise canonical or hreflang index targets.`);
+            }
+          } else {
+            const expectedCanonical = `${config.siteUrl}${publicPathname(language, pageName)}`;
+            if (result.canonicalHrefs.length !== 1 || result.canonicalHrefs[0] !== expectedCanonical) {
+              failures.push(`${route} @ ${viewport.name}: canonical links are ${JSON.stringify(result.canonicalHrefs)}, expected exactly ${expectedCanonical}.`);
+            }
+            const expectedHreflangEntries = [
+              ...switcherLanguages.map((candidate) => ({
+                language: candidate.code,
+                href: `${config.siteUrl}${publicPathname(candidate.code, pageName)}`,
+              })),
+              {
+                language: 'x-default',
+                href: `${config.siteUrl}${publicPathname(config.sourceLanguage.code, pageName)}`,
+              },
+            ];
+            const hreflangSortKey = (entry) => `${entry.language}\u0000${entry.href}`;
+            const actualHreflangEntries = result.hreflangEntries.toSorted((left, right) => (
+              hreflangSortKey(left) < hreflangSortKey(right) ? -1 : hreflangSortKey(left) > hreflangSortKey(right) ? 1 : 0
+            ));
+            const sortedExpectedHreflangEntries = expectedHreflangEntries.toSorted((left, right) => (
+              hreflangSortKey(left) < hreflangSortKey(right) ? -1 : hreflangSortKey(left) > hreflangSortKey(right) ? 1 : 0
+            ));
+            if (JSON.stringify(actualHreflangEntries) !== JSON.stringify(sortedExpectedHreflangEntries)) {
+              failures.push(`${route} @ ${viewport.name}: hreflang entries do not exactly match the configured reciprocal cluster.`);
+            }
+          }
           if (consoleErrors.length) failures.push(`${route} @ ${viewport.name}: console errors: ${consoleErrors.join(' | ')}.`);
-          const languageTarget = language === 'fr' ? config.sourceLanguage : switcherLanguages.find((candidate) => candidate.code === 'fr');
-          if (!languageTarget) {
+          const primaryLanguageTarget = language === 'fr'
+            ? config.sourceLanguage
+            : switcherLanguages.find((candidate) => candidate.code === 'fr');
+          if (!primaryLanguageTarget) {
             failures.push(`${route} @ ${viewport.name}: cross-language test target is unavailable.`);
           } else {
-            const targetValue = await page.$eval('.i18n-switcher select', (select, label) => {
-              const option = [...select.options].find((candidate) => candidate.textContent.trim() === label);
-              if (!option) throw new Error(`Language option is missing: ${label}`);
-              return option.value;
-            }, languageTarget.label);
-            const [languageResponse] = await Promise.all([
-              page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 }),
-              page.select('.i18n-switcher select', targetValue),
-            ]);
-            const languageLanding = new URL(page.url());
-            const expectedLanguagePathname = publicPathname(languageTarget.code, pageName);
-            if (languageLanding.pathname !== expectedLanguagePathname) {
-              failures.push(`${route} @ ${viewport.name}: ${languageTarget.label} selection landed on ${languageLanding.pathname}, expected ${expectedLanguagePathname}.`);
+            const languageTargets = pageName === 'index.html'
+              ? switcherLanguages.filter((candidate) => candidate.code !== language)
+              : [primaryLanguageTarget];
+            for (const [targetIndex, languageTarget] of languageTargets.entries()) {
+              if (targetIndex > 0) {
+                await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+              }
+              const { response: languageResponse } = await chooseSelectOptionWithPointerAndKeyboard(
+                page,
+                languageTarget.label,
+              );
+              const languageLanding = new URL(page.url());
+              const expectedLanguagePathname = publicPathname(languageTarget.code, pageName);
+              if (languageLanding.pathname !== expectedLanguagePathname) {
+                failures.push(`${route} @ ${viewport.name}: ${languageTarget.label} selection landed on ${languageLanding.pathname}, expected ${expectedLanguagePathname}.`);
+              }
+              if (!languageResponse || languageResponse.status() !== 200) {
+                failures.push(`${route} @ ${viewport.name}: ${languageTarget.label} destination returned HTTP ${languageResponse?.status() ?? 'no response'}.`);
+              }
+              const destinationState = await page.evaluate(() => ({
+                language: document.documentElement.lang,
+                headerPresent: Boolean(document.querySelector('header a.logo')),
+              }));
+              if (destinationState.language !== languageTarget.code || !destinationState.headerPresent) {
+                failures.push(`${route} @ ${viewport.name}: ${languageTarget.label} destination content is incomplete or has lang=${JSON.stringify(destinationState.language)}.`);
+              }
+              languageNavigationChecks += 1;
             }
-            if (!languageResponse || languageResponse.status() !== 200) {
-              failures.push(`${route} @ ${viewport.name}: language destination returned HTTP ${languageResponse?.status() ?? 'no response'}.`);
-            }
-            const destinationState = await page.evaluate(() => ({
-              language: document.documentElement.lang,
-              headerPresent: Boolean(document.querySelector('header a.logo')),
-            }));
-            if (destinationState.language !== languageTarget.code || !destinationState.headerPresent) {
-              failures.push(`${route} @ ${viewport.name}: language destination content is incomplete or has lang=${JSON.stringify(destinationState.language)}.`);
-            }
-            languageNavigationChecks += 1;
-            await page.goto(`${baseUrl}/${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
           }
-          const expectedPathname = `/${language}/`;
+          const expectedPathname = publicPathname(language, 'index.html');
+          const expectedContactPathname = publicPathname(language, 'contact.html');
+          if (pageName === 'contact.html') {
+            const submitButton = await page.$('form#quoteForm button[type="submit"]');
+            if (!submitButton) {
+              failures.push(`${route} @ ${viewport.name}: quote form submit control is missing.`);
+            } else {
+              const submitState = await inspectClickableElement(submitButton, { scroll: true });
+              if (!submitState.rendered || submitState.disabled) {
+                failures.push(`${route} @ ${viewport.name}: quote form submit control is not visibly actionable (${JSON.stringify(submitState)}).`);
+              } else {
+                quoteFormChecks += 1;
+              }
+            }
+          } else {
+            const quoteCandidates = await page.$$('a.nav-cta[href], a.floating-btn.quote[href], a.footer-quote[href], a.btn[href*="contact.html"]');
+            let quoteLink = null;
+            let quoteState = null;
+            const inspectedStates = [];
+            for (const candidate of quoteCandidates) {
+              const state = await inspectClickableElement(candidate);
+              inspectedStates.push(state);
+              if (state.rendered && !state.disabled && state.href) {
+                quoteLink = candidate;
+                quoteState = state;
+                break;
+              }
+            }
+            if (!quoteLink) {
+              for (const candidate of quoteCandidates) {
+                const state = await inspectClickableElement(candidate, { scroll: true });
+                inspectedStates.push(state);
+                if (state.rendered && !state.disabled && state.href) {
+                  quoteLink = candidate;
+                  quoteState = state;
+                  break;
+                }
+              }
+            }
+            // The success page intentionally offers products/WhatsApp rather
+            // than asking for another inquiry. Its contact route is in Menu.
+            // Exercise that real route instead of requiring a duplicate CTA.
+            if (!quoteLink && pageName === 'thank-you.html' && viewport.name === 'mobile') {
+              await page.click('#mobileToggle');
+              const candidate = await page.$('#mainNav a.nav-cta[href]');
+              if (candidate) {
+                const state = await inspectClickableElement(candidate, { scroll: true });
+                inspectedStates.push(state);
+                if (state.rendered && !state.disabled && state.href) {
+                  quoteLink = candidate;
+                  quoteState = state;
+                }
+              }
+            }
+            if (!quoteLink || !quoteState) {
+              failures.push(`${route} @ ${viewport.name}: no quote/contact CTA is visibly clickable (${JSON.stringify(inspectedStates)}).`);
+            } else {
+              const [quoteResponse] = await Promise.all([
+                page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 }),
+                page.mouse.click(
+                  quoteState.rect.left + quoteState.rect.width / 2,
+                  quoteState.rect.top + quoteState.rect.height / 2,
+                ),
+              ]);
+              const quoteLanding = new URL(page.url());
+              if (quoteLanding.pathname !== expectedContactPathname) {
+                failures.push(`${route} @ ${viewport.name}: quote navigation landed on ${quoteLanding.pathname}, expected ${expectedContactPathname}.`);
+              }
+              if (!quoteResponse || quoteResponse.status() !== 200) {
+                failures.push(`${route} @ ${viewport.name}: quote destination returned HTTP ${quoteResponse?.status() ?? 'no response'}.`);
+              }
+              const quoteDestination = await page.evaluate(() => ({
+                language: document.documentElement.lang,
+                formPresent: Boolean(document.querySelector('form#quoteForm')),
+              }));
+              if (quoteDestination.language !== language || !quoteDestination.formPresent) {
+                failures.push(`${route} @ ${viewport.name}: quote destination is incomplete or has lang=${JSON.stringify(quoteDestination.language)}.`);
+              }
+              quoteNavigationChecks += 1;
+            }
+          }
+          await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
           if (viewport.name === 'mobile') {
             await page.click('#mobileToggle');
             const mobileMenuState = await page.evaluate(() => ({
@@ -318,7 +567,7 @@ try {
             }
             homeNavigationChecks += 1;
           }
-          await page.goto(`${baseUrl}/${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+          await page.goto(`${baseUrl}${pathname}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
           const logo = await page.$('header a.logo');
           if (!logo) {
             failures.push(`${route} @ ${viewport.name}: Header logo link is missing.`);
@@ -341,6 +590,9 @@ try {
         } catch (error) {
           failures.push(`${route} @ ${viewport.name}: browser check failed (${error.message}).`);
         } finally {
+          if (pageErrors.length) {
+            failures.push(`${route} @ ${viewport.name}: uncaught page errors: ${pageErrors.join(' | ')}.`);
+          }
           checks += 1;
           await page.close();
         }
@@ -349,22 +601,31 @@ try {
   }
 } finally {
   await browser.close();
-  await new Promise((resolve) => server.close(resolve));
+  if (server) await new Promise((resolve) => server.close(resolve));
 }
 
 const report = {
   schemaVersion: 1,
   startedAt,
   completedAt: new Date().toISOString(),
+  mode: externalBaseUrl ? 'production-https' : 'local-http',
+  baseUrl,
   siteRoot,
+  expectedArtifactRoot,
+  expectedReleaseManifestSha256,
   browserExecutable: executablePath,
+  browserVersion,
   languages: requestedLanguages,
   pagesPerLanguage: requestedPages.length,
   viewports,
   checkedViewports: checks,
   languageNavigationChecks,
+  quoteNavigationChecks,
+  quoteFormChecks,
   logoNavigationChecks,
   homeNavigationChecks,
+  exactArtifactChecks,
+  consentSettlementChecks,
   failures,
 };
 
@@ -379,5 +640,6 @@ if (failures.length) {
   for (const failure of failures) console.error(`- ${failure}`);
   process.exitCode = 1;
 } else {
-  console.log(`Localized render QA passed: ${checks} viewport checks, ${languageNavigationChecks} real language selections, ${homeNavigationChecks} real Home-link clicks, and ${logoNavigationChecks} real logo clicks (${requestedPages.length} pages × ${requestedLanguages.length} languages × ${viewports.length} viewports).`);
+  const artifactSummary = expectedArtifactRoot ? `, ${exactArtifactChecks} exact public artifact byte checks` : '';
+  console.log(`Localized render QA passed: ${checks} viewport checks, ${languageNavigationChecks} real language selections, ${quoteNavigationChecks} real quote-link clicks, ${quoteFormChecks} visible quote-form submit checks, ${homeNavigationChecks} real Home-link clicks, and ${logoNavigationChecks} real logo clicks${artifactSummary} (${requestedPages.length} pages × ${requestedLanguages.length} languages × ${viewports.length} viewports).`);
 }

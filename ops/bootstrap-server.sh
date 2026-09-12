@@ -11,6 +11,12 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PRIVILEGED_NGINX_HELPER="/usr/local/sbin/begapunk-nginx-config"
 SUDOERS_FILE="/etc/sudoers.d/begapunk-nginx-config"
 
+# activate-release.sh is deliberately self-contained on the server, but it is
+# also the canonical source of the runtime-node safety functions used during
+# this one-time migration.
+# shellcheck source=activate-release.sh
+source "$SCRIPT_DIR/activate-release.sh"
+
 echo "Live root: $LIVE_ROOT"
 echo "Deployment base: $BASE_DIR"
 echo "Nginx config: $NGINX_CONF"
@@ -35,7 +41,27 @@ if [[ "$EUID" -ne 0 ]]; then
   exit 3
 fi
 
-if [[ -e "$BASE_DIR/.bootstrap-complete" ]]; then
+canonical_base="$(realpath -m -- "$BASE_DIR" 2>/dev/null)" || {
+  echo "Deployment base cannot be resolved safely." >&2
+  exit 12
+}
+if [[ ! "$BASE_DIR" =~ ^/[^/]+/[^/]+(/[^/]+)*$ || "$canonical_base" != "$BASE_DIR" ]]; then
+  echo "Deployment base must be a canonical absolute path below a top-level directory: $BASE_DIR" >&2
+  exit 12
+fi
+if [[ -e "$BASE_DIR" || -L "$BASE_DIR" ]]; then
+  validate_plain_directory_tree "$BASE_DIR" || exit 12
+fi
+for managed_dir in "$BASE_DIR" "$BASE_DIR/releases" "$BASE_DIR/shared" "$BASE_DIR/bin" "$BASE_DIR/staging"; do
+  if [[ -e "$managed_dir" || -L "$managed_dir" ]]; then
+    [[ -d "$managed_dir" && ! -L "$managed_dir" ]] || {
+      echo "Managed deployment path must be a real directory before bootstrap: $managed_dir" >&2
+      exit 12
+    }
+  fi
+done
+
+if [[ -e "$BASE_DIR/.bootstrap-complete" || -L "$BASE_DIR/.bootstrap-complete" ]]; then
   echo "Bootstrap was already completed; refusing to replace the active release layout." >&2
   exit 11
 fi
@@ -54,6 +80,7 @@ timestamp="$(date +%Y%m%d-%H%M%S)"
 seed_id="initial-${timestamp}"
 seed_dir="$BASE_DIR/releases/$seed_id"
 config_backup="${NGINX_CONF}.pre-atomic-deploy-${timestamp}"
+well_known_candidate="$BASE_DIR/shared/.well-known.bootstrap-${timestamp}-$$"
 
 deploy_group="$(id -gn "$DEPLOY_USER")"
 mkdir -p "$BASE_DIR/releases" "$BASE_DIR/shared" "$BASE_DIR/bin" "$BASE_DIR/staging"
@@ -71,7 +98,13 @@ install -o root -g root -m 0755 \
   "$PRIVILEGED_NGINX_HELPER"
 
 sudoers_candidate="${SUDOERS_FILE}.tmp-$$"
-trap 'rm -f -- "$sudoers_candidate"' EXIT
+cleanup_bootstrap_candidates() {
+  rm -f -- "$sudoers_candidate"
+  if [[ -e "$well_known_candidate" || -L "$well_known_candidate" ]]; then
+    rm -rf -- "$well_known_candidate"
+  fi
+}
+trap cleanup_bootstrap_candidates EXIT
 printf '%s ALL=(root) NOPASSWD: %s\n' "$DEPLOY_USER" "$PRIVILEGED_NGINX_HELPER" > "$sudoers_candidate"
 chmod 0440 "$sudoers_candidate"
 if ! visudo -cf "$sudoers_candidate"; then
@@ -79,21 +112,45 @@ if ! visudo -cf "$sudoers_candidate"; then
   exit 10
 fi
 
-if [[ -f "$LIVE_ROOT/.env" && ! -e "$BASE_DIR/shared/.env" ]]; then
-  install -o root -g www -m 0640 "$LIVE_ROOT/.env" "$BASE_DIR/shared/.env"
+if [[ ! -e "$BASE_DIR/shared/.env" && ! -L "$BASE_DIR/shared/.env" \
+  && ( -e "$LIVE_ROOT/.env" || -L "$LIVE_ROOT/.env" ) ]]; then
+  validate_plain_runtime_file "$LIVE_ROOT/.env" || exit 12
+  install -o root -g www -m 0640 -- "$LIVE_ROOT/.env" "$BASE_DIR/shared/.env"
 fi
 
-if [[ -d "$LIVE_ROOT/.well-known" && ! -e "$BASE_DIR/shared/.well-known" ]]; then
-  cp -a "$LIVE_ROOT/.well-known" "$BASE_DIR/shared/.well-known"
+www_gid="$(getent group www | awk -F: 'NR == 1 { print $3 }')"
+if [[ ! "$www_gid" =~ ^[0-9]+$ ]] \
+  || ! validate_inquiry_environment_file "$BASE_DIR/shared/.env" 0 "$www_gid"; then
+  echo "Shared inquiry environment failed its regular-file, ownership, mode, or required-key contract." >&2
+  exit 12
+fi
+
+if [[ ! -e "$BASE_DIR/shared/.well-known" && ! -L "$BASE_DIR/shared/.well-known" \
+  && ( -e "$LIVE_ROOT/.well-known" || -L "$LIVE_ROOT/.well-known" ) ]]; then
+  validate_plain_directory_tree "$LIVE_ROOT/.well-known" || exit 12
+  cp -a -- "$LIVE_ROOT/.well-known" "$well_known_candidate"
+  validate_plain_directory_tree "$well_known_candidate" || exit 12
+  chown -R root:root -- "$well_known_candidate"
+  find "$well_known_candidate" -type d -exec chmod 0755 -- {} +
+  find "$well_known_candidate" -type f -exec chmod 0644 -- {} +
+  validate_managed_runtime_tree "$well_known_candidate" 0 0 || exit 12
+  mv -- "$well_known_candidate" "$BASE_DIR/shared/.well-known"
 fi
 
 shopt -s nullglob
 for verification_file in "$LIVE_ROOT"/WW_verify_*.txt; do
-  if [[ ! -e "$BASE_DIR/shared/$(basename "$verification_file")" ]]; then
-    cp -a "$verification_file" "$BASE_DIR/shared/"
+  validate_plain_runtime_file "$verification_file" || exit 12
+  if [[ ! -e "$BASE_DIR/shared/$(basename "$verification_file")" \
+    && ! -L "$BASE_DIR/shared/$(basename "$verification_file")" ]]; then
+    install -o root -g root -m 0644 -- \
+      "$verification_file" "$BASE_DIR/shared/$(basename "$verification_file")"
   fi
 done
 shopt -u nullglob
+
+# Existing shared bindings and newly migrated ones must satisfy the same
+# canonical realpath, node-type, ownership and mode contract as activation.
+validate_shared_runtime_bindings "$BASE_DIR/shared" 0 0 || exit 12
 
 mkdir -p "$seed_dir"
 rsync -a --delete \
@@ -101,6 +158,19 @@ rsync -a --delete \
   --exclude='.well-known' \
   --exclude='WW_verify_*.txt' \
   "$LIVE_ROOT/" "$seed_dir/"
+
+# The legacy source tree is untrusted input. Generate its canonical manifest
+# and require an exact regular-file/directory tree before adding any of the
+# small, separately validated runtime-link exceptions below.
+(
+  cd "$seed_dir"
+  find . -type f ! -name manifest.sha256 -printf '%P\0' | sort -z | xargs -0 sha256sum > manifest.sha256
+)
+verify_release_tree_exact "$seed_dir" || {
+  echo "Initial release snapshot failed the exact artifact-boundary check." >&2
+  exit 13
+}
+chown -R "$DEPLOY_USER:$deploy_group" "$seed_dir"
 
 if [[ -d "$BASE_DIR/shared/.well-known" ]]; then
   ln -s "$BASE_DIR/shared/.well-known" "$seed_dir/.well-known"
@@ -119,12 +189,6 @@ for verification_file in "$BASE_DIR/shared"/WW_verify_*.txt; do
   ln -s "$verification_file" "$seed_dir/$(basename "$verification_file")"
 done
 shopt -u nullglob
-
-(
-  cd "$seed_dir"
-  find . -type f ! -name manifest.sha256 -print0 | sort -z | xargs -0 sha256sum > manifest.sha256
-)
-chown -R "$DEPLOY_USER:$deploy_group" "$seed_dir"
 
 bootstrap_transaction="bootstrap-${timestamp}"
 bootstrap_candidate="$BASE_DIR/staging/nginx-managed-${bootstrap_transaction}.conf"

@@ -3,6 +3,10 @@ import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
 import puppeteer from 'puppeteer-core';
+import {
+  chooseSelectOptionWithPointerAndKeyboard,
+  collectPageErrors,
+} from './lib/browser-interaction-gate.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
@@ -61,6 +65,7 @@ let pageChecks = 0;
 let homeNavigationChecks = 0;
 let logoNavigationChecks = 0;
 let languageNavigationChecks = 0;
+let quoteNavigationChecks = 0;
 
 function localizedFileUrl(language, pageName) {
   const directory = language === config.sourceLanguage.code ? siteRoot : path.join(siteRoot, language);
@@ -84,15 +89,7 @@ async function loadLocalPage(page, owner, pageName) {
 }
 
 async function selectLanguage(page, targetLabel) {
-  const targetValue = await page.$eval('.i18n-switcher select', (select, label) => {
-    const option = [...select.options].find((candidate) => candidate.textContent.trim() === label);
-    if (!option) throw new Error(`Language option is missing: ${label}`);
-    return option.value;
-  }, targetLabel);
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 }),
-    page.select('.i18n-switcher select', targetValue),
-  ]);
+  await chooseSelectOptionWithPointerAndKeyboard(page, targetLabel);
 }
 
 try {
@@ -101,6 +98,7 @@ try {
     const expectedHomepage = pathToFileURL(path.join(languageDirectory, 'index.html')).href;
     for (const pageName of pages) {
       const page = await browser.newPage();
+      const pageErrors = collectPageErrors(page);
       await page.setViewport({ width: 1440, height: 900 });
       await page.setRequestInterception(true);
       page.on('request', (request) => {
@@ -159,6 +157,40 @@ try {
         }
 
         await loadLocalPage(page, owner, pageName);
+        const quoteLink = await page.$('a.nav-cta');
+        if (!quoteLink) throw new Error('Primary quote navigation link is missing.');
+        const quoteState = await quoteLink.evaluate((element) => {
+          const style = getComputedStyle(element);
+          const rect = element.getBoundingClientRect();
+          return {
+            rendered: style.display !== 'none'
+              && style.visibility !== 'hidden'
+              && Number.parseFloat(style.opacity || '1') !== 0
+              && style.pointerEvents !== 'none'
+              && rect.width > 0
+              && rect.height > 0,
+            href: element.getAttribute('href'),
+          };
+        });
+        if (!quoteState.rendered || !quoteState.href) throw new Error('Primary quote navigation is not visibly clickable.');
+        await Promise.all([
+          page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 }),
+          quoteLink.click(),
+        ]);
+        const expectedContact = localizedFileUrl(language, 'contact.html');
+        if (page.url() !== expectedContact) {
+          throw new Error(`Quote navigation went to ${page.url()}, expected ${expectedContact}.`);
+        }
+        const quoteDestination = await page.evaluate(() => ({
+          language: document.documentElement.lang,
+          formPresent: Boolean(document.querySelector('form#quoteForm')),
+        }));
+        if (quoteDestination.language !== language || !quoteDestination.formPresent) {
+          throw new Error(`Quote destination is incomplete or has lang=${JSON.stringify(quoteDestination.language)}.`);
+        }
+        quoteNavigationChecks += 1;
+
+        await loadLocalPage(page, owner, pageName);
         const homeLink = await page.$('.nav-home-mobile');
         if (!homeLink) throw new Error('Explicit Home navigation link is missing.');
         const homeVisible = await homeLink.evaluate((element) => {
@@ -189,6 +221,9 @@ try {
       } catch (error) {
         failures.push(`${language}/${pageName}: ${error.message}`);
       } finally {
+        if (pageErrors.length) {
+          failures.push(`${language}/${pageName}: uncaught page errors: ${pageErrors.join(' | ')}`);
+        }
         pageChecks += 1;
         await page.close();
       }
@@ -204,4 +239,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Local-file navigation passed: ${pageChecks} page checks, ${languageNavigationChecks} real language selections, ${homeNavigationChecks} real Home-link clicks, and ${logoNavigationChecks} real logo clicks across ${pages.length} page(s) and ${languages.length} language(s).`);
+console.log(`Local-file navigation passed: ${pageChecks} page checks, ${languageNavigationChecks} real language selections, ${quoteNavigationChecks} real quote-link clicks, ${homeNavigationChecks} real Home-link clicks, and ${logoNavigationChecks} real logo clicks across ${pages.length} page(s) and ${languages.length} language(s).`);

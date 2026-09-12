@@ -7,6 +7,7 @@ import {
   loadPublicDownloadAllowlist,
   parsePublicDownloadsManifest,
 } from './lib/public-downloads.mjs';
+import { validateStepFile } from './lib/step-file.mjs';
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
@@ -176,8 +177,7 @@ for (const fileName of approvedFiles) {
     if (!buffer.subarray(Math.max(0, buffer.length - 4096)).includes(Buffer.from('%%EOF'))) failures.push(`${publicPath}: missing PDF end marker`);
   } else {
     const source = buffer.toString('utf8');
-    if (!source.startsWith('ISO-10303-21;')) failures.push(`${publicPath}: invalid STEP header`);
-    if (!source.includes('END-ISO-10303-21;')) failures.push(`${publicPath}: missing STEP end marker`);
+    for (const failure of validateStepFile(source)) failures.push(`${publicPath}: invalid STEP structure (${failure})`);
   }
   const digest = createHash('sha256').update(buffer).digest('hex');
   if (manifestRecords.get(fileName) !== digest) failures.push(`${publicPath}: SHA-256 does not match the public-download manifest`);

@@ -46,8 +46,8 @@ foreach ($requiredCommand in @('git', 'node', 'npm')) {
 
 $nodeVersionText = (& node --version).TrimStart('v')
 $nodeMajor = [int]($nodeVersionText.Split('.')[0])
-if ($nodeMajor -lt 22) {
-    throw "Node.js 22 or newer is required. Detected: $nodeVersionText"
+if ($nodeMajor -ne 24) {
+    throw "The canonical audit and deployment runtime is Node.js 24.x. Detected: $nodeVersionText"
 }
 
 $initialChanges = @(Get-RelevantGitChanges)
@@ -74,7 +74,7 @@ if (-not $SkipInstall) {
 Invoke-CheckedCommand npm run deploy:prepare
 
 if ($DryRun) {
-    Write-Host 'Dry run passed. No Git tag was created and no deployment was triggered.' -ForegroundColor Green
+    Write-Host 'Local dry run completed. Ubuntu-only gates remain UNKNOWN until CI; no Git tag was created.' -ForegroundColor Yellow
     exit 0
 }
 

@@ -3,9 +3,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import os
+import tempfile
 from pathlib import Path
 
 from pypdf import PdfReader, PdfWriter
+from pypdf.generic import ArrayObject, DictionaryObject, IndirectObject, NameObject
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +35,69 @@ TITLES = {
     "BP-4P-30-0001.pdf": "BP-4P-30-0001 Through-Bore Rotary Union Engineering Drawing",
     "BP-8P-0001.pdf": "BP-8P-0001 Eight-Passage Rotary Union Engineering Drawing",
 }
+
+FORBIDDEN_PDF_KEYS = {
+    "/AA",
+    "/Collection",
+    "/EmbeddedFile",
+    "/EmbeddedFiles",
+    "/EF",
+    "/GoToE",
+    "/GoToR",
+    "/ImportData",
+    "/JavaScript",
+    "/JS",
+    "/Launch",
+    "/Movie",
+    "/OpenAction",
+    "/Rendition",
+    "/RichMedia",
+    "/Sound",
+    "/SubmitForm",
+    "/XFA",
+}
+
+
+def forbidden_pdf_features(reader: PdfReader) -> list[str]:
+    findings: set[str] = set()
+    visited_indirect: set[tuple[int, int]] = set()
+
+    def visit(value: object, object_path: str) -> None:
+        if isinstance(value, IndirectObject):
+            identity = (value.idnum, value.generation)
+            if identity in visited_indirect:
+                return
+            visited_indirect.add(identity)
+            value = value.get_object()
+
+        if isinstance(value, DictionaryObject):
+            for raw_key, child in value.items():
+                key = str(raw_key)
+                child_path = f"{object_path}/{key.removeprefix('/')}"
+                if key in FORBIDDEN_PDF_KEYS:
+                    findings.add(child_path)
+                visit(child, child_path)
+        elif isinstance(value, ArrayObject):
+            for index, child in enumerate(value):
+                visit(child, f"{object_path}[{index}]")
+        elif isinstance(value, NameObject) and str(value) in FORBIDDEN_PDF_KEYS:
+            # PDF actions such as /S /Launch and annotations such as
+            # /Subtype /RichMedia express the dangerous feature as a name
+            # value, not necessarily as a dictionary key.
+            findings.add(f"{object_path}={value}")
+
+    visit(reader.trailer.get("/Root"), "Root")
+    return sorted(findings)
+
+
+def assert_safe_pdf(reader: PdfReader, file_name: str) -> None:
+    if reader.is_encrypted:
+        raise RuntimeError(f"PDF safety check failed for {file_name}: encrypted PDFs are forbidden")
+    findings = forbidden_pdf_features(reader)
+    if findings:
+        raise RuntimeError(
+            f"PDF safety check failed for {file_name}: active or embedded content at {findings}"
+        )
 
 
 def page_fingerprint(reader: PdfReader) -> list[tuple[str, tuple[float, float, float, float]]]:
@@ -78,8 +143,10 @@ def validate_inventory() -> list[Path]:
     return pdfs
 
 
-def metadata_mismatches(pdf_path: Path) -> dict[str, tuple[object, str]]:
-    reader = PdfReader(str(pdf_path))
+def metadata_mismatches(
+    pdf_path: Path, reader: PdfReader | None = None
+) -> dict[str, tuple[object, str]]:
+    reader = reader or PdfReader(str(pdf_path))
     metadata = reader.metadata or {}
     expected = expected_metadata(pdf_path.name)
     return {
@@ -90,16 +157,22 @@ def metadata_mismatches(pdf_path: Path) -> dict[str, tuple[object, str]]:
 
 
 def check_pdf(pdf_path: Path) -> None:
-    mismatches = metadata_mismatches(pdf_path)
+    reader = PdfReader(str(pdf_path))
+    assert_safe_pdf(reader, pdf_path.name)
+    # Reading every page proves the document structure is traversable rather
+    # than merely accepting a valid header and end marker.
+    page_fingerprint(reader)
+    mismatches = metadata_mismatches(pdf_path, reader)
     if mismatches:
         raise RuntimeError(f"Metadata check failed for {pdf_path.name}: {mismatches}")
 
 
 def rewrite_pdf(pdf_path: Path) -> bool:
-    if not metadata_mismatches(pdf_path):
+    source_reader = PdfReader(str(pdf_path))
+    assert_safe_pdf(source_reader, pdf_path.name)
+    if not metadata_mismatches(pdf_path, source_reader):
         return False
 
-    source_reader = PdfReader(str(pdf_path))
     source_fingerprint = page_fingerprint(source_reader)
 
     writer = PdfWriter()
@@ -122,10 +195,65 @@ def rewrite_pdf(pdf_path: Path) -> bool:
     return True
 
 
+def run_safety_self_test() -> None:
+    with tempfile.TemporaryDirectory(prefix="begapunk-pdf-safety-") as temporary:
+        temporary_root = Path(temporary)
+        safe_path = temporary_root / "safe.pdf"
+        javascript_path = temporary_root / "javascript.pdf"
+        launch_path = temporary_root / "launch.pdf"
+        attachment_path = temporary_root / "attachment.pdf"
+
+        safe_writer = PdfWriter()
+        safe_writer.add_blank_page(width=72, height=72)
+        with safe_path.open("wb") as stream:
+            safe_writer.write(stream)
+        assert_safe_pdf(PdfReader(str(safe_path)), safe_path.name)
+
+        active_writer = PdfWriter()
+        active_writer.add_blank_page(width=72, height=72)
+        active_writer.add_js("app.alert('fixture');")
+        with javascript_path.open("wb") as stream:
+            active_writer.write(stream)
+
+        launch_writer = PdfWriter()
+        launch_writer.add_blank_page(width=72, height=72)
+        launch_writer.root_object[NameObject("/FixtureAction")] = DictionaryObject(
+            {NameObject("/S"): NameObject("/Launch")}
+        )
+        with launch_path.open("wb") as stream:
+            launch_writer.write(stream)
+
+        attachment_writer = PdfWriter()
+        attachment_writer.add_blank_page(width=72, height=72)
+        attachment_writer.add_attachment("fixture.txt", b"fixture")
+        with attachment_path.open("wb") as stream:
+            attachment_writer.write(stream)
+
+        for unsafe_path, label in [
+            (javascript_path, "JavaScript"),
+            (launch_path, "Launch action"),
+            (attachment_path, "embedded attachment"),
+        ]:
+            try:
+                assert_safe_pdf(PdfReader(str(unsafe_path)), unsafe_path.name)
+            except RuntimeError as error:
+                if "active or embedded content" not in str(error):
+                    raise
+            else:
+                raise RuntimeError(f"PDF safety self-test failed: {label} fixture was accepted")
+
+    print("PDF safety self-test passed: safe PDF accepted; JavaScript, Launch action, and embedded attachment fixtures rejected.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Apply or verify SEO metadata on public Begapunk PDFs.")
     parser.add_argument("--write", action="store_true", help="Rewrite PDFs in place after invariant checks.")
+    parser.add_argument("--self-test", action="store_true", help="Run isolated positive and negative PDF safety fixtures.")
     args = parser.parse_args()
+
+    if args.self_test:
+        run_safety_self_test()
+        return
 
     pdfs = validate_inventory()
     if args.write:

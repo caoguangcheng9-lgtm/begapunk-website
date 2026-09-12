@@ -535,6 +535,51 @@ export function createArtifactSnapshot(relativePath, source) {
   };
 }
 
+// A legacy seal can seed a reviewed transition only after its Git bytes are
+// verified. Never derive a trusted baseline from candidate HTML or candidate hashes.
+export function verifiedLegacyArtifactSnapshots(manifest, readArtifact) {
+  if (manifest?.schemaVersion !== 1 || manifest.algorithm !== LEGACY_ALGORITHM
+      || !Array.isArray(manifest.artifacts) || !manifest.artifacts.length) {
+    throw new Error('Unsupported or empty legacy snapshot baseline.');
+  }
+  const seen = new Set();
+  return manifest.artifacts.map(artifact => {
+    if (typeof artifact.path !== 'string' || !/^(de|fr|ja|ru)\/[^/]+\.html$/.test(artifact.path)
+        || seen.has(artifact.path) || !/^[a-f0-9]{64}$/.test(artifact.sha256 ?? '')) {
+      throw new Error('Invalid, duplicate or unsafe legacy artifact.');
+    }
+    seen.add(artifact.path);
+    const snapshot = createArtifactSnapshot(artifact.path, readArtifact(artifact.path));
+    if (snapshot.mechanicalSha256 !== artifact.sha256) {
+      throw new Error(`Legacy Git bytes do not match the approved seal: ${artifact.path}`);
+    }
+    return snapshot;
+  });
+}
+
+export function assertReviewedBaselineTransition(before, after, baselineAt) {
+  if (!before || !after || before.path !== after.path || !Number.isFinite(Date.parse(baselineAt))) {
+    throw new Error('Missing or incompatible trusted baseline artifact.');
+  }
+  const later = p => Number.isFinite(Date.parse(p?.recordedAt))
+    && Date.parse(p.recordedAt) > Date.parse(baselineAt);
+  if (before.semanticSha256 !== after.semanticSha256) {
+    const p = after.semanticProvenance;
+    if (p?.kind !== 'ai-assisted-reviewed-semantic-change' || p.semanticReviewPerformed !== true
+        || p.nativeSpeakerReviewPerformed !== false || !later(p)
+        || p.beforeSemanticSha256 !== before.semanticSha256 || p.afterSemanticSha256 !== after.semanticSha256) {
+      throw new Error(`${before.path}: semantic change lacks an exact trusted-baseline review transition.`);
+    }
+  }
+  if (before.mechanicalSha256 !== after.mechanicalSha256) {
+    const p = after.mechanicalProvenance;
+    if (!['mechanical-only-refresh', 'semantic-review-artifact-capture'].includes(p?.kind) || !later(p)
+        || p.beforeMechanicalSha256 !== before.mechanicalSha256 || p.afterMechanicalSha256 !== after.mechanicalSha256) {
+      throw new Error(`${before.path}: artifact change lacks an exact trusted-baseline capture transition.`);
+    }
+  }
+}
+
 function artifactsByPath(artifacts, label) {
   const map = new Map();
   for (const artifact of artifacts) {

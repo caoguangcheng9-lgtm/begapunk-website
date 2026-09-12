@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "BEGAPUNK_RELEASE_AUDIT_STANDARD_V2",
+  "statusVocabulary": ["PASS", "FAIL", "UNKNOWN"],
+  "bindingStatusVocabulary": ["BOUND", "INVALID", "NOT_APPLICABLE"],
+  "severityVocabulary": ["P0", "P1", "P2", "P3"],
+  "actionVocabulary": ["BLOCK", "ROLLBACK", "WARN", "CONDITIONAL", "NOT_APPLICABLE"],
+  "inquiryAuthorizationSemantics": {
+    "gatePass": "Protected candidate authorization and a syntactically valid external evidence reference were co-recorded for this candidate; reference immutability and evidence content were not inspected.",
+    "requiredControlResult": "UNKNOWN",
+    "failClosedPathClasses": ["contact-form", "php-runtime", "phpmailer", "package-and-mail-contract", "htaccess", "nginx-routing", "production-build-deploy-activate-bootstrap", "unclassified-runtime-routing"]
+  },
+  "workflowContracts": {
+    "semanticDigestAlgorithm": "sha256-canonical-json-v1",
+    "deploy": "b865d93a8f83eeee8ecacfd6a8fe6ba984357976cbd667eed36e873254ddf054",
+    "prQuality": "5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a"
+  },
+  "gateSets": {
+    "source": [
+      "audit:policy:verify",
+      "audit:workflow-contracts:self-test",
+      "browser:interaction:self-test",
+      "release:authorization:self-test",
+      "editorial:snapshot:self-test",
+      "collab:validate",
+      "i18n:metadata:verify",
+      "product-trust:verify",
+      "faq-trust:verify",
+      "faq:i18n:verify",
+      "ai-trust-overrides:verify",
+      "owner-facts:translations:verify",
+      "unsafe-orphans:verify",
+      "soft-isolation:verify",
+      "clearance-article:verify",
+      "selection-article:verify",
+      "copy:regressions:verify",
+      "heroes:verify",
+      "main-landmarks:verify",
+      "consent-ui:verify",
+      "inquiry:verify",
+      "analytics:cache:verify",
+      "homepage-links:verify",
+      "discovery:verify",
+      "local-preview:smoke",
+      "cnc-saw-case:verify",
+      "search:verify",
+      "search:interactions:verify",
+      "preview:verify",
+      "drawing-products:verify",
+      "i18n:catalog:verify",
+      "i18n:verify",
+      "i18n:sitemap:verify",
+      "partial-locales:verify",
+      "partial-locales:content:verify",
+      "partial-contact:verify",
+      "editorial:release:verify",
+      "owner-facts:verify",
+      "product-ui:verify",
+      "products:validate",
+      "pdf:safety:self-test",
+      "step:safety:self-test",
+      "pdf:metadata:check",
+      "downloads:verify",
+      "images:verify",
+      "social:verify",
+      "quality:source",
+      "release:boundary:verify"
+    ],
+    "releaseCandidate": [
+      "deploy:build",
+      "release:inventory:verify",
+      "consent-ui:release:verify",
+      "preview:release:verify",
+      "local-preview:release:smoke",
+      "search:interactions:release:verify",
+      "release:experience:verify",
+      "claims:verify",
+      "deploy:validate"
+    ],
+    "nonWindows": ["deploy:verifier:verify"]
+  },
+  "phases": {
+    "pr": {
+      "gateSets": ["source", "releaseCandidate", "nonWindows"],
+      "additionalGates": ["release:navigation:smoke"]
+    },
+    "release": {
+      "gateSets": ["source", "releaseCandidate", "nonWindows"],
+      "additionalGates": ["local-preview:release:verify", "release:navigation:verify"]
+    }
+  },
+  "controls": [
+    {
+      "id": "GOV-01",
+      "severity": "P1",
+      "owner": "site-owner",
+      "automationStatus": "partial",
+      "implementation": ["audit:policy:verify", "release:authorization:self-test", "release:authorization:verify", "collab:validate", "deploy:build", "release:boundary:verify", "release:inventory:verify"],
+      "remainingEvidence": "The protected authorization reference must resolve to the separately retained review record; repository approvals, branch protection, environment reviewers, and final production release identity remain external state.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "AUD-01",
+      "severity": "P1",
+      "owner": "engineering",
+      "automationStatus": "partial",
+      "implementation": ["audit:policy:verify", "audit:workflow-contracts:self-test", "browser:interaction:self-test", "release:authorization:self-test", "editorial:snapshot:self-test", "deploy:verifier:verify", "release:boundary:verify", "pdf:safety:self-test", "step:safety:self-test"],
+      "remainingEvidence": "Negative and bypass fixtures do not yet cover every legacy P0/P1 verifier; verifier-scope reductions still require reviewer approval.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "CONDITIONAL", "postdeploy-24h": "WARN", "postdeploy-7d": "BLOCK"}
+    },
+    {
+      "id": "WEB-01",
+      "severity": "P1",
+      "owner": "content-owner",
+      "automationStatus": "partial",
+      "implementation": ["i18n:metadata:verify", "product-trust:verify", "faq-trust:verify", "faq:i18n:verify", "ai-trust-overrides:verify", "owner-facts:translations:verify", "unsafe-orphans:verify", "soft-isolation:verify", "clearance-article:verify", "selection-article:verify", "copy:regressions:verify", "cnc-saw-case:verify", "search:verify", "drawing-products:verify", "i18n:catalog:verify", "i18n:verify", "partial-locales:verify", "partial-locales:content:verify", "partial-contact:verify", "editorial:release:verify", "owner-facts:verify", "products:validate", "claims:verify"],
+      "remainingEvidence": "Product facts and changed localized semantics still require provenance-backed domain/editorial review; hashes only prove change state. The current manifest retains one transition per artifact, so a page changed semantically more than once since the approved production baseline must be consolidated into one final baseline-to-candidate review or remain blocked.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "CONDITIONAL", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "WEB-02",
+      "severity": "P1",
+      "owner": "engineering",
+      "automationStatus": "implemented",
+      "implementation": ["heroes:verify", "main-landmarks:verify", "analytics:cache:verify", "local-preview:smoke", "search:interactions:verify", "preview:verify", "product-ui:verify", "images:verify", "social:verify", "quality:source", "preview:release:verify", "local-preview:release:smoke", "local-preview:release:verify", "search:interactions:release:verify", "release:experience:verify", "deploy:validate"],
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "CONDITIONAL", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "SEO-01",
+      "severity": "P1",
+      "owner": "seo-owner",
+      "automationStatus": "partial",
+      "implementation": ["i18n:metadata:verify", "homepage-links:verify", "discovery:verify", "i18n:sitemap:verify", "i18n:verify", "pdf:metadata:check", "social:verify", "deploy:validate"],
+      "remainingEvidence": "Production fetch behavior and delayed Google Search Console processing require post-deployment evidence.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "NAV-01",
+      "severity": "P1",
+      "owner": "engineering",
+      "automationStatus": "implemented",
+      "implementation": ["browser:interaction:self-test", "homepage-links:verify", "local-preview:smoke", "partial-contact:verify", "local-preview:release:smoke", "local-preview:release:verify", "release:navigation:smoke", "release:navigation:verify", "postdeploy:navigation:verify", "search:interactions:release:verify"],
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "CONDITIONAL", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "DL-01",
+      "severity": "P0",
+      "owner": "engineering-owner",
+      "automationStatus": "partial",
+      "implementation": ["pdf:safety:self-test", "step:safety:self-test", "pdf:metadata:check", "downloads:verify", "release:links:verify", "release:boundary:verify"],
+      "remainingEvidence": "Independent malware scanning and engineering-content approval are not proven by parser or digest checks.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "INQ-UI",
+      "severity": "P1",
+      "owner": "sales-operations",
+      "automationStatus": "implemented",
+      "implementation": ["partial-contact:verify", "inquiry:verify", "consent-ui:verify", "consent-ui:release:verify", "postdeploy:navigation:verify"],
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "CONDITIONAL", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "INQ-ENDPOINT",
+      "severity": "P1",
+      "owner": "engineering",
+      "automationStatus": "partial",
+      "implementation": ["inquiry:verify", "inquiry:php:verify", "deploy:verifier:verify"],
+      "remainingEvidence": "A production rejection probe proves only the tested boundary; SMTP acceptance and delivery are separate controls.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "CONDITIONAL", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "INQ-SMTP",
+      "severity": "P1",
+      "owner": "sales-operations",
+      "automationStatus": "partial",
+      "implementation": ["release:authorization:verify"],
+      "remainingEvidence": "The verifier checks only the protected reference format and its candidate-SHA binding. It does not inspect the external record, so INQ-SMTP remains UNKNOWN in the binding artifact until an authorized reviewer verifies the correlated provider acceptance record.",
+      "requiredEvidence": "Provider acceptance ID correlated to an authorized controlled inquiry when the mail chain changes.",
+      "stages": {"pr": "CONDITIONAL", "release": "CONDITIONAL", "postdeploy-0-5m": "CONDITIONAL", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "INQ-DELIVERY",
+      "severity": "P1",
+      "owner": "sales-operations",
+      "automationStatus": "partial",
+      "implementation": ["release:authorization:verify"],
+      "remainingEvidence": "The verifier checks only the protected reference format and its candidate-SHA binding. It does not inspect the external record, so INQ-DELIVERY remains UNKNOWN in the binding artifact until an authorized reviewer verifies the correlated destination-inbox record.",
+      "requiredEvidence": "Authorized controlled message correlated from submission through the actual destination inbox; otherwise UNKNOWN.",
+      "stages": {"pr": "CONDITIONAL", "release": "CONDITIONAL", "postdeploy-0-5m": "CONDITIONAL", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "SRV-01",
+      "severity": "P0",
+      "owner": "infrastructure-owner",
+      "automationStatus": "partial",
+      "implementation": ["deploy:validate", "deploy:verifier:verify"],
+      "remainingEvidence": "Actual host identity, runtime bindings, service state, capacity, rollback target, and rollback outcome must come from the deployment environment.",
+      "stages": {"pr": "CONDITIONAL", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "SEC-01",
+      "severity": "P0",
+      "owner": "security-owner",
+      "automationStatus": "partial",
+      "implementation": ["release:boundary:verify", "deploy:validate", "deploy:verifier:verify", "pdf:safety:self-test"],
+      "remainingEvidence": "External TLS/host state, secret-store configuration, runtime binding ownership, and platform permissions require environment evidence.",
+      "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "CONDITIONAL", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "PERF-01",
+      "severity": "P2",
+      "owner": "engineering",
+      "automationStatus": "partial",
+      "implementation": ["images:verify", "release:experience:verify", "lighthouse:release:verify"],
+      "remainingEvidence": "Laboratory checks do not establish production field performance; RUM/Core Web Vitals need a defined observation window and sufficient samples.",
+      "stages": {"pr": "WARN", "release": "WARN", "postdeploy-0-5m": "WARN", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "DISC-01",
+      "severity": "P2",
+      "owner": "seo-owner",
+      "automationStatus": "partial",
+      "implementation": ["discovery:verify", "i18n:sitemap:verify"],
+      "remainingEvidence": "IndexNow response and Google Search Console crawl/index state are delayed external evidence and remain separate from release health.",
+      "requiredEvidence": "IndexNow and Search Console responses remain separate post-release evidence and do not roll back a healthy release.",
+      "stages": {"pr": "NOT_APPLICABLE", "release": "CONDITIONAL", "postdeploy-0-5m": "WARN", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    },
+    {
+      "id": "OBS-01",
+      "severity": "P1",
+      "owner": "infrastructure-owner",
+      "automationStatus": "manual",
+      "implementation": [],
+      "requiredEvidence": "Sanitized production 5xx, 404, PHP, latency and inquiry telemetry for the declared observation window.",
+      "stages": {"pr": "NOT_APPLICABLE", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
+    }
+  ]
+}

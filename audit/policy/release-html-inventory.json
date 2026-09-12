@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "canonicalPageSource": "i18n/config.json#pages",
+  "languageSource": "i18n/config.json#sourceLanguage+activeLanguageCodes",
+  "noindexPages": ["search.html", "thank-you.html"],
+  "errorPages": ["404.html"],
+  "redirectFiles": [
+    "3-in-3-out-Pneumatic-rotary-joint-P6776400.html",
+    "BP-2P-95-0001.html",
+    "products-p2.html",
+    "de/BP-2P-95-0001.html",
+    "de/products-p2.html",
+    "ja/BP-2P-95-0001.html",
+    "ja/products-p2.html",
+    "ru/BP-2P-95-0001.html",
+    "ru/products-p2.html"
+  ]
+}

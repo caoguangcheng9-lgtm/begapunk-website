@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
+import './editorial-legacy-transition.test.mjs';
 import { fileURLToPath } from 'node:url';
 import {
   applyMechanicalOnlySnapshots,

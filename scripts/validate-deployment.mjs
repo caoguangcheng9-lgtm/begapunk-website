@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
@@ -9,11 +9,29 @@ import {
   loadPublicDownloadAllowlist,
   parsePublicDownloadsManifest,
 } from './lib/public-downloads.mjs';
+import {
+  createPublicDirectoryPolicy,
+  inspectReleaseTree,
+  publicDirectoryBoundaryFailures,
+  RELEASE_MANIFEST_PATH,
+  verifyReleaseManifest,
+} from './lib/release-boundary.mjs';
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
 const failures = [];
 const i18nConfig = JSON.parse(await readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
+const releaseHtmlInventory = JSON.parse(await readFile(
+  path.join(sourceRoot, 'audit', 'policy', 'release-html-inventory.json'),
+  'utf8',
+));
+const publicDirectoryInventory = JSON.parse(await readFile(
+  path.join(sourceRoot, 'audit', 'policy', 'public-directory-inventory.json'),
+  'utf8',
+));
+if (publicDirectoryInventory.schemaVersion !== 1) {
+  throw new Error('audit/policy/public-directory-inventory.json: unsupported schemaVersion.');
+}
 const partialLanguagePages = i18nConfig.partialLanguagePages || {};
 const partialLanguageAssets = i18nConfig.partialLanguageAssets || {};
 const partialLanguageCodes = Object.keys(partialLanguagePages);
@@ -50,16 +68,38 @@ async function exists(relativePath) {
   }
 }
 
-async function walk(directory) {
-  const entries = await readdir(directory, { withFileTypes: true });
-  const files = [];
-  for (const entry of entries) {
-    const absolute = path.join(directory, entry.name);
-    if (entry.isDirectory()) files.push(...await walk(absolute));
-    if (entry.isFile()) files.push(absolute);
-  }
-  return files;
+const releaseTree = await inspectReleaseTree(releaseRoot);
+for (const { relativePath, type } of releaseTree.forbiddenNodes) {
+  failures.push(`Forbidden non-regular release entry: ${relativePath} (${type})`);
 }
+for (const { relativePath, problem } of releaseTree.unsafePaths) {
+  failures.push(`Unsafe release path: ${relativePath} (${problem})`);
+}
+const allFiles = releaseTree.files.map(({ absolutePath }) => absolutePath);
+const regularFilesByPath = new Map(releaseTree.files.map((file) => [file.relativePath, file]));
+const publicDirectories = [
+  'css',
+  'js',
+  'fonts',
+  'images',
+  'videos',
+  'PHPMailer',
+  ...deployedLanguageCodes,
+];
+const publicDirectoryPolicy = createPublicDirectoryPolicy({
+  deployedLanguageCodes,
+  canonicalPages: i18nConfig.pages || [],
+  redirectFiles: releaseHtmlInventory.redirectFiles || [],
+  declaredNonHtmlFiles: publicDirectoryInventory.files,
+});
+const releasePublicFiles = releaseTree.files.filter(({ relativePath }) => (
+  publicDirectories.some((directoryName) => relativePath.startsWith(`${directoryName}/`))
+));
+failures.push(...publicDirectoryBoundaryFailures(
+  releasePublicFiles,
+  publicDirectoryPolicy,
+  { requireCompleteInventory: true },
+).map((failure) => `Public directory inventory: ${failure}`));
 
 const requiredFiles = [
   'index.html',
@@ -87,14 +127,13 @@ const requiredFiles = [
 ];
 
 for (const fileName of requiredFiles) {
-  if (!await exists(fileName)) failures.push(`Missing required release file: ${fileName}`);
+  if (!regularFilesByPath.has(fileName)) failures.push(`Missing required regular release file: ${fileName}`);
 }
 
 for (const forbidden of ['.env', '.git', 'audit', 'catalog-project', 'i18n', 'scripts', 'package.json']) {
   if (await exists(forbidden)) failures.push(`Forbidden source or secret content in release: ${forbidden}`);
 }
 
-const allFiles = await walk(releaseRoot);
 const htmlFiles = allFiles.filter((fileName) => fileName.endsWith('.html'));
 const allowedPartialSitemaps = new Set(partialSitemapFiles);
 for (const relativePath of allFiles.map(toReleasePath).filter((fileName) => /^sitemap-[a-z]{2}\.xml$/i.test(fileName))) {
@@ -112,7 +151,7 @@ for (const fileName of allFiles) {
 
 async function validatePublicDownloadsManifest() {
   const manifestRelative = 'downloads/public-downloads.sha256';
-  if (!await exists(manifestRelative)) return 0;
+  if (!regularFilesByPath.has(manifestRelative)) return 0;
 
   const downloadsRoot = path.join(releaseRoot, 'downloads');
   const manifestPath = path.join(releaseRoot, manifestRelative);
@@ -120,8 +159,9 @@ async function validatePublicDownloadsManifest() {
   let downloadFiles;
   try {
     manifestSource = await readFile(manifestPath, 'utf8');
-    downloadFiles = (await walk(downloadsRoot))
-      .filter((fileName) => path.resolve(fileName) !== path.resolve(manifestPath));
+    downloadFiles = releaseTree.files
+      .filter(({ relativePath }) => relativePath.startsWith('downloads/') && relativePath !== manifestRelative)
+      .map(({ absolutePath }) => absolutePath);
   } catch (error) {
     failures.push(`${manifestRelative}: unable to read downloads manifest or directory (${error.message})`);
     return 0;
@@ -180,6 +220,19 @@ async function validatePublicDownloadsManifest() {
 
 const validatedDownloadCount = await validatePublicDownloadsManifest();
 
+let validatedReleaseManifestCount = 0;
+const releaseManifest = regularFilesByPath.get(RELEASE_MANIFEST_PATH);
+if (releaseManifest) {
+  try {
+    const manifestSource = await readFile(releaseManifest.absolutePath, 'utf8');
+    const result = await verifyReleaseManifest({ files: releaseTree.files, manifestSource });
+    validatedReleaseManifestCount = result.entryCount;
+    failures.push(...result.failures);
+  } catch (error) {
+    failures.push(`${RELEASE_MANIFEST_PATH}: unable to verify release manifest (${error.message})`);
+  }
+}
+
 function normalizeReference(value) {
   return value.split('#')[0].split('?')[0].trim();
 }
@@ -197,7 +250,10 @@ async function verifyReference(reference, owner) {
     return;
   }
   try {
-    await stat(target);
+    const targetStats = await stat(target);
+    if (!targetStats.isFile()) {
+      failures.push(`${path.relative(releaseRoot, owner)}: local reference is not a regular file (${reference})`);
+    }
   } catch {
     failures.push(`${path.relative(releaseRoot, owner)}: missing local reference (${reference})`);
   }
@@ -340,6 +396,7 @@ try {
       `if ($request_uri ~ "^/(${deployedLanguageCodes.join('|')})/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$1/$is_args$args; }`,
     ],
     ['root product alias', 'rewrite ^/BP-2P-95-0001[.]html$ https://www.begapunk.com/BP-2P-95-0005.html permanent;'],
+    ['legacy drawing alias', 'rewrite ^/downloads/BP-2P-95-0001[.]pdf$ https://www.begapunk.com/downloads/BP-2P-95-0005.pdf permanent;'],
     [
       'localized product aliases',
       `rewrite ^/(${deployedLanguageCodes.join('|')})/BP-2P-95-0001[.]html$ https://www.begapunk.com/$1/BP-2P-95-0005.html permanent;`,
@@ -378,8 +435,8 @@ try {
       failures.push(`ops/nginx-managed-redirects.conf: missing managed ${label}`);
     }
   }
-  if (policyDirectives.length !== 43 || new Set(policyDirectives).size !== 43) {
-    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 43 unique approved directives; found ${policyDirectives.length}`);
+  if (policyDirectives.length !== 44 || new Set(policyDirectives).size !== 44) {
+    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 44 unique approved directives; found ${policyDirectives.length}`);
   }
   if (policyDirectives.some((line) => /^location\b|\b(?:root|alias|proxy_pass|include)\b/i.test(line))) {
     failures.push('ops/nginx-managed-redirects.conf: policy must remain location-free and must not change roots, aliases, proxies, or includes');
@@ -398,6 +455,23 @@ try {
   }
   if (!activationScript.includes('Release contains a forbidden public .env path.')) {
     failures.push('ops/activate-release.sh: missing public .env fail-closed guard');
+  }
+  const activationInquiryEnvironmentValidation = activationScript.indexOf(
+    'validate_inquiry_environment_file "$SHARED_DIR/.env" 0 "$www_gid"',
+  );
+  const activationReleaseIdentityValidation = activationScript.indexOf(
+    'verify_release_manifest_identity "$release_dir" "$expected_manifest_sha256"',
+  );
+  const activationReleaseSwitch = activationScript.indexOf('mv -Tf "$next_link" "$CURRENT_LINK"');
+  if (activationInquiryEnvironmentValidation < 0
+    || activationReleaseIdentityValidation < activationInquiryEnvironmentValidation
+    || activationReleaseSwitch < activationReleaseIdentityValidation) {
+    failures.push('ops/activate-release.sh: every activation must validate the canonical inquiry environment before artifact verification and switching current');
+  }
+  if (!activationScript.includes('expected_homepage_sha256=')
+    || !activationScript.includes('actual_homepage_sha256=')
+    || !activationScript.includes('Origin served a different homepage artifact')) {
+    failures.push('ops/activate-release.sh: origin health check must verify the exact audited homepage bytes');
   }
   const activationPreviousTargetCapture = activationScript.indexOf('previous_target="$(readlink -f "$CURRENT_LINK"');
   const activationPruneTargetResolution = activationScript.indexOf('candidate_target="$(readlink -f "$candidate")"');
@@ -418,12 +492,47 @@ try {
   const bootstrapPolicyCommit = bootstrapScript.indexOf('commit "$bootstrap_transaction"');
   const bootstrapMarkerCommit = bootstrapScript.indexOf('mv -f -- "$bootstrap_marker_candidate" "$bootstrap_marker"');
   const bootstrapRollbackDisarm = bootstrapScript.indexOf('bootstrap_policy_staged=false');
+  const bootstrapInquiryMigrationGuard = bootstrapScript.indexOf(
+    '[[ ! -e "$BASE_DIR/shared/.env" && ! -L "$BASE_DIR/shared/.env"',
+  );
+  const bootstrapInquirySourceValidation = bootstrapScript.indexOf(
+    'validate_plain_runtime_file "$LIVE_ROOT/.env" || exit 12',
+  );
+  const bootstrapInquiryEnvironmentInstall = bootstrapScript.indexOf(
+    'install -o root -g www -m 0640 -- "$LIVE_ROOT/.env" "$BASE_DIR/shared/.env"',
+  );
+  const bootstrapInquiryEnvironmentValidation = bootstrapScript.indexOf(
+    'validate_inquiry_environment_file "$BASE_DIR/shared/.env" 0 "$www_gid"',
+  );
+  const bootstrapManagedDirectoryPreflight = bootstrapScript.indexOf(
+    'for managed_dir in "$BASE_DIR" "$BASE_DIR/releases" "$BASE_DIR/shared" "$BASE_DIR/bin" "$BASE_DIR/staging"',
+  );
+  const bootstrapManagedTreePreflight = bootstrapScript.indexOf(
+    'validate_plain_directory_tree "$BASE_DIR" || exit 12',
+  );
+  const bootstrapManagedDirectorySymlinkGuard = bootstrapScript.indexOf(
+    '[[ -d "$managed_dir" && ! -L "$managed_dir" ]]',
+    bootstrapManagedDirectoryPreflight,
+  );
+  const bootstrapManagedDirectoryCreation = bootstrapScript.indexOf(
+    'mkdir -p "$BASE_DIR/releases" "$BASE_DIR/shared" "$BASE_DIR/bin" "$BASE_DIR/staging"',
+  );
   if (bootstrapPolicyStage < 0
     || bootstrapReleaseSwitch < 0
     || bootstrapPolicyStage > bootstrapReleaseSwitch
     || bootstrapPolicyCommit < bootstrapReleaseSwitch
     || bootstrapMarkerCommit < bootstrapPolicyCommit
     || bootstrapRollbackDisarm < bootstrapMarkerCommit
+    || bootstrapInquiryMigrationGuard < 0
+    || bootstrapInquirySourceValidation < bootstrapInquiryMigrationGuard
+    || bootstrapInquiryEnvironmentInstall < bootstrapInquirySourceValidation
+    || bootstrapInquiryEnvironmentValidation < bootstrapInquiryEnvironmentInstall
+    || bootstrapInquiryEnvironmentValidation > bootstrapReleaseSwitch
+    || bootstrapManagedTreePreflight < 0
+    || bootstrapManagedDirectoryPreflight < bootstrapManagedTreePreflight
+    || bootstrapManagedDirectorySymlinkGuard < bootstrapManagedDirectoryPreflight
+    || bootstrapManagedDirectoryCreation < bootstrapManagedDirectorySymlinkGuard
+    || !activationScript.includes('validate_inquiry_environment_file()')
     || !bootstrapScript.includes("! grep -Eq '/www/begapunk/shared/[.]env|BEGAPUNK_ENV_FILE'")
     || !bootstrapScript.includes('ln -s "$BASE_DIR/shared/.env" "$seed_dir/.env"')
     || !bootstrapScript.includes('rollback_bootstrap_on_exit')) {
@@ -488,7 +597,23 @@ try {
     'Verify hardened server deployment contract',
     "helper_metadata\" != 'root:root:755'",
     "env_metadata\" != 'root:www:640'",
+    'active rollback release manifest verified',
+    'available_kib < 1048576',
+    'available_inodes < 10000',
+    'SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS SMTP_TO',
     'bash ops/verify-public-deployment.sh',
+    'BEGAPUNK_EXPECTED_HOMEPAGE_SHA256=',
+    'BEGAPUNK_EXPECTED_ROBOTS_SHA256=',
+    'BEGAPUNK_EXPECTED_SITEMAP_SHA256=',
+    'BEGAPUNK_EXPECTED_I18N_SITEMAP_SHA256=',
+    'bash tests/verify-public-deployment-headers.sh',
+    'npm run postdeploy:navigation:verify',
+    'actions/upload-artifact@',
+    'actions/download-artifact@',
+    'include-hidden-files: true',
+    'manifest_sha256:',
+    'EXPECTED_MANIFEST_SHA256:',
+    'BEGAPUNK_RELEASE_ID:',
     'previous_release_id',
   ]) {
     if (!workflow.includes(requiredWorkflowText)) {
@@ -499,11 +624,15 @@ try {
   if (!deployTimeout || Number(deployTimeout) < 45) {
     failures.push('.github/workflows/deploy.yml: deployment job must reserve at least 45 minutes for validation and rollback');
   }
+  if (!/build-release:[\s\S]*?environment:\s*production[\s\S]*?Build and audit release once/u.test(workflow)) {
+    failures.push('.github/workflows/deploy.yml: canonical release build must have production environment access before the IndexNow proof enters the manifest');
+  }
   for (const requiredPublicProbe of [
     "'/.env'",
     "'/manifest.sha256'",
     "'/PHPMailer/PHPMailer.php'",
     "'/BP-2P-95-0001.html'",
+    "'/downloads/BP-2P-95-0001.pdf'",
     "'/products-p2.html'",
     "'http://www.begapunk.com/?utm_source=post-deploy-http'",
     "'http://begapunk.com/?utm_source=post-deploy-apex-http'",
@@ -517,9 +646,15 @@ try {
     "'/cgi-sys/suspendedpage.cgi'",
     "'/__begapunk_missing_policy_probe__'",
     "verify_status '/' 200",
+    "'/robots.txt' '/sitemap.xml' '/sitemap-i18n.xml'",
+    "Sitemap: https://www.begapunk.com/sitemap-i18n.xml",
     'x-content-type-options:',
     'cache-control:',
     "'Alt-Svc'",
+    'extract_final_http_header_block',
+    'EXPECTED_HOMEPAGE_SHA256=',
+    'verify_final_http_status "$endpoint_headers" 405',
+    'verify_single_header_value "$endpoint_headers" \'Allow\' \'POST\'',
   ]) {
     if (!publicVerifier.includes(requiredPublicProbe)) {
       failures.push(`ops/verify-public-deployment.sh: missing public boundary probe (${requiredPublicProbe})`);
@@ -527,6 +662,14 @@ try {
   }
   if (publicVerifier.includes('includeSubDomains')) {
     failures.push('ops/verify-public-deployment.sh: HSTS verification must not require unreviewed subdomain coverage');
+  }
+  const deploymentCommit = workflow.indexOf('Commit deployment transaction');
+  const indexNowNotification = workflow.indexOf('Notify IndexNow of changed URLs');
+  const indexNowNonBlocking = workflow.indexOf('continue-on-error: true', indexNowNotification);
+  if (deploymentCommit < 0
+    || indexNowNotification < deploymentCommit
+    || indexNowNonBlocking < indexNowNotification) {
+    failures.push('.github/workflows/deploy.yml: IndexNow must run after transaction commit as a non-blocking notification');
   }
 } catch (error) {
   failures.push(`Cannot validate deployment hardening: ${error.message}`);
@@ -538,4 +681,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Deployment validation passed: ${htmlFiles.length} HTML files, ${allFiles.length} total release files, and ${validatedDownloadCount} verified public downloads.`);
+console.log(`Deployment validation passed: ${htmlFiles.length} HTML files, ${validatedReleaseManifestCount} manifest-tracked regular files, ${allFiles.length} total regular files including the manifest, and ${validatedDownloadCount} verified public downloads.`);

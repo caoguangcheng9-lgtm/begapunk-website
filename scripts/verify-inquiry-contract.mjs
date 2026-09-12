@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import { validateTrustedAuditPolicyContract } from './lib/audit-policy-contracts.mjs';
 import {
   drawingBackedProductMetadata,
   drawingBackedProductModels,
@@ -1241,8 +1242,14 @@ check(
   packageJson.scripts?.['inquiry:verify'] === 'node scripts/verify-inquiry-contract.mjs && node scripts/verify-analytics-attribution.mjs',
   'package.json: inquiry:verify must include the contract and consent-attribution checks.',
 );
-for (const scriptName of ['quality:pr', 'deploy:prepare']) {
-  const chain = String(packageJson.scripts?.[scriptName] || '').split(' && ');
+const auditPolicy = JSON.parse(read('audit/policy/release-audit-v2.json'));
+for (const failure of validateTrustedAuditPolicyContract(auditPolicy)) check(false, failure);
+for (const [scriptName, phaseName] of [['quality:pr', 'pr'], ['deploy:prepare', 'release']]) {
+  check(packageJson.scripts?.[scriptName] === `node scripts/run-release-audit.mjs ${phaseName}`,
+    `package.json: ${scriptName} must use the governed ${phaseName} audit plan.`);
+  const phase = auditPolicy.phases?.[phaseName];
+  const chain = [...(phase?.gateSets || []).flatMap(name => auditPolicy.gateSets?.[name] || []),
+    ...(phase?.additionalGates || [])].map(gate => `npm run ${gate}`);
   const inquiryIndexes = chain.reduce((indexes, command, index) => command === 'npm run inquiry:verify' ? [...indexes, index] : indexes, []);
   const analyticsCacheIndexes = chain.reduce((indexes, command, index) => command === 'npm run analytics:cache:verify' ? [...indexes, index] : indexes, []);
   const homepageLinksIndexes = chain.reduce((indexes, command, index) => command === 'npm run homepage-links:verify' ? [...indexes, index] : indexes, []);

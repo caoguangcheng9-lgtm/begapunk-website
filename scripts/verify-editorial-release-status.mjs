@@ -3,6 +3,8 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import {
   createArtifactSnapshot,
+  verifiedLegacyArtifactSnapshots,
+  assertReviewedBaselineTransition,
   EDITORIAL_MANIFEST_SCHEMA_VERSION,
   EDITORIAL_STATUS_SNAPSHOT_SCHEMA_VERSION,
   LEGACY_ALGORITHM,
@@ -764,13 +766,16 @@ if (artifactManifest) {
       } catch (error) {
         policyFail(`schema migration source review record cannot be read from trusted git baseline ${trustedBaselineRef} (${error.message}).`);
       }
-      for (const artifactPath of expectedArtifactPaths) {
-        const baselineArtifact = baselineByPath.get(artifactPath);
-        const currentArtifact = artifactByPath.get(artifactPath);
-        if (!baselineArtifact || baselineArtifact.sha256 !== currentArtifact?.mechanicalSha256) {
-          policyFail(`${artifactPath}: schema migration changed content relative to trusted git baseline ${trustedBaselineRef}.`);
+      try {
+        const verified = verifiedLegacyArtifactSnapshots(trustedBaselineManifest,
+          artifactPath => gitBytes(trustedBaselineRef, artifactPath));
+        for (const baselineArtifact of verified) {
+          try {
+            assertReviewedBaselineTransition(baselineArtifact, artifactByPath.get(baselineArtifact.path),
+              trustedBaselineManifest.capturedAt);
+          } catch (error) { policyFail(`trusted git baseline ${trustedBaselineRef}: ${error.message}`); }
         }
-      }
+      } catch (error) { policyFail(`legacy baseline integrity: ${error.message}`); }
     } else if (trustedBaselineManifest.schemaVersion === EDITORIAL_MANIFEST_SCHEMA_VERSION
       && trustedBaselineManifest.semanticAlgorithm === SEMANTIC_ALGORITHM) {
       for (const artifactPath of expectedArtifactPaths) {

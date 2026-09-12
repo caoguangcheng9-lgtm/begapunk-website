@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { load } from 'cheerio';
 import sharp from 'sharp';
+import { validateReleaseSearchContract } from './lib/audit-policy-contracts.mjs';
 import { DISCOVERY_ROBOTS_MARKER, discoveryExcludedPageSet } from './discovery-exclusions.mjs';
 import { drawingBackedProductMetadata } from './lib/drawing-backed-product-facts.mjs';
 import { filterExistingNoindexUrls } from './lib/indexing-policy.mjs';
@@ -110,13 +111,8 @@ try {
 }
 try {
   const packageJson = JSON.parse(await fs.readFile(path.join(sourceRoot, 'package.json'), 'utf8'));
-  const deployPrepare = packageJson.scripts?.['deploy:prepare'] || '';
-  if (!/(?:^|&&\s*)npm run search:verify(?:\s*&&|$)/.test(deployPrepare)) {
-    failures.push('package.json: deploy:prepare must run search:verify.');
-  }
-  if (/(?:^|&&\s*)npm run search:sync(?:\s*&&|$)/.test(deployPrepare)) {
-    failures.push('package.json: deploy:prepare must verify search data without mutating it via search:sync.');
-  }
+  const policy = JSON.parse(await fs.readFile(path.join(sourceRoot, 'audit/policy/release-audit-v2.json'), 'utf8'));
+  failures.push(...validateReleaseSearchContract(packageJson, policy));
 } catch (error) {
   failures.push(`package.json: deploy preparation contract could not be verified (${error.message}).`);
 }

@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { validateTrustedAuditPolicyContract } from './lib/audit-policy-contracts.mjs';
 
 const root = process.cwd();
 
@@ -91,8 +92,13 @@ if (scripts["collab:validate"] !== "node scripts/validate-collaboration-model.mj
   failures.push("package.json must expose the collab:validate command.");
 }
 
-if (!scripts["quality:pr"]?.includes("npm run collab:validate")) {
-  failures.push("quality:pr must enforce the collaboration-model validation.");
+const auditPolicy = JSON.parse(fs.readFileSync(path.join(root, 'audit/policy/release-audit-v2.json'), 'utf8'));
+failures.push(...validateTrustedAuditPolicyContract(auditPolicy));
+const prPhase = auditPolicy.phases?.pr;
+const prGates = (prPhase?.gateSets || []).filter(name => name !== 'nonWindows')
+  .flatMap(name => auditPolicy.gateSets?.[name] || []).concat(prPhase?.additionalGates || []);
+if (scripts['quality:pr'] !== 'node scripts/run-release-audit.mjs pr' || !prGates.includes('collab:validate')) {
+  failures.push('quality:pr must enforce the collaboration-model validation through the verified audit plan.');
 }
 
 if (failures.length > 0) {

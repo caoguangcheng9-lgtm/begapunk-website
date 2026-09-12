@@ -2,6 +2,17 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.mjs text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.php text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.css text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+.htaccess text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
 js/analytics.js text eol=lf
 *.py text eol=lf
 llms.txt text eol=lf
@@ -17,7 +28,3 @@ downloads/Begapunk_A4_Horizontal_R2000.dxf -text -diff
 downloads/Begapunk_A4_Horizontal_Template.dxf -text -diff
 downloads/SOLIDWORKS_Template_Guide.md -text -diff
 downloads/SOLIDWORKS_Template_Manual.md -text -diff
-
-de/** text=auto eol=lf
-ja/** text=auto eol=lf
-ru/** text=auto eol=lf

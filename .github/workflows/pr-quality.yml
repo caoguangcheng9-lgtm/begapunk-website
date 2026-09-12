@@ -24,10 +24,10 @@ jobs:
 
     steps:
       - name: Check out pull request
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
 
@@ -45,17 +45,19 @@ jobs:
         env:
           BEGAPUNK_EXPECTED_PHP_MINOR: ${{ matrix.php }}
 
-  quality:
-    needs: inquiry-php
+  deterministic-release-linux:
+    name: Deterministic release (Linux)
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 15
+    outputs:
+      digest: ${{ steps.digest.outputs.sha256 }}
 
     steps:
       - name: Check out pull request
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: npm
@@ -63,8 +65,89 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build release candidate
+        run: npm run deploy:build
+
+      - name: Record release manifest digest
+        id: digest
+        run: echo "sha256=$(node scripts/release-manifest-digest.mjs)" >> "$GITHUB_OUTPUT"
+
+  deterministic-release-windows:
+    name: Deterministic release (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 15
+    outputs:
+      digest: ${{ steps.digest.outputs.sha256 }}
+
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build release candidate
+        run: npm run deploy:build
+
+      - name: Record release manifest digest
+        id: digest
+        shell: pwsh
+        run: Add-Content -LiteralPath $env:GITHUB_OUTPUT -Value "sha256=$(node scripts/release-manifest-digest.mjs)"
+
+  deterministic-release:
+    name: Cross-platform release parity
+    needs: [deterministic-release-linux, deterministic-release-windows]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Compare Linux and Windows release manifests
+        env:
+          LINUX_DIGEST: ${{ needs.deterministic-release-linux.outputs.digest }}
+          WINDOWS_DIGEST: ${{ needs.deterministic-release-windows.outputs.digest }}
+        run: |
+          test -n "$LINUX_DIGEST"
+          test -n "$WINDOWS_DIGEST"
+          test "$LINUX_DIGEST" = "$WINDOWS_DIGEST"
+
+  quality:
+    needs: [inquiry-php, deterministic-release]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: .github/requirements-deploy.txt
+
+      - name: Install PDF validation dependency
+        run: python -m pip install --require-hashes -r .github/requirements-deploy.txt
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Run source, product, localization, claim, and release checks
         run: npm run quality:pr
+        env:
+          EDITORIAL_TRUSTED_BASE_REF: ${{ github.event.pull_request.base.sha }}
 
       - name: Confirm generated assets are committed
         run: |

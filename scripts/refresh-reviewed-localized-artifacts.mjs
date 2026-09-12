@@ -6,6 +6,7 @@ import {
   applyMechanicalOnlySnapshots,
   compareArtifactSnapshots,
   createArtifactSnapshot,
+  verifiedLegacyArtifactSnapshots,
   EDITORIAL_MANIFEST_SCHEMA_VERSION,
   EDITORIAL_STATUS_SNAPSHOT_SCHEMA_VERSION,
   LEGACY_ALGORITHM,
@@ -369,7 +370,7 @@ if (manifestRelative !== 'audit/localization/current-localized-artifacts.json') 
   throw new Error('Editorial status must point to audit/localization/current-localized-artifacts.json.');
 }
 const manifestPath = path.join(root, ...manifestRelative.split('/'));
-const previousManifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
+let previousManifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
 const trustedHeadManifest = readHeadJson(manifestRelative);
 const trustedHeadStatus = readHeadJson('i18n/editorial/status.json');
 
@@ -384,6 +385,39 @@ if (mode !== 'schema-migration'
   throw new Error(
     'Snapshot refresh refused because the working editorial status differs from the trusted HEAD baseline.',
   );
+}
+
+// Explicit owner-reviewed production baseline; the working HEAD guards above
+// still prevent silently replacing the current review/status records.
+const reviewBaselineRef = argumentValue('review-baseline-ref');
+if (reviewBaselineRef) {
+  if (mode !== 'reviewed-semantic' || !/^[a-f0-9]{40}$/.test(reviewBaselineRef)) {
+    throw new Error('A full production commit SHA is required for reviewed-semantic consolidation.');
+  }
+  const git = args => {
+    const r = spawnSync('git', args, { cwd: root, windowsHide: true, maxBuffer: 16 * 1024 * 1024 });
+    if (r.status !== 0 || r.error) throw new Error('Cannot verify the explicit production review baseline.');
+    return r.stdout;
+  };
+  if (git(['rev-parse', 'HEAD']).toString().trim() === reviewBaselineRef) throw new Error('Candidate HEAD cannot approve itself.');
+  git(['merge-base', '--is-ancestor', reviewBaselineRef, 'HEAD']);
+  const read = file => git(['show', `${reviewBaselineRef}:${file}`]);
+  const baseline = JSON.parse(read(manifestRelative));
+  const baselineStatus = JSON.parse(read('i18n/editorial/status.json'));
+  const readiness = ({ updatedAt, reviewedArtifactSnapshot, ...rest }) => rest;
+  if (JSON.stringify(readiness(status)) !== JSON.stringify(readiness(baselineStatus))) {
+    throw new Error('Consolidation may not self-approve editorial readiness changes.');
+  }
+  if (baseline.schemaVersion !== 1) throw new Error('This consolidation option supports only verified legacy production baselines.');
+  const snapshots = verifiedLegacyArtifactSnapshots(baseline, read);
+  assertSameSet(snapshots.map(a => a.path), expectedArtifactPaths, 'Production review scope differs.');
+  if (previousManifest.migration.sourceCapturedAt !== baseline.capturedAt
+      || previousManifest.migration.sourceReviewRecord !== baseline.reviewRecord) {
+    throw new Error('Legacy provenance differs from the recorded schema migration.');
+  }
+  const prior = new Map(previousManifest.artifacts.map(a => [a.path, a]));
+  previousManifest = { ...previousManifest, updatedAt: baseline.capturedAt,
+    artifacts: snapshots.map(a => ({ ...prior.get(a.path), ...a })) };
 }
 
 const currentArtifacts = [];

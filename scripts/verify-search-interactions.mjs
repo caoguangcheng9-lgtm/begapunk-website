@@ -483,6 +483,19 @@ try {
     await loadingPage.close();
   }
 
+  const fragmentPage = await browser.newPage();
+  await fragmentPage.setViewport({ width: 320, height: 844 });
+  await blockExternalRequests(fragmentPage);
+  try {
+    await fragmentPage.goto(`${preview.origin}/?utm_source=fragment-regression#mainNav`, { waitUntil: 'load', timeout: 15000 });
+    assert(await fragmentPage.$eval('#mainNav', e => getComputedStyle(e).display !== 'none'), 'Native fragment menu is not visible after enhancement.');
+    await fragmentPage.keyboard.press('Escape');
+    await fragmentPage.waitForFunction(() => getComputedStyle(document.getElementById('mainNav')).display === 'none');
+    assert(new URL(fragmentPage.url()).searchParams.get('utm_source') === 'fragment-regression', 'Closing native menu discarded attribution.');
+    assert(await fragmentPage.$eval('#mobileToggle', e => e.getAttribute('aria-expanded') === 'false'), 'Closed native target has incorrect ARIA state.');
+  } catch (error) { failures.push(`enhanced native fragment close: ${error.message}`); }
+  finally { await fragmentPage.close(); }
+
   const noScriptPage = await browser.newPage();
   await noScriptPage.setJavaScriptEnabled(false);
   await noScriptPage.setViewport({ width: 320, height: 844 });

@@ -112,7 +112,9 @@
     nav.classList.remove('mobile-open');
     toggle.classList.remove('active');
     if (window.location.hash === '#mainNav') {
-      // Clear only the native menu target; retain the path and campaign query.
+      // replaceState alone does not update CSS :target. Move the native target
+      // first, then clean the URL while preserving the path and campaign query.
+      window.location.replace(window.location.pathname + window.location.search + '#mobileToggle');
       window.history.replaceState(window.history.state, '', window.location.pathname + window.location.search);
     }
     toggle.setAttribute('aria-expanded', 'false');
