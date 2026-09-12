@@ -396,7 +396,6 @@ try {
       `if ($request_uri ~ "^/(${deployedLanguageCodes.join('|')})/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$1/$is_args$args; }`,
     ],
     ['root product alias', 'rewrite ^/BP-2P-95-0001[.]html$ https://www.begapunk.com/BP-2P-95-0005.html permanent;'],
-    ['legacy drawing alias', 'rewrite ^/downloads/BP-2P-95-0001[.]pdf$ https://www.begapunk.com/downloads/BP-2P-95-0005.pdf permanent;'],
     [
       'localized product aliases',
       `rewrite ^/(${deployedLanguageCodes.join('|')})/BP-2P-95-0001[.]html$ https://www.begapunk.com/$1/BP-2P-95-0005.html permanent;`,
@@ -435,8 +434,10 @@ try {
       failures.push(`ops/nginx-managed-redirects.conf: missing managed ${label}`);
     }
   }
-  if (policyDirectives.length !== 44 || new Set(policyDirectives).size !== 44) {
-    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 44 unique approved directives; found ${policyDirectives.length}`);
+  // Match the installed v3 policy. The separate historical PDF alias is not
+  // included in this release and must not force an unrelated privileged change.
+  if (policyDirectives.length !== 43 || new Set(policyDirectives).size !== 43) {
+    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 43 unique approved directives; found ${policyDirectives.length}`);
   }
   if (policyDirectives.some((line) => /^location\b|\b(?:root|alias|proxy_pass|include)\b/i.test(line))) {
     failures.push('ops/nginx-managed-redirects.conf: policy must remain location-free and must not change roots, aliases, proxies, or includes');
@@ -632,7 +633,6 @@ try {
     "'/manifest.sha256'",
     "'/PHPMailer/PHPMailer.php'",
     "'/BP-2P-95-0001.html'",
-    "'/downloads/BP-2P-95-0001.pdf'",
     "'/products-p2.html'",
     "'http://www.begapunk.com/?utm_source=post-deploy-http'",
     "'http://begapunk.com/?utm_source=post-deploy-apex-http'",
