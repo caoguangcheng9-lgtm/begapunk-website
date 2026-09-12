@@ -21,7 +21,9 @@
       setExpanded(button, button.getAttribute('aria-expanded') !== 'true');
     });
 
-    setExpanded(button, false);
+    // Preserve the server-rendered state: collapsing all answers after first
+    // paint moves the questions under readers, especially on tablet widths.
+    setExpanded(button, button.getAttribute('aria-expanded') === 'true');
     button.disabled = false;
   }
 

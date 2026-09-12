@@ -817,7 +817,8 @@ for (const language of verifiedLanguages) {
       else if (navigationSignatures.get(language.code) !== signature) failures.push(`${language.code}/${pageName}: navigation structure differs from other pages in the same language.`);
     }
     const mobileButton = $('#mobileToggle');
-    if (mobileButton.length !== 1 || mobileButton.attr('aria-controls') !== 'mainNav' || mobileButton.attr('aria-expanded') !== 'false') failures.push(`${language.code}/${pageName}: mobile menu button ARIA state is incomplete.`);
+    if (mobileButton.length !== 1 || !mobileButton.is('a') || mobileButton.attr('href') !== '#mainNav' || mobileButton.attr('aria-controls') !== 'mainNav') failures.push(`${language.code}/${pageName}: native mobile menu fallback is incomplete.`);
+    if ($('#mainNav > .nav-close[href="#mobileToggle"]').length !== 1) failures.push(`${language.code}/${pageName}: native menu close link is missing.`);
     const headerLogo = $('header a.logo');
     if (headerLogo.length !== 1 || headerLogo.attr('href') !== './') {
       failures.push(`${language.code}/${pageName}: Header logo must return to the current-language homepage with href="./".`);
@@ -1168,8 +1169,9 @@ try {
   const globalCss = await fs.readFile(path.join(sourceRoot, 'css', 'style.css'), 'utf8');
   if (/\.nav\.(?:open|active)\b/.test(globalCss)) failures.push('css/style.css: legacy .nav.open or .nav.active mobile state remains.');
   if (!/\.nav\.mobile-open/.test(globalCss) || !/max-height:\s*calc\(100vh\s*-\s*64px\)/.test(globalCss) || !/overflow-y:\s*auto/.test(globalCss)) failures.push('css/style.css: canonical scrollable .nav.mobile-open state is incomplete.');
-  if ((globalCss.match(/\.nav\.mobile-open\s*,\s*html:not\(\.site-navigation-ready\)\s+\.nav\s*\{/g) || []).length !== 1) failures.push('css/style.css: enhanced and no-JavaScript navigation rules must share one canonical layout block.');
-  if (!/\.site-navigation-ready\s+\.nav\s*\{\s*display:\s*none/.test(globalCss) || !/html:not\(\.site-navigation-ready\)\s+\.mobile-toggle\s*\{\s*display:\s*none/.test(globalCss)) failures.push('css/style.css: no-JavaScript mobile navigation fallback is incomplete.');
+  if ((globalCss.match(/\.nav\.mobile-open\s*,\s*\.nav:target\s*\{/g) || []).length !== 1) failures.push('css/style.css: enhanced and native fragment menus must share one canonical layout block.');
+  if (/html:not\(\.site-navigation-ready\)/.test(globalCss)) failures.push('css/style.css: script readiness must not change the initial header geometry.');
+  if (!/@media\s*\(max-width:\s*1279px\)[\s\S]*?\.nav\s*\{\s*display:\s*none/.test(globalCss)) failures.push('css/style.css: initial compact navigation must be collapsed without waiting for JavaScript.');
   if (!/@media\s*\(max-width:\s*1279px\)[\s\S]*?\.header\s*\{[^}]*z-index:\s*1[12]\d{2}/.test(globalCss)) failures.push('css/style.css: compact header breakpoint and stacking context must protect long localized navigation below 1280px.');
   if (!/\.mobile-toggle span\s*\{\s*display:\s*none/.test(globalCss)) failures.push('css/style.css: decorative hamburger spans must be hidden in the text-only mobile control.');
   for (const label of ['Menu', 'Menü', 'メニュー', 'Меню']) {
@@ -1184,7 +1186,7 @@ try {
   if (!/\.footer\s+a:focus-visible\s*\{[^}]*outline:\s*3px/is.test(globalCss)) failures.push('css/style.css: clear Footer keyboard focus style is missing.');
   if (!/\.footer-links\s+a\s*\{[^}]*min-height:\s*44px/is.test(globalCss)) failures.push('css/style.css: Footer navigation touch targets must be at least 44px high.');
   if (!/\.nav-home-mobile\s*\{\s*display:\s*flex\s*;?\s*\}/.test(globalCss)) failures.push('css/style.css: explicit desktop Home navigation link must remain visible.');
-  if (!/:is\(\.nav\.mobile-open,\s*html:not\(\.site-navigation-ready\)\s+\.nav\)\s+\.nav-home-mobile\s*\{[^}]*display:\s*flex\s*!important/.test(globalCss)) failures.push('css/style.css: Home navigation link must remain visible inside enhanced and no-JavaScript compact menus.');
+  if (!/:is\(\.nav\.mobile-open,\s*\.nav:target\)\s+\.nav-home-mobile\s*\{[^}]*display:\s*flex\s*!important/.test(globalCss)) failures.push('css/style.css: Home navigation link must remain visible inside enhanced and native compact menus.');
   if (!/\.nav-dropdown:focus-within\s+\.nav-dropdown-menu/.test(globalCss)) failures.push('css/style.css: desktop dropdown focus-within support is missing.');
   for (const cssName of ['production-inspection-testing.css', 'case-studies.css', 'application-case.css', 'manufacturing-quality.css']) {
     const css = await fs.readFile(path.join(sourceRoot, 'css', cssName), 'utf8');
@@ -1209,7 +1211,7 @@ try {
 try {
   const navigationSource = await fs.readFile(path.join(sourceRoot, 'js', 'site-navigation.js'), 'utf8');
   if (navigationSource.includes('stopImmediatePropagation')) failures.push('js/site-navigation.js: obsolete capture-stage listener suppression remains.');
-  for (const required of ["classList.add('site-navigation-ready')", "toggle('mobile-open')", 'firstNavigationTarget()?.focus()', "event.key === 'Escape'", 'toggle.focus()', "document.addEventListener('focusin'", 'const desktopNavigationMinWidth = 1280', 'window.innerWidth >= desktopNavigationMinWidth', "toggle.setAttribute('aria-expanded'", ".i18n-switcher option[value]", "value.endsWith('/')", '`${value}index.html`']) {
+  for (const required of ["classList.add('site-navigation-ready')", "toggle('mobile-open', isOpen)", 'firstNavigationTarget()?.focus()', "event.key === 'Escape'", 'toggle.focus()', "document.addEventListener('focusin'", 'const desktopNavigationMinWidth = 1280', 'window.innerWidth >= desktopNavigationMinWidth', "toggle.setAttribute('aria-expanded'", ".i18n-switcher option[value]", "value.endsWith('/')", '`${value}index.html`']) {
     if (!navigationSource.includes(required)) failures.push(`js/site-navigation.js: required behavior is missing (${required}).`);
   }
 } catch (error) {

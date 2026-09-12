@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
+import { SITE_FAQ_SCRIPT_VERSION } from './lib/site-asset-versions.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
@@ -287,7 +288,7 @@ function buildLocalizedHtml({ sourceHtml, targetHtml, data, languageCode }) {
   html = html.replace(/\s*<script\s+(?:defer(?:=["']["'])?\s+)?src=["']\.\.\/js\/faq\.js[^"']*["']><\/script>\s*/gi, '\n');
   const navigationScriptPattern = /(<script\s+defer(?:=["']["'])?\s+src=["']\.\.\/js\/site-navigation\.js[^"']*["']><\/script>)/i;
   assert(navigationScriptPattern.test(html), `${languageCode}/faq.html: site-navigation script was not found.`);
-  html = html.replace(navigationScriptPattern, `<script src="../js/faq.js?v=20260815-faq1"></script>\n$1`);
+  html = html.replace(navigationScriptPattern, `<script src="../js/faq.js?v=${SITE_FAQ_SCRIPT_VERSION}"></script>\n$1`);
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(data.meta.title)}</title>`);
   html = replaceMetaContent(html, /(<meta\s+name=["']description["']\s+content=["'])[^"']*(["'][^>]*>)/i, data.meta.description, `${languageCode}: description`);
@@ -383,7 +384,7 @@ assert(source$('main#main-content').length === 1, 'faq.html: exactly one main la
 assertExactIds(source$('.faq-item[id]').map((_, item) => source$(item).attr('id')).get(), questionIds, 'faq.html: question IDs');
 assertExactIds(source$('.faq-section[id]').map((_, item) => source$(item).attr('id')).get(), sectionIds, 'faq.html: section IDs');
 assert(source$('.faq-related-link').length === 8, 'faq.html: exactly eight contextual internal links are required.');
-const sourceFaqScript = source$('script[src="js/faq.js?v=20260815-faq1"]');
+const sourceFaqScript = source$(`script[src="js/faq.js?v=${SITE_FAQ_SCRIPT_VERSION}"]`);
 assert(sourceFaqScript.length === 1, 'faq.html: the shared progressive-enhancement script is missing.');
 assert(sourceFaqScript.attr('defer') === undefined, 'faq.html: the FAQ enhancement script must execute at the end of parsing before first paint.');
 

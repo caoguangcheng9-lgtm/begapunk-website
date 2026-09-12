@@ -353,7 +353,7 @@ try {
     await noScriptSearchPage.setViewport({ width: 320, height: 568 });
     await blockExternalRequests(noScriptSearchPage);
     try {
-      await noScriptSearchPage.goto(diskPageUrl(language, 'search.html').href, { waitUntil: 'domcontentloaded', timeout: 15000 });
+      await noScriptSearchPage.goto(diskPageUrl(language, 'search.html').href, { waitUntil: 'load', timeout: 15000 });
       const noScriptSearchState = await noScriptSearchPage.evaluate(() => {
         const controls = [...document.querySelectorAll('#search-input, #search-btn, .search-filter-btn')];
         const fallback = document.querySelector('.search-no-js');
@@ -365,7 +365,7 @@ try {
           fallbackVisible: Boolean(fallback && getComputedStyle(fallback).display !== 'none' && fallback.getClientRects().length),
           catalogHref: catalogLink?.href || '',
           searchBusy: document.querySelector('.search-box-wrap')?.getAttribute('aria-busy'),
-          navigationPosition: getComputedStyle(document.getElementById('mainNav')).position,
+          navigationDisplay: getComputedStyle(document.getElementById('mainNav')).display,
           headerPosition: getComputedStyle(document.querySelector('.header')).position,
           mainStartsAfterHeader: document.querySelector('main').getBoundingClientRect().top
             >= document.querySelector('.header').getBoundingClientRect().bottom - 1,
@@ -375,8 +375,12 @@ try {
       assert(noScriptSearchState.fallbackVisible && noScriptSearchState.fallbackText.length > 20, `${language.code}: no-JavaScript search guidance is missing.`);
       assert(new URL(noScriptSearchState.catalogHref).pathname === diskPageUrl(language, 'products.html').pathname, `${language.code}: no-JavaScript catalog fallback is not localized.`);
       assert(noScriptSearchState.searchBusy === 'false', `${language.code}: no-JavaScript search is incorrectly left busy.`);
-      assert(noScriptSearchState.navigationPosition === 'static' && noScriptSearchState.headerPosition !== 'sticky', `${language.code}: no-JavaScript navigation still overlays the document.`);
+      assert(noScriptSearchState.navigationDisplay === 'none', `${language.code}: no-JavaScript navigation must start collapsed without covering the document.`);
       assert(noScriptSearchState.mainStartsAfterHeader, `${language.code}: no-JavaScript navigation covers the search page body.`);
+      await noScriptSearchPage.click('#mobileToggle');
+      assert(await noScriptSearchPage.$eval('#mainNav', e => getComputedStyle(e).display !== 'none'), `${language.code}: native no-JavaScript menu cannot be opened.`);
+      await noScriptSearchPage.click('.nav-close');
+      assert(await noScriptSearchPage.$eval('#mainNav', e => getComputedStyle(e).display === 'none'), `${language.code}: native no-JavaScript menu cannot be closed.`);
       await noScriptSearchPage.$eval('.search-no-js', (fallback) => {
         fallback.scrollIntoView({ block: 'center', behavior: 'instant' });
       });
@@ -483,7 +487,7 @@ try {
   await noScriptPage.setJavaScriptEnabled(false);
   await noScriptPage.setViewport({ width: 320, height: 844 });
   try {
-    await noScriptPage.goto(`${preview.origin}/`, { waitUntil: 'domcontentloaded', timeout: 15000 });
+    await noScriptPage.goto(`${preview.origin}/`, { waitUntil: 'load', timeout: 15000 });
     const noScriptState = await noScriptPage.evaluate(() => {
       const nav = document.getElementById('mainNav');
       const toggle = document.getElementById('mobileToggle');
@@ -503,10 +507,12 @@ try {
       };
     });
     assert(!noScriptState.enhancedClass, 'No-JavaScript page was incorrectly marked as enhanced.');
-    assert(noScriptState.navVisible && noScriptState.firstLinkVisible, 'No-JavaScript mobile navigation is not visible and usable.');
-    assert(noScriptState.navPosition === 'static' && noScriptState.headerPosition !== 'sticky', 'No-JavaScript mobile navigation remains an overlay.');
+    assert(!noScriptState.navVisible && !noScriptState.toggleHidden, 'Native mobile menu must start collapsed with its opener visible.');
     assert(noScriptState.mainStartsAfterHeader, 'No-JavaScript mobile navigation covers the page body.');
-    assert(noScriptState.toggleHidden, 'No-JavaScript page still shows a non-functional menu button.');
+    await noScriptPage.click('#mobileToggle');
+    assert(await noScriptPage.$eval('#mainNav', e => getComputedStyle(e).display !== 'none'), 'No-JavaScript menu opener is non-functional.');
+    await noScriptPage.click('.nav-close');
+    assert(await noScriptPage.$eval('#mainNav', e => getComputedStyle(e).display === 'none'), 'No-JavaScript menu close link is non-functional.');
   } catch (error) {
     failures.push(`no-JavaScript mobile menu: ${error.message}`);
   } finally {

@@ -6,6 +6,7 @@ import {
   SITE_NAVIGATION_SCRIPT_VERSION,
   SITE_SEARCH_SCRIPT_VERSION,
   SITE_STYLE_VERSION,
+  SITE_FAQ_SCRIPT_VERSION,
 } from './lib/site-asset-versions.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
@@ -291,6 +292,23 @@ function navMarkup(language, page) {
   return `<nav class="nav" id="mainNav">\n    <a href="index.html" class="nav-home-mobile${active === 'home' ? ' active' : ''}"${active === 'home' ? ' aria-current="page"' : ''}>${t.home}</a>\n${dropdown('products.html', t.products, t.productLinks.slice(1), active === 'products', page)}\n${dropdown('applications.html', t.applications, t.applicationLinks.slice(1), active === 'applications', page)}\n${dropdown('manufacturing-quality.html', t.quality, t.qualityLinks.slice(1), active === 'quality', page)}\n${dropdown('blog.html', t.knowledge, t.knowledgeLinks.slice(1), active === 'knowledge', page)}\n    <a href="about.html" class="nav-about${active === 'about' ? ' active' : ''}"${active === 'about' ? ' aria-current="page"' : ''}>${t.about}</a>\n    <a href="contact.html" class="nav-cta"${page === 'contact.html' ? ' aria-current="page"' : ''}>${t.quote}</a>\n   </nav>`;
 }
 
+// Native fragment links keep the compact menu usable before the deferred
+// enhancement loads, with scripts blocked, and with JavaScript disabled.
+const menuLabels = {
+  en: ['Menu', 'Close menu'],
+  de: ['Menü', 'Menü schließen'],
+  fr: ['Menu', 'Fermer le menu'],
+  ja: ['メニュー', 'メニューを閉じる'],
+  ru: ['Меню', 'Закрыть меню'],
+};
+function resilientNavMarkup(language, page) {
+  return navMarkup(language, page).replace('id="mainNav">',
+    `id="mainNav">\n    <a href="#mobileToggle" class="nav-close">${menuLabels[language][1]}</a>`);
+}
+function mobileToggleMarkup(language) {
+  return `<a href="#mainNav" class="mobile-toggle" id="mobileToggle" aria-label="${menuLabels[language][0]}" aria-controls="mainNav"><span></span><span></span><span></span></a>`;
+}
+
 function removeLegacyMobileListeners(html) {
   const listenerBlock = /\s*if\s*\(\s*mobileToggle\s*&&\s*mainNav\s*\)\s*\{\s*mobileToggle\.addEventListener\(\s*['"]click['"]\s*,\s*(?:\(\s*\)\s*=>|function\s*\(\s*\))\s*\{\s*(?:var\s+isOpen\s*=\s*)?mainNav\.classList\.toggle\(\s*['"]mobile-open['"]\s*\)\s*;\s*mobileToggle\.classList\.toggle\(\s*['"]active['"](?:\s*,\s*isOpen)?\s*\)\s*;\s*(?:mobileToggle\.setAttribute\(\s*['"]aria-expanded['"]\s*,\s*String\(\s*isOpen\s*\)\s*\)\s*;\s*)?\}\s*\)\s*;\s*\}/g;
   const listener = /\s*mobileToggle\.addEventListener\(\s*['"]click['"]\s*,\s*\(\)\s*=>\s*\{\s*mainNav\.classList\.toggle\(\s*['"]mobile-open['"]\s*\)\s*;\s*(?:mobileToggle\.classList\.toggle\(\s*['"]active['"]\s*\)\s*;\s*)?\}\s*\)\s*;/g;
@@ -380,6 +398,8 @@ function synchronizeSearchFallback(html, language, page) {
     /\s*<!-- search-no-js:start -->[\s\S]*?<!-- search-no-js:end -->/gi,
     '',
   );
+  next = updateSearchTag(next, /<main\b(?=[^>]*\bid=["']main-content["'])[^>]*>/i,
+    { 'data-search-page': '' }, '#main-content');
   next = updateSearchTag(
     next,
     /<div\b(?=[^>]*\bclass=["'][^"']*\bsearch-box-wrap\b[^"']*["'])[^>]*>/i,
@@ -485,18 +505,22 @@ for (const language of languages) {
         `$1${searchScriptVersion}`,
       );
     html = synchronizeSearchFallback(html, language, page);
+    html = html.replace(/(src=["'](?:\.\.\/)?js\/faq\.js\?v=)[^"']+/g, `$1${SITE_FAQ_SCRIPT_VERSION}`);
     const $ = load(html, { decodeEntities: false, sourceCodeLocationInfo: true });
     const nav = $('#mainNav').get(0);
+    const mobileToggle = $('#mobileToggle').get(0);
     const switcher = $('.i18n-switcher').first().get(0);
     const footer = $('footer.footer').first().get(0);
     if (!nav) throw new Error(`${language}/${page}: #mainNav missing.`);
+    if (!mobileToggle) throw new Error(`${language}/${page}: #mobileToggle missing.`);
     if (!switcher) throw new Error(`${language}/${page}: language switcher is missing.`);
     if (!footer) throw new Error(`${language}/${page}: footer is missing.`);
     const navRange = replacementRange(nav);
     const switcherRange = replacementRange(switcher);
     const footerRange = replacementRange(footer);
     const edits = [
-      { ...navRange, value: canonicalHomepageLinks(navMarkup(language, page)) },
+      { ...navRange, value: canonicalHomepageLinks(resilientNavMarkup(language, page)) },
+      { ...replacementRange(mobileToggle), value: mobileToggleMarkup(language) },
       { ...switcherRange, value: switcherMarkup(language, page) },
       { ...footerRange, value: canonicalHomepageLinks(footerMarkup(language, page)) },
     ];

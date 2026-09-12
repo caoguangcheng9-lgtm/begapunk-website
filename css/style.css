@@ -105,6 +105,7 @@ a:hover { color: var(--primary-dark); }
 }
 .logo span { color:#60a5fa; }
 .nav { display:flex; gap:14px; align-items:center; }
+.nav > .nav-close { display:none; }
 .nav a {
     font-size:0.875rem; font-weight:500; color:rgba(255,255,255,0.85);
     position:relative;
@@ -4527,12 +4528,12 @@ line-height: 1.65;
         min-width:86px;
     }
 
-    .site-navigation-ready .nav { display:none; }
-
-    html:not(.site-navigation-ready) .mobile-toggle { display:none; }
+    /* Stable from first paint. Fragment links also work without JavaScript. */
+    .nav { display:none; }
+    .nav > .nav-close { display:flex; justify-content:flex-end; }
 
     .nav.mobile-open,
-    html:not(.site-navigation-ready) .nav {
+    .nav:target {
         position:absolute;
         top:64px;
         right:0;
@@ -4551,37 +4552,10 @@ line-height: 1.65;
         box-shadow:0 18px 36px rgba(0,0,0,0.24);
     }
 
-    /* With JavaScript unavailable there is no close control. Keep the full
-       navigation in normal document flow so it cannot cover the page body. */
-    html:not(.site-navigation-ready) .header {
-        position:relative;
-        top:auto;
-    }
+    :is(.nav.mobile-open, .nav:target) .nav-home-mobile { display:flex !important; }
 
-    html:not(.site-navigation-ready) .header-inner {
-        height:auto;
-        min-height:64px;
-        padding-top:10px;
-        padding-bottom:14px;
-        flex-wrap:wrap;
-    }
-
-    html:not(.site-navigation-ready) .nav {
-        position:static;
-        inset:auto;
-        z-index:auto;
-        order:4;
-        width:100%;
-        max-height:none;
-        flex:1 0 100%;
-        overflow:visible;
-        box-shadow:none;
-    }
-
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-home-mobile { display:flex !important; }
-
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) > a,
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-toggle {
+    :is(.nav.mobile-open, .nav:target) > a,
+    :is(.nav.mobile-open, .nav:target) .nav-dropdown-toggle {
         display:flex;
         width:100%;
         min-height:44px;
@@ -4597,7 +4571,7 @@ line-height: 1.65;
         overflow-wrap:anywhere;
     }
 
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown {
+    :is(.nav.mobile-open, .nav:target) .nav-dropdown {
         display:flex;
         width:100%;
         min-width:0;
@@ -4606,7 +4580,7 @@ line-height: 1.65;
         gap:4px;
     }
 
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-menu {
+    :is(.nav.mobile-open, .nav:target) .nav-dropdown-menu {
         position:static;
         width:100%;
         min-width:0;
@@ -4622,9 +4596,9 @@ line-height: 1.65;
         box-shadow:none;
     }
 
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-menu::before { display:none; }
+    :is(.nav.mobile-open, .nav:target) .nav-dropdown-menu::before { display:none; }
 
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-dropdown-menu a {
+    :is(.nav.mobile-open, .nav:target) .nav-dropdown-menu a {
         display:flex;
         min-height:44px;
         align-items:center;
@@ -4636,7 +4610,7 @@ line-height: 1.65;
         overflow-wrap:anywhere;
     }
 
-    :is(.nav.mobile-open, html:not(.site-navigation-ready) .nav) .nav-cta {
+    :is(.nav.mobile-open, .nav:target) .nav-cta {
         justify-content:center;
         border-color:transparent;
         background:var(--primary);
@@ -4969,6 +4943,23 @@ html[lang="ja"] .legal-hero h1 {
 }
 
 /* Search stays visibly unavailable until its client-side index is ready. */
+/* Keep the footer below the first viewport while search results are fetched.
+   An empty/error/no-script result can still use the same stable page shell. */
+main[data-search-page] {
+    min-height:calc(100vh - 80px);
+    min-height:calc(100svh - 80px);
+}
+/* Long localized quality-control terms must not impose a grid minimum width. */
+.page-manufacturing-quality .mq-control {
+    min-width:0;
+    overflow-wrap:anywhere;
+}
+@media (max-width:1279px) {
+    main[data-search-page] {
+        min-height:calc(100vh - 64px);
+        min-height:calc(100svh - 64px);
+    }
+}
 .search-box-wrap :disabled,
 .search-filters :disabled {
     cursor: not-allowed;

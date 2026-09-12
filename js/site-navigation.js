@@ -1,8 +1,8 @@
 (() => {
   'use strict';
 
-  // CSS keeps the navigation visible as a no-JavaScript fallback. Mark the
-  // enhanced experience before wiring the compact-menu behavior.
+  // Enhancement marker only: CSS must never change header geometry when this
+  // deferred script arrives. Native fragment links provide the basic menu.
   document.documentElement.classList.add('site-navigation-ready');
 
   const preservedCampaignParameters = Object.freeze({
@@ -99,21 +99,30 @@
 
   toggle.dataset.navigationReady = 'true';
   toggle.setAttribute('aria-controls', 'mainNav');
-  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('role', 'button');
+  const menuIsOpen = () => nav.classList.contains('mobile-open') || nav.matches(':target');
+  const syncExpanded = () => toggle.setAttribute('aria-expanded', String(menuIsOpen()));
+  syncExpanded();
 
   const firstNavigationTarget = () => nav.querySelector(
-    'a[href]:not([tabindex="-1"]), button:not([disabled]), select:not([disabled]), input:not([disabled])',
+    'a[href]:not(.nav-close):not([tabindex="-1"]), button:not([disabled]), select:not([disabled]), input:not([disabled])',
   );
 
   const closeMenu = () => {
     nav.classList.remove('mobile-open');
     toggle.classList.remove('active');
+    if (window.location.hash === '#mainNav') {
+      // Clear only the native menu target; retain the path and campaign query.
+      window.history.replaceState(window.history.state, '', window.location.pathname + window.location.search);
+    }
     toggle.setAttribute('aria-expanded', 'false');
   };
 
   toggle.addEventListener('click', (event) => {
     event.preventDefault();
-    const isOpen = nav.classList.toggle('mobile-open');
+    const isOpen = !menuIsOpen();
+    if (!isOpen) { closeMenu(); return; }
+    nav.classList.toggle('mobile-open', isOpen);
     toggle.classList.toggle('active', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
     if (isOpen) {
@@ -121,24 +130,35 @@
     }
   });
 
+  toggle.addEventListener('keydown', (event) => {
+    if (event.key === ' ') { event.preventDefault(); toggle.click(); }
+  });
+  window.addEventListener('hashchange', syncExpanded);
+
   nav.addEventListener('click', (event) => {
+    if (event.target.closest('.nav-close')) {
+      event.preventDefault();
+      closeMenu();
+      toggle.focus();
+      return;
+    }
     if (event.target.closest('a')) closeMenu();
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && nav.classList.contains('mobile-open')) {
+    if (event.key === 'Escape' && menuIsOpen()) {
       closeMenu();
       toggle.focus();
     }
   });
 
   document.addEventListener('click', (event) => {
-    if (!nav.classList.contains('mobile-open')) return;
+    if (!menuIsOpen()) return;
     if (!nav.contains(event.target) && !toggle.contains(event.target)) closeMenu();
   });
 
   document.addEventListener('focusin', (event) => {
-    if (!nav.classList.contains('mobile-open')) return;
+    if (!menuIsOpen()) return;
     if (!nav.contains(event.target) && !toggle.contains(event.target)) closeMenu();
   });
 
