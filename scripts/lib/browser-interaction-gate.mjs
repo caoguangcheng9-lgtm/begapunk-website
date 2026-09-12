@@ -12,6 +12,21 @@ export function collectPageErrors(page) {
   return errors;
 }
 
+export async function openMobileNavigationWithPointer(page, { timeout = 3000 } = {}) {
+  await page.click('#mobileToggle');
+  // The real menu intentionally focuses its first link on the next frame.
+  // Wait for that application transition before scrolling a later menu item;
+  // otherwise deferred focus can scroll the item out of view after inspection.
+  await page.waitForFunction(() => {
+    const nav = document.querySelector('#mainNav');
+    const toggle = document.querySelector('#mobileToggle');
+    return toggle?.getAttribute('aria-expanded') === 'true'
+      && nav?.contains(document.activeElement)
+      && getComputedStyle(nav).display !== 'none'
+      && nav.getBoundingClientRect().height > 0;
+  }, { timeout });
+}
+
 export async function inspectPointerActionability(element, { scroll = false } = {}) {
   if (scroll) {
     await element.evaluate((candidate) => {

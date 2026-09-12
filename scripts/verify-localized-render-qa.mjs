@@ -7,6 +7,7 @@ import puppeteer from 'puppeteer-core';
 import {
   chooseSelectOptionWithPointerAndKeyboard,
   collectPageErrors,
+  openMobileNavigationWithPointer,
 } from './lib/browser-interaction-gate.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
@@ -494,7 +495,7 @@ try {
             // than asking for another inquiry. Its contact route is in Menu.
             // Exercise that real route instead of requiring a duplicate CTA.
             if (!quoteLink && pageName === 'thank-you.html' && viewport.name === 'mobile') {
-              await page.click('#mobileToggle');
+              await openMobileNavigationWithPointer(page);
               const candidate = await page.$('#mainNav a.nav-cta[href]');
               if (candidate) {
                 const state = await inspectClickableElement(candidate, { scroll: true });
