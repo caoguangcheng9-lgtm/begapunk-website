@@ -1,5 +1,11 @@
 const DEFAULT_SELECTOR = '.i18n-switcher select';
 
+export async function requireFreshNavigationResponses(page) {
+  // Release acceptance needs fresh 200 bodies for exact artifact hashing.
+  // Keep strict status checks; do not treat a bodyless 304 as a passed page.
+  await page.setCacheEnabled(false);
+}
+
 function errorText(error) {
   if (error?.stack) return error.stack;
   if (error?.message) return error.message;

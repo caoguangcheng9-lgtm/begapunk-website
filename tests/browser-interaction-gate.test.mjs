@@ -3,10 +3,12 @@ import { promises as fs } from 'node:fs';
 import { after, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
+import http from 'node:http';
 import {
   collectPageErrors,
   inspectPointerActionability,
   openMobileNavigationWithPointer,
+  requireFreshNavigationResponses,
 } from '../scripts/lib/browser-interaction-gate.mjs';
 
 async function findBrowser() {
@@ -41,6 +43,51 @@ before(async () => {
 
 after(async () => {
   await browser?.close();
+});
+
+test('release navigation disables conditional cache while preserving real status and body checks', async () => {
+  const requests = [];
+  const expectedBody = '<!doctype html><title>Fresh artifact</title><a href="/">Home</a>';
+  const server = http.createServer((request, response) => {
+    if (request.url !== '/') {
+      response.writeHead(404).end('Not found');
+      return;
+    }
+    const conditional = request.headers['if-none-match'];
+    requests.push(conditional || null);
+    if (conditional === '"fixture-v1"') {
+      response.writeHead(304, { ETag: '"fixture-v1"' }).end();
+    } else {
+      response.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-cache', ETag: '"fixture-v1"' }).end(expectedBody);
+    }
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const url = `http://127.0.0.1:${server.address().port}/`;
+  const page = await browser.newPage();
+  try {
+    await page.setRequestInterception(true);
+    page.on('request', request => request.continue());
+    assert.equal((await page.goto(url)).status(), 200);
+    const cachedResponse = await page.reload();
+    assert.ok(requests.includes('"fixture-v1"'), 'fixture must reproduce conditional revalidation');
+    assert.equal(cachedResponse.status(), 304, 'reproduce the strict-status gate failure');
+    await requireFreshNavigationResponses(page);
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const response = await page.goto(url);
+      assert.equal(response.status(), 200);
+      assert.equal((await response.buffer()).toString(), expectedBody);
+      assert.equal(requests.at(-1), null);
+    }
+    assert.equal((await page.goto(`${url}missing`)).status(), 404);
+    const source = await fs.readFile(new URL('../scripts/verify-localized-render-qa.mjs', import.meta.url), 'utf8');
+    assert.match(source, /await requireFreshNavigationResponses\(page\)/u);
+    assert.ok(source.indexOf('await requireFreshNavigationResponses(page)') < source.indexOf('await page.goto('));
+    assert.match(source, /response\.status\(\) !== 200/u);
+    assert.match(source, /await verifyExactArtifactResponse\(response/u);
+  } finally {
+    await page.close();
+    await new Promise(resolve => server.close(resolve));
+  }
 });
 
 test('disabled language selector is rejected', async () => {

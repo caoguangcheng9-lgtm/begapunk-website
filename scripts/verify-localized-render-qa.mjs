@@ -8,6 +8,7 @@ import {
   chooseSelectOptionWithPointerAndKeyboard,
   collectPageErrors,
   openMobileNavigationWithPointer,
+  requireFreshNavigationResponses,
 } from './lib/browser-interaction-gate.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
@@ -267,6 +268,7 @@ try {
     for (const pageName of requestedPages) {
       for (const viewport of viewports) {
         const page = await browser.newPage();
+        await requireFreshNavigationResponses(page);
         const consoleErrors = [];
         const pageErrors = collectPageErrors(page);
         page.on('console', (message) => {
