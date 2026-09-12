@@ -217,6 +217,30 @@ test('server release/runtime boundary regression suite passes', {
   assert.equal(stderr, '');
 });
 
+test('SMTP helper is fixed-path, argument-free and fail-closed at both deployment boundaries', async () => {
+  const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const helper = await readFile(path.join(repositoryRoot, 'ops/install-nginx-managed-redirects.sh'), 'utf8');
+  const activation = await readFile(path.join(repositoryRoot, 'ops/activate-release.sh'), 'utf8');
+  const workflow = await readFile(path.join(repositoryRoot, '.github/workflows/deploy.yml'), 'utf8');
+  assert.match(helper, /doctor\|smtp-check\)\s*\[\[ "\$#" -eq 1 \]\]/);
+  assert.match(helper, /local smtp_file='\/www\/begapunk\/shared\/\.env'/);
+  assert.match(helper, /\[\[ "\$action" != 'validate' && "\$EUID" -ne 0 \]\]/);
+  assert.match(activation, /sudo -n \/usr\/local\/sbin\/begapunk-nginx-config smtp-check/);
+  assert.match(activation, /\[\[ "\$smtp_result" != 'begapunk-smtp-check-ok:v1' \]\]/);
+  assert.match(workflow, /sudo -n "\$helper" smtp-check/);
+  assert.match(workflow, /\[\[ "\$smtp_result" == 'begapunk-smtp-check-ok:v1' \]\]/);
+  assert.doesNotMatch(workflow, /awk -v wanted=/);
+});
+
+test('SMTP helper fixture regression suite passes', {
+  skip: process.platform === 'win32' ? 'Requires Linux file ownership semantics.' : false,
+}, async () => {
+  const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const { stdout, stderr } = await execFileAsync('bash', ['tests/smtp-helper.test.sh'], { cwd: repositoryRoot });
+  assert.match(stdout, /SMTP helper fixture tests passed/);
+  assert.equal(stderr, '');
+});
+
 test('bootstrap exact-verifies the copied seed before adding runtime links', async () => {
   const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const bootstrapSource = await readFile(path.join(repositoryRoot, 'ops', 'bootstrap-server.sh'), 'utf8');

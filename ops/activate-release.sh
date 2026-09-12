@@ -154,6 +154,21 @@ validate_inquiry_environment_file() {
   local required_key
 
   validate_managed_runtime_file "$file_path" "$expected_uid" "$expected_gid" 640 || return 1
+  # The deploy account deliberately cannot read production SMTP credentials.
+  # Delegate only the fixed production path, never arbitrary caller paths.
+  if [[ ! -r "$file_path" ]]; then
+    if [[ "$file_path" != '/www/begapunk/shared/.env' || "$expected_uid" != '0' ]]; then
+      release_safety_error 'unreadable inquiry environment is outside the privileged check contract.'
+      return 1
+    fi
+    local smtp_result
+    if ! smtp_result="$(sudo -n /usr/local/sbin/begapunk-nginx-config smtp-check)" \
+      || [[ "$smtp_result" != 'begapunk-smtp-check-ok:v1' ]]; then
+      release_safety_error 'privileged SMTP configuration check failed.'
+      return 1
+    fi
+    return 0
+  fi
   for required_key in SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS SMTP_TO; do
     if ! awk -v wanted="$required_key" '
       function trim(value) {

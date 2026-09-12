@@ -32,6 +32,7 @@ INCLUDE_LINE="    include $MANAGED_CONF;"
 usage() {
   echo "Usage: begapunk-nginx-config version" >&2
   echo "Usage: begapunk-nginx-config doctor" >&2
+  echo "Usage: begapunk-nginx-config smtp-check" >&2
   echo "Usage: begapunk-nginx-config validate <candidate>" >&2
   echo "Usage: begapunk-nginx-config stage <candidate> <transaction-id>" >&2
   echo "       begapunk-nginx-config commit <transaction-id>" >&2
@@ -47,7 +48,7 @@ case "$action" in
     printf '%s\n' 'begapunk-nginx-config-v3'
     exit 0
     ;;
-  doctor)
+  doctor|smtp-check)
     [[ "$#" -eq 1 ]] || { usage; exit 2; }
     ;;
   validate)
@@ -153,6 +154,49 @@ run_doctor() {
   fi
 
   printf '%s\n' 'begapunk-nginx-config-doctor-ok:v3'
+}
+
+run_smtp_check() {
+  # No path argument or environment override: callers receive only a verdict.
+  local smtp_file='/www/begapunk/shared/.env'
+  local required_key
+  if [[ ! -f "$smtp_file" || -L "$smtp_file" \
+    || "$(realpath -e -- "$smtp_file" 2>/dev/null)" != "$smtp_file" \
+    || "$(stat -c '%U:%G:%a' "$smtp_file" 2>/dev/null)" != 'root:www:640' ]]; then
+    echo 'SMTP check failed: unsafe configuration file metadata.' >&2
+    return 1
+  fi
+  for required_key in SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS SMTP_TO; do
+    if ! awk -v wanted="$required_key" '
+      function trim(value) {
+        sub(/^[[:space:]]+/, "", value)
+        sub(/[[:space:]]+$/, "", value)
+        return value
+      }
+      /^[[:space:]]*#/ { next }
+      index($0, "=") > 0 && !seen {
+        separator = index($0, "=")
+        key = trim(substr($0, 1, separator - 1))
+        if (key != wanted) next
+        seen = 1
+        value = trim(substr($0, separator + 1))
+        if (length(value) >= 2) {
+          first = substr(value, 1, 1)
+          last = substr(value, length(value), 1)
+          if ((first == "\"" && last == "\"") || (first == "\047" && last == "\047")) {
+            value = substr(value, 2, length(value) - 2)
+          }
+        }
+        value = trim(value)
+        valid = length(value) > 0
+      }
+      END { exit !(seen && valid) }
+    ' "$smtp_file" 2>/dev/null; then
+      printf 'SMTP check failed: missing non-empty %s.\n' "$required_key" >&2
+      return 1
+    fi
+  done
+  printf '%s\n' 'begapunk-smtp-check-ok:v1'
 }
 
 is_allowed_directive() {
@@ -870,6 +914,9 @@ rollback_transaction() {
 case "$action" in
   doctor)
     run_doctor
+    ;;
+  smtp-check)
+    run_smtp_check
     ;;
   validate)
     [[ -f "$candidate" && ! -L "$candidate" ]] || { echo "Nginx policy candidate is missing or is a symlink." >&2; exit 4; }

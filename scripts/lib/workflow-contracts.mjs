@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: 'b865d93a8f83eeee8ecacfd6a8fe6ba984357976cbd667eed36e873254ddf054',
+  deploy: '5ba3790921d6a85fd39fb9c8a5535bc29c3b8759fa184060d18d3318ed4041ac',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
