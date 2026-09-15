@@ -33,6 +33,8 @@ usage() {
   echo "Usage: begapunk-nginx-config version" >&2
   echo "Usage: begapunk-nginx-config doctor" >&2
   echo "Usage: begapunk-nginx-config smtp-check" >&2
+  echo "Usage: begapunk-nginx-config telemetry-version" >&2
+  echo "Usage: begapunk-nginx-config telemetry-start|telemetry-check <transaction-id>" >&2
   echo "Usage: begapunk-nginx-config validate <candidate>" >&2
   echo "Usage: begapunk-nginx-config stage <candidate> <transaction-id>" >&2
   echo "       begapunk-nginx-config commit <transaction-id>" >&2
@@ -48,7 +50,7 @@ case "$action" in
     printf '%s\n' 'begapunk-nginx-config-v3'
     exit 0
     ;;
-  doctor|smtp-check)
+  doctor|smtp-check|telemetry-version)
     [[ "$#" -eq 1 ]] || { usage; exit 2; }
     ;;
   validate)
@@ -64,7 +66,7 @@ case "$action" in
     transaction_id="${3:-}"
     [[ "$#" -eq 3 ]] || { usage; exit 2; }
     ;;
-  commit|rollback)
+  commit|rollback|telemetry-start|telemetry-check)
     transaction_id="${2:-}"
     [[ "$#" -eq 2 ]] || { usage; exit 2; }
     ;;
@@ -79,13 +81,13 @@ if [[ "$action" != 'validate' && "$EUID" -ne 0 ]]; then
   exit 2
 fi
 
-if [[ "$action" =~ ^(stage|commit|rollback)$ && ! "$transaction_id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{5,100}$ ]]; then
+if [[ "$action" =~ ^(stage|commit|rollback|telemetry-start|telemetry-check)$ && ! "$transaction_id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{5,100}$ ]]; then
   echo "Invalid Nginx transaction id." >&2
   exit 3
 fi
 
 transaction_dir="$TRANSACTION_ROOT/$transaction_id"
-if [[ "$action" =~ ^(stage|commit|rollback)$ ]]; then
+if [[ "$action" =~ ^(stage|commit|rollback|telemetry-start|telemetry-check)$ ]]; then
   exec 9>/run/lock/begapunk-nginx-config.lock
   if ! flock -n 9; then
     echo "Another Begapunk Nginx policy operation is running." >&2
@@ -154,6 +156,21 @@ run_doctor() {
   fi
 
   printf '%s\n' 'begapunk-nginx-config-doctor-ok:v3'
+}
+
+run_telemetry() {
+  local observer='/usr/local/libexec/begapunk-production-telemetry.py'
+  [[ -f "$observer" && ! -L "$observer" \
+    && "$(realpath -e -- "$observer")" == "$observer" \
+    && "$(stat -c '%U:%G:%a' "$observer")" == 'root:root:644' ]] || {
+    echo 'Telemetry observer is missing or has unsafe metadata.' >&2
+    return 1
+  }
+  if [[ "$1" == 'version' ]]; then
+    sha256sum -- "$observer" | awk '{print $1}'
+  else
+    /usr/bin/python3 -I "$observer" "$1" "$transaction_id"
+  fi
 }
 
 run_smtp_check() {
@@ -917,6 +934,15 @@ case "$action" in
     ;;
   smtp-check)
     run_smtp_check
+    ;;
+  telemetry-version)
+    run_telemetry version
+    ;;
+  telemetry-start)
+    run_telemetry start
+    ;;
+  telemetry-check)
+    run_telemetry check
     ;;
   validate)
     [[ -f "$candidate" && ! -L "$candidate" ]] || { echo "Nginx policy candidate is missing or is a symlink." >&2; exit 4; }

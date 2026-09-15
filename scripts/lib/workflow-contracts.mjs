@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: '5ba3790921d6a85fd39fb9c8a5535bc29c3b8759fa184060d18d3318ed4041ac',
+  deploy: '53b36788ceb24ec51be7ad54a342f688ec8d0c6ac79ef4dcf3825cf5811b104a',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
@@ -123,9 +123,11 @@ const EXPECTED_DEPLOY_STEPS = Object.freeze({
     'Prepare IndexNow URLs from the active release',
     'Upload immutable release',
     'Stage managed Nginx policy',
+    'Checkpoint production telemetry',
     'Activate release',
     'Verify public deployment boundary',
     'Verify production navigation in a real browser',
+    'Verify production telemetry before commit',
     'Commit deployment transaction',
     'Roll back an uncommitted deployment',
     'Notify IndexNow of changed URLs',
@@ -421,6 +423,15 @@ npm run deploy:validate
 (cd dist/production && sha256sum --quiet -c manifest.sha256)
 `, failures);
   const browserStep = step(validationJob, 'Verify production navigation in a real browser', failures, 'deploy/validate-and-deploy');
+  const telemetryStart = step(validationJob, 'Checkpoint production telemetry', failures, 'deploy/validate-and-deploy');
+  const telemetryCheck = step(validationJob, 'Verify production telemetry before commit', failures, 'deploy/validate-and-deploy');
+  for (const [label, gate, action] of [['checkpoint', telemetryStart, 'telemetry-start'], ['check', telemetryCheck, 'telemetry-check']]) {
+    assertUnconditional(`deploy/validate-and-deploy telemetry ${label}`, gate, failures);
+    if (!normalizedRun(gate.run).includes(`/usr/local/sbin/begapunk-nginx-config ${action} '$release_id'`)
+      || !normalizedRun(gate.run).includes('set -Eeuo pipefail')) {
+      failures.push(`deploy/validate-and-deploy telemetry ${label} must execute the transaction-bound fail-closed observer.`);
+    }
+  }
   assertUnconditional('deploy/validate-and-deploy browser verification', browserStep, failures);
   exactRun('deploy/validate-and-deploy browser verification', browserStep, 'npm run postdeploy:navigation:verify', failures);
   const uploadReleaseStep = step(validationJob, 'Upload immutable release', failures, 'deploy/validate-and-deploy');

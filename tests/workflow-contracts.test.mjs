@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
+import { spawnSync } from 'node:child_process';
 import {
   parseWorkflow,
   TRUSTED_WORKFLOW_SEMANTIC_DIGESTS,
@@ -17,6 +18,32 @@ const [deploySource, prSource] = await Promise.all([
 const expectedSemanticDigests = {
   ...TRUSTED_WORKFLOW_SEMANTIC_DIGESTS,
 };
+
+test('production telemetry parser positive, negative and bypass fixtures', () => {
+  const result = spawnSync('python', ['-B', 'tests/production-telemetry.test.py'], { cwd: repositoryRoot, encoding: 'utf8', windowsHide: true });
+  assert.equal(result.status, 0, result.error?.message || result.stderr || result.stdout);
+});
+
+test('telemetry cannot be omitted or made non-blocking before commit', () => {
+  for (const replacement of [
+    '      - name: Verify production telemetry before commit\n        if: ${{ false }}',
+    '      - name: Verify production telemetry before commit\n        continue-on-error: true',
+  ]) {
+    const changed = deploySource.replace('      - name: Verify production telemetry before commit', replacement);
+    assert.ok(validateContracts({ deploySource: changed, prSource }).length);
+  }
+  const changed = deploySource.replace('telemetry-check', 'version');
+  assert.ok(validateContracts({ deploySource: changed, prSource }).length);
+});
+
+test('telemetry cannot move behind transaction commit', () => {
+  const begin = deploySource.indexOf('      - name: Verify production telemetry before commit');
+  const end = deploySource.indexOf('      - name: Commit deployment transaction', begin);
+  assert.ok(begin > 0 && end > begin);
+  const block = deploySource.slice(begin, end);
+  const changed = deploySource.replace(block, '').replace('      - name: Roll back an uncommitted deployment', block + '      - name: Roll back an uncommitted deployment');
+  assert.match(validateContracts({ deploySource: changed, prSource }).join('\n'), /step names and order must match/);
+});
 
 function validateContracts(input) {
   return validateAuditWorkflowContracts({ ...input, expectedSemanticDigests });
