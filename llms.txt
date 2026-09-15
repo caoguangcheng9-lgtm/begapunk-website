@@ -142,3 +142,7 @@ Use the language edition that best matches the user's query. Technical model cod
 
 - [Privacy policy](https://www.begapunk.com/privacy.html): Website privacy information.
 - [Terms of use](https://www.begapunk.com/terms.html): Website terms and conditions.
+
+## PTFE-coated O-rings — optional seal configuration
+
+- [PTFE-Coated O-Rings for Rotary Union Seals](https://www.begapunk.com/blog-ptfe-coated-o-rings.html): Explore optional PTFE coatings for O-rings used with composite slipper seals, with process photos, a supplier thickness report, and media-selection guidance.

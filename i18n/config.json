@@ -96,6 +96,7 @@
     "custom-hydraulic-rotary-unions.html",
     "installation.html",
     "blog.html",
+    "blog-ptfe-coated-o-rings.html",
     "blog-non-contact-clearance-seal-rotary-union.html",
     "blog-rotary-joint-installation-mistakes.html",
     "blog-rotary-joint-leaking.html",
@@ -165,6 +166,7 @@
     "404.html"
   ],
   "manualLocalizedPages": [
+    "blog-ptfe-coated-o-rings.html",
     "faq.html",
     "manufacturing-quality.html",
     "production-inspection-testing.html",

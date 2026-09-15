@@ -48,6 +48,7 @@
 ## Technische Beiträge
 
 - [Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk](https://www.begapunk.com/de/blog.html): Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.
+- [PTFE-beschichtete O-Ringe für Drehdurchführungen | Begapunk](https://www.begapunk.com/de/blog-ptfe-coated-o-rings.html): Optionale PTFE-Beschichtung für O-Ringe in Gleitring-Verbunddichtungen: Prozessfotos, Schichtdickenbericht des Lieferanten und Hinweise zur Medienauswahl.
 - [Berührungslose Spaltdichtung in Drehdurchführungen | Begapunk](https://www.begapunk.com/de/blog-non-contact-clearance-seal-rotary-union.html): So überträgt eine Drehdurchführung mit berührungsloser Spaltdichtung ein Medium in den schnell drehenden Rotor – mit einseitigem Radialspalt von 0,003 mm.
 - [Drehdurchführung montieren: 7 häufige Fehler](https://www.begapunk.com/de/blog-rotary-joint-installation-mistakes.html): Sieben Montagefehler, die Drehdurchführungen vorzeitig schädigen können, mit Prüfhinweisen zu Ausrichtung, Rohrleitung, Filtration und Dichtheit.
 - [Drehdurchführung undicht? Systematische Fehlersuche](https://www.begapunk.com/de/blog-rotary-joint-leaking.html): Diagnose einer undichten Drehdurchführung: Leckort finden, Armaturenfehler von dynamischen Dichtungen trennen, Ausrichtung prüfen, bevor Teile gewechselt werden.

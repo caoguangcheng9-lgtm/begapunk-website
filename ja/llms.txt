@@ -48,6 +48,7 @@
 ## 技術記事
 
 - [ロータリージョイント技術ガイド | Begapunk](https://www.begapunk.com/ja/blog.html): 空圧用ロータリージョイントの作動原理、選定、取付、シール方式、実機への組込み事例、出荷前検査工程を紹介する実務ガイドです。
+- [ロータリージョイント用PTFEコーティングOリング | Begapunk](https://www.begapunk.com/ja/blog-ptfe-coated-o-rings.html): 複合スリッパーシール用OリングのPTFEコーティングオプションを紹介。工程写真、サプライヤーの厚さ検査報告書、使用流体に合わせた選定のポイントを掲載しています。
 - [非接触すきまシール式ロータリジョイントの原理 | Begapunk](https://www.begapunk.com/ja/blog-non-contact-clearance-seal-rotary-union.html): 非接触すきまシール式ロータリジョイントで、固定側から高速回転するロータへ流体を供給する仕組みと、片側ラジアルすきま0.003 mmの意味を解説します。
 - [ロータリージョイント取付時の7つの注意点](https://www.begapunk.com/ja/blog-rotary-joint-installation-mistakes.html): 早期故障につながる取付ミスを防ぐため、芯合わせ、配管荷重、ろ過、ねじシール、ならし運転、漏れ確認を解説します。
 - [ロータリージョイントの漏れ原因と点検手順](https://www.begapunk.com/ja/blog-rotary-joint-leaking.html): ロータリージョイントの漏れは、漏れ位置の特定、継手不良と回転シール不良の切り分け、芯出し確認を部品交換の前に行います。
