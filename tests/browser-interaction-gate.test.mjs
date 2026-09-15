@@ -4,6 +4,7 @@ import { after, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 import http from 'node:http';
+import { execFileSync } from 'node:child_process';
 import {
   collectPageErrors,
   inspectPointerActionability,
@@ -32,17 +33,40 @@ async function findBrowser() {
 }
 
 let browser;
+let fixturePhase = 'browser startup';
+// A wedged browser or shutdown must fail this isolated fixture, not consume the
+// entire CI job without diagnostics. This never turns an unrun check into PASS.
+const fixtureDeadline = setTimeout(() => {
+  console.error(`Browser interaction fixture timed out during ${fixturePhase}.`);
+  browser?.process()?.kill('SIGKILL');
+  process.exit(1);
+}, 60_000);
+fixtureDeadline.unref();
 
 before(async () => {
+  const executablePath = await findBrowser();
+  if (process.platform === 'linux') {
+    console.info(`Fixture browser: ${execFileSync(executablePath, ['--version'], { encoding: 'utf8', timeout: 5000 }).trim()}`);
+  }
+  console.info('Starting browser interaction fixture.');
   browser = await puppeteer.launch({
-    executablePath: await findBrowser(),
+    executablePath,
     headless: true,
+    timeout: 30_000,
+    protocolTimeout: 30_000,
+    dumpio: process.env.GITHUB_ACTIONS === 'true',
     args: ['--disable-background-networking', '--disable-component-update', '--disable-default-apps', '--no-first-run'],
   });
+  fixturePhase = 'browser fixture execution';
+  console.info(`Browser connected: ${await browser.version()}`);
 });
 
 after(async () => {
-  await browser?.close();
+  fixturePhase = 'browser shutdown';
+  if (browser) {
+    await browser.close();
+    clearTimeout(fixtureDeadline);
+  }
 });
 
 test('release navigation disables conditional cache while preserving real status and body checks', async () => {
