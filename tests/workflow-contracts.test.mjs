@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { spawnSync } from 'node:child_process';
@@ -52,6 +53,40 @@ test('telemetry cannot move behind transaction commit', () => {
   const block = deploySource.slice(begin, end);
   const changed = deploySource.replace(block, '').replace('      - name: Roll back an uncommitted deployment', block + '      - name: Roll back an uncommitted deployment');
   assert.match(validateContracts({ deploySource: changed, prSource }).join('\n'), /step names and order must match/);
+});
+
+test('telemetry checkpoint creates evidence on a clean runner and preserves failure propagation', { skip: process.platform === 'win32' }, async () => {
+  const workflow = parseWorkflow(deploySource);
+  const run = workflow.jobs['validate-and-deploy'].steps.find(entry => entry.name === 'Checkpoint production telemetry').run;
+  const mockCommands = `
+sha256sum() { printf 'fixture-digest  observer.py\\n'; }
+ssh() {
+  case "$*" in
+    *telemetry-version*) printf 'fixture-digest\\n' ;;
+    *telemetry-start*) printf '{"result":"PASS","stage":"checkpoint"}\\n'; return "$FIXTURE_OBSERVER_EXIT" ;;
+    *) return 99 ;;
+  esac
+}
+`;
+  for (const variant of ['clean', 'missing-directory', 'observer-failure']) {
+    const directory = await mkdtemp(path.join(os.tmpdir(), 'begapunk-checkpoint-'));
+    try {
+      const script = variant === 'missing-directory' ? run.replace('mkdir -p dist/audit', ':') : run;
+      const result = spawnSync('bash', ['-c', mockCommands + script], {
+        cwd: directory, encoding: 'utf8', timeout: 10000,
+        env: { ...process.env, DEPLOY_USER: 'fixture', DEPLOY_HOST: 'invalid', release_id: 'fixture-release', FIXTURE_OBSERVER_EXIT: variant === 'observer-failure' ? '7' : '0' },
+      });
+      assert.equal(result.error, undefined);
+      if (variant === 'clean') {
+        assert.equal(result.status, 0, result.stderr);
+        assert.equal(JSON.parse(await readFile(path.join(directory, 'dist/audit/production-telemetry-start.json'), 'utf8')).result, 'PASS');
+      } else {
+        assert.notEqual(result.status, 0, `${variant} must fail closed`);
+      }
+    } finally {
+      await rm(directory, { recursive: true, force: true });
+    }
+  }
 });
 
 function validateContracts(input) {

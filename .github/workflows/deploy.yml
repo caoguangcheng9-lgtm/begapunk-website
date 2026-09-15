@@ -481,6 +481,7 @@ jobs:
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         run: |
           set -Eeuo pipefail
+          mkdir -p dist/audit
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
           port="${DEPLOY_PORT:-22}"
           ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -p "$port")
