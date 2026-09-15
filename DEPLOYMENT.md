@@ -103,6 +103,11 @@ with mode 0644, and update the existing root-owned Nginx helper from
 `ops/install-nginx-managed-redirects.sh` (0755). Back up both installed files first,
 verify their reviewed SHA-256 digests, and hold the existing maintenance lock.
 Do not grant the deployment user access to raw logs or change sudoers.
+Use the owner-only `ops/install-production-telemetry.sh --check` and then
+`--apply`, supplying the reviewed helper and observer SHA-256 as the second
+and third arguments. Stage all three files in a root-controlled directory.
+The installer refuses pending deployment transactions, holds the maintenance
+and helper locks, replaces the files atomically and retains a rollback backup.
 The existing hardening/bootstrap commands do not install the observer; this is
 an explicit additional provisioning step. The old v3 policy actions are unchanged.
 

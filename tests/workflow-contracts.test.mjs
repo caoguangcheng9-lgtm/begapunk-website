@@ -24,6 +24,15 @@ test('production telemetry parser positive, negative and bypass fixtures', () =>
   assert.equal(result.status, 0, result.error?.message || result.stderr || result.stdout);
 });
 
+test('telemetry provisioning scripts have valid Bash and reject invalid arguments on Linux', { skip: process.platform === 'win32' }, () => {
+  for (const file of ['ops/install-production-telemetry.sh', 'ops/install-nginx-managed-redirects.sh']) {
+    const syntax = spawnSync('bash', ['-n', file], { cwd: repositoryRoot, encoding: 'utf8' });
+    assert.equal(syntax.status, 0, syntax.stderr);
+  }
+  const invalid = spawnSync('bash', ['ops/install-production-telemetry.sh', '--apply', '../bad', 'bad'], { cwd: repositoryRoot, encoding: 'utf8' });
+  assert.equal(invalid.status, 2, invalid.stderr);
+});
+
 test('telemetry cannot be omitted or made non-blocking before commit', () => {
   for (const replacement of [
     '      - name: Verify production telemetry before commit\n        if: ${{ false }}',
