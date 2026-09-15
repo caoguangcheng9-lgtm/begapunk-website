@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { load } from 'cheerio';
 import sharp from 'sharp';
+import { publishedBlogRoutes } from './lib/blog-hub-inventory.mjs';
 import { validateReleaseSearchContract } from './lib/audit-policy-contracts.mjs';
 import { DISCOVERY_ROBOTS_MARKER, discoveryExcludedPageSet } from './discovery-exclusions.mjs';
 import { drawingBackedProductMetadata } from './lib/drawing-backed-product-facts.mjs';
@@ -44,7 +45,16 @@ try {
 }
 const translationManagedPages = config.translationManagedPages || config.pages;
 const manualLocalizedPages = config.manualLocalizedPages || [];
-const expectedOwnershipCounts = { total: 56, managed: 47, manual: 9 };
+// The protected editorial baseline/enrollment gate authorizes page scope; do not hard-code a historic count here.
+const editorialStatus = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n/editorial/status.json'), 'utf8'));
+const catalogScope = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n/source-catalog.json'), 'utf8'));
+const expectedOwnershipCounts = {
+  total: editorialStatus.reviewedArtifactSnapshot.pagesPerLanguage,
+  managed: catalogScope.pages.length,
+  manual: editorialStatus.reviewedArtifactSnapshot.pagesPerLanguage - catalogScope.pages.length,
+};
+const canonicalBlog = load(await fs.readFile(path.join(sourceRoot, 'blog.html'), 'utf8'));
+const expectedPostPages = publishedBlogRoutes(canonicalBlog, config.pages, new URL(config.siteUrl).origin);
 const configuredPageSet = new Set(config.pages);
 const translationPageSet = new Set(translationManagedPages);
 const manualPageSet = new Set(manualLocalizedPages);
@@ -1011,15 +1021,9 @@ for (const language of verifiedLanguages) {
             && compactText(blog.name) !== compactText($('h1').first().text())) {
           failures.push(`${language.code}/blog.html: Blog JSON-LD name does not match the localized H1.`);
         }
-        const expectedPostPages = [
-          'blog-non-contact-clearance-seal-rotary-union.html',
-          'blog-rotary-joint-selection.html',
-          'blog-rotary-joint-installation-mistakes.html',
-          'blog-rotary-union-seal-types.html',
-        ];
         const posts = Array.isArray(blog.blogPost) ? blog.blogPost : [];
         if (posts.length !== expectedPostPages.length) {
-          failures.push(`${language.code}/blog.html: Blog JSON-LD must list the four published engineering guides.`);
+          failures.push(`${language.code}/blog.html: Blog JSON-LD must list all ${expectedPostPages.length} published engineering guides.`);
         } else {
           for (let index = 0; index < expectedPostPages.length; index += 1) {
             const postPage = expectedPostPages[index];

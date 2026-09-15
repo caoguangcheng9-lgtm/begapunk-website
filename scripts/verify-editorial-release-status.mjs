@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
+import { enrollmentScope, enrolledStatus, validReviewBefore, assertEnrolledArtifact, readinessFields } from './lib/editorial-page-enrollment.mjs';
 import {
   createArtifactSnapshot,
   verifiedLegacyArtifactSnapshots,
@@ -524,9 +525,8 @@ if (artifactManifest) {
         if (!transition || typeof transition !== 'object' || Array.isArray(transition)
           || typeof transition.path !== 'string'
           || !expectedArtifactSet.has(transition.path)
-          || !SHA256_PATTERN.test(transition.beforeSemanticSha256 ?? '')
+          || !validReviewBefore(transition)
           || !SHA256_PATTERN.test(transition.afterSemanticSha256 ?? '')
-          || !SHA256_PATTERN.test(transition.beforeMechanicalSha256 ?? '')
           || !SHA256_PATTERN.test(transition.afterMechanicalSha256 ?? '')) {
           policyFail(`${label} reviewedArtifactTransitions contains an invalid transition (${relativePath}).`);
           continue;
@@ -728,6 +728,36 @@ if (artifactManifest) {
     policyFail(`artifact manifest contains unknown pages: ${extraArtifactPaths.join(', ')}.`);
   }
 
+  let addedPaths = [];
+  let expectedReadiness = trustedBaselineStatus;
+  if (trustedBaselineStatus && trustedBaselineManifest) {
+    try {
+      const beforeConfig = gitJson(trustedBaselineRef, 'i18n/config.json');
+      addedPaths = enrollmentScope(beforeConfig, config).addedPaths;
+      if (addedPaths.length) {
+        const enrollment = artifactManifest.enrollment;
+        if (trustedBaselineManifest.schemaVersion !== EDITORIAL_MANIFEST_SCHEMA_VERSION
+          || enrollment?.baselineRef !== baselineCommit
+          || !Array.isArray(enrollment?.addedPaths)
+          || enrollment.addedPaths.length !== addedPaths.length
+          || !sameSet(enrollment.addedPaths, addedPaths)) throw new Error('Missing exact new-page enrollment against the protected baseline.');
+        const contract = await validateSemanticReviewRecord(enrollment.record, enrollment.recordSha256, 'page enrollment');
+        if (!contract?.record) throw new Error('Missing page enrollment review record.');
+        expectedReadiness = enrolledStatus({ beforeConfig, config, baselineStatus: trustedBaselineStatus,
+          baselineRef: baselineCommit, artifacts, evidence: {
+            baselineRef: evidenceScalar(contract.record, 'enrollmentBaselineRef', 'page enrollment'),
+            paths: evidenceJsonArray(contract.record, 'enrolledArtifactPaths', 'page enrollment', { allowEmpty: false }),
+            renderChecks: evidenceJsonArray(contract.record, 'enrollmentRenderChecks', 'page enrollment', { allowEmpty: false }),
+          } });
+        for (const artifactPath of addedPaths) {
+          if (gitResult(['cat-file', '-e', `${baselineCommit}:${artifactPath}`]).status !== 128)
+            throw new Error(`New enrollment path already exists or cannot be verified: ${artifactPath}.`);
+          assertEnrolledArtifact(artifactByPath.get(artifactPath), enrollment, trustedBaselineManifest.updatedAt);
+        }
+      }
+    } catch (error) { policyFail(`new-page enrollment: ${error.message}`); }
+  }
+
   if (trustedBaselineStatus) {
     const governedStatus = (value) => {
       const {
@@ -737,7 +767,7 @@ if (artifactManifest) {
       } = value ?? {};
       return governed;
     };
-    if (JSON.stringify(governedStatus(status)) !== JSON.stringify(governedStatus(trustedBaselineStatus))) {
+    if (JSON.stringify(governedStatus(status)) !== JSON.stringify(readinessFields(expectedReadiness))) {
       policyFail(`editorial readiness fields differ from trusted git baseline ${trustedBaselineRef}; a snapshot refresh may not self-approve status debt.`);
     }
   }
@@ -748,7 +778,7 @@ if (artifactManifest) {
       : [];
     const baselineByPath = new Map(baselineArtifacts.map((artifact) => [artifact?.path, artifact]));
     if (baselineArtifacts.length !== baselineByPath.size
-      || !sameSet([...baselineByPath.keys()], expectedArtifactPaths)) {
+      || !sameSet([...baselineByPath.keys()], expectedArtifactPaths.filter(p => !addedPaths.includes(p)))) {
       policyFail(`trusted git baseline ${trustedBaselineRef} has a duplicate or incompatible artifact scope.`);
     } else if (trustedBaselineManifest.schemaVersion === 1
       && trustedBaselineManifest.algorithm === LEGACY_ALGORITHM) {
