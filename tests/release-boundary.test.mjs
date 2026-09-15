@@ -222,7 +222,7 @@ test('SMTP helper is fixed-path, argument-free and fail-closed at both deploymen
   const helper = await readFile(path.join(repositoryRoot, 'ops/install-nginx-managed-redirects.sh'), 'utf8');
   const activation = await readFile(path.join(repositoryRoot, 'ops/activate-release.sh'), 'utf8');
   const workflow = await readFile(path.join(repositoryRoot, '.github/workflows/deploy.yml'), 'utf8');
-  assert.match(helper, /doctor\|smtp-check\)\s*\[\[ "\$#" -eq 1 \]\]/);
+  assert.match(helper, /doctor\|smtp-check\|telemetry-version\)\s*\[\[ "\$#" -eq 1 \]\]/);
   assert.match(helper, /local smtp_file='\/www\/begapunk\/shared\/\.env'/);
   assert.match(helper, /\[\[ "\$action" != 'validate' && "\$EUID" -ne 0 \]\]/);
   assert.match(activation, /sudo -n \/usr\/local\/sbin\/begapunk-nginx-config smtp-check/);

@@ -2,6 +2,7 @@ import { spawnSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { enrollmentScope, enrolledStatus, validReviewBefore } from './lib/editorial-page-enrollment.mjs';
 import {
   applyMechanicalOnlySnapshots,
   compareArtifactSnapshots,
@@ -20,6 +21,8 @@ const root = path.resolve(import.meta.dirname, '..');
 const write = process.argv.includes('--write');
 const mechanicalOnly = process.argv.includes('--mechanical-only');
 const schemaMigration = process.argv.includes('--schema-migration');
+const enrollPages = process.argv.includes('--enroll-pages');
+if (enrollPages && (mechanicalOnly || schemaMigration)) throw new Error('Page enrollment requires reviewed-semantic mode.');
 
 if (!write) throw new Error('Use --write only after the required evidence record is complete.');
 if (mechanicalOnly && schemaMigration) {
@@ -193,9 +196,8 @@ function parseReviewedArtifactTransitions(record) {
   for (const transition of transitions) {
     if (!transition || typeof transition !== 'object' || Array.isArray(transition)
       || typeof transition.path !== 'string'
-      || !/^[a-f0-9]{64}$/.test(transition.beforeSemanticSha256 ?? '')
+      || !validReviewBefore(transition)
       || !/^[a-f0-9]{64}$/.test(transition.afterSemanticSha256 ?? '')
-      || !/^[a-f0-9]{64}$/.test(transition.beforeMechanicalSha256 ?? '')
       || !/^[a-f0-9]{64}$/.test(transition.afterMechanicalSha256 ?? '')) {
       throw new Error(
         `${record.relativePath}: reviewedArtifactTransitions entries require exact before/after semantic and mechanical hashes.`,
@@ -348,7 +350,7 @@ function readHeadRecordPath(relativePath, label) {
 
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 const statusPath = path.join(root, 'i18n', 'editorial', 'status.json');
-const status = JSON.parse(await fs.readFile(statusPath, 'utf8'));
+let status = JSON.parse(await fs.readFile(statusPath, 'utf8'));
 const languages = [...config.activeLanguageCodes];
 const pages = [...config.pages];
 const expectedArtifactPaths = languages.flatMap((language) =>
@@ -356,7 +358,7 @@ const expectedArtifactPaths = languages.flatMap((language) =>
 );
 const expectedArtifactSet = new Set(expectedArtifactPaths);
 
-if (status.reviewedArtifactSnapshot?.pagesPerLanguage !== pages.length) {
+if (!enrollPages && status.reviewedArtifactSnapshot?.pagesPerLanguage !== pages.length) {
   throw new Error('Editorial status page count does not match i18n/config.json.');
 }
 assertSameSet(
@@ -373,6 +375,13 @@ const manifestPath = path.join(root, ...manifestRelative.split('/'));
 let previousManifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
 const trustedHeadManifest = readHeadJson(manifestRelative);
 const trustedHeadStatus = readHeadJson('i18n/editorial/status.json');
+const beforeConfig = readHeadJson('i18n/config.json');
+const addedPaths = enrollPages ? enrollmentScope(beforeConfig, config).addedPaths : [];
+if (enrollPages && !addedPaths.length) throw new Error('No new localized pages to enroll.');
+for (const artifactPath of addedPaths) {
+  const exists = spawnSync('git', ['cat-file', '-e', `HEAD:${artifactPath}`], { cwd: root, windowsHide: true });
+  if (exists.status !== 128 || exists.error) throw new Error(`Enrollment must start from an absent Git path: ${artifactPath}.`);
+}
 
 if (mode !== 'schema-migration'
   && JSON.stringify(previousManifest) !== JSON.stringify(trustedHeadManifest)) {
@@ -391,6 +400,7 @@ if (mode !== 'schema-migration'
 // still prevent silently replacing the current review/status records.
 const reviewBaselineRef = argumentValue('review-baseline-ref');
 if (reviewBaselineRef) {
+  if (enrollPages) throw new Error('Enrollment cannot be combined with legacy baseline consolidation.');
   if (mode !== 'reviewed-semantic' || !/^[a-f0-9]{40}$/.test(reviewBaselineRef)) {
     throw new Error('A full production commit SHA is required for reviewed-semantic consolidation.');
   }
@@ -552,8 +562,12 @@ if (mode === 'schema-migration') {
   if (status.reviewedArtifactSnapshot?.schemaVersion !== EDITORIAL_STATUS_SNAPSHOT_SCHEMA_VERSION) {
     throw new Error(`Editorial status snapshot schemaVersion must be ${EDITORIAL_STATUS_SNAPSHOT_SCHEMA_VERSION}.`);
   }
-  validateCurrentManifest(previousManifest, expectedArtifactPaths);
-  const comparison = compareArtifactSnapshots(previousManifest.artifacts, currentArtifacts);
+  validateCurrentManifest(previousManifest, expectedArtifactPaths.filter(p => !addedPaths.includes(p)));
+  const comparison = compareArtifactSnapshots(previousManifest.artifacts, currentArtifacts.filter(a => !addedPaths.includes(a.path)));
+  comparison.semanticChangedPaths.push(...addedPaths);
+  comparison.mechanicalChangedPaths.push(...addedPaths);
+  comparison.semanticChangedPaths.sort();
+  comparison.mechanicalChangedPaths.sort();
 
   if (mode === 'mechanical-only') {
     const record = await readEvidenceRecord('change-record');
@@ -631,6 +645,17 @@ if (mode === 'schema-migration') {
   } else {
     const record = await readEvidenceRecord('review-record');
     const reviewedAt = validateSemanticReviewRecord(record);
+    let enrollment;
+    if (enrollPages) {
+      const baselineRef = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', windowsHide: true }).stdout.trim();
+      status = enrolledStatus({ beforeConfig, config, baselineStatus: trustedHeadStatus, baselineRef,
+        artifacts: currentArtifacts, evidence: {
+          baselineRef: recordScalar(record, 'enrollmentBaselineRef'),
+          paths: recordJsonArray(record, 'enrolledArtifactPaths', { allowEmpty: false }),
+          renderChecks: recordJsonArray(record, 'enrollmentRenderChecks', { allowEmpty: false }),
+        } });
+      enrollment = { baselineRef, record: record.relativePath, recordSha256: record.sha256, addedPaths };
+    }
     if (!Number.isFinite(Date.parse(previousManifest.updatedAt ?? ''))
       || Date.parse(reviewedAt) <= Date.parse(previousManifest.updatedAt)) {
       throw new Error(
@@ -666,9 +691,9 @@ if (mode === 'schema-migration') {
     );
     const expectedTransitions = comparison.semanticChangedPaths.map((artifactPath) => ({
       path: artifactPath,
-      beforeSemanticSha256: previousByPath.get(artifactPath).semanticSha256,
+      beforeSemanticSha256: previousByPath.get(artifactPath)?.semanticSha256 ?? null,
       afterSemanticSha256: currentByPath.get(artifactPath).semanticSha256,
-      beforeMechanicalSha256: previousByPath.get(artifactPath).mechanicalSha256,
+      beforeMechanicalSha256: previousByPath.get(artifactPath)?.mechanicalSha256 ?? null,
       afterMechanicalSha256: currentByPath.get(artifactPath).mechanicalSha256,
     }));
     if (JSON.stringify(normalizedTransitions(reviewedTransitions))
@@ -713,6 +738,7 @@ if (mode === 'schema-migration') {
       ...previousManifest,
       updatedAt: recordedAt,
       statusUpdatedAt: status.updatedAt,
+      ...(enrollment ? { enrollment } : {}),
       lastUpdate: {
         mode: 'reviewed-semantic',
         recordedAt,

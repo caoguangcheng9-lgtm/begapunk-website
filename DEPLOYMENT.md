@@ -94,6 +94,40 @@ Obtain the server host key with `ssh-keyscan`, but verify its fingerprint agains
 
 ## Server directories
 
+### Production telemetry gate (2026-09-15)
+
+Before deploying this workflow, a server owner must install the reviewed
+`ops/production-telemetry.py` at
+`/usr/local/libexec/begapunk-production-telemetry.py` as a root-owned regular file
+with mode 0644, and update the existing root-owned Nginx helper from
+`ops/install-nginx-managed-redirects.sh` (0755). Back up both installed files first,
+verify their reviewed SHA-256 digests, and hold the existing maintenance lock.
+Do not grant the deployment user access to raw logs or change sudoers.
+Use the owner-only `ops/install-production-telemetry.sh --check` and then
+`--apply`, supplying the reviewed helper and observer SHA-256 as the second
+and third arguments. Stage all three files in a root-controlled directory.
+The installer refuses pending deployment transactions, holds the maintenance
+and helper locks, replaces the files atomically and retains a rollback backup.
+The existing hardening/bootstrap commands do not install the observer; this is
+an explicit additional provisioning step. The old v3 policy actions are unchanged.
+
+After Nginx staging and before activation, `telemetry-start <release-id>` records
+root-owned byte offsets for the fixed site access, Nginx error and PHP-FPM logs.
+After public and browser checks and before commit, `telemetry-check <release-id>`
+reads only appended data. It verifies the active release and checkpoint age,
+requires parseable access evidence, and blocks on 5xx, known-public-path 404s,
+PHP diagnostics or non-allowlisted Nginx errors. Ordinary missing-file scanner
+errors are counted, not silently discarded. Missing/unreadable/replaced/rotated
+logs, partial records, invalid UTF-8, stale checkpoints or deltas over 16 MiB
+are UNKNOWN and fail closed, using the existing uncommitted-transaction rollback.
+The workflow verifies the installed observer's digest against the candidate file
+and retains only aggregate JSON. Neither raw requests nor customer data are emitted.
+
+This is an immediate post-activation log check, not proof of 24-hour stability,
+field latency or inbox delivery. System and latency observations remain separate.
+The two new workflow steps and their order are enforced by the structural workflow
+contract; parser fixtures run through the existing audit workflow self-test gate.
+
 After the one-time bootstrap:
 
 ```text

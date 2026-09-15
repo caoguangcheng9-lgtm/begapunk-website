@@ -232,6 +232,8 @@ release 必须基于批准的 main commit，并在上传前完成：
 
 当前本地化 manifest 对每个 artifact 保留一跳 before→after provenance。若同一页面在两个生产 release 之间发生两次或更多语义修改，最后一次记录不能拿中间 commit 冒充生产基线；必须在发布前对“已批准生产基线→最终候选”做一次合并后的最终语义复核并记录精确 transition，或先发布并批准中间版本。长期迁移目标是 append-only transition chain；在其落地前，这一限制按 P1 fail-closed，不得人工改 hash 绕过。
 
+新增页面使用 `editorial:snapshot:refresh -- --write --enroll-pages --review-record=audit/localization/<record>.md` 登记，不能伪造旧文件哈希。记录必须绑定完整基线 SHA、全部新增本地化路径、精确 `null → semantic/mechanical SHA-256` 转换和逐页手机/桌面实测结果。审核器从可信 Git 配置独立推导新增范围并确认这些路径原先不存在；禁止借登记删除旧页面、修改语言范围或清除已有审核债务。新增页状态只按已验证增量更新，旧页仍执行原有基线转换校验。渲染总数表示原基线记录加本次新增检查，不表示全站重新实测。该路径的正向、负向和绕过测试纳入既有 `editorial:snapshot:self-test`，PR/release 继续调用同一个只读发布审核器。
+
 现行统一入口为 [`scripts/run-release-audit.mjs`](../../scripts/run-release-audit.mjs)：`quality:pr` 使用 `pr` phase，`deploy:prepare` 使用 `release` phase；两者读取同一份 [`audit/policy/release-audit-v2.json`](../../audit/policy/release-audit-v2.json)。最终制品由 [`scripts/build-production-release.mjs`](../../scripts/build-production-release.mjs) 构建，并由 [`scripts/validate-deployment.mjs`](../../scripts/validate-deployment.mjs) 验证。
 
 ### 6.3 上线后 0-5 分钟

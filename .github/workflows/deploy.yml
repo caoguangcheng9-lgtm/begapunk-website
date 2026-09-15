@@ -474,6 +474,23 @@ jobs:
             "flock -w 30 /www/begapunk/maintenance.lock sudo -n /usr/local/sbin/begapunk-nginx-config stage '$nginx_candidate' '$release_id'"
           echo "nginx_transaction_staged=true" >> "$GITHUB_ENV"
 
+      - name: Checkpoint production telemetry
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          port="${DEPLOY_PORT:-22}"
+          ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -p "$port")
+          expected_observer="$(sha256sum ops/production-telemetry.py | awk '{print $1}')"
+          actual_observer="$(ssh "${ssh_args[@]}" "$target" 'sudo -n /usr/local/sbin/begapunk-nginx-config telemetry-version')"
+          test "$actual_observer" = "$expected_observer"
+          ssh "${ssh_args[@]}" "$target" \
+            "sudo -n /usr/local/sbin/begapunk-nginx-config telemetry-start '$release_id'" \
+            | tee dist/audit/production-telemetry-start.json
+
       - name: Activate release
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -504,6 +521,19 @@ jobs:
 
       - name: Verify production navigation in a real browser
         run: npm run postdeploy:navigation:verify
+
+      - name: Verify production telemetry before commit
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          port="${DEPLOY_PORT:-22}"
+          ssh -o BatchMode=yes -o ConnectTimeout=15 -p "$port" "$target" \
+            "sudo -n /usr/local/sbin/begapunk-nginx-config telemetry-check '$release_id'" \
+            | tee dist/audit/production-telemetry-check.json
 
       - name: Commit deployment transaction
         env:

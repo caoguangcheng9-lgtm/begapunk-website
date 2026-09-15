@@ -4,6 +4,8 @@ import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import './editorial-legacy-transition.test.mjs';
+import './editorial-page-enrollment.test.mjs';
+import './blog-hub-inventory.test.mjs';
 import { fileURLToPath } from 'node:url';
 import {
   applyMechanicalOnlySnapshots,
@@ -301,6 +303,8 @@ test('refresh CLI anchors HEAD, permits cache-only change, and rejects semantic 
   );
 
   const now = new Date().toISOString();
+  await cp(path.join(repositoryRoot, 'scripts/lib/editorial-page-enrollment.mjs'),
+    path.join(fixtureRoot, 'scripts/lib/editorial-page-enrollment.mjs'));
   const pagePath = path.join(fixtureRoot, 'fr', 'page.html');
   const manifestPath = path.join(fixtureRoot, 'audit', 'localization', 'current-localized-artifacts.json');
   const page = '<!doctype html>\n<html lang="fr"><body><p>Texte visible</p><script src="../js/site.js?v=one"></script></body></html>\n';
@@ -792,6 +796,43 @@ test('refresh CLI anchors HEAD, permits cache-only change, and rejects semantic 
   assert.notEqual(replayAttempt.status, 0);
   assert.match(replayAttempt.stderr, /reviewedAt must be later than the trusted manifest updatedAt|reviewedArtifactTransitions hashes do not match/);
   assert.equal(await readFile(manifestPath, 'utf8'), manifestBeforeReplay);
+  await writeFile(pagePath, reviewedSemanticPage);
+  const enrollmentBase = run('git', ['rev-parse', 'HEAD'], fixtureRoot).stdout.trim();
+  const enrollmentStatusBefore = await readFile(statusPath, 'utf8');
+  await writeFile(path.join(fixtureRoot, 'i18n/config.json'), JSON.stringify({ activeLanguageCodes: ['fr'], pages: ['page.html', 'new.html'] }));
+  await writeFile(path.join(fixtureRoot, 'fr/new.html'), page);
+  const newSnapshot = createArtifactSnapshot('fr/new.html', page);
+  const newTransition = [{ path: 'fr/new.html', beforeSemanticSha256: null, beforeMechanicalSha256: null,
+    afterSemanticSha256: newSnapshot.semanticSha256, afterMechanicalSha256: newSnapshot.mechanicalSha256 }];
+  const renderChecks = [390, 1440].map(width => ({ path: 'fr/new.html', width, height: 900,
+    result: 'PASS', browser: 'fixture browser, not real QA', mechanicalSha256: newSnapshot.mechanicalSha256 }));
+  const enrollmentRecord = 'audit/localization/enrollment.md';
+  const enrollmentSource = semanticRecordSource()
+    .replace(semanticReviewedAt, new Date(Math.max(Date.now(), Date.parse(JSON.parse(manifestBeforeReplay).updatedAt) + 1)).toISOString())
+    .replace('reviewedArtifactPaths: `["fr/page.html"]`', 'reviewedArtifactPaths: `["fr/new.html"]`')
+    .replace(JSON.stringify(reviewedTransition), JSON.stringify(newTransition))
+    + `enrollmentBaselineRef: ${enrollmentBase}\nenrolledArtifactPaths: ["fr/new.html"]\nenrollmentRenderChecks: ${JSON.stringify(renderChecks)}\n`;
+  const enrollmentFile = path.join(fixtureRoot, enrollmentRecord);
+  const enrollArgs = ['scripts/refresh-reviewed-localized-artifacts.mjs', '--write', '--enroll-pages', `--review-record=${enrollmentRecord}`];
+  await writeFile(enrollmentFile, enrollmentSource.replace(JSON.stringify(renderChecks), '[]'));
+  assert.notEqual(run(process.execPath, enrollArgs, fixtureRoot).status, 0, 'missing render evidence must fail');
+  assert.equal(await readFile(manifestPath, 'utf8'), manifestBeforeReplay);
+  assert.equal(await readFile(statusPath, 'utf8'), enrollmentStatusBefore);
+  await writeFile(enrollmentFile, enrollmentSource);
+  assertCommandPassed(run(process.execPath, enrollArgs, fixtureRoot), 'enroll new reviewed page');
+  const verifyEnroll = () => run(process.execPath, ['scripts/verify-editorial-release-status.mjs', `--baseline-ref=${enrollmentBase}`], fixtureRoot);
+  assertCommandPassed(verifyEnroll(), 'verify new page against protected baseline');
+  const validStatus = await readFile(statusPath, 'utf8');
+  const poisoned = JSON.parse(validStatus);
+  poisoned.localMarketReview.targetMarketPeerReferenceRequired = false;
+  await writeFile(statusPath, JSON.stringify(poisoned));
+  assert.notEqual(verifyEnroll().status, 0, 'enrollment must not waive old readiness rules');
+  await writeFile(statusPath, validStatus);
+  await writeFile(path.join(fixtureRoot, 'fr/new.html'), page.replace('Texte visible', 'Unreviewed replacement'));
+  assert.notEqual(verifyEnroll().status, 0, 'post-review new page drift must fail');
+  await writeFile(path.join(fixtureRoot, 'fr/new.html'), page);
+  await writeFile(pagePath, reviewedSemanticPage.replace('Texte modifié', 'Unreviewed existing copy'));
+  assert.notEqual(verifyEnroll().status, 0, 'existing page drift must still fail');
 });
 
 test('semantic projection has a deterministic golden digest', () => {

@@ -48,6 +48,7 @@
 ## Articles techniques
 
 - [Guides techniques sur les raccords tournants | Begapunk](https://www.begapunk.com/fr/blog.html): Guides pratiques sur la sélection, l’installation, les joints, la maintenance, les applications réelles et les contrôles de production des raccords tournants.
+- [Joints toriques revêtus de PTFE pour raccords tournants | Begapunk](https://www.begapunk.com/fr/blog-ptfe-coated-o-rings.html): Découvrez le revêtement PTFE en option pour joints toriques de joints composites : photos du procédé, rapport d’épaisseur du fournisseur et choix du fluide.
 - [Raccord tournant à étanchéité sans contact | Begapunk](https://www.begapunk.com/fr/blog-non-contact-clearance-seal-rotary-union.html): Comprenez comment un raccord tournant à étanchéité sans contact transfère le fluide à grande vitesse et pourquoi un jeu radial unilatéral de 0,003 mm est déterminant.
 - [Installation d’un raccord tournant : 7 erreurs | Begapunk](https://www.begapunk.com/fr/blog-rotary-joint-installation-mistakes.html): Évitez sept erreurs courantes liées à l’alignement, aux efforts de tuyauterie, à la filtration, à l’étanchéité des filetages, au rodage et au contrôle des fuites.
 - [Raccord tournant qui fuit ? Guide de diagnostic | Begapunk](https://www.begapunk.com/fr/blog-rotary-joint-leaking.html): Localisez la fuite, distinguez un défaut de montage d’un défaut d’étanchéité rotative et contrôlez l’alignement avant de remplacer des composants.

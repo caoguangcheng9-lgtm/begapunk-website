@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-12T01:34:48.937Z",
+  "generatedAt": "2026-09-15T07:50:57.498Z",
   "pages": [
     "index.html",
     "about.html",
@@ -282,6 +282,13 @@
     {
       "id": "9fb9151d6eabfbbf",
       "source": "<a href=\"blog-non-contact-clearance-seal-rotary-union.html\">How a Non-Contact Clearance-Seal Rotary Union Works at High Speed</a>",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
+      "id": "6e1dfa799c07e992",
+      "source": "<a href=\"blog-ptfe-coated-o-rings.html\" style=\"display:block;\">PTFE-Coated O-Rings for Rotary Union Seals</a>",
       "pages": [
         "blog.html"
       ]
@@ -4178,6 +4185,13 @@
       ]
     },
     {
+      "id": "ec00cef1dae863f3",
+      "source": "Application-based selection",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
       "id": "98e33b0f3104fcf1",
       "source": "Applications",
       "pages": [
@@ -4739,6 +4753,13 @@
       "source": "Blow-off",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "b8f43e423d8bb020",
+      "source": "Blue PTFE-coated O-rings for an optional rotary union seal configuration",
+      "pages": [
+        "blog.html"
       ]
     },
     {
@@ -7211,10 +7232,24 @@
       ]
     },
     {
+      "id": "5b80586815167318",
+      "source": "Explore an optional surface treatment for O-rings used with composite slipper seals, with process photos and a supplier coating thickness report.",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
       "id": "c5c6bfc78bb1921d",
       "source": "Explore focused application guides",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "b443e5526c440368",
+      "source": "Explore operating principles, seal options, and practical guidance for rotary joint selection and installation.",
+      "pages": [
+        "blog.html"
       ]
     },
     {
@@ -10799,6 +10834,13 @@
       ]
     },
     {
+      "id": "dc0e05f919143557",
+      "source": "Read about optional PTFE-coated O-rings for rotary unions",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
       "id": "65014fb542551ebf",
       "source": "Read how a non-contact clearance-seal rotary union works",
       "pages": [
@@ -11498,6 +11540,13 @@
       "source": "Seal material and geometry must match the medium, pressure, temperature, speed, and mating surfaces. Do not substitute a visually similar O-ring or dynamic seal without confirming its dimensions and material compatibility.",
       "pages": [
         "blog-seal-replacement.html"
+      ]
+    },
+    {
+      "id": "35a46d1477e59b38",
+      "source": "Seal Options",
+      "pages": [
+        "blog.html"
       ]
     },
     {
@@ -12776,13 +12825,6 @@
       "source": "These five checks help narrow the model before the drawing and operating conditions are reviewed.",
       "pages": [
         "blog-rotary-joint-selection.html"
-      ]
-    },
-    {
-      "id": "96fa724cdf0596d2",
-      "source": "These four published guides explain the operating principle and the decisions most often needed before model selection, installation, and seal review.",
-      "pages": [
-        "blog.html"
       ]
     },
     {

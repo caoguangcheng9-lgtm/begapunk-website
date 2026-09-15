@@ -1,6 +1,6 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
-  "updatedAt": "2026-09-12",
+  "updatedAt": "2026-09-15",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -40,8 +40,8 @@
     "semanticAlgorithm": "sha256-semantic-html-v1",
     "mechanicalAlgorithm": "sha256-lf-text-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "manifestUpdatedAt": "2026-09-12T03:21:07.018Z",
-    "pagesPerLanguage": 56,
+    "manifestUpdatedAt": "2026-09-15T08:19:59.389Z",
+    "pagesPerLanguage": 57,
     "languages": [
       "de",
       "fr",
@@ -55,20 +55,20 @@
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
     "de": {
-      "reviewed": 56,
-      "total": 56
+      "reviewed": 57,
+      "total": 57
     },
     "ja": {
-      "reviewed": 56,
-      "total": 56
+      "reviewed": 57,
+      "total": 57
     },
     "ru": {
-      "reviewed": 56,
-      "total": 56
+      "reviewed": 57,
+      "total": 57
     },
     "fr": {
-      "reviewed": 56,
-      "total": 56
+      "reviewed": 57,
+      "total": 57
     }
   },
   "languages": {
@@ -129,7 +129,8 @@
         "case-bp-3p-s06-sensor-monitored-chuck.html",
         "manufacturing-quality.html",
         "production-inspection-testing.html",
-        "404.html"
+        "404.html",
+        "blog-ptfe-coated-o-rings.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -192,7 +193,8 @@
         "privacy.html",
         "terms.html",
         "thank-you.html",
-        "404.html"
+        "404.html",
+        "blog-ptfe-coated-o-rings.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -255,7 +257,8 @@
         "case-bp-3p-s06-sensor-monitored-chuck.html",
         "manufacturing-quality.html",
         "production-inspection-testing.html",
-        "404.html"
+        "404.html",
+        "blog-ptfe-coated-o-rings.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -318,7 +321,8 @@
         "case-bp-3p-s06-sensor-monitored-chuck.html",
         "manufacturing-quality.html",
         "production-inspection-testing.html",
-        "404.html"
+        "404.html",
+        "blog-ptfe-coated-o-rings.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -328,9 +332,9 @@
   "renderQa": {
     "completedAt": "2026-09-04T08:50:17.448Z",
     "browser": "Automated Microsoft Edge (C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe)",
-    "pagesPerLanguage": 56,
+    "pagesPerLanguage": 57,
     "viewportsPerPage": 2,
-    "checkedViewports": 448,
+    "checkedViewports": 456,
     "criteria": [
       "one visible H1",
       "correct html lang",

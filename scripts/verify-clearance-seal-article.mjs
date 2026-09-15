@@ -3,11 +3,16 @@ import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
 import sharp from 'sharp';
+import { blogHubInventoryMatches } from './lib/blog-hub-inventory.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const pageName = 'blog-non-contact-clearance-seal-rotary-union.html';
 const publicOrigin = 'https://www.begapunk.com';
 const config = JSON.parse(await readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
+const englishHub = load(await readFile(path.join(root, 'blog.html'), 'utf8'));
+const publishedGuides = parseSchemas(englishHub, 'blog.html')
+  .filter(node => schemaHasType(node, 'BlogPosting'))
+  .map(node => new URL(node.url).pathname.slice(1));
 const failures = [];
 
 const routes = {
@@ -226,7 +231,8 @@ for (const page of pages) {
   const hubFile = path.join(root, prefix, 'blog.html');
   const $hub = load(await readFile(hubFile, 'utf8'));
   assert($hub(`.blog-card a[href="${pageName}"]`).length >= 1, `${page.code}/blog.html: visible article card missing`);
-  assert($hub('.blog-card').length === 4, `${page.code}/blog.html: expected four published guide cards`);
+  assert(publishedGuides.every(route => config.pages.includes(route))
+    && blogHubInventoryMatches($hub, publishedGuides), `${page.code}/blog.html: guide cards must exactly match the configured English BlogPosting inventory`);
   const hubSchemas = parseSchemas($hub, `${page.code}/blog.html`);
   const hubPosts = hubSchemas.filter((node) => schemaHasType(node, 'BlogPosting') && node.url === page.canonical);
   assert(hubPosts.length === 1, `${page.code}/blog.html: BlogPosting for article missing or duplicated`);

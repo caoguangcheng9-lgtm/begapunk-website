@@ -3414,6 +3414,12 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
 }
 
 const frenchSearchKeywords = Object.freeze({
+  'blog-ptfe-coated-o-rings.html': Object.freeze([
+    'joints toriques revêtus de PTFE',
+    'revêtement PTFE en option',
+    'étanchéité des raccords tournants',
+    'compatibilité avec le fluide',
+  ]),
   'applications.html': Object.freeze([
     'applications des raccords tournants pneumatiques',
     'sélection par application',
@@ -3662,6 +3668,12 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
     }
   }
   const localizedItems = [];
+  const ptfeArticleKeywords = {
+    de: ['PTFE-beschichtete O-Ringe', 'optionale PTFE-Beschichtung', 'Drehdurchführungsdichtungen', 'Medienverträglichkeit'],
+    fr: frenchSearchKeywords['blog-ptfe-coated-o-rings.html'],
+    ja: ['PTFEコーティングOリング', 'オプションのPTFEコーティング', 'ロータリージョイントのシール', '流体との適合性'],
+    ru: ['Кольца O-ring с покрытием PTFE', 'опциональное покрытие PTFE', 'уплотнения вращающихся соединений', 'совместимость с рабочей средой'],
+  };
   for (const item of searchIndex) {
     if (discoveryExcludedPages.has(item.url)) continue;
     if (!config.pages.includes(item.url)) {
@@ -3684,6 +3696,8 @@ async function renderLocalizedSearchIndex(language, outputDirectory) {
       body: content.text().replace(/\s+/g, ' ').trim(),
       ...(drawingKeywords
         ? { keywords: drawingKeywords }
+        : item.url === 'blog-ptfe-coated-o-rings.html'
+          ? { keywords: ptfeArticleKeywords[language.code] }
         : language.code === 'fr' && frenchSearchKeywords[item.url]
           ? { keywords: frenchSearchKeywords[item.url] }
         : item.url === 'manufacturing-quality.html'
