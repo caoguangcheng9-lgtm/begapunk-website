@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-15T07:50:57.498Z",
+  "generatedAt": "2026-09-18T11:37:03.402Z",
   "pages": [
     "index.html",
     "about.html",
@@ -136,8 +136,61 @@
       ]
     },
     {
-      "id": "7b3b938f0172eb7e",
-      "source": "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
+      "id": "3ee6c24cddc5c1b2",
+      "source": "© 2026 <span class=\"footer-company-name\">Ningbo Begapunk Pneumatic Components Co., Ltd.</span> All rights reserved.",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "d1d4bb75e13d9bea",
+      "source": "<a href=\"about.html\">About Begapunk</a>",
       "pages": [
         "404.html",
         "BP-1P-0003.html",
@@ -196,6 +249,13 @@
       ]
     },
     {
+      "id": "e1a4db525d910c06",
+      "source": "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "16458ceaf670ac9e",
       "source": "<a href=\"application-bottle-filling-capping.html\">Bottle-Capping Head</a>",
       "pages": [
@@ -210,6 +270,13 @@
       ]
     },
     {
+      "id": "15d26900cab7f006",
+      "source": "<a href=\"application-cnc-pneumatic-clamping.html\">CNC pneumatic clamping</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "68659b4215682dea",
       "source": "<a href=\"application-electronics-battery-test-fixtures.html\">Electronics and Battery Test Fixtures</a>",
       "pages": [
@@ -221,6 +288,66 @@
       "source": "<a href=\"application-laser-tube-cutting.html\">Laser Tube Cutting Rear Chucks</a>",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "0e78ae1e36dc25ab",
+      "source": "<a href=\"application-laser-tube-cutting.html\">Laser tube cutting</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "454ec1011e86f5ab",
+      "source": "<a href=\"application-laser-tube-cutting.html\">Laser Tube Cutting</a>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -273,6 +400,59 @@
       ]
     },
     {
+      "id": "2faa980fcd77e76e",
+      "source": "<a href=\"applications.html\">All Applications</a>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
       "id": "9d833b90bb4e439e",
       "source": "<a href=\"applications.html\">See Real Equipment Installations</a>",
       "pages": [
@@ -301,8 +481,8 @@
       ]
     },
     {
-      "id": "320f5aa536aa363e",
-      "source": "<a href=\"blog-rotary-joint-leaking.html\">Rotary joint leaking? Diagnostic flowchart for maintenance teams</a>",
+      "id": "e632f503ebdc65dd",
+      "source": "<a href=\"blog-rotary-joint-leaking.html\">Rotary joint leaking? A five-step troubleshooting guide</a>",
       "pages": [
         "index.html"
       ]
@@ -386,59 +566,6 @@
       "source": "<a href=\"blog-rotary-union-seal-types.html\">Rotary Union Seal Types: O-Ring, Lip, and Spring-Energized PTFE</a>",
       "pages": [
         "blog.html"
-      ]
-    },
-    {
-      "id": "c97f3e9c9121702e",
-      "source": "<a href=\"blog-rotary-union-seal-types.html\">Sealing Technology</a>",
-      "pages": [
-        "404.html",
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html",
-        "about.html",
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-cnc-pneumatic-clamping.html",
-        "application-electronics-battery-test-fixtures.html",
-        "application-laser-tube-cutting.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "application-steel-dusty-environments.html",
-        "application-textile-printing-converting.html",
-        "application-vacuum-packaging-machines.html",
-        "application-welding-positioners.html",
-        "applications.html",
-        "blog-rotary-joint-installation-mistakes.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-rotary-joint-selection.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html",
-        "blog.html",
-        "contact.html",
-        "index.html",
-        "installation.html",
-        "privacy.html",
-        "product-comparison.html",
-        "products.html",
-        "search.html",
-        "terms.html",
-        "thank-you.html"
       ]
     },
     {
@@ -558,8 +685,8 @@
       ]
     },
     {
-      "id": "bbc3ed4b0d32c0d7",
-      "source": "<a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> or custom",
+      "id": "62c7af7e9386633b",
+      "source": "<a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> as a pneumatic starting point; review vacuum or cooling circuits separately",
       "pages": [
         "application-textile-printing-converting.html"
       ]
@@ -645,7 +772,53 @@
       "id": "e6da3f0bca9c2f29",
       "source": "<a href=\"case-studies.html\">Case Studies</a>",
       "pages": [
-        "installation.html"
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -818,10 +991,169 @@
       ]
     },
     {
+      "id": "d7b5f866cb0c18b4",
+      "source": "<a href=\"manufacturing-quality.html\">Manufacturing &amp; Quality</a>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
       "id": "af5e37f26e4ac309",
       "source": "<a href=\"product-comparison.html\">Compare Rotary Union Models</a>",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "9a8bc88913dc4a72",
+      "source": "<a href=\"product-comparison.html\">Model Comparison</a>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "34a91e12db63e343",
+      "source": "<a href=\"production-inspection-testing.html\">100% Leak Testing</a>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -835,7 +1167,53 @@
       "id": "a7b6efa2ab1a2f56",
       "source": "<a href=\"products.html\">Product Catalog</a>",
       "pages": [
-        "installation.html"
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -864,6 +1242,218 @@
       "source": "<div class=\"industry-body\">\n      <h3>Review an Operating Problem</h3>\n      <p>Share the model, medium, operating limits, installation details, and observed symptoms for an engineer-to-engineer review.</p>\n      <span class=\"industry-link\">Contact an engineer →</span>\n     </div>",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "477d2e385d074341",
+      "source": "<h2 class=\"footer-title\">Applications &amp; Cases</h2><span class=\"footer-toggle-icon\" aria-hidden=\"true\"></span>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "a91f8da5b1de65f8",
+      "source": "<h2 class=\"footer-title\">Products &amp; Selection</h2><span class=\"footer-toggle-icon\" aria-hidden=\"true\"></span>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "80351fd3128efca3",
+      "source": "<h2 class=\"footer-title\">Quality &amp; Factory</h2><span class=\"footer-toggle-icon\" aria-hidden=\"true\"></span>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "271a50b53c712d8d",
+      "source": "<h2 class=\"footer-title\">Technical Support</h2><span class=\"footer-toggle-icon\" aria-hidden=\"true\"></span>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -1609,13 +2199,6 @@
       ]
     },
     {
-      "id": "f2a6497a5cc913bc",
-      "source": "<strong>Bore:</strong> 10–30 mm (roller shafts) — through-bore must match shaft diameter",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
       "id": "26a97bafd5c98ac5",
       "source": "<strong>Bore:</strong> 3–6 mm for small grippers; 6–10 mm for larger actuators",
       "pages": [
@@ -1952,8 +2535,8 @@
       ]
     },
     {
-      "id": "8238c0d40254d2d6",
-      "source": "<strong>Environment:</strong> lint, paper dust, ink, adhesive — specify contamination type",
+      "id": "d939fd3a33e5ff85",
+      "source": "<strong>Environment:</strong> identify lint, paper dust, ink, adhesive, temperature, and cleaning conditions.",
       "pages": [
         "application-textile-printing-converting.html"
       ]
@@ -2078,6 +2661,13 @@
       ]
     },
     {
+      "id": "7ea4067cc2d06bfd",
+      "source": "<strong>Mechanical fit:</strong> share shaft diameter, required through-bore, mounting drawing, and available space.",
+      "pages": [
+        "application-textile-printing-converting.html"
+      ]
+    },
+    {
       "id": "5c13fce6ca3e377f",
       "source": "<strong>Media:</strong> dry air + shield gas (argon/CO2) — specify gas mixture",
       "pages": [
@@ -2089,13 +2679,6 @@
       "source": "<strong>Media:</strong> dry air + water-soluble coolant — seal must resist both",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
-      "id": "d6881c9eb5ca8fa8",
-      "source": "<strong>Media:</strong> dry air, vacuum, water, coolant — specify all media when inquiring",
-      "pages": [
-        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -2117,6 +2700,13 @@
       "source": "<strong>Media:</strong> vacuum + dry filtered air — food-grade for edible product lines",
       "pages": [
         "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "26624e59a03bb2f3",
+      "source": "<strong>Medium and passages:</strong> list what flows through each passage and which circuits must remain separate.",
+      "pages": [
+        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -2155,13 +2745,6 @@
       ]
     },
     {
-      "id": "00d6f74d60fdf8d2",
-      "source": "<strong>Mounting:</strong> flange or through-bore for roller shaft integration",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
       "id": "ae59b8b79dd54170",
       "source": "<strong>Mounting:</strong> flange with heat shield — keep joint away from direct spatter",
       "pages": [
@@ -2194,13 +2777,6 @@
       "source": "<strong>Passages:</strong> 2–4 (air + vacuum + sensor air + blow-off)",
       "pages": [
         "application-electronics-battery-test-fixtures.html"
-      ]
-    },
-    {
-      "id": "d76d4132188de1b1",
-      "source": "<strong>Passages:</strong> 2–4 (air + vacuum + water/coolant)",
-      "pages": [
-        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -2239,6 +2815,13 @@
       ]
     },
     {
+      "id": "75f50a43defe4c2c",
+      "source": "<strong>Pressure and speed:</strong> provide normal and peak pressure, roller RPM, and whether motion is continuous or intermittent.",
+      "pages": [
+        "application-textile-printing-converting.html"
+      ]
+    },
+    {
       "id": "f36e02f81808225c",
       "source": "<strong>Pressure and speed:</strong> select within the current limits of the chosen model and approved drawing",
       "pages": [
@@ -2257,13 +2840,6 @@
       "source": "<strong>Pressure:</strong> 0.2–0.5 MPa (vacuum/gripper) — low-pressure precision control",
       "pages": [
         "application-electronics-battery-test-fixtures.html"
-      ]
-    },
-    {
-      "id": "04d31909beef431d",
-      "source": "<strong>Pressure:</strong> 0.2–0.6 MPa (blow-off) / -0.04 to -0.08 MPa (vacuum) / 0.1–0.4 MPa (water)",
-      "pages": [
-        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -2400,13 +2976,6 @@
       ]
     },
     {
-      "id": "b9980855d0c55800",
-      "source": "<strong>RPM:</strong> 100–500 (roller speed) — up to 2,000 for high-speed winding",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
       "id": "f1e9b35ae1e8d774",
       "source": "<strong>RPM:</strong> 30–100 (packaging turret) — intermittent indexing",
       "pages": [
@@ -2432,13 +3001,6 @@
       "source": "<strong>Seal:</strong> Glyd Ring (PTFE composite) recommended for coolant compatibility",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
-      "id": "ac9cf9986b28e28a",
-      "source": "<strong>Seal:</strong> PTFE skeleton oil seal for &gt;500 RPM roller applications",
-      "pages": [
-        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -2586,59 +3148,6 @@
       "source": "<strong>Who this is for:</strong> Welding equipment manufacturers, fabrication shop managers, and automation engineers designing rotary welding fixtures and positioners.",
       "pages": [
         "application-welding-positioners.html"
-      ]
-    },
-    {
-      "id": "c5883d4b109e61f5",
-      "source": "<svg class=\"footer-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z\"></path><circle cx=\"12\" cy=\"9\" r=\"2.5\"></circle></svg><span>Ningbo, Zhejiang, China</span>",
-      "pages": [
-        "404.html",
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html",
-        "about.html",
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-cnc-pneumatic-clamping.html",
-        "application-electronics-battery-test-fixtures.html",
-        "application-laser-tube-cutting.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "application-steel-dusty-environments.html",
-        "application-textile-printing-converting.html",
-        "application-vacuum-packaging-machines.html",
-        "application-welding-positioners.html",
-        "applications.html",
-        "blog-rotary-joint-installation-mistakes.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-rotary-joint-selection.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html",
-        "blog.html",
-        "contact.html",
-        "index.html",
-        "installation.html",
-        "privacy.html",
-        "product-comparison.html",
-        "products.html",
-        "search.html",
-        "terms.html",
-        "thank-you.html"
       ]
     },
     {
@@ -4351,6 +4860,13 @@
       ]
     },
     {
+      "id": "15aa8492add8bef4",
+      "source": "Before choosing replacement parts, compare <a href=\"blog-rotary-union-seal-types.html\">rotary union seal types</a> and review the <a href=\"installation.html\">installation guide</a> for fitting, alignment, and hose-routing checks.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "173c5fba909dfa25",
       "source": "Before You Choose",
       "pages": [
@@ -5144,6 +5660,13 @@
       ]
     },
     {
+      "id": "70afaf7a650ec6ae",
+      "source": "BP-2P-30-0001 combines two air passages with a 30 mm through-bore. Check the shaft clearance and mounting drawing.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "8003f40a6d3b738d",
       "source": "BP-2P-30-0001 view 1",
       "pages": [
@@ -5793,6 +6316,13 @@
       ]
     },
     {
+      "id": "8aa9453e412f0dd6",
+      "source": "Choose a rotary union by requirement",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "bc737dcf6ea9936e",
       "source": "Choose by Equipment",
       "pages": [
@@ -6218,6 +6748,13 @@
       ]
     },
     {
+      "id": "673b664746f6f296",
+      "source": "Compare air passage counts, pressure and speed before selecting a model.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "218576cd10d89c43",
       "source": "Compare aluminum, stainless-steel, and brass rotary-union bodies by mass and environment, then confirm the selected model’s published body material. This is not a ranking of which metal lasts longer.",
       "pages": [
@@ -6297,6 +6834,13 @@
       "source": "Compare models, see real installations, and view production testing",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "e6741bb9d7ac5fe8",
+      "source": "Compare multi-passage models",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -7383,6 +7927,13 @@
       "source": "Find the Right Rotary Joint",
       "pages": [
         "search.html"
+      ]
+    },
+    {
+      "id": "fb88c022ac439a83",
+      "source": "Find where the rotary union leaks, check whether it leaks at rest or during rotation, and follow five checks before replacing a seal or the complete unit.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
       ]
     },
     {
@@ -8632,15 +9183,15 @@
       ]
     },
     {
-      "id": "0ffd39b9256aced3",
-      "source": "Leaking Rotary Union? Diagnostic Flowchart for Factory Maintenance Teams",
+      "id": "6ef364504fdfb4b2",
+      "source": "Leaking Rotary Union? 5-Step Troubleshooting | Begapunk",
       "pages": [
         "blog-rotary-joint-leaking.html"
       ]
     },
     {
-      "id": "fe7d7e085953992c",
-      "source": "Leaking Rotary Union? Diagnostic Guide | Begapunk",
+      "id": "c4a9d894772f307e",
+      "source": "Leaking Rotary Union? A Five-Step Troubleshooting Guide",
       "pages": [
         "blog-rotary-joint-leaking.html"
       ]
@@ -8847,6 +9398,13 @@
       "source": "Match a rotary union to your automation table",
       "pages": [
         "application-automation-rotary-tables.html"
+      ]
+    },
+    {
+      "id": "59b27bf118797ae8",
+      "source": "Match the rotary union to your roller",
+      "pages": [
+        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -9392,6 +9950,13 @@
       ]
     },
     {
+      "id": "584a168201f77e6e",
+      "source": "Multi-passage rotary unions",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "13147348da57e5b9",
       "source": "Multi-port pneumatic routing, compact automation, rotary manifolds",
       "pages": [
@@ -9505,8 +10070,43 @@
       ]
     },
     {
-      "id": "9919daa861424840",
-      "source": "Ningbo Begapunk Pneumatic Components Co., Ltd.",
+      "id": "2c5e0c32aa5a4c80",
+      "source": "Ningbo Begapunk Pneumatic Components Co., Ltd. (\"Begapunk\", \"we\", \"us\", or \"our\") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.",
+      "pages": [
+        "privacy.html"
+      ]
+    },
+    {
+      "id": "e9dcdce65b441af5",
+      "source": "Ningbo Begapunk Pneumatic Components Co., Ltd. was established to develop and manufacture pneumatic rotary joints for industrial machinery.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "b0ea56c14e9577d6",
+      "source": "Ningbo factory · established in 2022",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
+      "id": "c5d403881bbabe73",
+      "source": "Ningbo-based manufacturer of standard and custom rotary joints for industrial automation, established in 2022.",
+      "pages": [
+        "index.html"
+      ]
+    },
+    {
+      "id": "3d57451e399be1ab",
+      "source": "Ningbo-based pneumatic rotary joint manufacturer established in 2022, serving industrial automation and rotating machinery projects.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "44651f30f5bf27c4",
+      "source": "Ningbo, Zhejiang, China",
       "pages": [
         "404.html",
         "BP-1P-0003.html",
@@ -9555,41 +10155,6 @@
         "search.html",
         "terms.html",
         "thank-you.html"
-      ]
-    },
-    {
-      "id": "2c5e0c32aa5a4c80",
-      "source": "Ningbo Begapunk Pneumatic Components Co., Ltd. (\"Begapunk\", \"we\", \"us\", or \"our\") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.",
-      "pages": [
-        "privacy.html"
-      ]
-    },
-    {
-      "id": "e9dcdce65b441af5",
-      "source": "Ningbo Begapunk Pneumatic Components Co., Ltd. was established to develop and manufacture pneumatic rotary joints for industrial machinery.",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
-      "id": "b0ea56c14e9577d6",
-      "source": "Ningbo factory · established in 2022",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "c5d403881bbabe73",
-      "source": "Ningbo-based manufacturer of standard and custom rotary joints for industrial automation, established in 2022.",
-      "pages": [
-        "index.html"
-      ]
-    },
-    {
-      "id": "3d57451e399be1ab",
-      "source": "Ningbo-based pneumatic rotary joint manufacturer established in 2022, serving industrial automation and rotating machinery projects.",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -10271,6 +10836,13 @@
       ]
     },
     {
+      "id": "2d75714c1aa21174",
+      "source": "Pneumatic-electric rotary unions",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "7f69649ad70496d4",
       "source": "Poland",
       "pages": [
@@ -10325,8 +10897,15 @@
       ]
     },
     {
-      "id": "42f03e7ea63a442d",
-      "source": "Precision rotary joint manufacturer based in Ningbo, China. Supporting industrial automation OEMs and machine builders.",
+      "id": "e619f39108ba603f",
+      "source": "Precision rotary joint manufacturing in Ningbo, China.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "ffe456e57be59bad",
+      "source": "Precision rotary joints for industrial automation.",
       "pages": [
         "404.html",
         "BP-1P-0003.html",
@@ -10375,13 +10954,6 @@
         "search.html",
         "terms.html",
         "thank-you.html"
-      ]
-    },
-    {
-      "id": "e619f39108ba603f",
-      "source": "Precision rotary joint manufacturing in Ningbo, China.",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -11150,6 +11722,13 @@
       ]
     },
     {
+      "id": "d9ba95581029b95c",
+      "source": "Review BP-3P-S06-0001 when the rotating assembly needs both air and electrical connections. Send both requirements for selection.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "7ee05589fd32d8f1",
       "source": "Review materials for a specific medium or environment",
       "pages": [
@@ -11276,8 +11855,8 @@
       ]
     },
     {
-      "id": "c0433acefcbcdb42",
-      "source": "Rotary Joint Leaking? A Practical Diagnostic Flowchart",
+      "id": "556b7f8abeec5614",
+      "source": "Rotary Joint Leaking? A Five-Step Troubleshooting Guide",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
       ]
@@ -11382,27 +11961,6 @@
       ]
     },
     {
-      "id": "ab9b1b21b376800c",
-      "source": "Rotary Union for Printing &amp; Converting Equipment | Begapunk",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
-      "id": "13653c8ce9b17892",
-      "source": "Rotary Union for Printing Machinery & Converting Equipment",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
-      "id": "6bd0db0a77c90f8f",
-      "source": "Rotary Union for Printing Machinery & Converting Equipment | Begapunk",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
       "id": "8e953ba673e88002",
       "source": "Rotary Union for Printing Machinery and Converting Equipment",
       "pages": [
@@ -11477,6 +12035,13 @@
       "source": "Rotary Union Seal Replacement: A Step-by-Step Guide for Maintenance Teams",
       "pages": [
         "blog-seal-replacement.html"
+      ]
+    },
+    {
+      "id": "6b1adc544ab2016f",
+      "source": "Rotary Unions for Printing Machinery | Begapunk",
+      "pages": [
+        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -11697,15 +12262,8 @@
       ]
     },
     {
-      "id": "0ebbce7a4239e79c",
-      "source": "Select a rotary union for printing machinery, textile winders, and converting lines by media, pressure, RPM, passages, bore, and contamination.",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
-      "id": "321061a23cf968f9",
-      "source": "Select a rotary union for printing, textile and converting equipment by medium, pressure, speed, passage count and through-bore requirements.",
+      "id": "e796141996e44611",
+      "source": "Select a rotary union for printing rollers and converting equipment. Compare pneumatic models and send your medium, pressure, speed, and shaft drawing.",
       "pages": [
         "application-textile-printing-converting.html"
       ]
@@ -11757,6 +12315,13 @@
       "source": "Selecting a rotary joint is not complicated — but it is specific. Confirm the passage count, allowable combined pressure and speed, seal material, media compatibility, mounting, and required flow against the current product page, approved drawing, and actual duty conditions.",
       "pages": [
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "94fc02ad369c99e3",
+      "source": "Selecting for a machine?",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -11973,13 +12538,6 @@
       "source": "Send the model, leak location, and photos of the shaft and sealing faces. We will help decide inspect-and-reseal versus replace the union.",
       "pages": [
         "blog-seal-replacement.html"
-      ]
-    },
-    {
-      "id": "d7295ba35114ba23",
-      "source": "Send the model, leak location, photos, medium, and whether leakage appears at rest or only during rotation.",
-      "pages": [
-        "blog-rotary-joint-leaking.html"
       ]
     },
     {
@@ -12359,6 +12917,13 @@
       ]
     },
     {
+      "id": "ef24c2d055fd30e9",
+      "source": "Start with the <a href=\"product-comparison.html\">pneumatic rotary union comparison</a>. For water, coolant, vacuum, or combined media, send the operating conditions for a configuration review.",
+      "pages": [
+        "application-textile-printing-converting.html"
+      ]
+    },
+    {
       "id": "845db2d7ed109171",
       "source": "Start with the function at each rotating station. A circuit that must hold pressure, switch independently, or stay isolated from another function needs its own defined passage. Electrical signals, wash fluid, or other services may require separate interfaces or a custom combined design.",
       "pages": [
@@ -12368,6 +12933,13 @@
     {
       "id": "db2f5acf085663e8",
       "source": "Start with the leak location and timing",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
+      "id": "c909f2b5c9044ff8",
+      "source": "Start with the model, a photo of the leak location, and whether leakage appears at rest or only during rotation. Include the medium, pressure, and speed if available so we can review the seal and installation requirements.",
       "pages": [
         "blog-rotary-joint-leaking.html"
       ]
@@ -12480,59 +13052,6 @@
       "source": "Systematic troubleshooting: check pressure, RPM, seal material, and air quality before replacing seals.",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "73542f0d323b229f",
-      "source": "Technical Resources",
-      "pages": [
-        "404.html",
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html",
-        "about.html",
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-cnc-pneumatic-clamping.html",
-        "application-electronics-battery-test-fixtures.html",
-        "application-laser-tube-cutting.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "application-steel-dusty-environments.html",
-        "application-textile-printing-converting.html",
-        "application-vacuum-packaging-machines.html",
-        "application-welding-positioners.html",
-        "applications.html",
-        "blog-rotary-joint-installation-mistakes.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-rotary-joint-selection.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html",
-        "blog.html",
-        "contact.html",
-        "index.html",
-        "installation.html",
-        "privacy.html",
-        "product-comparison.html",
-        "products.html",
-        "search.html",
-        "terms.html",
-        "thank-you.html"
       ]
     },
     {
@@ -12970,6 +13489,13 @@
       ]
     },
     {
+      "id": "42279184de3089f1",
+      "source": "Through-bore rotary unions",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "79c8de1ca4fcb93f",
       "source": "To exercise these rights, contact us at <a href=\"mailto:sales@begapunk.com\">sales@begapunk.com</a>.",
       "pages": [
@@ -13095,13 +13621,6 @@
       ]
     },
     {
-      "id": "662b22cf03411b3b",
-      "source": "Typical Textile &amp; Printing Rotary Union Specs",
-      "pages": [
-        "application-textile-printing-converting.html"
-      ]
-    },
-    {
       "id": "5b48f41fa0bf23cd",
       "source": "Typical Vacuum Packaging Rotary Union Specs",
       "pages": [
@@ -13151,13 +13670,6 @@
       ]
     },
     {
-      "id": "b461e388e71f2b8d",
-      "source": "Use a controlled diagnostic sequence to separate hose, fitting, static-seal, rotating-seal, and cross-passage faults before replacing parts.",
-      "pages": [
-        "blog-rotary-joint-leaking.html"
-      ]
-    },
-    {
       "id": "a5651c6c98fbe66a",
       "source": "Use lithium-based grease rated for the operating temperature of your application.",
       "pages": [
@@ -13176,6 +13688,13 @@
       "source": "Use proper anti-rotation support and hose routing. Side load can shorten seal life even when pressure and RPM are within range.",
       "pages": [
         "application-steel-dusty-environments.html"
+      ]
+    },
+    {
+      "id": "13ba6e942d11d948",
+      "source": "Use the machine requirements to narrow the selection, then check the operating limits and media of the individual model. A typical printing-machine range is not a rating for every rotary union.",
+      "pages": [
+        "application-textile-printing-converting.html"
       ]
     },
     {
@@ -13417,6 +13936,13 @@
       ]
     },
     {
+      "id": "920da84b34584d2c",
+      "source": "View the 30 mm through-bore model",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "c92a465db16e6195",
       "source": "View the Automation Rotary Tables application guide",
       "pages": [
@@ -13498,6 +14024,13 @@
       "source": "View the Pneumatic Tools and Hose Anti-Twist application guide",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "12f78de4af9dbe5c",
+      "source": "View the pneumatic-electric model",
+      "pages": [
+        "products.html"
       ]
     },
     {

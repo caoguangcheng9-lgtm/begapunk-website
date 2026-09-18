@@ -5,6 +5,27 @@
   // deferred script arrives. Native fragment links provide the basic menu.
   document.documentElement.classList.add('site-navigation-ready');
 
+  // Native disclosures keep the links usable when scripting is unavailable.
+  // Only narrow screens collapse; wider layouts retain all navigation links.
+  const footerMedia = window.matchMedia('(max-width: 430px)');
+  const footerGroups = [...document.querySelectorAll('#siteFooter details.footer-column')];
+  const syncFooter = () => {
+    footerGroups.forEach((group) => {
+      group.open = !footerMedia.matches;
+      const summary = group.querySelector('summary');
+      summary.tabIndex = footerMedia.matches ? 0 : -1;
+      if (footerMedia.matches) summary.removeAttribute('aria-disabled');
+      else summary.setAttribute('aria-disabled', 'true');
+    });
+  };
+  footerGroups.forEach((group) => {
+    group.querySelector('summary').addEventListener('click', (event) => {
+      if (!footerMedia.matches) event.preventDefault();
+    });
+  });
+  syncFooter();
+  footerMedia.addEventListener('change', syncFooter);
+
   const preservedCampaignParameters = Object.freeze({
     gclid: 300,
     gbraid: 300,

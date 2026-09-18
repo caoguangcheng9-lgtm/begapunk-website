@@ -14,6 +14,7 @@ const outputRoot = process.env.I18N_OUTPUT_ROOT
   ? path.resolve(process.env.I18N_OUTPUT_ROOT)
   : root;
 const checkOnly = process.argv.includes('--check');
+const footerOnly = process.argv.includes('--footer-only');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 const configuredLanguages = outputRoot === root
   ? [config.sourceLanguage.code, ...config.activeLanguageCodes]
@@ -89,76 +90,99 @@ const copy = {
 
 const footerCopy = {
   en: {
-    positioning: 'Precision rotary joint manufacturer based in Ningbo, China. Supporting industrial automation OEMs and machine builders.',
-    address: 'Ningbo, Zhejiang, China', quote: 'Get a Quote', socialTitle: 'Follow Begapunk',
-    navigationLabel: 'Footer navigation', legalLabel: 'Legal information',
-    titles: ['Technical Resources'],
+    positioning: "Precision rotary joints for industrial automation.",
+    address: "Ningbo, Zhejiang, China",
+    quote: "Get a Quote",
+    socialTitle: "Follow Begapunk",
+    navigationLabel: "Footer navigation",
+    legalLabel: "Legal information",
+    titles: ["Products & Selection","Applications & Cases","Quality & Factory","Technical Support"],
     links: [
-      [['blog.html', 'Technical Blog'], ['blog-rotary-joint-selection.html', 'Selection Guide'], ['blog-rotary-union-seal-types.html', 'Sealing Technology'], ['installation.html', 'Installation Guide'], ['faq.html', 'FAQ']],
+      [["products.html", "Product Catalog"], ["product-comparison.html", "Model Comparison"], ["blog-rotary-joint-selection.html", "Selection Guide"]],
+      [["applications.html", "All Applications"], ["case-studies.html", "Case Studies"], ["application-laser-tube-cutting.html", "Laser Tube Cutting"]],
+      [["manufacturing-quality.html", "Manufacturing & Quality"], ["production-inspection-testing.html", "100% Leak Testing"], ["about.html", "About Begapunk"]],
+      [["blog.html", "Technical Blog"], ["installation.html", "Installation Guide"], ["faq.html", "FAQ"]],
     ],
-    privacy: 'Privacy', terms: 'Terms',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.',
-    socialLabels: ['G. C. Cao on LinkedIn', 'Begapunk on YouTube', 'Begapunk on Facebook', 'Begapunk on X'],
+    privacy: "Privacy",
+    terms: "Terms",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
+    socialLabels: ["G. C. Cao on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
   },
   de: {
-    positioning: 'Hersteller von Präzisionsdrehdurchführungen mit Sitz in Ningbo, China. Unterstützung für OEMs und Maschinenbauer in der Industrieautomation.',
-    address: 'Ningbo, Zhejiang, China', quote: 'Angebot anfordern', socialTitle: 'Begapunk folgen',
-    navigationLabel: 'Fußzeilennavigation', legalLabel: 'Rechtliche Informationen',
-    titles: ['Produkte & Auswahl', 'Anwendungen & Praxisbeispiele', 'Qualität & Werk', 'Technischer Support'],
+    positioning: "Präzisionsdrehdurchführungen für die Industrieautomation.",
+    address: "Ningbo, Zhejiang, China",
+    quote: "Angebot anfordern",
+    socialTitle: "Begapunk folgen",
+    navigationLabel: "Fußzeilennavigation",
+    legalLabel: "Rechtliche Informationen",
+    titles: ["Produkte & Auswahl","Anwendungen & Praxisbeispiele","Qualität & Werk","Technischer Support"],
     links: [
-      [['products.html', 'Produktkatalog'], ['product-comparison.html', 'Modellvergleich']],
-      [['case-studies.html', 'Reale Anwendungsbeispiele'], ['application-laser-tube-cutting.html', 'Laser-Rohrschneiden'], ['application-packaging-machinery.html', 'Verpackungsmaschinen'], ['application-bottle-filling-capping.html', 'Flaschenfüllen & Verschließen'], ['applications.html', 'Alle Anwendungen']],
-      [['manufacturing-quality.html', 'Fertigung & Qualität'], ['production-inspection-testing.html', '100%-Dichtheitsprüfung'], ['about.html', 'Unternehmen & Werk']],
-      [['blog-rotary-joint-selection.html', 'Auswahlleitfaden'], ['installation.html', 'Montageanleitung'], ['faq.html', 'FAQ'], ['contact.html', 'Kontakt']],
+      [["products.html", "Produktkatalog"], ["product-comparison.html", "Modellvergleich"], ["blog-rotary-joint-selection.html", "Auswahlleitfaden"]],
+      [["applications.html", "Alle Anwendungen"], ["case-studies.html", "Reale Anwendungsbeispiele"], ["application-laser-tube-cutting.html", "Laser-Rohrschneiden"]],
+      [["manufacturing-quality.html", "Fertigung & Qualität"], ["production-inspection-testing.html", "100%-Dichtheitsprüfung"], ["about.html", "Unternehmen & Werk"]],
+      [["blog.html", "Technischer Blog"], ["installation.html", "Montageanleitung"], ["faq.html", "FAQ"]],
     ],
-    privacy: 'Datenschutz', terms: 'Nutzungsbedingungen',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.',
-    socialLabels: ['G. C. Cao auf LinkedIn', 'Begapunk auf YouTube', 'Begapunk auf Facebook', 'Begapunk auf X'],
+    privacy: "Datenschutz",
+    terms: "Nutzungsbedingungen",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.",
+    socialLabels: ["G. C. Cao auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
   },
   fr: {
-    positioning: 'Fabricant de raccords tournants de précision basé à Ningbo, en Chine. Accompagnement des constructeurs de machines et des OEM de l\'automatisation industrielle.',
-    address: 'Ningbo, Zhejiang, Chine', quote: 'Demander un devis', socialTitle: 'Suivre Begapunk',
-    navigationLabel: 'Navigation de pied de page', legalLabel: 'Informations légales',
-    titles: ['Produits et sélection', 'Applications et études de cas', 'Qualité et usine', 'Assistance technique'],
+    positioning: "Raccords tournants de précision pour l’automatisation industrielle.",
+    address: "Ningbo, Zhejiang, Chine",
+    quote: "Demander un devis",
+    socialTitle: "Suivre Begapunk",
+    navigationLabel: "Navigation de pied de page",
+    legalLabel: "Informations légales",
+    titles: ["Produits et sélection","Applications et études de cas","Qualité et usine","Assistance technique"],
     links: [
-      [['products.html', 'Catalogue produits'], ['product-comparison.html', 'Comparatif des modèles']],
-      [['case-studies.html', 'Études de cas réelles'], ['application-laser-tube-cutting.html', 'Découpe laser de tubes'], ['application-packaging-machinery.html', 'Machines d\'emballage'], ['application-bottle-filling-capping.html', 'Remplissage et bouchage de bouteilles'], ['applications.html', 'Toutes les applications']],
-      [['manufacturing-quality.html', 'Fabrication et qualité'], ['production-inspection-testing.html', 'Essai d\'étanchéité à 100 %'], ['about.html', 'Entreprise et usine']],
-      [['blog-rotary-joint-selection.html', 'Guide de sélection'], ['installation.html', 'Guide d\'installation'], ['faq.html', 'FAQ'], ['contact.html', 'Contact']],
+      [["products.html", "Catalogue produits"], ["product-comparison.html", "Comparatif des modèles"], ["blog-rotary-joint-selection.html", "Guide de sélection"]],
+      [["applications.html", "Toutes les applications"], ["case-studies.html", "Études de cas réelles"], ["application-laser-tube-cutting.html", "Découpe laser de tubes"]],
+      [["manufacturing-quality.html", "Fabrication et qualité"], ["production-inspection-testing.html", "Essai d'étanchéité à 100 %"], ["about.html", "Entreprise et usine"]],
+      [["blog.html", "Blog technique"], ["installation.html", "Guide d'installation"], ["faq.html", "FAQ"]],
     ],
-    privacy: 'Confidentialité', terms: 'Conditions d\'utilisation',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.',
-    socialLabels: ['G. C. Cao sur LinkedIn', 'Begapunk sur YouTube', 'Begapunk sur Facebook', 'Begapunk sur X'],
+    privacy: "Confidentialité",
+    terms: "Conditions d'utilisation",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.",
+    socialLabels: ["G. C. Cao sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
   },
   ja: {
-    positioning: '中国・寧波の産業用ロータリージョイントメーカーです。産業オートメーションのOEM・装置メーカーを支援します。',
-    address: '中国 浙江省 寧波市', quote: '見積もりを依頼', socialTitle: 'Begapunk公式SNS',
-    navigationLabel: 'フッターナビゲーション', legalLabel: '法的情報',
-    titles: ['製品・選定', '用途・実機組込み事例', '品質・工場', '技術サポート'],
+    positioning: "産業オートメーション向けの精密ロータリージョイント。",
+    address: "中国 浙江省 寧波市",
+    quote: "見積もりを依頼",
+    socialTitle: "Begapunk公式SNS",
+    navigationLabel: "フッターナビゲーション",
+    legalLabel: "法的情報",
+    titles: ["製品・選定","用途・実機組込み事例","品質・工場","技術サポート"],
     links: [
-      [['products.html', '製品一覧'], ['product-comparison.html', '機種選定表']],
-      [['case-studies.html', '実機組込み事例'], ['application-laser-tube-cutting.html', 'レーザー管切断機'], ['application-packaging-machinery.html', '包装機械'], ['application-bottle-filling-capping.html', 'ボトル充填・キャッピング機'], ['applications.html', '用途一覧']],
-      [['manufacturing-quality.html', '製造・品質管理'], ['production-inspection-testing.html', '全数漏れ検査'], ['about.html', '会社・工場情報']],
-      [['blog-rotary-joint-selection.html', '選定ガイド'], ['installation.html', '取付要領'], ['faq.html', 'よくある質問'], ['contact.html', 'お問い合わせ']],
+      [["products.html", "製品一覧"], ["product-comparison.html", "機種選定表"], ["blog-rotary-joint-selection.html", "選定ガイド"]],
+      [["applications.html", "用途一覧"], ["case-studies.html", "実機組込み事例"], ["application-laser-tube-cutting.html", "レーザー管切断機"]],
+      [["manufacturing-quality.html", "製造・品質管理"], ["production-inspection-testing.html", "全数漏れ検査"], ["about.html", "会社・工場情報"]],
+      [["blog.html", "技術資料"], ["installation.html", "取付要領"], ["faq.html", "よくある質問"]],
     ],
-    privacy: 'プライバシーポリシー', terms: '利用規約',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.',
-    socialLabels: ['G. C. CaoのLinkedIn個人プロフィール', 'Begapunk公式YouTube', 'Begapunk公式Facebook', 'Begapunk公式X'],
+    privacy: "プライバシーポリシー",
+    terms: "利用規約",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
+    socialLabels: ["G. C. CaoのLinkedIn個人プロフィール","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
   },
   ru: {
-    positioning: 'Begapunk — производитель прецизионных вращающихся соединений в Нинбо, Китай. Мы работаем с производителями промышленного оборудования и систем автоматизации.',
-    address: 'Нинбо, Чжэцзян, Китай', quote: 'Запросить предложение', socialTitle: 'Begapunk в социальных сетях',
-    navigationLabel: 'Навигация в нижней части страницы', legalLabel: 'Правовая информация',
-    titles: ['Продукция и подбор', 'Применение и примеры', 'Качество и производство', 'Техническая поддержка'],
+    positioning: "Прецизионные вращающиеся соединения для промышленной автоматизации.",
+    address: "Нинбо, Чжэцзян, Китай",
+    quote: "Запросить предложение",
+    socialTitle: "Begapunk в социальных сетях",
+    navigationLabel: "Навигация в нижней части страницы",
+    legalLabel: "Правовая информация",
+    titles: ["Продукция и подбор","Применение и примеры","Качество и производство","Техническая поддержка"],
     links: [
-      [['products.html', 'Каталог продукции'], ['product-comparison.html', 'Сравнение моделей']],
-      [['case-studies.html', 'Реальные примеры применения'], ['application-laser-tube-cutting.html', 'Лазерная резка труб'], ['application-packaging-machinery.html', 'Упаковочные машины'], ['application-bottle-filling-capping.html', 'Розлив и укупорка бутылок'], ['applications.html', 'Все области применения']],
-      [['manufacturing-quality.html', 'Производство и качество'], ['production-inspection-testing.html', '100%-ный контроль герметичности'], ['about.html', 'О компании и производстве']],
-      [['blog-rotary-joint-selection.html', 'Руководство по выбору'], ['installation.html', 'Инструкция по монтажу'], ['faq.html', 'Часто задаваемые вопросы'], ['contact.html', 'Контакты']],
+      [["products.html", "Каталог продукции"], ["product-comparison.html", "Сравнение моделей"], ["blog-rotary-joint-selection.html", "Руководство по выбору"]],
+      [["applications.html", "Все области применения"], ["case-studies.html", "Реальные примеры применения"], ["application-laser-tube-cutting.html", "Лазерная резка труб"]],
+      [["manufacturing-quality.html", "Производство и качество"], ["production-inspection-testing.html", "100%-ный контроль герметичности"], ["about.html", "О компании и производстве"]],
+      [["blog.html", "Технический блог"], ["installation.html", "Инструкция по монтажу"], ["faq.html", "Часто задаваемые вопросы"]],
     ],
-    privacy: 'Политика конфиденциальности', terms: 'Условия использования',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Все права защищены.',
-    socialLabels: ['G. C. Cao в LinkedIn', 'Begapunk на YouTube', 'Begapunk на Facebook', 'Begapunk в X'],
+    privacy: "Политика конфиденциальности",
+    terms: "Условия использования",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Все права защищены.",
+    socialLabels: ["G. C. Cao в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
   },
 };
 
@@ -332,7 +356,7 @@ function icon(name) {
 }
 
 function footerColumn(title, items) {
-  return `<section class="footer-column">\n     <h2 class="footer-title">${title}</h2>\n     <ul class="footer-links">\n${items.map(([href, label]) => `      <li><a href="${href}">${label}</a></li>`).join('\n')}\n     </ul>\n    </section>`;
+  return `<details class="footer-column" open>\n     <summary class="footer-summary"><h2 class="footer-title">${title}</h2><span class="footer-toggle-icon" aria-hidden="true"></span></summary>\n     <ul class="footer-links">\n${items.map(([href, label]) => `      <li><a href="${href}">${label}</a></li>`).join('\n')}\n     </ul>\n    </details>`;
 }
 
 function footerMarkup(language, page) {
@@ -341,11 +365,47 @@ function footerMarkup(language, page) {
   const assetPrefix = language === 'en' ? '' : '../';
   const social = socialLinks.map(([key, , href], index) => `      <li><a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${t.socialLabels[index]}">${icon(key)}</a></li>`).join('\n');
   const columns = t.links.map((links, index) => footerColumn(t.titles[index], links)).join('\n    ');
-  const navigationClass = language === 'en' ? 'footer-navigation footer-navigation--compact' : 'footer-navigation';
+  const copyright = t.copyright.replace(legalCompanyName, `<span class="footer-company-name">${legalCompanyName}</span>`);
   const footerAction = page === 'thank-you.html'
     ? ''
     : `\n   <a class="footer-quote" href="contact.html#quoteForm">${t.quote}</a>`;
-  return `<footer class="footer" id="siteFooter">\n <div class="container">\n  <div class="footer-brand footer-brand-band">\n   <a class="footer-logo" href="index.html" aria-label="Begapunk"><img src="${assetPrefix}images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>\n   <div class="footer-brand-copy">\n    <p class="footer-positioning">${t.positioning}</p>\n    <p class="footer-company-name">${legalCompanyName}</p>\n   </div>${footerAction}\n  </div>\n  <div class="footer-contact-band">\n   <address class="footer-contact">\n    <span class="footer-address">${icon('location')}<span>${t.address}</span></span>\n    <a href="mailto:sales@begapunk.com">${icon('mail')}<span>sales@begapunk.com</span></a>\n    <a href="tel:+8618368425342">${icon('phone')}<span>+86 183 6842 5342</span></a>\n    <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer">${icon('whatsapp')}<span>WhatsApp</span></a>\n   </address>\n   <nav class="footer-social" aria-label="${t.socialTitle}">\n    <ul class="footer-social-links">\n${social}\n    </ul>\n   </nav>\n  </div>\n  <nav class="${navigationClass}" aria-label="${t.navigationLabel}">\n   ${columns}\n  </nav>\n  <div class="footer-bottom">\n   <p>${t.copyright}</p>\n   <nav class="footer-legal" aria-label="${t.legalLabel}">\n    <a href="privacy.html">${t.privacy}</a>\n    <a href="terms.html">${t.terms}</a>\n   </nav>\n  </div>\n </div>\n</footer>`;
+  return `<footer class="footer" id="siteFooter">
+ <div class="container">
+  <div class="footer-brand footer-brand-band">
+   <div class="footer-brand-copy">
+    <a class="footer-logo" href="index.html" aria-label="Begapunk"><img src="${assetPrefix}images/optimized/begapunk-logo-header.webp" alt="Begapunk" loading="lazy" width="226" height="40"></a>
+    <p class="footer-positioning">${t.positioning}</p>
+   </div>${footerAction}
+  </div>
+  <div class="footer-contact-band">
+   <address class="footer-contact">
+    <a href="mailto:sales@begapunk.com">${icon('mail')}<span>sales@begapunk.com</span></a>
+    <a href="tel:+8618368425342">${icon('phone')}<span>+86 183 6842 5342</span></a>
+    <a href="https://wa.me/8618368425342" target="_blank" rel="noopener noreferrer">${icon('whatsapp')}<span>WhatsApp</span></a>
+   </address>
+  </div>
+  <nav class="footer-navigation" aria-label="${t.navigationLabel}">
+   ${columns}
+  </nav>
+  <div class="footer-bottom">
+   <div class="footer-identity">
+    <p class="footer-copyright">${copyright}</p>
+    <div class="footer-meta">
+     <span class="footer-address">${t.address}</span>
+     <nav class="footer-legal" aria-label="${t.legalLabel}">
+      <a href="privacy.html">${t.privacy}</a>
+      <a href="terms.html">${t.terms}</a>
+     </nav>
+    </div>
+   </div>
+   <nav class="footer-social" aria-label="${t.socialTitle}">
+    <ul class="footer-social-links">
+${social}
+    </ul>
+   </nav>
+  </div>
+ </div>
+</footer>`;
 }
 
 function replacementRange(element) {
@@ -491,6 +551,21 @@ for (const language of languages) {
     const pageStyleVersion = language === 'en'
       ? (page === 'index.html' ? englishHomepageStyleVersion : englishStyleVersion)
       : (page === 'index.html' ? homepageStyleVersion : styleVersion);
+    // Allow footer maintenance without rewriting unrelated navigation/breadcrumbs.
+    if (footerOnly) {
+      const $original = load(original, { sourceCodeLocationInfo: true });
+      const footer = $original('footer.footer').get(0);
+      if (!footer) throw new Error(`${language}/${page}: footer is missing.`);
+      const { start, end } = replacementRange(footer);
+      const next = `${original.slice(0, start)}${canonicalHomepageLinks(footerMarkup(language, page))}${original.slice(end)}`
+        .replace(/(href=["'](?:\.\.\/)?css\/style\.css\?v=)[^"']+/g, `$1${pageStyleVersion}`)
+        .replace(/(src=["'](?:\.\.\/)?js\/site-navigation\.js\?v=)[^"']+/g, `$1${navigationScriptVersion}`);
+      if (next !== original) {
+        changed += 1;
+        if (!checkOnly) await fs.writeFile(file, next, 'utf8');
+      }
+      continue;
+    }
     let html = removeLegacyMobileListeners(original)
       .replace(
         /(href=["'](?:\.\.\/)?css\/style\.css\?v=)[^"']+/g,

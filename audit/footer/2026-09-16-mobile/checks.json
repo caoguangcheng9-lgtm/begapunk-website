@@ -1,0 +1,516 @@
+{
+  "checkedAt": "2026-09-16T08:43:03.038Z",
+  "cases": 40,
+  "results": [
+    {
+      "lang": "en",
+      "width": 320,
+      "mode": "script-enabled",
+      "height": 894,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "mode": "script-enabled",
+      "height": 869,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "en",
+      "width": 430,
+      "mode": "script-enabled",
+      "height": 869,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "en",
+      "width": 431,
+      "mode": "script-enabled",
+      "height": 945,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "mode": "script-enabled",
+      "height": 881,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "mode": "script-enabled",
+      "height": 521,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "de",
+      "width": 320,
+      "mode": "script-enabled",
+      "height": 915,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "de",
+      "width": 390,
+      "mode": "script-enabled",
+      "height": 915,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "de",
+      "width": 430,
+      "mode": "script-enabled",
+      "height": 869,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "de",
+      "width": 431,
+      "mode": "script-enabled",
+      "height": 965,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        39.1875,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "de",
+      "width": 768,
+      "mode": "script-enabled",
+      "height": 881,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "de",
+      "width": 1440,
+      "mode": "script-enabled",
+      "height": 521,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "de",
+      "width": 390,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "de",
+      "width": 1440,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "fr",
+      "width": 320,
+      "mode": "script-enabled",
+      "height": 915,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "fr",
+      "width": 390,
+      "mode": "script-enabled",
+      "height": 915,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "fr",
+      "width": 430,
+      "mode": "script-enabled",
+      "height": 894,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "fr",
+      "width": 431,
+      "mode": "script-enabled",
+      "height": 970,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "fr",
+      "width": 768,
+      "mode": "script-enabled",
+      "height": 881,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "fr",
+      "width": 1440,
+      "mode": "script-enabled",
+      "height": 521,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "fr",
+      "width": 390,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "fr",
+      "width": 1440,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "ja",
+      "width": 320,
+      "mode": "script-enabled",
+      "height": 916,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ja",
+      "width": 390,
+      "mode": "script-enabled",
+      "height": 895,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ja",
+      "width": 430,
+      "mode": "script-enabled",
+      "height": 870,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ja",
+      "width": 431,
+      "mode": "script-enabled",
+      "height": 946,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ja",
+      "width": 768,
+      "mode": "script-enabled",
+      "height": 882,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ja",
+      "width": 1440,
+      "mode": "script-enabled",
+      "height": 522,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ja",
+      "width": 390,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "ja",
+      "width": 1440,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "ru",
+      "width": 320,
+      "mode": "script-enabled",
+      "height": 959,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ru",
+      "width": 390,
+      "mode": "script-enabled",
+      "height": 915,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ru",
+      "width": 430,
+      "mode": "script-enabled",
+      "height": 915,
+      "visibleLinks": 0,
+      "overflow": false,
+      "summaryHeights": [
+        56,
+        56,
+        56,
+        56
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ru",
+      "width": 431,
+      "mode": "script-enabled",
+      "height": 1011,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ru",
+      "width": 768,
+      "mode": "script-enabled",
+      "height": 881,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ru",
+      "width": 1440,
+      "mode": "script-enabled",
+      "height": 521,
+      "visibleLinks": 12,
+      "overflow": false,
+      "summaryHeights": [
+        19.59375,
+        19.59375,
+        19.59375,
+        19.59375
+      ],
+      "interactionChecks": "passed"
+    },
+    {
+      "lang": "ru",
+      "width": 390,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    },
+    {
+      "lang": "ru",
+      "width": 1440,
+      "mode": "script-disabled",
+      "visibleLinks": 12
+    }
+  ]
+}

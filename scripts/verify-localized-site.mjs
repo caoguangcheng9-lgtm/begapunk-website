@@ -304,76 +304,99 @@ const obsoleteHomepageSocialProfiles = [
 ];
 const footerExpected = {
   en: {
-    positioning: 'Precision rotary joint manufacturer based in Ningbo, China. Supporting industrial automation OEMs and machine builders.',
-    address: 'Ningbo, Zhejiang, China', quote: 'Get a Quote', socialTitle: 'Follow Begapunk',
-    navigationLabel: 'Footer navigation', legalLabel: 'Legal information',
-    titles: ['Technical Resources'],
+    positioning: "Precision rotary joints for industrial automation.",
+    address: "Ningbo, Zhejiang, China",
+    quote: "Get a Quote",
+    socialTitle: "Follow Begapunk",
+    navigationLabel: "Footer navigation",
+    legalLabel: "Legal information",
+    titles: ["Products & Selection","Applications & Cases","Quality & Factory","Technical Support"],
     links: [
-      [['blog.html', 'Technical Blog'], ['blog-rotary-joint-selection.html', 'Selection Guide'], ['blog-rotary-union-seal-types.html', 'Sealing Technology'], ['installation.html', 'Installation Guide'], ['faq.html', 'FAQ']],
+      [["products.html", "Product Catalog"], ["product-comparison.html", "Model Comparison"], ["blog-rotary-joint-selection.html", "Selection Guide"]],
+      [["applications.html", "All Applications"], ["case-studies.html", "Case Studies"], ["application-laser-tube-cutting.html", "Laser Tube Cutting"]],
+      [["manufacturing-quality.html", "Manufacturing & Quality"], ["production-inspection-testing.html", "100% Leak Testing"], ["about.html", "About Begapunk"]],
+      [["blog.html", "Technical Blog"], ["installation.html", "Installation Guide"], ["faq.html", "FAQ"]],
     ],
-    privacy: 'Privacy', terms: 'Terms',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.',
-    socialLabels: ['G. C. Cao on LinkedIn', 'Begapunk on YouTube', 'Begapunk on Facebook', 'Begapunk on X'],
+    privacy: "Privacy",
+    terms: "Terms",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
+    socialLabels: ["G. C. Cao on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
   },
   de: {
-    positioning: 'Hersteller von Präzisionsdrehdurchführungen mit Sitz in Ningbo, China. Unterstützung für OEMs und Maschinenbauer in der Industrieautomation.',
-    address: 'Ningbo, Zhejiang, China', quote: 'Angebot anfordern', socialTitle: 'Begapunk folgen',
-    navigationLabel: 'Fußzeilennavigation', legalLabel: 'Rechtliche Informationen',
-    titles: ['Produkte & Auswahl', 'Anwendungen & Praxisbeispiele', 'Qualität & Werk', 'Technischer Support'],
+    positioning: "Präzisionsdrehdurchführungen für die Industrieautomation.",
+    address: "Ningbo, Zhejiang, China",
+    quote: "Angebot anfordern",
+    socialTitle: "Begapunk folgen",
+    navigationLabel: "Fußzeilennavigation",
+    legalLabel: "Rechtliche Informationen",
+    titles: ["Produkte & Auswahl","Anwendungen & Praxisbeispiele","Qualität & Werk","Technischer Support"],
     links: [
-      [['products.html', 'Produktkatalog'], ['product-comparison.html', 'Modellvergleich']],
-      [['case-studies.html', 'Reale Anwendungsbeispiele'], ['application-laser-tube-cutting.html', 'Laser-Rohrschneiden'], ['application-packaging-machinery.html', 'Verpackungsmaschinen'], ['application-bottle-filling-capping.html', 'Flaschenfüllen & Verschließen'], ['applications.html', 'Alle Anwendungen']],
-      [['manufacturing-quality.html', 'Fertigung & Qualität'], ['production-inspection-testing.html', '100%-Dichtheitsprüfung'], ['about.html', 'Unternehmen & Werk']],
-      [['blog-rotary-joint-selection.html', 'Auswahlleitfaden'], ['installation.html', 'Montageanleitung'], ['faq.html', 'FAQ'], ['contact.html', 'Kontakt']],
+      [["products.html", "Produktkatalog"], ["product-comparison.html", "Modellvergleich"], ["blog-rotary-joint-selection.html", "Auswahlleitfaden"]],
+      [["applications.html", "Alle Anwendungen"], ["case-studies.html", "Reale Anwendungsbeispiele"], ["application-laser-tube-cutting.html", "Laser-Rohrschneiden"]],
+      [["manufacturing-quality.html", "Fertigung & Qualität"], ["production-inspection-testing.html", "100%-Dichtheitsprüfung"], ["about.html", "Unternehmen & Werk"]],
+      [["blog.html", "Technischer Blog"], ["installation.html", "Montageanleitung"], ["faq.html", "FAQ"]],
     ],
-    privacy: 'Datenschutz', terms: 'Nutzungsbedingungen',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.',
-    socialLabels: ['G. C. Cao auf LinkedIn', 'Begapunk auf YouTube', 'Begapunk auf Facebook', 'Begapunk auf X'],
+    privacy: "Datenschutz",
+    terms: "Nutzungsbedingungen",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.",
+    socialLabels: ["G. C. Cao auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
   },
   fr: {
-    positioning: 'Fabricant de raccords tournants de précision basé à Ningbo, en Chine. Accompagnement des constructeurs de machines et des OEM de l\'automatisation industrielle.',
-    address: 'Ningbo, Zhejiang, Chine', quote: 'Demander un devis', socialTitle: 'Suivre Begapunk',
-    navigationLabel: 'Navigation de pied de page', legalLabel: 'Informations légales',
-    titles: ['Produits et sélection', 'Applications et études de cas', 'Qualité et usine', 'Assistance technique'],
+    positioning: "Raccords tournants de précision pour l’automatisation industrielle.",
+    address: "Ningbo, Zhejiang, Chine",
+    quote: "Demander un devis",
+    socialTitle: "Suivre Begapunk",
+    navigationLabel: "Navigation de pied de page",
+    legalLabel: "Informations légales",
+    titles: ["Produits et sélection","Applications et études de cas","Qualité et usine","Assistance technique"],
     links: [
-      [['products.html', 'Catalogue produits'], ['product-comparison.html', 'Comparatif des modèles']],
-      [['case-studies.html', 'Études de cas réelles'], ['application-laser-tube-cutting.html', 'Découpe laser de tubes'], ['application-packaging-machinery.html', 'Machines d\'emballage'], ['application-bottle-filling-capping.html', 'Remplissage et bouchage de bouteilles'], ['applications.html', 'Toutes les applications']],
-      [['manufacturing-quality.html', 'Fabrication et qualité'], ['production-inspection-testing.html', 'Essai d\'étanchéité à 100 %'], ['about.html', 'Entreprise et usine']],
-      [['blog-rotary-joint-selection.html', 'Guide de sélection'], ['installation.html', 'Guide d\'installation'], ['faq.html', 'FAQ'], ['contact.html', 'Contact']],
+      [["products.html", "Catalogue produits"], ["product-comparison.html", "Comparatif des modèles"], ["blog-rotary-joint-selection.html", "Guide de sélection"]],
+      [["applications.html", "Toutes les applications"], ["case-studies.html", "Études de cas réelles"], ["application-laser-tube-cutting.html", "Découpe laser de tubes"]],
+      [["manufacturing-quality.html", "Fabrication et qualité"], ["production-inspection-testing.html", "Essai d'étanchéité à 100 %"], ["about.html", "Entreprise et usine"]],
+      [["blog.html", "Blog technique"], ["installation.html", "Guide d'installation"], ["faq.html", "FAQ"]],
     ],
-    privacy: 'Confidentialité', terms: 'Conditions d\'utilisation',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.',
-    socialLabels: ['G. C. Cao sur LinkedIn', 'Begapunk sur YouTube', 'Begapunk sur Facebook', 'Begapunk sur X'],
+    privacy: "Confidentialité",
+    terms: "Conditions d'utilisation",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.",
+    socialLabels: ["G. C. Cao sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
   },
   ja: {
-    positioning: '中国・寧波の産業用ロータリージョイントメーカーです。産業オートメーションのOEM・装置メーカーを支援します。',
-    address: '中国 浙江省 寧波市', quote: '見積もりを依頼', socialTitle: 'Begapunk公式SNS',
-    navigationLabel: 'フッターナビゲーション', legalLabel: '法的情報',
-    titles: ['製品・選定', '用途・実機組込み事例', '品質・工場', '技術サポート'],
+    positioning: "産業オートメーション向けの精密ロータリージョイント。",
+    address: "中国 浙江省 寧波市",
+    quote: "見積もりを依頼",
+    socialTitle: "Begapunk公式SNS",
+    navigationLabel: "フッターナビゲーション",
+    legalLabel: "法的情報",
+    titles: ["製品・選定","用途・実機組込み事例","品質・工場","技術サポート"],
     links: [
-      [['products.html', '製品一覧'], ['product-comparison.html', '機種選定表']],
-      [['case-studies.html', '実機組込み事例'], ['application-laser-tube-cutting.html', 'レーザー管切断機'], ['application-packaging-machinery.html', '包装機械'], ['application-bottle-filling-capping.html', 'ボトル充填・キャッピング機'], ['applications.html', '用途一覧']],
-      [['manufacturing-quality.html', '製造・品質管理'], ['production-inspection-testing.html', '全数漏れ検査'], ['about.html', '会社・工場情報']],
-      [['blog-rotary-joint-selection.html', '選定ガイド'], ['installation.html', '取付要領'], ['faq.html', 'よくある質問'], ['contact.html', 'お問い合わせ']],
+      [["products.html", "製品一覧"], ["product-comparison.html", "機種選定表"], ["blog-rotary-joint-selection.html", "選定ガイド"]],
+      [["applications.html", "用途一覧"], ["case-studies.html", "実機組込み事例"], ["application-laser-tube-cutting.html", "レーザー管切断機"]],
+      [["manufacturing-quality.html", "製造・品質管理"], ["production-inspection-testing.html", "全数漏れ検査"], ["about.html", "会社・工場情報"]],
+      [["blog.html", "技術資料"], ["installation.html", "取付要領"], ["faq.html", "よくある質問"]],
     ],
-    privacy: 'プライバシーポリシー', terms: '利用規約',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.',
-    socialLabels: ['G. C. CaoのLinkedIn個人プロフィール', 'Begapunk公式YouTube', 'Begapunk公式Facebook', 'Begapunk公式X'],
+    privacy: "プライバシーポリシー",
+    terms: "利用規約",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
+    socialLabels: ["G. C. CaoのLinkedIn個人プロフィール","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
   },
   ru: {
-    positioning: 'Begapunk — производитель прецизионных вращающихся соединений в Нинбо, Китай. Мы работаем с производителями промышленного оборудования и систем автоматизации.',
-    address: 'Нинбо, Чжэцзян, Китай', quote: 'Запросить предложение', socialTitle: 'Begapunk в социальных сетях',
-    navigationLabel: 'Навигация в нижней части страницы', legalLabel: 'Правовая информация',
-    titles: ['Продукция и подбор', 'Применение и примеры', 'Качество и производство', 'Техническая поддержка'],
+    positioning: "Прецизионные вращающиеся соединения для промышленной автоматизации.",
+    address: "Нинбо, Чжэцзян, Китай",
+    quote: "Запросить предложение",
+    socialTitle: "Begapunk в социальных сетях",
+    navigationLabel: "Навигация в нижней части страницы",
+    legalLabel: "Правовая информация",
+    titles: ["Продукция и подбор","Применение и примеры","Качество и производство","Техническая поддержка"],
     links: [
-      [['products.html', 'Каталог продукции'], ['product-comparison.html', 'Сравнение моделей']],
-      [['case-studies.html', 'Реальные примеры применения'], ['application-laser-tube-cutting.html', 'Лазерная резка труб'], ['application-packaging-machinery.html', 'Упаковочные машины'], ['application-bottle-filling-capping.html', 'Розлив и укупорка бутылок'], ['applications.html', 'Все области применения']],
-      [['manufacturing-quality.html', 'Производство и качество'], ['production-inspection-testing.html', '100%-ный контроль герметичности'], ['about.html', 'О компании и производстве']],
-      [['blog-rotary-joint-selection.html', 'Руководство по выбору'], ['installation.html', 'Инструкция по монтажу'], ['faq.html', 'Часто задаваемые вопросы'], ['contact.html', 'Контакты']],
+      [["products.html", "Каталог продукции"], ["product-comparison.html", "Сравнение моделей"], ["blog-rotary-joint-selection.html", "Руководство по выбору"]],
+      [["applications.html", "Все области применения"], ["case-studies.html", "Реальные примеры применения"], ["application-laser-tube-cutting.html", "Лазерная резка труб"]],
+      [["manufacturing-quality.html", "Производство и качество"], ["production-inspection-testing.html", "100%-ный контроль герметичности"], ["about.html", "О компании и производстве"]],
+      [["blog.html", "Технический блог"], ["installation.html", "Инструкция по монтажу"], ["faq.html", "Часто задаваемые вопросы"]],
     ],
-    privacy: 'Политика конфиденциальности', terms: 'Условия использования',
-    copyright: '© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Все права защищены.',
-    socialLabels: ['G. C. Cao в LinkedIn', 'Begapunk на YouTube', 'Begapunk на Facebook', 'Begapunk в X'],
+    privacy: "Политика конфиденциальности",
+    terms: "Условия использования",
+    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Все права защищены.",
+    socialLabels: ["G. C. Cao в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
   },
 };
 const navProductPages = new Set(['products.html', 'products-p2.html', 'product-comparison.html', ...config.pages.filter((page) => /^BP-/.test(page))]);
@@ -842,9 +865,11 @@ for (const language of verifiedLanguages) {
     const footerRoot = footer.first();
     if (footerRoot.children('.container').children('.footer-brand-band').length !== 1) failures.push(`${language.code}/${pageName}: exactly one first-layer Footer brand band is required.`);
     if (footerRoot.children('.container').children('.footer-contact-band').length !== 1) failures.push(`${language.code}/${pageName}: exactly one second-layer Footer contact band is required.`);
-    if (footerRoot.find('.footer-company-name').length !== 1 || compactText(footerRoot.find('.footer-company-name').text()) !== legalCompanyName) {
-      failures.push(`${language.code}/${pageName}: the legal company name must appear once in the brand identity field.`);
+    if (footerRoot.find('.footer-company-name').length !== 1 || compactText(footerRoot.find('.footer-copyright > .footer-company-name').text()) !== legalCompanyName) {
+      failures.push(`${language.code}/${pageName}: the legal company name must appear once in the copyright row.`);
     }
+    if (footerRoot.find('.footer-brand-band .footer-logo').length !== 1 || footerRoot.find('.footer-brand-band .footer-company-name').length) failures.push(`${language.code}/${pageName}: compact brand band must contain the logo and positioning, without a repeated company name.`);
+    if (footerRoot.find('.footer-bottom .footer-social').length !== 1 || footerRoot.find('.footer-bottom .footer-address').length !== 1) failures.push(`${language.code}/${pageName}: social links and location must appear in the bottom row.`);
     if (compactText(footerRoot.find('.footer-positioning').text()) !== footerCopy.positioning) failures.push(`${language.code}/${pageName}: approved Footer positioning copy drifted.`);
     if (compactText(footerRoot.find('.footer-address').text()) !== footerCopy.address) failures.push(`${language.code}/${pageName}: localized Footer address is incorrect.`);
     const contactExpectations = [
@@ -877,20 +902,23 @@ for (const language of verifiedLanguages) {
     const footerNavigation = footerRoot.find('nav.footer-navigation');
     if (footerNavigation.length !== 1 || footerNavigation.attr('aria-label') !== footerCopy.navigationLabel) failures.push(`${language.code}/${pageName}: localized Footer navigation landmark is incorrect.`);
     const footerColumns = footerNavigation.children('.footer-column');
-    if (footerColumns.length !== footerCopy.links.length) failures.push(`${language.code}/${pageName}: Footer navigation group count is incorrect.`);
+    if (footerColumns.length !== 4 || footerNavigation.hasClass('footer-navigation--compact')) failures.push(`${language.code}/${pageName}: all languages must use the same four Footer groups.`);
     const footerTitles = footerColumns.find('.footer-title').map((_, element) => compactText($(element).text())).get();
     if (JSON.stringify(footerTitles) !== JSON.stringify(footerCopy.titles)) failures.push(`${language.code}/${pageName}: Footer group labels or order are inconsistent.`);
     footerColumns.each((index, column) => {
+      if (column.tagName !== 'details' || !$(column).is('[open]') || $(column).children('summary.footer-summary').length !== 1) {
+        failures.push(`${language.code}/${pageName}: Footer group ${index + 1} must provide an initially open native disclosure for the no-script fallback.`);
+      }
       const list = $(column).children('ul.footer-links');
       const actualLinks = list.children('li').children('a').map((_, element) => [[$(element).attr('href'), compactText($(element).text())]]).get();
-      if (list.length !== 1 || list.children('li').length !== footerCopy.links[index].length || JSON.stringify(actualLinks) !== JSON.stringify(footerCopy.links[index])) {
+      if (list.length !== 1 || list.children('li').length !== 3 || JSON.stringify(actualLinks) !== JSON.stringify(footerCopy.links[index])) {
         failures.push(`${language.code}/${pageName}: Footer group ${index + 1} links drifted from the approved structure.`);
       }
     });
     const legal = footerRoot.find('nav.footer-legal');
     const legalLinks = legal.children('a').map((_, element) => [[$(element).attr('href'), compactText($(element).text())]]).get();
     if (legal.length !== 1 || legal.attr('aria-label') !== footerCopy.legalLabel || JSON.stringify(legalLinks) !== JSON.stringify([['privacy.html', footerCopy.privacy], ['terms.html', footerCopy.terms]])) failures.push(`${language.code}/${pageName}: localized Privacy/Terms links are incorrect.`);
-    if (compactText(footerRoot.find('.footer-bottom > p').text()) !== footerCopy.copyright) failures.push(`${language.code}/${pageName}: localized legal copyright is incorrect.`);
+    if (compactText(footerRoot.find('.footer-bottom .footer-copyright').text()) !== footerCopy.copyright) failures.push(`${language.code}/${pageName}: localized legal copyright is incorrect.`);
     const internalFooterHrefs = footerRoot.find('a[href]').map((_, element) => $(element).attr('href')).get().filter((href) => !/^(?:https?:|mailto:|tel:|#)/i.test(href));
     if (new Set(internalFooterHrefs).size !== internalFooterHrefs.length) failures.push(`${language.code}/${pageName}: duplicate internal Footer href detected.`);
     if (footerRoot.find('[style]').length) failures.push(`${language.code}/${pageName}: inline Footer color/style attribute detected.`);
@@ -1161,6 +1189,7 @@ for (const language of verifiedLanguages) {
 }
 
 if (footerStructureSignatures.size !== verifiedLanguages.length) failures.push('One or more languages are missing a canonical Footer structure.');
+if (new Set(footerStructureSignatures.values()).size !== 1) failures.push('Footer structure must match across all languages.');
 if (verifiedLocalizedBlogShareBlocks !== localizedBlogSharePages.size * activeLanguages.length) {
   failures.push(`Localized blog sharing coverage: expected ${localizedBlogSharePages.size * activeLanguages.length} governed blocks, checked ${verifiedLocalizedBlogShareBlocks}.`);
 }
@@ -1178,7 +1207,9 @@ try {
     if (!globalCss.includes(`content:\"${label}\"`)) failures.push(`css/style.css: localized mobile menu label ${label} is missing.`);
   }
     if (/\.footer-grid\b/.test(globalCss)) failures.push('css/style.css: obsolete two-column Footer grid remains.');
-    if (!/\.footer-brand-band\s*\{[^}]*grid-template-columns:\s*auto\s+minmax\(0,\s*1fr\)\s+auto/is.test(globalCss)) failures.push('css/style.css: desktop three-part Footer brand band is missing.');
+    if (!/\.footer-brand-band\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)\s+auto/is.test(globalCss)) failures.push('css/style.css: desktop brand-and-quote Footer layout is missing.');
+    if (!/\.footer-title\s*\{[^}]*font-family:\s*inherit[^}]*text-transform:\s*none/is.test(globalCss)) failures.push('css/style.css: Footer titles must inherit the body font without forced uppercase.');
+    if (/\.footer-navigation--compact\b/.test(globalCss)) failures.push('css/style.css: language-specific compact Footer styles must be removed.');
     if (!/\.footer-contact-band\s*\{[^}]*display:\s*flex/is.test(globalCss)) failures.push('css/style.css: Footer contact band layout is missing.');
     if (!/\.footer-social-links\s+a\s*\{[^}]*width:\s*44px[^}]*height:\s*44px/is.test(globalCss)) failures.push('css/style.css: Footer social controls must be exactly 44 by 44 pixels.');
     if (!/@media\s*\(max-width:\s*1179px\)[\s\S]*?\.footer-navigation\s*\{[^}]*grid-template-columns:\s*repeat\(2/is.test(globalCss)) failures.push('css/style.css: tablet Footer 2-column navigation rule is missing.');
@@ -1574,15 +1605,14 @@ for (const language of verifiedLanguages) {
         if ($page(`#mainNav > a.nav-quality[href="${manufacturingQualityPage}"]`).length !== 1 || $page(`#mainNav .nav-dropdown a[href="${manufacturingQualityPage}"]`).length) {
           failures.push(`${language.code}/${configuredPage}: Quality must be the sole direct Header link to manufacturing-quality.`);
         }
-        if ($page(`.footer-links a[href="${manufacturingQualityPage}"]`).length) failures.push(`${language.code}/${configuredPage}: compact English Footer must not repeat manufacturing-quality.`);
       } else {
         const qualityMenu = $page('.nav-dropdown').eq(2);
         if (qualityMenu.children(`.nav-dropdown-toggle[href="${manufacturingQualityPage}"]`).length !== 1
             || qualityMenu.find(`.nav-dropdown-menu a[href="${manufacturingQualityPage}"]`).length !== 0) {
           failures.push(`${language.code}/${configuredPage}: Quality parent must be the sole Header link to manufacturing-quality.`);
         }
-        if ($page(`.footer-links a[href="${manufacturingQualityPage}"]`).length !== 1) failures.push(`${language.code}/${configuredPage}: Company footer must contain exactly one manufacturing-quality link.`);
       }
+      if ($page(`.footer-links a[href="${manufacturingQualityPage}"]`).length !== 1) failures.push(`${language.code}/${configuredPage}: Footer must contain exactly one manufacturing-quality link.`);
       if (configuredPage === 'about.html' && $page(`.mq-about-entry a[href="${manufacturingQualityPage}"]`).length !== 1) {
         failures.push(`${language.code}/about.html: manufacturing-process section entry is missing.`);
       }
@@ -2856,7 +2886,7 @@ for (const language of verifiedLanguages) {
       if (!$detail(selector).length) failures.push(`${language.code}/${applicationCasePage}: required standard component ${selector} is missing.`);
     }
     const expectedNavigationDropdowns = language.code === 'en' ? 2 : 4;
-    const expectedFooterColumns = language.code === 'en' ? 1 : 4;
+    const expectedFooterColumns = 4;
     if ($detail('.nav-dropdown').length !== expectedNavigationDropdowns) failures.push(`${language.code}/${applicationCasePage}: standard navigation dropdown count is incorrect.`);
     if ($detail('.footer-brand-band').length !== 1 || $detail('.footer-contact-band').length !== 1 || $detail('.footer-navigation > .footer-column').length !== expectedFooterColumns) {
       failures.push(`${language.code}/${applicationCasePage}: standard three-layer Footer is missing.`);
