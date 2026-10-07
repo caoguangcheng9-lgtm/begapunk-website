@@ -34,6 +34,7 @@ TITLES = {
     "BP-3P-S06-0001.pdf": "BP-3P-S06-0001 Pneumatic-Electric Rotary Union Drawing",
     "BP-4P-30-0001.pdf": "BP-4P-30-0001 Through-Bore Rotary Union Engineering Drawing",
     "BP-8P-0001.pdf": "BP-8P-0001 Eight-Passage Rotary Union Engineering Drawing",
+    "BP-10P-0001.pdf": "BP-10P-0001 Ten-Passage Pneumatic Rotary Union Engineering Drawing",
 }
 
 FORBIDDEN_PDF_KEYS = {

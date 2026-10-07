@@ -599,7 +599,11 @@ async function syncSitemap(relativePath, urls) {
     const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const pattern = new RegExp(`(<loc>${escaped}<\\/loc>[\\s\\S]*?<lastmod>)[^<]+(<\\/lastmod>)`);
     if (!pattern.test(xml)) throw new Error(`${relativePath}: sitemap entry not found for ${url}.`);
-    xml = xml.replace(pattern, `$1${dateModified}$2`);
+    // A later page edit owns its newer lastmod; the case's original date is only a floor.
+    xml = xml.replace(pattern, (match, start, end) => {
+      const current = match.slice(start.length, match.length - end.length);
+      return `${start}${current > dateModified ? current : dateModified}${end}`;
+    });
   }
   await planWrite(relativePath, xml);
 }

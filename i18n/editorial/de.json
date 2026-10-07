@@ -424,7 +424,13 @@
     "a4306ece4ff2ec28": "Auswahlleitfaden für pneumatische Drehdurchführungen lesen",
     "8f1dad5e343c2944": "Montageleitfaden für pneumatische Drehdurchführungen lesen",
     "62ca1f919d7b62e7": "Dichtungsvergleich für Drehdurchführungen lesen",
-    "860aa6bf330672b2": "Praxisnahe Leitfäden zu Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen."
+    "860aa6bf330672b2": "Praxisnahe Leitfäden zu Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie zu Anwendungsprüfung und Dichtheitsnachweisen.",
+    "08d489cd36e8b692": "<a href=\"blog-prevent-air-hose-twisting.html\" style=\"display:block;\">Druckluftschläuche wickeln sich um die Maschine? So gelingt die Luftversorgung über eine Drehverbindung</a>",
+    "9464fcddd151004b": "Druckluftschläuche wickeln sich um die Maschine? So gelingt die Luftversorgung über eine Drehverbindung",
+    "d82e280b97bb3be2": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung mit Schlauchverschraubungen",
+    "ab470235a16c5a5c": "Pneumatische Schaltungsplanung",
+    "97213c618a9e63fe": "Pneumatische Drehdurchführungen",
+    "9386e76d6793c671": "Druckluftschläuche wickeln sich am Rundtisch auf? Bewegungsarten vergleichen, das Prinzip pneumatischer Drehdurchführungen verstehen und Luftkreise auswählen."
   },
   "installation.html": {
     "c2587f44f02594c9": "/ Montageanleitung",
@@ -603,7 +609,8 @@
     "9262a471d5b23bfb": "Lösen",
     "99b574b0ef67c0f9": "Wenn sich eine CNC-Spannvorrichtung dreht, dürfen sich die Druckluftleitungen weder verdrehen noch am Aktuator ziehen. Eine pneumatische Drehdurchführung stellt abgedichtete rotierende Druckluftkanäle zwischen der stationären Druckluftversorgung und der rotierenden Vorrichtung bereit.",
     "e1991a09b2ca744c": "Ja, wenn das Modell passend zu Druck, Dichtungszustand und Schlauchbelastung ausgewählt ist. Der Vorrichtungskreis benötigt außerdem eine geeignete Druckregelung.",
-    "cdff9c67cca2de6f": "Ja. Für CNC-Vorrichtungen wird eine Zeichnung dringend empfohlen, da Einbaumaße und Anschlussposition meist über die endgültige Ausführung entscheiden."
+    "cdff9c67cca2de6f": "Ja. Für CNC-Vorrichtungen wird eine Zeichnung dringend empfohlen, da Einbaumaße und Anschlussposition meist über die endgültige Ausführung entscheiden.",
+    "9a6204899da19f9d": "<strong>BP-10P-0001</strong><span>Für intermittierend rotierende Vorrichtungen mit zehn unabhängigen Druckluftkreisen. Max. 1 MPa und 100 min⁻¹; ohne Durchgangsbohrung. Die Katalogausführung ist für Druckluft vorgesehen.</span>"
   },
   "application-textile-printing-converting.html": {
     "2ab4ded509e8addc": "/ Druckmaschinen und Converting-Anlagen",
@@ -3298,5 +3305,29 @@
     "View 100% Leak Testing →": "100%-Dichtheitsprüfung ansehen →",
     "Photo note:": "Aussagegrenze der Fotos:",
     "These photographs document different stages of stator production. Final material, dimensions, color and inspection requirements are confirmed by the order drawing and agreed inspection plan.": "Diese Fotos zeigen mehrere sichtbare Fertigungszustände. Sie bilden keine lückenlose Rückverfolgbarkeit desselben Bauteils oder Loses ab und belegen für sich genommen weder die Legierung noch die Maßhaltigkeit jedes Bauteils, die Schichtdicke jedes Bauteils, eine exakte Farbübereinstimmung, das Bestehen der Prüfung oder die Versandfreigabe. Maßgeblich bleiben die Auftragszeichnung und die vereinbarten Prüfanforderungen."
+  },
+  "application-automation-rotary-tables.html": {
+    "b8d810db80eff239": "<a href=\"blog-prevent-air-hose-twisting.html\">Leitfaden: Druckluftschläuche vor Verdrehen schützen →</a>",
+    "13ff02358786b108": "<a href=\"BP-10P-0001.html\">BP-10P-0001</a> — Für intermittierend rotierende Vorrichtungen mit zehn unabhängigen Druckluftkreisen. Max. 1 MPa und 100 min⁻¹; ohne Durchgangsbohrung. Die Katalogausführung ist für Druckluft vorgesehen.",
+    "10feb832b7b9426a": "Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle.",
+    "aad395b075325893": "Senden Sie Schnittansicht, Pneumatikplan und den realen Index-/Stillstandstakt. Wir vergleichen 2-Wege-Luftkatalogmodelle mit der Schnittstelle."
+  },
+  "product-comparison.html": {
+    "2a52862f5c038db8": "<a href=\"BP-10P-0001.html\">Technische Daten →</a>",
+    "dcdac2196bed5b8c": "<strong>BP-10P-0001</strong>",
+    "e892b2aacb35431d": "10 unabhängige Druckluftkanäle",
+    "ce02aeef749c3257": "100 min⁻¹ — intermittierende Rotation",
+    "66e3f743071b5c6c": "Stirnseitige Montage; 10 × M5 je Stirnseite; keine Durchgangsbohrung",
+    "f72668a1d666f93f": "Für intermittierend rotierende Vorrichtungen mit zehn unabhängigen Druckluftkreisen. Max. 1 MPa und 100 min⁻¹; ohne Durchgangsbohrung. Die Katalogausführung ist für Druckluft vorgesehen."
+  },
+  "products.html": {
+    "af850568990529b0": "10 unabhängige Druckluftkanäle",
+    "8c1a9e18907218ca": "20 × G1/8",
+    "70a0e22c653192e2": "Aluminiumlegierung 6061",
+    "edb5099c766f99d8": "Schlauchverschraubungen für 8 mm enthalten",
+    "6ee871d2b4b1670e": "BP-10P-0001 · 10 Kanäle",
+    "ca780fbf0f97b3ca": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung",
+    "d6d9f916709e47cc": "100 min⁻¹ — intermittierende Rotation",
+    "7513cd2d22e67708": "O-Ring"
   }
 }

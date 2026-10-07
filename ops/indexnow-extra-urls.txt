@@ -1,7 +1,7 @@
 https://www.begapunk.com/3-in-3-out-Pneumatic-rotary-joint-P6776400.html
 https://www.begapunk.com/BP-3P-0004.html
-https://www.begapunk.com/downloads/Begapunk-Rotary-Joint-Catalog-2026.pdf
-https://www.begapunk.com/downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf
+https://www.begapunk.com/downloads/BP-10P-0001.pdf
+https://www.begapunk.com/downloads/BP-10P-0001.step
 https://www.begapunk.com/downloads/BP-1P-0003.pdf
 https://www.begapunk.com/downloads/BP-1P-0003.step
 https://www.begapunk.com/downloads/BP-1P-0006.pdf
@@ -34,3 +34,5 @@ https://www.begapunk.com/downloads/BP-4P-30-0001.pdf
 https://www.begapunk.com/downloads/BP-4P-30-0001.step
 https://www.begapunk.com/downloads/BP-8P-0001.pdf
 https://www.begapunk.com/downloads/BP-8P-0001.step
+https://www.begapunk.com/downloads/Begapunk-Rotary-Joint-Catalog-2026.pdf
+https://www.begapunk.com/downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf

@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
+import { assertBp10ProductContract } from './lib/bp10-product-contract.mjs';
 import {
   drawingBackedProductMetadata,
   drawingBackedProductModels,
@@ -364,7 +365,7 @@ for (const locale of productLocales) {
   if (!actions) throw new Error(`Missing drawing-backed related-product actions for ${locale}.`);
   for (const pageName of productPages) {
     const model = path.basename(pageName, '.html');
-    if (!drawingBackedModelSet.has(model)) throw new Error(`${pageName}: product is absent from the shared drawing-backed model contract.`);
+    if (!drawingBackedModelSet.has(model) && model !== 'BP-10P-0001') throw new Error(`${pageName}: product is absent from an approved product contract.`);
     const relativePath = locale === sourceLocale ? pageName : path.join(locale, pageName);
     if (relativePath.toLowerCase().includes('catalog-project')) throw new Error(`Protected path rejected: ${relativePath}`);
     const filePath = path.resolve(root, relativePath);
@@ -374,7 +375,8 @@ for (const locale of productLocales) {
     snapshots.set(filePath, before);
     const current = load(before, { decodeEntities: false });
     try {
-      assertRelatedProducts(current, { model, locale, pageName: label, actions });
+      if (model === 'BP-10P-0001') assertBp10ProductContract(current, locale, label);
+      else assertRelatedProducts(current, { model, locale, pageName: label, actions });
       if (locale === sourceLocale) assertProductTrustContent(current, label);
     } catch (error) {
       if (checkOnly) throw error;

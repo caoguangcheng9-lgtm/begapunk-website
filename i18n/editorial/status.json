@@ -1,6 +1,6 @@
 {
   "standard": "Every visible sentence, heading, label, button, metadata field and structured-data text must receive a recorded AI-assisted target-market line-by-line review for local industrial terminology, grammar, natural business usage, search intent and fact boundaries. Machine translation and automated pattern scans alone do not qualify. Independent native-speaker or human editorial sign-off is optional and is not a release requirement; when absent, the review must remain described as AI-assisted and must never be represented as native-speaker or human approval.",
-  "updatedAt": "2026-09-18",
+  "updatedAt": "2026-10-07",
   "localMarketReview": {
     "schemaVersion": 1,
     "effectiveDate": "2026-08-14",
@@ -40,8 +40,8 @@
     "semanticAlgorithm": "sha256-semantic-html-v1",
     "mechanicalAlgorithm": "sha256-lf-text-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "manifestUpdatedAt": "2026-09-18T12:04:19.476Z",
-    "pagesPerLanguage": 57,
+    "manifestUpdatedAt": "2026-10-07T07:36:55.909Z",
+    "pagesPerLanguage": 59,
     "languages": [
       "de",
       "fr",
@@ -55,20 +55,20 @@
   "seoGeo": {
     "standard": "Curated target-market title, meta description, H1, Open Graph, Twitter metadata, content-schema language, visible FAQ parity and a complete localized llms.txt index are required for every page. Metadata and body wording must also be reviewed against target-country industrial terminology and buyer search intent.",
     "de": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 59,
+      "total": 59
     },
     "ja": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 59,
+      "total": 59
     },
     "ru": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 59,
+      "total": 59
     },
     "fr": {
-      "reviewed": 57,
-      "total": 57
+      "reviewed": 59,
+      "total": 59
     }
   },
   "languages": {
@@ -130,7 +130,9 @@
         "manufacturing-quality.html",
         "production-inspection-testing.html",
         "404.html",
-        "blog-ptfe-coated-o-rings.html"
+        "blog-ptfe-coated-o-rings.html",
+        "BP-10P-0001.html",
+        "blog-prevent-air-hose-twisting.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -194,7 +196,9 @@
         "terms.html",
         "thank-you.html",
         "404.html",
-        "blog-ptfe-coated-o-rings.html"
+        "blog-ptfe-coated-o-rings.html",
+        "BP-10P-0001.html",
+        "blog-prevent-air-hose-twisting.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -258,7 +262,9 @@
         "manufacturing-quality.html",
         "production-inspection-testing.html",
         "404.html",
-        "blog-ptfe-coated-o-rings.html"
+        "blog-ptfe-coated-o-rings.html",
+        "BP-10P-0001.html",
+        "blog-prevent-air-hose-twisting.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -322,7 +328,9 @@
         "manufacturing-quality.html",
         "production-inspection-testing.html",
         "404.html",
-        "blog-ptfe-coated-o-rings.html"
+        "blog-ptfe-coated-o-rings.html",
+        "BP-10P-0001.html",
+        "blog-prevent-air-hose-twisting.html"
       ],
       "copyReviewedAwaitingRender": [],
       "inProgress": [],
@@ -332,9 +340,9 @@
   "renderQa": {
     "completedAt": "2026-09-04T08:50:17.448Z",
     "browser": "Automated Microsoft Edge (C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe)",
-    "pagesPerLanguage": 57,
+    "pagesPerLanguage": 59,
     "viewportsPerPage": 2,
-    "checkedViewports": 456,
+    "checkedViewports": 472,
     "criteria": [
       "one visible H1",
       "correct html lang",

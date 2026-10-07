@@ -114,7 +114,9 @@
     "privacy.html",
     "terms.html",
     "thank-you.html",
-    "404.html"
+    "404.html",
+    "BP-10P-0001.html",
+    "blog-prevent-air-hose-twisting.html"
   ],
   "translationManagedPages": [
     "index.html",
@@ -175,7 +177,9 @@
     "case-studies.html",
     "blog-non-contact-clearance-seal-rotary-union.html",
     "blog-rotary-union-seal-types.html",
-    "custom-hydraulic-rotary-unions.html"
+    "custom-hydraulic-rotary-unions.html",
+    "BP-10P-0001.html",
+    "blog-prevent-air-hose-twisting.html"
   ],
   "translatedAttributes": [
     "alt",
@@ -203,5 +207,6 @@
     ".icon",
     ".arrow",
     "[data-no-translate]"
-  ]
+  ],
+  "sourceOnlyPages": []
 }

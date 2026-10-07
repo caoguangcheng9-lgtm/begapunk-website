@@ -3414,6 +3414,9 @@ function assertCompleteTranslationCoverage(pages, catalog, caches) {
 }
 
 const frenchSearchKeywords = Object.freeze({
+  'blog-prevent-air-hose-twisting.html': Object.freeze([
+    'torsion des tuyaux d’air', 'table rotative', 'joint tournant pneumatique', 'circuits d’air', 'BP-10P-0001',
+  ]),
   'blog-ptfe-coated-o-rings.html': Object.freeze([
     'joints toriques revêtus de PTFE',
     'revêtement PTFE en option',
@@ -3772,8 +3775,11 @@ function renderLocalizedLlms(language) {
     const entry = seo[pageName];
     if (!entry) throw new Error(`${language.code}/${pageName}: cannot add missing SEO entry to llms.txt.`);
     const model = productDetailPagePattern.test(pageName) ? path.basename(pageName, '.html') : null;
-    const drawingLabel = model ? drawingBackedProductLinkLabel(language.code, model) : null;
-    const drawingSummary = model ? drawingBackedProductSummary(language.code, model) : null;
+    // Manually reviewed new products have their own facts and localized summary;
+    // never apply the legacy drawing manifest's seal or duty-cycle defaults to them.
+    const manualProduct = model && manualLocalizedPages.includes(pageName) && entry.llms;
+    const drawingLabel = manualProduct ? entry.llms.title : model ? drawingBackedProductLinkLabel(language.code, model) : null;
+    const drawingSummary = manualProduct ? entry.llms.description : model ? drawingBackedProductSummary(language.code, model) : null;
     if (model && (!drawingLabel || !drawingSummary)) {
       throw new Error(`${language.code}/${pageName}: drawing-backed llms copy is missing.`);
     }

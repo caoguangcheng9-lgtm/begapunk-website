@@ -12,6 +12,7 @@
     "css/applications-overview.css",
     "css/case-studies.css",
     "css/contact-rfq.css",
+    "css/hose-twisting-article.css",
     "css/manufacturing-quality.css",
     "css/product-detail.css",
     "css/production-inspection-testing.css",
@@ -259,6 +260,8 @@
     "images/optimized/hero-products-clean-640.webp",
     "images/optimized/hero-products-clean-960.webp",
     "images/optimized/hero-products-clean.webp",
+    "images/optimized/products/BP-10P-0001-drawing.png",
+    "images/optimized/products/BP-10P-0001-video-cover.jpg",
     "images/optimized/products/BP-1P-0003-1.webp",
     "images/optimized/products/BP-1P-0003-3.webp",
     "images/optimized/products/BP-1P-0006-1.webp",
@@ -301,6 +304,9 @@
     "images/optimized/products/BP-4P-30-0001/BP-4P-30-0001.webp",
     "images/optimized/products/BP-8P-0001-1.webp",
     "images/optimized/products/BP-8P-0001-3.webp",
+    "images/optimized/products/bp-10p-0001-detail.webp",
+    "images/optimized/products/bp-10p-0001-hero.webp",
+    "images/optimized/products/bp-10p-0001-rear.webp",
     "images/p27_2-in-2-out-Rotary-joint.png",
     "images/p27_2-in-2-out-Rotary-joint.webp",
     "images/p45_2-in-2-out-Rotary-joint-1.png",
@@ -454,6 +460,8 @@
     "js/vendor/fuse.min.js",
     "ru/llms.txt",
     "ru/search-index.json",
+    "videos/BP-10P-0001-en.vtt",
+    "videos/BP-10P-0001_begapunk.mp4",
     "videos/factory-tour.mp4"
   ]
 }

@@ -31,6 +31,8 @@ Use the language edition that best matches the user's query. Technical model cod
 
 ## Product models
 
+- [BP-10P-0001 10-Passage Pneumatic Rotary Union](https://www.begapunk.com/BP-10P-0001.html): BP-10P-0001 is a 10-passage pneumatic rotary union for transferring ten independent compressed-air circuits between fixed piping and rotating equipment. It has a maximum pressure of 1 MPa and a maximum speed of 100 RPM for intermittent rotation, with 20 G1/8 ports and included fittings for 8 mm OD tubing. The 6061 aluminum alloy body uses O-ring seals and has no through bore.
+
 - [BP-1P-0003 — 1-passage pneumatic rotary joint](https://www.begapunk.com/BP-1P-0003.html): BP-1P-0003 is a 1-passage pneumatic rotary joint with 1 inlet and 1 outlet. Published values: maximum pressure 1 MPa, maximum speed 500 RPM, temperature range -20 to +80 °C, weight 270 g, Grade 45 carbon steel body, PTFE seal with O-ring, media: air, oil, water; port annotations: media inlet: 1 × G3/8; media outlet: 1 × M10×1.5.
 - [BP-1P-0006 — 1-passage pneumatic rotary joint](https://www.begapunk.com/BP-1P-0006.html): BP-1P-0006 is a 1-passage pneumatic rotary joint with 1 inlet and 8 outlets. Published values: maximum pressure 1 MPa, maximum speed 300 RPM, temperature range -20 to +80 °C, weight 265 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: inlet: 1 × G1/8; outlet: 8 × G1/8.
 - [BP-2P-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-0001.html): BP-2P-0001 is a 2-passage pneumatic rotary joint with 2 inlets and 2 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 390 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: media inlet: 2 × G1/8; media outlet: 2 × G1/8.
@@ -75,6 +77,7 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Installation mistakes](https://www.begapunk.com/blog-rotary-joint-installation-mistakes.html): Common installation errors that can shorten service life.
 - [Seal types](https://www.begapunk.com/blog-rotary-union-seal-types.html): Comparison of O-ring, lip-seal, and spring-energized PTFE designs.
 - [Non-contact clearance-seal operating principle](https://www.begapunk.com/blog-non-contact-clearance-seal-rotary-union.html): Visual explanation of the stationary stator, rotating rotor, medium flow path, and controlled 0.003 mm one-side radial clearance.
+- [Air Hoses Twisting on Rotating Machinery? How to Keep Air Moving Across a Rotating Connection](https://www.begapunk.com/blog-prevent-air-hose-twisting.html): Stop air hoses winding around rotary tables and fixtures. Compare motion types, see how a pneumatic rotary union works, and choose the right air circuits.
 - [Frequently asked questions](https://www.begapunk.com/faq.html): Answers about media, pressure, speed, installation, maintenance, and customization.
 
 - [Leaking rotary union](https://www.begapunk.com/blog-rotary-joint-leaking.html): Diagnostic guide for a leaking rotary union: locate the leak, separate fittings from seals, and check alignment before replacing parts.

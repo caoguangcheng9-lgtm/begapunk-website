@@ -297,5 +297,19 @@
     "title": "100%-Dichtheitsprüfung jedes einzelnen Kanals | Begapunk",
     "description": "Nach der Endmontage wird jede pneumatische Drehdurchführung kanalweise mit Druckluft bei 1,0 MPa geprüft, bevor sie verpackt und eingelagert werden darf.",
     "h1": "100%-Dichtheitsprüfung jedes einzelnen Kanals bei pneumatischen Drehdurchführungen"
+  },
+  "BP-10P-0001.html": {
+    "title": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung | Begapunk",
+    "description": "10 unabhängige Druckluftkanäle, 1 MPa, 100 min⁻¹ bei intermittierender Rotation. G1/8-Anschlüsse, 8-mm-Schlauchverschraubungen, PDF und STEP.",
+    "h1": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung",
+    "llms": {
+      "title": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung",
+      "description": "BP-10P-0001 ist eine pneumatische 10-Kanal-Drehdurchführung zur Übertragung von zehn unabhängigen Druckluftkreisen zwischen feststehenden Leitungen und rotierenden Maschinenteilen. Der Maximaldruck beträgt 1 MPa, die maximale Drehzahl 100 min⁻¹ bei intermittierender Rotation. Sie verfügt über 20 G1/8-Anschlüsse und mitgelieferte Steckverschraubungen für Schläuche mit 8 mm Außendurchmesser. Das Gehäuse aus Aluminiumlegierung 6061 ist mit O-Ringen abgedichtet und besitzt keine Durchgangsbohrung."
+    }
+  },
+  "blog-prevent-air-hose-twisting.html": {
+    "title": "Druckluftschläuche an Rundtischen vor Verdrehen schützen | Begapunk",
+    "description": "Druckluftschläuche wickeln sich am Rundtisch auf? Bewegungsarten vergleichen, das Prinzip pneumatischer Drehdurchführungen verstehen und Luftkreise auswählen.",
+    "h1": "Druckluftschläuche wickeln sich um die Maschine? So gelingt die Luftversorgung über eine Drehverbindung"
   }
 }

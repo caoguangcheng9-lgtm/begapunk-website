@@ -117,7 +117,9 @@ for (const locale of locales) {
   assertDrawingBackedProductRecordCoverage(visibleRecords, `${locale.code}/search-index.json`);
   const synchronized = [];
   for (const record of visibleRecords) {
-    if (!config.pages.includes(record.url)) {
+    const sourceOnlyPage = locale.code === config.sourceLanguage.code
+      && (config.sourceOnlyPages || []).includes(record.url);
+    if (!config.pages.includes(record.url) && !sourceOnlyPage) {
       const drawingKeywords = drawingBackedProductKeywords(locale.code, record.id);
       const legacySafeRecord = retireLegacyProductReferences(locale.code, record);
       synchronized.push(drawingKeywords ? { ...legacySafeRecord, keywords: drawingKeywords } : legacySafeRecord);

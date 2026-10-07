@@ -457,7 +457,9 @@ function runCatalogFilterScript(filterSource, relative, channels, expectedCounts
 
 function validateCatalogFilter($, locale, catalogName) {
   const relative = publicPath(locale, catalogName);
-  const expectedCounts = catalogFilterCounts[catalogName];
+  const expectedCounts = catalogName === 'products.html'
+    ? [17, 2, 8, 3, 3, 1]
+    : catalogFilterCounts[catalogName];
   const buttons = $('.filter-btn').toArray();
   if (buttons.length !== catalogFilterCodes.length) {
     failures.push(`${relative}: expected ${catalogFilterCodes.length} filter buttons, found ${buttons.length}`);
@@ -801,13 +803,18 @@ runDrawingBackedValidatorCases();
 validateDrawingBackedSourceContract();
 
 for (const locale of locales) {
-  for (const fileName of productFiles) {
+  const localeProductFiles = [...new Set([...productFiles,
+    ...(siteConfig.manualLocalizedPages || []).filter((page) => /^BP-.*\.html$/.test(page)),
+    ...(locale.code === sourceLocale
+    ? (siteConfig.sourceOnlyPages || []).filter((page) => /^BP-.*\.html$/.test(page)) : [])])];
+  const localeModels = new Set(localeProductFiles.map((file) => path.basename(file, '.html')));
+  for (const fileName of localeProductFiles) {
     const model = path.basename(fileName, '.html');
     const $ = await readHtml(locale, fileName);
     if ($) validateDetailPage($, locale, fileName, model);
   }
-  await validateCatalog(locale, models);
-  await validateSearchIndex(locale, models);
+  await validateCatalog(locale, localeModels);
+  await validateSearchIndex(locale, localeModels);
   await validateSecondaryProductSurfaces(locale);
   await validateDrawingBackedPublicPolicy(locale);
 }

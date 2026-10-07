@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { load } from 'cheerio';
+import { assertBp10ProductContract } from './lib/bp10-product-contract.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
@@ -392,6 +393,11 @@ for (const [language, locale] of Object.entries(locales)) {
     const source = await read(relativePath);
     if (!source) continue;
     const $ = load(source, { decodeEntities: false });
+    if (pageName === 'BP-10P-0001.html') {
+      try { assertBp10ProductContract($, locale.code || Object.keys(locales).find(k => locales[k] === locale), relativePath); }
+      catch (error) { fail(error.message); }
+      continue;
+    }
     const matchingRows = $('table.spec-table tr').filter((_, row) => {
       const name = compact($(row).find('th').first().text());
       const value = compact($(row).find('td').first().text());
@@ -509,8 +515,8 @@ for (const [language, locale] of Object.entries(locales)) {
   if (/every unit is 30 MPa/i.test(pageText)) fail(relativePath + ': must not claim every unit is 30 MPa.');
 }
 
-if (productPages.length !== 16) {
-  fail(`i18n/config.json: expected exactly 16 product pages, found ${productPages.length}.`);
+if (productPages.length !== 17 || !productPages.includes('BP-10P-0001.html')) {
+  fail(`i18n/config.json: expected the 16 drawing-manifest products and BP-10P-0001, found ${productPages.length}.`);
 }
 
 if (failures.length) {

@@ -31,7 +31,10 @@ if (inventory.canonicalPageSource !== 'i18n/config.json#pages') failures.push('U
 if (inventory.languageSource !== 'i18n/config.json#sourceLanguage+activeLanguageCodes') failures.push('Unexpected languageSource.');
 
 const languagePrefixes = ['', ...config.activeLanguageCodes.map((language) => `${language}/`)];
-const canonicalPaths = languagePrefixes.flatMap((prefix) => config.pages.map((page) => `${prefix}${page}`));
+const canonicalPaths = [
+  ...languagePrefixes.flatMap((prefix) => config.pages.map((page) => `${prefix}${page}`)),
+  ...(config.sourceOnlyPages || []),
+];
 const redirectPaths = inventory.redirectFiles || [];
 const expectedPaths = [...canonicalPaths, ...redirectPaths].sort();
 const duplicateExpected = expectedPaths.filter((value, index) => expectedPaths.indexOf(value) !== index);

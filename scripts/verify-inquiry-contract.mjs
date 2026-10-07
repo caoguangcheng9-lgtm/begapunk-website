@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import { assertBp10ProductContract } from './lib/bp10-product-contract.mjs';
 import { validateTrustedAuditPolicyContract } from './lib/audit-policy-contracts.mjs';
 import {
   drawingBackedProductMetadata,
@@ -879,11 +880,16 @@ for (const page of pages.slice(1)) {
   );
 }
 
-check(PRODUCT_PAGE_NAMES.length === 16, `Product inquiry contract must cover exactly 16 product pages; found ${PRODUCT_PAGE_NAMES.length}.`);
+check(PRODUCT_PAGE_NAMES.length === 17 && PRODUCT_PAGE_NAMES.includes('BP-10P-0001.html'), `Product inquiry contract must cover the 16 drawing-manifest products and BP-10P-0001; found ${PRODUCT_PAGE_NAMES.length}.`);
 for (const locale of PRODUCT_LOCALES) {
   for (const pageName of PRODUCT_PAGE_NAMES) {
     const model = path.basename(pageName, '.html');
     const relativePath = locale === 'en' ? pageName : path.join(locale, pageName);
+    if (model === 'BP-10P-0001') {
+      try { assertBp10ProductContract(load(read(relativePath)), locale, relativePath); }
+      catch (error) { check(false, error.message); }
+      continue;
+    }
     check(DRAWING_BACKED_PRODUCT_MODELS.has(model), `${relativePath}: model is absent from the drawing-backed product contract.`);
     const metadata = drawingBackedProductMetadata(locale, model);
     check(Boolean(metadata), `${relativePath}: localized product metadata is missing.`);

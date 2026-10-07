@@ -14,6 +14,12 @@ const siteConfig = JSON.parse(readFileSync(path.join(repoRoot, 'i18n', 'config.j
 const sourceLocale = siteConfig.sourceLanguage?.code;
 const activeLocaleCodes = [...new Set([sourceLocale, ...(siteConfig.activeLanguageCodes || [])])];
 const siteOrigin = 'https://www.begapunk.com';
+const publishedModels = [...drawingBackedProductModels, 'BP-10P-0001'];
+function bp10Line(spec) {
+  const file = spec.locale === 'en' ? 'bp10-en-segments.json' : `bp10-${spec.locale}.json`;
+  const d = JSON.parse(readFileSync(path.join(repoRoot, 'i18n/manual', file), 'utf8'));
+  return `- [${d[3]}](${productUrl(spec, 'BP-10P-0001')}): ${d[34]}`;
+}
 const retiredProductModels = new Map([
   ['BP-2P-95-0001', 'BP-2P-95-0005'],
 ]);
@@ -73,10 +79,10 @@ function extractProductLines(content, spec, context) {
   for (const match of content.matchAll(allProductLinesPattern(spec))) {
     records.push({ line: match[1], model: match[2] });
   }
-  if (records.length !== drawingBackedProductModels.length) {
-    throw new Error(`${context}: expected exactly ${drawingBackedProductModels.length} ${spec.locale} product entries, found ${records.length}.`);
+  if (records.length !== publishedModels.length) {
+    throw new Error(`${context}: expected exactly ${publishedModels.length} ${spec.locale} product entries, found ${records.length}.`);
   }
-  const counts = new Map(drawingBackedProductModels.map((model) => [model, 0]));
+  const counts = new Map(publishedModels.map((model) => [model, 0]));
   for (const record of records) {
     if (!counts.has(record.model)) {
       throw new Error(`${context}: unexpected product URL for ${record.model}.`);
@@ -171,6 +177,7 @@ function transformFile(source, spec) {
   const migration = migrateRetiredProductLines(source, spec, context);
   const sourceRecords = extractProductLines(migration.output, spec, context);
   const sourceByModel = new Map(sourceRecords.map((record) => [record.model, record.line]));
+  if (sourceByModel.get('BP-10P-0001') !== bp10Line(spec)) throw new Error(`${context}: BP-10P-0001 must match its independent reviewed copy.`);
   const expectedByModel = new Map(
     drawingBackedProductModels.map((model) => [model, expectedProductLine(spec, model)]),
   );

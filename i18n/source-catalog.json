@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-09-18T11:37:03.402Z",
+  "generatedAt": "2026-10-07T07:27:53.359Z",
   "pages": [
     "index.html",
     "about.html",
@@ -467,6 +467,20 @@
       ]
     },
     {
+      "id": "08d489cd36e8b692",
+      "source": "<a href=\"blog-prevent-air-hose-twisting.html\" style=\"display:block;\">Air Hoses Twisting on Rotating Machinery? How to Keep Air Moving Across a Rotating Connection</a>",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
+      "id": "b8d810db80eff239",
+      "source": "<a href=\"blog-prevent-air-hose-twisting.html\">Guide: prevent air hose twisting on rotating machinery →</a>",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
       "id": "6e1dfa799c07e992",
       "source": "<a href=\"blog-ptfe-coated-o-rings.html\" style=\"display:block;\">PTFE-Coated O-Rings for Rotary Union Seals</a>",
       "pages": [
@@ -626,6 +640,13 @@
         "search.html",
         "terms.html",
         "thank-you.html"
+      ]
+    },
+    {
+      "id": "2a52862f5c038db8",
+      "source": "<a href=\"BP-10P-0001.html\">View</a>",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -2227,6 +2248,20 @@
       ]
     },
     {
+      "id": "9a6204899da19f9d",
+      "source": "<strong>BP-10P-0001 · 10 independent air passages</strong><span>For multi-circuit compressed-air fixtures with intermittent rotation up to 100 RPM and pressure up to 1 MPa. No through bore; not a coolant-transfer configuration.</span>",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "dcdac2196bed5b8c",
+      "source": "<strong>BP-10P-0001</strong>",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "2c5eb5df1e8093f3",
       "source": "<strong>BP-1P-0003</strong>",
       "pages": [
@@ -3081,6 +3116,13 @@
       ]
     },
     {
+      "id": "13ff02358786b108",
+      "source": "<strong>Ten independent air circuits:</strong> <a href=\"BP-10P-0001.html\">BP-10P-0001 10-passage pneumatic rotary union</a> is an option for intermittent indexing tables that need separate pneumatic circuits and no center through bore. Maximum pressure: 1 MPa; maximum speed: 100 RPM for intermittent rotation. Check the Ø80 × 217 mm body and mounting pattern against your table layout.",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
       "id": "e95d7be9a3c57730",
       "source": "<strong>Tip:</strong> If a future machine upgrade is likely, compare the cost and space of one spare passage with replacing the rotary joint later.",
       "pages": [
@@ -3438,6 +3480,20 @@
       ]
     },
     {
+      "id": "af850568990529b0",
+      "source": "10 independent air passages",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "e892b2aacb35431d",
+      "source": "10 independent air passages, 10-in-10-out",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "9c2d1f0fc24cf324",
       "source": "10. Changes to Terms",
       "pages": [
@@ -3454,6 +3510,13 @@
     {
       "id": "1a7721105f90ab48",
       "source": "100 RPM",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "ce02aeef749c3257",
+      "source": "100 RPM (intermittent)",
       "pages": [
         "product-comparison.html"
       ]
@@ -3617,6 +3680,13 @@
       "source": "2. Pricing and Quotes",
       "pages": [
         "terms.html"
+      ]
+    },
+    {
+      "id": "8c1a9e18907218ca",
+      "source": "20 × G1/8",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -3873,6 +3943,13 @@
       ]
     },
     {
+      "id": "70a0e22c653192e2",
+      "source": "6061 aluminum",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "fa5bb7f2929660bc",
       "source": "6061 aluminum alloy",
       "pages": [
@@ -3892,6 +3969,13 @@
       "source": "7. Intellectual Property",
       "pages": [
         "terms.html"
+      ]
+    },
+    {
+      "id": "edb5099c766f99d8",
+      "source": "8 mm tube fittings included",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -4303,6 +4387,13 @@
       "source": "Air gripper and blow-off",
       "pages": [
         "application-electronics-battery-test-fixtures.html"
+      ]
+    },
+    {
+      "id": "9464fcddd151004b",
+      "source": "Air Hoses Twisting on Rotating Machinery? How to Keep Air Moving Across a Rotating Connection",
+      "pages": [
+        "blog.html"
       ]
     },
     {
@@ -5297,6 +5388,27 @@
       "source": "Both entries above are standard air models. Water, coolant, and hydraulic-oil applications require a separately configured solution.",
       "pages": [
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "6ee871d2b4b1670e",
+      "source": "BP-10P-0001 · 10-Passage",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "d82e280b97bb3be2",
+      "source": "BP-10P-0001 10-passage pneumatic rotary union with air fittings",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
+      "id": "ca780fbf0f97b3ca",
+      "source": "BP-10P-0001 10-passage pneumatic rotary union with G1/8 fittings",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -7650,6 +7762,13 @@
       ]
     },
     {
+      "id": "66e3f743071b5c6c",
+      "source": "End-face mount; 10 × M5 on each end; no through bore",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "8dc9012bf2192a86",
       "source": "Engineer's guide to rotary joint selection: passage count, pressure, RPM, media compatibility, and mounting type.",
       "pages": [
@@ -8997,6 +9116,13 @@
       ]
     },
     {
+      "id": "f72668a1d666f93f",
+      "source": "Intermittent rotary tables and multi-circuit pneumatic clamping; compressed air only",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "c7a44a157f0fd7cf",
       "source": "International Project Support",
       "pages": [
@@ -9424,6 +9550,13 @@
     {
       "id": "980bbbecacb0cffa",
       "source": "Max 100 RPM",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "d6d9f916709e47cc",
+      "source": "Max 100 RPM · intermittent",
       "pages": [
         "products.html"
       ]
@@ -10257,6 +10390,13 @@
       ]
     },
     {
+      "id": "7513cd2d22e67708",
+      "source": "O-ring seals",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "2430a0e8fd44f832",
       "source": "Ø30mm Bore",
       "pages": [
@@ -10618,6 +10758,13 @@
       ]
     },
     {
+      "id": "ab470235a16c5a5c",
+      "source": "Pneumatic Circuit Design",
+      "pages": [
+        "blog.html"
+      ]
+    },
+    {
       "id": "a57c912b7deab90c",
       "source": "Pneumatic clamp",
       "pages": [
@@ -10693,6 +10840,13 @@
       "source": "Pneumatic Rotary Union &amp; Rotary Joint Catalog | Begapunk",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "97213c618a9e63fe",
+      "source": "Pneumatic Rotary Union Applications",
+      "pages": [
+        "blog.html"
       ]
     },
     {
@@ -12276,6 +12430,13 @@
       ]
     },
     {
+      "id": "10feb832b7b9426a",
+      "source": "Select an air rotary union for automation rotary tables by matching clamp, release, and blow-off circuits to the table cycle. Compare current pneumatic catalog models.",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
       "id": "0a62ae1f6509902d",
       "source": "Select an air rotary union for CNC pneumatic clamping fixtures, rotary tables, indexing fixtures and machining automation systems.",
       "pages": [
@@ -12422,8 +12583,8 @@
       ]
     },
     {
-      "id": "f774f6652e2583c2",
-      "source": "Send a section view, the pneumatic diagram, and the real index/dwell cycle. We will compare 2-passage air catalog models to the interface.",
+      "id": "aad395b075325893",
+      "source": "Send a section view, the pneumatic diagram, and the real index/dwell cycle. We will compare suitable pneumatic catalog models to the interface.",
       "pages": [
         "application-automation-rotary-tables.html"
       ]
@@ -12998,6 +13159,13 @@
       "source": "Step-by-step installation guide for Begapunk rotary joints. Mounting, connections, filtration, lubrication, and maintenance.",
       "pages": [
         "installation.html"
+      ]
+    },
+    {
+      "id": "9386e76d6793c671",
+      "source": "Stop air hoses winding around rotary tables and fixtures. Compare motion types, see how a pneumatic rotary union works, and choose the right air circuits.",
+      "pages": [
+        "blog.html"
       ]
     },
     {

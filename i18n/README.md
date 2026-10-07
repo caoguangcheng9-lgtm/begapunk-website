@@ -7,11 +7,17 @@
 
 ## 1. 凭据
 
+仅英文发布、尚无翻译的页面登记在 `config.json` 的 `sourceOnlyPages`，不要放入全语言 `pages`。搜索索引同步、国际网站地图和发布 HTML 清单会识别这些英文页面；不会为它们生成不存在的语言版本。翻译完成后，再将页面移入相应的多语言清单。`output/` 中的中文审阅稿不登记为公开页面。
+
 翻译工具只从进程环境读取 GOOGLE_CLOUD_TRANSLATION_API_KEY。
 
 不得把 API key 写入仓库、JSON、命令参数、报告或发布包。翻译缓存只能保存源文本和译文。
 
 ## 2. 常用命令
+
+气管防缠绕文章 `blog-prevent-air-hose-twisting.html` 以用户确认的中文稿为依据，英文为公开内容母版。五语言文案对应 `manual/hose-article-*.json`；`node scripts/sync-hose-article-localizations.mjs` 检查一致性，添加 `--write` 写回五语言页面及其元数据。英文正文变化时须同步分段母版和译文，专用同步器会拒绝未映射的内容。该页登记为 `manualLocalizedPages`，正文与 FAQ、示意图、响应式表格标签同等维护。审校记录见 `audit/localization/2026-10-07-hose-article-review.json`。
+
+BP-10P-0001 的德、法、日、俄页面采用 `manual/bp10-*.json` 中逐段维护的译文，已登记为 `manualLocalizedPages`。`bp10-en-segments.json` 保留对应英文原文；源文有增删时，专用同步器会拒绝未映射内容，需先更新译文。运行 `node scripts/sync-bp10-localizations.mjs` 检查，添加 `--write` 仅重建这四张产品页。目录、应用入口等已单独集成；修改后照常同步搜索索引和国际 sitemap。不得把旧型号统一的 PTFE 密封描述套用到该型号。
 
 提取英文字符串，不调用外部翻译服务：
 

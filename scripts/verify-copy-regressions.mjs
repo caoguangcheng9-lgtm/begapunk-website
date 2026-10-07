@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
+import { assertBp10ProductContract } from './lib/bp10-product-contract.mjs';
 import { drawingBackedPublicStep } from './lib/drawing-backed-product-facts.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
@@ -832,6 +833,12 @@ for (const copy of commercialProductCopyByLocale) {
     const requestForbidden = STEP_CAD_REQUEST_FORBIDDEN[locale] ?? [];
     let required = copy.required;
     let forbidden = [...copy.forbidden, ...requestForbidden];
+    if (model === 'BP-10P-0001') {
+      const file = `${copy.prefix}${pageName}`;
+      assertBp10ProductContract(load(await fs.readFile(path.join(root, file), 'utf8')), locale, file);
+      checks.push({ file, forbidden, required: [] });
+      continue;
+    }
     if (hasPublicStep) {
       required = [...new Set([...copy.required, stepTitle, stepDesc])];
     } else if (stepDesc) {

@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-07",
+  "route": "blog-prevent-air-hose-twisting.html",
+  "status": "local implementation verified; not deployed",
+  "source": {
+    "approvedDraft": "output/blog-prevent-air-hose-twisting-zh-review.html",
+    "approval": "Owner accepted the Chinese preview in this conversation: OK，没啥问题",
+    "publicMaster": "blog-prevent-air-hose-twisting.html",
+    "copy": "i18n/manual/hose-article-en.json"
+  },
+  "review": {
+    "method": "AI-assisted segment-by-segment translation and technical consistency review against the owner-approved Chinese draft",
+    "languages": [
+      "en",
+      "de",
+      "fr",
+      "ja",
+      "ru"
+    ],
+    "segmentsPerLanguage": 110,
+    "independentNativeReview": false,
+    "scope": [
+      "headings and prose",
+      "motion comparison table including mobile labels",
+      "connection diagrams",
+      "English-language animation description",
+      "product example",
+      "five FAQ answers",
+      "inquiry CTA",
+      "metadata and image/accessibility descriptions"
+    ],
+    "technicalChecks": [
+      "Limited-angle oscillation distinguished from same-direction indexing and continuous rotation",
+      "Stopping between indexing moves does not remove accumulated relative angle",
+      "Valve location changes the number of independent circuits crossing the interface",
+      "BP-10P-0001: ten compressed-air passages, 1 MPa, 100 RPM intermittent rotation, no through bore",
+      "Twenty G1/8 ports, ten inlet and ten outlet; ten straight and ten elbow fittings for 8 mm OD tubing",
+      "No automatic extension of the catalog configuration to continuous duty, hydraulic oil, water or vacuum",
+      "Rotating-side hoses still require routing, support and movement clearance"
+    ]
+  },
+  "integration": [
+    "five localized technical-blog cards and Blog schema entries",
+    "five rotary-table application links",
+    "reciprocal links with five BP-10P-0001 product pages",
+    "five local search records",
+    "five llms entries",
+    "primary and international sitemaps",
+    "six reciprocal hreflang entries per page",
+    "manual-localization registration"
+  ],
+  "verification": {
+    "tests": [
+      "node --test tests/hose-article.test.mjs tests/bp10-discovery.test.mjs",
+      "node scripts/validate-product-data.mjs",
+      "node scripts/sync-hose-article-localizations.mjs",
+      "node scripts/sync-bp10-localizations.mjs",
+      "node scripts/sync-search-index.mjs --check",
+      "node scripts/sync-sitemap-i18n.mjs"
+    ],
+    "results": "Passed; article checks rerun after replacing the inquiry application's internal slug with localized descriptive text.",
+    "browser": "All five languages checked at widths 390 and 320: no horizontal overflow, table caption widths correct, video fits, no broken loaded images, mobile footer collapsed. English desktop preview checked. RU-to-FR language switch, English blog-card navigation and French inquiry prefill verified.",
+    "realInquirySent": false,
+    "fullReleaseAuditRun": false,
+    "chineseReview": "Remains local-only with noindex,nofollow; excluded from public search, language routes and sitemaps."
+  },
+  "technicalReferences": [
+    "https://www.parker.com/content/dam/Parker-com/Literature/Parflex/Parker-Safety-Guide.pdf"
+  ],
+  "referenceUpdate": "Owner-approved cleanup on 2026-10-07: removed DEUBLIN and numbered citations; retained Parker as one localized further-reading item across five languages and the Chinese review."
+}

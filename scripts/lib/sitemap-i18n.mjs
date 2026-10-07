@@ -83,6 +83,13 @@ export async function renderInternationalSitemaps({
   const excludedPages = new Set([...(config.sitemapExcludedPages || []), ...discoveryExcludedPages]);
   const fullLanguages = [config.sourceLanguage, ...activeLanguages];
   const fullPages = config.pages.filter((pageName) => !excludedPages.has(pageName));
+  const sourceOnlyPages = config.sourceOnlyPages || [];
+  if (new Set(sourceOnlyPages).size !== sourceOnlyPages.length
+    || sourceOnlyPages.some((page) => !/^[A-Za-z0-9_-]+\.html$/.test(page)
+      || config.pages.includes(page)
+      || [...partialLanguagePages.values()].some((pages) => pages.has(page)))) {
+    throw new Error('sourceOnlyPages must contain unique root HTML pages outside the translated page lists.');
+  }
   const nextState = { schemaVersion: 1, pages: {} };
 
   const languagesForPage = (pageName) => [
@@ -112,6 +119,12 @@ export async function renderInternationalSitemaps({
     }
   }
 
+  for (const pageName of sourceOnlyPages) {
+    if (excludedPages.has(pageName)) continue;
+    const { url, lastmod } = await lastmodFor(config.sourceLanguage.code, pageName);
+    const alternates = `    <xhtml:link rel="alternate" hreflang="${config.sourceLanguage.code}" href="${url}" />\n    <xhtml:link rel="alternate" hreflang="x-default" href="${url}" />`;
+    mainBlocks.push(sitemapBlock(url, lastmod, alternates));
+  }
   const sitemaps = new Map([['sitemap-i18n.xml', sitemapDocument(mainBlocks)]]);
   for (const language of partialLanguages) {
     const blocks = [];

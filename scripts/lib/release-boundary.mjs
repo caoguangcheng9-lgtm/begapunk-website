@@ -11,7 +11,7 @@ const PUBLIC_ASSET_EXTENSION_ALLOWLIST = new Map([
   ['js', new Set(['.js'])],
   ['fonts', new Set(['.woff2'])],
   ['images', new Set(['.ico', '.jpg', '.png', '.webp'])],
-  ['videos', new Set(['.mp4'])],
+  ['videos', new Set(['.mp4', '.vtt'])],
 ]);
 
 const PUBLIC_ASSET_NESTING_ALLOWLIST = new Set(['js', 'images']);

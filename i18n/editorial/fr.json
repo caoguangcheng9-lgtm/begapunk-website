@@ -39,5 +39,40 @@
   },
   "BP-4P-30-0001.html": {
     "c6d36ee1a63a6495": "<h3>Conception sur mesure</h3>\n    <p>Pour toute exigence sur mesure, les matériaux en contact avec le fluide, le matériau des joints, les produits de nettoyage et la documentation requise sont examinés pour chaque projet. Les formats CAO disponibles et le délai sont confirmés pour le projet sélectionné.</p>\n    <div class=\"price\">Demander un devis</div>"
+  },
+  "blog.html": {
+    "08d489cd36e8b692": "<a href=\"blog-prevent-air-hose-twisting.html\" style=\"display:block;\">Les tuyaux d’air s’enroulent sur votre machine ? Comment alimenter en air une partie tournante</a>",
+    "9464fcddd151004b": "Les tuyaux d’air s’enroulent sur votre machine ? Comment alimenter en air une partie tournante",
+    "d82e280b97bb3be2": "Joint tournant pneumatique BP-10P-0001 à 10 passages avec raccords",
+    "ab470235a16c5a5c": "Conception des circuits pneumatiques",
+    "97213c618a9e63fe": "Applications des joints tournants pneumatiques",
+    "9386e76d6793c671": "Des tuyaux s’enroulent sur une table rotative ? Comparez les mouvements, comprenez le joint tournant pneumatique et choisissez les circuits d’air nécessaires."
+  },
+  "application-automation-rotary-tables.html": {
+    "b8d810db80eff239": "<a href=\"blog-prevent-air-hose-twisting.html\">Guide : éviter la torsion des tuyaux sur les machines tournantes →</a>",
+    "13ff02358786b108": "<a href=\"BP-10P-0001.html\">BP-10P-0001</a> — Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé.",
+    "10feb832b7b9426a": "Sélectionnez un raccord tournant pneumatique pour table rotative en associant les circuits de serrage, desserrage et soufflage au cycle de la machine.",
+    "aad395b075325893": "Envoyez une vue en coupe, le schéma pneumatique et le cycle réel d’indexage et d’arrêt. Nous comparerons l’interface aux modèles pneumatiques à 2 passages du catalogue."
+  },
+  "product-comparison.html": {
+    "2a52862f5c038db8": "<a href=\"BP-10P-0001.html\">Caractéristiques →</a>",
+    "dcdac2196bed5b8c": "<strong>BP-10P-0001</strong>",
+    "e892b2aacb35431d": "10 circuits d’air indépendants",
+    "ce02aeef749c3257": "100 tr/min — rotation intermittente",
+    "66e3f743071b5c6c": "Fixation en bout ; 10 × M5 par face ; sans alésage traversant",
+    "f72668a1d666f93f": "Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé."
+  },
+  "application-cnc-pneumatic-clamping.html": {
+    "9a6204899da19f9d": "<strong>BP-10P-0001</strong><span>Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé.</span>"
+  },
+  "products.html": {
+    "af850568990529b0": "10 circuits d’air indépendants",
+    "8c1a9e18907218ca": "20 × G1/8",
+    "70a0e22c653192e2": "Alliage d’aluminium 6061",
+    "edb5099c766f99d8": "Raccords pour tubes de 8 mm inclus",
+    "6ee871d2b4b1670e": "BP-10P-0001 · 10 passages",
+    "ca780fbf0f97b3ca": "BP-10P-0001 joint tournant pneumatique à 10 passages",
+    "d6d9f916709e47cc": "100 tr/min — rotation intermittente",
+    "7513cd2d22e67708": "Joint torique"
   }
 }
