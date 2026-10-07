@@ -8,6 +8,7 @@ import {
   parsePublicDownloadsManifest,
 } from './lib/public-downloads.mjs';
 import { validateStepFile } from './lib/step-file.mjs';
+import { downloadLinkLabel } from './lib/download-link-label.mjs';
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const releaseRoot = path.resolve(process.argv[2] || 'dist/production');
@@ -30,12 +31,6 @@ function toPublicPath(absolute) {
 
 function pageUrl(publicPath) {
   return `${siteOrigin}/${publicPath}`;
-}
-
-function normalizedLabel($, element) {
-  return String($(element).attr('aria-label') || $(element).attr('title') || $(element).text() || '')
-    .replace(/\s+/g, ' ')
-    .trim();
 }
 
 const allFiles = await walk(releaseRoot);
@@ -147,7 +142,7 @@ for (const [ownerPath, $] of documents) {
     }
     linkCounts.set(downloadName, linkCounts.get(downloadName) + 1);
     if (hasDownloadAttribute) downloadAttributeCounts.set(downloadName, downloadAttributeCounts.get(downloadName) + 1);
-    if (!normalizedLabel($, element)) failures.push(`${ownerPath}: download link has no accessible label (${href})`);
+    if (!downloadLinkLabel($, element)) failures.push(`${ownerPath}: download link has no accessible label (${href})`);
   });
 }
 
