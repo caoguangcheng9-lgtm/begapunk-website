@@ -4,6 +4,8 @@ import { after, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 import http from 'node:http';
+import net from 'node:net';
+import { once } from 'node:events';
 import { execFileSync } from 'node:child_process';
 import {
   collectPageErrors,
@@ -35,6 +37,14 @@ async function findBrowser() {
 
 let browser;
 let fixturePhase = 'browser startup';
+async function closeFixtureServer(server) {
+  await new Promise((resolve, reject) => {
+    server.close(error => error ? reject(error) : resolve());
+    // Chrome can retain speculative sockets that never send an HTTP request.
+    // Assertions have finished; release every fixture connection during cleanup.
+    server.closeAllConnections();
+  });
+}
 // A wedged browser or shutdown must fail this isolated fixture, not consume the
 // entire CI job without diagnostics. This never turns an unrun check into PASS.
 const fixtureDeadline = setTimeout(() => {
@@ -67,6 +77,28 @@ after(async () => {
   if (browser) {
     await browser.close();
     clearTimeout(fixtureDeadline);
+  }
+});
+
+test('fixture cleanup closes a speculative connection without an HTTP request', async () => {
+  const server = http.createServer((request, response) => response.end('fixture'));
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const socket = net.createConnection({ host: '127.0.0.1', port: server.address().port });
+  let deadline;
+  try {
+    await once(socket, 'connect');
+    await Promise.race([
+      closeFixtureServer(server),
+      new Promise((resolve, reject) => {
+        deadline = setTimeout(() => reject(new Error('Fixture cleanup left a speculative socket open')), 2000);
+      }),
+    ]);
+    assert.equal(server.listening, false);
+  } finally {
+    clearTimeout(deadline);
+    socket.destroy();
+    server.closeAllConnections();
+    if (server.listening) await closeFixtureServer(server);
   }
 });
 
@@ -110,8 +142,10 @@ test('release navigation disables conditional cache while preserving real status
     assert.match(source, /response\.status\(\) !== 200/u);
     assert.match(source, /await verifyExactArtifactResponse\(response/u);
   } finally {
+    fixturePhase = 'cache fixture cleanup';
     await page.close();
-    await new Promise(resolve => server.close(resolve));
+    await closeFixtureServer(server);
+    fixturePhase = 'browser fixture execution';
   }
 });
 
