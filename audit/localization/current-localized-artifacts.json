@@ -2,15 +2,15 @@
   "schemaVersion": 2,
   "semanticAlgorithm": "sha256-semantic-html-v1",
   "mechanicalAlgorithm": "sha256-lf-text-v1",
-  "updatedAt": "2026-10-07T07:36:55.909Z",
+  "updatedAt": "2026-10-07T08:19:09.510Z",
   "statusUpdatedAt": "2026-10-07",
   "qualityBoundary": "semantic-change-detection-plus-mechanical-integrity-not-native-speaker-or-new-editorial-proof",
   "lastUpdate": {
     "mode": "reviewed-semantic",
-    "recordedAt": "2026-10-07T07:36:55.909Z",
+    "recordedAt": "2026-10-07T08:19:09.510Z",
     "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
-    "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-    "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
+    "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+    "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
     "semanticReviewPerformed": true,
     "nativeSpeakerReviewPerformed": false,
     "semanticChangedPaths": [
@@ -195,9 +195,9 @@
       "mechanicalSha256": "852367d7411c02b39a42f24fc570e34d26fd609e7d8f680dcd672fa92b34a49d",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "41985c5680117bc4393dbb9dc060e46bdd3e4525262c1128114136f911b3e4ae",
         "afterSemanticSha256": "2201e2d74137d1751a8da1681ff2687b285b92b78cb579de2c24e7068b1629b2",
@@ -206,9 +206,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "8336790feb7f0dbbaf8558a7a28b79c55b1514434c34be1d87c80c53735c5bea",
         "afterMechanicalSha256": "852367d7411c02b39a42f24fc570e34d26fd609e7d8f680dcd672fa92b34a49d"
@@ -220,9 +220,9 @@
       "mechanicalSha256": "73e0bb6fdc5554196454d4f523510be460077733da586add21b9106ffeac18ae",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "da57038cb1289cad0112b2fa38054f8700b855873ad165656038146b843bec8e",
         "afterSemanticSha256": "8c5c97545cfa02243e57ae880b31b2e36a75ab14dc454b3426663b1d6fffe166",
@@ -231,9 +231,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "dd8112f11350f58f85ecb14bfcdd2c3c627df1623d6cd6b074d8cf32c0040092",
         "afterMechanicalSha256": "73e0bb6fdc5554196454d4f523510be460077733da586add21b9106ffeac18ae"
@@ -670,9 +670,9 @@
       "mechanicalSha256": "3f4e978769e48d3e47fff7532ef020902882e54ec0eddf38e3fcf43b12273728",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "6975315334ff1c53854aff85b98f30db4764445764f20474a6dd450f7e48fd4e",
         "afterSemanticSha256": "88f9e923cc3f10d6cb16ff6b253b4b729ca4c4fc89f56db605f656c8edce069e",
@@ -681,9 +681,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "98f15a80e7b334e87971afbbf8bfbffcc367fe66cd41c7dc49f44888835a736d",
         "afterMechanicalSha256": "3f4e978769e48d3e47fff7532ef020902882e54ec0eddf38e3fcf43b12273728"
@@ -720,9 +720,9 @@
       "mechanicalSha256": "62e896e6dc81746684c2bf3e3f964eb34d094917ad8e2d961cffd4084762a6ae",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "e010cf8ebc82598e1282b2c906f6c00e6681ee8834f700c0d68655e191f7b09b",
         "afterSemanticSha256": "78dea108ecacd9fa583d6fe0b594486398050675e650d3f7eae6c8292bcc2a1d",
@@ -731,9 +731,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "d083c2c0fc4f32cb57dbf4e9bf303fce52418c57f16fa8153fa5d450aab589c0",
         "afterMechanicalSha256": "62e896e6dc81746684c2bf3e3f964eb34d094917ad8e2d961cffd4084762a6ae"
@@ -1020,9 +1020,9 @@
       "mechanicalSha256": "cea1d180a0b1251e66b6b6dc7b2e714242b84a81c42e847913f79461c7738dba",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "773d235b33732a4c7d8d3642481f7f0c8747041e7b00d9c74d627767051e4837",
         "afterSemanticSha256": "de0bc62b13de7f39966acb29e6aa062c93ae1022602586a8062bcfb0d903491a",
@@ -1031,9 +1031,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "1689e8afb375793611c67678d1f3e1c7a3b9d558e0499aadc31593f6311f4032",
         "afterMechanicalSha256": "cea1d180a0b1251e66b6b6dc7b2e714242b84a81c42e847913f79461c7738dba"
@@ -1516,52 +1516,52 @@
     },
     {
       "path": "de/BP-10P-0001.html",
-      "semanticSha256": "9dd8c26f2d539c2eb6b93013a8268abef217595a67799a1a6d4a85bffec3b181",
-      "mechanicalSha256": "7d8a13c00dd01ed4fd553e36895030fd8e9b4cc183515435f4e6e5dc6c150a67",
+      "semanticSha256": "063983dd71e1f1f6452339d984c404826b3fb5a7eac4fc0b0dc2bb3cd0c4bbcf",
+      "mechanicalSha256": "54779b56e2eaa2f7bf90b8ea70c73917446a758f78b18747b870fca65a8a60d3",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "9dd8c26f2d539c2eb6b93013a8268abef217595a67799a1a6d4a85bffec3b181",
+        "afterSemanticSha256": "063983dd71e1f1f6452339d984c404826b3fb5a7eac4fc0b0dc2bb3cd0c4bbcf",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "7d8a13c00dd01ed4fd553e36895030fd8e9b4cc183515435f4e6e5dc6c150a67"
+        "afterMechanicalSha256": "54779b56e2eaa2f7bf90b8ea70c73917446a758f78b18747b870fca65a8a60d3"
       }
     },
     {
       "path": "de/blog-prevent-air-hose-twisting.html",
-      "semanticSha256": "190a8e14fd66d0a150615feeb36faab380ff428e910b486f879123f4de04e6a9",
-      "mechanicalSha256": "75f49d5811176362f0ba596d60685be728bc50a106839b294a64bd75570ebaf0",
+      "semanticSha256": "84a5e558c79a85010c07b6d50b6c66cd0b55d0b96e42fad9c1c97148bdda67fd",
+      "mechanicalSha256": "f4f031bb8ce9d4de443b673092a804341acc1d1d37346ff964b0f03731bd3b8b",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "190a8e14fd66d0a150615feeb36faab380ff428e910b486f879123f4de04e6a9",
+        "afterSemanticSha256": "84a5e558c79a85010c07b6d50b6c66cd0b55d0b96e42fad9c1c97148bdda67fd",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "75f49d5811176362f0ba596d60685be728bc50a106839b294a64bd75570ebaf0"
+        "afterMechanicalSha256": "f4f031bb8ce9d4de443b673092a804341acc1d1d37346ff964b0f03731bd3b8b"
       }
     },
     {
@@ -1670,9 +1670,9 @@
       "mechanicalSha256": "3830d7eeb50284d3d5b3c46264af78e066b15eee9c4ad99a15ee8ceb77ac0f9e",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "c5296c97ebd53799c20e898b1bf0c009078de2761c773afda7278f2b6ac5a0f4",
         "afterSemanticSha256": "e691e40bb117f0463ca22ceb4c90a842d14088faa52473cb255740db2db9e7ff",
@@ -1681,9 +1681,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "a19158fc4b360995dbc01ec25c4521fcc9ac379dbb248c3adc8091b343afb1c3",
         "afterMechanicalSha256": "3830d7eeb50284d3d5b3c46264af78e066b15eee9c4ad99a15ee8ceb77ac0f9e"
@@ -1695,9 +1695,9 @@
       "mechanicalSha256": "b81198505382aa724f299af9bb01afc53df304254555e77885f6b3d891a2b75a",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "c3b51b3314aaac0b0f2ebd655f932834418dc15cce216fac5e2cbae935e1adab",
         "afterSemanticSha256": "be4bc38972160e4598a70efcbed7a59b0bc114cd6146f936ecdeb6c3aa01e79a",
@@ -1706,9 +1706,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "72275a5ec5d3b3619ab378c3ec30ec2844d2b36384e7f57547282f8bca48fea3",
         "afterMechanicalSha256": "b81198505382aa724f299af9bb01afc53df304254555e77885f6b3d891a2b75a"
@@ -2145,9 +2145,9 @@
       "mechanicalSha256": "0062e60c6be912a79718794e62a28c9a935078a0481ecc9ada8729d575b4a2bc",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "2d37b02eba8790c664600ef55d9066cba54d73944ecf6a9ae14064717f914538",
         "afterSemanticSha256": "e39c9042623788fd159963374521d2f5127f823615b19da7eabf21205459f0c0",
@@ -2156,9 +2156,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "9c2bdcc63402e4c563f0c273233dffbe83ca0f79a13cb404ea6b5e8e1639c51e",
         "afterMechanicalSha256": "0062e60c6be912a79718794e62a28c9a935078a0481ecc9ada8729d575b4a2bc"
@@ -2195,9 +2195,9 @@
       "mechanicalSha256": "ea804608488e5607a387ab7b5bf4151d8466136034105a3d73641c36c88db78f",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "e5f57518a759997a3b772062a6da4ef7c60ea5c446413e7db644e1f24517e29e",
         "afterSemanticSha256": "813e9b2255ec6412d575b3083a6deae03e383777cd8b4ad0a0a56de34719da46",
@@ -2206,9 +2206,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "9d73b437ca7ac724aca3b0fc7d5c7eb37f9592e462e3140a37c5e7fcdf34c41a",
         "afterMechanicalSha256": "ea804608488e5607a387ab7b5bf4151d8466136034105a3d73641c36c88db78f"
@@ -2495,9 +2495,9 @@
       "mechanicalSha256": "5a33e21351fc33c164279d505d58d4e0b0918e1f0f7164d718f81f1418369658",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "5e4080afbe776f95fd37f5217452e6b346c53e7f4bdbc094f9c2ff5b7c2c97d0",
         "afterSemanticSha256": "6d83ae9f70f1ab5ad06dd7d5c4cc423cec2ac1c8f2184a342ab4dfc5dd5d5882",
@@ -2506,9 +2506,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "711d188ad057d4d1665e18cdf0f5759cd00195f996d4eb4378e575f80dd3ff47",
         "afterMechanicalSha256": "5a33e21351fc33c164279d505d58d4e0b0918e1f0f7164d718f81f1418369658"
@@ -2991,52 +2991,52 @@
     },
     {
       "path": "fr/BP-10P-0001.html",
-      "semanticSha256": "3cc1fd03af6b3b6bcf65290d3565dc8a60b0af3a1b7a628a23ee3fb81c67112e",
-      "mechanicalSha256": "ee00344f5645ed2dd178f688a2f6284e39160ef3e91a799071208adc56f0485f",
+      "semanticSha256": "691d1a041d475223d302d530d4a83e746a062e858af40d848f0080ac5380364a",
+      "mechanicalSha256": "3c354633b894d01fb763951e4d978277714489b3258c8fa223df3b2cd236faad",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "3cc1fd03af6b3b6bcf65290d3565dc8a60b0af3a1b7a628a23ee3fb81c67112e",
+        "afterSemanticSha256": "691d1a041d475223d302d530d4a83e746a062e858af40d848f0080ac5380364a",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "ee00344f5645ed2dd178f688a2f6284e39160ef3e91a799071208adc56f0485f"
+        "afterMechanicalSha256": "3c354633b894d01fb763951e4d978277714489b3258c8fa223df3b2cd236faad"
       }
     },
     {
       "path": "fr/blog-prevent-air-hose-twisting.html",
-      "semanticSha256": "e9bffe3b40b9c8e8b4a3501e19e2ded67074fe3e62cd8f0933c6fd7d928523bb",
-      "mechanicalSha256": "f996d817f6e49881cee599514fa5102dc84d82c500ba4d44acf3cd07f0e96734",
+      "semanticSha256": "4e9d37bb151bdca88061c58eadb9f943ddb409e05236861b3152d212efaf27f2",
+      "mechanicalSha256": "3fd2e6aa2acfe326252d0c5afbf1f41cb3dc47c36ddddc89abe146a86f7bb1fb",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "e9bffe3b40b9c8e8b4a3501e19e2ded67074fe3e62cd8f0933c6fd7d928523bb",
+        "afterSemanticSha256": "4e9d37bb151bdca88061c58eadb9f943ddb409e05236861b3152d212efaf27f2",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "f996d817f6e49881cee599514fa5102dc84d82c500ba4d44acf3cd07f0e96734"
+        "afterMechanicalSha256": "3fd2e6aa2acfe326252d0c5afbf1f41cb3dc47c36ddddc89abe146a86f7bb1fb"
       }
     },
     {
@@ -3145,9 +3145,9 @@
       "mechanicalSha256": "1550e606cb9411fcf0594b556d39d0f7db55058a92f288793e96ee0067b3f466",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "2c0e2a91aa085cb1cfc40d6333004edc5b5781595793fe82d108501217f7ac96",
         "afterSemanticSha256": "4983665991f85a4334dc32f757d4e55214cc830c6253f42fa9d01fe0503c3bee",
@@ -3156,9 +3156,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "950751e981bb8a211afb11b0f90daf795ddf75147b018c5ac8c743d43a056107",
         "afterMechanicalSha256": "1550e606cb9411fcf0594b556d39d0f7db55058a92f288793e96ee0067b3f466"
@@ -3170,9 +3170,9 @@
       "mechanicalSha256": "0b6fa2145ce4c6acb2a3bef0aa04fde623e6d9d441499b1eaceca0784b3bbe1b",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "8f592841a37e5b38146a77b7b9521a56e2a9a419c959140a8531105294bfb262",
         "afterSemanticSha256": "4d8a43f4b16abb9fc02cc02df3bc977817d6530a0457fb987d79b7c1015c837c",
@@ -3181,9 +3181,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "78416878aa77fbc61bb0d25442a06e43c1ffe9d5735829bbf9760c005801389c",
         "afterMechanicalSha256": "0b6fa2145ce4c6acb2a3bef0aa04fde623e6d9d441499b1eaceca0784b3bbe1b"
@@ -3620,9 +3620,9 @@
       "mechanicalSha256": "193a538bdf129ec76686eca21297fbe3c7d1f49eb370885e460bf44428ca3007",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "096a5df939ac64d10693dbc80c6fa88cf8df845803609655a11ec9701a6d5382",
         "afterSemanticSha256": "fc16a5b4a09227f6ae51f59eaaa33efd530ea58630c71f7d3e3c92d8bf5bb84a",
@@ -3631,9 +3631,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "75888e1779828a0c0b75f992f4cd3c310597d61d4b6d8e5b90e542ef2dbcfc63",
         "afterMechanicalSha256": "193a538bdf129ec76686eca21297fbe3c7d1f49eb370885e460bf44428ca3007"
@@ -3670,9 +3670,9 @@
       "mechanicalSha256": "d85a543601d64d8ab247685fe3b15c3c932ee8db38b530f1e31dd20346eefbda",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "b3964b81a7391ba141b5350a50e2679b94697a33b710b2198a27530ca18caed4",
         "afterSemanticSha256": "0fd42742d152d44f8dd071c2f9f2300ae8deeec9bc81e9eac113748bf35538cd",
@@ -3681,9 +3681,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "153d2815b11247b81ae18481dd8135a2f880be27ef20a4601d40e2766da51b3e",
         "afterMechanicalSha256": "d85a543601d64d8ab247685fe3b15c3c932ee8db38b530f1e31dd20346eefbda"
@@ -3970,9 +3970,9 @@
       "mechanicalSha256": "31b057c9d363277339028eb0a61219c8592f956d53ff98d6213c8260792165e4",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "ad4b5a3ab415622030ab0577741beb5bfae182fa0d58268ab61cf68b287d874c",
         "afterSemanticSha256": "b4e0f001fd59c217741a0ed026beb939a08457f8bbfc4e0d6919cab5b4cdaf16",
@@ -3981,9 +3981,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "cc2a776e76deb6a06197928d57cf5893e2cbb474ae005476bd6189ab8293e0c2",
         "afterMechanicalSha256": "31b057c9d363277339028eb0a61219c8592f956d53ff98d6213c8260792165e4"
@@ -4466,52 +4466,52 @@
     },
     {
       "path": "ja/BP-10P-0001.html",
-      "semanticSha256": "e3d13b6642af3aff838be977ee1268d02140851e61467cfdfd3285a23ba3213d",
-      "mechanicalSha256": "2eb0922149efbbae429740e47ee47366eeac4c5848d38089a8e521010e19a5a8",
+      "semanticSha256": "335f996f4a93ec9d88ffed0656600a52cf7c4d3431e8fe30b2f311c129efa867",
+      "mechanicalSha256": "1b463bed698b6e5161853c5a9ba2865859e5c1e0ea3c5579682c5d326660d517",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "e3d13b6642af3aff838be977ee1268d02140851e61467cfdfd3285a23ba3213d",
+        "afterSemanticSha256": "335f996f4a93ec9d88ffed0656600a52cf7c4d3431e8fe30b2f311c129efa867",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "2eb0922149efbbae429740e47ee47366eeac4c5848d38089a8e521010e19a5a8"
+        "afterMechanicalSha256": "1b463bed698b6e5161853c5a9ba2865859e5c1e0ea3c5579682c5d326660d517"
       }
     },
     {
       "path": "ja/blog-prevent-air-hose-twisting.html",
-      "semanticSha256": "22e026d1f8e48d92d04d284f96d7226fa62bef02f65d435943d5a6c71d387636",
-      "mechanicalSha256": "c16900e00f91fff6f1330df9383d64c6c8c0775aa6a13ea98389777379e2e1d3",
+      "semanticSha256": "928211e3ec6d6bf117f49fb754d96e5176ecaf623daa607a7a5f016604ac859e",
+      "mechanicalSha256": "21a7974e3454434fa3426d83d313a9b416dd18778f546bcd9110e46caa0b6fdc",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "22e026d1f8e48d92d04d284f96d7226fa62bef02f65d435943d5a6c71d387636",
+        "afterSemanticSha256": "928211e3ec6d6bf117f49fb754d96e5176ecaf623daa607a7a5f016604ac859e",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "c16900e00f91fff6f1330df9383d64c6c8c0775aa6a13ea98389777379e2e1d3"
+        "afterMechanicalSha256": "21a7974e3454434fa3426d83d313a9b416dd18778f546bcd9110e46caa0b6fdc"
       }
     },
     {
@@ -4620,9 +4620,9 @@
       "mechanicalSha256": "1ace85b849ee15893e2f45a8a57fd71a6922cc5496ea3cdb0b500f0ef4469d13",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "bb3afb423044d274335c244edf00093d4e6be983285ff5d754c1e59d417cba4c",
         "afterSemanticSha256": "25c5cf2f519658811bbab7530941cc5d8798aaed0fb115cc9409a3c1122aaed9",
@@ -4631,9 +4631,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "1dfe0dff1d48fbf784cd98efb9dadd813a10c03ab4b8c11dc693d97d39cee3e1",
         "afterMechanicalSha256": "1ace85b849ee15893e2f45a8a57fd71a6922cc5496ea3cdb0b500f0ef4469d13"
@@ -4645,9 +4645,9 @@
       "mechanicalSha256": "d7e0fcff0c9f75421ec88ee271d90ee8f5d139e179279cb8e799d7291b0d2301",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "ae348c9c5036d33a6fe2a00a6085eaec98971fcaf3a7c3cc7e2a72a1f8b10ee4",
         "afterSemanticSha256": "d84870fdf8496bf41321e97547499954d235e02a346cebb38101cdaf553974f0",
@@ -4656,9 +4656,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "cf85f66a76dd41d188a99f7bbf1c38b511501246b8c16e1cb413b6adde57cb04",
         "afterMechanicalSha256": "d7e0fcff0c9f75421ec88ee271d90ee8f5d139e179279cb8e799d7291b0d2301"
@@ -5095,9 +5095,9 @@
       "mechanicalSha256": "3fb0646b003be9188ce0f6a09dc864b1ace27bce31bfc412cad9164caefd60a0",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "b584ccb49622e3b6081a5e67fa919a14f319b3be2e4f84a0bd48adce75652565",
         "afterSemanticSha256": "a41a979aa8cd7230f006bc959b2dcc57131f929df18a95db084b03838b25cfa3",
@@ -5106,9 +5106,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "a82277b07611ec0fbfaa8d95049570a677bfea0becf53a996d63091ef873218c",
         "afterMechanicalSha256": "3fb0646b003be9188ce0f6a09dc864b1ace27bce31bfc412cad9164caefd60a0"
@@ -5145,9 +5145,9 @@
       "mechanicalSha256": "210da50b8bd69ffe455b99064dc13b60aef7dff4cbefd6a634a25a8ec619eca1",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "cb0cbec92bf5955d476d480a6717a6f060e37664cfdd1d8af3f4b86110a2c11b",
         "afterSemanticSha256": "7ed166edc2bf152e50075f70963f9848e38d97ebac36211b316923e150b5de78",
@@ -5156,9 +5156,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "de89e8fad3c711d74594397d38365c0bd87aa8e935504fc3e560b2def66ec000",
         "afterMechanicalSha256": "210da50b8bd69ffe455b99064dc13b60aef7dff4cbefd6a634a25a8ec619eca1"
@@ -5445,9 +5445,9 @@
       "mechanicalSha256": "4c24e7d62fa9741ff3a4ed0272f9d20983855e8ad115d2c1ea2d3c1ea0a78c78",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": "bd23909baa1b298fa9672be46dd0d22b5eee8325e08d2fd4545b9bc048ef27cc",
         "afterSemanticSha256": "9b4f9c4212008d887bad5f80556fa4a15c373b6b6b5dea90dac6c23b0818a6de",
@@ -5456,9 +5456,9 @@
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": "1d5e8409c69718a2e8e49de6592dfe69a87737978c5858bc33e4f83519d9d88f",
         "afterMechanicalSha256": "4c24e7d62fa9741ff3a4ed0272f9d20983855e8ad115d2c1ea2d3c1ea0a78c78"
@@ -5941,59 +5941,59 @@
     },
     {
       "path": "ru/BP-10P-0001.html",
-      "semanticSha256": "9a951f154554d60ee083a5f3df2a5c1738bb2319592ce64ca0ac5c3604bd7079",
-      "mechanicalSha256": "dd744a6371425422a1d242eebd6be1740fc0dd2dccce8fa07cbe973e987ebe3e",
+      "semanticSha256": "dd62b6f3f519aaf08d6d622836f1ea7fb37e5ffab89005b2b238941616e6598c",
+      "mechanicalSha256": "3842f5fb4f48acbea5fa97a69e0867553f96375cb6bf53c323804fd2eb5f142b",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "9a951f154554d60ee083a5f3df2a5c1738bb2319592ce64ca0ac5c3604bd7079",
+        "afterSemanticSha256": "dd62b6f3f519aaf08d6d622836f1ea7fb37e5ffab89005b2b238941616e6598c",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "dd744a6371425422a1d242eebd6be1740fc0dd2dccce8fa07cbe973e987ebe3e"
+        "afterMechanicalSha256": "3842f5fb4f48acbea5fa97a69e0867553f96375cb6bf53c323804fd2eb5f142b"
       }
     },
     {
       "path": "ru/blog-prevent-air-hose-twisting.html",
-      "semanticSha256": "e0a6cf522ce1d190b98e3e3fe8b68de5a36ef8f02c8abb31a6076ac7d8ee8190",
-      "mechanicalSha256": "58c0f816ac30f5ecae6f136cd818e6a07d857a27df09c6e3d640d8d0d29ec4e1",
+      "semanticSha256": "0f876240de2e7ed5a38656d89dabaedf08a1d7738eef5fb5c1ab230b9b46e74d",
+      "mechanicalSha256": "48da1bce662c3d87d7b1af24fad9df82808e3d95874dba93c61aa10464e746d7",
       "semanticProvenance": {
         "kind": "ai-assisted-reviewed-semantic-change",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeSemanticSha256": null,
-        "afterSemanticSha256": "e0a6cf522ce1d190b98e3e3fe8b68de5a36ef8f02c8abb31a6076ac7d8ee8190",
+        "afterSemanticSha256": "0f876240de2e7ed5a38656d89dabaedf08a1d7738eef5fb5c1ab230b9b46e74d",
         "semanticReviewPerformed": true,
         "nativeSpeakerReviewPerformed": false
       },
       "mechanicalProvenance": {
         "kind": "semantic-review-artifact-capture",
-        "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-        "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
-        "recordedAt": "2026-10-07T07:36:49.234Z",
+        "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+        "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
+        "recordedAt": "2026-10-07T08:18:07.602Z",
         "baselineManifestUpdatedAt": "2026-09-18T12:04:19.476Z",
         "beforeMechanicalSha256": null,
-        "afterMechanicalSha256": "58c0f816ac30f5ecae6f136cd818e6a07d857a27df09c6e3d640d8d0d29ec4e1"
+        "afterMechanicalSha256": "48da1bce662c3d87d7b1af24fad9df82808e3d95874dba93c61aa10464e746d7"
       }
     }
   ],
   "enrollment": {
     "baselineRef": "a4264c449cb469811a9a2c7343de192fc0b68fef",
-    "record": "audit/localization/2026-10-07-bp10-hose-release-enrollment.md",
-    "recordSha256": "cb0ca3ed84f20feb3ba045d41f0407d50d89fe45292ca1a46aec0194cc0bfe49",
+    "record": "audit/localization/2026-10-07-bp10-hose-sentence-review.md",
+    "recordSha256": "c0f81890da800e8135ad8f5d74b0122bea30987d4627c60457ec9e788f94c525",
     "addedPaths": [
       "de/BP-10P-0001.html",
       "de/blog-prevent-air-hose-twisting.html",

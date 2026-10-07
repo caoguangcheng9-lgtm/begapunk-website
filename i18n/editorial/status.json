@@ -40,7 +40,7 @@
     "semanticAlgorithm": "sha256-semantic-html-v1",
     "mechanicalAlgorithm": "sha256-lf-text-v1",
     "manifest": "audit/localization/current-localized-artifacts.json",
-    "manifestUpdatedAt": "2026-10-07T07:36:55.909Z",
+    "manifestUpdatedAt": "2026-10-07T08:19:09.510Z",
     "pagesPerLanguage": 59,
     "languages": [
       "de",
