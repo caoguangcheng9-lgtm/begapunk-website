@@ -51,7 +51,6 @@
     "f8e3bcf95f065143": "Pneumatische Drehdurchführungen | Standard- und Sonderausführungen",
     "5291c2317381a072": "Standard- und kundenspezifische pneumatische Drehdurchführungen für CNC-Maschinen, Verpackungs- und Abfüllanlagen, Laserschneidmaschinen und Automatisierungstechnik. STEP-/IGES-Dateien können nach Prüfung von Modell und Anwendung für qualifizierte Projekte bereitgestellt werden; Dateiformat und Bereitstellungszeitpunkt werden projektspezifisch bestätigt.",
     "297ad8531d8726ec": "Nach Anwendung auswählen",
-    "6d584ef3a0817174": "1–8 Wege",
     "8127b08354f14a88": "Luft / Hydrauliköl",
     "362c21c2ed292383": "Gewinde / Flansch",
     "bdab0463aa465968": "<span class=\"home-application-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"5\"></circle><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4M15.5 8.5l3-3\"></path></svg></span><span class=\"home-application-copy\"><strong>Laserrohrschneiden</strong><small>Druckluftübertragung zum hinteren Spannfutter</small></span>",
@@ -69,7 +68,6 @@
     "ba31518b4c75d26e": "Neue Produkte",
     "c4a8a10c3bdab57b": "<img src=\"images/optimized/products/BP-4P-30-0001/BP-4P-30-0001.webp\" alt=\"BP-4P-30-0001, 4-Kanal-Drehdurchführung\" loading=\"lazy\" width=\"500\" height=\"500\"><span class=\"portal-date\">Juni 2026</span><strong>BP-4P-30-0001</strong><small>4-Kanal-Drehdurchführung mit Flansch und Ø30-mm-Durchgangsbohrung</small>",
     "bdf731e880417370": "<img src=\"images/optimized/products/BP-3P-S06-0001/BP-3P-S06-0001-1.webp\" alt=\"BP-3P-S06-0001, pneumatisch-elektrische Drehdurchführung\" loading=\"lazy\" width=\"500\" height=\"500\"><span class=\"portal-date\">Juni 2026</span><strong>BP-3P-S06-0001</strong><small>3 Luftkanäle und 6 elektrische Stromkreise in einer Einheit</small>",
-    "e376957075aa1bae": "<img src=\"images/optimized/products/BP-2P-130-0001-1.webp\" alt=\"BP-2P-130-0001, Schwerlast-Drehdurchführung\" loading=\"lazy\" width=\"500\" height=\"500\"><span class=\"portal-date\">Mai 2026</span><strong>BP-2P-130-0001</strong><small>2-Kanal-Schwerlastausführung für höhere Belastungen</small>",
     "894f99751b662f8c": "<img src=\"images/optimized/products/BP-2P-50-0001-1.webp\" alt=\"BP-2P-50-0001, staubgeschützte Drehdurchführung\" loading=\"lazy\" width=\"500\" height=\"500\"><span class=\"portal-date\">Mai 2026</span><strong>BP-2P-50-0001</strong><small>Staubgeschützte 2-Kanal-Ausführung für raue Industrieumgebungen</small>",
     "32874e1feb9f9095": "Drehdurchführungen nach Anwendung",
     "790646415eccf94e": "<img src=\"images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"Drehdurchführung für Laserrohrschneidmaschinen\" loading=\"lazy\" width=\"500\" height=\"500\"><strong>Laserrohrschneidmaschinen</strong><span>Prozessgas, Spannluft und Kühlmittelversorgung für rotierende Rohrbearbeitungssysteme.</span>",
@@ -92,7 +90,10 @@
     "5234d0e6d10b1b42": "<strong>FAQ</strong><span>Antworten zu Auswahl und Wartung</span>",
     "9aa2d85de104f530": "<strong>Anleitungen / Anfrage</strong><span>Betriebsdaten zur technischen Prüfung senden</span>",
     "ea47cd2409e8b2d1": "Pneumatische Drehdurchführungen für OEM-Maschinen | Begapunk",
-    "2aafd7cd79068463": "Modellspezifische Prüfanforderungen"
+    "2aafd7cd79068463": "Modellspezifische Prüfanforderungen",
+    "9fe9093761b70e00": "1–10 Wege",
+    "e2540ca35927bbed": "<img src=\"images/optimized/products/bp-10p-0001-hero.webp\" alt=\"BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung\" loading=\"lazy\" width=\"1600\" height=\"1200\">\n                <span class=\"portal-date\">Oktober 2026</span>\n                <strong>BP-10P-0001</strong>\n                <small>10 unabhängige Druckluftkanäle</small>",
+    "ca780fbf0f97b3ca": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung"
   },
   "application-electronics-battery-test-fixtures.html": {
     "cad0c902b78909fe": "/ Elektronik- und Batterieprüfung",
@@ -3318,7 +3319,8 @@
     "e892b2aacb35431d": "10 unabhängige Druckluftkanäle",
     "ce02aeef749c3257": "100 min⁻¹ — intermittierende Rotation",
     "66e3f743071b5c6c": "Stirnseitige Montage; 10 × M5 je Stirnseite; keine Durchgangsbohrung",
-    "f72668a1d666f93f": "Für intermittierend rotierende Vorrichtungen mit zehn unabhängigen Druckluftkreisen. Max. 1 MPa und 100 min⁻¹; ohne Durchgangsbohrung. Die Katalogausführung ist für Druckluft vorgesehen."
+    "f72668a1d666f93f": "Für intermittierend rotierende Vorrichtungen mit zehn unabhängigen Druckluftkreisen. Max. 1 MPa und 100 min⁻¹; ohne Durchgangsbohrung. Die Katalogausführung ist für Druckluft vorgesehen.",
+    "4f0d774b2e10f57a": "Stator: 4 × M4, 10 mm tief; Rotor: 4 × M4, 10 mm tief"
   },
   "products.html": {
     "af850568990529b0": "10 unabhängige Druckluftkanäle",
@@ -3328,6 +3330,8 @@
     "6ee871d2b4b1670e": "BP-10P-0001 · 10 Kanäle",
     "ca780fbf0f97b3ca": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung",
     "d6d9f916709e47cc": "100 min⁻¹ — intermittierende Rotation",
-    "7513cd2d22e67708": "O-Ring"
+    "7513cd2d22e67708": "O-Ring",
+    "6d6d05b16a501946": "BP-2P-08-0001 kompakte pneumatische Zweikanal-Drehdurchführung aus AL6061 mit M4-Befestigungsgewinden",
+    "52254db545540725": "Je Stirnseite 4 × M4, 10 mm tief"
   }
 }

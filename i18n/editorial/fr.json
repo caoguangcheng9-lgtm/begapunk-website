@@ -60,7 +60,8 @@
     "e892b2aacb35431d": "10 circuits d’air indépendants",
     "ce02aeef749c3257": "100 tr/min — rotation intermittente",
     "66e3f743071b5c6c": "Fixation en bout ; 10 × M5 par face ; sans alésage traversant",
-    "f72668a1d666f93f": "Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé."
+    "f72668a1d666f93f": "Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé.",
+    "4f0d774b2e10f57a": "Stator : 4 × M4, profondeur 10 mm ; rotor : 4 × M4, profondeur 10 mm"
   },
   "application-cnc-pneumatic-clamping.html": {
     "9a6204899da19f9d": "<strong>BP-10P-0001</strong><span>Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé.</span>"
@@ -73,6 +74,13 @@
     "6ee871d2b4b1670e": "BP-10P-0001 · 10 passages",
     "ca780fbf0f97b3ca": "BP-10P-0001 joint tournant pneumatique à 10 passages",
     "d6d9f916709e47cc": "100 tr/min — rotation intermittente",
-    "7513cd2d22e67708": "Joint torique"
+    "7513cd2d22e67708": "Joint torique",
+    "6d6d05b16a501946": "BP-2P-08-0001 raccord tournant pneumatique compact à 2 passages en AL6061 avec trous de fixation M4",
+    "52254db545540725": "4 × M4 à chaque extrémité, profondeur 10 mm"
+  },
+  "index.html": {
+    "9fe9093761b70e00": "1 à 10 circuits",
+    "e2540ca35927bbed": "<img src=\"images/optimized/products/bp-10p-0001-hero.webp\" alt=\"BP-10P-0001 joint tournant pneumatique à 10 passages\" loading=\"lazy\" width=\"1600\" height=\"1200\">\n                <span class=\"portal-date\">Octobre 2026</span>\n                <strong>BP-10P-0001</strong>\n                <small>10 circuits d’air indépendants</small>",
+    "ca780fbf0f97b3ca": "BP-10P-0001 joint tournant pneumatique à 10 passages"
   }
 }

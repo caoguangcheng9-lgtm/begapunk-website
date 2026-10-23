@@ -435,7 +435,7 @@
         ],
         "envelope": {
           "shape": "cylindrical",
-          "maximumDiameterMm": 65,
+          "maximumDiameterMm": 56,
           "overallLengthMm": 66
         },
         "throughBore": {

@@ -193,7 +193,7 @@
   "Industries Served": "対応業界",
   "Month Warranty": "か月保証",
   "Day Delivery": "日で出荷",
-  "1-8 passages": "1～8流路",
+  "1-10 passages": "1～10流路",
   "Air / vacuum": "エア・真空",
   "Threaded / flange": "ねじ取付・フランジ取付",
   "Laser Tube Cutting": "レーザー管切断機",
@@ -1410,5 +1410,8 @@
   "Bottle capping": "ボトルキャッピング",
   "<a href=\"application-laser-tube-cutting.html\">Laser tube cutting</a>": "<a href=\"application-laser-tube-cutting.html\">レーザー管切断</a>",
   "<a href=\"application-cnc-pneumatic-clamping.html\">CNC pneumatic clamping</a>": "<a href=\"application-cnc-pneumatic-clamping.html\">CNC空圧クランプ</a>",
-  "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">ボトルキャッピング</a>"
+  "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">ボトルキャッピング</a>",
+  "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 M4取付穴を備えたAL6061製の小型2流路空圧ロータリージョイント",
+  "4 × M4 per end, depth 10 mm": "両端面に各4 × M4、深さ10 mm",
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "固定側：4 × M4、深さ10 mm；回転側：4 × M4、深さ10 mm"
 }

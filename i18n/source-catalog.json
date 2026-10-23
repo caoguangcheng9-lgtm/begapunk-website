@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-10-07T07:27:53.359Z",
+  "generatedAt": "2026-10-23T02:45:41.702Z",
   "pages": [
     "index.html",
     "about.html",
@@ -1499,15 +1499,15 @@
       ]
     },
     {
-      "id": "73107d9e4b1431ed",
-      "source": "<img src=\"images/optimized/products/BP-1P-0003-1.webp\" alt=\"Air swivel rotary joint for pneumatic tools\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Pneumatic Tools</strong>\n                <span>Compact air swivels for hose anti-twist and handheld tool air supply.</span>",
+      "id": "e2540ca35927bbed",
+      "source": "<img src=\"images/optimized/products/bp-10p-0001-hero.webp\" alt=\"BP-10P-0001 10-passage pneumatic rotary union with G1/8 fittings\" loading=\"lazy\" width=\"1600\" height=\"1200\">\n                <span class=\"portal-date\">October 2026</span>\n                <strong>BP-10P-0001</strong>\n                <small>10 independent air passages</small>",
       "pages": [
         "index.html"
       ]
     },
     {
-      "id": "e376957075aa1bae",
-      "source": "<img src=\"images/optimized/products/BP-2P-130-0001-1.webp\" alt=\"BP-2P-130-0001 heavy duty rotary joint\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">May 2026</span>\n                <strong>BP-2P-130-0001</strong>\n                <small>Heavy-duty 2-passage rotary joint for higher load</small>",
+      "id": "73107d9e4b1431ed",
+      "source": "<img src=\"images/optimized/products/BP-1P-0003-1.webp\" alt=\"Air swivel rotary joint for pneumatic tools\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Pneumatic Tools</strong>\n                <span>Compact air swivels for hose anti-twist and handheld tool air supply.</span>",
       "pages": [
         "index.html"
       ]
@@ -3407,8 +3407,8 @@
       ]
     },
     {
-      "id": "6d584ef3a0817174",
-      "source": "1-8 passages",
+      "id": "9fe9093761b70e00",
+      "source": "1-10 passages",
       "pages": [
         "index.html"
       ]
@@ -3821,6 +3821,13 @@
       "source": "300 RPM",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "52254db545540725",
+      "source": "4 × M4 per end, depth 10 mm",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -5408,6 +5415,7 @@
       "id": "ca780fbf0f97b3ca",
       "source": "BP-10P-0001 10-passage pneumatic rotary union with G1/8 fittings",
       "pages": [
+        "index.html",
         "products.html"
       ]
     },
@@ -5575,17 +5583,17 @@
       ]
     },
     {
-      "id": "2e19ef8657f1bba0",
-      "source": "BP-2P-08-0001 2-passage pneumatic rotary union M5 threaded compact AL6061",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "0134dd84cb319c7f",
       "source": "BP-2P-08-0001 and BP-3P-0004 are used for rear-chuck compressed air. Choose by the number of independently controlled air functions and the required interface.",
       "pages": [
         "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "6d6d05b16a501946",
+      "source": "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -5643,13 +5651,6 @@
       "source": "BP-2P-130-0001 air rotary union for a CNC pneumatic clamping fixture",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
-      "id": "9b2b8d8be56dfd3b",
-      "source": "BP-2P-130-0001 heavy duty rotary joint",
-      "pages": [
-        "index.html"
       ]
     },
     {
@@ -9460,20 +9461,6 @@
       ]
     },
     {
-      "id": "16b637de203d56a3",
-      "source": "M5 threaded",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "2a51535e477128d3",
-      "source": "M5 Threaded",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "5ba90bd4a34db64d",
       "source": "Machine Area",
       "pages": [
@@ -13122,6 +13109,13 @@
     {
       "id": "63b93bf0fe09b864",
       "source": "Stator 4 × M5 × 10 mm; rotor 6 × M5 × 8 mm; confirm supplied drawing",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "4f0d774b2e10f57a",
+      "source": "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm",
       "pages": [
         "product-comparison.html"
       ]

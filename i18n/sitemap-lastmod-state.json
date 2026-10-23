@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "pages": {
     "https://www.begapunk.com/": {
-      "contentSha256": "9f54d09f69ee7182766ade0ce97b1562907f17213339b1dce7e886b18d557386",
-      "lastmod": "2026-09-16"
+      "contentSha256": "da1b7acbf6a3f9cc14eba72ef7c3130ad3ac84177811c6c15a4c7e27f6beb3d3",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/about.html": {
       "contentSha256": "d14060c2833df25ba89c2b4c24462e8e5cab14f0f43154c3d1edcfdc4fabb2f2",
@@ -18,12 +18,12 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/products.html": {
-      "contentSha256": "12ca1485db60428f79b0d1f004d37bf4b7b1af7a29142f07e7c20246ee3e0f75",
-      "lastmod": "2026-10-07"
+      "contentSha256": "0e45a4d86b5f46bc2d9e16cf9e0745affca17d1075fb6566c89ba2a803091f0e",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/product-comparison.html": {
-      "contentSha256": "94e28f34516f2250bfdeaca4fabc455f288d5cdb3608d8c0b64ecd25595a4d92",
-      "lastmod": "2026-10-07"
+      "contentSha256": "6e470789df69425a8e730622c665f7f25fae16b9a64e66417f38e4358b2a7d08",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/BP-1P-0003.html": {
       "contentSha256": "368cadc36e107891540f355b29ce5f9b6129e5630c16a93ef56c24cba5b1d11d",
@@ -42,8 +42,8 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/BP-2P-08-0001.html": {
-      "contentSha256": "963a338da6a895e069fdb296e95642db47d102686a12aedd02954af0e6f66907",
-      "lastmod": "2026-09-16"
+      "contentSha256": "6caa4848e9835af6ccc1cc6c6deea241f691e03b07220653facec30341485c26",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/BP-2P-130-0001.html": {
       "contentSha256": "68fa0a7de89d23315f8cb1f5ba172af7d12bf106c55cb68d2e3944baf0105ea3",
@@ -226,8 +226,8 @@
       "lastmod": "2026-10-07"
     },
     "https://www.begapunk.com/de/": {
-      "contentSha256": "2389deec61ee7ed87f3949898723daf3a960da7f0d36e6c8cd498975382b1631",
-      "lastmod": "2026-09-16"
+      "contentSha256": "6f8c7864a42205af4b19e8e3492fbb5a27d15fb703d74716c421da2a861593f9",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/de/about.html": {
       "contentSha256": "88ef7836dcae30581f6472807c48deb818b0160ee1746e680fa1009ffd8e4153",
@@ -242,12 +242,12 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/de/products.html": {
-      "contentSha256": "852367d7411c02b39a42f24fc570e34d26fd609e7d8f680dcd672fa92b34a49d",
-      "lastmod": "2026-10-07"
+      "contentSha256": "b841613e2b056c87ceaf86d533a69c2e87023d2953dae9304499bef731e1f17b",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/de/product-comparison.html": {
-      "contentSha256": "73e0bb6fdc5554196454d4f523510be460077733da586add21b9106ffeac18ae",
-      "lastmod": "2026-10-07"
+      "contentSha256": "577fdab62d93e3f69760edeabbab3aac2ba44878fa942e90d2943a60ead4a5db",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/de/BP-1P-0003.html": {
       "contentSha256": "4c7086adc80f943008a05eceb5b2bbc536f71e79353fb114825dc3d62cce6094",
@@ -266,8 +266,8 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/de/BP-2P-08-0001.html": {
-      "contentSha256": "7d6532468c6628b3a69bc88b3ccc8cb0c97fbea5d1d7c412a263f8634c82879e",
-      "lastmod": "2026-09-16"
+      "contentSha256": "623b937266ba421c4f822fb00b76d02ecf8a10d0e4a4b9293a029d67d150f625",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/de/BP-2P-130-0001.html": {
       "contentSha256": "3f8d4e3484cac9488d008e7cc777cf20ca019683666b2aa67d1439ec424909ec",
@@ -450,8 +450,8 @@
       "lastmod": "2026-10-07"
     },
     "https://www.begapunk.com/fr/": {
-      "contentSha256": "f80fa01dee0d9ae1b838098c62217a22026ad1875ff921984bb8be0dc87cccf9",
-      "lastmod": "2026-09-16"
+      "contentSha256": "83f7534c867d4caeba41fb53c03368fe32138ab9000a90e8f7829baa959dbe96",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/fr/about.html": {
       "contentSha256": "c5ddd7521705ff4ccbaddfa7e10c71b554427b911d32ce163c57cd22680141e3",
@@ -466,12 +466,12 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/fr/products.html": {
-      "contentSha256": "3830d7eeb50284d3d5b3c46264af78e066b15eee9c4ad99a15ee8ceb77ac0f9e",
-      "lastmod": "2026-10-07"
+      "contentSha256": "a94dec7ab0413424975d71d928827db5e9e31e929216a94995723a2ea68f1b75",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/fr/product-comparison.html": {
-      "contentSha256": "b81198505382aa724f299af9bb01afc53df304254555e77885f6b3d891a2b75a",
-      "lastmod": "2026-10-07"
+      "contentSha256": "ecbcb8343aeb3d0c06d1ad8c2120cde42f683d931eb732e1eae7d4a3a2e081b5",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/fr/BP-1P-0003.html": {
       "contentSha256": "b6cb25cc84fe108f093994e6cc46ac12bcc4011f09e38ada41a7ddec90d4ea17",
@@ -490,8 +490,8 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/fr/BP-2P-08-0001.html": {
-      "contentSha256": "efb949ae586d5822c4874c1d06e2d03a8a69b4fec43e599501e4594a4d63064d",
-      "lastmod": "2026-09-16"
+      "contentSha256": "68437aeda05e0ed2130b5ccab821e5d2f7ac45c92d3e11bf7cf9455aa716f0f4",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/fr/BP-2P-130-0001.html": {
       "contentSha256": "c5dbdee7061f68db39f500504804811073261428ccfa9b89d750d25e5e5c04b4",
@@ -674,8 +674,8 @@
       "lastmod": "2026-10-07"
     },
     "https://www.begapunk.com/ja/": {
-      "contentSha256": "5f82c2d93d3dbeff0084a2c18d9f17cd59058d486e47dfd51a926147eb3b1104",
-      "lastmod": "2026-09-16"
+      "contentSha256": "8dccac6da8725e04d143023b8c9b68f2188818bfc1146ebfc2fa9827bdfc7667",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ja/about.html": {
       "contentSha256": "9ea5d53a837d1cac4b67f69f82a96e9a1cdf7c1a42fd48d9bc76875d928a092e",
@@ -690,12 +690,12 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/ja/products.html": {
-      "contentSha256": "1550e606cb9411fcf0594b556d39d0f7db55058a92f288793e96ee0067b3f466",
-      "lastmod": "2026-10-07"
+      "contentSha256": "57e87771c0c81e85ccff374c664b58671b85ceb759a7ffab0c2ec11c3385ca57",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ja/product-comparison.html": {
-      "contentSha256": "0b6fa2145ce4c6acb2a3bef0aa04fde623e6d9d441499b1eaceca0784b3bbe1b",
-      "lastmod": "2026-10-07"
+      "contentSha256": "95997d2935e4dd1c2434dac04feb9d0dafc627884110c5f541c4264c10a0bae7",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ja/BP-1P-0003.html": {
       "contentSha256": "debd0cf9cf3c214c4c1af747f35a356649385186b24d87a1f3cffefd30959229",
@@ -714,8 +714,8 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/ja/BP-2P-08-0001.html": {
-      "contentSha256": "72cbbc6bcab6835a274a26425de9973fd3c0df5b28e80be49bfe0613407221f7",
-      "lastmod": "2026-09-16"
+      "contentSha256": "15bc93238d9645f402cfb22cfb46ea59760d006783bf234e12b6ed2c60cc0a2d",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ja/BP-2P-130-0001.html": {
       "contentSha256": "4b3c84da8d667d60df9d950f460a0ebe173f7e7eee2c9637e1ed47d0aa1770a8",
@@ -898,8 +898,8 @@
       "lastmod": "2026-10-07"
     },
     "https://www.begapunk.com/ru/": {
-      "contentSha256": "d4115978cfa56101c043a5c7d23c691ef3586461dca2ec0f9bcb52680c9e621b",
-      "lastmod": "2026-09-16"
+      "contentSha256": "f5d449c76063b71d8064c4fb8ad983a97d9579573c8d270eb2b539adf45acdd9",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ru/about.html": {
       "contentSha256": "910a7acc7ea377a2b0ae23cd5cb54e6d1f1d457eb1f147a240528743033c1080",
@@ -914,12 +914,12 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/ru/products.html": {
-      "contentSha256": "1ace85b849ee15893e2f45a8a57fd71a6922cc5496ea3cdb0b500f0ef4469d13",
-      "lastmod": "2026-10-07"
+      "contentSha256": "323d2fa1d23d455f16c7bdef533889731e5c0ee900183eda213c7eacdb1ef5e0",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ru/product-comparison.html": {
-      "contentSha256": "d7e0fcff0c9f75421ec88ee271d90ee8f5d139e179279cb8e799d7291b0d2301",
-      "lastmod": "2026-10-07"
+      "contentSha256": "3fac814ad064634fe1ffc44d0e767d052db00844b6cadf9473e28b76a0a07705",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ru/BP-1P-0003.html": {
       "contentSha256": "e159b61ed94ba212b70ee1b294be47aa3e0f63f39035cae01b1712461d89254e",
@@ -938,8 +938,8 @@
       "lastmod": "2026-09-16"
     },
     "https://www.begapunk.com/ru/BP-2P-08-0001.html": {
-      "contentSha256": "83bbfc90992ed5bcc833507499d41d3eb80dd52f42881bf1bdcf793418544a1e",
-      "lastmod": "2026-09-16"
+      "contentSha256": "30b2b58697b8a87036ba53243fcf7c8f2b48618053944360bfad2ad82e137eac",
+      "lastmod": "2026-10-23"
     },
     "https://www.begapunk.com/ru/BP-2P-130-0001.html": {
       "contentSha256": "64f764375724fb35ee38540ddc2157a5dc410fdedd425d11e8eafe8933e7d5b1",

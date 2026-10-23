@@ -23,7 +23,7 @@
   "Pneumatic Rotary Union Model Comparison | Begapunk": "Pneumatische Drehdurchführungen vergleichen | Begapunk",
   "Knowledge Center": "Technisches Wissenszentrum",
   "Download Full Catalog (PDF)": "Gesamtkatalog herunterladen (PDF, Englisch)",
-  "1-8 passages": "1–8 Wege",
+  "1-10 passages": "1–10 Wege",
   "2-in-2-out": "2 Eingänge / 2 Ausgänge",
   "Max 100 RPM": "Max. 100 min⁻¹",
   "Application to product-family comparison": "Vergleich von Anwendungen und Produktfamilien",
@@ -1362,5 +1362,8 @@
   "Bottle capping": "Flaschenverschließen",
   "<a href=\"application-laser-tube-cutting.html\">Laser tube cutting</a>": "<a href=\"application-laser-tube-cutting.html\">Laser-Rohrschneiden</a>",
   "<a href=\"application-cnc-pneumatic-clamping.html\">CNC pneumatic clamping</a>": "<a href=\"application-cnc-pneumatic-clamping.html\">Pneumatische CNC-Spannvorrichtungen</a>",
-  "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Flaschenverschließen</a>"
+  "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Flaschenverschließen</a>",
+  "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 kompakte pneumatische Zweikanal-Drehdurchführung aus AL6061 mit M4-Befestigungsgewinden",
+  "4 × M4 per end, depth 10 mm": "Je Stirnseite 4 × M4, 10 mm tief",
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Stator: 4 × M4, 10 mm tief; Rotor: 4 × M4, 10 mm tief"
 }

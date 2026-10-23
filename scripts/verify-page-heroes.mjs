@@ -16,7 +16,7 @@ const homeContracts = {
     description: 'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.',
     sectionTitle: 'Find by Application',
     comparisonLabel: 'Model Comparison',
-    tags: ["1-8 passages", "Compressed air (catalog)", "Threaded / flange"],
+    tags: ["1-10 passages", "Compressed air (catalog)", "Threaded / flange"],
     applications: [
       ['application-laser-tube-cutting.html', 'Laser tube rear chuck', 'Compressed-air transfer; verify circuits and interfaces'],
       ['application-packaging-machinery.html', 'Packaging Lines', 'Rotary sealers and mandrels'],
@@ -29,7 +29,7 @@ const homeContracts = {
     description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für OEM-Maschinen, abgestimmt auf die tatsächlichen Betriebsbedingungen. Mindestbestellmenge: 1 Stück. Fertigungszeit: Katalogmodelle typischerweise etwa 20 Kalendertage; Sonderanfertigungen höchstens 30 Kalendertage. Jede Katalogseite enthält eine 2D-Zeichnung und ein STEP-AP214 zum Download.',
     sectionTitle: 'Nach Anwendung auswählen',
     comparisonLabel: 'Modellvergleich',
-    tags: ["1–8 Wege", "Druckluft (Katalog)", "Gewinde / Flansch"],
+    tags: ["1–10 Wege", "Druckluft (Katalog)", "Gewinde / Flansch"],
     applications: [
       ['application-laser-tube-cutting.html', 'Laserrohrschneiden', 'Druckluftübertragung zum hinteren Spannfutter'],
       ['application-packaging-machinery.html', 'Verpackungsmaschinen', 'Rotierende Siegelköpfe und Dorne'],
@@ -42,7 +42,7 @@ const homeContracts = {
     description: 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de fabrication : environ 20 jours calendaires pour les modèles du catalogue ; dans les 30 jours calendaires pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
     sectionTitle: 'Choisir par application',
     comparisonLabel: 'Comparer les modèles',
-    tags: ['1 à 8 circuits', 'Air comprimé (catalogue)', 'Filetage / bride'],
+    tags: ['1 à 10 circuits', 'Air comprimé (catalogue)', 'Filetage / bride'],
     applications: [
       ['application-laser-tube-cutting.html', 'Mandrin arrière pour découpe laser de tubes', 'Transfert d’air comprimé ; vérifier les circuits et les interfaces'],
       ['application-packaging-machinery.html', 'Lignes d’emballage', 'Scelleuses rotatives et mandrins'],
@@ -55,7 +55,7 @@ const homeContracts = {
     description: 'OEM装置向けのエアーロータリージョイント（空圧用ロータリージョイント）を、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
     sectionTitle: '用途から探す',
     comparisonLabel: '機種選定表',
-    tags: ["1～8流路", "圧縮空気（カタログ）", "ねじ取付・フランジ取付"],
+    tags: ["1～10流路", "圧縮空気（カタログ）", "ねじ取付・フランジ取付"],
     applications: [
       ['application-laser-tube-cutting.html', 'レーザー管切断機', '後側チャックへの圧縮空気供給'],
       ['application-packaging-machinery.html', '包装機械', '回転シール部・マンドレルへの流体供給'],
@@ -68,7 +68,7 @@ const homeContracts = {
     description: "Предлагаем стандартные и заказные пневматические ротационные соединения для OEM-оборудования и подбираем исполнение с учётом реальных условий эксплуатации. Минимальный заказ — 1 шт. Каталожные модели обычно изготавливаем примерно за 20 календарных дней, заказные исполнения — не более чем за 30 календарных дней. На странице каждой каталожной модели доступны 2D-чертёж и файл STEP AP214.",
     sectionTitle: 'Выбор по применению',
     comparisonLabel: 'Сравнение моделей',
-    tags: ["1-8 проходов", "Сжатый воздух (каталог)", "Резьба / фланец"],
+    tags: ["1-10 проходов", "Сжатый воздух (каталог)", "Резьба / фланец"],
     applications: [
       ['application-laser-tube-cutting.html', 'Лазерная резка труб', 'Подача сжатого воздуха к заднему патрону'],
       ['application-packaging-machinery.html', 'Упаковочные линии', 'Поворотные запаечные узлы и оправки'],

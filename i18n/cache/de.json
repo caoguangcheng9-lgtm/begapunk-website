@@ -57,7 +57,6 @@
     "2d151af2dc2a16f1": "<img src=\"images/optimized/2-in-2-out-Rotary-joint.webp\" alt=\"Drehdurchführung für Verpackungsmaschinen\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Verpackungsmaschinen</strong>\n                <span>Pneumatische Drehübergabe für Rundtische, Siegelköpfe und Beutelfüllmaschinen.</span>",
     "46abe75ab71d4181": "<img src=\"images/optimized/2-in-2-out-Rotary-joint.webp\" alt=\"Drehdurchführung für Vakuumverpackungsmaschinen\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Vakuumverpackungsmaschinen</strong>\n                <span>Getrenntes Vakuum, Abluft und Spannenluft für Rotationsverpackungsstationen.</span>",
     "73107d9e4b1431ed": "<img src=\"images/optimized/products/BP-1P-0003-1.webp\" alt=\"Druckluft-Drehdurchführung Drehdurchführung für Pneumatikwerkzeuge\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Pneumatikwerkzeuge</strong>\n                <span>Kompakte Druckluft-Drehdurchführungen für Schlauchverdrehungs- und Handwerkzeug-Luftversorgung.</span>",
-    "e376957075aa1bae": "<img src=\"images/optimized/products/BP-2P-130-0001-1.webp\" alt=\"BP-2P-130-0001 Schwerlast Drehdurchführung\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">Mai 2026</span>\n                <strong>BP-2P-130-0001</strong>\n                <small>Heavy Duty 2-Kanal Drehdurchführung für höhere Last</small>",
     "b5c6bdfbe0db878b": "<img src=\"images/optimized/products/BP-3P-0004-1.webp\" alt=\"pneumatische Drehdurchführung für Roboter-End-of-Arm-Tooling\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Roboter-End-of-Arm-Tooling</strong>\n                <span>Luft- und Vakuumübertragung für Robotergreifer, Saugnäpfe und rotierende Handgelenke.</span>",
     "12409bb7fc3675bd": "<img src=\"images/optimized/products/BP-3P-0004-1.webp\" alt=\"pneumatische Drehdurchführung für Elektronik- und Batteriearmaturen\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Elektronik &amp; Batteriebefestigungen</strong>\n                <span>Kompakte Luft- und Vakuumübertragung für rotierende Prüf- und Inspektionsstationen.</span>",
     "a4493c041fb54089": "<img src=\"images/optimized/products/BP-3P-0004-1.webp\" alt=\"Drehdurchführung für Automatisierungs-Rundtische\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Automatische Drehtische</strong>\n                <span>Multi-Kanal-Layouts für Rundschalttische, Armaturen, Greifer und Aktuatorsteuerung.</span>",
@@ -158,7 +157,6 @@
     "d488bc42800ce538": "1 MPa",
     "455f4feead4fb67a": "1 Kanal",
     "2ecb8a9488812b7e": "1 Kanal, 1 Einlass / 1 Auslass",
-    "6d584ef3a0817174": "1-8 Kanäle",
     "8dc7bf471f75d9f6": "1. Informationen, die wir sammeln",
     "0174fbb4a4607b13": "1. Produkte und Spezifikationen",
     "9c2d1f0fc24cf324": "10. Änderungen der Bedingungen",
@@ -281,7 +279,6 @@
     "dd278f2a06c8ecda": "BP-2P-130-0001",
     "1be31155adfbf1f5": "BP-2P-130-0001 · Schwerlast",
     "ed05eb020ee35a47": "BP-2P-130-0001 2-in-2-out Schwerlast Drehdurchführung 5 MPa großer Durchmesser",
-    "9b2b8d8be56dfd3b": "BP-2P-130-0001 Schwerlast Drehdurchführung",
     "de097da716344dde": "BP-2P-130-0001 Ansicht 1",
     "64d530ce74142c00": "BP-2P-130-0001 Ansicht 3",
     "4abd27e950122969": "BP-2P-16-0001",
@@ -492,8 +489,6 @@
     "424d37604333b56f": "Geringe Leckage und kompakte Gehäuse",
     "2db2c111a0824270": "Leckagearm und kompakte Montage",
     "b9c3e3a01fb62e0f": "Schmiermittel mit <strong>nicht mehr als zwei Pumpen</strong> Fett pro Anschluss während der routinemäßigen Wartung.",
-    "16b637de203d56a3": "M5 Gewinde",
-    "2a51535e477128d3": "M5 Gewinde",
     "5ba90bd4a34db64d": "Maschinenbereich",
     "17ccfa5b681e3e7b": "Instandhaltung",
     "d81e78f190e60a86": "Zugang zu Instandhaltungsarbeiten",
@@ -828,7 +823,6 @@
     "f3f6759c503e19a5": "BP-2P-08-0001 · 2 Eingänge / 2 Ausgänge",
     "816b00fc91b4f071": "BP-4P-30-0001 · 4-Kanal",
     "1a457bbaba7d2af0": "BP-3P-0007 · 3 Eingänge / 3 Ausgänge (G1/8)",
-    "2e19ef8657f1bba0": "BP-2P-08-0001 kompakte Zweikanal-Drehdurchführung aus Aluminium 6061 mit M5-Gewinde",
     "b4beaa60ae781125": "BP-4P-30-0001 Vierkanal-Drehdurchführung aus Aluminium 6061 mit Flansch und 30-mm-Durchgang",
     "2d5902ef7893eb36": "45#-Kohlenstoffstahl",
     "29b7e1a7616c66ff": "2D-PDF herunterladen",
@@ -977,6 +971,9 @@
     "e453b10ce060cb9a": "57 $/St. · 100+",
     "17fbd193bfd88dc7": "60 $/St. · 100+",
     "e5ab3d8f36118a91": "BP-2P-0002 · 2-zu-3 (G1/8)",
-    "e1810dbab10aca4d": "BP-2P-30-0001 · 2-Wege (Ø30 mm)"
+    "e1810dbab10aca4d": "BP-2P-30-0001 · 2-Wege (Ø30 mm)",
+    "6d6d05b16a501946": "BP-2P-08-0001 kompakte pneumatische Zweikanal-Drehdurchführung aus AL6061 mit M4-Befestigungsgewinden",
+    "52254db545540725": "Je Stirnseite 4 × M4, 10 mm tief",
+    "4f0d774b2e10f57a": "Stator: 4 × M4, 10 mm tief; Rotor: 4 × M4, 10 mm tief"
   }
 }

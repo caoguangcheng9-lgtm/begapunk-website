@@ -1238,7 +1238,7 @@
   "<span class=\"home-application-icon\" aria-hidden=\"true\">\n                    <svg viewBox=\"0 0 24 24\" focusable=\"false\"><path d=\"m4 7 8-4 8 4-8 4-8-4Z\"></path><path d=\"M4 7v10l8 4 8-4V7M12 11v10\"></path></svg>\n                </span>\n                <span class=\"home-application-copy\"><strong>Packaging Lines</strong><small>Rotary sealers and mandrels</small></span>": "<span class=\"home-application-icon\" aria-hidden=\"true\">\n                    <svg viewBox=\"0 0 24 24\" focusable=\"false\"><path d=\"m4 7 8-4 8 4-8 4-8-4Z\"></path><path d=\"M4 7v10l8 4 8-4V7M12 11v10\"></path></svg>\n                </span>\n                <span class=\"home-application-copy\"><strong>Lignes d’emballage</strong><small>Dispositifs de scellage et mandrins rotatifs</small></span>",
   "<span class=\"home-application-icon\" aria-hidden=\"true\">\n                    <svg viewBox=\"0 0 24 24\" focusable=\"false\"><path d=\"M9 3h6v3l2 3v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9l2-3V3Z\"></path><path d=\"M9 12h8M10 3h4\"></path></svg>\n                </span>\n                <span class=\"home-application-copy\"><strong>Bottle Filling</strong><small>Air distribution on rotary turrets</small></span>": "<span class=\"home-application-icon\" aria-hidden=\"true\">\n                    <svg viewBox=\"0 0 24 24\" focusable=\"false\"><path d=\"M9 3h6v3l2 3v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9l2-3V3Z\"></path><path d=\"M9 12h8M10 3h4\"></path></svg>\n                </span>\n                <span class=\"home-application-copy\"><strong>Remplissage de bouteilles</strong><small>Distribution d’air sur tourelles rotatives</small></span>",
   "<strong>Effective Date:</strong> May 8, 2026": "<strong>Date d’entrée en vigueur :</strong> 8 mai 2026",
-  "1-8 passages": "1 à 8 passages",
+  "1-10 passages": "1 à 10 circuits",
   "1. Information We Collect": "1. Informations recueillies",
   "1. Products and Specifications": "1. Produits et caractéristiques",
   "10. Contact Us": "10. Nous contacter",
@@ -1971,5 +1971,8 @@
   "Bottle capping": "Bouchage de bouteilles",
   "<a href=\"application-laser-tube-cutting.html\">Laser tube cutting</a>": "<a href=\"application-laser-tube-cutting.html\">Découpe laser de tubes</a>",
   "<a href=\"application-cnc-pneumatic-clamping.html\">CNC pneumatic clamping</a>": "<a href=\"application-cnc-pneumatic-clamping.html\">Bridage pneumatique CNC</a>",
-  "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Bouchage de bouteilles</a>"
+  "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Bouchage de bouteilles</a>",
+  "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 raccord tournant pneumatique compact à 2 passages en AL6061 avec trous de fixation M4",
+  "4 × M4 per end, depth 10 mm": "4 × M4 à chaque extrémité, profondeur 10 mm",
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Stator : 4 × M4, profondeur 10 mm ; rotor : 4 × M4, profondeur 10 mm"
 }

@@ -79,7 +79,6 @@
     "46abe75ab71d4181": "<img src=\"images/optimized/2-in-2-out-Rotary-joint.webp\" alt=\"raccord tournant pour machines d&#x27;emballage sous vide\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Machines d'emballage sous vide</strong>\n                <span>Aspirateur séparé, relâcher l'air et serrer l'air pour les postes d'emballage rotatifs.</span>",
     "4161677e943fce52": "<img src=\"images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"raccord tournant pneumatique pour une machine à découper les tubes laser\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Transfert d'air comprimé à l'arrière du tube laser</strong>\n                <span>Applications vérifiées à l'aide de BP-3P-0004 et BP-2P-08-0001. Le nombre de circuits et les interfaces doivent être confirmés par rapport à la conception du mandrin et de la machine.</span>",
     "73107d9e4b1431ed": "<img src=\"images/optimized/products/BP-1P-0003-1.webp\" alt=\"raccord tournant rotatif pour outils pneumatiques\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Outils pneumatiques</strong>\n                <span>Volants d'air compacts pour l'alimentation d'air anti-torsion et d'outils portatifs.</span>",
-    "e376957075aa1bae": "<img src=\"images/optimized/products/BP-2P-130-0001-1.webp\" alt=\"BP-2P-130-0001 raccord tournant lourd\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">Mai 2026</span>\n                <strong>BP-2P-130-0001</strong>\n                <small>raccord tournant à 2 passages pour charge plus élevée</small>",
     "1894656c9ed4ac0a": "<img src=\"images/optimized/products/BP-2P-50-0001-1.webp\" alt=\"Raccord tournant BP-2P-50-0001 avec capot de protection et labyrinthe\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <span class=\"portal-date\">Mai 2026</span>\n                <strong>BP-2P-50-0001</strong>\n                <small>Capot de protection et labyrinthe pour environnements industriels poussiéreux</small>",
     "b5c6bdfbe0db878b": "<img src=\"images/optimized/products/BP-3P-0004-1.webp\" alt=\"Raccordement rotatif à air pour l&#x27;outillage en fin d&#x27;arm\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Outillage de fin d'armement de robot</strong>\n                <span>Transfert d'air et de vide pour pinces robot, ventouses et poignets rotatifs.</span>",
     "12409bb7fc3675bd": "<img src=\"images/optimized/products/BP-3P-0004-1.webp\" alt=\"Raccordement rotatif pneumatique pour appareils électroniques et pour batteries\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Accessoires de batterie électroniques &amp;</strong>\n                <span>Transfert compact d'air et de vide pour les postes d'essai et d'inspection rotatifs.</span>",
@@ -330,7 +329,6 @@
     "d488bc42800ce538": "1 MPa",
     "455f4feead4fb67a": "1 passage",
     "2ecb8a9488812b7e": "1 passage, 1-en-1-out",
-    "6d584ef3a0817174": "1-8 passages",
     "18624ab911e7e132": "1-en 8-hors",
     "d80705e185aae927": "1-en-8-out, orifice de 4 mm",
     "9854d4257b06259e": "1-passage",
@@ -576,7 +574,6 @@
     "61666ef0059b2173": "BP-2P-0002 vue 2",
     "5617750f55350242": "BP-2P-0002 vue 3",
     "f3f6759c503e19a5": "BP-2P-08-0001 · Compact 2-passage",
-    "2e19ef8657f1bba0": "BP-2P-08-0001 raccord tournant pneumatique 2 passages M5 filetée compacte AL6061",
     "0134dd84cb319c7f": "BP-2P-08-0001 et BP-3P-0004 sont utilisés pour l'air comprimé à l'arrière. Choisissez par le nombre de fonctions d'air contrôlées indépendamment et l'interface requise.",
     "a866ad3e627e2bc4": "BP-2P-08-0001 est une autre option pour une prise pneumatique à trois javelots. L'installation montrée utilise BP-2P-16-0001. Nous comparerons le nombre de passages, l'interface de montage, la pression, la vitesse et les dimensions avant de recommander l'un ou l'autre modèle.",
     "fccd3e936c62e3a1": "BP-2P-08-0001 fournit deux passages indépendants, et BP-3P-0004 en fournit trois. Choisissez en fonction du nombre de fonctions d'air contrôlées séparément et de l'interface requise.",
@@ -586,7 +583,6 @@
     "1be31155adfbf1f5": "BP-2P-130-0001 · Services lourds",
     "ed05eb020ee35a47": "BP-2P-130-0001 raccord tournant 2-en-2-out 5 MPa de grand diamètre",
     "49aa6460a2cd05cc": "BP-2P-130-0001 raccord tournant pour un dispositif de serrage pneumatique CNC",
-    "9b2b8d8be56dfd3b": "BP-2P-130-0001 raccord tournant lourd",
     "02dd96707048febb": "BP-2P-130-0001 dans un appareil à scie circulaire CNC personnalisé",
     "2d1287a8d997ee4e": "BP-2P-130-0001 est installé à l'arrière d'un appareil CNC personnalisé sur une scie à lame circulaire. Deux passages indépendants à air comprimé actionnent les fonctions de serrage et de relâchement.",
     "0a3c6b5ce4eb6685": "BP-2P-130-0001 utilisé dans la scie circulaire à basse vitesse d'un client.",
@@ -1035,8 +1031,6 @@
     "2cf661ae4775e78f": "Faible masse",
     "b61459bee7fefeae": "Équipement de production client à basse vitesse; la vitesse de rotation exacte n'est pas établie par la vidéo",
     "b9c3e3a01fb62e0f": "Lubrifiant avec <strong>pas plus de deux pompes</strong> de graisse par raccord pendant l'entretien de routine.",
-    "16b637de203d56a3": "M5 fileté",
-    "2a51535e477128d3": "M5 Threaded",
     "5ba90bd4a34db64d": "Zone des machines",
     "c6fd9fbaa30de6c2": "Usinage, assemblage et inspection passage par passage",
     "17ccfa5b681e3e7b": "Entretien",
@@ -1681,6 +1675,9 @@
     "9f0d167ee2a30d59": "Pour commencer, un type de machine, une référence, une photo ou un plan suffit. Partagez les informations dont vous disposez ; nous identifierons un modèle du catalogue ou une solution sur mesure adaptée.",
     "db72256304bbafc0": "Votre société Ltd.",
     "2f7ed06c5bf3abf6": "Votre machine n'a pas besoin de correspondre à une catégorie existante.",
-    "40a246d93d023329": "Votre demande sera examinée par nos ingénieurs. Nous répondons normalement dans un jour ouvrable."
+    "40a246d93d023329": "Votre demande sera examinée par nos ingénieurs. Nous répondons normalement dans un jour ouvrable.",
+    "6d6d05b16a501946": "BP-2P-08-0001 raccord tournant pneumatique compact à 2 passages en AL6061 avec trous de fixation M4",
+    "52254db545540725": "4 × M4 à chaque extrémité, profondeur 10 mm",
+    "4f0d774b2e10f57a": "Stator : 4 × M4, profondeur 10 mm ; rotor : 4 × M4, profondeur 10 mm"
   }
 }

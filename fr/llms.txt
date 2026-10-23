@@ -62,7 +62,7 @@
 
 ## Entreprise et services
 
-- [Raccord tournant pneumatique | Standard et sur mesure | Begapunk](https://www.begapunk.com/fr/): Raccords tournants pneumatiques pour constructeurs de machines et OEM : 1 à 8 passages, modèles standard ou sur mesure, plans 2D et fichiers STEP pour vérifier l’intégration.
+- [Raccord tournant pneumatique | Standard et sur mesure | Begapunk](https://www.begapunk.com/fr/): Raccords tournants pneumatiques pour constructeurs de machines et OEM : 1 à 10 passages, modèles standard ou sur mesure, plans 2D et fichiers STEP pour vérifier l’intégration.
 - [À propos de Begapunk | Fabricant de raccords tournants](https://www.begapunk.com/fr/about.html): Découvrez Begapunk, fabricant basé à Ningbo de raccords tournants pneumatiques standard et sur mesure pour l’automatisation industrielle et les machines tournantes.
 - [Fabrication et qualité | Raccords tournants Begapunk](https://www.begapunk.com/fr/manufacturing-quality.html): Découvrez comment Begapunk spécifie l’anodisation dure des rotors, l’anodisation couleur des corps de stator et contrôle l’épaisseur des revêtements.
 - [Essai d’étanchéité à 100 %, circuit par circuit | Begapunk](https://www.begapunk.com/fr/production-inspection-testing.html): Chaque circuit de chaque raccord tournant pneumatique est soumis à un essai d’étanchéité à l’air comprimé sous 1,0 MPa après l’assemblage final.

@@ -92,7 +92,7 @@ const governedGeneratedCopy = Object.freeze({
       'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.': 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de fabrication : environ 20 jours calendaires pour les modèles du catalogue ; dans les 30 jours calendaires pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
       'Find by Application': 'Choisir par application',
       'Model Comparison': 'Comparer les modèles',
-      '1-8 passages': '1 à 8 circuits',
+      '1-10 passages': '1 à 10 circuits',
       'Compressed air (catalog)': 'Air comprimé (catalogue)',
       'Threaded / flange': 'Filetage / bride',
       'Laser tube rear chuck': 'Mandrin arrière pour découpe laser de tubes',
@@ -1972,7 +1972,7 @@ function applyGovernedGeneratedDomCopy($, languageCode, pageName) {
   requireOne('.hero-def', 'hero description').text(copy['Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.']);
   requireOne('#home-application-title', 'application section title').text(copy['Find by Application']);
   requireOne('.portal-heading > a[href="product-comparison.html"]', 'model-comparison label').text(copy['Model Comparison']);
-  requireOne('.hero-spec-tag.tag-passages', 'passage tag').text(copy['1-8 passages']);
+  requireOne('.hero-spec-tag.tag-passages', 'passage tag').text(copy['1-10 passages']);
   requireOne('.hero-spec-tag.tag-media', 'media tag').text(copy['Compressed air (catalog)']);
   requireOne('.hero-spec-tag.tag-mounting', 'mounting tag').text(copy['Threaded / flange']);
 

@@ -3219,7 +3219,9 @@
     "6ee871d2b4b1670e": "BP-10P-0001 · 10流路",
     "ca780fbf0f97b3ca": "BP-10P-0001 10流路エアロータリージョイント",
     "d6d9f916709e47cc": "100 min⁻¹（間欠回転）",
-    "7513cd2d22e67708": "Oリング"
+    "7513cd2d22e67708": "Oリング",
+    "6d6d05b16a501946": "BP-2P-08-0001 M4取付穴を備えたAL6061製の小型2流路空圧ロータリージョイント",
+    "52254db545540725": "両端面に各4 × M4、深さ10 mm"
   },
   "index.html": {
     "b394d0af8b4dc4d9": "OEM装置向けのエアーロータリージョイント（空圧用ロータリージョイント）を、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。",
@@ -3229,7 +3231,6 @@
     "f8e3bcf95f065143": "空圧ロータリージョイント｜標準品・特注品",
     "5291c2317381a072": "工作機械、包装機、充填機、レーザー加工機、自動化設備向けに、標準品および特注の空圧ロータリージョイントを提供します。STEP/IGESデータは、型式および用途の確認後、対象となる案件に提供できる場合があり、ファイル形式と提供時期は案件ごとに確定します。",
     "297ad8531d8726ec": "用途から探す",
-    "6d584ef3a0817174": "1～8流路",
     "8127b08354f14a88": "エア・作動油",
     "362c21c2ed292383": "ねじ取付・フランジ取付",
     "bdab0463aa465968": "<span class=\"home-application-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"5\"></circle><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4M15.5 8.5l3-3\"></path></svg></span><span class=\"home-application-copy\"><strong>レーザー管切断機</strong><small>後側チャックへの圧縮空気供給</small></span>",
@@ -3237,7 +3238,10 @@
     "837f5887bf7486a5": "<span class=\"home-application-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><path d=\"M9 3h6v3l2 3v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9l2-3V3Z\"></path><path d=\"M9 12h8M10 3h4\"></path></svg></span><span class=\"home-application-copy\"><strong>ボトル充填</strong><small>回転タレットへのエア供給</small></span>",
     "603b574865883a16": "<span class=\"home-application-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 3v3M21 12h-3M12 21v-3M3 12h3\"></path></svg></span><span class=\"home-application-copy\"><strong>回転テーブル</strong><small>空圧治具・クランプ回路への供給</small></span>",
     "ea47cd2409e8b2d1": "OEM機械向け空圧用ロータリージョイント | Begapunk",
-    "2aafd7cd79068463": "型式ごとの検査条件"
+    "2aafd7cd79068463": "型式ごとの検査条件",
+    "9fe9093761b70e00": "1～10流路",
+    "e2540ca35927bbed": "<img src=\"images/optimized/products/bp-10p-0001-hero.webp\" alt=\"BP-10P-0001 10流路エアロータリージョイント\" loading=\"lazy\" width=\"1600\" height=\"1200\">\n                <span class=\"portal-date\">2026年10月</span>\n                <strong>BP-10P-0001</strong>\n                <small>独立した10系統の空気流路</small>",
+    "ca780fbf0f97b3ca": "BP-10P-0001 10流路エアロータリージョイント"
   },
   "product-comparison.html": {
     "43068b4a3a779593": "流路数、最高使用圧力、最高回転数、取付方式、本体材質、代表用途から、Begapunkの空圧用ロータリージョイントを比較できます。",
@@ -3296,7 +3300,8 @@
     "e892b2aacb35431d": "独立した10系統の空気流路",
     "ce02aeef749c3257": "100 min⁻¹（間欠回転）",
     "66e3f743071b5c6c": "端面取付・各端面10×M5・中心貫通穴なし",
-    "f72668a1d666f93f": "独立した10系統の圧縮空気回路が必要な間欠回転治具向け。最高圧力1 MPa、最高回転数100 min⁻¹。中心貫通穴はありません。カタログ仕様の対応流体は圧縮空気です。"
+    "f72668a1d666f93f": "独立した10系統の圧縮空気回路が必要な間欠回転治具向け。最高圧力1 MPa、最高回転数100 min⁻¹。中心貫通穴はありません。カタログ仕様の対応流体は圧縮空気です。",
+    "4f0d774b2e10f57a": "固定側：4 × M4、深さ10 mm；回転側：4 × M4、深さ10 mm"
   },
   "application-steel-dusty-environments.html": {
     "ff9fff577e962e1a": "/ 製鉄・粉じん環境",
