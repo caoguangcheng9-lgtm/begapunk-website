@@ -39,12 +39,12 @@
       "leadTime"
     ],
     "BP-2P-08-0001": [
+      "performance",
+      "bore",
       "passages",
       "price",
       "leadTime",
-      "warranty",
-      "delivery",
-      "quality"
+      "orderSupport"
     ],
     "BP-2P-130-0001": [
       "performance",
@@ -56,7 +56,7 @@
     ],
     "BP-2P-16-0001": [
       "performance",
-      "body",
+      "bore",
       "passages",
       "mount",
       "media",
@@ -64,7 +64,7 @@
     ],
     "BP-2P-30-0001": [
       "performance",
-      "body",
+      "bore",
       "passages",
       "mount",
       "media",
@@ -72,7 +72,7 @@
     ],
     "BP-2P-50-0001": [
       "performance",
-      "protection",
+      "bore",
       "passages",
       "mount",
       "media",
@@ -301,6 +301,8 @@
       "stepDownloadLabel": "Download 3D Model (.step)",
   "keySpecLabels": {
         "performance": "Pressure / speed",
+        "bore": "Through bore",
+        "orderSupport": "Supply / support",
         "body": "Body",
         "seal": "Seal",
         "passages": "Passages / MOQ",
@@ -332,9 +334,7 @@
         },
         "BP-2P-08-0001": {
           "price": "100+ pcs: $42/pc\n1–99 pcs: request quote",
-          "warranty": "1 year from shipment",
-          "delivery": "Worldwide shipping · FOB Ningbo",
-          "quality": "Leak-tested · inspection report"
+          "orderSupport": "Warranty: 1 year from shipment. Worldwide shipping · FOB Ningbo. Leak-tested · inspection report."
         },
         "BP-2P-95-0005": {
           "price": "100+ pcs: $218/pc\n1–99 pcs: request quote",
@@ -373,6 +373,8 @@
       "stepDownloadLabel": "3D-Modell (.step) herunterladen",
   "keySpecLabels": {
         "performance": "Druck / Drehzahl",
+        "bore": "Durchgangsbohrung",
+        "orderSupport": "Lieferung / Service",
         "body": "Gehäuse",
         "seal": "Dichtung",
         "passages": "Kanäle / MOQ",
@@ -404,9 +406,7 @@
         },
         "BP-2P-08-0001": {
           "price": "Ab 100 St.: 42 $/St.\n1–99 St.: Angebot anfragen",
-          "warranty": "1 Jahr ab Versand",
-          "delivery": "Weltweiter Versand · FOB Ningbo",
-          "quality": "Dichtheitsprüfung · Prüfbericht"
+          "orderSupport": "Garantie: 1 Jahr ab Versand. Weltweiter Versand · FOB Ningbo. Dichtheitsprüfung · Prüfbericht."
         },
         "BP-2P-95-0005": {
           "price": "Ab 100 St.: 218 $/St.\n1–99 St.: Angebot anfragen",
@@ -445,6 +445,8 @@
       "stepDownloadLabel": "Télécharger le modèle 3D (.step)",
       "keySpecLabels": {
         "performance": "Pression / vitesse",
+        "bore": "Alésage traversant",
+        "orderSupport": "Livraison / service",
         "body": "Corps",
         "seal": "Joint d’étanchéité",
         "passages": "Passages / quantité minimale",
@@ -466,8 +468,7 @@
       },
       "keySpecValueOverrides": {
         "BP-2P-50-0001": {
-          "media": "Fluide standard : air",
-          "protection": "Capot de protection et labyrinthe"
+          "media": "Fluide standard : air"
         },
         "BP-3P-0004": {
           "price": "À partir de 100 pièces : 57 $/pièce\n1 à 99 pièces : demander un devis",
@@ -477,9 +478,7 @@
         },
         "BP-2P-08-0001": {
           "price": "À partir de 100 pièces : 42 $/pièce\n1 à 99 pièces : demander un devis",
-          "warranty": "1 an à compter de l'expédition",
-          "delivery": "Expédition mondiale · FOB Ningbo",
-          "quality": "Contrôle d’étanchéité · rapport d’inspection"
+          "orderSupport": "Garantie : 1 an à compter de l'expédition. Expédition mondiale · FOB Ningbo. Contrôle d’étanchéité · rapport d’inspection."
         },
         "BP-2P-95-0005": {
           "price": "À partir de 100 pièces : 218 $/pièce\n1 à 99 pièces : demander un devis",
@@ -518,6 +517,8 @@
       "stepDownloadLabel": "3Dモデル（.step）をダウンロード",
   "keySpecLabels": {
         "performance": "圧力／回転数",
+        "bore": "貫通穴",
+        "orderSupport": "納品・サポート",
         "body": "ボディ",
         "seal": "シール",
         "passages": "流路／MOQ",
@@ -549,9 +550,7 @@
         },
         "BP-2P-08-0001": {
           "price": "100個以上：$42/個\n1〜99個：見積もりを依頼",
-          "warranty": "出荷から1年間",
-          "delivery": "世界発送 · FOB寧波",
-          "quality": "漏れ検査 · 検査レポート"
+          "orderSupport": "保証：出荷から1年間。世界発送・FOB寧波。漏れ検査・検査レポート。"
         },
         "BP-2P-95-0005": {
           "price": "100個以上：$218/個\n1〜99個：見積もりを依頼",
@@ -590,6 +589,8 @@
       "stepDownloadLabel": "Скачать 3D-модель (.step)",
   "keySpecLabels": {
         "performance": "Давление / частота вращения",
+        "bore": "Проходное отверстие",
+        "orderSupport": "Поставка / поддержка",
         "body": "Корпус",
         "seal": "Уплотнение",
         "passages": "Каналы / MOQ",
@@ -621,9 +622,7 @@
         },
         "BP-2P-08-0001": {
           "price": "От 100 шт.: $42/шт.\n1–99 шт.: запросить цену",
-          "warranty": "1 год с отгрузки",
-          "delivery": "Доставка по всему миру · FOB Нинбо",
-          "quality": "Проверка герметичности · протокол испытаний"
+          "orderSupport": "Гарантия: 1 год с отгрузки. Доставка по всему миру · FOB Нинбо. Проверка герметичности · протокол испытаний."
         },
         "BP-2P-95-0005": {
           "price": "От 100 шт.: $218/шт.\n1–99 шт.: запросить цену",

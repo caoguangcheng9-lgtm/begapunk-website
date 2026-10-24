@@ -1210,6 +1210,7 @@ export function drawingBackedUiContract(locale, model) {
     fields,
     keyValues: {
       performance: uiPerformance(locale, pressure, speed), body, seal, passages: uiPassagesMoq(locale, model), media: keyMedia,
+      ...(bore ? { bore } : {}),
       mount: uiFormatMountingKey(locale, model, facts.mounting),
       ports: uiFormatPortsKey(locale, model, facts.ports),
       ...(model === 'BP-3P-S06-0001' ? { channels } : {}),
@@ -1411,7 +1412,18 @@ function verifiedMetadataDescription(locale, model, product, heading) {
   const russianMediaLabel = facts.media.length === 1 ? 'среда' : 'среды';
 
   let baseDescription;
-  if (model === 'BP-3P-0006') {
+  if (twoPassageBoreModels.has(model)) {
+    const bore = localizedNumber(locale, facts.throughBore.diameterMm);
+    const pressureMpa = localizedNumber(locale, facts.maximumPressure.value);
+    baseDescription = uiPhrase(locale, {
+      en: `${model}: 2-passage pneumatic rotary union with a Ø${bore} mm through bore. Published limits: ${pressureMpa} MPa, ${speed} RPM. PDF/STEP drawings and quotes available.`,
+      de: `${model}: pneumatische 2-Kanal-Drehdurchführung mit Ø${bore} mm Durchgangsbohrung. Grenzwerte: ${pressureMpa} MPa, ${speed} min⁻¹. PDF/STEP-Zeichnungen und Angebot verfügbar.`,
+      fr: `${model} : raccord tournant pneumatique à 2 passages avec alésage traversant de Ø${bore} mm. Limites publiées : ${pressureMpa} MPa, ${speed} tr/min. Plans PDF/STEP et devis disponibles.`,
+      ja: `${model}は中空穴径Ø${bore} mmの2流路空圧ロータリージョイントです。公表上限は${pressureMpa} MPa、${speed} min⁻¹。PDF図面・STEPモデルのダウンロードと見積依頼に対応。`,
+      ru: `${model}: 2-канальное пневматическое вращающееся соединение с проходным отверстием Ø${bore} мм. Предельные значения: ${pressureMpa} МПа, ${speed} об/мин. Чертежи PDF/STEP и запрос цены.`,
+    });
+    return baseDescription;
+  } else if (model === 'BP-3P-0006') {
     baseDescription = uiPhrase(locale, {
       en: `${heading}. ${pressure}, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before fittings.`,
       de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium: ${media}. Anschlussgewinde vor Fittingwahl bestätigen.`,
@@ -1465,24 +1477,35 @@ function pendingIdentityMetadataDescription(locale, model, heading) {
 }
 
 // Exact reviewed search-title overrides; visible product headings and facts stay unchanged.
+const twoPassageBoreModels = new Set(['BP-2P-08-0001', 'BP-2P-16-0001', 'BP-2P-30-0001', 'BP-2P-50-0001']);
+const twoPassageBoreTitles = Object.fromEntries([...twoPassageBoreModels].flatMap((model) => {
+  const bore = products[model].drawingFacts.throughBore;
+  if (bore?.status !== 'verified' || !Number.isFinite(bore.diameterMm) || bore.diameterMm <= 0) {
+    throw new Error(`${model}: search title requires a verified through-bore diameter.`);
+  }
+  return Object.entries({
+    en: `${model} 2-Passage Pneumatic Rotary Union | Ø${bore.diameterMm} mm Bore`,
+    de: `${model} 2-Kanal-Pneumatik-Drehdurchführung | Ø${bore.diameterMm} mm Durchgang`,
+    fr: `${model} raccord tournant pneumatique 2 passages | Alésage Ø${bore.diameterMm} mm`,
+    ja: `${model} 2流路 空圧ロータリージョイント | 中空穴Ø${bore.diameterMm} mm`,
+    ru: `${model} 2-канальное пневматическое вращающееся соединение | Ø${bore.diameterMm} мм`,
+  }).map(([locale, title]) => [`${locale}/${model}`, title]);
+}));
 const productSearchTitleOverrides = Object.freeze({
   "ru/BP-1P-0003": "BP-1P-0003 1-канальное пневматическое вращающееся соединение",
-  "ru/BP-2P-08-0001": "BP-2P-08-0001 2-канальное пневматическое вращающееся соединение",
-  "ru/BP-2P-50-0001": "BP-2P-50-0001 2-канальное пневматическое вращающееся соединение",
   "ru/BP-2P-0001": "BP-2P-0001 2-канальное пневматическое вращающееся соединение",
   "ru/BP-3P-S06-0001": "BP-3P-S06-0001 3-канальное пневмоэлектрическое вращающееся соединение",
-  "ru/BP-2P-16-0001": "BP-2P-16-0001 2-канальное пневматическое вращающееся соединение",
   "ru/BP-1P-0006": "BP-1P-0006 1-канальное пневматическое вращающееся соединение",
   "ru/BP-3P-0006": "BP-3P-0006 3-канальное пневматическое вращающееся соединение",
   "ru/BP-8P-0001": "BP-8P-0001 8-канальное пневматическое вращающееся соединение",
   "ru/BP-3P-0004": "BP-3P-0004 3-канальное пневматическое вращающееся соединение",
-  "ru/BP-2P-30-0001": "BP-2P-30-0001 2-канальное пневматическое вращающееся соединение",
   "ru/BP-2P-130-0001": "BP-2P-130-0001 2-канальное пневматическое вращающееся соединение",
   "ru/BP-2P-0002": "BP-2P-0002 2-канальное пневматическое вращающееся соединение",
   "ru/BP-3P-0007": "BP-3P-0007 3-канальное пневматическое вращающееся соединение",
   "fr/BP-2P-95-0005": "BP-2P-95-0005 raccord tournant pneumatique à 2 passages | Begapunk",
   "ru/BP-4P-30-0001": "BP-4P-30-0001 4-канальное пневматическое вращающееся соединение",
-  "fr/BP-3P-S06-0001": "BP-3P-S06-0001 raccord tournant pneumatique-électrique à 3 passages"
+  "fr/BP-3P-S06-0001": "BP-3P-S06-0001 raccord tournant pneumatique-électrique à 3 passages",
+  ...twoPassageBoreTitles,
 });
 
 export function drawingBackedProductMetadata(locale, model) {

@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-10-23T02:45:41.702Z",
+  "generatedAt": "2026-10-24T03:00:12.828Z",
   "pages": [
     "index.html",
     "about.html",
@@ -2178,6 +2178,13 @@
       ]
     },
     {
+      "id": "86b53a0d1d5145ae",
+      "source": "<strong>Air circuits:</strong> Passage count depends on the independent air circuits and valve arrangement.",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
       "id": "23d1cfcfef36cb7d",
       "source": "<strong>Allow free movement.</strong> There should be a slight, kink-free curve in the hose when installed. It is essential that the housing or shaft is allowed to float to compensate for any eccentricity or misalignment.",
       "pages": [
@@ -2224,13 +2231,6 @@
       "source": "<strong>Bore:</strong> 3–6 mm for small grippers; 6–10 mm for larger actuators",
       "pages": [
         "application-electronics-battery-test-fixtures.html"
-      ]
-    },
-    {
-      "id": "a0648c7facfbb1d1",
-      "source": "<strong>Bore:</strong> 6–10 mm for standard clamps; 16–30 mm for large fixture plates",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
       ]
     },
     {
@@ -2640,6 +2640,13 @@
       ]
     },
     {
+      "id": "56cabde6f58f9be5",
+      "source": "<strong>Installation:</strong> Share mounting dimensions, airflow requirements, and any through-bore requirement.",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
       "id": "82d20b98c16a68cd",
       "source": "<strong>Integration:</strong> review pneumatic-electric combination when signals are required",
       "pages": [
@@ -2710,13 +2717,6 @@
       ]
     },
     {
-      "id": "dabce8998f34d3dd",
-      "source": "<strong>Media:</strong> dry air + water-soluble coolant — seal must resist both",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
       "id": "1cb9b90bb298cb46",
       "source": "<strong>Media:</strong> dry air; other media require written compatibility confirmation for the selected model and operating conditions",
       "pages": [
@@ -2742,6 +2742,13 @@
       "source": "<strong>Medium and passages:</strong> list what flows through each passage and which circuits must remain separate.",
       "pages": [
         "application-textile-printing-converting.html"
+      ]
+    },
+    {
+      "id": "e580935590b684a2",
+      "source": "<strong>Medium:</strong> The pneumatic catalog models shown here are for compressed air. Coolant transfer requires separate selection.",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
       ]
     },
     {
@@ -2773,13 +2780,6 @@
       ]
     },
     {
-      "id": "b41b3ca2f9dab688",
-      "source": "<strong>Mounting:</strong> flange mount preferred for fixture plate integration",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
       "id": "ae59b8b79dd54170",
       "source": "<strong>Mounting:</strong> flange with heat shield — keep joint away from direct spatter",
       "pages": [
@@ -2794,17 +2794,17 @@
       ]
     },
     {
+      "id": "d30922a8973f2ebe",
+      "source": "<strong>Operating conditions:</strong> Provide the required pressure, rotational speed, and duty cycle so we can select a suitable model.",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
       "id": "ba246dc61f430d51",
       "source": "<strong>Order data:</strong> Retained as required by applicable tax, accounting, warranty, and commercial laws.",
       "pages": [
         "privacy.html"
-      ]
-    },
-    {
-      "id": "92523f09f960fd9a",
-      "source": "<strong>Passages:</strong> 1–4 (clamp + unclamp + blow-off + coolant mist)",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
       ]
     },
     {
@@ -2882,13 +2882,6 @@
       "source": "<strong>Pressure:</strong> 0.4–0.8 MPa (clamping); confirm the continuous-duty limit for the selected model against the current product page, approved drawing, gas mixture, temperature, and welding cycle",
       "pages": [
         "application-welding-positioners.html"
-      ]
-    },
-    {
-      "id": "a96f2c83f3e9140f",
-      "source": "<strong>Pressure:</strong> 0.4–0.8 MPa (clamping); confirm the continuous-duty limit for the selected model against the current product page, approved drawing, medium, temperature, and machining cycle",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
       ]
     },
     {
@@ -2997,13 +2990,6 @@
       ]
     },
     {
-      "id": "2d2311b1ed36f727",
-      "source": "<strong>RPM:</strong> &lt;200 (most fixtures) / up to 500 (high-speed rotary tables)",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
       "id": "4b5b4f5b292712a8",
       "source": "<strong>RPM:</strong> &lt;60 (welding positioner) / up to 120 (pipe rotators)",
       "pages": [
@@ -3029,13 +3015,6 @@
       "source": "<strong>Seal:</strong> Glyd Ring (PTFE composite) — low leakage essential for vacuum stability",
       "pages": [
         "application-vacuum-packaging-machines.html"
-      ]
-    },
-    {
-      "id": "be3f18be723089a7",
-      "source": "<strong>Seal:</strong> Glyd Ring (PTFE composite) recommended for coolant compatibility",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
       ]
     },
     {
@@ -6053,13 +6032,6 @@
       ]
     },
     {
-      "id": "731c04d3026aa217",
-      "source": "BP-4P or custom multi-passage",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
       "id": "816b00fc91b4f071",
       "source": "BP-4P-30-0001 · 4-Passage Through-Bore",
       "pages": [
@@ -6617,6 +6589,13 @@
     {
       "id": "dc6295450563dd75",
       "source": "CNC Fixture Selection Checklist",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "c1620b1f829dd4a5",
+      "source": "CNC Fixture Selection Inputs",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
       ]
@@ -7956,6 +7935,13 @@
       "source": "Face Mounting",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "d309011175f5aced",
+      "source": "Face mounting + anti-rotation",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -10007,13 +9993,6 @@
       ]
     },
     {
-      "id": "443f58410edcdc31",
-      "source": "More passages, larger bore, low leakage",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
-      ]
-    },
-    {
       "id": "be77275a0e040519",
       "source": "Mount Type",
       "pages": [
@@ -10654,6 +10633,13 @@
       ]
     },
     {
+      "id": "d16cc3bd195a762f",
+      "source": "Passage count follows independent air circuits and valve arrangement",
+      "pages": [
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
       "id": "06306cc66e3130b9",
       "source": "Passage count, air condition, pressure, motion, flow, ports, and installation space",
       "pages": [
@@ -10770,6 +10756,13 @@
       "source": "Pneumatic function",
       "pages": [
         "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "7b9dcb85dcc751a5",
+      "source": "Pneumatic model matched to circuit and mounting requirements",
+      "pages": [
         "application-cnc-pneumatic-clamping.html"
       ]
     },
@@ -11407,13 +11400,6 @@
       "source": "Protective Shroud &amp; Labyrinth",
       "pages": [
         "products.html"
-      ]
-    },
-    {
-      "id": "a27f20aad277b499",
-      "source": "Protective Shroud + Labyrinth",
-      "pages": [
-        "BP-2P-50-0001.html"
       ]
     },
     {
@@ -13732,13 +13718,6 @@
       "source": "Typical catalog lead time: about 20 days",
       "pages": [
         "index.html"
-      ]
-    },
-    {
-      "id": "6b72ef90badf0ef7",
-      "source": "Typical CNC Pneumatic Clamping Rotary Union Specs",
-      "pages": [
-        "application-cnc-pneumatic-clamping.html"
       ]
     },
     {

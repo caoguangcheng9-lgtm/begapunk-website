@@ -30,18 +30,18 @@ const JUMP_LINKS = Object.freeze([
   Object.freeze({ key: 'faq', href: '#faq' }),
 ]);
 const KEY_SPEC_LABEL_KEYS = Object.freeze([
-  'performance', 'body', 'seal', 'passages', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels', 'price', 'moq', 'warranty', 'delivery', 'quality',
+  'performance', 'body', 'seal', 'passages', 'mount', 'media', 'leadTime', 'ports', 'protection', 'channels', 'price', 'moq', 'warranty', 'delivery', 'quality', 'bore', 'orderSupport',
 ]);
 const EXPECTED_MODEL_KEY_SPEC_KEYS = Object.freeze({
   'BP-1P-0003': Object.freeze(['performance', 'body', 'passages', 'ports', 'media', 'leadTime']),
   'BP-1P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
   'BP-2P-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-0002': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
-  'BP-2P-08-0001': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
+  'BP-2P-08-0001': Object.freeze(['performance', 'bore', 'passages', 'price', 'leadTime', 'orderSupport']),
   'BP-2P-130-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
-  'BP-2P-16-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
-  'BP-2P-30-0001': Object.freeze(['performance', 'body', 'passages', 'mount', 'media', 'leadTime']),
-  'BP-2P-50-0001': Object.freeze(['performance', 'protection', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-16-0001': Object.freeze(['performance', 'bore', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-30-0001': Object.freeze(['performance', 'bore', 'passages', 'mount', 'media', 'leadTime']),
+  'BP-2P-50-0001': Object.freeze(['performance', 'bore', 'passages', 'mount', 'media', 'leadTime']),
   'BP-2P-95-0005': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-3P-0004': Object.freeze(['passages', 'price', 'leadTime', 'warranty', 'delivery', 'quality']),
   'BP-3P-0006': Object.freeze(['performance', 'ports', 'body', 'passages', 'media', 'leadTime']),
@@ -446,7 +446,7 @@ function validateManualCopy(contract) {
 
     const labelKeys = Object.keys(copy.keySpecLabels || {}).sort();
     if (labelKeys.join(',') !== [...KEY_SPEC_LABEL_KEYS].sort().join(',')) {
-      throw new Error(`${locale}.keySpecLabels must exactly cover the ten approved categories.`);
+      throw new Error(`${locale}.keySpecLabels must exactly cover the approved categories.`);
     }
     for (const key of labelKeys) {
       if (typeof copy.keySpecLabels[key] !== 'string' || !copy.keySpecLabels[key].trim()) {
@@ -469,7 +469,7 @@ function validateManualCopy(contract) {
       for (const key of Object.keys(overrides[model] || {})) {
         const value = overrides[model][key];
         const allowed = (model === 'BP-2P-50-0001' && ['media', 'protection'].includes(key))
-          || ['price', 'moq', 'warranty', 'delivery', 'passages', 'quality'].includes(key);
+          || ['price', 'moq', 'warranty', 'delivery', 'passages', 'quality', 'orderSupport'].includes(key);
         if (!allowed || typeof value !== 'string' || !value.trim()) {
           throw new Error(`${locale}.keySpecValueOverrides contains an unsupported or empty override (${model}.${key}).`);
         }
@@ -773,7 +773,7 @@ function validateFinalStructure(source, relativePath, copy, contract) {
         || !item.children('dd').text().trim()) {
         errors.push(`key product parameter ${index + 1}`);
       }
-      const overrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
+      const overrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality', 'orderSupport'];
       const locale = localeForFile(relativePath);
       const allowLocalizedDrawingOverride = locale === 'fr'
         && model === 'BP-2P-50-0001'
@@ -1198,7 +1198,7 @@ function keySpecValuesFromDocument($, relativePath, contract, copy) {
 
   return keys.map((key, index) => {
     if (key === 'leadTime') return copy.leadTimeValue;
-    const commercialOverrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality'];
+    const commercialOverrideKeys = ['passages', 'price', 'moq', 'warranty', 'delivery', 'quality', 'orderSupport'];
     const allowLocalizedDrawingOverride = locale === 'fr'
       && model === 'BP-2P-50-0001'
       && ['media', 'protection'].includes(key);

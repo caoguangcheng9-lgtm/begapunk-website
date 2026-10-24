@@ -446,7 +446,7 @@ function assertProductDetailUiManualContract() {
   const expectedKeys = [...scalarKeys, ...nestedKeys];
   const jumpKeys = ['compat', 'downloads', 'faq', 'install', 'specs'];
   const keySpecKeys = [
-    'body', 'channels', 'delivery', 'leadTime', 'media', 'moq', 'mount', 'passages', 'performance', 'ports', 'price', 'protection', 'quality', 'seal', 'warranty',
+    'body', 'bore', 'channels', 'delivery', 'leadTime', 'media', 'moq', 'mount', 'orderSupport', 'passages', 'performance', 'ports', 'price', 'protection', 'quality', 'seal', 'warranty',
   ];
   for (const languageCode of expectedLanguageCodes) {
     const copy = productDetailUiContract.locales[languageCode];

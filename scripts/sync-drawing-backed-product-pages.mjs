@@ -400,6 +400,10 @@ function locateKeySpecTargets(source, relativePath, locale, model, localized) {
   for (const required of requiredKeys) {
     if (!finalKeys.includes(required)) throw new Error(`${relativePath}: missing key category ${required}.`);
   }
+  if (new Set(['BP-2P-08-0001', 'BP-2P-16-0001', 'BP-2P-30-0001', 'BP-2P-50-0001']).has(model)
+    && (!finalKeys.includes('bore') || !finalKeys.includes('performance') || !localized.keyValues.bore)) {
+    throw new Error(`${relativePath}: through-bore selection requires verified bore and performance in the first view.`);
+  }
   if (model !== 'BP-3P-S06-0001' && finalKeys.includes('seal')) {
     throw new Error(`${relativePath}: ordinary-model first view must move seal to the specifications table.`);
   }

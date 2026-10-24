@@ -229,6 +229,77 @@ const copy = {
   },
 };
 
+// General CNC selection guidance is separate from the verified BP-2P-130 case.
+// Keep it model-neutral: fixture size or clamp count does not establish ratings
+// or the number of independent passages required across the rotating interface.
+const selectionCopy = {
+  en: {
+    heading: 'CNC Fixture Selection Inputs',
+    inputs: [
+      ['Medium:', 'The pneumatic catalog models shown here are for compressed air. Coolant transfer requires separate selection.'],
+      ['Operating conditions:', 'Provide the required pressure, rotational speed, and duty cycle so we can select a suitable model.'],
+      ['Air circuits:', 'Passage count depends on the independent air circuits and valve arrangement.'],
+      ['Installation:', 'Share mounting dimensions, airflow requirements, and any through-bore requirement.'],
+    ],
+    fixtureArea: 'Large fixture plate',
+    function: 'Multiple clamps and blow-off',
+    selectionFocus: 'Passage count follows independent air circuits and valve arrangement',
+    configuration: 'Pneumatic model matched to circuit and mounting requirements',
+  },
+  de: {
+    heading: 'Angaben zur Auswahl für CNC-Spannvorrichtungen',
+    inputs: [
+      ['Medium:', 'Die hier gezeigten pneumatischen Katalogmodelle sind für Druckluft ausgelegt. Für die Übertragung von Kühlschmierstoff ist eine separate Auswahl erforderlich.'],
+      ['Betriebsbedingungen:', 'Nennen Sie den erforderlichen Druck, die Drehzahl und den Betriebszyklus, damit wir ein geeignetes Modell auswählen können.'],
+      ['Druckluftkreise:', 'Die Kanalzahl richtet sich nach den unabhängigen Druckluftkreisen und der Ventilanordnung.'],
+      ['Einbau:', 'Senden Sie die Einbaumaße, den erforderlichen Luftdurchsatz und gegebenenfalls die Anforderungen an eine Durchgangsbohrung.'],
+    ],
+    fixtureArea: 'Große Vorrichtungsplatte',
+    function: 'Mehrere Spanner und Abblasfunktion',
+    selectionFocus: 'Kanalzahl nach unabhängigen Druckluftkreisen und Ventilanordnung',
+    configuration: 'Pneumatisches Modell passend zu Druckluftkreisen und Einbauschnittstelle',
+  },
+  fr: {
+    heading: 'Données de sélection pour un montage CNC',
+    inputs: [
+      ['Fluide :', 'Les modèles pneumatiques du catalogue présentés ici sont destinés à l’air comprimé. Le transfert de liquide de refroidissement nécessite une sélection distincte.'],
+      ['Conditions de fonctionnement :', 'Indiquez la pression, la vitesse de rotation et le cycle de fonctionnement requis pour que nous puissions sélectionner un modèle adapté.'],
+      ['Circuits pneumatiques :', 'Le nombre de passages dépend des circuits pneumatiques indépendants et de la disposition des distributeurs.'],
+      ['Installation :', 'Transmettez les dimensions de montage, le débit d’air requis et tout besoin d’alésage traversant.'],
+    ],
+    fixtureArea: 'Grande plaque de montage',
+    function: 'Plusieurs serrages et circuits de soufflage',
+    selectionFocus: 'Nombre de passages selon les circuits pneumatiques indépendants et la disposition des distributeurs',
+    configuration: 'Modèle pneumatique adapté aux circuits et à l’interface de montage',
+  },
+  ja: {
+    heading: 'CNC治具の選定に必要な情報',
+    inputs: [
+      ['使用流体：', 'ここで紹介する標準空圧モデルの使用流体は圧縮空気です。クーラントの供給には別途選定が必要です。'],
+      ['運転条件：', '適切な型式を選定するため、必要な圧力、回転数、運転サイクルをお知らせください。'],
+      ['空圧回路：', '流路数は、独立した空圧回路とバルブの配置によって決まります。'],
+      ['取付条件：', '取付寸法、必要な空気流量、貫通穴の要否と寸法をお知らせください。'],
+    ],
+    fixtureArea: '大型治具プレート',
+    function: '複数クランプとエアブロー',
+    selectionFocus: '独立した空圧回路とバルブ配置に応じた流路数',
+    configuration: '空圧回路と取付条件に合う空圧モデル',
+  },
+  ru: {
+    heading: 'Исходные данные для подбора соединения для оснастки ЧПУ',
+    inputs: [
+      ['Рабочая среда:', 'Представленные здесь каталожные пневматические модели предназначены для сжатого воздуха. Для передачи СОЖ требуется отдельный подбор.'],
+      ['Условия работы:', 'Укажите требуемые давление, частоту вращения и рабочий цикл, чтобы мы могли подобрать подходящую модель.'],
+      ['Пневматические контуры:', 'Количество каналов зависит от независимых пневматических контуров и расположения распределителей.'],
+      ['Монтаж:', 'Предоставьте монтажные размеры, требуемый расход воздуха и требования к сквозному отверстию, если оно необходимо.'],
+    ],
+    fixtureArea: 'Крупная плита приспособления',
+    function: 'Несколько зажимов и обдув',
+    selectionFocus: 'Количество каналов по независимым пневматическим контурам и расположению распределителей',
+    configuration: 'Пневматическая модель под требования контуров и монтажного интерфейса',
+  },
+};
+
 const productEvidenceFragments = Object.freeze({
   en: [
     'BP-2P-130-0001',
@@ -451,8 +522,25 @@ async function syncApplicationPage(languageCode) {
       .replaceAll('<li>ブローオフ</li>', `<li>${locale.blowOff}</li>`);
   }
   if (languageCode === 'ru') html = html.replaceAll('<li>Взрыв</li>', `<li>${locale.blowOff}</li>`);
+  html = syncSelectionGuidance(html, languageCode, relativePath);
   html = syncJsonLd(html, languageCode);
   await planWrite(relativePath, html);
+}
+
+function syncSelectionGuidance(html, languageCode, relativePath) {
+  const locale = selectionCopy[languageCode];
+  const inputSection = /<section class="section" style="padding-top:0;">[\s\S]*?<\/section>/g;
+  if ([...html.matchAll(inputSection)].length !== 1) {
+    throw new Error(`${relativePath}: expected one CNC selection-input section.`);
+  }
+  const inputs = locale.inputs.map(([label, detail]) => `<li><strong>${label}</strong> ${detail}</li>`).join('');
+  html = html.replace(inputSection, `<section class="section" style="padding-top:0;"><div class="container"><div style="background:var(--bg-alt);border-left:4px solid var(--primary);padding:24px 28px;border-radius:8px;"><h3 style="margin:0 0 14px;font-size:1.15rem;color:var(--dark-soft);">${locale.heading}</h3><ul style="margin:0;padding-left:22px;line-height:1.9;font-size:0.95rem;">${inputs}</ul></div></div></section>`);
+  const escapedArea = locale.fixtureArea.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const fixtureRow = new RegExp(`<tr><td>${escapedArea}<\\/td>[\\s\\S]*?<\\/tr>`, 'g');
+  if ([...html.matchAll(fixtureRow)].length !== 1) {
+    throw new Error(`${relativePath}: expected one large-fixture selection row.`);
+  }
+  return html.replace(fixtureRow, `<tr><td>${locale.fixtureArea}</td><td>${locale.function}</td><td>${locale.selectionFocus}</td><td>${locale.configuration}</td></tr>`);
 }
 
 function countOccurrences(value, needle) {
@@ -544,6 +632,20 @@ async function syncOverrides(languageCode) {
     [source.productEntryHeading, locale.productEntryHeading], [source.productEntry, locale.productEntry],
     [source.productEntryLink, locale.productEntryLink],
   ];
+  const sourceSelection = selectionCopy.en;
+  const targetSelection = selectionCopy[languageCode];
+  pairs.push(
+    [sourceSelection.heading, targetSelection.heading],
+    [sourceSelection.selectionFocus, targetSelection.selectionFocus],
+    [sourceSelection.configuration, targetSelection.configuration],
+  );
+  sourceSelection.inputs.forEach(([sourceLabel, sourceDetail], index) => {
+    const [targetLabel, targetDetail] = targetSelection.inputs[index];
+    pairs.push([
+      `<strong>${sourceLabel}</strong> ${sourceDetail}`,
+      `<strong>${targetLabel}</strong> ${targetDetail}`,
+    ]);
+  });
   pairs.push([
     'Project-owner confirmation establishes the customer production application, installed model, two compressed-air passages, clamp/release function and low-speed circular-saw context. The frame does not establish port numbering or assignment, operating pressure, exact speed, duty cycle, service life, leakage performance, machine output or performance improvement. Confirm these conditions from the fixture drawing and approved product data.',
     locale.boundary,

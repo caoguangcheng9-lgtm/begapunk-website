@@ -1413,5 +1413,13 @@
   "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">ボトルキャッピング</a>",
   "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 M4取付穴を備えたAL6061製の小型2流路空圧ロータリージョイント",
   "4 × M4 per end, depth 10 mm": "両端面に各4 × M4、深さ10 mm",
-  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "固定側：4 × M4、深さ10 mm；回転側：4 × M4、深さ10 mm"
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "固定側：4 × M4、深さ10 mm；回転側：4 × M4、深さ10 mm",
+  "Face mounting + anti-rotation": "端面取付＋回り止め",
+  "CNC Fixture Selection Inputs": "CNC治具の選定に必要な情報",
+  "Passage count follows independent air circuits and valve arrangement": "独立した空圧回路とバルブ配置に応じた流路数",
+  "Pneumatic model matched to circuit and mounting requirements": "空圧回路と取付条件に合う空圧モデル",
+  "<strong>Medium:</strong> The pneumatic catalog models shown here are for compressed air. Coolant transfer requires separate selection.": "<strong>使用流体：</strong> ここで紹介する標準空圧モデルの使用流体は圧縮空気です。クーラントの供給には別途選定が必要です。",
+  "<strong>Operating conditions:</strong> Provide the required pressure, rotational speed, and duty cycle so we can select a suitable model.": "<strong>運転条件：</strong> 適切な型式を選定するため、必要な圧力、回転数、運転サイクルをお知らせください。",
+  "<strong>Air circuits:</strong> Passage count depends on the independent air circuits and valve arrangement.": "<strong>空圧回路：</strong> 流路数は、独立した空圧回路とバルブの配置によって決まります。",
+  "<strong>Installation:</strong> Share mounting dimensions, airflow requirements, and any through-bore requirement.": "<strong>取付条件：</strong> 取付寸法、必要な空気流量、貫通穴の要否と寸法をお知らせください。"
 }

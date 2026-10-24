@@ -1365,5 +1365,13 @@
   "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Flaschenverschließen</a>",
   "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 kompakte pneumatische Zweikanal-Drehdurchführung aus AL6061 mit M4-Befestigungsgewinden",
   "4 × M4 per end, depth 10 mm": "Je Stirnseite 4 × M4, 10 mm tief",
-  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Stator: 4 × M4, 10 mm tief; Rotor: 4 × M4, 10 mm tief"
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Stator: 4 × M4, 10 mm tief; Rotor: 4 × M4, 10 mm tief",
+  "Face mounting + anti-rotation": "Stirnseitige Montage + Verdrehsicherung",
+  "CNC Fixture Selection Inputs": "Angaben zur Auswahl für CNC-Spannvorrichtungen",
+  "Passage count follows independent air circuits and valve arrangement": "Kanalzahl nach unabhängigen Druckluftkreisen und Ventilanordnung",
+  "Pneumatic model matched to circuit and mounting requirements": "Pneumatisches Modell passend zu Druckluftkreisen und Einbauschnittstelle",
+  "<strong>Medium:</strong> The pneumatic catalog models shown here are for compressed air. Coolant transfer requires separate selection.": "<strong>Medium:</strong> Die hier gezeigten pneumatischen Katalogmodelle sind für Druckluft ausgelegt. Für die Übertragung von Kühlschmierstoff ist eine separate Auswahl erforderlich.",
+  "<strong>Operating conditions:</strong> Provide the required pressure, rotational speed, and duty cycle so we can select a suitable model.": "<strong>Betriebsbedingungen:</strong> Nennen Sie den erforderlichen Druck, die Drehzahl und den Betriebszyklus, damit wir ein geeignetes Modell auswählen können.",
+  "<strong>Air circuits:</strong> Passage count depends on the independent air circuits and valve arrangement.": "<strong>Druckluftkreise:</strong> Die Kanalzahl richtet sich nach den unabhängigen Druckluftkreisen und der Ventilanordnung.",
+  "<strong>Installation:</strong> Share mounting dimensions, airflow requirements, and any through-bore requirement.": "<strong>Einbau:</strong> Senden Sie die Einbaumaße, den erforderlichen Luftdurchsatz und gegebenenfalls die Anforderungen an eine Durchgangsbohrung."
 }

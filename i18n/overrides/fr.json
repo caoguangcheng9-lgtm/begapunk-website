@@ -1974,5 +1974,13 @@
   "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Bouchage de bouteilles</a>",
   "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 raccord tournant pneumatique compact à 2 passages en AL6061 avec trous de fixation M4",
   "4 × M4 per end, depth 10 mm": "4 × M4 à chaque extrémité, profondeur 10 mm",
-  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Stator : 4 × M4, profondeur 10 mm ; rotor : 4 × M4, profondeur 10 mm"
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Stator : 4 × M4, profondeur 10 mm ; rotor : 4 × M4, profondeur 10 mm",
+  "Face mounting + anti-rotation": "Fixation en face + antirotation",
+  "CNC Fixture Selection Inputs": "Données de sélection pour un montage CNC",
+  "Passage count follows independent air circuits and valve arrangement": "Nombre de passages selon les circuits pneumatiques indépendants et la disposition des distributeurs",
+  "Pneumatic model matched to circuit and mounting requirements": "Modèle pneumatique adapté aux circuits et à l’interface de montage",
+  "<strong>Medium:</strong> The pneumatic catalog models shown here are for compressed air. Coolant transfer requires separate selection.": "<strong>Fluide :</strong> Les modèles pneumatiques du catalogue présentés ici sont destinés à l’air comprimé. Le transfert de liquide de refroidissement nécessite une sélection distincte.",
+  "<strong>Operating conditions:</strong> Provide the required pressure, rotational speed, and duty cycle so we can select a suitable model.": "<strong>Conditions de fonctionnement :</strong> Indiquez la pression, la vitesse de rotation et le cycle de fonctionnement requis pour que nous puissions sélectionner un modèle adapté.",
+  "<strong>Air circuits:</strong> Passage count depends on the independent air circuits and valve arrangement.": "<strong>Circuits pneumatiques :</strong> Le nombre de passages dépend des circuits pneumatiques indépendants et de la disposition des distributeurs.",
+  "<strong>Installation:</strong> Share mounting dimensions, airflow requirements, and any through-bore requirement.": "<strong>Installation :</strong> Transmettez les dimensions de montage, le débit d’air requis et tout besoin d’alésage traversant."
 }

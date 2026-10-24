@@ -1386,5 +1386,13 @@
   "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>": "<a href=\"application-bottle-filling-capping.html\">Укупорка бутылок</a>",
   "BP-2P-08-0001 compact 2-passage pneumatic rotary union in AL6061 with M4 mounting holes": "BP-2P-08-0001 — компактное двухканальное пневматическое вращающееся соединение из AL6061 с монтажными отверстиями M4",
   "4 × M4 per end, depth 10 mm": "По 4 × M4 на каждом торце, глубина 10 мм",
-  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Статор: 4 × M4, глубина 10 мм; ротор: 4 × M4, глубина 10 мм"
+  "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm": "Статор: 4 × M4, глубина 10 мм; ротор: 4 × M4, глубина 10 мм",
+  "Face mounting + anti-rotation": "Торцевое крепление + защита от проворачивания",
+  "CNC Fixture Selection Inputs": "Исходные данные для подбора соединения для оснастки ЧПУ",
+  "Passage count follows independent air circuits and valve arrangement": "Количество каналов по независимым пневматическим контурам и расположению распределителей",
+  "Pneumatic model matched to circuit and mounting requirements": "Пневматическая модель под требования контуров и монтажного интерфейса",
+  "<strong>Medium:</strong> The pneumatic catalog models shown here are for compressed air. Coolant transfer requires separate selection.": "<strong>Рабочая среда:</strong> Представленные здесь каталожные пневматические модели предназначены для сжатого воздуха. Для передачи СОЖ требуется отдельный подбор.",
+  "<strong>Operating conditions:</strong> Provide the required pressure, rotational speed, and duty cycle so we can select a suitable model.": "<strong>Условия работы:</strong> Укажите требуемые давление, частоту вращения и рабочий цикл, чтобы мы могли подобрать подходящую модель.",
+  "<strong>Air circuits:</strong> Passage count depends on the independent air circuits and valve arrangement.": "<strong>Пневматические контуры:</strong> Количество каналов зависит от независимых пневматических контуров и расположения распределителей.",
+  "<strong>Installation:</strong> Share mounting dimensions, airflow requirements, and any through-bore requirement.": "<strong>Монтаж:</strong> Предоставьте монтажные размеры, требуемый расход воздуха и требования к сквозному отверстию, если оно необходимо."
 }
