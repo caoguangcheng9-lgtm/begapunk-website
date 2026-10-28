@@ -184,7 +184,16 @@ validate_baota_acme_runtime_tree() (
       *) release_safety_error "www ownership is forbidden outside ACME token paths ($node)."; return 1 ;;
     esac
     if [[ "$actual_metadata" != "$www_uid:$www_gid:$expected_mode" ]]; then
-      release_safety_error "ACME runtime owner/mode mismatch ($node)."
+      # BaoTa's root-run ACME renewer writes the token as 600, 640 or 644
+      # depending on its version. All three keep the token unreadable to other
+      # users and readable by the www nginx workers, so accept the whole set
+      # instead of failing every release that follows a routine renewal.
+      if [[ "$relative" == /acme-challenge/* && -f "$node" ]]; then
+        case "$actual_metadata" in
+          "$www_uid:$www_gid:600"|"$www_uid:$www_gid:640"|"$www_uid:$www_gid:644") continue ;;
+        esac
+      fi
+      release_safety_error "ACME runtime owner/mode mismatch ($node, found $actual_metadata)."
       return 1
     fi
   done < "$inventory_file"
