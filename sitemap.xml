@@ -466,6 +466,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.begapunk.com/downloads/BP-3P-0004.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.begapunk.com/downloads/BP-3P-0006.pdf</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>yearly</changefreq>
@@ -496,6 +502,96 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.begapunk.com/downloads/BP-1P-0003.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-1P-0006.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-0002.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-08-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-130-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-16-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-30-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-50-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-2P-95-0005.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-3P-0006.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-3P-0007.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-3P-S06-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-4P-30-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.begapunk.com/downloads/BP-8P-0001.step</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.begapunk.com/blog-ptfe-coated-o-rings.html</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -514,4 +610,5 @@
     <priority>0.7</priority>
   </url>
   <url><loc>https://www.begapunk.com/downloads/BP-10P-0001.pdf</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://www.begapunk.com/downloads/BP-10P-0001.step</loc><lastmod>2026-10-07</lastmod></url>
 </urlset>
