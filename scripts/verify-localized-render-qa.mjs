@@ -110,13 +110,26 @@ function sha256(buffer) {
   return createHash('sha256').update(buffer).digest('hex');
 }
 
+// Cloudflare injects its Web Analytics beacon into HTML responses that look like
+// browser navigations, so a proxied origin can never be byte-identical to its
+// artifact. Remove that single known tag before hashing; every other byte
+// difference still fails the comparison.
+const EDGE_INJECTED_SCRIPT = /\n?<script\b[^>]*\bsrc="https:\/\/static\.cloudflareinsights\.com\/[^"]*"[^>]*><\/script>/gu;
+
+function withoutEdgeInjectedScripts(buffer) {
+  const text = buffer.toString('utf8');
+  if (!text.includes('static.cloudflareinsights.com')) return buffer;
+  const stripped = text.replace(EDGE_INJECTED_SCRIPT, '');
+  return stripped === text ? buffer : Buffer.from(stripped, 'utf8');
+}
+
 async function verifyExactArtifactResponse(response, language, pageName, route, viewportName) {
   if (!expectedArtifactRoot) return null;
   const relativePath = artifactRelativePath(language, pageName);
   const expectedBytes = await fs.readFile(path.join(expectedArtifactRoot, ...relativePath.split('/')));
   const actualBytes = await response.buffer();
-  const expectedDigest = sha256(expectedBytes);
-  const actualDigest = sha256(actualBytes);
+  const expectedDigest = sha256(withoutEdgeInjectedScripts(expectedBytes));
+  const actualDigest = sha256(withoutEdgeInjectedScripts(actualBytes));
   if (actualDigest !== expectedDigest) {
     failures.push(`${route} @ ${viewportName}: public HTML SHA-256 ${actualDigest} does not match audited artifact ${expectedDigest}.`);
   }
