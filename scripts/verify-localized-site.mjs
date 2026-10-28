@@ -1822,7 +1822,10 @@ try {
   const sitemapUrls = [...sitemapSource.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const expectedSitemapUrls = [
     ...discoverablePages.map((pageName) => pageUrl(config.sourceLanguage.code, pageName)),
-    ...approvedDownloadUrls,
+    // STEP models stay downloadable from the product pages, but they are not
+    // advertised in the sitemap: search engines cannot index CAD files, so the
+    // entries only spend crawl budget and park URLs in "discovered, not indexed".
+    ...approvedDownloadUrls.filter((url) => !/\.step$/iu.test(url)),
   ];
   if (sitemapUrls.length !== expectedSitemapUrls.length) failures.push(`sitemap.xml: expected ${expectedSitemapUrls.length} URLs, found ${sitemapUrls.length}.`);
   expectedSitemapUrls.forEach((url) => {
