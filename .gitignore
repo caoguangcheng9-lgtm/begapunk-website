@@ -24,3 +24,6 @@ audit_extracts/
 CORE-EEAT-Audit-Report.md
 .codex-panel*
 .codex-tmp*
+
+# Local review scratch output
+output/
