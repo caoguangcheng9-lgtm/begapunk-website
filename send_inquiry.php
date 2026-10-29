@@ -457,6 +457,78 @@ function normalize_inquiry_type(string $value): string
     return $map[$value] ?? 'general_inquiry';
 }
 
+// Additive spam assessment. It never rejects on weak evidence: a low score only
+// annotates the notification so sales can triage, while a clearly automated
+// submission (score at or above SPAM_REJECT_SCORE) is dropped before sending.
+const SPAM_MARK_SCORE = 2;
+const SPAM_REJECT_SCORE = 6;
+
+function score_inquiry_spam(string $company, string $requirements, string $sourceLanguage): array
+{
+    $signals = [];
+    $score = 0;
+    $add = static function (string $signal, int $weight) use (&$signals, &$score): void {
+        $signals[] = $signal;
+        $score += $weight;
+    };
+
+    $origin = isset($_SERVER['HTTP_ORIGIN']) && is_string($_SERVER['HTTP_ORIGIN'])
+        ? trim($_SERVER['HTTP_ORIGIN'])
+        : '';
+    if ($origin === '') {
+        $add('missing_origin', 1);
+    }
+
+    $referer = isset($_SERVER['HTTP_REFERER']) && is_string($_SERVER['HTTP_REFERER'])
+        ? trim($_SERVER['HTTP_REFERER'])
+        : '';
+    if ($referer === '') {
+        $add('missing_referer', 1);
+    } else {
+        $refererHost = strtolower((string) parse_url($referer, PHP_URL_HOST));
+        if ($refererHost !== '' && !in_array($refererHost, ['begapunk.com', 'www.begapunk.com'], true)) {
+            $add('foreign_referer', 1);
+        }
+    }
+
+    $agent = isset($_SERVER['HTTP_USER_AGENT']) && is_string($_SERVER['HTTP_USER_AGENT'])
+        ? trim($_SERVER['HTTP_USER_AGENT'])
+        : '';
+    if ($agent === '') {
+        $add('missing_user_agent', 3);
+    } else {
+        if (preg_match('/cve-\d|cve_|curl\/|python-requests|python-urllib|go-http-client|wget\/|scrapy|libwww-perl|okhttp|httpclient/i', $agent) === 1) {
+            $add('automation_user_agent', 3);
+        }
+        if (stripos($agent, 'mozilla/') === false) {
+            $add('non_browser_user_agent', 1);
+        }
+    }
+
+    $placeholderCompanies = ['google', 'test', 'asdf', 'none', 'na', 'n/a', '123', 'abc', 'company', '-'];
+    if (in_array(strtolower(trim($company)), $placeholderCompanies, true)) {
+        $add('placeholder_company', 1);
+    }
+
+    $message = trim($requirements);
+    $messageLength = function_exists('mb_strlen') ? mb_strlen($message, 'UTF-8') : strlen($message);
+    if ($message !== '' && $messageLength < 15) {
+        $add('very_short_message', 1);
+    }
+
+    // Eth and thorn are Icelandic-only letters: a Latin-script message carrying
+    // them is not the language the visitor declared.
+    if (preg_match('/[\x{00F0}\x{00DE}\x{00FE}]/u', $message) === 1) {
+        $add('language_mismatch', 1);
+    } elseif ($sourceLanguage === 'ru' && $message !== '' && preg_match('/\p{Cyrillic}/u', $message) !== 1) {
+        $add('language_mismatch', 1);
+    } elseif ($sourceLanguage === 'ja' && $message !== '' && preg_match('/\p{Han}|\p{Hiragana}|\p{Katakana}/u', $message) !== 1) {
+        $add('language_mismatch', 1);
+    }
+
+    return ['score' => $score, 'signals' => $signals];
+}
+
 function normalize_source_page(string $value): string
 {
     if ($value === '' || strpos($value, '\\') !== false || strpos($value, '://') !== false || strpos($value, '//') === 0) {
@@ -595,6 +667,19 @@ $attachment = isset($_FILES['drawing']) && is_array($_FILES['drawing'])
     ? validate_attachment($_FILES['drawing'], $context)
     : [];
 
+// Assess after validation so every existing rejection path keeps its status code.
+$spam = score_inquiry_spam($company, $requirements, $sourceLanguage);
+$spamScore = (int) $spam['score'];
+if ($spamScore >= SPAM_REJECT_SCORE) {
+    respond($context, 400, false, 'spam_detected');
+}
+$spamNote = $spamScore >= SPAM_MARK_SCORE
+    ? '[Possible spam] '
+    : '';
+$spamSignalRow = $spam['signals'] === []
+    ? ''
+    : implode(', ', $spam['signals']) . ' (score ' . $spamScore . ')';
+
 $rows = [
     'Name' => $name,
     'Email' => $email,
@@ -616,6 +701,7 @@ $rows = [
     'Campaign Content (utm_content)' => $utmContent,
     'First Landing Page' => $firstLandingPage,
     'Initial Referrer' => $initialReferrer,
+    'Spam signals' => $spamSignalRow,
 ];
 
 $tableRows = '';
@@ -653,7 +739,7 @@ try {
     $requesterLabel = $name !== '' ? $name : $email;
     $mail->addReplyTo($email, $requesterLabel);
     $mail->isHTML(true);
-    $mail->Subject = '[Begapunk] New Quote Request from ' . $requesterLabel;
+    $mail->Subject = $spamNote . '[Begapunk] New Quote Request from ' . $requesterLabel;
     $mail->Body = $htmlBody;
     $mail->AltBody = trim(html_entity_decode(strip_tags(str_replace(['</tr>', '</td>'], ["\n", ': '], $htmlBody)), ENT_QUOTES, 'UTF-8'));
 
