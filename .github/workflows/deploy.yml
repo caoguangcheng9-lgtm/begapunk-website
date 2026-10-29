@@ -620,9 +620,32 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: node scripts/submit-indexnow.mjs "$RUNNER_TEMP/indexnow-urls.txt"
 
+      - name: Purge the Cloudflare edge cache
+        id: purge
+        # A failed purge leaves the deployment live but stale for up to the
+        # edge TTL, so it warns instead of failing the release.
+        continue-on-error: true
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ZONE: ${{ vars.CF_ZONE_ID }}
+        run: |
+          set -u
+          if [[ -z "${CF_TOKEN}" || -z "${CF_ZONE}" ]]; then
+            echo "::warning::Cloudflare purge credentials are not configured; HTML stays cached for up to 2 hours."
+            exit 0
+          fi
+          response="$(curl -sS --max-time 20 -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE}/purge_cache" \
+            -H "Authorization: Bearer ${CF_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}')"
+          echo "$response"
+          echo "$response" | grep -q '"success": *true'
+
       - name: Deployment summary
         env:
           INDEXNOW_OUTCOME: ${{ steps.indexnow.outcome }}
+          PURGE_OUTCOME: ${{ steps.purge.outcome }}
         run: |
           echo "### Begapunk production deployment" >> "$GITHUB_STEP_SUMMARY"
           echo "- Release: \`$release_id\`" >> "$GITHUB_STEP_SUMMARY"
@@ -633,6 +656,11 @@ jobs:
             echo "- IndexNow: changed URLs accepted" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "- IndexNow: warning; notification failed and requires retry (deployment remains healthy)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [[ "$PURGE_OUTCOME" == 'success' ]]; then
+            echo "- Cloudflare cache: purged, new HTML is live at the edge" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- Cloudflare cache: warning; purge failed, HTML may stay cached for up to 2 hours" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload post-deployment audit evidence

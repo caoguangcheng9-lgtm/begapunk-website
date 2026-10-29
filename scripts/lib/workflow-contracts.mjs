@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: 'f03715f1880b198d99428a34c233b65f0870e83f0758a6f722ed0407ea86d777',
+  deploy: '721edf6f04b81f220165a9345ddf9be676dfbdeccba05bc4b17519c1aaa6a177',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
@@ -131,6 +131,7 @@ const EXPECTED_DEPLOY_STEPS = Object.freeze({
     'Commit deployment transaction',
     'Roll back an uncommitted deployment',
     'Notify IndexNow of changed URLs',
+    'Purge the Cloudflare edge cache',
     'Deployment summary',
     'Upload post-deployment audit evidence',
   ],
@@ -193,6 +194,7 @@ function assertConditionalInventory(deployWorkflow, prWorkflow, failures) {
       "${{ always() && env.nginx_transaction_attempted == 'true' && env.deployment_committed != 'true' }}",
     ],
     ['deploy/validate-and-deploy/Notify IndexNow of changed URLs/continue-on-error', true],
+    ['deploy/validate-and-deploy/Purge the Cloudflare edge cache/continue-on-error', true],
     ['deploy/validate-and-deploy/Upload post-deployment audit evidence/if', '${{ always() }}'],
   ]);
   for (const [workflowName, workflow] of [['deploy', deployWorkflow], ['pr-quality', prWorkflow]]) {
