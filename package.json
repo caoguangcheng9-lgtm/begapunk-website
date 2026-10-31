@@ -90,6 +90,8 @@
     "downloads:verify": "node scripts/generate-public-downloads-manifest.mjs --check",
     "products:validate": "node scripts/validate-product-data.mjs",
     "audit:product-truth": "node scripts/audit-product-truth.mjs",
+    "audit:redesign": "node scripts/audit-redesign-safety.mjs",
+    "audit:redesign:capture": "node scripts/audit-redesign-safety.mjs --capture",
     "audit:policy:verify": "node --test tests/audit-policy-contracts.test.mjs && node scripts/verify-audit-policy.mjs",
     "audit:workflow-contracts:self-test": "node --test tests/workflow-contracts.test.mjs",
     "browser:interaction:self-test": "node --test tests/browser-interaction-gate.test.mjs",
