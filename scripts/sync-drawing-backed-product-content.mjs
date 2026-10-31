@@ -2092,6 +2092,59 @@ function parseStructuredData(value, label) {
   return locateProductJsonScript(value, label).data;
 }
 
+function plainFaqText(value) {
+  const decoded = String(value)
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&middot;/g, '·')
+    .replace(/&times;/g, '×')
+    .replace(/&Oslash;/g, 'Ø');
+  return decoded.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * FAQ structured data is allowed only when it mirrors the visible FAQ exactly.
+ *
+ * This replaces the former blanket ban on FAQPage in product pages. The intent
+ * behind that ban was to stop a generated page from claiming answers a reader
+ * cannot see, which is exactly what search engines penalise. Keeping the guard
+ * as an equality check preserves that intent while allowing the structured data
+ * the application pages already ship: same questions, same order, same answer
+ * text as the rendered <details class="faq-item"> blocks.
+ */
+function assertFaqSchemaMatchesVisible(next, label) {
+  const { graph } = locateProductJsonScript(next, label);
+  const faqNode = graph.find((node) => node['@type'] === 'FAQPage');
+  if (!faqNode) return;
+
+  const visible = [];
+  for (const block of next.matchAll(/<details[^>]*class="faq-item"[^>]*>([\s\S]*?)<\/details>/gi)) {
+    const summary = block[1].match(/<summary[^>]*>([\s\S]*?)<\/summary>/i);
+    const answer = block[1].match(/<div[^>]*class="faq-answer"[^>]*>([\s\S]*?)<\/div>/i);
+    if (!summary || !answer) continue;
+    visible.push({ name: plainFaqText(summary[1]), text: plainFaqText(answer[1]) });
+  }
+
+  const entities = Array.isArray(faqNode.mainEntity) ? faqNode.mainEntity : [];
+  if (entities.length !== visible.length) {
+    throw new Error(`${label}: FAQPage lists ${entities.length} question(s) but ${visible.length} are visible`);
+  }
+  for (let index = 0; index < entities.length; index += 1) {
+    const question = entities[index] || {};
+    const answer = question.acceptedAnswer || {};
+    if (plainFaqText(question.name || '') !== visible[index].name) {
+      throw new Error(`${label}: FAQPage question ${index + 1} does not match the visible question`);
+    }
+    if (plainFaqText(answer.text || '') !== visible[index].text) {
+      throw new Error(`${label}: FAQPage answer ${index + 1} does not match the visible answer`);
+    }
+  }
+}
+
 function validateProtectedContent(original, next, model, product, locale) {
   const label = `${model}/${locale}`;
   const copy = COPY[locale];
@@ -2144,7 +2197,7 @@ function validateProtectedContent(original, next, model, product, locale) {
     || !/<div class="faq-mini">\s*<details class="faq-item" open>/i.test(next)) {
     throw new Error(`${label}: FAQ source must contain five details items with only the first item open`);
   }
-  if (/"@type"\s*:\s*"FAQPage"/i.test(next)) throw new Error(`${label}: FAQPage structured data must not be generated`);
+  assertFaqSchemaMatchesVisible(next, label);
   const relatedPanel = markerSlice(next, '<!-- ===== RELATED PRODUCTS ===== -->', '<!-- ===== FAQ ===== -->', `${label}: related products`);
   if (countMatches(relatedPanel, /class="related-card"/g) !== 4
     || countMatches(relatedPanel, /<a href="BP-[^"]+\.html" class="related-card">/g) !== 3
