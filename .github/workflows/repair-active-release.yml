@@ -1,0 +1,108 @@
+name: Repair active release integrity
+
+# Emergency maintenance path.
+#
+# A hotfix applied directly to a release directory makes that release fail its
+# own manifest check, and the deploy workflow correctly refuses to switch away
+# from an untrustworthy rollback target. There was no sanctioned way to undo
+# such a hotfix, so this workflow exists: it restores the handler from the
+# backup taken before the hotfix and proves the release manifest verifies again.
+#
+# It is manual-only, records the reason in the run summary, and touches exactly
+# one file.
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Why the active release needs repairing
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  repair:
+    name: Restore handler and verify manifest
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$DEPLOY_SSH_KEY"
+          test -n "$DEPLOY_KNOWN_HOSTS"
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Restore the pre-hotfix handler
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          REPAIR_REASON: ${{ inputs.reason }}
+        run: |
+          set -euo pipefail
+          ssh_args=(-i ~/.ssh/id_ed25519 -p "${DEPLOY_PORT:-22}" -o BatchMode=yes)
+          ssh "${ssh_args[@]}" "$DEPLOY_USER@$DEPLOY_HOST" 'bash -se' <<'REMOTE'
+          set -Eeuo pipefail
+
+          base_dir='/www/begapunk'
+          current_link="$base_dir/current"
+          backup='/root/send_inquiry.php.bak-20261030'
+
+          active_release="$(readlink -f "$current_link")"
+          printf 'Active release: %s\n' "$active_release"
+
+          if [[ ! -d "$active_release" || "$active_release" != "$base_dir/releases/"* ]]; then
+            printf 'ERROR: active release does not resolve inside %s/releases\n' "$base_dir" >&2
+            exit 1
+          fi
+
+          if [[ ! -f "$backup" ]]; then
+            printf 'ERROR: backup %s is missing; nothing to restore from.\n' "$backup" >&2
+            exit 1
+          fi
+
+          printf 'Before: %s\n' "$(cd "$active_release" && sha256sum send_inquiry.php)"
+
+          sudo install -o codexdeploy -g codexdeploy -m 644 \
+            "$backup" "$active_release/send_inquiry.php"
+
+          printf 'After:  %s\n' "$(cd "$active_release" && sha256sum send_inquiry.php)"
+
+          if ! (cd "$active_release" && sudo sha256sum --quiet -c manifest.sha256); then
+            printf 'ERROR: manifest still does not verify after restore.\n' >&2
+            exit 1
+          fi
+
+          printf 'MANIFEST_OK: %s now matches its manifest.\n' "$active_release"
+
+          if [[ -f "$active_release/send_inquiry.php" ]]; then
+            curl --silent --show-error --head --max-time 30 \
+              "https://www.begapunk.com/send_inquiry.php" \
+              | tr -d '\r' | head -n 1
+          fi
+          REMOTE
+
+      - name: Summarize
+        if: ${{ always() }}
+        env:
+          REPAIR_REASON: ${{ inputs.reason }}
+        run: |
+          {
+            echo "### Active release repair"
+            echo ""
+            echo "- Reason: $REPAIR_REASON"
+            echo "- Restored: send_inquiry.php from the pre-hotfix backup"
+            echo "- Verification: manifest.sha256 must report MANIFEST_OK"
+            echo ""
+            echo "Re-trigger the release tag once the manifest verifies."
+          } >> "$GITHUB_STEP_SUMMARY"
