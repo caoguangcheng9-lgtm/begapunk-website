@@ -66,13 +66,8 @@ body {
     overflow-x:hidden;
 }
 /* ===== TYPOGRAPHY ===== */
-/* Headings reuse the body Inter stack. Playfair Display is a high-contrast
-   editorial serif that reads as "fashion magazine" against industrial subject
-   matter, and it cost a 37.5 KB font download on every page view. The face is
-   still declared but no longer referenced, so browsers stop requesting it. */
 h1, h2, h3, h4, .section-title, .logo {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    letter-spacing: -0.022em;
+    font-family: 'Playfair Display', 'Inter', Georgia, serif;
 }
 
 /* Japanese pages use the platform's native Japanese fonts. This avoids
@@ -1717,7 +1712,6 @@ html[data-bp-consent-ui="closing"] .floating-cta {
  /* Spec Table */
  .spec-table {
  width: 100%;
- max-width: 860px;
  border-collapse: collapse;
  margin-bottom: 24px;
  }
