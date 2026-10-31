@@ -66,19 +66,20 @@ jobs:
             exit 1
           fi
 
-          if [[ ! -f "$backup" ]]; then
-            printf 'ERROR: backup %s is missing; nothing to restore from.\n' "$backup" >&2
+          if ! sudo -n test -f "$backup"; then
+            printf 'ERROR: backup %s is missing or not readable with sudo; nothing to restore from.\n' "$backup" >&2
+            sudo -n ls -la "$backup" 2>&1 || true
             exit 1
           fi
 
-          printf 'Before: %s\n' "$(cd "$active_release" && sha256sum send_inquiry.php)"
+          printf 'Before: %s\n' "$(cd "$active_release" && sudo -n sha256sum send_inquiry.php)"
 
-          sudo install -o codexdeploy -g codexdeploy -m 644 \
+          sudo -n install -o codexdeploy -g codexdeploy -m 644 \
             "$backup" "$active_release/send_inquiry.php"
 
-          printf 'After:  %s\n' "$(cd "$active_release" && sha256sum send_inquiry.php)"
+          printf 'After:  %s\n' "$(cd "$active_release" && sudo -n sha256sum send_inquiry.php)"
 
-          if ! (cd "$active_release" && sudo sha256sum --quiet -c manifest.sha256); then
+          if ! (cd "$active_release" && sudo -n sha256sum --quiet -c manifest.sha256); then
             printf 'ERROR: manifest still does not verify after restore.\n' >&2
             exit 1
           fi
