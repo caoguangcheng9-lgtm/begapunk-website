@@ -42,20 +42,33 @@ function decodeEntities(text) {
 }
 
 function toPlainText(html) {
-  return decodeEntities(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+  // Decorative toggle glyphs (the "+" in <span aria-hidden="true">) are not
+  // part of the question wording.
+  const withoutDecorative = html.replace(/<span[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/span>/gi, ' ');
+  return decodeEntities(withoutDecorative.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 }
 
-/** Pull question/answer pairs out of the rendered FAQ markup. */
+/**
+ * Pull question/answer pairs out of the rendered FAQ markup.
+ *
+ * Deliberately structure-based rather than class-based: the shipped pages use
+ * <details class="faq-item"> + <div class="faq-answer">, while the redesign
+ * draft uses <details class="bp1-faq-item"> + <p>. Matching on "any <details>
+ * whose class mentions faq, with a <summary> for the question and the rest of
+ * the block for the answer" survives both, and skips unrelated <details> such
+ * as the video transcript.
+ */
 function extractFaq(html) {
   const pairs = [];
-  const blockPattern = /<details class="faq-item"[^>]*>([\s\S]*?)<\/details>/g;
+  const blockPattern = /<details[^>]*class="[^"]*faq[^"]*"[^>]*>([\s\S]*?)<\/details>/gi;
   for (const block of html.matchAll(blockPattern)) {
     const inner = block[1];
-    const questionMatch = inner.match(/<summary[^>]*class="faq-question"[^>]*>([\s\S]*?)<\/summary>/);
-    const answerMatch = inner.match(/<div[^>]*class="faq-answer"[^>]*>([\s\S]*?)<\/div>/);
-    if (!questionMatch || !answerMatch) continue;
-    const name = toPlainText(questionMatch[1]);
-    const text = toPlainText(answerMatch[1]);
+    const summaryMatch = inner.match(/<summary[^>]*>([\s\S]*?)<\/summary>/i);
+    if (!summaryMatch) continue;
+    const name = toPlainText(summaryMatch[1]);
+    // Everything after the summary, minus the closing detail wrapper, is the answer.
+    const answerHtml = inner.slice(summaryMatch.index + summaryMatch[0].length);
+    const text = toPlainText(answerHtml);
     if (name && text) pairs.push({ name, text });
   }
   return pairs;
