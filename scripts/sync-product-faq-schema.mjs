@@ -127,9 +127,13 @@ function processFile(file) {
 
 const files = FILE_FILTER
   ? [FILE_FILTER]
-  : globSync('**/BP-*.html', { cwd: ROOT })
+  // English product pages only. Localized product pages sit behind the
+  // editorial semantic-review gate: their semantic artifact hash covers the FAQ
+  // text, so adding structured data there counts as a semantic change and needs
+  // a real review cycle rather than an automated pass. BP-10P-0001 is the pilot
+  // that already carries an approved FAQPage in every language.
+  : globSync('BP-*.html', { cwd: ROOT })
       .map((f) => f.split(path.sep).join('/'))
-      .filter((f) => !f.startsWith('dist/') && !f.startsWith('output/') && !f.startsWith('tmp/'))
       .sort();
 
 const results = files.map(processFile);

@@ -27,3 +27,10 @@ CORE-EEAT-Audit-Report.md
 
 # Local review scratch output
 output/
+
+# BP-1P-0003 redesign preview assets, copied from the product material folder
+# for local review only. Committed once the page actually references them.
+downloads/BP-1P-0003-20261026.pdf
+downloads/BP-1P-0003-customer-20261026.step
+videos/BP-1P-0003-motion-flow-en-20261026.*
+images/products/BP-1P-0003-20261026/
