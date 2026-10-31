@@ -44,6 +44,8 @@
     "product-ui:sync": "node scripts/sync-product-detail-ui.mjs --write",
     "product-ui:verify": "node scripts/sync-product-detail-ui.mjs --check && node scripts/build-localized-site.mjs --mode verify-product-ui-generation",
     "faq-trust:sync": "node scripts/sync-faq-trust-content.mjs",
+    "product-faq:sync": "node scripts/sync-product-faq-schema.mjs",
+    "product-faq:verify": "node scripts/sync-product-faq-schema.mjs --check",
     "faq-trust:verify": "node scripts/sync-faq-trust-content.mjs --check",
     "faq:i18n:sync": "node scripts/sync-localized-faq-content.mjs",
     "faq:i18n:verify": "node scripts/sync-localized-faq-content.mjs --check",
