@@ -527,9 +527,9 @@ function visibleFaqEntries($) {
   })).get().filter((item) => item.question && item.answer);
   if (disclosureEntries.length) return disclosureEntries;
 
-  const cardEntries = $('.faq-item, .app-faq-item').map((_, item) => ({
-    question: compactText($(item).find('.faq-question, h3').first().clone().find('svg, i, .faq-icon, .faq-toggle, .arrow').remove().end().text()),
-    answer: compactText($(item).find('.faq-answer, p').first().text()),
+  const cardEntries = $('.faq-item, .app-faq-item, .embedded-faq-item').map((_, item) => ({
+    question: compactText($(item).find('summary, .faq-question, h3').first().clone().find('svg, i, .faq-icon, .faq-toggle, .arrow').remove().end().text()),
+    answer: compactText($(item).find('.embedded-faq-answer, .faq-answer, p').first().text()),
   })).get().filter((item) => item.question && item.answer);
   if (cardEntries.length) return cardEntries;
 
@@ -2973,7 +2973,7 @@ for (const language of verifiedLanguages) {
     const applicationMain = $laserApplication('body').clone();
     applicationMain.find('header, nav, footer, script, style, .cookie-banner, .i18n-switcher').remove();
     applicationMain.find('#process-gas-engineering-path').remove();
-    applicationMain.find('.app-faq-item').each((_, element) => {
+    applicationMain.find('.app-faq-item, .embedded-faq-item').each((_, element) => {
       const faq = $laserApplication(element);
       const faqText = compactText(faq.text());
       if (!laserApplicationMediaClaims[language.code]?.test(faqText)) return;
@@ -3000,8 +3000,9 @@ for (const language of verifiedLanguages) {
     if (laserApplicationPhotoModelNote[language.code]?.test(compactText(laserWithoutPhotoNote.text()))) {
       failures.push(`${language.code}/${laserApplicationPageName}: the photograph-to-model note is repeated outside the designated paragraph.`);
     }
-    if ($laserApplication('.app-faq-item').length !== 3) {
-      failures.push(`${language.code}/${laserApplicationPageName}: the concise laser application FAQ must contain exactly three complementary items.`);
+    const expectedLaserFaqCount = 4;
+    if ($laserApplication('.app-faq-item, .embedded-faq-item').length !== expectedLaserFaqCount) {
+      failures.push(`${language.code}/${laserApplicationPageName}: the laser application FAQ must contain exactly ${expectedLaserFaqCount} complementary items.`);
     }
 
     const bottleCopy = bottleCappingVerification[language.code];

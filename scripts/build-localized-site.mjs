@@ -1873,8 +1873,8 @@ function schemaTypes(node) {
 }
 
 function visibleFaqEntities($) {
-  return $('.faq-item, .app-faq-item').map((_, item) => {
-    const questionNode = $(item).find('.faq-question, h3').first().clone();
+  return $('.faq-item, .app-faq-item, .embedded-faq-item').map((_, item) => {
+    const questionNode = $(item).find('.faq-question, summary, h3').first().clone();
     questionNode.find('svg, i, .faq-icon, .faq-toggle, .arrow').remove();
     const question = compactText(questionNode.text());
     const answer = compactText($(item).find('.faq-answer, p').first().text());

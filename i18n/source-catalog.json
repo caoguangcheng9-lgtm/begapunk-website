@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-10-24T03:00:12.828Z",
+  "generatedAt": "2026-11-04T06:15:46.283Z",
   "pages": [
     "index.html",
     "about.html",
@@ -249,6 +249,13 @@
       ]
     },
     {
+      "id": "c87c8b67405fdc51",
+      "source": "<a href=\"application-automation-rotary-tables.html\">Plan a rotary-table circuit</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "e1a4db525d910c06",
       "source": "<a href=\"application-bottle-filling-capping.html\">Bottle capping</a>",
       "pages": [
@@ -274,6 +281,13 @@
       "source": "<a href=\"application-cnc-pneumatic-clamping.html\">CNC pneumatic clamping</a>",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "e8424886dfc2ce2b",
+      "source": "<a href=\"application-cnc-pneumatic-clamping.html\">See a pneumatic clamping application</a>",
+      "pages": [
+        "application-automation-rotary-tables.html"
       ]
     },
     {
@@ -516,6 +530,13 @@
       ]
     },
     {
+      "id": "75d3eeae8321cf4e",
+      "source": "<a href=\"blog-rotary-joint-selection.html\">Review the selection checklist</a>",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
       "id": "095c2e0ca5cb4367",
       "source": "<a href=\"blog-rotary-joint-selection.html\">Selection Guide</a>",
       "pages": [
@@ -569,6 +590,13 @@
       ]
     },
     {
+      "id": "623921b99699f1ed",
+      "source": "<a href=\"blog-rotary-union-seal-types.html\">Review seal selection factors</a>",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "c55ff59e19609dfd",
       "source": "<a href=\"blog-rotary-union-seal-types.html\">Rotary union seal types: O-ring, lip seal, and spring-energized PTFE seal</a>",
       "pages": [
@@ -580,6 +608,20 @@
       "source": "<a href=\"blog-rotary-union-seal-types.html\">Rotary Union Seal Types: O-Ring, Lip, and Spring-Energized PTFE</a>",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "e48f92d10ecd0921",
+      "source": "<a href=\"blog-seal-replacement.html\">Review seal replacement and inspection</a>",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
+      "id": "ae0d148cd44001bb",
+      "source": "<a href=\"blog-threaded-vs-flange.html\">Review connection and mounting choices</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -685,6 +727,13 @@
       ]
     },
     {
+      "id": "548c220b80be8906",
+      "source": "<a href=\"BP-2P-08-0001.html\">View the 2-passage option</a><a href=\"BP-3P-0004.html\">View the 3-passage option</a>",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
       "id": "aad42d0f3da390e5",
       "source": "<a href=\"BP-2P-08-0001.html\">View</a>",
       "pages": [
@@ -692,10 +741,31 @@
       ]
     },
     {
+      "id": "dcbbb4369cc17abc",
+      "source": "<a href=\"BP-2P-130-0001.html\">View the 5 MPa air model</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "0fbe4c4b798982e1",
       "source": "<a href=\"BP-2P-130-0001.html\">View</a>",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "e3fb5616a01166aa",
+      "source": "<a href=\"BP-2P-16-0001.html\">View a compact 2-passage air model</a><a href=\"application-vacuum-packaging-machines.html\">Review vacuum packaging requirements</a>",
+      "pages": [
+        "application-packaging-machinery.html"
+      ]
+    },
+    {
+      "id": "40f504efd2ef0718",
+      "source": "<a href=\"BP-2P-16-0001.html\">View the model used in this customer installation</a>",
+      "pages": [
+        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -710,6 +780,20 @@
       "source": "<a href=\"BP-2P-30-0001.html\">BP-2P-30-0001</a> as a pneumatic starting point; review vacuum or cooling circuits separately",
       "pages": [
         "application-textile-printing-converting.html"
+      ]
+    },
+    {
+      "id": "9167920471186f63",
+      "source": "<a href=\"BP-2P-30-0001.html\">View a 30 mm through-bore model</a><a href=\"BP-10P-0001.html\">View a 10-passage model without a center through bore</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "663eef7a93d6c541",
+      "source": "<a href=\"BP-2P-30-0001.html\">View a through-bore option</a><a href=\"BP-10P-0001.html\">View a 10-passage indexing option</a>",
+      "pages": [
+        "application-automation-rotary-tables.html"
       ]
     },
     {
@@ -748,6 +832,13 @@
       ]
     },
     {
+      "id": "b6a92e0fda4ee1ff",
+      "source": "<a href=\"BP-3P-0004.html\">Check the 3-passage model's limits</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "2f5effe86484ae7e",
       "source": "<a href=\"BP-3P-0004.html\">View</a>",
       "pages": [
@@ -766,6 +857,13 @@
       "source": "<a href=\"BP-3P-0007.html\">View</a>",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "a1822c3fce67c846",
+      "source": "<a href=\"BP-3P-S06-0001.html\">View the pneumatic-electrical model</a>",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -843,10 +941,94 @@
       ]
     },
     {
+      "id": "f883dac32f40b57a",
+      "source": "<a href=\"case-studies.html\">Explore Begapunk customer installations</a>",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "1d374cfc3508434e",
+      "source": "<a href=\"case-studies.html\">See real application cases</a>",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "5081cfe24eb02a41",
+      "source": "<a href=\"case-studies.html#laser-tube-rear-chuck\">See a rear-chuck installation</a>",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
       "id": "c1364333d694c72f",
       "source": "<a href=\"contact.html?inquiry_type=technical-consultation&amp;source=blog-rotary-joint-selection.html#quoteForm\">Send Your Requirements →</a>",
       "pages": [
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "9e2b4abcbaba4623",
+      "source": "<a href=\"contact.html?source=certification-faq#quoteForm\">Ask about your documentation requirements</a>",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "c6004a126fac2293",
+      "source": "<a href=\"contact.html?source=filling-faq#quoteForm\">Discuss your filling-machine circuits</a>",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
+      "id": "2a13b45192d3b229",
+      "source": "<a href=\"contact.html?source=laser-faq#quoteForm\">Send a chuck photo or drawing</a>",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "84299887f2977bba",
+      "source": "<a href=\"contact.html?source=products-faq#quoteForm\">Get a model and quantity quote</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "06817742e5402fa3",
+      "source": "<a href=\"contact.html?source=products-replacement-faq#quoteForm\">Request a replacement comparison</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "5bb80b8c024586bd",
+      "source": "<a href=\"contact.html?source=robot-hybrid-faq#quoteForm\">Send your air and electrical requirements</a>",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "f5496dd07a32896d",
+      "source": "<a href=\"contact.html?source=selection-custom-faq#quoteForm\">Discuss a custom interface</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "49f698c32ea7dcea",
+      "source": "<a href=\"contact.html?source=selection-quote-faq#quoteForm\">Send your model, drawing or requirements</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "8b47d7353ba43b33",
+      "source": "<a href=\"contact.html?source=vacuum-definition-faq#quoteForm\">Discuss your vacuum operating conditions</a>",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
       ]
     },
     {
@@ -875,6 +1057,13 @@
       "source": "<a href=\"custom-hydraulic-rotary-unions.html\">Custom Hydraulic Rotary Unions</a>",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "8ba983c9f5b577a1",
+      "source": "<a href=\"custom-hydraulic-rotary-unions.html\">Explore custom hydraulic rotary unions</a>",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -945,6 +1134,34 @@
       ]
     },
     {
+      "id": "d97c40f0d052a631",
+      "source": "<a href=\"faq.html#faq-19\">Review signs that require immediate shutdown</a>",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
+      "id": "ac86fcfffc314816",
+      "source": "<a href=\"faq.html#faq-25\">Read the warranty review and replacement process</a>",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "5cb4136fd75b07bd",
+      "source": "<a href=\"faq.html#faq-26\">See sample ordering and production lead times</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "97b6e9552b398f1c",
+      "source": "<a href=\"installation.html\">Check installation and hose support</a>",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "af98af8790224fc2",
       "source": "<a href=\"installation.html\">Installation guide: anti-rotation bracket, hose stress, and seal protection</a>",
       "pages": [
@@ -1005,10 +1222,24 @@
       ]
     },
     {
+      "id": "dcce193356ee4c0b",
+      "source": "<a href=\"installation.html\">Review the installation guide</a>",
+      "pages": [
+        "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
       "id": "cf73910ba79e10c2",
       "source": "<a href=\"mailto:sales@begapunk.com\">Email Support</a>",
       "pages": [
         "installation.html"
+      ]
+    },
+    {
+      "id": "59b8b7eb356a601c",
+      "source": "<a href=\"manufacturing-quality.html\">Explore manufacturing and quality</a><a href=\"contact.html?source=about-faq#quoteForm\">Discuss your project</a>",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -1062,6 +1293,20 @@
         "search.html",
         "terms.html",
         "thank-you.html"
+      ]
+    },
+    {
+      "id": "1703bacbe0b315f5",
+      "source": "<a href=\"product-comparison.html\">Compare Begapunk models</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "ea4c0f1433d9fd57",
+      "source": "<a href=\"product-comparison.html\">Compare model specifications</a>",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -1178,10 +1423,31 @@
       ]
     },
     {
+      "id": "ae9c26e2232b8211",
+      "source": "<a href=\"production-inspection-testing.html\">Review production inspection</a><a href=\"faq.html#faq-26\">Check single-unit ordering and lead times</a>",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "569c5edaa28fd171",
+      "source": "<a href=\"production-inspection-testing.html\">See passage-by-passage leak testing</a>",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "3d2be98249cb7925",
       "source": "<a href=\"production-inspection-testing.html\">See the Production Testing Process</a>",
       "pages": [
         "blog.html"
+      ]
+    },
+    {
+      "id": "8ab5ecf397c21728",
+      "source": "<a href=\"products.html\">Compare available body materials</a>",
+      "pages": [
+        "blog-rotary-joint-materials.html"
       ]
     },
     {
@@ -1235,6 +1501,13 @@
         "search.html",
         "terms.html",
         "thank-you.html"
+      ]
+    },
+    {
+      "id": "8c218db6a80f0767",
+      "source": "<a href=\"terms.html\">Read the ordering and payment terms</a>",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -4134,6 +4407,13 @@
       ]
     },
     {
+      "id": "a8e595cebedca774",
+      "source": "A multi-passage rotary union transfers several independent air or liquid circuits through one compact rotating assembly. Separate sealed passages keep the circuits isolated, with designs ranging from two passages to a dozen or more for complex automation. They are widely used in laser tube-cutting chucks, multi-station rotary tables and robot tooling that need multiple air or vacuum functions. Begapunk tests each assembled union passage by passage for external and cross-port leakage.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "4e833827026d8d05",
       "source": "A photo or drawing helps us check the available space, mounting interface, connections, and hose direction.",
       "pages": [
@@ -4236,6 +4516,20 @@
       "source": "A threaded connection can be compact and direct, but thread engagement, sealing method, installation torque, orientation, and removal access all matter. The surrounding structure must prevent hoses or fittings from imposing bending or torsional load on the union.",
       "pages": [
         "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
+      "id": "d68337926c521f2f",
+      "source": "A through-bore rotary union has a continuous central opening for cables, optical fibers, a spindle or a drawbar. A non-through-bore design has no continuous center opening, so it does not provide that routing space. Through-bore designs give more integration flexibility when the machine needs central clearance; choose the bore size and interfaces around the machine layout. A cable passed through the center still needs a slip ring or other suitable interface for unlimited electrical rotation.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "14b13ae0b8564e3d",
+      "source": "A vacuum rotary union transfers vacuum from stationary piping to rotating equipment. Its sealing system limits air entering from the atmosphere so the equipment maintains the required suction level. Typical applications include semiconductor wafer-handling tables, packaging-machine vacuum drums, rotating suction tooling and composite-forming equipment. Select the seal design for the required vacuum, leakage limit and speed.",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
       ]
     },
     {
@@ -4624,6 +4918,13 @@
       ]
     },
     {
+      "id": "2e85ff558016e2e9",
+      "source": "Aluminum vs Stainless Steel: Common Questions",
+      "pages": [
+        "blog-rotary-joint-materials.html"
+      ]
+    },
+    {
       "id": "d96c79e60abafd9a",
       "source": "Aluminum, carbon-steel, and stainless-steel components are machined to the approved drawing.",
       "pages": [
@@ -4881,6 +5182,13 @@
       ]
     },
     {
+      "id": "f3555c33ea201b82",
+      "source": "Assess four areas: custom design and engineering response, including drawings and application review; seal-manufacturing quality and service-life test evidence relevant to your operating conditions; dependable lead times and sample support; and after-sales technical support and clear warranty terms. Ask for the evidence relevant to your machine. Begapunk offers flexible custom interfaces, single-unit samples, passage-by-passage production testing and individual product traceability.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "25a47a8a462e7f3d",
       "source": "August 19, 2026",
       "pages": [
@@ -5099,6 +5407,13 @@
       ]
     },
     {
+      "id": "f4251671250b8516",
+      "source": "Begapunk is a Chinese manufacturer to shortlist for pneumatic, vacuum-configured and pneumatic-electric rotary unions. We focus on industrial machinery, with standard products and custom interfaces for laser tube cutting, packaging equipment and automation rotary tables. Our model drawings, production leak-testing process and customer-authorized installations help buyers assess the product and supplier before ordering.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "c1d28d6b2ee50c34",
       "source": "Begapunk is a Ningbo-based manufacturer of pneumatic rotary joints for industrial automation and rotating machinery. Established in 2022, we develop standard and custom single-passage and multi-passage solutions for transferring compressed air between stationary and rotating machine components.",
       "pages": [
@@ -5110,6 +5425,13 @@
       "source": "Begapunk may require photographs, operating records, inspection results, or return of the unit before determining whether a claim is covered.",
       "pages": [
         "terms.html"
+      ]
+    },
+    {
+      "id": "24eba6fb9f8b84c7",
+      "source": "Begapunk offers cost-effective standard and custom alternatives for customers comparing pneumatic and multi-passage Deublin rotary unions. We can match a replacement proposal to the required mounting dimensions, port layout, passage count, pressure and speed, helping you compare purchase cost and delivery. Send the Deublin model number or drawing for a direct comparison. A drop-in replacement is established model by model; it is not assumed for every similar-looking union.",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -5300,6 +5622,13 @@
       ]
     },
     {
+      "id": "41f272b4c0eb0716",
+      "source": "Begapunk provides a standard one-year warranty from the shipment date for defects in materials or workmanship, under the written order terms. Damage caused by incorrect installation, excessive pressure or speed, unsuitable or unfiltered air, and misuse is excluded from that coverage. Send the model, traceability number, operating conditions and photos of the problem for review. When a covered manufacturing defect is confirmed, the standard remedy is replacement at no charge.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "b3c80db41211f8bc",
       "source": "Begapunk rotary joint manufacturing facility Ningbo",
       "pages": [
@@ -5374,6 +5703,20 @@
       "source": "Both entries above are standard air models. Water, coolant, and hydraulic-oil applications require a separately configured solution.",
       "pages": [
         "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "2f4b8f4a3edbe150",
+      "source": "Bottle Filling &amp; Capping Rotary Union FAQ",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
+      "id": "3aea15db4df955d0",
+      "source": "Bottle filling and capping machines commonly use precision rotary distributors or multi-passage pneumatic rotary unions to supply rotating air motors and grippers. Reliable sealing and a design suited to the cleaning environment keep the rotating head supplied throughout its cycle. In the installation shown here, Begapunk BP-2P-16-0001 supplies two independent air circuits for clamping and releasing a three-jaw cap gripper; its catalog ratings are 1 MPa and 200 RPM.",
+      "pages": [
+        "application-bottle-filling-capping.html"
       ]
     },
     {
@@ -5580,13 +5923,6 @@
       "source": "BP-2P-08-0001 is another option for a pneumatic three-jaw bottle-cap gripper. The installation shown uses BP-2P-16-0001. We will compare the passage count, mounting interface, pressure, speed, and dimensions before recommending either model.",
       "pages": [
         "application-bottle-filling-capping.html"
-      ]
-    },
-    {
-      "id": "fccd3e936c62e3a1",
-      "source": "BP-2P-08-0001 provides two independent passages, and BP-3P-0004 provides three. Choose according to the number of separately controlled air functions and the required interface.",
-      "pages": [
-        "application-laser-tube-cutting.html"
       ]
     },
     {
@@ -6243,17 +6579,17 @@
       ]
     },
     {
+      "id": "14505a76078771ad",
+      "source": "Can I buy a single rotary union as a sample?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "e295b3e91c294c18",
       "source": "Can I use PTFE tape and liquid sealant together?",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "59204b5ab3310c3d",
-      "source": "Can one rotary union carry vacuum and compressed air?",
-      "pages": [
-        "application-vacuum-packaging-machines.html"
       ]
     },
     {
@@ -6394,6 +6730,34 @@
       ]
     },
     {
+      "id": "9d197585a5be3939",
+      "source": "Choose a custom rotary union when a standard model cannot meet the installation space, passage count, connection threads, speed or pressure requirements. Unusual combinations, such as more than 12 circuits, high-power electrical transfer or a fiber-optic interface, also call for custom engineering. If a catalog model meets the requirements, choose it first to reduce cost and simplify delivery. Begapunk can customize ports, mounting interfaces and dimensions around your machine.",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "b012c45ca2f2971b",
+      "source": "Choose a dedicated vacuum rotary union that maintains the required negative pressure with low air ingress during rotation. Its seals must prevent outside air from entering faster than the vacuum system can remove it. If the packaging machine also uses compressed air for heat-sealing cylinders or blow-off, choose a combined design with separate vacuum and positive-pressure passages. Specify the target vacuum, flow and cycle speed.",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "e28d242277fbf1b2",
+      "source": "Choose a pneumatic-only union when the rotating equipment needs compressed air or vacuum alone, with seals selected for that medium. A pneumatic-electric hybrid is the compact choice when sensors, solenoid valves, motors or heaters also need power or control signals: it combines fluid and electrical transfer and prevents cable winding during continuous rotation. Specify voltage, current and any data protocol, including Ethernet, for the electrical interface. A separate slip ring can provide the same electrical function where the layout allows.",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "d7f6581fe5b0d92b",
+      "source": "Choose a pressure rating that covers the machine's maximum working pressure and pressure peaks at the required speed. Many Begapunk standard pneumatic models are rated at 1 MPa (10 bar), suitable for common factory compressed-air systems. For a high-pressure air circuit above 40 bar, BP-2P-130-0001 offers a 5 MPa (50 bar), 80 RPM option. Vacuum performance is specified separately from the positive-pressure rating.",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "b6cbee83f9fd3508",
       "source": "Choose a Rotary Joint",
       "pages": [
@@ -6405,6 +6769,13 @@
       "source": "Choose a rotary union by requirement",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "d23dfef3a08651b4",
+      "source": "Choose aluminum for low weight, good heat dissipation and an economical body, especially in robot end-of-arm tooling and general automation. Choose an appropriate stainless steel grade, such as 304 or 316L, when corrosion resistance, moisture or cleaning chemicals dominate the application. Stainless steel is a strong choice for food-processing, medical and chemical-service equipment, with the wetted parts, seals and cleaning design also matched to the service.",
+      "pages": [
+        "blog-rotary-joint-materials.html"
       ]
     },
     {
@@ -6443,10 +6814,24 @@
       ]
     },
     {
+      "id": "568b5bd589e91250",
+      "source": "Choose threaded mounting for a compact, lightweight connection where space is tight, such as a small automation table or pneumatic fixture. Choose flange mounting when a defined bolt pattern and locating face provide a more stable, repeatable installation, particularly for larger interfaces. For high-speed or heavy machinery, check the complete design's speed and support requirements: a flange alone does not establish a load or speed rating.",
+      "pages": [
+        "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
       "id": "c10fdc50e6dd79fd",
       "source": "Choose threaded vs flange rotary-union mounting from envelope, alignment, anti-rotation, and service access—not from the union’s appearance alone.",
       "pages": [
         "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
+      "id": "c0ebed57d47da44f",
+      "source": "Choosing a Rotary Union Manufacturer",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -6711,6 +7096,13 @@
         "application-textile-printing-converting.html",
         "application-vacuum-packaging-machines.html",
         "application-welding-positioners.html"
+      ]
+    },
+    {
+      "id": "f7c26447f0f61da9",
+      "source": "Common port threads include G parallel pipe threads, such as G1/8, G1/4 and G3/8; NPT tapered pipe threads; and metric M-series threads. G and NPT are widely used for pneumatic tubing and fittings in industrial automation. Match the rotary union's exact thread standard and sealing method to the machine's fittings to prevent leakage. G and NPT threads are not interchangeable.",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -7190,6 +7582,13 @@
       ]
     },
     {
+      "id": "a26b64fb2fd56dc4",
+      "source": "Contact Begapunk for the certification and compliance documentation available for your selected product. Send the model, destination market and required standards with your inquiry. We will confirm the applicable scope and available documents with the quotation, so the documentation matches the product and order you are buying.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "155ed5762501540a",
       "source": "Contact Engineering",
       "pages": [
@@ -7273,6 +7672,13 @@
       "source": "Count the clamp, release, and other air functions that must be controlled separately.",
       "pages": [
         "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "68510a34485d6c76",
+      "source": "Count the independent circuits that must cross the rotating interface: each separate air supply, blow-off, vacuum or return line needs a passage. A double-acting fixture normally needs two for clamp and release when its control valve is on the stationary side; placing the valve on the rotating side can change the count. Specify electrical slip-ring circuits separately. Allow one or two spare fluid passages if future upgrades justify the extra space and cost.",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -7978,10 +8384,8 @@
       "pages": [
         "application-cnc-pneumatic-clamping.html",
         "application-electronics-battery-test-fixtures.html",
-        "application-laser-tube-cutting.html",
         "application-steel-dusty-environments.html",
         "application-textile-printing-converting.html",
-        "application-vacuum-packaging-machines.html",
         "application-welding-positioners.html",
         "blog-rotary-joint-installation-mistakes.html"
       ]
@@ -8054,6 +8458,13 @@
       "source": "Fine dust near seal area",
       "pages": [
         "application-steel-dusty-environments.html"
+      ]
+    },
+    {
+      "id": "19ce5da50746f72b",
+      "source": "First stop the machine, isolate its energy sources, shut off the air supply and depressurize every passage. Clean the exterior and check fittings and threaded connections for looseness. Next, following the model's service procedure, release the anti-rotation restraint if needed and check for abnormal play or loose bearings. Finally, if disassembly is required, inspect seals and sealing surfaces for scratches, wear and debris, and replace damaged parts. Refit the restraint and test at low pressure and speed before normal operation.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
       ]
     },
     {
@@ -8262,6 +8673,20 @@
       ]
     },
     {
+      "id": "090066c1126764c0",
+      "source": "For a laser tube-cutting rear chuck, choose a dedicated multi-passage rotary union that keeps the pneumatic circuits supplied throughout rotation. Begapunk's BP-2P-08-0001 and BP-3P-0004 provide two- and three-passage rear-chuck options. Match the chuck's speed, pressure, mounting interface and any large center-bore requirement to the selected design. Process and cutting-assist gases require a separate solution, with their own materials and testing.",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "e60f50495fb2517b",
+      "source": "For a rotary filling machine that transfers both product liquid and air or vacuum, choose a combined liquid-and-pneumatic rotary union. A large center through bore can leave room for the machine's shaft while separate passages serve filling, bottle positioning or drip control. Appropriate stainless steel grades, such as 304 or 316L, are strong choices for wetted parts, together with food-contact-compatible seals and a suitable cleaning design. The customer case on this page demonstrates air transfer to a capping gripper.",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
       "id": "35159c26ba4cfd4f",
       "source": "For a similar capping machine",
       "pages": [
@@ -8292,6 +8717,13 @@
     {
       "id": "aaaf3a0272a967ad",
       "source": "For a useful selection and quotation, provide:",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "658ff69ad0510aff",
+      "source": "For an accurate custom quotation, send the medium, passage count, passage diameter or flow, working and peak pressure, maximum and average speed, installation-space limits, connection threads and any electrical slip-ring requirements. Include temperature, duty cycle and order quantity where available. A 3D model or mechanical drawing helps us assess the design faster. A model number, photo or sketch is enough to start; Begapunk can help complete the remaining details.",
       "pages": [
         "blog-rotary-joint-selection.html"
       ]
@@ -8357,6 +8789,13 @@
       "source": "For questions about this Privacy Policy or your data:",
       "pages": [
         "privacy.html"
+      ]
+    },
+    {
+      "id": "879334c25a30f3af",
+      "source": "For robot end-of-arm tooling, prioritize a compact, lightweight union that minimizes the load on the wrist. Choose a Begapunk pneumatic-electric model when the tool needs both air and electrical control. For a tool needing two to six air circuits, match the passage count and electrical channels to those requirements. BP-3P-S06-0001 combines three air passages with six electrical leads in one assembly. Select the electrical configuration for the sensors, valves and actuators used on the tool.",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -8687,6 +9126,13 @@
       ]
     },
     {
+      "id": "29582e0983320900",
+      "source": "How do I know how many passages my rotary union needs?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "470e1b5e774010d2",
       "source": "How do I select a rotary union for printing machinery?",
       "pages": [
@@ -8698,6 +9144,20 @@
       "source": "How does particle protection differ from liquid protection?",
       "pages": [
         "application-steel-dusty-environments.html"
+      ]
+    },
+    {
+      "id": "3c39946c539bbd3e",
+      "source": "How many air passages does a laser tube cutting chuck need?",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "55078bae9ed28781",
+      "source": "How much does a pneumatic rotary union cost?",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -8719,6 +9179,13 @@
       "source": "How to assess an anti-twist installation",
       "pages": [
         "application-pneumatic-tools-hose-anti-twist.html"
+      ]
+    },
+    {
+      "id": "601e10a583692aec",
+      "source": "How to choose a rotary union for packaging machinery?",
+      "pages": [
+        "application-packaging-machinery.html"
       ]
     },
     {
@@ -8764,6 +9231,13 @@
       ]
     },
     {
+      "id": "e5d7a357e882d7b1",
+      "source": "How to select a pneumatic rotary union step by step?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "b1102867bbd704fd",
       "source": "How to Select a Pneumatic Rotary Union: 5 Key Parameters | Begapunk",
       "pages": [
@@ -8771,10 +9245,24 @@
       ]
     },
     {
+      "id": "6bbead70b7d54b5b",
+      "source": "How to select a rotary union for an indexing rotary table?",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
       "id": "a2d1e4c77fac70aa",
       "source": "How to select pneumatic rotary joints for CNC fixtures, rotary tables, and clamping systems.",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
+      ]
+    },
+    {
+      "id": "df8c21290e6d92ae",
+      "source": "How to troubleshoot a leaking rotary joint step by step?",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
       ]
     },
     {
@@ -9124,6 +9612,13 @@
       ]
     },
     {
+      "id": "f25c4659c75dfcb8",
+      "source": "Is Begapunk a good rotary union manufacturer?",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "1f3f5d6d40ab100b",
       "source": "It can be possible with separated passages, but media, pressure, speed, and seal requirements must be confirmed.",
       "pages": [
@@ -9266,6 +9761,13 @@
         "search.html",
         "terms.html",
         "thank-you.html"
+      ]
+    },
+    {
+      "id": "7811dc0f9eb9e10c",
+      "source": "Laser Tube Cutting Rotary Union FAQ",
+      "pages": [
+        "application-laser-tube-cutting.html"
       ]
     },
     {
@@ -9486,6 +9988,13 @@
       ]
     },
     {
+      "id": "d22b0bce87a6a4a6",
+      "source": "Manufacturers to compare include Deublin and Rotoflux for fluid rotary unions, and Moog for slip rings and fluid rotary solutions. Begapunk is a strong option for machine builders seeking pneumatic or pneumatic-electric rotary unions, responsive custom design and competitive pricing. Compare the product's fit with your machine, sealing design, delivery and after-sales support to choose the best supplier for the application.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "bc8cca18ea44b193",
       "source": "Manufacturing Process",
       "pages": [
@@ -9500,10 +10009,24 @@
       ]
     },
     {
+      "id": "fa5505aa1507fca7",
+      "source": "Match the passage count to the chuck's control circuit. Three- or five-passage layouts can serve clamp, release and additional independent pneumatic functions; a simpler clamp/release circuit may need only two. Single-acting and double-acting chucks can need different layouts, and spare pneumatic blow-off circuits add passages. Begapunk's listed rear-chuck options have two or three passages. Process or cutting-assist gas requires a separate solution with appropriate materials and testing.",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
       "id": "59b27bf118797ae8",
       "source": "Match the rotary union to your roller",
       "pages": [
         "application-textile-printing-converting.html"
+      ]
+    },
+    {
+      "id": "b9482134911fc16b",
+      "source": "Match the RPM rating to the machine's actual maximum speed and whether it rotates intermittently or continuously. High-speed packaging equipment and robot tooling need low-friction seals and precision bearings designed for that duty; operation at several thousand RPM requires a dedicated high-speed design. Using a low-speed union above its rating can quickly cause frictional heat, seal wear and air leakage. Check the selected model's speed limit together with pressure and lubrication requirements.",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -10510,6 +11033,13 @@
       ]
     },
     {
+      "id": "a57c4432ff805c9f",
+      "source": "Overheating is commonly caused by excessive speed or pressure, too much seal friction, misalignment or a bearing-lubrication problem. If the rotary union becomes abnormally hot, stop the machine, isolate the supply and release pressure before inspection. Check operating limits, seal friction and the specified lubrication. Correct the cause before restarting at low pressure and speed to avoid permanent seal or bearing damage.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "715157470a2c7722",
       "source": "Pack &amp; Ship",
       "pages": [
@@ -10567,6 +11097,13 @@
         "search.html",
         "terms.html",
         "thank-you.html"
+      ]
+    },
+    {
+      "id": "633a94f533aaea37",
+      "source": "Packaging Machinery Rotary Union FAQ",
+      "pages": [
+        "application-packaging-machinery.html"
       ]
     },
     {
@@ -10675,6 +11212,13 @@
       ]
     },
     {
+      "id": "7cc14e593e8ff825",
+      "source": "Payment options include bank transfer (T/T), letter of credit (L/C), PayPal and major credit cards for international customers and OEM machine builders. The available method, currency, transaction fees and payment schedule are confirmed in the quotation and accepted order.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "25f5d95e43310c92",
       "source": "Pick the threaded interface when envelope is tight and the structure can take installation torque without bending the union. Pick a flange when you need a defined bolt pattern, orientation, and repeatable removal. Neither mounting type corrects poor concentricity.",
       "pages": [
@@ -10724,6 +11268,13 @@
       ]
     },
     {
+      "id": "ca3d7b7d71c3be8d",
+      "source": "Pneumatic and hydraulic rotary unions differ mainly in the medium they transfer and their working pressure. Pneumatic unions carry compressed air, vacuum or inert gas with seals selected for that service; low-friction designs suit fast rotation. Hydraulic unions carry hydraulic oil and use seals and bearings selected for higher pressure. Many Begapunk standard air models are rated at 1 MPa (10 bar). Higher-pressure air and hydraulic applications use the appropriate model or custom configuration.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "af04aee5002abfad",
       "source": "Pneumatic and vacuum rotary union guide for rotary vacuum packaging machines, pouch filling machines, vacuum sealing heads, and rotating packaging stations.",
       "pages": [
@@ -10749,6 +11300,13 @@
       "source": "Pneumatic clamping and fixture control for rotary welding tables, pipe welding rotators, and robotic welding fixtures.",
       "pages": [
         "application-welding-positioners.html"
+      ]
+    },
+    {
+      "id": "a04de680c83f128a",
+      "source": "Pneumatic fixtures on rotary tables commonly use a multi-passage, through-bore pneumatic rotary union mounted on the table's rotational axis. It continuously supplies the rotating fixtures so they can clamp and release workpieces quickly without winding the supply hoses. This supports faster automated handling and machining cycles. Match passage count and flow to the fixtures, and use the center bore for a shaft or cables when the machine layout needs it.",
+      "pages": [
+        "application-automation-rotary-tables.html"
       ]
     },
     {
@@ -10907,6 +11465,13 @@
       ]
     },
     {
+      "id": "4a6961539c78b20e",
+      "source": "Pneumatic Rotary Union Selection FAQ",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "8a3b20f185dee913",
       "source": "Pneumatic rotary union selection for electronics automation, battery test fixtures, inspection stations and pneumatic-electric rotary interfaces.",
       "pages": [
@@ -10974,6 +11539,13 @@
       "source": "Pneumatic-electric rotary unions",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "8791a11b26ac00f2",
+      "source": "Pneumatic-only vs pneumatic-electric hybrid rotary unions: which do I need?",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
       ]
     },
     {
@@ -11151,6 +11723,13 @@
       "source": "Printing press roller",
       "pages": [
         "application-textile-printing-converting.html"
+      ]
+    },
+    {
+      "id": "09c9e775605bfea3",
+      "source": "Prioritize low weight, adequate speed and multiple independent passages. Compact aluminum pneumatic or vacuum rotary unions are a good starting point for packaging turntables and bag-making equipment with frequent operating cycles. For a machine running at 200-500 RPM or faster, select a union rated for that actual duty. Low starting torque helps frequent indexing; match the seal configuration to air or vacuum service and the cleaning environment.",
+      "pages": [
+        "application-packaging-machinery.html"
       ]
     },
     {
@@ -11612,13 +12191,6 @@
       ]
     },
     {
-      "id": "68e4a9e6eae487ef",
-      "source": "Rear-Chuck Pneumatic Rotary Union Questions",
-      "pages": [
-        "application-laser-tube-cutting.html"
-      ]
-    },
-    {
       "id": "9b9bda41b51ecbc5",
       "source": "Recommended Starting Points",
       "pages": [
@@ -11898,6 +12470,13 @@
       ]
     },
     {
+      "id": "2a95f0dda086ca9d",
+      "source": "Robot Tooling &amp; Pneumatic-Electric FAQ",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
       "id": "cb2c8b0c2cb90e65",
       "source": "Robotic welding fixture",
       "pages": [
@@ -12015,6 +12594,13 @@
       "source": "Rotary pouch machine",
       "pages": [
         "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "c6f5418d4a16d2a5",
+      "source": "Rotary Table &amp; Pneumatic Fixture FAQ",
+      "pages": [
+        "application-automation-rotary-tables.html"
       ]
     },
     {
@@ -12137,10 +12723,24 @@
       ]
     },
     {
+      "id": "017d84653505f872",
+      "source": "Rotary Union Leakage, Noise &amp; Overheating FAQ",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "793ef4839e59ef0c",
       "source": "Rotary Union Materials: Aluminum, Stainless Steel or Brass? | Begapunk",
       "pages": [
         "blog-rotary-joint-materials.html"
+      ]
+    },
+    {
+      "id": "700ede9462786222",
+      "source": "Rotary Union Mounting FAQ",
+      "pages": [
+        "blog-threaded-vs-flange.html"
       ]
     },
     {
@@ -12162,6 +12762,20 @@
       "source": "Rotary Union Seal Replacement: A Step-by-Step Guide for Maintenance Teams",
       "pages": [
         "blog-seal-replacement.html"
+      ]
+    },
+    {
+      "id": "1e9a0d40e8864f47",
+      "source": "Rotary Union Selection &amp; Buying Questions",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "f864500515c9c247",
+      "source": "Rotary unions are classified by medium, passage count, body layout and mounting method. Main types include pneumatic, hydraulic, water/coolant, steam and vacuum unions; single-, double- and multi-passage designs; and through-bore or non-through-bore bodies. A through bore leaves space for a cable, shaft or drawbar. Begapunk supplies standard pneumatic models and custom solutions for different passage layouts, interfaces and media requirements.",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -12377,6 +12991,13 @@
     {
       "id": "902a22ab59df3942",
       "source": "Select a pneumatic rotary union by passage count, operating pressure, rotational speed, media compatibility and mounting method.",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "533fe06ee2363dd3",
+      "source": "Select a pneumatic rotary union in five steps: identify the medium and passage count; establish working and peak pressure; determine maximum speed and whether motion is continuous or intermittent; check the installation space and threaded or flange interfaces; then choose body and seal materials for dust, temperature, cleanliness and other environmental conditions. Allow for pressure peaks within the selected model's limits. Begapunk can quickly match these requirements to a standard model or custom design.",
       "pages": [
         "blog-rotary-joint-selection.html"
       ]
@@ -12819,6 +13440,13 @@
       ]
     },
     {
+      "id": "b76757fe39a64e5b",
+      "source": "Should I choose aluminum or stainless steel for a rotary union?",
+      "pages": [
+        "blog-rotary-joint-materials.html"
+      ]
+    },
+    {
       "id": "ded5733ee342cc89",
       "source": "Should I lubricate the seal before installation?",
       "pages": [
@@ -13002,6 +13630,13 @@
       ]
     },
     {
+      "id": "82fd21e6db603ccc",
+      "source": "Standard pneumatic rotary unions range from tens to hundreds of US dollars, depending on passage count, size, materials and quantity. Simple single-passage and compact models are generally more economical; complex multi-passage designs cost more. Custom pricing reflects engineering work, design complexity and batch size. Begapunk offers cost-effective industrial rotary unions and custom alternatives. Published quantity prices apply to the stated order tier; send the model or drawing and quantity for an exact quotation.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "f219d32f6777ef8c",
       "source": "Standard Starting Points",
       "pages": [
@@ -13041,6 +13676,13 @@
       "source": "Start with five engineering inputs",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "00af4fe6e0f057f0",
+      "source": "Start with passage count and mounting dimensions. If the table has four to eight independent circuits for cylinders, fixtures or vacuum cups, choose the matching number of passages. Check whether cables or a mechanical shaft must pass through the center bore. Fit the specified anti-rotation support to restrain the stationary side while preserving the clearance required by the design; support machine loads independently.",
+      "pages": [
+        "application-automation-rotary-tables.html"
       ]
     },
     {
@@ -13383,6 +14025,13 @@
       ]
     },
     {
+      "id": "1b7dcc4efad54188",
+      "source": "The main causes of air leakage are misalignment and uneven seal wear, operation above the pressure or speed limit, moisture or contaminants damaging the sealing surfaces, and worn or aged seals. Check external fittings and tubing before dismantling the union. Keep the air supply properly filtered, separate out water and follow the model's lubrication requirements. When seals are worn, use the correct model-specific replacement set and inspect the sealing surfaces and bearings.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "7b5c054eabd1ee49",
       "source": "The minimum order quantity is one unit for both catalog and custom products.",
       "pages": [
@@ -13595,6 +14244,13 @@
       ]
     },
     {
+      "id": "497f7ad5a7816863",
+      "source": "Threaded vs flange mounting: which is better for my machine?",
+      "pages": [
+        "blog-threaded-vs-flange.html"
+      ]
+    },
+    {
       "id": "18e07c4d844895e2",
       "source": "Threaded vs Flange-Mounted Rotary Unions | Begapunk",
       "pages": [
@@ -13639,6 +14295,13 @@
     {
       "id": "42279184de3089f1",
       "source": "Through-bore rotary unions",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "39d38ab4c31187f3",
+      "source": "Through-bore vs blind-bore rotary joints: what's the difference?",
       "pages": [
         "products.html"
       ]
@@ -13804,6 +14467,13 @@
       ]
     },
     {
+      "id": "766a3032ddf1ac08",
+      "source": "Unusual noise commonly comes from worn or damaged bearings, inadequate lubrication where required, excessive seal friction, misalignment or excessive radial or axial loads. Stop the machine and isolate the supply before checking lubrication, alignment and bearing condition. Running a noisy or binding rotary union can lead to bearing seizure or damage to the housing and other components.",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
       "id": "a9f55ee7e4beadc3",
       "source": "Upload your drawing or old rotary joint photo through the RFQ form. Begapunk engineers will review the supplied interface details.",
       "pages": [
@@ -13916,13 +14586,6 @@
       ]
     },
     {
-      "id": "ba739eaab24426b9",
-      "source": "Vacuum Packaging Rotary Union Questions",
-      "pages": [
-        "application-vacuum-packaging-machines.html"
-      ]
-    },
-    {
       "id": "1b95d653fc7273ea",
       "source": "Vacuum packaging stations often combine vacuum extraction, positive air blow-off, clamp actuation, and sealing motion in one rotating machine area.",
       "pages": [
@@ -13932,6 +14595,13 @@
     {
       "id": "e559245c19470833",
       "source": "Vacuum plus release air",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "f2ca05ce617f2db5",
+      "source": "Vacuum Rotary Union FAQ",
       "pages": [
         "application-vacuum-packaging-machines.html"
       ]
@@ -14364,6 +15034,27 @@
       ]
     },
     {
+      "id": "ab08bdbd19a91afd",
+      "source": "What are affordable alternatives to Deublin rotary unions?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "b63e29c84f7da963",
+      "source": "What are the main types of rotary unions?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "24dfcffc9f9012a7",
+      "source": "What certifications do Begapunk rotary unions have?",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "f9e8e2a6c5563946",
       "source": "What do I need to send for a model recommendation?",
       "pages": [
@@ -14392,6 +15083,41 @@
       ]
     },
     {
+      "id": "e03743ebdc86e977",
+      "source": "What information do I need to provide for a custom rotary union quote?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "dafbe3860c41181c",
+      "source": "What is a multi-passage rotary union?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "45de1a19f56ab153",
+      "source": "What is a vacuum rotary union, and where is it used?",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "7d74516dd0de9a6d",
+      "source": "What is the difference between pneumatic and hydraulic rotary unions?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "552ac082977d32fa",
+      "source": "What is the warranty policy for Begapunk rotary unions?",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "8350ed8257b72b16",
       "source": "What it helps us check",
       "pages": [
@@ -14399,10 +15125,87 @@
       ]
     },
     {
+      "id": "3033519f424c6c91",
+      "source": "What payment methods do you accept?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "13ecd68310236497",
+      "source": "What pressure rating do I need for a pneumatic rotary union?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "6f6ed9904a60b0e4",
       "source": "What pressure should be used for the post-installation leak test?",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "de144dc101e24717",
+      "source": "What rotary union do I need for a laser tube cutting machine?",
+      "pages": [
+        "application-laser-tube-cutting.html"
+      ]
+    },
+    {
+      "id": "4706f2d9c1cce310",
+      "source": "What rotary union do I need for a vacuum packaging machine?",
+      "pages": [
+        "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "810182a07c416c7f",
+      "source": "What rotary union is used for pneumatic fixtures on rotary tables?",
+      "pages": [
+        "application-automation-rotary-tables.html"
+      ]
+    },
+    {
+      "id": "0e3396ce117df12a",
+      "source": "What rotary union is used for robot end-of-arm tooling?",
+      "pages": [
+        "application-robot-end-of-arm-tooling.html"
+      ]
+    },
+    {
+      "id": "2e97c723e1394930",
+      "source": "What rotary union is used in bottle filling and capping machines?",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
+      "id": "9f21148c16afd8be",
+      "source": "What rotary union works for a rotary filling machine?",
+      "pages": [
+        "application-bottle-filling-capping.html"
+      ]
+    },
+    {
+      "id": "d9a445cb9b108562",
+      "source": "What RPM rating do I need for my rotary union?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
+      "id": "f7c93d6f48d44f54",
+      "source": "What should I look for when choosing a rotary union supplier?",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "ecaaccddb7fe406c",
+      "source": "What thread types are available for pneumatic rotary unions?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -14500,6 +15303,13 @@
       ]
     },
     {
+      "id": "909cf2712c309acb",
+      "source": "When should I choose a custom rotary union instead of a standard model?",
+      "pages": [
+        "blog-rotary-joint-selection.html"
+      ]
+    },
+    {
       "id": "fef029f8061f09d0",
       "source": "When the model or requirements are clear, we'll reply with a quotation and estimated lead time.",
       "pages": [
@@ -14528,10 +15338,17 @@
       ]
     },
     {
-      "id": "27bc91c2480b7f08",
-      "source": "Which standard models are used for rear-chuck compressed air?",
+      "id": "bf93774988611abd",
+      "source": "Who are the best pneumatic rotary union manufacturers?",
       "pages": [
-        "application-laser-tube-cutting.html"
+        "about.html"
+      ]
+    },
+    {
+      "id": "8bd6982c24117d68",
+      "source": "Who are the top rotary union manufacturers in China?",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -14553,6 +15370,27 @@
       "source": "Why is a new rotary joint leaking immediately?",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "3118a32b7e5fe751",
+      "source": "Why is my pneumatic rotary union leaking air?",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
+      "id": "ed713ef85ab93531",
+      "source": "Why is my rotary union making noise?",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
+      ]
+    },
+    {
+      "id": "ccd95819af125b25",
+      "source": "Why is my rotary union overheating?",
+      "pages": [
+        "blog-rotary-joint-leaking.html"
       ]
     },
     {
@@ -14633,10 +15471,24 @@
       ]
     },
     {
-      "id": "79d5143fc6a43db2",
-      "source": "Yes, when separate passages are used and the rotary union is selected for the required pressure and vacuum level.",
+      "id": "4371e589a9b40b7f",
+      "source": "Yes, with a configuration selected for vacuum. Specify the target vacuum, leakage tolerance, flow and speed so the seals and port layout can be matched to the application. A standard compressed-air model needs a separate vacuum suitability review.",
       "pages": [
         "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "6afdf542e1853bd2",
+      "source": "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Catalog models typically take about 20 calendar days to produce after payment; custom products are completed within 30 calendar days. If a suitable unit is already in stock, ask us for the available dispatch date. Production lead time does not include international shipping.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "91dba314dd79bb17",
+      "source": "Yes. Begapunk is a specialist manufacturer of industrial rotary connections, with pneumatic and multi-passage models, vacuum configurations and pneumatic-electric options. We combine PTFE sealing technology with rigorous passage-by-passage testing to supply dependable products and custom solutions for laser tube cutting, packaging machinery and automation rotary tables. Flexible interfaces, single-unit samples and support from selection through production make Begapunk a strong choice for machine builders.",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -14658,13 +15510,6 @@
       "source": "Yes. They are used when air, vacuum, water, coolant, or other media must pass into rotating rollers or drums.",
       "pages": [
         "application-textile-printing-converting.html"
-      ]
-    },
-    {
-      "id": "8d1cb3a37079d6c1",
-      "source": "Yes. Vacuum applications are common, but leakage tolerance, seal structure, and port layout must be confirmed.",
-      "pages": [
-        "application-vacuum-packaging-machines.html"
       ]
     },
     {

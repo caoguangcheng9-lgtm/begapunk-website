@@ -88,6 +88,22 @@
   @media (max-width: 500px) { .social-share { gap: 8px; } .share-btn { padding: 8px 12px; font-size: 0.8rem; } }
  </style>
  <script defer="" src="../js/analytics.js?v=d1fe8e76c3eb"></script>
+<style id="page-faq-style">
+.embedded-faq .container{max-width:960px}
+.embedded-faq .section-title{text-align:left;margin-bottom:24px}
+.embedded-faq-item{border-bottom:1px solid var(--border,#e2e8f0);padding:0;background:var(--bg,#fff)}
+.embedded-faq-item:first-child{border-top:1px solid var(--border,#e2e8f0)}
+.embedded-faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;list-style:none;padding:20px 4px;font-weight:600;color:var(--dark,#0f172a);line-height:1.6;overflow-wrap:anywhere}
+.embedded-faq-item summary::-webkit-details-marker{display:none}
+.embedded-faq-item summary::after{content:'+';flex:none;font-size:1.4rem;color:var(--primary,#ea580c)}
+.embedded-faq-item[open] summary::after{content:'−'}
+.embedded-faq-item summary:focus-visible{outline:3px solid var(--primary,#ea580c);outline-offset:3px}
+.embedded-faq-answer,.embedded-faq-links{margin:0 4px 20px;line-height:1.8;overflow-wrap:anywhere}
+.embedded-faq-answer p{margin:0}
+.embedded-faq-links{display:flex;flex-wrap:wrap;gap:10px 24px;font-weight:600}
+.embedded-faq-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+</style>
+<script type="application/ld+json" id="page-faq-schema">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Joint torique, joint à lèvre ou joint PTFE : lequel choisir pour l’air comprimé ?","acceptedAnswer":{"@type":"Answer","text":"Pour l’air comprimé, choisissez les joints selon la vitesse, le frottement et la durée de vie attendue. Économiques, les joints toriques servent souvent à l’étanchéité statique ou à la précharge élastique ; leur emploi dynamique dépend de la conception. Le frottement d’un joint à lèvre dépend de son matériau, de sa géométrie et de la pression. Les joints composites PTFE constituent un bon choix pour limiter le frottement et résister à l’usure. Les versions à ressort maintiennent le contact d’étanchéité sur une large plage de fonctionnement. Les modèles du catalogue Begapunk utilisent des ensembles PTFE + joint torique. Aucun concept de joint n’est optimal pour toutes les conditions de pression, de vitesse et de lubrification."}}],"inLanguage":"fr"}</script>
 </head>
 <body>
  <a class="skip-link" href="#main-content" data-search-exclude="">Passer au contenu principal</a>
@@ -214,6 +230,21 @@
    <p>Indiquez le fluide, la pression, le mouvement, la température, le nombre de circuits, le plan de montage et le critère de fuite. Begapunk pourra alors étudier un modèle standard ou une configuration sur mesure faisant l’objet d’une documentation distincte.</p>
    <p><a href="contact.html"><strong>Demander l’étude du joint et du raccord tournant →</strong></a></p>
   </article>
+
+<!-- PAGE-FAQ:START -->
+<section class="section embedded-faq" aria-labelledby="page-faq-heading">
+ <div class="container">
+  <h2 class="section-title" id="page-faq-heading">FAQ : choisir les joints d’étanchéité d’un raccord tournant</h2>
+  <div class="embedded-faq-list">
+    <details class="embedded-faq-item" id="question-q23-q64" open>
+     <summary>Joint torique, joint à lèvre ou joint PTFE : lequel choisir pour l’air comprimé ?</summary>
+     <div class="embedded-faq-answer"><p>Pour l’air comprimé, choisissez les joints selon la vitesse, le frottement et la durée de vie attendue. Économiques, les joints toriques servent souvent à l’étanchéité statique ou à la précharge élastique ; leur emploi dynamique dépend de la conception. Le frottement d’un joint à lèvre dépend de son matériau, de sa géométrie et de la pression. Les joints composites PTFE constituent un bon choix pour limiter le frottement et résister à l’usure. Les versions à ressort maintiennent le contact d’étanchéité sur une large plage de fonctionnement. Les modèles du catalogue Begapunk utilisent des ensembles PTFE + joint torique. Aucun concept de joint n’est optimal pour toutes les conditions de pression, de vitesse et de lubrification.</p></div>
+     <p class="embedded-faq-links"><a href="blog-ptfe-coated-o-rings.html">Voir le procédé de revêtement des joints toriques Begapunk</a><a href="production-inspection-testing.html">Voir les essais des raccords assemblés</a></p>
+    </details>
+  </div>
+ </div>
+</section>
+<!-- PAGE-FAQ:END -->
 
   <!-- ===== RELATED ARTICLES ===== -->
   <section class="related-articles">

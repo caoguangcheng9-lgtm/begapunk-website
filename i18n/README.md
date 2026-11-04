@@ -63,6 +63,8 @@ FAQ 专用同步与验证：
     npm run faq:i18n:sync
     npm run faq:i18n:verify
 
+嵌入产品、应用和文章页的 FAQ 使用 `data/page-faq.en.json` 及 `manual/page-faq-{de,fr,ja,ru}.json`。译文按原稿题号映射；源摘要不一致时同步器拒绝继续，须重新核对译文。`npm run page-faq:i18n:sync` 只更新 13 页/语言的受控 FAQ 区域、FAQPage 和对应的页面级翻译记忆；`npm run page-faq:i18n:verify` 为只读核验。先设置仓库外的 `I18N_OUTPUT_ROOT` 生成并比较，再按已授权范围写回。英文使用 `page-faq:sync` / `page-faq:verify`。改动后同步搜索索引、sitemap 并完成本地化审校记录。
+
 ## 3. 写入安全边界
 
 - i18n:build、i18n:refresh-metadata 和 i18n:integrate 的写入模式必须使用仓库外的 I18N_OUTPUT_ROOT。

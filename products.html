@@ -76,6 +76,22 @@
 <style id="catalog-selection-style">
 .catalog-selection{padding:24px 0 8px;scroll-margin-top:96px}.catalog-selection h2{font-size:1.35rem;margin-bottom:14px}.catalog-selection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.catalog-selection-card{padding:18px;border:1px solid var(--border);border-radius:var(--radius);min-width:0}.catalog-selection-card h3{font-size:1.05rem;line-height:1.4;margin-bottom:8px;overflow-wrap:anywhere}.catalog-selection-card p{font-size:.92rem;line-height:1.6;color:var(--text-light);margin-bottom:12px}.catalog-selection-card a,.catalog-selection-apps a{color:var(--primary);text-decoration:underline;text-underline-offset:3px}.catalog-selection-card a{font-weight:600;font-size:.92rem;overflow-wrap:anywhere}.catalog-selection-apps{font-size:.92rem;line-height:1.8;margin-top:14px}.catalog-selection-apps ul{display:flex;gap:8px 20px;flex-wrap:wrap;list-style:none;padding:0;margin:4px 0 0}@media(max-width:767px){.catalog-selection-grid{grid-template-columns:1fr}.catalog-selection-card{padding:14px}.catalog-selection-card p{margin-bottom:8px}.catalog-selection-apps ul{display:block}}
 </style>
+<style id="page-faq-style">
+.embedded-faq .container{max-width:960px}
+.embedded-faq .section-title{text-align:left;margin-bottom:24px}
+.embedded-faq-item{border-bottom:1px solid var(--border,#e2e8f0);padding:0;background:var(--bg,#fff)}
+.embedded-faq-item:first-child{border-top:1px solid var(--border,#e2e8f0)}
+.embedded-faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;list-style:none;padding:20px 4px;font-weight:600;color:var(--dark,#0f172a);line-height:1.6;overflow-wrap:anywhere}
+.embedded-faq-item summary::-webkit-details-marker{display:none}
+.embedded-faq-item summary::after{content:'+';flex:none;font-size:1.4rem;color:var(--primary,#ea580c)}
+.embedded-faq-item[open] summary::after{content:'−'}
+.embedded-faq-item summary:focus-visible{outline:3px solid var(--primary,#ea580c);outline-offset:3px}
+.embedded-faq-answer,.embedded-faq-links{margin:0 4px 20px;line-height:1.8;overflow-wrap:anywhere}
+.embedded-faq-answer p{margin:0}
+.embedded-faq-links{display:flex;flex-wrap:wrap;gap:10px 24px;font-weight:600}
+.embedded-faq-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+</style>
+<script type="application/ld+json" id="page-faq-schema">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between pneumatic and hydraulic rotary unions?","acceptedAnswer":{"@type":"Answer","text":"Pneumatic and hydraulic rotary unions differ mainly in the medium they transfer and their working pressure. Pneumatic unions carry compressed air, vacuum or inert gas with seals selected for that service; low-friction designs suit fast rotation. Hydraulic unions carry hydraulic oil and use seals and bearings selected for higher pressure. Many Begapunk standard air models are rated at 1 MPa (10 bar). Higher-pressure air and hydraulic applications use the appropriate model or custom configuration."}},{"@type":"Question","name":"What are the main types of rotary unions?","acceptedAnswer":{"@type":"Answer","text":"Rotary unions are classified by medium, passage count, body layout and mounting method. Main types include pneumatic, hydraulic, water/coolant, steam and vacuum unions; single-, double- and multi-passage designs; and through-bore or non-through-bore bodies. A through bore leaves space for a cable, shaft or drawbar. Begapunk supplies standard pneumatic models and custom solutions for different passage layouts, interfaces and media requirements."}},{"@type":"Question","name":"What is a multi-passage rotary union?","acceptedAnswer":{"@type":"Answer","text":"A multi-passage rotary union transfers several independent air or liquid circuits through one compact rotating assembly. Separate sealed passages keep the circuits isolated, with designs ranging from two passages to a dozen or more for complex automation. They are widely used in laser tube-cutting chucks, multi-station rotary tables and robot tooling that need multiple air or vacuum functions. Begapunk tests each assembled union passage by passage for external and cross-port leakage."}},{"@type":"Question","name":"Through-bore vs blind-bore rotary joints: what's the difference?","acceptedAnswer":{"@type":"Answer","text":"A through-bore rotary union has a continuous central opening for cables, optical fibers, a spindle or a drawbar. A non-through-bore design has no continuous center opening, so it does not provide that routing space. Through-bore designs give more integration flexibility when the machine needs central clearance; choose the bore size and interfaces around the machine layout. A cable passed through the center still needs a slip ring or other suitable interface for unlimited electrical rotation."}},{"@type":"Question","name":"How much does a pneumatic rotary union cost?","acceptedAnswer":{"@type":"Answer","text":"Standard pneumatic rotary unions range from tens to hundreds of US dollars, depending on passage count, size, materials and quantity. Simple single-passage and compact models are generally more economical; complex multi-passage designs cost more. Custom pricing reflects engineering work, design complexity and batch size. Begapunk offers cost-effective industrial rotary unions and custom alternatives. Published quantity prices apply to the stated order tier; send the model or drawing and quantity for an exact quotation."}},{"@type":"Question","name":"Can I buy a single rotary union as a sample?","acceptedAnswer":{"@type":"Answer","text":"Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Catalog models typically take about 20 calendar days to produce after payment; custom products are completed within 30 calendar days. If a suitable unit is already in stock, ask us for the available dispatch date. Production lead time does not include international shipping."}},{"@type":"Question","name":"What payment methods do you accept?","acceptedAnswer":{"@type":"Answer","text":"Payment options include bank transfer (T/T), letter of credit (L/C), PayPal and major credit cards for international customers and OEM machine builders. The available method, currency, transaction fees and payment schedule are confirmed in the quotation and accepted order."}},{"@type":"Question","name":"What are affordable alternatives to Deublin rotary unions?","acceptedAnswer":{"@type":"Answer","text":"Begapunk offers cost-effective standard and custom alternatives for customers comparing pneumatic and multi-passage Deublin rotary unions. We can match a replacement proposal to the required mounting dimensions, port layout, passage count, pressure and speed, helping you compare purchase cost and delivery. Send the Deublin model number or drawing for a direct comparison. A drop-in replacement is established model by model; it is not assumed for every similar-looking union."}}]}</script>
 </head>
 
 <body>
@@ -953,6 +969,56 @@
 
 
 <!-- ===== FOOTER ===== -->
+
+<!-- PAGE-FAQ:START -->
+<section class="section embedded-faq" aria-labelledby="page-faq-heading">
+ <div class="container">
+  <h2 class="section-title" id="page-faq-heading">Rotary Union Selection &amp; Buying Questions</h2>
+  <div class="embedded-faq-list">
+    <details class="embedded-faq-item" id="question-q1" open>
+     <summary>What is the difference between pneumatic and hydraulic rotary unions?</summary>
+     <div class="embedded-faq-answer"><p>Pneumatic and hydraulic rotary unions differ mainly in the medium they transfer and their working pressure. Pneumatic unions carry compressed air, vacuum or inert gas with seals selected for that service; low-friction designs suit fast rotation. Hydraulic unions carry hydraulic oil and use seals and bearings selected for higher pressure. Many Begapunk standard air models are rated at 1 MPa (10 bar). Higher-pressure air and hydraulic applications use the appropriate model or custom configuration.</p></div>
+     <p class="embedded-faq-links"><a href="custom-hydraulic-rotary-unions.html">Explore custom hydraulic rotary unions</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q3">
+     <summary>What are the main types of rotary unions?</summary>
+     <div class="embedded-faq-answer"><p>Rotary unions are classified by medium, passage count, body layout and mounting method. Main types include pneumatic, hydraulic, water/coolant, steam and vacuum unions; single-, double- and multi-passage designs; and through-bore or non-through-bore bodies. A through bore leaves space for a cable, shaft or drawbar. Begapunk supplies standard pneumatic models and custom solutions for different passage layouts, interfaces and media requirements.</p></div>
+     <p class="embedded-faq-links"><a href="product-comparison.html">Compare Begapunk models</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q4">
+     <summary>What is a multi-passage rotary union?</summary>
+     <div class="embedded-faq-answer"><p>A multi-passage rotary union transfers several independent air or liquid circuits through one compact rotating assembly. Separate sealed passages keep the circuits isolated, with designs ranging from two passages to a dozen or more for complex automation. They are widely used in laser tube-cutting chucks, multi-station rotary tables and robot tooling that need multiple air or vacuum functions. Begapunk tests each assembled union passage by passage for external and cross-port leakage.</p></div>
+     <p class="embedded-faq-links"><a href="production-inspection-testing.html">See passage-by-passage leak testing</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q66">
+     <summary>Through-bore vs blind-bore rotary joints: what's the difference?</summary>
+     <div class="embedded-faq-answer"><p>A through-bore rotary union has a continuous central opening for cables, optical fibers, a spindle or a drawbar. A non-through-bore design has no continuous center opening, so it does not provide that routing space. Through-bore designs give more integration flexibility when the machine needs central clearance; choose the bore size and interfaces around the machine layout. A cable passed through the center still needs a slip ring or other suitable interface for unlimited electrical rotation.</p></div>
+     <p class="embedded-faq-links"><a href="BP-2P-30-0001.html">View a 30 mm through-bore model</a><a href="BP-10P-0001.html">View a 10-passage model without a center through bore</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q104">
+     <summary>How much does a pneumatic rotary union cost?</summary>
+     <div class="embedded-faq-answer"><p>Standard pneumatic rotary unions range from tens to hundreds of US dollars, depending on passage count, size, materials and quantity. Simple single-passage and compact models are generally more economical; complex multi-passage designs cost more. Custom pricing reflects engineering work, design complexity and batch size. Begapunk offers cost-effective industrial rotary unions and custom alternatives. Published quantity prices apply to the stated order tier; send the model or drawing and quantity for an exact quotation.</p></div>
+     <p class="embedded-faq-links"><a href="contact.html?source=products-faq#quoteForm">Get a model and quantity quote</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q105">
+     <summary>Can I buy a single rotary union as a sample?</summary>
+     <div class="embedded-faq-answer"><p>Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Catalog models typically take about 20 calendar days to produce after payment; custom products are completed within 30 calendar days. If a suitable unit is already in stock, ask us for the available dispatch date. Production lead time does not include international shipping.</p></div>
+     <p class="embedded-faq-links"><a href="faq.html#faq-26">See sample ordering and production lead times</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q108">
+     <summary>What payment methods do you accept?</summary>
+     <div class="embedded-faq-answer"><p>Payment options include bank transfer (T/T), letter of credit (L/C), PayPal and major credit cards for international customers and OEM machine builders. The available method, currency, transaction fees and payment schedule are confirmed in the quotation and accepted order.</p></div>
+     <p class="embedded-faq-links"><a href="terms.html">Read the ordering and payment terms</a></p>
+    </details>
+    <details class="embedded-faq-item" id="question-q120">
+     <summary>What are affordable alternatives to Deublin rotary unions?</summary>
+     <div class="embedded-faq-answer"><p>Begapunk offers cost-effective standard and custom alternatives for customers comparing pneumatic and multi-passage Deublin rotary unions. We can match a replacement proposal to the required mounting dimensions, port layout, passage count, pressure and speed, helping you compare purchase cost and delivery. Send the Deublin model number or drawing for a direct comparison. A drop-in replacement is established model by model; it is not assumed for every similar-looking union.</p></div>
+     <p class="embedded-faq-links"><a href="contact.html?source=products-replacement-faq#quoteForm">Request a replacement comparison</a></p>
+    </details>
+  </div>
+ </div>
+</section>
+<!-- PAGE-FAQ:END -->
 
 </main>
 <footer class="footer" id="siteFooter">
