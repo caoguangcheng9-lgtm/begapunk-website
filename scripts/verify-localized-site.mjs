@@ -15,6 +15,7 @@ import {
   serializeSitemapLastmodState,
   SITEMAP_LASTMOD_STATE,
 } from './lib/sitemap-i18n.mjs';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(sourceRoot, 'i18n', 'config.json'), 'utf8'));
@@ -278,26 +279,19 @@ const navigationExpected = {
 };
 const footerStructureSignatures = new Map();
 const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
+const canonicalLegalName = COMPANY_IDENTITY.legalNameZh;
 const footerStyleVersion = SITE_STYLE_VERSION;
 const homepageStyleVersion = SITE_STYLE_VERSION;
 const englishFooterStyleVersion = SITE_STYLE_VERSION;
 const englishHomepageStyleVersion = SITE_STYLE_VERSION;
-const footerSocial = [
-  ['https://www.linkedin.com/in/guangcheng-cao/', 'LinkedIn'],
-  ['https://www.youtube.com/@BEGAPUNKRotaryJointsTV', 'YouTube'],
-  ['https://www.facebook.com/profile.php?id=61591616523667', 'Facebook'],
-  ['https://x.com/Begapunk728', 'X'],
-];
-const organizationSocialProfiles = [
-  'https://www.youtube.com/@BEGAPUNKRotaryJointsTV',
-  'https://www.facebook.com/profile.php?id=61591616523667',
-  'https://x.com/Begapunk728',
-];
+const socialPlatforms = ['LinkedIn', 'YouTube', 'Facebook', 'X'];
+const footerSocial = COMPANY_IDENTITY.brandSocialProfiles.map((href, index) => [href, socialPlatforms[index]]);
+const organizationSocialProfiles = [...COMPANY_IDENTITY.brandSocialProfiles];
 const founderSocialProfiles = ['https://www.linkedin.com/in/guangcheng-cao/'];
 const organizationEntityId = 'https://www.begapunk.com/#organization';
 const founderEntityId = 'https://www.begapunk.com/#founder-g-c-cao';
 const localBusinessEntityId = 'https://www.begapunk.com/#localbusiness';
-const canonicalBrandName = 'Begapunk';
+const canonicalBrandName = COMPANY_IDENTITY.brandName;
 const obsoleteHomepageSocialProfiles = [
   'https://www.linkedin.com/company/begapunk',
   'https://www.youtube.com/@begapunk',
@@ -305,7 +299,8 @@ const obsoleteHomepageSocialProfiles = [
 const footerExpected = {
   en: {
     positioning: "Precision rotary joints for industrial automation.",
-    address: "Ningbo, Zhejiang, China",
+    registeredAddressLabel: "Registered address",
+    registrationNumberLabel: "Registration No.",
     quote: "Get a Quote",
     socialTitle: "Follow Begapunk",
     navigationLabel: "Footer navigation",
@@ -319,12 +314,12 @@ const footerExpected = {
     ],
     privacy: "Privacy",
     terms: "Terms",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
-    socialLabels: ["G. C. Cao on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
+    socialLabels: ["Begapunk on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
   },
   de: {
     positioning: "Präzisionsdrehdurchführungen für die Industrieautomation.",
-    address: "Ningbo, Zhejiang, China",
+    registeredAddressLabel: "Eingetragene Geschäftsadresse",
+    registrationNumberLabel: "Registrierungsnummer",
     quote: "Angebot anfordern",
     socialTitle: "Begapunk folgen",
     navigationLabel: "Fußzeilennavigation",
@@ -338,12 +333,12 @@ const footerExpected = {
     ],
     privacy: "Datenschutz",
     terms: "Nutzungsbedingungen",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.",
-    socialLabels: ["G. C. Cao auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
+    socialLabels: ["Begapunk auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
   },
   fr: {
     positioning: "Raccords tournants de précision pour l’automatisation industrielle.",
-    address: "Ningbo, Zhejiang, Chine",
+    registeredAddressLabel: "Adresse du siège social",
+    registrationNumberLabel: "Numéro d’enregistrement",
     quote: "Demander un devis",
     socialTitle: "Suivre Begapunk",
     navigationLabel: "Navigation de pied de page",
@@ -357,12 +352,12 @@ const footerExpected = {
     ],
     privacy: "Confidentialité",
     terms: "Conditions d'utilisation",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.",
-    socialLabels: ["G. C. Cao sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
+    socialLabels: ["Begapunk sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
   },
   ja: {
     positioning: "産業オートメーション向けの精密ロータリージョイント。",
-    address: "中国 浙江省 寧波市",
+    registeredAddressLabel: "登記上の所在地",
+    registrationNumberLabel: "登記番号",
     quote: "見積もりを依頼",
     socialTitle: "Begapunk公式SNS",
     navigationLabel: "フッターナビゲーション",
@@ -376,12 +371,12 @@ const footerExpected = {
     ],
     privacy: "プライバシーポリシー",
     terms: "利用規約",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
-    socialLabels: ["G. C. CaoのLinkedIn個人プロフィール","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
+    socialLabels: ["Begapunk公式LinkedIn","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
   },
   ru: {
     positioning: "Прецизионные вращающиеся соединения для промышленной автоматизации.",
-    address: "Нинбо, Чжэцзян, Китай",
+    registeredAddressLabel: "Юридический адрес",
+    registrationNumberLabel: "Регистрационный номер",
     quote: "Запросить предложение",
     socialTitle: "Begapunk в социальных сетях",
     navigationLabel: "Навигация в нижней части страницы",
@@ -395,8 +390,7 @@ const footerExpected = {
     ],
     privacy: "Политика конфиденциальности",
     terms: "Условия использования",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Все права защищены.",
-    socialLabels: ["G. C. Cao в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
+    socialLabels: ["Begapunk в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
   },
 };
 const navProductPages = new Set(['products.html', 'products-p2.html', 'product-comparison.html', ...config.pages.filter((page) => /^BP-/.test(page))]);
@@ -865,13 +859,26 @@ for (const language of verifiedLanguages) {
     const footerRoot = footer.first();
     if (footerRoot.children('.container').children('.footer-brand-band').length !== 1) failures.push(`${language.code}/${pageName}: exactly one first-layer Footer brand band is required.`);
     if (footerRoot.children('.container').children('.footer-contact-band').length !== 1) failures.push(`${language.code}/${pageName}: exactly one second-layer Footer contact band is required.`);
-    if (footerRoot.find('.footer-company-name').length !== 1 || compactText(footerRoot.find('.footer-copyright > .footer-company-name').text()) !== legalCompanyName) {
-      failures.push(`${language.code}/${pageName}: the legal company name must appear once in the copyright row.`);
+    const companyInfo = footerRoot.find('.footer-company-info');
+    const companyInfoLines = companyInfo.children().map((_, element) => `${element.tagName}.${($(element).attr('class') || '').trim()}`).get();
+    const expectedCompanyLine = `© 2026 ${legalCompanyName}（${canonicalLegalName}）`;
+    const expectedAddressLine = `${footerCopy.registeredAddressLabel}: ${COMPANY_IDENTITY.registeredAddress.addressEn}`;
+    const expectedLegalLine = `USCC ${COMPANY_IDENTITY.uscc} · ${footerCopy.registrationNumberLabel} ${COMPANY_IDENTITY.registrationNumber} · ${footerCopy.privacy} · ${footerCopy.terms}`;
+    if (companyInfo.length !== 1 || JSON.stringify(companyInfoLines) !== JSON.stringify(['p.footer-copyright', 'address.footer-address', 'div.footer-legal-line'])) {
+      failures.push(`${language.code}/${pageName}: company information must use exactly three approved lines.`);
     }
+    if (footerRoot.find('.footer-company-name').length !== 1 || compactText(footerRoot.find('.footer-copyright > .footer-company-name').text()) !== legalCompanyName
+        || footerRoot.find('.footer-company-name-zh').length !== 1 || compactText(footerRoot.find('.footer-company-name-zh').text()) !== canonicalLegalName) {
+      failures.push(`${language.code}/${pageName}: the English and Chinese legal names must appear once on the company line.`);
+    }
+    if (compactText(footerRoot.find('.footer-copyright').text()) !== expectedCompanyLine) failures.push(`${language.code}/${pageName}: company copyright line is incorrect.`);
     if (footerRoot.find('.footer-brand-band .footer-logo').length !== 1 || footerRoot.find('.footer-brand-band .footer-company-name').length) failures.push(`${language.code}/${pageName}: compact brand band must contain the logo and positioning, without a repeated company name.`);
-    if (footerRoot.find('.footer-bottom .footer-social').length !== 1 || footerRoot.find('.footer-bottom .footer-address').length !== 1) failures.push(`${language.code}/${pageName}: social links and location must appear in the bottom row.`);
+    if (footerRoot.find('.footer-bottom .footer-social').length !== 1 || footerRoot.find('.footer-bottom .footer-address').length !== 1) failures.push(`${language.code}/${pageName}: social links and registered address must appear in the bottom row.`);
     if (compactText(footerRoot.find('.footer-positioning').text()) !== footerCopy.positioning) failures.push(`${language.code}/${pageName}: approved Footer positioning copy drifted.`);
-    if (compactText(footerRoot.find('.footer-address').text()) !== footerCopy.address) failures.push(`${language.code}/${pageName}: localized Footer address is incorrect.`);
+    if (compactText(footerRoot.find('.footer-address').text()) !== expectedAddressLine) failures.push(`${language.code}/${pageName}: localized Footer registered address is incorrect.`);
+    if (compactText(footerRoot.find('.footer-legal-line').text()) !== expectedLegalLine) failures.push(`${language.code}/${pageName}: Footer registration and legal line is incorrect.`);
+    if (footerRoot.find('.footer-registration, .footer-registration-address, .footer-meta').length) failures.push(`${language.code}/${pageName}: retired Footer company-information blocks remain.`);
+    if (compactText(footerRoot.text()).includes(COMPANY_IDENTITY.registeredAddress.addressZh)) failures.push(`${language.code}/${pageName}: Chinese address must not appear in the Footer.`);
     const contactExpectations = [
       ['mailto:sales@begapunk.com', 'sales@begapunk.com'],
       ['tel:+8618368425342', '+86 183 6842 5342'],
@@ -898,7 +905,7 @@ for (const language of verifiedLanguages) {
       const svg = link.find('svg.footer-icon');
       if (svg.length !== 1 || svg.attr('aria-hidden') !== 'true' || svg.attr('focusable') !== 'false') failures.push(`${language.code}/${pageName}: ${platform} icon accessibility attributes are incomplete.`);
     });
-    if (/Begapunk LinkedIn Company Page/i.test(footerRoot.text())) failures.push(`${language.code}/${pageName}: LinkedIn is incorrectly presented as a company page.`);
+    if (/G\. C\. Cao(?:のLinkedIn個人プロフィール| on LinkedIn| auf LinkedIn| sur LinkedIn| в LinkedIn)/i.test(footerRoot.text())) failures.push(`${language.code}/${pageName}: Footer LinkedIn profile must reference the company page, not the founder's personal profile.`);
     const footerNavigation = footerRoot.find('nav.footer-navigation');
     if (footerNavigation.length !== 1 || footerNavigation.attr('aria-label') !== footerCopy.navigationLabel) failures.push(`${language.code}/${pageName}: localized Footer navigation landmark is incorrect.`);
     const footerColumns = footerNavigation.children('.footer-column');
@@ -918,7 +925,14 @@ for (const language of verifiedLanguages) {
     const legal = footerRoot.find('nav.footer-legal');
     const legalLinks = legal.children('a').map((_, element) => [[$(element).attr('href'), compactText($(element).text())]]).get();
     if (legal.length !== 1 || legal.attr('aria-label') !== footerCopy.legalLabel || JSON.stringify(legalLinks) !== JSON.stringify([['privacy.html', footerCopy.privacy], ['terms.html', footerCopy.terms]])) failures.push(`${language.code}/${pageName}: localized Privacy/Terms links are incorrect.`);
-    if (compactText(footerRoot.find('.footer-bottom .footer-copyright').text()) !== footerCopy.copyright) failures.push(`${language.code}/${pageName}: localized legal copyright is incorrect.`);
+    const contactAddressSecondary = $('.bp-rfq-address-secondary');
+    if (pageName === 'contact.html') {
+      if (contactAddressSecondary.length !== 1 || compactText(contactAddressSecondary.text()) !== COMPANY_IDENTITY.registeredAddress.addressZh) {
+        failures.push(`${language.code}/${pageName}: Chinese registered-address secondary line is missing or incorrect.`);
+      }
+    } else if (contactAddressSecondary.length) {
+      failures.push(`${language.code}/${pageName}: Chinese address must remain limited to contact pages.`);
+    }
     const internalFooterHrefs = footerRoot.find('a[href]').map((_, element) => $(element).attr('href')).get().filter((href) => !/^(?:https?:|mailto:|tel:|#)/i.test(href));
     if (new Set(internalFooterHrefs).size !== internalFooterHrefs.length) failures.push(`${language.code}/${pageName}: duplicate internal Footer href detected.`);
     if (footerRoot.find('[style]').length) failures.push(`${language.code}/${pageName}: inline Footer color/style attribute detected.`);
@@ -1090,18 +1104,25 @@ for (const language of verifiedLanguages) {
         if (organization['@id'] !== organizationEntityId || organization.url !== 'https://www.begapunk.com/') {
           failures.push(`${language.code}/${pageName}: Organization must use the canonical entity ID and root-domain URL.`);
         }
-        if (organization.name !== canonicalBrandName || organization.legalName !== legalCompanyName) {
+        if (organization.name !== canonicalBrandName || organization.legalName !== canonicalLegalName) {
           failures.push(`${language.code}/${pageName}: Organization must use the canonical brand and legal company names.`);
         }
-        if (organization.foundingDate !== '2022') {
-          failures.push(`${language.code}/${pageName}: Organization foundingDate must be the owner-confirmed year 2022.`);
+        if (organization.foundingDate !== COMPANY_IDENTITY.foundingDate) {
+          failures.push(`${language.code}/${pageName}: Organization foundingDate must be ${COMPANY_IDENTITY.foundingDate}.`);
         }
-        if (organization.alternateName !== undefined) {
-          failures.push(`${language.code}/${pageName}: unverified Organization alternateName must not be published.`);
+        if (JSON.stringify(organization.alternateName) !== JSON.stringify(COMPANY_IDENTITY.alternateNames)) {
+          failures.push(`${language.code}/${pageName}: Organization alternateName must match the canonical company names.`);
+        }
+        const organizationIdentifiers = Array.isArray(organization.identifier) ? organization.identifier : [];
+        for (const expectedIdentifier of COMPANY_IDENTITY.identifiers) {
+          const actualIdentifier = organizationIdentifiers.find((identifier) => identifier?.propertyID === expectedIdentifier.propertyID);
+          if (!actualIdentifier || String(actualIdentifier.value) !== expectedIdentifier.value) {
+            failures.push(`${language.code}/${pageName}: Organization identifier ${expectedIdentifier.propertyID} is missing or incorrect.`);
+          }
         }
         const organizationSameAs = Array.isArray(organization.sameAs) ? organization.sameAs : [];
         if (JSON.stringify(organizationSameAs) !== JSON.stringify(organizationSocialProfiles)) {
-          failures.push(`${language.code}/${pageName}: Organization.sameAs must exactly contain the three approved Begapunk brand channels in canonical order.`);
+          failures.push(`${language.code}/${pageName}: Organization.sameAs must exactly contain the four approved Begapunk brand channels in canonical order.`);
         }
         if (new Set(organizationSameAs).size !== organizationSameAs.length) {
           failures.push(`${language.code}/${pageName}: Organization.sameAs contains a duplicate social profile.`);
@@ -1135,11 +1156,21 @@ for (const language of verifiedLanguages) {
       if (business['@id'] !== localBusinessEntityId
           || business.url !== 'https://www.begapunk.com/'
           || business.name !== canonicalBrandName
-          || business.legalName !== legalCompanyName) {
+          || business.legalName !== canonicalLegalName) {
         failures.push(`${language.code}/${pageName}: LocalBusiness must use the canonical ID, root URL, brand name and legal name.`);
       }
-      if (business.alternateName !== undefined) {
-        failures.push(`${language.code}/${pageName}: unverified LocalBusiness alternateName must not be published.`);
+      if (JSON.stringify(business.alternateName) !== JSON.stringify(COMPANY_IDENTITY.alternateNames)) {
+        failures.push(`${language.code}/${pageName}: LocalBusiness alternateName must match the canonical company names.`);
+      }
+      if (business.foundingDate !== COMPANY_IDENTITY.foundingDate) {
+        failures.push(`${language.code}/${pageName}: LocalBusiness foundingDate must be ${COMPANY_IDENTITY.foundingDate}.`);
+      }
+      const businessIdentifiers = Array.isArray(business.identifier) ? business.identifier : [];
+      for (const expectedIdentifier of COMPANY_IDENTITY.identifiers) {
+        const actualIdentifier = businessIdentifiers.find((identifier) => identifier?.propertyID === expectedIdentifier.propertyID);
+        if (!actualIdentifier || String(actualIdentifier.value) !== expectedIdentifier.value) {
+          failures.push(`${language.code}/${pageName}: LocalBusiness identifier ${expectedIdentifier.propertyID} is missing or incorrect.`);
+        }
       }
       if (JSON.stringify(sameAs) !== JSON.stringify(organizationSocialProfiles)) {
         failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must exactly contain the approved Begapunk brand channels.`);

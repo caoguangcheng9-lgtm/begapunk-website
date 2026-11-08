@@ -164,7 +164,7 @@
     {
       "id": "faq-26",
       "question": "Wie hoch ist die Mindestbestellmenge, und welche Fertigungszeiten sind üblich?",
-      "answer": "Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen eine Einheit. Katalogmodelle benötigen typischerweise etwa 20 Kalendertage. Kundenspezifische Produkte werden innerhalb von 30 Kalendertagen fertiggestellt. Die Fertigungszeit beginnt mit Zahlungseingang und enthält nicht die internationale Transportzeit."
+      "answer": "Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen eine Einheit. Fertigungszeit: 20 Kalendertage nach Zahlungseingang (ohne Versand) für Standard-Katalogmodelle. Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand) für kundenspezifische Produkte."
     },
     {
       "id": "faq-27",
@@ -229,14 +229,6 @@
     "nativeHumanSignoff": false,
     "unresolvedIssues": [],
     "officialTerminologySources": [
-      {
-        "name": "Deublin Deutschland – Drehdurchführungen",
-        "url": "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
-      },
-      {
-        "name": "Deublin – Luft und Hydraulik mit Elastomerdichtungen, Betriebsanleitung",
-        "url": "https://www.deublin.com/-/media/API-Sync-Assets/MAN/040-563-D-RevF.pdf"
-      },
       {
         "name": "SCHUNK Deutschland – Drehdurchführung DDF 2",
         "url": "https://schunk.com/de/de/automatisierungstechnik/drehdurchfuehrungen/ddf-2/ddf-2-125-p4-e10/p/000000000000323137"

@@ -19,7 +19,7 @@ const checks = [
       'Up to 12 custom',
       'Carbon-fiber Glyd ring',
       'MOQ 1',
-      'Within 30 days after payment',
+      'Up to 30 calendar days after payment (excluding shipping)',
       'Ningbo facility',
       'contact.html?inquiry_type=hydraulic&amp;product=hydraulic&amp;source=custom-hydraulic-rotary-unions.html#quoteForm',
     ],
@@ -32,22 +32,22 @@ const checks = [
   },
   {
     file: 'de/custom-hydraulic-rotary-unions.html',
-    required: ['Hydraulik-Drehdurchf', '2-Wege', '12 Wege', 'Glyd-Ring', '30 MPa', 'Innerhalb von 30 Tagen nach Zahlungseingang'],
+    required: ['Hydraulik-Drehdurchf', '2-Wege', '12 Wege', 'Glyd-Ring', '30 MPa', 'Bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand)'],
     forbidden: ['Kanalzahl', 'Etwa 30 Tage nach Zahlungseingang', 'etwa 30 Kalendertage nach Zahlungseingang'],
   },
   {
     file: 'fr/custom-hydraulic-rotary-unions.html',
-    required: ['Raccords tournants hydrauliques sur mesure', '2 circuits standard', '12 circuits sur mesure', 'bague Glyd en PTFE renforcé de fibres de carbone', '30 MPa', 'Dans les 30 jours suivant le paiement', 'site de Ningbo'],
+    required: ['Raccords tournants hydrauliques sur mesure', '2 circuits standard', '12 circuits sur mesure', 'bague Glyd en PTFE renforcé de fibres de carbone', '30 MPa', 'Jusqu’à 30 jours calendaires après paiement (hors expédition)', 'site de Ningbo'],
     forbidden: ['raccords tournants hydrauliques personnalisés', 'Environ 30 jours après paiement', 'environ 30 jours calendaires après paiement', 'union douanière', 'grappins en bois et en bois'],
   },
   {
     file: 'ja/custom-hydraulic-rotary-unions.html',
-    required: ['\u6db2\u5727\u30ed\u30fc\u30bf\u30ea\u30fc\u30b8\u30e7\u30a4\u30f3\u30c8', '2\u6d41\u8def', '12\u6d41\u8def', '30 MPa', '\u5165\u91d1\u5f8c 30\u65e5\u4ee5\u5185'],
+    required: ['\u6db2\u5727\u30ed\u30fc\u30bf\u30ea\u30fc\u30b8\u30e7\u30a4\u30f3\u30c8', '2\u6d41\u8def', '12\u6d41\u8def', '30 MPa', '\u5165\u91d1\u5f8c\u6700\u592730\u66a6\u65e5'],
     forbidden: ['\u5165\u91d1\u5f8c \u7d0430\u65e5', '\u5165\u91d1\u5f8c\u7d0430\u66a6\u65e5'],
   },
   {
     file: 'ru/custom-hydraulic-rotary-unions.html',
-    required: ['\u0433\u0438\u0434\u0440\u0430\u0432\u043b', '30 \u041c\u041f\u0430', 'Glyd', '2 \u043f\u0440\u043e\u0445\u043e\u0434', '\u0412 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
+    required: ['\u0433\u0438\u0434\u0440\u0430\u0432\u043b', '30 \u041c\u041f\u0430', 'Glyd', '2 \u043f\u0440\u043e\u0445\u043e\u0434', '\u0414\u043e 30 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u044b\u0445 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
     forbidden: ['\u041e\u043a\u043e\u043b\u043e 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b', '\u043e\u043a\u043e\u043b\u043e 30 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u044b\u0445 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
   },
 
@@ -130,7 +130,7 @@ const checks = [
   {
     file: 'products.html',
     forbidden: ['about 30 days for custom'],
-    required: ['within 30 calendar days', '2 in / 4 out', '4 × Ø4 outlets (2 clamp · 2 release)', 'Begapunk-Rotary-Joint-Catalog-2026.pdf'],
+    required: ['up to 30 calendar days after payment (excluding shipping)', '2 in / 4 out', '4 × Ø4 outlets (2 clamp · 2 release)', 'Begapunk-Rotary-Joint-Catalog-2026.pdf'],
   },
   {
     file: 'BP-2P-95-0005.html',
@@ -209,7 +209,7 @@ const checks = [
   {
     file: 'faq.html',
     forbidden: ['Send the basic operating conditions', 'provide the equipment application and basic operating conditions', 'Do not run a standard compressed-air configuration without oil mist', 'What air preparation does a compressed-air rotary joint require?'],
-    required: ['complete three-piece air-preparation unit', 'wear-resistant, oil-free seal option', 'automated test equipment includes a rotation function', 'within 30 calendar days', 'We do not use your inquiries or drawings for marketing or public display.'],
+    required: ['complete three-piece air-preparation unit', 'wear-resistant, oil-free seal option', 'automated test equipment includes a rotation function', 'up to 30 calendar days after payment (excluding shipping)', 'We do not use your inquiries or drawings for marketing or public display.'],
   },
   {
     file: 'terms.html',
@@ -222,9 +222,8 @@ const checks = [
     ],
     required: [
       'minimum order quantity is one unit for both catalog and custom products',
-      'Catalog models typically take about 20 calendar days to produce',
-      'Custom products are completed within 30 calendar days',
-      'Production time starts when payment is received',
+      '20 calendar days after payment (excluding shipping)',
+      'up to 30 calendar days after payment (excluding shipping)',
       'one year from the shipment date',
       'replacement at no charge',
       'Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our")',
@@ -285,12 +284,12 @@ const checks = [
   },
   {
     file: 'ja/privacy.html',
-    forbidden: ['精密ロータリージョイントメーカーBegapunk', 'Yugongの道', 'Zonghanの工業団地', 'アドレス:', '最終更新日：</strong>2026年8月28日'],
+    forbidden: ['精密ロータリージョイントメーカーBegapunk', '最終更新日：</strong>2026年8月28日'],
     required: [
       'Ningbo Begapunk Pneumatic Components Co., Ltd.',
       '最終更新日：</strong>2026年9月4日',
       'マーケティングや一般公開に使用することはありません',
-      '住所：88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
+      '住所：No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, 中国',
     ],
   },
   {
@@ -381,17 +380,17 @@ const checks = [
   {
     file: 'de/index.html',
     forbidden: ['Zeichnung per E-Mail oder WhatsApp senden'],
-    required: ['Modellnummer, Foto, Zeichnung oder Betriebsbedingungen per E-Mail oder WhatsApp senden', 'höchstens 30 Kalendertage'],
+    required: ['Modellnummer, Foto, Zeichnung oder Betriebsbedingungen per E-Mail oder WhatsApp senden', 'bis zu 30 Kalendertage nach Zahlungseingang'],
   },
   {
     file: 'ja/index.html',
     forbidden: ['メールまたはWhatsAppで図面を送付'],
-    required: ['型式、写真、図面、使用条件をメール／WhatsAppで送付', '30暦日以内'],
+    required: ['型式、写真、図面、使用条件をメール／WhatsAppで送付', '最大30暦日'],
   },
   {
     file: 'ru/index.html',
     forbidden: ['Отправьте чертёж по электронной почте или WhatsApp', 'Как проходит 100%-ная проверка герметичности'],
-    required: ['Отправьте номер модели, фотографию, чертёж или условия эксплуатации по электронной почте или через WhatsApp', 'не более чем за 30 календарных дней', 'Как проверяется каждое готовое изделие'],
+    required: ['Отправьте номер модели, фотографию, чертёж или условия эксплуатации по электронной почте или через WhatsApp', 'до 30 календарных дней после оплаты', 'Как проверяется каждое готовое изделие'],
   },
   {
     file: 'ru/application-textile-printing-converting.html',

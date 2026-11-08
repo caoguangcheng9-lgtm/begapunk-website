@@ -1682,10 +1682,10 @@ const applicationInquiryCopyRows = [
     ru: 'Запрос получен | Begapunk',
   },
   {
-    source: 'Email: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br>\n\n    Address: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
-    de: 'E-Mail: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> Anschrift: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
-    ja: 'メール：<a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> 住所：88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
-    ru: 'Электронная почта: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> Адрес: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China',
+    source: 'Email: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br>\n\n    Address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China',
+    de: 'E-Mail: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> Anschrift: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China',
+    ja: 'メール：<a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> 住所：No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, 中国',
+    ru: 'Электронная почта: <a href="mailto:sales@begapunk.com">sales@begapunk.com</a><br> Адрес: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, Китай',
   },
 ];
 

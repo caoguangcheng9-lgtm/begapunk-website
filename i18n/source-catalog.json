@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-11-04T06:15:46.283Z",
+  "generatedAt": "2026-11-08T07:59:42.202Z",
   "pages": [
     "index.html",
     "about.html",
@@ -136,8 +136,8 @@
       ]
     },
     {
-      "id": "3ee6c24cddc5c1b2",
-      "source": "© 2026 <span class=\"footer-company-name\">Ningbo Begapunk Pneumatic Components Co., Ltd.</span> All rights reserved.",
+      "id": "6011b92ff17c7f68",
+      "source": "© 2026 <span class=\"footer-company-name\">Ningbo Begapunk Pneumatic Components Co., Ltd.</span>（<span class=\"footer-company-name-zh\">宁波贝加庞克气动元件有限公司</span>）",
       "pages": [
         "404.html",
         "BP-1P-0003.html",
@@ -941,20 +941,6 @@
       ]
     },
     {
-      "id": "f883dac32f40b57a",
-      "source": "<a href=\"case-studies.html\">Explore Begapunk customer installations</a>",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
-      "id": "1d374cfc3508434e",
-      "source": "<a href=\"case-studies.html\">See real application cases</a>",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "5081cfe24eb02a41",
       "source": "<a href=\"case-studies.html#laser-tube-rear-chuck\">See a rear-chuck installation</a>",
       "pages": [
@@ -1236,13 +1222,6 @@
       ]
     },
     {
-      "id": "59b8b7eb356a601c",
-      "source": "<a href=\"manufacturing-quality.html\">Explore manufacturing and quality</a><a href=\"contact.html?source=about-faq#quoteForm\">Discuss your project</a>",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "d7b5f866cb0c18b4",
       "source": "<a href=\"manufacturing-quality.html\">Manufacturing &amp; Quality</a>",
       "pages": [
@@ -1299,6 +1278,7 @@
       "id": "1703bacbe0b315f5",
       "source": "<a href=\"product-comparison.html\">Compare Begapunk models</a>",
       "pages": [
+        "about.html",
         "products.html"
       ]
     },
@@ -1423,6 +1403,13 @@
       ]
     },
     {
+      "id": "f9ca39c65d77c963",
+      "source": "<a href=\"production-inspection-testing.html\">Review production inspection</a>",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "ae9c26e2232b8211",
       "source": "<a href=\"production-inspection-testing.html\">Review production inspection</a><a href=\"faq.html#faq-26\">Check single-unit ordering and lead times</a>",
       "pages": [
@@ -1448,6 +1435,13 @@
       "source": "<a href=\"products.html\">Compare available body materials</a>",
       "pages": [
         "blog-rotary-joint-materials.html"
+      ]
+    },
+    {
+      "id": "840220fbfc83381b",
+      "source": "<a href=\"products.html\">Explore Begapunk products</a>",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -1765,8 +1759,8 @@
       ]
     },
     {
-      "id": "4161677e943fce52",
-      "source": "<img src=\"images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"Pneumatic rotary union for a laser tube cutting machine rear chuck\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Laser tube rear-chuck compressed-air transfer</strong>\n                <span>Verified rear-chuck applications using BP-3P-0004 and BP-2P-08-0001. Circuit count and interfaces must be confirmed against the chuck and machine design.</span>",
+      "id": "161a8524f530e877",
+      "source": "<img src=\"images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"Pneumatic rotary union for a laser tube cutting machine rear chuck\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Laser tube rear-chuck compressed-air transfer</strong>\n                <span>Rear-chuck applications with BP-3P-0004 and BP-2P-08-0001, installed and used in customer applications. Circuit count and interfaces must be confirmed against the chuck and machine design.</span>",
       "pages": [
         "index.html"
       ]
@@ -3637,6 +3631,27 @@
       ]
     },
     {
+      "id": "138b9734fee830fa",
+      "source": "1 × G1/8 inlet · 8 × G1/8 outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "d275d9388b395aa8",
+      "source": "1 × G1/8, depth 8 mm release inlet · 1 × G1/8, depth 8 mm clamp inlet · 2 × Ø4 mm release outlet · 2 × Ø4 mm clamp outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "6f25f42b51885025",
+      "source": "1 × G3/8 media inlet · 1 × M10×1.5 media outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "d488bc42800ce538",
       "source": "1 MPa",
       "pages": [
@@ -3823,10 +3838,38 @@
       ]
     },
     {
+      "id": "a9ab88eeb6e9000c",
+      "source": "2 × G1/8 inlet · 2 × G1/8 outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "aa675d602acff141",
       "source": "2 × G1/8 inlets",
       "pages": [
         "products.html"
+      ]
+    },
+    {
+      "id": "313fabbc3b7134ef",
+      "source": "2 × G1/8 media inlet · 2 × G1/8 media outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "d1517ec4bb896386",
+      "source": "2 × G1/8 side A · 2 × G1/8 side B; port functions are assigned in the confirmed drawing before production",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "f4c2b50fb3bcf4a0",
+      "source": "2 × G1/8, depth 8 mm side port group · 3 × G1/8, depth 8 mm end-face port group · 1 × G1/4, depth 8 mm opposite-face port",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -3942,6 +3985,13 @@
       ]
     },
     {
+      "id": "4cc91ad5c4cd3e6b",
+      "source": "20 × G1/8: 10 inlet + 10 outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "ec2323688fb0e39b",
       "source": "200 rpm",
       "pages": [
@@ -3975,6 +4025,27 @@
       "source": "2P air/vacuum rotary union",
       "pages": [
         "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "6aa0d211b33e561c",
+      "source": "3 × G1/8 inlet · 3 × G1/8 outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "eb5479d99d078a9b",
+      "source": "3 × G1/8 media inlet · 3 × G1/8 media outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "a93ea3bfd3f5952f",
+      "source": "3 × Ø4 mm air outlet; the air inlet is assigned in the confirmed drawing before production",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -4071,6 +4142,13 @@
     {
       "id": "aee4741feaa481db",
       "source": "300 RPM",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "702395331b0b39e8",
+      "source": "4 × G1/8 face A · 4 × G1/8 face B; port functions are assigned in the confirmed drawing before production",
       "pages": [
         "product-comparison.html"
       ]
@@ -4231,6 +4309,13 @@
       ]
     },
     {
+      "id": "0a766e31f37f7f9c",
+      "source": "8 × G1/8 media inlet · 8 × G1/8 media outlet",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "edb5099c766f99d8",
       "source": "8 mm tube fittings included",
       "pages": [
@@ -4271,13 +4356,6 @@
       "pages": [
         "blog-rotary-joint-selection.html",
         "product-comparison.html"
-      ]
-    },
-    {
-      "id": "ae89bf04efb2615a",
-      "source": "88 Yugong Road, Zonghan Industrial Park<br>Cixi, Ningbo, Zhejiang 315300, China",
-      "pages": [
-        "contact.html"
       ]
     },
     {
@@ -4632,6 +4710,13 @@
       "source": "Add contact and project details (Optional)",
       "pages": [
         "contact.html"
+      ]
+    },
+    {
+      "id": "249a3d09bb15aec1",
+      "source": "After final assembly, every finished Begapunk pneumatic rotary union and every passage is leak-tested with compressed air before packing and storage. Each passage is tested at 1.0 MPa while the remaining passages stay unpressurized and open. The test pressurizes for approximately 1 second, rotates the joint and holds pressure for approximately 4 seconds. A unit is released only after the instrument displays PASS for every passage.",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -5182,8 +5267,8 @@
       ]
     },
     {
-      "id": "f3555c33ea201b82",
-      "source": "Assess four areas: custom design and engineering response, including drawings and application review; seal-manufacturing quality and service-life test evidence relevant to your operating conditions; dependable lead times and sample support; and after-sales technical support and clear warranty terms. Ask for the evidence relevant to your machine. Begapunk offers flexible custom interfaces, single-unit samples, passage-by-passage production testing and individual product traceability.",
+      "id": "7151420b41a856eb",
+      "source": "Assess four areas: engineering response, including drawings and application review; seal quality and service-life test evidence relevant to your operating conditions; stated lead times and sample support; and after-sales technical support with clear warranty terms. Ask each supplier for the evidence relevant to your machine. Begapunk provides custom interfaces, single-unit samples, passage-by-passage production testing and individual product traceability.",
       "pages": [
         "about.html"
       ]
@@ -5407,15 +5492,15 @@
       ]
     },
     {
-      "id": "f4251671250b8516",
-      "source": "Begapunk is a Chinese manufacturer to shortlist for pneumatic, vacuum-configured and pneumatic-electric rotary unions. We focus on industrial machinery, with standard products and custom interfaces for laser tube cutting, packaging equipment and automation rotary tables. Our model drawings, production leak-testing process and customer-authorized installations help buyers assess the product and supplier before ordering.",
+      "id": "c1d28d6b2ee50c34",
+      "source": "Begapunk is a Ningbo-based manufacturer of pneumatic rotary joints for industrial automation and rotating machinery. Established in 2022, we develop standard and custom single-passage and multi-passage solutions for transferring compressed air between stationary and rotating machine components.",
       "pages": [
         "about.html"
       ]
     },
     {
-      "id": "c1d28d6b2ee50c34",
-      "source": "Begapunk is a Ningbo-based manufacturer of pneumatic rotary joints for industrial automation and rotating machinery. Established in 2022, we develop standard and custom single-passage and multi-passage solutions for transferring compressed air between stationary and rotating machine components.",
+      "id": "e75ff5d529227e05",
+      "source": "Begapunk is operated by Ningbo Begapunk Pneumatic Components Co., Ltd. in Ningbo, Zhejiang, China. It manufactures pneumatic rotary joints and multi-passage rotary unions, with vacuum-configured and pneumatic-electric options, and quotes custom interfaces for machinery such as laser tube cutting, packaging equipment and automation rotary tables. Each catalog model page lists its published specifications and offers a model drawing and a STEP file.",
       "pages": [
         "about.html"
       ]
@@ -5428,13 +5513,6 @@
       ]
     },
     {
-      "id": "24eba6fb9f8b84c7",
-      "source": "Begapunk offers cost-effective standard and custom alternatives for customers comparing pneumatic and multi-passage Deublin rotary unions. We can match a replacement proposal to the required mounting dimensions, port layout, passage count, pressure and speed, helping you compare purchase cost and delivery. Send the Deublin model number or drawing for a direct comparison. A drop-in replacement is established model by model; it is not assumed for every similar-looking union.",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "fff23eaf2a3db331",
       "source": "Begapunk offers threaded and flange-mounted configurations. Send the machine layout or mounting envelope and we will identify the closest available model or custom option.",
       "pages": [
@@ -5444,6 +5522,59 @@
     {
       "id": "617e5e8741d01bb0",
       "source": "Begapunk on Facebook",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "960e14c009b4ae09",
+      "source": "Begapunk on LinkedIn",
       "pages": [
         "404.html",
         "BP-1P-0003.html",
@@ -6530,6 +6661,13 @@
       ]
     },
     {
+      "id": "1bb10a969a216cbe",
+      "source": "Can a Begapunk model replace a rotary union from another manufacturer?",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
       "id": "c3f23c6aaf5748ae",
       "source": "Can a pneumatic rotary union carry vacuum?",
       "pages": [
@@ -6664,13 +6802,6 @@
       "source": "Catalog model pages include a simplified STEP AP214 file so you can verify envelope, ports, bolt pattern, and clearance before ordering.",
       "pages": [
         "index.html"
-      ]
-    },
-    {
-      "id": "af4a613c38b904c5",
-      "source": "Catalog models typically take about 20 calendar days to produce. Custom products are completed within 30 calendar days. Production time starts when payment is received and does not include international shipping.",
-      "pages": [
-        "terms.html"
       ]
     },
     {
@@ -7370,6 +7501,13 @@
       ]
     },
     {
+      "id": "fcd1edd5b3f2e4f9",
+      "source": "Compare suppliers against the same checklist: the medium, pressure, speed, passage count and port sizes the model is rated for; whether a model drawing and STEP file are available before ordering; how each unit is tested before shipment; lead time and minimum order quantity; the written warranty terms; and the documentation available for your destination market. Ask each supplier to state these in writing for the specific model you plan to use.",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "ca6c28e14487b5f3",
       "source": "Compare the model number, thread standard, passage layout, bolt pattern, rotating side, stationary side, and flow direction with the current drawing before assembly. Use a 3D STEP file to check surrounding clearance when space is limited.",
       "pages": [
@@ -7865,8 +8003,8 @@
       ]
     },
     {
-      "id": "df3b4e5db47db5b5",
-      "source": "Deposit, balance, credit, and payment timing are confirmed in the formal quotation and accepted order; this page does not establish a standard deposit percentage.",
+      "id": "b8225d3f7a7430bc",
+      "source": "Deposit, balance and payment timing are set in each formal quotation and accepted order.",
       "pages": [
         "terms.html"
       ]
@@ -7997,13 +8135,6 @@
       "source": "Drawing or Photo (Optional)",
       "pages": [
         "contact.html"
-      ]
-    },
-    {
-      "id": "20c0dab4a5fe0cad",
-      "source": "Drawing-defined face mounting",
-      "pages": [
-        "product-comparison.html"
       ]
     },
     {
@@ -8140,18 +8271,11 @@
       ]
     },
     {
-      "id": "b8ae1b32bf98f4c3",
-      "source": "Email: <a href=\"mailto:sales@begapunk.com\">sales@begapunk.com</a><br>\n\n    Address: 88 Yugong Road, Zonghan Industrial Park, Cixi, Ningbo, Zhejiang, 315300, China",
+      "id": "6b47eeaae959ba5c",
+      "source": "Email: <a href=\"mailto:sales@begapunk.com\">sales@begapunk.com</a><br>\n\n    Address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China",
       "pages": [
         "privacy.html",
         "terms.html"
-      ]
-    },
-    {
-      "id": "66e3f743071b5c6c",
-      "source": "End-face mount; 10 × M5 on each end; no through bore",
-      "pages": [
-        "product-comparison.html"
       ]
     },
     {
@@ -8330,8 +8454,57 @@
       ]
     },
     {
-      "id": "cc60117dba0636e4",
-      "source": "Face mounting",
+      "id": "63ad1fdc65d6ca9f",
+      "source": "face A: 2 × M5, depth 10 mm · face B: 3 × M5, depth 8 mm",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "06e773fb9a824f28",
+      "source": "face A: 3 × M5 · face B: 3 × Ø6 mm hole · body: 1 × M5 anti-rotation set-screw",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "bbeef75640a40535",
+      "source": "face A: 4 × M4 · face B: 4 × M4",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "637a02696edf1c6f",
+      "source": "face A: 4 × M5 · face B: 4 × M5",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "eee233175aded980",
+      "source": "face A: 4 × M5, depth 12 mm · face B: 4 × M6 through-hole · body: 2 × M8, depth 12 mm anti-rotation",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "9e34633156d5d29e",
+      "source": "face A: 4 × M5, depth 12 mm · face B: 6 × M6",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "7f7a13d884b01c80",
+      "source": "face A: 6 × M10, depth 13 mm · face B: 6 × M10, depth 13 mm",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "7bb39688e0989ad8",
+      "source": "face A: 6 × M5, depth 12 mm · face A: 8 × M8, depth 12 mm · face B: 8 × M6, depth 15 mm · body: 2 × M10 anti-rotation",
       "pages": [
         "product-comparison.html"
       ]
@@ -8344,8 +8517,8 @@
       ]
     },
     {
-      "id": "d309011175f5aced",
-      "source": "Face mounting + anti-rotation",
+      "id": "66da98a26421a81c",
+      "source": "Face mounting — face A: 4 × M6 · face B: 3 × M6 · face B: 3 × Ø6 mm hole",
       "pages": [
         "product-comparison.html"
       ]
@@ -8355,20 +8528,6 @@
       "source": "Factory &amp; Quality",
       "pages": [
         "index.html"
-      ]
-    },
-    {
-      "id": "7c339e15097b2889",
-      "source": "Factory Address",
-      "pages": [
-        "contact.html"
-      ]
-    },
-    {
-      "id": "7c68f8f7734a2159",
-      "source": "Factory details",
-      "pages": [
-        "contact.html"
       ]
     },
     {
@@ -8506,8 +8665,7 @@
       "id": "aeb84e81dae8381c",
       "source": "Flange mount",
       "pages": [
-        "blog-rotary-joint-selection.html",
-        "product-comparison.html"
+        "blog-rotary-joint-selection.html"
       ]
     },
     {
@@ -8834,70 +8992,10 @@
       ]
     },
     {
-      "id": "eedd5de11c8d39ef",
-      "source": "G. C. Cao on LinkedIn",
-      "pages": [
-        "404.html",
-        "BP-1P-0003.html",
-        "BP-1P-0006.html",
-        "BP-2P-0001.html",
-        "BP-2P-0002.html",
-        "BP-2P-08-0001.html",
-        "BP-2P-130-0001.html",
-        "BP-2P-16-0001.html",
-        "BP-2P-30-0001.html",
-        "BP-2P-50-0001.html",
-        "BP-2P-95-0005.html",
-        "BP-3P-0004.html",
-        "BP-3P-0006.html",
-        "BP-3P-0007.html",
-        "BP-3P-S06-0001.html",
-        "BP-4P-30-0001.html",
-        "BP-8P-0001.html",
-        "about.html",
-        "application-automation-rotary-tables.html",
-        "application-bottle-filling-capping.html",
-        "application-cnc-pneumatic-clamping.html",
-        "application-electronics-battery-test-fixtures.html",
-        "application-laser-tube-cutting.html",
-        "application-packaging-machinery.html",
-        "application-pneumatic-tools-hose-anti-twist.html",
-        "application-robot-end-of-arm-tooling.html",
-        "application-steel-dusty-environments.html",
-        "application-textile-printing-converting.html",
-        "application-vacuum-packaging-machines.html",
-        "application-welding-positioners.html",
-        "applications.html",
-        "blog-rotary-joint-installation-mistakes.html",
-        "blog-rotary-joint-leaking.html",
-        "blog-rotary-joint-materials.html",
-        "blog-rotary-joint-selection.html",
-        "blog-seal-replacement.html",
-        "blog-threaded-vs-flange.html",
-        "blog.html",
-        "contact.html",
-        "index.html",
-        "installation.html",
-        "privacy.html",
-        "product-comparison.html",
-        "products.html",
-        "search.html",
-        "terms.html",
-        "thank-you.html"
-      ]
-    },
-    {
       "id": "c7c0a02063afdffe",
       "source": "G1/8 Thread",
       "pages": [
         "products.html"
-      ]
-    },
-    {
-      "id": "21a46eba51b12a66",
-      "source": "G1/8 threaded",
-      "pages": [
-        "product-comparison.html"
       ]
     },
     {
@@ -9165,6 +9263,13 @@
       "source": "How printing machinery uses rotary unions",
       "pages": [
         "application-textile-printing-converting.html"
+      ]
+    },
+    {
+      "id": "6e024db6f423ad2c",
+      "source": "How should I compare rotary union suppliers?",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -9612,17 +9717,17 @@
       ]
     },
     {
-      "id": "f25c4659c75dfcb8",
-      "source": "Is Begapunk a good rotary union manufacturer?",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "1f3f5d6d40ab100b",
       "source": "It can be possible with separated passages, but media, pressure, speed, and seal requirements must be confirmed.",
       "pages": [
         "application-textile-printing-converting.html"
+      ]
+    },
+    {
+      "id": "7b2a2b4029369c76",
+      "source": "It depends on the model. Replacement is checked model by model and is never assumed for similar-looking units. Send the existing model number or drawing together with the mounting dimensions, port layout, passage count, pressure and speed. Begapunk compares these with its published model data and confirms whether a catalog or custom unit fits.",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -9985,13 +10090,6 @@
       "source": "Maintenance baseline created",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "d22b0bce87a6a4a6",
-      "source": "Manufacturers to compare include Deublin and Rotoflux for fluid rotary unions, and Moog for slip rings and fluid rotary solutions. Begapunk is a strong option for machine builders seeking pneumatic or pneumatic-electric rotary unions, responsive custom design and competitive pricing. Compare the product's fit with your machine, sealing design, delivery and after-sales support to choose the best supplier for the application.",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -10523,8 +10621,8 @@
       ]
     },
     {
-      "id": "8b36c59d1d612acc",
-      "source": "Mounting",
+      "id": "0bf9c30f427be3cc",
+      "source": "Mounting interface",
       "pages": [
         "product-comparison.html"
       ]
@@ -10727,8 +10825,57 @@
       ]
     },
     {
-      "id": "44651f30f5bf27c4",
-      "source": "Ningbo, Zhejiang, China",
+      "id": "a93d134047ed0623",
+      "source": "No abnormal leak, heat, noise, or hose movement",
+      "pages": [
+        "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "39ec2a835853a8b2",
+      "source": "No automatic return period or full-refund right is promised by this page. Any return or refund requires prior written authorization and follows the formal quotation, accepted order, and applicable law.",
+      "pages": [
+        "terms.html"
+      ]
+    },
+    {
+      "id": "571bb0995aa41e33",
+      "source": "No damage or contamination",
+      "pages": [
+        "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "25b5050ea0117396",
+      "source": "No debris or external pipe load",
+      "pages": [
+        "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "0d4b1bb1728208ab",
+      "source": "No excess sealant in passages",
+      "pages": [
+        "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "7d7e360586090927",
+      "source": "No results found",
+      "pages": [
+        "search.html"
+      ]
+    },
+    {
+      "id": "fbacfb75c7a9eaf4",
+      "source": "No separate mounting feature specified; media ports are not mounting holes",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "5ae4828bee13162c",
+      "source": "No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China",
       "pages": [
         "404.html",
         "BP-1P-0003.html",
@@ -10780,45 +10927,10 @@
       ]
     },
     {
-      "id": "a93d134047ed0623",
-      "source": "No abnormal leak, heat, noise, or hose movement",
+      "id": "52192d559efac63e",
+      "source": "No. 665 Youdian Road, Andong Town<br>Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China",
       "pages": [
-        "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "39ec2a835853a8b2",
-      "source": "No automatic return period or full-refund right is promised by this page. Any return or refund requires prior written authorization and follows the formal quotation, accepted order, and applicable law.",
-      "pages": [
-        "terms.html"
-      ]
-    },
-    {
-      "id": "571bb0995aa41e33",
-      "source": "No damage or contamination",
-      "pages": [
-        "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "25b5050ea0117396",
-      "source": "No debris or external pipe load",
-      "pages": [
-        "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "0d4b1bb1728208ab",
-      "source": "No excess sealant in passages",
-      "pages": [
-        "blog-rotary-joint-installation-mistakes.html"
-      ]
-    },
-    {
-      "id": "7d7e360586090927",
-      "source": "No results found",
-      "pages": [
-        "search.html"
+        "contact.html"
       ]
     },
     {
@@ -11563,6 +11675,20 @@
       ]
     },
     {
+      "id": "2e7af21432f9d47d",
+      "source": "Port thread",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "4f5dc95ed2152b33",
+      "source": "Port thread is confirmed from the current model-specific drawing before fitting selection",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "dd65913133894f1b",
       "source": "Possible Model or Configuration",
       "pages": [
@@ -11832,6 +11958,13 @@
       "source": "Production &amp; Quality",
       "pages": [
         "about.html"
+      ]
+    },
+    {
+      "id": "6500f6f99cf752ce",
+      "source": "Production lead time: 20 calendar days after payment (excluding shipping) for standard catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products.",
+      "pages": [
+        "terms.html"
       ]
     },
     {
@@ -12242,6 +12375,126 @@
       "source": "Refer to your product data sheet for the recommended lubrication interval (typically every 3–6 months for continuous-duty applications).",
       "pages": [
         "installation.html"
+      ]
+    },
+    {
+      "id": "d76f7018c1ecc66c",
+      "source": "Registered Address",
+      "pages": [
+        "contact.html"
+      ]
+    },
+    {
+      "id": "6f0f959ce0512396",
+      "source": "Registered address and working hours",
+      "pages": [
+        "contact.html"
+      ]
+    },
+    {
+      "id": "aa5f02c5e1af58ea",
+      "source": "Registered address:",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
+      "id": "cefe243cf4ce4dbc",
+      "source": "Registration No. <span class=\"footer-registration-value\">330218000114820</span>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -12825,6 +13078,13 @@
       "source": "Rotating supply for blow-off, vacuum web handling, and reviewed coolant or water-transfer requirements.",
       "pages": [
         "applications.html"
+      ]
+    },
+    {
+      "id": "36a1fd94f9e158d9",
+      "source": "Rotor mounting: 10 × M5 × 0.8 on Ø66 mm PCD; 12 mm full thread depth · Stator mounting: 10 × M5 × 0.8 on Ø68 mm PCD; 10 mm full thread depth",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -13461,8 +13721,8 @@
       ]
     },
     {
-      "id": "686c5c95f8a94b8f",
-      "source": "Single channel: BP-1P-0003 — threaded mount, compact, rated 1.0 MPa",
+      "id": "2c8768f933a875fa",
+      "source": "Single channel: BP-1P-0003 — compact, ports 1 × G3/8 inlet and 1 × M10×1.5 outlet; no separate mounting feature is specified, and the media ports are not mounting holes",
       "pages": [
         "blog-rotary-joint-selection.html"
       ]
@@ -13588,8 +13848,8 @@
       ]
     },
     {
-      "id": "b8293ce43ec31df9",
-      "source": "Standard and custom models. MOQ: 1 unit. Production lead time is typically about 20 calendar days for catalog models and within 30 calendar days for custom products. Every catalog model page includes a 2D drawing and a downloadable STEP AP214 file.",
+      "id": "cffe78d5bcfb550e",
+      "source": "Standard and custom models. MOQ: 1 unit. Production lead time: 20 calendar days after payment (excluding shipping) for standard catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products. Every catalog model page includes a 2D drawing and a downloadable STEP AP214 file.",
       "pages": [
         "products.html"
       ]
@@ -13602,8 +13862,8 @@
       ]
     },
     {
-      "id": "b394d0af8b4dc4d9",
-      "source": "Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.",
+      "id": "12498a5172724641",
+      "source": "Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.",
       "pages": [
         "index.html"
       ]
@@ -13735,15 +13995,36 @@
       ]
     },
     {
-      "id": "63b93bf0fe09b864",
-      "source": "Stator 4 × M5 × 10 mm; rotor 6 × M5 × 8 mm; confirm supplied drawing",
+      "id": "c050a8779eb8edf8",
+      "source": "stator: 4 × M4, depth 10 mm · rotor: 4 × M4, depth 10 mm",
       "pages": [
         "product-comparison.html"
       ]
     },
     {
-      "id": "4f0d774b2e10f57a",
-      "source": "Stator: 4 × M4, depth 10 mm; rotor: 4 × M4, depth 10 mm",
+      "id": "ca6815a3fd6b0cdc",
+      "source": "stator: 4 × M5 · rotor: 4 × M5",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "8c5f50f10adda75d",
+      "source": "stator: 4 × M5, depth 10 mm (4 × M5 × 10 mm) · rotor: 6 × M5, depth 8 mm (6 × M5 × 8 mm)",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "66d4106a2c18a255",
+      "source": "stator: 4 × M5, depth 8 mm · rotor: 4 × M5, depth 8 mm",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
+      "id": "dd33cc9a1ff474e6",
+      "source": "stator: 4 × M6 · rotor: 4 × M6",
       "pages": [
         "product-comparison.html"
       ]
@@ -14203,7 +14484,6 @@
       "id": "5949276ab6f67468",
       "source": "Threaded",
       "pages": [
-        "product-comparison.html",
         "products.html"
       ]
     },
@@ -14377,8 +14657,8 @@
       ]
     },
     {
-      "id": "a748e59be485a7a4",
-      "source": "Typical catalog lead time: about 20 days",
+      "id": "489f45268c2ccb3a",
+      "source": "Typical catalog production lead time: 20 calendar days after payment",
       "pages": [
         "index.html"
       ]
@@ -14478,6 +14758,59 @@
       "source": "Upload your drawing or old rotary joint photo through the RFQ form. Begapunk engineers will review the supplied interface details.",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "6742b736e8ccf30a",
+      "source": "USCC <span class=\"footer-registration-value\">91330201MABLQR5K7U</span>",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
       ]
     },
     {
@@ -15034,13 +15367,6 @@
       ]
     },
     {
-      "id": "ab08bdbd19a91afd",
-      "source": "What are affordable alternatives to Deublin rotary unions?",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "b63e29c84f7da963",
       "source": "What are the main types of rotary unions?",
       "pages": [
@@ -15066,6 +15392,13 @@
       "source": "What Do You Need? <span class=\"req\">*</span>",
       "pages": [
         "contact.html"
+      ]
+    },
+    {
+      "id": "3a4b14fa6c65705c",
+      "source": "What does Begapunk test before shipment?",
+      "pages": [
+        "about.html"
       ]
     },
     {
@@ -15317,6 +15650,13 @@
       ]
     },
     {
+      "id": "c3d3e6fb02df6205",
+      "source": "Where is Begapunk based and what does it make?",
+      "pages": [
+        "about.html"
+      ]
+    },
+    {
       "id": "376e3656479c85d2",
       "source": "Where the rotary union fits in a packaging machine",
       "pages": [
@@ -15335,20 +15675,6 @@
       "source": "Which passage count is common for welding fixtures?",
       "pages": [
         "application-welding-positioners.html"
-      ]
-    },
-    {
-      "id": "bf93774988611abd",
-      "source": "Who are the best pneumatic rotary union manufacturers?",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
-      "id": "8bd6982c24117d68",
-      "source": "Who are the top rotary union manufacturers in China?",
-      "pages": [
-        "about.html"
       ]
     },
     {
@@ -15478,17 +15804,10 @@
       ]
     },
     {
-      "id": "6afdf542e1853bd2",
-      "source": "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Catalog models typically take about 20 calendar days to produce after payment; custom products are completed within 30 calendar days. If a suitable unit is already in stock, ask us for the available dispatch date. Production lead time does not include international shipping.",
+      "id": "6ef0772b0ad73a2a",
+      "source": "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products. If a suitable unit is already in stock, ask us for the available dispatch date.",
       "pages": [
         "products.html"
-      ]
-    },
-    {
-      "id": "91dba314dd79bb17",
-      "source": "Yes. Begapunk is a specialist manufacturer of industrial rotary connections, with pneumatic and multi-passage models, vacuum configurations and pneumatic-electric options. We combine PTFE sealing technology with rigorous passage-by-passage testing to supply dependable products and custom solutions for laser tube cutting, packaging machinery and automation rotary tables. Flexible interfaces, single-unit samples and support from selection through production make Begapunk a strong choice for machine builders.",
-      "pages": [
-        "about.html"
       ]
     },
     {

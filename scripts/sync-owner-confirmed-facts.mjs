@@ -53,17 +53,19 @@ const customHydraulicLeadTimeContracts = Object.freeze([
   Object.freeze({
     file: 'custom-hydraulic-rotary-unions.html',
     replacements: Object.freeze([
-      Object.freeze({ legacy: 'Custom hydraulic is about 30 calendar days after payment.', current: 'Custom hydraulic is completed within 30 calendar days after payment.', count: 3 }),
-      Object.freeze({ legacy: 'About 30 days after payment', current: 'Within 30 days after payment', count: 1 }),
-      Object.freeze({ legacy: 'MOQ 1, about 30 days', current: 'MOQ 1, within 30 days', count: 1 }),
+      Object.freeze({ legacy: 'Custom hydraulic is completed within 30 calendar days after payment.', current: 'Production lead time: up to 30 calendar days after payment (excluding shipping).', count: 3 }),
+      Object.freeze({ legacy: 'Catalog pneumatic remains about 20 days; custom hydraulic is not that 20-day item.', current: 'Catalog pneumatic production lead time: 20 calendar days after payment (excluding shipping).', legacyVariants: Object.freeze(['It is not the catalog pneumatic ≈20-day item.']), count: 3 }),
+      Object.freeze({ legacy: 'Within 30 days after payment', current: 'Up to 30 calendar days after payment (excluding shipping)', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1, within 30 days', current: 'MOQ 1, up to 30 calendar days', count: 1 }),
     ]),
   }),
   Object.freeze({
     file: 'de/custom-hydraulic-rotary-unions.html',
     replacements: Object.freeze([
-      Object.freeze({ legacy: 'Hydraulik nach Maß braucht etwa 30 Kalendertage nach Zahlungseingang.', current: 'Hydraulik nach Maß wird innerhalb von 30 Kalendertagen nach Zahlungseingang fertiggestellt.', count: 3 }),
-      Object.freeze({ legacy: 'Etwa 30 Tage nach Zahlungseingang', current: 'Innerhalb von 30 Tagen nach Zahlungseingang', count: 1 }),
-      Object.freeze({ legacy: 'MOQ 1, etwa 30 Tage', current: 'MOQ 1, innerhalb von 30 Tagen', count: 1 }),
+      Object.freeze({ legacy: 'Hydraulik nach Maß wird innerhalb von 30 Kalendertagen nach Zahlungseingang fertiggestellt.', current: 'Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand).', count: 3 }),
+      Object.freeze({ legacy: 'Pneumatik-Katalog bleibt bei etwa 20 Tagen; die Hydraulik nach Maß ist nicht dieser 20-Tage-Artikel.', current: 'Fertigungszeit für den Pneumatik-Katalog: 20 Kalendertage nach Zahlungseingang (ohne Versand).', legacyVariants: Object.freeze(['Das ist nicht der pneumatische Katalogartikel mit etwa 20 Tagen.']), count: 3 }),
+      Object.freeze({ legacy: 'Innerhalb von 30 Tagen nach Zahlungseingang', current: 'Bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand)', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1, innerhalb von 30 Tagen', current: 'MOQ 1, bis zu 30 Kalendertage', count: 1 }),
     ]),
   }),
   ...(i18nConfig.activeLanguageCodes.includes('fr') ? [Object.freeze({
@@ -93,25 +95,27 @@ const customHydraulicLeadTimeContracts = Object.freeze([
         legacy: Object.freeze(['installation de Ningbo', 'Installation de Ningbo']),
       }),
       Object.freeze({
-        current: 'Dans les 30 jours suivant le paiement',
+        current: 'Jusqu’à 30 jours calendaires après paiement (hors expédition)',
         legacy: Object.freeze(['Dans les 30 jours après paiement', 'Sous 30 jours après paiement']),
       }),
     ]),
     replacements: Object.freeze([
       Object.freeze({
-        legacy: 'La fabrication hydraulique sur mesure prend environ 30 jours calendaires après paiement.',
+        legacy: 'La fabrication hydraulique sur mesure est achevée dans un délai de 30 jours calendaires après paiement.',
         legacyVariants: Object.freeze([
           'L\'hydraulique personnalisé est complété dans les 30 jours civils suivant le paiement.',
           'L\'hydraulique sur mesure est réalisée dans les 30 jours calendaires suivant le paiement.',
         ]),
-        current: 'La fabrication hydraulique sur mesure est achevée dans un délai de 30 jours calendaires après paiement.',
+        current: 'Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition).',
         count: 3,
       }),
-      Object.freeze({ legacy: 'Environ 30 jours après paiement', current: 'Dans les 30 jours suivant le paiement', count: 1 }),
+      Object.freeze({ legacy: 'Le délai indicatif des modèles pneumatiques du catalogue reste d’environ 20 jours ; ce délai de 20 jours ne s’applique pas à cette offre hydraulique sur mesure.', current: 'Délai de production des modèles pneumatiques du catalogue : 20 jours calendaires après paiement (hors expédition).', count: 2 }),
+      Object.freeze({ legacy: 'Cette offre est distincte des modèles pneumatiques du catalogue, dont le délai indicatif est d’environ 20 jours.', current: 'Cette offre est distincte des modèles pneumatiques du catalogue, dont le délai de production est de 20 jours calendaires après paiement (hors expédition).', count: 1 }),
+      Object.freeze({ legacy: 'Dans les 30 jours suivant le paiement', current: 'Jusqu’à 30 jours calendaires après paiement (hors expédition)', count: 1 }),
       Object.freeze({
-        legacy: 'MOQ 1, environ 30 jours',
+        legacy: 'Quantité minimale : 1 pièce, fabrication sous 30 jours',
         legacyVariants: Object.freeze(['MOQ 1, dans les 30 jours']),
-        current: 'Quantité minimale : 1 pièce, fabrication sous 30 jours',
+        current: 'Quantité minimale : 1 pièce, jusqu’à 30 jours calendaires',
         count: 1,
       }),
     ]),
@@ -119,17 +123,19 @@ const customHydraulicLeadTimeContracts = Object.freeze([
   Object.freeze({
     file: 'ja/custom-hydraulic-rotary-unions.html',
     replacements: Object.freeze([
-      Object.freeze({ legacy: '特注液圧は入金後約30暦日です。', current: '特注液圧は入金後30暦日以内に製作します。', count: 3 }),
-      Object.freeze({ legacy: '入金後 約30日', current: '入金後 30日以内', count: 1 }),
-      Object.freeze({ legacy: 'MOQ 1個、約30日', current: 'MOQ 1個、30日以内', count: 1 }),
+      Object.freeze({ legacy: '特注液圧は入金後30暦日以内に製作します。', current: '製作期間：特注液圧は入金後最大30暦日（輸送期間を除く）。', count: 3 }),
+      Object.freeze({ legacy: '空圧カタログの約20日品ではありません。', current: '空圧カタログの製作期間は入金後20暦日（輸送期間を除く）です。', count: 3 }),
+      Object.freeze({ legacy: '入金後 30日以内', current: '入金後最大30暦日（輸送期間を除く）', count: 4 }),
+      Object.freeze({ legacy: 'MOQ 1個、30日以内', current: 'MOQ 1個、最大30暦日', count: 1 }),
     ]),
   }),
   Object.freeze({
     file: 'ru/custom-hydraulic-rotary-unions.html',
     replacements: Object.freeze([
-      Object.freeze({ legacy: 'Заказная гидравлика — около 30 календарных дней после оплаты.', current: 'Заказная гидравлика изготавливается в течение 30 календарных дней после оплаты.', count: 3 }),
-      Object.freeze({ legacy: 'Около 30 дней после оплаты', current: 'В течение 30 дней после оплаты', count: 1 }),
-      Object.freeze({ legacy: 'MOQ 1, около 30 дней', current: 'MOQ 1, в течение 30 дней', count: 1 }),
+      Object.freeze({ legacy: 'Заказная гидравлика изготавливается в течение 30 календарных дней после оплаты.', current: 'Срок производства: до 30 календарных дней после оплаты (без учёта доставки).', count: 3 }),
+      Object.freeze({ legacy: 'Каталожная пневматика остаётся около 20 дней; заказная гидравлика — не эта 20-дневная позиция.', current: 'Срок производства каталожной пневматики: 20 календарных дней после оплаты (без учёта доставки).', legacyVariants: Object.freeze(['Это не каталожная пневматика со сроком около 20 дней.']), count: 3 }),
+      Object.freeze({ legacy: 'В течение 30 дней после оплаты', current: 'До 30 календарных дней после оплаты (без учёта доставки)', count: 1 }),
+      Object.freeze({ legacy: 'MOQ 1, в течение 30 дней', current: 'MOQ 1, до 30 календарных дней', count: 1 }),
     ]),
   }),
 ]);
@@ -421,10 +427,10 @@ const rows = [
     ru: `Заказ считается подтвержденным только после письменного принятия его коммерческих и технических условий обеими сторонами.`,
   },
   {
-    source: `Deposit, balance, credit, and payment timing are confirmed in the formal quotation and accepted order; this page does not establish a standard deposit percentage.`,
-    de: `Anzahlung, Restzahlung, Zahlungsziel und Zahlungstermine werden im formellen Angebot und angenommenen Auftrag festgelegt; diese Seite legt keinen einheitlichen Anzahlungsprozentsatz fest.`,
-    ja: `前払金、残金、掛取引および支払時期は、正式な見積書および受諾済み注文書で確定します。本ページは一律の前払率を定めるものではありません。`,
-    ru: `Размер аванса, остаточный платеж, условия кредита и сроки оплаты указываются в официальном коммерческом предложении и принятом заказе; настоящая страница не устанавливает стандартный размер аванса.`,
+    source: `Deposit, balance and payment timing are set in each formal quotation and accepted order.`,
+    de: `Anzahlung, Restzahlung und Zahlungstermin werden im jeweiligen formellen Angebot und angenommenen Auftrag festgelegt.`,
+    ja: `前払金、残金および支払時期は、各正式見積書および受諾済み注文書で定めます。`,
+    ru: `Размер аванса, остаток и сроки оплаты устанавливаются в каждом официальном коммерческом предложении и принятом заказе.`,
   },
   {
     source: `Available payment methods and any transaction fees are confirmed for the specific quotation and order.`,
@@ -439,10 +445,10 @@ const rows = [
     ru: `Минимальный заказ составляет 1 шт. как для каталожных моделей, так и для заказных изделий.`,
   },
   {
-    source: `Catalog models typically take about 20 calendar days to produce. Custom products are completed within 30 calendar days. Production time starts when payment is received and does not include international shipping.`,
-    de: `Die Fertigungszeit für Katalogmodelle beträgt typischerweise etwa 20 Kalendertage. Sonderanfertigungen werden innerhalb von 30 Kalendertagen fertiggestellt. Die Fertigungszeit beginnt mit dem Zahlungseingang und umfasst nicht den internationalen Transport.`,
-    ja: `カタログ品の製作期間は通常約20暦日です。特注品は30暦日以内に製作を完了します。製作期間は入金確認後から起算し、国際輸送期間は含みません。`,
-    ru: `Срок изготовления каталожных моделей обычно составляет около 20 календарных дней. Заказные изделия изготавливаются в течение 30 календарных дней. Срок изготовления исчисляется с момента получения оплаты и не включает международную перевозку.`,
+    source: `Production lead time: 20 calendar days after payment (excluding shipping) for standard catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products.`,
+    de: `Fertigungszeit: 20 Kalendertage nach Zahlungseingang (ohne Versand) für Standard-Katalogmodelle. Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand) für kundenspezifische Produkte.`,
+    ja: `製作期間：標準カタログ品は入金後20暦日（輸送期間を除く）。製作期間：特注品は入金後最大30暦日（輸送期間を除く）。`,
+    ru: `Срок производства: 20 календарных дней после оплаты (без учёта доставки) для стандартных каталожных моделей. Срок производства: до 30 календарных дней после оплаты (без учёта доставки) для изделий по индивидуальному заказу.`,
   },
   {
     source: `The estimated dispatch date, shipping method, carrier, and transit estimate are confirmed in the formal quotation and accepted order.`,
@@ -555,10 +561,10 @@ const frenchStaticTranslations = Object.freeze([
   `La durée de validité du devis et ses conditions d'acceptation figurent dans le devis formel ; cette page ne promet aucune durée de validité fixe.`,
   `Le fret, l'assurance, le dédouanement, les droits, les taxes et les autres frais à destination sont répartis uniquement selon l'Incoterm et les conditions écrites figurant dans le devis formel et la commande acceptée.`,
   `Une commande n'est confirmée que lorsque ses conditions commerciales et techniques ont été acceptées par écrit par les deux parties.`,
-  `L'acompte, le solde, les conditions de crédit et le calendrier de paiement sont confirmés dans le devis formel et la commande acceptée ; cette page ne fixe aucun pourcentage d'acompte standard.`,
+  `L’acompte, le solde et le calendrier de paiement sont définis dans chaque devis formel et commande acceptée.`,
   `Les modes de paiement disponibles et les éventuels frais de transaction sont confirmés pour chaque devis et chaque commande.`,
   `La quantité minimale de commande est d'une unité, tant pour les modèles du catalogue que pour les produits sur mesure.`,
-  `La fabrication des modèles du catalogue prend généralement environ 20 jours calendaires. Les produits sur mesure sont achevés dans un délai de 30 jours calendaires. Le délai de fabrication commence à réception du paiement et n'inclut pas le transport international.`,
+  `Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue standard. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les produits sur mesure.`,
   `La date d'expédition estimée, le mode d'expédition, le transporteur et le délai de transport estimé sont confirmés dans le devis formel et la commande acceptée.`,
   `EXW, FOB, CIF, DDP ou un autre Incoterm peut être envisagé s'il est expressément indiqué dans le devis formel et la commande acceptée. La mention d'un Incoterm sur cette page ne garantit pas sa disponibilité pour chaque commande.`,
   `La responsabilité du fret, de l'assurance, du dédouanement à l'exportation ou à l'importation, des droits, des taxes, du transfert des risques et de la livraison est déterminée uniquement par l'Incoterm confirmé et les conditions écrites de la commande. Begapunk ne prend pas en charge le dédouanement à l'importation, les droits ou les taxes, sauf acceptation expresse et écrite de cette responsabilité.`,

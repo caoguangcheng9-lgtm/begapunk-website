@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { load } from 'cheerio';
 import { assertBp10ProductContract } from './lib/bp10-product-contract.mjs';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
@@ -19,7 +20,7 @@ const locales = {
     aboutRoleDescriptions: ['Founder & Engineer', 'Machining, assembly, and passage-by-passage inspection', 'Inquiry, drawing, quotation, and order coordination'],
     termsPolicies: [
       'The minimum order quantity is one unit for both catalog and custom products.',
-      'Catalog models typically take about 20 calendar days to produce. Custom products are completed within 30 calendar days. Production time starts when payment is received and does not include international shipping.',
+      'Production lead time: 20 calendar days after payment (excluding shipping) for standard catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products.',
       "Begapunk's standard warranty period is one year from the shipment date for all products, subject to the approved specification and written order terms.",
       'If Begapunk confirms a covered product or manufacturing defect for which it is responsible, the standard remedy is a replacement at no charge. Begapunk covers the return and replacement-shipment costs agreed in writing for that claim. Other issues are handled according to the inspection findings and the written agreement between the parties.',
     ],
@@ -52,7 +53,7 @@ const locales = {
     aboutRoleDescriptions: ['Gründer & Ingenieur', 'Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals', 'Koordination von Anfragen, Zeichnungen, Angeboten und Aufträgen'],
     termsPolicies: [
       'Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen 1 Stück.',
-      'Die Fertigungszeit für Katalogmodelle beträgt typischerweise etwa 20 Kalendertage. Sonderanfertigungen werden innerhalb von 30 Kalendertagen fertiggestellt. Die Fertigungszeit beginnt mit dem Zahlungseingang und umfasst nicht den internationalen Transport.',
+      'Fertigungszeit: 20 Kalendertage nach Zahlungseingang (ohne Versand) für Standard-Katalogmodelle. Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand) für kundenspezifische Produkte.',
       'Die reguläre Garantiezeit für alle Begapunk-Produkte beträgt ein Jahr ab Versanddatum und gilt im Rahmen der freigegebenen Spezifikation und der schriftlichen Auftragsbedingungen.',
       'Bestätigt Begapunk einen von der Garantie gedeckten Produkt- oder Fertigungsfehler, für den Begapunk verantwortlich ist, erfolgt als reguläre Abhilfe ein kostenloser Ersatz. Begapunk übernimmt die für diesen Fall schriftlich vereinbarten Kosten der Rücksendung und Ersatzlieferung. Andere Fälle werden anhand der Prüfergebnisse und der schriftlichen Vereinbarung zwischen den Parteien behandelt.',
     ],
@@ -85,7 +86,7 @@ const locales = {
     aboutRoleDescriptions: ['Fondateur et ingénieur', 'Usinage, assemblage et contrôle circuit par circuit', 'Coordination des demandes, plans, devis et commandes'],
     termsPolicies: [
       'La quantité minimale de commande est d\'une unité, tant pour les modèles du catalogue que pour les produits sur mesure.',
-      'La fabrication des modèles du catalogue prend généralement environ 20 jours calendaires. Les produits sur mesure sont achevés dans un délai de 30 jours calendaires. Le délai de fabrication commence à réception du paiement et n\'inclut pas le transport international.',
+      'Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue standard. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les produits sur mesure.',
       'La durée de garantie standard de Begapunk est d\'un an à compter de la date d\'expédition pour tous les produits, sous réserve des caractéristiques approuvées et des conditions écrites de la commande.',
       'Si Begapunk confirme un défaut de produit ou de fabrication couvert dont elle est responsable, la mesure standard consiste en un remplacement sans frais. Begapunk prend en charge les frais de retour et d\'expédition du produit de remplacement convenus par écrit pour cette réclamation. Les autres problèmes sont traités selon les conclusions du contrôle et l\'accord écrit entre les parties.',
     ],
@@ -118,7 +119,7 @@ const locales = {
     aboutRoleDescriptions: ['創業者・エンジニア', '加工・組立・各流路の検査を調整', 'お問い合わせ・図面・見積・注文を調整'],
     termsPolicies: [
       'カタログ品、特注品ともに最小注文数量は1個です。',
-      'カタログ品の製作期間は通常約20暦日です。特注品は30暦日以内に製作を完了します。製作期間は入金確認後から起算し、国際輸送期間は含みません。',
+      '製作期間：標準カタログ品は入金後20暦日（輸送期間を除く）。製作期間：特注品は入金後最大30暦日（輸送期間を除く）。',
       'Begapunk全製品の標準保証期間は出荷日から1年間とし、承認済み仕様および書面による注文条件に従います。',
       'Begapunkが自社の責任による保証対象の製品不良または製造不良であると確認した場合、標準対応として無償で交換します。Begapunkは、当該申請について書面で合意した返送費用および交換品の発送費用を負担します。その他の場合は、検査結果および両当事者間の書面による合意に基づいて対応します。',
     ],
@@ -151,7 +152,7 @@ const locales = {
     aboutRoleDescriptions: ['Основатель и инженер', 'Координация обработки, сборки и проверки каждого канала', 'Координация запросов, чертежей, предложений и заказов'],
     termsPolicies: [
       'Минимальный заказ составляет 1 шт. как для каталожных моделей, так и для заказных изделий.',
-      'Срок изготовления каталожных моделей обычно составляет около 20 календарных дней. Заказные изделия изготавливаются в течение 30 календарных дней. Срок изготовления исчисляется с момента получения оплаты и не включает международную перевозку.',
+      'Срок производства: 20 календарных дней после оплаты (без учёта доставки) для стандартных каталожных моделей. Срок производства: до 30 календарных дней после оплаты (без учёта доставки) для изделий по индивидуальному заказу.',
       'Стандартный гарантийный срок на всю продукцию Begapunk составляет один год с даты отгрузки и действует в рамках согласованной спецификации и письменных условий заказа.',
       'Если Begapunk подтверждает покрываемый гарантией дефект изделия или производства, за который несет ответственность, стандартной мерой является бесплатная замена. Begapunk оплачивает согласованные в письменной форме расходы на возврат и отправку замены по данной претензии. В остальных случаях решение принимается на основании результатов проверки и письменного соглашения сторон.',
     ],
@@ -176,13 +177,11 @@ const locales = {
 };
 
 const expectedBusiness = {
-  streetAddress: '88 Yugong Road, Zonghan Industrial Park',
-  addressLocality: 'Ningbo',
-  addressRegion: 'Zhejiang',
-  postalCode: '315300',
-  addressCountry: 'CN',
-  latitude: 29.8683,
-  longitude: 121.544,
+  streetAddress: COMPANY_IDENTITY.registeredAddress.streetAddress,
+  addressLocality: COMPANY_IDENTITY.registeredAddress.addressLocality,
+  addressRegion: COMPANY_IDENTITY.registeredAddress.addressRegion,
+  postalCode: COMPANY_IDENTITY.registeredAddress.postalCode,
+  addressCountry: COMPANY_IDENTITY.registeredAddress.addressCountry,
   openingHours: 'Mo-Fr 08:30-17:30',
 };
 
@@ -264,8 +263,21 @@ function checkOrganizationFacts($, relativePath, locale) {
     return;
   }
   const organization = organizations[0];
-  if (String(organization.foundingDate) !== '2022') {
-    fail(`${relativePath}: Organization foundingDate must be exactly 2022.`);
+  if (organization.legalName !== COMPANY_IDENTITY.legalNameZh) {
+    fail(`${relativePath}: Organization legalName must be ${COMPANY_IDENTITY.legalNameZh}.`);
+  }
+  if (String(organization.foundingDate) !== COMPANY_IDENTITY.foundingDate) {
+    fail(`${relativePath}: Organization foundingDate must be exactly ${COMPANY_IDENTITY.foundingDate}.`);
+  }
+  if (Object.hasOwn(organization, 'address')) {
+    fail(`${relativePath}: Organization address must stay location-neutral; the registered address belongs to the canonical LocalBusiness.`);
+  }
+  const identifiers = Array.isArray(organization.identifier) ? organization.identifier : [];
+  for (const expected of COMPANY_IDENTITY.identifiers) {
+    const match = identifiers.find((identifier) => identifier?.propertyID === expected.propertyID);
+    if (!match || String(match.value) !== expected.value) {
+      fail(`${relativePath}: Organization identifier ${expected.propertyID} must be ${expected.value}.`);
+    }
   }
   if (!organization.founder || organization.founder['@type'] !== 'Person') {
     fail(`${relativePath}: Organization founder must be a Person.`);
@@ -279,10 +291,12 @@ function checkLocalBusiness(node, relativePath, sourceName) {
     fail(`${relativePath}: missing canonical LocalBusiness in ${sourceName}.`);
     return;
   }
+  if (Object.hasOwn(node, 'geo')) {
+    fail(`${relativePath}: unverified LocalBusiness geo coordinates must not be published.`);
+  }
   for (const [key, expected] of Object.entries(expectedBusiness)) {
     let actual;
-    if (key === 'latitude' || key === 'longitude') actual = node.geo?.[key];
-    else if (key === 'openingHours') actual = node.openingHours;
+    if (key === 'openingHours') actual = node.openingHours;
     else actual = node.address?.[key];
     if (actual !== expected) {
       fail(`${relativePath}: LocalBusiness ${key} must be exactly ${JSON.stringify(expected)}, found ${JSON.stringify(actual)}.`);
@@ -362,7 +376,7 @@ for (const [language, locale] of Object.entries(locales)) {
   if (termsSource) {
     const $ = load(termsSource, { decodeEntities: false });
     for (const policy of locale.termsPolicies) {
-      const matchingTerms = $('li').filter((_, item) => compact($(item).text()) === policy);
+      const matchingTerms = $('li').filter((_, item) => compact($(item).text()) === compact(policy));
       if (matchingTerms.length !== 1) {
         fail(`${termsPath}: expected one exact commercial-policy statement, found ${matchingTerms.length}: ${policy}`);
       }
@@ -497,11 +511,11 @@ for (const [language, locale] of Object.entries(locales)) {
 
 const hydraulicPage = 'custom-hydraulic-rotary-unions.html';
 const hydraulicFacts = {
-  en: ['30 MPa', '300 bar', '4350 psi', '2 passages typical', 'Up to 12 custom', 'Carbon-fiber Glyd ring', 'MOQ 1', 'Within 30 days after payment', 'Ningbo facility'],
-  de: ['30 MPa', '300 bar', '2-Wege', '12 Wege', 'Glyd-Ring', 'MOQ 1', 'Innerhalb von 30 Tagen nach Zahlungseingang'],
-  fr: ['30 MPa', '300 bar', '2 circuits standard', 'jusqu\'à 12 circuits sur mesure', 'bague Glyd en PTFE renforcé de fibres de carbone', 'Quantité minimale : 1 pièce', 'Dans les 30 jours suivant le paiement', 'site de Ningbo'],
-  ja: ['30 MPa', '2\u6d41\u8def', '12\u6d41\u8def', '\u30b0\u30e9\u30a4\u30c9\u30ea\u30f3\u30b0', 'MOQ 1', '\u5165\u91d1\u5f8c 30\u65e5\u4ee5\u5185'],
-  ru: ['30 \u041c\u041f\u0430', '300 \u0431\u0430\u0440', '2 \u043f\u0440\u043e\u0445\u043e\u0434', 'Glyd', 'MOQ 1', '\u0412 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 30 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
+  en: ['30 MPa', '300 bar', '4350 psi', '2 passages typical', 'Up to 12 custom', 'Carbon-fiber Glyd ring', 'MOQ 1', 'Up to 30 calendar days after payment (excluding shipping)', 'Ningbo facility'],
+  de: ['30 MPa', '300 bar', '2-Wege', '12 Wege', 'Glyd-Ring', 'MOQ 1', 'Bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand)'],
+  fr: ['30 MPa', '300 bar', '2 circuits standard', 'jusqu\'à 12 circuits sur mesure', 'bague Glyd en PTFE renforcé de fibres de carbone', 'Quantité minimale : 1 pièce', 'Jusqu’à 30 jours calendaires après paiement (hors expédition)', 'site de Ningbo'],
+  ja: ['30 MPa', '2\u6d41\u8def', '12\u6d41\u8def', '\u30b0\u30e9\u30a4\u30c9\u30ea\u30f3\u30b0', 'MOQ 1', '\u5165\u91d1\u5f8c\u6700\u592730\u66a6\u65e5'],
+  ru: ['30 \u041c\u041f\u0430', '300 \u0431\u0430\u0440', '2 \u043f\u0440\u043e\u0445\u043e\u0434', 'Glyd', 'MOQ 1', '\u0414\u043e 30 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u044b\u0445 \u0434\u043d\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u043e\u043f\u043b\u0430\u0442\u044b'],
 };
 for (const [language, locale] of Object.entries(locales)) {
   const relativePath = relativeFile(locale, hydraulicPage);

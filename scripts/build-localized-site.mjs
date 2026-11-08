@@ -19,6 +19,7 @@ import {
   renderInternationalSitemaps,
   SITEMAP_LASTMOD_STATE,
 } from './lib/sitemap-i18n.mjs';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
@@ -30,14 +31,10 @@ const manualLocalizedPages = config.manualLocalizedPages || [];
 const canonicalOrganizationId = `${config.siteUrl}/#organization`;
 const canonicalFounderId = `${config.siteUrl}/#founder-g-c-cao`;
 const canonicalLocalBusinessId = `${config.siteUrl}/#localbusiness`;
-const canonicalBrandName = 'Begapunk';
-const canonicalLegalName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
-const canonicalFoundingDate = '2022';
-const canonicalBrandSameAs = [
-  'https://www.youtube.com/@BEGAPUNKRotaryJointsTV',
-  'https://www.facebook.com/profile.php?id=61591616523667',
-  'https://x.com/Begapunk728',
-];
+const canonicalBrandName = COMPANY_IDENTITY.brandName;
+const canonicalLegalName = COMPANY_IDENTITY.legalNameZh;
+const canonicalFoundingDate = COMPANY_IDENTITY.foundingDate;
+const canonicalBrandSameAs = [...COMPANY_IDENTITY.brandSocialProfiles];
 const canonicalFounderSameAs = ['https://www.linkedin.com/in/guangcheng-cao/'];
 const languageSwitcherLabels = {
   en: 'Language',
@@ -89,7 +86,7 @@ const governedGeneratedCopy = Object.freeze({
   fr: Object.freeze({
     'index.html': Object.freeze({
       'Pneumatic Rotary Unions | Standard & Custom': 'Raccords tournants pneumatiques | Standard et sur mesure',
-      'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.': 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de fabrication : environ 20 jours calendaires pour les modèles du catalogue ; dans les 30 jours calendaires pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
+      'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.': 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
       'Find by Application': 'Choisir par application',
       'Model Comparison': 'Comparer les modèles',
       '1-10 passages': '1 à 10 circuits',
@@ -1495,7 +1492,7 @@ function normalizeGermanOutput(html) {
     ['1. O-Ring Dichtungen', '1. O-Ring-Dichtungen'],
     ['3. federunterstütztes kohlenstoffgefülltes PTFE Dichtungen', '3. Federunterstützte PTFE-Dichtungen mit Kohlenstofffüllung'],
     ['Wann zu ersetzen vs. Wann zu reparieren', 'Wann ersetzen, wann reparieren?'],
-    ['Fabrikanschrift', 'Werksanschrift'],
+    ['Fabrikanschrift', 'Eingetragene Geschäftsadresse'],
     ['kundenspezifisch Bestellungen &amp; Lieferung', 'Sonderausführungen und Lieferung'],
     ['3. Cookies &amp; Tracking Technologien', '3. Cookies und Tracking-Technologien'],
     ['4. Data Sharing', '4. Weitergabe von Daten'],
@@ -1969,7 +1966,7 @@ function applyGovernedGeneratedDomCopy($, languageCode, pageName) {
   const badge = requireOne('.hero-badge', 'hero badge');
   badge.contents().filter((_, node) => node.type === 'text').remove();
   badge.append(` ${copy['Pneumatic Rotary Unions | Standard & Custom']}`);
-  requireOne('.hero-def', 'hero description').text(copy['Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.']);
+  requireOne('.hero-def', 'hero description').text(copy['Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.']);
   requireOne('#home-application-title', 'application section title').text(copy['Find by Application']);
   requireOne('.portal-heading > a[href="product-comparison.html"]', 'model-comparison label').text(copy['Model Comparison']);
   requireOne('.hero-spec-tag.tag-passages', 'passage tag').text(copy['1-10 passages']);
@@ -2734,7 +2731,11 @@ function normalizeOrganizationIdentity(value, schemaLocale = {}, seo = {}, site 
   value.name = canonicalBrandName;
   value.legalName = canonicalLegalName;
   value.foundingDate = canonicalFoundingDate;
-  delete value.alternateName;
+  value.alternateName = [...COMPANY_IDENTITY.alternateNames];
+  value.identifier = COMPANY_IDENTITY.identifiers.map((identifier) => ({ ...identifier }));
+  // The canonical LocalBusiness carries the registered address. Keep the
+  // Organization node location-neutral to avoid duplicating address facts.
+  delete value.address;
   value.sameAs = canonicalBrandSameAs;
   const localizedDescription = site.organizationDescription || site.description || seo.description;
   if (value.description && localizedDescription) value.description = localizedDescription;
@@ -2770,7 +2771,9 @@ function normalizeLocalBusinessIdentity(value, schemaLocale = {}) {
   value.url = `${config.siteUrl}/`;
   value.name = canonicalBrandName;
   value.legalName = canonicalLegalName;
-  delete value.alternateName;
+  value.alternateName = [...COMPANY_IDENTITY.alternateNames];
+  value.identifier = COMPANY_IDENTITY.identifiers.map((identifier) => ({ ...identifier }));
+  value.foundingDate = canonicalFoundingDate;
   value.sameAs = canonicalBrandSameAs;
   value.parentOrganization = { '@id': canonicalOrganizationId };
   if (value.description && schemaLocale.localBusinessDescription) {

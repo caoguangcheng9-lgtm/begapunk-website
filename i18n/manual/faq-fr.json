@@ -9,12 +9,36 @@
     "jumpAria": "Catégories de la foire aux questions"
   },
   "sections": [
-    { "id": "faq-basics", "navLabel": "Principes fondamentaux", "heading": "Principes fondamentaux" },
-    { "id": "faq-selection", "navLabel": "Conditions de service et sélection", "heading": "Conditions de service et sélection" },
-    { "id": "faq-customization", "navLabel": "Conception sur mesure et plans", "heading": "Conception sur mesure, plans et intégration" },
-    { "id": "faq-installation", "navLabel": "Installation et durée de vie", "heading": "Installation, fonctionnement et durée de vie" },
-    { "id": "faq-testing", "navLabel": "Essais de production et traçabilité", "heading": "Essais de production et traçabilité" },
-    { "id": "faq-commercial", "navLabel": "Réparation, conditions commerciales et étude d’application", "heading": "Réparation, conditions commerciales et étude d’application" }
+    {
+      "id": "faq-basics",
+      "navLabel": "Principes fondamentaux",
+      "heading": "Principes fondamentaux"
+    },
+    {
+      "id": "faq-selection",
+      "navLabel": "Conditions de service et sélection",
+      "heading": "Conditions de service et sélection"
+    },
+    {
+      "id": "faq-customization",
+      "navLabel": "Conception sur mesure et plans",
+      "heading": "Conception sur mesure, plans et intégration"
+    },
+    {
+      "id": "faq-installation",
+      "navLabel": "Installation et durée de vie",
+      "heading": "Installation, fonctionnement et durée de vie"
+    },
+    {
+      "id": "faq-testing",
+      "navLabel": "Essais de production et traçabilité",
+      "heading": "Essais de production et traçabilité"
+    },
+    {
+      "id": "faq-commercial",
+      "navLabel": "Réparation, conditions commerciales et étude d’application",
+      "heading": "Réparation, conditions commerciales et étude d’application"
+    }
   ],
   "questions": [
     {
@@ -140,7 +164,7 @@
     {
       "id": "faq-26",
       "question": "Quelle est la quantité minimale de commande et quels sont les délais de production habituels ?",
-      "answer": "La quantité minimale de commande est d’une unité, pour les produits catalogue comme pour les produits sur mesure. La fabrication d’un modèle catalogue demande généralement environ 20 jours calendaires. Un produit sur mesure est généralement réalisé dans un délai de 30 jours calendaires. Le délai de production commence à la réception du paiement et n’inclut pas le transport international."
+      "answer": "La quantité minimale de commande est d’une unité, pour les produits catalogue comme pour les produits sur mesure. Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue standard. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les produits sur mesure."
     },
     {
       "id": "faq-27",
@@ -154,14 +178,46 @@
     }
   ],
   "relatedLinks": [
-    { "faqId": "faq-04", "text": "Voir le raccord tournant pneumatique-électrique BP-3P-S06-0001.", "href": "BP-3P-S06-0001.html" },
-    { "faqId": "faq-05", "text": "Découvrir les applications des raccords tournants par type de machine.", "href": "applications.html" },
-    { "faqId": "faq-08", "text": "Comparer les modèles Begapunk selon leur nombre de circuits.", "href": "product-comparison.html" },
-    { "faqId": "faq-13", "text": "Consulter le processus de demande et d’approbation des plans Begapunk.", "href": "contact.html#inquiry-process" },
-    { "faqId": "faq-14", "text": "Télécharger les plans 2D et les modèles STEP depuis les pages produit.", "href": "products.html?source=fr/faq.html" },
-    { "faqId": "faq-15", "text": "Consulter la liste de contrôle pour l’installation d’un raccord tournant.", "href": "blog-rotary-joint-installation-mistakes.html#checklist" },
-    { "faqId": "faq-22", "text": "Voir les paramètres confirmés du contrôle d’étanchéité en production.", "href": "production-inspection-testing.html#verified-test-parameters" },
-    { "faqId": "faq-27", "text": "Demander l’étude technique de votre application de raccord tournant.", "href": "contact.html?request=application-review&source=fr/faq.html#quoteForm" }
+    {
+      "faqId": "faq-04",
+      "text": "Voir le raccord tournant pneumatique-électrique BP-3P-S06-0001.",
+      "href": "BP-3P-S06-0001.html"
+    },
+    {
+      "faqId": "faq-05",
+      "text": "Découvrir les applications des raccords tournants par type de machine.",
+      "href": "applications.html"
+    },
+    {
+      "faqId": "faq-08",
+      "text": "Comparer les modèles Begapunk selon leur nombre de circuits.",
+      "href": "product-comparison.html"
+    },
+    {
+      "faqId": "faq-13",
+      "text": "Consulter le processus de demande et d’approbation des plans Begapunk.",
+      "href": "contact.html#inquiry-process"
+    },
+    {
+      "faqId": "faq-14",
+      "text": "Télécharger les plans 2D et les modèles STEP depuis les pages produit.",
+      "href": "products.html?source=fr/faq.html"
+    },
+    {
+      "faqId": "faq-15",
+      "text": "Consulter la liste de contrôle pour l’installation d’un raccord tournant.",
+      "href": "blog-rotary-joint-installation-mistakes.html#checklist"
+    },
+    {
+      "faqId": "faq-22",
+      "text": "Voir les paramètres confirmés du contrôle d’étanchéité en production.",
+      "href": "production-inspection-testing.html#verified-test-parameters"
+    },
+    {
+      "faqId": "faq-27",
+      "text": "Demander l’étude technique de votre application de raccord tournant.",
+      "href": "contact.html?request=application-review&source=fr/faq.html#quoteForm"
+    }
   ],
   "cta": {
     "heading": "Besoin d’une réponse pour votre machine ?",
@@ -173,9 +229,18 @@
     "nativeHumanSignoff": false,
     "unresolvedIssues": [],
     "officialTerminologySources": [
-      { "name": "DEUBLIN France – Joints tournants, raccords tournants", "url": "https://www.deublin.eu/joints-tournants-raccords-tournants" },
-      { "name": "SCHUNK France – Joint tournant DDF 2", "url": "https://schunk.com/fr/fr/technologie-d-automatisation/joint-tournant/c/PUB_8326" },
-      { "name": "Festo France – Fonctionnement d’une unité de traitement d’air", "url": "https://www.festo.com/fr/fr/e/blog/in-practice/comment-fonctionne-une-unite-de-traitement-d-air-id_4074291" }
+      {
+        "name": "SCHUNK France – Joint tournant DDF 2",
+        "url": "https://schunk.com/fr/fr/technologie-d-automatisation/joint-tournant/c/PUB_8326"
+      },
+      {
+        "name": "Festo France – Fonctionnement d’une unité de traitement d’air",
+        "url": "https://www.festo.com/fr/fr/e/blog/in-practice/comment-fonctionne-une-unite-de-traitement-d-air-id_4074291"
+      },
+      {
+        "name": "ISO 5598:2020 – Transmissions hydrauliques et pneumatiques — Vocabulaire",
+        "url": "https://www.iso.org/fr/standard/67985.html"
+      }
     ]
   }
 }

@@ -69,7 +69,7 @@
         {
           "sourceIds": [105],
           "question": "Can I buy a single rotary union as a sample?",
-          "answer": "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Catalog models typically take about 20 calendar days to produce after payment; custom products are completed within 30 calendar days. If a suitable unit is already in stock, ask us for the available dispatch date. Production lead time does not include international shipping.",
+          "answer": "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products. If a suitable unit is already in stock, ask us for the available dispatch date.",
           "links": [
             [
               "faq.html#faq-26",
@@ -90,8 +90,8 @@
         },
         {
           "sourceIds": [120],
-          "question": "What are affordable alternatives to Deublin rotary unions?",
-          "answer": "Begapunk offers cost-effective standard and custom alternatives for customers comparing pneumatic and multi-passage Deublin rotary unions. We can match a replacement proposal to the required mounting dimensions, port layout, passage count, pressure and speed, helping you compare purchase cost and delivery. Send the Deublin model number or drawing for a direct comparison. A drop-in replacement is established model by model; it is not assumed for every similar-looking union.",
+          "question": "Can a Begapunk model replace a rotary union from another manufacturer?",
+          "answer": "It depends on the model. Replacement is checked model by model and is never assumed for similar-looking units. Send the existing model number or drawing together with the mounting dimensions, port layout, passage count, pressure and speed. Begapunk compares these with its published model data and confirms whether a catalog or custom unit fits.",
           "links": [
             [
               "contact.html?source=products-replacement-faq#quoteForm",
@@ -497,30 +497,30 @@
       "items": [
         {
           "sourceIds": [119],
-          "question": "Who are the best pneumatic rotary union manufacturers?",
-          "answer": "Manufacturers to compare include Deublin and Rotoflux for fluid rotary unions, and Moog for slip rings and fluid rotary solutions. Begapunk is a strong option for machine builders seeking pneumatic or pneumatic-electric rotary unions, responsive custom design and competitive pricing. Compare the product's fit with your machine, sealing design, delivery and after-sales support to choose the best supplier for the application.",
+          "question": "How should I compare rotary union suppliers?",
+          "answer": "Compare suppliers against the same checklist: the medium, pressure, speed, passage count and port sizes the model is rated for; whether a model drawing and STEP file are available before ordering; how each unit is tested before shipment; lead time and minimum order quantity; the written warranty terms; and the documentation available for your destination market. Ask each supplier to state these in writing for the specific model you plan to use.",
           "links": [
             [
-              "case-studies.html",
-              "See real application cases"
+              "product-comparison.html",
+              "Compare Begapunk models"
             ]
           ]
         },
         {
           "sourceIds": [121],
-          "question": "Who are the top rotary union manufacturers in China?",
-          "answer": "Begapunk is a Chinese manufacturer to shortlist for pneumatic, vacuum-configured and pneumatic-electric rotary unions. We focus on industrial machinery, with standard products and custom interfaces for laser tube cutting, packaging equipment and automation rotary tables. Our model drawings, production leak-testing process and customer-authorized installations help buyers assess the product and supplier before ordering.",
+          "question": "Where is Begapunk based and what does it make?",
+          "answer": "Begapunk is operated by Ningbo Begapunk Pneumatic Components Co., Ltd. in Ningbo, Zhejiang, China. It manufactures pneumatic rotary joints and multi-passage rotary unions, with vacuum-configured and pneumatic-electric options, and quotes custom interfaces for machinery such as laser tube cutting, packaging equipment and automation rotary tables. Each catalog model page lists its published specifications and offers a model drawing and a STEP file.",
           "links": [
             [
-              "case-studies.html",
-              "Explore Begapunk customer installations"
+              "products.html",
+              "Explore Begapunk products"
             ]
           ]
         },
         {
           "sourceIds": [122],
           "question": "What should I look for when choosing a rotary union supplier?",
-          "answer": "Assess four areas: custom design and engineering response, including drawings and application review; seal-manufacturing quality and service-life test evidence relevant to your operating conditions; dependable lead times and sample support; and after-sales technical support and clear warranty terms. Ask for the evidence relevant to your machine. Begapunk offers flexible custom interfaces, single-unit samples, passage-by-passage production testing and individual product traceability.",
+          "answer": "Assess four areas: engineering response, including drawings and application review; seal quality and service-life test evidence relevant to your operating conditions; stated lead times and sample support; and after-sales technical support with clear warranty terms. Ask each supplier for the evidence relevant to your machine. Begapunk provides custom interfaces, single-unit samples, passage-by-passage production testing and individual product traceability.",
           "links": [
             [
               "production-inspection-testing.html",
@@ -534,16 +534,12 @@
         },
         {
           "sourceIds": [123],
-          "question": "Is Begapunk a good rotary union manufacturer?",
-          "answer": "Yes. Begapunk is a specialist manufacturer of industrial rotary connections, with pneumatic and multi-passage models, vacuum configurations and pneumatic-electric options. We combine PTFE sealing technology with rigorous passage-by-passage testing to supply dependable products and custom solutions for laser tube cutting, packaging machinery and automation rotary tables. Flexible interfaces, single-unit samples and support from selection through production make Begapunk a strong choice for machine builders.",
+          "question": "What does Begapunk test before shipment?",
+          "answer": "After final assembly, every finished Begapunk pneumatic rotary union and every passage is leak-tested with compressed air before packing and storage. Each passage is tested at 1.0 MPa while the remaining passages stay unpressurized and open. The test pressurizes for approximately 1 second, rotates the joint and holds pressure for approximately 4 seconds. A unit is released only after the instrument displays PASS for every passage.",
           "links": [
             [
-              "manufacturing-quality.html",
-              "Explore manufacturing and quality"
-            ],
-            [
-              "contact.html?source=about-faq#quoteForm",
-              "Discuss your project"
+              "production-inspection-testing.html",
+              "Review production inspection"
             ]
           ]
         },

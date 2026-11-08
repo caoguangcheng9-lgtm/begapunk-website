@@ -8,6 +8,7 @@ import {
   SITE_STYLE_VERSION,
   SITE_FAQ_SCRIPT_VERSION,
 } from './lib/site-asset-versions.mjs';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const outputRoot = process.env.I18N_OUTPUT_ROOT
@@ -91,7 +92,8 @@ const copy = {
 const footerCopy = {
   en: {
     positioning: "Precision rotary joints for industrial automation.",
-    address: "Ningbo, Zhejiang, China",
+    registeredAddressLabel: "Registered address",
+    registrationNumberLabel: "Registration No.",
     quote: "Get a Quote",
     socialTitle: "Follow Begapunk",
     navigationLabel: "Footer navigation",
@@ -105,12 +107,12 @@ const footerCopy = {
     ],
     privacy: "Privacy",
     terms: "Terms",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
-    socialLabels: ["G. C. Cao on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
+    socialLabels: ["Begapunk on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
   },
   de: {
     positioning: "Präzisionsdrehdurchführungen für die Industrieautomation.",
-    address: "Ningbo, Zhejiang, China",
+    registeredAddressLabel: "Eingetragene Geschäftsadresse",
+    registrationNumberLabel: "Registrierungsnummer",
     quote: "Angebot anfordern",
     socialTitle: "Begapunk folgen",
     navigationLabel: "Fußzeilennavigation",
@@ -124,12 +126,12 @@ const footerCopy = {
     ],
     privacy: "Datenschutz",
     terms: "Nutzungsbedingungen",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Alle Rechte vorbehalten.",
-    socialLabels: ["G. C. Cao auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
+    socialLabels: ["Begapunk auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
   },
   fr: {
     positioning: "Raccords tournants de précision pour l’automatisation industrielle.",
-    address: "Ningbo, Zhejiang, Chine",
+    registeredAddressLabel: "Adresse du siège social",
+    registrationNumberLabel: "Numéro d’enregistrement",
     quote: "Demander un devis",
     socialTitle: "Suivre Begapunk",
     navigationLabel: "Navigation de pied de page",
@@ -143,12 +145,12 @@ const footerCopy = {
     ],
     privacy: "Confidentialité",
     terms: "Conditions d'utilisation",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Tous droits réservés.",
-    socialLabels: ["G. C. Cao sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
+    socialLabels: ["Begapunk sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
   },
   ja: {
     positioning: "産業オートメーション向けの精密ロータリージョイント。",
-    address: "中国 浙江省 寧波市",
+    registeredAddressLabel: "登記上の所在地",
+    registrationNumberLabel: "登記番号",
     quote: "見積もりを依頼",
     socialTitle: "Begapunk公式SNS",
     navigationLabel: "フッターナビゲーション",
@@ -162,12 +164,12 @@ const footerCopy = {
     ],
     privacy: "プライバシーポリシー",
     terms: "利用規約",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. All rights reserved.",
-    socialLabels: ["G. C. CaoのLinkedIn個人プロフィール","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
+    socialLabels: ["Begapunk公式LinkedIn","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
   },
   ru: {
     positioning: "Прецизионные вращающиеся соединения для промышленной автоматизации.",
-    address: "Нинбо, Чжэцзян, Китай",
+    registeredAddressLabel: "Юридический адрес",
+    registrationNumberLabel: "Регистрационный номер",
     quote: "Запросить предложение",
     socialTitle: "Begapunk в социальных сетях",
     navigationLabel: "Навигация в нижней части страницы",
@@ -181,8 +183,7 @@ const footerCopy = {
     ],
     privacy: "Политика конфиденциальности",
     terms: "Условия использования",
-    copyright: "© 2026 Ningbo Begapunk Pneumatic Components Co., Ltd. Все права защищены.",
-    socialLabels: ["G. C. Cao в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
+    socialLabels: ["Begapunk в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
   },
 };
 
@@ -271,16 +272,16 @@ function switcherMarkup(currentLanguage, pageName) {
   return `<div class="i18n-switcher" data-no-translate><label class="sr-only" for="language-${currentLanguage}">${accessibleLabel}</label><select id="language-${currentLanguage}" aria-label="${accessibleLabel}" onchange="${languageChangeHandler}">${options}</select></div>`;
 }
 
-const legalCompanyName = 'Ningbo Begapunk Pneumatic Components Co., Ltd.';
+const legalCompanyName = COMPANY_IDENTITY.legalNameEn;
 const styleVersion = SITE_STYLE_VERSION;
 const homepageStyleVersion = SITE_STYLE_VERSION;
 const englishStyleVersion = SITE_STYLE_VERSION;
 const englishHomepageStyleVersion = SITE_STYLE_VERSION;
 const socialLinks = [
-  ['linkedin', 'LinkedIn', 'https://www.linkedin.com/in/guangcheng-cao/'],
-  ['youtube', 'YouTube', 'https://www.youtube.com/@BEGAPUNKRotaryJointsTV'],
-  ['facebook', 'Facebook', 'https://www.facebook.com/profile.php?id=61591616523667'],
-  ['x', 'X', 'https://x.com/Begapunk728'],
+  ['linkedin', 'LinkedIn', COMPANY_IDENTITY.brandSocialProfiles[0]],
+  ['youtube', 'YouTube', COMPANY_IDENTITY.brandSocialProfiles[1]],
+  ['facebook', 'Facebook', COMPANY_IDENTITY.brandSocialProfiles[2]],
+  ['x', 'X', COMPANY_IDENTITY.brandSocialProfiles[3]],
 ];
 
 const productPages = new Set(['products.html', 'products-p2.html', 'product-comparison.html', ...config.pages.filter((page) => /^BP-/.test(page))]);
@@ -365,7 +366,11 @@ function footerMarkup(language, page) {
   const assetPrefix = language === 'en' ? '' : '../';
   const social = socialLinks.map(([key, , href], index) => `      <li><a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${t.socialLabels[index]}">${icon(key)}</a></li>`).join('\n');
   const columns = t.links.map((links, index) => footerColumn(t.titles[index], links)).join('\n    ');
-  const copyright = t.copyright.replace(legalCompanyName, `<span class="footer-company-name">${legalCompanyName}</span>`);
+  const companyInfo = `<div class="footer-company-info">
+    <p class="footer-copyright">© 2026 <span class="footer-company-name">${legalCompanyName}</span>（<span class="footer-company-name-zh">${COMPANY_IDENTITY.legalNameZh}</span>）</p>
+    <address class="footer-address"><span class="footer-address-label">${t.registeredAddressLabel}:</span> ${COMPANY_IDENTITY.registeredAddress.addressEn}</address>
+    <div class="footer-legal-line"><span>USCC <span class="footer-registration-value">${COMPANY_IDENTITY.uscc}</span></span> <span class="footer-separator" aria-hidden="true">·</span> <span>${t.registrationNumberLabel} <span class="footer-registration-value">${COMPANY_IDENTITY.registrationNumber}</span></span> <span class="footer-separator" aria-hidden="true">·</span> <nav class="footer-legal" aria-label="${t.legalLabel}"><a href="privacy.html">${t.privacy}</a> <span class="footer-separator" aria-hidden="true">·</span> <a href="terms.html">${t.terms}</a></nav></div>
+   </div>`;
   const footerAction = page === 'thank-you.html'
     ? ''
     : `\n   <a class="footer-quote" href="contact.html#quoteForm">${t.quote}</a>`;
@@ -388,16 +393,7 @@ function footerMarkup(language, page) {
    ${columns}
   </nav>
   <div class="footer-bottom">
-   <div class="footer-identity">
-    <p class="footer-copyright">${copyright}</p>
-    <div class="footer-meta">
-     <span class="footer-address">${t.address}</span>
-     <nav class="footer-legal" aria-label="${t.legalLabel}">
-      <a href="privacy.html">${t.privacy}</a>
-      <a href="terms.html">${t.terms}</a>
-     </nav>
-    </div>
-   </div>
+   <div class="footer-identity">${companyInfo}</div>
    <nav class="footer-social" aria-label="${t.socialTitle}">
     <ul class="footer-social-links">
 ${social}
@@ -619,6 +615,13 @@ for (const language of languages) {
       let touched = false;
       const visit = (value) => {
         if (!value || typeof value !== 'object') return;
+        if (['Organization', 'LocalBusiness'].includes(value['@type'])) {
+          const canonicalSameAs = [...COMPANY_IDENTITY.brandSocialProfiles];
+          if (JSON.stringify(value.sameAs) !== JSON.stringify(canonicalSameAs)) {
+            value.sameAs = canonicalSameAs;
+            touched = true;
+          }
+        }
         if (value['@type'] === 'BreadcrumbList' && Array.isArray(value.itemListElement)) {
           // The terminal crumb is the current page title and is governed by the
           // localized SEO entry. Only normalize ancestor section labels here.

@@ -349,7 +349,7 @@
           "quality": "Leak-tested · inspection report"
         }
       },
-      "leadTimeValue": "About 20 calendar days after payment"
+      "leadTimeValue": "20 calendar days after payment (excluding shipping)"
     },
     "de": {
       "skipLink": "Zum Hauptinhalt springen",
@@ -421,7 +421,7 @@
           "quality": "Dichtheitsprüfung · Prüfbericht"
         }
       },
-      "leadTimeValue": "Etwa 20 Kalendertage nach Zahlungseingang"
+      "leadTimeValue": "20 Kalendertage nach Zahlungseingang (ohne Versand)"
     },
     "fr": {
       "skipLink": "Aller au contenu principal",
@@ -493,7 +493,7 @@
           "quality": "Contrôle d’étanchéité · rapport d’inspection"
         }
       },
-      "leadTimeValue": "Environ 20 jours calendaires après paiement"
+      "leadTimeValue": "20 jours calendaires après paiement (hors expédition)"
     },
     "ja": {
       "skipLink": "メインコンテンツへ移動",
@@ -565,7 +565,7 @@
           "quality": "漏れ検査 · 検査レポート"
         }
       },
-      "leadTimeValue": "入金後、約20暦日"
+      "leadTimeValue": "入金後20暦日（輸送期間を除く）"
     },
     "ru": {
       "skipLink": "Перейти к основному содержанию",
@@ -637,7 +637,7 @@
           "quality": "Проверка герметичности · протокол испытаний"
         }
       },
-      "leadTimeValue": "Около 20 календарных дней после оплаты"
+      "leadTimeValue": "20 календарных дней после оплаты (без учёта доставки)"
     }
   }
 }

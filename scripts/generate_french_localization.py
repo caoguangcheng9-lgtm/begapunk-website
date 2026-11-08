@@ -501,7 +501,7 @@ CURATED_SEO = {
     },
     "product-comparison.html": {
         "title": "Comparer les raccords tournants pneumatiques | Begapunk",
-        "description": "Comparez 16 raccords tournants pneumatiques Begapunk par passages, pression, vitesse, montage, matière et application type.",
+        "description": "Comparez 17 raccords tournants pneumatiques Begapunk par passages, pression, vitesse, montage, matière et application type.",
         "h1": "Comparer les raccords tournants pneumatiques",
     },
     "contact.html": {
@@ -878,7 +878,7 @@ def generate_faq_contract() -> None:
             "nativeHumanSignoff": False,
             "unresolvedIssues": [],
             "officialTerminologySources": [
-                {"name": "DEUBLIN France – Joints tournants, raccords tournants", "url": "https://www.deublin.eu/joints-tournants-raccords-tournants"},
+                {"name": "ISO 5598:2020 – Transmissions hydrauliques et pneumatiques — Vocabulaire", "url": "https://www.iso.org/fr/standard/67985.html"},
                 {"name": "SCHUNK France – Joint tournant DDF 2", "url": "https://schunk.com/fr/fr/technologie-d-automatisation/joint-tournant/c/PUB_8326"},
                 {"name": "Festo France – Fonctionnement d’une unité de traitement d’air", "url": "https://www.festo.com/fr/fr/e/blog/in-practice/comment-fonctionne-une-unite-de-traitement-d-air-id_4074291"},
             ],

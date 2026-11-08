@@ -72,7 +72,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     secondaryActionLabel: 'Download 3D Model (.step)',
     drawingDownloadLabel: 'Download 2D Drawing (PDF)',
     stepDownloadLabel: 'Download 3D Model (.step)',
-    leadTimeValue: 'About 20 calendar days after payment',
+    leadTimeValue: '20 calendar days after payment (excluding shipping)',
   }),
   de: Object.freeze({
     skipLink: 'Zum Hauptinhalt springen',
@@ -87,7 +87,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     secondaryActionLabel: 'STEP-Datei anfordern',
     drawingDownloadLabel: '2D-Zeichnung (PDF) herunterladen',
     stepDownloadLabel: '3D-Modell (.step) herunterladen',
-    leadTimeValue: 'Etwa 20 Kalendertage nach Zahlungseingang',
+    leadTimeValue: '20 Kalendertage nach Zahlungseingang (ohne Versand)',
   }),
   fr: Object.freeze({
     skipLink: 'Aller au contenu principal',
@@ -102,7 +102,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     secondaryActionLabel: 'Demander le fichier STEP',
     drawingDownloadLabel: 'Télécharger le plan 2D (PDF)',
     stepDownloadLabel: 'Télécharger le modèle 3D (.step)',
-    leadTimeValue: 'Environ 20 jours calendaires après paiement',
+    leadTimeValue: '20 jours calendaires après paiement (hors expédition)',
   }),
   ja: Object.freeze({
     skipLink: 'メインコンテンツへ移動',
@@ -117,7 +117,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     secondaryActionLabel: 'STEPデータを依頼',
     drawingDownloadLabel: '2D図面（PDF）をダウンロード',
     stepDownloadLabel: '3Dモデル（.step）をダウンロード',
-    leadTimeValue: '入金後、約20暦日',
+    leadTimeValue: '入金後20暦日（輸送期間を除く）',
   }),
   ru: Object.freeze({
     skipLink: 'Перейти к основному содержанию',
@@ -132,7 +132,7 @@ const EXPECTED_UI_COPY = Object.freeze({
     secondaryActionLabel: 'Запросить файл STEP',
     drawingDownloadLabel: 'Скачать 2D-чертёж (PDF)',
     stepDownloadLabel: 'Скачать 3D-модель (.step)',
-    leadTimeValue: 'Около 20 календарных дней после оплаты',
+    leadTimeValue: '20 календарных дней после оплаты (без учёта доставки)',
   }),
 });
 const SHARE_CHANNELS = Object.freeze([

@@ -955,9 +955,9 @@ function assertManifestContract(manifest) {
   const bp2p0002 = manifest.products?.["BP-2P-0002"]?.drawingFacts?.mounting?.features ?? [];
   if (
     !bp2p0002.some((feature) => feature.count === 4 && feature.thread === "M5" && feature.depthMm === 12)
-    || !bp2p0002.some((feature) => feature.count === 4 && feature.diameterMm === 6 && feature.feature === "through-hole")
+    || !bp2p0002.some((feature) => feature.count === 4 && feature.thread === "M6" && feature.feature === "through-hole")
   ) {
-    addFailure("critical-contract", "manifest:BP-2P-0002", "Mounting must preserve face-a 4 x M5 depth 12 and face-b 4 x diameter-6 through holes.");
+    addFailure("critical-contract", "manifest:BP-2P-0002", "Mounting must preserve face-a 4 x M5 depth 12 and face-b 4 x M6 through holes.");
   }
 
   const bp2p50 = manifest.products?.["BP-2P-50-0001"]?.drawingFacts?.mounting?.features ?? [];

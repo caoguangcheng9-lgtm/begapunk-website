@@ -13,7 +13,7 @@ const languages = [
 const homeContracts = {
   en: {
     badge: 'Pneumatic Rotary Unions | Standard & Custom',
-    description: 'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production time: about 20 calendar days for catalog models; within 30 calendar days for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.',
+    description: 'Standard and custom pneumatic rotary unions for OEM machinery, adapted to actual operating conditions. MOQ: 1 unit. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom configurations. Every catalog model page includes a 2D PDF and a downloadable STEP AP214 for a fit check.',
     sectionTitle: 'Find by Application',
     comparisonLabel: 'Model Comparison',
     tags: ["1-10 passages", "Compressed air (catalog)", "Threaded / flange"],
@@ -26,7 +26,7 @@ const homeContracts = {
   },
   de: {
     badge: 'Pneumatische Drehdurchführungen | Standard- und Sonderausführungen',
-    description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für OEM-Maschinen, abgestimmt auf die tatsächlichen Betriebsbedingungen. Mindestbestellmenge: 1 Stück. Fertigungszeit: Katalogmodelle typischerweise etwa 20 Kalendertage; Sonderanfertigungen höchstens 30 Kalendertage. Jede Katalogseite enthält eine 2D-Zeichnung und ein STEP-AP214 zum Download.',
+    description: 'Standard- und kundenspezifische pneumatische Drehdurchführungen für OEM-Maschinen, abgestimmt auf die tatsächlichen Betriebsbedingungen. Mindestbestellmenge: 1 Stück. Fertigungszeit: 20 Kalendertage nach Zahlungseingang (ohne Versand) für Katalogmodelle. Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand) für kundenspezifische Konfigurationen. Jede Katalogseite enthält eine 2D-Zeichnung und ein STEP-AP214 zum Download.',
     sectionTitle: 'Nach Anwendung auswählen',
     comparisonLabel: 'Modellvergleich',
     tags: ["1–10 Wege", "Druckluft (Katalog)", "Gewinde / Flansch"],
@@ -39,7 +39,7 @@ const homeContracts = {
   },
   fr: {
     badge: 'Raccords tournants pneumatiques | Standard et sur mesure',
-    description: 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de fabrication : environ 20 jours calendaires pour les modèles du catalogue ; dans les 30 jours calendaires pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
+    description: 'Raccords tournants pneumatiques standard et sur mesure pour machines OEM, adaptés aux conditions réelles de fonctionnement. Quantité minimale : 1 unité. Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les configurations sur mesure. Chaque page de modèle du catalogue comprend un plan PDF 2D et un fichier STEP AP214 à télécharger pour vérifier l’encombrement.',
     sectionTitle: 'Choisir par application',
     comparisonLabel: 'Comparer les modèles',
     tags: ['1 à 10 circuits', 'Air comprimé (catalogue)', 'Filetage / bride'],
@@ -52,7 +52,7 @@ const homeContracts = {
   },
   ja: {
     badge: '空圧ロータリージョイント｜標準品・特注品',
-    description: 'OEM装置向けのエアーロータリージョイント（空圧用ロータリージョイント）を、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間はカタログ品で通常約20暦日、特注品で30暦日以内です。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
+    description: 'OEM装置向けのエアーロータリージョイント（空圧用ロータリージョイント）を、実際の使用条件に合わせて提供します。最小注文数量は1個です。製作期間：カタログ品は入金後20暦日（輸送期間を除く）。製作期間：特注仕様は入金後最大30暦日（輸送期間を除く）。すべてのカタログ品に2D図面と3D STEPモデルを用意しています。',
     sectionTitle: '用途から探す',
     comparisonLabel: '機種選定表',
     tags: ["1～10流路", "圧縮空気（カタログ）", "ねじ取付・フランジ取付"],
@@ -65,7 +65,7 @@ const homeContracts = {
   },
   ru: {
     badge: 'Пневматические вращающиеся соединения | Серийные и заказные',
-    description: "Предлагаем стандартные и заказные пневматические ротационные соединения для OEM-оборудования и подбираем исполнение с учётом реальных условий эксплуатации. Минимальный заказ — 1 шт. Каталожные модели обычно изготавливаем примерно за 20 календарных дней, заказные исполнения — не более чем за 30 календарных дней. На странице каждой каталожной модели доступны 2D-чертёж и файл STEP AP214.",
+    description: "Предлагаем стандартные и заказные пневматические ротационные соединения для OEM-оборудования и подбираем исполнение с учётом реальных условий эксплуатации. Минимальный заказ — 1 шт. Срок производства: 20 календарных дней после оплаты (без учёта доставки) для каталожных моделей. Срок производства: до 30 календарных дней после оплаты (без учёта доставки) для заказных исполнений. На странице каждой каталожной модели доступны 2D-чертёж и файл STEP AP214.",
     sectionTitle: 'Выбор по применению',
     comparisonLabel: 'Сравнение моделей',
     tags: ["1-10 проходов", "Сжатый воздух (каталог)", "Резьба / фланец"],
@@ -94,11 +94,11 @@ const changedStylesheets = new Map([
   ['application-case.css', '20260814-hero1'],
   ['manufacturing-quality.css', '20260814-hero1'],
   ['production-inspection-testing.css', '20260814-hero1'],
-  ['contact-rfq.css', '20260828-response11'],
+  ['contact-rfq.css', '20261108-footer-info1'],
 ]);
 
 function contractFor(route) {
-  if (route === 'index.html') return { family: 'home-feature', selector: '.hero-deublin' };
+  if (route === 'index.html') return { family: 'home-feature', selector: '.hero-home' };
   if (/^BP-[A-Z0-9-]+\.html$/i.test(route)) return { family: 'product-detail', selector: '.pd-info' };
   if (route === 'search.html') return { family: 'search-utility', selector: '.search-hero' };
   if (route === '404.html') return { family: 'outcome-utility', selector: '.err-container' };

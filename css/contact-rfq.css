@@ -889,6 +889,12 @@ html {
   line-height: 1.6;
 }
 
+.bp-rfq-meta-item .bp-rfq-address-secondary {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #738196;
+}
+
 @media (max-width: 1100px) {
   .bp-rfq-hero-grid,
   .bp-rfq-main {

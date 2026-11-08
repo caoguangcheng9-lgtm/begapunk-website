@@ -102,7 +102,7 @@ const trustRequirements = new Map([
     required: ['one year from the shipment date', 'If Begapunk confirms a covered manufacturing defect', 'replacement at no charge', 'costs handled as agreed in writing'],
   }],
   [expectedQuestions[24], {
-    required: ['minimum order quantity is one unit for both catalog and custom products', 'about 20 calendar days', 'within 30 calendar days', 'starts when payment is received', 'does not include international shipping'],
+    required: ['minimum order quantity is one unit for both catalog and custom products', '20 calendar days after payment (excluding shipping)', 'up to 30 calendar days after payment (excluding shipping)'],
   }],
   [expectedQuestions[26], {
     required: ['We do not use your inquiries or drawings for marketing or public display'],

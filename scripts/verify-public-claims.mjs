@@ -1002,7 +1002,10 @@ verifyRuleSamples('incorrect ISO 17799 leakage standard', {
 
 verifyRuleSamples('obsolete Begapunk company LinkedIn entity', {
   blocked: ['https://www.linkedin.com/company/begapunk'],
-  allowed: ['https://www.linkedin.com/in/guangcheng-cao/'],
+  allowed: [
+    'https://www.linkedin.com/in/guangcheng-cao/',
+    'https://www.linkedin.com/company/144021127/',
+  ],
 });
 
 verifyRuleSamples('obsolete Begapunk YouTube entity', {

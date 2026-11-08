@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourcePolicy": {
-    "description": "Drawing-backed facts for the 16 published product models. The drawing table and unambiguous drawing annotations are the only fact sources represented here.",
+    "description": "Drawing-backed facts for the 16 drawing-reviewed catalog models. This dataset does not represent BP-10P-0001; the drawing table and unambiguous drawing annotations are the only fact sources represented here.",
     "verifiedStatus": "verified-drawing",
     "quarantineStatus": "identity-pending",
     "annotationConflictStatus": "annotation-conflict",
@@ -331,7 +331,7 @@
         ],
         "envelope": {
           "shape": "cylindrical",
-          "maximumDiameterMm": 65,
+          "maximumDiameterMm": 64,
           "overallLengthMm": 61.2
         },
         "mounting": {
@@ -347,9 +347,9 @@
             {
               "side": "face-b",
               "count": 4,
-              "diameterMm": 6,
+              "thread": "M6",
               "feature": "through-hole",
-              "raw": "4-dia6 through"
+              "raw": "4-M6 through"
             },
             {
               "side": "body",
