@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const checkOnly = process.argv.includes('--check');
@@ -163,13 +164,8 @@ const technicalNoteRows = technicalNoteVariants.map((variant) => ({
 
 const retiredAboutSources = [
   `Precision Machining Career Begins`,
-  `Founder GuangCheng Cao began working in precision machining.`,
-  `Founder &amp; Chief Engineer<br>Working in precision machining since 2006`,
-  `Meet Begapunk, a Ningbo-based manufacturer of pneumatic rotary unions established in 2022, led by a founder working in precision machining since 2006.`,
-  `Ningbo-based rotary joint manufacturer established in 2022, led by a founder working in precision machining since 2006.`,
   `Leadership`,
   `Meet the Team`,
-  `Founder &amp; Chief Engineer`,
   `Production Manager`,
   `International Sales<br>Fluent in EN/DE/ES`,
   `Begapunk is a specialized rotary joint (rotary union) manufacturer based in Ningbo, Zhejiang Province, China. We design and produce single-passage and multi-passage rotary unions for industrial automation, CNC machining, laser cutting, plastic extrusion, wind energy, and other rotating machinery applications.`,
@@ -246,10 +242,10 @@ const rows = [
     ru: `Инженерная поддержка, производство и продажи`,
   },
   {
-    source: `Founder &amp; Engineer`,
-    de: `Gründer &amp; Ingenieur`,
-    ja: `創業者・エンジニア`,
-    ru: `Основатель и инженер`,
+    source: `Operations &amp; Engineering Manager`,
+    de: COMPANY_IDENTITY.person.jobTitles.de,
+    ja: COMPANY_IDENTITY.person.jobTitles.ja,
+    ru: COMPANY_IDENTITY.person.jobTitles.ru,
   },
   {
     source: `Production &amp; Quality`,
@@ -531,7 +527,7 @@ const frenchStaticTranslations = Object.freeze([
   `Ningbo Begapunk Pneumatic Components Co., Ltd. a été créée pour développer et fabriquer des raccords tournants pneumatiques destinés aux machines industrielles.`,
   `Accompagnement de projet`,
   `Ingénierie, production et ventes`,
-  `Fondateur et ingénieur`,
+  COMPANY_IDENTITY.person.jobTitles.fr,
   `Production et qualité`,
   `Usinage, assemblage et contrôle circuit par circuit`,
   `Ventes internationales`,

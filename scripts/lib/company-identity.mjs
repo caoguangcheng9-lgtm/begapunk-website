@@ -16,6 +16,20 @@ export const COMPANY_IDENTITY = Object.freeze({
     'https://www.facebook.com/profile.php?id=61595481363231',
     'https://x.com/Begapunk728',
   ]),
+  person: Object.freeze({
+    name: 'GuangCheng Cao',
+    idFragment: 'person-g-c-cao',
+    jobTitles: Object.freeze({
+      en: 'Operations & Engineering Manager',
+      de: 'Betriebs- und Engineering-Manager',
+      fr: 'Responsable opérations et ingénierie',
+      ja: 'オペレーション・エンジニアリング責任者',
+      ru: 'Менеджер по операциям и инженерии',
+    }),
+    sameAs: Object.freeze([
+      'https://www.linkedin.com/in/guangcheng-cao/',
+    ]),
+  }),
   registeredAddress: Object.freeze({
     addressZh: '浙江省宁波市杭州湾新区庵东镇邮电路665号（邮编 315327）',
     addressEn: 'No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China',

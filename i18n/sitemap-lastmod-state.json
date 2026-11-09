@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "pages": {
     "https://www.begapunk.com/": {
-      "contentSha256": "60e87d15418543b5d0d4a946251b5d035b7140b2a6553d3ec9773c5a671af066",
-      "lastmod": "2026-11-08"
+      "contentSha256": "dd18593e0f69ac574c6e4d218aa1cd4b1359ea7f90751f5bbe775e564cae3cf3",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/about.html": {
-      "contentSha256": "1d369fc6cbb053a3f5aebd239f897bce5b62f69cb26c4900bf9bfd710aae1509",
-      "lastmod": "2026-11-08"
+      "contentSha256": "f2ae0f1cae968bdb9ab905666ba18a28ff614d280ae243256df64bb604433c2c",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/manufacturing-quality.html": {
       "contentSha256": "99a87cdd1f013cce76ad60c5e250ee28a287a13f89fcf6cb134d008d4f36edce",
@@ -226,12 +226,12 @@
       "lastmod": "2026-11-08"
     },
     "https://www.begapunk.com/de/": {
-      "contentSha256": "6a48335ebfd10a2c06bfb9a28744ec16366eeb66b2dec664f993f00fc69a5c47",
-      "lastmod": "2026-11-08"
+      "contentSha256": "4072d0400ed7b826330cc2a3d050ce4b43862bca3f915f074c099d5370fba59a",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/de/about.html": {
-      "contentSha256": "5f3fc7492a058b1fd2b0bc330e74653c61dcadcfc0c350e9b6d169d08765fbee",
-      "lastmod": "2026-11-08"
+      "contentSha256": "d0894c11f293d7c3a43be5a72681b734b97e34558d7f6e92051464cb4da49a2a",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/de/manufacturing-quality.html": {
       "contentSha256": "818c9b619bd4cf632ba5405221e70c22de280b1a57b16d3e46314af908949378",
@@ -450,12 +450,12 @@
       "lastmod": "2026-11-08"
     },
     "https://www.begapunk.com/fr/": {
-      "contentSha256": "5886aabac58a56323e83595e47b92b4b4564b57282b5ef4117098b3cb11f6c49",
-      "lastmod": "2026-11-08"
+      "contentSha256": "4b171422b49c9102791764ac7cb9a89a83f43a98e1f1989fc51f39f63c3b2329",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/fr/about.html": {
-      "contentSha256": "405e49a12ebd426653443ad23f3a032e90a18c9d4f75c43c70379bff6028a351",
-      "lastmod": "2026-11-08"
+      "contentSha256": "fb2ec507a700eb4421c006bb8e4a1a21452de2f1e6132ca18bcdeb5ff1d3280c",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/fr/manufacturing-quality.html": {
       "contentSha256": "aa32961ac0eb9d2d1072ac472f12e7afc42e0c7bf164f0b0f49c0bcab0f15a96",
@@ -674,12 +674,12 @@
       "lastmod": "2026-11-08"
     },
     "https://www.begapunk.com/ja/": {
-      "contentSha256": "828b8913a6400a5d1cfdcb0985784f0113031c5eb9516df0fc73d9208c196d3d",
-      "lastmod": "2026-11-08"
+      "contentSha256": "f624916a01bb36ac916d9f70abbad4942bb0bf5c0320ec007834a413019d0b04",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/ja/about.html": {
-      "contentSha256": "dfbec1ad1e6206a6e4f0b75d466a69d413ccf6b5c4041a1c580c0b7bce9fe509",
-      "lastmod": "2026-11-08"
+      "contentSha256": "1f48a4123ea7cb96041ef18fd76018c73f38cfeca8ebbd3fc680db3eafd81aeb",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/ja/manufacturing-quality.html": {
       "contentSha256": "0bf5de73f5ac70ab7e1ccd49a06c1fd035513f31c537d684b8d5243466d4ea0d",
@@ -898,12 +898,12 @@
       "lastmod": "2026-11-08"
     },
     "https://www.begapunk.com/ru/": {
-      "contentSha256": "9360e3a0a2a21d950331af67dd8479d54a922f9fc1067e3cb055010cb31d8551",
-      "lastmod": "2026-11-08"
+      "contentSha256": "9180deb53fa43a96a9f252ec2871900f53620c2762a95e206b02ef9688014fc4",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/ru/about.html": {
-      "contentSha256": "8bd02c493741b6562785323f9af2db9d844331c931f119f99608b496bf94c1d9",
-      "lastmod": "2026-11-08"
+      "contentSha256": "062c97d6c664e7af605c6ecb4bdda7e1ce65b6d395aba94f163d7f4e079890ed",
+      "lastmod": "2026-11-09"
     },
     "https://www.begapunk.com/ru/manufacturing-quality.html": {
       "contentSha256": "052e4306ee891bcad71a601cadd535181a539fd8858277e51b2cbc9eeb7c68de",

@@ -29,13 +29,13 @@ const llmsExcludedPages = new Set([...(config.sitemapExcludedPages || []), ...di
 const translationManagedPages = config.translationManagedPages || config.pages;
 const manualLocalizedPages = config.manualLocalizedPages || [];
 const canonicalOrganizationId = `${config.siteUrl}/#organization`;
-const canonicalFounderId = `${config.siteUrl}/#founder-g-c-cao`;
+const canonicalPersonId = `${config.siteUrl}/#${COMPANY_IDENTITY.person.idFragment}`;
 const canonicalLocalBusinessId = `${config.siteUrl}/#localbusiness`;
 const canonicalBrandName = COMPANY_IDENTITY.brandName;
 const canonicalLegalName = COMPANY_IDENTITY.legalNameZh;
 const canonicalFoundingDate = COMPANY_IDENTITY.foundingDate;
 const canonicalBrandSameAs = [...COMPANY_IDENTITY.brandSocialProfiles];
-const canonicalFounderSameAs = ['https://www.linkedin.com/in/guangcheng-cao/'];
+const canonicalPersonSameAs = [...COMPANY_IDENTITY.person.sameAs];
 const languageSwitcherLabels = {
   en: 'Language',
   de: 'Sprache',
@@ -2096,7 +2096,7 @@ function applyDrawingBackedProductMetadata($, languageCode, pageName) {
 
 const schemaLocaleByLanguage = {
   de: {
-    founderJobTitle: 'Gründer und Ingenieur',
+    personJobTitle: COMPANY_IDENTITY.person.jobTitles.de,
     factoryName: 'Begapunk Fertigung',
     slogan: 'Spezialist für pneumatische Drehdurchführungen',
     knowsAbout: ['Pneumatische Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrielle Automatisierung', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
@@ -2104,7 +2104,7 @@ const schemaLocaleByLanguage = {
     localBusinessKnowsAbout: ['Luft-Drehdurchführungen', 'Pneumatische Drehdurchführungen', 'Drehdurchführungen', 'Mehrkanal-Drehdurchführungen', 'Industrieautomation', 'CNC-Maschinen', 'Laserschneidmaschinen', 'Verpackungsmaschinen'],
   },
   fr: {
-    founderJobTitle: 'Fondateur et ingénieur',
+    personJobTitle: COMPANY_IDENTITY.person.jobTitles.fr,
     factoryName: 'Site de production Begapunk',
     slogan: 'Spécialiste des raccords tournants pneumatiques',
     knowsAbout: ['Raccords tournants pneumatiques', 'Raccords tournants multicanaux', 'Raccords tournants sur mesure', 'Automatisation industrielle', 'Machines CNC', 'Machines de découpe laser', 'Machines d\'emballage'],
@@ -2112,7 +2112,7 @@ const schemaLocaleByLanguage = {
     localBusinessKnowsAbout: ['Raccords tournants pour air comprimé', 'Raccords tournants pneumatiques', 'Raccords tournants', 'Raccords tournants multicanaux', 'Automatisation industrielle', 'Machines CNC', 'Machines de découpe laser', 'Machines d\'emballage'],
   },
   ja: {
-    founderJobTitle: '創業者・エンジニア',
+    personJobTitle: COMPANY_IDENTITY.person.jobTitles.ja,
     factoryName: 'Begapunk 生産拠点',
     slogan: '空圧用ロータリージョイント専門メーカー',
     knowsAbout: ['空圧用ロータリージョイント', '多流路・多ポートロータリージョイント', '特注回転継手', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
@@ -2120,7 +2120,7 @@ const schemaLocaleByLanguage = {
     localBusinessKnowsAbout: ['エアロータリーユニオン', '空圧用ロータリージョイント', 'ロータリージョイント', '多流路ロータリージョイント', '産業自動化', 'CNC工作機械', 'レーザー切断機', '包装機械'],
   },
   ru: {
-    founderJobTitle: 'Основатель и инженер',
+    personJobTitle: COMPANY_IDENTITY.person.jobTitles.ru,
     factoryName: 'Производство Begapunk',
     slogan: 'Специалист по пневматическим вращающимся соединениям',
     knowsAbout: ['Пневматические вращающиеся соединения', 'Пневматические ротационные соединения', 'Многоканальные вращающиеся коллекторы', 'Специальные вращающиеся соединения', 'Промышленная автоматизация', 'Станки с ЧПУ', 'Лазерные станки', 'Упаковочное оборудование'],
@@ -2740,20 +2740,24 @@ function normalizeOrganizationIdentity(value, schemaLocale = {}, seo = {}, site 
   const localizedDescription = site.organizationDescription || site.description || seo.description;
   if (value.description && localizedDescription) value.description = localizedDescription;
   if (value.slogan && schemaLocale.slogan) value.slogan = schemaLocale.slogan;
-  if (value.founder) {
-    const normalizeFounder = (founder) => {
-      const { description: _removedFounderDescription, ...founderWithoutDescription } = founder;
+  delete value.founder;
+  delete value.founders;
+  if (value.employee) {
+    const normalizeEmployee = (employee) => {
+      const { description: _removedEmployeeDescription, ...employeeWithoutDescription } = employee;
       return {
-        ...founderWithoutDescription,
+        ...employeeWithoutDescription,
         '@type': 'Person',
-        '@id': canonicalFounderId,
-        ...(schemaLocale.founderJobTitle ? { jobTitle: schemaLocale.founderJobTitle } : {}),
-        sameAs: canonicalFounderSameAs,
+        '@id': canonicalPersonId,
+        name: COMPANY_IDENTITY.person.name,
+        jobTitle: schemaLocale.personJobTitle || COMPANY_IDENTITY.person.jobTitles.en,
+        sameAs: canonicalPersonSameAs,
+        worksFor: { '@id': canonicalOrganizationId },
       };
     };
-    value.founder = Array.isArray(value.founder)
-      ? value.founder.map(normalizeFounder)
-      : normalizeFounder(value.founder);
+    value.employee = Array.isArray(value.employee)
+      ? value.employee.map(normalizeEmployee)
+      : normalizeEmployee(value.employee);
   }
   if (schemaLocale.knowsAbout) value.knowsAbout = schemaLocale.knowsAbout;
   if (value.contactPoint && typeof value.contactPoint === 'object') {

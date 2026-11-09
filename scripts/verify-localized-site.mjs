@@ -142,7 +142,7 @@ const suspiciousRepeatedSymbolPattern = /(?:★\s*){5,}|(?:⚙\s*){3,}|(?:✉\s*
 const suspiciousPlaceholderPattern = /__(?:PH|TR|Ф|ТР)?[A-ZА-ЯЁ]{4,8}__|\b(?:PH|TR)AAA[A-Z]\b|\b(?:Ф|ТР)ААА[А-ЯЁ]\b/u;
 const malformedLocalizedMarkupPattern = /\b0=""\s+class="<|class="(?:&lt;|<)(?:p|div)\b|app-detail-cta"\s+style="[^"]*;"&gt;/iu;
 const suspiciousRussianMachineTranslationPattern = /Корабли|Тяжел(?:ый|ая|ое) долг|Протоптан|Стальная сталь|Ротари|совместн(?:ый|ое) каталог|Следующая статья/iu;
-const suspiciousVisibleEnglishPattern = /\b(?:Home|Products|Case Studies|Technical Center|Request (?:a )?Quote|Learn More|Read More|View Product|Contact Us|Download (?:PDF|Catalog|Drawing|2D|3D|Model)|Previous(?: Article)?|Next(?: Article)?|No results found|Privacy Policy|Terms of Service|Last Updated|Founder & Engineer|Production & Quality|International Sales|Send Inquiry|Inquiry Received|Manufacturing & Quality|Leak Testing|Compare Models|Technical Data|Threaded|Heavy Duty|Rotary Joint|Rotary Union|Ships in|Flange Mount|Details)\b/i;
+const suspiciousVisibleEnglishPattern = /\b(?:Home|Products|Case Studies|Technical Center|Request (?:a )?Quote|Learn More|Read More|View Product|Contact Us|Download (?:PDF|Catalog|Drawing|2D|3D|Model)|Previous(?: Article)?|Next(?: Article)?|No results found|Privacy Policy|Terms of Service|Last Updated|Operations & Engineering Manager|Production & Quality|International Sales|Send Inquiry|Inquiry Received|Manufacturing & Quality|Leak Testing|Compare Models|Technical Data|Threaded|Heavy Duty|Rotary Joint|Rotary Union|Ships in|Flange Mount|Details)\b/i;
 const suspiciousLocalizedPhrases = {
   de: /Erzeugnisse|Sonderanfrage|uns benachrichtigen|Multi-Kanal|multi-Kanal|through-Bohrung|Through-Bohrung|Air Kanäle|air Kanäle|Rutschring|Kanal Ausführung|Re-Leitungsführung|Automatisierungstabelle/,
   fr: /union rotative pneumatique|syndicat rotatif|joint tournant pneumatique pneumatique|canaux d'air air|table d'automatisation|nous notifier|demande personnalisée utilisateur|autorisation de ne pas communiquer|joint d['’]évacuation|C['’]est pas vrai|mise en page de machine|croquis de circuit aérien|et vous dire si|\bclampage\b|\bdéclamp\b|\bdessin approuvé\b/iu,
@@ -157,11 +157,12 @@ const expectedTeamTitles = {
   ja: ['GuangCheng Cao', '製造・品質管理', '海外営業'],
   ru: ['GuangCheng Cao', 'Производство и качество', 'Международные продажи'],
 };
-const expectedFounderJobTitle = {
-  de: 'Gründer und Ingenieur',
-  fr: 'Fondateur et ingénieur',
-  ja: '創業者・エンジニア',
-  ru: 'Основатель и инженер',
+const expectedPersonJobTitle = {
+  en: COMPANY_IDENTITY.person.jobTitles.en,
+  de: COMPANY_IDENTITY.person.jobTitles.de,
+  fr: COMPANY_IDENTITY.person.jobTitles.fr,
+  ja: COMPANY_IDENTITY.person.jobTitles.ja,
+  ru: COMPANY_IDENTITY.person.jobTitles.ru,
 };
 const expectedOrganizationSlogan = {
   de: 'Spezialist für pneumatische Drehdurchführungen',
@@ -287,9 +288,10 @@ const englishHomepageStyleVersion = SITE_STYLE_VERSION;
 const socialPlatforms = ['LinkedIn', 'YouTube', 'Facebook', 'X'];
 const footerSocial = COMPANY_IDENTITY.brandSocialProfiles.map((href, index) => [href, socialPlatforms[index]]);
 const organizationSocialProfiles = [...COMPANY_IDENTITY.brandSocialProfiles];
-const founderSocialProfiles = ['https://www.linkedin.com/in/guangcheng-cao/'];
+const personSocialProfiles = [...COMPANY_IDENTITY.person.sameAs];
 const organizationEntityId = 'https://www.begapunk.com/#organization';
-const founderEntityId = 'https://www.begapunk.com/#founder-g-c-cao';
+const personEntityId = `https://www.begapunk.com/#${COMPANY_IDENTITY.person.idFragment}`;
+const obsoletePersonEntityId = ['https://www.begapunk.com/#', 'founder', '-g-c-cao'].join('');
 const localBusinessEntityId = 'https://www.begapunk.com/#localbusiness';
 const canonicalBrandName = COMPANY_IDENTITY.brandName;
 const obsoleteHomepageSocialProfiles = [
@@ -689,7 +691,7 @@ for (const language of verifiedLanguages) {
       if (teamInitials.join('|') !== expectedTeamInitials.join('|')) failures.push(`${language.code}/${pageName}: team initials were changed by localization.`);
       if (teamTitles.join('|') !== expectedTeamTitles[language.code].join('|')) failures.push(`${language.code}/${pageName}: project-support titles were changed by localization.`);
       const preservedPersonNames = $('.team-person-name').map((_, element) => $(element).text().trim()).get();
-      if (preservedPersonNames.join('|') !== 'GuangCheng Cao') failures.push(`${language.code}/${pageName}: only the confirmed founder name may be preserved from localization.`);
+      if (preservedPersonNames.join('|') !== COMPANY_IDENTITY.person.name) failures.push(`${language.code}/${pageName}: only the confirmed employee name may be preserved from localization.`);
     }
     if (pageName === 'faq.html') {
       const categoryIcons = $('.faq-category .icon').map((_, element) => $(element).text().trim()).get();
@@ -905,7 +907,7 @@ for (const language of verifiedLanguages) {
       const svg = link.find('svg.footer-icon');
       if (svg.length !== 1 || svg.attr('aria-hidden') !== 'true' || svg.attr('focusable') !== 'false') failures.push(`${language.code}/${pageName}: ${platform} icon accessibility attributes are incomplete.`);
     });
-    if (/G\. C\. Cao(?:のLinkedIn個人プロフィール| on LinkedIn| auf LinkedIn| sur LinkedIn| в LinkedIn)/i.test(footerRoot.text())) failures.push(`${language.code}/${pageName}: Footer LinkedIn profile must reference the company page, not the founder's personal profile.`);
+    if (/G\. C\. Cao(?:のLinkedIn個人プロフィール| on LinkedIn| auf LinkedIn| sur LinkedIn| в LinkedIn)/i.test(footerRoot.text())) failures.push(`${language.code}/${pageName}: Footer LinkedIn profile must reference the company page, not the employee's personal profile.`);
     const footerNavigation = footerRoot.find('nav.footer-navigation');
     if (footerNavigation.length !== 1 || footerNavigation.attr('aria-label') !== footerCopy.navigationLabel) failures.push(`${language.code}/${pageName}: localized Footer navigation landmark is incorrect.`);
     const footerColumns = footerNavigation.children('.footer-column');
@@ -959,6 +961,9 @@ for (const language of verifiedLanguages) {
       if (redirect && redirect !== pageUrl(language.code, 'thank-you.html')) failures.push(`${language.code}/${pageName}: localized form redirect is incorrect.`);
     });
     const pageStructuredNodes = [];
+    if (html.includes(obsoletePersonEntityId)) {
+      failures.push(`${language.code}/${pageName}: obsolete Person @id remains in page data.`);
+    }
     $('script[type="application/ld+json"]').each((_, element) => {
       try {
         const payload = JSON.parse($(element).html());
@@ -970,10 +975,14 @@ for (const language of verifiedLanguages) {
             if ([...types].some((type) => contentTypes.has(type)) && node.inLanguage !== language.code) {
               failures.push(`${language.code}/${pageName}: ${[...types].join('/')} JSON-LD lacks the correct inLanguage.`);
             }
-            if (types.has('Organization')) {
-              const founders = Array.isArray(node.founder) ? node.founder : (node.founder ? [node.founder] : []);
-              if (founders.some((founder) => founder.jobTitle !== expectedFounderJobTitle[language.code])) {
-                failures.push(`${language.code}/${pageName}: Organization founder job title is not localized.`);
+            if (types.has('Organization')
+              && node['@id'] === organizationEntityId
+              && ['index.html', 'about.html'].includes(pageName)) {
+              const employees = Array.isArray(node.employee) ? node.employee : (node.employee ? [node.employee] : []);
+              if (employees.length !== 1
+                || employees[0]?.['@type'] !== 'Person'
+                || employees[0]?.jobTitle !== expectedPersonJobTitle[language.code]) {
+                failures.push(`${language.code}/${pageName}: Organization employee job title is not localized.`);
               }
               if (node.slogan && node.slogan !== expectedOrganizationSlogan[language.code]) {
                 failures.push(`${language.code}/${pageName}: Organization slogan is not localized.`);
@@ -1127,22 +1136,37 @@ for (const language of verifiedLanguages) {
         if (new Set(organizationSameAs).size !== organizationSameAs.length) {
           failures.push(`${language.code}/${pageName}: Organization.sameAs contains a duplicate social profile.`);
         }
-        if (organizationSameAs.includes(founderSocialProfiles[0])) {
-          failures.push(`${language.code}/${pageName}: Organization.sameAs must not contain the founder's personal LinkedIn profile.`);
+        if (organizationSameAs.includes(personSocialProfiles[0])) {
+          failures.push(`${language.code}/${pageName}: Organization.sameAs must not contain the employee's personal LinkedIn profile.`);
         }
-        const founder = organization.founder;
-        if (!founder || Array.isArray(founder) || typeof founder !== 'object' || !schemaTypes(founder).has('Person')) {
-          failures.push(`${language.code}/${pageName}: Organization.founder must be one Person object.`);
+        if (Object.hasOwn(organization, 'founder') || Object.hasOwn(organization, 'founders')) {
+          failures.push(`${language.code}/${pageName}: Organization must not contain a founder property.`);
+        }
+        const employees = Array.isArray(organization.employee)
+          ? organization.employee
+          : (organization.employee ? [organization.employee] : []);
+        if (employees.length !== 1 || !schemaTypes(employees[0]).has('Person')) {
+          failures.push(`${language.code}/${pageName}: Organization.employee must contain exactly one Person object.`);
         } else {
-          if (founder['@id'] !== founderEntityId) {
-            failures.push(`${language.code}/${pageName}: Organization.founder.@id must be ${founderEntityId}.`);
+          const employee = employees[0];
+          if (employee['@id'] !== personEntityId) {
+            failures.push(`${language.code}/${pageName}: Organization.employee.@id must be ${personEntityId}.`);
           }
-          const founderSameAs = Array.isArray(founder.sameAs) ? founder.sameAs : [];
-          if (JSON.stringify(founderSameAs) !== JSON.stringify(founderSocialProfiles)) {
-            failures.push(`${language.code}/${pageName}: Organization.founder.sameAs must exactly contain G. C. Cao's approved personal LinkedIn profile.`);
+          if (employee.name !== COMPANY_IDENTITY.person.name) {
+            failures.push(`${language.code}/${pageName}: Organization.employee.name must be ${COMPANY_IDENTITY.person.name}.`);
           }
-          if (new Set(founderSameAs).size !== founderSameAs.length) {
-            failures.push(`${language.code}/${pageName}: Organization.founder.sameAs contains a duplicate social profile.`);
+          if (employee.jobTitle !== expectedPersonJobTitle[language.code]) {
+            failures.push(`${language.code}/${pageName}: Organization.employee.jobTitle is not localized.`);
+          }
+          if (employee.worksFor?.['@id'] !== organizationEntityId) {
+            failures.push(`${language.code}/${pageName}: Organization.employee.worksFor must reference the canonical Organization.`);
+          }
+          const employeeSameAs = Array.isArray(employee.sameAs) ? employee.sameAs : [];
+          if (JSON.stringify(employeeSameAs) !== JSON.stringify(personSocialProfiles)) {
+            failures.push(`${language.code}/${pageName}: Organization.employee.sameAs must exactly contain G. C. Cao's approved personal LinkedIn profile.`);
+          }
+          if (new Set(employeeSameAs).size !== employeeSameAs.length) {
+            failures.push(`${language.code}/${pageName}: Organization.employee.sameAs contains a duplicate social profile.`);
           }
         }
       }
@@ -1175,8 +1199,8 @@ for (const language of verifiedLanguages) {
       if (JSON.stringify(sameAs) !== JSON.stringify(organizationSocialProfiles)) {
         failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must exactly contain the approved Begapunk brand channels.`);
       }
-      if (sameAs.includes(founderSocialProfiles[0])) {
-        failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must not contain the founder's personal LinkedIn profile.`);
+      if (sameAs.includes(personSocialProfiles[0])) {
+        failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must not contain the employee's personal LinkedIn profile.`);
       }
       if (business.parentOrganization?.['@id'] !== organizationEntityId) {
         failures.push(`${language.code}/${pageName}: LocalBusiness.parentOrganization must reference the canonical Organization.`);
@@ -1184,9 +1208,9 @@ for (const language of verifiedLanguages) {
     }
     for (const node of pageStructuredNodes) {
       const sameAs = Array.isArray(node.sameAs) ? node.sameAs : [];
-      if (!sameAs.includes(founderSocialProfiles[0])) continue;
-      if (!schemaTypes(node).has('Person') || node['@id'] !== founderEntityId) {
-        failures.push(`${language.code}/${pageName}: the personal LinkedIn profile may appear only on the canonical Founder Person entity.`);
+      if (!sameAs.includes(personSocialProfiles[0])) continue;
+      if (!schemaTypes(node).has('Person') || node['@id'] !== personEntityId) {
+        failures.push(`${language.code}/${pageName}: the personal LinkedIn profile may appear only on the canonical employee Person entity.`);
       }
     }
     for (const obsoleteProfile of obsoleteHomepageSocialProfiles) {

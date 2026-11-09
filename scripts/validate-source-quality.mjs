@@ -3,12 +3,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
 import { SITE_SEARCH_SCRIPT_VERSION } from './lib/site-asset-versions.mjs';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [];
 const config = JSON.parse(await readFile(path.join(repoRoot, 'i18n', 'config.json'), 'utf8'));
 const activeLanguageCodes = config.activeLanguageCodes || [];
 const sourceDirectories = ['', ...activeLanguageCodes];
+const obsoletePersonEntityId = ['https://www.begapunk.com/#', 'founder', '-g-c-cao'].join('');
 
 function collectJsonLd($, relative) {
   const values = [];
@@ -39,6 +41,9 @@ for (const directory of sourceDirectories) {
     const relative = directory ? `${directory}/${fileName}` : fileName;
     const source = await readFile(path.join(absoluteDirectory, fileName), 'utf8');
     const $ = load(source);
+    if (source.includes(obsoletePersonEntityId)) {
+      failures.push(`${relative}: obsolete Person @id remains`);
+    }
 
     const main = $('main');
     if (main.length !== 1) failures.push(`${relative}: expected exactly one main landmark (found ${main.length})`);
@@ -63,11 +68,23 @@ for (const directory of sourceDirectories) {
 
     for (const jsonLd of collectJsonLd($, relative)) {
       walkJson(jsonLd, (node) => {
-        if (Object.hasOwn(node, 'founders')) failures.push(`${relative}: use Schema.org founder, not founders`);
-        if (node['@type'] === 'Organization' && node.founder) {
-          const founders = Array.isArray(node.founder) ? node.founder : [node.founder];
-          if (founders.some((founder) => founder?.['@type'] !== 'Person' || !founder?.name)) {
-            failures.push(`${relative}: Organization founder must be a named Person`);
+        if (Object.hasOwn(node, 'founder') || Object.hasOwn(node, 'founders')) {
+          failures.push(`${relative}: Organization must not publish a founder property for GuangCheng Cao`);
+        }
+        if (node['@type'] === 'Organization'
+          && node['@id'] === 'https://www.begapunk.com/#organization'
+          && ['index.html', 'about.html'].includes(fileName)) {
+          const employees = Array.isArray(node.employee) ? node.employee : (node.employee ? [node.employee] : []);
+          if (employees.length !== 1) {
+            failures.push(`${relative}: canonical Organization must contain exactly one employee Person`);
+          } else {
+            const employee = employees[0];
+            if (employee?.['@type'] !== 'Person'
+              || employee?.['@id'] !== `https://www.begapunk.com/#${COMPANY_IDENTITY.person.idFragment}`
+              || employee?.name !== COMPANY_IDENTITY.person.name
+              || !Object.values(COMPANY_IDENTITY.person.jobTitles).includes(employee?.jobTitle)) {
+              failures.push(`${relative}: canonical Organization employee identity is incorrect`);
+            }
           }
         }
       });

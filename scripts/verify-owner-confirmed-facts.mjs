@@ -7,6 +7,7 @@ import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
 const root = path.resolve(import.meta.dirname, '..');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
 const failures = [];
+const obsoletePersonEntityId = ['https://www.begapunk.com/#', 'founder', '-g-c-cao'].join('');
 
 const locales = {
   en: {
@@ -17,7 +18,7 @@ const locales = {
     termsIdentity: 'These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.',
     termsArbitration: "These Terms are governed by the laws of the People's Republic of China. Any dispute arising from or in connection with these Terms shall first be resolved through good-faith negotiation. If negotiation fails, the dispute shall be submitted to Ningbo Arbitration Commission for arbitration in accordance with its arbitration rules in effect at the time of submission.",
     aboutRoleTitles: ['GuangCheng Cao', 'Production & Quality', 'International Sales'],
-    aboutRoleDescriptions: ['Founder & Engineer', 'Machining, assembly, and passage-by-passage inspection', 'Inquiry, drawing, quotation, and order coordination'],
+    aboutRoleDescriptions: [COMPANY_IDENTITY.person.jobTitles.en, 'Machining, assembly, and passage-by-passage inspection', 'Inquiry, drawing, quotation, and order coordination'],
     termsPolicies: [
       'The minimum order quantity is one unit for both catalog and custom products.',
       'Production lead time: 20 calendar days after payment (excluding shipping) for standard catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products.',
@@ -50,7 +51,7 @@ const locales = {
     termsIdentity: 'Diese Allgemeinen Geschäftsbedingungen („Bedingungen“) regeln die Nutzung der Begapunk-Website und den Kauf von Drehdurchführungen bei Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“). Mit dem Zugriff auf unsere Website oder der Erteilung einer Bestellung stimmen Sie diesen Bedingungen zu.',
     termsArbitration: 'Diese Bedingungen unterliegen dem Recht der Volksrepublik China. Jede Streitigkeit aus oder im Zusammenhang mit diesen Bedingungen soll zunächst durch Verhandlungen nach Treu und Glauben beigelegt werden. Scheitern die Verhandlungen, wird die Streitigkeit der Ningbo Arbitration Commission zur Schiedsentscheidung nach deren zum Zeitpunkt der Einreichung geltender Schiedsordnung vorgelegt.',
     aboutRoleTitles: ['GuangCheng Cao', 'Fertigung & Qualität', 'Internationaler Vertrieb'],
-    aboutRoleDescriptions: ['Gründer & Ingenieur', 'Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals', 'Koordination von Anfragen, Zeichnungen, Angeboten und Aufträgen'],
+    aboutRoleDescriptions: [COMPANY_IDENTITY.person.jobTitles.de, 'Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals', 'Koordination von Anfragen, Zeichnungen, Angeboten und Aufträgen'],
     termsPolicies: [
       'Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen 1 Stück.',
       'Fertigungszeit: 20 Kalendertage nach Zahlungseingang (ohne Versand) für Standard-Katalogmodelle. Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand) für kundenspezifische Produkte.',
@@ -83,7 +84,7 @@ const locales = {
     termsIdentity: 'Les présentes Conditions d\'utilisation (« Conditions ») régissent votre utilisation du site Begapunk et l\'achat de raccords tournants auprès de Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre »). En accédant à notre site ou en passant une commande, vous acceptez ces Conditions.',
     termsArbitration: 'Les présentes Conditions sont régies par le droit de la République populaire de Chine. Tout litige découlant des présentes Conditions ou s\'y rapportant doit d\'abord faire l\'objet d\'une tentative de règlement amiable de bonne foi. À défaut d\'accord, le litige sera soumis à la Commission d\'arbitrage de Ningbo conformément au règlement d\'arbitrage en vigueur au moment de la saisine.',
     aboutRoleTitles: ['GuangCheng Cao', 'Production et qualité', 'Ventes internationales'],
-    aboutRoleDescriptions: ['Fondateur et ingénieur', 'Usinage, assemblage et contrôle circuit par circuit', 'Coordination des demandes, plans, devis et commandes'],
+    aboutRoleDescriptions: [COMPANY_IDENTITY.person.jobTitles.fr, 'Usinage, assemblage et contrôle circuit par circuit', 'Coordination des demandes, plans, devis et commandes'],
     termsPolicies: [
       'La quantité minimale de commande est d\'une unité, tant pour les modèles du catalogue que pour les produits sur mesure.',
       'Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue standard. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les produits sur mesure.',
@@ -116,7 +117,7 @@ const locales = {
     termsIdentity: '本利用規約・取引条件（以下「本規約」）は、Begapunkウェブサイトの利用およびNingbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）からのロータリージョイント製品の購入に適用されます。本ウェブサイトへのアクセスまたは注文をもって、本規約に同意したものとみなします。',
     termsArbitration: '本規約は中華人民共和国の法律に準拠します。本規約に起因し、または関連する紛争は、まず誠実な協議により解決を図るものとします。協議で解決できない場合、当該紛争をNingbo Arbitration Commission（寧波仲裁委員会）に付託し、申立時に有効な同委員会の仲裁規則に従って仲裁により解決します。',
     aboutRoleTitles: ['GuangCheng Cao', '製造・品質管理', '海外営業'],
-    aboutRoleDescriptions: ['創業者・エンジニア', '加工・組立・各流路の検査を調整', 'お問い合わせ・図面・見積・注文を調整'],
+    aboutRoleDescriptions: [COMPANY_IDENTITY.person.jobTitles.ja, '加工・組立・各流路の検査を調整', 'お問い合わせ・図面・見積・注文を調整'],
     termsPolicies: [
       'カタログ品、特注品ともに最小注文数量は1個です。',
       '製作期間：標準カタログ品は入金後20暦日（輸送期間を除く）。製作期間：特注品は入金後最大30暦日（輸送期間を除く）。',
@@ -149,7 +150,7 @@ const locales = {
     termsIdentity: 'Настоящие условия поставки и использования («Условия») регулируют использование сайта Begapunk и приобретение ротационных соединений у компании Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы»). Используя сайт или размещая заказ, вы соглашаетесь с настоящими Условиями.',
     termsArbitration: 'Настоящие Условия регулируются законодательством Китайской Народной Республики. Любой спор, возникающий из настоящих Условий или в связи с ними, стороны сначала стремятся урегулировать путём добросовестных переговоров. Если договориться не удаётся, спор передаётся в Ningbo Arbitration Commission (Арбитражную комиссию Нинбо) для разрешения в соответствии с её арбитражным регламентом, действующим на момент подачи заявления.',
     aboutRoleTitles: ['GuangCheng Cao', 'Производство и качество', 'Международные продажи'],
-    aboutRoleDescriptions: ['Основатель и инженер', 'Координация обработки, сборки и проверки каждого канала', 'Координация запросов, чертежей, предложений и заказов'],
+    aboutRoleDescriptions: [COMPANY_IDENTITY.person.jobTitles.ru, 'Координация обработки, сборки и проверки каждого канала', 'Координация запросов, чертежей, предложений и заказов'],
     termsPolicies: [
       'Минимальный заказ составляет 1 шт. как для каталожных моделей, так и для заказных изделий.',
       'Срок производства: 20 календарных дней после оплаты (без учёта доставки) для стандартных каталожных моделей. Срок производства: до 30 календарных дней после оплаты (без учёта доставки) для изделий по индивидуальному заказу.',
@@ -279,10 +280,27 @@ function checkOrganizationFacts($, relativePath, locale) {
       fail(`${relativePath}: Organization identifier ${expected.propertyID} must be ${expected.value}.`);
     }
   }
-  if (!organization.founder || organization.founder['@type'] !== 'Person') {
-    fail(`${relativePath}: Organization founder must be a Person.`);
-  } else if (Object.hasOwn(organization.founder, 'description')) {
-    fail(`${relativePath}: the founder JSON-LD must not publish a biographical description.`);
+  if (Object.hasOwn(organization, 'founder') || Object.hasOwn(organization, 'founders')) {
+    fail(`${relativePath}: Organization must not publish a founder property for GuangCheng Cao.`);
+  }
+  const employees = Array.isArray(organization.employee) ? organization.employee : (organization.employee ? [organization.employee] : []);
+  if (employees.length !== 1 || employees[0]?.['@type'] !== 'Person') {
+    fail(`${relativePath}: Organization employee must contain exactly one Person.`);
+  } else {
+    const employee = employees[0];
+    const languageCode = locale.prefix || 'en';
+    if (employee['@id'] !== `https://www.begapunk.com/#${COMPANY_IDENTITY.person.idFragment}`) {
+      fail(`${relativePath}: Organization employee @id is incorrect.`);
+    }
+    if (employee.name !== COMPANY_IDENTITY.person.name) {
+      fail(`${relativePath}: Organization employee name must be ${COMPANY_IDENTITY.person.name}.`);
+    }
+    if (employee.jobTitle !== COMPANY_IDENTITY.person.jobTitles[languageCode]) {
+      fail(`${relativePath}: Organization employee jobTitle is not localized.`);
+    }
+    if (Object.hasOwn(employee, 'description')) {
+      fail(`${relativePath}: the employee JSON-LD must not publish a biographical description.`);
+    }
   }
 }
 
@@ -335,7 +353,7 @@ for (const language of config.activeLanguageCodes || []) {
 claimFiles.push(...await collectFiles(path.join(root, 'i18n'), (name) => /\.json$/i.test(name)));
 
 const globalForbidden = [
-  { label: 'retired founder-history claim from 2006', pattern: /\b2006\b|2006年/i },
+  { label: 'retired 2006 personnel-history claim', pattern: /\b2006\b|2006年/i },
   { label: 'unsupported 200,000/200K production-volume claim', pattern: /\b(?:200(?:,|\s)?000\+?|200K\+?)\b/i },
   { label: 'unsupported 20+ years claim', pattern: /\b20\+\s*years?\b|\b20\+\s*Jahre\b|\b20\+\s*ans?\b|20年以上|\b20\+\s*лет\b/i },
   { label: 'controlled-laboratory validation claim', pattern: /controlled\s+laboratory\s+conditions|kontrollierten?\s+Laborbedingungen|conditions?\s+(?:contrôlées?\s+)?(?:de|en)\s+laboratoire|管理された(?:試験|実験)(?:条件|環境)|контролируем(?:ых|ые)\s+лабораторн(?:ых|ые)\s+услов/i },
@@ -406,6 +424,9 @@ for (const [language, locale] of Object.entries(locales)) {
     const relativePath = relativeFile(locale, pageName);
     const source = await read(relativePath);
     if (!source) continue;
+    if (source.includes(obsoletePersonEntityId)) {
+      fail(`${relativePath}: obsolete Person @id remains.`);
+    }
     const $ = load(source, { decodeEntities: false });
     if (pageName === 'BP-10P-0001.html') {
       try { assertBp10ProductContract($, locale.code || Object.keys(locales).find(k => locales[k] === locale), relativePath); }
@@ -470,7 +491,7 @@ for (const [language, locale] of Object.entries(locales)) {
     if (pageName === 'about.html') {
       const text = visiblePageText($);
       if (!/\b2022\b/.test(text)) fail(`${relativePath}: visible company history must state establishment in 2022.`);
-      if (/\b2006\b|2006年/.test(text)) fail(`${relativePath}: visible company copy must not publish the retired founder-history claim.`);
+      if (/\b2006\b|2006年/.test(text)) fail(`${relativePath}: visible company copy must not publish the retired 2006 personnel-history claim.`);
       if (/Li Wei|Sarah Zhang|Fluent in EN\/DE\/ES/.test(text)) {
         fail(`${relativePath}: unsupported legacy personnel or language-proficiency claims remain visible.`);
       }
@@ -489,7 +510,7 @@ for (const [language, locale] of Object.entries(locales)) {
       }
       const personNames = $('.team-person-name').map((_, element) => compact($(element).text())).get();
       if (personNames.join('|') !== 'GuangCheng Cao') {
-        fail(`${relativePath}: only the confirmed founder name may appear as a preserved team person name.`);
+        fail(`${relativePath}: only the confirmed employee name may appear as a preserved team person name.`);
       }
       const businesses = parseJsonLd($, relativePath).filter((node) => node['@type'] === 'LocalBusiness'
         && node['@id'] === 'https://www.begapunk.com/#localbusiness');

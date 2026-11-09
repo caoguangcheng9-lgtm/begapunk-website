@@ -246,23 +246,23 @@ const checks = [
   },
   {
     file: 'about.html',
-    forbidden: ['Global Expansion', 'Expanded production capacity', 'Leadership', 'Meet the Team', 'Founder &amp; Chief Engineer', 'Li Wei', 'Sarah Zhang', 'Production Manager', 'Fluent in EN/DE/ES'],
-    required: ['International Project Support', 'Website launched with English technical documentation and expanded application support.', 'Project Support', 'Engineering, Production &amp; Sales', 'Founder &amp; Engineer', 'Production &amp; Quality', 'Machining, assembly, and passage-by-passage inspection', 'Inquiry, drawing, quotation, and order coordination'],
+    forbidden: ['Global Expansion', 'Expanded production capacity', 'Leadership', 'Meet the Team', ['\u0046ounder', '&amp;', 'Engineer'].join(' '), 'Li Wei', 'Sarah Zhang', 'Production Manager', 'Fluent in EN/DE/ES'],
+    required: ['International Project Support', 'Website launched with English technical documentation and expanded application support.', 'Project Support', 'Engineering, Production &amp; Sales', 'Operations &amp; Engineering Manager', 'Production &amp; Quality', 'Machining, assembly, and passage-by-passage inspection', 'Inquiry, drawing, quotation, and order coordination'],
   },
   {
     file: 'de/about.html',
-    forbidden: ['Li Wei', 'Sarah Zhang', 'Unternehmensleitung', '<h2 class="section-title">Unser Team</h2>', 'leitender Ingenieur'],
-    required: ['Projektunterstützung', 'Technik, Fertigung &amp; Vertrieb', 'Gründer &amp; Ingenieur', 'Fertigung &amp; Qualität', 'Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals'],
+    forbidden: ['Li Wei', 'Sarah Zhang', 'Unternehmensleitung', '<h2 class="section-title">Unser Team</h2>', 'leitender Ingenieur', ['\u0047r\u00fcnder', '&amp;', 'Ingenieur'].join(' ')],
+    required: ['Projektunterstützung', 'Technik, Fertigung &amp; Vertrieb', 'Betriebs- und Engineering-Manager', 'Fertigung &amp; Qualität', 'Koordination von Bearbeitung, Montage und Prüfung jedes einzelnen Kanals'],
   },
   {
     file: 'ja/about.html',
-    forbidden: ['Li Wei', 'Sarah Zhang', '経営・技術チーム', 'チーム紹介', '技術責任者'],
-    required: ['案件対応', '技術・製造・営業', '創業者・エンジニア', '製造・品質管理', '加工・組立・各流路の検査を調整'],
+    forbidden: ['Li Wei', 'Sarah Zhang', '経営・技術チーム', 'チーム紹介', ['\u5275\u696d\u8005', '・', 'エンジニア'].join('')],
+    required: ['案件対応', '技術・製造・営業', 'オペレーション・エンジニアリング責任者', '製造・品質管理', '加工・組立・各流路の検査を調整'],
   },
   {
     file: 'ru/about.html',
-    forbidden: ['Li Wei', 'Sarah Zhang', 'Руководство компании', 'Наша команда', 'главный инженер'],
-    required: ['Поддержка проектов', 'Инженерная поддержка, производство и продажи', 'Основатель и инженер', 'Производство и качество', 'Координация обработки, сборки и проверки каждого канала'],
+    forbidden: ['Li Wei', 'Sarah Zhang', 'Руководство компании', 'Наша команда', 'главный инженер', ['\u041e\u0441\u043d\u043e\u0432\u0430\u0442\u0435\u043b\u044c', 'и', 'инженер'].join(' ')],
+    required: ['Поддержка проектов', 'Инженерная поддержка, производство и продажи', 'Менеджер по операциям и инженерии', 'Производство и качество', 'Координация обработки, сборки и проверки каждого канала'],
   },
   {
     file: 'de/case-studies.html',
