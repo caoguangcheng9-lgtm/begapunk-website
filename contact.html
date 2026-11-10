@@ -225,6 +225,18 @@
  <input type="email" id="email" name="email" placeholder="john@company.com" required>
  </div>
 
+ <!-- Company Name (required) -->
+ <div class="form-group">
+ <label for="company">Company Name <span class="req">*</span></label>
+ <input type="text" id="company" name="company" placeholder="Your Company Ltd." required>
+ </div>
+
+ <!-- Application / Machine (required) -->
+ <div class="form-group">
+ <label for="application">Application / Machine Type <span class="req">*</span></label>
+ <input type="text" id="application" name="application" placeholder="e.g. laser tube cutting machine, rotary table" required>
+ </div>
+
 
 
  <!-- Product or request type -->
@@ -257,9 +269,9 @@
 
  <div class="form-group">
 
- <label for="requirements">What Do You Need? <span class="req">*</span></label>
+ <label for="requirements">What Do You Need? (Optional)</label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="Tell us what you know: model, medium, passages, pressure, RPM, port size, mounting, or machine application. Incomplete details are fine." required></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Tell us what you know: model, medium, passages, pressure, RPM, port size, mounting, or machine application. Incomplete details are fine."></textarea>
 
  </div>
 
@@ -291,32 +303,24 @@
      <input type="text" id="fullname" name="fullname" placeholder="John Doe">
     </div>
     <div class="form-group">
-     <label for="company">Company Name (Optional)</label>
-     <input type="text" id="company" name="company" placeholder="Your Company Ltd.">
+     <label for="country">Country (Optional)</label>
+     <select id="country" name="country">
+      <option value="">Select country...</option>
+      <option value="US">United States</option>
+      <option value="DE">Germany</option>
+      <option value="UK">United Kingdom</option>
+      <option value="FR">France</option>
+      <option value="IT">Italy</option>
+      <option value="ES">Spain</option>
+      <option value="NL">Netherlands</option>
+      <option value="PL">Poland</option>
+      <option value="BR">Brazil</option>
+      <option value="IN">India</option>
+      <option value="JP">Japan</option>
+      <option value="KR">South Korea</option>
+      <option value="other">Other</option>
+     </select>
     </div>
-   </div>
-   <div class="form-group">
-    <label for="country">Country (Optional)</label>
-    <select id="country" name="country">
-     <option value="">Select country...</option>
-     <option value="US">United States</option>
-     <option value="DE">Germany</option>
-     <option value="UK">United Kingdom</option>
-     <option value="FR">France</option>
-     <option value="IT">Italy</option>
-     <option value="ES">Spain</option>
-     <option value="NL">Netherlands</option>
-     <option value="PL">Poland</option>
-     <option value="BR">Brazil</option>
-     <option value="IN">India</option>
-     <option value="JP">Japan</option>
-     <option value="KR">South Korea</option>
-     <option value="other">Other</option>
-    </select>
-   </div>
-   <div class="form-group">
-    <label for="application">Application / Machine Model (Optional)</label>
-    <input type="text" id="application" name="application" placeholder="e.g. laser rear chuck, rotary table, packaging line">
    </div>
    <div class="form-group">
     <label for="quantity">Estimated Quantity (Optional)</label>
@@ -447,7 +451,7 @@
 
 <!-- ===== JS ===== -->
 
-<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"I need a quote for this model or application.","3d_step":"Catalog STEP is on the product page. Please send custom-model or other CAD requirements.","application_review":"Please help me choose a suitable rotary union for this application.","seal_review":"Please help me check seal compatibility for these operating conditions.","verified_drawing":"Please check the marked interface or dimensions for this model.","technical_consultation":"I have a technical question about this model or application.","general_inquiry":"Please review the information below and advise the next step.","hydraulic":"Please review a custom hydraulic, oil, water, or coolant rotary union. Medium and pressure:"},"modelRequestTemplates":{"3d_step":"Catalog STEP for {model} is on the product page. Use this form for custom CAD or other files."},"requiredFields":{"email":"Email","requirements":"What Do You Need?"},"required":"{field} is required. Please fill it in.","invalidEmail":"Please enter a valid email address (for example, john@company.com).","emailSuggestion":"Did you mean {domain}? Please check your email address.","invalidFileType":"Invalid file type: .{ext}. Allowed: PDF, STEP, IGES, DWG, DXF, JPG, PNG.","fileTooLarge":"File too large ({size} MB). Maximum allowed: 10 MB.","noFile":"No file selected","sending":"Sending...","success":"Thank you. We have received your request. Our engineers will review it and normally reply within one business day. If anything else is needed, we will ask only for the specific detail required.","serviceUnavailable":"The inquiry service is temporarily unavailable. Please email sales@begapunk.com.","invalidResponse":"We could not confirm whether your inquiry was sent. Please contact sales@begapunk.com before submitting it again.","networkFailure":"The inquiry could not be sent. Please try again or email sales@begapunk.com.","stepButton":"Send CAD Request →"}</script>
+<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"I need a quote for this model or application.","3d_step":"Catalog STEP is on the product page. Please send custom-model or other CAD requirements.","application_review":"Please help me choose a suitable rotary union for this application.","seal_review":"Please help me check seal compatibility for these operating conditions.","verified_drawing":"Please check the marked interface or dimensions for this model.","technical_consultation":"I have a technical question about this model or application.","general_inquiry":"Please review the information below and advise the next step.","hydraulic":"Please review a custom hydraulic, oil, water, or coolant rotary union. Medium and pressure:"},"modelRequestTemplates":{"3d_step":"Catalog STEP for {model} is on the product page. Use this form for custom CAD or other files."},"requiredFields":{"email":"Email","company":"Company Name","application":"Application / Machine Type"},"required":"{field} is required. Please fill it in.","invalidEmail":"Please enter a valid email address (for example, john@company.com).","emailSuggestion":"Did you mean {domain}? Please check your email address.","invalidFileType":"Invalid file type: .{ext}. Allowed: PDF, STEP, IGES, DWG, DXF, JPG, PNG.","fileTooLarge":"File too large ({size} MB). Maximum allowed: 10 MB.","noFile":"No file selected","sending":"Sending...","success":"Thank you. We have received your request. Our engineers will review it and normally reply within one business day. If anything else is needed, we will ask only for the specific detail required.","serviceUnavailable":"The inquiry service is temporarily unavailable. Please email sales@begapunk.com.","invalidResponse":"We could not confirm whether your inquiry was sent. Please contact sales@begapunk.com before submitting it again.","networkFailure":"The inquiry could not be sent. Please try again or email sales@begapunk.com.","stepButton":"Send CAD Request →"}</script>
 <script>
 
 // Mobile Menu

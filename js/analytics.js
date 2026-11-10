@@ -23,6 +23,14 @@
     const CONFIG = {
         GA_ID: 'G-D4FZF37Z07',
         GA_DEBUG: false,               // Set true to log GA events to console
+        // Google Ads conversion (AW-). Loaded only after consent, alongside GA4.
+        ADS_ID: 'AW-18425348455',
+        // Conversion labels. Form submit fires automatically via the thank-you.html
+        // page-load rule, so no manual send_to for it here. Email/WhatsApp are
+        // manual click conversions. Leave WHATSAPP_LABEL empty until the WhatsApp
+        // conversion exists in Google Ads; trackAdsConversion skips empty labels.
+        ADS_LABEL_EMAIL: 'qKlKCJqEr7UdEOeC8tFE',   // Email Click (secondary)
+        ADS_LABEL_WHATSAPP: '',                      // WhatsApp Click (secondary) — fill after creating the conversion
         STORAGE_KEY: 'begapunk_cookie_consent',
         ATTRIBUTION_STORAGE_KEY: 'begapunk_session_attribution_v1',
         // Version 2 expands the optional choice from analytics-only to analytics
@@ -287,6 +295,14 @@
         }, parameters || {}));
     }
 
+    // Fire a Google Ads conversion event. Consent-gated. No-op if the label is
+    // empty (e.g. WhatsApp not set up yet) — never sends a placeholder string.
+    function trackAdsConversion(label) {
+        if (consentState !== 'granted' || !window.gtag || !window.gtag.loaded) return;
+        if (!CONFIG.ADS_ID || !label) return;
+        window.gtag('event', 'conversion', { send_to: CONFIG.ADS_ID + '/' + label });
+    }
+
     function getLinkLabel(link) {
         return (link.getAttribute('aria-label') || link.textContent || '')
             .replace(/\s+/g, ' ')
@@ -307,8 +323,10 @@
 
             if (/^mailto:/i.test(href)) {
                 trackEvent('contact_email_click', parameters);
+                trackAdsConversion(CONFIG.ADS_LABEL_EMAIL);
             } else if (/^(https?:)?\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)/i.test(href)) {
                 trackEvent('whatsapp_click', parameters);
+                trackAdsConversion(CONFIG.ADS_LABEL_WHATSAPP);
             } else if (/\.(pdf|step|stp|dxf|dwg)(?:[?#]|$)/i.test(href)) {
                 trackEvent('technical_document_download', Object.assign(parameters, {
                     document_name: href.split('/').pop().split('?')[0]
@@ -376,6 +394,14 @@
             allow_google_signals: false,
             allow_ad_personalization_signals: false
         });
+
+        // Google Ads conversion ID. This is what makes the existing
+        // "webpage load on thank-you.html" primary conversion fire after a form
+        // submit. Only fires on the thank-you.html URL rule; other pages just
+        // load the config without recording a conversion.
+        if (CONFIG.ADS_ID) {
+            window.gtag('config', CONFIG.ADS_ID);
+        }
 
         // Load gtag.js
         loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(CONFIG.GA_ID), true, false)
