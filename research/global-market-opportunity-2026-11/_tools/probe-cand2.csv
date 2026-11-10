@@ -1,0 +1,49 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://www.vdw.de/en/members/","404","https://www.vdw.de/en/members/","19","",""
+"https://www.ucimu.it/en/associates/","403","https://www.ucimu.it/en/associates/","5455","Just a moment...",""
+"https://www.imtma.in/members","403","https://www.imtma.in/members/","358","403 Forbidden",""
+"https://www.mib.org.tr/","200","https://mib.org.tr/","268425","Makina İmalatçıları Birliği","tube;"
+"https://www.mta.org.uk/members","200","https://www.mta.org.uk/members/","1645734","Members","laser;tube;chuck;rotary joint;pneumatic;automation;cnc;spindle;collet;"
+"https://www.cyan-tec.co.uk/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.cyan-tec.co.uk/","0","",""
+"https://www.kitagawa-europe.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.kitagawa-europe.com/","0","",""
+"https://www.toolfast.in/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.toolfast.in/","0","",""
+"https://www.myslaser.com.my/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.myslaser.com.my/","0","",""
+"https://www.unistar.vn/","200","https://www.unistar.vn/","115649","UNISTAR — Shine with Your Brand",""
+"https://www.sureshindulasers.com/","200","https://www.sureshindulasers.com/","119886","fiber laser cutting machine Exporter & Manufacturer | Suresh Indu Lasers Private Limited, Pune","laser;tube;automation;cnc;"
+"https://www.ainnovative.co.in/","200","https://www.ainnovative.co.in/","412776","Water Jet Cutting Machine Manufacturer,Laser Cutting Machine Supplier,Exporter","laser;tube;cnc;"
+"https://www.mvd.com.tr/","200","https://www.mvd.com.tr/","151596","Industrial Fabrication Machines | MVD Machinery","laser;tube;"
+"https://www.sahinler.com.tr/","200","https://www.sahinler.com.tr/","95137","Şahinler Metal — İkincil Alüminyum, Enerji Kablosu ve Çelik Halat","tube;"
+"https://www.famar.it/","200","https://www.famar.it/","25622","famar - Arredamenti su Misura",""
+"https://www.preciTec.de/","404","https://www.preciTec.de/","4596","Page Not Found",""
+"https://www.weiss-gmbh.de/","200","https://www.weiss-world.com/us-en","571131","WEISS Group","laser;tube;automation;packaging;"
+"https://www.haimer.com/","200","https://www.haimer.com/de","714852","HAIMER | HAIMER","tube;chuck;automation;cnc;"
+"https://www.cmsindustries.it/","200","https://www.cms.it/it","52976","CMS: Centri di Lavoro, Termoformatrici e Sistemi di Taglio | SCM Group","tube;automation;"
+"https://www.el-en.com/","200","https://www.el-en.com/","330919","Ellen Van Huffel – Graphic Design","tube;"

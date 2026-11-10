@@ -1,0 +1,32 @@
+﻿country,company,website,products,company_type,laser_tube_business,pneumatic_chuck_business,likely_buyer,purchase_likelihood,evidence_basis,china_supply_signal,contact_page,public_email,linkedin,source_url,evidence_grade,status
+Turkey,Ermaksan Makine,https://www.ermaksan.com.tr/,CNC 激光切割/折弯/自动化产线,整机制造商,是（官网含 tube/cnc/automation 关键词；管材机型待产品页确认）,否,是,高,"官网首页 200，标题 Ermaksan Makine - Yenilikçi Teknolojiler；关键词命中 tube/cnc/automation",未知,待核实,待核实,待核实,https://www.ermaksan.com.tr/,B,已验证官网
+Turkey,Baykal,https://www.baykal.com.tr/,激光切割、管材加工、折弯机,整机制造商,是（官网命中 laser/tube）,否,是,高,"官网首页 200，关键词命中 laser/tube/automation",未知,待核实,待核实,待核实,https://www.baykal.com.tr/,A,已验证官网
+Turkey,Durmazlar,https://www.durmazlar.com.tr/,激光切割、CNC、钣金设备,整机制造商,是（命中 tube/cnc）,否,是,中高,"官网首页 200，标题 Anasayfa - Durmazlar，命中 tube/cnc",未知,待核实,待核实,待核实,https://www.durmazlar.com.tr/,B,已验证官网
+Turkey,Dener Makina,https://www.dener.com/,钣金与金属加工机械（含激光）,整机制造商,是（命中 tube/cnc）,否,是,中,"官网首页 200，标题 Sac ve Metal İşleme Makineleri Üreticisi",未知,待核实,待核实,待核实,https://www.dener.com/,B,已验证官网
+Turkey,Akyapak,https://www.akyapak.com/,管材/型材加工、弯曲、切割设备,整机制造商,部分（管材加工设备为主，非切管机整机）,否,是,中高,"官网首页 200，标题 Metal İşleme, Bükme, Kesme，命中 tube",未知,待核实,待核实,待核实,https://www.akyapak.com/,A,已验证官网
+Turkey,MVD Machinery,https://www.mvd.com.tr/,工业钣金加工机械,整机制造商,是（命中 laser/tube）,否,是,中,"官网首页 200，标题 Industrial Fabrication Machines",未知,待核实,待核实,待核实,https://www.mvd.com.tr/,B,已验证官网
+Turkey,ER-EL,https://www.er-el.com.tr/,模具夹紧与加工系统（kalıp bağlama）,夹紧/工装制造商,否,是（卡盘/夹紧系统相邻）,是,中,"官网首页 200，标题 Kalıp Bağlama ve İşleme Sistemleri",未知,待核实,待核实,待核实,https://www.er-el.com.tr/,B,已验证官网
+Turkey,Rototech,https://www.rototech.com.tr/,旋转接头（Rotary Joint / Swivel Joint / Multiport / Özel Ürünler）,本地竞争者,否,否,否,—,"官网首页 200；产品线含 rotary joint、swivel joint、multiport 与定制；介质含空气/水；100% 本地生产并出口",未知,待核实,satis@rototech.com.tr,待核实,https://www.rototech.com.tr/,A,竞争者
+India,Sahajanand Laser Technology (SLTL),https://www.sltl.com/,激光切割机、激光系统,整机制造商,是,否,是,高,"官网首页 200，标题 Laser Cutting Machine Manufacturer India- SLTL Group",未知,待核实,待核实,待核实,https://www.sltl.com/,A,已验证官网
+India,Suresh Indu Lasers,https://www.sureshindulasers.com/,光纤激光切割机,整机制造商,是,否,是,高,"官网首页 200，标题 fiber laser cutting machine Exporter & Manufacturer",未知,待核实,待核实,待核实,https://www.sureshindulasers.com/,A,已验证官网
+India,A Innovative International,https://www.ainnovative.co.in/,水刀与激光切割机,整机制造商,是,否,是,中高,"官网首页 200，标题 Water Jet Cutting Machine Manufacturer, Laser Cutting Machine Supplier",未知,待核实,待核实,待核实,https://www.ainnovative.co.in/,A,已验证官网
+India,Jyoti CNC Automation,https://www.jyoti.co.in/,CNC 车床/加工中心,整机制造商,否,否,是,中,"官网首页 200，标题 CNC machine, cnc lathe, vmc, hmc",未知,待核实,待核实,待核实,https://www.jyoti.co.in/,A,已验证官网
+India,Ace Micromatic,https://www.acemicro.com/,CNC 机床与金属切削,整机制造商,否,否,是,中,"官网首页 200，标题 Best CNC and Metal Cutting Machine Manufacturers in India（域名与集团站点需人工确认）",未知,待核实,待核实,待核实,https://www.acemicro.com/,B,待核实域名
+India,Batliboi,https://www.batliboi.com/,机床制造与代理,制造商/代理,否,否,是,中,"官网首页 200，标题 Home - Batliboi",未知,待核实,待核实,待核实,https://www.batliboi.com/,A,已验证官网
+Italy,BLM Group,https://www.blmgroup.com/,管材激光切割、弯管、锯切、端部成型,整机制造商,是（管材激光切割与弯管设备厂商）,否,是,高,"官网首页 200，标题 Tube Processing: tube laser cutting and sawing",未知,待核实,待核实,待核实,https://www.blmgroup.com/,A,已验证官网
+Italy,Salvagnini,https://www.salvagnini.com/,钣金与管材激光、折弯、自动化,整机制造商,是,否,是,高,"官网首页 200，标题 Sheet Metal Machinery Manufacturer，命中 laser/tube",未知,待核实,待核实,待核实,https://www.salvagnini.com/,A,已验证官网
+Italy,SMW Autoblok,https://www.smw-autoblok.it/,卡盘与工件夹持,卡盘制造商,否,是,是,高,"官网返回 403（Cloudflare），品牌与产品由行业常识与搜索确认，需人工核验",未知,待核实,待核实,待核实,https://www.smw-autoblok.it/,B,官网反爬
+Italy,CMS SpA,https://www.cmsindustries.it/,复合材料/石材/金属加工中心,整机制造商,部分,否,是,中,"官网首页 200，标题 CMS: Centri di Lavoro, Termoformatrici e Sistemi di Taglio",未知,待核实,待核实,待核实,https://www.cmsindustries.it/,A,已验证官网
+Germany,TRUMPF,https://www.trumpf.com/,激光切割/管材激光/机床,整机制造商,是（全球管材激光标杆）,否,是,高,"官网返回 403（反爬）；品牌与产品由搜索与行业目录确认，需人工核验",未知,待核实,待核实,待核实,https://www.trumpf.com/,B,官网反爬
+Germany,Schunk,https://www.schunk.com/,夹持/抓取/工件夹持,夹持与自动化制造商,否,是,是,中高,"官网首页 200，标题 Competence leader for toolholding and workholding, gripping technology",未知,待核实,待核实,待核实,https://www.schunk.com/,A,已验证官网
+Germany,Röhm,https://www.roehm.biz/,卡盘与工件夹持,卡盘制造商,否,是,是,高,"官网首页 200，标题 Vorreiter und Trendsetter für moderne Spannlösungen",未知,待核实,待核实,待核实,https://www.roehm.biz/,A,已验证官网
+United Kingdom,Colchester Machine Tool Solutions,https://www.colchester.co.uk/,CNC 车床/机床,整机制造商,否,否,是,中,"官网首页 200，命中 laser/chuck/cnc",未知,待核实,待核实,待核实,https://www.colchester.co.uk/,A,已验证官网
+United Kingdom,Citizen Machinery UK,https://www.citizenmachinery.co.uk/,CNC 车床（走心机）,整机制造商,否,否,是,中,"官网首页 200，标题 Leading Supplier of CNC Lathes",未知,待核实,待核实,待核实,https://www.citizenmachinery.co.uk/,A,已验证官网
+United Kingdom,Pratt Burnerd,https://www.prattburnerd.com/,卡盘/工件夹持,卡盘制造商,否,是,是,中高,"官网首页 200，标题 High-quality Workholding Solutions，命中 chuck/collet（该域名为美国站，英国品牌需人工确认主体）",未知,待核实,待核实,待核实,https://www.prattburnerd.com/,B,主体待核实
+United Kingdom,Kitagawa Europe,https://www.kitagawa-europe.com/,卡盘/工件夹持,卡盘制造商,否,是,是,高,"官网 TLS 握手失败，未能读取；品牌由搜索与行业目录确认",未知,待核实,待核实,待核实,https://www.kitagawa-europe.com/,C,待核实
+United Kingdom,Chester Machine Tools,https://www.chestermachinetools.com/,机床与工具,整机/代理,否,否,是,低中,"官网首页 200，标题 Chester Machine Tools，命中 cnc/spindle",未知,待核实,待核实,待核实,https://www.chestermachinetools.com/,A,已验证官网
+United Kingdom,Asquith Butler,https://www.asquithbutler.com/,大型机床/加工中心,整机制造商,否,否,是,低中,"官网首页 200，标题 Asquith Butler",未知,待核实,待核实,待核实,https://www.asquithbutler.com/,A,已验证官网
+Vietnam,Deratech Vietnam,https://deratech.vn/,钣金与管材激光加工设备,整机/集成商,是（官网含管材激光机型）,否,是,中,"官网首页 200，标题 Giải Pháp Gia Công Kim Loại Tấm Cao Cấp，命中 laser/tube",较高（韩系品牌在越设点，供应链区域化）,待核实,待核实,待核实,https://deratech.vn/,B,已验证官网
+Vietnam,Nam Son Laser,https://namson.com.vn/,激光切割设备与集成,代理/集成商,是,否,是,中,"官网首页 200，标题 Giải Pháp Công Nghệ Laser Số 1 Việt Nam",高（代理多品牌，含中国设备）,待核实,待核实,待核实,https://namson.com.vn/,B,已验证官网
+Thailand,Siam P&W Technic,https://www.siampw.com/,激光切割设备/服务,设备商/服务商,是,否,是,中,"官网首页 200，标题 Homepage - Siam P&W Technic，命中 laser/tube",未知,待核实,待核实,待核实,https://www.siampw.com/,B,已验证官网
+Malaysia,Myslaser,https://www.myslaser.com/,激光切割设备,设备商/代理,是,否,是,中,"官网 TLS 失败；由搜索结果为马来西亚激光设备商（IPMEX 参展）",未知,待核实,待核实,待核实,https://www.myslaser.com/,C,待核实

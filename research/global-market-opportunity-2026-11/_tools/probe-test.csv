@@ -1,0 +1,35 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://www.ermaksan.com.tr/","200","https://www.ermaksan.com.tr/","133167","Ermaksan Makine - Yenilikçi Teknolojiler","tube;automation;cnc;"
+"https://www.baykal.com.tr/","200","https://www.baykal.com.tr/","81280","Baykal","laser;tube;automation;"
+"https://www.durmazlar.com.tr/","200","https://www.durmazlar.com.tr/","217122","Anasayfa - Durmazlar","tube;cnc;"
+"https://www.dener.com.tr/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.dener.com.tr/","0","",""
+"https://www.akyapak.com/","200","https://akyapak.com/","683575","Akyapak | Metal İşleme, Bükme, Kesme ve Makine Çözümleri","tube;automation;cnc;cylinder;"
+"https://www.rototech.com.tr/","200","https://rototech.com.tr/","86526","Rototech® - Rotary Unions | Anasayfa","tube;rotary union;rotary joint;"
+"https://www.er-el.com.tr/","200","https://www.er-el.com.tr/tr","152864","Kalıp Bağlama ve İşleme Sistemleri — ER-EL","tube;"
+"https://www.deublin.com/","200","https://www.deublin.com/en","149288","Deublin","tube;rotary union;packaging;spindle;"
+"https://www.dsti.com/","200","https://www.dsti.com/","294505","Engineered Fluid Solutions - Rotary Unions & Slip Rings Made In USA","tube;rotary union;automation;"
+"https://www.kadant.com/","403","https://www.kadant.com/","52","",""
+"https://www.rotarysystems.com/","200","https://rotarysystems.com/","112767","Rotary Systems, Inc. » Expert Rotary Unions & Slip Rings","rotary union;automation;collet;"
+"https://www.rotoflux.it/","200","https://rotoflux.com/","96255","Produzione Giunti Rotanti | Giunti Girevoli | Rotoflux","rotary union;collet;"
+"https://www.smcworld.com/","403","https://www.smcworld.com/","5659","Attention Required! | Cloudflare",""
+"https://www.festo.com/","403","https://www.festo.com/","365","Access Denied",""
+"https://www.schunk.com/","200","https://schunk.com/us/en","265226"," SCHUNK – Competence leader for toolholding and workholding, gripping technology and automation technology","laser;tube;chuck;pneumatic;automation;packaging;"
+"https://www.roehm.biz/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.roehm.biz/","0","",""
+"https://www.smw-autoblok.de/","403","https://www.smwautoblok.com/de/de/","387","Access Denied",""
+"https://www.blmgroup.com/","200","https://www.blmgroup.com/","335184","BLM GROUP | Tube Processing: tube laser cutting and sawing, end-forming & bending","laser;tube;automation;cnc;"
+"https://www.trumpf.com/","403","https://www.trumpf.com/","368","Access Denied",""
+"https://www.bystronic.com/","200","https://www.bystronic.com/usa/en-us","310980","Bystronic | Laser cutting, bending, automation","laser;tube;automation;"

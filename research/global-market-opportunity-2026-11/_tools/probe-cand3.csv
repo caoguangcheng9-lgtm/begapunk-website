@@ -1,0 +1,82 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://www.sarten.com.tr/","200","https://www.sarten.com.tr/","341009","AnaSayfa - Sarten Ambalaj San. ve Tic. A.Ş.","tube;packaging;"
+"https://www.femsan.com/","200","https://www.femsan.com/","11864","Femsan Elektrik Motorları, Istanbul","tube;"
+"https://www.taksan.com.tr/","200","https://www.taksan.com.tr/","220374","Ana Sayfa - TAKSAN SOĞUTMA | Endüstriyel Soğuk Hava Deposu",""
+"https://www.itema.it/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.itema.it/","0","",""
+"https://www.santoni.com/","200","https://www.santoni.com/","155015"," Macchine circolari elettroniche per Seamlesswear, Santoni. ","tube;"
+"https://www.brazzoli.com/","curl.exe : curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error 
+usually occurs when a fatal SSL/TLS alert is received (e.g. handshake failed). More detail may be available in the Wind
+ows System event log.
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...stem event log.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.brazzoli.com/","0","",""
+"https://www.ima.it/","200","https://imagroup.com/","385152","IMA Group | The Global Processing and Packaging Leader","tube;automation;packaging;"
+"https://www.sacmi.it/","200","https://sacmi.it/","129572"," Sacmi: Tecnologie Industriali Per Ceramica, Packaging E Food | SACMI IT ","laser;tube;packaging;"
+"https://www.marchesini.com/","200","https://www.marchesini.com/en","179260","Marchesini Group | Packaging Machines and Lines","tube;packaging;"
+"https://www.smw-autoblok.it/","curl.exe : curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - Ŀ����Ҫ���Ʋ���ȷ��
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (60) scha...����Ҫ���Ʋ���ȷ��:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.
+000","https://www.smw-autoblok.it/","0","",""
+"https://www.roehm.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.roehm.com/","0","",""
+"https://www.zimmer-group.com/","200","https://www.zimmer-group.com/de/","329188","Effiziente Automatisierungstechnik - Zimmer Group","tube;automation;"
+"https://www.precitec.com/","200","https://www.precitec.com/","215278","Precision in laser processing & metrology | PRECITEC","laser;tube;automation;"
+"https://www.prattburnerd.co.uk/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.prattburnerd.co.uk/","0","",""
+"https://www.kitagawa.co.uk/","200","https://kitagawa.co.uk/en-gb","31085","",""
+"https://www.colchester.co.uk/","200","https://www.colchester.co.uk/","168577","Colchester Machine Tool Solutions Homepage - Colchester Machine Tool Solutions - Colchester Machine Tool Solut","laser;tube;chuck;automation;cnc;"
+"https://www.citizenmachinery.co.uk/","200","https://citizenmachinery.co.uk/","86473","Leading Supplier of CNC Lathes | Citizen Machinery","laser;tube;cnc;spindle;"
+"https://www.asquithbutler.com/","200","https://www.asquithbutler.com/","16873","Asquith Butler","tube;"
+"https://www.chestermachinetools.com/","200","https://www.chestermachinetools.com/","76777","Chester Machine Tools","tube;cnc;spindle;"
+"https://www.excelmachinetools.co.uk/","403","https://www.excelmachinetools.co.uk/","52","",""
+"https://www.wardjet.com/","403","https://www.wardjet.com/","1325","Just a moment...",""
+"https://www.acemicro.com/","403","https://www.hugedomains.com/domain_profile.cfm?d=acemicro.com","5598","Just a moment...",""
+"https://www.batliboi.com/","200","https://batliboi.com/","277406","Home - Batliboi","automation;cnc;spindle;"
+"https://www.nichrome.com/","200","https://www.nichrome.com/","86787","Packaging Machines Manufacturer in India | Food, Pharma & Liquid Solutions - Nichrome","tube;automation;packaging;"
+"https://www.lmw.co.in/","curl.exe : curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error 
+usually occurs when a fatal SSL/TLS alert is received (e.g. handshake failed). More detail may be available in the Wind
+ows System event log.
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...stem event log.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.lmw.co.in/","0","",""
+"https://www.bodor.in/","200","https://www.bodor.in/","3721","bodor.in | Premium Domain Name for Sale",""
+"https://www.vitrox.com/","200","https://www.vitrox.com/","60199","ViTrox | AI Machine Vision, SMT Inspection & Embedded Automation","tube;automation;"
+"https://www.pentamaster.com.my/","200","https://pentamaster.com/","261388","Pentamaster","laser;automation;packaging;"
+"https://www.festo.co.th/","403","https://www.festo.com:443/th/th","376","Access Denied",""
+"https://www.smc.co.th/","200","https://www.smc.co.th/","11074","SMC Consulting Engineers - Bangkok Thailand",""

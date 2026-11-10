@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-11-09T04:06:48.470Z",
+  "generatedAt": "2026-11-10T03:58:43.245Z",
   "pages": [
     "index.html",
     "about.html",
@@ -5066,8 +5066,8 @@
       ]
     },
     {
-      "id": "706d1023c1c5505b",
-      "source": "Application / Machine Model (Optional)",
+      "id": "54da5fe12001657d",
+      "source": "Application / Machine Type <span class=\"req\">*</span>",
       "pages": [
         "contact.html"
       ]
@@ -7349,8 +7349,8 @@
       ]
     },
     {
-      "id": "4cd671ccbb2e70bd",
-      "source": "Company Name (Optional)",
+      "id": "9fe95014dfdb5a61",
+      "source": "Company Name <span class=\"req\">*</span>",
       "pages": [
         "contact.html"
       ]
@@ -8201,8 +8201,8 @@
       ]
     },
     {
-      "id": "a1cb7eb6bfec6780",
-      "source": "e.g. laser rear chuck, rotary table, packaging line",
+      "id": "51a0227467778978",
+      "source": "e.g. laser tube cutting machine, rotary table",
       "pages": [
         "contact.html"
       ]
@@ -15388,8 +15388,8 @@
       ]
     },
     {
-      "id": "d77244c9c1b9a17e",
-      "source": "What Do You Need? <span class=\"req\">*</span>",
+      "id": "5c1c9e0a22e42b8a",
+      "source": "What Do You Need? (Optional)",
       "pages": [
         "contact.html"
       ]

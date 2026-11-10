@@ -75,7 +75,7 @@
 
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","url":"https://www.begapunk.com/ru/contact.html","mainEntity":{"@type":"LocalBusiness","@id":"https://www.begapunk.com/#localbusiness","name":"Begapunk","legalName":"宁波贝加庞克气动元件有限公司","parentOrganization":{"@id":"https://www.begapunk.com/#organization"},"url":"https://www.begapunk.com/","logo":{"@type":"ImageObject","url":"https://www.begapunk.com/images/begapunk-logo-header.png"},"image":"https://www.begapunk.com/images/factory.jpg","description":"Производитель пневматических вращающихся соединений, расположенный в Нинбо, Китай.","telephone":"+86 183 6842 5342","email":"sales@begapunk.com","address":{"@type":"PostalAddress","streetAddress":"No. 665 Youdian Road, Andong Town","addressLocality":"Hangzhou Bay New Area, Ningbo","addressRegion":"Zhejiang","postalCode":"315327","addressCountry":"CN"},"openingHours":"Mo-Fr 08:30-17:30","knowsAbout":["Воздушные вращающиеся соединения","Пневматические вращающиеся соединения","Вращающиеся соединения","Многоканальные вращающиеся соединения","Промышленная автоматизация","Станки с ЧПУ","Лазерные станки","Упаковочное оборудование"],"sameAs":["https://www.linkedin.com/company/144021127/","https://www.youtube.com/@BEGAPUNKRotaryJointsTV","https://www.facebook.com/profile.php?id=61595481363231","https://x.com/Begapunk728"],"alternateName":["Ningbo Begapunk Pneumatic Components Co., Ltd.","BEGAPUNK"],"foundingDate":"2022-04-28","identifier":[{"@type":"PropertyValue","propertyID":"Unified Social Credit Code","value":"91330201MABLQR5K7U"},{"@type":"PropertyValue","propertyID":"Business Registration Number","value":"330218000114820"},{"@type":"PropertyValue","propertyID":"Organization Code","value":"MABLQR5K-7"}]},"inLanguage":"ru"}</script>
 
-    <script defer="" src="../js/analytics.js?v=d1fe8e76c3eb"></script>
+    <script defer="" src="../js/analytics.js?v=e388c8fc344b"></script>
 </head>
 
 <body class="contact-rfq-page">
@@ -239,6 +239,18 @@
  <input type="email" id="email" name="email" placeholder="john@company.com" required="">
  </div>
 
+ <!-- Company Name (required) -->
+ <div class="form-group">
+ <label for="company">Компания <span class="req">*</span></label>
+ <input type="text" id="company" name="company" placeholder="Название компании" required="">
+ </div>
+
+ <!-- Application / Machine (required) -->
+ <div class="form-group">
+ <label for="application">Применение / Тип машины <span class="req">*</span></label>
+ <input type="text" id="application" name="application" placeholder="напр., трубный лазерный станок, поворотный стол" required="">
+ </div>
+
 
 
  <!-- Product or request type -->
@@ -271,9 +283,9 @@
 
  <div class="form-group">
 
- <label for="requirements">Что вам требуется? <span class="req">*</span></label>
+ <label for="requirements">Что вам нужно? (Необязательно)</label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="Укажите известные данные: модель, среду, число каналов, давление, скорость, размер портов, монтаж или применение. Полный набор данных не обязателен." required=""></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Укажите известные данные: модель, среду, число каналов, давление, скорость, размер портов, монтаж или применение. Полный набор данных не обязателен."></textarea>
 
  </div>
 
@@ -300,32 +312,24 @@
      <input type="text" id="fullname" name="fullname" placeholder="Иван Иванов">
     </div>
     <div class="form-group">
-     <label for="company">Компания (необязательно)</label>
-     <input type="text" id="company" name="company" placeholder="Название компании">
+     <label for="country">Страна (необязательно)</label>
+     <select id="country" name="country">
+      <option value="">Выберите страну ...</option>
+      <option value="US">Соединенные Штаты</option>
+      <option value="DE">Германия</option>
+      <option value="UK">Соединенное Королевство</option>
+      <option value="FR">Франция</option>
+      <option value="IT">Италия</option>
+      <option value="ES">Испания</option>
+      <option value="NL">Нидерланды</option>
+      <option value="PL">Польша</option>
+      <option value="BR">Бразилия</option>
+      <option value="IN">Индия</option>
+      <option value="JP">Япония</option>
+      <option value="KR">Южная Корея</option>
+      <option value="other">Другое</option>
+     </select>
     </div>
-   </div>
-   <div class="form-group">
-    <label for="country">Страна (необязательно)</label>
-    <select id="country" name="country">
-     <option value="">Выберите страну ...</option>
-     <option value="US">Соединенные Штаты</option>
-     <option value="DE">Германия</option>
-     <option value="UK">Соединенное Королевство</option>
-     <option value="FR">Франция</option>
-     <option value="IT">Италия</option>
-     <option value="ES">Испания</option>
-     <option value="NL">Нидерланды</option>
-     <option value="PL">Польша</option>
-     <option value="BR">Бразилия</option>
-     <option value="IN">Индия</option>
-     <option value="JP">Япония</option>
-     <option value="KR">Южная Корея</option>
-     <option value="other">Другое</option>
-    </select>
-   </div>
-   <div class="form-group">
-    <label for="application">Применение / модель оборудования (необязательно)</label>
-    <input type="text" id="application" name="application" placeholder="например: задний патрон лазерного станка, поворотный стол, упаковочная линия">
    </div>
    <div class="form-group">
     <label for="quantity">Ориентировочное количество (необязательно)</label>
@@ -456,7 +460,7 @@
 
 <!-- ===== JS ===== -->
 
-<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"Мне нужно предложение для этой модели или области применения.","3d_step":"Каталожный STEP есть на странице модели. Укажите требования к заказному CAD или другим файлам.","application_review":"Помогите подобрать подходящее вращающееся соединение для этого применения.","seal_review":"Проверьте совместимость уплотнений с этими условиями эксплуатации.","verified_drawing":"Проверьте отмеченный интерфейс или размеры для этой модели.","technical_consultation":"У меня есть технический вопрос по этой модели или области применения.","general_inquiry":"Проверьте информацию ниже и сообщите следующий шаг.","hydraulic":"Проверьте индивидуальное гидравлическое соединение для масла, воды или СОЖ. Среда и давление:"},"modelRequestTemplates":{"3d_step":"Каталожный STEP для {model} есть на странице модели. Это форма для заказного CAD или других файлов."},"requiredFields":{"email":"Электронная почта","requirements":"Что вам требуется?"},"required":"Заполните поле «{field}».","invalidEmail":"Введите корректный адрес электронной почты, например name@company.com.","emailSuggestion":"Возможно, вы имели в виду {domain}? Проверьте адрес электронной почты.","invalidFileType":"Формат .{ext} не поддерживается. Допустимые форматы: PDF, STEP, STP, IGES, IGS, DWG, DXF, JPG, JPEG, PNG.","fileTooLarge":"Файл слишком большой ({size} МБ). Максимальный размер — 10 МБ.","noFile":"Файл не выбран","sending":"Отправка запроса…","success":"Спасибо. Мы получили ваш запрос. Наши инженеры рассмотрят его и обычно ответят в течение одного рабочего дня. Если потребуется дополнительная информация, мы уточним только конкретно необходимые данные.","serviceUnavailable":"Сервис обработки запросов временно недоступен. Повторите попытку позже или напишите на sales@begapunk.com.","invalidResponse":"Не удалось подтвердить, был ли запрос отправлен. Перед повторной отправкой свяжитесь с нами по адресу sales@begapunk.com.","networkFailure":"Произошла ошибка сети. Проверьте подключение и повторите попытку или напишите на sales@begapunk.com.","stepButton":"Отправить запрос CAD →"}</script>
+<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"Мне нужно предложение для этой модели или области применения.","3d_step":"Каталожный STEP есть на странице модели. Укажите требования к заказному CAD или другим файлам.","application_review":"Помогите подобрать подходящее вращающееся соединение для этого применения.","seal_review":"Проверьте совместимость уплотнений с этими условиями эксплуатации.","verified_drawing":"Проверьте отмеченный интерфейс или размеры для этой модели.","technical_consultation":"У меня есть технический вопрос по этой модели или области применения.","general_inquiry":"Проверьте информацию ниже и сообщите следующий шаг.","hydraulic":"Проверьте индивидуальное гидравлическое соединение для масла, воды или СОЖ. Среда и давление:"},"modelRequestTemplates":{"3d_step":"Каталожный STEP для {model} есть на странице модели. Это форма для заказного CAD или других файлов."},"requiredFields":{"email":"Электронная почта","company":"Название компании","application":"Применение / Тип машины"},"required":"Заполните поле «{field}».","invalidEmail":"Введите корректный адрес электронной почты, например name@company.com.","emailSuggestion":"Возможно, вы имели в виду {domain}? Проверьте адрес электронной почты.","invalidFileType":"Формат .{ext} не поддерживается. Допустимые форматы: PDF, STEP, STP, IGES, IGS, DWG, DXF, JPG, JPEG, PNG.","fileTooLarge":"Файл слишком большой ({size} МБ). Максимальный размер — 10 МБ.","noFile":"Файл не выбран","sending":"Отправка запроса…","success":"Спасибо. Мы получили ваш запрос. Наши инженеры рассмотрят его и обычно ответят в течение одного рабочего дня. Если потребуется дополнительная информация, мы уточним только конкретно необходимые данные.","serviceUnavailable":"Сервис обработки запросов временно недоступен. Повторите попытку позже или напишите на sales@begapunk.com.","invalidResponse":"Не удалось подтвердить, был ли запрос отправлен. Перед повторной отправкой свяжитесь с нами по адресу sales@begapunk.com.","networkFailure":"Произошла ошибка сети. Проверьте подключение и повторите попытку или напишите на sales@begapunk.com.","stepButton":"Отправить запрос CAD →"}</script>
 <script>
 
 // Mobile Menu

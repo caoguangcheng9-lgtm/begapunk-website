@@ -32,7 +32,8 @@
       },
       "requiredFields": {
         "email": "E-Mail",
-        "requirements": "Was benötigen Sie?"
+        "company": "Unternehmen",
+        "application": "Anwendung / Maschinentyp"
       },
       "required": "Bitte füllen Sie das Feld „{field}“ aus.",
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@firma.de.",
@@ -63,7 +64,8 @@
       },
       "requiredFields": {
         "email": "メールアドレス",
-        "requirements": "ご要望"
+        "company": "会社名",
+        "application": "用途 / 機械の種類"
       },
       "required": "「{field}」を入力してください。",
       "invalidEmail": "有効なメールアドレスを入力してください（例：name@company.com）。",
@@ -94,7 +96,8 @@
       },
       "requiredFields": {
         "email": "Электронная почта",
-        "requirements": "Что вам требуется?"
+        "company": "Название компании",
+        "application": "Применение / Тип машины"
       },
       "required": "Заполните поле «{field}».",
       "invalidEmail": "Введите корректный адрес электронной почты, например name@company.com.",
@@ -125,7 +128,8 @@
       },
       "requiredFields": {
         "email": "E-mail",
-        "requirements": "Votre besoin"
+        "company": "Nom de l'entreprise",
+        "application": "Application / Type de machine"
       },
       "required": "Le champ « {field} » est obligatoire.",
       "invalidEmail": "Veuillez saisir une adresse e-mail valide, par exemple prenom@entreprise.com.",

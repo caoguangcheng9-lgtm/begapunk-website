@@ -1,0 +1,38 @@
+﻿country,company,website,products,industry_segment,company_type,rotary_media_use_case,likely_buyer,purchase_likelihood,basis,china_supply_signal,contact_page,public_email,linkedin,source_url,evidence_grade,status
+Turkey,Turpack,https://turpack.com/,包装机械（灌装/封口/成型）,包装机械,整机制造商,旋转封口/灌装头的气路与真空传输,是,高,"官网首页 200，标题 Turkey's Leading Packaging Machine Manufacturer，命中 pneumatic/packaging",未知,待核实,待核实,待核实,https://turpack.com/,A,已验证官网
+Turkey,Antürk Makina,https://www.anturkmakina.com.tr/,纺织机械,纺织机械,整机制造商,热辊/印花/卷绕的导热油、水、气路,是,中,"官网首页 200，标题 Antürk Makina；GTM 纺织机械展参展商名录",未知,待核实,待核实,待核实,https://www.anturkmakina.com.tr/,B,已验证官网
+Turkey,Cantek Mühendislik,https://www.cantekmuhendislik.com.tr/,纺织机械,纺织机械,整机制造商,染色/整理设备的介质旋转传输,是,中,"官网首页 200，标题 Cantek Mühendislik；GTM 参展商名录",未知,待核实,待核实,待核实,https://www.cantekmuhendislik.com.tr/,B,已验证官网
+Turkey,Ceyhan Makine,https://www.ceyhanmakine.com.tr/,纺织机械,纺织机械,整机制造商,热辊与气动控制,是,中,"官网首页 200，标题 Ceyhan Makine；GTM 参展商名录",未知,待核实,待核实,待核实,https://www.ceyhanmakine.com.tr/,B,已验证官网
+Turkey,Atac Machinery,https://www.atacmakina.com/,纺织实验室测试设备,纺织检测设备,整机制造商,小口径气路/水浴旋转,是,低中,"官网首页 200，标题 Textile Laboratory Test Devices Manufacturer",未知,待核实,待核实,待核实,https://www.atacmakina.com/,A,已验证官网
+Turkey,ASRAM Makina,https://www.asram.com.tr/,纺织机械,纺织机械,整机制造商,卷绕/染色介质传输,是,中,"官网首页 200，标题 ASRAM MAKİNA；GTM 参展商名录",未知,待核实,待核实,待核实,https://www.asram.com.tr/,B,已验证官网
+Turkey,Sarten Ambalaj,https://www.sarten.com.tr/,金属包装（罐/盖）,包装（终端用户）,终端制造商,产线设备维护备件,低,低,"官网首页 200，标题 Sarten Ambalaj；属终端用户而非设备 OEM",未知,待核实,待核实,待核实,https://www.sarten.com.tr/,A,终端用户-低优先
+Turkey,Femsan,https://www.femsan.com/,电机,电机,零部件制造商,无直接旋转气路需求,否,低,"官网首页 200，标题 Femsan Elektrik Motorları",未知,待核实,待核实,待核实,https://www.femsan.com/,A,相关性低
+India,Nichrome,https://www.nichrome.com/,食品/医药/液体包装机械,包装机械,整机制造商,旋转灌装/封口的气路与真空,是,高,"官网首页 200，标题 Packaging Machines Manufacturer in India",未知,待核实,待核实,待核实,https://www.nichrome.com/,A,已验证官网
+India,Janatics,https://www.janatics.com/,气动元件（气缸/阀/接头）,气动元件,零部件制造商,可能作为渠道/配套方而非终端,合作,中,"官网首页 200，标题 Home - Janatics，命中 pneumatic/automation",未知,待核实,待核实,待核实,https://www.janatics.com/,A,潜在渠道
+India,Jyoti CNC Automation,https://www.jyoti.co.in/,CNC 机床,机床,整机制造商,回转工作台/夹具气路,是,中,"官网首页 200，标题 CNC machine, cnc lathe, vmc, hmc",未知,待核实,待核实,待核实,https://www.jyoti.co.in/,A,已验证官网
+India,Batliboi,https://www.batliboi.com/,机床制造与代理,机床,制造商/代理,机床附件与备件,是,中,"官网首页 200，标题 Home - Batliboi",未知,待核实,待核实,待核实,https://www.batliboi.com/,A,已验证官网
+India,Ace Micromatic,https://www.acemicro.com/,CNC 机床,机床,整机制造商,回转工作台/夹具,是,中,"官网首页 200；域名与集团站点需人工确认",未知,待核实,待核实,待核实,https://www.acemicro.com/,B,待核实域名
+India,Sahajanand Laser Technology (SLTL),https://www.sltl.com/,激光切割机,激光设备,整机制造商,卡盘/旋转轴气路,是,高,"官网首页 200，标题 Laser Cutting Machine Manufacturer India",未知,待核实,待核实,待核实,https://www.sltl.com/,A,已验证官网
+Italy,IMA Group,https://www.ima.it/,医药/食品/化妆品包装机械,包装机械,整机制造商,旋转封口/灌装的气路、真空、冷却,是,高,"官网首页 200，标题 The Global Processing and Packaging Leader",未知,待核实,待核实,待核实,https://www.ima.it/,A,已验证官网
+Italy,SACMI,https://www.sacmi.it/,陶瓷/包装/食品机械,包装与工业机械,整机制造商,压机与包装线的旋转介质传输,是,高,"官网首页 200，标题 Tecnologie Industriali Per Ceramica, Packaging E Food",未知,待核实,待核实,待核实,https://www.sacmi.it/,A,已验证官网
+Italy,Marchesini Group,https://www.marchesini.com/,医药包装机械,包装机械,整机制造商,旋转工位气路与真空,是,高,"官网首页 200，标题 Packaging Machines and Lines",未知,待核实,待核实,待核实,https://www.marchesini.com/,A,已验证官网
+Italy,Santoni,https://www.santoni.com/,无缝针织圆机,纺织机械,整机制造商,回转机构的压缩空气传输,是,中,"官网首页 200，标题 Macchine circolari elettroniche per Seamlesswear",未知,待核实,待核实,待核实,https://www.santoni.com/,A,已验证官网
+Italy,Camozzi,https://www.camozzi.com/,气动元件与系统,气动元件,零部件制造商,竞争/配套,竞争,中,"官网首页 200（返回体较小，需人工复核产品页）",未知,待核实,待核实,待核实,https://www.camozzi.com/,B,竞争者/待复核
+Italy,Pneumax,https://www.pneumax.net/,气动阀与系统,气动元件,零部件制造商,竞争/配套,竞争,中,"官网首页 200，命中 pneumatic/tube",未知,待核实,待核实,待核实,https://www.pneumax.net/,A,竞争者
+Italy,CMS SpA,https://www.cmsindustries.it/,多材料加工中心,工业机械,整机制造商,旋转工作台气路,是,中,"官网首页 200",未知,待核实,待核实,待核实,https://www.cmsindustries.it/,A,已验证官网
+Germany,Festo,https://www.festo.com/,气动与电驱动自动化,气动元件,零部件制造商,竞争/配套,竞争,中,"官网返回 403（反爬），品牌与产品由行业目录确认",未知,待核实,待核实,待核实,https://www.festo.com/,B,官网反爬
+Germany,Schunk,https://www.schunk.com/,夹持/抓取,自动化部件,零部件制造商,夹爪与回转模块气路,是,中高,"官网首页 200",未知,待核实,待核实,待核实,https://www.schunk.com/,A,已验证官网
+Germany,Zimmer Group,https://www.zimmer-group.com/,夹持/缓冲/自动化,自动化部件,零部件制造商,夹紧与回转模块气路,是,中,"官网首页 200，标题 Effiziente Automatisierungstechnik",未知,待核实,待核实,待核实,https://www.zimmer-group.com/,A,已验证官网
+Germany,Afag,https://www.afag.com/,上料/搬运自动化,自动化,整机制造商,旋转分度与抓取气路,是,中,"官网首页 200，命中 pneumatic/automation",未知,待核实,待核实,待核实,https://www.afag.com/,A,已验证官网
+Germany,Weiss Group,https://www.weiss-gmbh.de/,分度台/自动化,自动化,整机制造商,回转分度台气路/真空,是,中高,"官网首页 200，标题 WEISS Group，命中 automation/packaging",未知,待核实,待核实,待核实,https://www.weiss-gmbh.de/,A,已验证官网
+Germany,HAIMER,https://www.haimer.com/,刀柄/夹持/动平衡,机床附件,零部件制造商,主轴/刀柄相关气路（相关性有限）,低,低,"官网首页 200，标题 HAIMER",未知,待核实,待核实,待核实,https://www.haimer.com/,A,相关性低
+Germany,TRUMPF,https://www.trumpf.com/,激光切割/机床,激光设备,整机制造商,管材激光卡盘气路,是,高,"官网返回 403；品牌与产品由搜索确认",未知,待核实,待核实,待核实,https://www.trumpf.com/,B,官网反爬
+United Kingdom,Colchester Machine Tool Solutions,https://www.colchester.co.uk/,CNC 车床,机床,整机制造商,卡盘/回转气路,是,中,"官网首页 200",未知,待核实,待核实,待核实,https://www.colchester.co.uk/,A,已验证官网
+United Kingdom,Citizen Machinery UK,https://www.citizenmachinery.co.uk/,走心机/CNC 车床,机床,整机制造商,回转气路,是,中,"官网首页 200",未知,待核实,待核实,待核实,https://www.citizenmachinery.co.uk/,A,已验证官网
+United Kingdom,Chester Machine Tools,https://www.chestermachinetools.com/,机床与工具,机床,整机/代理,机床附件,是,低中,"官网首页 200",未知,待核实,待核实,待核实,https://www.chestermachinetools.com/,A,已验证官网
+United Kingdom,Asquith Butler,https://www.asquithbutler.com/,大型机床,机床,整机制造商,回转工作台/附件,是,低中,"官网首页 200",未知,待核实,待核实,待核实,https://www.asquithbutler.com/,A,已验证官网
+Vietnam,Deratech Vietnam,https://deratech.vn/,钣金/管材激光设备,激光设备,整机/集成商,卡盘气路,是,中,"官网首页 200，命中 laser/tube",较高（韩系品牌区域化供应链）,待核实,待核实,待核实,https://deratech.vn/,B,已验证官网
+Vietnam,Nam Son Laser,https://namson.com.vn/,激光设备代理与集成,激光设备,代理/集成商,整机配套与售后备件,是,中,"官网首页 200，标题 Giải Pháp Công Nghệ Laser Số 1 Việt Nam",高（代理含中国品牌）,待核实,待核实,待核实,https://namson.com.vn/,B,已验证官网
+Thailand,Siam P&W Technic,https://www.siampw.com/,激光切割设备,激光设备,设备商/服务商,整机配套,是,中,"官网首页 200，命中 laser/tube",未知,待核实,待核实,待核实,https://www.siampw.com/,B,已验证官网
+Malaysia,ViTrox,https://www.vitrox.com/,机器视觉/半导体检测自动化,自动化,整机制造商,旋转测试工位气路/真空,是,中,"官网首页 200，标题 AI Machine Vision, SMT Inspection",未知,待核实,待核实,待核实,https://www.vitrox.com/,A,已验证官网
+Malaysia,Pentamaster,https://www.pentamaster.com.my/,自动化设备/测试处理机,自动化,整机制造商,旋转工位气路与真空,是,中,"官网首页 200，标题 Pentamaster，命中 automation/packaging",未知,待核实,待核实,待核实,https://www.pentamaster.com.my/,A,已验证官网

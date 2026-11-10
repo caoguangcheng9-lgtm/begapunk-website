@@ -75,7 +75,7 @@
 
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","url":"https://www.begapunk.com/de/contact.html","mainEntity":{"@type":"LocalBusiness","@id":"https://www.begapunk.com/#localbusiness","name":"Begapunk","legalName":"宁波贝加庞克气动元件有限公司","parentOrganization":{"@id":"https://www.begapunk.com/#organization"},"url":"https://www.begapunk.com/","logo":{"@type":"ImageObject","url":"https://www.begapunk.com/images/begapunk-logo-header.png"},"image":"https://www.begapunk.com/images/factory.jpg","description":"Hersteller pneumatischer Drehdurchführungen mit Sitz in Ningbo, China.","telephone":"+86 183 6842 5342","email":"sales@begapunk.com","address":{"@type":"PostalAddress","streetAddress":"No. 665 Youdian Road, Andong Town","addressLocality":"Hangzhou Bay New Area, Ningbo","addressRegion":"Zhejiang","postalCode":"315327","addressCountry":"CN"},"openingHours":"Mo-Fr 08:30-17:30","knowsAbout":["Luft-Drehdurchführungen","Pneumatische Drehdurchführungen","Drehdurchführungen","Mehrkanal-Drehdurchführungen","Industrieautomation","CNC-Maschinen","Laserschneidmaschinen","Verpackungsmaschinen"],"sameAs":["https://www.linkedin.com/company/144021127/","https://www.youtube.com/@BEGAPUNKRotaryJointsTV","https://www.facebook.com/profile.php?id=61595481363231","https://x.com/Begapunk728"],"alternateName":["Ningbo Begapunk Pneumatic Components Co., Ltd.","BEGAPUNK"],"foundingDate":"2022-04-28","identifier":[{"@type":"PropertyValue","propertyID":"Unified Social Credit Code","value":"91330201MABLQR5K7U"},{"@type":"PropertyValue","propertyID":"Business Registration Number","value":"330218000114820"},{"@type":"PropertyValue","propertyID":"Organization Code","value":"MABLQR5K-7"}]},"inLanguage":"de"}</script>
 
-    <script defer="" src="../js/analytics.js?v=d1fe8e76c3eb"></script>
+    <script defer="" src="../js/analytics.js?v=e388c8fc344b"></script>
 </head>
 
 <body class="contact-rfq-page">
@@ -239,6 +239,18 @@
  <input type="email" id="email" name="email" placeholder="john@company.com" required="">
  </div>
 
+ <!-- Company Name (required) -->
+ <div class="form-group">
+ <label for="company">Unternehmen <span class="req">*</span></label>
+ <input type="text" id="company" name="company" placeholder="Firmenname" required="">
+ </div>
+
+ <!-- Application / Machine (required) -->
+ <div class="form-group">
+ <label for="application">Anwendung / Maschinentyp <span class="req">*</span></label>
+ <input type="text" id="application" name="application" placeholder="z. B. Rohrlaserschneidmaschine, Rundtisch" required="">
+ </div>
+
 
 
  <!-- Product or request type -->
@@ -271,9 +283,9 @@
 
  <div class="form-group">
 
- <label for="requirements">Was benötigen Sie? <span class="req">*</span></label>
+ <label for="requirements">Was benötigen Sie? (Optional)</label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="Nennen Sie die bereits bekannten Angaben: Modell, Medium, Kanalzahl, Druck, Drehzahl, Anschlussgröße, Montage oder Maschinenanwendung. Unvollständige Angaben sind in Ordnung." required=""></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Nennen Sie die bereits bekannten Angaben: Modell, Medium, Kanalzahl, Druck, Drehzahl, Anschlussgröße, Montage oder Maschinenanwendung. Unvollständige Angaben sind in Ordnung."></textarea>
 
  </div>
 
@@ -300,32 +312,24 @@
      <input type="text" id="fullname" name="fullname" placeholder="max. Mustermann">
     </div>
     <div class="form-group">
-     <label for="company">Unternehmen (optional)</label>
-     <input type="text" id="company" name="company" placeholder="Firmenname">
+     <label for="country">Land (optional)</label>
+     <select id="country" name="country">
+      <option value="">Bitte Land auswählen ...</option>
+      <option value="US">Vereinigte Staaten</option>
+      <option value="DE">Deutschland</option>
+      <option value="UK">Vereinigtes Königreich</option>
+      <option value="FR">Frankreich</option>
+      <option value="IT">Italien</option>
+      <option value="ES">Spanien</option>
+      <option value="NL">Niederlande</option>
+      <option value="PL">Polen</option>
+      <option value="BR">Brasilien</option>
+      <option value="IN">Indien</option>
+      <option value="JP">Japan</option>
+      <option value="KR">Südkorea</option>
+      <option value="other">Sonstiges</option>
+     </select>
     </div>
-   </div>
-   <div class="form-group">
-    <label for="country">Land (optional)</label>
-    <select id="country" name="country">
-     <option value="">Bitte Land auswählen ...</option>
-     <option value="US">Vereinigte Staaten</option>
-     <option value="DE">Deutschland</option>
-     <option value="UK">Vereinigtes Königreich</option>
-     <option value="FR">Frankreich</option>
-     <option value="IT">Italien</option>
-     <option value="ES">Spanien</option>
-     <option value="NL">Niederlande</option>
-     <option value="PL">Polen</option>
-     <option value="BR">Brasilien</option>
-     <option value="IN">Indien</option>
-     <option value="JP">Japan</option>
-     <option value="KR">Südkorea</option>
-     <option value="other">Sonstiges</option>
-    </select>
-   </div>
-   <div class="form-group">
-    <label for="application">Anwendung / Maschinentyp (optional)</label>
-    <input type="text" id="application" name="application" placeholder="z. B. hinteres Laserfutter, Drehtisch, Verpackungslinie">
    </div>
    <div class="form-group">
     <label for="quantity">Voraussichtliche Menge (optional)</label>
@@ -456,7 +460,7 @@
 
 <!-- ===== JS ===== -->
 
-<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"Ich benötige ein Angebot für dieses Modell oder diese Anwendung.","3d_step":"Katalog-STEP steht auf der Produktseite. Bitte senden Sie Anforderungen für Sonder-CAD oder andere Dateien.","application_review":"Bitte helfen Sie mir, eine passende Drehdurchführung für diese Anwendung auszuwählen.","seal_review":"Bitte prüfen Sie die Dichtungsverträglichkeit für diese Betriebsbedingungen.","verified_drawing":"Bitte prüfen Sie die markierte Schnittstelle oder die markierten Maße für dieses Modell.","technical_consultation":"Ich habe eine technische Frage zu diesem Modell oder dieser Anwendung.","general_inquiry":"Bitte prüfen Sie die folgenden Angaben und teilen Sie mir den nächsten Schritt mit.","hydraulic":"Bitte prüfen Sie eine hydraulische Drehdurchführung für Öl, Wasser oder Kühlmittel. Medium und Druck:"},"modelRequestTemplates":{"3d_step":"Katalog-STEP für {model} steht auf der Produktseite. Dieses Formular ist für Sonder-CAD oder andere Dateien."},"requiredFields":{"email":"E-Mail","requirements":"Was benötigen Sie?"},"required":"Bitte füllen Sie das Feld „{field}“ aus.","invalidEmail":"Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@firma.de.","emailSuggestion":"Meinten Sie {domain}? Bitte prüfen Sie die E-Mail-Adresse.","invalidFileType":"Dieser Dateityp wird nicht unterstützt: .{ext}. Zulässig sind: PDF, STEP, STP, IGES, IGS, DWG, DXF, JPG, JPEG, PNG.","fileTooLarge":"Die Datei ist zu groß ({size} MB). Maximal zulässig sind 10 MB.","noFile":"Keine Datei ausgewählt","sending":"Anfrage wird gesendet…","success":"Vielen Dank. Wir haben Ihre Anfrage erhalten. Unsere Ingenieure prüfen sie und antworten in der Regel innerhalb eines Arbeitstags. Sollte noch etwas fehlen, fragen wir nur gezielt nach der benötigten Angabe.","serviceUnavailable":"Der Anfragedienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut oder schreiben Sie an sales@begapunk.com.","invalidResponse":"Wir konnten nicht bestätigen, ob Ihre Anfrage gesendet wurde. Bitte wenden Sie sich an sales@begapunk.com, bevor Sie sie erneut senden.","networkFailure":"Ein Netzwerkfehler ist aufgetreten. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut oder schreiben Sie an sales@begapunk.com.","stepButton":"CAD-Anfrage senden →"}</script>
+<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"Ich benötige ein Angebot für dieses Modell oder diese Anwendung.","3d_step":"Katalog-STEP steht auf der Produktseite. Bitte senden Sie Anforderungen für Sonder-CAD oder andere Dateien.","application_review":"Bitte helfen Sie mir, eine passende Drehdurchführung für diese Anwendung auszuwählen.","seal_review":"Bitte prüfen Sie die Dichtungsverträglichkeit für diese Betriebsbedingungen.","verified_drawing":"Bitte prüfen Sie die markierte Schnittstelle oder die markierten Maße für dieses Modell.","technical_consultation":"Ich habe eine technische Frage zu diesem Modell oder dieser Anwendung.","general_inquiry":"Bitte prüfen Sie die folgenden Angaben und teilen Sie mir den nächsten Schritt mit.","hydraulic":"Bitte prüfen Sie eine hydraulische Drehdurchführung für Öl, Wasser oder Kühlmittel. Medium und Druck:"},"modelRequestTemplates":{"3d_step":"Katalog-STEP für {model} steht auf der Produktseite. Dieses Formular ist für Sonder-CAD oder andere Dateien."},"requiredFields":{"email":"E-Mail","company":"Unternehmen","application":"Anwendung / Maschinentyp"},"required":"Bitte füllen Sie das Feld „{field}“ aus.","invalidEmail":"Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@firma.de.","emailSuggestion":"Meinten Sie {domain}? Bitte prüfen Sie die E-Mail-Adresse.","invalidFileType":"Dieser Dateityp wird nicht unterstützt: .{ext}. Zulässig sind: PDF, STEP, STP, IGES, IGS, DWG, DXF, JPG, JPEG, PNG.","fileTooLarge":"Die Datei ist zu groß ({size} MB). Maximal zulässig sind 10 MB.","noFile":"Keine Datei ausgewählt","sending":"Anfrage wird gesendet…","success":"Vielen Dank. Wir haben Ihre Anfrage erhalten. Unsere Ingenieure prüfen sie und antworten in der Regel innerhalb eines Arbeitstags. Sollte noch etwas fehlen, fragen wir nur gezielt nach der benötigten Angabe.","serviceUnavailable":"Der Anfragedienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut oder schreiben Sie an sales@begapunk.com.","invalidResponse":"Wir konnten nicht bestätigen, ob Ihre Anfrage gesendet wurde. Bitte wenden Sie sich an sales@begapunk.com, bevor Sie sie erneut senden.","networkFailure":"Ein Netzwerkfehler ist aufgetreten. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut oder schreiben Sie an sales@begapunk.com.","stepButton":"CAD-Anfrage senden →"}</script>
 <script>
 
 // Mobile Menu

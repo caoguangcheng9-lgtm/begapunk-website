@@ -1354,7 +1354,7 @@
   "Working environment": "Environnement de fonctionnement",
   "You can also block or delete cookies and local storage in your browser. Clearing the consent record causes the preference banner to appear again.": "Vous pouvez également bloquer ou supprimer les cookies et le stockage local dans votre navigateur. La suppression de l’enregistrement du consentement fait réapparaître la bannière de préférences.",
   "You can change your preference at any time using the controls below.": "Vous pouvez modifier votre choix à tout moment à l’aide des commandes ci-dessous.",
-  "Your Company Ltd.": "Votre entreprise",
+  "Your Company Ltd.": "Votre SARL",
   "Your request will be reviewed by our engineers. We normally reply within one business day.": "Votre demande sera étudiée par notre équipe technique.",
   "› How to Install a Pneumatic Rotary Joint: 7 Mistakes That Cause Early Failure": "› Installer un raccord tournant pneumatique : 7 erreurs qui provoquent une défaillance prématurée",
   "› How to Select a Pneumatic Rotary Joint": "› Comment choisir un raccord tournant pneumatique",
@@ -2018,5 +2018,9 @@
   "Typical catalog production lead time: 20 calendar days after payment": "Délai habituel de production catalogue : 20 jours calendaires après paiement",
   "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products. If a suitable unit is already in stock, ask us for the available dispatch date.": "Oui. Begapunk accepte les commandes d’échantillons à l’unité, aussi bien pour les modèles standard du catalogue que pour les raccords sur mesure. Vous pouvez ainsi tester un prototype avant de commander une série. Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les produits sur mesure. Si une pièce adaptée est en stock, demandez-nous la date d’expédition disponible.",
   "<img src=\"images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"Pneumatic rotary union for a laser tube cutting machine rear chuck\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Laser tube rear-chuck compressed-air transfer</strong>\n                <span>Rear-chuck applications with BP-3P-0004 and BP-2P-08-0001, installed and used in customer applications. Circuit count and interfaces must be confirmed against the chuck and machine design.</span>": "<img src=\"../images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"Raccord tournant pneumatique pour mandrin arrière de machine de découpe laser de tubes\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Transfert d’air comprimé vers le mandrin arrière d’une machine de découpe laser de tubes</strong>\n                <span>Applications sur mandrin arrière avec BP-3P-0004 et BP-2P-08-0001, installées et utilisées dans des applications client. Le nombre de circuits et les interfaces doivent être confirmés selon la conception du mandrin et de la machine.</span>",
-  "Operations &amp; Engineering Manager": "Responsable opérations et ingénierie"
+  "Operations &amp; Engineering Manager": "Responsable opérations et ingénierie",
+  "Company Name <span class=\"req\">*</span>": "Nom de l'entreprise <span class=\"req\">*</span>",
+  "Application / Machine Type <span class=\"req\">*</span>": "Application / Type de machine <span class=\"req\">*</span>",
+  "What Do You Need? (Optional)": "De quoi avez-vous besoin ? (Facultatif)",
+  "e.g. laser tube cutting machine, rotary table": "p. ex. machine de découpe de tubes laser, table rotative"
 }

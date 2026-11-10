@@ -1,0 +1,6 @@
+﻿country,company,website,distributor_type,brands_carried,product_focus,relevance_to_begapunk,evidence,source_url,evidence_grade,status
+Turkey,Pnomarket,https://www.pnomarket.com/,液压与气动产品分销商,多品牌（液压/气动元件）,气动元件、液压件、接头,中：可作为区域渠道，但需评估其是否代理竞品,官网首页 200，标题 Hidrolik ve Pnömatik Ürünler,https://www.pnomarket.com/,A,已验证官网
+India,Batliboi,https://www.batliboi.com/,机床制造 + 代理分销,自有品牌与代理品牌,机床及附件,中：机床渠道可触达 OEM，但非气动专营,官网首页 200,https://www.batliboi.com/,A,已验证官网
+Vietnam,THK Vietnam (Hisaka),https://thk.net.vn/,工业零部件代理/分销,THK、Deublin 等,直线运动、旋转接头（含 Deublin 产品页）,高：已在销售旋转接头，说明本地有需求与渠道,"官网首页 200；产品页 /product/khop-noi-xoay-deublin-1005-020-037/ 标题为 Khớp nối xoay Deublin 1005-020-037（已实际抓取）",https://thk.net.vn/product/khop-noi-xoay-deublin-1005-020-037/,A,已验证产品页
+Malaysia,SEM Equipment,https://www.sem-eq.com/,工业设备与零部件供应,自有 MK 系列旋转接头,气动旋转接头（MK11A/MK21）,高：本地已有旋转接头供应，可作为渠道或竞争参照,官网 TLS 握手失败；搜索结果展示其 MK 系列产品页,https://www.sem-eq.com/,C,待核实
+United Kingdom,Laser Lines,https://www.laserlines.co.uk/,工业激光设备分销商,多品牌激光器与系统,激光切割/打标/增材设备,中：激光设备渠道，可接触激光整机厂与用户,官网首页 200，标题 leading supplier of Industrial Lasers,https://www.laserlines.co.uk/,A,已验证官网
