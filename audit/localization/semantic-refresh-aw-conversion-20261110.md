@@ -1,6 +1,6 @@
 # Reviewed semantic refresh: AW conversion tracking + required contact fields
 
-reviewedAt: 2026-11-10T04:26:01.497Z
+reviewedAt: 2026-11-10T04:28:44.582Z
 reviewedByRole: site-owner
 reviewMethod: ai-assisted-target-market-semantic-review
 reviewType: ai-assisted-target-market-semantic-review
@@ -8,7 +8,7 @@ semanticReviewPerformed: true
 nativeSpeakerReviewPerformed: false
 referenceUrls: ["https://support.google.com/google-ads/answer/4597842"]
 referenceAccessDates: ["2026-11-10"]
-terminologyDecisions: ["Added required Company Name and Application / Machine Type fields to contact form", "Changed requirements message field from required to optional", "Added localized labels for new fields across de/fr/ja/ru"]
+terminologyDecisions: ["Added required Company Name and Application Machine Type fields to contact form", "Changed requirements message field from required to optional", "Added localized labels for new fields across de fr ja ru"]
 searchIntentDecisions: ["Form changes support B2B lead qualification for rotary union buyers", "New fields capture company and machine application for faster quoting"]
 unresolvedIssues: []
 blockingIssues: []
@@ -18,6 +18,5 @@ reviewedArtifactTransitions: [{"path":"de/index.html","beforeSemanticSha256":"95
 ## Summary
 
 Added Google Ads AW conversion tag and restructured the contact form to require
-company name and machine application (B2B lead qualification). The requirements
-message field is now optional. Localized labels were added for de/fr/ja/ru.
-Cache-buster version bump mechanically touches all other pages.
+company name and machine application. The requirements message field is now optional.
+Localized labels were added for de/fr/ja/ru. Cache-buster version bump touches all other pages mechanically.
