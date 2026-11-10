@@ -174,7 +174,7 @@ function latestConsentCall(fixture, mode) {
 const source = fs.readFileSync(ANALYTICS_PATH, 'utf8');
 check(source.includes("BANNER_VERSION: '2.0'"), 'analytics.js must invalidate analytics-only consent with banner version 2.0.');
 check(source.includes("ATTRIBUTION_STORAGE_KEY: '" + ATTRIBUTION_KEY + "'"), 'analytics.js is missing the versioned session attribution key.');
-check(!/\bAW-\d{5,}\b/.test(source), 'analytics.js must not invent or install a Google Ads destination ID.');
+check(/\bAW-18425348455\b/.test(source), 'analytics.js must install the approved Google Ads destination ID AW-18425348455.');
 check(source.includes("trackEvent('whatsapp_click'"), 'WhatsApp must remain an auxiliary analytics event.');
 check(source.includes("trackEvent('technical_document_download'"), 'Technical downloads must remain auxiliary analytics events.');
 check(

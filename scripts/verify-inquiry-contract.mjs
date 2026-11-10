@@ -81,8 +81,8 @@ const REQUIRED_HIDDEN_FIELDS = [
   'inquiry_type', 'source_model', 'source_product', 'source_page', 'source_url',
   ...ATTRIBUTION_HIDDEN_FIELDS,
 ];
-const REQUIRED_NATIVE_FIELDS = ['email', 'requirements'];
-const OPTIONAL_NATIVE_FIELDS = ['fullname', 'company', 'country', 'product'];
+const REQUIRED_NATIVE_FIELDS = ['email', 'company', 'application'];
+const OPTIONAL_NATIVE_FIELDS = ['fullname', 'country', 'product', 'requirements'];
 const REQUEST_CODE_MAP = {
   quote: 'quote',
   '3d-step': '3d_step',
@@ -412,6 +412,7 @@ async function runSubmitFixture(page, runtime = {}, initialValues = {}) {
     fullname: 'Contract Test',
     email: 'contract-test@example.com',
     company: 'Contract Test Company',
+    application: 'Contract Test Application',
     country: 'Germany',
     product: 'BP-2P-130-0001',
     requirements: 'Synthetic validation only. Do not submit.',
@@ -549,9 +550,8 @@ for (const page of pages) {
   const drawingIndex = namedControls.indexOf(form.find('[name="drawing"]').get(0));
   check(
     applicationIndex >= 0 && applicationIndex < quantityIndex && drawingIndex >= 0
-      && form.find('.bp-rfq-optional-fields [name="application"]').length === 1
       && form.find('.bp-rfq-optional-fields [name="quantity"]').length === 1,
-    `${page.file}: application and quantity must remain adjacent optional project fields.`,
+    `${page.file}: application must be a required field before quantity, and quantity must remain inside optional project fields.`,
   );
   check(page.$('.bp-rfq-form-head > .bp-rfq-form-kicker').length === 1, `${page.file}: RFQ form kicker must remain present.`);
   check(page.$('.bp-rfq-form-head > h2#rfq-form-title').length === 1, `${page.file}: RFQ form title must remain present.`);
@@ -586,7 +586,7 @@ for (const page of pages) {
       sameKeys(Object.keys(page.copy), [...Object.keys(RFQ_NESTED_KEYS), ...RFQ_SCALAR_KEYS]),
       `${page.file}: Contact RFQ top-level keys differ from the approved contract.`,
     );
-    check(stringLeafCount(page.copy) === 23, `${page.file}: Contact RFQ data must contain exactly 23 string leaves.`);
+    check(stringLeafCount(page.copy) === 24, `${page.file}: Contact RFQ data must contain exactly 24 string leaves.`);
     for (const [group, expectedKeys] of Object.entries(RFQ_NESTED_KEYS)) {
       check(
         page.copy[group] && typeof page.copy[group] === 'object' && !Array.isArray(page.copy[group]),
@@ -809,6 +809,7 @@ for (const page of pages) {
       fullname: 'Contract Test',
       email: 'contract-test@example.com',
       company: 'Contract Test Company',
+      application: 'Contract Test Application',
       country: 'Germany',
       product: 'BP-2P-130-0001',
       requirements: 'Synthetic validation only. Do not submit.',
@@ -1126,9 +1127,9 @@ const requiredConditionStart = php.indexOf("if ($email === ''");
 const invalidContactStart = php.indexOf('if (!filter_var($email', requiredConditionStart);
 const requiredCondition = php.slice(requiredConditionStart, invalidContactStart);
 check(requiredConditionStart >= 0 && invalidContactStart > requiredConditionStart, 'send_inquiry.php: required-field condition could not be located.');
-check(requiredCondition.includes('$email') && requiredCondition.includes('$requirements'), 'send_inquiry.php: email and requirements must remain required.');
+check(requiredCondition.includes('$email') && requiredCondition.includes('$company') && requiredCondition.includes('$application'), 'send_inquiry.php: email, company and application must remain required.');
 check(!requiredCondition.includes('$name'), 'send_inquiry.php: fullname must not be required.');
-check(!requiredCondition.includes('$company'), 'send_inquiry.php: company must not be required.');
+check(!requiredCondition.includes('$requirements'), 'send_inquiry.php: requirements (message) must not be required.');
 check(!requiredCondition.includes('$country'), 'send_inquiry.php: country must not be required.');
 check(!requiredCondition.includes('$product'), 'send_inquiry.php: product must not be required.');
 check(!requiredCondition.includes('$quantity'), 'send_inquiry.php: quantity must not become required.');

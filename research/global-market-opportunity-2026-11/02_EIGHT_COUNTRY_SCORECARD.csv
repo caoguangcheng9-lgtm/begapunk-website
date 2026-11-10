@@ -1,0 +1,9 @@
+﻿country,rank_overall,overall_score,rank_laser,laser_score,rank_pneumatic,pneumatic_score,laser_oem_30,laser_search_20,laser_cpc_15,laser_fit_15,laser_feasibility_10,laser_competition_10,pneu_oem_30,pneu_search_20,pneu_cpc_15,pneu_fit_15,pneu_feasibility_10,pneu_competition_10,evidence_grade,key_strength,key_risk,ad_recommendation,notes
+Turkey,1,65.0,1,66.5,4,63.5,24,10,7.5,12,8,5,22,9,7.5,12,8,5,B,"本土激光/钣金设备与纺织机械 OEM 密度高（6 家激光/钣金 + 5 家纺织机械已验证）；价格敏感、对中国供应链熟悉、物流近","本土已有 Rototech（多通道/定制/出口），价格与交期竞争不可避免；英文技术资料足够但本地化土耳其语内容缺失",首选测试：激光线 40%，气动线 30%,CPC 分为中性分，见说明
+India,2,64.5,2,64.5,3,64.5,18,14,7.5,13,7,5,18,14,7.5,13,7,5,A,"英文环境、价格敏感、SLTL/苏雷什/乔蒂等本土激光与机床 OEM 已验证；询盘量大、决策快","本土低价替代与大量中国贸易商；客户对价格极敏感，可能只比价不下单",首选测试：激光与气动并行 35%,CPC 分为中性分
+Italy,3,64.5,3,63.5,1,65.5,22,13,7.5,11,7,3,24,13,7.5,11,7,3,A,"BLM/Salvagnini 管材激光主要厂商 + IMA/Sacmi/Marchesini 包装机械集群；OEM 质量最高","Rotoflux（本地）、Camozzi、Deublin 品牌根深蒂固；认证与文档要求高；CPC 预期最高",次选测试：包装/激光 25%,CPC 分为中性分
+Germany,4,62.0,4,59.5,2,64.5,20,15,7.5,9,5,3,25,15,7.5,9,5,3,A,"Trumpf/Schunk/Röhm/Festo 等顶级 OEM；德语搜索词丰富（Drehdurchführung、Rohrlaser）","Ott-Jakob/Deublin/Kadant 本地强势；CE/材料证明与德语服务门槛；CNY100/天难以覆盖高竞价",不建议首轮投放,CPC 分为中性分
+United Kingdom,5,52.5,5,51.5,5,53.5,10,11,7.5,10,7,6,12,11,7.5,10,7,6,B,"英文市场、沟通成本低；有 Colchester/Citizen/Pratt Burnerd 等机床与卡盘企业；MTA 会员体系可定向","本土几乎无管材激光整机 OEM，多为代理与集成商；脱欧后清关与 VAT 摩擦；广告竞争中等偏高",暂缓投放，保留外呼,CPC 分为中性分
+Vietnam,6,46.5,6,45.5,6,47.5,7,10,7.5,10,6,5,9,10,7.5,10,6,5,B,"越南语整机搜索词丰富（máy cắt laser ống 含价格/规格词），中资设备主导、供应链熟悉","本土整机 OEM 少，多为代理/集成商；旋转接头采购多随整机由中国母公司决定；广告难触达决策人",不做广告，做渠道开发,CPC 分为中性分
+Malaysia,7,43.0,7,41.5,7,44.5,7,8,7.5,8,6,5,10,8,7.5,8,6,5,B,"英语/马来语环境；ViTrox/Pentamaster 等自动化 OEM；本地已有 SEM Equipment 供应旋转接头","半导体/检测自动化为主，管材激光与包装机械 OEM 少；市场小、询盘量有限",暂缓投放,CPC 分为中性分
+Thailand,8,37.0,8,36.5,8,37.5,6,4,7.5,9,5,5,7,4,7.5,9,5,5,C,"泰国有 HSG 等中资激光产能落地，设备保有量增长","泰语旋转接头与管材激光词在 Google Suggest 中无任何补全（0 条），本地搜索需求未形成；OEM 样本最少",不建议投放,CPC 分为中性分

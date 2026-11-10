@@ -1,0 +1,28 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://www.akcanmakina.com.tr/","curl.exe : curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - Ŀ����Ҫ���Ʋ���ȷ��
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (60) scha...����Ҫ���Ʋ���ȷ��:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.
+000","https://www.akcanmakina.com.tr/","0","",""
+"https://www.anturkmakina.com.tr/","200","https://www.anturkmakina.com.tr/","62238","Antürk Makina","tube;"
+"https://www.cagsanmakine.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.cagsanmakine.com/","0","",""
+"https://www.cantekmuhendislik.com.tr/","200","https://www.cantekmuhendislik.com.tr/","31594","Cantek Mühendislik","tube;"
+"https://www.ceyhanmakine.com.tr/","200","https://www.ceyhanmakine.com.tr/","227292","Ceyhan Makine – Ceyhan Makine","tube;"
+"https://www.atacmakina.com/","200","https://www.atacmakina.com/","104370","Textile Laboratory Test Devices Manufacturer - Atac Machinery","tube;"
+"https://www.asram.com.tr/","200","https://www.asram.com.tr/","38344"," ASRAM MAKİNA ",""
+"https://www.cpm.com.tr/","200","https://cpm.com.tr/","333531","CPM – CPM Yazılım A.Ş.","tube;"

@@ -1,0 +1,23 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://turpack.com/","200","https://turpack.com/","127043","Turpack – Turkey's Leading Packaging Machine Manufacturer","tube;pneumatic;packaging;"
+"https://www.semetrapack.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.semetrapack.com/","0","",""
+"https://www.bossar.com/","200","https://www.sig.biz/bossar/en","219373","Bossar pouch equipment by SIG - SIG – for better","tube;packaging;"
+"https://www.waradepacktech.com/","403","https://www.waradepacktech.com/","5466","Just a moment...",""
+"https://vietpack.com.vn/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://vietpack.com.vn/","0","",""
+"https://www.quyentinhoa.com/","503","https://www.quyentinhoa.com/","0","",""
+"https://www.packworldturkiye.com/","200","https://packworldturkiye.com/","188365","Packworld Türkiye — Ambalaj Sektörü Haber Portalı","tube;packaging;"
+"https://www.gtmfair.com/en/exhibitor-list","200","https://gtmfair.com/en/exhibitor-list","1352494"," Exhibitor List | GTM Gaziantep Textile Machinery Exhibition 2027 | GTM Exhibition ","automation;cnc;"

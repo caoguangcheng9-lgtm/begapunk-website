@@ -1,0 +1,25 @@
+﻿country,language,keyword,keyword_type,intent,autocomplete_present,suggestion_sample,monthly_search_volume,cpc_low,cpc_high,data_source,data_date,confidence,notes
+Turkey,tr,lazer boru kesme makinesi,激光切管机,设备采购,是,"lazer boru kesme makinesi ; lazer boru profil kesme makinesi",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,补全条数 2，词库薄；说明土耳其语整机搜索存在但长尾少
+Turkey,tr,lazer boru profil kesme makinesi,激光切管机（型材）,设备采购,是,同上,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,型材/管材合称表达
+Turkey,tr,pnömatik rotary union,旋转接头,部件采购,否,0 条补全,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,土耳其语未形成该部件词，B2B 用户更可能用英文
+Turkey,en,rotary union,旋转接头,部件采购,是,"rotary union ; rotary union pneumatic ; rotary union joint ; rotary union price",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,该组补全与 India/UK/Malaysia 完全相同，判定为全球英文词而非本地词
+India,en,pneumatic rotary union,旋转接头,部件采购,是,"pneumatic rotary union ; pneumatic rotary union smc ; pneumatic rotary union festo ; air rotary union",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,品牌词（SMC/Festo）占比高，说明用户以替换件思维搜索
+India,en,laser tube cutting machine,激光切管机,设备采购,是,"... manufacturers ; ... price in india ; ... chuck ; ... india",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,出现 price in india / manufacturers in india，本地购买意图明确
+India,en,laser tube cutting machine chuck,激光切管机卡盘,部件采购,是,由上一词补全出现,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,高相关长尾：卡盘 + 整机组合词
+India,en,rotary union manufacturers,旋转接头厂商,供应商筛选,是,"rotary union manufacturers in india",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,出现 in india，本地供应商筛选意图
+Italy,it,giunto rotante pneumatico,旋转接头,部件采购,是,giunto rotante pneumatico,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,意大利语本地词成立
+Italy,it,giunto rotante aria compressa,压缩空气旋转接头,部件采购,是,giunto rotante aria compressa,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,介质限定词，意图明确
+Italy,it,giunto rotante deublin,旋转接头（品牌）,品牌替换,是,giunto rotante deublin,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,Deublin 品牌搜索占位，说明品牌心智强
+Italy,it,taglio laser tubi,管材激光切割,加工服务,是,"taglio laser tubi inox ; ... brescia ; ... bergamo ; ... usato",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,补全以城市/服务/二手为主，属加工服务意图，不是设备或部件采购
+Germany,de,Drehdurchführung,旋转接头,部件采购,是,"drehdurchführung ; drehdurchführung hydraulik ; drehdurchführung pneumatik ; drehdurchführung druckluft",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,德语品类词成熟，含气动/液压限定
+Germany,de,Drehdurchführung pneumatik,气动旋转接头,部件采购,是,drehdurchführung pneumatik,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,最贴近 Begapunk 产品
+Germany,de,Drehdurchführung druckluft,压缩空气旋转接头,部件采购,是,drehdurchführung druckluft,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,介质限定词
+Germany,de,Rohrlaser,管材激光,设备采购,是,"rohrlaser ; rohrlaser maschine ; rohrlaser kaufen ; rohrlaser preis ; rohrlaser lohnfertigung",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,混合购买与服务意图（lohnfertigung 为代加工）
+United Kingdom,en,pneumatic rotary union,旋转接头,部件采购,是,同印度组（全球词）,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,未见英国本地限定词
+United Kingdom,en,laser tube cutting machine,激光切管机,设备采购,是,"... price ; ... manufacturers ; ... chuck",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,无 UK 本地限定，需求信号弱于印度
+Vietnam,vi,máy cắt laser ống,管材激光切割机,设备采购,是,"máy cắt laser ống kim loại ; ống hộp ; ống tròn ; giá bao nhiêu ; 1500w",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,越南语整机词丰富，含价格/功率，购买意图强
+Vietnam,vi,khớp nối quay khí nén,气动旋转接头,部件采购,是,仅 1 条,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,部件词存在但极薄
+Thailand,th,ข้อต่อหมุนลม,气动旋转接头,部件采购,否,0 条补全,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,泰语该词无补全，需求未形成
+Thailand,th,เครื่องตัดเลเซอร์ท่อ,管材激光切割机,设备采购,否,0 条补全,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,整机泰语词亦无补全，建议改用英文词
+Malaysia,en,laser cutting machine,激光切割机,设备采购,是,"laser cutting machine malaysia price ; laser cutting machine malaysia ; ... parts name",N/A,N/A,N/A,Google Suggest API,2026-11-09,C,出现 malaysia 本地限定
+Malaysia,en,rotary union,旋转接头,部件采购,是,全球词,N/A,N/A,N/A,Google Suggest API,2026-11-09,C,无本地限定

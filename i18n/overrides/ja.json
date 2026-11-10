@@ -1458,5 +1458,10 @@
   "Typical catalog production lead time: 20 calendar days after payment": "カタログ品の標準製作期間：入金後20暦日",
   "Yes. Begapunk accepts single-unit sample orders for both standard catalog models and custom rotary unions, so you can test a prototype before committing to a production batch. Production lead time: 20 calendar days after payment (excluding shipping) for catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products. If a suitable unit is already in stock, ask us for the available dispatch date.": "はい。Begapunkは標準カタログ品・特注品ともに、1個からのサンプル注文に対応しています。量産発注前に試作機で評価できます。製作期間：カタログ品は入金後20暦日（輸送期間を除く）。製作期間：特注品は入金後最大30暦日（輸送期間を除く）。適合する製品の在庫がある場合は、出荷可能日をお問い合わせください。",
   "<img src=\"images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"Pneumatic rotary union for a laser tube cutting machine rear chuck\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>Laser tube rear-chuck compressed-air transfer</strong>\n                <span>Rear-chuck applications with BP-3P-0004 and BP-2P-08-0001, installed and used in customer applications. Circuit count and interfaces must be confirmed against the chuck and machine design.</span>": "<img src=\"../images/optimized/3-in-3-out-M8-rotary-joint-3.webp\" alt=\"レーザー管切断機の後側チャックに使用する空圧用ロータリジョイント\" loading=\"lazy\" width=\"500\" height=\"500\">\n                <strong>レーザー管切断機の後側チャックへの圧縮空気供給</strong>\n                <span>BP-3P-0004 と BP-2P-08-0001 を使用したリアチャック用途。お客様の用途で設置・使用されています。流路数と取合いは、チャックおよび装置の設計に基づいて確認してください。</span>",
-  "Operations &amp; Engineering Manager": "オペレーション・エンジニアリング責任者"
+  "Operations &amp; Engineering Manager": "オペレーション・エンジニアリング責任者",
+  "Company Name <span class=\"req\">*</span>": "会社名 <span class=\"req\">*</span>",
+  "Application / Machine Type <span class=\"req\">*</span>": "用途 / 機械の種類 <span class=\"req\">*</span>",
+  "What Do You Need? (Optional)": "必要なもの（任意）",
+  "e.g. laser tube cutting machine, rotary table": "例：レーザー管切断機、ロータリーテーブル",
+  "Your Company Ltd.": "貴社名"
 }

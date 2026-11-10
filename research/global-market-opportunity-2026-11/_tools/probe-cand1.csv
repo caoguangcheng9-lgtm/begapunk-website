@@ -1,0 +1,79 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://www.prattburnerd.com/","200","https://www.prattburnerd.com/","97766","Pratt Burnerd America | High-quality Workholding Solutions","chuck;collet;cylinder;"
+"https://www.kitagawa-europe.co.uk/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.kitagawa-europe.co.uk/","0","",""
+"https://www.cyantec.co.uk/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.cyantec.co.uk/","0","",""
+"https://www.laserlines.co.uk/","200","https://www.laserlines.co.uk/","658568","Laser Lines a leading supplier of Industrial Lasers and 3D Printers","laser;tube;cnc;"
+"https://www.smw-autoblok.it/","000","https://www.smw-autoblok.it/
+curl.exe : curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - Ŀ����Ҫ���Ʋ���ȷ��
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (60) scha...����Ҫ���Ʋ���ȷ��:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.","0","",""
+"https://www.camozzi.com/","403","https://www.camozzi.com/","5438","Just a moment...",""
+"https://www.pneumax.net/","200","https://www.pneumax.net/","142","",""
+"https://www.salvagnini.com/","200","https://www.salvagninigroup.com/en-US","79212","Sheet Metal Machinery Manufacturer | Salvagnini America","laser;tube;automation;"
+"https://www.ott-jakob.de/","200","https://www.ott-jakob.de/","108749","OTT-JAKOB Spanntechnik GmbH","tube;cnc;spindle;"
+"https://www.zimmer-group.de/","curl.exe : curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error 
+usually occurs when a fatal SSL/TLS alert is received (e.g. handshake failed). More detail may be available in the Wind
+ows System event log.
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...stem event log.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.zimmer-group.de/","0","",""
+"https://www.afag.com/","200","https://discreteautomation.emerson.com/brands/afag","136312","","tube;pneumatic;automation;packaging;cylinder;"
+"https://www.sltl.com/","200","https://www.sltl.com/","446115","Laser Cutting Machine Manufacturer India- SLTL Group®","laser;tube;automation;cnc;"
+"https://www.janatics.com/","200","https://www.janatics.com/","203442"," Home || Janatics ","tube;pneumatic;automation;packaging;cnc;cylinder;"
+"https://www.toolfast.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.toolfast.com/","0","",""
+"https://www.dener.com/","200","https://tr.dener.com/","88865","Dener Makina | Sac ve Metal İşleme Makineleri Üreticisi","tube;cnc;"
+"https://deratech.vn/","200","https://deratech.vn/","164104","Deratech Việt Nam - Giải Pháp Gia Công Kim Loại Tấm Cao Cấp","laser;tube;automation;cnc;"
+"https://namson.com.vn/","200","https://namson.com.vn/","270442","Nam Sơn Laser – Giải Pháp Công Nghệ Laser Số 1 Việt Nam","laser;tube;cnc;"
+"https://www.myslaser.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.myslaser.com/","0","",""
+"https://www.sem-eq.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.sem-eq.com/","0","",""
+"https://www.siampw.com/","200","https://www.siampw.com/","151518","Homepage - Siam P&W Technic","laser;tube;packaging;cnc;"
+"https://www.hsglaser.com/","200","https://www.hsglaser.com/","81905","Fiber laser cutting machine | EU and ISO certification | HSG","laser;tube;automation;cnc;"
+"https://www.ensun.io/search/laser-cutting-machine/malaysia","429","https://www.ensun.io/search/laser-cutting-machine/malaysia","20770","Vercel Security Checkpoint",""

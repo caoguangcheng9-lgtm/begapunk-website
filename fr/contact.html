@@ -75,7 +75,7 @@
 
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","url":"https://www.begapunk.com/fr/contact.html","mainEntity":{"@type":"LocalBusiness","@id":"https://www.begapunk.com/#localbusiness","name":"Begapunk","legalName":"宁波贝加庞克气动元件有限公司","parentOrganization":{"@id":"https://www.begapunk.com/#organization"},"url":"https://www.begapunk.com/","logo":{"@type":"ImageObject","url":"https://www.begapunk.com/images/begapunk-logo-header.png"},"image":"https://www.begapunk.com/images/factory.jpg","description":"Fabricant de raccords tournants pneumatiques basé à Ningbo, en Chine.","telephone":"+86 183 6842 5342","email":"sales@begapunk.com","address":{"@type":"PostalAddress","streetAddress":"No. 665 Youdian Road, Andong Town","addressLocality":"Hangzhou Bay New Area, Ningbo","addressRegion":"Zhejiang","postalCode":"315327","addressCountry":"CN"},"openingHours":"Mo-Fr 08:30-17:30","knowsAbout":["Raccords tournants pour air comprimé","Raccords tournants pneumatiques","Raccords tournants","Raccords tournants multicanaux","Automatisation industrielle","Machines CNC","Machines de découpe laser","Machines d'emballage"],"sameAs":["https://www.linkedin.com/company/144021127/","https://www.youtube.com/@BEGAPUNKRotaryJointsTV","https://www.facebook.com/profile.php?id=61595481363231","https://x.com/Begapunk728"],"alternateName":["Ningbo Begapunk Pneumatic Components Co., Ltd.","BEGAPUNK"],"foundingDate":"2022-04-28","identifier":[{"@type":"PropertyValue","propertyID":"Unified Social Credit Code","value":"91330201MABLQR5K7U"},{"@type":"PropertyValue","propertyID":"Business Registration Number","value":"330218000114820"},{"@type":"PropertyValue","propertyID":"Organization Code","value":"MABLQR5K-7"}]},"inLanguage":"fr"}</script>
 
-    <script defer="" src="../js/analytics.js?v=d1fe8e76c3eb"></script>
+    <script defer="" src="../js/analytics.js?v=e388c8fc344b"></script>
 </head>
 
 <body class="contact-rfq-page">
@@ -239,6 +239,18 @@
  <input type="email" id="email" name="email" placeholder="jean@entreprise.fr" required="">
  </div>
 
+ <!-- Company Name (required) -->
+ <div class="form-group">
+ <label for="company">Nom de l'entreprise <span class="req">*</span></label>
+ <input type="text" id="company" name="company" placeholder="Votre SARL" required="">
+ </div>
+
+ <!-- Application / Machine (required) -->
+ <div class="form-group">
+ <label for="application">Application / Type de machine <span class="req">*</span></label>
+ <input type="text" id="application" name="application" placeholder="p. ex. machine de découpe de tubes laser, table rotative" required="">
+ </div>
+
 
 
  <!-- Product or request type -->
@@ -271,9 +283,9 @@
 
  <div class="form-group">
 
- <label for="requirements">Décrivez votre besoin <span class="req">*</span></label>
+ <label for="requirements">De quoi avez-vous besoin ? (Facultatif)</label>
 
- <textarea id="requirements" name="requirements" rows="5" placeholder="Indiquez ce que vous connaissez déjà : référence, fluide, nombre de passages, pression, vitesse, diamètre des orifices, montage ou application machine. Des informations incomplètes suffisent pour commencer." required=""></textarea>
+ <textarea id="requirements" name="requirements" rows="5" placeholder="Indiquez ce que vous connaissez déjà : référence, fluide, nombre de passages, pression, vitesse, diamètre des orifices, montage ou application machine. Des informations incomplètes suffisent pour commencer."></textarea>
 
  </div>
 
@@ -303,32 +315,24 @@
      <input type="text" id="fullname" name="fullname" placeholder="Jean Dupont">
     </div>
     <div class="form-group">
-     <label for="company">Entreprise (facultatif)</label>
-     <input type="text" id="company" name="company" placeholder="Votre entreprise">
+     <label for="country">Pays (facultatif)</label>
+     <select id="country" name="country">
+      <option value="">Sélectionner un pays…</option>
+      <option value="US">États-Unis</option>
+      <option value="DE">Allemagne</option>
+      <option value="UK">Royaume-Uni</option>
+      <option value="FR">France</option>
+      <option value="IT">Italie</option>
+      <option value="ES">Espagne</option>
+      <option value="NL">Pays-Bas</option>
+      <option value="PL">Pologne</option>
+      <option value="BR">Brésil</option>
+      <option value="IN">Inde</option>
+      <option value="JP">Japon</option>
+      <option value="KR">Corée du Sud</option>
+      <option value="other">Autre</option>
+     </select>
     </div>
-   </div>
-   <div class="form-group">
-    <label for="country">Pays (facultatif)</label>
-    <select id="country" name="country">
-     <option value="">Sélectionner un pays…</option>
-     <option value="US">États-Unis</option>
-     <option value="DE">Allemagne</option>
-     <option value="UK">Royaume-Uni</option>
-     <option value="FR">France</option>
-     <option value="IT">Italie</option>
-     <option value="ES">Espagne</option>
-     <option value="NL">Pays-Bas</option>
-     <option value="PL">Pologne</option>
-     <option value="BR">Brésil</option>
-     <option value="IN">Inde</option>
-     <option value="JP">Japon</option>
-     <option value="KR">Corée du Sud</option>
-     <option value="other">Autre</option>
-    </select>
-   </div>
-   <div class="form-group">
-    <label for="application">Application / modèle de machine (facultatif)</label>
-    <input type="text" id="application" name="application" placeholder="Ex. : mandrin arrière de machine laser, table rotative, ligne d’emballage">
    </div>
    <div class="form-group">
     <label for="quantity">Quantité estimée (facultatif)</label>
@@ -459,7 +463,7 @@
 
 <!-- ===== JS ===== -->
 
-<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"Je souhaite obtenir un devis pour ce modèle ou cette application.","3d_step":"Le fichier STEP du catalogue se trouve sur la page produit. Je souhaite demander un fichier CAO pour un modèle sur mesure ou un autre besoin.","application_review":"Aidez-moi à choisir un raccord tournant adapté à cette application.","seal_review":"Aidez-moi à vérifier la compatibilité des joints avec ces conditions d’utilisation.","verified_drawing":"Veuillez vérifier l’interface ou les dimensions indiquées pour ce modèle.","technical_consultation":"J’ai une question technique concernant ce modèle ou cette application.","general_inquiry":"Veuillez examiner les informations ci-dessous et m’indiquer la prochaine étape.","hydraulic":"Veuillez étudier un raccord tournant sur mesure pour huile hydraulique, eau ou liquide de refroidissement. Fluide et pression :"},"modelRequestTemplates":{"3d_step":"Le fichier STEP catalogue de {model} se trouve sur la page produit. J’utilise ce formulaire pour un fichier CAO sur mesure ou un autre format."},"requiredFields":{"email":"E-mail","requirements":"Votre besoin"},"required":"Le champ « {field} » est obligatoire.","invalidEmail":"Veuillez saisir une adresse e-mail valide, par exemple prenom@entreprise.com.","emailSuggestion":"Vouliez-vous saisir {domain} ? Vérifiez votre adresse e-mail.","invalidFileType":"Type de fichier non accepté : .{ext}. Formats autorisés : PDF, STEP, IGES, DWG, DXF, JPG, PNG.","fileTooLarge":"Le fichier est trop volumineux ({size} Mo). Taille maximale : 10 Mo.","noFile":"Aucun fichier sélectionné","sending":"Envoi en cours…","success":"Merci. Nous avons bien reçu votre demande. Notre équipe technique va l’examiner. Si une donnée manque, nous demanderons uniquement l’information nécessaire.","serviceUnavailable":"Le service de traitement des demandes est temporairement indisponible. Écrivez à sales@begapunk.com.","invalidResponse":"Nous n’avons pas pu confirmer l’envoi de votre demande. Contactez sales@begapunk.com avant de l’envoyer de nouveau.","networkFailure":"La demande n’a pas pu être envoyée. Réessayez ou écrivez à sales@begapunk.com.","stepButton":"Envoyer la demande de CAO →"}</script>
+<script id="contact-rfq-copy" type="application/json">{"requestTemplates":{"quote":"Je souhaite obtenir un devis pour ce modèle ou cette application.","3d_step":"Le fichier STEP du catalogue se trouve sur la page produit. Je souhaite demander un fichier CAO pour un modèle sur mesure ou un autre besoin.","application_review":"Aidez-moi à choisir un raccord tournant adapté à cette application.","seal_review":"Aidez-moi à vérifier la compatibilité des joints avec ces conditions d’utilisation.","verified_drawing":"Veuillez vérifier l’interface ou les dimensions indiquées pour ce modèle.","technical_consultation":"J’ai une question technique concernant ce modèle ou cette application.","general_inquiry":"Veuillez examiner les informations ci-dessous et m’indiquer la prochaine étape.","hydraulic":"Veuillez étudier un raccord tournant sur mesure pour huile hydraulique, eau ou liquide de refroidissement. Fluide et pression :"},"modelRequestTemplates":{"3d_step":"Le fichier STEP catalogue de {model} se trouve sur la page produit. J’utilise ce formulaire pour un fichier CAO sur mesure ou un autre format."},"requiredFields":{"email":"E-mail","company":"Nom de l'entreprise","application":"Application / Type de machine"},"required":"Le champ « {field} » est obligatoire.","invalidEmail":"Veuillez saisir une adresse e-mail valide, par exemple prenom@entreprise.com.","emailSuggestion":"Vouliez-vous saisir {domain} ? Vérifiez votre adresse e-mail.","invalidFileType":"Type de fichier non accepté : .{ext}. Formats autorisés : PDF, STEP, IGES, DWG, DXF, JPG, PNG.","fileTooLarge":"Le fichier est trop volumineux ({size} Mo). Taille maximale : 10 Mo.","noFile":"Aucun fichier sélectionné","sending":"Envoi en cours…","success":"Merci. Nous avons bien reçu votre demande. Notre équipe technique va l’examiner. Si une donnée manque, nous demanderons uniquement l’information nécessaire.","serviceUnavailable":"Le service de traitement des demandes est temporairement indisponible. Écrivez à sales@begapunk.com.","invalidResponse":"Nous n’avons pas pu confirmer l’envoi de votre demande. Contactez sales@begapunk.com avant de l’envoyer de nouveau.","networkFailure":"La demande n’a pas pu être envoyée. Réessayez ou écrivez à sales@begapunk.com.","stepButton":"Envoyer la demande de CAO →"}</script>
 <script>
 
 // Mobile Menu

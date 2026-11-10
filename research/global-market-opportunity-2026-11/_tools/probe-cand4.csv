@@ -1,0 +1,127 @@
+﻿"url","status","effective","bytes","title","hits"
+"https://www.erkam.com.tr/","403","https://www.erkam.com.tr/","358","403 Forbidden",""
+"https://www.pimak.com.tr/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.pimak.com.tr/","0","",""
+"https://www.pnomarket.com/","200","https://www.pnomarket.com/","408330","Hidrolik ve Pnömatik Ürünler | Pnomarket","tube;"
+"https://www.hg-laser.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.hg-laser.com/","0","",""
+"https://bodor.com/","200","https://www.bodor.com/en/","118245","Bodor Laser | World No.1 in sales volume of laser cutting machines","laser;tube;automation;"
+"https://thk.net.vn/","200","https://thk.net.vn/","192651","Sản phẩm THK - Công ty TNHH Hisaka Việt Nam","laser;automation;"
+"https://www.hsglaser.co.th/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.hsglaser.co.th/","0","",""
+"https://www.myslaser.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.myslaser.com/","0","",""
+"http://www.sem-eq.com/","curl.exe : curl: (52) Empty reply from server
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (52) Empty reply from server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","http://www.sem-eq.com/","0","",""
+"https://www.acemicromatic.net/","200","https://www.acemicromatic.net/","307721","Best CNC and Metal Cutting Machine Manufacturers in India","laser;tube;chuck;automation;cnc;spindle;"
+"https://www.jyoti.co.in/","200","https://jyoti.co.in/","186362","Jyoti CNC Automation Limited | cnc machine, cnc lathe, vmc machine, hmc machine, cnc turning center, cnc milli","tube;chuck;automation;cnc;spindle;"
+"https://www.lakshmimachinelworks.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.lakshmimachinelworks.com/","0","",""
+"https://www.famar.biz/","200","https://www.famar.biz/","2478","famar carpenteria metallica",""
+"https://www.autoblok.it/","curl.exe : curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - Ŀ����Ҫ���Ʋ���ȷ��
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (60) scha...����Ҫ���Ʋ���ȷ��:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.
+000","https://www.autoblok.it/","0","",""
+"https://www.tecnofrese.it/","200","https://www.tecnofrese.it/","73806","Tecnofrese – Fresature e Asfaltature Stradali",""
+"https://www.roehm.biz/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.roehm.biz/","0","",""
+"https://www.forkardt.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.forkardt.com/","0","",""
+"https://www.hainbuch.com/","200","https://www.hainbuch.com/","141096","Vorreiter und Trendsetter für moderne Spannlösungen","tube;automation;spindle;"
+"https://www.cyantec.co.uk/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.cyantec.co.uk/","0","",""
+"https://www.kitagawa-europe.com/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.kitagawa-europe.com/","0","",""
+"https://www.xten.com.my/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.xten.com.my/","0","",""
+"https://www.siamdenki.co.th/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.siamdenki.co.th/","0","",""
+"https://www.bodor.co.th/","curl.exe : curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed
+所在位置 E:\begapunk-site-v2\research\global-market-opportunity-2026-11\_tools\probe.ps1:13 字符: 10
++   $raw = & curl.exe -sS -L --max-time 20 --connect-timeout 15 -A $ua  ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (curl: (35) scha...nnection failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+000","https://www.bodor.co.th/","0","",""
