@@ -656,7 +656,7 @@ $productReference = $sourceModel !== ''
     ? $sourceModel
     : ($sourceProduct !== '' ? $sourceProduct : $product);
 
-if ($email === '' || $requirements === '') {
+if ($email === '' || $company === '' || $application === '') {
     respond($context, 422, false, 'required_fields');
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email . $name)) {
