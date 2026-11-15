@@ -32,3 +32,8 @@ downloads/SOLIDWORKS_Template_Manual.md -text -diff
 
 # WebVTT subtitles must have identical checkout bytes on Windows and Linux.
 videos/*.vtt text eol=lf
+
+# Pinned audit records are hashed as original bytes; never normalize them.
+audit/llms-social-identity/2026-11-14/LINKEDIN_CURRENT_PROFILE_AUDIT.md -text
+audit/llms-social-identity/2026-11-14/FACEBOOK_CURRENT_PROFILE_AUDIT.md -text
+audit/llms-social-identity/2026-11-14/X_CURRENT_PROFILE_AUDIT.md -text
