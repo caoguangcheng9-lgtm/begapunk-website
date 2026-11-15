@@ -4688,7 +4688,7 @@ line-height: 1.65;
 
     .footer-social-links {
         display:grid;
-        grid-template-columns:repeat(4, 44px);
+        grid-template-columns:repeat(5, 44px);
     }
 
     .footer-navigation {
@@ -4717,6 +4717,14 @@ line-height: 1.65;
     .footer-legal {
         flex-wrap:wrap;
         gap:0 20px;
+    }
+}
+
+/* Keep 44px social targets when fewer than five columns fit. */
+@media (max-width: 299px) {
+    .footer-social-links {
+        display:flex;
+        flex-wrap:wrap;
     }
 }
 

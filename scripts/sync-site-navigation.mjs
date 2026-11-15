@@ -16,8 +16,10 @@ const outputRoot = process.env.I18N_OUTPUT_ROOT
   : root;
 const checkOnly = process.argv.includes('--check');
 const footerOnly = process.argv.includes('--footer-only');
+const socialOnly = process.argv.includes('--social-only');
+const styleOnly = process.argv.includes('--style-only');
 const config = JSON.parse(await fs.readFile(path.join(root, 'i18n', 'config.json'), 'utf8'));
-const configuredLanguages = outputRoot === root
+const configuredLanguages = outputRoot === root || styleOnly
   ? [config.sourceLanguage.code, ...config.activeLanguageCodes]
   : [...config.activeLanguageCodes];
 
@@ -30,6 +32,12 @@ function envList(name) {
 
 const requestedLanguages = envList('I18N_LANGUAGE_CODES');
 const requestedPages = envList('I18N_PAGE_NAMES');
+if (styleOnly && (socialOnly || footerOnly || !requestedLanguages.length || !requestedPages.length)) {
+  throw new Error('--style-only requires explicit language/page lists and cannot combine maintenance modes.');
+}
+if (socialOnly && (footerOnly || !requestedLanguages.length || !requestedPages.length)) {
+  throw new Error('--social-only requires explicit language/page lists and cannot be combined with --footer-only.');
+}
 const languages = requestedLanguages.length ? requestedLanguages : configuredLanguages;
 const pages = requestedPages.length ? requestedPages : config.pages;
 const navigationScriptVersion = SITE_NAVIGATION_SCRIPT_VERSION;
@@ -107,7 +115,7 @@ const footerCopy = {
     ],
     privacy: "Privacy",
     terms: "Terms",
-    socialLabels: ["Begapunk on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
+    socialLabels: {"LinkedIn":"Begapunk on LinkedIn","YouTube":"Begapunk on YouTube","Facebook":"Begapunk on Facebook","X":"Begapunk on X","Instagram":"Begapunk on Instagram"},
   },
   de: {
     positioning: "Präzisionsdrehdurchführungen für die Industrieautomation.",
@@ -126,7 +134,7 @@ const footerCopy = {
     ],
     privacy: "Datenschutz",
     terms: "Nutzungsbedingungen",
-    socialLabels: ["Begapunk auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
+    socialLabels: {"LinkedIn":"Begapunk auf LinkedIn","YouTube":"Begapunk auf YouTube","Facebook":"Begapunk auf Facebook","X":"Begapunk auf X","Instagram":"Begapunk auf Instagram"},
   },
   fr: {
     positioning: "Raccords tournants de précision pour l’automatisation industrielle.",
@@ -145,7 +153,7 @@ const footerCopy = {
     ],
     privacy: "Confidentialité",
     terms: "Conditions d'utilisation",
-    socialLabels: ["Begapunk sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
+    socialLabels: {"LinkedIn":"Begapunk sur LinkedIn","YouTube":"Begapunk sur YouTube","Facebook":"Begapunk sur Facebook","X":"Begapunk sur X","Instagram":"Begapunk sur Instagram"},
   },
   ja: {
     positioning: "産業オートメーション向けの精密ロータリージョイント。",
@@ -164,7 +172,7 @@ const footerCopy = {
     ],
     privacy: "プライバシーポリシー",
     terms: "利用規約",
-    socialLabels: ["Begapunk公式LinkedIn","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
+    socialLabels: {"LinkedIn":"Begapunk公式LinkedIn","YouTube":"Begapunk公式YouTube","Facebook":"Begapunk公式Facebook","X":"Begapunk公式X","Instagram":"Begapunk公式Instagram"},
   },
   ru: {
     positioning: "Прецизионные вращающиеся соединения для промышленной автоматизации.",
@@ -183,7 +191,7 @@ const footerCopy = {
     ],
     privacy: "Политика конфиденциальности",
     terms: "Условия использования",
-    socialLabels: ["Begapunk в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
+    socialLabels: {"LinkedIn":"Begapunk в LinkedIn","YouTube":"Begapunk на YouTube","Facebook":"Begapunk на Facebook","X":"Begapunk в X","Instagram":"Begapunk в Instagram"},
   },
 };
 
@@ -277,12 +285,7 @@ const styleVersion = SITE_STYLE_VERSION;
 const homepageStyleVersion = SITE_STYLE_VERSION;
 const englishStyleVersion = SITE_STYLE_VERSION;
 const englishHomepageStyleVersion = SITE_STYLE_VERSION;
-const socialLinks = [
-  ['linkedin', 'LinkedIn', COMPANY_IDENTITY.brandSocialProfiles[0]],
-  ['youtube', 'YouTube', COMPANY_IDENTITY.brandSocialProfiles[1]],
-  ['facebook', 'Facebook', COMPANY_IDENTITY.brandSocialProfiles[2]],
-  ['x', 'X', COMPANY_IDENTITY.brandSocialProfiles[3]],
-];
+const socialLinks = COMPANY_IDENTITY.officialSocialChannels;
 
 const productPages = new Set(['products.html', 'products-p2.html', 'product-comparison.html', ...config.pages.filter((page) => /^BP-/.test(page))]);
 const applicationPages = new Set(['applications.html', ...config.pages.filter((page) => /^application-/.test(page) || /^case(?:-|studies)/.test(page))]);
@@ -350,6 +353,7 @@ function icon(name) {
     linkedin: '<path d="M5.4 8.2H2V22h3.4V8.2ZM3.7 2A2 2 0 1 0 3.7 6a2 2 0 0 0 0-4ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.3V22h3.4v-6.8c0-1.8.3-3.6 2.6-3.6 2.3 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/>',
     youtube: '<path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6ZM9.8 15.4V8.6L16 12l-6.2 3.4Z"/>',
     facebook: '<path d="M14 22v-8h2.8l.4-3H14V9.1c0-.9.3-1.6 1.7-1.6h1.7V4.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V11H7.5v3h2.9v8H14Z"/>',
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.75"/>',
     x: '<path d="M3 3h4.7l4.8 6.4L18 3h3l-7.1 8.7L22 21h-4.7l-5.2-6.9L6 21H3l7.7-9.2L3 3Zm3.5 2 11.8 14h1.2L7.7 5H6.5Z"/>',
   };
   const filled = ['linkedin', 'youtube', 'facebook', 'x'].includes(name);
@@ -360,11 +364,95 @@ function footerColumn(title, items) {
   return `<details class="footer-column" open>\n     <summary class="footer-summary"><h2 class="footer-title">${title}</h2><span class="footer-toggle-icon" aria-hidden="true"></span></summary>\n     <ul class="footer-links">\n${items.map(([href, label]) => `      <li><a href="${href}">${label}</a></li>`).join('\n')}\n     </ul>\n    </details>`;
 }
 
+function socialMarkup(language, preservedIcons = new Map()) {
+  return socialLinks.map(({ key, platform, url }) => {
+    const label = footerCopy[language]?.socialLabels[platform];
+    if (!label) throw new Error(`${language}/${platform}: social accessible label is missing.`);
+    return `      <li><a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">${preservedIcons.get(key) ?? icon(key)}</a></li>`;
+  }).join('\n');
+}
+
+// Update only the shared CSS href through the same governed version source.
+async function styleOnlyMarkup(original, file) {
+  const $ = load(original, { sourceCodeLocationInfo: true });
+  const links = $('link[rel="stylesheet"]').filter((_, el) => /^(?:\.\.\/)?css\/style\.css(?:\?v=[^&#"']+)?$/.test($(el).attr('href') || ''));
+  if (links.length !== 1) throw new Error(`${file}: expected exactly one shared CSS resource.`);
+  const link = links.get(0), href = $(link).attr('href');
+  const resource = path.resolve(path.dirname(file), href.split('?')[0]);
+  if (resource !== path.join(outputRoot, 'css', 'style.css')) throw new Error(`${file}: unexpected CSS resource path.`);
+  await fs.access(resource);
+  const location = link.sourceCodeLocation.attrs.href;
+  const attribute = original.slice(location.startOffset, location.endOffset);
+  const match = attribute.match(/^href=(['"])(.*?)\1$/i);
+  if (!match) throw new Error(`${file}: unsupported CSS href syntax.`);
+  const next = `href=${match[1]}${href.split('?')[0]}?v=${SITE_STYLE_VERSION}${match[1]}`;
+  return original.slice(0, location.startOffset) + next + original.slice(location.endOffset);
+}
+
+// A bounded maintenance path: replace only the social list contents and
+// Organization.sameAs. Keep LocalBusiness, Person and all other fields intact.
+function socialOnlyMarkup(original, language) {
+  const $ = load(original, { sourceCodeLocationInfo: true });
+  const lists = $('#siteFooter .footer-social-links');
+  if (lists.length !== 1) throw new Error(`${language}: expected one Footer social list.`);
+  // Keep existing icon bytes, including SVG attribute order. The social-only
+  // path must not rewrite approved icons while adding one new platform.
+  const preservedIcons = new Map();
+  const anchors = lists.find('a');
+  if (![4, 5].includes(anchors.length)) throw new Error(`${language}: unexpected social link count.`);
+  anchors.each((_, element) => {
+    const link = $(element);
+    const channel = socialLinks.find(({ platform }) => footerCopy[language].socialLabels[platform] === link.attr('aria-label'));
+    if (!channel || preservedIcons.has(channel.key)) throw new Error(`${language}: unknown or duplicate social label.`);
+    const historicalLinkedIn = COMPANY_IDENTITY.localBusinessSocialProfiles.find(url => new URL(url).hostname === 'www.linkedin.com');
+    if (link.attr('href') !== channel.url && !(channel.key === 'linkedin' && link.attr('href') === historicalLinkedIn)) {
+      throw new Error(`${language}/${channel.platform}: unexpected existing corporate account.`);
+    }
+    if (link.find('svg.footer-icon').length !== 1) throw new Error(`${language}/${channel.platform}: expected one existing icon.`);
+    const position = element.sourceCodeLocation;
+    preservedIcons.set(channel.key, original.slice(position.startTag.endOffset, position.endTag.startOffset));
+  });
+  for (const { key } of socialLinks.filter(channel => channel.key !== 'instagram')) {
+    if (!preservedIcons.has(key)) throw new Error(`${language}/${key}: existing platform is missing.`);
+  }
+  const range = lists.get(0).sourceCodeLocation;
+  const newline = original.includes('\r\n') ? '\r\n' : '\n';
+  const edits = [{ start: range.startTag.endOffset, end: range.endTag.startOffset,
+    value: `${newline}${socialMarkup(language, preservedIcons).replaceAll('\n', newline)}${newline}    ` }];
+  $('script[type="application/ld+json"]').each((_, element) => {
+    const raw = $(element).html() || '';
+    const data = JSON.parse(raw);
+    let touched = false;
+    const visit = (value) => {
+      if (!value || typeof value !== 'object') return;
+      const types = Array.isArray(value['@type']) ? value['@type'] : [value['@type']];
+      if (types.includes('Organization') && !types.includes('LocalBusiness')) {
+        if (JSON.stringify(value.sameAs) !== JSON.stringify(COMPANY_IDENTITY.brandSocialProfiles)) {
+          value.sameAs = [...COMPANY_IDENTITY.brandSocialProfiles];
+          touched = true;
+        }
+      }
+      for (const child of Object.values(value)) visit(child);
+    };
+    visit(data);
+    if (touched) {
+      const location = element.sourceCodeLocation;
+      edits.push({ start: location.startTag.endOffset, end: location.endTag.startOffset,
+        value: `${raw.match(/^\s*/)[0]}${JSON.stringify(data)}${raw.match(/\s*$/)[0]}` });
+    }
+  });
+  let next = original;
+  for (const edit of edits.sort((a, b) => b.start - a.start)) {
+    next = `${next.slice(0, edit.start)}${edit.value}${next.slice(edit.end)}`;
+  }
+  return next;
+}
+
 function footerMarkup(language, page) {
   const t = footerCopy[language];
   if (!t) throw new Error(`Missing footer copy for configured language: ${language}`);
   const assetPrefix = language === 'en' ? '' : '../';
-  const social = socialLinks.map(([key, , href], index) => `      <li><a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${t.socialLabels[index]}">${icon(key)}</a></li>`).join('\n');
+  const social = socialMarkup(language);
   const columns = t.links.map((links, index) => footerColumn(t.titles[index], links)).join('\n    ');
   const companyInfo = `<div class="footer-company-info">
     <p class="footer-copyright">© 2026 <span class="footer-company-name">${legalCompanyName}</span>（<span class="footer-company-name-zh">${COMPANY_IDENTITY.legalNameZh}</span>）</p>
@@ -544,6 +632,22 @@ for (const language of languages) {
       ? path.join(outputRoot, page)
       : path.join(outputRoot, language, page);
     const original = await fs.readFile(file, 'utf8');
+    if (styleOnly) {
+      const next = await styleOnlyMarkup(original, file);
+      if (next !== original) {
+        changed += 1;
+        if (!checkOnly) await fs.writeFile(file, next, 'utf8');
+      }
+      continue;
+    }
+    if (socialOnly) {
+      const next = socialOnlyMarkup(original, language);
+      if (next !== original) {
+        changed += 1;
+        if (!checkOnly) await fs.writeFile(file, next, 'utf8');
+      }
+      continue;
+    }
     const pageStyleVersion = language === 'en'
       ? (page === 'index.html' ? englishHomepageStyleVersion : englishStyleVersion)
       : (page === 'index.html' ? homepageStyleVersion : styleVersion);
@@ -616,7 +720,8 @@ for (const language of languages) {
       const visit = (value) => {
         if (!value || typeof value !== 'object') return;
         if (['Organization', 'LocalBusiness'].includes(value['@type'])) {
-          const canonicalSameAs = [...COMPANY_IDENTITY.brandSocialProfiles];
+          const canonicalSameAs = [...(value['@type'] === 'LocalBusiness'
+            ? COMPANY_IDENTITY.localBusinessSocialProfiles : COMPANY_IDENTITY.brandSocialProfiles)];
           if (JSON.stringify(value.sameAs) !== JSON.stringify(canonicalSameAs)) {
             value.sameAs = canonicalSameAs;
             touched = true;

@@ -33,11 +33,11 @@ if (args.length > 1 || (args[0] && !['--check', '--write'].includes(args[0]))) {
 const mode = args[0] === '--write' ? 'write' : 'check';
 
 const WARRANTY_EXPECTATIONS = Object.freeze({
-  en: Object.freeze({ label: 'Warranty period', value: '1 year from shipment' }),
-  de: Object.freeze({ label: 'Garantiezeitraum', value: '1 Jahr ab Versand' }),
-  fr: Object.freeze({ label: 'Durée de garantie', value: "1 an à compter de l'expédition" }),
-  ja: Object.freeze({ label: '保証期間', value: '出荷日から1年' }),
-  ru: Object.freeze({ label: 'Гарантийный срок', value: '1 год с даты отгрузки' }),
+  en: Object.freeze({ label: 'Warranty period', value: '12 months from customer receipt' }),
+  de: Object.freeze({ label: 'Garantiezeitraum', value: '12 Monate ab Erhalt durch den Kunden' }),
+  fr: Object.freeze({ label: 'Durée de garantie', value: "12 mois à compter de la réception par le client" }),
+  ja: Object.freeze({ label: '保証期間', value: 'お客様の受領日から12か月' }),
+  ru: Object.freeze({ label: 'Гарантийный срок', value: '12 месяцев с даты получения заказчиком' }),
 });
 
 const CAD_EXPECTATIONS = Object.freeze({
@@ -161,9 +161,9 @@ function validateFactContract(contract) {
     }
   }
   const anomaly = contract.products[PORT_ANOMALY_MODEL]?.drawingFacts?.ports;
-  if (anomaly?.status !== 'anomaly-unresolved'
-    || anomaly.annotations?.some((annotation) => annotation.thread !== 'G4/1')) {
-    throw new Error(`${PORT_ANOMALY_MODEL}: unresolved raw G4/1 port contract changed unexpectedly.`);
+  if (anomaly?.status !== 'verified'
+    || anomaly.annotations?.some((annotation) => annotation.thread !== 'G1/4')) {
+    throw new Error(`${PORT_ANOMALY_MODEL}: owner-selected IA Rev A G1/4 port contract mismatch.`);
   }
 }
 
@@ -213,6 +213,7 @@ function buildDesiredProduct(currentProduct, localized, locale, model, product) 
     throw new Error(`${model}/${locale}: Product JSON-LD has no additionalProperty array.`);
   }
 
+  if (!Object.hasOwn(localized.fields, 'weight')) desired.additionalProperty = desired.additionalProperty.filter(item => drawingBackedCanonicalField(item?.name) !== 'weight');
   findWarrantyProperty(currentProduct, locale, `${model}/${locale}`);
   for (const field of localized.requiredJsonFields) {
     const matches = desired.additionalProperty.filter((item) => drawingBackedCanonicalField(item?.name) === field);
@@ -238,13 +239,10 @@ function buildDesiredProduct(currentProduct, localized, locale, model, product) 
       name: cad.label,
       value: cad.value,
     });
-    desired.associatedMedia = {
-      '@type': 'MediaObject',
-      name: cad.mediaName(model),
-      contentUrl: `https://www.begapunk.com/downloads/${model}.step`,
-      encodingFormat: 'application/step',
-    };
+    delete desired.associatedMedia;
   }
+  delete desired.inLanguage;
+  delete desired.associatedMedia;
   assertWarrantyPropertyPreserved(currentProduct, desired, locale, `${model}/${locale}`);
   return desired;
 }
@@ -456,7 +454,7 @@ function locateSpecificationTargets(source, relativePath, locale, model, product
 
   const required = [];
   if (product.status === 'verified-drawing') {
-    required.push('pressure', 'speed', 'body', 'seal', 'media', 'temperature', 'weight', 'dimensions');
+    required.push(...['pressure', 'speed', 'body', 'seal', 'media', 'temperature', 'weight', 'dimensions'].filter(field => Object.hasOwn(localized.fields, field)));
     if (product.drawingFacts.throughBore?.status === 'verified') required.push('bore');
     if (product.drawingFacts.mounting.status === 'verified') required.push('mount');
     if (product.drawingFacts.ports.status === 'anomaly-unresolved'
@@ -472,7 +470,7 @@ function locateSpecificationTargets(source, relativePath, locale, model, product
     }
   }
   const missingRequired = required.filter((field) => !seenTargetFields.has(field));
-  const managedFields = existingManagedFields.length ? existingManagedFields : missingRequired;
+  const managedFields = (existingManagedFields.length ? existingManagedFields : missingRequired).filter(field => Object.hasOwn(localized.fields, field));
   const requiredOrder = [
     'pressure', 'speed', 'body', 'seal', 'media', 'temperature', 'weight',
     'dimensions', 'bore', 'mount', 'ports',
@@ -627,8 +625,8 @@ function assertTargetContract(after, contract, relativePath, locale, model, prod
   }
   if (model === PORT_ANOMALY_MODEL) {
     const targetText = contract.targets.map((target) => target.desired).join('\n');
-    if (/G1\/4|G4\/1/i.test(targetText)) {
-      throw new Error(`${relativePath}: unresolved port annotation was normalized or published.`);
+    if (/G4\/1/i.test(targetText) || !targetText.includes('G1/4')) {
+      throw new Error(`${relativePath}: approved IA port thread missing or retired typo published.`);
     }
     if (!contract.keySpec.finalKeys.includes('ports')) {
       throw new Error(`${relativePath}: unresolved port boundary is absent from first-view key specs.`);

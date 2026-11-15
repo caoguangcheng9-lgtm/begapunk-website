@@ -390,6 +390,7 @@ try {
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith('#'));
   const requiredNginxDirectives = [
+    ['temporary retired catalog', 'if ($uri = /downloads/Begapunk-Rotary-Joint-Catalog-2026.pdf) { return 302 https://www.begapunk.com/products.html; }'],
     ['root homepage alias', 'if ($request_uri ~ "^/index[.]html(?:[?].*)?$") { return 301 https://www.begapunk.com/$is_args$args; }'],
     [
       'localized homepage aliases',
@@ -436,8 +437,8 @@ try {
   }
   // Match the installed v3 policy. The separate historical PDF alias is not
   // included in this release and must not force an unrelated privileged change.
-  if (policyDirectives.length !== 43 || new Set(policyDirectives).size !== 43) {
-    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 43 unique approved directives; found ${policyDirectives.length}`);
+  if (policyDirectives.length !== 44 || new Set(policyDirectives).size !== 44) {
+    failures.push(`ops/nginx-managed-redirects.conf: expected exactly 44 unique approved directives; found ${policyDirectives.length}`);
   }
   if (policyDirectives.some((line) => /^location\b|\b(?:root|alias|proxy_pass|include)\b/i.test(line))) {
     failures.push('ops/nginx-managed-redirects.conf: policy must remain location-free and must not change roots, aliases, proxies, or includes');

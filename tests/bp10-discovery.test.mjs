@@ -16,8 +16,8 @@ test('BP10 trust contract rejects wrong duty cycle, seal, port count and RFQ att
   const source = await read(route);
   assertBp10ProductContract(load(source), 'en', route);
   for (const [before, after] of [
-    ['100 RPM — intermittent rotation', '100 RPM — continuous rotation'],
-    ['<td>O-ring</td>', '<td>PTFE</td>'],
+    ['<td>100 RPM</td>', '<td>100 RPM — intermittent rotation</td>'],
+    ['<td>FKM O-ring with MoS₂ additive and post-molding PTFE surface coating</td>', '<td>PTFE</td>'],
     ['20 × G1/8: 10 inlet + 10 outlet', '20 × G1/8: 1 inlet + 19 outlet'],
     ['&amp;source=BP-10P-0001.html', '&amp;source=BP-8P-0001.html'],
   ]) {
@@ -31,14 +31,14 @@ test('BP10 is discoverable once in the catalog, comparison and both sitemaps', a
   const card = catalog(`[data-href="${route}"]`);
   assert.equal(card.length, 1);
   assert.equal(card.attr('data-channel'), '4-channel+');
-  assert.match(card.text(), /100 RPM · intermittent/);
+  assert.match(card.text(), /100 RPM/);
   const list = JSON.parse(catalog('script[type="application/ld+json"]').first().text());
   assert.equal(list.numberOfItems, catalog('.product-card-large').length);
   assert.equal(list.itemListElement.filter((item) => item.url === url).length, 1);
   const comparison = load(await read('product-comparison.html'));
   const row = comparison(`tr:has(a[href="${route}"])`);
   assert.equal(row.length, 1);
-  assert.match(row.text(), /100 RPM \(intermittent\)/);
+  assert.match(row.text(), /100 RPM/);
   for (const file of ['sitemap.xml', 'sitemap-i18n.xml']) {
     const xml = load(await read(file), { xmlMode: true });
     assert.equal(xml('loc').toArray().filter((el) => xml(el).text() === url).length, 1);
@@ -51,8 +51,8 @@ test('BP10 facts and multilingual discovery stay consistent', async () => {
   const $ = load(await read(route));
   const product = JSON.parse($('script[type="application/ld+json"]').text())['@graph'].find((item) => item['@type'] === 'Product');
   const rows = $('.spec-table tr').toArray().map((el) => [$(el).find('th').text(), $(el).find('td').text()]);
-  assert.deepEqual(product.additionalProperty.map((p) => [p.name, p.value]), rows);
-  assert.match(product.description, /100 RPM for intermittent rotation/);
+  assert.deepEqual(product.additionalProperty.filter(p=>!String(p.propertyID||'').startsWith('begapunk-policy-')).map((p) => [p.name, p.value]), rows);
+  assert.match(product.description, /100 RPM/);
   assert.match(product.description, /O-ring/);
   const records = JSON.parse(await read('search-index.json')).filter((r) => r.url === route);
   assert.equal(records.length, 1);
@@ -67,12 +67,13 @@ test('BP10 facts and multilingual discovery stay consistent', async () => {
     assert.equal(local('.i18n-switcher option').length, 5);
     const graph=JSON.parse(local('script[type="application/ld+json"]').text())['@graph'];
     const facts=graph.find(o=>o['@type']==='Product');
-    assert.deepEqual(facts.additionalProperty.map(p=>[p.name,p.value]),local('.spec-table tr').toArray().map(e=>[local(e).find('th').text(),local(e).find('td').text()]));
-    assert.equal(facts.additionalProperty.length,17);
+    assert.deepEqual(facts.additionalProperty.filter(p=>!String(p.propertyID||'').startsWith('begapunk-policy-')).map(p=>[p.name,p.value]),local('.spec-table tr').toArray().map(e=>[local(e).find('th').text(),local(e).find('td').text()]));
+    assert.equal(facts.additionalProperty.filter(p=>!String(p.propertyID||'').startsWith('begapunk-policy-')).length,16);
+    assert.ok(!/217\s*×\s*117[.,]5\s*×\s*115[.,]8/u.test(local('main').text()), 'Unverified fitted envelope must remain unpublished');
     assert.equal(graph.find(o=>o['@type']==='FAQPage').mainEntity.length,5);
     assert.equal(local('a[href="../downloads/BP-10P-0001.step"]').length,2);
     assert.equal(local('track').attr('srclang'),'en');
-    assert.ok(!/PTFE|FKM/.test(local('main').text()));
+    assert.ok(/PTFE/.test(local('main').text()) && /FKM/.test(local('main').text()) && /MoS₂/.test(local('main').text()));
     const catalog=load(await read(`${lang}/products.html`));
     assert.equal(catalog(`[data-href="${route}"]`).length,1);
     assert.equal(catalog('.product-card-large').length,17);
@@ -80,7 +81,7 @@ test('BP10 facts and multilingual discovery stay consistent', async () => {
     assert.equal(comparison(`tr:has(a[href="${route}"])`).length,1);
     for(const file of ['application-automation-rotary-tables.html','application-cnc-pneumatic-clamping.html']) {
       const app=load(await read(`${lang}/${file}`));
-      assert.equal(app(`main a[href="${route}"]`).length,1);
+      assert.equal(app(`main a[href="${route}"]`).length,file==='application-automation-rotary-tables.html'?2:1);
     }
     for(const element of local('main a[href^="contact.html?"]').toArray()) {
       const link=new URL(local(element).attr('href'),`https://www.begapunk.com/${lang}/`);
@@ -90,7 +91,7 @@ test('BP10 facts and multilingual discovery stay consistent', async () => {
   }
   for (const file of ['application-automation-rotary-tables.html', 'application-cnc-pneumatic-clamping.html']) {
     const page = load(await read(file));
-    assert.equal(page(`main a[href="${route}"]`).length, 1);
+    assert.equal(page(`main a[href="${route}"]`).length, file==='application-automation-rotary-tables.html'?2:1);
   }
   assert.ok(!(await read('sitemap-i18n.xml')).includes('zh-review'));
   assert.ok(!JSON.parse(await read('search-index.json')).some((r) => r.url.includes('zh-review')));

@@ -53,6 +53,9 @@
       "partial-locales:verify",
       "partial-locales:content:verify",
       "partial-contact:verify",
+      "owner:content:self-test",
+      "owner:content:80:verify",
+      "owner:content:17:verify",
       "editorial:release:verify",
       "owner-facts:verify",
       "product-ui:verify",
@@ -95,7 +98,7 @@
       "severity": "P1",
       "owner": "site-owner",
       "automationStatus": "partial",
-      "implementation": ["audit:policy:verify", "release:authorization:self-test", "release:authorization:verify", "collab:validate", "deploy:build", "release:boundary:verify", "release:inventory:verify"],
+      "implementation": ["audit:policy:verify", "release:authorization:self-test", "release:authorization:verify", "collab:validate", "deploy:build", "release:boundary:verify", "release:inventory:verify", "owner:content:80:verify", "owner:content:17:verify"],
       "remainingEvidence": "The protected authorization reference must resolve to the separately retained review record; repository approvals, branch protection, environment reviewers, and final production release identity remain external state.",
       "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "ROLLBACK", "postdeploy-24h": "WARN", "postdeploy-7d": "WARN"}
     },
@@ -104,7 +107,7 @@
       "severity": "P1",
       "owner": "engineering",
       "automationStatus": "partial",
-      "implementation": ["audit:policy:verify", "audit:workflow-contracts:self-test", "browser:interaction:self-test", "release:authorization:self-test", "editorial:snapshot:self-test", "deploy:verifier:verify", "release:boundary:verify", "pdf:safety:self-test", "step:safety:self-test"],
+      "implementation": ["audit:policy:verify", "audit:workflow-contracts:self-test", "browser:interaction:self-test", "release:authorization:self-test", "editorial:snapshot:self-test", "deploy:verifier:verify", "release:boundary:verify", "pdf:safety:self-test", "step:safety:self-test", "owner:content:self-test"],
       "remainingEvidence": "Negative and bypass fixtures do not yet cover every legacy P0/P1 verifier; verifier-scope reductions still require reviewer approval.",
       "stages": {"pr": "BLOCK", "release": "BLOCK", "postdeploy-0-5m": "CONDITIONAL", "postdeploy-24h": "WARN", "postdeploy-7d": "BLOCK"}
     },

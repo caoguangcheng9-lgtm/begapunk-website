@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { isProductFactPublished } from "./lib/owner-product-policy.mjs";
 
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
@@ -497,7 +498,11 @@ function checkCoreFactPairs(context, surface, pairs, record) {
     (value) => matchesTemperature(value, facts.temperatureRange),
     `${facts.temperatureRange.minimum} to ${facts.temperatureRange.maximum} degC`
   );
-  checkRequiredPair(context, surface, pairs, "weight", (value) => matchesWeight(value, facts.weight), `${facts.weight.value} g`);
+  if (isProductFactPublished(record.websiteModel, "weight")) {
+    checkRequiredPair(context, surface, pairs, "weight", (value) => matchesWeight(value, facts.weight), `${facts.weight.value} g`);
+  } else if (matchingPairText(pairs, "weight")) {
+    addFailure("withheld-fact-published", context, `${surface} must not publish the unverified historical weight.`);
+  }
   checkRequiredPair(
     context,
     surface,
@@ -970,11 +975,11 @@ function assertManifestContract(manifest) {
 
   const bp3p0006 = manifest.products?.["BP-3P-0006"]?.drawingFacts?.ports;
   if (
-    bp3p0006?.status !== "anomaly-unresolved"
+    bp3p0006?.status !== "verified"
     || bp3p0006.annotations?.length !== 2
-    || bp3p0006.annotations.some((port) => port.thread !== "G4/1")
+    || bp3p0006.annotations.some((port) => port.thread !== "G1/4")
   ) {
-    addFailure("critical-contract", "manifest:BP-3P-0006", "Port annotations must remain raw G4/1 with anomaly-unresolved status.");
+    addFailure("critical-contract", "manifest:BP-3P-0006", "Owner-selected IA Rev A requires six G1/4 ports, verified status.");
   }
 
   const s06 = manifest.products?.["BP-3P-S06-0001"]?.drawingFacts;

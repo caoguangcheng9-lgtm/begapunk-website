@@ -74,7 +74,7 @@
     "b8d810db80eff239": "<a href=\"blog-prevent-air-hose-twisting.html\">Guide : éviter la torsion des tuyaux sur les machines tournantes →</a>",
     "13ff02358786b108": "<a href=\"BP-10P-0001.html\">BP-10P-0001</a> — Pour les montages à rotation intermittente nécessitant dix circuits pneumatiques indépendants. Max. 1 MPa et 100 tr/min ; sans alésage traversant. La version catalogue est destinée à l’air comprimé.",
     "10feb832b7b9426a": "Sélectionnez un raccord tournant pneumatique pour table rotative en associant les circuits de serrage, desserrage et soufflage au cycle de la machine.",
-    "aad395b075325893": "Envoyez une vue en coupe, le schéma pneumatique et le cycle réel d’indexage et d’arrêt. Nous comparerons l’interface aux modèles pneumatiques à 2 passages du catalogue.",
+    "aad395b075325893": "Envoyez une vue en coupe, le schéma pneumatique et le cycle réel d’indexage et d’arrêt. Nous comparerons les modèles pneumatiques appropriés du catalogue aux exigences de l’interface.",
     "e8424886dfc2ce2b": "<a href=\"application-cnc-pneumatic-clamping.html\">Voir une application de bridage pneumatique</a>",
     "663eef7a93d6c541": "<a href=\"BP-2P-30-0001.html\">Voir une version à alésage traversant</a><a href=\"BP-10P-0001.html\">Voir une version à 10 voies pour table d’indexage</a>",
     "6bbead70b7d54b5b": "Comment choisir un raccord tournant pour une table d’indexage ?",
@@ -225,7 +225,8 @@
     "fcd1edd5b3f2e4f9": "Comparez les fournisseurs selon la même liste de contrôle : le fluide, la pression, la vitesse, le nombre de passages et les dimensions des orifices pour lesquels le modèle est prévu ; la disponibilité d’un plan de modèle et d’un fichier STEP avant commande ; la façon dont chaque unité est contrôlée avant expédition ; le délai et la quantité minimale de commande ; les conditions de garantie écrites ; et les documents disponibles pour votre marché de destination. Demandez à chaque fournisseur de confirmer ces éléments par écrit pour le modèle précis que vous prévoyez d’utiliser.",
     "6e024db6f423ad2c": "Comment comparer les fournisseurs de raccords tournants ?",
     "c3d3e6fb02df6205": "Où se trouve Begapunk et que fabrique l’entreprise ?",
-    "e5ce56829782bfae": "Chaque unité finie est contrôlée pour l’étanchéité passage par passage et porte un numéro de traçabilité individuel. Les paramètres d’essai sont publiés sur la page de contrôle en production ; ils confirment l’étanchéité à la pression d’essai indiquée et ne permettent pas, à eux seuls, d’établir la durée de vie."
+    "e5ce56829782bfae": "Chaque unité finie est contrôlée pour l’étanchéité passage par passage et porte un numéro de traçabilité individuel. Les paramètres d’essai sont publiés sur la page de contrôle en production ; ils confirment l’étanchéité à la pression d’essai indiquée et ne permettent pas, à eux seuls, d’établir la durée de vie.",
+    "9b9a6993136a495e": "Begapunk fournit une garantie contractuelle standard de 12 mois à compter de la réception du produit par le client, couvrant les défauts de matière ou de fabrication selon les conditions écrites de la commande. Les dommages dus à une mauvaise installation, à une pression ou une vitesse excessive, à un air inadapté ou non filtré et à une mauvaise utilisation sont exclus de cette couverture. Envoyez le modèle, le numéro de traçabilité, les conditions de fonctionnement et des photos du problème pour examen. Lorsqu’un défaut de fabrication couvert est confirmé, la solution standard est un remplacement sans frais."
   },
   "blog-threaded-vs-flange.html": {
     "dcce193356ee4c0b": "<a href=\"installation.html\">Consulter le guide d’installation</a>",

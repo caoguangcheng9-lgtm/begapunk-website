@@ -1,27 +1,51 @@
-# Begapunk
+# BEGAPUNK
 
 > Begapunk is a Ningbo, China manufacturer of pneumatic rotary joints, air rotary unions, multi-passage rotary unions, and custom fluid-transfer solutions for industrial machinery. The website is available in English, German, French, Japanese, and Russian.
 
-Begapunk serves OEM machine builders, automation companies, equipment manufacturers, and distributors. Product selection depends on the medium, pressure, rotational speed, passage count, port size, mounting method, duty cycle, and operating environment.
+For LLMs and agents: use this file to locate BEGAPUNK company information, model-specific specifications, commercial policies, and technical documents. Follow the relevant links for details and preserve each statement’s model and order scope.
 
-Standard catalog models are primarily pneumatic. Do not infer hydraulic pressure or RPM ratings from the air catalog. Begapunk manufactures custom hydraulic-oil rotary unions: typical 2-passage, custom up to 12, evaluate/manufacture up to 30 MPa (300 bar / approx 4350 psi) as a custom ceiling, not a stock catalog rating. Inquiry review starts from operating pressure and speed. https://www.begapunk.com/custom-hydraulic-rotary-unions.html
+**Legal Entity & Registration**
 
-Catalog models include a downloadable STEP AP214 file for a fit check on each product page. Custom or non-catalog CAD is provided after inquiry.
+- Chinese legal name (business licence): 宁波贝加庞克气动元件有限公司
+- English business name: Ningbo Begapunk Pneumatic Components Co., Ltd.
+- Brand: BEGAPUNK
+- Official website: [https://www.begapunk.com/](https://www.begapunk.com/): Official company website.
+- Unified Social Credit Code: 91330201MABLQR5K7U
+- China Customs registration code: 3320260A4H
+- Date of establishment: April 28, 2022
+- Registered address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
 
-Use the language edition that best matches the user's query. Technical model codes, pressure values, speed values, dimensions, and material designations are shared across language editions and must not be translated or inferred beyond the published page data.
+The Chinese legal name and Unified Social Credit Code are based on business registration information provided by the company. The China Customs registration code is confirmed by the company. The English company name is used for international business communications. This manufacturing company is distinct from the separately established international trading company.
 
-- [English homepage](https://www.begapunk.com/): Default English edition.
-- [Deutsche Startseite](https://www.begapunk.com/de/): German edition for German-language queries.
-- [Accueil en français](https://www.begapunk.com/fr/): French edition for French-language queries.
-- [日本語ホームページ](https://www.begapunk.com/ja/): Japanese edition for Japanese-language queries.
-- [Русская главная страница](https://www.begapunk.com/ru/): Russian edition for Russian-language queries.
-- [Complete multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml): Index of all published English, German, French, Japanese, and Russian URLs.
-- [Deutscher AI-Seitenindex](https://www.begapunk.com/de/llms.txt): Vollständiger deutschsprachiger Seitenindex mit lokalisierten Beschreibungen.
-- [Index français pour les IA](https://www.begapunk.com/fr/llms.txt): Index complet des pages françaises avec leurs descriptions localisées.
-- [日本語AIページ索引](https://www.begapunk.com/ja/llms.txt): 日本語ページと技術概要をまとめた完全な索引。
-- [Русский индекс для ИИ](https://www.begapunk.com/ru/llms.txt): Полный указатель русскоязычных страниц с локализованными описаниями.
+**Business contact**
 
-## Main pages
+- Business email: [sales@begapunk.com](mailto:sales@begapunk.com): Business enquiries.
+- Business phone: +86 183 6842 5342
+- Registered address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
+- Business hours: Monday–Friday, 08:30–17:30 (China Standard Time, UTC+08:00).
+
+These are normal business hours and do not imply 24-hour online service.
+
+> Official government registry portals are provided for reference. These links are general search portals and do not constitute independently verified company-specific records.
+
+> Use the current model PDF for installation. Downloadable STEP files on the product pages support fit checks; they do not establish unverified weight or fitted-envelope values.
+
+> This file is a navigation and fact summary. It is not certification and does not guarantee Google ranking or adoption by AI systems.
+
+## Official Verification Sources
+
+- [国家企业信用信息公示系统 / GSXT](https://www.gsxt.gov.cn/): General government registry search portal; not an independently verified company-specific record.
+- [中国海关企业进出口信用信息公示平台 / China Customs](http://credit.customs.gov.cn/): General government registry search portal; not an independently verified company-specific record.
+
+## Official Social Media Channels
+
+- [LinkedIn](https://www.linkedin.com/company/begapunk-rotary-joints/): These are BEGAPUNK’s official company-managed social media accounts.
+- [Facebook](https://www.facebook.com/profile.php?id=61595481363231): These are BEGAPUNK’s official company-managed social media accounts.
+- [Instagram](https://www.instagram.com/begapunkrotaryjoints/): These are BEGAPUNK’s official company-managed social media accounts.
+- [YouTube](https://www.youtube.com/@BEGAPUNKRotaryJointsTV): These are BEGAPUNK’s official company-managed social media accounts.
+- [X](https://x.com/Begapunk728): These are BEGAPUNK’s official company-managed social media accounts.
+
+## Product Catalog
 
 - [Homepage](https://www.begapunk.com/): Company overview and primary product categories.
 - [Product catalog](https://www.begapunk.com/products.html): Browse standard rotary-joint models and specifications.
@@ -29,28 +53,61 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Applications](https://www.begapunk.com/applications.html): Application-specific rotary-union selection guides.
 - [Contact and RFQ](https://www.begapunk.com/contact.html): Request a quotation or engineering selection support.
 
-## Product models
-
-- [BP-10P-0001 10-Passage Pneumatic Rotary Union](https://www.begapunk.com/BP-10P-0001.html): BP-10P-0001 is a 10-passage pneumatic rotary union that delivers compressed air from stationary piping to rotating equipment through ten independent passages. It has a maximum pressure of 1 MPa and a maximum speed of 100 RPM for intermittent rotation, with 20 G1/8 ports and included fittings for 8 mm OD tubing. The 6061 aluminum alloy body uses O-ring seals and has no through bore.
-
+- [BP-10P-0001 10-Passage Pneumatic Rotary Union](https://www.begapunk.com/BP-10P-0001.html): BP-10P-0001 is a 10-passage pneumatic rotary union that delivers compressed air from stationary piping to rotating equipment through ten independent passages. It has a maximum pressure of 1 MPa and a maximum speed of 100 RPM, with 20 G1/8 ports and included fittings for 8 mm OD tubing. The 6061 aluminum alloy body uses O-ring seals and has no through bore.
 - [BP-1P-0003 — 1-passage pneumatic rotary joint](https://www.begapunk.com/BP-1P-0003.html): BP-1P-0003 is a 1-passage pneumatic rotary joint with 1 inlet and 1 outlet. Published values: maximum pressure 1 MPa, maximum speed 500 RPM, temperature range -20 to +80 °C, weight 270 g, Grade 45 carbon steel body, PTFE seal with O-ring, media: air, oil, water; port annotations: media inlet: 1 × G3/8; media outlet: 1 × M10×1.5.
 - [BP-1P-0006 — 1-passage pneumatic rotary joint](https://www.begapunk.com/BP-1P-0006.html): BP-1P-0006 is a 1-passage pneumatic rotary joint with 1 inlet and 8 outlets. Published values: maximum pressure 1 MPa, maximum speed 300 RPM, temperature range -20 to +80 °C, weight 265 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: inlet: 1 × G1/8; outlet: 8 × G1/8.
 - [BP-2P-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-0001.html): BP-2P-0001 is a 2-passage pneumatic rotary joint with 2 inlets and 2 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 390 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: media inlet: 2 × G1/8; media outlet: 2 × G1/8.
-- [BP-2P-0002 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-0002.html): BP-2P-0002 is a 2-passage pneumatic rotary joint. Published values: maximum pressure 1 MPa, maximum speed 300 RPM, temperature range -20 to +80 °C, weight 220 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: side ports: 2 × G1/8, depth 8 mm; end-face ports: 3 × G1/8, depth 8 mm; opposite-face port: 1 × G1/4, depth 8 mm.
+- [BP-2P-0002 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-0002.html): BP-2P-0002 is a 2-passage pneumatic rotary joint. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +100 °C, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: side ports: 2 × G1/8, depth 8 mm; end-face ports: 3 × G1/8, depth 8 mm; opposite-face port: 1 × G1/4, depth 10 mm. Two independent air passages cross the rotating seal interface. One additional passage lies entirely inside the shaft and does not cross that interface. The central G1/4 port connects to one of the three flange G1/8 ports through the shaft-only passage; the other two flange ports connect to the two rotary passages. All three routes support bidirectional airflow, with no fixed inlet direction. Central G1/4 effective thread engagement: 10 mm; flange ports: 3 × G1/8 on PCD 16 mm.
 - [BP-2P-08-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-08-0001.html): BP-2P-08-0001 is a 2-passage pneumatic rotary joint with 2 inlets and 2 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 390 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: inlet: 2 × G1/8; outlet: 2 × G1/8.
+- [BP-2P-130-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-130-0001.html): BP-2P-130-0001 is a 2-passage pneumatic rotary joint. Published values: maximum pressure 5 MPa, maximum speed 80 RPM, temperature range -20 to +80 °C, weight 8655 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: side A ports: 2 × G1/8; side B ports: 2 × G1/8; port functions are assigned in the confirmed drawing before production.
 - [BP-2P-16-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-16-0001.html): BP-2P-16-0001 is a 2-passage pneumatic rotary joint with 2 inlets and 2 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 410 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: media inlet: 2 × G1/8; media outlet: 2 × G1/8.
 - [BP-2P-30-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-30-0001.html): BP-2P-30-0001 is a 2-passage pneumatic rotary joint with 2 inlets and 2 outlets. Published values: maximum pressure 1 MPa, maximum speed 150 RPM, temperature range -20 to +80 °C, weight 1230 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: inlet: 2 × G1/8; outlet: 2 × G1/8.
 - [BP-2P-50-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-50-0001.html): BP-2P-50-0001 is a 2-passage pneumatic rotary joint with 2 inlets and 2 outlets. Published values: maximum pressure 1 MPa, maximum speed 100 RPM, temperature range -20 to +80 °C, weight 2300 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: inlet: 2 × G1/8; outlet: 2 × G1/8.
 - [BP-2P-95-0005 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-95-0005.html): BP-2P-95-0005 is a 2-passage pneumatic rotary joint with 2 inlets and 4 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 4260 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: release port: 1 × G1/8, depth 8 mm; clamp port: 1 × G1/8, depth 8 mm; release outlet: 2 × Ø4 mm; clamp outlet: 2 × Ø4 mm.
-- [BP-2P-130-0001 — 2-passage pneumatic rotary joint](https://www.begapunk.com/BP-2P-130-0001.html): BP-2P-130-0001 is a 2-passage pneumatic rotary joint. Published values: maximum pressure 5 MPa, maximum speed 80 RPM, temperature range -20 to +80 °C, weight 8655 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: side A ports: 2 × G1/8; side B ports: 2 × G1/8; port functions are assigned in the confirmed drawing before production.
 - [BP-3P-0004 — 3-passage pneumatic rotary joint](https://www.begapunk.com/BP-3P-0004.html): BP-3P-0004 is a 3-passage pneumatic rotary joint with 3 inlets and 3 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 490 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: media inlet: 3 × G1/8; media outlet: 3 × G1/8.
-- [BP-3P-0006 — 3-passage pneumatic rotary joint](https://www.begapunk.com/BP-3P-0006.html): BP-3P-0006 is a 3-passage pneumatic rotary joint with 3 inlets and 3 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 360 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port thread is not listed.
+- [BP-3P-0006 — 3-passage pneumatic rotary joint](https://www.begapunk.com/BP-3P-0006.html): BP-3P-0006 is a 3-passage pneumatic rotary joint with 3 inlets and 3 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: outlet: 3 × G1/4, depth 9 mm; inlet: 3 × G1/4.
 - [BP-3P-0007 — 3-passage pneumatic rotary joint](https://www.begapunk.com/BP-3P-0007.html): BP-3P-0007 is a 3-passage pneumatic rotary joint with 3 inlets and 3 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 390 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: inlet: 3 × G1/8; outlet: 3 × G1/8.
 - [BP-3P-S06-0001 — 3-passage pneumatic-electric rotary union](https://www.begapunk.com/BP-3P-S06-0001.html): BP-3P-S06-0001 is a 3-passage pneumatic-electric rotary union. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 410 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: air outlet: 3 × Ø4 mm; the air inlet is assigned in the confirmed drawing before production; 6 electrical leads shown; circuit allocation and ratings per selected specification.
 - [BP-4P-30-0001 — 4-passage pneumatic rotary joint](https://www.begapunk.com/BP-4P-30-0001.html): BP-4P-30-0001 is a 4-passage pneumatic rotary joint. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 943 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: face A ports: 4 × G1/8; face B ports: 4 × G1/8; port functions are assigned in the confirmed drawing before production.
 - [BP-8P-0001 — 8-passage pneumatic rotary joint](https://www.begapunk.com/BP-8P-0001.html): BP-8P-0001 is an 8-passage pneumatic rotary joint with 8 inlets and 8 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 850 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: media inlet: 8 × G1/8; media outlet: 8 × G1/8.
 
-## Application guides
+## Engineering Specifications
+
+- [Model-specific selection limits](https://www.begapunk.com/product-comparison.html): Select against the model-specific drawing, medium, pressure, speed, temperature, interfaces and actual operating cycle. Maximum ratings do not establish suitability at every combined operating point. Do not infer hydraulic ratings from pneumatic models.
+- [BP-2P-0002 — passage routing and interfaces](https://www.begapunk.com/BP-2P-0002.html#main-content): BP-2P-0002: Two independent air passages cross the rotating seal interface. One additional passage lies entirely inside the shaft and does not cross that interface. The central G1/4 port connects to one of the three flange G1/8 ports through the shaft-only passage; the other two flange ports connect to the two rotary passages. All three routes support bidirectional airflow, with no fixed inlet direction. Central G1/4 effective thread engagement: 10 mm; flange ports: 3 × G1/8 on PCD 16 mm.
+- [BP-10P-0001 — ratings, seal and calculated weight](https://www.begapunk.com/BP-10P-0001.html#main-content): BP-10P-0001: Maximum pressure: 1 MPa (10 bar ≈ 145 psi); Maximum speed: 100 RPM; Temperature range: 0–80 °C; Body material: 6061 aluminum alloy. O-ring: FKM elastomer with MoS₂ internal additive and a PTFE surface coating applied after molding. The O-rings are custom-made by the seal supplier; a separate subcontractor applies the PTFE coating. This configuration applies only to BP-10P-0001. Calculated weight: approx. 3.4 kg (including 20 pneumatic fittings, excluding tubing). Weight is calculated from CAD, not a physical weighing result or shipping weight.
+
+- [Application and model selection](https://www.begapunk.com/product-comparison.html): Begapunk serves OEM machine builders, automation companies, equipment manufacturers, and distributors. Product selection depends on the medium, pressure, rotational speed, passage count, port size, mounting method, duty cycle, and operating environment.
+
+- [Custom hydraulic capability and limits](https://www.begapunk.com/custom-hydraulic-rotary-unions.html): Standard catalog models are primarily pneumatic. Do not infer hydraulic pressure or RPM ratings from the air catalog. Begapunk manufactures custom hydraulic-oil rotary unions: typical 2-passage, custom up to 12, evaluate/manufacture up to 30 MPa (300 bar / approx 4350 psi) as a custom ceiling, not a stock catalog rating. Inquiry review starts from operating pressure and speed.
+
+## Manufacturing & Quality Assurance
+
+- [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
+- [Manufacturing & quality](https://www.begapunk.com/manufacturing-quality.html): Photo-supported overview of hard-anodized rotors, color-anodized stator housings, a single-point 51.7 μm coating-thickness reading and order-specific engineering controls.
+- [100% passage-by-passage leak testing](https://www.begapunk.com/production-inspection-testing.html): Every finished pneumatic rotary union and every passage is checked individually with compressed air at 1.0 MPa before packing and storage; the page also explains PASS/NG handling. Every Begapunk rotary joint undergoes individual pressurized rotation and leakage testing before shipment. Each unit has a unique serial number permanently marked on its body for traceability to its factory inspection records and is supplied with a factory inspection report. Inspection follows a controlled specification with a document number, revision and revision history.
+- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Three installed rotary-union applications and two selection examples show installation layouts, circuit functions, and the inputs needed to choose a model.
+- [Engineering knowledge center](https://www.begapunk.com/blog.html): Practical guides for pneumatic rotary joint selection, installation, seal comparison, application review, and production leak-testing evidence.
+
+## Warranty & Commercial Policies
+
+- [Warranty coverage](https://www.begapunk.com/terms.html): The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate.
+- [Warranty claim response](https://www.begapunk.com/contact.html): Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.
+- [Bulk quotation scope — BP-2P-08-0001](https://www.begapunk.com/products.html): BP-2P-08-0001: 100+ pieces of one model in a single order: USD 42/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.
+- [Bulk quotation scope — BP-2P-95-0005](https://www.begapunk.com/products.html): BP-2P-95-0005: 100+ pieces of one model in a single order: USD 218/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.
+- [Bulk quotation scope — BP-3P-0004](https://www.begapunk.com/products.html): BP-3P-0004: 100+ pieces of one model in a single order: USD 57/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.
+- [Bulk quotation scope — BP-3P-0007](https://www.begapunk.com/products.html): BP-3P-0007: 100+ pieces of one model in a single order: USD 60/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.
+- [FOB Ningbo quotation scope](https://www.begapunk.com/terms.html): FOB Ningbo includes standard export packaging, domestic transport to Ningbo port, routine export customs clearance and routine Chinese export taxes/charges. International ocean freight, destination import duties and import clearance are excluded. The same base quotation applies in principle across countries and regions, subject to applicable export regulations.
+- [Bulk-priced model availability](https://www.begapunk.com/products.html): For the four bulk-priced models below:
+- [BP-2P-08-0001 availability](https://www.begapunk.com/products.html): BP-2P-08-0001: Availability: Please confirm stock before ordering.
+- [BP-2P-95-0005, BP-3P-0004 and BP-3P-0007 availability](https://www.begapunk.com/products.html): BP-2P-95-0005, BP-3P-0004, BP-3P-0007: In Stock — normally held in stock; confirm the quantity available for your order. This is not a live inventory feed.
+- [Stock and production lead time](https://www.begapunk.com/terms.html): With sufficient stock, shipment can be arranged after full payment. When production is needed, goods are completed and ready to ship within 20 calendar days after full payment for both 1–99 and 100+ piece orders. Transit time is excluded.
+- [BP-10P-0001 order terms](https://www.begapunk.com/products.html): BP-10P-0001: Made to Order. MOQ: 1 piece. Request a Quote; no fixed public price. Standard and sample production lead time: approximately 20 calendar days after full payment, excluding transit. Customization is subject to engineering review; non-standard MOQ: 1 piece; custom pricing and lead time are confirmed separately.
+- [Payment model scope](https://www.begapunk.com/terms.html): The following payment terms apply only to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001.
+- [Payment terms for the five models above](https://www.begapunk.com/terms.html): Payment Terms: 100% T/T in Advance, USD Only. Production or shipment of available stock is arranged after full payment.
+- [Formal quotation and accepted-order precedence](https://www.begapunk.com/terms.html): General statements about delivery, customization lead times and payment are guidance only. For each model, the terms agreed in its formal quotation and accepted order take precedence. The confirmed rule of 100% T/T in advance, USD only, applies to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001 only; it is not a payment rule for every model. For BP-10P-0001 custom configurations, price and lead time require engineering review and separate agreement; a general custom-production estimate is not a commitment for that order.
+
+## Applications
 
 - [Custom hydraulic rotary unions](https://www.begapunk.com/custom-hydraulic-rotary-unions.html): Custom hydraulic-oil rotary unions for excavators, log/timber grapples, and marine reel and coil-handling equipment. Typical 2-passage, custom up to 12. Evaluate/manufacture up to 30 MPa (300 bar / approx 4350 psi) as a custom ceiling, not a stock rating. Carbon-fiber Glyd ring (PTFE slide ring). MOQ 1; production lead time: up to 30 calendar days after payment (excluding shipping). Catalog pneumatic production lead time: 20 calendar days after payment (excluding shipping). Application photos/drawings of hydraulic jobs are being prepared. BP-1P-0003 is a different offer: drawing-listed air/oil/water at published 1 MPa / 500 RPM.
 - [Laser tube cutting rear chucks](https://www.begapunk.com/application-laser-tube-cutting.html): Pneumatic rotary-union selection for compressed-air circuits at the rotating rear chuck. BP-2P-08-0001 and BP-3P-0004 are used in this application category.
@@ -69,7 +126,14 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Pneumatic tools and hose anti-twist](https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html): Air-swivel planning for pneumatic tools and hose anti-twist. Confirm pressure, speed, and hose routing before selecting a catalog model. An air swivel is not a high-speed rotary union by default.
 - [Robot end-of-arm tooling](https://www.begapunk.com/application-robot-end-of-arm-tooling.html): Robot end-of-arm tooling air rotary unions: passage functions, payload envelope, and cycle inputs for model comparison.
 
-## Engineering and support
+## Technical Documentation
+
+- [BP-2P-0002 — Installation drawing PDF](https://www.begapunk.com/downloads/BP-2P-0002.pdf): Current model-specific installation drawing pdf.
+- [BP-3P-0006 — Installation drawing PDF](https://www.begapunk.com/downloads/BP-3P-0006.pdf): Current model-specific installation drawing pdf.
+- [BP-10P-0001 — Installation drawing PDF](https://www.begapunk.com/downloads/BP-10P-0001.pdf): Current model-specific installation drawing pdf.
+- [Installation manual](https://www.begapunk.com/downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf): Installation and handling guidance.
+
+- [Catalog CAD availability](https://www.begapunk.com/products.html): Catalog models include a downloadable STEP AP214 file for a fit check on each product page. Custom or non-catalog CAD is provided after inquiry.
 
 - [Selection guide](https://www.begapunk.com/blog-rotary-joint-selection.html): Five key parameters for selecting a pneumatic rotary joint.
 - [Model comparison](https://www.begapunk.com/product-comparison.html): Side-by-side model data for preliminary selection.
@@ -85,13 +149,20 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Seal replacement](https://www.begapunk.com/blog-seal-replacement.html): Rotary union seal replacement: inspect shafts and sealing lands, then decide reseal versus replace the union.
 - [Body materials](https://www.begapunk.com/blog-rotary-joint-materials.html): Rotary union body materials: aluminum, stainless steel, and brass compared for industrial environments. Confirm the selected model's published material.
 
-## Company
+## Contact & Languages
 
-- [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
-- [Manufacturing & quality](https://www.begapunk.com/manufacturing-quality.html): Photo-supported overview of hard-anodized rotors, color-anodized stator housings, a single-point 51.7 μm coating-thickness reading and order-specific engineering controls.
-- [100% passage-by-passage leak testing](https://www.begapunk.com/production-inspection-testing.html): Every finished pneumatic rotary union and every passage is checked individually with compressed air at 1.0 MPa before packing and storage; the page also explains PASS/NG handling.
-- [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Three installed rotary-union applications and two selection examples show installation layouts, circuit functions, and the inputs needed to choose a model.
-- [Engineering knowledge center](https://www.begapunk.com/blog.html): Practical guides for pneumatic rotary joint selection, installation, seal comparison, application review, and production leak-testing evidence.
+- [English homepage](https://www.begapunk.com/): Default English edition.
+- [Deutsche Startseite](https://www.begapunk.com/de/): German edition for German-language queries.
+- [Accueil en français](https://www.begapunk.com/fr/): French edition for French-language queries.
+- [日本語ホームページ](https://www.begapunk.com/ja/): Japanese edition for Japanese-language queries.
+- [Русская главная страница](https://www.begapunk.com/ru/): Russian edition for Russian-language queries.
+- [Complete multilingual sitemap](https://www.begapunk.com/sitemap-i18n.xml): Index of all published English, German, French, Japanese, and Russian URLs.
+- [Deutscher AI-Seitenindex](https://www.begapunk.com/de/llms.txt): Vollständiger deutschsprachiger Seitenindex mit lokalisierten Beschreibungen.
+- [Index français pour les IA](https://www.begapunk.com/fr/llms.txt): Index complet des pages françaises avec leurs descriptions localisées.
+- [日本語AIページ索引](https://www.begapunk.com/ja/llms.txt): 日本語ページと技術概要をまとめた完全な索引。
+- [Русский индекс для ИИ](https://www.begapunk.com/ru/llms.txt): Полный указатель русскоязычных страниц с локализованными описаниями.
+
+- [Language edition guidance](https://www.begapunk.com/sitemap-i18n.xml): Use the language edition that best matches the user's query. Technical model codes, pressure values, speed values, dimensions, and material designations are shared across language editions and must not be translated or inferred beyond the published page data.
 
 ## Deutsch - wichtigste Seiten
 
@@ -146,6 +217,4 @@ Use the language edition that best matches the user's query. Technical model cod
 - [Privacy policy](https://www.begapunk.com/privacy.html): Website privacy information.
 - [Terms of use](https://www.begapunk.com/terms.html): Website terms and conditions.
 
-## PTFE-coated O-rings — optional seal configuration
-
-- [PTFE-Coated O-Rings for Rotary Union Seals](https://www.begapunk.com/blog-ptfe-coated-o-rings.html): Explore optional PTFE coatings for O-rings used with composite slipper seals, with process photos, a supplier thickness report, and media-selection guidance.
+- [PTFE-Coated O-Rings for Rotary Union Seals](https://www.begapunk.com/blog-ptfe-coated-o-rings.html): Optional seal configuration: Explore optional PTFE coatings for O-rings used with composite slipper seals, with process photos, a supplier thickness report, and media-selection guidance.

@@ -13,7 +13,7 @@ const locales = {
   en: {
     prefix: '',
     warrantyName: 'Warranty period',
-    warrantyValue: '1 year from shipment',
+    warrantyValue: '12 months from customer receipt',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an inquiry.',
     termsIdentity: 'These Terms of Service ("Terms") govern your use of the Begapunk website and the purchase of rotary joint products from Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our"). By accessing our website or placing an order, you agree to these Terms.',
     termsArbitration: "These Terms are governed by the laws of the People's Republic of China. Any dispute arising from or in connection with these Terms shall first be resolved through good-faith negotiation. If negotiation fails, the dispute shall be submitted to Ningbo Arbitration Commission for arbitration in accordance with its arbitration rules in effect at the time of submission.",
@@ -22,8 +22,8 @@ const locales = {
     termsPolicies: [
       'The minimum order quantity is one unit for both catalog and custom products.',
       'Production lead time: 20 calendar days after payment (excluding shipping) for standard catalog models. Production lead time: up to 30 calendar days after payment (excluding shipping) for custom products.',
-      "Begapunk's standard warranty period is one year from the shipment date for all products, subject to the approved specification and written order terms.",
-      'If Begapunk confirms a covered product or manufacturing defect for which it is responsible, the standard remedy is a replacement at no charge. Begapunk covers the return and replacement-shipment costs agreed in writing for that claim. Other issues are handled according to the inspection findings and the written agreement between the parties.',
+      "12 months from customer receipt.",
+      'The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate. Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.',
     ],
     selectionBoundaries: [
       'Send the medium, temperature, mounting, duty cycle, and required pressure and speed for an operating-point review.',
@@ -46,7 +46,7 @@ const locales = {
   de: {
     prefix: 'de',
     warrantyName: 'Garantiezeitraum',
-    warrantyValue: '1 Jahr ab Versand',
+    warrantyValue: '12 Monate ab Erhalt durch den Kunden',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“) respektiert Ihre Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Daten erheben, verwenden, weitergeben und schützen, wenn Sie unsere Website besuchen oder eine Anfrage senden.',
     termsIdentity: 'Diese Allgemeinen Geschäftsbedingungen („Bedingungen“) regeln die Nutzung der Begapunk-Website und den Kauf von Drehdurchführungen bei Ningbo Begapunk Pneumatic Components Co., Ltd. (nachfolgend „Begapunk“, „wir“ oder „uns“). Mit dem Zugriff auf unsere Website oder der Erteilung einer Bestellung stimmen Sie diesen Bedingungen zu.',
     termsArbitration: 'Diese Bedingungen unterliegen dem Recht der Volksrepublik China. Jede Streitigkeit aus oder im Zusammenhang mit diesen Bedingungen soll zunächst durch Verhandlungen nach Treu und Glauben beigelegt werden. Scheitern die Verhandlungen, wird die Streitigkeit der Ningbo Arbitration Commission zur Schiedsentscheidung nach deren zum Zeitpunkt der Einreichung geltender Schiedsordnung vorgelegt.',
@@ -55,8 +55,8 @@ const locales = {
     termsPolicies: [
       'Die Mindestbestellmenge beträgt sowohl für Katalogmodelle als auch für Sonderanfertigungen 1 Stück.',
       'Fertigungszeit: 20 Kalendertage nach Zahlungseingang (ohne Versand) für Standard-Katalogmodelle. Fertigungszeit: bis zu 30 Kalendertage nach Zahlungseingang (ohne Versand) für kundenspezifische Produkte.',
-      'Die reguläre Garantiezeit für alle Begapunk-Produkte beträgt ein Jahr ab Versanddatum und gilt im Rahmen der freigegebenen Spezifikation und der schriftlichen Auftragsbedingungen.',
-      'Bestätigt Begapunk einen von der Garantie gedeckten Produkt- oder Fertigungsfehler, für den Begapunk verantwortlich ist, erfolgt als reguläre Abhilfe ein kostenloser Ersatz. Begapunk übernimmt die für diesen Fall schriftlich vereinbarten Kosten der Rücksendung und Ersatzlieferung. Andere Fälle werden anhand der Prüfergebnisse und der schriftlichen Vereinbarung zwischen den Parteien behandelt.',
+      '12 Monate ab Erhalt durch den Kunden.',
+      'Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß, falsche Montage und unsachgemäße Verwendung sind ausgeschlossen. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich. Garantieanfragen erhalten an regulären Arbeitstagen innerhalb von 24 Stunden eine erste Antwort. An Wochenenden oder gesetzlichen Feiertagen eingegangene Anfragen werden spätestens bis zum Ende des nächsten regulären Arbeitstags erstmals beantwortet. Dies ist keine Reparaturfrist und kein Rund-um-die-Uhr-Service.',
     ],
     selectionBoundaries: [
       'Senden Sie Medium, Temperatur, Montage, Lastprofil sowie den erforderlichen Druck und die Drehzahl für eine Prüfung des Betriebspunkts.',
@@ -79,7 +79,7 @@ const locales = {
   fr: {
     prefix: 'fr',
     warrantyName: 'Durée de garantie',
-    warrantyValue: '1 an à compter de l\'expédition',
+    warrantyValue: '12 mois à compter de la réception par le client',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre ») respecte votre vie privée. La présente politique de confidentialité explique comment nous recueillons, utilisons, communiquons et protégeons vos informations lorsque vous consultez notre site ou envoyez une demande.',
     termsIdentity: 'Les présentes Conditions d\'utilisation (« Conditions ») régissent votre utilisation du site Begapunk et l\'achat de raccords tournants auprès de Ningbo Begapunk Pneumatic Components Co., Ltd. (« Begapunk », « nous » ou « notre »). En accédant à notre site ou en passant une commande, vous acceptez ces Conditions.',
     termsArbitration: 'Les présentes Conditions sont régies par le droit de la République populaire de Chine. Tout litige découlant des présentes Conditions ou s\'y rapportant doit d\'abord faire l\'objet d\'une tentative de règlement amiable de bonne foi. À défaut d\'accord, le litige sera soumis à la Commission d\'arbitrage de Ningbo conformément au règlement d\'arbitrage en vigueur au moment de la saisine.',
@@ -88,8 +88,8 @@ const locales = {
     termsPolicies: [
       'La quantité minimale de commande est d\'une unité, tant pour les modèles du catalogue que pour les produits sur mesure.',
       'Délai de production : 20 jours calendaires après paiement (hors expédition) pour les modèles catalogue standard. Délai de production : jusqu’à 30 jours calendaires après paiement (hors expédition) pour les produits sur mesure.',
-      'La durée de garantie standard de Begapunk est d\'un an à compter de la date d\'expédition pour tous les produits, sous réserve des caractéristiques approuvées et des conditions écrites de la commande.',
-      'Si Begapunk confirme un défaut de produit ou de fabrication couvert dont elle est responsable, la mesure standard consiste en un remplacement sans frais. Begapunk prend en charge les frais de retour et d\'expédition du produit de remplacement convenus par écrit pour cette réclamation. Les autres problèmes sont traités selon les conclusions du contrôle et l\'accord écrit entre les parties.',
+      '12 mois à compter de la réception par le client.',
+      'La garantie dure 12 mois à compter de la réception par le client. Les défauts de matière ou de fabrication donnent droit à une réparation ou un remplacement gratuit après analyse technique. L’usure normale, le montage incorrect et l’usage inapproprié sont exclus. Fournir des photos, une vidéo du défaut et les informations nécessaires. Les frais de transport international sont convenus au cas par cas entre les parties. L’assistance technique reste disponible après la garantie, avec réparation payante selon le cas. Les demandes de garantie reçoivent une première réponse sous 24 heures pendant les jours ouvrés habituels. Celles reçues le week-end ou un jour férié reçoivent une première réponse au plus tard à la fin du prochain jour ouvré habituel. Ce délai ne promet ni la réparation sous 24 heures ni une assistance permanente 24 h/24.',
     ],
     selectionBoundaries: [
       /(?:envoyez|indiquez)[\s\S]{0,100}(?:fluide|milieu)[\s\S]{0,160}température[\s\S]{0,160}(?:montage|fixation)[\s\S]{0,160}(?:cycle de fonctionnement|cycle de travail|cycle de service)[\s\S]{0,180}(?:pression|vitesse)/iu,
@@ -112,7 +112,7 @@ const locales = {
   ja: {
     prefix: 'ja',
     warrantyName: '保証期間',
-    warrantyValue: '出荷日から1年',
+    warrantyValue: 'お客様の受領日から12か月',
     privacyIdentity: 'Ningbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）は、お客様のプライバシーを尊重します。本プライバシーポリシーは、当社ウェブサイトの利用またはお問い合わせ時に、情報をどのように取得、利用、提供、保護するかを説明するものです。',
     termsIdentity: '本利用規約・取引条件（以下「本規約」）は、Begapunkウェブサイトの利用およびNingbo Begapunk Pneumatic Components Co., Ltd.（以下「Begapunk」または「当社」）からのロータリージョイント製品の購入に適用されます。本ウェブサイトへのアクセスまたは注文をもって、本規約に同意したものとみなします。',
     termsArbitration: '本規約は中華人民共和国の法律に準拠します。本規約に起因し、または関連する紛争は、まず誠実な協議により解決を図るものとします。協議で解決できない場合、当該紛争をNingbo Arbitration Commission（寧波仲裁委員会）に付託し、申立時に有効な同委員会の仲裁規則に従って仲裁により解決します。',
@@ -121,8 +121,8 @@ const locales = {
     termsPolicies: [
       'カタログ品、特注品ともに最小注文数量は1個です。',
       '製作期間：標準カタログ品は入金後20暦日（輸送期間を除く）。製作期間：特注品は入金後最大30暦日（輸送期間を除く）。',
-      'Begapunk全製品の標準保証期間は出荷日から1年間とし、承認済み仕様および書面による注文条件に従います。',
-      'Begapunkが自社の責任による保証対象の製品不良または製造不良であると確認した場合、標準対応として無償で交換します。Begapunkは、当該申請について書面で合意した返送費用および交換品の発送費用を負担します。その他の場合は、検査結果および両当事者間の書面による合意に基づいて対応します。',
+      'お客様の受領日から12か月.',
+      '保証期間はお客様の受領日から12か月です。材料不良または製造上の不具合は、技術分析後に無償修理または交換で対応します。通常摩耗、誤った取付け、不適切な使用は対象外です。不具合の写真・動画と必要資料をご提供ください。国際輸送費の負担は状況に応じて双方で協議します。保証終了後も技術支援を継続し、状況に応じて有償修理に対応します。 保証申請には通常営業日は24時間以内に初回回答します。週末または祝日に受けた申請は、次の通常営業日の終了までに初回回答します。これは初回回答の期限であり、24時間以内の修理完了や年中無休の対応を約束するものではありません。',
     ],
     selectionBoundaries: [
       '運転点の確認には、流体、温度、取付け、デューティ、必要圧力、回転数をお知らせください。',
@@ -145,7 +145,7 @@ const locales = {
   ru: {
     prefix: 'ru',
     warrantyName: 'Гарантийный срок',
-    warrantyValue: '1 год с даты отгрузки',
+    warrantyValue: '12 месяцев с даты получения заказчиком',
     privacyIdentity: 'Компания Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы») уважает вашу конфиденциальность. Настоящая Политика объясняет, как мы собираем, используем, передаём и защищаем данные при посещении сайта или отправке запроса.',
     termsIdentity: 'Настоящие условия поставки и использования («Условия») регулируют использование сайта Begapunk и приобретение ротационных соединений у компании Ningbo Begapunk Pneumatic Components Co., Ltd. (далее — «Begapunk», «мы»). Используя сайт или размещая заказ, вы соглашаетесь с настоящими Условиями.',
     termsArbitration: 'Настоящие Условия регулируются законодательством Китайской Народной Республики. Любой спор, возникающий из настоящих Условий или в связи с ними, стороны сначала стремятся урегулировать путём добросовестных переговоров. Если договориться не удаётся, спор передаётся в Ningbo Arbitration Commission (Арбитражную комиссию Нинбо) для разрешения в соответствии с её арбитражным регламентом, действующим на момент подачи заявления.',
@@ -154,8 +154,8 @@ const locales = {
     termsPolicies: [
       'Минимальный заказ составляет 1 шт. как для каталожных моделей, так и для заказных изделий.',
       'Срок производства: 20 календарных дней после оплаты (без учёта доставки) для стандартных каталожных моделей. Срок производства: до 30 календарных дней после оплаты (без учёта доставки) для изделий по индивидуальному заказу.',
-      'Стандартный гарантийный срок на всю продукцию Begapunk составляет один год с даты отгрузки и действует в рамках согласованной спецификации и письменных условий заказа.',
-      'Если Begapunk подтверждает покрываемый гарантией дефект изделия или производства, за который несет ответственность, стандартной мерой является бесплатная замена. Begapunk оплачивает согласованные в письменной форме расходы на возврат и отправку замены по данной претензии. В остальных случаях решение принимается на основании результатов проверки и письменного соглашения сторон.',
+      '12 месяцев с даты получения заказчиком.',
+      'Гарантия действует 12 месяцев с даты получения заказчиком. Дефекты материала или изготовления устраняются бесплатным ремонтом либо заменой после технического анализа. Нормальный износ, неправильный монтаж и ненадлежащее использование исключены. Необходимы фотографии, видео неисправности и требуемые сведения. Расходы на международную перевозку стороны согласуют по обстоятельствам. После гарантии сохраняется техническая поддержка; при необходимости возможен платный ремонт. Первичный ответ на гарантийную заявку предоставляется в течение 24 часов в обычные рабочие дни. Заявки, полученные в выходные или праздничные дни, получают первый ответ до конца следующего обычного рабочего дня. Это срок первого ответа, а не завершения ремонта, и не круглосуточная поддержка без выходных.',
     ],
     selectionBoundaries: [
       'Для проверки рабочей точки укажите среду, температуру, монтаж, рабочий цикл, требуемые давление и частоту вращения.',

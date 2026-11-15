@@ -1,46 +1,49 @@
+import { policyCopy } from './owner-product-policy.mjs';
 import assert from 'node:assert/strict';
 
 // Owner-approved BP-10P configuration. It deliberately does not inherit the
 // legacy 16-model contract's PTFE seal, continuous-speed or pricing assumptions.
 export function assertBp10ProductContract($, locale, label) {
+  const policy = policyCopy(locale);
   label = label.replaceAll('\\', '/');
   const values = $('.spec-table tr').toArray().map(e => $(e).find('td').text().trim());
   const labels = $('.spec-table tr').toArray().map(e => $(e).find('th').text().trim());
   const copy = {
-    en: ['Compressed air', 'intermittent', 'O-ring', 'None', 'Approximate', '1 year from shipment'],
-    de: ['Druckluft', 'intermittierende', 'O-Ring', 'Keine', 'Ungefähres', '1 Jahr ab Versand'],
-    fr: ['Air comprimé', 'intermittente', 'Joint torique', 'Aucun', 'approximative', '1 an à compter de l’expédition'],
-    ja: ['圧縮空気', '間欠', 'Oリング', 'なし', '概算', '出荷日から1年間'],
-    ru: ['Сжатый воздух', 'прерывистое', 'Кольцо круглого сечения O-ring', 'Нет', 'Ориентировочная', '1 год с даты отгрузки'],
+    en: ['Compressed air', 'intermittent', 'O-ring', 'None', 'Approximate', '12 months from customer receipt'],
+    de: ['Druckluft', 'intermittierende', 'O-Ring', 'Keine', 'Ungefähres', '12 Monate ab Erhalt durch den Kunden'],
+    fr: ['Air comprimé', 'intermittente', 'Joint torique', 'Aucun', 'approximative', '12 mois à compter de la réception par le client'],
+    ja: ['圧縮空気', '間欠', 'Oリング', 'なし', '概算', 'お客様の受領日から12か月'],
+    ru: ['Сжатый воздух', 'прерывистое', 'Кольцо круглого сечения O-ring', 'Нет', 'Ориентировочная', '12 месяцев с даты получения заказчиком'],
   }[locale];
   assert.ok(copy, `${label}: unsupported locale`);
-  assert.equal(values.length, 17, `${label}: specification scope`);
+  assert.equal(values.length, 16, `${label}: specification scope`);
   assert.equal(values[0], 'BP-10P-0001', label);
   assert.equal(values[1], '10', label);
   assert.equal(values[2], copy[0], `${label}: compressed-air-only configuration`);
   assert.match(values[3], /^1 (MPa|МПа) /u, `${label}: pressure`);
   assert.match(values[4], /^100 /u, `${label}: speed`);
-  assert.ok(values[4].includes(copy[1]), `${label}: intermittent duty must be explicit`);
+  assert.ok(!/intermitt|間欠|прерывист/iu.test(values[4]), `${label}: retired intermittent-only limitation`);
   assert.match(values[5], /0[–−-]80.*°C/u, `${label}: temperature`);
   assert.match(values[6], /6061/u, `${label}: body material`);
-  assert.equal(values[7], copy[2], `${label}: O-ring, no inherited PTFE specification`);
+  assert.equal(values[7], policy.sealShort, `${label}: owner-confirmed BP10-only seal configuration`);
   assert.match(values[8], /20 × G1\/8|G1\/8 × 20/u, `${label}: ports`);
   assert.equal((values[8].match(/10/g) || []).length, 2, `${label}: inlet/outlet counts`);
   assert.equal((values[9].match(/10/g) || []).length, 2, `${label}: fitting counts`);
   assert.match(values[9], /8\s*(mm|мм)/u, `${label}: fitting tube diameter`);
   assert.equal(values[10], copy[3], `${label}: no through bore`);
   assert.match(values[11], /[ØφΦ]80\s*×\s*217/u, `${label}: body dimensions`);
-  assert.match(values[12], /217 × 117[.,]5 × 115[.,]8/u, `${label}: fitted envelope`);
-  assert.match(values[13], /10 × M5 × 0[.,]8.*[ØφΦ]66.*12|PCD Ø66 mm上にM5 × 0.8を10か所、完全ねじ部深さ12 mm/u, `${label}: rotor mounting`);
-  assert.match(values[14], /10 × M5 × 0[.,]8.*[ØφΦ]68.*10|PCD Ø68 mm上にM5 × 0.8を10か所、完全ねじ部深さ10 mm/u, `${label}: stator mounting`);
-  assert.match(values[15], /^(?:継手込み約)?3[.,]4\s*(kg|кг)/u, `${label}: approximate weight`);
-  assert.ok(labels[15].toLowerCase().includes(copy[4].toLowerCase()), `${label}: weight qualification`);
-  assert.match(values[16], /^1\b/u, `${label}: MOQ`);
-  assert.ok($('.pd-key-specs').text().includes(copy[5]), `${label}: one-year-from-shipment warranty`);
+  assert.ok(!/217\s*×\s*117[.,]5\s*×\s*115[.,]8/u.test($('main').text()), `${label}: unverified fitted envelope must not be published`);
+  assert.match(values[12], /10 × M5 × 0[.,]8.*[ØφΦ]66.*12|PCD Ø66 mm上にM5 × 0.8を10か所、完全ねじ部深さ12 mm/u, `${label}: rotor mounting`);
+  assert.match(values[13], /10 × M5 × 0[.,]8.*[ØφΦ]68.*10|PCD Ø68 mm上にM5 × 0.8を10か所、完全ねじ部深さ10 mm/u, `${label}: stator mounting`);
+  assert.match(values[14], /3[.,]4\s*(kg|кг)/u, `${label}: approximate weight`);
+  assert.equal(labels[14], policy.weightLabel, `${label}: CAD weight qualification`);
+  assert.equal(values[14], policy.weight, `${label}: 20 fittings included, tubing excluded`);
+  assert.match(values[15], /^1\b/u, `${label}: MOQ`);
+  assert.ok($('.pd-key-specs').text().includes(copy[5]), `${label}: receipt-based warranty`);
   assert.equal($('.pd-key-specs .pd-key-spec').length || $('.pd-key-specs > div').length, 6, `${label}: six commercial fields`);
   const graph = JSON.parse($('script[type="application/ld+json"]').text())['@graph'];
   const product = graph.find(n => n['@type'] === 'Product');
-  assert.deepEqual(product.additionalProperty.map(p => [p.name, p.value]), labels.map((l, i) => [l, values[i]]), `${label}: visible/schema parity`);
+  assert.deepEqual(product.additionalProperty.filter(p => !String(p.propertyID || '').startsWith('begapunk-policy-')).map(p => [p.name, p.value]), labels.map((l, i) => [l, values[i]]), `${label}: visible/schema parity`);
   assert.equal(product.offers, undefined, `${label}: no unsupported price`);
   const faqs = graph.find(n => n['@type'] === 'FAQPage').mainEntity;
   const visibleFaqs = $('.faq-item').toArray().map(e => [$(e).find('summary').text().trim(), $(e).find('.faq-answer').text().trim()]);

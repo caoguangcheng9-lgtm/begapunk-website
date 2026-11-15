@@ -5,6 +5,36 @@
 - [Mehrsprachige Sitemap](https://www.begapunk.com/sitemap-i18n.xml)
 - [Englischer KI-Index](https://www.begapunk.com/llms.txt)
 
+## Rechtsträger und Registrierung
+
+- Chinesischer rechtlicher Firmenname laut Gewerbelizenz: 宁波贝加庞克气动元件有限公司
+- Englischer Name im Außenauftritt: Ningbo Begapunk Pneumatic Components Co., Ltd.
+- Marke: BEGAPUNK
+- Offizielle Website: [https://www.begapunk.com/](https://www.begapunk.com/)
+- Einheitlicher Sozialkreditcode: 91330201MABLQR5K7U
+- Chinesische Zollregistrierungsnummer: 3320260A4H
+- Gründungsdatum: 28. April 2022
+- Registrierte Anschrift: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
+
+Der chinesische rechtliche Firmenname und der einheitliche Sozialkreditcode beruhen auf den vom Unternehmen bereitgestellten Angaben zur Gewerberegistrierung. Die chinesische Zollregistrierungsnummer wurde vom Unternehmen bestätigt. Der englische Firmenname wird für die internationale Geschäftskommunikation verwendet. Dieses Fertigungsunternehmen ist von der separat gegründeten internationalen Handelsgesellschaft zu unterscheiden.
+
+## Offizielle Abfragequellen
+
+Offizielle staatliche Registerportale werden als Referenz bereitgestellt. Diese Links führen zu allgemeinen Suchportalen und stellen keine unabhängig verifizierten unternehmensbezogenen Registereinträge dar.
+
+- [国家企业信用信息公示系统 / GSXT](https://www.gsxt.gov.cn/)
+- [中国海关企业进出口信用信息公示平台 / China Customs](http://credit.customs.gov.cn/)
+
+## Official Social Media Channels
+
+Dies sind die offiziellen, von BEGAPUNK verwalteten Social-Media-Konten.
+
+- [LinkedIn](https://www.linkedin.com/company/begapunk-rotary-joints/)
+- [Facebook](https://www.facebook.com/profile.php?id=61595481363231)
+- [Instagram](https://www.instagram.com/begapunkrotaryjoints/)
+- [YouTube](https://www.youtube.com/@BEGAPUNKRotaryJointsTV)
+- [X](https://x.com/Begapunk728)
+
 ## Produkte
 
 - [Drehdurchführungen: Produktübersicht | Begapunk](https://www.begapunk.com/de/products.html): Drehdurchführungen nach Anzahl der Wege, Anschluss, Durchgangsbohrung und Einbausituation auswählen. Technische Daten und Zeichnungen direkt vergleichen.
@@ -12,7 +42,7 @@
 - [BP-1P-0003 — pneumatische Drehdurchführung mit 1 Kanal](https://www.begapunk.com/de/BP-1P-0003.html): BP-1P-0003 ist eine pneumatische Drehdurchführung mit 1 Kanal, 1 Eingang und 1 Ausgang. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 500 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 270 g, Gehäuse aus Stahl 45, PTFE-Dichtung mit O-Ring, Medien: Luft, Öl, Wasser; Anschlussangaben: Medieneinlass: 1 × G3/8; Medienauslass: 1 × M10×1,5.
 - [BP-1P-0006 — pneumatische Drehdurchführung mit 1 Kanal](https://www.begapunk.com/de/BP-1P-0006.html): BP-1P-0006 ist eine pneumatische Drehdurchführung mit 1 Kanal, 1 Eingang und 8 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 300 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 265 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Einlass: 1 × G1/8; Auslass: 8 × G1/8.
 - [BP-2P-0001 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-0001.html): BP-2P-0001 ist eine pneumatische Drehdurchführung mit 2 Kanälen, 2 Eingängen und 2 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 390 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Medieneinlass: 2 × G1/8; Medienauslass: 2 × G1/8.
-- [BP-2P-0002 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-0002.html): BP-2P-0002 ist eine pneumatische Drehdurchführung mit 2 Kanälen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 300 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 220 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: seitliche Anschlüsse: 2 × G1/8, Tiefe 8 mm; stirnseitige Anschlüsse: 3 × G1/8, Tiefe 8 mm; Anschluss Gegenseite: 1 × G1/4, Tiefe 8 mm.
+- [BP-2P-0002 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-0002.html): BP-2P-0002 ist eine pneumatische Drehdurchführung mit 2 Kanälen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +100 °C, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: seitliche Anschlüsse: 2 × G1/8, Tiefe 8 mm; stirnseitige Anschlüsse: 3 × G1/8, Tiefe 8 mm; Anschluss Gegenseite: 1 × G1/4, Tiefe 10 mm. Zwei unabhängige Luftkanäle durchqueren die rotierende Dichtschnittstelle. Ein zusätzlicher Kanal liegt vollständig innerhalb der Welle und durchquert diese Schnittstelle nicht. Der zentrale G1/4-Anschluss ist über den Wellenkanal mit einem der drei G1/8-Flanschanschlüsse verbunden; die anderen beiden Flanschanschlüsse gehören zu den zwei Drehkanälen. Alle drei Wege erlauben Luftströmung in beide Richtungen ohne festgelegte Einlassrichtung. Wirksame Gewindeeingriffstiefe G1/4: 10 mm; Flanschanschlüsse: 3 × G1/8 auf Lochkreis 16 mm.
 - [BP-2P-08-0001 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-08-0001.html): BP-2P-08-0001 ist eine pneumatische Drehdurchführung mit 2 Kanälen, 2 Eingängen und 2 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 390 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Einlass: 2 × G1/8; Auslass: 2 × G1/8.
 - [BP-2P-130-0001 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-130-0001.html): BP-2P-130-0001 ist eine pneumatische Drehdurchführung mit 2 Kanälen. Veröffentlichte Werte: maximaler Druck 5 MPa, maximale Drehzahl 80 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 8655 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Anschlüsse Seite A: 2 × G1/8; Anschlüsse Seite B: 2 × G1/8; Anschlussfunktionen werden in der bestätigten Zeichnung vor der Fertigung zugeordnet.
 - [BP-2P-16-0001 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-16-0001.html): BP-2P-16-0001 ist eine pneumatische Drehdurchführung mit 2 Kanälen, 2 Eingängen und 2 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 410 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Medieneinlass: 2 × G1/8; Medienauslass: 2 × G1/8.
@@ -20,17 +50,17 @@
 - [BP-2P-50-0001 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-50-0001.html): BP-2P-50-0001 ist eine pneumatische Drehdurchführung mit 2 Kanälen, 2 Eingängen und 2 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 100 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 2300 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Einlass: 2 × G1/8; Auslass: 2 × G1/8.
 - [BP-2P-95-0005 — pneumatische Drehdurchführung mit 2 Kanälen](https://www.begapunk.com/de/BP-2P-95-0005.html): BP-2P-95-0005 ist eine pneumatische Drehdurchführung mit 2 Kanälen, 2 Eingängen und 4 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 4260 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Löseanschluss: 1 × G1/8, Tiefe 8 mm; Klemmanschluss: 1 × G1/8, Tiefe 8 mm; Löseausgang: 2 × Ø4 mm; Klemmausgang: 2 × Ø4 mm.
 - [BP-3P-0004 — pneumatische Drehdurchführung mit 3 Kanälen](https://www.begapunk.com/de/BP-3P-0004.html): BP-3P-0004 ist eine pneumatische Drehdurchführung mit 3 Kanälen, 3 Eingängen und 3 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 490 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Medieneinlass: 3 × G1/8; Medienauslass: 3 × G1/8.
-- [BP-3P-0006 — pneumatische Drehdurchführung mit 3 Kanälen](https://www.begapunk.com/de/BP-3P-0006.html): BP-3P-0006 ist eine pneumatische Drehdurchführung mit 3 Kanälen, 3 Eingängen und 3 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 360 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussgewinde ist nicht angegeben.
+- [BP-3P-0006 — pneumatische Drehdurchführung mit 3 Kanälen](https://www.begapunk.com/de/BP-3P-0006.html): BP-3P-0006 ist eine pneumatische Drehdurchführung mit 3 Kanälen, 3 Eingängen und 3 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Auslass: 3 × G1/4, Tiefe 9 mm; Einlass: 3 × G1/4.
 - [BP-3P-0007 — pneumatische Drehdurchführung mit 3 Kanälen](https://www.begapunk.com/de/BP-3P-0007.html): BP-3P-0007 ist eine pneumatische Drehdurchführung mit 3 Kanälen, 3 Eingängen und 3 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 390 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Einlass: 3 × G1/8; Auslass: 3 × G1/8.
 - [BP-3P-S06-0001 — pneumatisch-elektrische Drehdurchführung mit 3 Kanälen](https://www.begapunk.com/de/BP-3P-S06-0001.html): BP-3P-S06-0001 ist eine pneumatisch-elektrische Drehdurchführung mit 3 Kanälen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 410 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Luftausgang: 3 × Ø4 mm; der Lufteingang wird in der bestätigten Zeichnung vor der Fertigung zugeordnet; 6 elektrische Leitungen dargestellt; Kreiszuordnung und Nennwerte gemäß gewählter Spezifikation.
 - [BP-4P-30-0001 — pneumatische Drehdurchführung mit 4 Kanälen](https://www.begapunk.com/de/BP-4P-30-0001.html): BP-4P-30-0001 ist eine pneumatische Drehdurchführung mit 4 Kanälen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 943 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Anschlüsse Fläche A: 4 × G1/8; Anschlüsse Fläche B: 4 × G1/8; Anschlussfunktionen werden in der bestätigten Zeichnung vor der Fertigung zugeordnet.
 - [BP-8P-0001 — pneumatische Drehdurchführung mit 8 Kanälen](https://www.begapunk.com/de/BP-8P-0001.html): BP-8P-0001 ist eine pneumatische Drehdurchführung mit 8 Kanälen, 8 Eingängen und 8 Ausgängen. Veröffentlichte Werte: maximaler Druck 1 MPa, maximale Drehzahl 200 U/min, Temperaturbereich -20 bis +80 °C, Gewicht 850 g, Gehäuse aus Aluminiumlegierung 6061, PTFE-Dichtung mit O-Ring, Medium: Luft; Anschlussangaben: Medieneinlass: 8 × G1/8; Medienauslass: 8 × G1/8.
-- [BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung](https://www.begapunk.com/de/BP-10P-0001.html): BP-10P-0001 ist eine pneumatische 10-Kanal-Drehdurchführung, die Druckluft über zehn unabhängige Kanäle von feststehenden Leitungen zu rotierenden Maschinenteilen leitet. Der Maximaldruck beträgt 1 MPa, die maximale Drehzahl 100 min⁻¹ bei intermittierender Rotation. Sie verfügt über 20 G1/8-Anschlüsse und mitgelieferte Steckverschraubungen für Schläuche mit 8 mm Außendurchmesser. Das Gehäuse aus Aluminiumlegierung 6061 ist mit O-Ringen abgedichtet und besitzt keine Durchgangsbohrung.
+- [BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung](https://www.begapunk.com/de/BP-10P-0001.html): BP-10P-0001 ist eine pneumatische 10-Kanal-Drehdurchführung, die Druckluft über zehn unabhängige Kanäle von feststehenden Leitungen zu rotierenden Maschinenteilen leitet. Der Maximaldruck beträgt 1 MPa, die maximale Drehzahl 100 min⁻¹. Sie verfügt über 20 G1/8-Anschlüsse und mitgelieferte Steckverschraubungen für Schläuche mit 8 mm Außendurchmesser. Das Gehäuse aus Aluminiumlegierung 6061 ist mit O-Ringen abgedichtet und besitzt keine Durchgangsbohrung.
 
 ## Anwendungen
 
 - [Drehdurchführungen nach Anwendung | Begapunk](https://www.begapunk.com/de/applications.html): Anwendungsübersicht für pneumatische Drehdurchführungen, einschließlich der Übertragung von Druckluft zum hinteren Spannfutter einer Laser-Rohrschneidmaschine.
-- [Drehdurchführungen für Rund- und Drehtische | Begapunk](https://www.begapunk.com/de/application-automation-rotary-tables.html): Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle.
+- [Drehdurchführungen für Rund- und Drehtische | Begapunk](https://www.begapunk.com/de/application-automation-rotary-tables.html): Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie geeignete pneumatische Katalogmodelle.
 - [Drehdurchführungen für Füll- und Verschließmaschinen](https://www.begapunk.com/de/application-bottle-filling-capping.html): BP-2P-16-0001 im Produktions-Verschließkopf: zwei unabhängige Luftwege spannen und lösen einen Dreibackengreifer. BP-2P-08-0001 ist eine weitere pneumatische Greiferoption.
 - [Drehdurchführungen für pneumatische CNC-Spanntechnik](https://www.begapunk.com/de/application-cnc-pneumatic-clamping.html): Auswahlhilfe mit einer vom Kunden freigegebenen Produktionsanwendung der BP-2P-130-0001 an einer langsam laufenden kundenspezifischen CNC-Spannvorrichtung einer Kreissägemaschine; zwei getrennte Druckluftkanäle dienen zum Spannen und Lösen.
 - [Drehdurchführungen für Elektronik- und Batterieprüfung](https://www.begapunk.com/de/application-electronics-battery-test-fixtures.html): Pneumatische und kombinierte Drehdurchführungen für rotierende Prüfstationen, Greifer, Vakuumsauger und Batterie-Testvorrichtungen auswählen.
@@ -72,3 +102,64 @@
 - [Drehdurchführung anfragen | Technische Prüfung Begapunk](https://www.begapunk.com/de/contact.html): Für die Anfrage einer Drehdurchführung genügen Modellbezeichnung, Foto, Zeichnung oder bekannte Betriebsdaten. In der Regel antworten wir innerhalb eines Arbeitstags.
 - [Datenschutzerklärung | Begapunk](https://www.begapunk.com/de/privacy.html): Informationen zur Erhebung, Verarbeitung, Speicherung und zum Schutz personenbezogener Daten auf der Begapunk Website.
 - [Allgemeine Geschäftsbedingungen | Begapunk](https://www.begapunk.com/de/terms.html): Geschäftsbedingungen von Begapunk für Angebote, Bestellungen, Lieferung, Gewährleistung, Rückgabe und Haftung.
+
+## Technische Spezifikationen
+
+Die Auswahl richtet sich nach der modellspezifischen Zeichnung, Medium, Druck, Drehzahl, Temperatur, Anschlüssen und dem tatsächlichen Betriebszyklus. Maximalwerte belegen nicht die Eignung für jede Kombination von Betriebsbedingungen. Hydraulische Kennwerte dürfen nicht aus pneumatischen Modellen abgeleitet werden.
+
+- BP-2P-0002: Zwei unabhängige Luftkanäle durchqueren die rotierende Dichtschnittstelle. Ein zusätzlicher Kanal liegt vollständig innerhalb der Welle und durchquert diese Schnittstelle nicht. Der zentrale G1/4-Anschluss ist über den Wellenkanal mit einem der drei G1/8-Flanschanschlüsse verbunden; die anderen beiden Flanschanschlüsse gehören zu den zwei Drehkanälen. Alle drei Wege erlauben Luftströmung in beide Richtungen ohne festgelegte Einlassrichtung. Wirksame Gewindeeingriffstiefe G1/4: 10 mm; Flanschanschlüsse: 3 × G1/8 auf Lochkreis 16 mm.
+- BP-10P-0001: Maximaldruck: 1 MPa (10 bar ≈ 145 psi); Maximale Drehzahl: 100 U/min; Temperaturbereich: 0–80 °C; Gehäusewerkstoff: Aluminiumlegierung 6061. O-Ring aus FKM-Elastomer mit internem MoS₂-Zusatz und nach dem Formen aufgebrachter PTFE-Oberflächenbeschichtung. Der Dichtungslieferant fertigt die O-Ringe kundenspezifisch; ein separater Unterauftragnehmer beschichtet sie mit PTFE. Nur für BP-10P-0001. Berechnetes Gewicht: ca. 3,4 kg (einschließlich 20 Pneumatikverschraubungen, ohne Schläuche). CAD-berechnetes Gewicht, kein Wiegeergebnis und kein Versandgewicht.
+
+## Fertigung und Qualitätssicherung
+
+Jede Begapunk-Drehdurchführung wird vor dem Versand einzeln unter Druck auf rotierende Dichtfunktion und Leckage geprüft. Jede Einheit trägt eine dauerhaft am Gehäuse markierte eindeutige Seriennummer zur Rückverfolgung ihrer Werksprüfaufzeichnungen und wird mit einem Werksprüfbericht geliefert. Die Prüfung folgt einer gelenkten Prüfvorschrift mit Dokumentnummer, Versionsnummer und Änderungshistorie.
+
+## Garantie und Geschäftsbedingungen
+
+Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß, falsche Montage und unsachgemäße Verwendung sind ausgeschlossen. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich.
+
+Garantieanfragen erhalten an regulären Arbeitstagen innerhalb von 24 Stunden eine erste Antwort. An Wochenenden oder gesetzlichen Feiertagen eingegangene Anfragen werden spätestens bis zum Ende des nächsten regulären Arbeitstags erstmals beantwortet. Dies ist keine Reparaturfrist und kein Rund-um-die-Uhr-Service.
+
+### Geltungsbereich der Staffelpreise
+
+- BP-2P-08-0001: Ab 100 Stück eines Modells in einem einzelnen Auftrag: 42 USD/Stück, FOB Ningbo, gültig bis 2026-12-31. 1–99 Stück: Angebot anfordern. Gemischte Modelle und aufsummierte frühere Aufträge zählen nicht zur Mindestmenge.
+- BP-2P-95-0005: Ab 100 Stück eines Modells in einem einzelnen Auftrag: 218 USD/Stück, FOB Ningbo, gültig bis 2026-12-31. 1–99 Stück: Angebot anfordern. Gemischte Modelle und aufsummierte frühere Aufträge zählen nicht zur Mindestmenge.
+- BP-3P-0004: Ab 100 Stück eines Modells in einem einzelnen Auftrag: 57 USD/Stück, FOB Ningbo, gültig bis 2026-12-31. 1–99 Stück: Angebot anfordern. Gemischte Modelle und aufsummierte frühere Aufträge zählen nicht zur Mindestmenge.
+- BP-3P-0007: Ab 100 Stück eines Modells in einem einzelnen Auftrag: 60 USD/Stück, FOB Ningbo, gültig bis 2026-12-31. 1–99 Stück: Angebot anfordern. Gemischte Modelle und aufsummierte frühere Aufträge zählen nicht zur Mindestmenge.
+
+FOB Ningbo umfasst Standard-Exportverpackung, Inlandstransport zum Hafen Ningbo, reguläre Exportzollabfertigung und übliche chinesische Exportsteuern/-abgaben. Internationale Seefracht, Einfuhrzölle und Einfuhrabfertigung im Zielland sind ausgeschlossen. Grundsätzlich gilt dasselbe Basisangebot für alle Länder und Regionen, vorbehaltlich der geltenden Exportvorschriften.
+
+Für die folgenden vier Modelle mit Staffelpreisen:
+
+- BP-2P-08-0001: Verfügbarkeit: Bitte Lagerbestand vor der Bestellung bestätigen lassen.
+- BP-2P-95-0005, BP-3P-0004, BP-3P-0007: Auf Lager — üblicherweise vorrätig; verfügbare Menge für Ihren Auftrag bestätigen lassen. Keine Echtzeit-Bestandsanzeige.
+
+Bei ausreichendem Lagerbestand kann der Versand nach vollständigem Zahlungseingang veranlasst werden. Falls Produktion erforderlich ist, ist die Ware innerhalb von 20 Kalendertagen nach vollständigem Zahlungseingang fertig und versandbereit, sowohl bei 1–99 als auch ab 100 Stück. Transportzeit ist nicht enthalten.
+
+- BP-10P-0001: Fertigung auf Bestellung. Mindestmenge: 1 Stück. Angebot anfordern; kein fester öffentlicher Preis. Standard- und Musterfertigung: etwa 20 Kalendertage nach vollständigem Zahlungseingang, ohne Transportzeit. Sonderausführungen nach technischer Prüfung; Mindestmenge 1 Stück; Preis und Lieferzeit werden separat bestätigt.
+
+Die folgenden Zahlungsbedingungen gelten ausschließlich für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001.
+
+Zahlungsbedingungen: 100 % T/T-Vorauszahlung per Banküberweisung, ausschließlich USD. Produktion oder Versand verfügbarer Lagerware wird nach vollständigem Zahlungseingang veranlasst.
+
+Allgemeine Angaben zu Lieferung, Fertigungszeiten für Sonderausführungen und Zahlung dienen nur der Orientierung. Für jedes Modell haben die in seinem formellen Angebot und angenommenen Auftrag vereinbarten Bedingungen Vorrang. Die bestätigte Regel von 100 % T/T-Vorauszahlung ausschließlich in USD gilt nur für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001, nicht für alle Modelle. Bei Sonderausführungen des BP-10P-0001 erfordern Preis und Lieferzeit eine technische Prüfung und gesonderte Vereinbarung; eine allgemeine Schätzung der Sonderfertigungszeit ist keine Zusage für diesen Auftrag.
+
+## Technische Dokumentation
+
+Für den Einbau gilt die aktuelle Modellzeichnung als PDF. Die STEP-Dateien auf den Produktseiten unterstützen die Einbauprüfung; sie belegen keine ungeprüften Gewichts- oder Gesamtbauraumangaben mit Anschlüssen.
+
+- [BP-2P-0002 — Einbauzeichnung als PDF](https://www.begapunk.com/downloads/BP-2P-0002.pdf)
+- [BP-3P-0006 — Einbauzeichnung als PDF](https://www.begapunk.com/downloads/BP-3P-0006.pdf)
+- [BP-10P-0001 — Einbauzeichnung als PDF](https://www.begapunk.com/downloads/BP-10P-0001.pdf)
+- [Installationsanleitung](https://www.begapunk.com/downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf)
+
+## Kontakt und Sprachen
+
+- Geschäftliche E-Mail: [sales@begapunk.com](mailto:sales@begapunk.com)
+- Geschäftliche Telefonnummer: +86 183 6842 5342
+- Registrierte Anschrift: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
+- Geschäftszeiten: Montag–Freitag, 08:30–17:30 (Chinesische Standardzeit, UTC+08:00).
+
+Dies sind die regulären Geschäftszeiten; sie bedeuten keinen Online-Service rund um die Uhr.
+
+Diese Datei dient als Seiten- und Faktenübersicht. Sie ist keine Zertifizierung und garantiert weder Google-Rankings noch eine Übernahme durch KI-Systeme.

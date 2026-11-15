@@ -130,7 +130,7 @@ const checks = [
   {
     file: 'products.html',
     forbidden: ['about 30 days for custom'],
-    required: ['up to 30 calendar days after payment (excluding shipping)', '2 in / 4 out', '4 × Ø4 outlets (2 clamp · 2 release)', 'Begapunk-Rotary-Joint-Catalog-2026.pdf'],
+    required: ['up to 30 calendar days after payment (excluding shipping)', '2 in / 4 out', '4 × Ø4 outlets (2 clamp · 2 release)', 'product-comparison.html'],
   },
   {
     file: 'BP-2P-95-0005.html',
@@ -224,8 +224,8 @@ const checks = [
       'minimum order quantity is one unit for both catalog and custom products',
       '20 calendar days after payment (excluding shipping)',
       'up to 30 calendar days after payment (excluding shipping)',
-      'one year from the shipment date',
-      'replacement at no charge',
+      '12 months from customer receipt',
+      'free repair or replacement after technical analysis',
       'Ningbo Begapunk Pneumatic Components Co., Ltd. ("Begapunk", "we", "us", or "our")',
       'Ningbo Arbitration Commission',
       'arbitration rules in effect at the time of submission',

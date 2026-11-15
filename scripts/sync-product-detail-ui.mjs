@@ -5,6 +5,7 @@ import process from 'node:process';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import { applyProductPolicy, assertOwnerProductPolicy } from './lib/owner-product-policy.mjs';
 import { drawingBackedUiContract, drawingBackedPublicStep } from './lib/drawing-backed-product-facts.mjs';
 import { SITE_NAVIGATION_SCRIPT_VERSION, SITE_STYLE_VERSION } from './lib/site-asset-versions.mjs';
 
@@ -1467,6 +1468,10 @@ async function main() {
     next = normalizeFirstViewWhitespace(next);
     next = transformRelatedResourceOverrides(next, relativePath, contract);
     validateFinalStructure(next, relativePath, copy, contract);
+    // Apply the authoritative policy after UI copy, as the full locale builder does.
+    // This prevents standalone UI synchronization from reverting approved terms.
+    next = applyProductPolicy(next, localeForFile(relativePath), modelForFile(relativePath));
+    assertOwnerProductPolicy(next, localeForFile(relativePath), modelForFile(relativePath));
     if (next !== source) pending.push({ relativePath, absolutePath, next });
   }
 

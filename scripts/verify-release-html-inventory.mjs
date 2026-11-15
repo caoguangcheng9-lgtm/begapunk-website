@@ -1,6 +1,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { load } from 'cheerio';
+import { verifyIncrementalReleaseArtifact } from './lib/owner-incremental-acceptance.mjs';
 
 const repositoryRoot = path.resolve(import.meta.dirname, '..');
 const releaseRoot = path.resolve(process.argv[2] || path.join(repositoryRoot, 'dist', 'production'));
@@ -55,6 +56,9 @@ for (const page of [...noindexPages, ...errorPages]) {
 }
 for (const relative of canonicalPaths) {
   if (!actualSet.has(relative)) continue;
+  try {
+    await verifyIncrementalReleaseArtifact(repositoryRoot, relative, await readFile(path.join(releaseRoot, ...relative.split('/'))));
+  } catch (error) { failures.push(`${relative}: incremental release bytes rejected (${error.message}).`); }
   const pageName = path.posix.basename(relative);
   const $ = load(await readFile(path.join(releaseRoot, ...relative.split('/')), 'utf8'));
   const robots = $('meta[name="robots"]').map((_, element) => $(element).attr('content') || '').get();

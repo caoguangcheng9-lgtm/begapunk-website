@@ -60,6 +60,9 @@
     "owner-facts:verify": "node scripts/verify-owner-confirmed-facts.mjs",
     "cnc-saw-case:sync": "node scripts/sync-cnc-saw-fixture-case.mjs",
     "cnc-saw-case:verify": "node scripts/sync-cnc-saw-fixture-case.mjs --check",
+    "owner:content:80:verify": "node scripts/verify-owner-ai-content-acceptance.mjs",
+    "owner:content:17:verify": "node scripts/verify-owner-additional17-content-acceptance.mjs",
+    "owner:content:self-test": "node --test tests/editorial-owner-ai-acceptance.test.mjs tests/editorial-owner-additional17-acceptance.test.mjs tests/editorial-incremental-acceptance.test.mjs",
     "editorial:release:verify": "node scripts/verify-editorial-release-status.mjs",
     "editorial:snapshot:self-test": "node --test tests/editorial-artifact-snapshot.test.mjs",
     "editorial:snapshot:refresh": "node scripts/refresh-reviewed-localized-artifacts.mjs",
@@ -123,7 +126,9 @@
     "lighthouse:verify:strict": "node scripts/verify-lighthouse-performance.mjs dist/production --strict",
     "lighthouse:release:verify": "npm run lighthouse:browser:install && npm run lighthouse:verify",
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production && npm run release:links:verify",
-    "deploy:prepare": "node scripts/run-release-audit.mjs release"
+    "deploy:prepare": "node scripts/run-release-audit.mjs release",
+    "product-facts:sync": "node scripts/sync-confirmed-product-facts.mjs --write",
+    "product-facts:verify": "node scripts/sync-confirmed-product-facts.mjs --check && node scripts/verify-confirmed-product-facts.mjs"
   },
   "devDependencies": {
     "@puppeteer/browsers": "3.2.0",

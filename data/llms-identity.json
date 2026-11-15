@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "brand": "BEGAPUNK",
+  "legalNameZh": "宁波贝加庞克气动元件有限公司",
+  "externalNameEn": "Ningbo Begapunk Pneumatic Components Co., Ltd.",
+  "website": "https://www.begapunk.com/",
+  "uscc": "91330201MABLQR5K7U",
+  "customsRegistration": "3320260A4H",
+  "source": {
+    "date": "2026-11-14",
+    "reference": "Owner instruction: BEGAPUNK — llms.txt GEO最终优化与本地验收, section 2",
+    "legalNameAndUscc": "OWNER_PROVIDED_BUSINESS_LICENSE_INFORMATION",
+    "customsCodeAndEntity": "OWNER_CONFIRMED",
+    "independentlyVerified": false,
+    "governmentScreenshotSupplement": {
+      "providedDate": "2026-11-14",
+      "evidenceType": "OWNER_PROVIDED_GOVERNMENT_QUERY_SCREENSHOTS",
+      "contentBasis": "OWNER_REPORTED_CONTENT_NOT_DIRECTLY_INSPECTED",
+      "sourceRecord": {
+        "path": "audit/llms-social-identity/2026-11-14/OWNER_EVIDENCE_SOURCE.md",
+        "sha256": "1fb5dec77e8c54a0eca9b300dabe7fc6777b2bb0498f55621d51b54656ebb01c"
+      }
+    },
+    "identityContactSupplement": {
+      "date": "2026-11-14",
+      "reference": "Owner instruction: BEGAPUNK — llms.txt 企业信息补全（仅限本轮）, sections 2–4",
+      "level": "OWNER_PROVIDED",
+      "governmentScreenshotReview": "OWNER_CONFIRMS_SCREENSHOTS_PROVIDED_AND_CONTENT_CHECKED",
+      "independentOnlineVerification": false,
+      "note": "This records the owner confirmation in this instruction; it does not assert new direct image inspection by Codex or screenshot-file archiving."
+    }
+  },
+  "verificationSources": [
+    {
+      "name": "国家企业信用信息公示系统 / GSXT",
+      "url": "https://www.gsxt.gov.cn/",
+      "kind": "LOOKUP_PORTAL_ONLY",
+      "entityRecordStatus": "PENDING_VERIFICATION"
+    },
+    {
+      "name": "中国海关企业进出口信用信息公示平台 / China Customs",
+      "url": "http://credit.customs.gov.cn/",
+      "kind": "LOOKUP_PORTAL_ONLY",
+      "entityRecordStatus": "PENDING_VERIFICATION"
+    }
+  ],
+  "sameAs": [],
+  "governmentQueryScreenshots": [
+    {
+      "registry": "GSXT",
+      "providedDate": "2026-11-14",
+      "reportedFields": {
+        "legalNameZh": "宁波贝加庞克气动元件有限公司",
+        "uscc": "91330201MABLQR5K7U",
+        "enterpriseStatusZh": "存续"
+      },
+      "archiveStatus": "ARCHIVE_REQUIRED",
+      "assetPath": null,
+      "assetSha256": null,
+      "imageInspectedByCodex": false,
+      "independentOnlineVerification": false
+    },
+    {
+      "registry": "CHINA_CUSTOMS",
+      "providedDate": "2026-11-14",
+      "reportedFields": {
+        "legalNameZh": "宁波贝加庞克气动元件有限公司",
+        "uscc": "91330201MABLQR5K7U",
+        "customsRegistration": "3320260A4H"
+      },
+      "archiveStatus": "ARCHIVE_REQUIRED",
+      "assetPath": null,
+      "assetSha256": null,
+      "imageInspectedByCodex": false,
+      "independentOnlineVerification": false
+    }
+  ],
+  "officialSocialChannels": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/company/begapunk-rotary-joints/",
+      "ownershipStatus": "CONFIRMED_OFFICIAL_ACCOUNT",
+      "ownershipBasis": "OWNER_CONFIRMATION_AND_ARCHIVED_ACCOUNT_AUDIT",
+      "ownerConfirmationDate": "2026-11-14",
+      "evidence": {
+        "path": "audit/llms-social-identity/2026-11-14/LINKEDIN_CURRENT_PROFILE_AUDIT.md",
+        "sha256": "7fadb09b0537046d8ee74e1afc967e20369b938c130f46aaec59c8586491f8b0"
+      },
+      "platformBadgeStatus": "NOT_VERIFIED",
+      "platformCertificationClaimed": false,
+      "productCertificationClaimed": false
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/profile.php?id=61595481363231",
+      "ownershipStatus": "CONFIRMED_OFFICIAL_ACCOUNT",
+      "ownershipBasis": "OWNER_CONFIRMATION_AND_ARCHIVED_ACCOUNT_AUDIT",
+      "ownerConfirmationDate": "2026-11-14",
+      "evidence": {
+        "path": "audit/llms-social-identity/2026-11-14/FACEBOOK_CURRENT_PROFILE_AUDIT.md",
+        "sha256": "6aeafa02067130d3e2f45eeec04b23e8422b947b3de3d8338bfb7a2bb126daef"
+      },
+      "platformBadgeStatus": "NOT_VERIFIED",
+      "platformCertificationClaimed": false,
+      "productCertificationClaimed": false
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/begapunkrotaryjoints/",
+      "ownershipStatus": "CONFIRMED_OFFICIAL_ACCOUNT",
+      "ownershipBasis": "OWNER_CONFIRMATION_AND_ARCHIVED_ACCOUNT_AUDIT",
+      "ownerConfirmationDate": "2026-11-14",
+      "evidence": {
+        "path": "audit/llms-social-identity/2026-11-14/INSTAGRAM_CURRENT_PROFILE_AUDIT.md",
+        "sha256": "6c8961fab44f97aed1537bd7e291a79d869e08c553c8b4a359c867d9574c2e44"
+      },
+      "platformBadgeStatus": "NOT_VERIFIED",
+      "platformCertificationClaimed": false,
+      "productCertificationClaimed": false
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/@BEGAPUNKRotaryJointsTV",
+      "ownershipStatus": "CONFIRMED_OFFICIAL_ACCOUNT",
+      "ownershipBasis": "OWNER_CONFIRMATION_AND_ARCHIVED_ACCOUNT_AUDIT",
+      "ownerConfirmationDate": "2026-11-14",
+      "evidence": {
+        "path": "audit/llms-social-identity/2026-11-14/YOUTUBE_GEO_PUBLICATION_RESULT.md",
+        "sha256": "b1ebccef6c46728e7d1806a0b49c6c1314cf59ff2fbff18ec7b6e37c14740aa0"
+      },
+      "platformBadgeStatus": "NOT_VERIFIED",
+      "platformCertificationClaimed": false,
+      "productCertificationClaimed": false
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/Begapunk728",
+      "ownershipStatus": "CONFIRMED_OFFICIAL_ACCOUNT",
+      "ownershipBasis": "OWNER_CONFIRMATION_AND_ARCHIVED_ACCOUNT_AUDIT",
+      "ownerConfirmationDate": "2026-11-14",
+      "evidence": {
+        "path": "audit/llms-social-identity/2026-11-14/X_CURRENT_PROFILE_AUDIT.md",
+        "sha256": "d5dcc6db96ec896664e9b847436ed9ab6b79b49b82ee9586868af4684d37c204"
+      },
+      "platformBadgeStatus": "NOT_VERIFIED",
+      "platformCertificationClaimed": false,
+      "productCertificationClaimed": false
+    }
+  ],
+  "establishedDate": "2022-04-28",
+  "registeredAddress": "No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.",
+  "businessEmail": "sales@begapunk.com",
+  "businessPhone": "+86 183 6842 5342",
+  "businessHours": {
+    "weekdays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "08:30",
+    "closes": "17:30",
+    "timeZone": "Asia/Shanghai",
+    "utcOffset": "+08:00"
+  }
+}

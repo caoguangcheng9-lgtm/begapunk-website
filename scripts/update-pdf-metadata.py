@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
 import tempfile
 from pathlib import Path
@@ -14,9 +15,19 @@ ROOT = Path(__file__).resolve().parents[1]
 DOWNLOADS = ROOT / "downloads"
 TEMP_DIR = ROOT / "tmp" / "pdfs" / "metadata-rewrite"
 AUTHOR = "Ningbo Begapunk Pneumatic Components Co., Ltd."
+CONTROLLED_DRAWINGS = json.loads((ROOT / "data" / "public-downloads.json").read_text(encoding="utf-8")).get("drawingVersions", {})
+
+
+def assert_controlled_original(pdf_path: Path) -> bool:
+    record = CONTROLLED_DRAWINGS.get(pdf_path.stem)
+    if not record:
+        return False
+    actual = hashlib.sha256(pdf_path.read_bytes()).hexdigest()
+    if actual != record["sha256"]:
+        raise RuntimeError(f"Controlled drawing original hash mismatch: {pdf_path.name}")
+    return True
 
 TITLES = {
-    "Begapunk-Rotary-Joint-Catalog-2026.pdf": "Begapunk Rotary Joint Product Catalog 2026",
     "Begapunk_Rotary_Joint_Installation_Manual.pdf": "Begapunk Pneumatic Rotary Union Installation Manual",
     "BP-1P-0003.pdf": "BP-1P-0003 Pneumatic Rotary Union Engineering Drawing",
     "BP-1P-0006.pdf": "BP-1P-0006 Pneumatic Rotary Union Engineering Drawing",
@@ -163,12 +174,19 @@ def check_pdf(pdf_path: Path) -> None:
     # Reading every page proves the document structure is traversable rather
     # than merely accepting a valid header and end marker.
     page_fingerprint(reader)
+    # Approved engineering originals keep their own metadata and exact bytes.
+    # They must never be rewritten by the website SEO metadata pipeline.
+    if assert_controlled_original(pdf_path):
+        return
     mismatches = metadata_mismatches(pdf_path, reader)
     if mismatches:
         raise RuntimeError(f"Metadata check failed for {pdf_path.name}: {mismatches}")
 
 
 def rewrite_pdf(pdf_path: Path) -> bool:
+    if assert_controlled_original(pdf_path):
+        check_pdf(pdf_path)
+        return False
     source_reader = PdfReader(str(pdf_path))
     assert_safe_pdf(source_reader, pdf_path.name)
     if not metadata_mismatches(pdf_path, source_reader):
@@ -272,7 +290,7 @@ def main() -> None:
     else:
         for pdf_path in pdfs:
             check_pdf(pdf_path)
-        print(f"Verified metadata for {len(pdfs)} PDFs.")
+        print(f"Verified {len(pdfs)} PDFs: safety/readability plus exact controlled-original hashes or legacy metadata.")
 
 
 if __name__ == "__main__":

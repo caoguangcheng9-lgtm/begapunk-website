@@ -275,7 +275,8 @@
     "fcd1edd5b3f2e4f9": "Vergleichen Sie Anbieter anhand derselben Checkliste: Medium, Druck, Drehzahl, Kanalzahl und die Anschlussgrößen, für die das Modell ausgelegt ist; ob vor der Bestellung eine Modellzeichnung und eine STEP-Datei verfügbar sind; wie jede Einheit vor dem Versand geprüft wird; Lieferzeit und Mindestbestellmenge; die schriftlichen Garantiebedingungen; und die für Ihren Zielmarkt verfügbaren Unterlagen. Lassen Sie sich diese Angaben von jedem Anbieter für das konkrete Modell schriftlich bestätigen.",
     "6e024db6f423ad2c": "Wie sollte ich Drehdurchführungsanbieter vergleichen?",
     "c3d3e6fb02df6205": "Wo ist Begapunk ansässig und was stellt das Unternehmen her?",
-    "e5ce56829782bfae": "Fertige Einheiten werden kanalweise auf Dichtheit geprüft und tragen jeweils eine individuelle Rückverfolgbarkeitsnummer. Die Prüfparameter sind auf der Seite zur Fertigungsprüfung veröffentlicht; sie bestätigen die Dichtheit beim angegebenen Prüfdruck und belegen für sich genommen keine Lebensdauer."
+    "e5ce56829782bfae": "Fertige Einheiten werden kanalweise auf Dichtheit geprüft und tragen jeweils eine individuelle Rückverfolgbarkeitsnummer. Die Prüfparameter sind auf der Seite zur Fertigungsprüfung veröffentlicht; sie bestätigen die Dichtheit beim angegebenen Prüfdruck und belegen für sich genommen keine Lebensdauer.",
+    "9b9a6993136a495e": "Begapunk gewährt gemäß den schriftlichen Auftragsbedingungen standardmäßig eine Herstellergarantie von 12 Monaten ab Erhalt des Produkts durch den Kunden auf Material- und Fertigungsfehler. Schäden durch falsche Montage, zu hohen Druck oder zu hohe Drehzahl, ungeeignete oder ungefilterte Luft sowie Fehlgebrauch sind von dieser Garantie ausgeschlossen. Senden Sie zur Prüfung Modell, Rückverfolgbarkeitsnummer, Betriebsbedingungen und Fotos des Problems. Wird ein von der Garantie erfasster Fertigungsfehler bestätigt, erfolgt üblicherweise ein kostenloser Austausch."
   },
   "application-vacuum-packaging-machines.html": {
     "89791f6ac254e12b": "/ Vakuumverpackung",
@@ -3405,8 +3406,8 @@
   "application-automation-rotary-tables.html": {
     "b8d810db80eff239": "<a href=\"blog-prevent-air-hose-twisting.html\">Leitfaden: Druckluftschläuche vor Verdrehen schützen →</a>",
     "13ff02358786b108": "<a href=\"BP-10P-0001.html\">BP-10P-0001</a> — Für intermittierend rotierende Vorrichtungen mit zehn unabhängigen Druckluftkreisen. Max. 1 MPa und 100 min⁻¹; ohne Durchgangsbohrung. Die Katalogausführung ist für Druckluft vorgesehen.",
-    "10feb832b7b9426a": "Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie aktuelle 2-Wege-Katalogmodelle.",
-    "aad395b075325893": "Senden Sie Schnittansicht, Pneumatikplan und den realen Index-/Stillstandstakt. Wir vergleichen 2-Wege-Luftkatalogmodelle mit der Schnittstelle.",
+    "10feb832b7b9426a": "Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie geeignete pneumatische Katalogmodelle.",
+    "aad395b075325893": "Senden Sie eine Schnittansicht, den Pneumatikplan und den tatsächlichen Indexier-/Stillstandszyklus. Wir gleichen geeignete pneumatische Katalogmodelle mit der Einbauschnittstelle ab.",
     "e8424886dfc2ce2b": "<a href=\"application-cnc-pneumatic-clamping.html\">Anwendung zum pneumatischen Spannen ansehen</a>",
     "663eef7a93d6c541": "<a href=\"BP-2P-30-0001.html\">Ausführung mit Durchgangsbohrung ansehen</a><a href=\"BP-10P-0001.html\">10-Kanal-Ausführung für Rundschalttische ansehen</a>",
     "6bbead70b7d54b5b": "Wie wähle ich eine Drehdurchführung für einen Rundschalttisch aus?",

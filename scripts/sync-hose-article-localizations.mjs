@@ -2,6 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {load} from 'cheerio';
+import { COMPANY_IDENTITY } from './lib/company-identity.mjs';
+import { readProtectedHoseState, assertProtectedHoseOutput } from './lib/protected-hose-article-output.mjs';
 const root=path.resolve(import.meta.dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const route='blog-prevent-air-hose-twisting.html';
@@ -21,6 +23,8 @@ export const articleMeta={
  ru:{title:'Как избежать перекручивания пневмошлангов на поворотном столе | Begapunk',description:'Шланги наматываются на поворотный стол? Сравните виды движения, изучите принцип пневматического вращающегося соединения и подберите воздушные контуры.',locale:'ru_RU',labels:['Навигационная цепочка','Содержание статьи','Две схемы подачи воздуха','BP-10P-0001: анимация принципа пневматического вращающегося соединения','Английский','10-канальное пневматическое вращающееся соединение BP-10P-0001 с фитингами']}
 };
 let changed=0;
+const planned=[];
+const protectionFailures=[];
 for(const lang of langs){
  const d=JSON.parse(read(`i18n/manual/hose-article-${lang}.json`));
  if(Object.keys(d).length!==110)throw Error(`Incomplete ${lang} translation`);
@@ -47,10 +51,14 @@ for(const lang of langs){
  $('.motion-table tr').each((_,e)=>{$(e).find('td').eq(0).attr('data-label',d[26]);$(e).find('td').eq(1).attr('data-label',d[27]);});
  $('main a[href^="contact.html?"]').each((_,e)=>{const u=new URL($(e).attr('href'),canonical);u.searchParams.set('source',prefix+route);u.searchParams.set('application',d[2]);$(e).attr('href','contact.html'+u.search+u.hash);});
  const headline=clean($('h1').text());
- const graph=[{'@type':'TechArticle','@id':canonical+'#article',headline,description:m.description,inLanguage:lang,image:hero,dateModified:'2026-10-07',author:{'@type':'Organization',name:'Begapunk',url:base},publisher:{'@id':base+'#organization'},mainEntityOfPage:{'@type':'WebPage','@id':canonical,inLanguage:lang}}, {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:d[0],item:base+prefix},{'@type':'ListItem',position:2,name:d[1],item:base+prefix+'blog.html'},{'@type':'ListItem',position:3,name:d[2],item:canonical}]},{'@type':'FAQPage',inLanguage:lang,mainEntity:$('.ta-faq details').toArray().map(e=>({'@type':'Question',name:$(e).find('summary').text(),acceptedAnswer:{'@type':'Answer',text:$(e).find('p').text()}}))}];
+ const approvedState=readProtectedHoseState(read(prefix+route));
+ const graph=[{'@type':'TechArticle','@id':canonical+'#article',headline,description:m.description,inLanguage:lang,image:hero,dateModified:'2026-10-07',author:{...approvedState.author,sameAs:COMPANY_IDENTITY.brandSocialProfiles},publisher:{'@id':base+'#organization'},mainEntityOfPage:{'@type':'WebPage','@id':canonical,inLanguage:lang}}, approvedState.breadcrumb,{'@type':'FAQPage',inLanguage:lang,mainEntity:$('.ta-faq details').toArray().map(e=>({'@type':'Question',name:$(e).find('summary').text(),acceptedAnswer:{'@type':'Answer',text:$(e).find('p').text()}}))}];
  $('head').append($('<script>').attr('type','application/ld+json').text(JSON.stringify({'@context':'https://schema.org','@graph':graph})));
  const output=$.html(),file=prefix+route;
- if(!fs.existsSync(path.join(root,file))||read(file)!==output){changed++;if(process.argv.includes('--write'))fs.writeFileSync(path.join(root,file),output);else console.error(`Outdated: ${file}`);}
+ try { assertProtectedHoseOutput(read(file),output,file); } catch(error) { protectionFailures.push(error.message); }
+ if(read(file)!==output){changed++;planned.push({file,output});}
 }
+if(protectionFailures.length)throw Error('Protected article regeneration rejected before any write:\n'+protectionFailures.join('\n'));
+for(const {file,output} of planned){if(process.argv.includes('--write'))fs.writeFileSync(path.join(root,file),output);else console.error(`Outdated: ${file}`);}
 console.log(`Hose article: ${changed} pages ${process.argv.includes('--write')?'written':'outdated'}.`);
 if(changed&&!process.argv.includes('--write'))process.exitCode=1;

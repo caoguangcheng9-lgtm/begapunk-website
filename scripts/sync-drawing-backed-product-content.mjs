@@ -10,6 +10,7 @@
  */
 
 import fs from 'node:fs/promises';
+import { synchronizeExistingProductFaq } from './lib/owner-product-policy.mjs';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -86,7 +87,7 @@ const COPY = {
     inletPending: 'Air inlet connection is not identified; request the current model-specific drawing',
     mountNotStated: 'No separate mounting features are listed',
     noBore: 'No through-bore dimension is listed',
-    warranty: '1 year from shipment',
+    warranty: '12 months from customer receipt',
     electrical: 'The drawing shows 6 electrical leads; confirm circuit allocation and electrical ratings for the selected configuration',
     compatHeading: 'Machine Compatibility and Application Fit',
     compatIntro: 'Check the selected model against the machine’s required circuits, ports, pressure, speed, mounting space, and duty cycle.',
@@ -155,7 +156,7 @@ const COPY = {
     inletPending: 'Lufteinlass ist nicht eindeutig angegeben; aktuelle modellspezifische Zeichnung anfordern',
     mountNotStated: 'Separate Montagemerkmale sind nicht angegeben',
     noBore: 'Keine Abmessung für eine Durchgangsbohrung angegeben',
-    warranty: '1 Jahr ab Versand',
+    warranty: '12 Monate ab Erhalt durch den Kunden',
     electrical: 'Die Zeichnung zeigt 6 elektrische Leitungen; Kreiszuordnung und elektrische Nennwerte für die gewählte Ausführung bestätigen',
     compatHeading: 'Maschinenkompatibilität und Anwendungseignung',
     compatIntro: 'Das gewählte Modell mit den erforderlichen Kreisen, Anschlüssen, Druck-, Drehzahl-, Bauraum- und Betriebsbedingungen der Maschine abgleichen.',
@@ -213,7 +214,7 @@ COPY.fr = {
   inletPending: 'Le raccordement de l’entrée d’air n’est pas identifié ; demandez le plan à jour propre au modèle',
   mountNotStated: 'Aucune caractéristique de fixation distincte n’est indiquée',
   noBore: 'Aucune dimension d’alésage traversant n’est indiquée',
-  warranty: "1 an à compter de l'expédition",
+  warranty: "12 mois à compter de la réception par le client",
   electrical: 'Le plan représente 6 conducteurs électriques ; confirmez l’affectation des circuits et les caractéristiques électriques nominales de la configuration retenue',
   compatHeading: 'Compatibilité machine et adéquation à l’application',
   compatIntro: 'Vérifiez le modèle retenu par rapport aux circuits, orifices, pression, vitesse, espace de fixation et cycle de service requis par la machine.',
@@ -265,7 +266,7 @@ COPY.ja = {
   statusVerified: '用途確認が可能', statusPending: '選定前に用途確認が必要',
   portsCountPending: '出口数は記載されていません。選定前に最新の型式専用図面をご依頼ください', portsSizePending: 'ポート仕様は未確定です。最新の型式専用図面をご依頼ください',
   inletPending: '空気入口接続は明確に記載されていません。最新の型式専用図面をご依頼ください', mountNotStated: '独立した取付仕様は記載されていません', noBore: '貫通穴寸法は記載されていません',
-  warranty: '出荷日から1年', electrical: '電気リード6本です。選定仕様の回路割当と電気定格を確認してください',
+  warranty: 'お客様の受領日から12か月', electrical: '電気リード6本です。選定仕様の回路割当と電気定格を確認してください',
   compatHeading: '適合機械と用途条件', compatIntro: '選定型式を、機械に必要な回路、ポート、圧力、回転数、取付空間、デューティと照合してください。',
   compatCards: [['回路・ポートの一致', '機械の全回路と各ポート機能を選定仕様と照合し、未確定の注記は継手選定や相手部品加工の前に確認してください。'], ['圧力・回転数', '流体、圧力、回転数、温度、デューティの組合せを選定仕様で確認してください。'], ['取付け・外形', '取付仕様、周囲すきま、ホース経路、軸芯、外力を機械組立状態で確認してください。']],
   notApproved: '個別確認が必要な条件', notApprovedItems: ['記載されていない流体', '公開最大値を超える運転', '未解決のポートまたは電気仕様', '規制対象、安全上重要な用途、食品接触、真空、特殊環境で個別技術審査を受けていない場合'],
@@ -298,7 +299,7 @@ COPY.ru = {
   statusVerified: 'Доступно для проверки применения', statusPending: 'Перед выбором требуется проверка применения',
   portsCountPending: 'Количество выходов не указано; запросите актуальный чертёж конкретной модели до выбора', portsSizePending: 'Спецификация портов не определена; запросите актуальный чертёж конкретной модели',
   inletPending: 'Вход воздуха не обозначен; запросите актуальный чертёж конкретной модели', mountNotStated: 'Отдельные монтажные элементы не указаны', noBore: 'Размер сквозного отверстия не указан',
-  warranty: '1 год с даты отгрузки', electrical: 'На чертеже показано 6 электрических выводов; подтвердите распределение цепей и электрические номиналы для выбранного исполнения',
+  warranty: '12 месяцев с даты получения заказчиком', electrical: 'На чертеже показано 6 электрических выводов; подтвердите распределение цепей и электрические номиналы для выбранного исполнения',
   compatHeading: 'Совместимость с оборудованием и условия применения', compatIntro: 'Сопоставьте выбранную модель с требуемыми контурами, портами, давлением, скоростью, монтажным пространством и рабочим циклом машины.',
   compatCards: [['Контуры и порты', 'Сопоставьте каждый контур машины и назначение порта с выбранным исполнением. Уточните неясные обозначения до выбора фитингов или обработки сопрягаемых деталей.'], ['Давление и скорость', 'Подтвердите сочетание среды, давления, скорости, температуры и рабочего цикла для выбранного исполнения.'], ['Монтаж и габариты', 'Проверьте монтажные элементы, зазоры, трассировку шлангов, соосность и внешние нагрузки в сборке машины.']],
   notApproved: 'Проверка применения требуется для', notApprovedItems: ['Среды, не указанные на странице', 'Работа выше опубликованного максимума', 'Неуточнённые данные портов или электрического интерфейса', 'Регулируемые, критичные для безопасности или особые условия без инженерной проверки проекта'],
@@ -462,10 +463,10 @@ const FAQ_COPY = Object.freeze({
     hybridInterfaceQuestion: 'Quelles interfaces pneumatiques et électriques {model} propose-t-il ?',
     hybridInterfaceAnswer: 'Orifices pneumatiques : {ports}. Électricité : six conducteurs ; confirmez l’affectation des circuits et les caractéristiques nominales de la configuration retenue. Fixation : {mounting}.',
     quoteQuestion: 'Que dois-je envoyer pour obtenir un devis ou un fichier CAO pour {model} ?',
-    quoteAnswer: 'La référence suffit pour commencer. Une photo, un plan ou les conditions de fonctionnement déjà connues peuvent nous aider à confirmer l’adéquation. Nous vous indiquerons ensuite le modèle adapté ou les informations encore nécessaires pour établir le devis.',
+    quoteAnswer: 'La référence suffit pour commencer. Une photo, un plan ou les conditions de fonctionnement déjà connues peuvent nous aider à confirmer l’adéquation. Nous répondons normalement sous un jour ouvré.',
     quoteQuestionStep: 'Comment obtenir un devis pour {model} ?',
-    quoteAnswerStep: 'La référence suffit pour commencer. Une photo, un plan ou les conditions de fonctionnement déjà connues peuvent nous aider à confirmer l’adéquation. Le fichier STEP 3D est disponible dans le panneau Téléchargements ; envoyez les conditions de fonctionnement pour obtenir un devis. Nous vous indiquerons ensuite le modèle adapté ou les informations encore nécessaires pour établir le devis.',
-    hybridQuoteAnswer: 'La référence suffit pour commencer. Si vous les connaissez, ajoutez une photo ou un plan ainsi que les fonctions pneumatiques et électriques requises. Nous vous indiquerons ensuite la configuration adaptée ou les informations encore nécessaires pour établir le devis.',
+    quoteAnswerStep: 'La référence suffit pour commencer. Une photo, un plan ou les conditions de fonctionnement déjà connues peuvent nous aider à confirmer l’adéquation. Le fichier STEP 3D est disponible dans le panneau Téléchargements ; envoyez les conditions de fonctionnement pour obtenir un devis. Nous répondons normalement sous un jour ouvré.',
+    hybridQuoteAnswer: 'La référence suffit pour commencer. Si vous les connaissez, ajoutez une photo ou un plan ainsi que les fonctions pneumatiques et électriques requises. Nous répondons normalement sous un jour ouvré.',
     pendingItems: Object.freeze([
       Object.freeze(['{model} est-il prêt à être sélectionné ?', 'Une validation de l’application est requise avant de sélectionner {model} ; les limites de fonctionnement et interfaces propres au modèle ne sont pas publiées actuellement.']),
       Object.freeze(['Quelles informations envoyer pour la validation de l’application ?', 'Envoyez le nombre de passages requis, le fluide, la pression de service, la vitesse, la température, le cycle de service, l’espace de fixation, l’encombrement et la quantité.']),
@@ -557,11 +558,11 @@ const SPECIAL_FAQ_COPY = Object.freeze({
     ru: Object.freeze({ fitAnswer: '{model} имеет пневматическую схему 2 входа / 4 выхода: 2 выхода для зажима и 2 для разжима. Подходящая среда: {media}. Монтаж: {mounting}.' }),
   }),
   'BP-3P-0006': Object.freeze({
-    en: Object.freeze({ interfaceAnswer: 'The port thread is confirmed from the current model-specific drawing before fitting selection. Mounting: {mounting}. Send the mating-part drawing before selecting fittings.' }),
-    de: Object.freeze({ interfaceAnswer: 'Das Anschlussgewinde wird vor der Auswahl der Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt. Montage: {mounting}. Senden Sie vor der Auswahl der Verschraubungen die Gegenstückzeichnung.' }),
-    fr: Object.freeze({ interfaceAnswer: 'Le filetage des orifices est confirmé sur le plan à jour propre au modèle avant la sélection des raccords. Fixation : {mounting}. Envoyez le plan de la pièce d’interface avant de choisir les raccords.' }),
-    ja: Object.freeze({ interfaceAnswer: 'ポートねじは継手選定前に最新の型式専用図面で確認します。取付け：{mounting}。継手選定前に相手部品図をお送りください。' }),
-    ru: Object.freeze({ interfaceAnswer: 'Резьба порта подтверждается по актуальному чертежу конкретной модели до выбора фитингов. Монтаж: {mounting}. До выбора фитингов отправьте чертёж сопрягаемой детали.' }),
+    en: Object.freeze({ interfaceAnswer: 'All six pneumatic ports are G1/4 BSPP: three housing radial ports and three rotor end-face ports. Ports: {ports}. Mounting: {mounting}.' }),
+    de: Object.freeze({ interfaceAnswer: 'Alle sechs Pneumatikanschlüsse sind G1/4 BSPP: drei radial am Gehäuse und drei an der Rotorstirnseite. Anschlüsse: {ports}. Montage: {mounting}.' }),
+    fr: Object.freeze({ interfaceAnswer: 'Les six orifices pneumatiques sont G1/4 BSPP : trois radiaux sur le corps et trois en face du rotor. Orifices : {ports}. Fixation : {mounting}.' }),
+    ja: Object.freeze({ interfaceAnswer: '6つの空圧ポートはすべてG1/4 BSPPで、ハウジング径方向に3つ、ローター端面に3つあります。ポート：{ports}。取付け：{mounting}。' }),
+    ru: Object.freeze({ interfaceAnswer: 'Все шесть пневмопортов — G1/4 BSPP: три радиальных на корпусе и три на торце ротора. Порты: {ports}. Монтаж: {mounting}.' }),
   }),
   'BP-3P-S06-0001': Object.freeze({
     en: Object.freeze({
@@ -808,7 +809,7 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: 'Typische Maschinen für {model}',
-        intro: '{model} führt {passages} über eine drehende Schnittstelle. Druck / Drehzahl: {pressure} · {speed}; geeignete Medien: {media}. Anschlussanordnung: {ports}. Montage: {mounting}. Die folgenden Beispiele zeigen typische Einsatzmaschinen und die Punkte, die vor der Auswahl übereinstimmen müssen.',
+        intro: '{model} überträgt das Medium zwischen feststehender und rotierender Seite ({passages}). Druck / Drehzahl: {pressure} · {speed}; geeignete Medien: {media}. Anschlussanordnung: {ports}. Montage: {mounting}. Die folgenden Beispiele zeigen typische Einsatzmaschinen und die Punkte, die vor der Auswahl übereinstimmen müssen.',
         inquiryTitle: 'Senden Sie die Maschinendaten',
         inquiryText: 'Senden Sie Maschinen- oder Anbaugerätetyp, Zeichnung, Funktion jedes Kanals, Medium, Arbeitsdruck, gegebenenfalls Rücklaufdruck, Volumenstrom, Drehzahl, Temperatur, Betriebszyklus, äußere Lasten, verfügbaren Bauraum, Anschlussgewinde, Lochbild und Menge. Begapunk empfiehlt ein Standardmodell oder eine kundenspezifische Ausführung und antwortet mit Angebot sowie verfügbaren 2D- oder 3D-Dateien.',
         inquiryAction: 'Modellempfehlung anfragen',
@@ -930,7 +931,7 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: '{model}の主な搭載設備',
-        intro: '{model}は、固定側と回転側の間で{passages}を接続します。圧力／回転数：{pressure}・{speed}、適用流体：{media}。ポート構成：{ports}。取付：{mounting}。以下では、この流路構成が使われる代表的な設備と、選定前に一致させる条件を示します。',
+        intro: '{model}は、固定側と回転側の間で流体を供給します（{passages}）。圧力／回転数：{pressure}・{speed}、適用流体：{media}。ポート構成：{ports}。取付：{mounting}。以下では、この流路構成が使われる代表的な設備と、選定前に一致させる条件を示します。',
         inquiryTitle: '設備条件をお知らせください',
         inquiryText: '設備名、機械またはアタッチメント図面、各流路の機能、流体、作動圧力、必要に応じた戻り圧力、流量、回転数、温度、デューティ、外力、取付スペース、ポートねじ、取付穴、数量をお送りください。Begapunkが標準型式またはカスタム仕様をご提案し、見積りと提供可能な2D／3Dデータをご案内します。',
         inquiryAction: '型式選定を相談',
@@ -991,7 +992,7 @@ const APPLICATION_PANEL_COPY = Object.freeze({
     modes: Object.freeze({
       standard: Object.freeze({
         heading: 'Типовое оборудование для {model}',
-        intro: '{model} передаёт {passages} через вращающийся интерфейс. Давление / скорость: {pressure} · {speed}; подходящие среды: {media}. Схема портов: {ports}. Монтаж: {mounting}. Ниже приведены типовые машины для такой схемы каналов и условия, которые необходимо сопоставить перед выбором.',
+        intro: '{model} передаёт рабочую среду между неподвижной и вращающейся частями ({passages}). Давление / скорость: {pressure} · {speed}; подходящие среды: {media}. Схема портов: {ports}. Монтаж: {mounting}. Ниже приведены типовые машины для такой схемы каналов и условия, которые необходимо сопоставить перед выбором.',
         inquiryTitle: 'Отправьте параметры машины',
         inquiryText: 'Отправьте тип машины или навесного оборудования, чертёж, функцию каждого канала, среду, рабочее и при необходимости обратное давление, расход, скорость, температуру, рабочий цикл, внешние нагрузки, доступное пространство, резьбы портов, схему крепления и количество. Begapunk предложит стандартную или заказную конфигурацию и ответит по цене и доступным 2D- или 3D-файлам.',
         inquiryAction: 'Запросить рекомендацию модели',
@@ -1417,11 +1418,11 @@ const SPECIAL_RELATED_MODEL_COPY = Object.freeze({
     ru: (facts) => `Пневматическая схема 2 входа / 4 выхода: 2 выхода для зажима и 2 для разжима. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
   }),
   'BP-3P-0006': Object.freeze({
-    en: (facts) => `Port thread is confirmed from the current model-specific drawing before fitting selection. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
-    de: (facts) => `Das Anschlussgewinde wird vor der Auswahl der Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
-    fr: (facts) => `Le filetage des orifices est confirmé sur le plan à jour propre au modèle avant la sélection des raccords. Pression maximale ${facts.pressure} · vitesse maximale ${facts.speed}.`,
-    ja: (facts) => `ポートねじは継手選定前に最新の型式専用図面で確認します。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
-    ru: (facts) => `Резьба порта подтверждается по актуальному чертежу конкретной модели до выбора фитингов. Максимальное давление ${facts.pressure} · максимальная частота вращения ${facts.speed}.`,
+    en: (facts) => `Six G1/4 BSPP ports. ${facts.pressure} maximum pressure · ${facts.speed} maximum speed.`,
+    de: (facts) => `Sechs G1/4-BSPP-Anschlüsse. Maximaldruck ${facts.pressure} · maximale Drehzahl ${facts.speed}.`,
+    fr: (facts) => `Six orifices G1/4 BSPP. Pression maximale ${facts.pressure} · vitesse maximale ${facts.speed}.`,
+    ja: (facts) => `6つのG1/4 BSPPポート。最高使用圧力${facts.pressure}・最高回転数${facts.speed}。`,
+    ru: (facts) => `Шесть портов G1/4 BSPP. Максимальное давление ${facts.pressure} · частота вращения ${facts.speed}.`,
   }),
   'BP-3P-S06-0001': Object.freeze({
     en: (facts) => `3 pneumatic passages plus 6 electrical leads; confirm the air inlet, circuit allocation, and electrical ratings. ${facts.pressure} · ${facts.speed}.`,
@@ -1779,7 +1780,8 @@ function updateStructuredData(value, model, product, locale, contract, ui) {
   productNode.name = ui.productName || contract.h1;
   productNode.description = ui.structuredDescription;
   productNode.category = COPY[locale].category;
-  productNode.inLanguage = LOCALES[locale].htmlLang;
+  delete productNode.inLanguage;
+  delete productNode.associatedMedia;
   assertUiJsonProperties(productNode, ui, model, locale);
   const replacement = `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
   return `${value.slice(0, located.start)}${replacement}${value.slice(located.end)}`;
@@ -2049,7 +2051,7 @@ function riskRulesFor(model, product) {
   }
   if (model === 'BP-1P-0003') rules.push(['legacy BP-1P-0003 port', /G1\/4|G1\/8/giu]);
   if (model === 'BP-2P-08-0001') rules.push(['legacy BP-2P-08 mount', /(?:^|[^\w])M5(?:[^\w]|$)/giu]);
-  if (model === 'BP-3P-0006') rules.push(['unresolved BP-3P-0006 port size', /G1\/4|G4\/1/giu]);
+  if (model === 'BP-3P-0006') rules.push(['retired BP-3P-0006 port typo', /G4\/1/giu]);
   if (['BP-1P-0006', 'BP-2P-0002', 'BP-3P-0007'].includes(model)) {
     rules.push(['unsupported orifice claim', /4\s*mm[^<]{0,24}(?:orifice|bore)|4[- ]mm[- ]Bohrung|4\s*mm[^<]{0,20}オリフィス|проходн[^<]{0,20}4\s*мм/giu]);
   }
@@ -2294,6 +2296,7 @@ function transformPage(original, model, product, locale, orderedModels, products
     `${model}/${locale}`,
   ));
   applySurface('legacy-technical-note-removal', (value) => removeLegacyTechnicalNote(value, `${model}/${locale}`));
+  applySurface('existing-faq-schema', synchronizeExistingProductFaq);
   validateProtectedContent(original, next, model, product, locale);
   return { next, surfaces, beforeRisks: findRisks(original, model, product), afterRisks: findRisks(next, model, product) };
 }
@@ -2383,7 +2386,7 @@ async function main() {
   console.log(`Controlled legacy-risk matches before: ${printRiskSummary(plans, 'beforeRisks')}`);
   console.log(`Controlled residual-risk matches after proposed transform: ${printRiskSummary(plans, 'afterRisks')}`);
   console.log('Protected unchanged surfaces: header, jump navigation, quote/CAD actions, first-view download/compare utilities, share channels, first-view key specs, gallery assets, related resources, footer, and forms. Bottom CTA is drawing-controlled; the retired technical-note block is removed when present.');
-  console.log('Engineering holds: BP-3P-0006 port specification; BP-3P-S06-0001 electrical allocation/ratings.');
+  console.log('Engineering holds: BP-3P-S06-0001 electrical allocation/ratings.');
 
   if (mode === 'write') {
     for (const item of changed) await fs.writeFile(item.absolutePath, item.next, 'utf8');

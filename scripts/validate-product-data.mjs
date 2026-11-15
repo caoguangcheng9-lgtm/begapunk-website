@@ -2,6 +2,7 @@ import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { isProductFactPublished } from './lib/owner-product-policy.mjs';
 import { load } from 'cheerio';
 import {
   drawingBackedProductKeywords,
@@ -71,7 +72,6 @@ const drawingBackedPolicyByLocale = {
 const secondarySurfacePolicyByLocale = {
   en: {
     bp16Passages: '2 passages, 16 mm bore',
-    bp3Mount: 'Face mounting',
     bp3Weight: '0.36 kg',
     bp3ComparisonStale: ['3 passages, 6 mm orifice', 'G1/4 threaded'],
     bp3CatalogStale: ['3-Passage (G1/4)', '6mm Orifice', 'G1/4 Thread'],
@@ -84,7 +84,6 @@ const secondarySurfacePolicyByLocale = {
   },
   de: {
     bp16Passages: '2 Kanäle, 16 mm Durchgangsbohrung',
-    bp3Mount: 'Stirnseitenmontage',
     bp3Weight: '0,36 kg',
     bp3ComparisonStale: ['3 Kanäle, 6 mm Durchlass', 'G1/4-Gewinde'],
     bp3CatalogStale: ['3-Kanal (G1/4)', '6 mm Durchlass', 'G1/4 Gewinde'],
@@ -97,7 +96,6 @@ const secondarySurfacePolicyByLocale = {
   },
   fr: {
     bp16Passages: '2 passages, alésage 16 mm',
-    bp3Mount: 'Montage frontal',
     bp3Weight: '0,36 kg',
     bp3ComparisonStale: ['3 passages, orifice 6 mm', 'filetage G1/4'],
     bp3CatalogStale: ['3 passages (G1/4)', 'Orifice 6 mm', 'Filetage G1/4'],
@@ -110,7 +108,6 @@ const secondarySurfacePolicyByLocale = {
   },
   ja: {
     bp16Passages: '2流路・中空径16 mm',
-    bp3Mount: '端面取付',
     bp3Weight: '0.36 kg',
     bp3ComparisonStale: ['3流路・オリフィス径6 mm', 'G1/4ねじ'],
     bp3CatalogStale: ['3流路(G1/4)', 'オリフィス径6 mm', 'G1/4 ねじ'],
@@ -123,7 +120,6 @@ const secondarySurfacePolicyByLocale = {
   },
   ru: {
     bp16Passages: '2 канала, проходное отверстие 16 мм',
-    bp3Mount: 'Торцевое крепление',
     bp3Weight: '0,36 кг',
     bp3ComparisonStale: ['3 канала, отверстие 6 мм', 'резьба G1/4'],
     bp3CatalogStale: ['3 канала (G1/4)', 'Проход 6 мм', 'G1/4 резьба'],
@@ -589,12 +585,22 @@ function modelBlock($, selector, model) {
 
 async function validateSecondaryProductSurfaces(locale) {
   const policy = secondarySurfacePolicyByLocale[locale.code];
+  const bp3Contract = drawingBackedUiContract(locale.code, 'BP-3P-0006');
+  // These surfaces use the approved discovery port summary and drawing mount.
+  const bp3CatalogPorts = '6 × G1/4 BSPP';
+  const bp3WeightPublished = isProductFactPublished('BP-3P-0006', 'weight');
+  const rejectWithdrawnBp3Weight = (relative, label, text) => {
+    if (!bp3WeightPublished && /(?:0[.,]36\s*(?:kg|кг)|360\s*(?:g|г))/iu.test(text)) {
+      failures.push(`${relative}: ${label} republishes withdrawn BP-3P-0006 weight`);
+    }
+  };
   const catalogRelative = publicPath(locale, 'products.html');
   const catalog = await readHtml(locale, 'products.html');
   if (catalog) {
     const bp3Card = catalog(`.product-card-large[data-href="BP-3P-0006.html"]`);
     validateTextFragments(catalogRelative, 'BP-3P-0006 card', bp3Card.text(),
-      [policy.bp3Mount, policy.bp3Weight], policy.bp3CatalogStale);
+      [bp3CatalogPorts, ...(bp3WeightPublished ? [policy.bp3Weight] : [])], policy.bp3CatalogStale);
+    rejectWithdrawnBp3Weight(catalogRelative, 'BP-3P-0006 card', bp3Card.text());
 
     const s06Card = catalog(`.product-card-large[data-href="BP-3P-S06-0001.html"]`);
     validateTextFragments(catalogRelative, 'BP-3P-S06-0001 card', s06Card.text(),
@@ -623,7 +629,8 @@ async function validateSecondaryProductSurfaces(locale) {
 
     const bp3Row = modelBlock(comparison, 'tr', 'BP-3P-0006');
     validateTextFragments(comparisonRelative, 'BP-3P-0006 row', bp3Row.text(),
-      [policy.bp3Mount], policy.bp3ComparisonStale);
+      [bp3Contract.fields.mount], policy.bp3ComparisonStale);
+    rejectWithdrawnBp3Weight(comparisonRelative, 'BP-3P-0006 row', bp3Row.text());
 
     const s06Row = modelBlock(comparison, 'tr', 'BP-3P-S06-0001');
     validateTextFragments(comparisonRelative, 'BP-3P-S06-0001 row', s06Row.text(),
@@ -652,10 +659,10 @@ async function validateSecondaryProductSurfaces(locale) {
   }
   const searchRecordText = (url) => JSON.stringify(searchIndex.find((entry) => entry?.url === url) || {});
   validateTextFragments(searchRelative, 'products.html record', searchRecordText('products.html'),
-    [policy.bp3Mount, policy.s06Leads, policy.bp4Seal],
+    [bp3CatalogPorts, policy.s06Leads, policy.bp4Seal],
     [...policy.bp3CatalogStale, policy.s06Circuits, ...policy.bp4MaterialStale, policy.bp4DirectionStale, policy.bp30RequestStale]);
   validateTextFragments(searchRelative, 'product-comparison.html record', searchRecordText('product-comparison.html'),
-    [policy.bp16Passages, policy.bp3Mount, policy.s06Leads],
+    [policy.bp16Passages, bp3Contract.fields.mount, policy.s06Leads],
     [...policy.bp3ComparisonStale, policy.s06Circuits, ...policy.bp4MaterialStale, policy.bp4DirectionStale]);
   validateTextFragments(searchRelative, 'index.html record', searchRecordText('index.html'),
     [policy.s06Leads], [policy.s06Circuits]);

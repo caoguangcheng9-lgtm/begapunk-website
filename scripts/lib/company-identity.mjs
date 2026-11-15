@@ -1,3 +1,5 @@
+import { OFFICIAL_SOCIAL_CHANNELS } from './official-social-channels.mjs';
+
 export const COMPANY_IDENTITY = Object.freeze({
   brandName: 'Begapunk',
   legalNameZh: '宁波贝加庞克气动元件有限公司',
@@ -10,7 +12,10 @@ export const COMPANY_IDENTITY = Object.freeze({
   uscc: '91330201MABLQR5K7U',
   registrationNumber: '330218000114820',
   organizationCode: 'MABLQR5K-7',
-  brandSocialProfiles: Object.freeze([
+  officialSocialChannels: OFFICIAL_SOCIAL_CHANNELS,
+  brandSocialProfiles: Object.freeze(OFFICIAL_SOCIAL_CHANNELS.map(({ url }) => url)),
+  // Phase 8 does not authorize changes to the existing LocalBusiness nodes.
+  localBusinessSocialProfiles: Object.freeze([
     'https://www.linkedin.com/company/144021127/',
     'https://www.youtube.com/@BEGAPUNKRotaryJointsTV',
     'https://www.facebook.com/profile.php?id=61595481363231',

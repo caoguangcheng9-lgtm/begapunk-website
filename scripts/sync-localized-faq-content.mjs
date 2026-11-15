@@ -3,6 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { load } from 'cheerio';
 import { SITE_FAQ_SCRIPT_VERSION } from './lib/site-asset-versions.mjs';
+import { applyCommercialScope, policyCopy, stripProductPolicy } from './lib/owner-product-policy.mjs';
 
 const sourceRoot = path.resolve(import.meta.dirname, '..');
 const i18nRoot = path.join(sourceRoot, 'i18n');
@@ -117,7 +118,7 @@ function validateLocalization(data, languageCode) {
       'faq-22': [/1,0 MPa/i, /eine Sekunde/i, /vier Sekunden/i, /nicht|weder/i],
       'faq-23': [/offen/i, /drucklos/i, /Nachweisgrenze|Erkennungsschwelle/i],
       'faq-24': [/individuelle Rückverfolgbarkeitsnummer/i, /Prüfbericht/i, /vor der Bestellung/i],
-      'faq-25': [/ein Jahr ab Versanddatum/i, /Angebot/i, /Auftrag/i, /schriftlich/i],
+      'faq-25': [/12 Monate ab Erhalt durch den Kunden/i],
       'faq-26': [/eine Einheit/i, /20 Kalendertage/i, /30 Kalendertage/i],
       'faq-28': [/nicht.*Marketing|weder.*Marketing/i, /nicht.*(?:veröffentlicht|öffentlichen|Darstellung)|noch.*(?:veröffentlicht|öffentlichen|Darstellung)/i],
     },
@@ -128,7 +129,7 @@ function validateLocalization(data, languageCode) {
       'faq-22': [/1,0 MPa/i, /(?:environ|approximativement).*(?:1|une) seconde/i, /(?:environ|approximativement).*(?:4|quatre) secondes/i, /ne (?:confirme|constitue|représente|démontre) (?:ni|pas)/i],
       'faq-23': [/ouvert/i, /sans pression|non pressurisé/i, /seuil.*détection/i],
       'faq-24': [/(?:numéro|identifiant) (?:individuel de traçabilité|de traçabilité individuel)/i, /(?:rapport|relevé|procès-verbal).*(?:essai|contrôle|inspection)/i, /avant (?:la )?commande/i],
-      'faq-25': [/un an.*date d['’]expédition/i, /devis/i, /commande/i, /écrit/i],
+      'faq-25': [/12 mois à compter de la réception par le client/i],
       'faq-26': [/une unité/i, /20 jours calendaires/i, /30 jours calendaires/i],
       'faq-28': [/n(?:e|'|\u2019).*(?:utilisons|exploite).*(?:marketing|commercial)/i, /(?:nous ne les publions pas|n(?:e|'|\u2019).*rendons.*(?:public|publique))/i],
     },
@@ -139,7 +140,7 @@ function validateLocalization(data, languageCode) {
       'faq-22': [/1\.0 MPa/, /約1秒/, /約4秒/, /ものではありません/],
       'faq-23': [/大気開放/, /無加圧/, /検出しきい値/],
       'faq-24': [/個体別トレーサビリティ番号/, /検査記録/, /注文前/],
-      'faq-25': [/出荷日から1年間/, /見積書/, /受注内容|注文書/, /書面/],
+      'faq-25': [/お客様の受領日から12か月/],
       'faq-26': [/1個/, /20暦日/, /最大30暦日|30暦日以内/],
       'faq-28': [/マーケティング/, /一般公開|公開/],
     },
@@ -150,11 +151,14 @@ function validateLocalization(data, languageCode) {
       'faq-22': [/1,0 МПа/i, /одн.*секунд/i, /четыр.*секунд/i, /не подтвержд/i],
       'faq-23': [/открыт/i, /без давления/i, /порог.*обнаруж/i],
       'faq-24': [/индивидуальн.*номер прослеживаемости/i, /протокол.*контрол/i, /до заказа/i],
-      'faq-25': [/один год.*дат.*отгруз/i, /предложен/i, /заказ/i, /письмен/i],
+      'faq-25': [/12 месяцев с даты получения заказчиком/i],
       'faq-26': [/одно изделие/i, /20 календарных дней/i, /30 календарных дней/i],
       'faq-28': [/не используем.*маркетинг/i, /не публикуем.*открыт/i],
     },
   };
+  const warrantyPolicy = policyCopy(languageCode);
+  assert(compactText(answers.get('faq-25')) === compactText(`${warrantyPolicy.warranty} ${warrantyPolicy.response}`),
+    `${languageCode}/faq-25: full warranty and working-day response must match the owner-confirmed policy.`);
   const languageFactPatterns = factPatterns[languageCode];
   assert(languageFactPatterns, `${languageCode}: fact-validation patterns are missing.`);
   for (const [faqId, patterns] of Object.entries(languageFactPatterns)) {
@@ -169,7 +173,7 @@ function extractRequired(source, pattern, label) {
 }
 
 function buildLocalizedMain(sourceMain, data) {
-  const $ = load(sourceMain, { decodeEntities: false }, false);
+  const $ = load(stripProductPolicy(sourceMain), { decodeEntities: false }, false);
   const main = $('main#main-content');
   assert(main.length === 1, 'English FAQ must contain exactly one main#main-content.');
 
@@ -395,7 +399,7 @@ for (const languageCode of languageCodes) {
   validateLocalization(data, languageCode);
   const targetPath = path.join(outputRoot, languageCode, 'faq.html');
   const targetHtml = await fs.readFile(targetPath, 'utf8');
-  const desiredHtml = buildLocalizedHtml({ sourceHtml, targetHtml, data, languageCode });
+  const desiredHtml = applyCommercialScope(buildLocalizedHtml({ sourceHtml, targetHtml, data, languageCode }), languageCode, 'faq.html');
   planned.push({ path: targetPath, before: targetHtml, after: desiredHtml });
   planned.push(...await desiredMetadataFiles(languageCode, data, desiredHtml));
 }

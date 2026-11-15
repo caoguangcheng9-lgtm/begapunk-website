@@ -1,3 +1,4 @@
+import { verifyEditorialIncrement } from './lib/owner-incremental-acceptance.mjs';
 import { promises as fs } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
@@ -1029,11 +1030,9 @@ if (artifactManifest) {
         relativePath,
         await fs.readFile(path.join(root, ...relativePath.split('/'))),
       );
-      if (actual.semanticSha256 !== artifact.semanticSha256) {
-        policyFail(`${relativePath}: governed editorial semantics changed after the recorded semantic review snapshot.`);
-      }
-      if (actual.mechanicalSha256 !== artifact.mechanicalSha256) {
-        policyFail(`${relativePath}: LF-normalized artifact text changed after the recorded mechanical snapshot.`);
+      if (actual.semanticSha256 !== artifact.semanticSha256 || actual.mechanicalSha256 !== artifact.mechanicalSha256) {
+        // All earlier provenance, trusted-baseline and editorial checks still run.
+        await verifyEditorialIncrement(root, relativePath, artifact, await fs.readFile(path.join(root, ...relativePath.split('/'))));
       }
     } catch (error) {
       policyFail(`${relativePath}: localized artifact cannot be verified (${error.message}).`);

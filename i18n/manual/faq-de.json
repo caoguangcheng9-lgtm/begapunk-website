@@ -59,7 +59,7 @@
     {
       "id": "faq-04",
       "question": "Was ist der Unterschied zwischen einer Drehdurchführung für Fluide und einem elektrischen Schleifring?",
-      "answer": "Eine fluidische Drehdurchführung überträgt Gas oder Flüssigkeit, ein elektrischer Schleifring dagegen elektrische Leistung oder Signale. Benötigt eine Maschine beides, lassen sich beide Funktionen in einer Baugruppe kombinieren. Medien- und elektrische Anforderungen werden dennoch getrennt ausgelegt: Medium, Druck und Kanalanordnung auf der einen, Spannung, Strom und Signalart auf der anderen Seite. Diese Daten werden in der von beiden Seiten bestätigten Produktzeichnung und gegebenenfalls in der elektrischen Spezifikation festgehalten."
+      "answer": "Eine fluidische Drehdurchführung überträgt Gas oder Flüssigkeit, ein elektrischer Schleifring dagegen elektrische Leistung oder Signale. Benötigt eine Maschine beides, lassen sich beide Funktionen in einer Baugruppe kombinieren. Medien- und elektrische Anforderungen werden dennoch getrennt ausgelegt: Medium, Druck und Kanalanordnung auf der einen, Spannung, Strom und Signalart auf der anderen Seite. Diese Daten werden in der Produktzeichnung und in der elektrischen Spezifikation, die beide von beiden Seiten bestätigt werden, festgehalten."
     },
     {
       "id": "faq-05",
@@ -94,7 +94,7 @@
     {
       "id": "faq-11",
       "question": "Kann ein Standardmodell mit trockener oder ölfreier Druckluft betrieben werden?",
-      "answer": "Standardmodelle für Druckluft benötigen eine vollständige dreiteilige Druckluftaufbereitung aus Partikelfilter, Wasserabscheider und Druckluftöler und werden mit ölhaltiger Druckluft versorgt. Benötigt Ihre Maschine ölfreie Druckluft, teilen Sie uns dies vor der Auswahl mit. Für diesen Einsatz steht eine bewährte verschleißfeste Dichtungsausführung für ölfreien Betrieb zur Verfügung."
+      "answer": "Standardmodelle für Druckluft benötigen eine vollständige dreiteilige Druckluftaufbereitung aus Partikelfilter, Wasserabscheider und Druckluftöler und werden mit ölhaltiger Druckluft versorgt. Benötigt Ihre Maschine ölfreie Druckluft, teilen Sie uns dies vor der Auswahl mit. Für diesen Einsatz steht eine verschleißfeste Dichtungsausführung für ölfreien Betrieb zur Verfügung."
     },
     {
       "id": "faq-12",
@@ -109,7 +109,7 @@
     {
       "id": "faq-14",
       "question": "Kann ich auch ohne vollständige Maschinenzeichnung ein Angebot und CAD-Dateien erhalten?",
-      "answer": "Ja. Die Modellnummer reicht für ein Angebot. Katalog-STEP und PDF lädt man auf der Produktseite. Sonderausführungen weiter über die Anfrage. Kundendateien zeigen keine interne Dichtungsstruktur."
+      "answer": "Ja. Die Modellnummer reicht für ein Angebot. Katalog-STEP und PDF lädt man auf der Produktseite. Sonderausführungen weiter über die Anfrage. Die für Kunden bereitgestellten CAD-Dateien zeigen keine interne Dichtungsstruktur."
     },
     {
       "id": "faq-15",
@@ -154,12 +154,12 @@
     {
       "id": "faq-24",
       "question": "Können Kunden Prüf- und Rückverfolgbarkeitsunterlagen für eine einzelne Einheit erhalten?",
-      "answer": "Ja. Jede Drehdurchführung hat eine individuelle Rückverfolgbarkeitsnummer, die mit ihrem Prüfbericht verknüpft ist. Senden Sie uns diese Nummer, um den zugehörigen Bericht anzufordern. Soll der Bericht der Lieferung beiliegen oder ein besonderes Format beziehungsweise Abnahmekriterium erfüllen, teilen Sie uns das bitte vor der Bestellung mit."
+      "answer": "Ja. Jede Drehdurchführung wird mit einem Werksprüfbericht geliefert und hat eine individuelle Rückverfolgbarkeitsnummer, die mit ihrem Prüfdatensatz verknüpft ist. Senden Sie uns diese Nummer, um den zugehörigen Datensatz anzufordern. Falls ein besonderes Format oder Abnahmekriterium erforderlich ist, teilen Sie uns dies bitte vor der Bestellung mit."
     },
     {
       "id": "faq-25",
       "question": "Kann eine Drehdurchführung repariert werden, und wie wird ein Garantiefall beurteilt?",
-      "answer": "Einige Drehdurchführungen können repariert werden; bei schweren Schäden kann ein Austausch erforderlich sein. Die Standardgarantie beträgt ein Jahr ab Versanddatum und richtet sich nach Angebot, angenommenem Auftrag und schriftlichen Garantiebedingungen. Senden Sie bei einem Problem Modell, Rückverfolgbarkeitsnummer, kurze Betriebsdaten, Fehlerbild sowie passende Fotos oder Videos. Bestätigt Begapunk einen abgedeckten Fertigungsfehler, erfolgt der Ersatz standardmäßig kostenlos; Rücksendung und Ersatzversand werden wie schriftlich vereinbart abgewickelt. Andernfalls empfehlen wir nach der Prüfung eine Reparatur oder einen Austausch."
+      "answer": "Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß, falsche Montage und unsachgemäße Verwendung sind ausgeschlossen. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich. Garantieanfragen erhalten an regulären Arbeitstagen innerhalb von 24 Stunden eine erste Antwort. An Wochenenden oder gesetzlichen Feiertagen eingegangene Anfragen werden spätestens bis zum Ende des nächsten regulären Arbeitstags erstmals beantwortet. Dies ist keine Reparaturfrist und kein Rund-um-die-Uhr-Service."
     },
     {
       "id": "faq-26",
@@ -169,7 +169,7 @@
     {
       "id": "faq-27",
       "question": "Wie fordere ich eine technische Anwendungsprüfung für eine Drehdurchführung an?",
-      "answer": "Für den Einstieg genügt eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung. Es ist kein Problem, wenn noch nicht alle Angaben vorliegen. Senden Sie die vorhandenen Informationen über das Begapunk-Formular oder an sales@begapunk.com. Ein Begapunk-Ingenieur hilft, die offenen Punkte zu klären und schlägt ein passendes Katalogmodell oder eine Sonderausführung vor."
+      "answer": "Für den Einstieg genügt eine Modellnummer, ein Foto, eine Zeichnung oder eine kurze Beschreibung. Es ist kein Problem, wenn noch nicht alle Angaben vorliegen. Senden Sie die vorhandenen Informationen über das Begapunk-Formular oder an sales@begapunk.com. Ein Begapunk-Ingenieur hilft, die offenen Punkte zu klären und stellt bei Bedarf eine Empfehlung, eine Zeichnung und ein Angebot bereit."
     },
     {
       "id": "faq-28",

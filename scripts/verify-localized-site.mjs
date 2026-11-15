@@ -285,8 +285,7 @@ const footerStyleVersion = SITE_STYLE_VERSION;
 const homepageStyleVersion = SITE_STYLE_VERSION;
 const englishFooterStyleVersion = SITE_STYLE_VERSION;
 const englishHomepageStyleVersion = SITE_STYLE_VERSION;
-const socialPlatforms = ['LinkedIn', 'YouTube', 'Facebook', 'X'];
-const footerSocial = COMPANY_IDENTITY.brandSocialProfiles.map((href, index) => [href, socialPlatforms[index]]);
+const footerSocial = COMPANY_IDENTITY.officialSocialChannels.map(({ url, platform }) => [url, platform]);
 const organizationSocialProfiles = [...COMPANY_IDENTITY.brandSocialProfiles];
 const personSocialProfiles = [...COMPANY_IDENTITY.person.sameAs];
 const organizationEntityId = 'https://www.begapunk.com/#organization';
@@ -298,6 +297,12 @@ const obsoleteHomepageSocialProfiles = [
   'https://www.linkedin.com/company/begapunk',
   'https://www.youtube.com/@begapunk',
 ];
+// Preserve obsolete-profile rejection while exempting only complete approved URLs.
+function hasObsoleteSocialProfile(html, obsoleteProfile) {
+  const urls = html.match(/https?:\/\/[^\s"'<>\\]+/g) || [];
+  return urls.some(url => url.startsWith(obsoleteProfile)
+    && !COMPANY_IDENTITY.brandSocialProfiles.includes(url));
+}
 const footerExpected = {
   en: {
     positioning: "Precision rotary joints for industrial automation.",
@@ -316,7 +321,7 @@ const footerExpected = {
     ],
     privacy: "Privacy",
     terms: "Terms",
-    socialLabels: ["Begapunk on LinkedIn","Begapunk on YouTube","Begapunk on Facebook","Begapunk on X"],
+    socialLabels: {"LinkedIn":"Begapunk on LinkedIn","YouTube":"Begapunk on YouTube","Facebook":"Begapunk on Facebook","X":"Begapunk on X","Instagram":"Begapunk on Instagram"},
   },
   de: {
     positioning: "Präzisionsdrehdurchführungen für die Industrieautomation.",
@@ -335,7 +340,7 @@ const footerExpected = {
     ],
     privacy: "Datenschutz",
     terms: "Nutzungsbedingungen",
-    socialLabels: ["Begapunk auf LinkedIn","Begapunk auf YouTube","Begapunk auf Facebook","Begapunk auf X"],
+    socialLabels: {"LinkedIn":"Begapunk auf LinkedIn","YouTube":"Begapunk auf YouTube","Facebook":"Begapunk auf Facebook","X":"Begapunk auf X","Instagram":"Begapunk auf Instagram"},
   },
   fr: {
     positioning: "Raccords tournants de précision pour l’automatisation industrielle.",
@@ -354,7 +359,7 @@ const footerExpected = {
     ],
     privacy: "Confidentialité",
     terms: "Conditions d'utilisation",
-    socialLabels: ["Begapunk sur LinkedIn","Begapunk sur YouTube","Begapunk sur Facebook","Begapunk sur X"],
+    socialLabels: {"LinkedIn":"Begapunk sur LinkedIn","YouTube":"Begapunk sur YouTube","Facebook":"Begapunk sur Facebook","X":"Begapunk sur X","Instagram":"Begapunk sur Instagram"},
   },
   ja: {
     positioning: "産業オートメーション向けの精密ロータリージョイント。",
@@ -373,7 +378,7 @@ const footerExpected = {
     ],
     privacy: "プライバシーポリシー",
     terms: "利用規約",
-    socialLabels: ["Begapunk公式LinkedIn","Begapunk公式YouTube","Begapunk公式Facebook","Begapunk公式X"],
+    socialLabels: {"LinkedIn":"Begapunk公式LinkedIn","YouTube":"Begapunk公式YouTube","Facebook":"Begapunk公式Facebook","X":"Begapunk公式X","Instagram":"Begapunk公式Instagram"},
   },
   ru: {
     positioning: "Прецизионные вращающиеся соединения для промышленной автоматизации.",
@@ -392,7 +397,7 @@ const footerExpected = {
     ],
     privacy: "Политика конфиденциальности",
     terms: "Условия использования",
-    socialLabels: ["Begapunk в LinkedIn","Begapunk на YouTube","Begapunk на Facebook","Begapunk в X"],
+    socialLabels: {"LinkedIn":"Begapunk в LinkedIn","YouTube":"Begapunk на YouTube","Facebook":"Begapunk на Facebook","X":"Begapunk в X","Instagram":"Begapunk в Instagram"},
   },
 };
 const navProductPages = new Set(['products.html', 'products-p2.html', 'product-comparison.html', ...config.pages.filter((page) => /^BP-/.test(page))]);
@@ -899,11 +904,14 @@ for (const language of verifiedLanguages) {
     const socialNavigation = footerRoot.find('nav.footer-social');
     if (socialNavigation.length !== 1 || socialNavigation.attr('aria-label') !== footerCopy.socialTitle) failures.push(`${language.code}/${pageName}: localized social navigation label is incorrect.`);
     if (footerRoot.find('.footer-social-title').length) failures.push(`${language.code}/${pageName}: visible social heading must not consume Footer layout space.`);
-    footerSocial.forEach(([href, platform], index) => {
+    if (footerRoot.find('.footer-social-links a').length !== footerSocial.length) {
+      failures.push(`${language.code}/${pageName}: Footer must contain exactly the five approved corporate social links.`);
+    }
+    footerSocial.forEach(([href, platform]) => {
       const link = footerRoot.find(`.footer-social-links a[href="${href}"]`);
       const rel = new Set((link.attr('rel') || '').split(/\s+/).filter(Boolean));
       if (link.length !== 1 || link.attr('target') !== '_blank' || !rel.has('noopener') || !rel.has('noreferrer')) failures.push(`${language.code}/${pageName}: ${platform} Footer link or external-link protection is incorrect.`);
-      if (compactText(link.text()) !== '' || link.find('span').length || link.attr('aria-label') !== footerCopy.socialLabels[index]) failures.push(`${language.code}/${pageName}: ${platform} must be an icon-only Footer control with the approved accessible label.`);
+      if (compactText(link.text()) !== '' || link.find('span').length || link.attr('aria-label') !== footerCopy.socialLabels[platform]) failures.push(`${language.code}/${pageName}: ${platform} must be an icon-only Footer control with the approved accessible label.`);
       const svg = link.find('svg.footer-icon');
       if (svg.length !== 1 || svg.attr('aria-hidden') !== 'true' || svg.attr('focusable') !== 'false') failures.push(`${language.code}/${pageName}: ${platform} icon accessibility attributes are incomplete.`);
     });
@@ -969,9 +977,12 @@ for (const language of verifiedLanguages) {
         const payload = JSON.parse($(element).html());
         pageStructuredNodes.push(...schemaNodes(payload));
         if (language.code !== config.sourceLanguage.code) {
-          const contentTypes = new Set(['Article', 'Blog', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo']);
+          const contentTypes = new Set(['Article', 'Blog', 'BlogPosting', 'TechArticle', 'WebPage', 'WebSite', 'FAQPage', 'HowTo']);
           for (const node of schemaNodes(payload)) {
             const types = schemaTypes(node);
+            if (types.has('Product') && ('inLanguage' in node || 'associatedMedia' in node)) {
+              failures.push(`${language.code}/${pageName}: Product contains properties for a CreativeWork instead.`);
+            }
             if ([...types].some((type) => contentTypes.has(type)) && node.inLanguage !== language.code) {
               failures.push(`${language.code}/${pageName}: ${[...types].join('/')} JSON-LD lacks the correct inLanguage.`);
             }
@@ -1131,7 +1142,7 @@ for (const language of verifiedLanguages) {
         }
         const organizationSameAs = Array.isArray(organization.sameAs) ? organization.sameAs : [];
         if (JSON.stringify(organizationSameAs) !== JSON.stringify(organizationSocialProfiles)) {
-          failures.push(`${language.code}/${pageName}: Organization.sameAs must exactly contain the four approved Begapunk brand channels in canonical order.`);
+          failures.push(`${language.code}/${pageName}: Organization.sameAs must exactly contain the five approved Begapunk brand channels in canonical order.`);
         }
         if (new Set(organizationSameAs).size !== organizationSameAs.length) {
           failures.push(`${language.code}/${pageName}: Organization.sameAs contains a duplicate social profile.`);
@@ -1196,8 +1207,8 @@ for (const language of verifiedLanguages) {
           failures.push(`${language.code}/${pageName}: LocalBusiness identifier ${expectedIdentifier.propertyID} is missing or incorrect.`);
         }
       }
-      if (JSON.stringify(sameAs) !== JSON.stringify(organizationSocialProfiles)) {
-        failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must exactly contain the approved Begapunk brand channels.`);
+      if (JSON.stringify(sameAs) !== JSON.stringify(COMPANY_IDENTITY.localBusinessSocialProfiles)) {
+        failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must exactly preserve its existing approved channel baseline.`);
       }
       if (sameAs.includes(personSocialProfiles[0])) {
         failures.push(`${language.code}/${pageName}: LocalBusiness.sameAs must not contain the employee's personal LinkedIn profile.`);
@@ -1214,7 +1225,7 @@ for (const language of verifiedLanguages) {
       }
     }
     for (const obsoleteProfile of obsoleteHomepageSocialProfiles) {
-      if (html.includes(obsoleteProfile)) {
+      if (hasObsoleteSocialProfile(html, obsoleteProfile)) {
         failures.push(`${language.code}/${pageName}: obsolete social profile remains in page data (${obsoleteProfile}).`);
       }
     }

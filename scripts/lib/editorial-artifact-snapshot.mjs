@@ -507,6 +507,24 @@ export function semanticSha256(source) {
   return sha256(createSemanticProjection(source));
 }
 
+// An append-only, explicitly authorized semantic increment does not overwrite
+// the governed snapshot or weaken its earlier provenance checks.
+export function assertIncrementalSnapshotTransition(relativePath, beforeBytes, afterBytes, transition, governedArtifact) {
+  const before = createArtifactSnapshot(relativePath, beforeBytes);
+  const after = createArtifactSnapshot(relativePath, afterBytes);
+  const equal = (a,b) => a.semanticSha256 === b?.semanticSha256 && a.mechanicalSha256 === b?.mechanicalSha256;
+  if (transition.beforeSnapshot?.path !== relativePath || transition.afterSnapshot?.path !== relativePath
+      || !equal(before, transition.beforeSnapshot) || !equal(after, transition.afterSnapshot)
+      || transition.protection?.semanticReviewRequired !== true
+      || (governedArtifact && (governedArtifact.path !== relativePath || !equal(before, governedArtifact)))) {
+    throw new Error(`${relativePath}: incremental semantic/mechanical transition does not bind the retained governance snapshot.`);
+  }
+  if (before.semanticSha256 === after.semanticSha256) {
+    throw new Error(`${relativePath}: social increment must be recorded as an explicit semantic review, not a mechanical refresh.`);
+  }
+  return { before, after, semanticReviewRequired:true };
+}
+
 export function mechanicalSha256(source) {
   if (typeof source === 'string') return sha256(normalizeLfText(source));
   const input = Buffer.from(source);

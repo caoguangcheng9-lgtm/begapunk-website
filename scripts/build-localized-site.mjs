@@ -1,3 +1,6 @@
+import { enrichLocalizedLlms, renderEnglishLlms, bp10LlmsCopy } from './lib/llms-document.mjs';
+import { applyProductPolicy, stripProductPolicy, productPolicy, policyCopy } from './lib/owner-product-policy.mjs';
+import { applyProductDiscovery } from './lib/product-discovery-facts.mjs';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
@@ -506,6 +509,17 @@ function applyProductDetailUiCopy($, languageCode, pageName) {
   const copy = productDetailUiContract.locales[languageCode];
   if (!copy) throw new Error(`${languageCode}/${pageName}: product-detail UI copy is missing.`);
   const model = path.basename(pageName, '.html');
+  // Consume the same formal resource translations as the bounded UI synchronizer.
+  const resourceCopy = productDetailUiContract.relatedResourceOverrides?.[languageCode];
+  for (const entry of [...(resourceCopy?.['*'] || []), ...(resourceCopy?.[model] || [])]) {
+    const link = $('a.app-related-product').filter((_, node) => $(node).attr('href') === entry.href);
+    if (link.length !== 1 || link.find('strong').length !== 1 || link.find('span').length !== 1) {
+      throw new Error(`${languageCode}/${pageName}: related-resource contract mismatch for ${entry.href}.`);
+    }
+    link.find('strong').text(entry.title);
+    link.find('span').text(entry.description);
+  }
+
   const scopes = [
     [PRODUCT_UI_SKIP_SELECTOR, 'skip link', (node) => node.text(copy.skipLink)],
     [PRODUCT_UI_IMAGES_SELECTOR, 'product images region', (node) => node.attr('aria-label', copy.productImagesLabel)],
@@ -722,7 +736,10 @@ function applyDrawingBackedUiContract($, languageCode, pageName) {
     const field = drawingBackedCanonicalField(heading.text());
     if (!field) return;
     if (Object.hasOwn(contract.specificationLabels, field)) heading.text(contract.specificationLabels[field]);
-    if (!Object.hasOwn(contract.fields, field)) return;
+    if (!Object.hasOwn(contract.fields, field)) {
+      if (field === 'weight' && !contract.requiredJsonFields.includes(field)) row.remove();
+      return;
+    }
     if (seenSpecificationFields.has(field)) {
       throw new Error(`${label}: duplicate drawing-backed specification field ${field}.`);
     }
@@ -730,7 +747,7 @@ function applyDrawingBackedUiContract($, languageCode, pageName) {
     value.text(contract.fields[field]);
   });
   const requiredSpecificationFields = contract.requiredJsonFields.length
-    ? ['pressure', 'speed', 'media', 'body', 'seal', 'mount', 'temperature', 'weight']
+    ? ['pressure', 'speed', 'media', 'body', 'seal', 'mount', 'temperature', 'weight'].filter(field => contract.requiredJsonFields.includes(field))
     : [];
   for (const field of requiredSpecificationFields) {
     if (!seenSpecificationFields.has(field)) {
@@ -979,7 +996,7 @@ async function loadPages(pageNames = translationManagedPages) {
   const pages = [];
   for (const pageName of pageNames) {
     const filePath = path.join(sourceRoot, pageName);
-    const html = await fs.readFile(filePath, 'utf8');
+    const html = stripProductPolicy(await fs.readFile(filePath, 'utf8'));
     const $ = load(html, { decodeEntities: false });
     const page = { pageName, html, $, records: collectRecords($) };
     page.records = drawingBackedTranslationRecords(page);
@@ -1234,7 +1251,7 @@ function normalizeJapaneseOutput(html) {
     ['土台', '取付'],
     ['メディア', '使用流体'],
     ['義務周期', 'デューティサイクル'],
-    ['義務', '使用条件'],
+    // The legal phrase 権利または義務 is protected below from the legacy duty translation.
     ['derate', '定格を下げる'],
     ['流路 の', '流路の'],
     ['用途 の', '用途の'],
@@ -1330,6 +1347,7 @@ function normalizeJapaneseOutput(html) {
   let normalized = html;
   for (const [from, to] of replacements) normalized = normalized.replaceAll(from, to);
   normalized = normalized
+    .replace(/(?<!権利または)義務/g, '使用条件')
     .replaceAll('の特長', '')
     .replace(/最高の(\d+(?:\.\d+)?\s*MPa)/g, '最高使用圧力$1')
     .replace(/最高の(\d[\d,]*(?:\.\d+)?\s*RPM)/g, '最高使用回転数$1')
@@ -1649,7 +1667,7 @@ function normalizeRussianOutput(html) {
     ['Возврат и возврат', 'Возврат товара и денежных средств'],
     ['Управляющий закон', 'Применимое право'],
     ['Изменения в терминах', 'Изменение условий'],
-    ['11. Контакт', '11. Контакты'],
+    ['11. Контакт</', '11. Контакты</'],
     ['Cookies и технологии отслеживания', 'Файлы cookie и технологии отслеживания'],
     ['макс. Спид', 'Максимальная скорость'],
     ['#####1. Тест на статическое давление (без вращения)', '1. Статическое испытание давлением (без вращения)'],
@@ -2076,12 +2094,7 @@ function applyDrawingBackedProductMetadata($, languageCode, pageName) {
             cadProperty.name = cadCopy.cadPropertyName;
             cadProperty.value = cadCopy.cadPropertyValue;
           }
-          value.associatedMedia = {
-            '@type': 'MediaObject',
-            name: cadCopy.cadMediaName(model),
-            contentUrl: `https://www.begapunk.com/downloads/${model}.step`,
-            encodingFormat: 'application/step',
-          };
+          delete value.associatedMedia;
         }
       }
       for (const child of Object.values(value)) visit(child);
@@ -2271,10 +2284,10 @@ const structuredPropertyNames = {
 };
 
 const structuredWarrantyTerms = {
-  de: { name: 'Garantiezeitraum', value: '1 Jahr ab Versand' },
-  fr: { name: 'Durée de garantie', value: '1 an à compter de l\'expédition' },
-  ja: { name: '保証期間', value: '出荷日から1年' },
-  ru: { name: 'Гарантийный срок', value: '1 год с даты отгрузки' },
+  de: { name: 'Garantiezeitraum', value: '12 Monate ab Erhalt durch den Kunden' },
+  fr: { name: 'Durée de garantie', value: '12 mois à compter de la réception par le client' },
+  ja: { name: '保証期間', value: 'お客様の受領日から12か月' },
+  ru: { name: 'Гарантийный срок', value: '12 месяцев с даты получения заказчиком' },
 };
 
 const structuredApplicationValues = {
@@ -2778,7 +2791,7 @@ function normalizeLocalBusinessIdentity(value, schemaLocale = {}) {
   value.alternateName = [...COMPANY_IDENTITY.alternateNames];
   value.identifier = COMPANY_IDENTITY.identifiers.map((identifier) => ({ ...identifier }));
   value.foundingDate = canonicalFoundingDate;
-  value.sameAs = canonicalBrandSameAs;
+  value.sameAs = [...COMPANY_IDENTITY.localBusinessSocialProfiles];
   value.parentOrganization = { '@id': canonicalOrganizationId };
   if (value.description && schemaLocale.localBusinessDescription) {
     value.description = schemaLocale.localBusinessDescription;
@@ -2845,7 +2858,7 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
     ja: 'ホーム',
     ru: 'Главная',
   };
-  const contentTypes = new Set(['AboutPage', 'Article', 'Blog', 'BlogPosting', 'ContactPage', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
+  const contentTypes = new Set(['AboutPage', 'Article', 'Blog', 'BlogPosting', 'ContactPage', 'TechArticle', 'WebPage', 'WebSite', 'FAQPage', 'HowTo', 'CollectionPage']);
   const localizedCollectionAbout = {
     de: [
       'Drehdurchführungen für Druckluft',
@@ -3060,9 +3073,8 @@ function updateJsonLd($, languageCode, pageName, strict = false) {
             }
             value.additionalProperty = localizedProperties;
           }
-          if (value.associatedMedia && typeof value.associatedMedia === 'object') {
-            value.associatedMedia.name = productSchemaCopy.cadMediaName(path.basename(pageName, '.html'));
-          }
+          delete value.inLanguage;
+          delete value.associatedMedia;
         }
         if (types.has('Offer') && value.price !== undefined && value.price !== null) {
           const productSchemaCopy = structuredProductSchemaCopy[languageCode];
@@ -3340,7 +3352,7 @@ function applyTranslations(page, language, catalog, cache, drawingBackedDirectDo
   applyDrawingBackedProductMetadata(finalized, language.code, pageName);
   applyNotFoundIndexingPolicy(finalized, pageName);
   return patchDiscoveryRobotsMeta(
-    finalized.html().replace(/[ \t]+$/gm, ''),
+    applyProductDiscovery(applyProductPolicy(finalized.html().replace(/[ \t]+$/gm, ''), language.code, pageName.replace(/\.html$/, '')), language.code, pageName),
     discoveryExcludedPages.has(pageName),
   );
 }
@@ -3785,8 +3797,9 @@ function renderLocalizedLlms(language) {
     // Manually reviewed new products have their own facts and localized summary;
     // never apply the legacy drawing manifest's seal or duty-cycle defaults to them.
     const manualProduct = model && manualLocalizedPages.includes(pageName) && entry.llms;
-    const drawingLabel = manualProduct ? entry.llms.title : model ? drawingBackedProductLinkLabel(language.code, model) : null;
-    const drawingSummary = manualProduct ? entry.llms.description : model ? drawingBackedProductSummary(language.code, model) : null;
+    const manualLlms = model === 'BP-10P-0001' ? bp10LlmsCopy(language.code) : entry.llms;
+    const drawingLabel = manualProduct ? manualLlms.title : model ? drawingBackedProductLinkLabel(language.code, model) : null;
+    const drawingSummary = manualProduct ? manualLlms.description : model ? drawingBackedProductSummary(language.code, model) : null;
     if (model && (!drawingLabel || !drawingSummary)) {
       throw new Error(`${language.code}/${pageName}: drawing-backed llms copy is missing.`);
     }
@@ -3797,7 +3810,7 @@ function renderLocalizedLlms(language) {
     grouped.get(llmsGroup(pageName)).push(`- [${drawingLabel || entry.title}](${pageUrl(language.code, pageName)}): ${description}`);
   }
   const sections = [...grouped.entries()].map(([group, lines]) => `## ${labels.sections[group]}\n\n${lines.join('\n')}`).join('\n\n');
-  return `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [${labels.links.sitemap}](${config.siteUrl}/sitemap-i18n.xml)\n- [${labels.links.englishAiIndex}](${config.siteUrl}/llms.txt)\n\n${sections}\n`;
+  return enrichLocalizedLlms(language.code, `# ${seo._site.heading}\n\n> ${labels.summary}\n\n- [${labels.links.sitemap}](${config.siteUrl}/sitemap-i18n.xml)\n- [${labels.links.englishAiIndex}](${config.siteUrl}/llms.txt)\n\n${sections}\n`);
 }
 
 async function writeLocalizedLlms(language, outputDirectory) {
@@ -3818,7 +3831,7 @@ async function copyManualLocalizedPages(languageCode, outputDirectory) {
     // English manual pages are already the governed metadata source; target
     // languages use their curated i18n/seo records.
     if (languageCode !== config.sourceLanguage.code) applySeoMetadata($, languageCode, pageName);
-    const manualContentTypes = new Set(['AboutPage', 'Article', 'Blog', 'BlogPosting', 'ContactPage', 'TechArticle', 'WebPage', 'WebSite', 'Product', 'FAQPage', 'HowTo', 'CollectionPage']);
+    const manualContentTypes = new Set(['AboutPage', 'Article', 'Blog', 'BlogPosting', 'ContactPage', 'TechArticle', 'WebPage', 'WebSite', 'FAQPage', 'HowTo', 'CollectionPage']);
     const manualBreadcrumbLabels = {
       en: { 'index.html': 'Home', 'products.html': 'Products', 'applications.html': 'Applications', 'case-studies.html': 'Case Studies', 'blog.html': 'Knowledge Center', 'manufacturing-quality.html': 'Quality' },
       de: { 'index.html': 'Startseite', 'products.html': 'Produkte', 'applications.html': 'Anwendungen', 'case-studies.html': 'Fallstudien', 'blog.html': 'Wissenszentrum', 'manufacturing-quality.html': 'Qualität' },
@@ -3834,6 +3847,7 @@ async function copyManualLocalizedPages(languageCode, outputDirectory) {
         for (const [key, child] of Object.entries(value)) value[key] = visit(child);
         const types = schemaTypes(value);
         if ([...types].some((type) => manualContentTypes.has(type))) value.inLanguage = languageCode;
+        if (types.has('Product')) { delete value.inLanguage; delete value.associatedMedia; }
         if (types.has('BreadcrumbList') && Array.isArray(value.itemListElement)) {
           for (const item of value.itemListElement) {
             if (!item || typeof item !== 'object' || typeof item.item !== 'string') continue;
@@ -3895,7 +3909,7 @@ async function buildLocalizedPages(catalog) {
     const outputDirectory = path.join(outputRoot, language.code);
     await fs.mkdir(outputDirectory, { recursive: true });
     for (const sourcePage of pages) {
-      const html = await fs.readFile(path.join(sourceRoot, sourcePage.pageName), 'utf8');
+      const html = stripProductPolicy(await fs.readFile(path.join(sourceRoot, sourcePage.pageName), 'utf8'));
       const $ = load(html, { decodeEntities: false });
       const page = { pageName: sourcePage.pageName, $, records: collectRecords($) };
       page.records = drawingBackedTranslationRecords(page);
@@ -4124,8 +4138,15 @@ async function verifyContactGeneration(catalog) {
 
 function inspectProductDetailUi($, languageCode, pageName, side) {
   const label = `${languageCode}/${pageName} ${side}`;
-  const copy = productDetailUiContract.locales[languageCode];
   const model = path.basename(pageName, '.html');
+  // Match the model-scoped owner policy applied by the existing renderer.
+  const approvedPolicy = policyCopy(languageCode);
+  const copy = {
+    ...productDetailUiContract.locales[languageCode],
+    ...(productPolicy.paymentModels.includes(model) ? {
+      leadTimeValue: model === 'BP-10P-0001' ? approvedPolicy.bp10Lead : approvedPolicy.leadShort,
+    } : {}),
+  };
   const uniqueNode = (selector, scope) => {
     const nodes = $(selector);
     if (nodes.length !== 1) {
@@ -4330,7 +4351,7 @@ async function verifyProductUiGeneration(catalog) {
   let controlledComparisonCount = 0;
   for (const language of activeLanguages) {
     for (const pageName of productDetailPageNames) {
-      const html = await fs.readFile(path.join(sourceRoot, pageName), 'utf8');
+      const html = stripProductPolicy(await fs.readFile(path.join(sourceRoot, pageName), 'utf8'));
       const $ = load(html, { decodeEntities: false });
       const page = { pageName, $, records: collectRecords($) };
       page.records = drawingBackedTranslationRecords(page);
@@ -4394,7 +4415,7 @@ async function refreshLocalizedMetadata() {
     const outputDirectory = path.join(outputRoot, language.code);
     for (const pageName of translationManagedPages) {
       const filePath = path.join(outputDirectory, pageName);
-      const html = await fs.readFile(filePath, 'utf8');
+      const html = stripProductPolicy(await fs.readFile(filePath, 'utf8'));
       const $ = load(html, { decodeEntities: false });
       applySeoMetadata($, language.code, pageName);
       applyLocalizedBlogShareCopy($, language.code, pageName);
@@ -4491,7 +4512,7 @@ async function verifyLocalizedMetadata() {
   for (const language of activeLanguages) {
     for (const pageName of translationManagedPages) {
       const filePath = path.join(outputRoot, language.code, pageName);
-      const html = await fs.readFile(filePath, 'utf8');
+      const html = stripProductPolicy(await fs.readFile(filePath, 'utf8'));
       const current = inspectLocalizedMetadata(
         load(html, { decodeEntities: false }),
         language.code,
@@ -4503,8 +4524,14 @@ async function verifyLocalizedMetadata() {
       updateJsonLd(expected$, language.code, pageName, true);
       applyDrawingBackedUiContract(expected$, language.code, pageName);
       applyDrawingBackedProductMetadata(expected$, language.code, pageName);
+      // Match the existing renderer's final owner-policy and discovery passes.
+      // Their approved JSON-LD is part of the expected output, not an exception.
       const expectedHtml = patchDiscoveryRobotsMeta(
-        expected$.html(),
+        applyProductDiscovery(
+          applyProductPolicy(expected$.html(), language.code, pageName.replace(/\.html$/, '')),
+          language.code,
+          pageName,
+        ),
         discoveryExcludedPages.has(pageName),
       );
       const expected = inspectLocalizedMetadata(
@@ -4692,7 +4719,21 @@ try {
   if (error.code !== 'ENOENT') throw error;
 }
 
-if (mode === 'verify-contact') {
+if (mode === 'llms-check' || mode === 'llms-write') {
+  // This mode writes only the five llms indexes. It does not render HTML or
+  // update translation, sitemap, approval or source-catalog snapshots.
+  const documents = new Map([['llms.txt', renderEnglishLlms()]]);
+  for (const language of activeLanguages) documents.set(`${language.code}/llms.txt`, renderLocalizedLlms(language));
+  for (const [relative, expected] of documents) {
+    const target = path.join(sourceRoot, relative);
+    const current = await fs.readFile(target, 'utf8');
+    if (current !== expected) {
+      if (mode === 'llms-check') throw new Error(`${relative}: llms generation drift`);
+      await fs.writeFile(target, expected, 'utf8');
+    }
+  }
+  console.log(`${mode}: ${documents.size} llms indexes match the governed sources.`);
+} else if (mode === 'verify-contact') {
   assertCatalogPageContract(catalog, 'verifying Contact RFQ generation');
   await verifyContactGeneration(catalog);
 } else if (mode === 'verify-product-ui-generation') {

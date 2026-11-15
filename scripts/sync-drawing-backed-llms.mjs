@@ -147,8 +147,8 @@ function assertBoundaryCopy(spec, expectedByModel) {
     }
   }
 
-  if (/G4\/1|G1\/4/u.test(get('BP-3P-0006'))) {
-    throw new Error(`${spec.locale}/BP-3P-0006: unresolved port annotation must remain pending.`);
+  if (/G4\/1/u.test(get('BP-3P-0006')) || !get('BP-3P-0006').includes('G1/4')) {
+    throw new Error(`${spec.locale}/BP-3P-0006: approved G1/4 annotation missing or retired typo present.`);
   }
 
   const technicalClaim = /\b(?:MPa|RPM)\b|min⁻¹|U\/min|tr\/min|МПа|об\/мин|Ø|G1\//iu;
@@ -177,20 +177,21 @@ function transformFile(source, spec) {
   const migration = migrateRetiredProductLines(source, spec, context);
   const sourceRecords = extractProductLines(migration.output, spec, context);
   const sourceByModel = new Map(sourceRecords.map((record) => [record.model, record.line]));
-  if (sourceByModel.get('BP-10P-0001') !== bp10Line(spec)) throw new Error(`${context}: BP-10P-0001 must match its independent reviewed copy.`);
+  if (!sourceByModel.has('BP-10P-0001')) throw new Error(`${context}: BP-10P-0001 entry missing.`);
   const expectedByModel = new Map(
     drawingBackedProductModels.map((model) => [model, expectedProductLine(spec, model)]),
   );
+  expectedByModel.set('BP-10P-0001', bp10Line(spec));
   assertBoundaryCopy(spec, expectedByModel);
 
   let output = migration.output;
-  for (const model of drawingBackedProductModels) {
+  for (const model of publishedModels) {
     output = replaceProductLine(output, spec, model, expectedByModel.get(model), context);
   }
 
   const outputRecords = extractProductLines(output, spec, `${context} (generated)`);
   const outputByModel = new Map(outputRecords.map((record) => [record.model, record.line]));
-  for (const model of drawingBackedProductModels) {
+  for (const model of publishedModels) {
     if (outputByModel.get(model) !== expectedByModel.get(model)) {
       throw new Error(`${context}: generated entry for ${model} is not exact or its link is incorrect.`);
     }
@@ -200,12 +201,12 @@ function transformFile(source, spec) {
   }
 
   let idempotent = output;
-  for (const model of drawingBackedProductModels) {
+  for (const model of publishedModels) {
     idempotent = replaceProductLine(idempotent, spec, model, expectedByModel.get(model), `${context} (idempotency)`);
   }
   if (idempotent !== output) throw new Error(`${context}: llms synchronization is not idempotent.`);
 
-  const changedModels = drawingBackedProductModels.filter(
+  const changedModels = publishedModels.filter(
     (model) => sourceByModel.get(model) !== expectedByModel.get(model),
   );
   for (const model of migration.migratedModels) {
@@ -227,8 +228,8 @@ function assertManifestContract() {
     || !bp1p0006Ports.annotations?.some((port) => port.count === 8 && port.thread === 'G1/8' && port.role === 'outlet')) {
     throw new Error('BP-1P-0006 must preserve the owner-confirmed eight-outlet drawing fact.');
   }
-  if (manifest.products['BP-3P-0006']?.drawingFacts?.ports?.status !== 'anomaly-unresolved') {
-    throw new Error('BP-3P-0006 port specification must remain unresolved.');
+  if (manifest.products['BP-3P-0006']?.drawingFacts?.ports?.status !== 'verified') {
+    throw new Error('BP-3P-0006 requires the owner-selected IA Rev A port specification.');
   }
   const pendingModels = new Set(manifest.sourcePolicy?.identityPendingModels || []);
   for (const model of drawingBackedProductModels) {

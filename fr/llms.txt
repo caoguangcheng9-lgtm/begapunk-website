@@ -5,6 +5,36 @@
 - [Plan du site multilingue](https://www.begapunk.com/sitemap-i18n.xml)
 - [Index IA en anglais](https://www.begapunk.com/llms.txt)
 
+## Entité juridique et immatriculation
+
+- Dénomination légale chinoise figurant sur la licence commerciale: 宁波贝加庞克气动元件有限公司
+- Nom anglais utilisé à l’extérieur: Ningbo Begapunk Pneumatic Components Co., Ltd.
+- Marque: BEGAPUNK
+- Site officiel: [https://www.begapunk.com/](https://www.begapunk.com/)
+- Code unifié de crédit social: 91330201MABLQR5K7U
+- Code d’enregistrement auprès des douanes chinoises: 3320260A4H
+- Date de création: 28 avril 2022
+- Adresse enregistrée: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
+
+La dénomination légale chinoise et le code unifié de crédit social reposent sur les informations d’immatriculation commerciale fournies par l’entreprise. Le code d’enregistrement auprès des douanes chinoises est confirmé par l’entreprise. Le nom anglais de l’entreprise est utilisé pour les communications commerciales internationales. Cette entreprise de fabrication est distincte de la société de commerce international constituée séparément.
+
+## Sources officielles de consultation
+
+Les portails officiels des registres publics sont fournis à titre de référence. Ces liens mènent à des portails de recherche généraux et ne constituent pas des fiches propres à l’entreprise vérifiées de manière indépendante.
+
+- [国家企业信用信息公示系统 / GSXT](https://www.gsxt.gov.cn/)
+- [中国海关企业进出口信用信息公示平台 / China Customs](http://credit.customs.gov.cn/)
+
+## Official Social Media Channels
+
+Il s’agit des comptes officiels sur les réseaux sociaux gérés par BEGAPUNK.
+
+- [LinkedIn](https://www.linkedin.com/company/begapunk-rotary-joints/)
+- [Facebook](https://www.facebook.com/profile.php?id=61595481363231)
+- [Instagram](https://www.instagram.com/begapunkrotaryjoints/)
+- [YouTube](https://www.youtube.com/@BEGAPUNKRotaryJointsTV)
+- [X](https://x.com/Begapunk728)
+
 ## Produits
 
 - [Raccords tournants pneumatiques | Catalogue Begapunk](https://www.begapunk.com/fr/products.html): Sélectionnez un raccord tournant pneumatique par nombre de passages, pression, vitesse, alésage et montage. Plans 2D et fichiers STEP disponibles sur les pages des modèles.
@@ -12,7 +42,7 @@
 - [BP-1P-0003 — raccord tournant pneumatique à 1 passage](https://www.begapunk.com/fr/BP-1P-0003.html): BP-1P-0003 est un raccord tournant pneumatique à 1 passage avec 1 entrée et 1 sortie. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 500 tr/min, plage de température de -20 à +80 °C, masse 270 g, corps en acier au carbone nuance 45, joint d’étanchéité en PTFE avec joint torique, fluides : air, huile, eau ; repérage des orifices : entrée du fluide : 1 × G3/8 ; sortie du fluide : 1 × M10×1,5.
 - [BP-1P-0006 — raccord tournant pneumatique à 1 passage](https://www.begapunk.com/fr/BP-1P-0006.html): BP-1P-0006 est un raccord tournant pneumatique à 1 passage avec 1 entrée et 8 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 300 tr/min, plage de température de -20 à +80 °C, masse 265 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée : 1 × G1/8 ; sortie : 8 × G1/8.
 - [BP-2P-0001 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-0001.html): BP-2P-0001 est un raccord tournant pneumatique à 2 passages avec 2 entrées et 2 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 390 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée du fluide : 2 × G1/8 ; sortie du fluide : 2 × G1/8.
-- [BP-2P-0002 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-0002.html): BP-2P-0002 est un raccord tournant pneumatique à 2 passages. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 300 tr/min, plage de température de -20 à +80 °C, masse 220 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : orifices latéraux : 2 × G1/8, profondeur 8 mm ; orifices en face : 3 × G1/8, profondeur 8 mm ; orifice sur la face opposée : 1 × G1/4, profondeur 8 mm.
+- [BP-2P-0002 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-0002.html): BP-2P-0002 est un raccord tournant pneumatique à 2 passages. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +100 °C, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : orifices latéraux : 2 × G1/8, profondeur 8 mm ; orifices en face : 3 × G1/8, profondeur 8 mm ; orifice sur la face opposée : 1 × G1/4, profondeur 10 mm. Deux circuits d’air indépendants traversent l’interface d’étanchéité rotative. Un circuit supplémentaire reste entièrement à l’intérieur de l’arbre, sans traverser cette interface. L’orifice central G1/4 rejoint l’un des trois orifices G1/8 de bride par ce circuit interne ; les deux autres orifices de bride correspondent aux deux circuits rotatifs. Les trois trajets sont bidirectionnels, sans sens d’entrée imposé. Engagement effectif du filetage G1/4 central : 10 mm ; bride : 3 × G1/8 sur cercle de perçage de 16 mm.
 - [BP-2P-08-0001 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-08-0001.html): BP-2P-08-0001 est un raccord tournant pneumatique à 2 passages avec 2 entrées et 2 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 390 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée : 2 × G1/8 ; sortie : 2 × G1/8.
 - [BP-2P-130-0001 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-130-0001.html): BP-2P-130-0001 est un raccord tournant pneumatique à 2 passages. Valeurs publiées : pression maximale 5 MPa, vitesse maximale 80 tr/min, plage de température de -20 à +80 °C, masse 8 655 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : orifices côté A : 2 × G1/8 ; orifices côté B : 2 × G1/8 ; les fonctions des orifices sont définies sur le plan validé avant la production.
 - [BP-2P-16-0001 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-16-0001.html): BP-2P-16-0001 est un raccord tournant pneumatique à 2 passages avec 2 entrées et 2 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 410 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée du fluide : 2 × G1/8 ; sortie du fluide : 2 × G1/8.
@@ -20,12 +50,12 @@
 - [BP-2P-50-0001 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-50-0001.html): BP-2P-50-0001 est un raccord tournant pneumatique à 2 passages avec 2 entrées et 2 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 100 tr/min, plage de température de -20 à +80 °C, masse 2 300 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée : 2 × G1/8 ; sortie : 2 × G1/8.
 - [BP-2P-95-0005 — raccord tournant pneumatique à 2 passages](https://www.begapunk.com/fr/BP-2P-95-0005.html): BP-2P-95-0005 est un raccord tournant pneumatique à 2 passages avec 2 entrées et 4 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 4 260 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : orifice de desserrage : 1 × G1/8, profondeur 8 mm ; orifice de serrage : 1 × G1/8, profondeur 8 mm ; sortie de desserrage : 2 × Ø4 mm ; sortie de serrage : 2 × Ø4 mm.
 - [BP-3P-0004 — raccord tournant pneumatique à 3 passages](https://www.begapunk.com/fr/BP-3P-0004.html): BP-3P-0004 est un raccord tournant pneumatique à 3 passages avec 3 entrées et 3 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 490 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée du fluide : 3 × G1/8 ; sortie du fluide : 3 × G1/8.
-- [BP-3P-0006 — raccord tournant pneumatique à 3 passages](https://www.begapunk.com/fr/BP-3P-0006.html): BP-3P-0006 est un raccord tournant pneumatique à 3 passages avec 3 entrées et 3 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 360 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; le filetage des orifices n’est pas indiqué.
+- [BP-3P-0006 — raccord tournant pneumatique à 3 passages](https://www.begapunk.com/fr/BP-3P-0006.html): BP-3P-0006 est un raccord tournant pneumatique à 3 passages avec 3 entrées et 3 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : sortie : 3 × G1/4, profondeur 9 mm ; entrée : 3 × G1/4.
 - [BP-3P-0007 — raccord tournant pneumatique à 3 passages](https://www.begapunk.com/fr/BP-3P-0007.html): BP-3P-0007 est un raccord tournant pneumatique à 3 passages avec 3 entrées et 3 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 390 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée : 3 × G1/8 ; sortie : 3 × G1/8.
 - [BP-3P-S06-0001 — raccord tournant pneumatique-électrique à 3 passages](https://www.begapunk.com/fr/BP-3P-S06-0001.html): BP-3P-S06-0001 est un raccord tournant pneumatique-électrique à 3 passages. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 410 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : sortie d’air : 3 × Ø4 mm ; l’entrée d’air est définie sur le plan validé avant la production ; 6 conducteurs électriques représentés ; affectation des circuits et caractéristiques nominales selon la spécification retenue.
 - [BP-4P-30-0001 — raccord tournant pneumatique à 4 passages](https://www.begapunk.com/fr/BP-4P-30-0001.html): BP-4P-30-0001 est un raccord tournant pneumatique à 4 passages. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 943 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : orifices face A : 4 × G1/8 ; orifices face B : 4 × G1/8 ; les fonctions des orifices sont définies sur le plan validé avant la production.
 - [BP-8P-0001 — raccord tournant pneumatique à 8 passages](https://www.begapunk.com/fr/BP-8P-0001.html): BP-8P-0001 est un raccord tournant pneumatique à 8 passages avec 8 entrées et 8 sorties. Valeurs publiées : pression maximale 1 MPa, vitesse maximale 200 tr/min, plage de température de -20 à +80 °C, masse 850 g, corps en alliage d’aluminium 6061, joint d’étanchéité en PTFE avec joint torique, fluides : air ; repérage des orifices : entrée du fluide : 8 × G1/8 ; sortie du fluide : 8 × G1/8.
-- [BP-10P-0001 joint tournant pneumatique à 10 passages](https://www.begapunk.com/fr/BP-10P-0001.html): Le BP-10P-0001 est un joint tournant pneumatique à 10 passages qui achemine l’air comprimé des conduites fixes vers un équipement tournant par dix passages indépendants. Sa pression maximale est de 1 MPa et sa vitesse maximale de 100 tr/min en rotation intermittente. Il comporte 20 orifices G1/8 et des raccords fournis pour tubes de 8 mm de diamètre extérieur. Son corps en alliage d’aluminium 6061 utilise des joints toriques et ne possède pas d’alésage traversant.
+- [BP-10P-0001 joint tournant pneumatique à 10 passages](https://www.begapunk.com/fr/BP-10P-0001.html): Le BP-10P-0001 est un joint tournant pneumatique à 10 passages qui achemine l’air comprimé des conduites fixes vers un équipement tournant par dix passages indépendants. Sa pression maximale est de 1 MPa et sa vitesse maximale de 100 tr/min. Il comporte 20 orifices G1/8 et des raccords fournis pour tubes de 8 mm de diamètre extérieur. Son corps en alliage d’aluminium 6061 utilise des joints toriques et ne possède pas d’alésage traversant.
 
 ## Applications
 
@@ -72,3 +102,64 @@
 - [Demande de devis | Raccord tournant pneumatique | Begapunk](https://www.begapunk.com/fr/contact.html): Envoyez une référence, une photo, un plan ou les conditions connues pour obtenir un devis ou une recommandation de raccord tournant pneumatique.
 - [Politique de confidentialité | Begapunk](https://www.begapunk.com/fr/privacy.html): Informations sur la collecte, l’utilisation, la conservation et la protection des données personnelles sur le site Begapunk.
 - [Conditions d’utilisation | Begapunk](https://www.begapunk.com/fr/terms.html): Conditions encadrant l’utilisation du site et l’achat de produits Begapunk : garantie, retours, expédition, paiement et limites de responsabilité.
+
+## Spécifications techniques
+
+La sélection dépend du plan propre au modèle, du fluide, de la pression, de la vitesse, de la température, des interfaces et du cycle réel. Les valeurs maximales ne garantissent pas l’aptitude à toutes les combinaisons de conditions. Ne pas déduire les caractéristiques hydrauliques des modèles pneumatiques.
+
+- BP-2P-0002: Deux circuits d’air indépendants traversent l’interface d’étanchéité rotative. Un circuit supplémentaire reste entièrement à l’intérieur de l’arbre, sans traverser cette interface. L’orifice central G1/4 rejoint l’un des trois orifices G1/8 de bride par ce circuit interne ; les deux autres orifices de bride correspondent aux deux circuits rotatifs. Les trois trajets sont bidirectionnels, sans sens d’entrée imposé. Engagement effectif du filetage G1/4 central : 10 mm ; bride : 3 × G1/8 sur cercle de perçage de 16 mm.
+- BP-10P-0001: Pression maximale: 1 MPa (10 bar ≈ 145 psi); Vitesse maximale: 100 tr/min; Plage de température: 0–80 °C; Matériau du corps: Alliage d’aluminium 6061. Joint torique en FKM avec additif MoS₂ incorporé dans l’élastomère et revêtement de surface PTFE appliqué après moulage. Les joints sont fabriqués sur mesure par le fournisseur de joints ; un sous-traitant distinct applique le PTFE. Configuration réservée au BP-10P-0001. Masse calculée : env. 3,4 kg (avec 20 raccords pneumatiques, sans tubes). Masse calculée par CAO, non issue d’une pesée physique et distincte de la masse d’expédition.
+
+## Fabrication et assurance qualité
+
+Chaque raccord tournant Begapunk subit individuellement un contrôle d’étanchéité en rotation sous pression et un contrôle de fuite avant expédition. Chaque unité porte un numéro de série unique marqué de façon permanente sur son corps, permettant de retrouver ses relevés de contrôle en usine, et est livrée avec un rapport de contrôle en usine. Les contrôles suivent une spécification maîtrisée avec numéro de document, indice de version et historique des révisions.
+
+## Garantie et conditions commerciales
+
+La garantie dure 12 mois à compter de la réception par le client. Les défauts de matière ou de fabrication donnent droit à une réparation ou un remplacement gratuit après analyse technique. L’usure normale, le montage incorrect et l’usage inapproprié sont exclus. Fournir des photos, une vidéo du défaut et les informations nécessaires. Les frais de transport international sont convenus au cas par cas entre les parties. L’assistance technique reste disponible après la garantie, avec réparation payante selon le cas.
+
+Les demandes de garantie reçoivent une première réponse sous 24 heures pendant les jours ouvrés habituels. Celles reçues le week-end ou un jour férié reçoivent une première réponse au plus tard à la fin du prochain jour ouvré habituel. Ce délai ne promet ni la réparation sous 24 heures ni une assistance permanente 24 h/24.
+
+### Conditions des tarifs par quantité
+
+- BP-2P-08-0001: 100 pièces ou plus du même modèle en une seule commande : 42 USD/pièce, FOB Ningbo, valable jusqu’au 2026-12-31. 1–99 pièces : demander un devis. Aucun cumul de modèles différents ni de commandes antérieures.
+- BP-2P-95-0005: 100 pièces ou plus du même modèle en une seule commande : 218 USD/pièce, FOB Ningbo, valable jusqu’au 2026-12-31. 1–99 pièces : demander un devis. Aucun cumul de modèles différents ni de commandes antérieures.
+- BP-3P-0004: 100 pièces ou plus du même modèle en une seule commande : 57 USD/pièce, FOB Ningbo, valable jusqu’au 2026-12-31. 1–99 pièces : demander un devis. Aucun cumul de modèles différents ni de commandes antérieures.
+- BP-3P-0007: 100 pièces ou plus du même modèle en une seule commande : 60 USD/pièce, FOB Ningbo, valable jusqu’au 2026-12-31. 1–99 pièces : demander un devis. Aucun cumul de modèles différents ni de commandes antérieures.
+
+FOB Ningbo comprend l’emballage export standard, le transport intérieur jusqu’au port de Ningbo, le dédouanement export courant et les taxes/frais chinois courants à l’exportation. Le fret maritime international, les droits d’importation et le dédouanement à destination sont exclus. Le même tarif de base s’applique en principe à tous les pays et régions, sous réserve des règles d’exportation applicables.
+
+Pour les quatre modèles ci-dessous proposés à un tarif par quantité :
+
+- BP-2P-08-0001: Disponibilité : veuillez confirmer le stock avant de commander.
+- BP-2P-95-0005, BP-3P-0004, BP-3P-0007: En stock — normalement disponible ; confirmer la quantité pour votre commande. Il ne s’agit pas d’un suivi de stock en temps réel.
+
+Si le stock est suffisant, l’expédition peut être organisée après paiement intégral. Si une fabrication est nécessaire, les produits sont terminés et prêts à expédier sous 20 jours calendaires après paiement intégral, pour les commandes de 1–99 pièces comme pour celles de 100 pièces ou plus. Le transport est exclu.
+
+- BP-10P-0001: Fabrication sur commande. Minimum : 1 pièce. Demander un devis ; aucun prix public fixe. Fabrication standard et échantillon : environ 20 jours calendaires après paiement intégral, hors transport. Personnalisation après étude technique ; minimum hors standard : 1 pièce ; prix et délai à confirmer séparément.
+
+Les conditions de paiement suivantes s’appliquent uniquement à BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 et BP-10P-0001.
+
+Paiement : 100 % à l’avance par virement bancaire T/T, uniquement en USD. La production ou l’expédition du stock disponible est organisée après paiement intégral.
+
+Les indications générales sur la livraison, les délais de personnalisation et le paiement sont données à titre indicatif. Pour chaque modèle, les conditions convenues dans son devis formel et sa commande acceptée prévalent. La règle confirmée du paiement intégral anticipé par virement T/T, uniquement en USD, concerne seulement BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 et BP-10P-0001 ; elle ne concerne pas tous les modèles. Pour les configurations sur mesure du BP-10P-0001, le prix et le délai nécessitent une étude technique et un accord distinct ; une estimation générale de fabrication sur mesure ne constitue pas un engagement pour cette commande.
+
+## Documentation technique
+
+Utiliser le PDF actuel du modèle pour le montage. Les fichiers STEP des pages produit servent à vérifier l’intégration ; ils ne valident pas une masse ni un encombrement avec raccords encore non vérifiés.
+
+- [BP-2P-0002 — Plan de montage PDF](https://www.begapunk.com/downloads/BP-2P-0002.pdf)
+- [BP-3P-0006 — Plan de montage PDF](https://www.begapunk.com/downloads/BP-3P-0006.pdf)
+- [BP-10P-0001 — Plan de montage PDF](https://www.begapunk.com/downloads/BP-10P-0001.pdf)
+- [Manuel d’installation](https://www.begapunk.com/downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf)
+
+## Contact et langues
+
+- E-mail professionnel: [sales@begapunk.com](mailto:sales@begapunk.com)
+- Téléphone professionnel: +86 183 6842 5342
+- Adresse enregistrée: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
+- Horaires d’ouverture: Lundi–vendredi, 08:30–17:30 (heure normale de Chine, UTC+08:00).
+
+Il s’agit des horaires habituels de l’entreprise, sans service en ligne 24 heures sur 24.
+
+Ce fichier fournit un index et un résumé factuel. Il ne constitue pas une certification et ne garantit ni classement Google ni utilisation par les systèmes d’IA.

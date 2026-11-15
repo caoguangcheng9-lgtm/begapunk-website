@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-11-10T03:58:43.245Z",
+  "generatedAt": "2026-11-14T01:25:49.494Z",
   "pages": [
     "index.html",
     "about.html",
@@ -2515,8 +2515,8 @@
       ]
     },
     {
-      "id": "9a6204899da19f9d",
-      "source": "<strong>BP-10P-0001 · 10 independent air passages</strong><span>For multi-circuit compressed-air fixtures with intermittent rotation up to 100 RPM and pressure up to 1 MPa. No through bore; not a coolant-transfer configuration.</span>",
+      "id": "2d60e5bfd6a53ec4",
+      "source": "<strong>BP-10P-0001 · 10 independent air passages</strong><span>For multi-circuit compressed-air fixtures with rotation up to 100 RPM and pressure up to 1 MPa. No through bore; not a coolant-transfer configuration.</span>",
       "pages": [
         "application-cnc-pneumatic-clamping.html"
       ]
@@ -3362,8 +3362,8 @@
       ]
     },
     {
-      "id": "13ff02358786b108",
-      "source": "<strong>Ten independent air circuits:</strong> <a href=\"BP-10P-0001.html\">BP-10P-0001 10-passage pneumatic rotary union</a> is an option for intermittent indexing tables that need separate pneumatic circuits and no center through bore. Maximum pressure: 1 MPa; maximum speed: 100 RPM for intermittent rotation. Check the Ø80 × 217 mm body and mounting pattern against your table layout.",
+      "id": "8ed38d89a26b0e8e",
+      "source": "<strong>Ten independent air circuits:</strong> <a href=\"BP-10P-0001.html\">BP-10P-0001 10-passage pneumatic rotary union</a> is an option for rotary tables that need separate pneumatic circuits and no center through bore. Maximum pressure: 1 MPa; maximum speed: 100 RPM. Check the Ø80 × 217 mm body and mounting pattern against your table layout.",
       "pages": [
         "application-automation-rotary-tables.html"
       ]
@@ -3624,13 +3624,6 @@
       ]
     },
     {
-      "id": "a4ad70d0fc68d906",
-      "source": "0.36 kg",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "138b9734fee830fa",
       "source": "1 × G1/8 inlet · 8 × G1/8 outlet",
       "pages": [
@@ -3654,6 +3647,14 @@
     {
       "id": "d488bc42800ce538",
       "source": "1 MPa",
+      "pages": [
+        "product-comparison.html",
+        "products.html"
+      ]
+    },
+    {
+      "id": "4bb5f95554a9d181",
+      "source": "1 MPa (10 bar ≈ 145 psi)",
       "pages": [
         "product-comparison.html",
         "products.html"
@@ -3778,14 +3779,8 @@
       "id": "1a7721105f90ab48",
       "source": "100 RPM",
       "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "ce02aeef749c3257",
-      "source": "100 RPM (intermittent)",
-      "pages": [
-        "product-comparison.html"
+        "product-comparison.html",
+        "products.html"
       ]
     },
     {
@@ -3819,6 +3814,13 @@
     {
       "id": "65a6d7ae96d42c33",
       "source": "11. Contact",
+      "pages": [
+        "terms.html"
+      ]
+    },
+    {
+      "id": "42c58adf43f2e8da",
+      "source": "12 months from customer receipt.",
       "pages": [
         "terms.html"
       ]
@@ -3866,8 +3868,8 @@
       ]
     },
     {
-      "id": "f4c2b50fb3bcf4a0",
-      "source": "2 × G1/8, depth 8 mm side port group · 3 × G1/8, depth 8 mm end-face port group · 1 × G1/4, depth 8 mm opposite-face port",
+      "id": "bc33caa2d8c668c2",
+      "source": "2 × G1/8, depth 8 mm side port group · 3 × G1/8, depth 8 mm end-face port group (PCD 16 mm) · 1 × G1/4, depth 10 mm opposite-face port",
       "pages": [
         "product-comparison.html"
       ]
@@ -3915,13 +3917,6 @@
       ]
     },
     {
-      "id": "d04bb7724837238f",
-      "source": "2 passages, 2-in-3-out",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
       "id": "2d41a50109a52088",
       "source": "2 passages, 30 mm bore",
       "pages": [
@@ -3933,6 +3928,14 @@
       "source": "2 passages, 8 mm bore",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "2dbf57a74442f4b6",
+      "source": "2 rotary passages + 1 shaft-only passage",
+      "pages": [
+        "product-comparison.html",
+        "products.html"
       ]
     },
     {
@@ -4003,7 +4006,8 @@
       "source": "200 RPM",
       "pages": [
         "blog-rotary-joint-selection.html",
-        "product-comparison.html"
+        "product-comparison.html",
+        "products.html"
       ]
     },
     {
@@ -4025,6 +4029,13 @@
       "source": "2P air/vacuum rotary union",
       "pages": [
         "application-vacuum-packaging-machines.html"
+      ]
+    },
+    {
+      "id": "248f5689f753cd27",
+      "source": "3 × G1/4, depth 9 mm outlet (PCD 23 mm) · 3 × G1/4 inlet",
+      "pages": [
+        "product-comparison.html"
       ]
     },
     {
@@ -4256,6 +4267,13 @@
       "source": "500 RPM",
       "pages": [
         "product-comparison.html"
+      ]
+    },
+    {
+      "id": "2697f52f38b1b1ea",
+      "source": "6 × G1/4 BSPP",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -5573,6 +5591,59 @@
       ]
     },
     {
+      "id": "6b097e78bc98c46d",
+      "source": "Begapunk on Instagram",
+      "pages": [
+        "404.html",
+        "BP-1P-0003.html",
+        "BP-1P-0006.html",
+        "BP-2P-0001.html",
+        "BP-2P-0002.html",
+        "BP-2P-08-0001.html",
+        "BP-2P-130-0001.html",
+        "BP-2P-16-0001.html",
+        "BP-2P-30-0001.html",
+        "BP-2P-50-0001.html",
+        "BP-2P-95-0005.html",
+        "BP-3P-0004.html",
+        "BP-3P-0006.html",
+        "BP-3P-0007.html",
+        "BP-3P-S06-0001.html",
+        "BP-4P-30-0001.html",
+        "BP-8P-0001.html",
+        "about.html",
+        "application-automation-rotary-tables.html",
+        "application-bottle-filling-capping.html",
+        "application-cnc-pneumatic-clamping.html",
+        "application-electronics-battery-test-fixtures.html",
+        "application-laser-tube-cutting.html",
+        "application-packaging-machinery.html",
+        "application-pneumatic-tools-hose-anti-twist.html",
+        "application-robot-end-of-arm-tooling.html",
+        "application-steel-dusty-environments.html",
+        "application-textile-printing-converting.html",
+        "application-vacuum-packaging-machines.html",
+        "application-welding-positioners.html",
+        "applications.html",
+        "blog-rotary-joint-installation-mistakes.html",
+        "blog-rotary-joint-leaking.html",
+        "blog-rotary-joint-materials.html",
+        "blog-rotary-joint-selection.html",
+        "blog-seal-replacement.html",
+        "blog-threaded-vs-flange.html",
+        "blog.html",
+        "contact.html",
+        "index.html",
+        "installation.html",
+        "privacy.html",
+        "product-comparison.html",
+        "products.html",
+        "search.html",
+        "terms.html",
+        "thank-you.html"
+      ]
+    },
+    {
       "id": "960e14c009b4ae09",
       "source": "Begapunk on LinkedIn",
       "pages": [
@@ -5753,8 +5824,8 @@
       ]
     },
     {
-      "id": "41f272b4c0eb0716",
-      "source": "Begapunk provides a standard one-year warranty from the shipment date for defects in materials or workmanship, under the written order terms. Damage caused by incorrect installation, excessive pressure or speed, unsuitable or unfiltered air, and misuse is excluded from that coverage. Send the model, traceability number, operating conditions and photos of the problem for review. When a covered manufacturing defect is confirmed, the standard remedy is replacement at no charge.",
+      "id": "9b9a6993136a495e",
+      "source": "Begapunk provides a standard 12-month warranty from the date the customer receives the product for defects in materials or workmanship, under the written order terms. Damage caused by incorrect installation, excessive pressure or speed, unsuitable or unfiltered air, and misuse is excluded from that coverage. Send the model, traceability number, operating conditions and photos of the problem for review. When a covered manufacturing defect is confirmed, the standard remedy is replacement at no charge.",
       "pages": [
         "about.html"
       ]
@@ -5769,13 +5840,6 @@
     {
       "id": "5875f9c7fb560ad9",
       "source": "Begapunk terms of service. Product warranties, delivery terms, and conditions of sale for rotary joints and rotary unions.",
-      "pages": [
-        "terms.html"
-      ]
-    },
-    {
-      "id": "25d61f7523fdbd28",
-      "source": "Begapunk's standard warranty period is one year from the shipment date for all products, subject to the approved specification and written order terms.",
       "pages": [
         "terms.html"
       ]
@@ -5994,15 +6058,8 @@
       ]
     },
     {
-      "id": "e5ab3d8f36118a91",
-      "source": "BP-2P-0002 · 2-Inlet/3-Outlet (G1/8)",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
-      "id": "84a210aea7a78bed",
-      "source": "BP-2P-0002 2-in-3-out 4mm orifice G1/8 threaded rotary joint AL6061",
+      "id": "d6e887d82094214c",
+      "source": "BP-2P-0002 · 2 rotary passages + 1 shaft-only passage",
       "pages": [
         "products.html"
       ]
@@ -8088,13 +8145,6 @@
       ]
     },
     {
-      "id": "4b5a0bb95e23480d",
-      "source": "Download Full Catalog (PDF)",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "6183be0883d2a89c",
       "source": "Download PDF",
       "pages": [
@@ -8496,6 +8546,13 @@
       ]
     },
     {
+      "id": "5efab3c3fb674206",
+      "source": "face A: 4 × M6 · face B: 3 × M6, depth 10 mm",
+      "pages": [
+        "product-comparison.html"
+      ]
+    },
+    {
       "id": "7f7a13d884b01c80",
       "source": "face A: 6 × M10, depth 13 mm · face B: 6 × M10, depth 13 mm",
       "pages": [
@@ -8505,20 +8562,6 @@
     {
       "id": "7bb39688e0989ad8",
       "source": "face A: 6 × M5, depth 12 mm · face A: 8 × M8, depth 12 mm · face B: 8 × M6, depth 15 mm · body: 2 × M10 anti-rotation",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "c08ac7b2f9309053",
-      "source": "Face Mounting",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
-      "id": "66da98a26421a81c",
-      "source": "Face mounting — face A: 4 × M6 · face B: 3 × M6 · face B: 3 × Ø6 mm hole",
       "pages": [
         "product-comparison.html"
       ]
@@ -8652,6 +8695,14 @@
       "source": "Fixture circuits",
       "pages": [
         "application-welding-positioners.html"
+      ]
+    },
+    {
+      "id": "f4e7a0029e8372ab",
+      "source": "FKM O-ring with MoS₂ additive and post-molding PTFE surface coating",
+      "pages": [
+        "product-comparison.html",
+        "products.html"
       ]
     },
     {
@@ -8982,6 +9033,13 @@
       "source": "Full Name (Optional)",
       "pages": [
         "contact.html"
+      ]
+    },
+    {
+      "id": "a1b9b4c8b7783857",
+      "source": "G1/4 + G1/8",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -9441,13 +9499,6 @@
       ]
     },
     {
-      "id": "a9fd104ee1ad27bd",
-      "source": "If Begapunk confirms a covered product or manufacturing defect for which it is responsible, the standard remedy is a replacement at no charge. Begapunk covers the return and replacement-shipment costs agreed in writing for that claim. Other issues are handled according to the inspection findings and the written agreement between the parties.",
-      "pages": [
-        "terms.html"
-      ]
-    },
-    {
       "id": "0164f9bb71cff48c",
       "source": "If needed, we’ll ask only about the conditions that affect the quotation or model recommendation:",
       "pages": [
@@ -9686,13 +9737,6 @@
       "source": "Interface checks for a rotary table",
       "pages": [
         "application-automation-rotary-tables.html"
-      ]
-    },
-    {
-      "id": "f72668a1d666f93f",
-      "source": "Intermittent rotary tables and multi-circuit pneumatic clamping; compressed air only",
-      "pages": [
-        "product-comparison.html"
       ]
     },
     {
@@ -10137,13 +10181,6 @@
     {
       "id": "980bbbecacb0cffa",
       "source": "Max 100 RPM",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
-      "id": "d6d9f916709e47cc",
-      "source": "Max 100 RPM · intermittent",
       "pages": [
         "products.html"
       ]
@@ -10984,13 +11021,6 @@
       ]
     },
     {
-      "id": "7513cd2d22e67708",
-      "source": "O-ring seals",
-      "pages": [
-        "products.html"
-      ]
-    },
-    {
       "id": "2430a0e8fd44f832",
       "source": "Ø30mm Bore",
       "pages": [
@@ -11326,6 +11356,13 @@
     {
       "id": "7cc14e593e8ff825",
       "source": "Payment options include bank transfer (T/T), letter of credit (L/C), PayPal and major credit cards for international customers and OEM machine builders. The available method, currency, transaction fees and payment schedule are confirmed in the quotation and accepted order.",
+      "pages": [
+        "products.html"
+      ]
+    },
+    {
+      "id": "a23d111cedf5df6b",
+      "source": "PCD 16 mm",
       "pages": [
         "products.html"
       ]
@@ -11677,13 +11714,6 @@
     {
       "id": "2e7af21432f9d47d",
       "source": "Port thread",
-      "pages": [
-        "product-comparison.html"
-      ]
-    },
-    {
-      "id": "4f5dc95ed2152b33",
-      "source": "Port thread is confirmed from the current model-specific drawing before fitting selection",
       "pages": [
         "product-comparison.html"
       ]
@@ -14401,6 +14431,13 @@
       "source": "The supply line can wind around the machine if the stationary side is allowed to rotate. Excessive restraint can create the opposite problem by transmitting frame movement into the joint.",
       "pages": [
         "blog-rotary-joint-installation-mistakes.html"
+      ]
+    },
+    {
+      "id": "6738baed0d810ed4",
+      "source": "The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate. Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.",
+      "pages": [
+        "terms.html"
       ]
     },
     {

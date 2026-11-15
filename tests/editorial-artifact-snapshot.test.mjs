@@ -301,10 +301,15 @@ test('refresh CLI anchors HEAD, permits cache-only change, and rejects semantic 
     path.join(repositoryRoot, 'scripts', 'lib', 'editorial-artifact-snapshot.mjs'),
     path.join(fixtureRoot, 'scripts', 'lib', 'editorial-artifact-snapshot.mjs'),
   );
+  for (const dependency of ['owner-incremental-acceptance.mjs', 'owner-incremental-trust.mjs']) {
+    await cp(path.join(repositoryRoot, 'scripts', 'lib', dependency), path.join(fixtureRoot, 'scripts', 'lib', dependency));
+  }
 
   const now = new Date().toISOString();
   await cp(path.join(repositoryRoot, 'scripts/lib/editorial-page-enrollment.mjs'),
     path.join(fixtureRoot, 'scripts/lib/editorial-page-enrollment.mjs'));
+  await cp(path.join(repositoryRoot, 'scripts/lib/editorial-reviewed-subset.mjs'),
+    path.join(fixtureRoot, 'scripts/lib/editorial-reviewed-subset.mjs'));
   const pagePath = path.join(fixtureRoot, 'fr', 'page.html');
   const manifestPath = path.join(fixtureRoot, 'audit', 'localization', 'current-localized-artifacts.json');
   const page = '<!doctype html>\n<html lang="fr"><body><p>Texte visible</p><script src="../js/site.js?v=one"></script></body></html>\n';

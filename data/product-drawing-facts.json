@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourcePolicy": {
-    "description": "Drawing-backed facts for the 16 drawing-reviewed catalog models. This dataset does not represent BP-10P-0001; the drawing table and unambiguous drawing annotations are the only fact sources represented here.",
+    "description": "Legacy drawing-based rendering contract for 16 catalog models; record status identifies rendering eligibility, not whole-product verification. Field-level evidence governs revised models. BP-10P-0001 is maintained separately. Selected IA applicability and public policies confirmed by owner on 2026-11-13.",
     "verifiedStatus": "verified-drawing",
     "quarantineStatus": "identity-pending",
     "annotationConflictStatus": "annotation-conflict",
@@ -297,11 +297,12 @@
       "drawing": {
         "path": "downloads/BP-2P-0002.pdf",
         "filename": "BP-2P-0002.pdf",
-        "sha256": "3a261435bc7c6887471ae1d7d5ac93dae60ef47de97124637c59f57a9b68a2d8",
+        "sha256": "741b3469fe89d1e8016879415c41cb7d639f5dad4c3b14b385858788b0d512d0",
         "titleBlockModel": "BP-2P-0002",
-        "documentControlNumber": "QC-2020-0121-001",
-        "date": "2020-01-21",
-        "pageCount": 1
+        "documentControlNumber": "BP-2P-0002-IA",
+        "date": "2026-10-27",
+        "pageCount": 1,
+        "revision": "A"
       },
       "drawingFacts": {
         "media": [
@@ -312,13 +313,13 @@
           "unit": "MPa"
         },
         "maximumSpeed": {
-          "value": 300,
+          "value": 200,
           "unit": "RPM"
         },
         "bodyMaterial": "Aluminum Alloy 6061",
         "temperatureRange": {
           "minimum": -20,
-          "maximum": 80,
+          "maximum": 100,
           "unit": "degC"
         },
         "weight": {
@@ -342,14 +343,16 @@
               "count": 4,
               "thread": "M5",
               "depthMm": 12,
-              "raw": "4-M5 depth 12"
+              "raw": "4-M5 depth 12",
+              "pcdMm": 50
             },
             {
               "side": "face-b",
               "count": 4,
               "thread": "M6",
               "feature": "through-hole",
-              "raw": "4-M6 through"
+              "raw": "4-M6 through",
+              "pcdMm": 45
             },
             {
               "side": "body",
@@ -376,24 +379,71 @@
               "thread": "G1/8",
               "depthMm": 8,
               "role": "end-face-group",
-              "raw": "3-G1/8 depth 8"
+              "raw": "3-G1/8 depth 8",
+              "pcdMm": 16
             },
             {
               "count": 1,
               "thread": "G1/4",
-              "depthMm": 8,
+              "depthMm": 10,
               "role": "opposite-face",
-              "raw": "G1/4 depth 8"
+              "raw": "G1/4 BSPP depth 10, central shaft port"
             }
           ]
         }
       },
       "nonInferable": [
         "media other than air",
-        "inlet versus outlet assignment for the printed G1/8 and G1/4 groups",
-        "channel cross-connection behavior"
+        "fixed inlet/outlet direction",
+        "simultaneous maximum operating conditions without application review"
       ],
-      "prohibitedWebClaims": []
+      "prohibitedWebClaims": [],
+      "fieldEvidence": {
+        "media": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "maximumPressure": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "maximumSpeed": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "bodyMaterial": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "temperatureRange": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "sealMaterials": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "envelope": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "mounting": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "ports": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-2P-0002.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "weight": {
+          "level": "PENDING_EVIDENCE",
+          "source": "Legacy public drawing weight; not specified on selected IA drawing; current configuration weight not reverified."
+        },
+        "airRouting": {
+          "level": "OWNER_CONFIRMED",
+          "source": "2026-11-13 owner instruction section 3.1: two rotary passages + one shaft-only route; bidirectional; center G1/4 to one flange G1/8."
+        }
+      }
     },
     "BP-2P-08-0001": {
       "websiteModel": "BP-2P-08-0001",
@@ -1067,11 +1117,12 @@
       "drawing": {
         "path": "downloads/BP-3P-0006.pdf",
         "filename": "BP-3P-0006.pdf",
-        "sha256": "2ada2093698eb3143ca1b4fb680e15d77efc5cc8847722e1f1714bab44b0a44c",
+        "sha256": "cc39f187939538c95d53b4c5914a4e64b6eecd6136929e700fb6be2e6a0bb7fa",
         "titleBlockModel": "BP-3P-0006",
-        "documentControlNumber": "QC-2021-0112-001",
-        "date": "2021-01-12",
-        "pageCount": 2
+        "documentControlNumber": "BP-3P-0006-IA",
+        "date": "2026-10-28",
+        "pageCount": 1,
+        "revision": "A"
       },
       "drawingFacts": {
         "media": [
@@ -1111,55 +1162,92 @@
               "side": "face-a",
               "count": 4,
               "thread": "M6",
-              "raw": "4-M6"
+              "raw": "4-M6",
+              "pcdMm": 54
             },
             {
               "side": "face-b",
               "count": 3,
               "thread": "M6",
-              "raw": "3-M6"
-            },
-            {
-              "side": "face-b",
-              "count": 3,
-              "diameterMm": 6,
-              "feature": "hole",
-              "raw": "3-dia6"
+              "raw": "3 x M6 - 10 deep; PCD45",
+              "depthMm": 10,
+              "pcdMm": 45
             }
           ]
         },
         "ports": {
-          "status": "anomaly-unresolved",
+          "status": "verified",
           "annotations": [
             {
               "count": 3,
-              "thread": "G4/1",
+              "thread": "G1/4",
+              "depthMm": 9,
+              "pcdMm": 23,
               "role": "outlet",
-              "raw": "3-G4/1 OUT"
+              "raw": "3 x G1/4 BSPP - 9 deep; rotor end, PCD23"
             },
             {
               "count": 3,
-              "thread": "G4/1",
+              "thread": "G1/4",
               "role": "inlet",
-              "raw": "3-G4/1 IN"
+              "raw": "3 x G1/4 BSPP housing radial inlets"
             }
-          ],
-          "resolutionRule": "Preserve G4/1 exactly as printed. Do not normalize or publish it as G1/4 without drawing-owner confirmation."
+          ]
         }
       },
       "nonInferable": [
-        "whether G4/1 is a drafting error",
-        "G1/4 port size",
-        "any corrected port size before drawing-owner confirmation"
+        "simultaneous maximum operating conditions without application review"
       ],
       "prohibitedWebClaims": [
         {
-          "id": "unapproved-g1-4-normalization",
+          "id": "retired-port-typo",
           "match": [
-            "G1/4"
+            "G4/1"
           ]
         }
-      ]
+      ],
+      "fieldEvidence": {
+        "media": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "maximumPressure": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "maximumSpeed": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "bodyMaterial": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "temperatureRange": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "sealMaterials": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "envelope": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "mounting": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "ports": {
+          "level": "DRAWING_VERIFIED",
+          "source": "downloads/BP-3P-0006.pdf, IA Rev A p1; owner production applicability confirmation 2026-11-13"
+        },
+        "weight": {
+          "level": "PENDING_EVIDENCE",
+          "source": "Legacy public drawing weight; not specified on selected IA drawing; current configuration weight not reverified."
+        }
+      }
     },
     "BP-3P-0007": {
       "websiteModel": "BP-3P-0007",

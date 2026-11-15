@@ -219,6 +219,7 @@ run_smtp_check() {
 is_allowed_directive() {
   local directive="$1"
   case "$directive" in
+    'if ($uri = /downloads/Begapunk-Rotary-Joint-Catalog-2026.pdf) { return 302 https://www.begapunk.com/products.html; }') ;;
     'expires -1;') ;;
     'etag on;') ;;
     'if_modified_since exact;') ;;
@@ -292,8 +293,8 @@ validate_candidate() {
     directive_count=$((directive_count + 1))
   done < "$source_file"
 
-  if [[ "$directive_count" -ne 43 ]]; then
-    echo "Managed Nginx policy must contain exactly 43 approved directives; found $directive_count." >&2
+  if [[ "$directive_count" -ne 44 ]]; then
+    echo "Managed Nginx policy must contain exactly 44 approved directives; found $directive_count." >&2
     return 1
   fi
 }

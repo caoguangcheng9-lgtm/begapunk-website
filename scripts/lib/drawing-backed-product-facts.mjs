@@ -1,3 +1,4 @@
+import { policyCopy, isProductFactPublished } from './owner-product-policy.mjs';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { loadPublicDownloadAllowlist } from './public-downloads.mjs';
@@ -479,7 +480,7 @@ function mediaKeyword(locale, media) {
 
 function portKeywords(locale, model, facts) {
   const localized = localeCopy(locale);
-  if (model === 'BP-3P-0006') return [localized.portPending];
+  if (facts.ports.status === 'anomaly-unresolved') return [localized.portPending];
   if (!['verified', 'verified-threads-only', 'verified-outlets-only'].includes(facts.ports?.status)) return [];
   const keywords = (facts.ports.annotations || []).map((annotation) => {
     const role = portRoleTerms[locale][annotation.role];
@@ -788,9 +789,9 @@ function uiFormatPorts(locale, model, ports) {
       ru: `, глубина ${localizedNumber(locale, annotation.depthMm)} мм`,
     });
     if (locale === 'fr') {
-      return uiFormatFrenchPortAnnotation(annotation, interfaceSize, depth, role);
+      return uiFormatFrenchPortAnnotation(annotation, interfaceSize, depth, role) + (annotation.pcdMm ? ` (PCD ${annotation.pcdMm} mm)` : '');
     }
-    return `${annotation.count} × ${interfaceSize}${depth} ${role}`;
+    return `${annotation.count} × ${interfaceSize}${depth} ${role}${annotation.pcdMm ? ` (PCD ${annotation.pcdMm} mm)` : ''}`;
   });
   let result = parts.join(' · ');
   if (ports.status === 'verified-threads-only') {
@@ -871,7 +872,7 @@ function uiMountingFeatureType(locale, feature) {
 function uiFormatFrenchMountingFeature(feature, side, size, depth) {
   const localizedSize = size.replace(/^Ø(?=\d)/u, 'Ø ');
   const nounByFeature = {
-    'through-hole': feature.count === 1 ? 'trou débouchant' : 'trous débouchants',
+    'through-hole': feature.thread ? (feature.count === 1 ? 'taraudage débouchant' : 'taraudages débouchants') : (feature.count === 1 ? 'trou débouchant' : 'trous débouchants'),
     hole: feature.count === 1 ? 'trou' : 'trous',
     'anti-rotation': feature.count === 1 ? 'taraudage' : 'taraudages',
     'anti-rotation-set-screw': feature.count === 1 ? 'taraudage' : 'taraudages',
@@ -902,7 +903,9 @@ function uiFormatMountingFeature(locale, feature) {
   if (locale === 'fr') {
     return uiFormatFrenchMountingFeature(feature, side, size, depth);
   }
-  const featureType = feature.feature ? uiMountingFeatureType(locale, feature.feature) : '';
+  const featureType = feature.thread && feature.feature === 'through-hole' && locale !== 'en'
+    ? { de: ' Durchgangsgewindebohrung', ja: ' 貫通ねじ穴', ru: ' сквозное резьбовое отверстие' }[locale]
+    : (feature.feature ? uiMountingFeatureType(locale, feature.feature) : '');
   return `${side}${locale === 'fr' ? ' : ' : ': '}${feature.count} × ${size}${depth}${featureType}`;
 }
 
@@ -1154,7 +1157,7 @@ export function drawingBackedUiContract(locale, model) {
       ru: 'Подтвердите распределение цепей и электрические номиналы для выбранного исполнения.',
     })}`;
   }
-  if (model === 'BP-3P-0006') {
+  if (model === 'BP-3P-0006' && products[model].drawingFacts.ports.status === 'anomaly-unresolved') {
     priceNote = appendUiClause(locale, priceNote, uiPhrase(locale, {
       en: 'port thread is confirmed from the current model-specific drawing before fitting selection',
       de: 'das Anschlussgewinde wird vor der Auswahl von Verschraubungen anhand der aktuellen modellspezifischen Zeichnung bestätigt',
@@ -1175,7 +1178,7 @@ export function drawingBackedUiContract(locale, model) {
     rotor: uiFormatMountingSide(locale, model, facts.mounting, 'rotor'),
     stator: uiFormatMountingSide(locale, model, facts.mounting, 'stator'),
     temperature: uiFormatTemperature(locale, facts.temperatureRange),
-    weight: uiFormatWeight(locale, facts.weight),
+    ...(isProductFactPublished(model, 'weight') ? { weight: uiFormatWeight(locale, facts.weight) } : {}),
     dimensions: uiFormatEnvelope(locale, facts.envelope),
     outerDiameter: uiFormatEnvelopeDiameter(locale, facts.envelope),
     ...(bore ? { bore } : {}),
@@ -1187,7 +1190,7 @@ export function drawingBackedUiContract(locale, model) {
     dielectricStrength: electrical,
     ...(model === 'BP-3P-S06-0001' ? { pneumaticPassages: s06PneumaticPassages } : {}),
   };
-  const requiredJsonFields = ['pressure', 'speed', 'media', 'body', 'seal', 'mount', 'ports', 'temperature', 'weight', 'dimensions'];
+  const requiredJsonFields = ['pressure', 'speed', 'media', 'body', 'seal', 'mount', 'ports', 'temperature', 'weight', 'dimensions'].filter(field => isProductFactPublished(model, field));
   if (bore) requiredJsonFields.push('bore');
   const structuredDescription = model === 'BP-2P-16-0001'
     ? `${priceNote} ${uiPhrase(locale, {
@@ -1246,7 +1249,7 @@ function verifiedParts(locale, model, product) {
       localizedNumber(locale, facts.temperatureRange.minimum),
       localizedNumber(locale, facts.temperatureRange.maximum),
     ),
-    localized.weight(localizedWeightNumber(locale, facts.weight.value)),
+    ...(isProductFactPublished(model, 'weight') ? [localized.weight(localizedWeightNumber(locale, facts.weight.value))] : []),
     bodyKeyword(locale, facts.bodyMaterial),
     sealKeyword(locale, facts.sealMaterials),
     mediaKeyword(locale, facts.media),
@@ -1299,6 +1302,11 @@ export function drawingBackedProductKeywords(locale, model) {
 }
 
 export function drawingBackedProductSummary(locale, model) {
+  const summary = baseProductSummary(locale, model);
+  return model === 'BP-2P-0002' ? `${summary} ${policyCopy(locale).topology}` : summary;
+}
+
+function baseProductSummary(locale, model) {
   const product = products[model];
   if (!product) return null;
   const localized = localeCopy(locale);
@@ -1314,7 +1322,7 @@ export function drawingBackedProductSummary(locale, model) {
   const semicolonSeparator = locale === 'fr' ? '\u00a0; ' : '; ';
   const colonSeparator = locale === 'fr' ? '\u00a0: ' : ': ';
   const portText = parts.ports.length ? parts.ports.join(locale === 'ja' ? '・' : semicolonSeparator) : '';
-  const pendingPortBoundary = model === 'BP-3P-0006';
+  const pendingPortBoundary = product.drawingFacts.ports.status === 'anomaly-unresolved';
   const portClause = !portText
     ? ''
     : pendingPortBoundary
@@ -1377,10 +1385,10 @@ function metadataHeading(locale, model, product) {
   if (model === 'BP-2P-95-0005') {
     return uiPhrase(locale, {
       en: `${model} 2-Passage 2-in / 4-out Pneumatic Rotary Union`,
-      de: `${model} 2-Kanal-Drehdurchführung 2/4 Ausgänge`,
+      de: `${model} 2-Kanal-Drehdurchführung mit 2 Eingängen / 4 Ausgängen`,
       fr: `${model} raccord tournant pneumatique à 2 passages, 2 entrées / 4 sorties`,
       ja: `${model} 2流路 2入力4出力 空圧ロータリージョイント`,
-      ru: `${model} 2-канальное вращающееся соединение 2/4 выхода`,
+      ru: `${model} 2-канальное вращающееся соединение с 2 входами / 4 выходами`,
     });
   }
   return uiPhrase(locale, {
@@ -1423,7 +1431,7 @@ function verifiedMetadataDescription(locale, model, product, heading) {
       ru: `${model}: 2-канальное пневматическое вращающееся соединение с проходным отверстием Ø${bore} мм. Предельные значения: ${pressureMpa} МПа, ${speed} об/мин. Чертежи PDF/STEP и запрос цены.`,
     });
     return baseDescription;
-  } else if (model === 'BP-3P-0006') {
+  } else if (model === 'BP-3P-0006' && products[model].drawingFacts.ports.status === 'anomaly-unresolved') {
     baseDescription = uiPhrase(locale, {
       en: `${heading}. ${pressure}, ${speed} RPM; suitable medium: ${media}. Confirm the port thread before fittings.`,
       de: `${heading}. ${pressure}, ${speed} min⁻¹; Medium: ${media}. Anschlussgewinde vor Fittingwahl bestätigen.`,
@@ -1604,7 +1612,7 @@ for (const locale of Object.keys(copy)) {
     if (!identityPendingModels.has(model) && !keywords.includes(productTypeSearchSynonym(locale))) {
       throw new Error(`${locale}/${model}: verified keywords lack the localized rotary-union search synonym.`);
     }
-    if (model === 'BP-3P-0006' && [keywords.join(' '), summary, linkLabel, JSON.stringify(metadata)].some((value) => /G4\/1|G1\/4/.test(value))) {
+    if (model === 'BP-3P-0006' && products[model].drawingFacts.ports.status === 'anomaly-unresolved' && [keywords.join(' '), summary, linkLabel, JSON.stringify(metadata)].some((value) => /G4\/1|G1\/4/.test(value))) {
       throw new Error(`${locale}/${model}: unresolved or normalized port text must not be published.`);
     }
     if (model === 'BP-1P-0006') {

@@ -2,7 +2,6 @@
   "version": 1,
   "files": [
     "Begapunk_Rotary_Joint_Installation_Manual.pdf",
-    "Begapunk-Rotary-Joint-Catalog-2026.pdf",
     "BP-10P-0001.pdf",
     "BP-10P-0001.step",
     "BP-1P-0003.pdf",
@@ -37,5 +36,40 @@
     "BP-4P-30-0001.step",
     "BP-8P-0001.pdf",
     "BP-8P-0001.step"
+  ],
+  "drawingVersions": {
+    "BP-2P-0002": {
+      "documentNumber": "BP-2P-0002-IA",
+      "revision": "A",
+      "issueDate": "2026-10-27",
+      "sha256": "741b3469fe89d1e8016879415c41cb7d639f5dad4c3b14b385858788b0d512d0",
+      "evidenceLevel": "DOCUMENT_VERIFIED",
+      "applicability": "OWNER_CONFIRMED 2026-11-13"
+    },
+    "BP-3P-0006": {
+      "documentNumber": "BP-3P-0006-IA",
+      "revision": "A",
+      "issueDate": "2026-10-28",
+      "sha256": "cc39f187939538c95d53b4c5914a4e64b6eecd6136929e700fb6be2e6a0bb7fa",
+      "evidenceLevel": "DOCUMENT_VERIFIED",
+      "applicability": "OWNER_CONFIRMED 2026-11-13"
+    },
+    "BP-10P-0001": {
+      "documentNumber": "BP-10P-0001-IA",
+      "revision": "A",
+      "issueDate": "2026-10-28",
+      "sha256": "32dc0acf9e2571a1299b1cde5d66659f77c80a9f6c3aa9877fc29c8a9fbe5ccd",
+      "evidenceLevel": "DOCUMENT_VERIFIED",
+      "applicability": "OWNER_CONFIRMED 2026-11-13"
+    }
+  },
+  "quarantinedDocuments": [
+    {
+      "file": "Begapunk-Rotary-Joint-Catalog-2026.pdf",
+      "reason": "Superseded BP-2P-0002 speed and air-routing description; replacement catalog pending controlled revision.",
+      "evidenceLevel": "DOCUMENT_VERIFIED",
+      "reviewDate": "2026-11-13",
+      "redirect": "https://www.begapunk.com/products.html"
+    }
   ]
 }

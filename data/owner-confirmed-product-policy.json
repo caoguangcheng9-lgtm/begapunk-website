@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "confirmation": {
+    "level": "OWNER_CONFIRMED",
+    "date": "2026-11-13",
+    "source": "Owner instruction: BEGAPUNK PRODUCT FACT CLOSURE — LOCAL REPAIR; sections 3–7. Not independently verified test records."
+  },
+  "prices": {
+    "BP-2P-08-0001": 42,
+    "BP-2P-95-0005": 218,
+    "BP-3P-0004": 57,
+    "BP-3P-0007": 60
+  },
+  "priceCurrency": "USD",
+  "priceValidUntil": "2026-12-31",
+  "minimumBulkQuantity": 100,
+  "priceScope": "one model in one order; no mixed models or historical accumulation",
+  "publicOfferPolicy": "Omit numeric Offer markup: Google quantity-restriction display support not established. Keep qualified visible prices.",
+  "paymentModels": [
+    "BP-2P-08-0001",
+    "BP-2P-95-0005",
+    "BP-3P-0004",
+    "BP-3P-0007",
+    "BP-10P-0001"
+  ],
+  "locales": {
+    "en": {
+      "heading": "Quality, warranty and ordering",
+      "quality": "Every Begapunk rotary joint undergoes individual pressurized rotation and leakage testing before shipment. Each unit has a unique serial number permanently marked on its body for traceability to its factory inspection records and is supplied with a factory inspection report. Inspection follows a controlled specification with a document number, revision and revision history.",
+      "warrantyShort": "12 months from customer receipt",
+      "warranty": "The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate.",
+      "response": "Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.",
+      "payment": "Payment Terms: 100% T/T in Advance, USD Only. Production or shipment of available stock is arranged after full payment.",
+      "stockConfirm": "Availability: Please confirm stock before ordering.",
+      "stock": "In Stock — normally held in stock; confirm the quantity available for your order. This is not a live inventory feed.",
+      "lead": "With sufficient stock, shipment can be arranged after full payment. When production is needed, goods are completed and ready to ship within 20 calendar days after full payment for both 1–99 and 100+ piece orders. Transit time is excluded.",
+      "leadShort": "Stock: ship after full payment; production: ready within 20 calendar days",
+      "bulk": "100+ pieces of one model in a single order: USD {price}/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.",
+      "fob": "FOB Ningbo includes standard export packaging, domestic transport to Ningbo port, routine export customs clearance and routine Chinese export taxes/charges. International ocean freight, destination import duties and import clearance are excluded. The same base quotation applies in principle across countries and regions, subject to applicable export regulations.",
+      "bp10Order": "Made to Order. MOQ: 1 piece. Request a Quote; no fixed public price. Standard and sample production lead time: approximately 20 calendar days after full payment, excluding transit. Customization is subject to engineering review; non-standard MOQ: 1 piece; custom pricing and lead time are confirmed separately.",
+      "bp10Lead": "Made to order; approx. 20 calendar days after full payment; excludes transit",
+      "qualityShort": "Individual pressurized rotation and leakage testing; factory report supplied",
+      "topology": "Two independent air passages cross the rotating seal interface. One additional passage lies entirely inside the shaft and does not cross that interface. The central G1/4 port connects to one of the three flange G1/8 ports through the shaft-only passage; the other two flange ports connect to the two rotary passages. All three routes support bidirectional airflow, with no fixed inlet direction. Central G1/4 effective thread engagement: 10 mm; flange ports: 3 × G1/8 on PCD 16 mm.",
+      "seal": "O-ring: FKM elastomer with MoS₂ internal additive and a PTFE surface coating applied after molding. The O-rings are custom-made by the seal supplier; a separate subcontractor applies the PTFE coating. This configuration applies only to BP-10P-0001.",
+      "sealShort": "FKM O-ring with MoS₂ additive and post-molding PTFE surface coating",
+      "weightLabel": "Calculated weight",
+      "weight": "Calculated weight: approx. 3.4 kg (including 20 pneumatic fittings, excluding tubing).",
+      "weightNote": "Weight is calculated from CAD, not a physical weighing result or shipping weight.",
+      "commercialScopeHeading": "Model-specific order terms",
+      "commercialScope": "General statements about delivery, customization lead times and payment are guidance only. For each model, the terms agreed in its formal quotation and accepted order take precedence. The confirmed rule of 100% T/T in advance, USD only, applies to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001 only; it is not a payment rule for every model. For BP-10P-0001 custom configurations, price and lead time require engineering review and separate agreement; a general custom-production estimate is not a commitment for that order."
+    },
+    "de": {
+      "heading": "Qualität, Garantie und Bestellung",
+      "quality": "Jede Begapunk-Drehdurchführung wird vor dem Versand einzeln unter Druck auf rotierende Dichtfunktion und Leckage geprüft. Jede Einheit trägt eine dauerhaft am Gehäuse markierte eindeutige Seriennummer zur Rückverfolgung ihrer Werksprüfaufzeichnungen und wird mit einem Werksprüfbericht geliefert. Die Prüfung folgt einer gelenkten Prüfvorschrift mit Dokumentnummer, Versionsnummer und Änderungshistorie.",
+      "warrantyShort": "12 Monate ab Erhalt durch den Kunden",
+      "warranty": "Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß, falsche Montage und unsachgemäße Verwendung sind ausgeschlossen. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich.",
+      "response": "Garantieanfragen erhalten an regulären Arbeitstagen innerhalb von 24 Stunden eine erste Antwort. An Wochenenden oder gesetzlichen Feiertagen eingegangene Anfragen werden spätestens bis zum Ende des nächsten regulären Arbeitstags erstmals beantwortet. Dies ist keine Reparaturfrist und kein Rund-um-die-Uhr-Service.",
+      "payment": "Zahlungsbedingungen: 100 % T/T-Vorauszahlung per Banküberweisung, ausschließlich USD. Produktion oder Versand verfügbarer Lagerware wird nach vollständigem Zahlungseingang veranlasst.",
+      "stockConfirm": "Verfügbarkeit: Bitte Lagerbestand vor der Bestellung bestätigen lassen.",
+      "stock": "Auf Lager — üblicherweise vorrätig; verfügbare Menge für Ihren Auftrag bestätigen lassen. Keine Echtzeit-Bestandsanzeige.",
+      "lead": "Bei ausreichendem Lagerbestand kann der Versand nach vollständigem Zahlungseingang veranlasst werden. Falls Produktion erforderlich ist, ist die Ware innerhalb von 20 Kalendertagen nach vollständigem Zahlungseingang fertig und versandbereit, sowohl bei 1–99 als auch ab 100 Stück. Transportzeit ist nicht enthalten.",
+      "leadShort": "Lagerware: Versand nach Vollzahlung; Produktion: binnen 20 Kalendertagen versandbereit",
+      "bulk": "Ab 100 Stück eines Modells in einem einzelnen Auftrag: {price} USD/Stück, FOB Ningbo, gültig bis 2026-12-31. 1–99 Stück: Angebot anfordern. Gemischte Modelle und aufsummierte frühere Aufträge zählen nicht zur Mindestmenge.",
+      "fob": "FOB Ningbo umfasst Standard-Exportverpackung, Inlandstransport zum Hafen Ningbo, reguläre Exportzollabfertigung und übliche chinesische Exportsteuern/-abgaben. Internationale Seefracht, Einfuhrzölle und Einfuhrabfertigung im Zielland sind ausgeschlossen. Grundsätzlich gilt dasselbe Basisangebot für alle Länder und Regionen, vorbehaltlich der geltenden Exportvorschriften.",
+      "bp10Order": "Fertigung auf Bestellung. Mindestmenge: 1 Stück. Angebot anfordern; kein fester öffentlicher Preis. Standard- und Musterfertigung: etwa 20 Kalendertage nach vollständigem Zahlungseingang, ohne Transportzeit. Sonderausführungen nach technischer Prüfung; Mindestmenge 1 Stück; Preis und Lieferzeit werden separat bestätigt.",
+      "bp10Lead": "Auf Bestellung; ca. 20 Kalendertage nach Vollzahlung, ohne Transport",
+      "qualityShort": "Einzelprüfung unter Druck und Rotation auf Dichtheit; Werksprüfbericht",
+      "topology": "Zwei unabhängige Luftkanäle durchqueren die rotierende Dichtschnittstelle. Ein zusätzlicher Kanal liegt vollständig innerhalb der Welle und durchquert diese Schnittstelle nicht. Der zentrale G1/4-Anschluss ist über den Wellenkanal mit einem der drei G1/8-Flanschanschlüsse verbunden; die anderen beiden Flanschanschlüsse gehören zu den zwei Drehkanälen. Alle drei Wege erlauben Luftströmung in beide Richtungen ohne festgelegte Einlassrichtung. Wirksame Gewindeeingriffstiefe G1/4: 10 mm; Flanschanschlüsse: 3 × G1/8 auf Lochkreis 16 mm.",
+      "seal": "O-Ring aus FKM-Elastomer mit internem MoS₂-Zusatz und nach dem Formen aufgebrachter PTFE-Oberflächenbeschichtung. Der Dichtungslieferant fertigt die O-Ringe kundenspezifisch; ein separater Unterauftragnehmer beschichtet sie mit PTFE. Nur für BP-10P-0001.",
+      "sealShort": "FKM-O-Ring mit MoS₂-Zusatz und PTFE-Oberflächenbeschichtung nach dem Formen",
+      "weightLabel": "Berechnetes Gewicht",
+      "weight": "Berechnetes Gewicht: ca. 3,4 kg (einschließlich 20 Pneumatikverschraubungen, ohne Schläuche).",
+      "weightNote": "CAD-berechnetes Gewicht, kein Wiegeergebnis und kein Versandgewicht.",
+      "commercialScopeHeading": "Modellspezifische Auftragsbedingungen",
+      "commercialScope": "Allgemeine Angaben zu Lieferung, Fertigungszeiten für Sonderausführungen und Zahlung dienen nur der Orientierung. Für jedes Modell haben die in seinem formellen Angebot und angenommenen Auftrag vereinbarten Bedingungen Vorrang. Die bestätigte Regel von 100 % T/T-Vorauszahlung ausschließlich in USD gilt nur für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001, nicht für alle Modelle. Bei Sonderausführungen des BP-10P-0001 erfordern Preis und Lieferzeit eine technische Prüfung und gesonderte Vereinbarung; eine allgemeine Schätzung der Sonderfertigungszeit ist keine Zusage für diesen Auftrag."
+    },
+    "fr": {
+      "heading": "Qualité, garantie et commande",
+      "quality": "Chaque raccord tournant Begapunk subit individuellement un contrôle d’étanchéité en rotation sous pression et un contrôle de fuite avant expédition. Chaque unité porte un numéro de série unique marqué de façon permanente sur son corps, permettant de retrouver ses relevés de contrôle en usine, et est livrée avec un rapport de contrôle en usine. Les contrôles suivent une spécification maîtrisée avec numéro de document, indice de version et historique des révisions.",
+      "warrantyShort": "12 mois à compter de la réception par le client",
+      "warranty": "La garantie dure 12 mois à compter de la réception par le client. Les défauts de matière ou de fabrication donnent droit à une réparation ou un remplacement gratuit après analyse technique. L’usure normale, le montage incorrect et l’usage inapproprié sont exclus. Fournir des photos, une vidéo du défaut et les informations nécessaires. Les frais de transport international sont convenus au cas par cas entre les parties. L’assistance technique reste disponible après la garantie, avec réparation payante selon le cas.",
+      "response": "Les demandes de garantie reçoivent une première réponse sous 24 heures pendant les jours ouvrés habituels. Celles reçues le week-end ou un jour férié reçoivent une première réponse au plus tard à la fin du prochain jour ouvré habituel. Ce délai ne promet ni la réparation sous 24 heures ni une assistance permanente 24 h/24.",
+      "payment": "Paiement : 100 % à l’avance par virement bancaire T/T, uniquement en USD. La production ou l’expédition du stock disponible est organisée après paiement intégral.",
+      "stockConfirm": "Disponibilité : veuillez confirmer le stock avant de commander.",
+      "stock": "En stock — normalement disponible ; confirmer la quantité pour votre commande. Il ne s’agit pas d’un suivi de stock en temps réel.",
+      "lead": "Si le stock est suffisant, l’expédition peut être organisée après paiement intégral. Si une fabrication est nécessaire, les produits sont terminés et prêts à expédier sous 20 jours calendaires après paiement intégral, pour les commandes de 1–99 pièces comme pour celles de 100 pièces ou plus. Le transport est exclu.",
+      "leadShort": "Stock : expédition après paiement intégral ; fabrication prête sous 20 jours calendaires",
+      "bulk": "100 pièces ou plus du même modèle en une seule commande : {price} USD/pièce, FOB Ningbo, valable jusqu’au 2026-12-31. 1–99 pièces : demander un devis. Aucun cumul de modèles différents ni de commandes antérieures.",
+      "fob": "FOB Ningbo comprend l’emballage export standard, le transport intérieur jusqu’au port de Ningbo, le dédouanement export courant et les taxes/frais chinois courants à l’exportation. Le fret maritime international, les droits d’importation et le dédouanement à destination sont exclus. Le même tarif de base s’applique en principe à tous les pays et régions, sous réserve des règles d’exportation applicables.",
+      "bp10Order": "Fabrication sur commande. Minimum : 1 pièce. Demander un devis ; aucun prix public fixe. Fabrication standard et échantillon : environ 20 jours calendaires après paiement intégral, hors transport. Personnalisation après étude technique ; minimum hors standard : 1 pièce ; prix et délai à confirmer séparément.",
+      "bp10Lead": "Sur commande ; environ 20 jours calendaires après paiement intégral, hors transport",
+      "qualityShort": "Contrôle individuel de fuite en rotation sous pression ; rapport usine fourni",
+      "topology": "Deux circuits d’air indépendants traversent l’interface d’étanchéité rotative. Un circuit supplémentaire reste entièrement à l’intérieur de l’arbre, sans traverser cette interface. L’orifice central G1/4 rejoint l’un des trois orifices G1/8 de bride par ce circuit interne ; les deux autres orifices de bride correspondent aux deux circuits rotatifs. Les trois trajets sont bidirectionnels, sans sens d’entrée imposé. Engagement effectif du filetage G1/4 central : 10 mm ; bride : 3 × G1/8 sur cercle de perçage de 16 mm.",
+      "seal": "Joint torique en FKM avec additif MoS₂ incorporé dans l’élastomère et revêtement de surface PTFE appliqué après moulage. Les joints sont fabriqués sur mesure par le fournisseur de joints ; un sous-traitant distinct applique le PTFE. Configuration réservée au BP-10P-0001.",
+      "sealShort": "Joint torique FKM avec additif MoS₂ et revêtement PTFE après moulage",
+      "weightLabel": "Masse calculée",
+      "weight": "Masse calculée : env. 3,4 kg (avec 20 raccords pneumatiques, sans tubes).",
+      "weightNote": "Masse calculée par CAO, non issue d’une pesée physique et distincte de la masse d’expédition.",
+      "commercialScopeHeading": "Conditions de commande propres au modèle",
+      "commercialScope": "Les indications générales sur la livraison, les délais de personnalisation et le paiement sont données à titre indicatif. Pour chaque modèle, les conditions convenues dans son devis formel et sa commande acceptée prévalent. La règle confirmée du paiement intégral anticipé par virement T/T, uniquement en USD, concerne seulement BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 et BP-10P-0001 ; elle ne concerne pas tous les modèles. Pour les configurations sur mesure du BP-10P-0001, le prix et le délai nécessitent une étude technique et un accord distinct ; une estimation générale de fabrication sur mesure ne constitue pas un engagement pour cette commande."
+    },
+    "ja": {
+      "heading": "品質・保証・ご注文条件",
+      "quality": "Begapunkの全ロータリージョイントは出荷前に一品ずつ加圧回転シール試験と気密試験を実施します。各製品の本体には固有のシリアル番号を恒久表示し、その番号から出荷検査記録を追跡できます。製品には正式な出荷検査報告書を添付します。検査は文書番号・版番号・改訂履歴を備えた管理された検査規格に従います。",
+      "warrantyShort": "お客様の受領日から12か月",
+      "warranty": "保証期間はお客様の受領日から12か月です。材料不良または製造上の不具合は、技術分析後に無償修理または交換で対応します。通常摩耗、誤った取付け、不適切な使用は対象外です。不具合の写真・動画と必要資料をご提供ください。国際輸送費の負担は状況に応じて双方で協議します。保証終了後も技術支援を継続し、状況に応じて有償修理に対応します。",
+      "response": "保証申請には通常営業日は24時間以内に初回回答します。週末または祝日に受けた申請は、次の通常営業日の終了までに初回回答します。これは初回回答の期限であり、24時間以内の修理完了や年中無休の対応を約束するものではありません。",
+      "payment": "支払条件：USD建て、銀行送金T/Tによる100%前払い。全額入金後に生産または在庫品の出荷を手配します。",
+      "stockConfirm": "在庫状況：ご注文前に在庫をご確認ください。",
+      "stock": "在庫品（通常在庫あり）。ご注文数量の引当て可否をご確認ください。リアルタイム在庫表示ではありません。",
+      "lead": "在庫が十分にある場合は全額入金後に出荷を手配できます。生産が必要な場合は、1～99個・100個以上のいずれも全額入金後20暦日以内に生産を完了し、出荷可能な状態にします。輸送日数は含みません。",
+      "leadShort": "在庫品：全額入金後出荷手配／生産品：20暦日以内に出荷準備",
+      "bulk": "同一型式を1回の注文で100個以上：1個{price} USD、FOB Ningbo、2026-12-31まで有効。1～99個は個別見積り。異なる型式の合算や過去の注文数量の累計は対象外です。",
+      "fob": "FOB Ningboには標準輸出梱包、寧波港までの中国国内輸送、通常の輸出通関費用、中国の輸出段階の通常税費を含みます。国際海上運賃、仕向国の輸入関税および輸入通関費用は含みません。原則として国・地域を問わず同一の基本価格を適用しますが、取引は適用される輸出規制に従います。",
+      "bp10Order": "受注生産。最小注文数量1個。価格は個別見積りで、固定公開価格はありません。標準品・サンプルの生産期間は全額入金後約20暦日（輸送日数を除く）。カスタム仕様は技術検討が必要です。非標準仕様も最小1個からで、価格と納期は個別に確認します。",
+      "bp10Lead": "受注生産・全額入金後約20暦日、輸送日数を除く",
+      "qualityShort": "全数加圧回転・気密試験、出荷検査報告書付き",
+      "topology": "独立した2つの空気流路が回転シール界面を通過します。追加の1流路は軸内部だけを通り、この界面を通過しません。中央G1/4ポートは軸内流路でフランジ端の3つのG1/8ポートのうち1つに接続し、残り2つはそれぞれ2つの回転流路に対応します。3経路とも双方向に通気でき、固定の入口方向はありません。中央G1/4の有効ねじかみ合い深さは10 mm、フランジ端はPCD 16 mm上の3 × G1/8です。",
+      "seal": "OリングはFKMフッ素ゴムを基材とし、MoS₂（二硫化モリブデン）をゴム内部に添加、成形後にPTFE表面コーティングを施します。Oリングはシール供給業者が特注製作し、別の外注業者がPTFE処理を行います。BP-10P-0001専用仕様です。",
+      "sealShort": "MoS₂内部添加FKM Oリング、成形後PTFE表面コーティング",
+      "weightLabel": "計算質量",
+      "weight": "計算質量：約3.4 kg（空圧継手20個を含み、チューブを除く）。",
+      "weightNote": "CADによる計算値であり、実測質量や輸送重量ではありません。",
+      "commercialScopeHeading": "型式別の正式な注文条件",
+      "commercialScope": "一般的な納期、カスタム製作期間、支払方法の説明は目安です。各型式について、正式見積書および双方が承認した注文で合意した条件を優先します。確認済みの「USD建て・銀行送金T/Tによる100%前払い」は、BP-2P-08-0001、BP-2P-95-0005、BP-3P-0004、BP-3P-0007、BP-10P-0001の5型式だけに適用し、全型式共通の支払条件ではありません。BP-10P-0001のカスタム仕様は技術検討のうえ価格と納期を個別に合意します。一般的なカスタム製作期間の目安は、その注文の納期を保証するものではありません。"
+    },
+    "ru": {
+      "heading": "Качество, гарантия и заказ",
+      "quality": "Каждое вращающееся соединение Begapunk перед отгрузкой проходит индивидуальную проверку герметичности при вращении под давлением и проверку утечек. На корпус каждого изделия постоянно нанесён уникальный серийный номер для прослеживаемости заводских записей контроля; к изделию прилагается заводской протокол проверки. Контроль выполняется по управляемой инструкции с номером документа, номером версии и историей изменений.",
+      "warrantyShort": "12 месяцев с даты получения заказчиком",
+      "warranty": "Гарантия действует 12 месяцев с даты получения заказчиком. Дефекты материала или изготовления устраняются бесплатным ремонтом либо заменой после технического анализа. Нормальный износ, неправильный монтаж и ненадлежащее использование исключены. Необходимы фотографии, видео неисправности и требуемые сведения. Расходы на международную перевозку стороны согласуют по обстоятельствам. После гарантии сохраняется техническая поддержка; при необходимости возможен платный ремонт.",
+      "response": "Первичный ответ на гарантийную заявку предоставляется в течение 24 часов в обычные рабочие дни. Заявки, полученные в выходные или праздничные дни, получают первый ответ до конца следующего обычного рабочего дня. Это срок первого ответа, а не завершения ремонта, и не круглосуточная поддержка без выходных.",
+      "payment": "Оплата: 100% предоплата банковским переводом T/T, только USD. Производство или отгрузка имеющегося товара организуется после полной оплаты.",
+      "stockConfirm": "Наличие: уточните складской остаток перед заказом.",
+      "stock": "В наличии — обычно поддерживается складской запас; подтвердите доступное количество для заказа. Это не отображение остатков в реальном времени.",
+      "lead": "При достаточном запасе отгрузку можно организовать после полной оплаты. Если требуется производство, изделия будут изготовлены и готовы к отправке в течение 20 календарных дней после полной оплаты как для 1–99 шт., так и для 100 шт. и более. Время перевозки не включено.",
+      "leadShort": "Со склада — после полной оплаты; производство — готовность в течение 20 календарных дней",
+      "bulk": "От 100 шт. одной модели в одном заказе: {price} USD/шт., FOB Ningbo, действительно до 2026-12-31. 1–99 шт.: запрос цены. Смешивание моделей и суммирование прошлых заказов не допускается.",
+      "fob": "FOB Ningbo включает стандартную экспортную упаковку, перевозку по Китаю до порта Нинбо, обычное экспортное таможенное оформление и стандартные китайские экспортные налоги/сборы. Международный морской фрахт, импортные пошлины и оформление в стране назначения не включены. В принципе применяется одна базовая цена для всех стран и регионов с соблюдением применимых экспортных правил.",
+      "bp10Order": "Изготовление под заказ. Минимум: 1 шт. Запрос цены; фиксированной публичной цены нет. Стандартное производство и образцы: около 20 календарных дней после полной оплаты, без перевозки. Изменения конструкции требуют инженерной оценки; минимум нестандартного заказа — 1 шт.; цена и срок согласуются отдельно.",
+      "bp10Lead": "Под заказ; около 20 календарных дней после полной оплаты, без перевозки",
+      "qualityShort": "Индивидуальная проверка герметичности при вращении под давлением; заводской протокол",
+      "topology": "Два независимых воздушных канала проходят через вращающийся уплотнительный интерфейс. Дополнительный канал проходит только внутри вала, не пересекая этот интерфейс. Центральный порт G1/4 соединён этим каналом с одним из трёх фланцевых портов G1/8; два остальных соответствуют двум вращающимся каналам. Все три пути допускают поток в обоих направлениях без фиксированного входа. Эффективная глубина зацепления резьбы G1/4 — 10 мм; на фланце 3 × G1/8 по окружности PCD 16 мм.",
+      "seal": "Кольцо O-ring из FKM с внутренней добавкой MoS₂ и поверхностным покрытием PTFE, наносимым после формования. Поставщик уплотнений изготавливает кольца по заказу; отдельный подрядчик наносит PTFE. Только для BP-10P-0001.",
+      "sealShort": "Кольцо FKM O-ring с добавкой MoS₂ и покрытием PTFE после формования",
+      "weightLabel": "Расчётная масса",
+      "weight": "Расчётная масса: около 3,4 кг (с 20 пневматическими фитингами, без трубок).",
+      "weightNote": "Масса рассчитана в CAD; это не результат взвешивания и не масса отправления.",
+      "commercialScopeHeading": "Условия заказа для конкретной модели",
+      "commercialScope": "Общие сведения о поставке, сроках изготовления нестандартных изделий и оплате носят ориентировочный характер. Для каждой модели приоритет имеют условия, согласованные в её официальном предложении и принятом заказе. Подтверждённое правило 100% предоплаты банковским переводом T/T только в USD относится лишь к BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 и BP-10P-0001, а не ко всем моделям. Для нестандартных исполнений BP-10P-0001 цена и срок требуют инженерной оценки и отдельного согласования; общая оценка срока нестандартного производства не является обязательством по этому заказу."
+    }
+  },
+  "technicalEvidence": {
+    "BP-10P-0001": {
+      "ratedPressureSpeedTemperatureMediumPassages": {
+        "level": "DRAWING_VERIFIED",
+        "source": "BP-10P-0001-IA Rev A, 2026-10-28, p1 PRODUCT DATA; owner selected current production version."
+      },
+      "bodyMaterial6061": {
+        "level": "OWNER_CONFIRMED",
+        "source": "2026-11-13 owner instruction section 3.3; not printed on IA drawing."
+      },
+      "sealConfiguration": {
+        "level": "OWNER_CONFIRMED",
+        "source": "2026-11-13 owner instruction section 3.3; supplier/material documents not inspected."
+      },
+      "calculatedWeight": {
+        "level": "OWNER_CONFIRMED",
+        "source": "2026-11-13 owner instruction section 3.3; approx. 3.4 kg including 20 fittings, excluding tubing; not weighed."
+      },
+      "factoryInspectionRecords": {
+        "level": "TEST_RECORDED",
+        "source": "Owner confirms records exist; originals not inspected. No test durations or numerical leakage threshold published."
+      }
+    }
+  },
+  "withheldFacts": [
+    {
+      "model": "BP-2P-0002",
+      "field": "weight",
+      "previousValue": "0.22 kg (220 g)",
+      "evidenceLevel": "PENDING_EVIDENCE",
+      "public": false,
+      "decisionSource": "Owner instruction: FINAL RELEASE CLOSURE; remove unverified public field, retain internal evidence history. 2026-11-13",
+      "engineeringSource": "Legacy drawing value; current IA Rev A 2026-10-27 does not specify weight."
+    },
+    {
+      "model": "BP-3P-0006",
+      "field": "weight",
+      "previousValue": "0.36 kg (360 g)",
+      "evidenceLevel": "PENDING_EVIDENCE",
+      "public": false,
+      "decisionSource": "Owner instruction: FINAL RELEASE CLOSURE; remove unverified public field, retain internal evidence history. 2026-11-13",
+      "engineeringSource": "Legacy drawing value; current IA Rev A 2026-10-28 does not specify weight."
+    },
+    {
+      "model": "BP-10P-0001",
+      "field": "fittedEnvelope",
+      "previousValue": "217 × 117.5 × 115.8 mm; fittings included, tubing excluded",
+      "evidenceLevel": "PENDING_EVIDENCE",
+      "public": false,
+      "decisionSource": "Owner instruction: FINAL RELEASE CLOSURE; remove unverified public field, retain internal evidence history. 2026-11-13",
+      "engineeringSource": "Archived Rev B; current IA Rev A 2026-10-28 supports body Ø80 × 217 mm and excludes fittings/tubing."
+    }
+  ]
+}

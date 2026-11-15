@@ -1,3 +1,4 @@
+import { policyCopy } from './lib/owner-product-policy.mjs';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
@@ -99,7 +100,9 @@ const trustRequirements = new Map([
     required: ['individual traceability number', 'request the corresponding record', 'before ordering'],
   }],
   [expectedQuestions[23], {
-    required: ['one year from the shipment date', 'If Begapunk confirms a covered manufacturing defect', 'replacement at no charge', 'costs handled as agreed in writing'],
+    // Require the complete owner-approved terms, including response boundaries.
+    required: [compact(policyCopy('en').warranty), compact(policyCopy('en').response)],
+    forbidden: [/one year from the shipment date/i],
   }],
   [expectedQuestions[24], {
     required: ['minimum order quantity is one unit for both catalog and custom products', '20 calendar days after payment (excluding shipping)', 'up to 30 calendar days after payment (excluding shipping)'],

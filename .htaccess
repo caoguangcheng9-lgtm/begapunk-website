@@ -1,3 +1,6 @@
+# Temporarily withdraw the superseded catalog; use current model pages until revision.
+RedirectMatch 302 "^/downloads/Begapunk-Rotary-Joint-Catalog-2026\.pdf$" "https://www.begapunk.com/products.html"
+
 # Begapunk - Remove old pages from search engines
 # 410 Gone = permanent removal signal (stronger than 404)
 

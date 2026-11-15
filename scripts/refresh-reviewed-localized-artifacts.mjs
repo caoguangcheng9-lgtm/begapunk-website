@@ -3,6 +3,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { enrollmentScope, enrolledStatus, validReviewBefore } from './lib/editorial-page-enrollment.mjs';
+import { reviewedSubsetSnapshots } from './lib/editorial-reviewed-subset.mjs';
 import {
   applyMechanicalOnlySnapshots,
   compareArtifactSnapshots,
@@ -22,6 +23,10 @@ const write = process.argv.includes('--write');
 const mechanicalOnly = process.argv.includes('--mechanical-only');
 const schemaMigration = process.argv.includes('--schema-migration');
 const enrollPages = process.argv.includes('--enroll-pages');
+const reviewedSubset = process.argv.includes('--reviewed-subset');
+if (reviewedSubset && (enrollPages || mechanicalOnly || schemaMigration)) {
+  throw new Error('Reviewed subset requires ordinary reviewed-semantic mode.');
+}
 if (enrollPages && (mechanicalOnly || schemaMigration)) throw new Error('Page enrollment requires reviewed-semantic mode.');
 
 if (!write) throw new Error('Use --write only after the required evidence record is complete.');
@@ -399,6 +404,7 @@ if (mode !== 'schema-migration'
 // Explicit owner-reviewed production baseline; the working HEAD guards above
 // still prevent silently replacing the current review/status records.
 const reviewBaselineRef = argumentValue('review-baseline-ref');
+if (reviewedSubset && reviewBaselineRef) throw new Error('Reviewed subset cannot consolidate a legacy baseline.');
 if (reviewBaselineRef) {
   if (enrollPages) throw new Error('Enrollment cannot be combined with legacy baseline consolidation.');
   if (mode !== 'reviewed-semantic' || !/^[a-f0-9]{40}$/.test(reviewBaselineRef)) {
@@ -430,13 +436,21 @@ if (reviewBaselineRef) {
     artifacts: snapshots.map(a => ({ ...prior.get(a.path), ...a })) };
 }
 
-const currentArtifacts = [];
+let currentArtifacts = [];
 for (const relativePath of expectedArtifactPaths) {
   if (!safeArtifactPath(relativePath, expectedArtifactSet)) {
     throw new Error(`Unsafe localized artifact path: ${JSON.stringify(relativePath)}.`);
   }
   const source = await fs.readFile(path.join(root, ...relativePath.split('/')));
   currentArtifacts.push(createArtifactSnapshot(relativePath, source));
+}
+
+if (reviewedSubset) {
+  const subsetRecord = await readEvidenceRecord('review-record');
+  validateSemanticReviewRecord(subsetRecord);
+  const selected = parseReviewedArtifactPaths(subsetRecord);
+  currentArtifacts = reviewedSubsetSnapshots(previousManifest.artifacts, currentArtifacts, selected);
+  console.log(`Capturing only ${selected.length} reviewed paths; all other snapshots remain unchanged and are still checked by the release verifier.`);
 }
 
 const recordedAt = new Date().toISOString();

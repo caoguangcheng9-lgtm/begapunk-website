@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import crypto from 'node:crypto';
 import path from 'node:path';
+import { productPolicy } from './lib/owner-product-policy.mjs';
 
 const repoArgument = process.argv.slice(2).find((argument) => !argument.startsWith('--'));
 const repo = path.resolve(repoArgument || process.cwd());
@@ -383,7 +384,7 @@ const banned = [
     p1Boundary: true,
   },
   { name: 'incorrect ISO 17799 leakage standard', pattern: /\bISO(?:\/IEC)?\s*17799\b/gi },
-  { name: 'obsolete Begapunk company LinkedIn entity', pattern: /https?:\/\/(?:www\.)?linkedin\.com\/company\/begapunk\/?/gi },
+  { name: 'obsolete Begapunk company LinkedIn entity', pattern: /https?:\/\/(?:www\.)?linkedin\.com\/company\/begapunk(?!-rotary-joints(?:[\/?#]|$))\/?/gi },
   { name: 'obsolete Begapunk YouTube entity', pattern: /https?:\/\/(?:www\.)?youtube\.com\/@begapunk(?:[\/?#]|$)/gi },
   { name: 'BP-2P-95 pressure above approved 1 MPa rating', pattern: /(?:BP-2P-95(?:-0001)?[^\n]{0,220}\b(?:10|12)(?:[.,]0)?\s*(?:MPa|МПа)|\b(?:10|12)(?:[.,]0)?\s*(?:MPa|МПа)[^\n]{0,220}BP-2P-95(?:-0001)?)/giu, semantic: 'model-limit' },
   { name: 'BP-2P-0002 pressure above approved 1 MPa rating', pattern: /(?:BP-2P-0002[^\n]{0,180}1[.,]5\s*(?:MPa|МПа)|1[.,]5\s*(?:MPa|МПа)[^\n]{0,180}BP-2P-0002)/giu, semantic: 'model-limit' },
@@ -778,6 +779,18 @@ function matchIsBlocked(rule, source, match, relativePath = '') {
     && isApprovedProductionInspectionClaim(relativePath, source, match)) {
     return false;
   }
+  // Owner confirmation 2026-11-13 permits this exact qualified warranty-response
+  // policy, not an unrestricted 24-hour sales/support or repair promise.
+  if (rule.name === 'unsupported 24-hour response promise') {
+    if (isExplicitJapanese24HourDenial(source, match)) return false;
+    const at=match.index||0;
+    for(const copy of Object.values(productPolicy.locales)) {
+      for(const phrase of [copy.response, JSON.stringify(copy.response).slice(1,-1)]) {
+        let start=source.indexOf(phrase);
+        while(start>=0){if(at>=start&&at+match[0].length<=start+phrase.length)return false;start=source.indexOf(phrase,start+1);}
+      }
+    }
+  }
   if (rule.name === 'unsupported fixed 7-day shipping claim') {
     const index = match.index || 0;
     const rangeContext = source.slice(Math.max(0, index - 35), index + match[0].length);
@@ -793,6 +806,12 @@ function matchIsBlocked(rule, source, match, relativePath = '') {
   }
   if (!rule.allowDisclaimer) return true;
   return !isDisclaimerContext(source, match.index || 0, match[0].length);
+}
+
+function isExplicitJapanese24HourDenial(source, match) {
+  const start = match.index || 0, end = start + match[0].length;
+  const denial = /24\s*時間(?:オンライン)?(?:対応|サービス)(?:を意味するものではありません|を保証するものではありません|を保証していません|は行っていません)(?=[。！？\n]|$)/gu;
+  return [...source.matchAll(denial)].some(item => start >= item.index && end <= item.index + item[0].length);
 }
 
 function hasBlockedMatch(rule, source, relativePath = '') {
@@ -901,6 +920,25 @@ function verifyRuleSamples(ruleName, { blocked: blockedRuleSamples, allowed: all
   }
 }
 
+verifyRuleSamples('unsupported 24-hour response promise', {
+  allowed: [
+    '通常の営業時間であり、24時間オンライン対応を意味するものではありません。',
+    '24時間オンライン対応を保証するものではありません。',
+    '24時間対応を保証していません。',
+    '24時間対応は行っていません。',
+  ],
+  blocked: [
+    '24時間オンライン対応を保証します。',
+    '24時間以内に回答します。',
+    '24時間対応を意味するものではありませんが、実際は24時間対応します。',
+    '24時間オンライン対応を意味するものではありません。24時間以内に回答します。',
+    '24時間対応しないわけではありません。',
+    '24時間オンライン対応を意味するものではありませんとは言えません。',
+    '24時間オンライン対応を意味するものではありません\n24時間対応を保証します。',
+    '<p>24時間オンライン対応を意味するものではありません。</p><p>24時間対応します。</p>',
+  ],
+});
+
 verifyRuleSamples('unsupported affirmative IP65 claim', {
   blocked: [
     'BP-2P-50-0001 is IP65 rated for dust protection.',
@@ -1001,10 +1039,17 @@ verifyRuleSamples('incorrect ISO 17799 leakage standard', {
 });
 
 verifyRuleSamples('obsolete Begapunk company LinkedIn entity', {
-  blocked: ['https://www.linkedin.com/company/begapunk'],
+  blocked: [
+    'https://www.linkedin.com/company/begapunk',
+    'https://www.linkedin.com/company/begapunk/',
+    'https://www.linkedin.com/company/begapunk/?viewAsMember=true',
+    'https://www.linkedin.com/company/begapunk#about',
+    'https://www.linkedin.com/company/begapunk-rotary-joints-unconfirmed/',
+  ],
   allowed: [
     'https://www.linkedin.com/in/guangcheng-cao/',
     'https://www.linkedin.com/company/144021127/',
+    'https://www.linkedin.com/company/begapunk-rotary-joints/',
   ],
 });
 
