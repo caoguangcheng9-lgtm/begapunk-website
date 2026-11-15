@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: '7b683bfd2ab30a7e886dcbfa75eb2b5e16c67a6ca7819289de1a3f705ca77d55',
+  deploy: '2c2b83be12070e9b921e226628280c46da3ca3a62322e74fc1e2ac364e13bdd3',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
@@ -127,6 +127,9 @@ const EXPECTED_DEPLOY_STEPS = Object.freeze({
     'Activate release',
     'Verify public deployment boundary',
     'Verify production navigation in a real browser',
+    'Prepare website inquiry confirmation',
+    'Publish website inquiry test identity',
+    'Confirm website inquiry receipt before commit',
     'Verify production telemetry before commit',
     'Commit deployment transaction',
     'Roll back an uncommitted deployment',
@@ -374,6 +377,10 @@ echo "sha=$EDITORIAL_TRUSTED_BASE_SHA" >> "$GITHUB_OUTPUT"
     INQUIRY_DELIVERY_APPLICABILITY: '${{ vars.INQUIRY_DELIVERY_APPLICABILITY }}',
     INQUIRY_DELIVERY_APPROVED_SHA: '${{ vars.INQUIRY_DELIVERY_APPROVED_SHA }}',
     INQUIRY_DELIVERY_EVIDENCE_REF: '${{ vars.INQUIRY_DELIVERY_EVIDENCE_REF }}',
+    INQUIRY_DELIVERY_PHASE: '${{ vars.INQUIRY_DELIVERY_PHASE }}',
+    INQUIRY_POSTACTIVATION_APPROVED_SHA: '${{ vars.INQUIRY_POSTACTIVATION_APPROVED_SHA }}',
+    INQUIRY_POSTACTIVATION_AUTHORIZATION_REF: '${{ vars.INQUIRY_POSTACTIVATION_AUTHORIZATION_REF }}',
+    INQUIRY_RECEIPT_ISSUE: '${{ vars.INQUIRY_RECEIPT_ISSUE }}',
   };
   for (const [name, value] of Object.entries(expectedAuthorizationEnvironment)) {
     exact(`deploy/build-release authorization env ${name}`, authorizationStep.env?.[name], value, failures);
@@ -427,6 +434,34 @@ npm run deploy:validate
   const browserStep = step(validationJob, 'Verify production navigation in a real browser', failures, 'deploy/validate-and-deploy');
   const telemetryStart = step(validationJob, 'Checkpoint production telemetry', failures, 'deploy/validate-and-deploy');
   const telemetryCheck = step(validationJob, 'Verify production telemetry before commit', failures, 'deploy/validate-and-deploy');
+  const receiptStep = step(validationJob, 'Confirm website inquiry receipt before commit', failures, 'deploy/validate-and-deploy');
+  const receiptPreparation = step(validationJob, 'Prepare website inquiry confirmation', failures, 'deploy/validate-and-deploy');
+  const receiptPublication = step(validationJob, 'Publish website inquiry test identity', failures, 'deploy/validate-and-deploy');
+  assertUnconditional('deploy receipt preparation', receiptPreparation, failures);
+  assertUnconditional('deploy receipt publication', receiptPublication, failures);
+  exactRun('deploy receipt preparation', receiptPreparation, 'node scripts/verify-postactivation-inquiry.mjs --prepare', failures);
+  assertAction('deploy receipt publication', receiptPublication, 'actions/upload-artifact', failures);
+  exact('deploy receipt artifact', receiptPublication.with?.name, 'begapunk-inquiry-challenge-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}', failures);
+  exact('deploy receipt artifact path', receiptPublication.with?.path, 'dist/audit/postactivation-inquiry-challenge.json', failures);
+  exact('deploy receipt missing artifact', receiptPublication.with?.['if-no-files-found'], 'error', failures);
+  assertUnconditional('deploy/validate-and-deploy owner receipt', receiptStep, failures);
+  exact('deploy receipt bounded step timeout', receiptStep['timeout-minutes'], 23, failures);
+  exact('deploy job rollback time reserve', validationJob['timeout-minutes'], 60, failures);
+  if (JSON.stringify(validationJob.permissions) !== JSON.stringify({ contents: 'read', issues: 'read' })) failures.push('Receipt job permissions must remain contents/issue read-only.');
+  for (const [name, value] of Object.entries({
+    GITHUB_TOKEN: '${{ github.token }}',
+    INQUIRY_RECEIPT_ISSUE: '${{ vars.INQUIRY_RECEIPT_ISSUE }}',
+    EXPECTED_RELEASE_ID: '${{ needs.build-release.outputs.release_id }}',
+    EXPECTED_MANIFEST_SHA256: '${{ needs.build-release.outputs.manifest_sha256 }}',
+  })) exact(`deploy receipt binding ${name}`, receiptStep.env?.[name], value, failures);
+  exactRun('deploy owner receipt and active artifact check', receiptStep, `
+set -Eeuo pipefail
+node scripts/verify-postactivation-inquiry.mjs
+port="\${DEPLOY_PORT:-22}"
+target="\${DEPLOY_USER}@\${DEPLOY_HOST}"
+ssh -o BatchMode=yes -o ConnectTimeout=15 -p "$port" "$target" 'python3 -' < ops/read-release-identity.py > dist/audit/receipt-active-identity.json
+node scripts/verify-postactivation-inquiry.mjs --verify-active dist/audit/receipt-active-identity.json
+`, failures);
   for (const [label, gate, action] of [['checkpoint', telemetryStart, 'telemetry-start'], ['check', telemetryCheck, 'telemetry-check']]) {
     assertUnconditional(`deploy/validate-and-deploy telemetry ${label}`, gate, failures);
     if (!normalizedRun(gate.run).includes(`/usr/local/sbin/begapunk-nginx-config ${action} '$release_id'`)
@@ -501,7 +536,7 @@ BEGAPUNK_EXPECTED_I18N_SITEMAP_SHA256="$expected_i18n_sitemap_sha256" \\
   assertOrder(
     'deploy/validate-and-deploy production transaction',
     validationJob,
-    [productionDownload, downloadedValidation, uploadReleaseStep, activationStep, publicBoundaryStep, browserStep, commitStep],
+    [productionDownload, downloadedValidation, uploadReleaseStep, activationStep, publicBoundaryStep, browserStep, receiptPreparation, receiptPublication, receiptStep, telemetryCheck, commitStep],
     failures,
   );
   const indexNowStep = step(validationJob, 'Notify IndexNow of changed URLs', failures, 'deploy/validate-and-deploy');

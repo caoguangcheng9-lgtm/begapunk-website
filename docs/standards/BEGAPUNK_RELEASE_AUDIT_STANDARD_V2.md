@@ -389,3 +389,12 @@ audit/releases/<release-id>/<stage>/evidence.json
 4. 每次新增或修改 P0/P1 verifier，都必须同步补正向、负向和 bypass fixture，并让控制清单与实际阶段调用保持一致。
 
 本标准不把“存在脚本”“CI 配置看起来正确”或“历史上通过”当作当前 release 的 PASS。无法自动产生的证据必须由受控人工步骤记录为 PASS/FAIL/UNKNOWN；没有执行就写 UNKNOWN。
+
+
+### 2026-11-15 负责人批准：切换后、事务提交前的真实询盘确认
+
+仅在 `INQUIRY_DELIVERY_PHASE=post-activation`、`INQUIRY_POSTACTIVATION_APPROVED_SHA` 精确等于候选且 `INQUIRY_POSTACTIVATION_AUTHORIZATION_REF` 指向真实负责人授权时，允许将送达证据移到切换后。`INQUIRY_DELIVERY_APPLICABILITY` 仍为 required；原送达批准和证据字段必须留空，不能把授权或计划当作已收件。默认发布前证据模式和原安全断言保留。
+
+发布前仍验证版本授权及全部既有关卡。切换后，现有工作流发布本次 SHA、release ID、manifest、run/attempt、随机挑战及测试编号，等待仓库负责人账号在指定审核议题追加 JSON 收件记录。记录必须绑定本次身份，包含网页HTTP/PHP、SMTP、实际收件及负责人确认的证据引用和SHA-256；不含密码、客户信息或邮件正文。自动校验仅认证、绑定负责人对真实证据的确认，不冒称独立读取邮箱或SMTP平台。
+
+20分钟内未收到有效记录、记录失败、API错误或运行身份漂移均中止，沿用现有未提交事务回滚。确认后重新核对active全量制品，再验证生产遥测，才可提交事务。运行器硬故障或回滚失败仍需人工接管，不承诺失联情况下自动恢复。此顺序调整不取消真实询盘、不取消回滚、不更改历史内容审批。

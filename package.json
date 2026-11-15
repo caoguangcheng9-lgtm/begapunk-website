@@ -104,7 +104,7 @@
     "audit:policy:verify": "node --test tests/audit-policy-contracts.test.mjs && node scripts/verify-audit-policy.mjs",
     "audit:workflow-contracts:self-test": "node --test tests/workflow-contracts.test.mjs",
     "browser:interaction:self-test": "node --test tests/browser-interaction-gate.test.mjs",
-    "release:authorization:self-test": "node --test tests/release-authorization.test.mjs",
+    "release:authorization:self-test": "node --test tests/release-authorization.test.mjs tests/postactivation-inquiry.test.mjs",
     "release:authorization:verify": "node scripts/verify-release-authorization.mjs",
     "quality": "npm run quality:pr",
     "quality:source": "node scripts/validate-source-quality.mjs",

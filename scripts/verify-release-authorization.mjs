@@ -58,6 +58,16 @@ export function validateReleaseAuthorization(input) {
   const changedPaths = [...new Set(input.changedPaths || [])].sort();
   const inquiryChangedPaths = changedPaths.filter(isInquiryRuntimePath);
   const inquiryEvidenceRequired = input.inquiryApplicability === 'required';
+  const inquiryPhase = input.inquiryPhase || 'pre-activation';
+  const postActivation = inquiryPhase === 'post-activation';
+  if (!['pre-activation', 'post-activation'].includes(inquiryPhase)) failures.push('Invalid inquiry evidence phase.');
+  const postActivationBound = postActivation && inquiryEvidenceRequired
+    && input.postActivationApprovedCommit === input.candidateCommit
+    && SHA_PATTERN.test(input.candidateCommit || '')
+    && EVIDENCE_REF_PATTERN.test(input.postActivationAuthorizationRef || '')
+    && /^[1-9][0-9]*$/u.test(input.receiptIssue || '');
+  if (postActivation && !postActivationBound) failures.push('Post-activation inquiry requires exact candidate owner authorization and a receipt issue.');
+  if (postActivation && (input.inquiryApprovedCommit || input.inquiryEvidenceRef)) failures.push('Pending post-activation delivery must not claim an existing delivery approval or evidence.');
   const inquiryApplicabilityValid = ['required', 'not-applicable'].includes(input.inquiryApplicability);
   const inquiryEffectiveApplicability = inquiryChangedPaths.length || inquiryEvidenceRequired
     ? 'required'
@@ -80,7 +90,7 @@ export function validateReleaseAuthorization(input) {
   if (inquiryChangedPaths.length && input.inquiryApplicability !== 'required') {
     failures.push(`inquiry delivery evidence is required because runtime/form paths changed: ${inquiryChangedPaths.join(', ')}.`);
   }
-  if (inquiryEvidenceRequired) {
+  if (inquiryEvidenceRequired && !postActivation) {
     if (input.inquiryApprovedCommit !== input.candidateCommit) {
       failures.push('protected INQUIRY_DELIVERY_APPROVED_SHA must exactly match the candidate commit when delivery evidence is required.');
     }
@@ -94,11 +104,20 @@ export function validateReleaseAuthorization(input) {
     changedPaths,
     inquiryChangedPaths,
     inquiryEvidenceRequired,
+    inquiryPhase,
+    postActivationBound,
+    postActivationAuthorization: postActivationBound ? {
+      approvedCommit: input.postActivationApprovedCommit,
+      authorizationRef: input.postActivationAuthorizationRef,
+      receiptIssue: Number(input.receiptIssue),
+    } : null,
     inquiryEffectiveApplicability,
     inquiryReferenceBindingStatus: !inquiryApplicabilityValid || (inquiryChangedPaths.length && !inquiryEvidenceRequired)
       ? 'INVALID'
-      : inquiryEvidenceRequired
-        ? inquiryReferenceBound ? 'BOUND' : 'INVALID'
+      : postActivation
+        ? postActivationBound ? 'PENDING_POST_ACTIVATION' : 'INVALID'
+        : inquiryEvidenceRequired
+          ? inquiryReferenceBound ? 'BOUND' : 'INVALID'
         : 'NOT_APPLICABLE',
     inquiryControlResult: inquiryEffectiveApplicability === 'required' ? 'UNKNOWN' : null,
   };
@@ -120,14 +139,19 @@ export function buildReleaseAuthorizationReport({
   return {
     schemaVersion: 1,
     status: result.failures.length ? 'FAIL' : 'PASS',
-    scope: 'authorization-and-reference-binding-only',
-    resultSemantics: 'PASS means the protected candidate authorization and a syntactically valid evidence reference were co-recorded for this candidate; it does not prove reference immutability, inspect the referenced record, or establish SMTP acceptance or inbox delivery.',
+    scope: result.postActivationBound ? 'release-authorized-delivery-pending-before-transaction-commit' : 'authorization-and-reference-binding-only',
+    resultSemantics: result.postActivationBound
+      ? 'PASS authorizes the exact release with delivery still UNKNOWN; an authenticated owner receipt is mandatory after activation and before commit. It does not establish SMTP acceptance or inbox delivery.'
+      : 'PASS means the protected candidate authorization and a syntactically valid evidence reference were co-recorded for this candidate; it does not prove reference immutability, inspect the referenced record, or establish SMTP acceptance or inbox delivery.',
     candidateCommit,
     trustedBaselineCommit: baselineCommit,
     authorizationRef: EVIDENCE_REF_PATTERN.test(authorizationRef || '') ? authorizationRef : null,
     externallyReferencedBlockingControls,
     inquiryEvidence: {
       declaredApplicability: inquiryApplicability || null,
+      evidencePhase: result.inquiryPhase,
+      transactionCommitRequiresOwnerReceipt: result.postActivationBound === true,
+      postActivationAuthorization: result.postActivationAuthorization,
       effectiveApplicability: result.inquiryEffectiveApplicability,
       referenceBindingStatus: result.inquiryReferenceBindingStatus,
       referencedEvidenceInspected: false,
@@ -202,6 +226,10 @@ async function main() {
     inquiryApprovedCommit: (process.env.INQUIRY_DELIVERY_APPROVED_SHA || '').trim(),
     inquiryEvidenceRef: (process.env.INQUIRY_DELIVERY_EVIDENCE_REF || '').trim(),
     changedPaths,
+    inquiryPhase: process.env.INQUIRY_DELIVERY_PHASE,
+    postActivationApprovedCommit: (process.env.INQUIRY_POSTACTIVATION_APPROVED_SHA || '').trim(),
+    postActivationAuthorizationRef: (process.env.INQUIRY_POSTACTIVATION_AUTHORIZATION_REF || '').trim(),
+    receiptIssue: (process.env.INQUIRY_RECEIPT_ISSUE || '').trim(),
   });
 
   const report = buildReleaseAuthorizationReport({

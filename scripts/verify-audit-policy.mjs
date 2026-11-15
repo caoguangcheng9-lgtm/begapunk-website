@@ -31,7 +31,7 @@ try {
 }
 const requiredStages = ['pr', 'release', 'postdeploy-0-5m', 'postdeploy-24h', 'postdeploy-7d'];
 const statusVocabulary = new Set(['PASS', 'FAIL', 'UNKNOWN']);
-const bindingStatusVocabulary = new Set(['BOUND', 'INVALID', 'NOT_APPLICABLE']);
+const bindingStatusVocabulary = new Set(['BOUND', 'INVALID', 'NOT_APPLICABLE', 'PENDING_POST_ACTIVATION']);
 const severityVocabulary = new Set(['P0', 'P1', 'P2', 'P3']);
 const actionVocabulary = new Set(['BLOCK', 'ROLLBACK', 'WARN', 'CONDITIONAL', 'NOT_APPLICABLE']);
 
@@ -184,7 +184,7 @@ if (scripts['editorial:release:verify'] !== 'node scripts/verify-editorial-relea
 if (scripts['release:authorization:verify'] !== 'node scripts/verify-release-authorization.mjs') {
   failures.push('release:authorization:verify must use the versioned commit-bound authorization verifier.');
 }
-if (scripts['release:authorization:self-test'] !== 'node --test tests/release-authorization.test.mjs') {
+if (scripts['release:authorization:self-test'] !== 'node --test tests/release-authorization.test.mjs tests/postactivation-inquiry.test.mjs') {
   failures.push('release authorization negative tests must remain enabled.');
 }
 if (scripts['audit:workflow-contracts:self-test'] !== 'node --test tests/workflow-contracts.test.mjs') {

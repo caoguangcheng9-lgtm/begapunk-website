@@ -20,6 +20,25 @@ const expectedSemanticDigests = {
   ...TRUSTED_WORKFLOW_SEMANTIC_DIGESTS,
 };
 
+test('post-activation receipt is mandatory, bounded and before commit', () => {
+  for (const [oldText, newText] of [
+    ['      - name: Confirm website inquiry receipt before commit', '      - name: Confirm website inquiry receipt before commit\n        continue-on-error: true'],
+    ['      - name: Confirm website inquiry receipt before commit', '      - name: Confirm website inquiry receipt before commit\n        if: ${{ false }}'],
+    ['timeout-minutes: 23', 'timeout-minutes: 240'],
+    ['run: node scripts/verify-postactivation-inquiry.mjs --prepare', 'run: echo fabricated'],
+    ['node scripts/verify-postactivation-inquiry.mjs --verify-active dist/audit/receipt-active-identity.json', 'echo skip-active-check'],
+    ['      issues: read', '      issues: write'],
+  ]) {
+    assert.ok(deploySource.includes(oldText));
+    assert.ok(validateContracts({ deploySource: deploySource.replace(oldText, newText), prSource }).length);
+  }
+  const begin = deploySource.indexOf('      - name: Prepare website inquiry confirmation');
+  const end = deploySource.indexOf('      - name: Verify production telemetry before commit', begin);
+  const block = deploySource.slice(begin, end);
+  const moved = deploySource.replace(block, '').replace('      - name: Roll back an uncommitted deployment', block + '      - name: Roll back an uncommitted deployment');
+  assert.ok(validateContracts({ deploySource: moved, prSource }).length);
+});
+
 test('production telemetry parser positive, negative and bypass fixtures', () => {
   const result = spawnSync('python', ['-B', 'tests/production-telemetry.test.py'], { cwd: repositoryRoot, encoding: 'utf8', windowsHide: true });
   assert.equal(result.status, 0, result.error?.message || result.stderr || result.stdout);
@@ -141,6 +160,10 @@ test('authorization cannot be moved after artifact upload', () => {
           INQUIRY_DELIVERY_APPLICABILITY: \${{ vars.INQUIRY_DELIVERY_APPLICABILITY }}
           INQUIRY_DELIVERY_APPROVED_SHA: \${{ vars.INQUIRY_DELIVERY_APPROVED_SHA }}
           INQUIRY_DELIVERY_EVIDENCE_REF: \${{ vars.INQUIRY_DELIVERY_EVIDENCE_REF }}
+          INQUIRY_DELIVERY_PHASE: \${{ vars.INQUIRY_DELIVERY_PHASE }}
+          INQUIRY_POSTACTIVATION_APPROVED_SHA: \${{ vars.INQUIRY_POSTACTIVATION_APPROVED_SHA }}
+          INQUIRY_POSTACTIVATION_AUTHORIZATION_REF: \${{ vars.INQUIRY_POSTACTIVATION_AUTHORIZATION_REF }}
+          INQUIRY_RECEIPT_ISSUE: \${{ vars.INQUIRY_RECEIPT_ISSUE }}
         run: npm run release:authorization:verify
 
 `;

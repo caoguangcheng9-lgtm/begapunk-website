@@ -89,6 +89,10 @@ jobs:
           INQUIRY_DELIVERY_APPLICABILITY: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY }}
           INQUIRY_DELIVERY_APPROVED_SHA: ${{ vars.INQUIRY_DELIVERY_APPROVED_SHA }}
           INQUIRY_DELIVERY_EVIDENCE_REF: ${{ vars.INQUIRY_DELIVERY_EVIDENCE_REF }}
+          INQUIRY_DELIVERY_PHASE: ${{ vars.INQUIRY_DELIVERY_PHASE }}
+          INQUIRY_POSTACTIVATION_APPROVED_SHA: ${{ vars.INQUIRY_POSTACTIVATION_APPROVED_SHA }}
+          INQUIRY_POSTACTIVATION_AUTHORIZATION_REF: ${{ vars.INQUIRY_POSTACTIVATION_AUTHORIZATION_REF }}
+          INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
         run: npm run release:authorization:verify
 
       - name: Record canonical release manifest digest
@@ -199,10 +203,13 @@ jobs:
         run: npm run lighthouse:release:verify
 
   validate-and-deploy:
+    permissions:
+      contents: read
+      issues: read
     needs: [build-release, inquiry-php, lighthouse-performance]
     runs-on: ubuntu-24.04
     environment: production
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
       - name: Check out release source
@@ -515,6 +522,40 @@ jobs:
 
       - name: Verify production navigation in a real browser
         run: npm run postdeploy:navigation:verify
+
+      - name: Prepare website inquiry confirmation
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
+          EXPECTED_RELEASE_ID: ${{ needs.build-release.outputs.release_id }}
+          EXPECTED_MANIFEST_SHA256: ${{ needs.build-release.outputs.manifest_sha256 }}
+        run: node scripts/verify-postactivation-inquiry.mjs --prepare
+
+      - name: Publish website inquiry test identity
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: begapunk-inquiry-challenge-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/audit/postactivation-inquiry-challenge.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Confirm website inquiry receipt before commit
+        timeout-minutes: 23
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
+          EXPECTED_RELEASE_ID: ${{ needs.build-release.outputs.release_id }}
+          EXPECTED_MANIFEST_SHA256: ${{ needs.build-release.outputs.manifest_sha256 }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -Eeuo pipefail
+          node scripts/verify-postactivation-inquiry.mjs
+          port="${DEPLOY_PORT:-22}"
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          ssh -o BatchMode=yes -o ConnectTimeout=15 -p "$port" "$target" 'python3 -' < ops/read-release-identity.py > dist/audit/receipt-active-identity.json
+          node scripts/verify-postactivation-inquiry.mjs --verify-active dist/audit/receipt-active-identity.json
 
       - name: Verify production telemetry before commit
         env:
