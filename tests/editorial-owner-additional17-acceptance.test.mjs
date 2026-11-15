@@ -15,7 +15,7 @@ const policy=JSON.parse(await readFile(path.join(root,'audit/policy/release-audi
 const expectedCommands={
  'owner:content:80:verify':'node scripts/verify-owner-ai-content-acceptance.mjs',
  'owner:content:17:verify':'node scripts/verify-owner-additional17-content-acceptance.mjs',
- 'owner:content:self-test':'node --test tests/editorial-owner-ai-acceptance.test.mjs tests/editorial-owner-additional17-acceptance.test.mjs tests/editorial-incremental-acceptance.test.mjs',
+ 'owner:content:self-test':'node --test tests/editorial-owner-ai-acceptance.test.mjs tests/editorial-owner-additional17-acceptance.test.mjs tests/editorial-incremental-acceptance.test.mjs tests/legacy-composite-baseline.test.mjs tests/editorial-history-chain.test.mjs tests/release-identity-probe.test.mjs',
  'editorial:release:verify':'node scripts/verify-editorial-release-status.mjs',
 };
 function assertIntegration(p,q){

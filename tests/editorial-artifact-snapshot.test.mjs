@@ -301,8 +301,12 @@ test('refresh CLI anchors HEAD, permits cache-only change, and rejects semantic 
     path.join(repositoryRoot, 'scripts', 'lib', 'editorial-artifact-snapshot.mjs'),
     path.join(fixtureRoot, 'scripts', 'lib', 'editorial-artifact-snapshot.mjs'),
   );
-  for (const dependency of ['owner-incremental-acceptance.mjs', 'owner-incremental-trust.mjs']) {
+  for (const dependency of ['owner-incremental-acceptance.mjs', 'owner-incremental-trust.mjs', 'editorial-history-chain.mjs', 'legacy-composite-baseline.mjs']) {
     await cp(path.join(repositoryRoot, 'scripts', 'lib', dependency), path.join(fixtureRoot, 'scripts', 'lib', dependency));
+  }
+
+  for (const dependency of ['verify-owner-ai-content-acceptance.mjs', 'verify-owner-additional17-content-acceptance.mjs']) {
+    await cp(path.join(repositoryRoot, 'scripts', dependency), path.join(fixtureRoot, 'scripts', dependency));
   }
 
   const now = new Date().toISOString();

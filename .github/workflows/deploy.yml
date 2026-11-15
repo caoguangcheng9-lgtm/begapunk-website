@@ -411,18 +411,9 @@ jobs:
           port="${DEPLOY_PORT:-22}"
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
           ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
-          active_release="$(ssh "${ssh_args[@]}" "$target" 'basename "$(readlink -f /www/begapunk/current)"')"
-          if [[ "$active_release" =~ -([0-9a-f]{12})(-r[0-9]+)?$ ]] && git cat-file -e "${BASH_REMATCH[1]}^{commit}"; then
-            active_release_commit="$(git rev-parse "${BASH_REMATCH[1]}^{commit}")"
-            if [[ "$active_release_commit" != "$EDITORIAL_TRUSTED_BASE_SHA" ]]; then
-              echo "Protected editorial baseline does not match the active production release." >&2
-              exit 1
-            fi
-            node scripts/prepare-indexnow-urls.mjs "$active_release_commit" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
-          else
-            echo "Active release commit could not be resolved to the protected editorial baseline." >&2
-            exit 1
-          fi
+          ssh "${ssh_args[@]}" "$target" 'python3 -' < ops/read-release-identity.py > "$RUNNER_TEMP/active-release-identity.json"
+          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/active-release-identity.json" "$GITHUB_SHA" "$EDITORIAL_TRUSTED_BASE_SHA"
+          node scripts/prepare-indexnow-urls.mjs "$EDITORIAL_TRUSTED_BASE_SHA" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
 
       - name: Upload immutable release
         env:
@@ -445,6 +436,8 @@ jobs:
           previous_manifest_sha256="$(ssh "${ssh_args[@]}" "$target" \
             "sha256sum -- /www/begapunk/releases/$previous_release_id/manifest.sha256" | awk '{print $1}')"
           [[ "$previous_manifest_sha256" =~ ^[0-9a-f]{64}$ ]]
+          test "$previous_release_id" = "$VERIFIED_ACTIVE_RELEASE_ID"
+          test "$previous_manifest_sha256" = "$VERIFIED_ACTIVE_MANIFEST_SHA256"
           nginx_candidate="/www/begapunk/staging/nginx-managed-${release_id}.conf"
           echo "release_id=$release_id" >> "$GITHUB_ENV"
           echo "previous_release_id=$previous_release_id" >> "$GITHUB_ENV"
@@ -554,6 +547,7 @@ jobs:
       - name: Roll back an uncommitted deployment
         if: ${{ always() && env.nginx_transaction_attempted == 'true' && env.deployment_committed != 'true' }}
         env:
+          EDITORIAL_TRUSTED_BASE_SHA: ${{ needs.build-release.outputs.editorial_trusted_base_sha }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
@@ -612,6 +606,9 @@ jobs:
             echo "::error::Deployment rollback failed or could not be confirmed; manual recovery is required."
             exit 1
           fi
+
+          ssh "${ssh_args[@]}" "$target" 'python3 -' < ops/read-release-identity.py > "$RUNNER_TEMP/rollback-release-identity.json"
+          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json" "$GITHUB_SHA" "$EDITORIAL_TRUSTED_BASE_SHA" "$previous_release_id" "$previous_manifest_sha256"
 
       - name: Notify IndexNow of changed URLs
         id: indexnow

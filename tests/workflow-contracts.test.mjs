@@ -286,3 +286,24 @@ test('an extra action input cannot change an otherwise pinned action', () => {
   const failures = validateContracts({ deploySource: spoofed, prSource });
   assert.match(failures.join('\n'), /semantic digest changed/);
 });
+
+test('active composite identity verifier cannot be removed before upload', () => {
+  const changed=deploySource.replace('node scripts/verify-active-release-baseline.mjs', 'echo scripts/verify-active-release-baseline.mjs');
+  assert.ok(validateAuditWorkflowContracts({deploySource:changed,prSource}).some(x=>x.includes('must verify full active artifact identity')));
+});
+test('rollback manifest must remain tied to verified active identity', () => {
+  const changed=deploySource.replace('test "$previous_manifest_sha256" = "$VERIFIED_ACTIVE_MANIFEST_SHA256"', 'true');
+  assert.ok(validateAuditWorkflowContracts({deploySource:changed,prSource}).some(x=>x.includes('rollback identity must equal')));
+});
+test('rollback must verify the recovered artifact bytes, not just the directory name', () => {
+  const changed=deploySource.replace('node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json"', 'echo scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json"');
+  const failures=validateAuditWorkflowContracts({deploySource:changed,prSource});
+  assert.ok(failures.some(x=>x.includes('rollback must revalidate recovered identity')));
+});
+
+test('rollback verifier rejects changed captured manifest and release before trusting any registry', async () => {
+  const {verifyActiveBaseline}=await import('../scripts/verify-active-release-baseline.mjs');
+  const observation={manifestSha256:'a'.repeat(64),releaseId:'20261111-102512-ads-inquiry-test'};
+  await assert.rejects(verifyActiveBaseline('/nonexistent-fictional-root',observation,{expectedManifest:'b'.repeat(64)}),/Rollback manifest/);
+  await assert.rejects(verifyActiveBaseline('/nonexistent-fictional-root',observation,{expectedRelease:'different-release'}),/Rollback release/);
+});

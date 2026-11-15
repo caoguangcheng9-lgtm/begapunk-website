@@ -1,3 +1,5 @@
+import {inspectKnownHistory} from './lib/editorial-history-chain.mjs';
+import {requireCompositeOwner} from './lib/legacy-composite-baseline.mjs';
 import { verifyEditorialIncrement } from './lib/owner-incremental-acceptance.mjs';
 import { promises as fs } from 'node:fs';
 import { spawnSync } from 'node:child_process';
@@ -809,6 +811,15 @@ if (artifactManifest) {
       } catch (error) { policyFail(`legacy baseline integrity: ${error.message}`); }
     } else if (trustedBaselineManifest.schemaVersion === EDITORIAL_MANIFEST_SCHEMA_VERSION
       && trustedBaselineManifest.semanticAlgorithm === SEMANTIC_ALGORITHM) {
+      let knownHistory;
+      if (baselineCommit === 'b624739c9b6affd503152ad366f2fa5368502276') {
+        try {
+          knownHistory = await inspectKnownHistory(root, baselineCommit, artifactManifest);
+          console.log(`Historical chain evidence verified: ${knownHistory.paths} paths, ${knownHistory.steps} transitions, ${knownHistory.semanticSteps} semantic steps, ${knownHistory.repairedDirectBindings} repaired direct bindings; separate composite owner approval remains required.`);
+          try { await requireCompositeOwner(root, knownHistory.loaded); }
+          catch (error) { policyFail(error.message); }
+        } catch (error) { policyFail(`known historical chain: ${error.message}`); }
+      }
       for (const artifactPath of expectedArtifactPaths) {
         const baselineArtifact = baselineByPath.get(artifactPath);
         const currentArtifact = artifactByPath.get(artifactPath);
@@ -821,7 +832,7 @@ if (artifactManifest) {
             || !validTimestamp(provenance.recordedAt)
             || !validTimestamp(trustedBaselineManifest.updatedAt)
             || Date.parse(provenance.recordedAt) <= Date.parse(trustedBaselineManifest.updatedAt)) {
-            policyFail(`${artifactPath}: semantic change is not bound to an exact review transition from trusted git baseline ${trustedBaselineRef}.`);
+            if (!knownHistory) policyFail(`${artifactPath}: semantic change is not bound to an exact review transition from trusted git baseline ${trustedBaselineRef}.`);
           }
         }
         if (baselineArtifact.mechanicalSha256 !== currentArtifact.mechanicalSha256) {
@@ -832,7 +843,7 @@ if (artifactManifest) {
             || !validTimestamp(provenance.recordedAt)
             || !validTimestamp(trustedBaselineManifest.updatedAt)
             || Date.parse(provenance.recordedAt) <= Date.parse(trustedBaselineManifest.updatedAt)) {
-            policyFail(`${artifactPath}: mechanical change is not bound to an exact evidence transition from trusted git baseline ${trustedBaselineRef}.`);
+            if (!knownHistory) policyFail(`${artifactPath}: mechanical change is not bound to an exact evidence transition from trusted git baseline ${trustedBaselineRef}.`);
           }
         }
       }

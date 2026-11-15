@@ -62,7 +62,7 @@
     "cnc-saw-case:verify": "node scripts/sync-cnc-saw-fixture-case.mjs --check",
     "owner:content:80:verify": "node scripts/verify-owner-ai-content-acceptance.mjs",
     "owner:content:17:verify": "node scripts/verify-owner-additional17-content-acceptance.mjs",
-    "owner:content:self-test": "node --test tests/editorial-owner-ai-acceptance.test.mjs tests/editorial-owner-additional17-acceptance.test.mjs tests/editorial-incremental-acceptance.test.mjs",
+    "owner:content:self-test": "node --test tests/editorial-owner-ai-acceptance.test.mjs tests/editorial-owner-additional17-acceptance.test.mjs tests/editorial-incremental-acceptance.test.mjs tests/legacy-composite-baseline.test.mjs tests/editorial-history-chain.test.mjs tests/release-identity-probe.test.mjs",
     "editorial:release:verify": "node scripts/verify-editorial-release-status.mjs",
     "editorial:snapshot:self-test": "node --test tests/editorial-artifact-snapshot.test.mjs",
     "editorial:snapshot:refresh": "node scripts/refresh-reviewed-localized-artifacts.mjs",

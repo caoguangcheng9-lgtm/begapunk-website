@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: '721edf6f04b81f220165a9345ddf9be676dfbdeccba05bc4b17519c1aaa6a177',
+  deploy: '7b683bfd2ab30a7e886dcbfa75eb2b5e16c67a6ca7819289de1a3f705ca77d55',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
@@ -452,13 +452,31 @@ npm run deploy:validate
   const publicBoundaryStep = step(validationJob, 'Verify public deployment boundary', failures, 'deploy/validate-and-deploy');
   const commitStep = step(validationJob, 'Commit deployment transaction', failures, 'deploy/validate-and-deploy');
   const rollbackStep = step(validationJob, 'Roll back an uncommitted deployment', failures, 'deploy/validate-and-deploy');
+  const activeIdentityStep = step(validationJob, 'Prepare IndexNow URLs from the active release', failures, 'deploy/validate-and-deploy');
+  const activeIdentityRun = normalizedRun(activeIdentityStep.run);
+  assertUnconditional('deploy/validate-and-deploy active identity', activeIdentityStep, failures);
+  if (!activeIdentityRun.includes("'python3 -' < ops/read-release-identity.py")
+    || !activeIdentityRun.includes('node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/active-release-identity.json" "$GITHUB_SHA" "$EDITORIAL_TRUSTED_BASE_SHA"')) {
+    failures.push('deploy/validate-and-deploy must verify full active artifact identity and owner composite binding before upload.');
+  }
   const uploadRun = normalizedRun(uploadReleaseStep.run);
+  if (!uploadRun.includes('test "$previous_release_id" = "$VERIFIED_ACTIVE_RELEASE_ID"')
+    || !uploadRun.includes('test "$previous_manifest_sha256" = "$VERIFIED_ACTIVE_MANIFEST_SHA256"')) {
+    failures.push('deploy/validate-and-deploy rollback identity must equal the approved active identity before any upload.');
+  }
+
   if (!uploadRun.includes('previous_manifest_sha256="$(ssh "${ssh_args[@]}" "$target"')
     || !uploadRun.includes('"sha256sum -- /www/begapunk/releases/$previous_release_id/manifest.sha256" | awk \'{print $1}\')"')
     || !uploadRun.includes('echo "previous_manifest_sha256=$previous_manifest_sha256" >> "$GITHUB_ENV"')) {
     failures.push('deploy/validate-and-deploy upload must capture and persist the exact previous-release manifest digest for rollback.');
   }
   const rollbackRun = normalizedRun(rollbackStep.run);
+  if (rollbackStep.env?.EDITORIAL_TRUSTED_BASE_SHA !== '${{ needs.build-release.outputs.editorial_trusted_base_sha }}'
+    || !rollbackRun.includes("'python3 -' < ops/read-release-identity.py")
+    || !rollbackRun.includes('node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json" "$GITHUB_SHA" "$EDITORIAL_TRUSTED_BASE_SHA" "$previous_release_id" "$previous_manifest_sha256"')) {
+    failures.push('deploy/validate-and-deploy rollback must revalidate recovered identity against captured approval.');
+  }
+
   if (!rollbackRun.includes('"$previous_release_id" "$previous_manifest_sha256" "$release_id" "$nginx_candidate"')
     || !rollbackRun.includes('/www/begapunk/bin/activate-release.sh "$previous_release_id" "$previous_manifest_sha256"')) {
     failures.push('deploy/validate-and-deploy rollback must bind the previous release to its captured manifest digest.');
