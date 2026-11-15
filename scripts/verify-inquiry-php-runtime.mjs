@@ -130,6 +130,7 @@ const TEST_CASES = [
       company: 'Example Invalid Test Company',
       country: 'Testland',
       product: 'BP-TEST-0001',
+      application: 'Fictional isolated pneumatic application.',
       requirements: 'Fictional isolated validation request.',
     },
     expected: {

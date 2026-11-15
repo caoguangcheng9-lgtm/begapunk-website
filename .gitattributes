@@ -29,3 +29,6 @@ downloads/Begapunk_A4_Horizontal_R2000.dxf -text -diff
 downloads/Begapunk_A4_Horizontal_Template.dxf -text -diff
 downloads/SOLIDWORKS_Template_Guide.md -text -diff
 downloads/SOLIDWORKS_Template_Manual.md -text -diff
+
+# WebVTT subtitles must have identical checkout bytes on Windows and Linux.
+videos/*.vtt text eol=lf
