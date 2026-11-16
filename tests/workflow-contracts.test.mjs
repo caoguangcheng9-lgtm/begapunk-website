@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import { readFile, mkdtemp, rm, mkdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -19,6 +19,75 @@ const [deploySource, prSource] = await Promise.all([
 const expectedSemanticDigests = {
   ...TRUSTED_WORKFLOW_SEMANTIC_DIGESTS,
 };
+
+// Execute the actual YAML step with a local verifier fixture and the real tee.
+// No network, production build, SSH, or deployment is used by these tests.
+async function runPublicBoundaryFixture(exitCode, { legacy = false } = {}) {
+  const workflow = parseWorkflow(deploySource);
+  let run = workflow.jobs['validate-and-deploy'].steps.find(entry => entry.name === 'Verify public deployment boundary').run;
+  if (legacy) run = run.replace('set -Eeuo pipefail\n', '').replace(' 2>&1 | tee', ' | tee');
+  const directory = await mkdtemp(path.join(os.tmpdir(), 'begapunk-public-boundary-'));
+  try {
+    await mkdir(path.join(directory, 'ops'));
+    await mkdir(path.join(directory, 'dist/production'), { recursive: true });
+    for (const file of ['index.html', 'robots.txt', 'sitemap.xml', 'sitemap-i18n.xml']) {
+      await writeFile(path.join(directory, 'dist/production', file), `fixture ${file}\n`);
+    }
+    await writeFile(path.join(directory, 'ops/verify-public-deployment.sh'),
+      `printf 'verifier stdout\\n'\nprintf 'verifier stderr\\n' >&2\nexit ${exitCode}\n`);
+    const script = `tee() { command tee "$@"; local result=$?; printf '%s\\n' "$result" > tee-exit; return "$result"; }\n`
+      + run + '\nprintf "transaction committed\\n" > commit-marker\n';
+    const result = spawnSync('bash', ['--noprofile', '--norc', '-e', '-c', script], {
+      cwd: directory, encoding: 'utf8', timeout: 10000,
+    });
+    assert.equal(result.error, undefined, result.error?.message);
+    return {
+      status: result.status, stdout: result.stdout, stderr: result.stderr,
+      log: await readFile(path.join(directory, 'dist/audit/public-boundary.log'), 'utf8'),
+      teeStatus: Number(await readFile(path.join(directory, 'tee-exit'), 'utf8')),
+      committed: await readFile(path.join(directory, 'commit-marker'), 'utf8').then(() => true, error => {
+        if (error.code === 'ENOENT') return false;
+        throw error;
+      }),
+    };
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+}
+
+for (const exitCode of [0, 1, 23]) {
+  test(`public boundary pipeline preserves verifier exit ${exitCode} even when real tee succeeds`, { skip: process.platform === 'win32' }, async () => {
+    const result = await runPublicBoundaryFixture(exitCode);
+    assert.equal(result.teeStatus, 0, 'the real tee must succeed in this fixture');
+    assert.equal(result.status, exitCode, JSON.stringify(result));
+    assert.equal(result.committed, exitCode === 0, 'failed verification must stop before transaction commit');
+    assert.equal(result.log, 'verifier stdout\nverifier stderr\n', 'both streams must be retained');
+    assert.equal(result.stdout, result.log);
+  });
+}
+
+test('public boundary regression fixture reproduces the original masked failure', { skip: process.platform === 'win32' }, async () => {
+  const result = await runPublicBoundaryFixture(23, { legacy: true });
+  assert.equal(result.teeStatus, 0);
+  assert.equal(result.status, 0, 'original pipeline falsely succeeds');
+  assert.equal(result.committed, true, 'original pipeline reaches the commit sentinel');
+  assert.equal(result.log, 'verifier stdout\n');
+  assert.equal(result.stderr, 'verifier stderr\n');
+});
+
+test('public boundary failure cannot be ignored before the actual workflow transaction commit', () => {
+  const job = parseWorkflow(deploySource).jobs['validate-and-deploy'];
+  const boundaryIndex = job.steps.findIndex(entry => entry.name === 'Verify public deployment boundary');
+  const commitIndex = job.steps.findIndex(entry => entry.name === 'Commit deployment transaction');
+  assert.ok(boundaryIndex >= 0 && commitIndex > boundaryIndex);
+  assert.equal(job['continue-on-error'], undefined);
+  for (const index of [boundaryIndex, commitIndex]) {
+    assert.equal(job.steps[index]['continue-on-error'], undefined);
+    assert.equal(job.steps[index].if, undefined, 'keep the GitHub Actions default success() condition');
+  }
+  assert.match(job.steps[boundaryIndex].run, /^set -Eeuo pipefail\n/);
+  assert.ok(job.steps[boundaryIndex].run.includes('bash ops/verify-public-deployment.sh 2>&1 | tee dist/audit/public-boundary.log'));
+});
 
 test('post-activation receipt is mandatory, bounded and before commit', () => {
   for (const [oldText, newText] of [

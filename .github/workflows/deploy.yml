@@ -509,6 +509,7 @@ jobs:
 
       - name: Verify public deployment boundary
         run: |
+          set -Eeuo pipefail
           mkdir -p dist/audit
           expected_homepage_sha256="$(sha256sum dist/production/index.html | awk '{print $1}')"
           expected_robots_sha256="$(sha256sum dist/production/robots.txt | awk '{print $1}')"
@@ -518,7 +519,7 @@ jobs:
           BEGAPUNK_EXPECTED_ROBOTS_SHA256="$expected_robots_sha256" \
           BEGAPUNK_EXPECTED_SITEMAP_SHA256="$expected_sitemap_sha256" \
           BEGAPUNK_EXPECTED_I18N_SITEMAP_SHA256="$expected_i18n_sitemap_sha256" \
-            bash ops/verify-public-deployment.sh | tee dist/audit/public-boundary.log
+            bash ops/verify-public-deployment.sh 2>&1 | tee dist/audit/public-boundary.log
 
       - name: Verify production navigation in a real browser
         run: npm run postdeploy:navigation:verify

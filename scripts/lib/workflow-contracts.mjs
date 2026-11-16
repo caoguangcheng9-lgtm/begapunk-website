@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: '2c2b83be12070e9b921e226628280c46da3ca3a62322e74fc1e2ac364e13bdd3',
+  deploy: 'ada6a477f262a8a80f879caa84c90ac000b779812198e499feb9f13cf73ef4c0',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
@@ -522,6 +522,7 @@ node scripts/verify-postactivation-inquiry.mjs --verify-active dist/audit/receip
     ['transaction commit', commitStep],
   ]) assertUnconditional(`deploy/validate-and-deploy ${label}`, stepValue, failures);
   exactRun('deploy/validate-and-deploy public boundary', publicBoundaryStep, `
+set -Eeuo pipefail
 mkdir -p dist/audit
 expected_homepage_sha256="$(sha256sum dist/production/index.html | awk '{print $1}')"
 expected_robots_sha256="$(sha256sum dist/production/robots.txt | awk '{print $1}')"
@@ -531,7 +532,7 @@ BEGAPUNK_EXPECTED_HOMEPAGE_SHA256="$expected_homepage_sha256" \\
 BEGAPUNK_EXPECTED_ROBOTS_SHA256="$expected_robots_sha256" \\
 BEGAPUNK_EXPECTED_SITEMAP_SHA256="$expected_sitemap_sha256" \\
 BEGAPUNK_EXPECTED_I18N_SITEMAP_SHA256="$expected_i18n_sitemap_sha256" \\
-  bash ops/verify-public-deployment.sh | tee dist/audit/public-boundary.log
+  bash ops/verify-public-deployment.sh 2>&1 | tee dist/audit/public-boundary.log
 `, failures);
   assertOrder(
     'deploy/validate-and-deploy production transaction',
