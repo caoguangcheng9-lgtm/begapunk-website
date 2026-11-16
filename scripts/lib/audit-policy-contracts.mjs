@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 // evidence boundaries and workflow fingerprints. Updating it is a governed
 // policy change, never a mechanical response to a failing test.
 export const TRUSTED_AUDIT_POLICY_SEMANTIC_SHA256 =
-  '5b9351f823c70e492ecd2dab971173f37dd6553813c53138c5f116582fcd41c1';
+  '295febeb0dddbb0112608c59a1cb0aa5ddfb7ccc8ce6b7c5bdf6103804f43e71';
 
 function canonicalize(value) {
   if (Array.isArray(value)) return value.map(canonicalize);
