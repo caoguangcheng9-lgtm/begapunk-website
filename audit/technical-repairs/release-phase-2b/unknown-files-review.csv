@@ -1,0 +1,7 @@
+relative_path,current_location,included_in_release,file_type,referenced_by,runtime_role,security_risk,decision,decision_reason
+downloads/Begapunk_A4_Horizontal_R2000.dxf,E:/begapunk-site-v2/downloads/Begapunk_A4_Horizontal_R2000.dxf,no,dxf,none,none,low,可以不上线,"未被 HTML、CSS、JavaScript、sitemap、搜索索引或服务器配置引用；保留在源项目供后续人工确认"
+downloads/Begapunk_A4_Horizontal_Template.dxf,E:/begapunk-site-v2/downloads/Begapunk_A4_Horizontal_Template.dxf,no,dxf,none,none,low,可以不上线,"未被 HTML、CSS、JavaScript、sitemap、搜索索引或服务器配置引用；保留在源项目供后续人工确认"
+downloads/BP-200-0001-view.pdf,E:/begapunk-site-v2/downloads/BP-200-0001-view.pdf,no,pdf,none,none,low,可以不上线,"未形成公开下载入口且不参与运行；保留在源项目供后续人工确认"
+downloads/BP-200-0001.pdf,E:/begapunk-site-v2/downloads/BP-200-0001.pdf,no,pdf,none,none,low,可以不上线,"未形成公开下载入口且不参与运行；保留在源项目供后续人工确认"
+downloads/SJ10-06.pdf,E:/begapunk-site-v2/downloads/SJ10-06.pdf,no,pdf,none,none,low,可以不上线,"未形成公开下载入口且不参与运行；保留在源项目供后续人工确认"
+videos/factory-tour.mp4,E:/begapunk-site-v2/videos/factory-tour.mp4,no,mp4,none,none,low,可以不上线,"首页和其他页面未引用该视频，当前网站运行不依赖；保留在源项目供后续人工确认"

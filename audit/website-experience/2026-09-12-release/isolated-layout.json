@@ -1,0 +1,3601 @@
+{
+  "startedAt": "2026-09-12T02:14:45.436Z",
+  "completedAt": "2026-09-12T02:15:34.858Z",
+  "root": "E:\\begapunk-release-20260912\\dist\\production",
+  "baseline": false,
+  "fallback": false,
+  "pageCount": 25,
+  "caseCount": 125,
+  "failingCases": 0,
+  "results": [
+    {
+      "route": "contact.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Union RFQ | Request a Quote | Begapunk",
+        "mainTop": 533,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "contact.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Union RFQ | Request a Quote | Begapunk",
+        "mainTop": 534.8125,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "contact.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Union RFQ | Request a Quote | Begapunk",
+        "mainTop": 834.078125,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "contact.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Union RFQ | Request a Quote | Begapunk",
+        "mainTop": 761.96875,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "contact.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Union RFQ | Request a Quote | Begapunk",
+        "mainTop": 628.5,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/contact.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
+        "mainTop": 562.578125,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/contact.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
+        "mainTop": 564.390625,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/contact.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
+        "mainTop": 960.890625,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/contact.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
+        "mainTop": 832.046875,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/contact.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
+        "mainTop": 658.078125,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/faq.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 180.6000000005588,
+            "value": 0.000565081787109375,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "faq-01-panel",
+                "from": 796.5,
+                "to": 805.5
+              },
+              {
+                "node": "SPAN",
+                "from": 757.5,
+                "to": 762
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.000565081787109375,
+      "brokenImages": []
+    },
+    {
+      "route": "de/faq.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 178,
+            "value": 0.00044444444444444447,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "faq-01-panel",
+                "from": 798.3125,
+                "to": 807.3125
+              },
+              {
+                "node": "SPAN",
+                "from": 759.3125,
+                "to": 763.8125
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.00044444444444444447,
+      "brokenImages": []
+    },
+    {
+      "route": "de/faq.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/faq.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/faq.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/index.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatische Drehdurchführungen | 1–8 Kanäle | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/index.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatische Drehdurchführungen | 1–8 Kanäle | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/index.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatische Drehdurchführungen | 1–8 Kanäle | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/index.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatische Drehdurchführungen | 1–8 Kanäle | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/index.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatische Drehdurchführungen | 1–8 Kanäle | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/manufacturing-quality.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fertigung & Qualität | Harteloxieren | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/manufacturing-quality.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fertigung & Qualität | Harteloxieren | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/manufacturing-quality.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fertigung & Qualität | Harteloxieren | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/manufacturing-quality.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fertigung & Qualität | Harteloxieren | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/manufacturing-quality.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fertigung & Qualität | Harteloxieren | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/search.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunk Drehdurchführungen durchsuchen",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/search.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunk Drehdurchführungen durchsuchen",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "de/search.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunk Drehdurchführungen durchsuchen",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/search.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunk Drehdurchführungen durchsuchen",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "de/search.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 673.5,
+            "value": 0.005827973583568709,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "search-results",
+                "from": 662.609375,
+                "to": 688.453125
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunk Drehdurchführungen durchsuchen",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.005827973583568709,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "faq.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rotary Joint FAQ: Selection, Design & Testing | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "faq.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rotary Joint FAQ: Selection, Design & Testing | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "faq.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rotary Joint FAQ: Selection, Design & Testing | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "faq.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rotary Joint FAQ: Selection, Design & Testing | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "faq.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rotary Joint FAQ: Selection, Design & Testing | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/contact.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Demande de devis | Raccord tournant pneumatique | Begapunk",
+        "mainTop": 616.234375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/contact.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Demande de devis | Raccord tournant pneumatique | Begapunk",
+        "mainTop": 618.046875,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/contact.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Demande de devis | Raccord tournant pneumatique | Begapunk",
+        "mainTop": 1077.03125,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/contact.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Demande de devis | Raccord tournant pneumatique | Begapunk",
+        "mainTop": 951.984375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/contact.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Demande de devis | Raccord tournant pneumatique | Begapunk",
+        "mainTop": 682.15625,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/faq.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 171.6000000005588,
+            "value": 0.000729205322265625,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "faq-01-panel",
+                "from": 766.921875,
+                "to": 775.921875
+              },
+              {
+                "node": "SPAN",
+                "from": 727.921875,
+                "to": 732.421875
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "FAQ technique sur les raccords tournants | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.000729205322265625,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/faq.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 387.79999999981374,
+            "value": 0.0005683304398148148,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "faq-01-panel",
+                "from": 768.734375,
+                "to": 777.734375
+              },
+              {
+                "node": "SPAN",
+                "from": 729.734375,
+                "to": 734.234375
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "FAQ technique sur les raccords tournants | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.0005683304398148148,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/faq.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "FAQ technique sur les raccords tournants | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/faq.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "FAQ technique sur les raccords tournants | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/faq.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "FAQ technique sur les raccords tournants | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/index.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Raccord tournant pneumatique | Standard et sur mesure | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/index.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Raccord tournant pneumatique | Standard et sur mesure | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/index.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Raccord tournant pneumatique | Standard et sur mesure | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/index.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Raccord tournant pneumatique | Standard et sur mesure | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/index.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Raccord tournant pneumatique | Standard et sur mesure | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/manufacturing-quality.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fabrication et qualité | Raccords tournants Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/manufacturing-quality.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fabrication et qualité | Raccords tournants Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/manufacturing-quality.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fabrication et qualité | Raccords tournants Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/manufacturing-quality.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fabrication et qualité | Raccords tournants Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/manufacturing-quality.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Fabrication et qualité | Raccords tournants Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/search.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rechercher un raccord tournant | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/search.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rechercher un raccord tournant | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "fr/search.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rechercher un raccord tournant | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/search.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rechercher un raccord tournant | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "fr/search.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 652,
+            "value": 0.010076987491209851,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "search-results",
+                "from": 537.8125,
+                "to": 563.65625
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Rechercher un raccord tournant | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.010076987491209851,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "index.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "index.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "index.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "index.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "index.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Pneumatic Rotary Unions & Rotary Joints for OEM Machinery | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/contact.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイント見積・技術相談 | Begapunk",
+        "mainTop": 502.421875,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/contact.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイント見積・技術相談 | Begapunk",
+        "mainTop": 504.234375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/contact.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイント見積・技術相談 | Begapunk",
+        "mainTop": 861.390625,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/contact.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイント見積・技術相談 | Begapunk",
+        "mainTop": 654.15625,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/contact.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイント見積・技術相談 | Begapunk",
+        "mainTop": 785.484375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/faq.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイントFAQ：選定・設計・検査 | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/faq.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイントFAQ：選定・設計・検査 | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/faq.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイントFAQ：選定・設計・検査 | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/faq.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイントFAQ：選定・設計・検査 | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/faq.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "ロータリージョイントFAQ：選定・設計・検査 | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/index.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "エアーロータリージョイント（空圧用）｜標準・特注 | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/index.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "エアーロータリージョイント（空圧用）｜標準・特注 | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/index.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "エアーロータリージョイント（空圧用）｜標準・特注 | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/index.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "エアーロータリージョイント（空圧用）｜標準・特注 | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/index.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "エアーロータリージョイント（空圧用）｜標準・特注 | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/manufacturing-quality.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "製造・品質管理 | 硬質アルマイト | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/manufacturing-quality.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "製造・品質管理 | 硬質アルマイト | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/manufacturing-quality.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "製造・品質管理 | 硬質アルマイト | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/manufacturing-quality.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "製造・品質管理 | 硬質アルマイト | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/manufacturing-quality.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "製造・品質管理 | 硬質アルマイト | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/search.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunkサイト内検索 | ロータリージョイント",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/search.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunkサイト内検索 | ロータリージョイント",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ja/search.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 610.3999999994412,
+            "value": 0.011855279401423356,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "search-results",
+                "from": 483.828125,
+                "to": 509.671875
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunkサイト内検索 | ロータリージョイント",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.011855279401423356,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/search.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 638.3999999994412,
+            "value": 0.007824296026559095,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "search-results",
+                "from": 600.8125,
+                "to": 626.65625
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunkサイト内検索 | ロータリージョイント",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.007824296026559095,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ja/search.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Begapunkサイト内検索 | ロータリージョイント",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "manufacturing-quality.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Manufacturing & Quality | Hard Anodizing | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "manufacturing-quality.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Manufacturing & Quality | Hard Anodizing | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "manufacturing-quality.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Manufacturing & Quality | Hard Anodizing | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "manufacturing-quality.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Manufacturing & Quality | Hard Anodizing | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "manufacturing-quality.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Manufacturing & Quality | Hard Anodizing | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/contact.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Запрос на ротационное соединение | Begapunk",
+        "mainTop": 606.359375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/contact.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Запрос на ротационное соединение | Begapunk",
+        "mainTop": 609.984375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/contact.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Запрос на ротационное соединение | Begapunk",
+        "mainTop": 964.578125,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/contact.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Запрос на ротационное соединение | Begapunk",
+        "mainTop": 835.734375,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/contact.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Запрос на ротационное соединение | Begapunk",
+        "mainTop": 628.5,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/faq.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 189.6000000005588,
+            "value": 0.0001236328125,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "SPAN",
+                "from": 855.28125,
+                "to": 859.78125
+              },
+              {
+                "node": "faq-01-panel",
+                "from": 894.28125,
+                "to": 0
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Ротационные соединения: подбор, проектирование и испытания | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.0001236328125,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/faq.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 224.59999999962747,
+            "value": 0.000078930362654321,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "SPAN",
+                "from": 858.90625,
+                "to": 863.40625
+              },
+              {
+                "node": "faq-01-panel",
+                "from": 897.90625,
+                "to": 0
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Ротационные соединения: подбор, проектирование и испытания | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.000078930362654321,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/faq.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Ротационные соединения: подбор, проектирование и испытания | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/faq.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Ротационные соединения: подбор, проектирование и испытания | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/faq.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Ротационные соединения: подбор, проектирование и испытания | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/index.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Пневматические ротационные соединения для OEM-оборудования | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/index.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Пневматические ротационные соединения для OEM-оборудования | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/index.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Пневматические ротационные соединения для OEM-оборудования | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/index.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Пневматические ротационные соединения для OEM-оборудования | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/index.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Пневматические ротационные соединения для OEM-оборудования | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/manufacturing-quality.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Производство и качество | Анодирование | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/manufacturing-quality.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Производство и качество | Анодирование | Begapunk",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/manufacturing-quality.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Производство и качество | Анодирование | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/manufacturing-quality.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Производство и качество | Анодирование | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/manufacturing-quality.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Производство и качество | Анодирование | Begapunk",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/search.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Поиск по сайту Begapunk | Ротационные соединения",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/search.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Поиск по сайту Begapunk | Ротационные соединения",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "ru/search.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 595.1000000005588,
+            "value": 0.010076987491209851,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "search-results",
+                "from": 537.8125,
+                "to": 563.65625
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Поиск по сайту Begapunk | Ротационные соединения",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.010076987491209851,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/search.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [
+          {
+            "time": 680.8999999994412,
+            "value": 0.005827973583568709,
+            "recentInput": false,
+            "sources": [
+              {
+                "node": "search-results",
+                "from": 662.609375,
+                "to": 688.453125
+              }
+            ]
+          }
+        ],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Поиск по сайту Begapunk | Ротационные соединения",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0.005827973583568709,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "ru/search.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Поиск по сайту Begapunk | Ротационные соединения",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "search.html",
+      "width": 1280,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Search | Begapunk Rotary Joints & Rotary Unions",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "search.html",
+      "width": 1440,
+      "height": 900,
+      "mode": "desktop",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Search | Begapunk Rotary Joints & Rotary Unions",
+        "mainTop": 81,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": []
+    },
+    {
+      "route": "search.html",
+      "width": 320,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Search | Begapunk Rotary Joints & Rotary Unions",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "search.html",
+      "width": 390,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Search | Begapunk Rotary Joints & Rotary Unions",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    },
+    {
+      "route": "search.html",
+      "width": 768,
+      "height": 844,
+      "mode": "mobile",
+      "failures": [],
+      "pageErrors": [],
+      "badResponses": [],
+      "status": 200,
+      "initial": {
+        "shifts": [],
+        "overflow": 0,
+        "h1": 1,
+        "title": "Search | Begapunk Rotary Joints & Rotary Unions",
+        "mainTop": 65,
+        "languages": [
+          "English",
+          "Deutsch",
+          "Français",
+          "日本語",
+          "Русский"
+        ]
+      },
+      "loadShiftScore": 0,
+      "brokenImages": [],
+      "menuOpen": true,
+      "menuClosed": true
+    }
+  ],
+  "startingManifestSha256": "729b177e948bf9fb56907fe436da4ee799a1018f37000e13d5b551872b67fa61",
+  "endingManifestSha256": "729b177e948bf9fb56907fe436da4ee799a1018f37000e13d5b551872b67fa61",
+  "artifactChangedDuringRun": false
+}

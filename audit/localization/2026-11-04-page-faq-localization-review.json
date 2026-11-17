@@ -1,0 +1,2719 @@
+{
+  "reviewedAt": "2026-11-04T07:02:45.100Z",
+  "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+  "sourceDigest": "5bf16ab623b0ecd93b4b0031c36cb0305dc82a933ab5dac0cd9aa8640691e60c",
+  "records": [
+    {
+      "page": "products.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "1",
+        "3",
+        "4",
+        "66",
+        "104",
+        "105",
+        "108",
+        "120"
+      ],
+      "answersReviewed": 8,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "products.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "products.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "de",
+        "page": "products.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "blog-rotary-joint-selection.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "16",
+        "17",
+        "18",
+        "20",
+        "21",
+        "24",
+        "25"
+      ],
+      "answersReviewed": 7,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-materials.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "22+65"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-union-seal-types.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "23+64"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-threaded-vs-flange.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "19"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-laser-tube-cutting.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "41",
+        "42",
+        "application-laser-tube-cutting-existing-3",
+        "application-laser-tube-cutting-existing-4"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "application-laser-tube-cutting.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "application-laser-tube-cutting.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-packaging-machinery.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "44"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "application-packaging-machinery.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "application-packaging-machinery.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-bottle-filling-capping.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "45",
+        "47"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "application-bottle-filling-capping.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "application-bottle-filling-capping.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-automation-rotary-tables.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "49",
+        "55"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "application-automation-rotary-tables.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "application-automation-rotary-tables.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-robot-end-of-arm-tooling.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "51",
+        "67"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-vacuum-packaging-machines.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "2",
+        "53",
+        "application-vacuum-packaging-machines-existing-3"
+      ],
+      "answersReviewed": 3,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-leaking.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "79",
+        "80",
+        "81",
+        "82"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "about.html",
+      "language": "de",
+      "referenceUrls": [
+        "https://www.deublin.eu/mehrkanal-drehdurchfuehrungen",
+        "https://www.deublin.com/de/produkte/drehdurchfuehrungen"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Drehdurchführung / Mehrkanal-Drehdurchführung for the fluid-transfer assembly; Dichtung for its seal; Rundschalttisch, Verdrehsicherung and Spannen/Lösen for machine integration.",
+        "U/min for rotational speed; Kalendertage for calendar-day lead times; Herstellergarantie for the stated manufacturer warranty, not a claim about statutory rights."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use Kanalzahl, Druck, Drehzahl and Einbaumaße; supplier questions use empfehlenswert / engere Wahl without inventing a ranked list.",
+        "Buying answers lead with sample availability, manufacturing lead time, price tier, payment options and remedy."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "119",
+        "121",
+        "122",
+        "123",
+        "106",
+        "107"
+      ],
+      "answersReviewed": 6,
+      "renderChecks": [
+        {
+          "language": "de",
+          "page": "about.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "de",
+          "page": "about.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "de",
+        "page": "about.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "products.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "1",
+        "3",
+        "4",
+        "66",
+        "104",
+        "105",
+        "108",
+        "120"
+      ],
+      "answersReviewed": 8,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "products.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "products.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "fr",
+        "page": "products.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "blog-rotary-joint-selection.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "16",
+        "17",
+        "18",
+        "20",
+        "21",
+        "24",
+        "25"
+      ],
+      "answersReviewed": 7,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-materials.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "22+65"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-union-seal-types.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "23+64"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-threaded-vs-flange.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "19"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-laser-tube-cutting.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "41",
+        "42",
+        "application-laser-tube-cutting-existing-3",
+        "application-laser-tube-cutting-existing-4"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "application-laser-tube-cutting.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "application-laser-tube-cutting.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-packaging-machinery.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "44"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "application-packaging-machinery.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "application-packaging-machinery.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-bottle-filling-capping.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "45",
+        "47"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "application-bottle-filling-capping.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "application-bottle-filling-capping.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-automation-rotary-tables.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "49",
+        "55"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "application-automation-rotary-tables.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "application-automation-rotary-tables.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-robot-end-of-arm-tooling.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "51",
+        "67"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-vacuum-packaging-machines.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "2",
+        "53",
+        "application-vacuum-packaging-machines-existing-3"
+      ],
+      "answersReviewed": 3,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-leaking.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "79",
+        "80",
+        "81",
+        "82"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "about.html",
+      "language": "fr",
+      "referenceUrls": [
+        "https://www.deublin.eu/joints-tournants-raccords-tournants",
+        "https://www.deublin.com/fr/produits/unions-rotatives/air"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04",
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Raccord tournant consistently names the assembly; joint torique, joint à lèvre and joint d’étanchéité name seal components. Voies, table d’indexage, bridage and collecteur électrique fit industrial procurement and selection.",
+        "tr/min, jours calendaires, crédit documentaire and garantie contractuelle preserve units and commercial meaning."
+      ],
+      "searchIntentDecisions": [
+        "Selection questions use choisir, nombre de voies, pression admissible and montage; manufacturer questions use choisir / retenir pour une consultation.",
+        "Buying copy answers cost, ordering an individual sample, payment and warranty directly; no local price conversion is invented."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "119",
+        "121",
+        "122",
+        "123",
+        "106",
+        "107"
+      ],
+      "answersReviewed": 6,
+      "renderChecks": [
+        {
+          "language": "fr",
+          "page": "about.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "fr",
+          "page": "about.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "fr",
+        "page": "about.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "products.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "1",
+        "3",
+        "4",
+        "66",
+        "104",
+        "105",
+        "108",
+        "120"
+      ],
+      "answersReviewed": 8,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "products.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "products.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "ja",
+        "page": "products.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "blog-rotary-joint-selection.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "16",
+        "17",
+        "18",
+        "20",
+        "21",
+        "24",
+        "25"
+      ],
+      "answersReviewed": 7,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-materials.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "22+65"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-union-seal-types.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "23+64"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-threaded-vs-flange.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "19"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-laser-tube-cutting.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "41",
+        "42",
+        "application-laser-tube-cutting-existing-3",
+        "application-laser-tube-cutting-existing-4"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "application-laser-tube-cutting.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "application-laser-tube-cutting.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-packaging-machinery.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "44"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "application-packaging-machinery.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "application-packaging-machinery.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-bottle-filling-capping.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "45",
+        "47"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "application-bottle-filling-capping.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "application-bottle-filling-capping.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-automation-rotary-tables.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "49",
+        "55"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "application-automation-rotary-tables.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "application-automation-rotary-tables.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-robot-end-of-arm-tooling.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "51",
+        "67"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-vacuum-packaging-machines.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "2",
+        "53",
+        "application-vacuum-packaging-machines-existing-3"
+      ],
+      "answersReviewed": 3,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-leaking.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "79",
+        "80",
+        "81",
+        "82"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "about.html",
+      "language": "ja",
+      "referenceUrls": [
+        "https://www.ckd.co.jp/kiki/jp/product/detail/424/RJF"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "ロータリジョイント, 流路数/回路数, 回転数, インデックステーブル, エアブロー, クランプ/アンクランプ reflect Japanese pneumatic-equipment wording.",
+        "Use short です/ます answers, separate 電気回路 from エア流路, use 暦日 and 出荷日から1年間, and distinguish 真空度 from 正圧の定格."
+      ],
+      "searchIntentDecisions": [
+        "Use natural engineer questions with どのように選定しますか and 何流路; procurement uses 見積り, 納期, 仕向け市場 and 調達先.",
+        "Manufacturer questions retain おすすめ and a direct はい for Begapunk, with model fit and evidence in the answer."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "119",
+        "121",
+        "122",
+        "123",
+        "106",
+        "107"
+      ],
+      "answersReviewed": 6,
+      "renderChecks": [
+        {
+          "language": "ja",
+          "page": "about.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ja",
+          "page": "about.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "ja",
+        "page": "about.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "products.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "1",
+        "3",
+        "4",
+        "66",
+        "104",
+        "105",
+        "108",
+        "120"
+      ],
+      "answersReviewed": 8,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "products.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "products.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 8,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "ru",
+        "page": "products.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    },
+    {
+      "page": "blog-rotary-joint-selection.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "16",
+        "17",
+        "18",
+        "20",
+        "21",
+        "24",
+        "25"
+      ],
+      "answersReviewed": 7,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "blog-rotary-joint-selection.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 7,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-materials.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "22+65"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "blog-rotary-joint-materials.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-union-seal-types.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "23+64"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "blog-rotary-union-seal-types.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-threaded-vs-flange.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "19"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "blog-threaded-vs-flange.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-laser-tube-cutting.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "41",
+        "42",
+        "application-laser-tube-cutting-existing-3",
+        "application-laser-tube-cutting-existing-4"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "application-laser-tube-cutting.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "application-laser-tube-cutting.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-packaging-machinery.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "44"
+      ],
+      "answersReviewed": 1,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "application-packaging-machinery.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "application-packaging-machinery.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 1,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-bottle-filling-capping.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "45",
+        "47"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "application-bottle-filling-capping.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "application-bottle-filling-capping.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-automation-rotary-tables.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "49",
+        "55"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "application-automation-rotary-tables.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "application-automation-rotary-tables.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-robot-end-of-arm-tooling.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "51",
+        "67"
+      ],
+      "answersReviewed": 2,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "application-robot-end-of-arm-tooling.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 2,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "application-vacuum-packaging-machines.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "2",
+        "53",
+        "application-vacuum-packaging-machines-existing-3"
+      ],
+      "answersReviewed": 3,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "application-vacuum-packaging-machines.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 3,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "blog-rotary-joint-leaking.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "79",
+        "80",
+        "81",
+        "82"
+      ],
+      "answersReviewed": 4,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "blog-rotary-joint-leaking.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 4,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": null
+    },
+    {
+      "page": "about.html",
+      "language": "ru",
+      "referenceUrls": [
+        "https://fluidhandling.kadant.com/ru/produktsiya/vrashchayushchiesya-golovki-i-soedineniya/standartnye-vrashchayushchiesya-golovki"
+      ],
+      "referenceAccessDates": [
+        "2026-11-04"
+      ],
+      "terminologyDecisions": [
+        "Вращающееся соединение and многоканальное describe the fluid assembly; уплотнение describes seals; токосъёмник describes the electrical interface. Existing ротационное is a compatible site synonym.",
+        "Частота вращения / об/мин, подсос воздуха, межканальные утечки, момент страгивания and календарные дни avoid literal English calques and preserve engineering meaning."
+      ],
+      "searchIntentDecisions": [
+        "Use выбрать, число каналов, частота вращения and присоединения for engineering intent; включить в список поставщиков for supplier comparison.",
+        "Buying answers retain direct availability from one unit, calendar-day manufacturing times and quotation-confirmed payment methods."
+      ],
+      "reviewMethod": "AI-assisted question-by-question translation and semantic review against the owner-approved English FAQ, official target-market terminology references, technical/commercial boundary comparison, static contract checks and CUA browser inspection. No independent native-speaker or human engineering sign-off.",
+      "reviewedAt": "2026-11-04T07:02:45.100Z",
+      "reviewedByRole": "Codex AI-assisted technical localization reviewer",
+      "nativeSpeakerReviewPerformed": false,
+      "unresolvedIssues": [],
+      "questionKeys": [
+        "119",
+        "121",
+        "122",
+        "123",
+        "106",
+        "107"
+      ],
+      "answersReviewed": 6,
+      "renderChecks": [
+        {
+          "language": "ru",
+          "page": "about.html",
+          "width": 390,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": true
+        },
+        {
+          "language": "ru",
+          "page": "about.html",
+          "width": 1440,
+          "height": 900,
+          "result": "pass",
+          "faqCount": 6,
+          "mouseKeyboard": false
+        }
+      ],
+      "commercialExpandedCheck": {
+        "language": "ru",
+        "page": "about.html",
+        "width": 390,
+        "allAnswersExpanded": true,
+        "result": "pass"
+      }
+    }
+  ]
+}

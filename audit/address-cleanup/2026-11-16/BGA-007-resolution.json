@@ -1,0 +1,14 @@
+{
+  "issueId": "BGA-007",
+  "previousStatus": "PENDING_OWNER_EVIDENCE",
+  "status": "RESOLVED_OWNER_CONFIRMED",
+  "ownerConfirmedOn": "2026-11-16",
+  "decision": {
+    "path": "audit/address-cleanup/2026-11-16/OWNER_DECISION_RECORD_CN.md",
+    "sha256": "aafcf09afc4d10b1e94fade6b05fc4228b0c588b8363935a325228c90a5e9efb"
+  },
+  "finding": "The previous address is retired and must not be published as current contact information.",
+  "currentAddressRole": "Registered Address",
+  "deploymentAuthorized": false,
+  "historicalManualSha256": "6e1886f82be4095a1b80318d7ede925faa0692efb05674f884241e4cf3e3dc11"
+}

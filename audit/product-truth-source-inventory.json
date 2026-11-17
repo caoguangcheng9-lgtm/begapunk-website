@@ -1,0 +1,5848 @@
+{
+  "schema_version": "2.0",
+  "audit_date": "2026-07-31",
+  "repository": "caoguangcheng9-lgtm/begapunk-website",
+  "baseline_commit": "d95d4db1ce908f941e76bff3f78bc052455d0b0b",
+  "source_count": 236,
+  "models": [
+    "BP-1P-0003",
+    "BP-1P-0006",
+    "BP-200-0001",
+    "BP-2P-0001",
+    "BP-2P-0002",
+    "BP-2P-08-0001",
+    "BP-2P-130-0001",
+    "BP-2P-16-0001",
+    "BP-2P-30-0001",
+    "BP-2P-50-0001",
+    "BP-2P-95-0001",
+    "BP-2P-95-FAMILY",
+    "BP-3P-0004",
+    "BP-3P-0006",
+    "BP-3P-0007",
+    "BP-3P-S06-0001",
+    "BP-4P-30-0001",
+    "BP-8P-0001"
+  ],
+  "model_count": 18,
+  "field_types": [
+    "body_material",
+    "channel_configuration",
+    "compatible_media",
+    "friction_torque",
+    "maximum_pressure",
+    "maximum_speed",
+    "model",
+    "model_identity",
+    "mounting_style",
+    "operating_temperature",
+    "passages",
+    "port_thread",
+    "protection_rating",
+    "rated_pressure",
+    "rotor_mounting_pattern",
+    "seal_material",
+    "stator_mounting_pattern",
+    "test_pressure",
+    "unassigned_mounting_pattern",
+    "warranty",
+    "weight"
+  ],
+  "field_type_count": 21,
+  "summary": {
+    "observation_count": 2020,
+    "current_observations": 1942,
+    "historical_findings": 3,
+    "manual_review_findings": 57,
+    "stale_references": 14,
+    "source_identity_mismatches": 4,
+    "mismatched_document_count": 1,
+    "affected_observation_count": 4,
+    "coverage_differences": 1,
+    "parser_ambiguities": 0,
+    "git_tracked_sources": 236,
+    "local_untracked_sources": 0,
+    "protected_local_catalog_sources": 2,
+    "automatically_parseable_sources": 200,
+    "manual_engineering_verification_sources": 39
+  },
+  "sources": [
+    {
+      "source_path": "application-automation-rotary-tables.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "b92168afbab2cf620d36fb1c03dc13feef67a47096faf48a6ba3730bff93351f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 6,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-bottle-filling-capping.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "880768aa9cfdabc78a38e3e522d0f84cf842b4acbcca8665cdb685b11b38aa1d",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-cnc-pneumatic-clamping.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "115ae4f9417712c0c91272b97e96b2d27fe0a843c009a35f5e31119a58c992ed",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-electronics-battery-test-fixtures.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "971429f0c7412d905c054a309499a3b1307cc1a08a1dc4c36bc131aae28aa1bc",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-laser-tube-cutting.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "7c235bca8ddee69198cd9c7f2ddd62bdbef79a210b29555dca1b3b34217f901c",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "compatible_media",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-packaging-machinery.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "f89275a8494c4975a0fb6e71aacc3a5c8fffcec36425688c4aef48c1018288e7",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-pneumatic-tools-hose-anti-twist.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "fb87b7546651b53854815cda567eb7f3fa073128b7741a482cff3d9d6996f907",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-robot-end-of-arm-tooling.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "86b7eeaabf9ef2664f483d9a888e360b6639d766f251f708afdf3950dd5578aa",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-steel-dusty-environments.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "3ed3a57b5ae46539b6b63be62e19c378806f13b7047db49d0e1cba95db1a69be",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-textile-printing-converting.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "d5c12199e9ed0f3b4d2f2f7bdbdb59b9cd64fb2a180f84d61a824c74c3ad977f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-vacuum-packaging-machines.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "73b13ffa0745bc65506621775bfaa96914f659899dfb69af06e5912cd219abb5",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-0001",
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "application-welding-positioners.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "18c8a94e380b0b5f9999ff567e35bb4ca14c12d895f0f5b5ce758e61b8b7352b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "applications.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "fc1e876c9baf591b5d0105a870e14c2271be53ac1ff0489ad2785af3d8c10afb",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 12,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/01-BP-1P-0003-temperature.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "24596220ccf2a93c3eec8ca10f8fdf6da4441d7660d7c68265d6790524861297",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [
+        "operating_temperature"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/02-BP-1P-0003-material-surface.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "647923e03b4a4456bfe4dacda402677374eb8d17513f066160e0b39a37a60872",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [
+        "body_material",
+        "weight"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/03-BP-2P-0001-weight.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "b251d4e64160a46d432dfea2ee7c48d1afd122c3ec289689dcc712b6f0595b3f",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "weight"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/04-BP-2P-0001-material.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "6c793cf3e5b1150123e36479642d19de05a9f0238a98da320feecaf8730a2267",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/05-BP-2P-30-0001-model.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "e34b29ae3c0bfcb5a285d76bbd359999eb4d34c8ef03cccd97bd3af7185765c6",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-30-0001"
+      ],
+      "field_types": [
+        "model"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/06-BP-2P-95-0001-model.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "02647555b017e1333fa260c3ebc0c3806146cc71e9d4d067c201a46328bdc7b8",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "model"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/07-BP-2P-95-pressure.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "895e0f64cf3e27054a9ca4c0d1fbd3916bd111b366cbd314721cdaf02ef1ce1e",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "maximum_pressure"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/08-BP-4P-30-0001-speed.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "65a21cca9e88bf5831bdb0db7bc16d09f4b99e12bcdfd90d15fce26e5d9344cd",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "maximum_speed"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/09-BP-2P-50-0001-weight.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "3422b70ac047a7cf792a72b38f86d0698ed330c66d081dc0cdb47cc6805ef5e5",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "weight"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/10-BP-3P-0004-weight.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "a159f2a284b731a4b2bacea6dfa70523d77198b614cb3f5a7255ecd5b4299f28",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "weight"
+      ],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/evidence-cards/11-BP-2P-95-0001-test-pressure-dependent.md",
+      "source_type": "audit-evidence-card",
+      "git_tracked": true,
+      "source_hash": "ad60f5ad3dd467dc69e69d9f41d307ef88e6957d03fb8cfe306fd94a84ecba17",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [],
+      "notes": "Human-readable evidence card; underlying engineering material requires manual verification."
+    },
+    {
+      "source_path": "audit/fact-resolution/phase-1e-a/product-fact-conflicts.csv",
+      "source_type": "audit-conflict-record",
+      "git_tracked": true,
+      "source_hash": "33c482809594992c9e22d1730fc522c9f7e157afb7cc38893ea423784d5ba469",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": true,
+      "model_count": 8,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-2P-95-FAMILY",
+        "BP-3P-0004",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "component_materials",
+        "material_and_surface_treatment",
+        "max_speed",
+        "maximum_speed",
+        "model_identity",
+        "operating_temperature",
+        "rated_pressure",
+        "test_pressure",
+        "weight"
+      ],
+      "notes": "Existing unresolved fact-conflict register."
+    },
+    {
+      "source_path": "blog-rotary-joint-installation-mistakes.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "13c3edbb7ca654b46b4e4b54dd726b565aa7dffd7c54ea6242d8e846987b8889",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "compatible_media",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog-rotary-joint-leaking.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "60ae8190b0cbc27657bbc05a12e6b1bbf7ac9a2b115b731f62792b56fc21aad3",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog-rotary-joint-materials.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "8947547295346e9a631f9fa0e5dfb98cf92a863347161a1a853bab2b13da595a",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog-rotary-joint-selection.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "ed2e7c528c515c5b87942358a98e9a17c4240f68943ea147c75bc8c4250bbeec",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog-rotary-union-seal-types.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "544847cff41af93530a5f26871ce8e68105ea4ded3570f4678a010732ff1cf88",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog-seal-replacement.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "1acbe6f5f8937914e2f836e1a85886d77bd3dd305ae1075d0b7ee44f6c4982a8",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog-threaded-vs-flange.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "4e7d13e35de47372791027a91c419ebfd9e23262f6e64aa1f5e457de6724b06a",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "blog.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "95742b6774caf24f479a794c62d0b74dac927736d8b82b26ef81c0615fe01062",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "BP-1P-0003.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "8fceb1b69f21f0ad793eeb91619597b61fcb0a0b848d747653a15480971ec7bb",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-1P-0006.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "bc38943e67339493687744604e7138d67e53e3b3ec45aa1e869e981d21ec1487",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "7ddbdcf539342f7a4e9d66b04f38dcde67c133346ecd0b7e7974f272017b4735",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-0002.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "005cf7c5684d0de561690dbef0da829117a3bf642e819198436ad4de8040af2b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0002"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-08-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "f9cbe7f27c62298470824b88e92f9c3cc8687982a51432c50737122e40d12970",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-08-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-130-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "365e4ba9f1c73e919acb91c93f7ec7f9c154752f6c8c8697e502319c001923cf",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-130-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-16-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "060a9652c164c2298202e25ccd2510e85a33ddd3bc246e8d75ef6f940d37d044",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-16-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-30-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "2a0ada2a1b6fbb7ea184202020bc1cbe8c04bc54b451ec9585e8f1b5be4cb61d",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-50-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "686edb55939c424201605e680f3d091f1f11190940a156ff91b73f88bdc5681b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "protection_rating",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-2P-95-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "a56e15df2e4ca962189d395fa39769913d5b78ced41d5fd04fcf616868e54306",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-3P-0004.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "cfb79257c57e1b165bbf52ec54a33460b8afc353cf803b0551ceeb3a96082d4d",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-3P-0006.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "098b43137dfcdcdbb8681d51475ad65fb61c3ad9f1198519dd6f9ec09bbab117",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-3P-0007.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "48cb3dae7593605146652ab6618f863ce9df57dff4eac75f00801aeef5819327",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0007"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-3P-S06-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "5e22e75d9f71f939c74b535754ccd70e2b348f3b85465e999110f685ac4b71ff",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-S06-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-4P-30-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "b2f870798e1142b1d5778469714b31402847410d5e5e14801c9253e340d18e5c",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "BP-8P-0001.html",
+      "source_type": "website-product-html",
+      "git_tracked": true,
+      "source_hash": "40ec21bda3600e9e9a6c4c34ee2600266669990de4f79568b8d214ab0eccae4f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "catalog-project/data/catalog-data.csv",
+      "source_type": "local-untracked-source",
+      "git_tracked": true,
+      "source_hash": "e366e2f2d699fc387065795904b280860bfc146d8dd8a16034dfaed4beb1a510",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": true,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "unassigned_mounting_pattern",
+        "weight"
+      ],
+      "notes": "Protected local catalog CSV, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; the file is read-only and not authoritative."
+    },
+    {
+      "source_path": "catalog-project/data/source-evidence.json",
+      "source_type": "local-untracked-source",
+      "git_tracked": true,
+      "source_hash": "e2c0b764af3746512b9d4c312a281b03367229a8717d81db2cd291303239c6ff",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": true,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "maximum_pressure",
+        "maximum_speed",
+        "operating_temperature",
+        "weight"
+      ],
+      "notes": "Protected local evidence index, classified as local-untracked-source by task policy. Current Git tracking state is recorded separately; approval statements are not independently confirmed by Codex."
+    },
+    {
+      "source_path": "de/application-automation-rotary-tables.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "6279f01031c254e7e38d66b747aa8b2912f1e34c05a226f46babb6d29427b837",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 6,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-bottle-filling-capping.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "0342a4baf141bd2d6600719cd2ca741a06461465a8e37f65675cad0ff72f2c7e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-cnc-pneumatic-clamping.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "46cac84b3309b73902692449372a0dc093784a0ae9daec1e8055cbd69bc53bab",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-electronics-battery-test-fixtures.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "008aced214e27adc79f565e2059960ff56a4afcedbbf798ca08566de659d9316",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-laser-tube-cutting.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "3bc9a4d6fb5f3f885abea3f5613f9a89fe94402f874599d1538d38bd40e95b39",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "compatible_media",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-packaging-machinery.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "1ba249bea884bf13ca3c8c5a3c1edd692145e5013360f90fea71726b6b28c3d7",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-pneumatic-tools-hose-anti-twist.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "f0555fd4887381e90d3b30f416e0c73eb02d08b8334682e6021bcaa7a16c4943",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-robot-end-of-arm-tooling.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "1ee243871c9a735daa2bf3c8722a47300eb17f3e9e09ed30ab8e23770277c2fb",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-steel-dusty-environments.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "74770fa1b6aa64b76ad6bc1444cff982db0b307c7d26d845ea43340b9258d674",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-textile-printing-converting.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "9beec5a2325451a50b3daf7fa07dc4cb3dd68ba455c939aa0b0dcfd2b99ff38b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-vacuum-packaging-machines.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "b7e1837afc9ba23a50c3a3455a3d2a8ad56f4a8c5594991cedc48d3e55b5d47a",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-0001",
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/application-welding-positioners.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "1b16de64b00447443035600534822115e91e5b7b574cbfb41cfcd4bd4cb808ed",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/applications.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "4058be9b8bbc07c4708657f97c3edb145cb038df94fb6fc0d09a9bc4726f5007",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 12,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-rotary-joint-installation-mistakes.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "21887fdbb00507ae8c5b6a8ab7ec5be40f7505063ffcfe381a1c0fe98f961f64",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "compatible_media",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-rotary-joint-leaking.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "b65f863a461365035a6ec22042c797d84053aa6e132fa91e2e76648df43ec9d8",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-rotary-joint-materials.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "394201ed4018cf2f066a73d07b15147192d7b2a55b0d82938241f124e97065f6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-rotary-joint-selection.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "b88c1bb9810d5733ab27387d343670d7777d42f57566120565a9c099dbedd3ac",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-rotary-union-seal-types.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "57bea0ae9d1ff3e802320aaa67e5d932025c69f206e284a2ad6857fff0d34bd5",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-seal-replacement.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "8a312bbdf6db01eb2bb1de83cc6ba0d25d7835bfccaec90462c14be64bedb7b7",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog-threaded-vs-flange.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "b54f4db27af487b07e591cf707cfa491283eaf1c47ddef4a3ada8734aa52ef74",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/blog.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "e4f1f6a824c97ab22a1e4e4477d51958fdc72863cb608327dfcc5c3dc3279bbc",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/BP-1P-0003.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "3c9626b337a56e1a6f68e4026b33b5cb8a2bf44aa95898d0683791bb6fc701eb",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-1P-0006.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "7eed41761d8b591e3163a0413ac34acf9484c9e482a154311186e3ec00919e14",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "47ec6e819ee867da349c897e90e965d78b9c42e504a4915057bebb06f900e925",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-0002.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "fc1def9b01697c394f5cead22af4c1404e3bcc26551ec7bd051dd0c31f2b314f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0002"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-08-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "1d6bee0198b8e9ad33b22b7ee7fa8707ecac99651dfe42b9fcc2905ed975f676",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-08-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-130-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "2de0f8bf6708fb6f5abec55344378828b815892216bd328e38654eac3905eec6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-130-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-16-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "1909fe830a56121ff065a9432d93d6be7a1cb4d433c2b3431ccb1efa6d7d2aae",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-16-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-30-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "4142090863b7e4d19fc30a4646c34bd76efb51746daca34dc0218da072e6c194",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-50-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "33e41d8f3a0496230db7712de4a8195446b1a4b3829609598af92cb1a24ee825",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "protection_rating",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-2P-95-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "889ae592505913e3a7221cd17ef17cca01672f0606e793dcf8fc3dd37fb52723",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-3P-0004.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "bcc7828538f9e1178ea3666c29c5780064ec228d65ef05d77713b0ef694de4f5",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-3P-0006.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "974008b3c10044c660abcf6ac455da470f7cd6b345fb137b4c0a9b619afa7974",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-3P-0007.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "9bbe0cfbfacb3e42c36c6be458aa49c083802e108b654dd83f77bec2e670598e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0007"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-3P-S06-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "01ba559426a8c126614eb87fa10bec65e27184983d90edf442abe21856be6cdf",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-S06-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-4P-30-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "238c22d0f2cfc03eed9817becbca203abc5cd76cbf9b257074992954975d543e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/BP-8P-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "8e68fddec526453ea842aeb2c15c0f057988b3fafa2a2ecb276a0bfbd5291ebd",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "de/faq.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "a7ccf21655a2c310aae4acedc83c69281f56a3338402c3c35f92781f7719e884",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/installation.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "fe9cc5e04239e79f9af5d58e143ef65668a320901e3d3d8e74c49e4c9b61842c",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/llms.txt",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "98d5903af4c84685eaa5d04331c396abd08280c029a6b12d4cec1fc7fe8a5dcf",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [],
+      "notes": "AI-oriented discovery summary; not an independent engineering source."
+    },
+    {
+      "source_path": "de/product-comparison.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "88e3d1763474924c510023ef2d531e57cacf3c18197710ae51507ff0fc6506f1",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "de/products-p2.html",
+      "source_type": "translated-product-list",
+      "git_tracked": true,
+      "source_hash": "7858b89dfe7ef7909d941212b66567770fefa5a4589d6e1d51be84a783d4fc72",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 8,
+      "models": [
+        "BP-1P-0006",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-30-0001",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "maximum_pressure",
+        "mounting_style",
+        "port_thread"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "de/products.html",
+      "source_type": "translated-product-list",
+      "git_tracked": true,
+      "source_hash": "454dd7285b046e0bb4e86d00f0d90b53e13c7dd576dc70757141adf02183f2cc",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 9,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "maximum_pressure",
+        "mounting_style"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "de/search-index.json",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "c1208c2f7b17334a0f69b97a2ff9f941acaffa83fd5913ffa9495225e1f07df7",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "maximum_pressure",
+        "mounting_style"
+      ],
+      "notes": "Derived website search index; not an independent engineering source."
+    },
+    {
+      "source_path": "downloads/Begapunk_A4_Horizontal_R2000.dxf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "7130bf00c7f5e2a047229dff4568cd260a8691cc21589a33417f0773042402c3",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/Begapunk_A4_Horizontal_Template.dxf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "30197ca40185f2f0f9375a4d59d38d442381824f32636dd9d954b71d68c7de0e",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/Begapunk_Rotary_Joint_Installation_Manual.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "6e1886f82be4095a1b80318d7ede925faa0692efb05674f884241e4cf3e3dc11",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/Begapunk-Rotary-Joint-Catalog-2026.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "3d24a854c1ea8ccd580740c32d04b46034e434fc99b75b0ee6cf66c61c33b5bc",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-1P-0003_参数表.xlsx",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "281ef8b9f15c82adcf9cafe6a2a4cff143cc7a9b9ff177769e5bda05a3361461",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-1P-0003.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "4fc323f175a2cdb54807013073400117744969816012f7fe73fd006035372766",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-1P-0006.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "e8ceda6edec4331a8aa1996a8cd0ce961662db218abd890de90dd3584a3659fe",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0006"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-200-0001-view.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "11e7e7413e0770d7d70a488150ded87ad02883e215d9c064cb96781e258cef51",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-200-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-200-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "e0248ed9e3c2891ce65b4e6811eeaa8c6af501bb3864cba68863aa80cb0a248d",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-200-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-0001_draft.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "b02713adfb637832f40a7e6c54c17e6dddf2febecc128976a01e01019dfecf4e",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "67e5d88891ec42aaa6f65c82c3169cd5a89c947166d0939ffb2107b0a90d00c4",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-0002.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "435609ab35b15013dfba8e196a6b3bf8b6389f3536c7ba2a2659862cbe670c6e",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0002"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-08-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "10f745c415cbf1f0cd249b3c34c6df1f38777c5fb3caba906fc7a3b19f63557f",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-08-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-130-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "a46c1ae391dc2d56d98400f4dfe165e88160f4478f9ca9a9c0523efd0c6c4609",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-130-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-16-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "bd46e9e23cb32891ed8c4fa89f8cca998e3fc8e85d3e98d135106a214727a931",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-16-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-30-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "4a61b012cfc8428be3916ccf2a272d093ae0ba157443cdfb10e09fb83d4b6bbd",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-30-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-50-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "652375676687345701f7b497d661fb4f6dedb9ddcb31a6d18df1f99ec5cf915c",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-2P-95-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "e93209eddc568b7e6b4073e1d5316dbf29ce9be086de65454becd52b29e1b50c",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-3P-0004.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "ef4afa50b13e9b85bbbb222db6efba3b37b4c38251569fa63f279c66c24dcb0c",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0004"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-3P-0006.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "7b644baae4d6e2bc119c7d598ab026ab50dad700a184f8610850efd1bcdac143",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0006"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-3P-0007.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "74e5396aed493d0640cb018295ea2e794a48052d0629f074cac377512573aac4",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0007"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-3P-S06-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "d7e281fca08cf3d61f02752087705cabd66435ca6a2475e9ea386e33c49179c1",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-3P-S06-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-4P-30-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "f1958b99eb77cbc063cced2c1dc262ea12a4b41f17cff000bfbf5c6b0f86be1e",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-4P-30-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/BP-8P-0001.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "02920ec729dabc9262bc7a9fd2fbbe2de44adca5c301ede2aee4ed2a4317ef9c",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 1,
+      "models": [
+        "BP-8P-0001"
+      ],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "downloads/public-downloads.sha256",
+      "source_type": "product-download-manifest",
+      "git_tracked": true,
+      "source_hash": "11690d2def0f152d9e933bb98f8ecfd33b5833e0a075f849c9be97d199cc93d0",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 15,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-200-0001",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [],
+      "notes": "Integrity manifest for public downloads; records file identity, not approved parameter values."
+    },
+    {
+      "source_path": "downloads/SJ10-06.pdf",
+      "source_type": "engineering-binary",
+      "git_tracked": true,
+      "source_hash": "66c6e02962518194e7ae007b7a06402236d20d9d9d77e9e8691ed72776d6bcf5",
+      "automatically_parseable": false,
+      "manual_engineering_verification_required": true,
+      "model_count": 0,
+      "models": [],
+      "field_types": [],
+      "notes": "Binary engineering or technical file. Inventoried by path and hash only; approval and parameter content require manual engineering verification."
+    },
+    {
+      "source_path": "faq.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "761bb5211a744cab275ed71a0980ee9cfec57ee181f559257ac6cb1aa5b15188",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "i18n/cache/de.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "88f4e5975b6cb63d43f8420bb9e58dccdaa84876dc39662245e90671da3ef64a",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/cache/ja.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "2e63b19d9de28b09a93e2b5d221cc1022664adb6788f6d69462baab70dbf5424",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/cache/ru.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "d76df7e0aca2e02fa557c9b85927b73639874cc9fd02664990b9541fa8860760",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/config.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "dde3a27c21bcec67762936ee74306164e561806ef3dd28ce3526c4665f5d4343",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/editorial/de.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "1ed39b4154acb00d8c31f7390316f6dce57afc2a3c03e04c2f6fc49df26a5b8c",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/editorial/ja.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "f945877978c2edff9d3a328c6c81a17b8b6e12d2883947cad618cb7945e0e63d",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/editorial/ru.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "6ba9b3d8b98d1b8df0308c14bc6090b11e2358b5e701492ca553f830db135736",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/editorial/status.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "ad50aee544386e054e841a10792af32e7bffc8e3f657f1cb58ac325df1b4e2c6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/glossary.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "258e220bc8ae4e61bd7b574fdba43fcbbb5ab39d328dd5dd3031e06249ae06d3",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "mounting_style",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/overrides/de.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "eb182ebcdff53e6e236b6b330b0ecfddfd786850519601a4af0776a97e2e7db6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/overrides/ja.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "04feb844811796c1394e23390e6bb632354e97a09905cbce2bb032c0fa02de7f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/overrides/ru.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "0692aae56a4661648b5b1f63c4e313596c1e6aa4a5fcc255f7554cf5c020c3e8",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/seo/de.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "2d3abfbcd24c65d053fe5bf7fc908d227e07c2c4e57b688c75b191b64a9ca7a1",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/seo/ja.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "d23b557abe96e23986b316a6fd371839d6daf156e84c2c46f342a43e2edab1bc",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/seo/ru.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "c1295884a00a33a26def4795d2394e87bc3e2711284d843be4070ddbf31432b4",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "i18n/source-catalog.json",
+      "source_type": "translated-content-source",
+      "git_tracked": true,
+      "source_hash": "5baa8dfccea96122b70fd13c6ccaad22865807d23c53c45558604324643145d5",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Localization source, cache, editorial, override, SEO, or configuration data."
+    },
+    {
+      "source_path": "installation.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "171ca626426036d65cef3026e6cc4542d11a625221e24708b737c691a170bb44",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-automation-rotary-tables.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "6f4ab3d1ff97cb52c730c23c9adab9e6b76557fdac733bb0621ab4d94d6214ad",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 6,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-bottle-filling-capping.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "5979131b8e14530d3f95b661147eb7b33ac4917dbcb0b837d4d258b69e56851e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-cnc-pneumatic-clamping.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "73de4c4ee2fba8fd0840c55310bd8a9eb1cde1f9623d0104195ea22af8e334bf",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-electronics-battery-test-fixtures.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "628cdcfa0d73c21d0e240fe3087a2ac738c8ccd906a12214d923c14731e06eee",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-laser-tube-cutting.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "42c8fd91982ff59d906ba70d75012e5137af2d9b6832c9f5e1503ffe77f4788a",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "compatible_media",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-packaging-machinery.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "934ed66c0ba39604e338e9d51baecd80fcb7aa66f7b5b0e436cd006d6efa0c19",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-pneumatic-tools-hose-anti-twist.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "076615260a71eb6cd684c5290a1149bbb8116859ea5ce95f8ef4c970a195ccde",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-robot-end-of-arm-tooling.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "252c87f3355dd9898e0d14625a960b92acde9c25848e0750ec00555f4becbbf9",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-steel-dusty-environments.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "0365bfd2b2bb0c8a07e4e403f7602f67e0e943a0ae1eaee8076d312466e7a4c6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-textile-printing-converting.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "a340267688386dc04f7ecb52136da893209db9dda0f90f99868fe7aa9989ea82",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-vacuum-packaging-machines.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "eac3739653da23226083df706ff842675c3bf3a92a5173fd8a039a691f450393",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-0001",
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/application-welding-positioners.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "8324a74155508504a15584c6eb57edc9f0543d09a77391d4e51944acf86e5230",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/applications.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "51f9ee14c7d87bc050726bc24900d1f151855ad015433592849938e4663d8d87",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 12,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-rotary-joint-installation-mistakes.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "e36736540433054e322ef03c90dd0f7393d25759e89e10e131e18e886b3935d7",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "compatible_media",
+        "maximum_speed",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-rotary-joint-leaking.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "407c23d78b521e596adebf28e317b80968a606df95c7925b34200e176afcc4ba",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-rotary-joint-materials.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "d4d95c79c44a079dba0afe800d482ad7f91e575037234c8b254497e955f88af6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-rotary-joint-selection.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "297fe74479e85218067012b2252448c7f865519fac88b06ccc4eef4c7f034331",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-rotary-union-seal-types.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "cb4e7a66cb2e00c5ffcdfe89b798542fba733e3e8e9a029c4eaac28effe672b9",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-seal-replacement.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "45f9ebe8e54651a1a1e651c67352a0b0c14379885290058acdaa5a22c6693082",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog-threaded-vs-flange.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "16fff15076732bf5bbd48976b861b66260838e6126c227b297954dbc4b1ff9a8",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/blog.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "380cafb6f19baa99a5b4ad79f47aced969610e793a59fdb554ab9b4bd300d0a6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/BP-1P-0003.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "cad6d6c15064a162b46bd7532cf4c75f4cfb5d22692f983349c675e8c9c4a52e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-1P-0006.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "bb964c897f4fe456d6306e7a4f1bf7dc499f56658c480add5358f902c9897025",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "bac3cdfa44af0565a4d33046a62313c8e11f59e62a9cf5804c3a90d6e8bbf591",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-0002.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "c47fe2571224cd84eb475b301aa1453c075fbc9af9683caeefa1cf3343aa7981",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0002"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-08-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "5e873cb0e1676d57ff601c7c70f67ec050cb88e38d8cfbf2069ab74fd749c416",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-08-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-130-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "cc7bde617b1ba86626b7f310dd5b810d2bfe4ac752d2856ee0d5cda97f1089e4",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-130-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-16-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "27330ebdd6d38afdd32ff1f02c74973cec14f43e6023597d47d11de3cdb7ab00",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-16-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-30-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "5864a50f0ca98138cab8bed408c599822a7075ecc2b20da819c7cbfc6d88dbb6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-50-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "0efa39ea78e0ec16a3278d3b51b1735b275f42e9139a579ea90b62977f82b454",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "protection_rating",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-2P-95-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "9276b5abada1c296b25842af4e6fa537d9386bdc47743d05b1c0d1a8b8c4b243",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-3P-0004.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "25a7b29640394d7730b74c7d0e9c019ca45f01cafee67ed993a4b76c45e6698c",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-3P-0006.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "48c0cb6d78243612102ce50fe58d36d363d57eebca2c459d04b7f23e47444672",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-3P-0007.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "5a9fbc3db0f11e0cfe926b536812335ed626f2968f08db244d21ba0611fe9c79",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0007"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-3P-S06-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "95a9fa9fc28c4aaba41d3d1a47118dbfa8a8580e6ca47d6d72ea717a42c1389f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-S06-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-4P-30-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "84f8d579b2d9e362796473c47c7eec82935839dce7d87e67c9dfaa2a6aa63ef9",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/BP-8P-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "efaf80990e9c03942d16f8876d143db96ab1b58e1fda1b056f0ef7d7c0838816",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ja/faq.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "4542a6a4e0294622ce213f4b5e6ef4498cb590f1784af3399ded6fc921972bad",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/installation.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "31d02e4c04d1cb3193499ccd03ef0cbc34027e60babdbcb95e9765d88d835ede",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/llms.txt",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "9f75a6e2c7f22d6d813c9f9a73c8172d074e521d36ceec1b7fe3b80014d8fdab",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [],
+      "notes": "AI-oriented discovery summary; not an independent engineering source."
+    },
+    {
+      "source_path": "ja/product-comparison.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "d0e5d07927a9668b5ed5dff8cb05ae7fc21977440bb01653d40fa716f68b5788",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ja/products-p2.html",
+      "source_type": "translated-product-list",
+      "git_tracked": true,
+      "source_hash": "9bdf4e41cf95bad1ede216df752d3c49305ba9dc04c3e49c94ba32eafecce8be",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 8,
+      "models": [
+        "BP-1P-0006",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-30-0001",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "maximum_pressure",
+        "mounting_style",
+        "port_thread"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "ja/products.html",
+      "source_type": "translated-product-list",
+      "git_tracked": true,
+      "source_hash": "5769fcfc7ef74e836d65de0fc66b8bffd0064d28e36f4a320f0d5e0f982cd113",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 9,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "maximum_pressure",
+        "mounting_style"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "ja/search-index.json",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "d0274c27140f428001b36061113cd9baab5920b4c7dac383caeeeddc33b94afb",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "maximum_pressure",
+        "mounting_style"
+      ],
+      "notes": "Derived website search index; not an independent engineering source."
+    },
+    {
+      "source_path": "llms.txt",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "96eb4280020b2f3ca7c190deb794a94fc8d260927cb12c73b6f260d77b289d10",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [],
+      "notes": "AI-oriented discovery summary; not an independent engineering source."
+    },
+    {
+      "source_path": "product-comparison.html",
+      "source_type": "website-technical-content",
+      "git_tracked": true,
+      "source_hash": "6c86552baa152401df616b8227cc337cc2e83239704a4e240a6df08d2eb7d90e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "products-p2.html",
+      "source_type": "website-product-list",
+      "git_tracked": true,
+      "source_hash": "d49682e58b4d04ba2786f0f2688bfd2611a3312be06ba0f845ed8569b4b39b57",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 8,
+      "models": [
+        "BP-1P-0006",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-30-0001",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "products.html",
+      "source_type": "website-product-list",
+      "git_tracked": true,
+      "source_hash": "bff0f4f10ac73578c88f03ad6294a0a64bc2269e2694ddef110455441f7cb40b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 9,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "ru/application-automation-rotary-tables.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "145dbbcf27aacb39871282a843bd768355f86ff68c3e01505bfd0d6c1a9ca6fe",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 6,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-bottle-filling-capping.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "bc6c5467fcc6c46511bdb57281d0d5fad6ad8cd36ed42a6af686158303afbcc7",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-cnc-pneumatic-clamping.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "631920c0f505c94a869cac71560c629610cfbeecce5ad0482d9e3ec75bee48ee",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-electronics-battery-test-fixtures.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "990b88cc2adec0d3218ba0d878306f8c51ea9540c00963e35eb4270b005b1c41",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-laser-tube-cutting.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "e496487a2e5591de6c5fffd221c9219cd2dfa68c0c5e9ff9b021f7ee94ba4fe5",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-08-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-packaging-machinery.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "841507ff1795ed21f68ac6eb94d3f76e552b20c90c9eeeeea53bcccda821e732",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-pneumatic-tools-hose-anti-twist.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "294065972a64cc40cbe752ebbedce8a77e82b1a9b6534bbd5b4b687e6c100b9d",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-robot-end-of-arm-tooling.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "c764967e7de046d835522aa91366d9bec5aa906dc22c8bd86f47a11f34fe159b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-steel-dusty-environments.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "c3c0173e30dfbea98c1bd8a9dfb8ff16cd180c868331c59c8ead85ff20749bba",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-textile-printing-converting.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "0a93193a4687cf7e80ef8919122828919c2b36f8a63190548351f98c7fecae97",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 4,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-vacuum-packaging-machines.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "14c735683e9386353d1e36ecc23ad65c14f75f46b7508dbd2f95e0243be261fd",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-0001",
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/application-welding-positioners.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "e725c0cb329a92ba6344098425aaa8c1e04d41a5f1522ea32be240c0a95ef1c9",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-3P-0004",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/applications.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "4c1844d22f17d5a823df853d10926e61a3eb956b4c65f4573126d4d9cba6638e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 12,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-rotary-joint-installation-mistakes.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "0ba4522a6a6f23186ebbc782611399287d8c66a439fcd7e308f740473bb946ad",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-rotary-joint-leaking.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "7dddc3e3f29c3824d3c085439aafad082f9f87fb699dad097befabffd24806f0",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-rotary-joint-materials.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "f74430f468ef1c2a9e1ae9f0eb313bd110a5a2cb19fba5afc88e11669a87da71",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-rotary-joint-selection.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "1dbaba882a5f5f42ec280e5bfebf3576d2c23e38b555b68e54b21b87a2fbd8ef",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-rotary-union-seal-types.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "ae527a3537660cea713abdd1092b672291b534298dbd2afdca54fed5e61566e2",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 5,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-seal-replacement.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "eb6bc9bf700c5d75d2f86b0624d270512b387d4ab41c5a44a5fc2a517d6d1615",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 3,
+      "models": [
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog-threaded-vs-flange.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "dbc5882ccbde3cef034c89c7c983ff22143aebb968e903b9389d7aa2d3eb3edc",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/blog.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "9a1c57529adb74c6b32003675bbfb02a2fdb14816f260cecf853edbf391959a6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/BP-1P-0003.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "80aa298fc8c07a63aa2cc886c5704d402da75f6b463495179d00e1291e25260f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0003"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-1P-0006.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "01a2a6c3c493a35722063f29c7dba462bb90c3fd94ed2397b99158a6a51dae1f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-1P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "a26ae231ddae64d13f2a13457e7a650933b9ba8da8418e9b554beb61fbf8c168",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-0002.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "d06edcf6662400aa972ce9a3fd5030cf12ee2187156d7572616fb62812ec7e72",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-0002"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-08-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "1936ff214b9717ff708e6bc33a433e2a655b68d378411e7e458da332a1c8e590",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-08-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-130-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "6b6c70436d49732abfe620e37bd7d74d44eddb7d967fce9f9b1a1884fa7b0d89",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-130-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-16-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "0a67c037dff1a0aa940e9db68b35b04ccedef55d4e80c6848204a11f5c19c3e3",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-16-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-30-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "bbd13d3716272f593f7bd6e711cfad737b8a0f3ed0d672d944b1500d29c3937b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-50-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "d71823145b195e46c1060873f05dc5f141249cd66bc5f6092cfd37b3121e9da6",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "protection_rating",
+        "rotor_mounting_pattern",
+        "seal_material",
+        "stator_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-2P-95-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "6f683e9616ac9a95c626bfe08d04bf65e9d9d562397d8aa61cc30cce11e8492e",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-95-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "friction_torque",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-3P-0004.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "8d65b18a43df50bec8416f465b2d8d11d99500568f56577cb419fd653ef9e88b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0004"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-3P-0006.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "979ccf71a9a746846e7908ae3d16ea8047659af5bea88db497643caaba814390",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0006"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-3P-0007.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "2603f3afd26451d957b5a5f48cd0e610bff6a228c5349ab1543bc6ca0800d70f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-0007"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "port_thread",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-3P-S06-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "6842424426b032d2d86d2cb20d78983af4caaa8d0829ffbf272c261e553a51f1",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-3P-S06-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-4P-30-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "96cf809846b35c1286c6305450fb62ff11f4f69500bf5297ce3a37d3f0914378",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/BP-8P-0001.html",
+      "source_type": "translated-product-html",
+      "git_tracked": true,
+      "source_hash": "bdb9203dc491b2d27387d95991685f5dc1382e225f33c91d46af6473936ec439",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "model",
+        "mounting_style",
+        "operating_temperature",
+        "passages",
+        "seal_material",
+        "unassigned_mounting_pattern",
+        "warranty",
+        "weight"
+      ],
+      "notes": "Product detail HTML containing visible specifications and JSON-LD."
+    },
+    {
+      "source_path": "ru/faq.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "f72f42082180758b2c2b3d7df91426b205d58a621a4f0e7df72e94672a69bac0",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/installation.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "ca67b46563642050fa904c393808342e9260024e48c8770318629186bfcce5f1",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "maximum_pressure",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/llms.txt",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "f9f70ab01e4a57cd918d54be43ffaa8ae27f00ac964ca400a3a3323ac067570b",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [],
+      "notes": "AI-oriented discovery summary; not an independent engineering source."
+    },
+    {
+      "source_path": "ru/product-comparison.html",
+      "source_type": "translated-content",
+      "git_tracked": true,
+      "source_hash": "d7119826d68c846f4f8ee4a22e782d6458ca1255499d9191bfe3f56db5cbcb5c",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Technical, FAQ, application, comparison, or article content containing product references."
+    },
+    {
+      "source_path": "ru/products-p2.html",
+      "source_type": "translated-product-list",
+      "git_tracked": true,
+      "source_hash": "599bf6ff95971a3d81d92eac8b0df22fbec2fd8854e8f9930428d394bf0b6176",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 8,
+      "models": [
+        "BP-1P-0006",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-30-0001",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "ru/products.html",
+      "source_type": "translated-product-list",
+      "git_tracked": true,
+      "source_hash": "8027e56805e4a3368c261cbcdb263b264b5c09dad6c6dd60d49bbbc3c0e2ae3f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 9,
+      "models": [
+        "BP-1P-0003",
+        "BP-2P-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "channel_configuration",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style"
+      ],
+      "notes": "Product listing and product-card claims."
+    },
+    {
+      "source_path": "ru/search-index.json",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "998a66f26a0678a110b12c0d76a2a171e0f37b8cd1c331faf2c17f55ff4fc67a",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style"
+      ],
+      "notes": "Derived website search index; not an independent engineering source."
+    },
+    {
+      "source_path": "scripts/build-localized-site.mjs",
+      "source_type": "content-generation-script",
+      "git_tracked": true,
+      "source_hash": "e98e88901c275d4245c4fddf974bc9f1f98df7374a8b359f3317f3f1e96f9f76",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "body_material",
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "port_thread",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Script participating in generation, validation, localization, or download indexing."
+    },
+    {
+      "source_path": "scripts/generate-public-downloads-manifest.mjs",
+      "source_type": "content-generation-script",
+      "git_tracked": true,
+      "source_hash": "3e55a98ad81e3f4dcd06e54a38b56d06a261c5bffb1dad9c4aaacb33a0e2ff3f",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 2,
+      "models": [
+        "BP-2P-30-0001",
+        "BP-2P-95-0001"
+      ],
+      "field_types": [],
+      "notes": "Script participating in generation, validation, localization, or download indexing."
+    },
+    {
+      "source_path": "scripts/translate-catalog-offline.py",
+      "source_type": "content-generation-script",
+      "git_tracked": true,
+      "source_hash": "d8e10f75b20a47c27f897333d1d4e16eadadd37c9a9e30abacbce3dce9e88457",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 0,
+      "models": [],
+      "field_types": [
+        "compatible_media",
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Script participating in generation, validation, localization, or download indexing."
+    },
+    {
+      "source_path": "scripts/validate-product-data.mjs",
+      "source_type": "content-generation-script",
+      "git_tracked": true,
+      "source_hash": "0e23ca70be2d964ef1ca6355253d20ac74ead1e9070454918aead009002fe722",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 1,
+      "models": [
+        "BP-2P-50-0001"
+      ],
+      "field_types": [
+        "compatible_media",
+        "protection_rating",
+        "weight"
+      ],
+      "notes": "Script participating in generation, validation, localization, or download indexing."
+    },
+    {
+      "source_path": "search-index.json",
+      "source_type": "search-or-ai-index",
+      "git_tracked": true,
+      "source_hash": "ccdf07c266f75e8f4bdfb8bac380e85702691fa1f8897a2b96927a0f49397ed8",
+      "automatically_parseable": true,
+      "manual_engineering_verification_required": false,
+      "model_count": 16,
+      "models": [
+        "BP-1P-0003",
+        "BP-1P-0006",
+        "BP-2P-0001",
+        "BP-2P-0002",
+        "BP-2P-08-0001",
+        "BP-2P-130-0001",
+        "BP-2P-16-0001",
+        "BP-2P-30-0001",
+        "BP-2P-50-0001",
+        "BP-2P-95-0001",
+        "BP-3P-0004",
+        "BP-3P-0006",
+        "BP-3P-0007",
+        "BP-3P-S06-0001",
+        "BP-4P-30-0001",
+        "BP-8P-0001"
+      ],
+      "field_types": [
+        "maximum_pressure",
+        "maximum_speed",
+        "mounting_style"
+      ],
+      "notes": "Derived website search index; not an independent engineering source."
+    }
+  ]
+}

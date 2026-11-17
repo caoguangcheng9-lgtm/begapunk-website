@@ -1,4 +1,4 @@
-node_modules/
+﻿node_modules/
 dist/
 tmp/
 .env
@@ -36,6 +36,5 @@ videos/BP-1P-0003-motion-flow-en-20261026.*
 images/products/BP-1P-0003-20261026/
 
 # === dsh phase1 cleanup (2026-11-17) ===
-audit/
 AI_READINESS_AUDIT/
 _dsh_*.py

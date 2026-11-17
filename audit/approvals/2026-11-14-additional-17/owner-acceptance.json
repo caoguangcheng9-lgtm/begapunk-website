@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "cohortId": "2026-11-14-additional-17",
+  "draftOnly": false,
+  "registrationStatus": "REGISTERED",
+  "approvalType": "OWNER_ACCEPTED_AI_REVIEWED_CONTENT",
+  "decisionDate": "2026-11-14",
+  "recordedAt": "2026-11-14T01:57:43.067308+00:00",
+  "registeredAt": "2026-11-14T02:12:06.393Z",
+  "decisionSource": "explicit owner instruction in this Codex conversation; no human/native identity or signature attestation",
+  "reviewMethod": "AI_REVIEWED",
+  "nativeSpeakerReviewPerformed": false,
+  "deploymentAuthorized": false,
+  "acceptedPageCount": 17,
+  "localeCounts": {
+    "de": 4,
+    "fr": 4,
+    "ja": 5,
+    "ru": 4
+  },
+  "acceptedEvidencePackage": {
+    "name": "BEGAPUNK_FINAL_EDITORIAL_CLOSURE.zip",
+    "sha256": "ac3a180bc9183d20e04c40fbdf2f67b42d401fe255e4113c454d0b71c619b91e"
+  },
+  "registrationEvidencePackage": {
+    "name": "BEGAPUNK_FINAL_CONTENT_GATE_PASS.zip",
+    "sha256": "efeab9267f9d8f77b1e35f3034d993152cf177df6c73c92c2cf1ff21e1e41cfc"
+  },
+  "evidence": [
+    {
+      "path": "audit/approvals/2026-11-14-additional-17/OWNER_17_DECISION_SOURCE.md",
+      "sha256": "84c21744d993baea365a83d446e3c48285cfd98d1f892688fd9dc11b7512bbec"
+    },
+    {
+      "path": "audit/approvals/2026-11-14-additional-17/ORIGINAL_FINAL_17_PAGE_AI_REVIEW.md",
+      "sha256": "a187a0f6331b5a294f30740e631eb944ffc04945377b7bc1304e0b26c0571ca4"
+    },
+    {
+      "path": "audit/approvals/2026-11-14-additional-17/ORIGINAL_FINAL_17_AI_REVIEW.json",
+      "sha256": "a69cbc69c912241ff1364147c860f7f84963ffc4899592bd0c476083d6d615a1"
+    },
+    {
+      "path": "audit/approvals/2026-11-14-additional-17/OWNER_17_RECEIPT_DRAFT.json",
+      "sha256": "10cbc4dcbb6a845ad01d8d654613b6fff4ab6768056ffa6ad92941ac10b4b1d3"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "de/application-automation-rotary-tables.html",
+      "sha256": "7341de7ff0683952daa95aa3c5ed82d9cd9b162a46580228a2002071afb4459a"
+    },
+    {
+      "path": "de/application-cnc-pneumatic-clamping.html",
+      "sha256": "5fe664ecdbc8d4abf8e516499884e4bcc157f709c9d401dde5d2925f6cc52804"
+    },
+    {
+      "path": "de/blog-prevent-air-hose-twisting.html",
+      "sha256": "74f45e2546a8e4d9ed5bd6625f57834d1f819515dee13d9b5187c7ea0b9fef08"
+    },
+    {
+      "path": "de/product-comparison.html",
+      "sha256": "d6848cf25b80c86b6282b7d43d2fac00ff4ba49a70e3f4ba4427eab643775705"
+    },
+    {
+      "path": "fr/application-automation-rotary-tables.html",
+      "sha256": "50cdf76dc350da8238216f1aaae29b7f59327b99cf453977c25fdaeddc7d8891"
+    },
+    {
+      "path": "fr/application-cnc-pneumatic-clamping.html",
+      "sha256": "709a45c63491ce675dec51afe54ade28de5baa9e1df864da9967d922a9197107"
+    },
+    {
+      "path": "fr/blog-prevent-air-hose-twisting.html",
+      "sha256": "32fb962966dc85e05e05a79780d23c752fa33372f70c44652e9e7fae58564971"
+    },
+    {
+      "path": "fr/product-comparison.html",
+      "sha256": "49b2e95de6109c79ced831d6443f5fc7af38279e0292cffa861e0ea283236d3f"
+    },
+    {
+      "path": "ja/about.html",
+      "sha256": "134af28b0295f5936b68536379c1152ec2c47a6a0f756af4c0591e6c1f0c95ce"
+    },
+    {
+      "path": "ja/application-automation-rotary-tables.html",
+      "sha256": "461ebf34dea9e808924bfa06e3a7b804f0020857ed7407a5a646ec683b96f20c"
+    },
+    {
+      "path": "ja/application-cnc-pneumatic-clamping.html",
+      "sha256": "7e30a3c5b92f3e54cf65a97250eea26f875dac2c3d810bcd9c5a4eed357b6997"
+    },
+    {
+      "path": "ja/blog-prevent-air-hose-twisting.html",
+      "sha256": "4028e3701d73c0be510d0af8b17b404badda7513c9c0b8987814d4e1a6376b76"
+    },
+    {
+      "path": "ja/product-comparison.html",
+      "sha256": "8cba99ab82b55038f8c33967064c5e9b256ca03cbe4e733a523789d79c67af5a"
+    },
+    {
+      "path": "ru/application-automation-rotary-tables.html",
+      "sha256": "34cbae60babe7af3e64d69d264160a67bcdf18b3f00d138be148ae8dd13f695a"
+    },
+    {
+      "path": "ru/application-cnc-pneumatic-clamping.html",
+      "sha256": "b28154b41f85b459b10f77eddd6e66c0e5525e816c621ed736a314c5e7425916"
+    },
+    {
+      "path": "ru/blog-prevent-air-hose-twisting.html",
+      "sha256": "d7a071b9e41f22c98c66121bcdd9795bffd7cd153912d7f4d2a0409b8ef8c4ed"
+    },
+    {
+      "path": "ru/product-comparison.html",
+      "sha256": "efba59c402dc537801f534befd69d723221fa370d2e42e8e3c7fbfbe0c9bcd96"
+    }
+  ]
+}

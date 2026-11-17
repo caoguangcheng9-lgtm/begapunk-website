@@ -1,0 +1,61 @@
+{
+  "files_scanned": 394,
+  "html_pages": 51,
+  "formal_indexable": 48,
+  "page_priority": {
+    "P2": 4,
+    "P1": 23,
+    "P3": 24
+  },
+  "unique_issue_families": {
+    "P0": 0,
+    "P1": 6,
+    "P2": 7,
+    "P3": 3
+  },
+  "average_geo": 68.3,
+  "duplicate_groups": 3,
+  "claims": 1386,
+  "lowest": [
+    {
+      "page": "about.html",
+      "score": 51
+    },
+    {
+      "page": "privacy.html",
+      "score": 53
+    },
+    {
+      "page": "products-p2.html",
+      "score": 57
+    },
+    {
+      "page": "installation.html",
+      "score": 59
+    },
+    {
+      "page": "terms.html",
+      "score": 59
+    },
+    {
+      "page": "contact.html",
+      "score": 60
+    },
+    {
+      "page": "products.html",
+      "score": 62
+    },
+    {
+      "page": "blog.html",
+      "score": 66
+    },
+    {
+      "page": "blog-rotary-joint-installation-mistakes.html",
+      "score": 68
+    },
+    {
+      "page": "blog-rotary-joint-leaking.html",
+      "score": 68
+    }
+  ]
+}

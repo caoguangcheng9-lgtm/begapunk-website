@@ -1,0 +1,5 @@
+relative_path,line_number,match_type,masked_value,why_false_positive,safe_for_release,windows_absolute_path,debug_information,decision
+js/analytics.js,107,debug-code,co***g,"仅在 GA_DEBUG 为 true 时输出分析调试信息；正式配置为 false，不含凭据",yes,no,controlled,误报
+js/analytics.js,303,debug-code,co***g,"仅在 GA_DEBUG 为 true 时输出分析调试信息；正式配置为 false，不含凭据",yes,no,controlled,误报
+PHPMailer/PHPMailer.php,1534,ipv4-address,19***.1,"PHPMailer 源码注释/文档示例中的私有网络地址，不是 Begapunk 服务器地址或凭据",yes,no,no,误报
+PHPMailer/SMTP.php,177,ipv4-address,4.***.2,"RFC 章节 URL 被通用 IPv4 规则误判，不是地址或凭据",yes,no,no,误报

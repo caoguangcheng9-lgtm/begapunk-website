@@ -1,0 +1,485 @@
+{
+  "reviewedAt": "2026-10-07T08:12:11.153Z",
+  "reviewer": "Codex, AI language and technical-copy review",
+  "nativeSpeakerReview": false,
+  "scope": "Every segment of both new pages in en/de/fr/ja/ru; labels, prose, tables, FAQ and CTA. No product limits or measured claims changed.",
+  "changes": [
+    {
+      "family": "product",
+      "lang": "en",
+      "segment": 34,
+      "before": "BP-10P-0001 is a 10-passage pneumatic rotary union for transferring ten independent compressed-air circuits between fixed piping and rotating equipment. It has a maximum pressure of 1 MPa and a maximum speed of 100 RPM for intermittent rotation, with 20 G1/8 ports and included fittings for 8 mm OD tubing. The 6061 aluminum alloy body uses O-ring seals and has no through bore.",
+      "after": "BP-10P-0001 is a 10-passage pneumatic rotary union that delivers compressed air from stationary piping to rotating equipment through ten independent passages. It has a maximum pressure of 1 MPa and a maximum speed of 100 RPM for intermittent rotation, with 20 G1/8 ports and included fittings for 8 mm OD tubing. The 6061 aluminum alloy body uses O-ring seals and has no through bore."
+    },
+    {
+      "family": "product",
+      "lang": "en",
+      "segment": 37,
+      "before": "22-second principle animation with English narration. The illustrative fixture is not an installation drawing; use the downloadable outline for the current mounting pattern.",
+      "after": "22-second animation of the operating principle, with English narration. The fixture shown is illustrative; use the downloadable outline drawing for the current mounting pattern."
+    },
+    {
+      "family": "product",
+      "lang": "en",
+      "segment": 100,
+      "before": "Map and identify all ten circuits. Start at low pressure and speed, checking each connection and circuit before increasing to the intended intermittent operating cycle.",
+      "after": "Identify and label all ten circuits. Start at low pressure and speed, checking each connection and circuit before moving to the intended intermittent operating conditions."
+    },
+    {
+      "family": "product",
+      "lang": "en",
+      "segment": 119,
+      "before": "Download the outline PDF and simplified STEP model, then send your required quantity and any available pressure, speed, passage functions and installation drawing. The model number alone is enough to start.",
+      "after": "Download the outline PDF and simplified STEP model, then send your required quantity and any available details about pressure, speed and the function of each passage. Include an installation drawing if you have one. The model number alone is enough to start."
+    },
+    {
+      "family": "product",
+      "lang": "de",
+      "segment": 34,
+      "before": "BP-10P-0001 ist eine pneumatische 10-Kanal-Drehdurchführung zur Übertragung von zehn unabhängigen Druckluftkreisen zwischen feststehenden Leitungen und rotierenden Maschinenteilen. Der Maximaldruck beträgt 1 MPa, die maximale Drehzahl 100 min⁻¹ bei intermittierender Rotation. Sie verfügt über 20 G1/8-Anschlüsse und mitgelieferte Steckverschraubungen für Schläuche mit 8 mm Außendurchmesser. Das Gehäuse aus Aluminiumlegierung 6061 ist mit O-Ringen abgedichtet und besitzt keine Durchgangsbohrung.",
+      "after": "BP-10P-0001 ist eine pneumatische 10-Kanal-Drehdurchführung, die Druckluft über zehn unabhängige Kanäle von feststehenden Leitungen zu rotierenden Maschinenteilen leitet. Der Maximaldruck beträgt 1 MPa, die maximale Drehzahl 100 min⁻¹ bei intermittierender Rotation. Sie verfügt über 20 G1/8-Anschlüsse und mitgelieferte Steckverschraubungen für Schläuche mit 8 mm Außendurchmesser. Das Gehäuse aus Aluminiumlegierung 6061 ist mit O-Ringen abgedichtet und besitzt keine Durchgangsbohrung."
+    },
+    {
+      "family": "product",
+      "lang": "de",
+      "segment": 37,
+      "before": "22-sekündige Funktionsanimation mit englischem Sprechertext. Die dargestellte Vorrichtung ist keine Montagezeichnung; das aktuelle Lochbild finden Sie in der herunterladbaren Maßzeichnung.",
+      "after": "22-sekündige Funktionsanimation mit englischem Sprechertext. Die dargestellte Vorrichtung dient der Veranschaulichung; das aktuelle Lochbild finden Sie in der herunterladbaren Maßzeichnung."
+    },
+    {
+      "family": "product",
+      "lang": "de",
+      "segment": 119,
+      "before": "Laden Sie die PDF-Maßzeichnung und das vereinfachte STEP-Modell herunter. Senden Sie anschließend die Stückzahl sowie vorhandene Angaben zu Druck, Drehzahl, Kanalfunktionen und Einbauzeichnung. Die Modellnummer genügt für eine erste Anfrage.",
+      "after": "Laden Sie die PDF-Maßzeichnung und das vereinfachte STEP-Modell herunter. Senden Sie anschließend die gewünschte Stückzahl sowie vorhandene Angaben zu Druck, Drehzahl und den Funktionen der einzelnen Kanäle. Fügen Sie eine Einbauzeichnung bei, falls vorhanden. Die Modellnummer genügt für eine erste Anfrage."
+    },
+    {
+      "family": "product",
+      "lang": "fr",
+      "segment": 34,
+      "before": "Le BP-10P-0001 est un joint tournant pneumatique à 10 passages qui transfère dix circuits d’air comprimé indépendants entre une tuyauterie fixe et un équipement tournant. Sa pression maximale est de 1 MPa et sa vitesse maximale de 100 tr/min en rotation intermittente. Il comporte 20 orifices G1/8 et des raccords fournis pour tubes de 8 mm de diamètre extérieur. Son corps en alliage d’aluminium 6061 utilise des joints toriques et ne possède pas d’alésage traversant.",
+      "after": "Le BP-10P-0001 est un joint tournant pneumatique à 10 passages qui achemine l’air comprimé des conduites fixes vers un équipement tournant par dix passages indépendants. Sa pression maximale est de 1 MPa et sa vitesse maximale de 100 tr/min en rotation intermittente. Il comporte 20 orifices G1/8 et des raccords fournis pour tubes de 8 mm de diamètre extérieur. Son corps en alliage d’aluminium 6061 utilise des joints toriques et ne possède pas d’alésage traversant."
+    },
+    {
+      "family": "product",
+      "lang": "fr",
+      "segment": 37,
+      "before": "Animation de principe de 22 secondes avec narration en anglais. Le montage illustré ne constitue pas un plan d’installation ; consultez le plan téléchargeable pour la disposition actuelle des fixations.",
+      "after": "Animation de 22 secondes illustrant le principe de fonctionnement, avec narration en anglais. Le montage est présenté à titre d’illustration ; consultez le plan téléchargeable pour la disposition actuelle des fixations."
+    },
+    {
+      "family": "product",
+      "lang": "fr",
+      "segment": 119,
+      "before": "Téléchargez le plan PDF et le modèle STEP simplifié, puis indiquez la quantité et les informations disponibles : pression, vitesse, fonctions des passages et plan d’installation. La référence du modèle suffit pour commencer.",
+      "after": "Téléchargez le plan PDF et le modèle STEP simplifié, puis indiquez la quantité souhaitée et les informations disponibles sur la pression, la vitesse et la fonction de chaque passage. Joignez un plan d’installation si vous en avez un. La référence du modèle suffit pour commencer."
+    },
+    {
+      "family": "product",
+      "lang": "ja",
+      "segment": 33,
+      "before": "独立した10本のエア回路。",
+      "after": "独立した10系統のエア回路。"
+    },
+    {
+      "family": "product",
+      "lang": "ja",
+      "segment": 34,
+      "before": "BP-10P-0001は、固定配管と回転設備の間で、独立した10本の圧縮空気回路を接続する10流路エアロータリージョイントです。最高圧力は1 MPa、最高回転数は間欠回転時100 min⁻¹です。G1/8ポートを20個備え、外径8 mmチューブ用継手が付属します。本体は6061アルミニウム合金製、シールはOリングで、中心貫通穴はありません。",
+      "after": "BP-10P-0001は、10本の独立した流路を通じて、固定配管から回転設備へ圧縮空気を供給する10流路エアロータリージョイントです。最高圧力は1 MPa、最高回転数は間欠回転時100 min⁻¹です。G1/8ポートを20個備え、外径8 mmチューブ用継手が付属します。本体は6061アルミニウム合金製、シールはOリングで、中心貫通穴はありません。"
+    },
+    {
+      "family": "product",
+      "lang": "ja",
+      "segment": 36,
+      "before": "各エア回路は独立しています。ロータリージョイントは圧縮空気を伝送する部品であり、制御弁の代わりにはなりません。",
+      "after": "各エア回路は独立しています。ロータリージョイントは圧縮空気を供給する部品であり、制御弁の代わりにはなりません。"
+    },
+    {
+      "family": "product",
+      "lang": "ja",
+      "segment": 37,
+      "before": "英語ナレーション付きの22秒間の原理アニメーションです。表示される治具は取付図ではありません。現在の取付穴配置は、ダウンロードできる外形図でご確認ください。",
+      "after": "英語ナレーション付きの22秒間の動作原理アニメーションです。表示される治具は説明用です。現在の取付穴配置は、ダウンロードできる外形図でご確認ください。"
+    },
+    {
+      "family": "product",
+      "lang": "ja",
+      "segment": 119,
+      "before": "PDF外形図と簡略化STEPモデルをダウンロードし、必要数量と、分かる範囲で圧力、回転数、各流路の用途、取付図をお送りください。型式だけでもお問い合わせいただけます。",
+      "after": "PDF外形図と簡略化STEPモデルをダウンロードし、必要数量と、分かる範囲の圧力、回転数、各流路の用途をお知らせください。取付図があれば添付してください。型式だけでもお問い合わせいただけます。"
+    },
+    {
+      "family": "product",
+      "lang": "ru",
+      "segment": 37,
+      "before": "22-секундная анимация принципа работы с английской озвучкой. Показанное приспособление не является монтажным чертежом; актуальное расположение крепёжных отверстий приведено в загружаемом габаритном чертеже.",
+      "after": "22-секундная анимация принципа работы с английской озвучкой. Приспособление показано для пояснения; актуальное расположение крепёжных отверстий приведено в загружаемом габаритном чертеже."
+    },
+    {
+      "family": "product",
+      "lang": "ru",
+      "segment": 100,
+      "before": "Определите и промаркируйте все десять контуров. Начинайте с низких давления и скорости, проверяя каждое подключение и контур перед переходом к предусмотренному прерывистому режиму.",
+      "after": "Определите и промаркируйте все десять контуров. Начинайте при низком давлении и малой частоте вращения. Проверьте каждое подключение и каждый контур перед переходом к предусмотренному прерывистому режиму."
+    },
+    {
+      "family": "product",
+      "lang": "ru",
+      "segment": 119,
+      "before": "Скачайте габаритный чертёж PDF и упрощённую STEP-модель, затем сообщите количество и имеющиеся данные: давление, скорость, назначение каналов и монтажный чертёж. Для начала достаточно номера модели.",
+      "after": "Скачайте габаритный чертёж PDF и упрощённую STEP-модель, затем сообщите требуемое количество и имеющиеся данные о давлении, частоте вращения и назначении каналов. Приложите монтажный чертёж, если он есть. Для начала достаточно номера модели."
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 31,
+      "before": "Use tubing suited to the motion and route it within its bend-radius, movement allowance and guidance requirements. If the angle, cycle frequency or space makes that impractical, assess a rotary union.",
+      "after": "Use tubing suited to the motion and route it according to the manufacturer’s requirements for bend radius, movement allowance and guidance. If the angle, cycle frequency or space makes that impractical, assess a rotary union."
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 48,
+      "before": "A rotary union links the two air circuits",
+      "after": "A rotary union connects stationary and rotating piping"
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 59,
+      "before": "Outlet hoses turn with the fixture and feed the required pneumatic functions.",
+      "after": "Outlet hoses turn with the fixture and supply air for the required pneumatic functions."
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 61,
+      "before": "Principle animation with English narration. The fixture is illustrative; use the current drawing on the product page for mounting dimensions.",
+      "after": "Animation of the operating principle, with English narration. The fixture is illustrative; use the current drawing on the product page for mounting dimensions."
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 66,
+      "before": "Start with the air circuits that must remain independent. How clamping, release, locating pins and blow-off are grouped depends on valve location and operating logic. Cylinder count alone does not determine passage count.",
+      "after": "Start with the air circuits that must remain independent. How the circuits for clamping, release, locating-pin actuation and blow-off are grouped depends on valve location and operating logic. Cylinder count alone does not determine passage count."
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 70,
+      "before": "A common air supply can cross to the rotating side, where a valve manifold distributes it to the actuators. This may reduce supply passages across the interface, but valve power, control signals and exhaust must also be arranged.",
+      "after": "A common air supply can cross to the rotating side, where a valve manifold distributes it to the actuators. This may reduce the number of air-supply passages across the interface, but valve power, control signals and exhaust must also be arranged."
+    },
+    {
+      "family": "article",
+      "lang": "en",
+      "segment": 104,
+      "before": "It addresses the rotating connection between the fixed air supply and the moving equipment. Rotating-side hoses, actuator travel and other cables still need routing that avoids interference or a second crossing of the rotating interface.",
+      "after": "It addresses the rotating connection between the fixed air supply and the moving equipment. Route rotating-side hoses and other cables to allow for actuator travel and avoid interference or a second crossing of the rotating interface."
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 48,
+      "before": "Eine Drehdurchführung verbindet beide Luftkreise",
+      "after": "Eine Drehdurchführung verbindet feststehende und rotierende Leitungen"
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 59,
+      "before": "Die Ausgangsschläuche drehen mit der Vorrichtung und versorgen die benötigten pneumatischen Funktionen.",
+      "after": "Die Ausgangsschläuche drehen sich mit der Vorrichtung und führen die Druckluft für die benötigten pneumatischen Funktionen zu."
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 64,
+      "before": "Antrieb, Steuerventile und Aktoren bleiben Bestandteile der Maschinensteuerung. Schlauchlasten müssen unabhängig abgestützt werden.",
+      "after": "Antrieb, Steuerventile und Aktoren bleiben Teil der funktionalen Auslegung der Maschine. Schläuche benötigen eine separate Abstützung, die ihre Lasten aufnimmt."
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 66,
+      "before": "Ausgangspunkt sind die Luftkreise, die voneinander getrennt bleiben müssen. Wie Spannen, Lösen, Positionierstifte und Abblasen zusammengefasst werden, hängt von Ventilposition und Ablaufsteuerung ab. Die Zylinderanzahl allein bestimmt die Kanalzahl nicht.",
+      "after": "Ausgangspunkt sind die Luftkreise, die voneinander getrennt bleiben müssen. Wie die Kreise zum Spannen, Lösen, Betätigen von Positionierstiften und Abblasen zusammengefasst werden, hängt von Ventilposition und Ablaufsteuerung ab. Die Zylinderanzahl allein bestimmt die Kanalzahl nicht."
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 84,
+      "before": "Vor Arbeiten die Maschine stillsetzen, Energiequellen sichern und Restdruck ablassen. Montieren, richten und stützen Sie die Baugruppe nach Maschinenzeichnung und Montageanleitung ab. Ziehen Sie die Drehdurchführung nicht mit den Schläuchen in Position.",
+      "after": "Setzen Sie vor Arbeiten die Maschine still, sichern Sie die Energiequellen und lassen Sie den Restdruck ab. Montieren Sie die Baugruppe gemäß Maschinenzeichnung und Montageanleitung. Richten Sie sie aus und stützen Sie sie ab. Ziehen Sie die Drehdurchführung nicht mit den Schläuchen in Position."
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 92,
+      "before": "Beobachten Sie bei kontrollierter niedriger Geschwindigkeit den gesamten Bewegungsweg, alle Stationen und Richtungswechsel. Prüfen Sie Kollisionen und Leckagen und anschließend Betriebsdruck, Takt und gleichzeitigen Luftbedarf. Eine einzelne störungsfreie Umdrehung ersetzt keine Zyklusprüfung.",
+      "after": "Beobachten Sie bei kontrollierter niedriger Geschwindigkeit den gesamten Bewegungsweg, alle Stationen und Richtungswechsel. Prüfen Sie auf Kollisionen und Leckagen. Überprüfen Sie anschließend Betriebsdruck, Takt und gleichzeitigen Luftbedarf. Eine einzelne störungsfreie Umdrehung ersetzt keine Zyklusprüfung."
+    },
+    {
+      "family": "article",
+      "lang": "de",
+      "segment": 104,
+      "before": "Sie löst die Drehverbindung zwischen fester Luftversorgung und bewegter Maschine. Rotierende Schläuche, Aktorbewegungen und weitere Kabel müssen trotzdem so geführt werden, dass keine Kollisionen oder zusätzliche Überbrückungen der Drehschnittstelle entstehen.",
+      "after": "Sie ermöglicht die Luftübertragung zwischen feststehender Versorgung und rotierendem Maschinenteil. Verlegen Sie Schläuche auf der rotierenden Seite und weitere Kabel so, dass sie den Bewegungsweg der Aktoren zulassen, nicht mit anderen Teilen kollidieren und die Drehschnittstelle nicht erneut überbrücken."
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 5,
+      "before": "Tables rotatives, montages et postes d’assemblage ont besoin d’air comprimé, mais leurs tuyaux peuvent se resserrer à chaque tour. Examinez d’abord le mouvement, puis choisissez le cheminement des tuyaux et la liaison tournante.",
+      "after": "Tables rotatives, montages et postes d’assemblage ont besoin d’air comprimé, mais leurs tuyaux peuvent s’enrouler de plus en plus à chaque tour. Examinez d’abord le mouvement, puis choisissez le cheminement des tuyaux et la liaison tournante."
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 18,
+      "before": "Pourquoi les tuyaux se resserrent-ils à chaque tour ?",
+      "after": "Pourquoi les tuyaux s’enroulent-ils davantage à chaque tour ?"
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 30,
+      "before": "Chaque cycle revient-il à la position initiale ? Aux deux extrémités, le tuyau risque-t-il d’être tendu, plié ou soumis au frottement ?",
+      "after": "Chaque cycle revient-il à la position initiale ? À chaque limite de course, le tuyau risque-t-il d’être tendu, plié ou soumis au frottement ?"
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 38,
+      "before": "Quels sont la vitesse de fonctionnement, la durée de marche continue, la pression et la température ?",
+      "after": "Quelles sont la vitesse de fonctionnement, la durée de marche continue, la pression et la température ?"
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 48,
+      "before": "Un joint tournant relie les deux circuits",
+      "after": "Un joint tournant relie les conduites fixes et tournantes"
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 59,
+      "before": "Les tuyaux de sortie tournent avec le montage et alimentent les fonctions pneumatiques prévues.",
+      "after": "Les tuyaux de sortie tournent avec le montage et acheminent l’air nécessaire aux fonctions pneumatiques prévues."
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 66,
+      "before": "Commencez par les circuits d’air qui doivent rester indépendants. Le regroupement du serrage, du desserrage, des pions de positionnement et du soufflage dépend de la position des distributeurs et de la logique de commande. Le nombre de vérins ne détermine pas à lui seul le nombre de passages.",
+      "after": "Commencez par les circuits d’air qui doivent rester indépendants. Le regroupement des circuits de serrage, de desserrage, de commande des pions de positionnement et de soufflage dépend de la position des distributeurs et de la logique de commande. Le nombre de vérins ne détermine pas à lui seul le nombre de passages."
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 70,
+      "before": "Une alimentation commune peut rejoindre le côté tournant, où un îlot de distributeurs la répartit entre les actionneurs. Cela peut réduire les passages d’alimentation nécessaires, mais il faut aussi prévoir l’alimentation électrique, les signaux de commande et l’échappement des distributeurs.",
+      "after": "Une alimentation commune peut rejoindre le côté tournant, où un îlot de distributeurs répartit l’air entre les actionneurs. Cela peut réduire le nombre de passages d’alimentation nécessaires, mais il faut aussi prévoir l’alimentation électrique, les signaux de commande et l’échappement des distributeurs."
+    },
+    {
+      "family": "article",
+      "lang": "fr",
+      "segment": 104,
+      "before": "Il assure la liaison tournante entre l’alimentation fixe et l’équipement mobile. Les tuyaux tournants, la course des actionneurs et les autres câbles nécessitent encore un cheminement évitant les interférences ou une nouvelle traversée de l’interface.",
+      "after": "Il assure la liaison tournante entre l’alimentation fixe et l’équipement mobile. Disposez les tuyaux du côté tournant et les autres câbles en tenant compte de la course des actionneurs, afin d’éviter les interférences ou une nouvelle traversée de l’interface."
+    },
+    {
+      "family": "article",
+      "lang": "ja",
+      "segment": 48,
+      "before": "ロータリージョイントで両側の回路を接続",
+      "after": "ロータリージョイントで固定側と回転側の配管を接続"
+    },
+    {
+      "family": "article",
+      "lang": "ja",
+      "segment": 59,
+      "before": "出口側のチューブは治具と一緒に回転し、必要な空気圧機能へ接続します。",
+      "after": "出口側のチューブは治具と一緒に回転し、各空圧機能に必要な圧縮空気を供給します。"
+    },
+    {
+      "family": "article",
+      "lang": "ja",
+      "segment": 66,
+      "before": "まず、独立させる必要がある空気回路を整理します。クランプ、アンクランプ、位置決めピン、ブローをどう組み合わせるかは、バルブの位置と動作ロジックで変わります。シリンダーの数だけで流路数は決まりません。",
+      "after": "まず、独立させる必要がある空気回路を整理します。クランプ、アンクランプ、位置決めピンの作動、ブローの各回路をどう組み合わせるかは、バルブの位置と動作ロジックで変わります。シリンダーの数だけで流路数は決まりません。"
+    },
+    {
+      "family": "article",
+      "lang": "ja",
+      "segment": 104,
+      "before": "固定給気と回転装置の間の回転接続に対応します。回転側のチューブ、アクチュエーターのストローク、他のケーブルは引き続き、互いの干渉や固定部と回転部を再びまたぐ配線を避けて配置する必要があります。",
+      "after": "固定側の給気配管と回転装置の間を接続しながら、相対回転に対応します。回転側のチューブや他のケーブルは、アクチュエーターのストロークを考慮して引き回し、周辺部品との干渉や、固定部と回転部を再びまたぐ経路を避ける必要があります。"
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 47,
+      "before": "Повторное вращение в одну сторону накапливает скручивание шланга или наматывает его на вал.",
+      "after": "При повторном вращении в одну сторону шланг, соединяющий неподвижную и вращающуюся части, всё сильнее скручивается или наматывается на вал."
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 48,
+      "before": "Вращающееся соединение связывает контуры обеих сторон",
+      "after": "Вращающееся соединение связывает неподвижные и вращающиеся линии"
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 59,
+      "before": "Выходные шланги поворачиваются вместе с оснасткой и питают нужные пневматические функции.",
+      "after": "Выходные шланги поворачиваются вместе с оснасткой и подают воздух для выполнения необходимых пневматических функций."
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 61,
+      "before": "Анимация принципа работы с английской озвучкой. Оснастка показана для пояснения; монтажные размеры приведены на актуальном чертеже страницы изделия.",
+      "after": "Анимация принципа работы с английской озвучкой. Оснастка показана для пояснения; монтажные размеры приведены на актуальном чертеже, доступном на странице изделия."
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 65,
+      "before": "Сколько каналов нужно? Считайте контуры через границу вращения",
+      "after": "Сколько каналов нужно? Определите число контуров, проходящих через границу вращения"
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 66,
+      "before": "Начните с воздушных контуров, которые должны оставаться независимыми. Объединение зажима, разжима, установочных пальцев и продувки зависит от расположения распределителей и логики работы. Число цилиндров само по себе не определяет число каналов.",
+      "after": "Начните с воздушных контуров, которые должны оставаться независимыми. Группировка контуров зажима, разжима, управления установочными пальцами и продувки зависит от расположения распределителей и логики работы. Число цилиндров само по себе не определяет число каналов."
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 85,
+      "before": "Разделите неподвижную и вращающуюся проводку. ",
+      "after": "Прокладывайте неподвижные и вращающиеся линии отдельно. "
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 92,
+      "before": "На контролируемой низкой скорости проследите весь ход, все позиции и реверсы. Проверьте столкновения и утечки, затем рабочее давление, время цикла и одновременное потребление воздуха. Один плавный оборот не заменяет проверку полного цикла.",
+      "after": "На контролируемой низкой скорости проследите весь ход, все позиции и реверсы. Проверьте, нет ли столкновений и утечек, затем проверьте рабочее давление, время цикла и одновременное потребление воздуха. Один плавный оборот не заменяет проверку полного цикла."
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 100,
+      "before": "Фитинг, который поворачивается для настройки при монтаже, не обязательно является динамическим вращающимся уплотнением. Уточните, разрешает ли производитель вращение во время работы и при каких частоте вращения, давлении и рабочем цикле.",
+      "after": "Фитинг, который поворачивается для настройки при монтаже, не обязательно является динамическим вращающимся уплотнением. Уточните, разрешает ли производитель вращение во время работы и какие ограничения установлены по частоте вращения, давлению и рабочему циклу."
+    },
+    {
+      "family": "article",
+      "lang": "ru",
+      "segment": 104,
+      "before": "Оно решает задачу вращающейся связи между неподвижной подачей воздуха и подвижным оборудованием. Шланги на вращающейся стороне, ход механизмов и остальные кабели всё равно нужно размещать без взаимных помех и повторного пересечения границы вращения.",
+      "after": "Оно обеспечивает передачу воздуха между неподвижной подающей линией и вращающимся оборудованием. Прокладывайте шланги на вращающейся стороне и остальные кабели с учётом хода механизмов, без взаимных помех и повторного пересечения границы вращения."
+    }
+  ],
+  "completedAt": "2026-10-07T08:18:07.602Z",
+  "reviewedSegments": {
+    "en/product": {
+      "segments": 124,
+      "sha256": "3edf7661bb4d0bbf7121c397ae436540eafdea8fe242ebed865b980339b75908",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "en/article": {
+      "segments": 110,
+      "sha256": "04f53252eba7feea25403c8ef33e1eb8e9ffb8861665fbb8c7cff0c8e6c6038e",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "de/product": {
+      "segments": 115,
+      "sha256": "66e00ac1ead357ebf05895a5f4a7486a6e429d0e61dc272bd3aef96d9dec869b",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "de/article": {
+      "segments": 110,
+      "sha256": "5f671b9691324b0ec02e2545954e0f13747746b3f7f8dcdb5d17dd76fea0cdee",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "fr/product": {
+      "segments": 115,
+      "sha256": "e39805e04720aab0fe4ad29f05fb3a5d2fba2601e810472256414c536742f01d",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "fr/article": {
+      "segments": 110,
+      "sha256": "0872aeb44cddf8ff805069e95d3a8ffdf7b939d8001f812f24f596805fea66a2",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "ja/product": {
+      "segments": 115,
+      "sha256": "2dccf88513b4f82c4c5298791cc2c174553c6f5e072b188cdf3113500ff98e9f",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "ja/article": {
+      "segments": 110,
+      "sha256": "7866a208dcd5bd41c4d86b46979147334148dd144201a4ab807d906ea3aa1f26",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "ru/product": {
+      "segments": 116,
+      "sha256": "feb0e0d58737e80fe4cdfde7d123c355da0f2e435b84ad4dc82feff4b5f0899a",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    },
+    "ru/article": {
+      "segments": 110,
+      "sha256": "eb5e41887f83ac98ac806c0f29f0c1496afbdec5671a78b3c74ed49103898af2",
+      "checked": "grammar, agreement, modifiers, collocation, parallel structure, technical meaning, FAQ parity and calls to action"
+    }
+  },
+  "renderVerification": {
+    "schemaVersion": 1,
+    "startedAt": "2026-10-07T08:15:10.560Z",
+    "completedAt": "2026-10-07T08:15:49.881Z",
+    "mode": "local-http",
+    "expectedArtifactRoot": null,
+    "expectedReleaseManifestSha256": null,
+    "browserVersion": "Chrome/154.0.8037.98",
+    "languages": [
+      "en",
+      "de",
+      "fr",
+      "ja",
+      "ru"
+    ],
+    "pagesPerLanguage": 2,
+    "viewports": [
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "checkedViewports": 20,
+    "languageNavigationChecks": 20,
+    "quoteNavigationChecks": 20,
+    "quoteFormChecks": 0,
+    "logoNavigationChecks": 20,
+    "homeNavigationChecks": 20,
+    "exactArtifactChecks": 0,
+    "consentSettlementChecks": 1,
+    "failures": []
+  },
+  "boundary": "AI language review; not independent native-speaker certification. Existing technical reference and owner-approved product facts retained. No new product capability, pressure, speed, dimensions or guarantee was introduced."
+}
