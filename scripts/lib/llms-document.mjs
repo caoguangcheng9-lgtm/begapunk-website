@@ -136,7 +136,7 @@ export function llmsEnglishSections() {
   const engineering = section(c.headings[3], [
     link('Model-specific selection limits', `${base}/product-comparison.html`, c.selection),
     link('BP-2P-0002 — passage routing and interfaces', `${base}/BP-2P-0002.html#main-content`, `BP-2P-0002: ${p.topology}`),
-    link('BP-10P-0001 — ratings, seal and calculated weight', `${base}/BP-10P-0001.html#main-content`, `BP-10P-0001: ${ratings}. ${p.seal} ${p.weight} ${p.weightNote}`),
+    link('BP-10P-0001 — ratings, seal and nominal weight', `${base}/BP-10P-0001.html#main-content`, `BP-10P-0001: ${ratings}. ${p.seal} ${p.weight} ${p.weightNote}`),
   ].join('\n'));
   const quality = `## ${c.headings[4]}`;
   const commercial = section(c.headings[5], [

@@ -35,7 +35,7 @@ For LLMs and agents: use this file to locate BEGAPUNK company information, model
 {{quality}}
 
 - [About Begapunk](https://www.begapunk.com/about.html): Company and manufacturing information.
-- [Manufacturing & quality](https://www.begapunk.com/manufacturing-quality.html): Photo-supported overview of hard-anodized rotors, color-anodized stator housings, a single-point 51.7 μm coating-thickness reading and order-specific engineering controls.
+- [Manufacturing & quality](https://www.begapunk.com/manufacturing-quality.html): Photo-supported overview of hard-anodized rotors, color-anodized stator housings, a batch-controlled 51.7 μm coating-thickness value and order-specific engineering controls.
 - [100% passage-by-passage leak testing](https://www.begapunk.com/production-inspection-testing.html): Every finished pneumatic rotary union and every passage is checked individually with compressed air at 1.0 MPa before packing and storage; the page also explains PASS/NG handling. {{qualityCommitment}}
 - [Application cases and selection examples](https://www.begapunk.com/case-studies.html): Three installed rotary-union applications and two selection examples show installation layouts, circuit functions, and the inputs needed to choose a model.
 - [Engineering knowledge center](https://www.begapunk.com/blog.html): Practical guides for pneumatic rotary joint selection, installation, seal comparison, application review, and production leak-testing evidence.
