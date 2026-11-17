@@ -232,7 +232,7 @@
   {
     "id": "BP-2P-08-0001",
     "url": "BP-2P-08-0001.html",
-    "title": "BP-2P-08-0001 2-Kanal-Pneumatik-Drehdurchführung | Begapunk",
+    "title": "BP-2P-08-0001 2-Kanal-Pneumatik-Drehdurchführung | Ø8 mm Durchgang",
     "description": "BP-2P-08-0001: pneumatische 2-Kanal-Drehdurchführung mit Ø8 mm Durchgangsbohrung. Grenzwerte: 1 MPa, 200 min⁻¹. PDF/STEP-Zeichnungen und Angebot verfügbar.",
     "h1": "BP-2P-08-0001 pneumatische 2-Kanal-Drehdurchführung",
     "h2s": [
@@ -334,7 +334,7 @@
   {
     "id": "BP-2P-16-0001",
     "url": "BP-2P-16-0001.html",
-    "title": "BP-2P-16-0001 2-Kanal-Pneumatik-Drehdurchführung | Begapunk",
+    "title": "BP-2P-16-0001 2-Kanal-Pneumatik-Drehdurchführung | Ø16 mm Durchgang",
     "description": "BP-2P-16-0001: pneumatische 2-Kanal-Drehdurchführung mit Ø16 mm Durchgangsbohrung. Grenzwerte: 1 MPa, 200 min⁻¹. PDF/STEP-Zeichnungen und Angebot verfügbar.",
     "h1": "BP-2P-16-0001 pneumatische 2-Kanal-Drehdurchführung",
     "h2s": [
@@ -385,7 +385,7 @@
   {
     "id": "BP-2P-30-0001",
     "url": "BP-2P-30-0001.html",
-    "title": "BP-2P-30-0001 2-Kanal-Pneumatik-Drehdurchführung | Begapunk",
+    "title": "BP-2P-30-0001 2-Kanal-Pneumatik-Drehdurchführung | Ø30 mm Durchgang",
     "description": "BP-2P-30-0001: pneumatische 2-Kanal-Drehdurchführung mit Ø30 mm Durchgangsbohrung. Grenzwerte: 1 MPa, 150 min⁻¹. PDF/STEP-Zeichnungen und Angebot verfügbar.",
     "h1": "BP-2P-30-0001 pneumatische 2-Kanal-Drehdurchführung",
     "h2s": [
@@ -436,7 +436,7 @@
   {
     "id": "BP-2P-50-0001",
     "url": "BP-2P-50-0001.html",
-    "title": "BP-2P-50-0001 2-Kanal-Pneumatik-Drehdurchführung | Begapunk",
+    "title": "BP-2P-50-0001 2-Kanal-Pneumatik-Drehdurchführung | Ø50 mm Durchgang",
     "description": "BP-2P-50-0001: pneumatische 2-Kanal-Drehdurchführung mit Ø50 mm Durchgangsbohrung. Grenzwerte: 1 MPa, 100 min⁻¹. PDF/STEP-Zeichnungen und Angebot verfügbar.",
     "h1": "BP-2P-50-0001 pneumatische 2-Kanal-Drehdurchführung",
     "h2s": [
@@ -487,8 +487,8 @@
   {
     "id": "BP-2P-95-0005",
     "url": "BP-2P-95-0005.html",
-    "title": "BP-2P-95-0005 2-Kanal-Drehdurchführung | Begapunk",
-    "description": "BP-2P-95-0005 2-Kanal-Drehdurchführung mit 2 Eingängen / 4 Ausgängen. 2 Ein-/4 Ausgänge für Spannen/Lösen. 1 MPa (10 bar / ca. 145 psi) · 200 min⁻¹.",
+    "title": "BP-2P-95-0005 2-Kanal-Drehdurchführung mit 2 Eingängen / 4 Ausgängen | Begapunk",
+    "description": "BP-2P-95-0005 2-Kanal-Drehdurchführung mit 2 Eingängen / 4 Ausgängen. 2 Ein-/4 Ausgänge für Spannen/Lösen. 1 MPa (10 bar / ca. 145 psi) · 200 min⁻¹; Medien: Luft. STEP AP214 laden.",
     "h1": "BP-2P-95-0005 2-Kanal-Drehdurchführung mit 2 Eingängen / 4 Ausgängen",
     "h2s": [
       "Technische Daten",
@@ -691,8 +691,8 @@
   {
     "id": "BP-3P-S06-0001",
     "url": "BP-3P-S06-0001.html",
-    "title": "BP-3P-S06-0001 3-Kanal-Pneumatik-Elektro-Drehdurchfüh | Begapunk",
-    "description": "BP-3P-S06-0001 3-Kanal-Pneumatik-Elektro-Drehdurchführung. 1 MPa (10 bar / ca. 145 psi), 200 min⁻¹; Medium Luft; sechs elektrische Leitungen.",
+    "title": "BP-3P-S06-0001 3-Kanal-Pneumatik-Elektro-Drehdurchführung | Begapunk",
+    "description": "BP-3P-S06-0001 3-Kanal-Pneumatik-Elektro-Drehdurchführung. 1 MPa (10 bar / ca. 145 psi), 200 min⁻¹; Medium Luft; sechs elektrische Leitungen, Nennwerte gemäß Spezifikation. STEP AP214 laden.",
     "h1": "BP-3P-S06-0001 3-Kanal-Pneumatik-Elektro-Drehdurchführung",
     "h2s": [
       "Technische Daten",
@@ -910,8 +910,8 @@
   {
     "id": "application-laser-tube-cutting",
     "url": "application-laser-tube-cutting.html",
-    "title": "Pneumatische Drehdurchführungen für hintere | Begapunk",
-    "description": "Zwei- und Dreikanal-Drehdurchführungen für Druckluft am hinteren Spannfutter vergleichen. Für den Einstieg genügt ein Modell, Foto oder eine Zeichnung.",
+    "title": "Pneumatische Drehdurchführungen für hintere Spannfutter | Begapunk",
+    "description": "Zwei- und Dreikanal-Drehdurchführungen für Druckluft am hinteren Spannfutter vergleichen. Für den Einstieg genügt ein Modell, Foto oder eine Zeichnung; Betriebsdaten können Sie ergänzen, soweit bekannt.",
     "h1": "Pneumatische Drehdurchführungen für hintere Spannfutter von Laser-Rohrschneidmaschinen",
     "h2s": [
       "Unabhängige Druckluftfunktionen in das rotierende Spannfutter führen",
@@ -948,7 +948,7 @@
     "id": "application-steel-dusty-environments",
     "url": "application-steel-dusty-environments.html",
     "title": "Staubgeschützte Drehdurchführungen für Stahlindustrie",
-    "description": "Auswahl staubgeschützter pneumatischer Drehdurchführungen für Stahlwerke, Gießereien und abrasive Anlagenbereiche. Angebot bei Begapunk anfordern.",
+    "description": "Auswahl staubgeschützter pneumatischer Drehdurchführungen für Stahlwerke, Gießereien und abrasive Anlagenbereiche.",
     "h1": "Staubgeschützte Drehdurchführungen für raue Einsatzbereiche",
     "h2s": [
       "Partikelbelastung an Dichtungen und Lagern verringern",
@@ -1080,7 +1080,7 @@
     "id": "custom-hydraulic-rotary-unions",
     "url": "custom-hydraulic-rotary-unions.html",
     "title": "Hydraulik-Drehdurchführungen nach Maß | Bis 30 MPa | Begapunk",
-    "description": "Hydraulik-Drehdurchführungen für Bagger, Holzgreifer und marine Haspel-/Coil-Handling. Typisch 2-Wege, bis 12 Wege. Prüfung bis 30 MPa (300 bar). MOQ.",
+    "description": "Hydraulik-Drehdurchführungen für Bagger, Holzgreifer und marine Haspel-/Coil-Handling. Typisch 2-Wege, bis 12 Wege. Prüfung bis 30 MPa (300 bar). MOQ 1.",
     "h1": "Hydraulik-Drehdurchführungen für Bagger, Holzgreifer und marine Haspel- sowie Coil-Handling-Anlagen",
     "h2s": [
       "Für Bagger, Holzgreifer und marine Haspelanlagen",
@@ -1312,7 +1312,7 @@
     "id": "blog",
     "url": "blog.html",
     "title": "Drehdurchführungen: Auswahl, Montage und Dichtungen | Begapunk",
-    "description": "Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf.",
+    "description": "Praxisnahe Leitfäden zu Funktion, Auswahl, Montage und Dichtungen pneumatischer Drehdurchführungen sowie reale Einbaubeispiele und der Prüfablauf in der Fertigung.",
     "h1": "Auswahl, Montage und Dichtungen von Drehdurchführungen",
     "h2s": [
       "Wählen Sie den nächsten technischen Schritt",
@@ -1412,7 +1412,7 @@
     "id": "contact",
     "url": "contact.html",
     "title": "Drehdurchführung anfragen | Technische Prüfung Begapunk",
-    "description": "Für die Anfrage einer Drehdurchführung genügen Modellbezeichnung, Foto, Zeichnung oder bekannte Betriebsdaten. In der Regel antworten wir innerhalb eines.",
+    "description": "Für die Anfrage einer Drehdurchführung genügen Modellbezeichnung, Foto, Zeichnung oder bekannte Betriebsdaten. In der Regel antworten wir innerhalb eines Arbeitstags.",
     "h1": "Drehdurchführung anfragen",
     "h2s": [
       "Angebot und voraussichtliche Lieferzeit",
@@ -1437,7 +1437,7 @@
     "id": "faq",
     "url": "faq.html",
     "title": "Technische FAQ zu Drehdurchführungen | Begapunk",
-    "description": "27 technische Antworten zu Funktion, Auswahl, Medien, kundenspezifischer Auslegung, Montage, Dichtheitsprüfung, Rückverfolgbarkeit und Anwendungsprüfung.",
+    "description": "27 technische Antworten zu Funktion, Auswahl, Medien, kundenspezifischer Auslegung, Montage, Dichtheitsprüfung, Rückverfolgbarkeit und Anwendungsprüfung von Drehdurchführungen.",
     "h1": "Technische FAQ zu Drehdurchführungen",
     "h2s": [
       "Modellspezifische Auftragsbedingungen",
@@ -1520,7 +1520,7 @@
     "id": "privacy",
     "url": "privacy.html",
     "title": "Datenschutzerklärung | Begapunk",
-    "description": "Informationen zur Erhebung, Verarbeitung, Speicherung und zum Schutz personenbezogener Daten auf der Begapunk Website. Angebot bei Begapunk anfordern.",
+    "description": "Informationen zur Erhebung, Verarbeitung, Speicherung und zum Schutz personenbezogener Daten auf der Begapunk Website.",
     "h1": "Datenschutzerklärung",
     "h2s": [
       "1. Welche Daten wir erheben",
@@ -1597,7 +1597,7 @@
     "id": "terms",
     "url": "terms.html",
     "title": "Allgemeine Geschäftsbedingungen | Begapunk",
-    "description": "Geschäftsbedingungen von Begapunk für Angebote, Bestellungen, Lieferung, Gewährleistung, Rückgabe und Haftung. Angebot bei Begapunk anfordern.",
+    "description": "Geschäftsbedingungen von Begapunk für Angebote, Bestellungen, Lieferung, Gewährleistung, Rückgabe und Haftung.",
     "h1": "Allgemeine Geschäftsbedingungen",
     "h2s": [
       "Modellspezifische Auftragsbedingungen",
@@ -1676,7 +1676,7 @@
     ],
     "url": "case-bp-3p-s06-sensor-monitored-chuck.html",
     "title": "BP-3P-S06-0001 im sensorüberwachten Spannfutter | Begapunk",
-    "description": "Fotodokumentierter Anwendungsfall der BP-3P-S06-0001 zur Druckluftübertragung über drei getrennte Kanäle sowie zur Übertragung externer Sensorsignale.",
+    "description": "Fotodokumentierter Anwendungsfall der BP-3P-S06-0001 zur Druckluftübertragung über drei getrennte Kanäle sowie zur Übertragung externer Sensorsignale in einem pneumatischen Spannfutter.",
     "h1": "BP-3P-S06-0001: Druckluft- und Signalübertragung in einem sensorüberwachten Spannfutter",
     "h2s": [
       "Fallübersicht",
@@ -1730,7 +1730,7 @@
     "id": "application-packaging-machinery",
     "url": "application-packaging-machinery.html",
     "title": "Drehdurchführungen für Verpackungsmaschinen | Begapunk",
-    "description": "Planen Sie eine pneumatische Drehdurchführung für Verpackungsrundläufer anhand der Spann- und Abblaskreise und vergleichen Sie aktuelle 2-Wege-Katalogmodelle.",
+    "description": "Planen Sie eine pneumatische Drehdurchführung für Verpackungsrundläufer anhand der Spann- und Abblaskreise und vergleichen Sie aktuelle 2-Wege-Katalogmodelle in der Produktliste.",
     "h1": "Drehdurchführungen für Verpackungsmaschinen",
     "h2s": [
       "Wo die Drehdurchführung in der Verpackungsmaschine sitzt",
@@ -1758,7 +1758,7 @@
     "id": "application-bottle-filling-capping",
     "url": "application-bottle-filling-capping.html",
     "title": "Drehdurchführungen für Füll- und Verschließmaschinen",
-    "description": "BP-2P-16-0001 im Produktions-Verschließkopf: zwei unabhängige Luftwege spannen und lösen einen Dreibackengreifer. BP-2P-08-0001 ist eine weitere pneumatische.",
+    "description": "BP-2P-16-0001 im Produktions-Verschließkopf: zwei unabhängige Luftwege spannen und lösen einen Dreibackengreifer. BP-2P-08-0001 ist eine weitere pneumatische Greiferoption.",
     "h1": "Drehdurchführungen für Flaschenfüll- und Verschließmaschinen",
     "h2s": [
       "BP-2P-16-0001 in einem Verschließkopf",
@@ -1785,7 +1785,7 @@
     "id": "application-automation-rotary-tables",
     "url": "application-automation-rotary-tables.html",
     "title": "Drehdurchführungen für Rund- und Drehtische | Begapunk",
-    "description": "Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie geeignete pneumatische.",
+    "description": "Wählen Sie eine pneumatische Drehdurchführung für Automations-Rundtische anhand von Spann-, Löse- und Abblaskreisen. Vergleichen Sie geeignete pneumatische Katalogmodelle.",
     "h1": "Drehdurchführungen für automatisierte Rund- und Drehtische",
     "h2s": [
       "Drehdurchführung und Tischzyklus aufeinander abstimmen",
@@ -1813,7 +1813,7 @@
     "id": "application-pneumatic-tools-hose-anti-twist",
     "url": "application-pneumatic-tools-hose-anti-twist.html",
     "title": "Luftdrehanschluss für Druckluftwerkzeuge | Schlauch-Verdrehschutz",
-    "description": "Planen Sie einen Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen anhand realer Bewegung, Durchfluss und Gewinde.",
+    "description": "Planen Sie einen Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen anhand realer Bewegung, Durchfluss und Gewinde. Vergleichen Sie aktuelle Einkanal-Katalogmodelle; das ist nicht automatisch eine schnell laufende Drehdurchführung.",
     "h1": "Luftdrehanschluss gegen Schlauchverdrehung an Druckluftwerkzeugen",
     "h2s": [
       "Bewegung vor der Auswahl des Drehanschlusses definieren",
@@ -1840,7 +1840,7 @@
     "id": "application-robot-end-of-arm-tooling",
     "url": "application-robot-end-of-arm-tooling.html",
     "title": "Drehdurchführungen für Roboter-Endeffektoren",
-    "description": "Planen Sie eine Drehdurchführung für Roboter-Endeffektoren anhand von Pneumatikwegen, optionalen Stromkreisen, Handgelenkbewegung und Nutzlast.",
+    "description": "Planen Sie eine Drehdurchführung für Roboter-Endeffektoren anhand von Pneumatikwegen, optionalen Stromkreisen, Handgelenkbewegung und Nutzlast. Vergleichen Sie pneumatische und pneumatisch-elektrische Katalogoptionen.",
     "h1": "Drehdurchführungen für Roboter-Endeffektoren",
     "h2s": [
       "Medien und Funktionen am Roboterhandgelenk erfassen",
@@ -1868,7 +1868,7 @@
     "id": "blog-rotary-joint-leaking",
     "url": "blog-rotary-joint-leaking.html",
     "title": "Drehdurchführung undicht? Fehlersuche in 5 Schritten",
-    "description": "Diagnose einer undichten Drehdurchführung: Leckort finden, Armaturenfehler von dynamischen Dichtungen trennen, Ausrichtung prüfen.",
+    "description": "Diagnose einer undichten Drehdurchführung: Leckort finden, Armaturenfehler von dynamischen Dichtungen trennen, Ausrichtung prüfen, bevor Teile gewechselt werden.",
     "h1": "Drehdurchführung undicht? Fehlersuche in 5 Schritten",
     "h2s": [
       "Mit Leckort und Zeitpunkt beginnen",
@@ -1897,7 +1897,7 @@
     "id": "blog-threaded-vs-flange",
     "url": "blog-threaded-vs-flange.html",
     "title": "Gewinde oder Flansch bei Drehdurchführungen?",
-    "description": "Gewinde- oder Flanschmontage einer Drehdurchführung nach Bauraum, Ausrichtung, Verdrehschutz und Wartungszugang wählen – nicht nach dem äußeren.",
+    "description": "Gewinde- oder Flanschmontage einer Drehdurchführung nach Bauraum, Ausrichtung, Verdrehschutz und Wartungszugang wählen – nicht nach dem äußeren Erscheinungsbild.",
     "h1": "Gewinde- und Flanschmontage bei Drehdurchführungen vergleichen",
     "h2s": [
       "Unterschiede der beiden Befestigungsarten",
@@ -1926,7 +1926,7 @@
     "id": "blog-seal-replacement",
     "url": "blog-seal-replacement.html",
     "title": "Dichtung einer Drehdurchführung wechseln | Anleitung",
-    "description": "Entscheiden Sie nach Prüfung von Wellen, Dichtflächen und Leckort, ob Dichtungen oder die komplette Drehdurchführung zu tauschen sind.",
+    "description": "Entscheiden Sie nach Prüfung von Wellen, Dichtflächen und Leckort, ob Dichtungen oder die komplette Drehdurchführung zu tauschen sind. Verwenden Sie den modellspezifischen Dichtungssatz.",
     "h1": "Dichtung einer Drehdurchführung fachgerecht wechseln",
     "h2s": [
       "Prüfen, ob ein Dichtungswechsel sinnvoll ist",
@@ -1954,7 +1954,7 @@
     "id": "blog-rotary-joint-materials",
     "url": "blog-rotary-joint-materials.html",
     "title": "Werkstoffe für Drehdurchführungen richtig auswählen",
-    "description": "Vergleichen Sie Aluminium-, Edelstahl- und Messinggehäuse nach Masse und Umgebung und bestätigen Sie den veröffentlichten Gehäusewerkstoff des gewählten.",
+    "description": "Vergleichen Sie Aluminium-, Edelstahl- und Messinggehäuse nach Masse und Umgebung und bestätigen Sie den veröffentlichten Gehäusewerkstoff des gewählten Modells. Keine Rangliste der Lebensdauer.",
     "h1": "Aluminium, Edelstahl oder Messing für Drehdurchführungen?",
     "h2s": [
       "Eigenschaften gängiger Gehäusewerkstoffe",
@@ -1983,7 +1983,7 @@
     "id": "BP-10P-0001",
     "url": "BP-10P-0001.html",
     "title": "BP-10P-0001 pneumatische 10-Kanal-Drehdurchführung | Begapunk",
-    "description": "10 unabhängige Druckluftkanäle, 1 MPa, 100 min⁻¹. G1/8-Anschlüsse, 8-mm-Schlauchverschraubungen, PDF und STEP. Angebot bei Begapunk anfordern.",
+    "description": "10 unabhängige Druckluftkanäle, 1 MPa, 100 min⁻¹. G1/8-Anschlüsse, 8-mm-Schlauchverschraubungen, PDF und STEP.",
     "category": "product",
     "keywords": [
       "BP-10P-0001",
@@ -2019,7 +2019,7 @@
   {
     "id": "blog-prevent-air-hose-twisting",
     "url": "blog-prevent-air-hose-twisting.html",
-    "title": "Druckluftschläuche an Rundtischen vor Verdrehen | Begapunk",
+    "title": "Druckluftschläuche an Rundtischen vor Verdrehen schützen | Begapunk",
     "description": "Druckluftschläuche wickeln sich am Rundtisch auf? Bewegungsarten vergleichen, das Prinzip pneumatischer Drehdurchführungen verstehen und Luftkreise auswählen.",
     "h1": "Druckluftschläuche wickeln sich um die Maschine? So gelingt die Luftversorgung über eine Drehverbindung",
     "h2s": [
