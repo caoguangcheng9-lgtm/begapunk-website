@@ -128,7 +128,7 @@ export function llmsEnglishSections() {
     `](mailto:${id.businessEmail}): Business enquiries.`);
   const boundaries = [c.lookup, c.docs, c.purpose].map(text => `> ${text}`).join('\n\n');
   const sources = section(c.headings[2], id.verificationSources.map(s => link(s.name, s.url,
-    'General government registry search portal; not an independently verified company-specific record.')).join('\n'));
+    'National government registry portal; use it to look up the registration identifiers listed above.')).join('\n'));
   const social = section(c.socialHeading, id.officialSocialChannels.map(s => link(s.platform, s.url,
     c.socialBoundary)).join('\n'));
   const manual = readJson('i18n/manual/bp10-en-segments.json');
@@ -136,7 +136,7 @@ export function llmsEnglishSections() {
   const engineering = section(c.headings[3], [
     link('Model-specific selection limits', `${base}/product-comparison.html`, c.selection),
     link('BP-2P-0002 — passage routing and interfaces', `${base}/BP-2P-0002.html#main-content`, `BP-2P-0002: ${p.topology}`),
-    link('BP-10P-0001 — ratings, seal and calculated weight', `${base}/BP-10P-0001.html#main-content`, `BP-10P-0001: ${ratings}. ${p.seal} ${p.weight} ${p.weightNote}`),
+    link('BP-10P-0001 — ratings, seal and nominal weight', `${base}/BP-10P-0001.html#main-content`, `BP-10P-0001: ${ratings}. ${p.seal} ${p.weight} ${p.weightNote}`),
   ].join('\n'));
   const quality = `## ${c.headings[4]}`;
   const commercial = section(c.headings[5], [

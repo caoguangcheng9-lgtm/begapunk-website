@@ -109,9 +109,9 @@ const disclaimerPatterns = [
   /\bne\s+(?:doit|devrait|peut)\s+pas\b[^.!?。！？\n]{0,90}\b(?:revendiqu(?:é|ée|er)|garanti(?:e)?|promis(?:e)?|décrit(?:e)?|présenté(?:e)?)\b/i,
   /\b(?:aucun(?:e)?|sans)\b[^.!?。！？\n]{0,70}\b(?:garantie|promesse|assurance|certification)\b/i,
   /\b(?:soumis(?:e)?\s+à|nécessite|requiert|doit\s+être)\b[^.!?。！？\n]{0,60}\b(?:confirmation|validation|vérification|approbation\s+écrite)\b/i,
-  /\bне\b[^.!?。！？\n]{0,70}\b(?:гарантируется|заявляется|обещается|подтверждено|сертифицировано)\b/i,
-  /\b(?:нет|без)\b[^.!?。！？\n]{0,70}\b(?:гарантии|обещания|подтверждения|сертификации)\b/i,
-  /\b(?:требует|подлежит)\b[^.!?。！？\n]{0,50}\bподтверждени/i,
+  /(?<![\p{L}\p{N}_])не(?![\\p{L}\\p{N}_])[^.!?。！？\n]{0,70}(?<![\p{L}\p{N}_])(?:гарантируется|заявляется|обещается|подтверждено|сертифицировано)(?![\p{L}\p{N}_])/iu,
+  /(?<![\p{L}\p{N}_])(?:нет|без)(?![\p{L}\p{N}_])[^.!?。！？\n]{0,70}(?<![\p{L}\p{N}_])(?:гарантии|обещания|подтверждения|сертификации)(?![\p{L}\p{N}_])/iu,
+  /(?<![\p{L}\p{N}_])(?:требует|подлежит)(?![\p{L}\p{N}_])[^.!?。！？\n]{0,50}(?<![\p{L}\p{N}_])подтверждени/iu,
 ];
 
 function getStatementContext(source, index, length) {

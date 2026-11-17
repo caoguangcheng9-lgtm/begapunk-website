@@ -57,7 +57,7 @@ fixtureDeadline.unref();
 before(async () => {
   const executablePath = await findBrowser();
   if (process.platform === 'linux') {
-    console.info(`Fixture browser: ${execFileSync(executablePath, ['--version'], { encoding: 'utf8', timeout: 5000 }).trim()}`);
+    console.info(`Fixture browser: ${execFileSync(executablePath, ['--version'], { encoding: 'utf8', timeout: 30_000 }).trim()}`);
   }
   console.info('Starting browser interaction fixture.');
   browser = await puppeteer.launch({
