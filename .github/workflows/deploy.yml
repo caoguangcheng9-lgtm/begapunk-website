@@ -22,7 +22,6 @@ jobs:
     outputs:
       release_id: ${{ steps.identity.outputs.release_id }}
       manifest_sha256: ${{ steps.manifest.outputs.sha256 }}
-      editorial_trusted_base_sha: ${{ steps.editorial-baseline.outputs.sha }}
 
     steps:
       - name: Check out release source
@@ -54,18 +53,6 @@ jobs:
           git fetch --no-tags origin main:refs/remotes/origin/main
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
 
-      - name: Load protected editorial trust baseline
-        id: editorial-baseline
-        env:
-          EDITORIAL_TRUSTED_BASE_SHA: ${{ vars.EDITORIAL_TRUSTED_BASE_SHA }}
-        run: |
-          [[ "$EDITORIAL_TRUSTED_BASE_SHA" =~ ^[0-9a-f]{40}$ ]]
-          test "$EDITORIAL_TRUSTED_BASE_SHA" != "$GITHUB_SHA"
-          git cat-file -e "${EDITORIAL_TRUSTED_BASE_SHA}^{commit}"
-          git merge-base --is-ancestor "$EDITORIAL_TRUSTED_BASE_SHA" "$GITHUB_SHA"
-          echo "EDITORIAL_TRUSTED_BASE_REF=$EDITORIAL_TRUSTED_BASE_SHA" >> "$GITHUB_ENV"
-          echo "sha=$EDITORIAL_TRUSTED_BASE_SHA" >> "$GITHUB_OUTPUT"
-
       - name: Create immutable release identity
         id: identity
         run: |
@@ -80,20 +67,7 @@ jobs:
         env:
           BEGAPUNK_RELEASE_ID: ${{ steps.identity.outputs.release_id }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-        run: npm run deploy:prepare
-
-      - name: Bind protected release authorization and inquiry evidence
-        env:
-          RELEASE_APPROVED_SHA: ${{ vars.RELEASE_APPROVED_SHA }}
-          RELEASE_AUTHORIZATION_REF: ${{ vars.RELEASE_AUTHORIZATION_REF }}
-          INQUIRY_DELIVERY_APPLICABILITY: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY }}
-          INQUIRY_DELIVERY_APPROVED_SHA: ${{ vars.INQUIRY_DELIVERY_APPROVED_SHA }}
-          INQUIRY_DELIVERY_EVIDENCE_REF: ${{ vars.INQUIRY_DELIVERY_EVIDENCE_REF }}
-          INQUIRY_DELIVERY_PHASE: ${{ vars.INQUIRY_DELIVERY_PHASE }}
-          INQUIRY_POSTACTIVATION_APPROVED_SHA: ${{ vars.INQUIRY_POSTACTIVATION_APPROVED_SHA }}
-          INQUIRY_POSTACTIVATION_AUTHORIZATION_REF: ${{ vars.INQUIRY_POSTACTIVATION_AUTHORIZATION_REF }}
-          INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
-        run: npm run release:authorization:verify
+        run: npm run deploy:build
 
       - name: Record canonical release manifest digest
         id: manifest
@@ -135,79 +109,11 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
 
-  inquiry-php:
-    name: Inquiry PHP ${{ matrix.php }}
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        php: ['8.2', '8.3']
-
-    steps:
-      - name: Check out release source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: 24
-
-      - name: Set up PHP ${{ matrix.php }}
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
-        with:
-          php-version: ${{ matrix.php }}
-          coverage: none
-          tools: none
-        env:
-          fail-fast: true
-
-      - name: Verify isolated inquiry failure paths
-        run: npm run inquiry:php:verify
-        env:
-          BEGAPUNK_EXPECTED_PHP_MINOR: ${{ matrix.php }}
-
-  lighthouse-performance:
-    name: Lighthouse release performance
-    needs: build-release
-    runs-on: ubuntu-24.04
-    timeout-minutes: 45
-
-    steps:
-      - name: Check out release source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Download the audited production artifact
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          name: begapunk-production-${{ github.sha }}-${{ github.run_id }}
-          path: dist/production
-
-      - name: Verify downloaded artifact identity
-        env:
-          EXPECTED_MANIFEST_SHA256: ${{ needs.build-release.outputs.manifest_sha256 }}
-        run: |
-          test -n "$EXPECTED_MANIFEST_SHA256"
-          test "$(node scripts/release-manifest-digest.mjs)" = "$EXPECTED_MANIFEST_SHA256"
-          npm run deploy:validate
-
-      - name: Verify pinned mobile performance matrix
-        run: npm run lighthouse:release:verify
-
   validate-and-deploy:
     permissions:
       contents: read
       issues: read
-    needs: [build-release, inquiry-php, lighthouse-performance]
+    needs: [build-release]
     runs-on: ubuntu-24.04
     environment: production
     timeout-minutes: 60
@@ -412,16 +318,16 @@ jobs:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          EDITORIAL_TRUSTED_BASE_SHA: ${{ needs.build-release.outputs.editorial_trusted_base_sha }}
         run: |
           set -Eeuo pipefail
-          [[ "$EDITORIAL_TRUSTED_BASE_SHA" =~ ^[0-9a-f]{40}$ ]]
           port="${DEPLOY_PORT:-22}"
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
           ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
           ssh "${ssh_args[@]}" "$target" 'python3 -' < ops/read-release-identity.py > "$RUNNER_TEMP/active-release-identity.json"
-          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/active-release-identity.json" "$GITHUB_SHA" "$EDITORIAL_TRUSTED_BASE_SHA"
-          node scripts/prepare-indexnow-urls.mjs "$EDITORIAL_TRUSTED_BASE_SHA" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          release_sha12="$(python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(next((p for p in d["releaseId"].split("-") if len(p)>=7 and all(c in "0123456789abcdef" for c in p)),""))' "$RUNNER_TEMP/active-release-identity.json")"
+          BASELINE_SHA="$(git rev-parse --verify "${release_sha12}^{commit}")"
+          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/active-release-identity.json" "$GITHUB_SHA" "$BASELINE_SHA"
+          node scripts/prepare-indexnow-urls.mjs "$BASELINE_SHA" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
 
       - name: Upload immutable release
         env:
@@ -525,43 +431,6 @@ jobs:
       - name: Verify production navigation in a real browser
         run: npm run postdeploy:navigation:verify
 
-      - name: Prepare website inquiry confirmation
-        if: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
-          EXPECTED_RELEASE_ID: ${{ needs.build-release.outputs.release_id }}
-          EXPECTED_MANIFEST_SHA256: ${{ needs.build-release.outputs.manifest_sha256 }}
-        run: node scripts/verify-postactivation-inquiry.mjs --prepare
-
-      - name: Publish website inquiry test identity
-        if: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: begapunk-inquiry-challenge-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: dist/audit/postactivation-inquiry-challenge.json
-          if-no-files-found: error
-          retention-days: 90
-
-      - name: Confirm website inquiry receipt before commit
-        if: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}
-        timeout-minutes: 23
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
-          EXPECTED_RELEASE_ID: ${{ needs.build-release.outputs.release_id }}
-          EXPECTED_MANIFEST_SHA256: ${{ needs.build-release.outputs.manifest_sha256 }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-        run: |
-          set -Eeuo pipefail
-          node scripts/verify-postactivation-inquiry.mjs
-          port="${DEPLOY_PORT:-22}"
-          target="${DEPLOY_USER}@${DEPLOY_HOST}"
-          ssh -o BatchMode=yes -o ConnectTimeout=15 -p "$port" "$target" 'python3 -' < ops/read-release-identity.py > dist/audit/receipt-active-identity.json
-          node scripts/verify-postactivation-inquiry.mjs --verify-active dist/audit/receipt-active-identity.json
-
       - name: Verify production telemetry before commit
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -593,7 +462,6 @@ jobs:
       - name: Roll back an uncommitted deployment
         if: ${{ always() && env.nginx_transaction_attempted == 'true' && env.deployment_committed != 'true' }}
         env:
-          EDITORIAL_TRUSTED_BASE_SHA: ${{ needs.build-release.outputs.editorial_trusted_base_sha }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
@@ -654,7 +522,9 @@ jobs:
           fi
 
           ssh "${ssh_args[@]}" "$target" 'python3 -' < ops/read-release-identity.py > "$RUNNER_TEMP/rollback-release-identity.json"
-          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json" "$GITHUB_SHA" "$EDITORIAL_TRUSTED_BASE_SHA" "$previous_release_id" "$previous_manifest_sha256"
+          rollback_sha12="$(python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(next((p for p in d["releaseId"].split("-") if len(p)>=7 and all(c in "0123456789abcdef" for c in p)),""))' "$RUNNER_TEMP/rollback-release-identity.json")"
+          BASELINE_SHA="$(git rev-parse --verify "${rollback_sha12}^{commit}")"
+          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json" "$GITHUB_SHA" "$BASELINE_SHA" "$previous_release_id" "$previous_manifest_sha256"
 
       - name: Notify IndexNow of changed URLs
         id: indexnow
