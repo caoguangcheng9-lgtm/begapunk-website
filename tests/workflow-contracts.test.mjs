@@ -371,8 +371,8 @@ test('a runner label change cannot move deployment onto an unaudited host', () =
 
 test('an extra action input cannot change an otherwise pinned action', () => {
   const spoofed = deploySource.replace(
-    '          include-hidden-files: true\n          retention-days: 90',
     '          include-hidden-files: true\n          overwrite: true\n          retention-days: 90',
+    '          include-hidden-files: true\n          overwrite: true\n          compression-level: 9\n          retention-days: 90',
   );
   assert.notEqual(spoofed, deploySource);
   const failures = validateContracts({ deploySource: spoofed, prSource });

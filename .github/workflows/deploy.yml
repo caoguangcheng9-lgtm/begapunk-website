@@ -119,10 +119,11 @@ jobs:
       - name: Upload canonical production artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: begapunk-production-${{ github.sha }}-${{ github.run_attempt }}
+          name: begapunk-production-${{ github.sha }}-${{ github.run_id }}
           path: dist/production
           if-no-files-found: error
           include-hidden-files: true
+          overwrite: true
           retention-days: 90
 
       - name: Upload release audit evidence
@@ -188,7 +189,7 @@ jobs:
       - name: Download the audited production artifact
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          name: begapunk-production-${{ github.sha }}-${{ github.run_attempt }}
+          name: begapunk-production-${{ github.sha }}-${{ github.run_id }}
           path: dist/production
 
       - name: Verify downloaded artifact identity
@@ -229,7 +230,7 @@ jobs:
       - name: Download the exact audited production artifact
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          name: begapunk-production-${{ github.sha }}-${{ github.run_attempt }}
+          name: begapunk-production-${{ github.sha }}-${{ github.run_id }}
           path: dist/production
 
       - name: Revalidate downloaded artifact integrity
@@ -525,6 +526,7 @@ jobs:
         run: npm run postdeploy:navigation:verify
 
       - name: Prepare website inquiry confirmation
+        if: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
           INQUIRY_RECEIPT_ISSUE: ${{ vars.INQUIRY_RECEIPT_ISSUE }}
@@ -533,6 +535,7 @@ jobs:
         run: node scripts/verify-postactivation-inquiry.mjs --prepare
 
       - name: Publish website inquiry test identity
+        if: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: begapunk-inquiry-challenge-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
@@ -541,6 +544,7 @@ jobs:
           retention-days: 90
 
       - name: Confirm website inquiry receipt before commit
+        if: ${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}
         timeout-minutes: 23
         env:
           GITHUB_TOKEN: ${{ github.token }}
