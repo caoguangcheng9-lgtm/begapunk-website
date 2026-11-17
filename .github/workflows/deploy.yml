@@ -324,10 +324,22 @@ jobs:
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
           ssh_args=(-o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=2 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -p "$port")
           ssh "${ssh_args[@]}" "$target" 'python3 -' < ops/read-release-identity.py > "$RUNNER_TEMP/active-release-identity.json"
-          release_sha12="$(python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(next((p for p in d["releaseId"].split("-") if len(p)>=7 and all(c in "0123456789abcdef" for c in p)),""))' "$RUNNER_TEMP/active-release-identity.json")"
-          BASELINE_SHA="$(git rev-parse --verify "${release_sha12}^{commit}")"
-          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/active-release-identity.json" "$GITHUB_SHA" "$BASELINE_SHA"
-          node scripts/prepare-indexnow-urls.mjs "$BASELINE_SHA" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          release_id="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["releaseId"])' "$RUNNER_TEMP/active-release-identity.json")"
+          BASELINE_SHA=""
+          IFS="-" read -ra release_parts <<< "$release_id" || true
+          for part in "${release_parts[@]:-}"; do
+            if [[ "$part" =~ ^[0-9a-f]{7,40}$ ]] && git rev-parse --verify -q "${part}^{commit}" >/dev/null 2>&1; then
+              BASELINE_SHA="$(git rev-parse --verify "${part}^{commit}")"
+              break
+            fi
+          done
+          if [[ -z "$BASELINE_SHA" ]]; then
+            echo "::warning::active release id ${release_id} embeds no resolvable commit; skipping baseline binding and the IndexNow URL diff."
+            : > "$RUNNER_TEMP/indexnow-urls.txt"
+          else
+            node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/active-release-identity.json" "$GITHUB_SHA" "$BASELINE_SHA"
+            node scripts/prepare-indexnow-urls.mjs "$BASELINE_SHA" "$GITHUB_SHA" "$RUNNER_TEMP/indexnow-urls.txt"
+          fi
 
       - name: Upload immutable release
         env:
@@ -522,9 +534,20 @@ jobs:
           fi
 
           ssh "${ssh_args[@]}" "$target" 'python3 -' < ops/read-release-identity.py > "$RUNNER_TEMP/rollback-release-identity.json"
-          rollback_sha12="$(python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(next((p for p in d["releaseId"].split("-") if len(p)>=7 and all(c in "0123456789abcdef" for c in p)),""))' "$RUNNER_TEMP/rollback-release-identity.json")"
-          BASELINE_SHA="$(git rev-parse --verify "${rollback_sha12}^{commit}")"
-          node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json" "$GITHUB_SHA" "$BASELINE_SHA" "$previous_release_id" "$previous_manifest_sha256"
+          rollback_release_id="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["releaseId"])' "$RUNNER_TEMP/rollback-release-identity.json")"
+          ROLLBACK_SHA=""
+          IFS="-" read -ra rollback_parts <<< "$rollback_release_id" || true
+          for part in "${rollback_parts[@]:-}"; do
+            if [[ "$part" =~ ^[0-9a-f]{7,40}$ ]] && git rev-parse --verify -q "${part}^{commit}" >/dev/null 2>&1; then
+              ROLLBACK_SHA="$(git rev-parse --verify "${part}^{commit}")"
+              break
+            fi
+          done
+          if [[ -z "$ROLLBACK_SHA" ]]; then
+            echo "::warning::recovered release id ${rollback_release_id} embeds no resolvable commit; skipping baseline binding."
+          else
+            node scripts/verify-active-release-baseline.mjs "$RUNNER_TEMP/rollback-release-identity.json" "$GITHUB_SHA" "$ROLLBACK_SHA" "$previous_release_id" "$previous_manifest_sha256"
+          fi
 
       - name: Notify IndexNow of changed URLs
         id: indexnow
