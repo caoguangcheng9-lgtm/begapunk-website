@@ -28,7 +28,7 @@
       "heading": "Quality, warranty and ordering",
       "quality": "Every Begapunk rotary joint undergoes individual pressurized rotation and leakage testing before shipment. Each unit has a unique serial number permanently marked on its body for traceability to its factory inspection records and is supplied with a factory inspection report. Inspection follows a controlled specification with a document number, revision and revision history.",
       "warrantyShort": "12 months from customer receipt",
-      "warranty": "The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate.",
+      "warranty": "The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear is excluded. Failures directly caused by operation beyond the applicable model’s published rated limits, incompatible media, failure to follow documented installation or operating requirements, misuse or incorrect installation may be excluded from free warranty coverage only when technical analysis confirms that direct causal link. Exceeding a parameter alone does not invalidate warranty coverage for unrelated failures. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate.",
       "response": "Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.",
       "payment": "Payment Terms: 100% T/T in Advance, USD Only. Production or shipment of available stock is arranged after full payment.",
       "stockConfirm": "Availability: Please confirm stock before ordering.",
@@ -45,15 +45,17 @@
       "sealShort": "FKM O-ring with MoS₂ additive and post-molding PTFE surface coating",
       "weightLabel": "Calculated weight",
       "weight": "Calculated weight: approx. 3.4 kg (including 20 pneumatic fittings, excluding tubing).",
-      "weightNote": "Weight is calculated from CAD, not a physical weighing result or shipping weight.",
+      "weightNote": "Net weight is approximate and excludes outer packaging.",
       "commercialScopeHeading": "Model-specific order terms",
-      "commercialScope": "General statements about delivery, customization lead times and payment are guidance only. For each model, the terms agreed in its formal quotation and accepted order take precedence. The confirmed rule of 100% T/T in advance, USD only, applies to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001 only; it is not a payment rule for every model. For BP-10P-0001 custom configurations, price and lead time require engineering review and separate agreement; a general custom-production estimate is not a commitment for that order."
+      "commercialScope": "General statements about delivery, customization lead times and payment are guidance only. For each model, the terms agreed in its formal quotation and accepted order take precedence. The confirmed rule of 100% T/T in advance, USD only, applies to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001 only; it is not a payment rule for every model. For BP-10P-0001 custom configurations, price and lead time require engineering review and separate agreement; a general custom-production estimate is not a commitment for that order.",
+      "otherPayment": "For other models, payment methods and payment schedules are specified in the formal quotation and accepted purchase order.",
+      "paymentSummary": "BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007, BP-10P-0001: 100% T/T in advance, USD only. For other models, payment methods and payment schedules are specified in the formal quotation and accepted purchase order."
     },
     "de": {
       "heading": "Qualität, Garantie und Bestellung",
       "quality": "Jede Begapunk-Drehdurchführung wird vor dem Versand einzeln unter Druck auf rotierende Dichtfunktion und Leckage geprüft. Jede Einheit trägt eine dauerhaft am Gehäuse markierte eindeutige Seriennummer zur Rückverfolgung ihrer Werksprüfaufzeichnungen und wird mit einem Werksprüfbericht geliefert. Die Prüfung folgt einer gelenkten Prüfvorschrift mit Dokumentnummer, Versionsnummer und Änderungshistorie.",
       "warrantyShort": "12 Monate ab Erhalt durch den Kunden",
-      "warranty": "Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß, falsche Montage und unsachgemäße Verwendung sind ausgeschlossen. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich.",
+      "warranty": "Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß ist ausgeschlossen. Fehler, die unmittelbar durch den Betrieb außerhalb der veröffentlichten Nenngrenzen des jeweiligen Modells, unverträgliche Medien, die Nichtbeachtung dokumentierter Montage- oder Betriebsanforderungen, unsachgemäße Verwendung oder falsche Montage verursacht wurden, können nur dann von der kostenlosen Garantie ausgeschlossen werden, wenn die technische Analyse diesen unmittelbaren ursächlichen Zusammenhang bestätigt. Eine Parameterüberschreitung allein hebt den Garantieschutz für andere, damit nicht zusammenhängende Fehler nicht auf. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich.",
       "response": "Garantieanfragen erhalten an regulären Arbeitstagen innerhalb von 24 Stunden eine erste Antwort. An Wochenenden oder gesetzlichen Feiertagen eingegangene Anfragen werden spätestens bis zum Ende des nächsten regulären Arbeitstags erstmals beantwortet. Dies ist keine Reparaturfrist und kein Rund-um-die-Uhr-Service.",
       "payment": "Zahlungsbedingungen: 100 % T/T-Vorauszahlung per Banküberweisung, ausschließlich USD. Produktion oder Versand verfügbarer Lagerware wird nach vollständigem Zahlungseingang veranlasst.",
       "stockConfirm": "Verfügbarkeit: Bitte Lagerbestand vor der Bestellung bestätigen lassen.",
@@ -72,13 +74,15 @@
       "weight": "Berechnetes Gewicht: ca. 3,4 kg (einschließlich 20 Pneumatikverschraubungen, ohne Schläuche).",
       "weightNote": "CAD-berechnetes Gewicht, kein Wiegeergebnis und kein Versandgewicht.",
       "commercialScopeHeading": "Modellspezifische Auftragsbedingungen",
-      "commercialScope": "Allgemeine Angaben zu Lieferung, Fertigungszeiten für Sonderausführungen und Zahlung dienen nur der Orientierung. Für jedes Modell haben die in seinem formellen Angebot und angenommenen Auftrag vereinbarten Bedingungen Vorrang. Die bestätigte Regel von 100 % T/T-Vorauszahlung ausschließlich in USD gilt nur für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001, nicht für alle Modelle. Bei Sonderausführungen des BP-10P-0001 erfordern Preis und Lieferzeit eine technische Prüfung und gesonderte Vereinbarung; eine allgemeine Schätzung der Sonderfertigungszeit ist keine Zusage für diesen Auftrag."
+      "commercialScope": "Allgemeine Angaben zu Lieferung, Fertigungszeiten für Sonderausführungen und Zahlung dienen nur der Orientierung. Für jedes Modell haben die in seinem formellen Angebot und angenommenen Auftrag vereinbarten Bedingungen Vorrang. Die bestätigte Regel von 100 % T/T-Vorauszahlung ausschließlich in USD gilt nur für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001, nicht für alle Modelle. Bei Sonderausführungen des BP-10P-0001 erfordern Preis und Lieferzeit eine technische Prüfung und gesonderte Vereinbarung; eine allgemeine Schätzung der Sonderfertigungszeit ist keine Zusage für diesen Auftrag.",
+      "otherPayment": "Für andere Modelle werden Zahlungsarten und Zahlungsplan im formellen Angebot und in der angenommenen Bestellung festgelegt.",
+      "paymentSummary": "BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007, BP-10P-0001: 100 % T/T-Vorauszahlung, ausschließlich USD. Für andere Modelle werden Zahlungsarten und Zahlungsplan im formellen Angebot und in der angenommenen Bestellung festgelegt."
     },
     "fr": {
       "heading": "Qualité, garantie et commande",
       "quality": "Chaque raccord tournant Begapunk subit individuellement un contrôle d’étanchéité en rotation sous pression et un contrôle de fuite avant expédition. Chaque unité porte un numéro de série unique marqué de façon permanente sur son corps, permettant de retrouver ses relevés de contrôle en usine, et est livrée avec un rapport de contrôle en usine. Les contrôles suivent une spécification maîtrisée avec numéro de document, indice de version et historique des révisions.",
       "warrantyShort": "12 mois à compter de la réception par le client",
-      "warranty": "La garantie dure 12 mois à compter de la réception par le client. Les défauts de matière ou de fabrication donnent droit à une réparation ou un remplacement gratuit après analyse technique. L’usure normale, le montage incorrect et l’usage inapproprié sont exclus. Fournir des photos, une vidéo du défaut et les informations nécessaires. Les frais de transport international sont convenus au cas par cas entre les parties. L’assistance technique reste disponible après la garantie, avec réparation payante selon le cas.",
+      "warranty": "La garantie dure 12 mois à compter de la réception par le client. Les défauts de matière ou de fabrication donnent droit à une réparation ou un remplacement gratuit après analyse technique. L’usure normale est exclue. Une défaillance directement causée par un fonctionnement au-delà des limites nominales publiées du modèle concerné, un fluide incompatible, le non-respect des exigences documentées de montage ou d’utilisation, un usage inapproprié ou un montage incorrect ne peut être exclue de la garantie gratuite que si l’analyse technique confirme ce lien de causalité direct. Le seul dépassement d’un paramètre n’annule pas la garantie pour les défaillances sans lien avec ce dépassement. Fournir des photos, une vidéo du défaut et les informations nécessaires. Les frais de transport international sont convenus au cas par cas entre les parties. L’assistance technique reste disponible après la garantie, avec réparation payante selon le cas.",
       "response": "Les demandes de garantie reçoivent une première réponse sous 24 heures pendant les jours ouvrés habituels. Celles reçues le week-end ou un jour férié reçoivent une première réponse au plus tard à la fin du prochain jour ouvré habituel. Ce délai ne promet ni la réparation sous 24 heures ni une assistance permanente 24 h/24.",
       "payment": "Paiement : 100 % à l’avance par virement bancaire T/T, uniquement en USD. La production ou l’expédition du stock disponible est organisée après paiement intégral.",
       "stockConfirm": "Disponibilité : veuillez confirmer le stock avant de commander.",
@@ -97,13 +101,15 @@
       "weight": "Masse calculée : env. 3,4 kg (avec 20 raccords pneumatiques, sans tubes).",
       "weightNote": "Masse calculée par CAO, non issue d’une pesée physique et distincte de la masse d’expédition.",
       "commercialScopeHeading": "Conditions de commande propres au modèle",
-      "commercialScope": "Les indications générales sur la livraison, les délais de personnalisation et le paiement sont données à titre indicatif. Pour chaque modèle, les conditions convenues dans son devis formel et sa commande acceptée prévalent. La règle confirmée du paiement intégral anticipé par virement T/T, uniquement en USD, concerne seulement BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 et BP-10P-0001 ; elle ne concerne pas tous les modèles. Pour les configurations sur mesure du BP-10P-0001, le prix et le délai nécessitent une étude technique et un accord distinct ; une estimation générale de fabrication sur mesure ne constitue pas un engagement pour cette commande."
+      "commercialScope": "Les indications générales sur la livraison, les délais de personnalisation et le paiement sont données à titre indicatif. Pour chaque modèle, les conditions convenues dans son devis formel et sa commande acceptée prévalent. La règle confirmée du paiement intégral anticipé par virement T/T, uniquement en USD, concerne seulement BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 et BP-10P-0001 ; elle ne concerne pas tous les modèles. Pour les configurations sur mesure du BP-10P-0001, le prix et le délai nécessitent une étude technique et un accord distinct ; une estimation générale de fabrication sur mesure ne constitue pas un engagement pour cette commande.",
+      "otherPayment": "Pour les autres modèles, les modes et échéances de paiement sont précisés dans le devis formel et le bon de commande accepté.",
+      "paymentSummary": "BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007, BP-10P-0001 : 100 % à l’avance par virement T/T, uniquement en USD. Pour les autres modèles, les modes et échéances de paiement sont précisés dans le devis formel et le bon de commande accepté."
     },
     "ja": {
       "heading": "品質・保証・ご注文条件",
       "quality": "Begapunkの全ロータリージョイントは出荷前に一品ずつ加圧回転シール試験と気密試験を実施します。各製品の本体には固有のシリアル番号を恒久表示し、その番号から出荷検査記録を追跡できます。製品には正式な出荷検査報告書を添付します。検査は文書番号・版番号・改訂履歴を備えた管理された検査規格に従います。",
       "warrantyShort": "お客様の受領日から12か月",
-      "warranty": "保証期間はお客様の受領日から12か月です。材料不良または製造上の不具合は、技術分析後に無償修理または交換で対応します。通常摩耗、誤った取付け、不適切な使用は対象外です。不具合の写真・動画と必要資料をご提供ください。国際輸送費の負担は状況に応じて双方で協議します。保証終了後も技術支援を継続し、状況に応じて有償修理に対応します。",
+      "warranty": "保証期間はお客様の受領日から12か月です。材料不良または製造上の不具合は、技術分析後に無償修理または交換で対応します。通常摩耗は対象外です。該当モデルの公開定格限界を超える運転、適合しない媒体、文書化された取付け・運転要件の不遵守、不適切な使用、または誤った取付けが直接の原因となった故障は、技術分析でその直接的な因果関係が確認された場合に限り、無償保証の対象外となることがあります。あるパラメータを超えた事実だけで、無関係な故障まで保証対象外にはしません。不具合の写真・動画と必要資料をご提供ください。国際輸送費の負担は状況に応じて双方で協議します。保証終了後も技術支援を継続し、状況に応じて有償修理に対応します。",
       "response": "保証申請には通常営業日は24時間以内に初回回答します。週末または祝日に受けた申請は、次の通常営業日の終了までに初回回答します。これは初回回答の期限であり、24時間以内の修理完了や年中無休の対応を約束するものではありません。",
       "payment": "支払条件：USD建て、銀行送金T/Tによる100%前払い。全額入金後に生産または在庫品の出荷を手配します。",
       "stockConfirm": "在庫状況：ご注文前に在庫をご確認ください。",
@@ -122,13 +128,15 @@
       "weight": "計算質量：約3.4 kg（空圧継手20個を含み、チューブを除く）。",
       "weightNote": "CADによる計算値であり、実測質量や輸送重量ではありません。",
       "commercialScopeHeading": "型式別の正式な注文条件",
-      "commercialScope": "一般的な納期、カスタム製作期間、支払方法の説明は目安です。各型式について、正式見積書および双方が承認した注文で合意した条件を優先します。確認済みの「USD建て・銀行送金T/Tによる100%前払い」は、BP-2P-08-0001、BP-2P-95-0005、BP-3P-0004、BP-3P-0007、BP-10P-0001の5型式だけに適用し、全型式共通の支払条件ではありません。BP-10P-0001のカスタム仕様は技術検討のうえ価格と納期を個別に合意します。一般的なカスタム製作期間の目安は、その注文の納期を保証するものではありません。"
+      "commercialScope": "一般的な納期、カスタム製作期間、支払方法の説明は目安です。各型式について、正式見積書および双方が承認した注文で合意した条件を優先します。確認済みの「USD建て・銀行送金T/Tによる100%前払い」は、BP-2P-08-0001、BP-2P-95-0005、BP-3P-0004、BP-3P-0007、BP-10P-0001の5型式だけに適用し、全型式共通の支払条件ではありません。BP-10P-0001のカスタム仕様は技術検討のうえ価格と納期を個別に合意します。一般的なカスタム製作期間の目安は、その注文の納期を保証するものではありません。",
+      "otherPayment": "その他のモデルの支払方法と支払日程は、正式な見積書および受諾済み注文書に定めます。",
+      "paymentSummary": "BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007, BP-10P-0001：100% T/T前払い、USDのみ。 その他のモデルの支払方法と支払日程は、正式な見積書および受諾済み注文書に定めます。"
     },
     "ru": {
       "heading": "Качество, гарантия и заказ",
       "quality": "Каждое вращающееся соединение Begapunk перед отгрузкой проходит индивидуальную проверку герметичности при вращении под давлением и проверку утечек. На корпус каждого изделия постоянно нанесён уникальный серийный номер для прослеживаемости заводских записей контроля; к изделию прилагается заводской протокол проверки. Контроль выполняется по управляемой инструкции с номером документа, номером версии и историей изменений.",
       "warrantyShort": "12 месяцев с даты получения заказчиком",
-      "warranty": "Гарантия действует 12 месяцев с даты получения заказчиком. Дефекты материала или изготовления устраняются бесплатным ремонтом либо заменой после технического анализа. Нормальный износ, неправильный монтаж и ненадлежащее использование исключены. Необходимы фотографии, видео неисправности и требуемые сведения. Расходы на международную перевозку стороны согласуют по обстоятельствам. После гарантии сохраняется техническая поддержка; при необходимости возможен платный ремонт.",
+      "warranty": "Гарантия действует 12 месяцев с даты получения заказчиком. Дефекты материала или изготовления устраняются бесплатным ремонтом либо заменой после технического анализа. Нормальный износ исключён. Неисправность, непосредственно вызванная работой за пределами опубликованных номинальных ограничений соответствующей модели, несовместимой средой, несоблюдением документированных требований к монтажу или эксплуатации, ненадлежащим использованием либо неправильным монтажом, может быть исключена из бесплатной гарантии только после подтверждения этой прямой причинной связи техническим анализом. Само по себе превышение параметра не отменяет гарантию на не связанные с ним неисправности. Необходимы фотографии, видео неисправности и требуемые сведения. Расходы на международную перевозку стороны согласуют по обстоятельствам. После гарантии сохраняется техническая поддержка; при необходимости возможен платный ремонт.",
       "response": "Первичный ответ на гарантийную заявку предоставляется в течение 24 часов в обычные рабочие дни. Заявки, полученные в выходные или праздничные дни, получают первый ответ до конца следующего обычного рабочего дня. Это срок первого ответа, а не завершения ремонта, и не круглосуточная поддержка без выходных.",
       "payment": "Оплата: 100% предоплата банковским переводом T/T, только USD. Производство или отгрузка имеющегося товара организуется после полной оплаты.",
       "stockConfirm": "Наличие: уточните складской остаток перед заказом.",
@@ -147,7 +155,9 @@
       "weight": "Расчётная масса: около 3,4 кг (с 20 пневматическими фитингами, без трубок).",
       "weightNote": "Масса рассчитана в CAD; это не результат взвешивания и не масса отправления.",
       "commercialScopeHeading": "Условия заказа для конкретной модели",
-      "commercialScope": "Общие сведения о поставке, сроках изготовления нестандартных изделий и оплате носят ориентировочный характер. Для каждой модели приоритет имеют условия, согласованные в её официальном предложении и принятом заказе. Подтверждённое правило 100% предоплаты банковским переводом T/T только в USD относится лишь к BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 и BP-10P-0001, а не ко всем моделям. Для нестандартных исполнений BP-10P-0001 цена и срок требуют инженерной оценки и отдельного согласования; общая оценка срока нестандартного производства не является обязательством по этому заказу."
+      "commercialScope": "Общие сведения о поставке, сроках изготовления нестандартных изделий и оплате носят ориентировочный характер. Для каждой модели приоритет имеют условия, согласованные в её официальном предложении и принятом заказе. Подтверждённое правило 100% предоплаты банковским переводом T/T только в USD относится лишь к BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 и BP-10P-0001, а не ко всем моделям. Для нестандартных исполнений BP-10P-0001 цена и срок требуют инженерной оценки и отдельного согласования; общая оценка срока нестандартного производства не является обязательством по этому заказу.",
+      "otherPayment": "Для остальных моделей способы и график оплаты указываются в официальном коммерческом предложении и принятом заказе на поставку.",
+      "paymentSummary": "BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007, BP-10P-0001: 100% предоплата T/T, только в USD. Для остальных моделей способы и график оплаты указываются в официальном коммерческом предложении и принятом заказе на поставку."
     }
   },
   "technicalEvidence": {
@@ -202,5 +212,53 @@
       "decisionSource": "Owner instruction: FINAL RELEASE CLOSURE; remove unverified public field, retain internal evidence history. 2026-11-13",
       "engineeringSource": "Archived Rev B; current IA Rev A 2026-10-28 supports body Ø80 × 217 mm and excludes fittings/tubing."
     }
-  ]
+  ],
+  "phase10aAuthorization": {
+    "date": "2026-11-16",
+    "scope": "Identity and commercial policy local repair only; candidate content approval and deployment are not granted.",
+    "sourceSha256": "421e2ac2b0803b5ceb5368cc56059444de1a30bd666a629c051b49402770ddbf"
+  },
+  "commercialEvidence": {
+    "status": "MATCHED_FORMAL_POLICY_AND_HISTORICAL_OWNER_APPROVED_BYTES",
+    "priceValidUntil": "2026-12-31",
+    "records": [
+      {
+        "path": "de/products.html",
+        "historicalRawSha256": "86ce9bdd2d8eed8428724f526340b00b494482e965ff94238b4d46729ba67076",
+        "approvalRecord": "audit/approvals/2026-11-13-ai-content/owner-acceptance.json",
+        "fact": "catalog production 20 calendar days; custom estimate up to 30 calendar days; accepted quote/order priority"
+      },
+      {
+        "path": "de/BP-2P-08-0001.html",
+        "historicalRawSha256": "cde28a19005b6d256a7b6b0be840bd73bdb1c17ef5b77a3078aa689adb4b29a1",
+        "approvalRecord": "audit/approvals/2026-11-13-ai-content/owner-acceptance.json",
+        "fact": "priceValidUntil=2026-12-31"
+      },
+      {
+        "path": "de/BP-2P-95-0005.html",
+        "historicalRawSha256": "c054c6b31c92cb27620cec5f4be7d5ce47a669a6db5c7f3b1298fcc5bc940432",
+        "approvalRecord": "audit/approvals/2026-11-13-ai-content/owner-acceptance.json",
+        "fact": "priceValidUntil=2026-12-31"
+      },
+      {
+        "path": "de/BP-3P-0004.html",
+        "historicalRawSha256": "4abbf64a665bc310fe7cfc9b62ecec7738fc53fe78663c7e4efffaf1567a703f",
+        "approvalRecord": "audit/approvals/2026-11-13-ai-content/owner-acceptance.json",
+        "fact": "priceValidUntil=2026-12-31"
+      },
+      {
+        "path": "de/BP-3P-0007.html",
+        "historicalRawSha256": "6f1844e836a7ef3ee1cfde4d6f8a30a036feb5ecdb199f33f2a1c97831ef3c3e",
+        "approvalRecord": "audit/approvals/2026-11-13-ai-content/owner-acceptance.json",
+        "fact": "priceValidUntil=2026-12-31"
+      },
+      {
+        "path": "de/terms.html",
+        "historicalRawSha256": "000e7158113b95c8d688690102af624ac8fa8b6299ff576e84735b3faf4516d6",
+        "approvalRecord": "audit/approvals/2026-11-13-ai-content/owner-acceptance.json",
+        "fact": "catalog production 20 calendar days; custom estimate up to 30 calendar days; accepted quote/order priority"
+      }
+    ],
+    "leadTimeScope": "Retain existing catalog/custom guidance supported by approved products/terms pages. Four priced models use their specific full-payment production policy; BP-10P-0001 standard/sample approximately 20 days; BP-10P-0001 custom requires separate engineering agreement. No new universal lead-time commitment."
+  }
 }

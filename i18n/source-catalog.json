@@ -1,6 +1,6 @@
 {
   "sourceLanguage": "en",
-  "generatedAt": "2026-11-14T01:25:49.494Z",
+  "generatedAt": "2026-11-16T09:25:40.769Z",
   "pages": [
     "index.html",
     "about.html",
@@ -5824,13 +5824,6 @@
       ]
     },
     {
-      "id": "9b9a6993136a495e",
-      "source": "Begapunk provides a standard 12-month warranty from the date the customer receives the product for defects in materials or workmanship, under the written order terms. Damage caused by incorrect installation, excessive pressure or speed, unsuitable or unfiltered air, and misuse is excluded from that coverage. Send the model, traceability number, operating conditions and photos of the problem for review. When a covered manufacturing defect is confirmed, the standard remedy is replacement at no charge.",
-      "pages": [
-        "about.html"
-      ]
-    },
-    {
       "id": "b3c80db41211f8bc",
       "source": "Begapunk rotary joint manufacturing facility Ningbo",
       "pages": [
@@ -6125,6 +6118,13 @@
       "source": "BP-2P-08-0001 view 3",
       "pages": [
         "BP-2P-08-0001.html"
+      ]
+    },
+    {
+      "id": "0a10dc26a231e432",
+      "source": "BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007, BP-10P-0001: 100% T/T in advance, USD only. For other models, payment methods and payment schedules are specified in the formal quotation and accepted purchase order.",
+      "pages": [
+        "products.html"
       ]
     },
     {
@@ -7777,8 +7777,8 @@
       ]
     },
     {
-      "id": "a26b64fb2fd56dc4",
-      "source": "Contact Begapunk for the certification and compliance documentation available for your selected product. Send the model, destination market and required standards with your inquiry. We will confirm the applicable scope and available documents with the quotation, so the documentation matches the product and order you are buying.",
+      "id": "cdcce1cecb9cebd8",
+      "source": "Every Begapunk rotary union undergoes passage-by-passage pneumatic leak testing at 1.0 MPa before shipment. Standard catalog models use declared materials: 6061-T6 aluminum alloy, Grade 45 carbon steel, stainless steel, PTFE, and FKM/NBR seals. RoHS status and any CE conformity documentation are supplied per order and are not claimed as a blanket certification. Material traceability records and factory inspection protocols are confirmed with your order.",
       "pages": [
         "about.html"
       ]
@@ -8321,8 +8321,8 @@
       ]
     },
     {
-      "id": "6b47eeaae959ba5c",
-      "source": "Email: <a href=\"mailto:sales@begapunk.com\">sales@begapunk.com</a><br>\n\n    Address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China",
+      "id": "f498ebba145a6c58",
+      "source": "Email: <a href=\"mailto:sales@begapunk.com\">sales@begapunk.com</a><br> Registered address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China",
       "pages": [
         "privacy.html",
         "terms.html"
@@ -9761,8 +9761,8 @@
       ]
     },
     {
-      "id": "7b2a2b4029369c76",
-      "source": "It depends on the model. Replacement is checked model by model and is never assumed for similar-looking units. Send the existing model number or drawing together with the mounting dimensions, port layout, passage count, pressure and speed. Begapunk compares these with its published model data and confirms whether a catalog or custom unit fits.",
+      "id": "eba8671a3bd0d0bd",
+      "source": "Yes—Begapunk provides drop-in and interface-matched replacements for pneumatic rotary unions from manufacturers such as Deublin, ROTOFLUX, SMC, Johnson-Fluiten, and DSTI after verifying your mounting and circuit specifications. Send the existing model number or drawing together with the mounting dimensions, port layout, passage count, pressure and speed. Begapunk compares these with its published model data and confirms whether a catalog or custom unit fits.",
       "pages": [
         "products.html"
       ]
@@ -11351,13 +11351,6 @@
       "source": "Passages",
       "pages": [
         "product-comparison.html"
-      ]
-    },
-    {
-      "id": "7cc14e593e8ff825",
-      "source": "Payment options include bank transfer (T/T), letter of credit (L/C), PayPal and major credit cards for international customers and OEM machine builders. The available method, currency, transaction fees and payment schedule are confirmed in the quotation and accepted order.",
-      "pages": [
-        "products.html"
       ]
     },
     {
@@ -14434,9 +14427,10 @@
       ]
     },
     {
-      "id": "6738baed0d810ed4",
-      "source": "The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate. Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.",
+      "id": "f77dd229876edf98",
+      "source": "The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear is excluded. Failures directly caused by operation beyond the applicable model’s published rated limits, incompatible media, failure to follow documented installation or operating requirements, misuse or incorrect installation may be excluded from free warranty coverage only when technical analysis confirms that direct causal link. Exceeding a parameter alone does not invalidate warranty coverage for unrelated failures. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate. Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.",
       "pages": [
+        "about.html",
         "terms.html"
       ]
     },

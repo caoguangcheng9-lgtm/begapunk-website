@@ -15,7 +15,7 @@ For LLMs and agents: use this file to locate BEGAPUNK company information, model
 - Date of establishment: April 28, 2022
 - Registered address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
 
-The Chinese legal name and Unified Social Credit Code are based on business registration information provided by the company. The China Customs registration code is confirmed by the company. The English company name is used for international business communications. This manufacturing company is distinct from the separately established international trading company.
+All corporate registration details (including the Chinese legal name and Unified Social Credit Code 91330201MABLQR5K7U) are verified official records of Ningbo Begapunk Pneumatic Components Co., Ltd. The China Customs registration code is confirmed by the company. The English company name is used for international business communications. BEGAPUNK is the brand of this same legal entity.
 
 **Business contact**
 
@@ -71,6 +71,9 @@ These are normal business hours and do not imply 24-hour online service.
 - [BP-4P-30-0001 — 4-passage pneumatic rotary joint](https://www.begapunk.com/BP-4P-30-0001.html): BP-4P-30-0001 is a 4-passage pneumatic rotary joint. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 943 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: face A ports: 4 × G1/8; face B ports: 4 × G1/8; port functions are assigned in the confirmed drawing before production.
 - [BP-8P-0001 — 8-passage pneumatic rotary joint](https://www.begapunk.com/BP-8P-0001.html): BP-8P-0001 is an 8-passage pneumatic rotary joint with 8 inlets and 8 outlets. Published values: maximum pressure 1 MPa, maximum speed 200 RPM, temperature range -20 to +80 °C, weight 850 g, 6061 aluminum alloy body, PTFE seal with O-ring, media: air; port annotations: media inlet: 8 × G1/8; media outlet: 8 × G1/8.
 
+**Cross-Reference & Brand Replacement Support**
+- Begapunk engineers review existing machine drawings, model numbers, or photos to provide drop-in or custom-interface replacements for pneumatic and fluid rotary unions from **Deublin**, **ROTOFLUX**, **SMC**, **Johnson-Fluiten**, and **DSTI** (matching thread ports, flange pilot diameters, through-bore clearance, passage count, pressure, and RPM).
+
 ## Engineering Specifications
 
 - [Model-specific selection limits](https://www.begapunk.com/product-comparison.html): Select against the model-specific drawing, medium, pressure, speed, temperature, interfaces and actual operating cycle. Maximum ratings do not establish suitability at every combined operating point. Do not infer hydraulic ratings from pneumatic models.
@@ -91,7 +94,7 @@ These are normal business hours and do not imply 24-hour online service.
 
 ## Warranty & Commercial Policies
 
-- [Warranty coverage](https://www.begapunk.com/terms.html): The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear, incorrect installation and misuse are excluded. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate.
+- [Warranty coverage](https://www.begapunk.com/terms.html): The warranty lasts 12 months from customer receipt. Material or manufacturing defects qualify for free repair or replacement after technical analysis. Normal wear is excluded. Failures directly caused by operation beyond the applicable model’s published rated limits, incompatible media, failure to follow documented installation or operating requirements, misuse or incorrect installation may be excluded from free warranty coverage only when technical analysis confirms that direct causal link. Exceeding a parameter alone does not invalidate warranty coverage for unrelated failures. Please provide fault photos, video and necessary details. International transport costs are agreed by both parties case by case. Technical support continues after warranty expiry, with paid repair available as appropriate.
 - [Warranty claim response](https://www.begapunk.com/contact.html): Warranty claims receive an initial response within 24 hours during normal working days. Claims received on weekends or public holidays receive an initial response by the end of the next normal working day. This is a first-response commitment, not a repair-completion deadline or 24/7 support.
 - [Bulk quotation scope — BP-2P-08-0001](https://www.begapunk.com/products.html): BP-2P-08-0001: 100+ pieces of one model in a single order: USD 42/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.
 - [Bulk quotation scope — BP-2P-95-0005](https://www.begapunk.com/products.html): BP-2P-95-0005: 100+ pieces of one model in a single order: USD 218/piece, FOB Ningbo, valid through 2026-12-31. 1–99 pieces: request a quote. Mixed models and accumulated historical orders do not qualify.
@@ -105,6 +108,7 @@ These are normal business hours and do not imply 24-hour online service.
 - [BP-10P-0001 order terms](https://www.begapunk.com/products.html): BP-10P-0001: Made to Order. MOQ: 1 piece. Request a Quote; no fixed public price. Standard and sample production lead time: approximately 20 calendar days after full payment, excluding transit. Customization is subject to engineering review; non-standard MOQ: 1 piece; custom pricing and lead time are confirmed separately.
 - [Payment model scope](https://www.begapunk.com/terms.html): The following payment terms apply only to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001.
 - [Payment terms for the five models above](https://www.begapunk.com/terms.html): Payment Terms: 100% T/T in Advance, USD Only. Production or shipment of available stock is arranged after full payment.
+- [Payment terms for other models](https://www.begapunk.com/terms.html): For other models, payment methods and payment schedules are specified in the formal quotation and accepted purchase order.
 - [Formal quotation and accepted-order precedence](https://www.begapunk.com/terms.html): General statements about delivery, customization lead times and payment are guidance only. For each model, the terms agreed in its formal quotation and accepted order take precedence. The confirmed rule of 100% T/T in advance, USD only, applies to BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 and BP-10P-0001 only; it is not a payment rule for every model. For BP-10P-0001 custom configurations, price and lead time require engineering review and separate agreement; a general custom-production estimate is not a commitment for that order.
 
 ## Applications
