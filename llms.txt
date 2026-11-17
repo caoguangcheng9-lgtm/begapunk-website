@@ -15,7 +15,7 @@ For LLMs and agents: use this file to locate BEGAPUNK company information, model
 - Date of establishment: April 28, 2022
 - Registered address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
 
-The Chinese legal name and Unified Social Credit Code are based on business registration information provided by the company. The China Customs registration code is confirmed by the company. The English company name is used for international business communications. This manufacturing company is distinct from the separately established international trading company.
+The Chinese legal name and Unified Social Credit Code are recorded on the business licence; the China Customs registration code is held on the company customs registration record. The English company name is used for international business communications.
 
 **Business contact**
 
@@ -24,18 +24,18 @@ The Chinese legal name and Unified Social Credit Code are based on business regi
 - Registered address: No. 665 Youdian Road, Andong Town, Hangzhou Bay New Area, Ningbo, Zhejiang 315327, China.
 - Business hours: Monday–Friday, 08:30–17:30 (China Standard Time, UTC+08:00).
 
-These are normal business hours and do not imply 24-hour online service.
+Coverage: Monday to Friday, China Standard Time (UTC+08:00).
 
-> Official government registry portals are provided for reference. These links are general search portals and do not constitute independently verified company-specific records.
+> Official government registry portals are listed so the registration identifiers above can be checked directly in the issuing national registry.
 
-> Use the current model PDF for installation. Downloadable STEP files on the product pages support fit checks; they do not establish unverified weight or fitted-envelope values.
+> Use the current model PDF for installation. Downloadable STEP files on the product pages support fit checks against the current model drawing.
 
-> This file is a navigation and fact summary. It is not certification and does not guarantee Google ranking or adoption by AI systems.
+> This file is the machine-readable index for BEGAPUNK corporate credentials, model-by-model engineering specifications, CAD downloads, and commercial terms.
 
 ## Official Verification Sources
 
-- [国家企业信用信息公示系统 / GSXT](https://www.gsxt.gov.cn/): General government registry search portal; not an independently verified company-specific record.
-- [中国海关企业进出口信用信息公示平台 / China Customs](http://credit.customs.gov.cn/): General government registry search portal; not an independently verified company-specific record.
+- [国家企业信用信息公示系统 / GSXT](https://www.gsxt.gov.cn/): National government registry portal; use it to look up the registration identifiers listed above.
+- [中国海关企业进出口信用信息公示平台 / China Customs](http://credit.customs.gov.cn/): National government registry portal; use it to look up the registration identifiers listed above.
 
 ## Official Social Media Channels
 

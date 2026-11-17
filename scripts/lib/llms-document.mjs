@@ -128,7 +128,7 @@ export function llmsEnglishSections() {
     `](mailto:${id.businessEmail}): Business enquiries.`);
   const boundaries = [c.lookup, c.docs, c.purpose].map(text => `> ${text}`).join('\n\n');
   const sources = section(c.headings[2], id.verificationSources.map(s => link(s.name, s.url,
-    'General government registry search portal; not an independently verified company-specific record.')).join('\n'));
+    'National government registry portal; use it to look up the registration identifiers listed above.')).join('\n'));
   const social = section(c.socialHeading, id.officialSocialChannels.map(s => link(s.platform, s.url,
     c.socialBoundary)).join('\n'));
   const manual = readJson('i18n/manual/bp10-en-segments.json');
