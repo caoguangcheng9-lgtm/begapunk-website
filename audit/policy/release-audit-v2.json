@@ -13,7 +13,7 @@
   },
   "workflowContracts": {
     "semanticDigestAlgorithm": "sha256-canonical-json-v1",
-    "deploy": "ada6a477f262a8a80f879caa84c90ac000b779812198e499feb9f13cf73ef4c0",
+    "deploy": "88ebb65e3930d89b131320901faa6e7c700cb19a97f93dd9e00419f86d0e1935",
     "prQuality": "5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a"
   },
   "gateSets": {

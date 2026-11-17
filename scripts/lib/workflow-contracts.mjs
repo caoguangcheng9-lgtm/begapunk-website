@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 // command, shell, permission, environment, action input or job option) changes
 // the digest and therefore requires an explicit contract review.
 export const TRUSTED_WORKFLOW_SEMANTIC_DIGESTS = Object.freeze({
-  deploy: 'ada6a477f262a8a80f879caa84c90ac000b779812198e499feb9f13cf73ef4c0',
+  deploy: '88ebb65e3930d89b131320901faa6e7c700cb19a97f93dd9e00419f86d0e1935',
   prQuality: '5a6fa2745cfd6e172321fec19d1c83427ae04e9053941f473db9ca506dece07a',
 });
 
@@ -199,6 +199,9 @@ function assertConditionalInventory(deployWorkflow, prWorkflow, failures) {
     ['deploy/validate-and-deploy/Notify IndexNow of changed URLs/continue-on-error', true],
     ['deploy/validate-and-deploy/Purge the Cloudflare edge cache/continue-on-error', true],
     ['deploy/validate-and-deploy/Upload post-deployment audit evidence/if', '${{ always() }}'],
+    ['deploy/validate-and-deploy/Prepare website inquiry confirmation/if', "${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}"],
+    ['deploy/validate-and-deploy/Publish website inquiry test identity/if', "${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}"],
+    ['deploy/validate-and-deploy/Confirm website inquiry receipt before commit/if', "${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}"],
   ]);
   for (const [workflowName, workflow] of [['deploy', deployWorkflow], ['pr-quality', prWorkflow]]) {
     for (const [jobId, jobValue] of Object.entries(workflow?.jobs || {})) {
@@ -420,7 +423,7 @@ echo "sha=$EDITORIAL_TRUSTED_BASE_SHA" >> "$GITHUB_OUTPUT"
   assertUnconditional('deploy/validate-and-deploy artifact download', productionDownload, failures);
   assertAction('deploy/validate-and-deploy artifact download', productionDownload, 'actions/download-artifact', failures);
   exact('deploy/validate-and-deploy artifact path', productionDownload.with?.path, 'dist/production', failures);
-  const expectedArtifactName = 'begapunk-production-${{ github.sha }}-${{ github.run_attempt }}';
+  const expectedArtifactName = 'begapunk-production-${{ github.sha }}-${{ github.run_id }}';
   exact('deploy/validate-and-deploy artifact name', productionDownload.with?.name, expectedArtifactName, failures);
   const downloadedValidation = step(validationJob, 'Revalidate downloaded artifact integrity', failures, 'deploy/validate-and-deploy');
   assertUnconditional('deploy/validate-and-deploy artifact revalidation', downloadedValidation, failures);
@@ -437,14 +440,14 @@ npm run deploy:validate
   const receiptStep = step(validationJob, 'Confirm website inquiry receipt before commit', failures, 'deploy/validate-and-deploy');
   const receiptPreparation = step(validationJob, 'Prepare website inquiry confirmation', failures, 'deploy/validate-and-deploy');
   const receiptPublication = step(validationJob, 'Publish website inquiry test identity', failures, 'deploy/validate-and-deploy');
-  assertUnconditional('deploy receipt preparation', receiptPreparation, failures);
-  assertUnconditional('deploy receipt publication', receiptPublication, failures);
+  exact('deploy receipt preparation guard', receiptPreparation.if, "${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}", failures);
+  exact('deploy receipt publication guard', receiptPublication.if, "${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}", failures);
   exactRun('deploy receipt preparation', receiptPreparation, 'node scripts/verify-postactivation-inquiry.mjs --prepare', failures);
   assertAction('deploy receipt publication', receiptPublication, 'actions/upload-artifact', failures);
   exact('deploy receipt artifact', receiptPublication.with?.name, 'begapunk-inquiry-challenge-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}', failures);
   exact('deploy receipt artifact path', receiptPublication.with?.path, 'dist/audit/postactivation-inquiry-challenge.json', failures);
   exact('deploy receipt missing artifact', receiptPublication.with?.['if-no-files-found'], 'error', failures);
-  assertUnconditional('deploy/validate-and-deploy owner receipt', receiptStep, failures);
+  exact('deploy/validate-and-deploy owner receipt guard', receiptStep.if, "${{ vars.INQUIRY_DELIVERY_APPLICABILITY == 'required' }}", failures);
   exact('deploy receipt bounded step timeout', receiptStep['timeout-minutes'], 23, failures);
   exact('deploy job rollback time reserve', validationJob['timeout-minutes'], 60, failures);
   if (JSON.stringify(validationJob.permissions) !== JSON.stringify({ contents: 'read', issues: 'read' })) failures.push('Receipt job permissions must remain contents/issue read-only.');
