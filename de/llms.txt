@@ -108,7 +108,7 @@ Dies sind die offiziellen, von BEGAPUNK verwalteten Social-Media-Konten.
 Die Auswahl richtet sich nach der modellspezifischen Zeichnung, Medium, Druck, Drehzahl, Temperatur, Anschlüssen und dem tatsächlichen Betriebszyklus. Maximalwerte belegen nicht die Eignung für jede Kombination von Betriebsbedingungen. Hydraulische Kennwerte dürfen nicht aus pneumatischen Modellen abgeleitet werden.
 
 - BP-2P-0002: Zwei unabhängige Luftkanäle durchqueren die rotierende Dichtschnittstelle. Ein zusätzlicher Kanal liegt vollständig innerhalb der Welle und durchquert diese Schnittstelle nicht. Der zentrale G1/4-Anschluss ist über den Wellenkanal mit einem der drei G1/8-Flanschanschlüsse verbunden; die anderen beiden Flanschanschlüsse gehören zu den zwei Drehkanälen. Alle drei Wege erlauben Luftströmung in beide Richtungen ohne festgelegte Einlassrichtung. Wirksame Gewindeeingriffstiefe G1/4: 10 mm; Flanschanschlüsse: 3 × G1/8 auf Lochkreis 16 mm.
-- BP-10P-0001: Maximaldruck: 1 MPa (10 bar ≈ 145 psi); Maximale Drehzahl: 100 U/min; Temperaturbereich: 0–80 °C; Gehäusewerkstoff: Aluminiumlegierung 6061. O-Ring aus FKM-Elastomer mit internem MoS₂-Zusatz und nach dem Formen aufgebrachter PTFE-Oberflächenbeschichtung. Der Dichtungslieferant fertigt die O-Ringe kundenspezifisch; ein separater Unterauftragnehmer beschichtet sie mit PTFE. Nur für BP-10P-0001. Berechnetes Gewicht: ca. 3,4 kg (einschließlich 20 Pneumatikverschraubungen, ohne Schläuche). CAD-berechnetes Gewicht, kein Wiegeergebnis und kein Versandgewicht.
+- BP-10P-0001: Maximaldruck: 1 MPa (10 bar ≈ 145 psi); Maximale Drehzahl: 100 U/min; Temperaturbereich: 0–80 °C; Gehäusewerkstoff: Aluminiumlegierung 6061. O-Ring aus FKM-Elastomer mit internem MoS₂-Zusatz und nach dem Formen aufgebrachter PTFE-Oberflächenbeschichtung. Der Dichtungslieferant fertigt die O-Ringe kundenspezifisch; ein separater Unterauftragnehmer beschichtet sie mit PTFE. Nur für BP-10P-0001. Nenngewicht: ca. 3,4 kg (einschließlich 20 Pneumatik-Fittings, ohne Schläuche). CAD-basiertes Nenngewicht einschließlich der Standard-Fittings; das Versandgewicht hängt von der Verpackung ab.
 
 ## Fertigung und Qualitätssicherung
 
@@ -116,7 +116,7 @@ Jede Begapunk-Drehdurchführung wird vor dem Versand einzeln unter Druck auf rot
 
 ## Garantie und Geschäftsbedingungen
 
-Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß, falsche Montage und unsachgemäße Verwendung sind ausgeschlossen. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich.
+Die Garantie gilt 12 Monate ab Erhalt durch den Kunden. Bei Material- oder Fertigungsfehlern erfolgt nach technischer Analyse eine kostenlose Reparatur oder ein Ersatz. Normaler Verschleiß ist ausgeschlossen. Fehler, die unmittelbar durch den Betrieb außerhalb der veröffentlichten Nenngrenzen des jeweiligen Modells, unverträgliche Medien, die Nichtbeachtung dokumentierter Montage- oder Betriebsanforderungen, unsachgemäße Verwendung oder falsche Montage verursacht wurden, können nur dann von der kostenlosen Garantie ausgeschlossen werden, wenn die technische Analyse diesen unmittelbaren ursächlichen Zusammenhang bestätigt. Eine Parameterüberschreitung allein hebt den Garantieschutz für andere, damit nicht zusammenhängende Fehler nicht auf. Bitte Fehlerfotos, Videos und erforderliche Angaben bereitstellen. Internationale Transportkosten werden im Einzelfall zwischen beiden Parteien vereinbart. Technische Unterstützung bleibt nach Garantieablauf verfügbar; gegebenenfalls ist eine kostenpflichtige Reparatur möglich.
 
 Garantieanfragen erhalten an regulären Arbeitstagen innerhalb von 24 Stunden eine erste Antwort. An Wochenenden oder gesetzlichen Feiertagen eingegangene Anfragen werden spätestens bis zum Ende des nächsten regulären Arbeitstags erstmals beantwortet. Dies ist keine Reparaturfrist und kein Rund-um-die-Uhr-Service.
 
@@ -131,8 +131,8 @@ FOB Ningbo umfasst Standard-Exportverpackung, Inlandstransport zum Hafen Ningbo,
 
 Für die folgenden vier Modelle mit Staffelpreisen:
 
-- BP-2P-08-0001: Verfügbarkeit: Bitte Lagerbestand vor der Bestellung bestätigen lassen.
-- BP-2P-95-0005, BP-3P-0004, BP-3P-0007: Auf Lager — üblicherweise vorrätig; verfügbare Menge für Ihren Auftrag bestätigen lassen. Keine Echtzeit-Bestandsanzeige.
+- BP-2P-08-0001: Verfügbarkeit: Auf Lager und bestellbar.
+- BP-2P-95-0005, BP-3P-0004, BP-3P-0007: Auf Lager — üblicherweise vorrätig und kurzfristig lieferbar; für größere Mengen bestätigen wir die verfügbare Stückzahl.
 
 Bei ausreichendem Lagerbestand kann der Versand nach vollständigem Zahlungseingang veranlasst werden. Falls Produktion erforderlich ist, ist die Ware innerhalb von 20 Kalendertagen nach vollständigem Zahlungseingang fertig und versandbereit, sowohl bei 1–99 als auch ab 100 Stück. Transportzeit ist nicht enthalten.
 
@@ -142,7 +142,7 @@ Die folgenden Zahlungsbedingungen gelten ausschließlich für BP-2P-08-0001, BP-
 
 Zahlungsbedingungen: 100 % T/T-Vorauszahlung per Banküberweisung, ausschließlich USD. Produktion oder Versand verfügbarer Lagerware wird nach vollständigem Zahlungseingang veranlasst.
 
-Allgemeine Angaben zu Lieferung, Fertigungszeiten für Sonderausführungen und Zahlung dienen nur der Orientierung. Für jedes Modell haben die in seinem formellen Angebot und angenommenen Auftrag vereinbarten Bedingungen Vorrang. Die bestätigte Regel von 100 % T/T-Vorauszahlung ausschließlich in USD gilt nur für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001, nicht für alle Modelle. Bei Sonderausführungen des BP-10P-0001 erfordern Preis und Lieferzeit eine technische Prüfung und gesonderte Vereinbarung; eine allgemeine Schätzung der Sonderfertigungszeit ist keine Zusage für diesen Auftrag.
+Lieferung, Fertigungszeit und Zahlungsbedingungen werden je Modell im verbindlichen Angebot und der angenommenen Bestellung festgelegt. Die Regel 100 % T/T im Voraus in USD gilt für BP-2P-08-0001, BP-2P-95-0005, BP-3P-0004, BP-3P-0007 und BP-10P-0001. Bei kundenspezifischen Ausführungen des BP-10P-0001 werden Preis und Lieferzeit nach technischer Prüfung bestätigt.
 
 ## Technische Dokumentation
 
