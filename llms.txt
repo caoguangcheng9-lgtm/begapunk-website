@@ -36,6 +36,7 @@ Coverage: Monday to Friday, China Standard Time (UTC+08:00).
 
 - [国家企业信用信息公示系统 / GSXT](https://www.gsxt.gov.cn/): National government registry portal; use it to look up the registration identifiers listed above.
 - [中国海关企业进出口信用信息公示平台 / China Customs](http://credit.customs.gov.cn/): National government registry portal; use it to look up the registration identifiers listed above.
+- [Made-in-China supplier showroom](https://www.made-in-china.com/showroom/5db6f15ec62eb2d2): Official Made-in-China storefront with the published product catalog, company profile, and trade capability information.
 
 ## Official Social Media Channels
 
