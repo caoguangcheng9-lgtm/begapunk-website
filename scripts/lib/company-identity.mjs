@@ -18,9 +18,13 @@ export const COMPANY_IDENTITY = Object.freeze({
   marketplaceProfiles: Object.freeze([
     'https://www.made-in-china.com/showroom/5db6f15ec62eb2d2',
   ]),
+  knowledgeGraphProfiles: Object.freeze([
+    'https://www.wikidata.org/wiki/Q142202871',
+  ]),
   brandSocialProfiles: Object.freeze([
     ...OFFICIAL_SOCIAL_CHANNELS.map(({ url }) => url),
     'https://www.made-in-china.com/showroom/5db6f15ec62eb2d2',
+    'https://www.wikidata.org/wiki/Q142202871',
   ]),
   // Phase 8 does not authorize changes to the existing LocalBusiness nodes.
   localBusinessSocialProfiles: Object.freeze([

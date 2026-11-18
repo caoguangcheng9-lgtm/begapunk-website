@@ -41,6 +41,7 @@ Coverage: Monday to Friday, China Standard Time (UTC+08:00).
 ## Marketplace & Directory Profiles
 
 - [Made-in-China supplier showroom](https://www.made-in-china.com/showroom/5db6f15ec62eb2d2): Verified B2B storefront with the published pneumatic rotary union catalog, company profile, and trade capability information.
+- [Wikidata entity Q142202871](https://www.wikidata.org/wiki/Q142202871): Knowledge-graph identifier for the company entity, with official website, country, headquarters, inception date and industry statements.
 
 ## Official Social Media Channels
 
