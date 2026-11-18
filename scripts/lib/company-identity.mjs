@@ -13,7 +13,15 @@ export const COMPANY_IDENTITY = Object.freeze({
   registrationNumber: '330218000114820',
   organizationCode: 'MABLQR5K-7',
   officialSocialChannels: OFFICIAL_SOCIAL_CHANNELS,
-  brandSocialProfiles: Object.freeze(OFFICIAL_SOCIAL_CHANNELS.map(({ url }) => url)),
+  // Verified third-party marketplace storefronts. They are entity identifiers for the
+  // Organization node, not footer social channels.
+  marketplaceProfiles: Object.freeze([
+    'https://www.made-in-china.com/showroom/5db6f15ec62eb2d2',
+  ]),
+  brandSocialProfiles: Object.freeze([
+    ...OFFICIAL_SOCIAL_CHANNELS.map(({ url }) => url),
+    'https://www.made-in-china.com/showroom/5db6f15ec62eb2d2',
+  ]),
   // Phase 8 does not authorize changes to the existing LocalBusiness nodes.
   localBusinessSocialProfiles: Object.freeze([
     'https://www.linkedin.com/company/144021127/',
