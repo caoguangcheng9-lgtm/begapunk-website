@@ -8,6 +8,21 @@ Allow: /images/
 Disallow: /404.html
 Disallow: /send_inquiry.php
 
+# ===== AI ASSISTANT / ANSWER ENGINE CRAWLERS =====
+# Explicitly allowed so attribution in AI answers (Copilot, ChatGPT search,
+# Perplexity) is predictable and auditable. Content remains fully crawlable.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 # ===== SITEMAP =====
 Sitemap: https://www.begapunk.com/sitemap.xml
 
