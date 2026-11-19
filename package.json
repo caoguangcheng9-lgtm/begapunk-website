@@ -109,7 +109,7 @@
     "quality": "npm run quality:pr",
     "quality:source": "node scripts/validate-source-quality.mjs",
     "collab:validate": "node scripts/validate-collaboration-model.mjs",
-    "quality:pr": "node scripts/build-production-release.mjs && node scripts/validate-deployment.mjs dist/production && node scripts/verify-release-links-and-downloads.mjs dist/production && python scripts/verify-content-consistency.py",
+    "quality:pr": "node scripts/sync-sitemap-lastmod.mjs --write && node scripts/build-production-release.mjs && node scripts/validate-deployment.mjs dist/production && node scripts/verify-release-links-and-downloads.mjs dist/production && python scripts/verify-content-consistency.py",
     "deploy:build": "node scripts/build-production-release.mjs",
     "claims:verify": "node scripts/verify-public-claims.mjs",
     "release:experience:verify": "node scripts/verify-release-experience.mjs dist/production",
@@ -128,7 +128,9 @@
     "deploy:validate": "node scripts/validate-deployment.mjs dist/production && npm run release:links:verify",
     "deploy:prepare": "node scripts/run-release-audit.mjs release",
     "product-facts:sync": "node scripts/sync-confirmed-product-facts.mjs --write",
-    "product-facts:verify": "node scripts/sync-confirmed-product-facts.mjs --check && node scripts/verify-confirmed-product-facts.mjs"
+    "product-facts:verify": "node scripts/sync-confirmed-product-facts.mjs --check && node scripts/verify-confirmed-product-facts.mjs",
+    "sitemap:lastmod:sync": "node scripts/sync-sitemap-lastmod.mjs --write",
+    "sitemap:lastmod:verify": "node scripts/sync-sitemap-lastmod.mjs"
   },
   "devDependencies": {
     "@puppeteer/browsers": "3.2.0",
