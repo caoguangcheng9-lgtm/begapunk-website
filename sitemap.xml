@@ -5,53 +5,53 @@
   <!-- ===== CORE PAGES ===== -->
   <url>
     <loc>https://www.begapunk.com/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/products.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/product-comparison.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/contact.html</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- ===== BLOG ARTICLES ===== -->
   <url>
     <loc>https://www.begapunk.com/blog-rotary-joint-selection.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/blog-rotary-union-seal-types.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/blog-non-contact-clearance-seal-rotary-union.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/blog-rotary-joint-installation-mistakes.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -60,14 +60,14 @@
 
   <url>
     <loc>https://www.begapunk.com/applications.html</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/application-laser-tube-cutting.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -76,14 +76,14 @@
 
   <url>
     <loc>https://www.begapunk.com/custom-hydraulic-rotary-unions.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/application-cnc-pneumatic-clamping.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -91,7 +91,7 @@
 
   <url>
     <loc>https://www.begapunk.com/application-steel-dusty-environments.html</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -103,7 +103,7 @@
 
   <url>
     <loc>https://www.begapunk.com/application-vacuum-packaging-machines.html</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -111,7 +111,7 @@
 
   <url>
     <loc>https://www.begapunk.com/application-welding-positioners.html</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -119,7 +119,7 @@
 
   <url>
     <loc>https://www.begapunk.com/application-textile-printing-converting.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -127,56 +127,56 @@
 
   <url>
     <loc>https://www.begapunk.com/application-electronics-battery-test-fixtures.html</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/case-studies.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/case-bp-2p-95-pneumatic-chuck-integration.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/case-bp-3p-s06-sensor-monitored-chuck.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/blog.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/faq.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/installation.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/about.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -184,112 +184,112 @@
   <!-- ===== PRODUCT DETAIL PAGES ===== -->
   <url>
     <loc>https://www.begapunk.com/BP-1P-0003.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-1P-0006.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-0002.html</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-08-0001.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-130-0001.html</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-16-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-30-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-50-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-2P-95-0005.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-3P-0004.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-3P-0006.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-3P-0007.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-3P-S06-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-4P-30-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/BP-8P-0001.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -298,26 +298,26 @@
   <!-- ===== LEGAL PAGES ===== -->
   <url>
     <loc>https://www.begapunk.com/privacy.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/terms.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/manufacturing-quality.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/production-inspection-testing.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -325,63 +325,63 @@
 
   <url>
     <loc>https://www.begapunk.com/application-packaging-machinery.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/application-bottle-filling-capping.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/application-automation-rotary-tables.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/application-pneumatic-tools-hose-anti-twist.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/application-robot-end-of-arm-tooling.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/blog-rotary-joint-leaking.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/blog-threaded-vs-flange.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/blog-seal-replacement.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.begapunk.com/blog-rotary-joint-materials.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -413,7 +413,7 @@
   </url>
   <url>
     <loc>https://www.begapunk.com/downloads/BP-2P-0002.pdf</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -437,7 +437,7 @@
   </url>
   <url>
     <loc>https://www.begapunk.com/downloads/BP-2P-30-0001.pdf</loc>
-    <lastmod>2026-08-27</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -449,7 +449,7 @@
   </url>
   <url>
     <loc>https://www.begapunk.com/downloads/BP-2P-95-0005.pdf</loc>
-    <lastmod>2026-08-27</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -461,7 +461,7 @@
   </url>
   <url>
     <loc>https://www.begapunk.com/downloads/BP-3P-0006.pdf</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -491,21 +491,21 @@
   </url>
   <url>
     <loc>https://www.begapunk.com/blog-ptfe-coated-o-rings.html</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/BP-10P-0001.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.begapunk.com/blog-prevent-air-hose-twisting.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url><loc>https://www.begapunk.com/downloads/BP-10P-0001.pdf</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://www.begapunk.com/downloads/BP-10P-0001.pdf</loc><lastmod>2026-11-15</lastmod></url>
 </urlset>
