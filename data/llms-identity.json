@@ -163,5 +163,137 @@
     "closes": "17:30",
     "timeZone": "Asia/Shanghai",
     "utcOffset": "+08:00"
-  }
+  },
+  "marketplaceProfiles": [
+    {
+      "url": "https://www.made-in-china.com/showroom/5db6f15ec62eb2d2",
+      "platform": "Made-in-China",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.globalsources.com/ningbo-begapunk/showroom_6002100552719.htm",
+      "platform": "Global Sources",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.globalsources.com/ningbo-begapunk/homepage_6002100552719.htm",
+      "platform": "Global Sources",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.globalsources.com/ningbo-begapunk/company-profile_6002100552719.htm",
+      "platform": "Global Sources",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/company/Ningbo-Begapunk-Pneumatic-Components-Co-Ltd-14892621.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/my/MyDashboard.aspx",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q142202871",
+      "platform": "Wikidata",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-10p-0001-10-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083101.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-2p-0001-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083103.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-2p-08-0001-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083105.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-2p-95-0005-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083109.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-3p-0004-3-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083111.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-3p-0007-3-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083113.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-8p-0001-8-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083115.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-2p-0002-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083117.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-4p-30-0001-4-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083119.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.tradekey.com/product-free/Bp-2p-16-0001-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083121.html",
+      "platform": "TradeKey",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356582&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356583&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356584&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356585&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356586&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356587&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356588&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356589&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    },
+    {
+      "url": "https://www.3dcontentcentral.com/parts/part.aspx?id=3356590&catalogid=171",
+      "platform": "3D ContentCentral",
+      "status": "PUBLISHED"
+    }
+  ]
 }

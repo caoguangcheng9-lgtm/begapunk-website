@@ -83,7 +83,8 @@ for (const locale of ['en','de','fr','ja','ru']) {
       const f=decodeURIComponent(url.pathname).replace(/^\//,'')+(url.pathname.endsWith('/')?'index.html':'');
       assert.ok(existsSync(path.join(root,f)),`${relative}: local target ${f}`);
     } else assert.ok(llmsIdentity.verificationSources.some(s=>s.url===url.href)
-      || llmsIdentity.officialSocialChannels.some(s=>s.url===url.href),`${relative}: unapproved external link ${url.href}`);
+      || llmsIdentity.officialSocialChannels.some(s=>s.url===url.href)
+      || (llmsIdentity.marketplaceProfiles||[]).some(s=>s.url===url.href),`${relative}: unapproved external link ${url.href}`);
   }
   console.log(`PASS ${relative}: UTF-8, Markdown, 17 models, numeric parity, identity, policy and local URLs.`);
 }

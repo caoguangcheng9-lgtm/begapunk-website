@@ -14,6 +14,16 @@ For LLMs and agents: use this file to locate BEGAPUNK company information, model
 
 {{sources}}
 
+## Marketplace & Directory Profiles
+
+- [Made-in-China supplier showroom](https://www.made-in-china.com/showroom/5db6f15ec62eb2d2): Verified B2B storefront with the published pneumatic rotary union catalog, company profile, and trade capability information.
+- [Global Sources supplier showroom](https://www.globalsources.com/ningbo-begapunk/showroom_6002100552719.htm): Global Sources B2B storefront with the published pneumatic rotary union catalog, pricing, minimum order quantities and company profile.
+- [Global Sources supplier homepage](https://www.globalsources.com/ningbo-begapunk/homepage_6002100552719.htm): Global Sources supplier homepage with company overview, featured products and trade capability information.
+- [Global Sources company profile](https://www.globalsources.com/ningbo-begapunk/company-profile_6002100552719.htm): Global Sources company profile page with the registered overview, manufacturing scope and product categories.
+- [TradeKey company profile](https://www.tradekey.com/company/Ningbo-Begapunk-Pneumatic-Components-Co-Ltd-14892621.html): TradeKey supplier profile with company overview, business type, factory information, main markets, payment terms and the company website.
+- [3D ContentCentral contributor library](https://www.3dcontentcentral.com/my/MyDashboard.aspx): Dassault Systemes / SOLIDWORKS CAD library holding the published BEGAPUNK STEP models under Pneumatic Components.
+- [Wikidata entity Q142202871](https://www.wikidata.org/wiki/Q142202871): Knowledge-graph identifier for the company entity, with official website, country, headquarters, inception date and industry statements.
+
 {{social}}
 
 ## Product Catalog
@@ -25,6 +35,20 @@ For LLMs and agents: use this file to locate BEGAPUNK company information, model
 - [Contact and RFQ](https://www.begapunk.com/contact.html): Request a quotation or engineering selection support.
 
 {{products}}
+
+## Marketplace Product Listings
+
+- [BP-10P-0001 — 10-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-10p-0001-10-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083101.html): TradeKey product listing for BP-10P-0001; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-2P-0001 — 2-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-2p-0001-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083103.html): TradeKey product listing for BP-2P-0001; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-2P-08-0001 — 2-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-2p-08-0001-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083105.html): TradeKey product listing for BP-2P-08-0001; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-2P-95-0005 — 2-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-2p-95-0005-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083109.html): TradeKey product listing for BP-2P-95-0005; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-3P-0004 — 3-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-3p-0004-3-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083111.html): TradeKey product listing for BP-3P-0004; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-3P-0007 — 3-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-3p-0007-3-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083113.html): TradeKey product listing for BP-3P-0007; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-8P-0001 — 8-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-8p-0001-8-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083115.html): TradeKey product listing for BP-8P-0001; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-2P-0002 — 2-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-2p-0002-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083117.html): TradeKey product listing for BP-2P-0002; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-4P-30-0001 — 4-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-4p-30-0001-4-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083119.html): TradeKey product listing for BP-4P-30-0001; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BP-2P-16-0001 — 2-passage pneumatic rotary union (TradeKey)](https://www.tradekey.com/product-free/Bp-2p-16-0001-2-passage-Pneumatic-Rotary-Union-Air-Rotary-Joint-For-Pneumatic-Chuck-12083121.html): TradeKey product listing for BP-2P-16-0001; pricing, minimum order quantity and supplier contact are handled through TradeKey.
+- [BEGAPUNK global showroom (Global Sources)](https://www.globalsources.com/ningbo-begapunk/showroom_6002100552719.htm): Full published catalog of the 17 standard rotary union models on Global Sources, covering 1 to 10 passages.
 
 {{engineering}}
 
@@ -64,6 +88,19 @@ For LLMs and agents: use this file to locate BEGAPUNK company information, model
 {{documents}}
 
 - [Catalog CAD availability](https://www.begapunk.com/products.html): Catalog models include a downloadable STEP AP214 file for a fit check on each product page. Custom or non-catalog CAD is provided after inquiry.
+
+## Downloadable STEP Models
+
+- [BEGAPUNK STEP models on 3D ContentCentral](https://www.3dcontentcentral.com/my/MyDashboard.aspx): Downloadable STEP files of BEGAPUNK rotary unions, published in the SOLIDWORKS / Dassault Systemes CAD library under the Pneumatic Components category.
+- [BP-2P-0001 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356582&catalogid=171): Downloadable STEP file and 3D preview of BP-2P-0001.
+- [BP-8P-0001 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356583&catalogid=171): Downloadable STEP file and 3D preview of BP-8P-0001.
+- [BP-2P-08-0001 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356584&catalogid=171): Downloadable STEP file and 3D preview of BP-2P-08-0001.
+- [BP-3P-0004 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356585&catalogid=171): Downloadable STEP file and 3D preview of BP-3P-0004.
+- [BP-3P-0007 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356586&catalogid=171): Downloadable STEP file and 3D preview of BP-3P-0007.
+- [BP-4P-30-0001 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356587&catalogid=171): Downloadable STEP file and 3D preview of BP-4P-30-0001.
+- [BP-2P-30-0001 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356588&catalogid=171): Downloadable STEP file and 3D preview of BP-2P-30-0001.
+- [BP-2P-130-0001 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356589&catalogid=171): Downloadable STEP file and 3D preview of BP-2P-130-0001.
+- [BP-1P-0006 — STEP model (3D ContentCentral)](https://www.3dcontentcentral.com/parts/part.aspx?id=3356590&catalogid=171): Downloadable STEP file and 3D preview of BP-1P-0006.
 
 - [Selection guide](https://www.begapunk.com/blog-rotary-joint-selection.html): Five key parameters for selecting a pneumatic rotary joint.
 - [Model comparison](https://www.begapunk.com/product-comparison.html): Side-by-side model data for preliminary selection.
