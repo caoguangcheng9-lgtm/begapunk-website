@@ -360,13 +360,20 @@
     function bindSuccessfulInquiryTracking() {
         document.addEventListener('begapunk:inquiry-success', function (event) {
             const detail = event.detail || {};
-            trackEvent('generate_lead', {
+            const payload = {
                 method: 'website_contact_form',
                 form_id: detail.formId || 'quoteForm',
                 inquiry_type: detail.inquiryType || 'general_inquiry',
                 requested_product: detail.product || 'not_specified',
                 page_path: window.location.pathname
-            });
+            };
+            // GA4 standard lead event.
+            trackEvent('generate_lead', payload);
+            // Google Ads primary conversion "询价提交" (owned by the Ads account)
+            // listens for this bespoke event name. It must stay in sync with the
+            // GA4 key event imported into ads.google.com; without it the primary
+            // conversion never records.
+            trackEvent('begapunk_inquiry_sent', payload);
         });
     }
 
